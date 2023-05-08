@@ -1,0 +1,59 @@
+[{:el :dynamic-diagram
+  :id :story1/dynamic-view
+  :title "Going to the movies - Coarse Grained"
+  ;:spec {:legend true}
+  :ct [{:el :person-ext
+        :id :story1/moviegoer
+        :name "Moviegoer"}
+
+       {:el :person
+        :id :story1/cashier
+        :name "Cashier"}
+
+       {:el :person
+        :id :story1/consession-stand
+        :name "Consession Stand"}
+
+       {:el :person
+        :id :story1/usher
+        :name "Usher"}
+
+       {:el :person
+        :id :story1/projectionist
+        :name "Projectionist"}
+
+       {:el :rel
+        :id :story1/moviegoer-buys-ticket
+        :from :story1/moviegoer
+        :to :story1/cashier
+        :name "buys ticket from"}
+
+       {:el :rel
+        :id :story1/moviegoer-buys-snacks-and-drinks
+        :from :story1/moviegoer
+        :to :story1/consession-stand
+        :name "buys snacks and drinks from"}
+
+       {:el :rel
+        :id :story1/moviegoer-shows-ticket
+        :from :story1/moviegoer
+        :to :story1/usher
+        :name "shows ticket to"}
+
+       {:el :rel
+        :id :story1/usher-checks-ticket-grants-entrance
+        :from :story1/usher
+        :to :story1/moviegoer
+        :name "checks ticket and grants entrance"}
+
+       {:el :rel
+        :id :story1/projectionist-starts-movie
+        :from :story1/projectionist
+        :to :story1/moviegoer
+        :name "starts movie for"}
+
+       {:el :rel
+        :id :story1/moviegoer-watches-movie
+        :from :story1/moviegoer
+        :to :story1/projectionist ; should be movie
+        :name "watches movie"}]}]

@@ -1,0 +1,45 @@
+[{:el :system
+  :id :hexagonal/system
+  :name "Hexagonal Architecture"
+  :desc "describing structure and dependencies of a system of bounded domain context."
+  :ct [{:el :container
+        :id :hexagonal/container
+        :name "Container"
+        :desc "can be e.g. an application or a service"
+        :ct [{:el :component
+              :id :hexagonal/domain-core
+              :name "Domain Core"
+              :desc "contains the functional core of the domain"}
+             {:el :component
+              :id :hexagonal/domain-application
+              :name "Domain Application"
+              :desc "contains the processes and use-case orchestration of the domain. E.g. a controller."}
+             {:el :component
+              :id :hexagonal/repository-component
+              :name "Repository"
+              :desc "Adapter to the persistent data of the domain"}
+             {:el :component
+              :id :hexagonal/provided-interface-component
+              :name "Provided Interface Adapter"
+              :desc "API/Adapter for consumers of the domain"}
+             {:el :component
+              :id :hexagonal/cosumed-interface-component
+              :name "Consumed Interface Adapter"
+              :desc "Adapter for a service consumed for the the domain"}
+             ]}]}
+ {:el :rel
+  :id :hexagonal/domain-application-uses-domain-core
+  :from :hexagonal/domain-application
+  :to :hexagonal/domain-core
+  :name "uses"}
+ {:el :rel
+  :id :hexagonal/domain-application-uses-repository-component
+  :from :hexagonal/domain-application
+  :to :hexagonal/repository-component
+  :name "uses"}
+ {:el :rel
+  :id :hexagonal/provided-interface-component-uses-domain-application
+  :from :hexagonal/provided-interface-component
+  :to :hexagonal/domain-application
+  :name "uses"}
+ ]

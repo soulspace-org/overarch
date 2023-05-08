@@ -1,0 +1,20 @@
+[{:el :context-diagram
+  :id :test/styles-context-view 
+  :spec {:styles [{:el :rel
+                   :id :dashed-rel
+                   :line-style :dashed}
+                  {:el :rel
+                   :id :dotted-rel
+                   :line-style :dotted}
+                  {:el :rel
+                   :id :bold-rel
+                   :line-style :bold
+                   :line-color "#007700"
+                   :text-color "#000077"}
+                  {:el :element
+                   :id :red-rel
+                   :bg-color "#CC0000"
+                   :border-color "#330000"
+                   :text-color "#000000"}]}
+  :title "Style test"}
+ ]
