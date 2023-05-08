@@ -64,33 +64,83 @@ Model references may be enhanced with additional attributes that are specific to
 Examples
 --------
 
-Model definitions
+Example of a model definition
 
 ```
-[{:el :system :id :astronomy/pulsar-system :name "Pulsar" :desc "Astronomy Application"
-  :ct [{:el :container :id :astro/pulsar-ui-container :name "Pulsar UI" :desc "User Interface"
-        :ct [{:el :component :id :astronomy/pulsar-catalog-component :name "Catalog"
-              :desc "Providing celestial objects from catalogs"}
-             {:el :component :id :astronomy/pulsar-control-component :name "Instrument Control"
-              :desc "Controlling astronomical instruments (e.g. telescopes, cameras)"}
-             {:el :component :id :astronomy/pulsar-star-map-component :name "Star Map"
-              :desc "Rendering the celestial elements in a map"}]}]}
- {:el :person :id :astronomy/astronomer :name "Astronomer"}
- {:el :system-ext :id :astronomy/instruments :name "Astronomical Instruments"}]
-```
+[{:el :system
+  :id :hexagonal/system
+  :name "Hexagonal Architecture"
+  :desc "describing structure and dependencies of a system of bounded domain context."
+  :ct [{:el :container
+        :id :hexagonal/container
+        :name "Container"
+        :desc "can be e.g. an application or a service"
+        :ct [{:el :component
+              :id :hexagonal/domain-core
+              :name "Domain Core"
+              :desc "contains the functional core of the domain"}
+             {:el :component
+              :id :hexagonal/domain-application
+              :name "Domain Application"
+              :desc "contains the processes and use-case orchestration of the domain. E.g. a controller."}
+             {:el :component
+              :id :hexagonal/repository-component
+              :name "Repository"
+              :desc "Adapter to the persistent data of the domain"}
+             {:el :component
+              :id :hexagonal/provided-interface-component
+              :name "Provided Interface Adapter"
+              :desc "API/Adapter for consumers of the domain"}
+             {:el :component
+              :id :hexagonal/cosumed-interface-component
+              :name "Consumed Interface Adapter"
+              :desc "Adapter for a service consumed for the the domain"}
+             ]}]}
+ {:el :rel
+  :id :hexagonal/domain-application-uses-domain-core
+  :from :hexagonal/domain-application
+  :to :hexagonal/domain-core
+  :name "uses"}
+ {:el :rel
+  :id :hexagonal/domain-application-uses-repository-component
+  :from :hexagonal/domain-application
+  :to :hexagonal/repository-component
+  :name "uses"}
+ {:el :rel
+  :id :hexagonal/provided-interface-component-uses-domain-application
+  :from :hexagonal/provided-interface-component
+  :to :hexagonal/domain-application
+  :name "uses"}
+ ]
+ ```
 
-Diagram specification
+Example of a diagrams specification
 
 ```
-[{:el :context-diagram :id :astronomy/system-context
-  :style {:legend true :linetype :orthogonal}
-  :ct [{:ref :astronomy/pulsar-app}
-       {:ref :astronomy/astronomer}
-       {:ref :astronomy/instruments}
+[{:el :context-diagram
+  :id :hexagonal/system-context-view
+  :title "System Context View of a Hexagonal Architecture"
+  :spec {:legend true}
+  :ct [{:ref :hexagonal/system}]}
+ 
+ {:el :container-diagram
+  :id :hexagonal/container-view
+  :title "Container View of a Hexagonal Arcitecture"
+  :spec {:legend true}
+  :ct [{:ref :hexagonal/system}]}
+ 
+ {:el :component-diagram
+  :id :hexagonal/component-view
+  :title "Component View of a Hexagonal Arcitecture"
+  :spec {:legend true}
+  :ct [{:ref :hexagonal/container}
+       
+       {:ref :hexagonal/domain-application-uses-domain-core}
+       {:ref :hexagonal/domain-application-uses-repository-component}
+       {:ref :hexagonal/provided-interface-component-uses-domain-application}]}
 
-       {:el :rel :from :astronomy/astronomer :to :astronomy/pulsar-app :name "uses"}
-       {:el :rel :from :astronomy/hypernova-app :to :astronomy/instruments :name "controls"}]}]
-```
+ ]
+ ```
 
 Usage
 -----
