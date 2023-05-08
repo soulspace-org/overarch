@@ -155,9 +155,9 @@
   :name "Makes API calls to"
   :tech "Transit/HTTPS"}
  {:el :rel
-  :id :banking/single-page-app-calls-accounts-summary-controller
+  :id :banking/single-page-app-calls-reset-password-controller
   :from :banking/single-page-app
-  :to :banking/accounts-summary-controller
+  :to :banking/reset-password-controller
   :name "Makes API calls to"
   :tech "Transit/HTTPS"}
  {:el :rel
@@ -173,7 +173,7 @@
  :name "Makes API calls to"
  :tech "Transit/HTTPS"}
 {:el :rel
- :id :banking/mobile-app-calls-accounts-summary-controller
+ :id :banking/mobile-app-calls-reset-password-controller
  :from :banking/mobile-app
  :to :banking/reset-password-controller
  :name "Makes API calls to"
