@@ -1,3 +1,5 @@
+![overarch - Image © 2019 Ludger Solbach](/doc/overarch.jpg)
+
 Overarch Architecture Description
 =================================
 A data driven description of a software architecture based on the C4 model.
