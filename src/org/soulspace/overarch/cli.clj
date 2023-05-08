@@ -9,13 +9,14 @@
 
 
 (def appname "overarch")
-(def description "Overarch CLI")
+(def description "Overarch CLI Exporter")
 
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory." :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
-               ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export"]
-               ["-f" "--format" "Export format" :default :plantuml]])
-
+               ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
+               ["-f" "--format" "Export format" :default :plantuml]
+               ["-h" "--help" "print help"]
+               [nil  "--debug" "print debug messages" :default false]])
 
 (defn usage-msg
   "Returns a message containing the program usage."
@@ -88,3 +89,6 @@
       (exit (if success 0 1) exit-message)
       ; handle options and generate the requested outputs
       (handle options))))
+
+(comment
+  (-main "--debug"))
