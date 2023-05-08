@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1009px" preserveAspectRatio="none" style="width:973px;height:1009px;background:#FFFFFF;" version="1.1" viewBox="0 0 973 1009" width="973px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="26.2969" id="_title" style="stroke:none;stroke-width:1.0;" width="319" x="320.385" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="309" x="325.385" y="22.9951">Component View of the API Application</text><!--MD5=[2dce055d3a8855edeb8e5f972f4543ac]
+cluster banking_apiApplication--><g id="cluster_banking_apiApplication"><rect fill="none" height="460" rx="2.5" ry="2.5" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="743" x="75.77" y="286.2969"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="132" x="381.27" y="323.1484">API Application</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="80" x="407.27" y="338.0605">[Container]</text></g><!--MD5=[9cbd0ae4f0fbb4eb7a711fc04d4b4148]
+entity banking_signInController--><g id="elem_banking_signInController"><rect fill="#85BBF0" height="115.4531" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="218" x="91.77" y="374.7969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="158.27" y="395.9355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="154" x="123.77" y="413.6172">Sign In Controller</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="129" x="136.27" y="428.5293">[Clojure namespace]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="198.77" y="444.3545"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="198" x="101.77" y="460.6514">Allows users to sign in to the</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="144.27" y="476.9482">banking system.</text></g><!--MD5=[5b3def8e53fa700457394208ceaf07b8]
+entity banking_securityComponent--><g id="elem_banking_securityComponent"><rect fill="#85BBF0" height="131.75" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="217" x="92.27" y="590.2969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="158.27" y="611.4355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="181" x="110.27" y="629.1172">Security Component</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="129" x="136.27" y="644.0293">[Clojure namespace]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="198.77" y="659.8545"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="102.27" y="676.1514">Provides functionality related</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="120.77" y="692.4482">to signing in, changing</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="146.27" y="708.7451">passwords, etc.</text></g><!--MD5=[eeef916e41d9345334c58e2e5ee410c9]
+entity banking_resetPasswordController--><g id="elem_banking_resetPasswordController"><rect fill="#85BBF0" height="150.375" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="218" x="344.77" y="357.2969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="411.27" y="378.4355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="145" x="378.27" y="396.1172">Reset Password</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="88" x="409.77" y="414.7422">Controller</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="129" x="389.27" y="429.6543">[Clojure namespace]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="451.77" y="445.4795"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="362.27" y="461.7764">Allows users to reset their</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194" x="354.77" y="478.0732">passwords with a single use</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="438.27" y="494.3701">URL.</text></g><!--MD5=[729d1a563a632577ec8f9f86ccbab7b5]
+entity banking_emailComponent--><g id="elem_banking_emailComponent"><rect fill="#85BBF0" height="99.1563" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="179" x="364.27" y="606.7969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="411.27" y="627.9355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="159" x="374.27" y="645.6172">E-mail Component</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="129" x="389.27" y="660.5293">[Clojure namespace]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="451.77" y="676.3545"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="376.77" y="692.6514">Sends e-mail to users.</text></g><!--MD5=[4f0172c0faf0e8703bcd4d24183818c4]
+entity banking_accountsSummaryController--><g id="elem_banking_accountsSummaryController"><rect fill="#85BBF0" height="150.375" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="205" x="598.27" y="357.2969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="658.27" y="378.4355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="171" x="612.27" y="396.1172">Accounts Summary</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="88" x="656.77" y="414.7422">Controller</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="130" x="635.77" y="429.6543">[Clojure Namespace]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="698.77" y="445.4795"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="181" x="608.27" y="461.7764">Provides customers with a</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="622.27" y="478.0732">summary of their bank</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="666.77" y="494.3701">accounts.</text></g><!--MD5=[407cd5647976c53466448b847b101f8e]
+entity banking_mainframeBankingSystemFacade--><g id="elem_banking_mainframeBankingSystemFacade"><rect fill="#85BBF0" height="148.0469" rx="2.5" ry="2.5" style="stroke:#78A8D8;stroke-width:0.5;" width="218" x="584.77" y="582.2969"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="85" x="651.27" y="603.4355">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="169" x="606.27" y="621.1172">Mainframe Banking</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="134" x="626.77" y="639.7422">System Facade</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="129" x="627.27" y="654.6543">[Clojure Namespace,</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="69" x="659.27" y="668.623">http-client]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="691.77" y="684.4482"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="198" x="594.77" y="700.7451">A facade onto the mainframe</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="637.27" y="717.042">banking system.</text></g><!--MD5=[4b1f63f958a363aa23d5e826df8bdb67]
+entity banking_singlePageApp--><g id="elem_banking_singlePageApp"><rect fill="#438DD5" height="166.6719" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="203" x="96.27" y="44.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="160.77" y="65.4355">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="103" x="143.27" y="83.1172">Single-Page</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="96" x="149.77" y="101.7422">Application</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="180" x="107.77" y="116.6543">[ClojureScript and Re-Frame]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="195.77" y="132.4795"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="106.27" y="148.7764">Provides all of the internet</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="116.27" y="165.0732">banking functionality to</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="113.77" y="181.3701">customers via their web</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="167.77" y="197.667">browser.</text></g><!--MD5=[c0307190e1689443645e72b879da821a]
+entity banking_mobileApp--><g id="elem_banking_mobileApp"><rect fill="#438DD5" height="148.0469" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="220" x="594.77" y="53.7969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="667.77" y="74.9355">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="97" x="656.27" y="92.6172">Mobile App</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="174" x="617.77" y="107.5293">[ClojureScript and Reagent]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="702.77" y="123.3545"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="608.27" y="139.6514">Provides a limited subset of</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="632.77" y="155.9482">the internet banking</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="200" x="604.77" y="172.2451">functionality to customers via</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="637.77" y="188.542">their mobile device.</text></g><!--MD5=[477c019157dfb7fe8908ede52c1f0078]
+entity banking_database--><g id="elem_banking_database"><path d="M94.27,845.2969 C94.27,835.2969 200.77,835.2969 200.77,835.2969 C200.77,835.2969 307.27,835.2969 307.27,845.2969 L307.27,982.3438 C307.27,992.3438 200.77,992.3438 200.77,992.3438 C200.77,992.3438 94.27,992.3438 94.27,982.3438 L94.27,845.2969 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:0.5;"/><path d="M94.27,845.2969 C94.27,855.2969 200.77,855.2969 200.77,855.2969 C200.77,855.2969 307.27,855.2969 307.27,845.2969 " fill="none" style="stroke:#3C7FC0;stroke-width:0.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="163.77" y="870.4355">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="83" x="159.27" y="888.1172">Database</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="61" x="170.27" y="903.0293">[Datomic]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="198.77" y="918.8545"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="104.27" y="935.1514">Stores the user registration</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="130.27" y="951.4482">information, hashed</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="183" x="107.27" y="967.7451">authentication credentials,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="142.77" y="984.042">access logs, etc.</text></g><!--MD5=[0c43ff08bbfd02a37d69b4183c1b0e34]
+entity banking_emailSystem--><g id="elem_banking_emailSystem"><rect fill="#999999" height="101.4844" rx="2.5" ry="2.5" style="stroke:#8A8A8A;stroke-width:0.5;" width="186" x="360.77" y="863.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="396.27" y="884.4355">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="123" x="392.27" y="902.1172">E-mail System</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="451.77" y="918.8857"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="377.27" y="935.1826">The internal Microsoft</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="370.77" y="951.4795">Exchange email system.</text></g><!--MD5=[8250ffdafb811e06eedbcbea72883f86]
+entity banking_mainframeBankingSystem--><g id="elem_banking_mainframeBankingSystem"><rect fill="#999999" height="152.7031" rx="2.5" ry="2.5" style="stroke:#8A8A8A;stroke-width:0.5;" width="208" x="589.77" y="837.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="636.27" y="858.4355">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="169" x="606.27" y="876.1172">Mainframe Banking</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="66" x="660.77" y="894.7422">System</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="691.77" y="911.5107"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="599.77" y="927.8076">Stores all the core banking</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="631.27" y="944.1045">information about</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="616.77" y="960.4014">customers, accounts,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="634.27" y="976.6982">transactions, etc.</text></g><!--MD5=[17d2f091d4396d586b71a22509968ff1]
+link banking_singlePageApp to banking_signInController--><g id="link_banking_singlePageApp_banking_signInController"><path d="M96.01,165.9769 C48.38,190.0169 6,225.2369 25.77,270.2969 C42.88,309.2869 74.6,342.9869 106.39,369.3369 " fill="none" id="banking_singlePageApp-to-banking_signInController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="112.74,374.5069,108.4369,367.1256,104.6445,371.775,112.74,374.5069" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="26.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="43.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[0085bba901817d141f09b1216cdee67c]
+link banking_singlePageApp to banking_resetPasswordController--><g id="link_banking_singlePageApp_banking_resetPasswordController"><path d="M176.43,211.6569 C175.72,233.1569 180.04,254.6369 194.77,270.2969 C204.84,280.9969 313.67,271.6569 326.77,278.2969 C358.7,294.4869 385.6,322.6569 406.3,350.4569 " fill="none" id="banking_singlePageApp-to-banking_resetPasswordController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="411.16,357.1269,408.8657,348.8967,404.0198,352.4346,411.16,357.1269" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="195.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="212.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[c18bbc0e7ad96a58840c96b99194bb84]
+link banking_singlePageApp to banking_accountsSummaryController--><g id="link_banking_singlePageApp_banking_accountsSummaryController"><path d="M299.39,156.5369 C359.38,175.4169 435.35,203.7969 496.77,241.2969 C513.15,251.2969 511.46,262.0169 528.77,270.2969 C549.47,280.1969 559.96,266.7269 579.77,278.2969 C609.43,295.6169 634.57,323.2269 654.13,350.2469 " fill="none" id="banking_singlePageApp-to-banking_accountsSummaryController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="658.98,357.0969,656.8125,348.8324,651.9127,352.2954,658.98,357.0969" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="529.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="546.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[312e203415935b997d1863fa3d4ada9f]
+link banking_mobileApp to banking_signInController--><g id="link_banking_mobileApp_banking_signInController"><path d="M594.52,149.1569 C523.36,165.9269 431.1,194.6869 359.77,241.2969 C346,250.2969 291.93,316.3669 250.62,368.1069 " fill="none" id="banking_mobileApp-to-banking_signInController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="245.4,374.6569,252.7365,370.2779,248.0481,366.5336,245.4,374.6569" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="360.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="377.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[4264fb0dbfd6fdf7cb1799cde3c83254]
+link banking_mobileApp to banking_resetPasswordController--><g id="link_banking_mobileApp_banking_resetPasswordController"><path d="M701.18,201.9369 C696.12,227.2269 685.88,253.4269 665.77,270.2969 C651.24,282.4869 597.55,269.4369 580.77,278.2969 C549.26,294.9369 522.52,323.0369 501.81,350.6469 " fill="none" id="banking_mobileApp-to-banking_resetPasswordController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="496.95,357.2669,504.1019,352.5925,499.2649,349.0424,496.95,357.2669" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="688.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="705.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[5f47f2e3ef232b9b66e8e553fee61daa]
+link banking_mobileApp to banking_accountsSummaryController--><g id="link_banking_mobileApp_banking_accountsSummaryController"><path d="M814.88,198.9069 C833.58,219.6569 844.3,243.9469 834.77,270.2969 C824.21,299.4869 805.79,327.1169 785.93,350.9769 " fill="none" id="banking_mobileApp-to-banking_accountsSummaryController" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="780.58,357.2869,788.0416,353.1247,783.465,349.2447,780.58,357.2869" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="838.77" y="253.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="855.27" y="267.4043">[Transit/HTTPS]</text></g><!--MD5=[109c5afd44cd2d0448d8a11b4f8840a3]
+link banking_signInController to banking_securityComponent--><g id="link_banking_signInController_banking_securityComponent"><path d="M200.77,489.8869 C200.77,517.8369 200.77,551.8969 200.77,581.8269 " fill="none" id="banking_signInController-to-banking_securityComponent" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="200.77,590.1569,203.77,582.1569,197.77,582.1569,200.77,590.1569" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="35" x="201.77" y="549.4355">Uses</text></g><!--MD5=[4506c761d596107355397fe58cea6e90]
+link banking_resetPasswordController to banking_emailComponent--><g id="link_banking_resetPasswordController_banking_emailComponent"><path d="M453.77,507.5269 C453.77,537.2369 453.77,570.9169 453.77,598.6069 " fill="none" id="banking_resetPasswordController-to-banking_emailComponent" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="453.77,606.6269,456.77,598.6269,450.77,598.6269,453.77,606.6269" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="35" x="454.77" y="549.4355">Uses</text></g><!--MD5=[c2b985e70e1ed29ce47f748fe1ea02e4]
+link banking_accountsSummaryController to banking_mainframeBankingSystemFacade--><g id="link_banking_accountsSummaryController_banking_mainframeBankingSystemFacade"><path d="M698.43,507.5269 C697.76,528.8769 697.02,552.2669 696.34,574.0169 " fill="none" id="banking_accountsSummaryController-to-banking_mainframeBankingSystemFacade" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="696.08,582.2669,699.3214,574.3616,693.3241,574.1795,696.08,582.2669" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="35" x="698.77" y="549.4355">Uses</text></g><!--MD5=[333e0fe0d32bdde0e673a4f352608c21]
+link banking_securityComponent to banking_database--><g id="link_banking_securityComponent_banking_database"><path d="M200.77,722.4269 C200.77,754.1869 200.77,792.7969 200.77,826.9269 " fill="none" id="banking_securityComponent-to-banking_database" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="200.77,835.0469,203.77,827.0469,197.77,827.0469,200.77,835.0469" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="111" x="201.77" y="774.4355">Reads from and</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="64" x="227.27" y="788.4043">writes to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="59" x="229.77" y="802.373">[Datalog]</text></g><!--MD5=[db4ac3909b1ec0b93440d61647d1d21c]
+link banking_emailComponent to banking_emailSystem--><g id="link_banking_emailComponent_banking_emailSystem"><path d="M453.77,705.9569 C453.77,748.3469 453.77,809.8869 453.77,854.8269 " fill="none" id="banking_emailComponent-to-banking_emailSystem" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="453.77,863.0069,456.77,855.0069,450.77,855.0069,453.77,863.0069" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="134" x="454.77" y="788.4355">Sends e-mail using</text></g><!--MD5=[fede3c7ecc3ec75051bab7429e817eb9]
+link banking_mainframeBankingSystemFacade to banking_mainframeBankingSystem--><g id="link_banking_mainframeBankingSystemFacade_banking_mainframeBankingSystem"><path d="M693.77,730.5169 C693.77,761.1069 693.77,796.8369 693.77,828.5169 " fill="none" id="banking_mainframeBankingSystemFacade-to-banking_mainframeBankingSystem" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="693.77,836.9069,696.77,828.9069,690.77,828.9069,693.77,836.9069" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="127" x="694.77" y="781.4355">Makes API calls to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="77" x="719.77" y="795.4043">[XML/HTTPS]</text></g><!--MD5=[c878c56f4a6e60ca3a915933c80a2a94]
+@startuml banking_apiComponentView
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+
+
+
+
+title Component View of the API Application
+Container(banking_singlePageApp, "Single-Page Application", $techn="ClojureScript and Re-Frame", $descr="Provides all of the internet banking functionality to customers via their web browser.")
+Container(banking_mobileApp, "Mobile App", $techn="ClojureScript and Reagent", $descr="Provides a limited subset of the internet banking functionality to customers via their mobile device.")
+Container_Boundary(banking_apiApplication, "API Application") {
+  Component(banking_signInController, "Sign In Controller", $techn="Clojure namespace", $descr="Allows users to sign in to the banking system.")
+  Component(banking_securityComponent, "Security Component", $techn="Clojure namespace", $descr="Provides functionality related to signing in, changing passwords, etc.")
+  Component(banking_resetPasswordController, "Reset Password Controller", $techn="Clojure namespace", $descr="Allows users to reset their passwords with a single use URL.")
+  Component(banking_emailComponent, "E-mail Component", $techn="Clojure namespace", $descr="Sends e-mail to users.")
+  Component(banking_accountsSummaryController, "Accounts Summary Controller", $techn="Clojure Namespace", $descr="Provides customers with a summary of their bank accounts.")
+  Component(banking_mainframeBankingSystemFacade, "Mainframe Banking System Facade", $techn="Clojure Namespace, http-client", $descr="A facade onto the mainframe banking system.")
+}
+ContainerDb(banking_database, "Database", $techn="Datomic", $descr="Stores the user registration information, hashed authentication credentials, access logs, etc.")
+System_Ext(banking_emailSystem, "E-mail System", $descr="The internal Microsoft Exchange email system.")
+System_Ext(banking_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
+Rel(banking_singlePageApp, banking_signInController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_singlePageApp, banking_resetPasswordController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_singlePageApp, banking_accountsSummaryController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_mobileApp, banking_signInController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_mobileApp, banking_resetPasswordController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_mobileApp, banking_accountsSummaryController, "Makes API calls to", $techn="Transit/HTTPS")
+Rel(banking_signInController, banking_securityComponent, "Uses")
+Rel(banking_resetPasswordController, banking_emailComponent, "Uses")
+Rel(banking_accountsSummaryController, banking_mainframeBankingSystemFacade, "Uses")
+Rel(banking_securityComponent, banking_database, "Reads from and writes to", $techn="Datalog")
+Rel(banking_emailComponent, banking_emailSystem, "Sends e-mail using")
+Rel(banking_mainframeBankingSystemFacade, banking_mainframeBankingSystem, "Makes API calls to", $techn="XML/HTTPS")
+@enduml
+
+@startuml banking_apiComponentView
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendFontColor #FFFFFF
+skinparam LegendBackgroundColor transparent
+skinparam LegendBorderColor transparent
+
+skinparam rectangle<<legendArea>> {
+    backgroundcolor transparent
+    bordercolor transparent
+}
+
+skinparam rectangle {
+    StereotypeFontSize 12
+}
+
+skinparam database {
+    StereotypeFontSize 12
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+}
+
+skinparam arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam person {
+    StereotypeFontSize 12
+}
+
+skinparam actor {
+    StereotypeFontSize 12
+    style awesome
+}
+
+skinparam rectangle<<boundary>> {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    BorderStyle dashed
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontStyle plain
+    BackgroundColor transparent
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<boundary>>StereotypeFontColor transparent
+skinparam rectangle<<boundary>>StereotypeFontColor transparent
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+sprite $robot [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000005BFFFFFFFFFFFFFFFFFFFFFE9100000000000
+0000000000AFFFFFFFFFFFFFFFFFFFFFFFFFE30000000000
+0000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFE1000000000
+000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000000000
+000000004FFFFFFFFFFFFFFFFFFFFFFFFFFFFFC000000000
+000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000000
+000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000000
+000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000000
+000699405FFFFFFC427FFFFFFFFFC427FFFFFFE009982000
+008FFF705FFFFFE10006FFFFFFFE00007FFFFFE00FFFF100
+00CFFF705FFFFFA00001FFFFFFF900002FFFFFE00FFFF500
+00DFFF705FFFFFB00002FFFFFFFA00003FFFFFE00FFFF500
+00DFFF705FFFFFF4000AFFFFFFFF3000BFFFFFE00FFFF500
+00DFFF705FFFFFFFA8DFFFFFFFFFFA8DFFFFFFE00FFFF500
+00DFFF705FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE00FFFF500
+00DFFF705FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE00FFFF500
+00DFFF705FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE00FFFF500
+00DFFF705FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE00FFFF500
+00DFFF705FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE00FFFF500
+00CFFF705FFFFFF87777777777777777CFFFFFE00FFFF500
+008FFF705FFFFFF100000000000000009FFFFFE00FFFF100
+000699405FFFFFF76666666666666666CFFFFFE009982000
+000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000000
+000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000000
+000000004FFFFFFFFFFFFFFFFFFFFFFFFFFFFFC000000000
+000000000EFFFFFFFFFFFFFFFFFFFFFFFFFFFF7000000000
+0000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFD0000000000
+00000000004CFFFFFFFFFFFFFFFFFFFFFFFF910000000000
+000000000000011111111111111111111110000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $robot2 [48x48/16] {
+000000000000000088888888888888880000000000000000
+000000000000000AFFFFFFFFFFFFFFFFA000000000000000
+00000000000000CFFFFFFFFFFFFFFFFFFC00000000000000
+00000000000004EFFFFFFFFFFFFFFFFFFE40000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFFA0000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000888FFFFFFFFFFFFFFFFFFFF88800000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000008FF8FFFFFFFFFFFFFFFFFFFF8FF80000000000
+00000000000888FFFFFFFFFFFFFFFFFFFF88800000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000008FFFFFFFFFFFFFFFFFFFF80000000000000
+00000000000004CFFFFFFFFFFFFFFFFFFC40000000000000
+000000488888848CFFFFFFFFFFFFFFFFC848888884000000
+00000CFFFFFFFFC888888888888888888CFFFFFFFFC00000
+00008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000
+0000CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+0008FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF8000
+0008FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF8000
+0008FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF8000
+0008FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF8000
+0000CFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFC0000
+00008FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF80000
+00000CFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFC00000
+000000488887578888888888888888888864688884000000
+000000000000000000000000000000000000000000000000
+}
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam database<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam queue<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam person<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam actor<<container>> {
+    StereotypeFontColor #438DD5
+    FontColor #438DD5
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam database<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam queue<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam person<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam actor<<external_container>> {
+    StereotypeFontColor #B3B3B3
+    FontColor #B3B3B3
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam database<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam queue<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam person<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam actor<<component>> {
+    StereotypeFontColor #85BBF0
+    FontColor #85BBF0
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+skinparam rectangle<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam database<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam queue<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam person<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam actor<<external_component>> {
+    StereotypeFontColor #CCCCCC
+    FontColor #CCCCCC
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+title Component View of the API Application
+rectangle "== Single-Page Application\n//<size:12>[ClojureScript and Re-Frame]</size>//\n\nProvides all of the internet banking functionality to customers via their web browser." <<container>> as banking_singlePageApp 
+rectangle "== Mobile App\n//<size:12>[ClojureScript and Reagent]</size>//\n\nProvides a limited subset of the internet banking functionality to customers via their mobile device." <<container>> as banking_mobileApp 
+  rectangle "== API Application\n<size:12>[Container]</size>" <<container_boundary>><<boundary>> as banking_apiApplication  {
+  rectangle "== Sign In Controller\n//<size:12>[Clojure namespace]</size>//\n\nAllows users to sign in to the banking system." <<component>> as banking_signInController 
+  rectangle "== Security Component\n//<size:12>[Clojure namespace]</size>//\n\nProvides functionality related to signing in, changing passwords, etc." <<component>> as banking_securityComponent 
+  rectangle "== Reset Password Controller\n//<size:12>[Clojure namespace]</size>//\n\nAllows users to reset their passwords with a single use URL." <<component>> as banking_resetPasswordController 
+  rectangle "== E-mail Component\n//<size:12>[Clojure namespace]</size>//\n\nSends e-mail to users." <<component>> as banking_emailComponent 
+  rectangle "== Accounts Summary Controller\n//<size:12>[Clojure Namespace]</size>//\n\nProvides customers with a summary of their bank accounts." <<component>> as banking_accountsSummaryController 
+  rectangle "== Mainframe Banking System Facade\n//<size:12>[Clojure Namespace, http-client]</size>//\n\nA facade onto the mainframe banking system." <<component>> as banking_mainframeBankingSystemFacade 
+}
+database "== Database\n//<size:12>[Datomic]</size>//\n\nStores the user registration information, hashed authentication credentials, access logs, etc." <<container>> as banking_database 
+rectangle "== E-mail System\n\nThe internal Microsoft Exchange email system." <<external_system>> as banking_emailSystem 
+rectangle "== Mainframe Banking System\n\nStores all the core banking information about customers, accounts, transactions, etc." <<external_system>> as banking_mainframeBankingSystem 
+banking_singlePageApp - ->> banking_signInController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_singlePageApp - ->> banking_resetPasswordController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_singlePageApp - ->> banking_accountsSummaryController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_mobileApp - ->> banking_signInController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_mobileApp - ->> banking_resetPasswordController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_mobileApp - ->> banking_accountsSummaryController : **Makes API calls to**\n//<size:12>[Transit/HTTPS]</size>//
+banking_signInController - ->> banking_securityComponent : **Uses**
+banking_resetPasswordController - ->> banking_emailComponent : **Uses**
+banking_accountsSummaryController - ->> banking_mainframeBankingSystemFacade : **Uses**
+banking_securityComponent - ->> banking_database : **Reads from and writes to**\n//<size:12>[Datalog]</size>//
+banking_emailComponent - ->> banking_emailSystem : **Sends e-mail using**
+banking_mainframeBankingSystemFacade - ->> banking_mainframeBankingSystem : **Makes API calls to**\n//<size:12>[XML/HTTPS]</size>//
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 19:01:30 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
