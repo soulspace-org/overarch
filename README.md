@@ -4,6 +4,7 @@ A data driven description of a software architecture based on the C4 model.
 
 Describe your model as data and specify/generate representations (e.g. diagrams) for your model.
 
+
 Rationale
 ---------
 
@@ -63,6 +64,10 @@ Model references may be enhanced with additional attributes that are specific to
 
 Examples
 --------
+This is an example of the specification of a model and some diagrams based on the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
+
+The complete model and diagram specifications can be found under
+[models/banking](/models/banking).
 
 Example of a model definition
 
@@ -152,6 +157,30 @@ Example of a diagrams specification
        {:ref :banking/internet-banking-system-uses-email-system :direction :right}
        {:ref :banking/internet-banking-system-using-mainframe-banking-system}
        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
+
+ {:el :container-diagram
+  :id :banking/container-view
+  :spec {:legend true}
+  :title "Container View of the Internet Banking System"
+  :ct [; model elements
+       {:ref :banking/personal-customer}
+       {:ref :banking/internet-banking-system}
+       {:ref :banking/email-system}
+       {:ref :banking/mainframe-banking-system}
+
+       ; relations
+       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
+       {:ref :banking/personal-customer-uses-web-app}
+       {:ref :banking/personal-customer-uses-single-page-app}
+       {:ref :banking/personal-customer-uses-mobile-app}
+
+       {:ref :banking/web-app-deliveres-single-page-app :direction :right}
+       {:ref :banking/single-page-app-calls-api-application}
+       {:ref :banking/mobile-app-calls-api-application}
+       {:ref :banking/api-application-uses-database :direction :left}
+       {:ref :banking/api-application-uses-email-system :direction :right}
+       {:ref :banking/api-application-uses-mainframe-banking-system}
+       ]}
  ]
  ```
 
@@ -177,9 +206,9 @@ Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
 System Context View rendered with PlantUML
 ![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
 
+
 Usage
 -----
-
 Use a folder for all the data (e.g. models, diagram specifications).
 Add EDN files for the model and the diagram specifications and other representations. All the EDN files in the folder will be loaded.
 
