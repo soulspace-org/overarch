@@ -25,7 +25,37 @@
         :id :banking/api-application
         :name "API Application"
         :desc "Provides internet banking functionality via a JSON/HTTPS API."
-        :tech "Clojure and Liberator"}
+        :tech "Clojure and Liberator"
+        :ct [{:el :component
+              :id :banking/sign-in-controller
+              :name "Sign In Controller"
+              :desc "Allows users to sign in to the banking system."
+              :tech "Clojure namespace"}
+             {:el :component
+              :id :banking/security-component
+              :name "Security Component"
+              :desc "Provides functionality related to signing in, changing passwords, etc."
+              :tech "Clojure namespace"}
+             {:el :component
+              :id :banking/reset-password-controller
+              :name "Reset Password Controller"
+              :desc "Allows users to reset their passwords with a single use URL."
+              :tech "Clojure namespace"}
+             {:el :component
+              :id :banking/email-component
+              :name "E-mail Component"
+              :desc "Sends e-mail to users."
+              :tech "Clojure namespace"}
+             {:el :component
+              :id :banking/accounts-summary-controller
+              :name "Accounts Summary Controller"
+              :desc "Provides customers with a summary of their bank accounts."
+              :tech "Clojure Namespace"}
+             {:el :component
+              :id :banking/mainframe-banking-system-facade
+              :name "Mainframe Banking System Facade"
+              :desc "A facade onto the mainframe banking system."
+              :tech "Clojure Namespace, http-client"}]}
        {:el :container
         :subtype :database
         :id :banking/database
@@ -116,4 +146,75 @@
   :to :banking/mainframe-banking-system
   :name "Makes API calls to"
   :tech "XML/HTTPS"}
+ 
+ ; Component diagram relations
+ {:el :rel
+  :id :banking/single-page-app-calls-sign-in-controller
+  :from :banking/single-page-app
+  :to :banking/sign-in-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+ {:el :rel
+  :id :banking/single-page-app-calls-accounts-summary-controller
+  :from :banking/single-page-app
+  :to :banking/accounts-summary-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+ {:el :rel
+  :id :banking/single-page-app-calls-accounts-summary-controller
+  :from :banking/single-page-app
+  :to :banking/accounts-summary-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+{:el :rel
+ :id :banking/mobile-app-calls-sign-in-controller
+ :from :banking/mobile-app
+ :to :banking/sign-in-controller
+ :name "Makes API calls to"
+ :tech "Transit/HTTPS"}
+{:el :rel
+ :id :banking/mobile-app-calls-accounts-summary-controller
+ :from :banking/mobile-app
+ :to :banking/reset-password-controller
+ :name "Makes API calls to"
+ :tech "Transit/HTTPS"}
+{:el :rel
+ :id :banking/mobile-app-calls-accounts-summary-controller
+ :from :banking/mobile-app
+ :to :banking/accounts-summary-controller
+ :name "Makes API calls to"
+ :tech "Transit/HTTPS"}
+{:el :rel
+ :id :banking/sign-in-controller-uses-security-component
+ :from :banking/sign-in-controller
+ :to :banking/security-component
+ :name "Uses"}
+{:el :rel
+ :id :banking/reset-password-controller-uses-email-component
+ :from :banking/reset-password-controller
+ :to :banking/email-component
+ :name "Uses"}
+{:el :rel
+ :id :banking/accounts-summary-controller-uses-mainframe-banking-system-facade
+ :from :banking/accounts-summary-controller
+ :to :banking/mainframe-banking-system-facade
+ :name "Uses"}
+ {:el :rel
+  :id :banking/security-component-uses-database
+  :from :banking/security-component
+  :to :banking/database
+  :name "Reads from and writes to"
+  :tech "Datalog"}
+ {:el :rel
+  :id :banking/email-component-uses-email-system
+  :from :banking/email-component
+  :to :banking/email-system
+  :name "Sends e-mail using"}
+ {:el :rel
+  :id :banking/mainframe-banking-system-facade-calls-mainframe-banking-system
+  :from :banking/mainframe-banking-system-facade
+  :to :banking/mainframe-banking-system
+  :name "Makes API calls to"
+  :tech "XML/HTTPS"}
+
  ]
