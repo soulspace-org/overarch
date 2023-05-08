@@ -2,8 +2,9 @@
   :id :story1/dynamic-view
   :title "Going to the movies - Coarse Grained"
   ;:spec {:legend true}
-  :ct [{:el :person-ext
+  :ct [{:el :person
         :id :story1/moviegoer
+        :exernal true
         :name "Moviegoer"}
 
        {:el :person

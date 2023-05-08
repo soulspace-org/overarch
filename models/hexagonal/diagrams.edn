@@ -18,9 +18,9 @@
        {:ref :hexagonal/database-container}
        {:ref :hexagonal/queue-container}
 
-       {:ref :hexagonal/domain-application-uses-domain-core}
-       {:ref :hexagonal/domain-application-uses-repository-component}
-       {:ref :hexagonal/provided-interface-component-uses-domain-application}
-       {:ref :hexagonal/domain-application-uses-cosumed-interface-component}
-       {:ref :hexagonal/incoming-domain-events-triggers-domain-application}
-       {:ref :hexagonal/domain-application-sends-outgoing-domain-events}]}]
+       {:ref :hexagonal/application-logic-uses-domain-core}
+       {:ref :hexagonal/application-logic-uses-repository-component}
+       {:ref :hexagonal/provided-interface-component-uses-application-logic}
+       {:ref :hexagonal/application-logic-uses-cosumed-interface-component}
+       {:ref :hexagonal/incoming-domain-events-triggers-application-logic}
+       {:ref :hexagonal/application-logic-sends-outgoing-domain-events}]}]

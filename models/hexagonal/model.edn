@@ -11,9 +11,9 @@
               :name "Domain Core"
               :desc "contains the functional core of the domain"}
              {:el :component
-              :id :hexagonal/domain-application
-              :name "Domain Application"
-              :desc "contains the processes and use-case orchestration of the domain. E.g. a controller"}
+              :id :hexagonal/application-logic
+              :name "Application Logic"
+              :desc "contains the process and use-case orchestration of the domain."}
              {:el :component
               :id :hexagonal/repository-component
               :name "Repository"
@@ -23,7 +23,7 @@
               :name "Provided Interface Adapter"
               :desc "API/Adapter for consumers of the domain"}
              {:el :component
-              :id :hexagonal/cosumed-interface-component
+              :id :hexagonal/consumed-interface-component
               :name "Consumed Interface Adapter"
               :desc "Adapter for a service consumed for the the domain"}]}
        {:el :container
@@ -47,33 +47,33 @@
               :name "Outgoing Domain Events"
               :desc "notification of facts originating in this bounded context as domain events"}]}]}
  {:el :rel
-  :id :hexagonal/domain-application-uses-domain-core
-  :from :hexagonal/domain-application
+  :id :hexagonal/application-logic-uses-domain-core
+  :from :hexagonal/application-logic
   :to :hexagonal/domain-core
-  :name "uses"}
+  :name "calls"}
  {:el :rel
-  :id :hexagonal/domain-application-uses-repository-component
-  :from :hexagonal/domain-application
+  :id :hexagonal/application-logic-uses-repository-component
+  :from :hexagonal/application-logic
   :to :hexagonal/repository-component
-  :name "uses"}
+  :name "calls"}
  {:el :rel
-  :id :hexagonal/provided-interface-component-uses-domain-application
+  :id :hexagonal/provided-interface-component-calls-application-logic
   :from :hexagonal/provided-interface-component
-  :to :hexagonal/domain-application
-  :name "uses"}
+  :to :hexagonal/application-logic
+  :name "calls"}
  {:el :rel
-  :id :hexagonal/incoming-domain-events-triggers-domain-application
+  :id :hexagonal/incoming-domain-events-triggers-application-logic
   :from :hexagonal/incoming-domain-events
-  :to :hexagonal/domain-application
+  :to :hexagonal/application-logic
   :name "triggers"}
   {:el :rel
-   :id :hexagonal/domain-application-uses-consumed-interface-component
-   :from :hexagonal/domain-application
+   :id :hexagonal/application-logic-uses-consumed-interface-component
+   :from :hexagonal/application-logic
    :to :hexagonal/consumed-interface-component
    :name "uses"}
   {:el :rel
-   :id :hexagonal/domain-application-sends-outgoing-domain-events
-   :from :hexagonal/domain-application
+   :id :hexagonal/application-logic-sends-outgoing-domain-events
+   :from :hexagonal/application-logic
    :to :hexagonal/outgoing-domain-events
    :name "sends domain events to"}
  ]
