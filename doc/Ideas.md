@@ -15,6 +15,7 @@ Observations
 ------------
 * Textual DSLs may provide a compact and succinct language
 * Textual DSLs fall short at least in
+  * separation between layout and model
   * composablility
   * extendability
   * generalization
@@ -28,8 +29,10 @@ Observations
   * good editor support (e.g. VS Code/Calva)
   * readable/reusable outside of the proposed tools
     * self describing
-* Data in plain text files (e.g. EDN) is better in all of these points, but
-  * is likely not as compact and succint
+  * dynamic validation
+
+* Possible disadvantages
+  * likely not as compact and succint as DSLs
 
 Questions
 ---------
@@ -86,6 +89,12 @@ A: An advantage would be that relations would have be specified on the
    not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted
    elements.
 
+Q: Shall relations be automatically included in a view, when the participating
+   components are included?
+
+   That would make the specification of the views much shorter but relations may be
+   included, that should not be shown in the view. If there has to be an exclude mechanism, the usability of automatic inclusion shrink much.
+
 Q: Shall it be possible to model subcomponents, components that contain
    components?
    That would require a component boundary and rules, when to render the
@@ -135,6 +144,18 @@ A: Clojure is a perfect match
      * validation where it's needed
    * multiple value dispatch for export plugins
 
+
+PlantUML Export
+---------------
+
+Q: Is a global configuration (e.g. via config file) needed?
+
+   A potential use case would be the generation of internal links for imports on
+   systems without an internet connection or with proxy restrictions on raw.github.com.
+
+   Another use case would be the configurable inclusion of sprite/icon libraries.
+
+A: 
 
 
 
