@@ -85,6 +85,11 @@
    :node                "Node"
    :rel                 "Rel"})
 
+(def subtype->suffix
+  "Maps the subtype of an element to the PlantUML suffix."
+  {:database "Db"
+   :queue "Queue"})
+
 (def layouts
   "Maps layout keys to PlantUML."
   {:landscape "LAYOUT_LANDSCAPE()"
@@ -188,7 +193,9 @@
 (defn render-tech
   "Renders a PlantUML call for tech element e."
   [e]
-  (str (element->methods (:el e)) "("
+  (str (element->methods (:el e))
+       (when (:subtype e) (subtype->suffix (:subtype e)))
+       (when (:external e) "_Ext") "("
        (alias-name (:id e)) ", \""
        (:name e) "\""
        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
@@ -196,9 +203,10 @@
        ")"))
 
 (defn render-desc
-  "Renders a PlantUML call for describeable element e."
+  "Renders a PlantUML call for describable element e."
   [e]
-  (str (element->methods (:el e)) "("
+  (str (element->methods (:el e))
+       (when (:external e) "_Ext") "("
        (alias-name (:id e)) ", \""
        (:name e) "\""
        (when (:type e) (str ", $type=\"" (:type e) "\""))
@@ -206,7 +214,7 @@
        ")"))
 
 (defn render-node
-  "Renders a PlantUML call for describeable element e."
+  "Renders a PlantUML call for node element e."
   [e]
   (str (element->methods (:el e)) "("
        (alias-name (:id e)) ", \""
