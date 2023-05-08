@@ -47,10 +47,10 @@ Model references may be enhanced with additional attributes that are specific to
   * unwieldy tooling (IMHO)
 
 * [fc4-framework](https://github.com/FundingCircle/fc4-framework)
-  * 
+  * FC4 is a Docs as Code tool to create software architecture diagrams.
   * just diagram oriented
   * no separation between model and presentation
-  * tied to structurizr for modelling
+  * tied to structurizr for modelling and visualization
 
 * [archinsight](https://github.com/lonely-lockley/archinsight)
   * Insight language is a DSL (Domain Specific Language)
@@ -138,7 +138,6 @@ Example of a diagrams specification
        {:ref :hexagonal/domain-application-uses-domain-core}
        {:ref :hexagonal/domain-application-uses-repository-component}
        {:ref :hexagonal/provided-interface-component-uses-domain-application}]}
-
  ]
  ```
 

@@ -1,23 +1,22 @@
 [{:el :context-diagram
   :id :hexagonal/system-context-view
-  :title "System Context View of the Hexagonal Architecture"
+  :title "System Context View of a Hexagonal Architecture"
   :spec {:legend true}
   :ct [{:ref :hexagonal/system}]}
- 
+
  {:el :container-diagram
   :id :hexagonal/container-view
-  :title "Container View of the Hexagonal Arcitecture"
+  :title "Container View of a Hexagonal Arcitecture"
   :spec {:legend true}
   :ct [{:ref :hexagonal/system}]}
- 
+
  {:el :component-diagram
   :id :hexagonal/component-view
-  :title "Component View of the Hexagonal Arcitecture"
+  :title "Component View of a Hexagonal Arcitecture"
   :spec {:legend true}
   :ct [{:ref :hexagonal/container}
-       
+
        {:ref :hexagonal/domain-application-uses-domain-core}
        {:ref :hexagonal/domain-application-uses-repository-component}
-       {:ref :hexagonal/provided-interface-component-uses-domain-application}]}
-
- ]
+       {:ref :hexagonal/provided-interface-component-uses-domain-application}
+       {:ref :hexagonal/domain-application-uses-cosumed-interface-component}]}]

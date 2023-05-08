@@ -1,0 +1,38 @@
+[{:el :context-diagram
+  :id :banking/system-context-view
+  :title "System Context View of the Internet Banking System"
+  :ct [; model elements
+       {:ref :banking/personal-customer}
+       {:ref :banking/email-system}
+       {:ref :banking/mainframe-banking-system}
+       {:ref :banking/internet-banking-system}
+       
+       ; relations
+       {:ref :banking/personal-customer-uses-internet-banking-system}
+       {:ref :banking/internet-banking-system-uses-email-system}
+       {:ref :banking/internet-banking-system-using-mainframe-banking-system}
+       {:ref :banking/email-system-sends-mail-to-personal-customer}]}
+
+ {:el :container-diagram
+  :id :banking/container-view
+  :title "Container View of the Internet Banking System"
+  :ct [; model elements
+       {:ref :banking/personal-customer}
+       {:ref :banking/email-system}
+       {:ref :banking/mainframe-banking-system}
+       {:ref :banking/internet-banking-system}
+
+       ; relations
+       {:ref :banking/email-system-sends-mail-to-personal-customer}
+       {:ref :banking/personal-customer-uses-web-app}
+       {:ref :banking/personal-customer-uses-single-page-app}
+       {:ref :banking/personal-customer-uses-mobile-app}
+
+       {:ref :banking/web-app-deliveres-single-page-app}
+       {:ref :banking/single-page-app-calls-api-application}
+       {:ref :banking/mobile-app-calls-api-application}
+       {:ref :banking/api-application-uses-database}
+       {:ref :banking/api-application-uses-email-system}
+       {:ref :banking/api-application-uses-mainframe-banking-system}
+       ]}
+ ]
