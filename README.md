@@ -208,6 +208,9 @@ Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
 System Context View rendered with PlantUML
 ![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
 
+Container View rendered with PlantUML
+![Container View rendered with PlantUML](/doc/banking_containerView.svg)
+
 
 Usage
 -----
