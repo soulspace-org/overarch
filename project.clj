@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/data.json "2.4.0"]
                  [org.clojure/tools.cli "1.0.206"]
+                 [com.cnuernber/charred "1.028"]
                  [hawk/hawk "0.2.11"]
                  [org.soulspace.clj/clj.java "0.9.1"]]
 
