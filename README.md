@@ -6,7 +6,7 @@ A data driven description of a software architecture based on the C4 model.
 
 Describe your model as data and specify/generate representations (e.g. diagrams) for your model.
 
-*alpha - the data formats might change*
+*Disclaimer: this project is in alpha stage - the data formats might change, the code base will change*
 
 
 Rationale
