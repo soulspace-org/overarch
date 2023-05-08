@@ -67,79 +67,112 @@ Examples
 Example of a model definition
 
 ```
-[{:el :system
-  :id :hexagonal/system
-  :name "Hexagonal Architecture"
-  :desc "describing structure and dependencies of a system of bounded domain context."
+[{:el :person
+  :id :banking/personal-customer
+  :name "Personal Banking Customer"
+  :desc "A customer of the bank, with personal banking accounts."}
+ {:el :system
+  :id :banking/internet-banking-system
+  :name "Internet Banking System"
+  :desc "Allows customers to view information about their bank accounts and make payments."
   :ct [{:el :container
-        :id :hexagonal/container
-        :name "Container"
-        :desc "can be e.g. an application or a service"
-        :ct [{:el :component
-              :id :hexagonal/domain-core
-              :name "Domain Core"
-              :desc "contains the functional core of the domain"}
-             {:el :component
-              :id :hexagonal/domain-application
-              :name "Domain Application"
-              :desc "contains the processes and use-case orchestration of the domain. E.g. a controller."}
-             {:el :component
-              :id :hexagonal/repository-component
-              :name "Repository"
-              :desc "Adapter to the persistent data of the domain"}
-             {:el :component
-              :id :hexagonal/provided-interface-component
-              :name "Provided Interface Adapter"
-              :desc "API/Adapter for consumers of the domain"}
-             {:el :component
-              :id :hexagonal/cosumed-interface-component
-              :name "Consumed Interface Adapter"
-              :desc "Adapter for a service consumed for the the domain"}
-             ]}]}
+        :id :banking/web-app
+        :name "Web Application"
+        :desc "Deliveres the static content and the internet banking single page application."
+        :tech "Clojure and Luminus"}
+       {:el :container
+        :id :banking/single-page-app
+        :name "Single-Page Application"
+        :desc "Provides all of the internet banking functionality to customers via their web browser."
+        :tech "ClojureScript and Re-Frame"}
+       {:el :container
+        :id :banking/mobile-app
+        :name "Mobile App"
+        :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
+        :tech "ClojureScript and Reagent"}
+       {:el :container
+        :id :banking/api-application
+        :name "API Application"
+        :desc "Provides internet banking functionality via a JSON/HTTPS API."
+        :tech "Clojure and Liberator"}
+       {:el :container
+        :subtype :database
+        :id :banking/database
+        :name "Database"
+        :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+        :tech "Datomic"}]}
+ {:el :system
+  :id :banking/mainframe-banking-system
+  :external true
+  :name "Mainframe Banking System"
+  :desc "Stores all the core banking information about customers, accounts, transactions, etc."}
+ {:el :system
+  :id :banking/email-system
+  :external true
+  :name "E-mail System"
+  :desc "The internal Microsoft Exchange email system."}
+
+ ; Context diagram relations 
  {:el :rel
-  :id :hexagonal/domain-application-uses-domain-core
-  :from :hexagonal/domain-application
-  :to :hexagonal/domain-core
-  :name "uses"}
+  :id :banking/personal-customer-uses-internet-banking-system
+  :from :banking/personal-customer
+  :to :banking/internet-banking-system
+  :name "Views account balances and makes payments using"}
  {:el :rel
-  :id :hexagonal/domain-application-uses-repository-component
-  :from :hexagonal/domain-application
-  :to :hexagonal/repository-component
-  :name "uses"}
+  :id :banking/internet-banking-system-uses-email-system
+  :from :banking/internet-banking-system
+  :to :banking/email-system
+  :name "Sends e-mail using"}
  {:el :rel
-  :id :hexagonal/provided-interface-component-uses-domain-application
-  :from :hexagonal/provided-interface-component
-  :to :hexagonal/domain-application
-  :name "uses"}
- ]
+  :id :banking/internet-banking-system-using-mainframe-banking-system
+  :from :banking/internet-banking-system
+  :to :banking/mainframe-banking-system
+  :name "Gets account information from, and makes payments using"}
+ {:el :rel
+  :id :banking/email-system-sends-mail-to-personal-customer
+  :from :banking/email-system
+  :to :banking/personal-customer
+  :name "Sends e-mail to"}] 
  ```
 
 Example of a diagrams specification
 
 ```
 [{:el :context-diagram
-  :id :hexagonal/system-context-view
-  :title "System Context View of a Hexagonal Architecture"
-  :spec {:legend true}
-  :ct [{:ref :hexagonal/system}]}
- 
- {:el :container-diagram
-  :id :hexagonal/container-view
-  :title "Container View of a Hexagonal Arcitecture"
-  :spec {:legend true}
-  :ct [{:ref :hexagonal/system}]}
- 
- {:el :component-diagram
-  :id :hexagonal/component-view
-  :title "Component View of a Hexagonal Arcitecture"
-  :spec {:legend true}
-  :ct [{:ref :hexagonal/container}
+  :id :banking/system-context-view
+  :title "System Context View of the Internet Banking System"
+  :ct [; model elements
+       {:ref :banking/personal-customer}
+       {:ref :banking/email-system}
+       {:ref :banking/mainframe-banking-system}
+       {:ref :banking/internet-banking-system}
        
-       {:ref :hexagonal/domain-application-uses-domain-core}
-       {:ref :hexagonal/domain-application-uses-repository-component}
-       {:ref :hexagonal/provided-interface-component-uses-domain-application}]}
+       ; relations
+       {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
+       {:ref :banking/internet-banking-system-uses-email-system :direction :right}
+       {:ref :banking/internet-banking-system-using-mainframe-banking-system}
+       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
  ]
  ```
+
+PlantUML export of the System Context View
+```
+@startuml banking_systemContextView
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context View of the Internet Banking System
+Person(banking_personalCustomer, "Personal Banking Customer", $descr="A customer of the bank, with personal banking accounts.")
+System_Ext(banking_emailSystem, "E-mail System", $descr="The internal Microsoft Exchange email system.")
+System_Ext(banking_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
+System(banking_internetBankingSystem, "Internet Banking System", $descr="Allows customers to view information about their bank accounts and make payments.")
+Rel_Down(banking_personalCustomer, banking_internetBankingSystem, "Views account balances and makes payments using")
+Rel_Right(banking_internetBankingSystem, banking_emailSystem, "Sends e-mail using")
+Rel(banking_internetBankingSystem, banking_mainframeBankingSystem, "Gets account information from, and makes payments using")
+Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
+@enduml
+
+```
+
 
 Usage
 -----
