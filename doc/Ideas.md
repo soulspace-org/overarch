@@ -76,7 +76,7 @@ A: Implicit boundaries make the model more succinct.
    E.g. a system with containers should be rendered as a system boundary containing the containers.
 
 Q: Shall relations between low level elements (e.g. components) and the
-   outside world (e.g. users or external systems) be promoted to higher levels in the relevant diagram?
+   outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?
    
    The relation between a user and a user interface component would be rendered directly in a component diagram. In a container diagram, the relation would be rendered between the user and the container of the user interface component. In a system diagram, the relation would be rendered between the user and the system of the user interface component.
 
@@ -96,12 +96,20 @@ A:
 Q: How can architecture patterns like hexagonal or layered architectures
    be modelled and visualized appropriately within the C4 models?
 
-A:
+A: Each container would contain components with the responsibilities and dependencies
+   as specified by the given architecture.
 
 Q: How to support different exporting formats, e.g. diagramming tools, and
    not be specific in the specification of the views/digrams?
     
-A:
+A: Support a generic feature set in views and diagrams with optional specific
+   configuration for a specific export format (e.g. PlantUML)
+
+Q: Should names be generated from ids if missing?
+
+A: That would make the models more concise. Names can be generated from the name
+   part of the keyword by converting kebab case to First upper case with spaces
+   between words.
 
 Q: Why EDN?
 
