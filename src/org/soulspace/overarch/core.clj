@@ -142,8 +142,8 @@
 (s/def :overarch/id keyword?)
 (s/def :overarch/name string?)
 (s/def :overarch/desc string?)
-(s/def :overarch/kind keyword?)
-(s/def :overarch/extern boolean?)
+(s/def :overarch/subtype keyword?)
+(s/def :overarch/external boolean?)
 (s/def :overarch/tech string?) ; check
 (s/def :overarch/tags map?)    ; check
 (s/def :overarch/icon string?) ; check
@@ -168,7 +168,7 @@
 (s/def :overarch/element
   (s/keys :req-un [:overarch/el :overarch/id :overarch/name]
           :opt-un [:overarch/desc :overarch/ct
-                   :overarch/kind :overarch/extern]))
+                   :overarch/subtype :overarch/external]))
 
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
