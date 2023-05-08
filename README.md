@@ -73,7 +73,7 @@ This is an example of the specification of a model and some diagrams based on th
 The complete model and diagram specifications can be found under
 [models/banking](/models/banking).
 
-Example of a model definition
+### Example of a model definition
 
 ```
 [{:el :person
@@ -144,7 +144,7 @@ Example of a model definition
   :name "Sends e-mail to"}] 
  ```
 
-Example of a diagrams specification
+### Example of a diagrams specification
 
 ```
 [{:el :context-diagram
@@ -188,7 +188,7 @@ Example of a diagrams specification
  ]
  ```
 
-PlantUML export of the System Context View
+### PlantUML export of the System Context View
 ```
 @startuml banking_systemContextView
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
@@ -207,10 +207,10 @@ Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
 
 ```
 
-System Context View rendered with PlantUML
+### System Context View rendered with PlantUML
 ![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
 
-Container View rendered with PlantUML
+### Container View rendered with PlantUML
 ![Container View rendered with PlantUML](/doc/banking_containerView.svg)
 
 
