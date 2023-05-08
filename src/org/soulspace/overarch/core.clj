@@ -17,20 +17,16 @@
 
 (def context-types
   "Element types of a C4 context diagram."
-  #{:person :person-ext :system :system-db :system-queue
-                     :system-ext :system-db-ext :system-queue-ext
-                     :boundary :enterprise-boundary})
+  #{:person :system :boundary :enterprise-boundary})
 (def container-types
   "Element types of a C4 container diagram."
   (set/union context-types
-             #{:system-boundary :container :container-db :container-queue :container-ext
-               :container-db-ext :container-queue-ext}))
+             #{:system-boundary :container}))
 
 (def component-types
   "Element types of a C4 component diagram."
   (set/union container-types
-             #{:container-boundary :component :component-db :component-queue :component-ext
-               :component-db-ext :component-queue-ext}))
+             #{:container-boundary :component}))
 
 (def code-types
   "Element types of a C4 code diagram."
@@ -42,7 +38,7 @@
 
 (def deployment-types
   "Element types of a C4 deployment diagram."
-  #{:deployment-node :node})
+  #{:node})
 
 (def dynamic-types
   "Element types of a C4 dynamic diagram."
@@ -272,9 +268,7 @@
    The map has the following shape:
 
    :elements -> the given data
-   :registry -> a map from id to element
-   :diagrams -> a vector of the diagrams
-   :model-elements -> a vector of the model elements"
+   :registry -> a map from id to element"
   [elements]
   (if (s/valid? :overarch/elements elements)
     (reset! state {:elements elements
