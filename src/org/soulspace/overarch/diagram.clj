@@ -15,22 +15,6 @@
       (derive :enterprise-boundary :boundary)
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)
-      (derive :person-ext          :person)
-      (derive :system-db           :system)
-      (derive :system-queue        :system)
-      (derive :system-ext          :system)
-      (derive :system-db-ext       :system)
-      (derive :system-queue-ext    :system)
-      (derive :container-db        :container)
-      (derive :container-queue     :container)
-      (derive :container-ext       :container)
-      (derive :container-db-ext    :container)
-      (derive :container-queue-ext :container)
-      (derive :component-db        :component)
-      (derive :component-queue     :component)
-      (derive :component-ext       :component)
-      (derive :component-db-ext    :component)
-      (derive :component-queue-ext :component)
       (derive :person              :desc)
       (derive :system              :desc)
       (derive :container           :tech)
@@ -46,61 +30,47 @@
    :dynamic-diagram          arch/dynamic-level?
    :deployment-diagram       arch/deployment-level?})
 
+; general
 (def element->boundary
   "Maps model types to boundary types depending on the diagram type."
   {[:container-diagram :system]          :system-boundary
    [:component-diagram :system]          :system-boundary
-   [:component-diagram :system-db]       :system-boundary
-   [:component-diagram :system-queue]    :system-boundary
-   [:component-diagram :container]       :container-boundary
-   [:component-diagram :container-db]    :container-boundary
-   [:component-diagram :container-queue] :container-boundary})
+   [:component-diagram :container]       :container-boundary})
 
+; plantuml
 (def element->methods
   "Map from element type to PlantUML method."
   {:person              "Person"
-   :person-ext          "Person"
    :system              "System"
-   :system-ext          "System_Ext"
-   :system-db           "SystemDb"
-   :system-db-ext       "SystemDb_Ext"
-   :system-queue        "SystemQueue"
-   :system-queue-ext    "SystemQueue_Ext"
    :boundary            "Boundary"
    :enterprise-boundary "Enterprise_Boundary"
    :system-boundary     "System_Boundary"
    :container           "Container"
-   :container-ext       "Container_Ext"
-   :container-db        "ContainerDb"
-   :container-db-ext    "ContainerDb_Ext"
-   :container-queue     "ContainerQueue"
-   :container-queue-ext "ContainerQueue_Ext"
    :container-boundary  "Container_Boundary"
    :component           "Component"
-   :component-ext       "Component_Ext"
-   :component-db        "ComponentDb"
-   :component-db-ext    "ComponentDb_Ext"
-   :component-queue     "ComponentQueue"
-   :component-queue-ext "ComponentQueue_Ext"
    :node                "Node"
    :rel                 "Rel"})
 
+; plantuml
 (def subtype->suffix
   "Maps the subtype of an element to the PlantUML suffix."
   {:database "Db"
    :queue "Queue"})
 
+; plantuml
 (def layouts
   "Maps layout keys to PlantUML."
   {:landscape "LAYOUT_LANDSCAPE()"
    :left-right "LAYOUT_LEFT_RIGHT()"
    :top-down "LAYOUT_TOP_DOWN()"})
 
+; plantuml
 (def linetypes
   "Maps linetype keys to PlantUML."
   {:orthogonal "skinparam linetype ortho"
    :polygonal  "skinparam linetype polyline"})
 
+; plantuml
 (def directions
   "Maps direction keys to PlantUML Rel suffixes."
   {:down  "_Down"
@@ -108,15 +78,17 @@
    :right "_Right"
    :up    "_Up"})
 
+; plantuml
 (def styles
-  {:element  ""
-   :rel      ""
+  {:element  "AddElementTag"
+   :rel      "AddRelTag"
    :boundary ""})
 
 ;;;
 ;;; Context based content filtering
 ;;;
 
+; general
 (defn render-predicate
   "Returns true if the element is should be rendered for this diagram type.
    Checks both sides of a relation."
@@ -128,6 +100,7 @@
                (element-predicate (arch/get-model-element (:to e))))
           (element-predicate e)))))
   
+; general
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
    as a boundary for this diagram type, false otherwise."
@@ -142,12 +115,14 @@
 ;;; Rendering functions
 ;;;
 
+; general?
 (defn alias-name
   "Returns a valid PlantUML alias for the keyword."
   [kw]
   (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
                (sstr/hyphen-to-camel-case (name kw)))))
 
+; general
 (defn element-to-render
   "Returns the model element to be rendered in the context of the diagram."
   [diagram-type e]
@@ -158,6 +133,7 @@
     ; render e as normal model element
       e)))
 
+; general
 (defn elements-to-render
   "Returns the list of elements to render from the diagram
    or the given collection of elements, depending on the type
@@ -171,17 +147,20 @@
           (filter (render-predicate diagram-type))
           (map #(element-to-render diagram-type %))))))
 
+; general
 (defn relation-to-render
   "Returns the relation to be rendered in the context of the diagram."
   [diagram rel]
   ; TODO promote reations to higher levels?
   )
 
+; general
 (defn render-indent
   "Renders an indent of n space chars."
   [n]
   (str/join (repeat n " ")))
 
+; plantuml
 (defn render-boundary
   "Renders a PlantUML call for boundary e."
   [e]
@@ -190,6 +169,7 @@
        (:name e) "\""
        ")"))
 
+; plantuml
 (defn render-tech
   "Renders a PlantUML call for tech element e."
   [e]
@@ -202,6 +182,7 @@
        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
        ")"))
 
+; plantuml
 (defn render-desc
   "Renders a PlantUML call for describable element e."
   [e]
@@ -213,6 +194,7 @@
        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
        ")"))
 
+; plantuml
 (defn render-node
   "Renders a PlantUML call for node element e."
   [e]
@@ -223,6 +205,7 @@
        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
        ")"))
 
+; plantuml
 (defn render-rel
   "Renders a PlantUML call for relation e."
   [e]
@@ -235,10 +218,12 @@
        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
        ")"))
 
+; general?
 (defmulti render-element
   (fn [diagram indent e] (:el e))
   :hierarchy #'element-hierarchy)
 
+; general?
 (defmethod render-element :boundary
   [diagram indent e]
     (if (seq (:ct e))
@@ -250,18 +235,22 @@
                   (str (render-indent indent) "}")]))
       [(str (render-indent indent) (render-boundary e))]))
 
+; general?
 (defmethod render-element :rel
   [diagram indent e]
   [(str (render-indent indent) (render-rel e))])
 
+; plantuml?
 (defmethod render-element :desc
   [diagram indent e]
   [(str (render-indent indent) (render-desc e))])
 
+; plantuml?
 (defmethod render-element :tech
   [diagram indent e]
   [(str (render-indent indent) (render-tech e))])
 
+; general?
 (defmethod render-element :node
   [diagram indent e]
     (if (seq (:ct e))
@@ -273,6 +262,7 @@
                   (str (render-indent indent) "}")]))
       [(str (render-indent indent) (render-node e))]))
 
+; plantuml
 (defn render-imports
   "Renders the imports for the diagram."
   [diagram]
@@ -288,20 +278,20 @@
     (= :deployment-diagram (:el diagram))
     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml"))
 
+; plantuml
 (defn render-style
   "Renders a styles for the diagram."
   [diagram style]
   ; TODO
   )
 
+; plantuml
 (defn render-layout
   "Renders the layout for the diagram."
   [diagram]
   (let [spec (:spec diagram)]
     (flatten [(when (:styles spec)
                 (into [] (map #(render-style diagram %)) (:styles spec)))
-              (when (:legend spec)
-                "LAYOUT_WITH_LEGEND()")
               (when (:sketch spec)
                 "LAYOUT_AS_SKETCH()")
               (when (:layout spec)
@@ -309,11 +299,21 @@
               (when (:linetype spec)
                 (linetypes (:linetype spec)))])))
 
+; plantuml
+(defn render-legend
+  "Renders the legend for the diagram."
+  [diagram]
+  (let [spec (:spec diagram)]
+    [(when (:legend spec)
+       "SHOW_LEGEND()")]))
+
+; plantuml
 (defn render-title
   "Renders the title of the diagram."
   [diagram]
   (when (:title diagram) (str "title " (:title diagram))))
 
+; plantuml
 (defn render-diagram
   "Renders the PlantUML code for the diagram."
   [diagram]
@@ -324,12 +324,14 @@
               (render-layout diagram)
               (render-title diagram)
               (map #(render-element diagram 0 %) children)
+              (render-legend diagram)
               "@enduml"])))
 
 ;;;
 ;;; PlantUML file export
 ;;;
 
+; plantuml
 (defmethod arch/export-file :plantuml
   [format diagram]
   (let [dir-name (str "exports/plantuml/" (namespace (:id diagram)))
@@ -338,16 +340,19 @@
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
 
+; general
 (defmulti export-diagram
   "Exports the diagram in the given format."
   arch/export-format)
 
+; plantuml
 (defmethod export-diagram :plantuml
   [format diagram]
   (with-open [wrt (io/writer (arch/export-file format diagram))]
     (binding [*out* wrt]
       (println (str/join "\n" (render-diagram diagram))))))
 
+; general
 (defn export-diagrams 
   "Export all diagrams in the given format."
   [format]
