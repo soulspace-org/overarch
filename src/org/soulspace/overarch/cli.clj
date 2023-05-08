@@ -91,4 +91,6 @@
       (handle options))))
 
 (comment
+  (update-and-export! {:model-dir "models"
+                       :format :plantuml})
   (-main "--debug"))
