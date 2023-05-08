@@ -165,6 +165,7 @@ Person(banking_personalCustomer, "Personal Banking Customer", $descr="A customer
 System_Ext(banking_emailSystem, "E-mail System", $descr="The internal Microsoft Exchange email system.")
 System_Ext(banking_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
 System(banking_internetBankingSystem, "Internet Banking System", $descr="Allows customers to view information about their bank accounts and make payments.")
+
 Rel_Down(banking_personalCustomer, banking_internetBankingSystem, "Views account balances and makes payments using")
 Rel_Right(banking_internetBankingSystem, banking_emailSystem, "Sends e-mail using")
 Rel(banking_internetBankingSystem, banking_mainframeBankingSystem, "Gets account information from, and makes payments using")
@@ -173,6 +174,8 @@ Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
 
 ```
 
+System Context View rendered with PlantUML
+![System Context View rendered with PlantUML](/blob/main/doc/banking_systemContextView.svg)
 
 Usage
 -----
