@@ -51,12 +51,14 @@
   [args cli-opts]
   (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
     (cond
-      (:help options) ; help => exit OK with usage summary
-      {:exit-message (usage-msg appname description summary) :success true}
       errors ; errors => exit with description of errors
       {:exit-message (error-msg errors)}
-      ; (= 0 (count arguments)) ; no args
-      ; {:options options}
+      (:help options) ; help => exit OK with usage summary
+      {:exit-message (usage-msg appname description summary) :success true}
+      (= 0 (count arguments)) ; no args
+      {:options options}
+      (seq options)
+      {:options options}
       :else ; failed custom validation => exit with usage summary
       {:exit-message (usage-msg appname description summary)})))
 
