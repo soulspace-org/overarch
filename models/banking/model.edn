@@ -90,9 +90,73 @@
         :external true
         :name "Backoffice Stuff"
         :desc "Administration and support stuff within the bank."}]}
+ ;;
+ ;; Deployment
+ ;;
+ {:el :node
+  :id :banking/personal-customers-computer
+  :name "Customer's Computer"
+  :tech "Windows, macOS, Linux"
+  :ct [{:el :node
+        :id :banking/personal-customers-browser
+        :name "Web Browser"
+        :tech "Chrome, Firefox, Safari or Edge"
+        :ct [{:ref :banking/single-page-app}]}]}
+ {:el :node
+  :id :banking/personal-customers-mobile-device
+  :name "Customer's Mobile Device"
+  :tech "Android or iOS"
+  :ct [{:ref :banking/mobile-app}]}
+ {:el :node
+  :id :banking/big-bank-plc-datacenter
+  :name "Big Bank plc"
+  :tech "Datacenter"
+  :ct [{:el :node
+        :id :banking/big-bank-kubernetes-cluster
+        :name "Kubernetes Cluster"
+        :tech "VM, Ubuntu 22.04 LTS, K8s"
+        :ct [{:el :node
+              :id :banking/big-bank-web-server-node-pool
+              :name "Web Server Node Pool"
+              :tech "VM, Ubuntu 22.04 LTS"
+              :ct [{:el :node
+                    :id :banking/big-bank-web-server-pod
+                    :name "Web Server Pod"
+                    :desc "autoscaled, 2-8 instances"
+                    :ct [{:ref :banking/web-app}]}]}
+             {:el :node
+              :id :banking/big-bank-api-server-node-pool
+              :name "API Server Node Pool"
+              :tech "VM, Ubuntu 22.04 LTS"
+              :ct [{:el :node
+                    :id :banking/big-bank-api-server-pod
+                    :name "API Server Pod"
+                    :desc "autoscaled, 2-16 instances"
+                    :ct [{:ref :banking/api-application}]}]}]}
+       {:el :node
+        :id :banking/big-bank-prod001
+        :name "BigBank-prod001"
+        :ct [{:ref :banking/mainframe-banking-system}]}
+       {:el :node
+        :id :banking/big-bank-db01
+        :name "Primary DB Server"
+        :tech "Datomic"
+        :desc "for writes"
+        :ct [{:ref :banking/database}]}
+       {:el :node
+        :id :banking/big-bank-db02
+        :name "Secondary DB Server"
+        :tech "Datomic"
+        :desc "for reads"
+        :ct [{:el :container
+              :subtype :database
+              :id :banking/database-read
+              :name "Database for Reads"
+              :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+              :tech "Datomic"}]}]}
 
  ;;
- ;; Context diagram relations 
+ ;; Context level relations 
  ;;
  {:el :rel
   :id :banking/personal-customer-uses-internet-banking-system
@@ -116,7 +180,7 @@
   :name "Sends e-mail to"}
 
  ;;
- ;; Container diagram relations 
+ ;; Container level relations 
  ;;
  {:el :rel
   :id :banking/personal-customer-uses-web-app
@@ -170,7 +234,7 @@
   :tech "XML/HTTPS"}
 
  ;;
- ;; Component diagram relations
+ ;; Component level relations
  ;;
  {:el :rel
   :id :banking/single-page-app-calls-sign-in-controller

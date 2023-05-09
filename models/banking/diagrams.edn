@@ -78,4 +78,26 @@
        {:ref :banking/backoffice-stuff-uses-mainframe-banking-system}
        {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
        {:ref :banking/internet-banking-system-uses-email-system}
-       {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}]
+       {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
+
+ {:el :deployment-diagram
+  :id :banking/deployment-view
+  :spec {:legend true}
+  :title "Deployment View of Big Bank plc"
+  :ct [; model elements
+       {:ref :banking/personal-customers-mobile-device}
+       {:ref :banking/personal-customers-computer}
+       {:ref :banking/big-bank-plc-datacenter}
+
+       ; relations
+       {:ref :banking/single-page-app-calls-api-application}
+       {:ref :banking/mobile-app-calls-api-application}
+       {:ref :banking/web-app-deliveres-single-page-app}
+       {:ref :banking/api-application-uses-mainframe-banking-system}
+       {:ref :banking/api-application-uses-database}
+       {:el :rel
+        :id :banking/api-application-uses-database-read
+        :from :banking/api-application
+        :to :banking/database-read
+        :name "Reads from"
+        :tech "Datalog"}]}]
