@@ -45,8 +45,7 @@ A: Architecture in the context of information systems can be separated into
 Q: What is software architecture?
 
 A: Software architecture specifies the high level design of a software
-   system.
-   With an appropriate architecture (or high level design) the system is
+   system. With an appropriate architecture (or high level design) the system is
    able to fulfill the functional and nonfunctional requirements for the
    system.
 
@@ -69,6 +68,17 @@ A: The hierarchical structure of a system and its context
      (if relevant)
    * The deployment of the containers in the infrastructure for the system
      (if relevant)
+
+Q: What could also be captured in an extension of the descriptionẞ
+
+A: An extension of the model could make sense if there is value in the connection
+   of the additional elements to the existing elements, e.g. to provide traceability
+
+   Additional elements could be
+   * Enterprise architecture elements like capabilities
+   * Business arcitecture elements like business processes
+   * Functional and nonfunctional requirements and crosscutting concerns
+   * ...
 
 Q: Shall the boundaries be implicit in the model, e.g. rendering a
    system as a system-boundary in a container diagram, if it contains    container elements, that are visualized?
@@ -108,26 +118,34 @@ Q: How can architecture patterns like hexagonal or layered architectures
 A: Each container would contain components with the responsibilities and dependencies
    as specified by the given architecture.
 
-Q: How to support different exporting formats, e.g. diagramming tools, and
-   not be specific in the specification of the views/digrams?
-    
-A: Support a generic feature set in views and diagrams with optional specific
-   configuration for a specific export format (e.g. PlantUML)
-
 Q: Should names be generated from ids if missing?
 
 A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to First upper case with spaces
    between words.
 
-Q: Why EDN?
+Q: How to support different exporting formats, e.g. diagramming tools, and
+   not be specific in the specification of the views/digrams?
+    
+A: Support a generic feature set in views and diagrams with optional specific
+   configuration for a specific export format (e.g. PlantUML)
+
+Q: Can views be specified in a generic manner, so that the elements contained in a view are
+   selected with criteria based selectors/filters?
+   
+   C4 diagrams would be views that select the content based on the diagram type.
+   Views could also select content based on the namespace of the id or on the element type.
+
+A: 
+
+Q: Why EDN as the specification notation?
 
 A: Because it is an open and extensible data format
    * simple syntax
    * richer semantics than JSON
      * keywords, sets, tagged values
-   * no parsers needed (at least for clojure)
-   * good tooling support
+   * no parsers needed, read directly into data structures (at least for clojure)
+   * good tooling support with type completion
      * VS Code + Calva
      * IntelliJ + Cursive
      * Emacs + Cider
