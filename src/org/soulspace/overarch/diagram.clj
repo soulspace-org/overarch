@@ -269,6 +269,8 @@
   (cond
     (= :context-diagram (:el diagram))
     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
+    (= :system-landscape-diagram (:el diagram))
+    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
     (= :container-diagram (:el diagram))
     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml"
     (= :component-diagram (:el diagram))
