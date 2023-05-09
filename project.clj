@@ -9,9 +9,13 @@
                  [hawk/hawk "0.2.11"]
                  [org.soulspace.clj/clj.java "0.9.1"]]
 
-  :repl-options {:init-ns org.soulspace.overarch.core}
+  :repl-options {:init-ns org.soulspace.overarch.cli}
 
   :profiles {:dev {:dependencies [[djblue/portal "0.37.1"]
                                   [criterium/criterium "0.4.6"]
                                   [expound/expound "0.9.0"]]
-                   :global-vars {*warn-on-reflection* true}}})
+                   :global-vars {*warn-on-reflection* true}}}
+
+  :uberjar-name "overarch.jar"
+  :scm {:name "git" :url "https://github.com/soulspace-org/overarch"}
+  :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]])
