@@ -14,7 +14,7 @@
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory." :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
                ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
-               ["-f" "--format" "Export format" :default :plantuml]
+               ["-f" "--format" "Export format" :default "plantuml"]
                ["-h" "--help" "print help"]
                [nil  "--debug" "print debug messages" :default false]])
 
@@ -66,7 +66,7 @@
   "Read models and export diagrams."
   [options]
   (core/update-state! (:model-dir options))
-  (dia/export-diagrams (:format options)))
+  (dia/export-diagrams (keyword (:format options))))
 
 (defn handle
   "Handle options and generate the requested outputs."
