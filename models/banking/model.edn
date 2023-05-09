@@ -2,78 +2,98 @@
   :id :banking/personal-customer
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
- {:el :system
-  :id :banking/internet-banking-system
-  :name "Internet Banking System"
-  :desc "Allows customers to view information about their bank accounts and make payments."
-  :ct [{:el :container
-        :id :banking/web-app
-        :name "Web Application"
-        :desc "Deliveres the static content and the internet banking single page application."
-        :tech "Clojure and Luminus"}
-       {:el :container
-        :id :banking/single-page-app
-        :name "Single-Page Application"
-        :desc "Provides all of the internet banking functionality to customers via their web browser."
-        :tech "ClojureScript and Re-Frame"}
-       {:el :container
-        :id :banking/mobile-app
-        :name "Mobile App"
-        :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
-        :tech "ClojureScript and Reagent"}
-       {:el :container
-        :id :banking/api-application
-        :name "API Application"
-        :desc "Provides internet banking functionality via a JSON/HTTPS API."
-        :tech "Clojure and Liberator"
-        :ct [{:el :component
-              :id :banking/sign-in-controller
-              :name "Sign In Controller"
-              :desc "Allows users to sign in to the banking system."
-              :tech "Clojure namespace"}
-             {:el :component
-              :id :banking/security-component
-              :name "Security Component"
-              :desc "Provides functionality related to signing in, changing passwords, etc."
-              :tech "Clojure namespace"}
-             {:el :component
-              :id :banking/reset-password-controller
-              :name "Reset Password Controller"
-              :desc "Allows users to reset their passwords with a single use URL."
-              :tech "Clojure namespace"}
-             {:el :component
-              :id :banking/email-component
-              :name "E-mail Component"
-              :desc "Sends e-mail to users."
-              :tech "Clojure namespace"}
-             {:el :component
-              :id :banking/accounts-summary-controller
-              :name "Accounts Summary Controller"
-              :desc "Provides customers with a summary of their bank accounts."
-              :tech "Clojure Namespace"}
-             {:el :component
-              :id :banking/mainframe-banking-system-facade
-              :name "Mainframe Banking System Facade"
-              :desc "A facade onto the mainframe banking system."
-              :tech "Clojure Namespace, http-client"}]}
-       {:el :container
-        :subtype :database
-        :id :banking/database
-        :name "Database"
-        :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-        :tech "Datomic"}]}
- {:el :system
-  :id :banking/mainframe-banking-system
-  :external true
-  :name "Mainframe Banking System"
-  :desc "Stores all the core banking information about customers, accounts, transactions, etc."}
- {:el :system
-  :id :banking/email-system
-  :external true
-  :name "E-mail System"
-  :desc "The internal Microsoft Exchange email system."}
+ {:el :enterprise-boundary
+  :id :banking/big-bank-plc
+  :name "Big Bank plc"
+  :ct [{:el :system
+        :id :banking/internet-banking-system
+        :name "Internet Banking System"
+        :desc "Allows customers to view information about their bank accounts and make payments."
+        :ct [{:el :container
+              :id :banking/web-app
+              :name "Web Application"
+              :desc "Deliveres the static content and the internet banking single page application."
+              :tech "Clojure and Luminus"}
+             {:el :container
+              :id :banking/single-page-app
+              :name "Single-Page Application"
+              :desc "Provides all of the internet banking functionality to customers via their web browser."
+              :tech "ClojureScript and Re-Frame"}
+             {:el :container
+              :id :banking/mobile-app
+              :name "Mobile App"
+              :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
+              :tech "ClojureScript and Reagent"}
+             {:el :container
+              :id :banking/api-application
+              :name "API Application"
+              :desc "Provides internet banking functionality via a JSON/HTTPS API."
+              :tech "Clojure and Liberator"
+              :ct [{:el :component
+                    :id :banking/sign-in-controller
+                    :name "Sign In Controller"
+                    :desc "Allows users to sign in to the banking system."
+                    :tech "Clojure namespace"}
+                   {:el :component
+                    :id :banking/security-component
+                    :name "Security Component"
+                    :desc "Provides functionality related to signing in, changing passwords, etc."
+                    :tech "Clojure namespace"}
+                   {:el :component
+                    :id :banking/reset-password-controller
+                    :name "Reset Password Controller"
+                    :desc "Allows users to reset their passwords with a single use URL."
+                    :tech "Clojure namespace"}
+                   {:el :component
+                    :id :banking/email-component
+                    :name "E-mail Component"
+                    :desc "Sends e-mail to users."
+                    :tech "Clojure namespace"}
+                   {:el :component
+                    :id :banking/accounts-summary-controller
+                    :name "Accounts Summary Controller"
+                    :desc "Provides customers with a summary of their bank accounts."
+                    :tech "Clojure Namespace"}
+                   {:el :component
+                    :id :banking/mainframe-banking-system-facade
+                    :name "Mainframe Banking System Facade"
+                    :desc "A facade onto the mainframe banking system."
+                    :tech "Clojure Namespace, http-client"}]}
+             {:el :container
+              :subtype :database
+              :id :banking/database
+              :name "Database"
+              :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+              :tech "Datomic"}]}
+       {:el :system
+        :id :banking/mainframe-banking-system
+        :external true
+        :name "Mainframe Banking System"
+        :desc "Stores all the core banking information about customers, accounts, transactions, etc."}
+       {:el :system
+        :id :banking/email-system
+        :external true
+        :name "E-mail System"
+        :desc "The internal Microsoft Exchange email system."}
+       {:el :system
+        :id :banking/atm
+        :external true
+        :name "ATM"
+        :desc "Allows customers to withdraw cash."}
+       {:el :person
+        :id :banking/customer-service-stuff
+        :external true
+        :name "Customer Service Stuff"
+        :desc "Customer service stuff within the bank."}
+       {:el :person
+        :id :banking/backoffice-stuff
+        :external true
+        :name "Backoffice Stuff"
+        :desc "Administration and support stuff within the bank."}]}
 
- ; Context diagram relations 
+ ;;
+ ;; Context diagram relations 
+ ;;
  {:el :rel
   :id :banking/personal-customer-uses-internet-banking-system
   :from :banking/personal-customer
@@ -94,8 +114,10 @@
   :from :banking/email-system
   :to :banking/personal-customer
   :name "Sends e-mail to"}
- 
- ; Container diagram relations 
+
+ ;;
+ ;; Container diagram relations 
+ ;;
  {:el :rel
   :id :banking/personal-customer-uses-web-app
   :from :banking/personal-customer
@@ -146,8 +168,10 @@
   :to :banking/mainframe-banking-system
   :name "Makes API calls to"
   :tech "XML/HTTPS"}
- 
- ; Component diagram relations
+
+ ;;
+ ;; Component diagram relations
+ ;;
  {:el :rel
   :id :banking/single-page-app-calls-sign-in-controller
   :from :banking/single-page-app
@@ -166,39 +190,39 @@
   :to :banking/accounts-summary-controller
   :name "Makes API calls to"
   :tech "Transit/HTTPS"}
-{:el :rel
- :id :banking/mobile-app-calls-sign-in-controller
- :from :banking/mobile-app
- :to :banking/sign-in-controller
- :name "Makes API calls to"
- :tech "Transit/HTTPS"}
-{:el :rel
- :id :banking/mobile-app-calls-reset-password-controller
- :from :banking/mobile-app
- :to :banking/reset-password-controller
- :name "Makes API calls to"
- :tech "Transit/HTTPS"}
-{:el :rel
- :id :banking/mobile-app-calls-accounts-summary-controller
- :from :banking/mobile-app
- :to :banking/accounts-summary-controller
- :name "Makes API calls to"
- :tech "Transit/HTTPS"}
-{:el :rel
- :id :banking/sign-in-controller-uses-security-component
- :from :banking/sign-in-controller
- :to :banking/security-component
- :name "Uses"}
-{:el :rel
- :id :banking/reset-password-controller-uses-email-component
- :from :banking/reset-password-controller
- :to :banking/email-component
- :name "Uses"}
-{:el :rel
- :id :banking/accounts-summary-controller-uses-mainframe-banking-system-facade
- :from :banking/accounts-summary-controller
- :to :banking/mainframe-banking-system-facade
- :name "Uses"}
+ {:el :rel
+  :id :banking/mobile-app-calls-sign-in-controller
+  :from :banking/mobile-app
+  :to :banking/sign-in-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+ {:el :rel
+  :id :banking/mobile-app-calls-reset-password-controller
+  :from :banking/mobile-app
+  :to :banking/reset-password-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+ {:el :rel
+  :id :banking/mobile-app-calls-accounts-summary-controller
+  :from :banking/mobile-app
+  :to :banking/accounts-summary-controller
+  :name "Makes API calls to"
+  :tech "Transit/HTTPS"}
+ {:el :rel
+  :id :banking/sign-in-controller-uses-security-component
+  :from :banking/sign-in-controller
+  :to :banking/security-component
+  :name "Uses"}
+ {:el :rel
+  :id :banking/reset-password-controller-uses-email-component
+  :from :banking/reset-password-controller
+  :to :banking/email-component
+  :name "Uses"}
+ {:el :rel
+  :id :banking/accounts-summary-controller-uses-mainframe-banking-system-facade
+  :from :banking/accounts-summary-controller
+  :to :banking/mainframe-banking-system-facade
+  :name "Uses"}
  {:el :rel
   :id :banking/security-component-uses-database
   :from :banking/security-component
@@ -217,4 +241,31 @@
   :name "Makes API calls to"
   :tech "XML/HTTPS"}
 
- ]
+ ;;
+ ;; System landscape relations
+ ;;
+ {:el :rel
+  :id :banking/personal-customer-uses-atm
+  :from :banking/personal-customer
+  :to :banking/atm
+  :name "Withdraws cash using"}
+ {:el :rel
+  :id :banking/personal-customer-asks-customer-service-stuff
+  :from :banking/personal-customer
+  :to :banking/customer-service-stuff
+  :name "Asks questions to"}
+ {:el :rel
+  :id :banking/atm-uses-mainframe-banking-system
+  :from :banking/atm
+  :to :banking/mainframe-banking-system
+  :name "Uses"}
+ {:el :rel
+  :id :banking/customer-service-stuff-uses-mainframe-banking-system
+  :from :banking/customer-service-stuff
+  :to :banking/mainframe-banking-system
+  :name "Uses"}
+ {:el :rel
+  :id :banking/backoffice-stuff-uses-mainframe-banking-system
+  :from :banking/backoffice-stuff
+  :to :banking/mainframe-banking-system
+  :name "Uses"}]

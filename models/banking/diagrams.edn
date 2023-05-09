@@ -7,7 +7,7 @@
        {:ref :banking/email-system}
        {:ref :banking/mainframe-banking-system}
        {:ref :banking/internet-banking-system}
-       
+
        ; relations
        {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
        {:ref :banking/internet-banking-system-uses-email-system :direction :right}
@@ -35,8 +35,8 @@
        {:ref :banking/mobile-app-calls-api-application}
        {:ref :banking/api-application-uses-database :direction :left}
        {:ref :banking/api-application-uses-email-system :direction :right}
-       {:ref :banking/api-application-uses-mainframe-banking-system}
-       ]}
+       {:ref :banking/api-application-uses-mainframe-banking-system}]}
+
  {:el :component-diagram
   :id :banking/api-component-view
   :spec {:legend true}
@@ -61,6 +61,21 @@
        {:ref :banking/accounts-summary-controller-uses-mainframe-banking-system-facade}
        {:ref :banking/security-component-uses-database}
        {:ref :banking/email-component-uses-email-system}
-       {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}
-       ]}
- ]
+       {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+
+ {:el :system-landscape-diagram
+  :id :banking/system-landscape-view
+  :spec {:legend true}
+  :title "System Landscape View of Big Bank plc"
+  :ct [; model elements
+       {:ref :banking/big-bank-plc}
+       {:ref :banking/personal-customer}
+       
+       ; relations
+       {:ref :banking/personal-customer-asks-customer-service-stuff}
+       {:ref :banking/personal-customer-uses-internet-banking-system}
+       {:ref :banking/email-system-sends-mail-to-personal-customer}
+       {:ref :banking/backoffice-stuff-uses-mainframe-banking-system}
+       {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
+       {:ref :banking/internet-banking-system-uses-email-system}
+       {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}]
