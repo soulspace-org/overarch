@@ -124,17 +124,23 @@ A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to First upper case with spaces
    between words.
 
+Q: Can views be specified in a generic manner, so that the elements contained in a view are
+   selected with criteria based selectors/filters?
+   
+   C4 diagrams would be views that select the content based on the diagram type.
+   Views could also select content based on the namespace of the id or on the element type.
+
+A: 
+
 Q: How to support different exporting formats, e.g. diagramming tools, and
    not be specific in the specification of the views/digrams?
     
 A: Support a generic feature set in views and diagrams with optional specific
    configuration for a specific export format (e.g. PlantUML)
 
-Q: Can views be specified in a generic manner, so that the elements contained in a view are
-   selected with criteria based selectors/filters?
-   
-   C4 diagrams would be views that select the content based on the diagram type.
-   Views could also select content based on the namespace of the id or on the element type.
+Q: How should the export be implemented so that there is a clear separation between the
+   selection of and iteration over the relevant content and the format specific rendering
+   of the content?
 
 A: 
 
