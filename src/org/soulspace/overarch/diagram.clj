@@ -9,6 +9,7 @@
 ;;;; PlantUML rendering
 ;;;;
 
+; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
@@ -20,6 +21,7 @@
       (derive :container           :tech)
       (derive :component           :tech)))
 
+; general, multimethod?
 (def diagram-type->element-predicate
   "Map from diagram type to content-level predicate."
   {:context-diagram          arch/context-level?
@@ -159,6 +161,40 @@
   "Renders an indent of n space chars."
   [n]
   (str/join (repeat n " ")))
+
+(defn renderer-type
+  [format e]
+  [format (:el e)])
+
+(defmulti render-el renderer-type)
+
+(defmethod render-el [:plantuml :boundary]
+  [format e]
+  (str (element->methods (:el e)) "("
+       (alias-name (:id e)) ", \""
+       (:name e) "\""
+       ")"))
+
+(defmethod render-el [:plantuml :person]
+  [format e]
+  )
+
+(defmethod render-el [:plantuml :system]
+  [format e])
+
+(defmethod render-el [:plantuml :container]
+  [format e])
+
+(defmethod render-el [:plantuml :component]
+  [format e])
+
+(defmethod render-el [:plantuml :node]
+  [format e])
+
+(defmethod render-el [:plantuml :rel]
+  [format e])
+
+
 
 ; plantuml
 (defn render-boundary
@@ -315,17 +351,20 @@
   [diagram]
   (when (:title diagram) (str "title " (:title diagram))))
 
+(defmulti render-diagram
+  "Renders the diagram in the specified export format."
+  arch/export-format)
+
 ; plantuml
-(defn render-diagram
-  "Renders the PlantUML code for the diagram."
-  [diagram]
+(defmethod render-diagram [:plantuml]
+  [format diagram]
   (let [children (elements-to-render diagram)]
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id diagram)))
               (render-imports diagram)
               (render-layout diagram)
               (render-title diagram)
-              (map #(render-element diagram 0 %) children)
+              (map #(render-element format diagram 0 %) children)
               (render-legend diagram)
               "@enduml"])))
 
@@ -352,7 +391,7 @@
   [format diagram]
   (with-open [wrt (io/writer (arch/export-file format diagram))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-diagram diagram))))))
+      (println (str/join "\n" (render-diagram format diagram))))))
 
 ; general
 (defn export-diagrams 
