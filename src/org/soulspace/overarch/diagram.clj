@@ -100,27 +100,12 @@
   [n]
   (str/join (repeat n " ")))
 
-(defn renderer-type
-  [format e]
-  [format (:el e)])
-
-(defmulti render-el renderer-type)
-
 ; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
       (derive :enterprise-boundary :boundary)
       (derive :system-boundary     :boundary)
-      (derive :container-boundary  :boundary)
-      (derive :person              :desc)
-      (derive :system              :desc)
-      (derive :container           :tech)
-      (derive :component           :tech)))
-
-; general?
-(defmulti render-element
-  (fn [diagram indent e] (:el e))
-  :hierarchy #'element-hierarchy)
+      (derive :container-boundary  :boundary)))
 
 (defmulti render-diagram exp/export-format)
