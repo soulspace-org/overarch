@@ -4,8 +4,10 @@
             [clojure.string :as str]
             [clojure.walk :as walk]
             [clojure.spec.alpha :as s]
+            [charred.api :as json]
             [org.soulspace.clj.java.file :as file]
-            ))
+            
+            [clojure.java.io :as io]))
 
 ;;;
 ;;; Schema definitions
@@ -288,9 +290,11 @@
 ;;;
 
 (defn export-format
-  "Returns the export format for the diagram."
-  [format diagram]
-  format)
+  "Returns the export format for the data."
+  ([format]
+   format)
+  ([format _]
+  format))
 
 (defmulti export-file
   "Returns the export directory for the diagram."
@@ -299,6 +303,16 @@
 (defmulti export-model
   "Exports the diagram in the given format."
   export-format)
+
+(defmethod export-file :json
+  [format ]
+  
+  )
+
+(defmethod export-model :json
+  [format]
+  (with-open [wrt (io/writer (export-file :json))]
+    (json/write-json wrt (get-model-elements))))
 
 (comment
   (file/all-files-by-extension "edn" "models")

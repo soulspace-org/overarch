@@ -156,6 +156,18 @@ A: Because it is an open and extensible data format
      * IntelliJ + Cursive
      * Emacs + Cider
 
+Q: Why not JSON?
+
+A: JSON is a format that is widely used and supported by many programming languages.
+   But compared to EDN it has a few shortcomings
+   * JSON does not support sets and some literal types like uuids or instants of time
+   * JSON does not support keywords, which are really helpfull in creating
+     namespaced and conflict free attributes and ID spaces
+
+   JSON is supported as an export format to make the model and view data available to as
+   many languages and environments as possible, but the conversion might be lossy for the
+   reasons above.
+
 Q: Why Clojure?
 
 A: Clojure is a perfect match
