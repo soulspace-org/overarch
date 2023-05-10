@@ -20,15 +20,14 @@
 (def context-types
   "Element types of a C4 context diagram."
   #{:person :system :boundary :enterprise-boundary})
+
 (def container-types
   "Element types of a C4 container diagram."
-  (set/union context-types
-             #{:system-boundary :container}))
+  (set/union context-types #{:system-boundary :container}))
 
 (def component-types
   "Element types of a C4 component diagram."
-  (set/union container-types
-             #{:container-boundary :component}))
+  (set/union container-types #{:container-boundary :component}))
 
 (def code-types
   "Element types of a C4 code diagram."
@@ -40,7 +39,7 @@
 
 (def deployment-types
   "Element types of a C4 deployment diagram."
-  #{:node})
+  (set/union container-types #{:node}))
 
 (def dynamic-types
   "Element types of a C4 dynamic diagram."
