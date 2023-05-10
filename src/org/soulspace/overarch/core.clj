@@ -1,13 +1,9 @@
 (ns org.soulspace.overarch.core
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
-            [clojure.string :as str]
-            [clojure.walk :as walk]
             [clojure.spec.alpha :as s]
-            [charred.api :as json]
             [org.soulspace.clj.java.file :as file]
-            
-            [clojure.java.io :as io]))
+            ))
 
 ;;;
 ;;; Schema definitions
@@ -253,16 +249,6 @@
          (recur (register-elements m (:ct e)) (rest coll))))
      m)))
 
-(s/fdef read-elements
-  :args [string?]
-  :ret :overarch/ct)
-(defn read-elements
-  "Reads the elements of data from the given directory `dir`."
-  [dir]
-  (->> (file/all-files-by-extension "edn" dir)
-       (map slurp)
-       (mapcat edn/read-string)))
-
 (defn build-registry
   "Returns a map with the original data and a registry by id for lookups.
    
@@ -276,6 +262,16 @@
                    :registry (register-elements elements)})
     (s/explain :overarch/elements elements)))
 
+(s/fdef read-elements
+  :args [string?]
+  :ret :overarch/ct)
+(defn read-elements
+  "Reads the elements of data from the given directory `dir`."
+  [dir]
+  (->> (file/all-files-by-extension "edn" dir)
+       (map slurp)
+       (mapcat edn/read-string)))
+
 (defn update-state!
   "Updates the state with the registered data."
   [dir]
@@ -284,35 +280,6 @@
        (build-registry)
        (reset! state))
   nil)
-
-;;;
-;;; Exports
-;;;
-
-(defn export-format
-  "Returns the export format for the data."
-  ([format]
-   format)
-  ([format _]
-  format))
-
-(defmulti export-file
-  "Returns the export directory for the diagram."
-  export-format)
-
-(defmulti export-model
-  "Exports the diagram in the given format."
-  export-format)
-
-(defmethod export-file :json
-  [format ]
-  
-  )
-
-(defmethod export-model :json
-  [format]
-  (with-open [wrt (io/writer (export-file :json))]
-    (json/write-json wrt (get-model-elements))))
 
 (comment
   (file/all-files-by-extension "edn" "models")

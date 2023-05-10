@@ -2,7 +2,8 @@
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
             [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.diagram :as dia]
+            [org.soulspace.overarch.export :as exp]
+            [org.soulspace.overarch.plantuml :as puml]
             [hawk.core :as hawk])
   (:gen-class))
 
@@ -66,7 +67,7 @@
   "Read models and export diagrams."
   [options]
   (core/update-state! (:model-dir options))
-  (dia/export-diagrams (keyword (:format options))))
+  (exp/export-diagrams (keyword (:format options))))
 
 (defn handle
   "Handle options and generate the requested outputs."
