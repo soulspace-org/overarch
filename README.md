@@ -6,7 +6,7 @@ A data driven description of a software architecture based on the C4 model.
 
 Describe your model as data and specify/generate representations (e.g. diagrams) for your model.
 
-*Disclaimer: this project is in alpha stage - the data formats might change, the code base will change*
+*Disclaimer: this project is in alpha stage - the data format might change*
 
 
 Rationale
@@ -40,16 +40,18 @@ Model references may be enhanced with additional attributes that are specific to
 
 * [C4 PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
   * C4 standard library for PlantUML
-  * just diagram oriented
+  * diagram oriented
   * no separation between model and presentation
   * pure textual representation
   * needs a parser implementation
+  * useful as export target (implemented in overarch)
 
 * [structurizr](https://structurizr.org/)
   * C4 modelling tools from Simon Brown, the inventor of C4 models
   * diagram oriented
   * separates model from views, but in the same files
   * unwieldy tooling (IMHO)
+  * possible export target
 
 * [fc4-framework](https://github.com/FundingCircle/fc4-framework)
   * FC4 is a Docs as Code tool to create software architecture diagrams.
@@ -59,9 +61,9 @@ Model references may be enhanced with additional attributes that are specific to
 
 * [archinsight](https://github.com/lonely-lockley/archinsight)
   * Insight language is a DSL (Domain Specific Language)
-  * to translate C4 Model description into DOT language,
-  * that can be rendered by Graphviz.
-  * Insight supports only the first two levels of C4.
+  * translates C4 Model description into DOT language,
+  * rendered by Graphviz.
+  * supports only the first two levels of C4.
   * pure textual representation
   * needs a parser implementation
 
@@ -194,6 +196,7 @@ The complete model and diagram specifications can be found under
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
 title System Context View of the Internet Banking System
+
 Person(banking_personalCustomer, "Personal Banking Customer", $descr="A customer of the bank, with personal banking accounts.")
 System_Ext(banking_emailSystem, "E-mail System", $descr="The internal Microsoft Exchange email system.")
 System_Ext(banking_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
@@ -203,8 +206,9 @@ Rel_Down(banking_personalCustomer, banking_internetBankingSystem, "Views account
 Rel_Right(banking_internetBankingSystem, banking_emailSystem, "Sends e-mail using")
 Rel(banking_internetBankingSystem, banking_mainframeBankingSystem, "Gets account information from, and makes payments using")
 Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
-@enduml
 
+SHOW_LEGEND()
+@enduml
 ```
 
 ### System Context View rendered with PlantUML
