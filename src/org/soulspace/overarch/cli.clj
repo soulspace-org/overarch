@@ -15,7 +15,7 @@
 (def appname "overarch")
 (def description "Overarch CLI Exporter")
 
-(def cli-opts [["-m" "--model-dir DIRNAME" "Model directory." :default "models"]
+(def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
                ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
                ["-f" "--format" "Export format" :default "plantuml"]
@@ -100,4 +100,6 @@
 (comment
   (update-and-export! {:model-dir "models"
                        :format :plantuml})
-  (-main "--debug"))
+  (-main "--debug")
+  (-main "--help")
+  )
