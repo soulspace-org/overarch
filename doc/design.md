@@ -1,5 +1,5 @@
-Ideas
-=====
+Design
+======
 
 Situation
 ---------
@@ -10,6 +10,7 @@ The syntax of the PlantUML is inconsistent, brittle and errors are rendered
 in the generated image and are often not very helpful. On the other hand,
 PlantUML in combination with GraphViz are a pragmatic option to generate
 C4 architecture diagrams.
+
 
 Observations
 ------------
@@ -33,6 +34,7 @@ Observations
 
 * Possible disadvantages
   * likely not as compact and succint as DSLs
+
 
 Questions
 ---------
