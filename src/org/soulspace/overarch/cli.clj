@@ -11,7 +11,6 @@
   (:gen-class))
 
 
-
 (def appname "overarch")
 (def description "Overarch CLI Exporter")
 
@@ -19,8 +18,8 @@
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
                ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
                ["-f" "--format" "Export format" :default "plantuml"]
-               ["-h" "--help" "print help"]
-               [nil  "--debug" "print debug messages" :default false]])
+               ["-h" "--help" "Print help"]
+               [nil  "--debug" "Print debug messages" :default false]])
 
 (defn usage-msg
   "Returns a message containing the program usage."
@@ -31,7 +30,7 @@
   ([name description summary]
    (str/join "\n\n"
              [description
-              (str "Usage: " name " [options].")
+              (str "Usage: java --jar " name ".jar [options].")
               ""
               "Options:"
               summary])))
