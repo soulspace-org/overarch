@@ -1,5 +1,5 @@
 [{:el :context-diagram
-  :id :test/styles-context-view 
+  :id :test/styles-context-view
   :spec {:styles [{:el :rel
                    :id :dashed-rel
                    :line-style :dashed}

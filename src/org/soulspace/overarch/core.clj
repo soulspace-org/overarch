@@ -3,7 +3,8 @@
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
-            [org.soulspace.clj.java.file :as file]))
+            [org.soulspace.clj.java.file :as file]
+            [charred.api :as json]))
 
 ;;;
 ;;; Schema definitions
@@ -284,9 +285,6 @@
 (comment
   (file/all-files-by-extension "edn" "models")
   (read-elements "models")
-
-  (s/valid? :overarch/elements (read-elements "models/pulsar"))
-  (s/explain :overarch/elements (read-elements "models/pulsar"))
 
   (update-state! "models")
   

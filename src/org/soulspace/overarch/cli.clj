@@ -6,6 +6,7 @@
             [org.soulspace.overarch.export :as exp]
             ; must be loaded, for registering of the multimethods
             ; require dynamically?
+            [org.soulspace.overarch.json :as json]
             [org.soulspace.overarch.plantuml :as puml]
             [hawk.core :as hawk])
   (:gen-class))
@@ -17,7 +18,7 @@
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
                ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
-               ["-f" "--format" "Export format" :default "plantuml"]
+               ["-f" "--format FORMAT" "Export format (json, plantuml)" :default "plantuml"]
                ["-h" "--help" "Print help"]
                [nil  "--debug" "Print debug messages" :default false]])
 
@@ -74,8 +75,12 @@
 (defn handle
   "Handle options and generate the requested outputs."
   [options]
-  ; TODO implement dispatch on options
-  (update-and-export! options)
+  (when (:debug options)
+    (println options))
+  (when (= :json (keyword (:format options)))
+    (json/export-json (:model-dir options)))
+  (when (= :plantuml (keyword (:format options)))
+    (update-and-export! options))
   (when (:watch-model-dir options)
     ; TODO loop recur this update-and-export! as handler
     (hawk/watch! [{:paths [(:model-dir options)]
@@ -99,6 +104,7 @@
 (comment
   (update-and-export! {:model-dir "models"
                        :format :plantuml})
+  (-main "--debug" "--format" "json")
   (-main "--debug")
   (-main "--help")
   )
