@@ -2,7 +2,6 @@
   "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
-            [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]))

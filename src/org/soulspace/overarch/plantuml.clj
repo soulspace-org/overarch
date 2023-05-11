@@ -2,6 +2,7 @@
   "Functions to export views to plantuml."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
+            [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.diagram :as dia]
             [org.soulspace.overarch.export :as exp]))
@@ -78,7 +79,7 @@
     (let [children (dia/elements-to-render diagram (:ct e))]
       (flatten [(str (dia/render-indent indent) 
                      (element->methods (:el e)) "("
-                     (dia/alias-name (:id e)) ", \"" 
+                     (alias-name (:id e)) ", \"" 
                      (:name e) "\""
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -86,7 +87,7 @@
                 (str (dia/render-indent indent) "}")]))
     [(str (dia/render-indent indent) 
                      (element->methods (:el e)) "("
-                     (dia/alias-name (:id e)) ", \"" 
+                     (alias-name (:id e)) ", \"" 
                      (:name e) "\""
                      ")")]))
 
@@ -95,7 +96,7 @@
   [(str (dia/render-indent indent)
         (element->methods (:el e))
         (when (:external e) "_Ext") "("
-        (dia/alias-name (:id e)) ", \""
+        (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -106,7 +107,7 @@
   [(str (dia/render-indent indent)
         (element->methods (:el e))
         (when (:external e) "_Ext") "("
-        (dia/alias-name (:id e)) ", \""
+        (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -118,7 +119,7 @@
         (element->methods (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
-        (dia/alias-name (:id e)) ", \""
+        (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -130,7 +131,7 @@
         (element->methods (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
-        (dia/alias-name (:id e)) ", \""
+        (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -142,7 +143,7 @@
     (let [children (dia/elements-to-render diagram (:ct e))]
       (flatten [(str (dia/render-indent indent)
                      (element->methods (:el e)) "("
-                     (dia/alias-name (:id e)) ", \""
+                     (alias-name (:id e)) ", \""
                      (:name e) "\""
                      (when (:type e) (str ", $type=\"" (:type e) "\""))
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -152,7 +153,7 @@
                 (str (dia/render-indent indent) "}")]))
     [(str (dia/render-indent indent)
           (element->methods (:el e)) "("
-          (dia/alias-name (:id e)) ", \""
+          (alias-name (:id e)) ", \""
           (:name e) "\""
           (when (:type e) (str ", $type=\"" (:type e) "\""))
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -163,8 +164,8 @@
   [(str (dia/render-indent indent)
         (element->methods (:el e))
         (when (:direction e) (directions (:direction e))) "("
-        (dia/alias-name (:from e)) ", "
-        (dia/alias-name (:to e)) ", \""
+        (alias-name (:from e)) ", "
+        (alias-name (:to e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -233,7 +234,7 @@
   [format diagram]
   (let [children (dia/elements-to-render diagram)]
     ;(user/data-tapper "resolved" children)
-    (flatten [(str "@startuml " (dia/alias-name (:id diagram)))
+    (flatten [(str "@startuml " (alias-name (:id diagram)))
               (render-imports diagram)
               (render-layout diagram)
               (render-title diagram)
