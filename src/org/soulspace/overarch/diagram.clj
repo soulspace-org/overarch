@@ -1,4 +1,5 @@
 (ns org.soulspace.overarch.diagram
+  "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
@@ -54,13 +55,6 @@
 ;;;
 ;;; Rendering functions
 ;;;
-
-; general?
-(defn alias-name
-  "Returns a valid PlantUML alias for the keyword."
-  [kw]
-  (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
-               (sstr/hyphen-to-camel-case (name kw)))))
 
 ; general
 (defn element-to-render

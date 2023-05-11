@@ -1,4 +1,5 @@
 (ns org.soulspace.overarch.cli
+  "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
             [org.soulspace.overarch.core :as core]

@@ -1,9 +1,9 @@
 (ns org.soulspace.overarch.core
+  "Functions for the definition and handling of the overarch model."
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
-            [org.soulspace.clj.java.file :as file]
-            ))
+            [org.soulspace.clj.java.file :as file]))
 
 ;;;
 ;;; Schema definitions

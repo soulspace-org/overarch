@@ -1,5 +1,5 @@
 (ns org.soulspace.overarch.plantuml
-  "Functionality to export views to plantuml."
+  "Functions to export views to plantuml."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.java.file :as file]
@@ -11,10 +11,9 @@
 ;;;;
 
 ;;;
-;;; PlantUML mappings#
+;;; PlantUML mappings
 ;;;
 
-; plantuml
 (def element->methods
   "Map from element type to PlantUML method."
   {:person              "Person"
@@ -28,26 +27,22 @@
    :node                "Node"
    :rel                 "Rel"})
 
-; plantuml
 (def subtype->suffix
   "Maps the subtype of an element to the PlantUML suffix."
   {:database "Db"
    :queue "Queue"})
 
-; plantuml
 (def layouts
   "Maps layout keys to PlantUML."
   {:landscape "LAYOUT_LANDSCAPE()"
    :left-right "LAYOUT_LEFT_RIGHT()"
    :top-down "LAYOUT_TOP_DOWN()"})
 
-; plantuml
 (def linetypes
   "Maps linetype keys to PlantUML."
   {:orthogonal "skinparam linetype ortho"
    :polygonal  "skinparam linetype polyline"})
 
-; plantuml
 (def directions
   "Maps direction keys to PlantUML Rel suffixes."
   {:down  "_Down"
@@ -55,16 +50,27 @@
    :right "_Right"
    :up    "_Up"})
 
-; plantuml
 (def styles
   {:element  "AddElementTag"
    :rel      "AddRelTag"
    :boundary ""})
 
+;;;
+;;; Rendering
+;;;
+
+(defn alias-name
+  "Returns a valid PlantUML alias for the keyword."
+  [kw]
+  (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
+               (sstr/hyphen-to-camel-case (name kw)))))
+
 (defmulti render-element
+  "Renders an element in PlantUML.
+   
+   Multifunction dispatching on the value of the :el key of the element `e`."
   (fn [diagram indent e] (:el e))
   :hierarchy #'dia/element-hierarchy)
-
 
 (defmethod render-element :boundary
   [diagram indent e]
@@ -164,7 +170,6 @@
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         ")")])
 
-; plantuml
 (defn render-imports
   "Renders the imports for the diagram."
   [diagram]
@@ -193,14 +198,12 @@
     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml")
   )
 
-; plantuml
 (defn render-style
   "Renders a styles for the diagram."
   [diagram style]
   ; TODO
   )
 
-; plantuml
 (defn render-layout
   "Renders the layout for the diagram."
   [diagram]
@@ -214,7 +217,6 @@
               (when (:linetype spec)
                 (linetypes (:linetype spec)))])))
 
-; plantuml
 (defn render-legend
   "Renders the legend for the diagram."
   [diagram]
@@ -222,13 +224,11 @@
     [(when (:legend spec)
        "SHOW_LEGEND()")]))
 
-; plantuml
 (defn render-title
   "Renders the title of the diagram."
   [diagram]
   (when (:title diagram) (str "title " (:title diagram))))
 
-; plantuml
 (defmethod dia/render-diagram :plantuml
   [format diagram]
   (let [children (dia/elements-to-render diagram)]
@@ -245,7 +245,6 @@
 ;;; PlantUML file export
 ;;;
 
-; plantuml
 (defmethod exp/export-file :plantuml
   [format diagram]
   (let [dir-name (str "exports/plantuml/" (namespace (:id diagram)))
@@ -254,7 +253,6 @@
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
 
-; plantuml
 (defmethod exp/export-diagram :plantuml
   [format diagram]
   (with-open [wrt (io/writer (exp/export-file format diagram))]
