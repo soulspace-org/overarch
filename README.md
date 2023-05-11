@@ -263,9 +263,11 @@ java -jar overarch.jar <options>
 Overarch currently supports these options
 
 ```
-  -m, --model-dir DIRNAME   models    Model directory.
+Options:
+
+  -m, --model-dir DIRNAME   models    Model directory
   -e, --export-dir DIRNAME  export    Export directory
-  -f, --format              plantuml  Export format
+  -f, --format FORMAT       plantuml  Export format (json, plantuml)
   -h, --help                          Print help
       --debug                         Print debug messages
 ```
