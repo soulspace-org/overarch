@@ -218,12 +218,57 @@ SHOW_LEGEND()
 ![Container View rendered with PlantUML](/doc/banking_containerView.svg)
 
 
+Build
+-----
+Overarch is written in [Clojure](https://clojure.org) and build with
+[leiningen](https://leiningen.org/). To build it, you need to have Java 11 or higher
+and leiningen installed.
+
+In the cloned overarch repository, run
+
+```
+lein uberjar
+```
+
+to build a JAR file with all dependencies.
+See Usage on how to run it with it's CLI interface.
+
+
+
 Usage
 -----
-Use a folder for all the data (e.g. models, diagram specifications).
-Add EDN files for the model and the diagram specifications and other representations. All the EDN files in the folder will be loaded.
+If you have a clojure environment in some editor or IDE, please use it.
+If not, try Visual Studio Code with the Calva and PlantUML extensions.
+With this setup you get an editor for the EDN files with code completion,
+syntax check and syntax highlighting.
 
-...
+![Model editing](/doc/overarch_vscode_model.png)
+
+You also get integrated previews of the
+exported PlantUML diagrams and the ability to generate image files in different
+formats (e.g. PNG, SVG, PDF, ...) directly from within Visual Studio Code.
+
+![PlantUML preview](/doc/overarch_plantuml_preview.png)
+
+Use a folder for all the data (e.g. models, diagram specifications).
+Add EDN files for the model and the diagram specifications and other representations.
+All the EDN files in the folder will be loaded.
+
+Command Line Interface
+
+```
+java -jar overarch.jar <options>
+```
+
+Overarch currently supports these options
+
+```
+  -m, --model-dir DIRNAME   models  Model directory.
+  -e, --export-dir DIRNAME  export  Export directory
+  -f, --format                      Export format
+  -h, --help                        print help
+      --debug                       print debug messages
+```
 
 
 Copyright
