@@ -234,10 +234,9 @@ to build a JAR file with all dependencies.
 See Usage on how to run it with it's CLI interface.
 
 
-
 Usage
 -----
-If you have a clojure environment in some editor or IDE, please use it.
+If you have a clojure environment in some editor or IDE, just use it.
 If not, try Visual Studio Code with the Calva and PlantUML extensions.
 With this setup you get an editor for the EDN files with code completion,
 syntax check and syntax highlighting.

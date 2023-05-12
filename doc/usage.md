@@ -11,7 +11,13 @@ e.g. the rendering of diagrams in PlantUML or the conversion of the data to JSON
 Modelling
 ---------
 
-VS Code with the Calva Extension
+If you have a clojure environment in some editor or IDE, just use it.
+If not, try Visual Studio Code with the Calva and PlantUML extensions.
+With this setup you get an editor for the EDN files with code completion,
+syntax check and syntax highlighting.
+
+![Model editing](/doc/overarch_vscode_model.png)
+
 
 Model Elements
 --------------
