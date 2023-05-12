@@ -1,7 +1,6 @@
 Overarch Usage
 ==============
 
-
 Overview
 --------
 
@@ -19,13 +18,21 @@ Model Elements
 
 #### Persons
 
+Users, internal or external actors for the system.
+
 #### Systems
 
+Can containers
+
 #### Containers
+
+Can components
 
 #### Components
 
 #### Nodes
+
+Can contain other nodes, (external) sytems and containers.
 
 #### Relations
 
@@ -64,12 +71,27 @@ VS Code PlantUML Extension
 ### JSON
 
 
+
 Command Line Interface
 ----------------------
 
 Usage:
 
+```
 java -jar overarch.jar
+```
+
+Overarch currently supports these options
+
+```
+Options:
+
+  -m, --model-dir DIRNAME   models    Model directory
+  -e, --export-dir DIRNAME  export    Export directory
+  -f, --format FORMAT       plantuml  Export format (json, plantuml)
+  -h, --help                          Print help
+      --debug                         Print debug messages
+```
 
 
 
