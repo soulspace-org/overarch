@@ -78,7 +78,7 @@
   (when (:debug options)
     (println options))
   (when (= :json (keyword (:format options)))
-    (json/export-json (:model-dir options)))
+    (json/export-json options))
   (when (= :plantuml (keyword (:format options)))
     (update-and-export! options))
   (when (:watch-model-dir options)

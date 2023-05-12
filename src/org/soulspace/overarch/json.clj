@@ -12,13 +12,11 @@
 
 (defn export-json
   "Exports the data files in the given directory to JSON"
-  [dir]
-  (doseq [file (file/all-files-by-extension "edn" dir)]
-    (let [out-dir (str "exports/"
+  [opts]
+  (doseq [file (file/all-files-by-extension "edn" (:model-dir opts))]
+    (let [out-dir (str (:export-dir opts)"/"
                        (file/parent-path file) "/")
           out-file (str out-dir (file/base-name file) ".json")]
-;      (println "In: " (file/path file))
-;      (println "Out:" out-file)
       (file/create-dir out-dir)
       (->> file
            (slurp)
