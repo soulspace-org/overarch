@@ -13,11 +13,13 @@
 
 
 (def appname "overarch")
-(def description "Overarch CLI Exporter")
+(def description "Overarch CLI Exporter
+                  Reads your model and view specifications and exports them
+                  into the specified format.")
 
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
-               ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
+;               ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
                ["-f" "--format FORMAT" "Export format (json, plantuml)" :default "plantuml"]
                ["-h" "--help" "Print help"]
                [nil  "--debug" "Print debug messages" :default false]])
@@ -25,7 +27,7 @@
 (defn usage-msg
   "Returns a message containing the program usage."
   ([summary]
-   (usage-msg (str "java --jar " appname ".jar <options>") "" summary))
+   (usage-msg (str "java --jar " appname ".jar [options]") "" summary))
   ([name summary]
    (usage-msg name "" summary))
   ([name description summary]
