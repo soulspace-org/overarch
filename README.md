@@ -1,13 +1,13 @@
 ![overarch - Image © 2019 Ludger Solbach](/doc/overarch.jpg)
 
-Overarch Architecture Description
-=================================
-A data driven description of a software architecture based on the C4 model.
+Overarch
+========
+A data driven description of software architecture based on the C4 model.
 
-Overarch is not so much about how to model your architecture (see [C4 Model](https://c4model.com)) but about making the models composable and reusable.
-
-Describe your model as data and specify/generate representations (e.g. diagrams) for your model. All core and supplementary C4 diagrams exept code diagrams are
+Describe your model as data and specify/generate representations (e.g. diagrams) for your model. All core and supplementary C4 diagrams except code diagrams are
 supported.
+
+Overarch is not so much about how to model your architecture (see [C4 Model](https://c4model.com) for that), but about making the models composable and reusable.
 
 *Disclaimer: this project is in alpha stage - the data format might change*
 
@@ -31,13 +31,13 @@ Even if the model is specified as data, the format should be a text file (EDN, J
 
 The native format should be Extensible Data Notation (EDN) with representations in other formats like JSON. EDN is a textual format for data, which is human readable. It is directly readable into data structures in clojure code.
 
-The data format should be open for extension. E.g. it should cope with additional attributes in the data structures.
+The data format should be open for extension. E.g. it should cope with additional attributes or element types in the data structures.
 
 The model should describe the architecture (the structure) of your system(s). The elements are based on the C4 model and are a hierarchical composition of the elements of the architecture.
 
 Model references should be used to refer to model elements from representations (e.g. diagrams). To allow references to relations, the definition of a relation must have an id.
 
-Model references may be enhanced with additional attributes that are specific to the usage context (e.g. a sprite attribute in the context of a diagram to be rendered by PlantUML)
+Model references may be enhanced with additional attributes that are specific to the usage context (e.g. a style attribute in the context of a diagram)
 
 Examples
 --------
