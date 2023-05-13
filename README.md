@@ -77,7 +77,7 @@ The complete model and diagram specifications can be found under
 
 ### Example of a model definition
 
-```
+```clojure
 [{:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
@@ -148,7 +148,7 @@ The complete model and diagram specifications can be found under
 
 ### Example of a diagrams specification
 
-```
+```clojure
 [{:el :context-diagram
   :id :banking/system-context-view
   :title "System Context View of the Internet Banking System"
@@ -191,7 +191,7 @@ The complete model and diagram specifications can be found under
  ```
 
 ### PlantUML export of the System Context View
-```
+```plantuml
 @startuml banking_systemContextView
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 

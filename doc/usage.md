@@ -48,7 +48,7 @@ Relations describe the interacions of the parts of a view.
 
 Example (exerpt from the banking model containing context and container level elements):
 
-```
+```clojure
 [{:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
