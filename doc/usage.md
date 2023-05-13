@@ -48,21 +48,40 @@ Diagrams
 --------
 
 ### C4 Diagrams
+Overarch supports the description of all C4 core and sublementary diagrams except from code diagrams, which ideally should be generated from the code if needed.
+
+The core C4 diagrams form a hierarchy.
 
 #### System Context Diagrams
+Shows the system in the context of the actors and other systems it is interacting with. Contains users, external systems and the system to be described.
+
+![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
 
 #### Container Diagrams
+Shows the containers (e.g. processes, deployment units of the system) and the interactions between them and the outside world. Contains the elements of the system context diagram and the containers of the system to be described. The system to be described is rendered as a system boundary in the container diagram.
+
+![Container View rendered with PlantUML](/doc/banking_containerView.svg)
 
 #### Component Diagrams
+Shows the components and their interactions inside of a container.
+
+![Component View rendered with PlantUML](/doc/banking_componentView.svg)
 
 #### Code Diagrams
+Not supported
 
 #### System Landscape Diagrams
+Shows a broader system landscape and the interactions of the systems.
+
+![System Landscape View rendered with PlantUML](/doc/banking_systemLandscapeView.svg)
 
 #### Deployment Diagrams
+Shows the infrastucture and deployment of the containers of the system.
+
+![Deployment View rendered with PlantUML](/doc/banking_deploymentView.svg)
 
 #### Dynamic Diagrams
-
+Shows the order of some interactions.
 
 Exports
 -------
