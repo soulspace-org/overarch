@@ -28,25 +28,25 @@ Model Elements
 --------------
 
 #### Persons
-
-Users, internal or external actors for the system.
+Users are internal or external actors of the system.
 
 #### Systems
 
-Can containers
+Systems can contain containers.
 
 #### Containers
-
-Can components
+A container is a part of the system.
+Containers can contain components.
 
 #### Components
+A component is unit of software, which lives in a container of the system.
 
 #### Nodes
-
-Can contain other nodes, (external) sytems and containers.
+A node is a unit in a deployment view. Nodes represent parts of the infrastructure in which the containers of the system are deployed. 
+They can contain other nodes, (external) sytems and containers.
 
 #### Relations
-
+Relations describe the interacions of the parts of a view.
 
 
 Diagrams
