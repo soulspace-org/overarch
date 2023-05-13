@@ -1,8 +1,13 @@
 [{:el :context-diagram
   :id :test/styles-context-view
-  :spec {:styles [{:el :rel
+  :spec {:legend true
+         :styles [{:el :rel
                    :id :dashed-rel
-                   :line-style :dashed}
+                   :text-color "#000000"
+                   :line-color "#000000"
+                   :line-style :dashed
+                   :tech "async"
+                   :legend-text "asynchronous"}
                   {:el :rel
                    :id :dotted-rel
                    :line-style :dotted}
@@ -12,9 +17,24 @@
                    :line-color "#007700"
                    :text-color "#000077"}
                   {:el :element
-                   :id :red-rel
+                   :id :red-el
                    :bg-color "#CC0000"
                    :border-color "#330000"
-                   :text-color "#000000"}]}
-  :title "Style test"}
+                   :text-color "#000000"
+                   :legend-text "critical system"}]}
+  :title "Style test"
+  :ct [{:el :system
+        :id :test/sys1
+        :name "Sys1"
+        :style :red-el}
+       {:el :system
+        :id :test/sys2
+        :name "Sys2"
+        :external true}
+       
+       {:el :rel
+        :from :test/sys1
+        :to :test/sys2
+        :name "calls"
+        :style :dashed-rel}]}
  ]
