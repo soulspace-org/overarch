@@ -72,10 +72,12 @@
        {:ref :banking/personal-customer}
        
        ; relations
+       {:ref :banking/personal-customer-uses-atm}
+       {:ref :banking/atm-uses-mainframe-banking-system}
        {:ref :banking/personal-customer-asks-customer-service-stuff}
        {:ref :banking/personal-customer-uses-internet-banking-system}
        {:ref :banking/email-system-sends-mail-to-personal-customer}
-       {:ref :banking/backoffice-stuff-uses-mainframe-banking-system}
+       {:ref :banking/backoffice-stuff-uses-mainframe-banking-system :direction :right}
        {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
        {:ref :banking/internet-banking-system-uses-email-system}
        {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
