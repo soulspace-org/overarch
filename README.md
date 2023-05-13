@@ -38,38 +38,6 @@ Model references should be used to refer to model elements from representations 
 
 Model references may be enhanced with additional attributes that are specific to the usage context (e.g. a sprite attribute in the context of a diagram to be rendered by PlantUML)
 
-### Related Projects
-
-* [C4 PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
-  * C4 standard library for PlantUML
-  * diagram oriented
-  * no separation between model and presentation
-  * pure textual representation
-  * needs a parser implementation
-  * useful as export target (implemented in overarch)
-
-* [structurizr](https://structurizr.org/)
-  * C4 modelling tools from Simon Brown, the inventor of C4 models
-  * diagram oriented
-  * separates model from views, but in the same files
-  * unwieldy tooling (IMHO)
-  * possible export target
-
-* [fc4-framework](https://github.com/FundingCircle/fc4-framework)
-  * FC4 is a Docs as Code tool to create software architecture diagrams.
-  * just diagram oriented
-  * no separation between model and presentation
-  * tied to structurizr for modelling and visualization
-
-* [archinsight](https://github.com/lonely-lockley/archinsight)
-  * Insight language is a DSL (Domain Specific Language)
-  * translates C4 Model description into DOT language,
-  * rendered by Graphviz.
-  * supports only the first two levels of C4.
-  * pure textual representation
-  * needs a parser implementation
-
-
 Examples
 --------
 This is an example of the specification of a model and some diagrams based on the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).

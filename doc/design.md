@@ -11,6 +11,36 @@ in the generated image and are often not very helpful. On the other hand,
 PlantUML in combination with GraphViz are a pragmatic option to generate
 C4 architecture diagrams.
 
+### Existing Tools
+
+* [C4 PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
+  * C4 standard library for PlantUML
+  * diagram oriented
+  * no separation between model and presentation
+  * pure textual representation
+  * needs a parser implementation
+  * useful as export target (implemented in overarch)
+
+* [structurizr](https://structurizr.org/)
+  * C4 modelling tools from Simon Brown, the inventor of C4 models
+  * diagram oriented
+  * separates model from views, but in the same files
+  * unwieldy tooling (IMHO)
+  * possible export target
+
+* [fc4-framework](https://github.com/FundingCircle/fc4-framework)
+  * FC4 is a Docs as Code tool to create software architecture diagrams.
+  * just diagram oriented
+  * no separation between model and presentation
+  * tied to structurizr for modelling and visualization
+
+* [archinsight](https://github.com/lonely-lockley/archinsight)
+  * Insight language is a DSL (Domain Specific Language)
+  * translates C4 Model description into DOT language,
+  * rendered by Graphviz.
+  * supports only the first two levels of C4.
+  * pure textual representation
+  * needs a parser implementation
 
 Observations
 ------------
@@ -44,6 +74,7 @@ Q: What is architecture anyway?
 A: Architecture in the context of information systems can be separated into
    software architecture and system architecture.
 
+
 Q: What is software architecture?
 
 A: Software architecture specifies the high level design of a software
@@ -51,10 +82,12 @@ A: Software architecture specifies the high level design of a software
    able to fulfill the functional and nonfunctional requirements for the
    system.
 
+
 Q: What is system architecture?
 
 A: System architeture specifies the high level design of the runtime
    environment and infrastructure of one or more software systems.
+
 
 Q: What shall be captured in an architectural description model?
 
@@ -71,6 +104,7 @@ A: The hierarchical structure of a system and its context
    * The deployment of the containers in the infrastructure for the system
      (if relevant)
 
+
 Q: What could also be captured in an extension of the descriptionẞ
 
 A: An extension of the model could make sense if there is value in the connection
@@ -79,8 +113,9 @@ A: An extension of the model could make sense if there is value in the connectio
    Additional elements could be
    * Enterprise architecture elements like capabilities
    * Business arcitecture elements like business processes
-   * Functional and nonfunctional requirements and crosscutting concerns
+   * Functional or nonfunctional requirements and crosscutting concerns
    * ...
+
 
 Q: Shall the boundaries be implicit in the model, e.g. rendering a
    system as a system-boundary in a container diagram, if it contains    container elements, that are visualized?
@@ -90,35 +125,49 @@ A: Implicit boundaries make the model more succinct.
    containing children on the level of the diagram.
    E.g. a system with containers should be rendered as a system boundary containing the containers.
 
+
 Q: Shall relations between low level elements (e.g. components) and the
    outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?
    
    The relation between a user and a user interface component would be rendered directly in a component diagram. In a container diagram, the relation would be rendered between the user and the container of the user interface component. In a system diagram, the relation would be rendered between the user and the system of the user interface component.
 
-A: An advantage would be that relations would have be specified on the
+   An advantage would be that relations would have be specified on the
    component level, where the interaction is handled or the concrete dependency exists. But only relations between elements that are included
    in the diagram should be rendered. If a user or an external system is
    not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted
    elements.
 
+   Relations of different elements in a lower level could be merged into a relation on a higher level, but some merge rules would have to be
+   established first.
+
+A: 
+
+
 Q: Shall relations be automatically included in a view, when the participating
    components are included?
 
-   That would make the specification of the views much shorter but relations may be
-   included, that should not be shown in the view. If there has to be an exclude mechanism, the usability of automatic inclusion shrink much.
+   That would make the specification of the views much shorter but relations may be included, that should not be shown in the view. If there has to be an
+   exclude mechanism, the usability of automatic inclusion would shrink much.
+
+A: 
+
 
 Q: Shall it be possible to model subcomponents, components that contain
    components?
+
    That would require a component boundary and rules, when to render the
    component boundary in the context of a component diagram.
 
 A: 
 
+
 Q: How can architecture patterns like hexagonal or layered architectures
    be modelled and visualized appropriately within the C4 models?
 
-A: Each container would contain components with the responsibilities and dependencies
-   as specified by the given architecture.
+A: Each container would contain components with the responsibilities and
+   dependencies as specified by the given architecture. This is perfectly
+   possible in the current C4 model (see [hexagonal](/models/hexagonal/)).
+
 
 Q: Should names be generated from ids if missing?
 
@@ -126,13 +175,15 @@ A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to First upper case with spaces
    between words.
 
-Q: Can views be specified in a generic manner, so that the elements contained in a view are
-   selected with criteria based selectors/filters?
+
+Q: Can views be specified in a generic manner, so that the elements contained
+   in a view are selected with criteria based selectors/filters?
    
    C4 diagrams would be views that select the content based on the diagram type.
    Views could also select content based on the namespace of the id or on the element type.
 
 A: 
+
 
 Q: How to support different exporting formats, e.g. diagramming tools, and
    not be specific in the specification of the views/digrams?
@@ -140,11 +191,19 @@ Q: How to support different exporting formats, e.g. diagramming tools, and
 A: Support a generic feature set in views and diagrams with optional specific
    configuration for a specific export format (e.g. PlantUML)
 
-Q: How should the export be implemented so that there is a clear separation between the
-   selection of and iteration over the relevant content and the format specific rendering
-   of the content?
+
+Q: How can icons/sprites be implemented in a generic way, so they are not bound
+   to a specific diagram tool?
 
 A: 
+
+
+Q: How should the export be implemented so that there is a clear separation
+   between the selection of and iteration over the relevant content and the
+   format specific rendering of the content?
+
+A: 
+
 
 Q: Why EDN as the specification notation?
 
@@ -160,15 +219,19 @@ A: Because it is an open and extensible data format
 
 Q: Why not JSON?
 
-A: JSON is a format that is widely used and supported by many programming languages.
-   But compared to EDN it has a few shortcomings
-   * JSON does not support sets and some literal types like uuids or instants of time
+
+A: JSON is a format that is widely used and supported by many programming
+   languages. But compared to EDN it has a few shortcomings
+   * JSON does not support sets and some literal types like uuids or instants
+     of time
    * JSON does not support keywords, which are really helpfull in creating
      namespaced and conflict free attributes and ID spaces
 
-   JSON is supported as an export format to make the model and view data available to as
-   many languages and environments as possible, but the conversion might be lossy for the
-   reasons above.
+   JSON is supported as an export format to make the model and view data
+   available to as
+   many languages and environments as possible, but the conversion might be
+   lossy for the reasons above.
+
 
 Q: Why Clojure?
 
@@ -177,9 +240,11 @@ A: Clojure is a perfect match
      * rich data types with literal representations
      * rich library of functions make processing simple and easy
      * existing reader instead of hand written DSLs and parsers
-   * functional, easy to reason about
+   * functional implementation
+     * easy to reason about
+     * explicit state when needed
    * clojure.spec
-     * validation where it's needed
+     * validation where and when it's needed
    * multiple value dispatch for export plugins
 
 
@@ -189,14 +254,10 @@ PlantUML Export
 Q: Is a global configuration (e.g. via config file) needed?
 
    A potential use case would be the generation of internal links for imports on
-   systems without an internet connection or with proxy restrictions on raw.github.com.
+   systems without an internet connection or with proxy restrictions on
+   raw.githubusercontent.com.
 
    Another use case would be the configurable inclusion of sprite/icon libraries.
 
 A: 
 
-
-
-Input from others
------------------
-* automatic import of generated diagrams into the documentation (e.g. confluence) (Quirin)
