@@ -77,8 +77,6 @@
 (defn handle
   "Handle options and generate the requested outputs."
   [options]
-  (when (:debug options)
-    (println options))
   (when (= :json (keyword (:format options)))
     (json/export-json options))
   (when (= :plantuml (keyword (:format options)))
