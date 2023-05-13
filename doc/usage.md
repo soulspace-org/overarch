@@ -18,6 +18,11 @@ syntax check and syntax highlighting.
 
 ![Model editing](/doc/overarch_vscode_model.png)
 
+### Examples
+The model and diagram descriptions of the C4 model banking example can be found in models/banking folder:
+ * [model.edn](/models/banking/model.edn)
+ * [diagrams.edn](/models/banking/diagrams.edn)
+
 
 Model Elements
 --------------
