@@ -15,7 +15,7 @@
 ;;; PlantUML mappings
 ;;;
 
-(def element->methods
+(def element->method
   "Map from element type to PlantUML method."
   {:person              "Person"
    :system              "System"
@@ -51,20 +51,29 @@
    :right "_Right"
    :up    "_Up"})
 
-(def styles
+(def style->method
   {:element  "AddElementTag"
    :rel      "AddRelTag"
-   :boundary ""})
+   :boundary "AddBoundaryTag"})
+
+(def line-style->method
+  {:bold   "BoldLine()"
+   :dashed "DashedLine()"
+   :dotted "DottedLine()"})
 
 ;;;
 ;;; Rendering
 ;;;
 
 (defn alias-name
-  "Returns a valid PlantUML alias for the keyword."
+  "Returns a valid PlantUML alias for the namespaced keyword."
   [kw]
   (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
                (sstr/hyphen-to-camel-case (name kw)))))
+(defn short-name
+  "Returns a valid PlantUML alias for the name part of the keyword."
+  [kw]
+  (sstr/hyphen-to-camel-case (name kw)))
 
 (defmulti render-element
   "Renders an element in PlantUML.
@@ -77,64 +86,70 @@
   [diagram indent e]
   (if (seq (:ct e))
     (let [children (dia/elements-to-render diagram (:ct e))]
-      (flatten [(str (dia/render-indent indent) 
-                     (element->methods (:el e)) "("
-                     (alias-name (:id e)) ", \"" 
+      (flatten [(str (dia/render-indent indent)
+                     (element->method (:el e)) "("
+                     (alias-name (:id e)) ", \""
                      (:name e) "\""
+                     (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
                      children)
                 (str (dia/render-indent indent) "}")]))
-    [(str (dia/render-indent indent) 
-                     (element->methods (:el e)) "("
-                     (alias-name (:id e)) ", \"" 
-                     (:name e) "\""
-                     ")")]))
+    [(str (dia/render-indent indent)
+          (element->method (:el e)) "("
+          (alias-name (:id e)) ", \""
+          (:name e) "\""
+          (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
+          ")")]))
 
 (defmethod render-element :person
   [diagram indent e]
   [(str (dia/render-indent indent)
-        (element->methods (:el e))
+        (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
 (defmethod render-element :system
   [diagram indent e]
   [(str (dia/render-indent indent)
-        (element->methods (:el e))
+        (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
 (defmethod render-element :container
   [diagram indent e]
   [(str (dia/render-indent indent)
-        (element->methods (:el e))
+        (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
 (defmethod render-element :component
   [diagram indent e]
   [(str (dia/render-indent indent)
-        (element->methods (:el e))
+        (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
 (defmethod render-element :node
@@ -142,33 +157,36 @@
   (if (seq (:ct e))
     (let [children (dia/elements-to-render diagram (:ct e))]
       (flatten [(str (dia/render-indent indent)
-                     (element->methods (:el e)) "("
+                     (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
                      (:name e) "\""
                      (when (:type e) (str ", $type=\"" (:type e) "\""))
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+                     (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
                      children)
                 (str (dia/render-indent indent) "}")]))
     [(str (dia/render-indent indent)
-          (element->methods (:el e)) "("
+          (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
           (:name e) "\""
           (when (:type e) (str ", $type=\"" (:type e) "\""))
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+          (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
 (defmethod render-element :rel
   [diagram indent e]
   [(str (dia/render-indent indent)
-        (element->methods (:el e))
+        (element->method (:el e))
         (when (:direction e) (directions (:direction e))) "("
         (alias-name (:from e)) ", "
         (alias-name (:to e)) ", \""
         (:name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
 (defn render-imports
@@ -199,11 +217,47 @@
     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml")
   )
 
-(defn render-style
+(def styles-hierarchy
+  "Hierarchy for style methods."
+  (-> (make-hierarchy)
+      (derive :person :type)
+      (derive :system :type)
+      (derive :container :type)
+      (derive :component :type)
+      (derive :node :type)))
+
+(defmulti render-style
   "Renders a styles for the diagram."
+  (fn [diagram style] (:el style)) :hierarchy #'styles-hierarchy)
+
+; AddElementTag (tagStereo, ?bgColor, ?fontColor, ?borderColor, ?shadowing, ?shape, ?sprite, ?techn, ?legendText, ?legendSprite)
+(defmethod render-style :element
   [diagram style]
-  ; TODO
+  (let [el (:el style)]
+    (str (style->method (:el style)) "("
+         (short-name (:id style))
+       ; (alias-name (:id style))
+         (when (:bg-color style) (str ", $bgColor=\"" (:bg-color style) "\""))
+         (when (:text-color style) (str ", $fontColor=\"" (:text-color style) "\""))
+         (when (:border-color style) (str ", $borderColor=\"" (:border-color style) "\""))
+         (when (:tech style) (str ", $techn=\"" (:tech style) "\""))
+         (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
+         ")"))
   )
+
+; AddRelTag (tagStereo, ?textColor, ?lineColor, ?lineStyle, ?sprite, ?techn, ?legendText, ?legendSprite, ?lineThickness)
+(defmethod render-style :rel
+  [diagram style]
+  (let [el (:el style)]
+    (str (style->method (:el style)) "("
+         (short-name (:id style))
+       ; (alias-name (:id style))
+         (when (:text-color style) (str ", $textColor=\"" (:text-color style) "\""))
+         (when (:line-color style) (str ", $lineColor=\"" (:line-color style) "\""))
+         (when (:line-style style) (str ", $lineStyle=\"" (line-style->method (:line-style style)) "\""))
+         (when (:tech style) (str ", $techn=\"" (:tech style) "\""))
+         (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
+         ")")))
 
 (defn render-layout
   "Renders the layout for the diagram."
