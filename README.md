@@ -6,6 +6,8 @@ A data driven description of a software architecture based on the C4 model.
 
 Describe your model as data and specify/generate representations (e.g. diagrams) for your model.
 
+Overarch is not so much about how to model your architecture (see [C4 Model](https://c4model.com)) but about making the models composable and reusable.
+
 *Disclaimer: this project is in alpha stage - the data format might change*
 
 
