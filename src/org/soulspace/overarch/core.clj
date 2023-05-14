@@ -209,23 +209,31 @@
 
 (defn get-diagrams
   "Returns the collection of diagrams."
-  []
-  (diagrams (:elements @state)))
+  ([]
+   (diagrams (:elements @state)))
+  ([elements]
+   (diagrams elements)))
 
 (defn get-diagram
   "Returns the diagram with the given id."
-  [id]
-  ((:registry @state) id))
+  ([id]
+   ((:registry @state) id))
+  ([registry id]
+   (registry id)))
 
 (defn get-model-elements
   "Returns the collection of model elements."
-  []
-  (model-elements (:elements @state)))
+  ([]
+   (model-elements (:elements @state)))
+  ([elements]
+   (model-elements elements)))
 
 (defn get-model-element
   "Returns the model element with the given id."
-  [id]
-  ((:registry @state) id))
+  ([id]
+   ((:registry @state) id))
+  ([registry id]
+   (registry id)))
 
 (defn resolve-ref
   "Resolves the model element for the ref e."
