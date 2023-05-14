@@ -20,9 +20,6 @@
   "Returns the export directory for the diagram."
   export-format)
 
-(defmethod export-file :json
-  [format])
-
 ; general
 (defmulti export-diagram
   "Exports the diagram in the given format."
@@ -33,6 +30,4 @@
   "Export all diagrams in the given format."
   [format]
   (doseq [diagram (core/get-diagrams)]
-;    (println (:id diagram))
     (export-diagram format diagram)))
-
