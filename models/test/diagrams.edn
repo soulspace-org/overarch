@@ -22,7 +22,7 @@
                    :border-color "#330000"
                    :text-color "#000000"
                    :legend-text "critical system"}]}
-  :title "Style test"
+  :title "Style Test"
   :ct [{:el :system
         :id :test/sys1
         :name "Sys1"
@@ -31,10 +31,26 @@
         :id :test/sys2
         :name "Sys2"
         :external true}
-       
        {:el :rel
         :from :test/sys1
         :to :test/sys2
         :name "calls"
         :style :dashed-rel}]}
+ 
+ {:el :context-diagram
+  :id :test/plantuml-local-imports
+  :title "Local Import Test"
+  :spec {:legend true
+         :plantuml {:local-imports true}}
+  :ct [{:el :system
+        :id :test/sys1
+        :name "Sys1"}
+       {:el :system
+        :id :test/sys2
+        :name "Sys2"
+        :external true}
+       {:el :rel
+        :from :test/sys1
+        :to :test/sys2
+        :name "calls"}]}
  ]
