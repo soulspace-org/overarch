@@ -202,20 +202,33 @@
      !include FONTAWESOME/users.puml
      "
     )
-  (cond
-    (= :context-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
-    (= :system-landscape-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
-    (= :container-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml"
-    (= :component-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml"
-    (= :dynamic-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml"
-    (= :deployment-diagram (:el diagram))
-    "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml")
-  )
+ (if (get-in diagram [:spec :plantuml :local-imports])
+   (cond
+     (= :context-diagram (:el diagram))
+     "!include <C4/C4_Context.puml>"
+     (= :system-landscape-diagram (:el diagram))
+     "!include <C4/C4_Context.puml>"
+     (= :container-diagram (:el diagram))
+     "!include <C4/C4_Container.puml>"
+     (= :component-diagram (:el diagram))
+     "!include <C4/C4_Component.puml>"
+     (= :dynamic-diagram (:el diagram))
+     "!include <C4/C4_Dynamic.puml>"
+     (= :deployment-diagram (:el diagram))
+     "!include <C4/C4_Deployment.puml>")
+   (cond
+     (= :context-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
+     (= :system-landscape-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
+     (= :container-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml"
+     (= :component-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml"
+     (= :dynamic-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml"
+     (= :deployment-diagram (:el diagram))
+     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml")))
 
 (def styles-hierarchy
   "Hierarchy for style methods."
