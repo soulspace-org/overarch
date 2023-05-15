@@ -258,6 +258,18 @@
          (recur (register-elements m (:ct e)) (rest coll))))
      m)))
 
+(defn register-parents
+  "Returns a map of child id to parent id for the elements in coll."
+  ([coll]
+   (register-parents {} nil coll))
+  ([m p coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (and (identifiable? e) (identifiable? p) (model-element? p))
+         (recur (register-parents (assoc m (:id e) (:id p)) e (:ct e)) p (rest coll))
+         (recur (register-parents m e (:ct e)) p (rest coll))))
+     m)))
+
 (defn build-registry
   "Returns a map with the original data and a registry by id for lookups.
    
@@ -295,7 +307,7 @@
   (read-elements "models")
 
   (update-state! "models")
-  
-  (user/data-tapper "State" @state) 
+  (register-parents (:elements @state))
+  (user/data-tapper "State" @state)
   )
 
