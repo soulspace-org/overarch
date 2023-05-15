@@ -93,6 +93,13 @@
   [n]
   (str/join (repeat n " ")))
 
+(defn element-name
+  "Returns the name of the element."
+  [e]
+  (if (:name e)
+    (:name e)
+    (name (:id e)))) ; TODO convert hypen to spaces, first upper on words
+
 ; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
