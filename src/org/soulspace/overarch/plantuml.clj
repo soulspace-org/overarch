@@ -28,6 +28,15 @@
    :node                "Node"
    :rel                 "Rel"})
 
+(def diagram-type->import
+  "Map from diagram type to PlantUML import."
+  {:system-landscape-diagram "C4_Context.puml"
+   :context-diagram          "C4_Context.puml"
+   :container-diagram        "C4_Container.puml"
+   :component-diagram        "C4_Component.puml"
+   :dynamic-diagram          "C4_Dynamic.puml"
+   :deployment-diagram       "C4_Deployment.puml"})
+
 (def subtype->suffix
   "Maps the subtype of an element to the PlantUML suffix."
   {:database "Db"
@@ -189,46 +198,24 @@
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
+(comment
+  ; include icon/sprite sets, if icons are used, e.g. 
+  "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
+  "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
+  "!include DEVICONS/angular.puml
+   !include DEVICONS/java.puml
+   !include DEVICONS/msql_server.puml
+   !include FONTAWESOME/users.puml
+   ")
+
 (defn render-imports
   "Renders the imports for the diagram."
   [diagram]
-  (comment
-    ; include icon/sprite sets, if icons are used, e.g.
-    "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
-    "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
-    "!include DEVICONS/angular.puml
-     !include DEVICONS/java.puml
-     !include DEVICONS/msql_server.puml
-     !include FONTAWESOME/users.puml
-     "
-    )
- (if (get-in diagram [:spec :plantuml :local-imports])
-   (cond
-     (= :context-diagram (:el diagram))
-     "!include <C4/C4_Context.puml>"
-     (= :system-landscape-diagram (:el diagram))
-     "!include <C4/C4_Context.puml>"
-     (= :container-diagram (:el diagram))
-     "!include <C4/C4_Container.puml>"
-     (= :component-diagram (:el diagram))
-     "!include <C4/C4_Component.puml>"
-     (= :dynamic-diagram (:el diagram))
-     "!include <C4/C4_Dynamic.puml>"
-     (= :deployment-diagram (:el diagram))
-     "!include <C4/C4_Deployment.puml>")
-   (cond
-     (= :context-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
-     (= :system-landscape-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml"
-     (= :container-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml"
-     (= :component-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml"
-     (= :dynamic-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml"
-     (= :deployment-diagram (:el diagram))
-     "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml")))
+  (if (get-in diagram [:spec :plantuml :local-imports])
+    (str "!include <C4/"
+         (diagram-type->import (:el diagram)) ">")
+    (str "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
+         (diagram-type->import (:el diagram)))))
 
 (def styles-hierarchy
   "Hierarchy for style methods."
@@ -255,8 +242,7 @@
          (when (:border-color style) (str ", $borderColor=\"" (:border-color style) "\""))
          (when (:tech style) (str ", $techn=\"" (:tech style) "\""))
          (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
-         ")"))
-  )
+         ")")))
 
 ; AddRelTag (tagStereo, ?textColor, ?lineColor, ?lineStyle, ?sprite, ?techn, ?legendText, ?legendSprite, ?lineThickness)
 (defmethod render-style :rel
