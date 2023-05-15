@@ -39,6 +39,19 @@
   (portal/close)
   (portal/docs))
 
+;;;
+;;; Expound spec tool
+;;;
 (comment
   (require '[expound.alpha :as expound])
   )
+
+;;;
+;;; Clj->Java decompiler
+;;;
+(comment
+  (require '[clj-java-decompiler.core :refer [decompile disassemble]])
+  (decompile (fn [] (println "Hello, World!")))
+  (disassemble (fn [] (println "Hello, World!")))
+  )
+

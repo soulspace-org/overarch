@@ -15,6 +15,7 @@
 
   :profiles {:dev {:dependencies [[djblue/portal "0.37.1"]
                                   [criterium/criterium "0.4.6"]
+                                  [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
                                   [expound/expound "0.9.0"]]
                    :global-vars {*warn-on-reflection* true}}}
 
