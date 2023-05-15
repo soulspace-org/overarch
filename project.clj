@@ -1,4 +1,6 @@
 (defproject org.soulspace.clj/overarch "0.1.0-SNAPSHOT"
+  :description "OverArch provides architecture description as data based on C4 models,
+                opening multiple use cases for this data."
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
@@ -17,5 +19,8 @@
                    :global-vars {*warn-on-reflection* true}}}
 
   :uberjar-name "overarch.jar"
+  :main org.soulspace.overarch.cli
+
   :scm {:name "git" :url "https://github.com/soulspace-org/overarch"}
-  :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]])
+  :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]]
+  )
