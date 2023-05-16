@@ -1,4 +1,4 @@
-[{:el :dynamic-diagram
+#{{:el :dynamic-diagram
   :id :story1/dynamic-view
   :title "Going to the movies - Coarse Grained"
   ;:spec {:legend true}
@@ -57,4 +57,4 @@
         :id :story1/moviegoer-watches-movie
         :from :story1/moviegoer
         :to :story1/projectionist ; should be movie
-        :name "watches movie"}]}]
+        :name "watches movie"}]}}

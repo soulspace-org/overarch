@@ -1,15 +1,15 @@
-[{:el :person
+#{{:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
  {:el :enterprise-boundary
   :id :banking/big-bank-plc
   :name "Big Bank plc"
-  :ct [{:el :system
+  :ct #{{:el :system
         :id :banking/internet-banking-system
         :name "Internet Banking System"
         :desc "Allows customers to view information about their bank accounts and make payments."
-        :ct [{:el :container
+        :ct #{{:el :container
               :id :banking/web-app
               :name "Web Application"
               :desc "Deliveres the static content and the internet banking single page application."
@@ -29,7 +29,7 @@
               :name "API Application"
               :desc "Provides internet banking functionality via a JSON/HTTPS API."
               :tech "Clojure and Liberator"
-              :ct [{:el :component
+              :ct #{{:el :component
                     :id :banking/sign-in-controller
                     :name "Sign In Controller"
                     :desc "Allows users to sign in to the banking system."
@@ -58,13 +58,13 @@
                     :id :banking/mainframe-banking-system-facade
                     :name "Mainframe Banking System Facade"
                     :desc "A facade onto the mainframe banking system."
-                    :tech "Clojure Namespace, http-client"}]}
+                    :tech "Clojure Namespace, http-client"}}}
              {:el :container
               :subtype :database
               :id :banking/database
               :name "Database"
               :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-              :tech "Datomic"}]}
+              :tech "Datomic"}}}
        {:el :system
         :id :banking/mainframe-banking-system
         :external true
@@ -89,7 +89,7 @@
         :id :banking/backoffice-stuff
         :external true
         :name "Backoffice Stuff"
-        :desc "Administration and support stuff within the bank."}]}
+        :desc "Administration and support stuff within the bank."}}}
  ;;
  ;; Deployment
  ;;
@@ -97,63 +97,63 @@
   :id :banking/personal-customers-computer
   :name "Customer's Computer"
   :tech "Windows, macOS, Linux"
-  :ct [{:el :node
+  :ct #{{:el :node
         :id :banking/personal-customers-browser
         :name "Web Browser"
         :tech "Chrome, Firefox, Safari or Edge"
-        :ct [{:ref :banking/single-page-app}]}]}
+        :ct #{{:ref :banking/single-page-app}}}}}
  {:el :node
   :id :banking/personal-customers-mobile-device
   :name "Customer's Mobile Device"
   :tech "Android or iOS"
-  :ct [{:ref :banking/mobile-app}]}
+  :ct #{{:ref :banking/mobile-app}}}
  {:el :node
   :id :banking/big-bank-plc-datacenter
   :name "Big Bank plc"
   :tech "Datacenter"
-  :ct [{:el :node
+  :ct #{{:el :node
         :id :banking/big-bank-kubernetes-cluster
         :name "Kubernetes Cluster"
         :tech "VM, Ubuntu 22.04 LTS, K8s"
-        :ct [{:el :node
+        :ct #{{:el :node
               :id :banking/big-bank-web-server-node-pool
               :name "Web Server Node Pool"
               :tech "VM, Ubuntu 22.04 LTS"
-              :ct [{:el :node
+              :ct #{{:el :node
                     :id :banking/big-bank-web-server-pod
                     :name "Web Server Pod"
                     :desc "autoscaled, 2-8 instances"
-                    :ct [{:ref :banking/web-app}]}]}
+                    :ct #{{:ref :banking/web-app}}}}}
              {:el :node
               :id :banking/big-bank-api-server-node-pool
               :name "API Server Node Pool"
               :tech "VM, Ubuntu 22.04 LTS"
-              :ct [{:el :node
+              :ct #{{:el :node
                     :id :banking/big-bank-api-server-pod
                     :name "API Server Pod"
                     :desc "autoscaled, 2-16 instances"
-                    :ct [{:ref :banking/api-application}]}]}]}
+                    :ct #{{:ref :banking/api-application}}}}}}}
        {:el :node
         :id :banking/big-bank-prod001
         :name "BigBank-prod001"
-        :ct [{:ref :banking/mainframe-banking-system}]}
+        :ct #{{:ref :banking/mainframe-banking-system}}}
        {:el :node
         :id :banking/big-bank-db01
         :name "Primary DB Server"
         :tech "Datomic"
         :desc "for writes"
-        :ct [{:ref :banking/database}]}
+        :ct #{{:ref :banking/database}}}
        {:el :node
         :id :banking/big-bank-db02
         :name "Secondary DB Server"
         :tech "Datomic"
         :desc "for reads"
-        :ct [{:el :container
+        :ct #{{:el :container
               :subtype :database
               :id :banking/database-read
               :name "Database for Reads"
               :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-              :tech "Datomic"}]}]}
+              :tech "Datomic"}}}}}
 
  ;;
  ;; Context level relations 
@@ -332,4 +332,4 @@
   :id :banking/backoffice-stuff-uses-mainframe-banking-system
   :from :banking/backoffice-stuff
   :to :banking/mainframe-banking-system
-  :name "Uses"}]
+  :name "Uses"}}

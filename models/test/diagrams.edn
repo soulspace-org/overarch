@@ -1,7 +1,7 @@
-[{:el :context-diagram
+#{{:el :context-diagram
   :id :test/styles-context-view
   :spec {:legend true
-         :styles [{:el :rel
+         :styles #{{:el :rel
                    :id :dashed-rel
                    :text-color "#000000"
                    :line-color "#000000"
@@ -21,9 +21,9 @@
                    :bg-color "#CC0000"
                    :border-color "#330000"
                    :text-color "#000000"
-                   :legend-text "critical system"}]}
+                   :legend-text "critical system"}}}
   :title "Style Test"
-  :ct [{:el :system
+  :ct #{{:el :system
         :id :test/sys1
         :name "Sys1"
         :style :red-el}
@@ -35,14 +35,14 @@
         :from :test/sys1
         :to :test/sys2
         :name "calls"
-        :style :dashed-rel}]}
+        :style :dashed-rel}}}
  
  {:el :context-diagram
   :id :test/plantuml-local-imports
   :title "Local Import Test"
   :spec {:legend true
          :plantuml {:local-imports true}}
-  :ct [{:el :system
+  :ct #{{:el :system
         :id :test/sys1
         :name "Sys1"}
        {:el :system
@@ -52,5 +52,4 @@
        {:el :rel
         :from :test/sys1
         :to :test/sys2
-        :name "calls"}]}
- ]
+        :name "calls"}}}}

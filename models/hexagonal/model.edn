@@ -1,12 +1,12 @@
-[{:el :system
+#{{:el :system
   :id :hexagonal/system
   :name "Hexagonal Architecture"
   :desc "describing structure and dependencies of a system of bounded domain context."
-  :ct [{:el :container
+  :ct #{{:el :container
         :id :hexagonal/container
         :name "Container"
         :desc "can be e.g. an application or a service"
-        :ct [{:el :component
+        :ct #{{:el :component
               :id :hexagonal/domain-core
               :name "Domain Core"
               :desc "contains the functional core of the domain"}
@@ -25,7 +25,7 @@
              {:el :component
               :id :hexagonal/consumed-interface-component
               :name "Consumed Interface Adapter"
-              :desc "Adapter for a service consumed for the the domain"}]}
+              :desc "Adapter for a service consumed for the the domain"}}}
        {:el :container
         :id :hexagonal/database-container
         :subtype :database
@@ -36,7 +36,7 @@
         :subtype :queue
         :name "Queue"
         :desc "streams of domain events"
-        :ct [{:el :component
+        :ct #{{:el :component
               :id :hexagonal/incoming-domain-events
               :subtype :queue
               :name "Incoming Domain Events"
@@ -45,7 +45,8 @@
               :id :hexagonal/outgoing-domain-events
               :subtype :queue
               :name "Outgoing Domain Events"
-              :desc "notification of facts originating in this bounded context as domain events"}]}]}
+              :desc "notification of facts originating in this bounded context as domain events"}}}}}
+
  {:el :rel
   :id :hexagonal/application-logic-uses-domain-core
   :from :hexagonal/application-logic
@@ -75,5 +76,4 @@
    :id :hexagonal/application-logic-sends-outgoing-domain-events
    :from :hexagonal/application-logic
    :to :hexagonal/outgoing-domain-events
-   :name "sends domain events to"}
- ]
+   :name "sends domain events to"}}

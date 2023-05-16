@@ -1,4 +1,4 @@
-[{:el :context-diagram
+#{{:el :context-diagram
   :id :banking/system-context-view
   :spec {:legend true}
   :title "System Context View of the Internet Banking System"
@@ -102,4 +102,10 @@
         :from :banking/api-application
         :to :banking/database-read
         :name "Reads from"
-        :tech "Datalog"}]}]
+        :tech "Datalog"}
+       {:el :rel
+        :id :banking/database-sync
+        :from :banking/database
+        :to :banking/database-read
+        :name "synchronises"
+        :direction :right}]}}

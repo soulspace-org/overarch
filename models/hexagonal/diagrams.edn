@@ -1,4 +1,4 @@
-[{:el :context-diagram
+#{{:el :context-diagram
   :id :hexagonal/system-context-view
   :title "System Context View of a Hexagonal Architecture"
   :spec {:legend true}
@@ -23,4 +23,4 @@
        {:ref :hexagonal/provided-interface-component-uses-application-logic}
        {:ref :hexagonal/application-logic-uses-cosumed-interface-component}
        {:ref :hexagonal/incoming-domain-events-triggers-application-logic}
-       {:ref :hexagonal/application-logic-sends-outgoing-domain-events}]}]
+       {:ref :hexagonal/application-logic-sends-outgoing-domain-events}]}}
