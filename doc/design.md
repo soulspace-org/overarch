@@ -198,6 +198,19 @@ Q: How can icons/sprites be implemented in a generic way, so they are not bound
 A: 
 
 
+Q: Which are the levels/granularities of the export?
+
+A: It differs on the type of the export.
+   
+   For PlantUML the export can work on all the loaded model and diagram
+   specifications and generate the relevant diagrams, even for multiple models.
+
+   For Stucturizr the export should work on a model and the associated diagram specifications to generate a Structurizr workspace.
+
+   For JSON the export should be done on an individual file level, to keep the
+   structure of data files intact.
+
+
 Q: How should the export be implemented so that there is a clear separation
    between the selection of and iteration over the relevant content and the
    format specific rendering of the content?
