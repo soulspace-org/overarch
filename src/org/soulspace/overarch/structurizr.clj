@@ -2,7 +2,8 @@
   "Functions for the export to structurizr."
   (:require [clojure.string :as str]
             [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.diagram :as dia]))
+            [org.soulspace.overarch.diagram :as dia]
+            [org.soulspace.clj.string :as sstr]))
 
 (def element-type->structurizr
   "Maps the element to a structurizr type."
@@ -24,7 +25,7 @@
 (defn alias-name
   "Returns the alias name for the element."
   [id]
-  (name id))
+  (sstr/hyphen-to-camel-case (name id)))
 
 
 (defn render-relation
@@ -57,11 +58,24 @@
    (str (dia/render-indent 2) "}")]
   )
 
+(defn render-view-element
+  "Renders an element of a view."
+  [e]
+  [(str (:id e))]
+  )
+
 (defn render-view
   "Renders a structurizr view."
   [view]
-  [(str (dia/render-indent 4) "{")
-   
+  [(str (dia/render-indent 4)
+        (diagram-type->structurizr (:el view))
+        "\"" (sstr/first-upper-case
+              (sstr/hyphen-to-camel-case
+               (diagram-type->structurizr (:el view)))) "\" {\n")
+   (if (:ct view)
+     (map render-view-element (:ct view))
+     (str (dia/render-indent 6) "include *\n"))
+   (when (:title view) (dia/render-indent 6) "description \"" (:title view) "\"\n")
    (str (dia/render-indent 4) "}")]
   )
 
@@ -76,8 +90,17 @@
 
 (defn render-workspace
   "Renders a structurizr workspace."
-  []
-  [(str "workspace {")
-   (render-model (core/get-model-elements))
-   (render-views (core/get-diagrams))
-   "}"])
+  ([]
+   [(str "workspace {")
+    (render-model (core/get-model-elements))
+    (render-views (core/get-diagrams))
+    "}"])
+  ([m]
+   [(str "workspace {")
+    (render-model (core/get-model-elements))
+    (render-views (core/get-diagrams))
+    "}"]))
+
+(comment
+  (render-workspace)
+  )
