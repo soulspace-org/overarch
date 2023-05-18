@@ -160,8 +160,8 @@
          )))
 
 (s/def :overarch/element
-  (s/keys :req-un [:overarch/el :overarch/id :overarch/name]
-          :opt-un [:overarch/desc :overarch/ct
+  (s/keys :req-un [:overarch/el :overarch/id]
+          :opt-un [:overarch/name :overarch/desc :overarch/ct
                    :overarch/subtype :overarch/external]))
 
 (s/def :overarch/element-ref
@@ -181,7 +181,7 @@
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
          :relation    :overarch/relation
-         :diagram :overarch/diagram)))
+         :diagram     :overarch/diagram)))
 
 ;;;
 ;;; Data handling
@@ -240,7 +240,7 @@
   ([e]
    (get-parent-element @state e))
   ([m e]
-   ((:registry m) ((:parents m) (:id e)))))
+   ((:parents m) (:id e))))
 
 (defn resolve-ref
   "Resolves the model element for the ref e."
@@ -285,14 +285,14 @@
      m)))
 
 (defn register-parents
-  "Returns a map of child id to parent id for the elements in coll."
+  "Returns a map of child id to parent element for the elements in coll."
   ([coll]
    (register-parents {} nil coll))
   ([m p coll]
    (if (seq coll)
      (let [e (first coll)]
        (if (and (identifiable? e) (identifiable? p) (model-element? p))
-         (recur (register-parents (assoc m (:id e) (:id p)) e (:ct e)) p (rest coll))
+         (recur (register-parents (assoc m (:id e) p) e (:ct e)) p (rest coll))
          (recur (register-parents m e (:ct e)) p (rest coll))))
      m)))
 
@@ -302,7 +302,8 @@
    The map has the following shape:
 
    :elements -> the given data
-   :registry -> a map from id to element"
+   :registry -> a map from id to element
+   :parents  -> a map from id to parent element"
   [elements]
   (if (s/valid? :overarch/elements elements)
     (reset! state {:elements elements
