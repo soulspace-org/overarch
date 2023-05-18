@@ -49,7 +49,7 @@ The complete model and diagram specifications can be found under
 ### Example of a model definition
 
 ```clojure
-[{:el :person
+#{{:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
@@ -57,32 +57,32 @@ The complete model and diagram specifications can be found under
   :id :banking/internet-banking-system
   :name "Internet Banking System"
   :desc "Allows customers to view information about their bank accounts and make payments."
-  :ct [{:el :container
-        :id :banking/web-app
-        :name "Web Application"
-        :desc "Deliveres the static content and the internet banking single page application."
-        :tech "Clojure and Luminus"}
-       {:el :container
-        :id :banking/single-page-app
-        :name "Single-Page Application"
-        :desc "Provides all of the internet banking functionality to customers via their web browser."
-        :tech "ClojureScript and Re-Frame"}
-       {:el :container
-        :id :banking/mobile-app
-        :name "Mobile App"
-        :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
-        :tech "ClojureScript and Reagent"}
-       {:el :container
-        :id :banking/api-application
-        :name "API Application"
-        :desc "Provides internet banking functionality via a JSON/HTTPS API."
-        :tech "Clojure and Liberator"}
-       {:el :container
-        :subtype :database
-        :id :banking/database
-        :name "Database"
-        :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-        :tech "Datomic"}]}
+  :ct #{{:el :container
+         :id :banking/web-app
+         :name "Web Application"
+         :desc "Deliveres the static content and the internet banking single page application."
+         :tech "Clojure and Luminus"}
+        {:el :container
+         :id :banking/single-page-app
+         :name "Single-Page Application"
+         :desc "Provides all of the internet banking functionality to customers via their web browser."
+         :tech "ClojureScript and Re-Frame"}
+        {:el :container
+         :id :banking/mobile-app
+         :name "Mobile App"
+         :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
+         :tech "ClojureScript and Reagent"}
+        {:el :container
+         :id :banking/api-application
+         :name "API Application"
+         :desc "Provides internet banking functionality via a JSON/HTTPS API."
+         :tech "Clojure and Liberator"}
+        {:el :container
+         :subtype :database
+         :id :banking/database
+         :name "Database"
+         :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+         :tech "Datomic"}}}
  {:el :system
   :id :banking/mainframe-banking-system
   :external true
@@ -114,7 +114,7 @@ The complete model and diagram specifications can be found under
   :id :banking/email-system-sends-mail-to-personal-customer
   :from :banking/email-system
   :to :banking/personal-customer
-  :name "Sends e-mail to"}] 
+  :name "Sends e-mail to"}} 
  ```
 
 ### Example of a diagrams specification

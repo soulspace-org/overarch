@@ -187,16 +187,22 @@
 
 (defmethod render-element :rel
   [diagram indent e]
-  [(str (dia/render-indent indent)
-        (element->method (:el e))
-        (when (:direction e) (directions (:direction e))) "("
-        (alias-name (:from e)) ", "
-        (alias-name (:to e)) ", \""
-        (:name e) "\""
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-        (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
-        ")")])
+  (if (:constraint e) ; TODO :hidden or :constraint
+    [(str (dia/render-indent indent) "Lay"
+          (when (:direction e) (directions (:direction e))) "("
+          (alias-name (:from e)) ", "
+          (alias-name (:to e)) ", \""
+          ")")]
+    [(str (dia/render-indent indent)
+          (element->method (:el e))
+          (when (:direction e) (directions (:direction e))) "("
+          (alias-name (:from e)) ", "
+          (alias-name (:to e)) ", \""
+          (:name e) "\""
+          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+          (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+          (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
+          ")")]))
 
 (comment
   ; include icon/sprite sets, if icons are used, e.g. 
