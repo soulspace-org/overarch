@@ -210,37 +210,63 @@
 (defn get-diagrams
   "Returns the collection of diagrams."
   ([]
-   (diagrams (:elements @state)))
-  ([elements]
-   (diagrams elements)))
+   (get-diagrams @state))
+  ([m]
+   (diagrams (:elements m))))
 
 (defn get-diagram
   "Returns the diagram with the given id."
-  ([id]
-   ((:registry @state) id))
-  ([registry id]
-   (registry id)))
+  ([id]  
+   (get-diagram @state id))
+  ([m id]
+   ((:registry m) id)))
 
 (defn get-model-elements
   "Returns the collection of model elements."
   ([]
-   (model-elements (:elements @state)))
-  ([elements]
-   (model-elements elements)))
+   (get-model-elements @state))
+  ([m]
+   (model-elements (:elements m))))
 
 (defn get-model-element
   "Returns the model element with the given id."
   ([id]
-   ((:registry @state) id))
-  ([registry id]
-   (registry id)))
+   (get-model-element @state id))
+  ([m id]
+   ((:registry m) id)))
+
+(defn get-parent-element
+  "Returns the parent of the element."
+  ([e]
+   (get-parent-element @state e))
+  ([m e]
+   ((:registry m) ((:parents m) (:id e)))))
 
 (defn resolve-ref
   "Resolves the model element for the ref e."
-  [e]
-  (if (:ref e)
-    (merge (get-model-element (:ref e)) e)
-    e))
+  ([e]
+   (if (:ref e)
+     (merge (get-model-element (:ref e)) e)
+     e))
+  ([m e]
+   (if (:ref e)
+     (merge (get-model-element m (:ref e)) e)
+     e)))
+
+(defn aggregable-relation?
+  "Returns true, if the relations are aggregable."
+  ([r1 r2]
+   (aggregable-relation? @state r1 r2))
+  ([m r1 r2]
+   (and (= (:name r1) (:name r2))
+        (= (:tech r1) (:tech r2))
+        (= (:desc r1) (:desc r2))
+        (or (= (:from r1) (:from r2))
+            (= (get-parent-element m (:from r1))
+               (get-parent-element m (:from r2))))
+        (or (= (:to r1) (:to r2))
+            (= (get-parent-element m (:to r1))
+               (get-parent-element m (:to r2)))))))
 
 ;;
 ;; State preparation
@@ -280,7 +306,8 @@
   [elements]
   (if (s/valid? :overarch/elements elements)
     (reset! state {:elements elements
-                   :registry (register-elements elements)})
+                   :registry (register-elements elements)
+                   :parents (register-parents elements)})
     (s/explain :overarch/elements elements)))
 
 (s/fdef read-elements
@@ -310,4 +337,3 @@
   (register-parents (:elements @state))
   (user/data-tapper "State" @state)
   )
-
