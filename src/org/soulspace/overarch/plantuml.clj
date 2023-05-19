@@ -98,7 +98,7 @@
       (flatten [(str (dia/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
-                     (:name e) "\""
+                     (dia/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -107,7 +107,7 @@
     [(str (dia/render-indent indent)
           (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
-          (:name e) "\""
+          (dia/element-name e) "\""
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -117,7 +117,7 @@
         (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (:name e) "\""
+        (dia/element-name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -129,7 +129,7 @@
         (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (:name e) "\""
+        (dia/element-name e) "\""
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -142,7 +142,7 @@
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (:name e) "\""
+        (dia/element-name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -155,7 +155,7 @@
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (:name e) "\""
+        (dia/element-name e) "\""
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -168,7 +168,7 @@
       (flatten [(str (dia/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
-                     (:name e) "\""
+                     (dia/element-name e) "\""
                      (when (:type e) (str ", $type=\"" (:type e) "\""))
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
@@ -179,7 +179,7 @@
     [(str (dia/render-indent indent)
           (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
-          (:name e) "\""
+          (dia/element-name e) "\""
           (when (:type e) (str ", $type=\"" (:type e) "\""))
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))

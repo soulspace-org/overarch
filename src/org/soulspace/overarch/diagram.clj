@@ -109,4 +109,6 @@
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)))
 
-(defmulti render-diagram exp/export-format)
+(defmulti render-diagram
+  "Renders a diagram"
+  exp/export-format)
