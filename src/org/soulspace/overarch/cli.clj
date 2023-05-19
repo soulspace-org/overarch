@@ -11,6 +11,9 @@
             [hawk.core :as hawk])
   (:gen-class))
 
+;;;
+;;; CLI definition
+;;;
 
 (def appname "overarch")
 (def description "Overarch CLI Exporter
@@ -23,6 +26,10 @@
                ["-f" "--format FORMAT" "Export format (json, plantuml)" :default "plantuml"]
                ["-h" "--help" "Print help"]
                [nil  "--debug" "Print debug messages" :default false]])
+
+;;;
+;;; Output messages
+;;;
 
 (defn usage-msg
   "Returns a message containing the program usage."
@@ -50,23 +57,9 @@
   (println msg)
   (System/exit status))
 
-(defn validate-args
-  "Validate command line arguments. Either returns a map indicating the program
-  should exit (with an error message and optional success status), or a map
-  indicating the options provided."
-  [args cli-opts]
-  (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
-    (cond
-      errors ; errors => exit with description of errors
-      {:exit-message (error-msg errors)}
-      (:help options) ; help => exit OK with usage summary
-      {:exit-message (usage-msg appname description summary) :success true}
-      (= 0 (count arguments)) ; no args
-      {:options options}
-      (seq options)
-      {:options options}
-      :else ; failed custom validation => exit with usage summary
-      {:exit-message (usage-msg appname description summary)})))
+;;;
+;;; Handler logic
+;;;
 
 (defn update-and-export!
   "Read models and export diagrams."
@@ -88,6 +81,28 @@
                               (println "event: " e)
                               (println "context: " ctx)
                               ctx)}])))
+
+;;;
+;;; CLI entry 
+;;;
+
+(defn validate-args
+  "Validate command line arguments. Either returns a map indicating the program
+  should exit (with an error message and optional success status), or a map
+  indicating the options provided."
+  [args cli-opts]
+  (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
+    (cond
+      errors ; errors => exit with description of errors
+      {:exit-message (error-msg errors)}
+      (:help options) ; help => exit OK with usage summary
+      {:exit-message (usage-msg appname description summary) :success true}
+      (= 0 (count arguments)) ; no args
+      {:options options}
+      (seq options)
+      {:options options}
+      :else ; failed custom validation => exit with usage summary
+      {:exit-message (usage-msg appname description summary)})))
 
 (defn -main
   "Main function as CLI entry point."
