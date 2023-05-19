@@ -98,7 +98,10 @@
   [e]
   (if (:name e)
     (:name e)
-    (name (:id e)))) ; TODO convert hypen to spaces, first upper on words
+    (->> (name (:id e))
+         (#(str/split % #"-"))
+         (map str/capitalize)
+         (str/join " "))))
 
 ; general?
 (def element-hierarchy
