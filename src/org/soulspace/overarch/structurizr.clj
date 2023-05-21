@@ -45,7 +45,8 @@
 
 (defmethod render-element :rel
   [indent e]
-  [(str (alias-name (:from e)) " -> " (alias-name (:to e))
+  [(str (dia/render-indent indent)
+        (alias-name (:from e)) " -> " (alias-name (:to e))
         " \"" (:name e) "\""
         (when (:tech e) (str " \"" (:tech e) "\"")))])
 
@@ -70,13 +71,6 @@
             (str (dia/render-indent 2) "}")])
   )
 
-; TODO render rels only
-(defn render-view-element
-  "Renders an element of a view."
-  [indent e]
-  [(str (dia/render-indent indent) (:id e))]
-  )
-
 (defn render-view
   "Renders a structurizr view."
   [view]
@@ -86,8 +80,9 @@
                         (sstr/hyphen-to-camel-case
                          (diagram-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
-              (let [children (dia/elements-to-render view)]
-                (map (partial render-view-element 6) children))
+              (let [children (filter core/relation?
+                                     (dia/elements-to-render view))]
+                (map (partial render-element 6) children))
               (str (dia/render-indent 6) "include *\n"))
             (when (:title view)
               (str (dia/render-indent 6) "description \"" (:title view) "\"\n"))
