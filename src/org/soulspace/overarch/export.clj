@@ -11,23 +11,16 @@
 
 (defn export-format
   "Returns the export format for the data."
-  ([format]
-   format)
-  ([format _]
-   format))
+  ([options]
+   (:format options))
+  ([options _]
+   (:format options)))
 
 (defmulti export-file
   "Returns the export directory for the diagram."
   export-format)
 
-; general
-(defmulti export-diagram
+(defmulti export
   "Exports the diagram in the given format."
   export-format)
 
-; general
-(defn export-diagrams
-  "Export all diagrams in the given format."
-  [format]
-  (doseq [diagram (core/get-diagrams)]
-    (export-diagram format diagram)))

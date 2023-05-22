@@ -2,7 +2,8 @@
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
             [charred.api :as json]
-            [org.soulspace.clj.java.file :as file]))
+            [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.export :as exp]))
 
 (defn write-json
   "Writes the data as JSON to out-file."
@@ -22,6 +23,10 @@
            (slurp)
            (edn/read-string)
            (write-json out-file)))))
+
+(defmethod exp/export :json
+  [options]
+  (export-json options))
 
 (comment
   (export-json "models"))

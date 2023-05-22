@@ -4,6 +4,7 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.diagram :as dia]
             [org.soulspace.overarch.export :as exp]))
 
@@ -289,8 +290,8 @@
   [diagram]
   (when (:title diagram) (str "title " (:title diagram))))
 
-(defmethod dia/render-diagram :plantuml
-  [format diagram]
+(defn render-diagram
+  [options diagram]
   (let [children (dia/elements-to-render diagram)]
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id diagram)))
@@ -306,15 +307,26 @@
 ;;;
 
 (defmethod exp/export-file :plantuml
-  [format diagram]
-  (let [dir-name (str "exports/plantuml/" (namespace (:id diagram)))
+  [options diagram]
+  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id diagram)))
         dir (io/as-file dir-name)]
     (file/create-dir dir)
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
 
-(defmethod exp/export-diagram :plantuml
-  [format diagram]
-  (with-open [wrt (io/writer (exp/export-file format diagram))]
+; general
+(defmulti export-diagram
+  "Exports the diagram in the given format."
+  exp/export-format)
+
+(defmethod export-diagram :plantuml
+  [options diagram]
+  (with-open [wrt (io/writer (exp/export-file options diagram))]
     (binding [*out* wrt]
-      (println (str/join "\n" (dia/render-diagram format diagram))))))
+      (println (str/join "\n" (render-diagram options diagram))))))
+
+(defmethod exp/export :plantuml
+  [options]
+  (doseq [diagram (core/get-diagrams)]
+    (export-diagram options diagram)))
+
