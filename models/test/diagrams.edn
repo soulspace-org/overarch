@@ -23,7 +23,7 @@
                    :text-color "#000000"
                    :legend-text "critical system"}}}
   :title "Style Test"
-  :ct #{{:el :system
+  :ct [{:el :system
         :id :test/sys1
         :name "Sys1"
         :style :red-el}
@@ -35,14 +35,14 @@
         :from :test/sys1
         :to :test/sys2
         :name "calls"
-        :style :dashed-rel}}}
+        :style :dashed-rel}]}
  
  {:el :context-diagram
   :id :test/plantuml-local-imports
   :title "Local Import Test"
   :spec {:legend true
          :plantuml {:local-imports true}}
-  :ct #{{:el :system
+  :ct [{:el :system
         :id :test/sys1
         :name "Sys1"}
        {:el :system
@@ -52,4 +52,20 @@
        {:el :rel
         :from :test/sys1
         :to :test/sys2
-        :name "calls"}}}}
+        :name "calls"}]}
+
+ {:el :deployment-diagram
+  :id :test/icons
+  :title "Icon Test"
+  :spec {:lagend true}
+  :ct [{:el :node
+        :id :test/azure
+        :name "Azure"
+        :type "Azure"
+        :icon :azure/azure
+        :ct #{{:el :node
+               :id :test/azure-subscription
+               :name "Test Subscription"
+               :type "Azure Subscription"
+               :icon :azure/subscription}}}]}
+ }

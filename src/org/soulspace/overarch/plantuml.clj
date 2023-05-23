@@ -16,6 +16,14 @@
 ;;; PlantUML mappings
 ;;;
 
+; TODO
+(def icon-library->import
+  "Icon Libraries"
+  {:azure       ""
+   :aws         ""
+   :devicons    ""
+   :fontawesome ""})
+
 (def element->method
   "Map from element type to PlantUML method."
   {:person              "Person"

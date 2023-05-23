@@ -3,6 +3,7 @@
   (:require [clojure.string :as str]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.diagram :as dia]
+            [org.soulspace.overarch.export :as exp]
             [org.soulspace.clj.string :as sstr]))
 
 (def element-type->structurizr
@@ -110,6 +111,12 @@
     (render-views (core/get-diagrams))
     "}"]))
 
+(defmethod exp/export :structurizr
+  [options]
+  ; 
+  )
+
 (comment
   (println (str/join "\n" (flatten (render-workspace))))
   )
+
