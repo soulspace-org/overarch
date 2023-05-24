@@ -64,10 +64,10 @@
 
 (def directions
   "Maps direction keys to PlantUML Rel suffixes."
-  {:down  "_Down"
-   :left  "_Left"
-   :right "_Right"
-   :up    "_Up"})
+  {:down  "_D"
+   :left  "_L"
+   :right "_R"
+   :up    "_U"})
 
 (def style->method
   {:element  "AddElementTag"
@@ -200,7 +200,7 @@
     [(str (dia/render-indent indent) "Lay"
           (when (:direction e) (directions (:direction e))) "("
           (alias-name (:from e)) ", "
-          (alias-name (:to e)) ", \""
+          (alias-name (:to e))
           ")")]
     [(str (dia/render-indent indent)
           (element->method (:el e))
