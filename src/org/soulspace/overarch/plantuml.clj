@@ -17,13 +17,6 @@
 ;;;
 
 ; TODO
-(def icon-library->import
-  "Icon Libraries"
-  {:azure       ""
-   :aws         ""
-   :devicons    ""
-   :fontawesome ""})
-
 (def element->method
   "Map from element type to PlantUML method."
   {:person              "Person"
@@ -180,6 +173,7 @@
                      (dia/element-name e) "\""
                      (when (:type e) (str ", $type=\"" (:type e) "\""))
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+                     (when (:icon e) (str ", $sprite=\"" (:icon e) "\""))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -222,6 +216,38 @@
    !include DEVICONS/msql_server.puml
    !include FONTAWESOME/users.puml
    ")
+
+(def icon-library->import
+  "Icon Libraries"
+  {:azure       {:local ""
+                 :remote ""}
+   :aws         {:local ""
+                 :remote ""}
+   :devicons    {:local ""
+                 :remote "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :fontawesome {:local ""
+                 :remote "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
+
+
+(defn find-icons
+  ""
+  [diagram]
+  (let [coll (dia/elements-to-render diagram)]
+    )
+  )
+
+(defn render-icon-import
+  ""
+  [diagram icon-lib]
+  (if (get-in diagram [:spec :plantuml :local-imports])
+    (str (:local (icon-library->import icon-lib)) ".puml")
+    (str (:remote (icon-library->import icon-lib)) )))
+
+(defn render-icon-imports
+  ""
+  [diagram]
+  (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])]
+    (map (partial render-icon-import diagram) icon-libs)))
 
 (defn render-imports
   "Renders the imports for the diagram."
