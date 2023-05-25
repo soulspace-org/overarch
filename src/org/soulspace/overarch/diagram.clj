@@ -1,6 +1,7 @@
 (ns org.soulspace.overarch.diagram
   "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
+            [clojure.set :as set]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]))
 
@@ -85,6 +86,18 @@
   ; TODO promote relations to higher levels?
   )
 
+(defn collect-technologies
+  "Returns a map of id to element for the elements of the coll."
+  ([coll]
+   (collect-technologies #{} coll))
+  ([m coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (:tech e)
+         (recur (collect-technologies (set/union m #{(:tech e)}) (:ct e)) (rest coll))
+         (recur (collect-technologies m (:ct e)) (rest coll))))
+     m)))
+
 ; general
 (defn render-indent
   "Renders an indent of n space chars."
@@ -108,6 +121,7 @@
       (derive :enterprise-boundary :boundary)
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)))
+
 
 (def azure-icons
   {:azure/analysis-services           {:path "Analytics"

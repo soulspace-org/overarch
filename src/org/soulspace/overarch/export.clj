@@ -17,10 +17,14 @@
    (:format options)))
 
 (defmulti export-file
-  "Returns the export directory for the diagram."
+  "Returns the export directory for the format."
+  export-format)
+
+(defmulti export-view
+  "Exports the view in the given format."
   export-format)
 
 (defmulti export
-  "Exports the diagram in the given format."
+  "Exports the data in the given format."
   export-format)
 

@@ -195,10 +195,11 @@ A: Support a generic feature set in views and diagrams with optional specific
 Q: How can icons/sprites be implemented in a generic way, so they are not bound
    to a specific diagram tool?
 
-A: Icons should not be specified explicitly in the model or the view,
+A: The handling of icons is very tool specific an not easily implemented in a generic way.
+   As such icons should not be specified explicitly in the model or the view,
    the technologies should be specified. If a diagram tool supports icons,
-   the should be rendered automatically, if an icon for the technology exists
-   and rendering of icons is enabled in the view spec.
+   they should be rendered automatically based on the technology, if an icon for the
+   technology exists and the rendering of icons is enabled in the view spec.
 
 
 Q: Which are the levels/granularities of the export?
