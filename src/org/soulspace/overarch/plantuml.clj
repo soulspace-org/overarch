@@ -1,5 +1,5 @@
 (ns org.soulspace.overarch.plantuml
-  "Functions to export views to plantuml."
+  "Functions to export views to PlantUML."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
@@ -17,6 +17,18 @@
 ;;;
 
 ; TODO
+(def icon-libraries
+  "Definition of icon libraries."
+  {:azure {:name "azure"
+           :local-import "azure"
+           :remote-import ""
+     :ct #{{:path "AIMachineLearning"
+            :ct #{}}
+           {:path "Analytics"
+            :ct #{}}
+           {}}}})
+
+
 (def element->method
   "Map from element type to PlantUML method."
   {:person              "Person"
@@ -57,10 +69,10 @@
 
 (def directions
   "Maps direction keys to PlantUML Rel suffixes."
-  {:down  "_Down"
-   :left  "_Left"
-   :right "_Right"
-   :up    "_Up"})
+  {:down  "_D"
+   :left  "_L"
+   :right "_R"
+   :up    "_U"})
 
 (def style->method
   {:element  "AddElementTag"
@@ -76,6 +88,9 @@
 ;;; Rendering
 ;;;
 
+;;
+;; Elements
+;; 
 (defn alias-name
   "Returns a valid PlantUML alias for the namespaced keyword."
   [kw]
@@ -194,7 +209,7 @@
     [(str (dia/render-indent indent) "Lay"
           (when (:direction e) (directions (:direction e))) "("
           (alias-name (:from e)) ", "
-          (alias-name (:to e)) ", \""
+          (alias-name (:to e))
           ")")]
     [(str (dia/render-indent indent)
           (element->method (:el e))
@@ -206,6 +221,10 @@
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
+
+;;
+;; Imports
+;;
 
 (comment
   ; include icon/sprite sets, if icons are used, e.g. 
@@ -258,6 +277,10 @@
     (str "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
          (diagram-type->import (:el diagram)))))
 
+;;
+;; Styles
+;;
+
 (def styles-hierarchy
   "Hierarchy for style methods."
   (-> (make-hierarchy)
@@ -298,6 +321,10 @@
          (when (:tech style) (str ", $techn=\"" (:tech style) "\""))
          (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
          ")")))
+
+;;
+;; Layout
+;;
 
 (defn render-layout
   "Renders the layout for the diagram."
@@ -348,12 +375,7 @@
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
 
-; general
-(defmulti export-diagram
-  "Exports the diagram in the given format."
-  exp/export-format)
-
-(defmethod export-diagram :plantuml
+(defmethod exp/export-view :plantuml
   [options diagram]
   (with-open [wrt (io/writer (exp/export-file options diagram))]
     (binding [*out* wrt]
@@ -362,5 +384,5 @@
 (defmethod exp/export :plantuml
   [options]
   (doseq [diagram (core/get-diagrams)]
-    (export-diagram options diagram)))
+    (exp/export-view options diagram)))
 

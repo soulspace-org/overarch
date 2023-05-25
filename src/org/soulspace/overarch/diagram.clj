@@ -1,6 +1,7 @@
 (ns org.soulspace.overarch.diagram
   "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
+            [clojure.set :as set]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]))
 
@@ -85,6 +86,18 @@
   ; TODO promote relations to higher levels?
   )
 
+(defn collect-technologies
+  "Returns a map of id to element for the elements of the coll."
+  ([coll]
+   (collect-technologies #{} coll))
+  ([m coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (:tech e)
+         (recur (collect-technologies (set/union m #{(:tech e)}) (:ct e)) (rest coll))
+         (recur (collect-technologies m (:ct e)) (rest coll))))
+     m)))
+
 ; general
 (defn render-indent
   "Renders an indent of n space chars."
@@ -109,60 +122,114 @@
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)))
 
+
 (def azure-icons
-  {:azure/analysis-services           "azure/Analytics/AzureAnalysisServices"
-   :azure/data-catalog                "azure/Analytics/AzureDataCatalog"
-   :azure/data-explorer               "azure/Analytics/AzureDataExplorer"
-   :azure/data-lake-analytics         "azure/Analytics/AzureDataLakeAnalytics"
-   :azure/databricks                  "azure/Analytics/AzureDatabricks"
-   :azure/event-hub                   "azure/Analytics/AzureEventHub"
-   :azure/hdinsight                   "azure/Analytics/AzureHDInsight"
-   :azure/stream-analytics            "azure/Analytics/AzureDataCatalog"
-   :azure/app-service                 "azure/Compute/AzureAppService"
-   :azure/batch                       "azure/Compute/AzureBatch"
-   :azure/function                    "azure/Compute/AzureFunction"
-   :azure/service-fabric              "azure/Compute/AzureServiceFabric"
-   :azure/virtual-machine             "azure/Compute/AzureVirtualMachine"
-   :azure/virtual-machine-scale-set   "azure/Compute/AzureVirtualMachineScaleSet"
-   :azure/container-instance          "azure/Containers/AzureContainerInstance"
-   :azure/container-registry          "azure/Containers/AzureContainerRegistry"
-   :azure/kubernetes-service          "azure/Containers/AzureKubernetesService"
-   :azure/service-fabric-mesh         "azure/Containers/AzureServiceFabricMesh"
-   :azure/web-app-for-containers      "azure/Containers/AzureWebAppForContainers"
-   :azure/azure                       "azure/General/Azure"
-   :azure/automation                  "azure/Management/AzureAutomation"
-   :azure/backup                      "azure/Management/AzureBackup"
-   :azure/blueprints                  "azure/Management/AzureBluePrints"
-   :azure/managed-application         "azure/Management/AzureManagedApplications"
-   :azure/log-analytics               "azure/Management/AzureLogAnalytics"
-   :azure/mmanagement-group           "azure/Management/AzureManagementGroups"
-   :azure/monitor                     "azure/Management/AzureMonitor"
-   :azure/policy                      "azure/Management/AzurePolicy"
-   :azure/resource-group              "azure/Management/AzureResourceGroups"
-   :azure/scheduler                   "azure/Management/AzureScheduler"
-   :azure/site-recovery               "azure/Management/AzureSiteRecovery"
-   :azure/subscription                "azure/Management/AzureSubscription"
-   :azure/application-gateway         "azure/Networking/AzureApplicationGateway"
-   :azure/ddos-protection             "azure/Networking/AzureAzureDDoSProtection"
-   :azure/dns                         "azure/Networking/AzureDNS"
-   :azure/express-route               "azure/Networking/AzureExpressRoute"
-   :azure/front-door-service          "azure/Networking/AzureFrontDoorService"
-   :azure/load-balancer               "azure/Networking/AzureLoadBalancer"
-   :azure/traffic-manager             "azure/Networking/AzureTrafficManager"
-   :azure/vpn-gateway                 "azure/Networking/AzureVPNGateway"
-   :azure/virtual-network             "azure/Networking/AzureVirtualNetwork"
-   :azure/virtual-wan                 "azure/Networking/AzureVirtualWAN"
-   :azure/key-vault                   "azure/Security/AzureKeyVault"
-   :azure/sentinel                    "azure/Storage/AzureSentinel"
-   :azure/blob-storage                "azure/Storage/AzureBlobStorage"
-   :azure/data-box                    "azure/Storage/AzureDataBox"
-   :azure/data-lake-storage           "azure/Storage/AzureDataLakeStorage"
-   :azure/file-storage                "azure/Storage/AzureFileStorage"
-   :azure/managed-disks               "azure/Storage/AzureManagedDisks"
-   :azure/net-app-files               "azure/Storage/AzureNetAppFiles"
-   :azure/queue-storage               "azure/Storage/AzureQueueStorage"
-   :azure/stor-simple                 "azure/Storage/AzureStorSimple"
-   :azure/storage                     "azure/Storage/AzureStorage"}
+  {:azure/analysis-services           {:path "Analytics"
+                                       :name "AzureAnalysisServices"}
+   :azure/data-catalog                {:path "Analytics"
+                                       :name "AzureDataCatalog"}
+   :azure/data-explorer               {:path "Analytics"
+                                       :name "AzureDataExplorer"}
+   :azure/data-lake-analytics         {:path "Analytics"
+                                       :name "AzureDataLakeAnalytics"}
+   :azure/databricks                  {:path "Analytics"
+                                       :name "AzureDatabricks"}
+   :azure/event-hub                   {:path "Analytics"
+                                       :name "AzureEventHub"}
+   :azure/hdinsight                   {:path "Analytics"
+                                       :name "AzureHDInsight"}
+   :azure/stream-analytics            {:path "Analytics"
+                                       :name "AzureDataCatalog"}
+   :azure/app-service                 {:path "Compute"
+                                       :name "AzureAppService"}
+   :azure/batch                       {:path "Compute"
+                                       :name "AzureBatch"}
+   :azure/function                    {:path "Compute"
+                                       :name "AzureFunction"}
+   :azure/service-fabric              {:path "Compute"
+                                       :name "AzureServiceFabric"}
+   :azure/virtual-machine             {:path "Compute"
+                                       :name "AzureVirtualMachine"}
+   :azure/virtual-machine-scale-set   {:path "Compute"
+                                       :name "AzureVirtualMachineScaleSet"}
+   :azure/container-instance          {:path "Containers"
+                                       :name "AzureContainerInstance"}
+   :azure/container-registry          {:path "Containers"
+                                       :name "AzureContainerRegistry"}
+   :azure/kubernetes-service          {:path "Containers"
+                                       :name "AzureKubernetesService"}
+   :azure/service-fabric-mesh         {:path "Containers"
+                                       :name "AzureServiceFabricMesh"}
+   :azure/web-app-for-containers      {:path "Containers"
+                                       :name "AzureWebAppForContainers"}
+   :azure/azure                       {:path "General"
+                                       :name "Azure"}
+   :azure/automation                  {:path "Management"
+                                       :name "AzureAutomation"}
+   :azure/backup                      {:path "Management"
+                                       :name "AzureBackup"}
+   :azure/blueprints                  {:path "Management"
+                                       :name "AzureBluePrints"}
+   :azure/managed-application         {:path "Management"
+                                       :name "AzureManagedApplications"}
+   :azure/log-analytics               {:path "Management"
+                                       :name "AzureLogAnalytics"}
+   :azure/mmanagement-group           {:path "Management"
+                                       :name "AzureManagementGroups"}
+   :azure/monitor                     {:path "Management"
+                                       :name "AzureMonitor"}
+   :azure/policy                      {:path "Management"
+                                       :name "AzurePolicy"}
+   :azure/resource-group              {:path "Management"
+                                       :name "AzureResourceGroups"}
+   :azure/scheduler                   {:path "Management"
+                                       :name "AzureScheduler"}
+   :azure/site-recovery               {:path "Management"
+                                       :name "AzureSiteRecovery"}
+   :azure/subscription                {:path "Management"
+                                       :name "AzureSubscription"}
+   :azure/application-gateway         {:path "Networking"
+                                       :name "AzureApplicationGateway"}
+   :azure/ddos-protection             {:path "Networking"
+                                       :name "AzureAzureDDoSProtection"}
+   :azure/dns                         {:path "Networking"
+                                       :name "AzureDNS"}
+   :azure/express-route               {:path "Networking"
+                                       :name "AzureExpressRoute"}
+   :azure/front-door-service          {:path "Networking"
+                                       :name "AzureFrontDoorService"}
+   :azure/load-balancer               {:path "Networking"
+                                       :name "AzureLoadBalancer"}
+   :azure/traffic-manager             {:path "Networking"
+                                       :name "AzureTrafficManager"}
+   :azure/vpn-gateway                 {:path "Networking"
+                                       :name "AzureVPNGateway"}
+   :azure/virtual-network             {:path "Networking"
+                                       :name "AzureVirtualNetwork"}
+   :azure/virtual-wan                 {:path "Networking"
+                                       :name "AzureVirtualWAN"}
+   :azure/key-vault                   {:path "Security"
+                                       :name "AzureKeyVault"}
+   :azure/sentinel                    {:path "Security"
+                                       :name "AzureSentinel"}
+   :azure/blob-storage                {:path "Storage"
+                                       :name "AzureBlobStorage"}
+   :azure/data-box                    {:path "Storage"
+                                       :name "AzureDataBox"}
+   :azure/data-lake-storage           {:path "Storage"
+                                       :name "AzureDataLakeStorage"}
+   :azure/file-storage                {:path "Storage"
+                                       :name "AzureFileStorage"}
+   :azure/managed-disks               {:path "Storage"
+                                       :name "AzureManagedDisks"}
+   :azure/net-app-files               {:path "Storage"
+                                       :name "AzureNetAppFiles"}
+   :azure/queue-storage               {:path "Storage"
+                                       :name "AzureQueueStorage"}
+   :azure/stor-simple                 {:path "Storage"
+                                       :name "AzureStorSimple"}
+   :azure/storage                     {:path "Storage"
+                                       :name "AzureStorage"}}
   )
 
 (defmulti render-diagram
