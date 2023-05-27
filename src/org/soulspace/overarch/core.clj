@@ -3,8 +3,7 @@
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
-            [org.soulspace.clj.java.file :as file]
-            [charred.api :as json]))
+            [org.soulspace.clj.java.file :as file]))
 
 ;;;
 ;;; Schema definitions
@@ -15,38 +14,38 @@
 ;; 
 
 (def context-types
-  "Element types of a C4 context diagram."
+  "Element types of a C4 context view."
   #{:person :system :boundary :enterprise-boundary})
 
 (def container-types
-  "Element types of a C4 container diagram."
+  "Element types of a C4 container view."
   (set/union context-types #{:system-boundary :container}))
 
 (def component-types
-  "Element types of a C4 component diagram."
+  "Element types of a C4 component view."
   (set/union container-types #{:container-boundary :component}))
 
 (def code-types
-  "Element types of a C4 code diagram."
+  "Element types of a C4 code view."
   #{})
 
 (def system-landscape-types
-  "Element types of a C4 system-landscape diagram."
+  "Element types of a C4 system-landscape view."
   context-types)
 
 (def deployment-types
-  "Element types of a C4 deployment diagram."
+  "Element types of a C4 deployment view."
   (set/union container-types #{:node}))
 
 (def dynamic-types
-  "Element types of a C4 dynamic diagram."
+  "Element types of a C4 dynamic view."
   component-types)
 
-(def diagram-types
-  "C4 diagram types."
-  #{:context-diagram :container-diagram :component-diagram
-    :code-diagram :deployment-diagram :system-landscape-diagram
-    :dynamic-diagram})
+(def view-types
+  "C4 view types."
+  #{:context-view :container-view :component-view
+    :code-view :deployment-view :system-landscape-view
+    :dynamic-view})
 
 (def relation-types
   "Element types of relations"
@@ -65,63 +64,63 @@
 ;;
 
 (defn identifiable?
-  "Returns true if the given element has an ID."
+  "Returns true if the given element `e` has an ID."
   [e]
   (not= nil (:id e)))
 
 (defn relation?
-  "Returns true if the given element is a relation."
+  "Returns true if the given element `e` is a relation."
   [e]
   (contains? relation-types (:el e)))
 
 (defn reference?
-  "Returns true if the given element is a reference."
+  "Returns true if the given element `e` is a reference."
   [e]
   (contains? reference-types (:el e)))
 
 (defn model-element?
-  "Returns true if the given element is a model element."
+  "Returns true if the given element `e` is a model element."
   [e]
   (contains? model-types (:el e)))
 
-(defn diagram?
-  "Returns true if the given element is a diagram."
+(defn view?
+  "Returns true if the given element `e` is a view."
   [e]
-  (contains? diagram-types (:el e)))
+  (contains? view-types (:el e)))
 
 (defn context-level?
-  "Returns true if the given element is rendered in a context diagram."
+  "Returns true if the given element `e` is rendered in a context diagram."
   [e]
   (contains? context-types (:el e)))
 
 (defn container-level?
-  "Returns true if the given element is rendered in a container diagram."
+  "Returns true if the given element `e` is rendered in a container diagram."
   [e]
   (contains? container-types (:el e)))
 
 (defn component-level?
-  "Returns true if the given element is rendered in a component diagram."
+  "Returns true if the given element `e` is rendered in a component diagram."
   [e]
   (contains? component-types (:el e)))
 
 (defn code-level?
-  "Returns true if the given element is rendered in a code diagram."
+  "Returns true if the given element `e` is rendered in a code diagram."
   [e]
   (contains? code-types (:el e)))
 
 (defn dynamic-level?
-  "Returns true if the given element is rendered in a dynamic diagram."
+  "Returns true if the given element `e` is rendered in a dynamic diagram."
   [e]
   (contains? dynamic-types (:el e)))
 
 (defn system-landscape-level?
-  "Returns true if the given element is rendered
+  "Returns true if the given element `e` is rendered
    in a system landscape diagram."
   [e]
   (contains? system-landscape-types (:el e)))
 
 (defn deployment-level?
-  "Returns true if the given element is rendered in a deployment diagram."
+  "Returns true if the given element `e` is rendered in a deployment diagram."
   [e]
   (contains? deployment-types (:el e)))
 
@@ -156,7 +155,7 @@
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
          :relation    :overarch/relation
-         ;:diagram     :overarch/diagram
+         ;:view       :overarch/view
          )))
 
 (s/def :overarch/element
@@ -172,7 +171,7 @@
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
           :opt-un [:overarch/name :overarch/desc]))
 
-(s/def :overarch/diagram
+(s/def :overarch/view
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/spec :overarch/title]))
 
@@ -181,7 +180,7 @@
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
          :relation    :overarch/relation
-         :diagram     :overarch/diagram)))
+         :view        :overarch/view)))
 
 ;;;
 ;;; Data handling
@@ -197,27 +196,27 @@
 ;; Accessors
 ;;
 
-(defn diagrams
-  "Returns the collection of diagrams."
+(defn views
+  "Filters the given collection of elements `coll` for views."
   [coll]
-  (filter diagram? coll))
+  (filter view? coll))
 
 (defn model-elements
-  "Returns the collection of diagrams."
+  "Filters the given collection of elements `coll` for model elements."
   [coll]
   (filter model-element? coll))
 
-(defn get-diagrams
+(defn get-views
   "Returns the collection of diagrams."
   ([]
-   (get-diagrams @state))
+   (get-views @state))
   ([m]
-   (diagrams (:elements m))))
+   (views (:elements m))))
 
-(defn get-diagram
+(defn get-view
   "Returns the diagram with the given id."
   ([id]  
-   (get-diagram @state id))
+   (get-view @state id))
   ([m id]
    ((:registry m) id)))
 

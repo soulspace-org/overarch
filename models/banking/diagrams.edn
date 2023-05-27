@@ -1,4 +1,4 @@
-#{{:el :context-diagram
+#{{:el :context-view
   :id :banking/system-context-view
   :spec {:legend true}
   :title "System Context View of the Internet Banking System"
@@ -14,7 +14,7 @@
        {:ref :banking/internet-banking-system-using-mainframe-banking-system}
        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
- {:el :container-diagram
+ {:el :container-view
   :id :banking/container-view
   :spec {:legend true}
   :title "Container View of the Internet Banking System"
@@ -37,7 +37,7 @@
        {:ref :banking/api-application-uses-email-system :direction :right}
        {:ref :banking/api-application-uses-mainframe-banking-system}]}
 
- {:el :component-diagram
+ {:el :component-view
   :id :banking/api-component-view
   :spec {:legend true}
   :title "Component View of the API Application"
@@ -63,7 +63,7 @@
        {:ref :banking/email-component-uses-email-system}
        {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
 
- {:el :system-landscape-diagram
+ {:el :system-landscape-view
   :id :banking/system-landscape-view
   :spec {:legend true}
   :title "System Landscape View of Big Bank plc"
@@ -82,7 +82,7 @@
        {:ref :banking/internet-banking-system-uses-email-system}
        {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
 
- {:el :deployment-diagram
+ {:el :deployment-view
   :id :banking/deployment-view
   :spec {:legend true}
   :title "Deployment View of Big Bank plc"

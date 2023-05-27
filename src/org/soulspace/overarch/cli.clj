@@ -7,7 +7,7 @@
             ; must be loaded, for registering of the multimethods
             ; require dynamically?
             [org.soulspace.overarch.json :as json]
-            [org.soulspace.overarch.plantuml :as puml]
+            [org.soulspace.overarch.plantuml.core :as puml]
             [hawk.core :as hawk])
   (:gen-class))
 
@@ -62,14 +62,14 @@
 ;;;
 
 (defn update-and-export!
-  "Read models and export the data."
+  "Read models and export the data according to the given `options`."
   [options]
   (println "Update and export")
   (core/update-state! (:model-dir options))
   (exp/export options))
 
 (defn handle
-  "Handle options and generate the requested outputs."
+  "Handle the `options` and generate the requested outputs."
   [options]
   (update-and-export! options)
   (when (:watch-model-dir options)
@@ -85,9 +85,10 @@
 ;;;
 
 (defn validate-args
-  "Validate command line arguments. Either returns a map indicating the program
-  should exit (with an error message and optional success status), or a map
-  indicating the options provided."
+  "Validate command line arguments `args` according to the given `cli-opts`.
+   Either returns a map indicating the program should exit
+   (with an error message and optional success status), or a map
+   indicating the options provided."
   [args cli-opts]
   (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
     (cond

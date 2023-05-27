@@ -1,4 +1,4 @@
-#{{:el :context-diagram
+#{{:el :context-view
    :id :test/styles-context-view
    :spec {:legend true
           :styles #{{:el :rel
@@ -37,7 +37,7 @@
          :name "calls"
          :style :dashed-rel}]}
 
-  {:el :context-diagram
+  {:el :context-view
    :id :test/plantuml-local-imports
    :title "Local Import Test"
    :spec {:legend true
@@ -54,7 +54,7 @@
          :to :test/sys2
          :name "calls"}]}
 
-  {:el :deployment-diagram
+  {:el :deployment-view
    :id :test/icons
    :title "Icon Test"
    :spec {:lagend true}
