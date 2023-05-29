@@ -1,0 +1,13 @@
+@startuml
+'listopeniconic
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!include DEVICONS/clojure.puml
+!include DEVICONS/java.puml
+
+'!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+'!include FONTAWSOME/users.puml
+
+listsprites
+
+@enduml

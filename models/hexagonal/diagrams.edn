@@ -1,16 +1,16 @@
-#{{:el :context-diagram
+#{{:el :context-view
   :id :hexagonal/system-context-view
   :title "System Context View of a Hexagonal Architecture"
   :spec {:legend true}
   :ct [{:ref :hexagonal/system}]}
 
- {:el :container-diagram
+ {:el :container-view
   :id :hexagonal/container-view
   :title "Container View of a Hexagonal Arcitecture"
   :spec {:legend true}
   :ct [{:ref :hexagonal/system}]}
 
- {:el :component-diagram
+ {:el :component-view
   :id :hexagonal/component-view
   :title "Component View of a Hexagonal Arcitecture"
   :spec {:legend true}

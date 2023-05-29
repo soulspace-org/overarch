@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.plantuml
+(ns org.soulspace.overarch.plantuml.core
   "Functions to export views to PlantUML."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
@@ -16,25 +16,86 @@
 ;;; PlantUML mappings
 ;;;
 
-; TODO
-(def icon-libraries->import
-  "Icon Libraries"
-  {:azure       ""
-   :aws         ""
-   :devicons    ""
-   :fontawesome ""})
-
 (def icon-libraries
   "Definition of icon libraries."
   {:azure {:name "azure"
-           :local-import "azure"
-           :remote-import ""
-     :ct #{{:path "AIMachineLearning"
-            :ct #{}}
-           {:path "Analytics"
-            :ct #{}}
-           {}}}})
-
+           :local-prefix "azure"
+           :local-imports ["AzureCommon"
+                           "AzureC4Integration"
+                           "AIMachineLearning/all"
+                           "Analytics/all"
+                           "Compute/all"
+                           "Containers/all"
+                           "Databases/all"
+                           "Devops/all"
+                           "General/all"
+                           "Identity/all"
+                           "Integration/all"
+                           "InternetOfThings/all"
+                           "Management/all"
+                           "Media/all"
+                           "Mobile/all"
+                           "Networking/all"
+                           "Security/all"
+                           "Storage/all"
+                           "Web/all"]
+           :remote-prefix "AZURE"
+           :remote-url ""
+           :remote-imports ["AzureCommon"
+                            "AzureC4Integration"
+                            "AIMachineLearning/all"
+                            "Analytics/all"
+                            "Compute/all"
+                            "Containers/all"
+                            "Databases/all"
+                            "Devops/all"
+                            "General/all"
+                            "Identity/all"
+                            "Integration/all"
+                            "InternetOfThings/all"
+                            "Management/all"
+                            "Media/all"
+                            "Mobile/all"
+                            "Networking/all"
+                            "Security/all"
+                            "Storage/all"
+                            "Web/all"]}
+   :aws {:name "awslib"
+         :local-prefix "awslib"
+         :local-imports ["AWSCommon"
+                         "AWSC4Integration"
+                         "Analytics/all"
+                         "Compute/all"
+                         "Containers/all"
+                         "Database/all"
+                         "General/all"
+                         "ManagementGovernance/all"
+                         "NetworkingContentDelivery/all"
+                         "SecurityIdentityCompliance/all"
+                         "Serverless/all"
+                         "Storage/all"]
+         :remote-prefix "AWS"
+         :remote-url ""
+         :remote-imports ["AWSCommon"
+                          "AWSC4Integration"
+                          "Analytics/all"
+                          "Compute/all"
+                          "Containers/all"
+                          "Database/all"
+                          "General/all"
+                          "ManagementGovernance/all"
+                          "NetworkingContentDelivery/all"
+                          "SecurityIdentityCompliance/all"
+                          "Serverless/all"
+                          "Storage/all"]}
+   :devicons    {:name "devicons"
+                 :local-prefix "devicons"
+                 :remote-prefix "DEVICONS"
+                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :fontawesome {:name "fontawesome"
+                 :local-prefix "fontawesome"
+                 :remote-prefix "FONTAWESOME"
+                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
 
 (def element->method
   "Map from element type to PlantUML method."
@@ -49,14 +110,14 @@
    :node                "Node"
    :rel                 "Rel"})
 
-(def diagram-type->import
+(def view-type->import
   "Map from diagram type to PlantUML import."
-  {:system-landscape-diagram "C4_Context.puml"
-   :context-diagram          "C4_Context.puml"
-   :container-diagram        "C4_Container.puml"
-   :component-diagram        "C4_Component.puml"
-   :dynamic-diagram          "C4_Dynamic.puml"
-   :deployment-diagram       "C4_Deployment.puml"})
+  {:system-landscape-view "C4_Context.puml"
+   :context-view          "C4_Context.puml"
+   :container-view        "C4_Container.puml"
+   :component-view        "C4_Component.puml"
+   :dynamic-view          "C4_Dynamic.puml"
+   :deployment-view       "C4_Deployment.puml"})
 
 (def subtype->suffix
   "Maps the subtype of an element to the PlantUML suffix."
@@ -142,8 +203,8 @@
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (dia/element-name e) "\""
-        (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -154,8 +215,8 @@
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (dia/element-name e) "\""
-        (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:tech e) (str ", $type=\"" (:tech e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -167,8 +228,9 @@
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (dia/element-name e) "\""
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -180,8 +242,9 @@
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (dia/element-name e) "\""
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -193,8 +256,9 @@
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
                      (dia/element-name e) "\""
-                     (when (:type e) (str ", $type=\"" (:type e) "\""))
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+                     (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+                     (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -204,8 +268,9 @@
           (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
           (dia/element-name e) "\""
-          (when (:type e) (str ", $type=\"" (:type e) "\""))
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+          (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+          (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -223,8 +288,9 @@
           (alias-name (:from e)) ", "
           (alias-name (:to e)) ", \""
           (:name e) "\""
-          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+          (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -242,14 +308,43 @@
    !include FONTAWESOME/users.puml
    ")
 
+(defn local-import
+  "Renders a local import."
+  ([path]
+   (str "!include <" path ">"))
+  ([prefix path]
+   (str "!include <" prefix "/" path ">")))
+
+(defn remote-import
+  "Renders a remote import."
+  ([url]
+   (str "!includeurl " url))
+  ([prefix path]
+   (str "!includeurl " (str/upper-case prefix) "/" path)))
+
+(defn render-iconlib-import
+  "Renders the imports for an icon/sprite library."
+  [diagram icon-lib]
+  (if (get-in diagram [:spec :plantuml :local-imports])
+    [(map (:local-imports (icon-libraries icon-lib)))]
+    [(str "!define " (:remote-prefix icon-lib) (:remote-url icon-lib))
+     (map (partial remote-import (:remote-prefix icon-lib))
+          (:remote-imports (icon-libraries icon-lib)))]))
+
+(defn render-iconlib-imports
+  "Renders the imports for icon/sprite libraries."
+  [diagram]
+  (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])]
+    (map (partial render-iconlib-import diagram) icon-libs)))
+
 (defn render-imports
   "Renders the imports for the diagram."
   [diagram]
   (if (get-in diagram [:spec :plantuml :local-imports])
     (str "!include <C4/"
-         (diagram-type->import (:el diagram)) ">")
-    (str "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
-         (diagram-type->import (:el diagram)))))
+         (view-type->import (:el diagram)) ">")
+    (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
+         (view-type->import (:el diagram)))))
 
 ;;
 ;; Styles
@@ -350,13 +445,13 @@
                      (name (:id diagram)) ".puml"))))
 
 (defmethod exp/export-view :plantuml
-  [options diagram]
-  (with-open [wrt (io/writer (exp/export-file options diagram))]
+  [options view]
+  (with-open [wrt (io/writer (exp/export-file options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-diagram options diagram))))))
+      (println (str/join "\n" (render-diagram options view))))))
 
 (defmethod exp/export :plantuml
   [options]
-  (doseq [diagram (core/get-diagrams)]
-    (exp/export-view options diagram)))
+  (doseq [view (core/get-views)]
+    (exp/export-view options view)))
 
