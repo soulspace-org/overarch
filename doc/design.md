@@ -185,6 +185,16 @@ Q: Can views be specified in a generic manner, so that the elements contained
 A: 
 
 
+Q: How can duplication reduced in views of specific instanciations of the model?
+   Use case:
+   Deployment view to different stages with replacement of the stage variable with the
+   name of the stage or stage specific values (e.g. CIDR ranges, ...).
+   Merging of additional elements in the instantiation with elements in the template,
+   e.g. local queues for testing in the dev stage, which are external in the prod stage.
+
+A: Parameterized views, view templates with variable replacement and element merging.
+
+
 Q: How to support different exporting formats, e.g. diagramming tools, and
    not be specific in the specification of the views/digrams?
     
