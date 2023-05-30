@@ -57,12 +57,14 @@
   {:el :deployment-view
    :id :test/icons
    :title "Icon Test"
-   :spec {:lagend true}
+   :spec {:lagend true
+          :plantuml {:local-imports true
+                     :sprite-libs [:azure]}}
    :ct [{:el :node
          :id :test/azure
          :name "Azure"
-         :type "Azure"
+         :tech "Azure"
          :ct #{{:el :node
                 :id :test/azure-subscription
                 :name "Test Subscription"
-                :type "Azure Subscription"}}}]}}
+                :tech "Azure Subscription"}}}]}}

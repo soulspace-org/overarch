@@ -1,0 +1,104 @@
+@startuml
+
+!include <tupadr3/common>
+
+!include <tupadr3/govicons/airplane>
+!include <tupadr3/govicons/ambulance>
+!include <tupadr3/govicons/balance>
+!include <tupadr3/govicons/bar_chart>
+!include <tupadr3/govicons/barcode>
+!include <tupadr3/govicons/biohazard>
+!include <tupadr3/govicons/book>
+!include <tupadr3/govicons/briefcase>
+!include <tupadr3/govicons/building>
+!include <tupadr3/govicons/check>
+!include <tupadr3/govicons/briefcase>
+!include <tupadr3/govicons/bus_front>
+!include <tupadr3/govicons/cloud>
+!include <tupadr3/govicons/code>
+!include <tupadr3/govicons/cog>
+!include <tupadr3/govicons/cogs>
+!include <tupadr3/govicons/comment>
+!include <tupadr3/govicons/comments>
+!include <tupadr3/govicons/construction>
+!include <tupadr3/govicons/database>
+!include <tupadr3/govicons/desktop>
+!include <tupadr3/govicons/dna>
+!include <tupadr3/govicons/factory>
+!include <tupadr3/govicons/file>
+!include <tupadr3/govicons/file_contract_o>
+!include <tupadr3/govicons/file_excel>
+!include <tupadr3/govicons/file_excel_o>
+!include <tupadr3/govicons/file_o>
+!include <tupadr3/govicons/file_text>
+!include <tupadr3/govicons/file_text_o>
+!include <tupadr3/govicons/file_word>
+!include <tupadr3/govicons/file_word_o>
+!include <tupadr3/govicons/fingerprint>
+!include <tupadr3/govicons/folder>
+!include <tupadr3/govicons/folder_misc>
+!include <tupadr3/govicons/gavel>
+!include <tupadr3/govicons/handshake>
+!include <tupadr3/govicons/hard_hat>
+!include <tupadr3/govicons/heartbeat>
+!include <tupadr3/govicons/helicopter>
+!include <tupadr3/govicons/id_card>
+!include <tupadr3/govicons/id_card_o>
+!include <tupadr3/govicons/jet>
+!include <tupadr3/govicons/key>
+!include <tupadr3/govicons/leaf>
+!include <tupadr3/govicons/lightbulb>
+!include <tupadr3/govicons/line_chart>
+!include <tupadr3/govicons/lock>
+!include <tupadr3/govicons/medkit>
+!include <tupadr3/govicons/metro_front>
+!include <tupadr3/govicons/microscope>
+!include <tupadr3/govicons/mobile>
+!include <tupadr3/govicons/money>
+!include <tupadr3/govicons/pallet>
+!include <tupadr3/govicons/pie_chart>
+!include <tupadr3/govicons/poison>
+!include <tupadr3/govicons/poison_bottle>
+!include <tupadr3/govicons/presenter>
+!include <tupadr3/govicons/radar>
+!include <tupadr3/govicons/radioactive>
+!include <tupadr3/govicons/recycle>
+!include <tupadr3/govicons/reticle_crosshair>
+!include <tupadr3/govicons/reticle_dot>
+!include <tupadr3/govicons/ribbon>
+!include <tupadr3/govicons/road>
+!include <tupadr3/govicons/road_barricade>
+!include <tupadr3/govicons/road_sign>
+!include <tupadr3/govicons/ruler>
+!include <tupadr3/govicons/satellite>
+!include <tupadr3/govicons/script>
+!include <tupadr3/govicons/search>
+!include <tupadr3/govicons/security_camera>
+!include <tupadr3/govicons/shield>
+!include <tupadr3/govicons/shield_o>
+!include <tupadr3/govicons/ship_front>
+!include <tupadr3/govicons/stethoscope>
+!include <tupadr3/govicons/table>
+!include <tupadr3/govicons/tables>
+!include <tupadr3/govicons/tablet>
+!include <tupadr3/govicons/textile>
+!include <tupadr3/govicons/times>
+!include <tupadr3/govicons/tools>
+!include <tupadr3/govicons/train_front>
+!include <tupadr3/govicons/truck>
+!include <tupadr3/govicons/truck_front>
+!include <tupadr3/govicons/unlock>
+!include <tupadr3/govicons/user>
+!include <tupadr3/govicons/user_graduate>
+!include <tupadr3/govicons/user_politician>
+!include <tupadr3/govicons/user_suit>
+!include <tupadr3/govicons/users>
+!include <tupadr3/govicons/warning>
+!include <tupadr3/govicons/wheel_barrow>
+!include <tupadr3/govicons/world>
+
+
+
+listsprites
+
+@enduml

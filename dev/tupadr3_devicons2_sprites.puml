@@ -1,0 +1,37 @@
+@startuml
+
+!include <tupadr3/common>
+
+!include <tupadr3/devicons2/angularjs>
+!include <tupadr3/devicons2/apache>
+'!include <tupadr3/devicons2/bash>
+!include <tupadr3/devicons2/c>
+!include <tupadr3/devicons2/chrome>
+'!include <tupadr3/devicons2/clojure_line>
+'!include <tupadr3/devicons2/clojurescript>
+!include <tupadr3/devicons2/csharp>
+!include <tupadr3/devicons2/dot_net>
+'!include <tupadr3/devicons2/elixir>
+!include <tupadr3/devicons2/elm>
+!include <tupadr3/devicons2/erlang>
+'!include <tupadr3/devicons2/figma>
+'!include <tupadr3/devicons2/flutter>
+!include <tupadr3/devicons2/gitlab>
+'!include <tupadr3/devicons2/graphql>
+'!include <tupadr3/devicons2/julia>
+'!include <tupadr3/devicons2/kubernetes>
+'!include <tupadr3/devicons2/kotlin>
+'!include <tupadr3/devicons2/lua>
+!include <tupadr3/devicons2/mongodb>
+'!include <tupadr3/devicons2/objectivec>
+'!include <tupadr3/devicons2/ocaml>
+'!include <tupadr3/devicons2/r>
+'!include <tupadr3/devicons2/spring>
+!include <tupadr3/devicons2/swift>
+'!include <tupadr3/devicons2/vscode>
+!include <tupadr3/devicons2/vuejs>
+
+
+listsprites
+
+@enduml

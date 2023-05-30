@@ -1,29 +1,30 @@
 @startuml
 
-!include <azure/AzureCommon.puml>
+!include <azure/AzureCommon>
+!include <azure/AzureC4Integration>
 
-'!include <azure/AIMachineLearning/all.puml>
-'!include <azure/Analytics/all.puml>
-'!include <azure/Blockchain/all.puml>
-'!include <azure/Compute/all.puml>
-'!include <azure/Containers/all.puml>
-'!include <azure/Databases/all.puml>
-'!include <azure/Devops/all.puml>
-'!include <azure/General/all.puml>
-'!include <azure/Health/all.puml>
-'!include <azure/Identity/all.puml>
-'!include <azure/Integration/all.puml>
-'!include <azure/InternetOfThings/all.puml>
-'!include <azure/Intune/all.puml>
-'!include <azure/Management/all.puml>
-'!include <azure/Media/all.puml>
-'!include <azure/Migrate/all.puml>
-'!include <azure/Mobile/all.puml>
-!include <azure/Networking/all.puml>
-'!include <azure/Security/all.puml>
-'!include <azure/Stack/all.puml>
-'!include <azure/Storage/all.puml>
-'!include <azure/Web/all.puml>
+!include <azure/AIMachineLearning/all>
+'!include <azure/Analytics/all>
+''!include <azure/Blockchain/all>
+'!include <azure/Compute/all>
+'!include <azure/Containers/all>
+'!include <azure/Databases/all>
+'!include <azure/Devops/all>
+'!include <azure/General/all>
+''!include <azure/Health/all>
+'!include <azure/Identity/all>
+'!include <azure/Integration/all>
+'!include <azure/InternetOfThings/all>
+''!include <azure/Intune/all>
+'!include <azure/Management/all>
+'!include <azure/Media/all>
+''!include <azure/Migrate/all>
+'!include <azure/Mobile/all>
+'!include <azure/Networking/all>
+'!include <azure/Security/all>
+''!include <azure/Stack/all>
+'!include <azure/Storage/all>
+'!include <azure/Web/all>
 
 
 listsprites

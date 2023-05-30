@@ -1,0 +1,61 @@
+@startuml
+
+!include <tupadr3/common>
+
+!include <tupadr3/devicons/android>
+!include <tupadr3/devicons/angular>
+!include <tupadr3/devicons/apple>
+!include <tupadr3/devicons/atlassian>
+!include <tupadr3/devicons/aws>
+!include <tupadr3/devicons/chrome>
+!include <tupadr3/devicons/clojure_alt>
+!include <tupadr3/devicons/clojure>
+!include <tupadr3/devicons/code>
+!include <tupadr3/devicons/dart>
+!include <tupadr3/devicons/debian>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/devicons/dotnet>
+!include <tupadr3/devicons/eclipse>
+!include <tupadr3/devicons/erlang>
+!include <tupadr3/devicons/firefox>
+!include <tupadr3/devicons/fsharp>
+!include <tupadr3/devicons/git>
+!include <tupadr3/devicons/github>
+!include <tupadr3/devicons/go>
+!include <tupadr3/devicons/groovy>
+!include <tupadr3/devicons/haskell>
+!include <tupadr3/devicons/heroku>
+!include <tupadr3/devicons/html5>
+!include <tupadr3/devicons/intellij>
+!include <tupadr3/devicons/java>
+!include <tupadr3/devicons/javascript>
+!include <tupadr3/devicons/jenkins>
+!include <tupadr3/devicons/jira>
+!include <tupadr3/devicons/linux>
+!include <tupadr3/devicons/markdown>
+!include <tupadr3/devicons/msql_server>
+!include <tupadr3/devicons/mysql>
+!include <tupadr3/devicons/netbeans>
+!include <tupadr3/devicons/nginx>
+!include <tupadr3/devicons/nodejs>
+!include <tupadr3/devicons/perl>
+!include <tupadr3/devicons/php>
+!include <tupadr3/devicons/postgresql>
+!include <tupadr3/devicons/prolog>
+!include <tupadr3/devicons/python>
+!include <tupadr3/devicons/raspberry_pi>
+!include <tupadr3/devicons/react>
+!include <tupadr3/devicons/redis>
+!include <tupadr3/devicons/ruby>
+!include <tupadr3/devicons/rust>
+!include <tupadr3/devicons/safari>
+!include <tupadr3/devicons/scala>
+!include <tupadr3/devicons/sqllite>
+!include <tupadr3/devicons/terminal>
+!include <tupadr3/devicons/ubuntu>
+!include <tupadr3/devicons/windows>
+
+
+listsprites
+
+@enduml

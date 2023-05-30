@@ -1,0 +1,85 @@
+@startuml
+
+!include <tupadr3/common>
+
+
+!include <tupadr3/font-awesome-5/ad>
+!include <tupadr3/font-awesome-5/address_book>
+!include <tupadr3/font-awesome-5/address_card>
+
+!include <tupadr3/font-awesome-5/align_center>
+!include <tupadr3/font-awesome-5/align_justify>
+!include <tupadr3/font-awesome-5/align_left>
+!include <tupadr3/font-awesome-5/align_right>
+
+!include <tupadr3/font-awesome-5/angle_double_down>
+!include <tupadr3/font-awesome-5/angle_double_left>
+!include <tupadr3/font-awesome-5/angle_double_right>
+!include <tupadr3/font-awesome-5/angle_double_up>
+!include <tupadr3/font-awesome-5/angle_down>
+!include <tupadr3/font-awesome-5/angle_left>
+!include <tupadr3/font-awesome-5/angle_right>
+!include <tupadr3/font-awesome-5/angle_up>
+
+!include <tupadr3/font-awesome-5/angry>
+!include <tupadr3/font-awesome-5/archive>
+!include <tupadr3/font-awesome-5/archway>
+
+!include <tupadr3/font-awesome-5/arrow_alt_circle_down>
+!include <tupadr3/font-awesome-5/arrow_alt_circle_left>
+!include <tupadr3/font-awesome-5/arrow_alt_circle_right>
+!include <tupadr3/font-awesome-5/arrow_alt_circle_up>
+!include <tupadr3/font-awesome-5/arrow_circle_down>
+!include <tupadr3/font-awesome-5/arrow_circle_left>
+!include <tupadr3/font-awesome-5/arrow_circle_right>
+!include <tupadr3/font-awesome-5/arrow_circle_up>
+!include <tupadr3/font-awesome-5/arrow_down>
+!include <tupadr3/font-awesome-5/arrow_left>
+!include <tupadr3/font-awesome-5/arrow_right>
+!include <tupadr3/font-awesome-5/arrow_up>
+!include <tupadr3/font-awesome-5/arrows_alt>
+!include <tupadr3/font-awesome-5/arrows_alt_h>
+!include <tupadr3/font-awesome-5/arrows_alt_v>
+!include <tupadr3/font-awesome-5/asterisk>
+!include <tupadr3/font-awesome-5/at>
+!include <tupadr3/font-awesome-5/atlas>
+!include <tupadr3/font-awesome-5/atom>
+!include <tupadr3/font-awesome-5/award>
+!include <tupadr3/font-awesome-5/backspace>
+!include <tupadr3/font-awesome-5/backward>
+!include <tupadr3/font-awesome-5/bacon>
+!include <tupadr3/font-awesome-5/bacteria>
+!include <tupadr3/font-awesome-5/bacterium>
+!include <tupadr3/font-awesome-5/balance_scale>
+!include <tupadr3/font-awesome-5/balance_scale_left>
+!include <tupadr3/font-awesome-5/balance_scale_right>
+!include <tupadr3/font-awesome-5/ban>
+!include <tupadr3/font-awesome-5/band_aid>
+!include <tupadr3/font-awesome-5/barcode>
+!include <tupadr3/font-awesome-5/bars>
+!include <tupadr3/font-awesome-5/baseball_ball>
+!include <tupadr3/font-awesome-5/basketball_ball>
+!include <tupadr3/font-awesome-5/bath>
+!include <tupadr3/font-awesome-5/battery_empty>
+!include <tupadr3/font-awesome-5/battery_full>
+!include <tupadr3/font-awesome-5/battery_half>
+!include <tupadr3/font-awesome-5/battery_quarter>
+!include <tupadr3/font-awesome-5/battery_three_quarters>
+!include <tupadr3/font-awesome-5/bed>
+!include <tupadr3/font-awesome-5/beer>
+!include <tupadr3/font-awesome-5/bell>
+!include <tupadr3/font-awesome-5/bell_slash>
+!include <tupadr3/font-awesome-5/bezier_curve>
+!include <tupadr3/font-awesome-5/bicycle>
+!include <tupadr3/font-awesome-5/biking>
+!include <tupadr3/font-awesome-5/binoculars>
+!include <tupadr3/font-awesome-5/birthday_cake>
+
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/server>
+
+
+
+listsprites
+
+@enduml
