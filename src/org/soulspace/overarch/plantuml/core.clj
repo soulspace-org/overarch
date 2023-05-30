@@ -150,7 +150,8 @@
         (dia/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
+        (when (sprites/sprite? (:tech e))
+          (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -164,7 +165,8 @@
         (dia/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
+        (when (sprites/sprite? (:tech e)) 
+          (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -178,7 +180,8 @@
                      (dia/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-                     (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
+                     (when (sprites/sprite? (:tech e))
+                       (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -190,7 +193,8 @@
           (dia/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-          (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
+          (when (sprites/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -210,7 +214,8 @@
           (:name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-          (when (:tech e) (str ", $sprite=\"" (:tech e) "\""))
+          (when (sprites/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
