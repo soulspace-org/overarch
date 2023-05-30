@@ -117,7 +117,7 @@
           ")")]))
 
 (defmethod render-element :person
-  [diagram indent e]
+  [_ indent e]
   [(str (dia/render-indent indent)
         (element->method (:el e))
         (when (:external e) "_Ext") "("
@@ -129,7 +129,7 @@
         ")")])
 
 (defmethod render-element :system
-  [diagram indent e]
+  [_ indent e]
   [(str (dia/render-indent indent)
         (element->method (:el e))
         (when (:external e) "_Ext") "("
@@ -141,7 +141,7 @@
         ")")])
 
 (defmethod render-element :container
-  [diagram indent e]
+  [_ indent e]
   [(str (dia/render-indent indent)
         (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
@@ -156,7 +156,7 @@
         ")")])
 
 (defmethod render-element :component
-  [diagram indent e]
+  [_ indent e]
   [(str (dia/render-indent indent)
         (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
@@ -219,11 +219,15 @@
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
+;;;
+;;; Imports
+;;;
+
 ;;
-;; Imports
+;; Sprite Imports
 ;;
 
-(defn icons-for-diagram
+(defn sprites-for-diagram
   ""
   [diagram]
   (->> diagram
@@ -246,30 +250,34 @@
   ([prefix path]
    (str "!includeurl " (str/upper-case prefix) "/" path)))
 
-(defn render-icon-import
-  "Renders the import for an icon."
-  [diagram icon]
+(defn render-sprite-import
+  "Renders the import for an sprite."
+  [diagram sprite]
   (if (get-in diagram [:spec :plantuml :local-imports])
-    (local-import (str (:lib icon) "/" (:path icon) "/" (:name icon)))
-    (remote-import (str (:lib icon) "/" (:path icon) "/" (:name icon)))))
+    (local-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))
+    (remote-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))))
 
-(defn render-iconlib-import
-  "Renders the imports for an icon/sprite library."
-  [diagram icon-lib]
+(defn render-spritelib-import
+  "Renders the imports for an sprite library."
+  [diagram sprite-lib]
   (if (get-in diagram [:spec :plantuml :local-imports])
-    [(map (partial local-import (:local-prefix icon-lib))
-          (:local-imports (sprites/sprite-libraries icon-lib)))]
-    [(str "!define " (:remote-prefix icon-lib) (:remote-url icon-lib))
-     (map (partial remote-import (:remote-prefix icon-lib))
-          (:remote-imports (sprites/sprite-libraries icon-lib)))]))
+    [(map (partial local-import (:local-prefix (sprites/sprite-libraries sprite-lib)))
+          (:local-imports (sprites/sprite-libraries sprite-lib)))]
+    [(str "!define " (:remote-prefix sprite-lib) (:remote-url sprite-lib))
+     (map (partial remote-import (:remote-prefix sprite-lib))
+          (:remote-imports (sprites/sprite-libraries sprite-lib)))]))
 
-(defn render-icon-imports
+(defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
   [diagram]
   (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])
-        icons (icons-for-diagram diagram)]
-    [(map (partial render-iconlib-import diagram) icon-libs)
-     (map (partial render-icon-import diagram) icons)]))
+        icons (sprites-for-diagram diagram)]
+    [(map (partial render-spritelib-import diagram) icon-libs)
+     (map (partial render-sprite-import diagram) icons)]))
+
+;;
+;; C4 Imports
+;;
 
 (defn render-imports
   "Renders the imports for the diagram."
@@ -280,9 +288,9 @@
     (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
          (view-type->import (:el diagram)))))
 
-;;
-;; Styles
-;;
+;;;
+;;; Diagram Styles
+;;;
 
 (def styles-hierarchy
   "Hierarchy for style methods."
@@ -325,9 +333,9 @@
          (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
          ")")))
 
-;;
-;; Layout
-;;
+;;;
+;;; Diagram Layout
+;;;
 
 (defn render-layout
   "Renders the layout for the diagram."
@@ -360,7 +368,7 @@
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id diagram)))
               (render-imports diagram)
-              (render-icon-imports diagram)
+              (render-sprite-imports diagram)
               (render-layout diagram)
               (render-title diagram)
               (map #(render-element diagram 0 %) children)
@@ -375,6 +383,7 @@
   [options diagram]
   (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id diagram)))
         dir (io/as-file dir-name)]
+;    (println "exporting diagram to" dir-name)
     (file/create-dir dir)
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
