@@ -305,9 +305,9 @@
    :parents  -> a map from id to parent element"
   [elements]
   (if (s/valid? :overarch/elements elements)
-    (reset! state {:elements elements
-                   :registry (register-elements elements)
-                   :parents (register-parents elements)})
+    {:elements elements
+     :registry (register-elements elements)
+     :parents (register-parents elements)}
     (s/explain :overarch/elements elements)))
 
 (s/fdef read-elements
