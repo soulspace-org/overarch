@@ -22,7 +22,7 @@
 
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
-;               ["-w" "--watch-model-dir" "Watch model dir for changes and trigger export" :default false]
+               ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
                ["-f" "--format FORMAT" "Export format (json, plantuml)" :default :plantuml :parse-fn keyword]
                ["-h" "--help" "Print help"]
                [nil  "--debug" "Print debug messages" :default false]])
@@ -72,13 +72,15 @@
   "Handle the `options` and generate the requested outputs."
   [options]
   (update-and-export! options)
-  (when (:watch-model-dir options)
+  (when (:watch options)
     ; TODO loop recur this update-and-export! as handler
     (hawk/watch! [{:paths [(:model-dir options)]
                    :handler (fn [ctx e]
-                              (println "event: " e)
-                              (println "context: " ctx)
-                              ctx)}])))
+;                              (println "event: " e)
+;                              (println "context: " ctx)
+                              (update-and-export! options))}])
+    (while true
+      (Thread/sleep 5000))))
 
 ;;;
 ;;; CLI entry 
