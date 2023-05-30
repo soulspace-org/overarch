@@ -6,7 +6,8 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.diagram :as dia]
-            [org.soulspace.overarch.export :as exp]))
+            [org.soulspace.overarch.export :as exp]
+            [org.soulspace.overarch.plantuml.icons :as icons]))
 
 ;;;;
 ;;;; PlantUML rendering
@@ -15,87 +16,6 @@
 ;;;
 ;;; PlantUML mappings
 ;;;
-
-(def icon-libraries
-  "Definition of icon libraries."
-  {:azure {:name "azure"
-           :local-prefix "azure"
-           :local-imports ["AzureCommon"
-                           "AzureC4Integration"
-                           "AIMachineLearning/all"
-                           "Analytics/all"
-                           "Compute/all"
-                           "Containers/all"
-                           "Databases/all"
-                           "Devops/all"
-                           "General/all"
-                           "Identity/all"
-                           "Integration/all"
-                           "InternetOfThings/all"
-                           "Management/all"
-                           "Media/all"
-                           "Mobile/all"
-                           "Networking/all"
-                           "Security/all"
-                           "Storage/all"
-                           "Web/all"]
-           :remote-prefix "AZURE"
-           :remote-url ""
-           :remote-imports ["AzureCommon"
-                            "AzureC4Integration"
-                            "AIMachineLearning/all"
-                            "Analytics/all"
-                            "Compute/all"
-                            "Containers/all"
-                            "Databases/all"
-                            "Devops/all"
-                            "General/all"
-                            "Identity/all"
-                            "Integration/all"
-                            "InternetOfThings/all"
-                            "Management/all"
-                            "Media/all"
-                            "Mobile/all"
-                            "Networking/all"
-                            "Security/all"
-                            "Storage/all"
-                            "Web/all"]}
-   :aws {:name "awslib"
-         :local-prefix "awslib"
-         :local-imports ["AWSCommon"
-                         "AWSC4Integration"
-                         "Analytics/all"
-                         "Compute/all"
-                         "Containers/all"
-                         "Database/all"
-                         "General/all"
-                         "ManagementGovernance/all"
-                         "NetworkingContentDelivery/all"
-                         "SecurityIdentityCompliance/all"
-                         "Serverless/all"
-                         "Storage/all"]
-         :remote-prefix "AWS"
-         :remote-url ""
-         :remote-imports ["AWSCommon"
-                          "AWSC4Integration"
-                          "Analytics/all"
-                          "Compute/all"
-                          "Containers/all"
-                          "Database/all"
-                          "General/all"
-                          "ManagementGovernance/all"
-                          "NetworkingContentDelivery/all"
-                          "SecurityIdentityCompliance/all"
-                          "Serverless/all"
-                          "Storage/all"]}
-   :devicons    {:name "devicons"
-                 :local-prefix "devicons"
-                 :remote-prefix "DEVICONS"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
-   :fontawesome {:name "fontawesome"
-                 :local-prefix "fontawesome"
-                 :remote-prefix "FONTAWESOME"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
 
 (def element->method
   "Map from element type to PlantUML method."
@@ -298,15 +218,14 @@
 ;; Imports
 ;;
 
-(comment
-  ; include icon/sprite sets, if icons are used, e.g. 
-  "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
-  "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
-  "!include DEVICONS/angular.puml
-   !include DEVICONS/java.puml
-   !include DEVICONS/msql_server.puml
-   !include FONTAWESOME/users.puml
-   ")
+(defn icons-for-diagram
+  ""
+  [diagram]
+  (->> diagram
+       (dia/elements-to-render)
+       (dia/collect-technologies)
+       (filter icons/icon?)
+       (map #(icons/icon-map %))))
 
 (defn local-import
   "Renders a local import."
@@ -322,20 +241,30 @@
   ([prefix path]
    (str "!includeurl " (str/upper-case prefix) "/" path)))
 
+(defn render-icon-import
+  "Renders the import for an icon."
+  [diagram icon]
+  (if (get-in diagram [:spec :plantuml :local-imports])
+    (local-import (str (:lib icon) "/" (:path icon) "/" (:name icon)))
+    (remote-import (str (:lib icon) "/" (:path icon) "/" (:name icon)))))
+
 (defn render-iconlib-import
   "Renders the imports for an icon/sprite library."
   [diagram icon-lib]
   (if (get-in diagram [:spec :plantuml :local-imports])
-    [(map (:local-imports (icon-libraries icon-lib)))]
+    [(map (partial local-import (:local-prefix icon-lib))
+          (:local-imports (icons/icon-libraries icon-lib)))]
     [(str "!define " (:remote-prefix icon-lib) (:remote-url icon-lib))
      (map (partial remote-import (:remote-prefix icon-lib))
-          (:remote-imports (icon-libraries icon-lib)))]))
+          (:remote-imports (icons/icon-libraries icon-lib)))]))
 
-(defn render-iconlib-imports
+(defn render-icon-imports
   "Renders the imports for icon/sprite libraries."
   [diagram]
-  (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])]
-    (map (partial render-iconlib-import diagram) icon-libs)))
+  (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])
+        icons (icons-for-diagram diagram)]
+    [(map (partial render-iconlib-import diagram) icon-libs)
+     (map (partial render-icon-import diagram) icons)]))
 
 (defn render-imports
   "Renders the imports for the diagram."
@@ -426,6 +355,7 @@
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id diagram)))
               (render-imports diagram)
+              (render-icon-imports diagram)
               (render-layout diagram)
               (render-title diagram)
               (map #(render-element diagram 0 %) children)

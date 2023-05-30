@@ -88,7 +88,7 @@
   )
 
 (defn collect-technologies
-  "Returns a map of id to element for the elements of the coll."
+  "Returns the set of technologies for the elements of the coll."
   ([coll]
    (collect-technologies #{} coll))
   ([m coll]

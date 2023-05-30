@@ -5,7 +5,44 @@
             [org.soulspace.clj.java.file :as file]
             ))
 
-(def azure-icons
+(comment
+  ; include icon/sprite sets, if icons are used, e.g. 
+  "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
+  "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
+  "!include DEVICONS/angular.puml
+   !include DEVICONS/java.puml
+   !include DEVICONS/msql_server.puml
+   !include FONTAWESOME/users.puml
+   ")
+
+(def icon-libraries
+  "Definition of icon libraries."
+  {:azure {:name "azure"
+           :local-prefix "azure"
+           :local-imports ["AzureCommon"
+                           "AzureC4Integration"]
+           :remote-prefix "AZURE"
+           :remote-url "https://raw.githubusercontent.com/azure/"
+           :remote-imports ["AzureCommon"
+                            "AzureC4Integration"]}
+   :aws {:name "awslib"
+         :local-prefix "awslib"
+         :local-imports ["AWSCommon"
+                         "AWSC4Integration"]
+         :remote-prefix "AWS"
+         :remote-url "https://raw.githubusercontent.com/awslib/"
+         :remote-imports ["AWSCommon"
+                          "AWSC4Integration"]}
+   :devicons    {:name "devicons"
+                 :local-prefix "devicons"
+                 :remote-prefix "DEVICONS"
+                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :fontawesome {:name "fontawesome"
+                 :local-prefix "fontawesome"
+                 :remote-prefix "FONTAWESOME"
+                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
+
+(def icon-map
   {"Azure Batch AI"                    {:lib "azure"
                                         :path "AIMachineLearning"
                                         :name "AzureBatchAI"}
@@ -184,6 +221,11 @@
                                         :path "Storage"
                                         :name "AzureStorage"}})
 
+(defn icon?
+  "Returns true if the icon-map contains an icon for the given technology."
+  [tech]
+  (icon-map tech))
+
 (defn plantuml-imports
   "Returns a collection of vectors of all the PlantUML '*.puml' files in
    the given directory `dir` containing the path relative to the `dir`
@@ -202,9 +244,24 @@
   (with-open [wrt (io/writer file)]
     (csv/write-csv wrt coll)))
 
+(defn icon-entry
+  "Prepares icon entry info from collection PlantUML imports."
+  [x]
+  (let [path-entries (str/split (first x) #"/")
+        icon-lib (first path-entries)
+        icon-path (str/join "/" (rest path-entries))
+        icon-name (last x)
+        icon-key (last x)]
+    [icon-key {:lib icon-lib
+               :path icon-path
+               :name icon-name}]))
+
 (comment
   (count "/home/soulman/devel/tmp/plantuml-stdlib")
   (write-csv "dev/stdlib.csv" (into [] (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib")))
-  
-  (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
+
+  (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")) 
+
+  (map icon-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
+
   )
