@@ -225,7 +225,7 @@
        (dia/elements-to-render)
        (dia/collect-technologies)
        (filter sprites/sprite?)
-       (map #(sprites/sprite-map %))))
+       (map #(sprites/tech->sprite %))))
 
 (defn local-import
   "Renders a local import."

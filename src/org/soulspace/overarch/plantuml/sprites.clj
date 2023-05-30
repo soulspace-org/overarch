@@ -41,7 +41,8 @@
                  :remote-prefix "FONTAWESOME"
                  :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
 
-(def sprite-map
+(def tech->sprite
+  "Map of technology names to sprite infos."
   {"Azure Batch AI"                    {:lib "azure"
                                         :path "AIMachineLearning"
                                         :name "AzureBatchAI"}
@@ -223,7 +224,7 @@
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
   [tech]
-  (sprite-map tech))
+  (tech->sprite tech))
 
 (defn plantuml-imports
   "Returns a collection of vectors of all the PlantUML '*.puml' files in
