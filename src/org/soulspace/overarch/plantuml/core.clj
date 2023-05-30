@@ -7,7 +7,7 @@
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.diagram :as dia]
             [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.plantuml.icons :as icons]))
+            [org.soulspace.overarch.plantuml.sprites :as sprites]))
 
 ;;;;
 ;;;; PlantUML rendering
@@ -224,8 +224,8 @@
   (->> diagram
        (dia/elements-to-render)
        (dia/collect-technologies)
-       (filter icons/icon?)
-       (map #(icons/icon-map %))))
+       (filter sprites/sprite?)
+       (map #(sprites/sprite-map %))))
 
 (defn local-import
   "Renders a local import."
@@ -253,10 +253,10 @@
   [diagram icon-lib]
   (if (get-in diagram [:spec :plantuml :local-imports])
     [(map (partial local-import (:local-prefix icon-lib))
-          (:local-imports (icons/icon-libraries icon-lib)))]
+          (:local-imports (sprites/sprite-libraries icon-lib)))]
     [(str "!define " (:remote-prefix icon-lib) (:remote-url icon-lib))
      (map (partial remote-import (:remote-prefix icon-lib))
-          (:remote-imports (icons/icon-libraries icon-lib)))]))
+          (:remote-imports (sprites/sprite-libraries icon-lib)))]))
 
 (defn render-icon-imports
   "Renders the imports for icon/sprite libraries."

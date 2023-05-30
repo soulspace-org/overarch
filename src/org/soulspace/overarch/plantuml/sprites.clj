@@ -1,9 +1,8 @@
-(ns org.soulspace.overarch.plantuml.icons
+(ns org.soulspace.overarch.plantuml.sprites
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [charred.api :as csv]
-            [org.soulspace.clj.java.file :as file]
-            ))
+            [org.soulspace.clj.java.file :as file]))
 
 (comment
   ; include icon/sprite sets, if icons are used, e.g. 
@@ -15,8 +14,8 @@
    !include FONTAWESOME/users.puml
    ")
 
-(def icon-libraries
-  "Definition of icon libraries."
+(def sprite-libraries
+  "Definition of sprite libraries."
   {:azure {:name "azure"
            :local-prefix "azure"
            :local-imports ["AzureCommon"
@@ -42,7 +41,7 @@
                  :remote-prefix "FONTAWESOME"
                  :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
 
-(def icon-map
+(def sprite-map
   {"Azure Batch AI"                    {:lib "azure"
                                         :path "AIMachineLearning"
                                         :name "AzureBatchAI"}
@@ -221,10 +220,10 @@
                                         :path "Storage"
                                         :name "AzureStorage"}})
 
-(defn icon?
+(defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
   [tech]
-  (icon-map tech))
+  (sprite-map tech))
 
 (defn plantuml-imports
   "Returns a collection of vectors of all the PlantUML '*.puml' files in
@@ -237,24 +236,23 @@
        (map (juxt file/parent-path file/base-name))
        ;(map file/base-name)
        ))
-
 (defn write-csv
   "Writes the collection `coll` in CSV format to `file`."
   [file coll]
   (with-open [wrt (io/writer file)]
     (csv/write-csv wrt coll)))
 
-(defn icon-entry
-  "Prepares icon entry info from collection PlantUML imports."
+(defn sprite-entry
+  "Prepares sprite entry info from collection PlantUML imports."
   [x]
   (let [path-entries (str/split (first x) #"/")
-        icon-lib (first path-entries)
-        icon-path (str/join "/" (rest path-entries))
-        icon-name (last x)
-        icon-key (last x)]
-    [icon-key {:lib icon-lib
-               :path icon-path
-               :name icon-name}]))
+        sprite-lib (first path-entries)
+        sprite-path (str/join "/" (rest path-entries))
+        sprite-name (last x)
+        sprite-key (last x)]
+    [sprite-key {:lib sprite-lib
+                 :path sprite-path
+                 :name sprite-name}]))
 
 (comment
   (count "/home/soulman/devel/tmp/plantuml-stdlib")
@@ -262,6 +260,6 @@
 
   (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")) 
 
-  (map icon-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
+  (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
 
   )
