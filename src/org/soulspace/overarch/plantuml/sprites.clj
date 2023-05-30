@@ -121,6 +121,15 @@
    "Azure"                             {:lib "azure"
                                         :path "General"
                                         :name "Azure"}
+   "App Configuration"                 {:lib "azure"
+                                        :path "Management"
+                                        :name "AppConfiguration"}
+   "Azure Arc"                         {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureArc"}
+   "Azure Arc Machine"                 {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureArcMachine"}
    "Azure Automation"                  {:lib "azure"
                                         :path "Management"
                                         :name "AzureAutomation"}
@@ -130,15 +139,48 @@
    "Azure Blue Prints"                 {:lib "azure"
                                         :path "Management"
                                         :name "AzureBluePrints"}
-   "Azure Managed Applications"        {:lib "azure"
+   "Azure Compliance"                  {:lib "azure"
                                         :path "Management"
-                                        :name "AzureManagedApplications"}
+                                        :name "AzureCompliance"}
+   "Azure Cost Alert"                  {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureCostAlert"}
+   "Azure Cost Analysis"               {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureCostAnalysis"}
+   "Azure Cost Budget"                 {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureCostBudget"}
+   "Azure Cost Management"             {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureCostManagement"}
+   "Azure Cost Management And Billing" {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureCostManagementAndBilling"}
+   "Azure Geo Recovery"                {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureGeoRecovery"}
+   "Azure Lighthouse"                  {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureLighthose"}
    "Azure Log Analytics"               {:lib "azure"
                                         :path "Management"
                                         :name "AzureLogAnalytics"}
+   "Azure Managed Application Center"  {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureManagedApplicationCenter"}
+   "Azure Managed Applications"        {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureManagedApplications"}
    "Azure Management Group"            {:lib "azure"
                                         :path "Management"
                                         :name "AzureManagementGroups"}
+   "Azure Management Portal"           {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureManagementPortal"}
+   "Azure Metrics"                     {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureMetrics"}
    "Azure Monitor"                     {:lib "azure"
                                         :path "Management"
                                         :name "AzureMonitor"}
