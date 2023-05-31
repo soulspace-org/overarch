@@ -4,7 +4,7 @@
 !include <azure/AzureC4Integration>
 
 '!include <azure/AIMachineLearning/all>
-'!include <azure/Analytics/all>
+!include <azure/Analytics/all>
 ''!include <azure/Blockchain/all>
 '!include <azure/Compute/all>
 '!include <azure/Containers/all>
@@ -16,7 +16,7 @@
 '!include <azure/Integration/all>
 '!include <azure/InternetOfThings/all>
 ''!include <azure/Intune/all>
-!include <azure/Management/all>
+'!include <azure/Management/all>
 '!include <azure/Media/all>
 ''!include <azure/Migrate/all>
 '!include <azure/Mobile/all>

@@ -79,30 +79,72 @@
    "Azure Event Hub"                   {:lib "azure"
                                         :path "Analytics"
                                         :name "AzureEventHub"}
-   "Azure HDInsight"                   {:lib "azure"
+   "Azure Event Hub Cluster"           {:lib "azure"
                                         :path "Analytics"
-                                        :name "AzureHDInsight"}
+                                        :name "AzureEventHubCluster"}
+   "Azure HDInsight Cluster"           {:lib "azure"
+                                        :path "Analytics"
+                                        :name "AzureHDInsightCluster"}
+   "Azure Log Analytics Workspace"     {:lib "azure"
+                                        :path "Analytics"
+                                        :name "AzureLogAnalyticsWorkspace"}
+   "Azure PowerBI Embedded"            {:lib "azure"
+                                        :path "Analytics"
+                                        :name "AzurePowerBIEmbedded"}
    "Azure Stream Analytics"            {:lib "azure"
                                         :path "Analytics"
                                         :name "AzureStreamAnalytics"}
+   "PowerBI"                           {:lib "azure"
+                                        :path "Analytics"
+                                        :name "PowerBI"}
    "Azure App Service"                 {:lib "azure"
                                         :path "Compute"
                                         :name "AzureAppService"}
+   "Azure App Service Plan"            {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureAppServicePlan"}
+   "Azure App Service Plan Linux"      {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureAppServicePlanLinux"}
+   "Azure Availability Set"            {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureAvailabilitySet"}
    "Azure Batch"                       {:lib "azure"
                                         :path "Compute"
                                         :name "AzureBatch"}
+   "Azure Batch Account"               {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureBatchAccount"}
+   "Azure Cloud Service"               {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureCloudServices"}
+   "Azure Container Service"           {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureContainerService"}
    "Azure Function"                    {:lib "azure"
                                         :path "Compute"
                                         :name "AzureFunction"}
+   "Azure Mesh Application"            {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureMeshApplication"}
+   "Azure Server Farm"                 {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureServerFarm"}
    "Azure Service Fabric"              {:lib "azure"
                                         :path "Compute"
                                         :name "AzureServiceFabric"}
+   "Azure Spring Cloud"                {:lib "azure"
+                                        :path "Compute"
+                                        :name "AzureSpringCloud"}
    "Azure Virtual Machine"             {:lib "azure"
                                         :path "Compute"
                                         :name "AzureVirtualMachine"}
    "Azure Virtual Machine Scale Set"   {:lib "azure"
                                         :path "Compute"
                                         :name "AzureVirtualMachineScaleSet"}
+   "Azure Container App"               {:lib "azure"
+                                        :path "Containers"
+                                        :name "AzureContainerApp"}
    "Azure Container Instance"          {:lib "azure"
                                         :path "Containers"
                                         :name "AzureContainerInstance"}
@@ -112,12 +154,9 @@
    "Azure Kubernetes Service"          {:lib "azure"
                                         :path "Containers"
                                         :name "AzureKubernetesService"}
-   "Azure Service Fabric Mesh"         {:lib "azure"
+   "Azure Service Environment"         {:lib "azure"
                                         :path "Containers"
-                                        :name "AzureServiceFabricMesh"}
-   "Azure Web App For Containers"      {:lib "azure"
-                                        :path "Containers"
-                                        :name "AzureWebAppForContainers"}
+                                        :name "AzureServiceEnvironment"}
    "Azure"                             {:lib "azure"
                                         :path "General"
                                         :name "Azure"}
@@ -199,9 +238,15 @@
    "Azure Subscription"                {:lib "azure"
                                         :path "Management"
                                         :name "AzureSubscription"}
+   "Azure Tag"                         {:lib "azure"
+                                        :path "Management"
+                                        :name "AzureTag"}
    "Azure Application Gateway"         {:lib "azure"
                                         :path "Networking"
                                         :name "AzureApplicationGateway"}
+   "Azure Bastion"                     {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureBastion"}
    "Azure DDoS Protection"             {:lib "azure"
                                         :path "Networking"
                                         :name "AzureAzureDDoSProtection"}
@@ -211,12 +256,39 @@
    "Azure Express Route"               {:lib "azure"
                                         :path "Networking"
                                         :name "AzureExpressRoute"}
+   "Azure Firewall"                    {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureFirewall"}
    "Azure Front Door Service"          {:lib "azure"
                                         :path "Networking"
                                         :name "AzureFrontDoorService"}
+   "Azure IPAdress Space"              {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureIPAdressSpace"}
    "Azure Load Balancer"               {:lib "azure"
                                         :path "Networking"
                                         :name "AzureLoadBalancer"}
+   "Azure NSG"                         {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureNSG"}
+   "Azure Network Interface"           {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureNetworkInterface"}
+   "Azure Private Link"                {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzurePrivateLink"}
+   "Azure Private Link Hub"            {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzurePrivateLinkHub"}
+   "Azure Private Link Service"        {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzurePrivateLinkService"}
+   "Azure Public IP Address"           {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzurePublicIPAddress"}
+   "Azure Subnet"                      {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureSubnet"}
    "Azure Traffic Manager"             {:lib "azure"
                                         :path "Networking"
                                         :name "AzureTrafficManager"}
@@ -226,6 +298,9 @@
    "Azure Virtual Network"             {:lib "azure"
                                         :path "Networking"
                                         :name "AzureVirtualNetwork"}
+   "Azure Virtual Network Peering"     {:lib "azure"
+                                        :path "Networking"
+                                        :name "AzureVirtualNetworkPeering"}
    "Azure Virtual WAN"                 {:lib "azure"
                                         :path "Networking"
                                         :name "AzureVirtualWAN"}
