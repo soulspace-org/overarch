@@ -21,26 +21,44 @@ The model and diagram descriptions of the C4 model banking example can be found 
  * [diagrams.edn](/models/banking/diagrams.edn)
 
 
-Model Elements
---------------
+Models
+------
+
+THe model contains all the elements relevant in the architecture of the system.
+Models are specified in the Extensible Data Notation (EDN).
+EDN is a data notation like JSON but with richer data type support.
+Unlike JSON, EDN also supports sets in addition to lists and maps.
+EDN also supports more primitive types like UUIDs, instants of time, symbols and keywords.
+
+Especially keywords are useful as keys in a map or as identifiers.
+Keywords start with a colon (':'), have an optional namespace followed by a slash ('/')
+and a mandatory name, e.g. :namespace/name.
+
+The top level element in a model EDN file is a set. It contains the top level model elements.
+Model elements are denoted as maps in the EDN file.
+All model elements have at least two attributes, :el for the type of the element
+and :id for the identifier. Ids should be namespaced keywords, so that different models
+can be composed without collisions of the identifiers.
+
+
+### Model Elements
 
 #### Persons
 Users are internal or external actors of the system.
 
 #### Systems
-
-Systems can contain containers.
+A System is the top level element of the C4 model an can contain a set of containers.
 
 #### Containers
-A container is a part of the system.
-Containers can contain components.
+A container is a part of a system. It represents a process of the system (e.g. an executable or a service)
+Containers are composed of a set of components.
 
 #### Components
 A component is unit of software, which lives in a container of the system.
 
 #### Nodes
-A node is a unit in a deployment view. Nodes represent parts of the infrastructure in which the containers of the system are deployed. 
-They can contain other nodes, (external) sytems and containers.
+A node is a unit in a deployment view. Nodes represent parts of the infrastructure in which
+the containers of the system are deployed. They can contain a set of other nodes or containers.
 
 #### Relations
 Relations describe the interacions of the parts of a view.
@@ -57,7 +75,7 @@ Example (exerpt from the banking model containing context and container level el
   :id :banking/internet-banking-system
   :name "Internet Banking System"
   :desc "Allows customers to view information about their bank accounts and make payments."
-  :ct [{:el :container
+  :ct #{{:el :container
         :id :banking/web-app
         :name "Web Application"
         :desc "Deliveres the static content and the internet banking single page application."
@@ -82,7 +100,7 @@ Example (exerpt from the banking model containing context and container level el
         :id :banking/database
         :name "Database"
         :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-        :tech "Datomic"}]}
+        :tech "Datomic"}}}
  {:el :system
   :id :banking/mainframe-banking-system
   :external true
@@ -94,7 +112,7 @@ Example (exerpt from the banking model containing context and container level el
   :name "E-mail System"
   :desc "The internal Microsoft Exchange email system."}
 
- ; Context diagram relations 
+ ; Context level relations 
  {:el :rel
   :id :banking/personal-customer-uses-internet-banking-system
   :from :banking/personal-customer
