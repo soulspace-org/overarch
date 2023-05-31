@@ -27,7 +27,7 @@
            :remote-imports ["AzureCommon"
                             "AzureC4Integration"]}
    :aws {:name "awslib"
-         :local-prefix "awslib"
+         :local-prefix "awslib14"
          :local-imports ["AWSCommon"
                          "AWSC4Integration"]
          :remote-prefix "AWS"

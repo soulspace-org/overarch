@@ -1,0 +1,858 @@
+{"EKS Anywhere"                                            {:lib "awslib14", :path "Containers", :name "EKSAnywhere"}
+ "Elastic Container Service ECS Anywhere"                  {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceECSAnywhere"}
+"Containers"                                               {:lib "awslib14", :path "Containers", :name "Containers"}
+"EKS Cloud"                                                {:lib "awslib14", :path "Containers", :name "EKSCloud"}
+"Elastic Container Service Container1"                     {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceContainer1"}
+"EKS Distro"                                               {:lib "awslib14", :path "Containers", :name "EKSDistro"}
+"Elastic Container Service"                                {:lib "awslib14", :path "Containers", :name "ElasticContainerService"}
+"Elastic Container Service Container2"                     {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceContainer2"}
+"Elastic Kubernetes Service"                               {:lib "awslib14", :path "Containers", :name "ElasticKubernetesService"}
+"Elastic Container Service Copilot CLI"                    {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceCopilotCLI"}
+"Elastic Container Registry"                               {:lib "awslib14", :path "Containers", :name "ElasticContainerRegistry"}
+"Elastic Container Service Container3"                     {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceContainer3"}
+"Fargate"                                                  {:lib "awslib14", :path "Containers", :name "Fargate"}
+"Elastic Container Registry Registry"                      {:lib "awslib14", :path "Containers", :name "ElasticContainerRegistryRegistry"}
+"Red Hat Open Shift"                                       {:lib "awslib14", :path "Containers", :name "RedHatOpenShift"}
+"Elastic Container Service Service"                        {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceService"}
+"ECS Anywhere"                                             {:lib "awslib14", :path "Containers", :name "ECSAnywhere"}
+"Elastic Container Registry Image"                         {:lib "awslib14", :path "Containers", :name "ElasticContainerRegistryImage"}
+"Elastic Container Service Task"                           {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceTask"}
+"Quantum Technologies"                                     {:lib "awslib14", :path "QuantumTechnologies", :name "QuantumTechnologies"}
+"Braket Tensor Network"                                    {:lib "awslib14", :path "QuantumTechnologies", :name "BraketTensorNetwork"}
+"Braket Embedded Simulator"                                {:lib "awslib14", :path "QuantumTechnologies", :name "BraketEmbeddedSimulator"}
+"Braket"                                                   {:lib "awslib14", :path "QuantumTechnologies", :name "Braket"}
+"Braket State Vector"                                      {:lib "awslib14", :path "QuantumTechnologies", :name "BraketStateVector"}
+"Braket Simulator1"                                        {:lib "awslib14", :path "QuantumTechnologies", :name "BraketSimulator1"}
+"Braket Noise Simulator"                                   {:lib "awslib14", :path "QuantumTechnologies", :name "BraketNoiseSimulator"}
+"Braket Chip"                                              {:lib "awslib14", :path "QuantumTechnologies", :name "BraketChip"}
+"Braket Chandelier"                                        {:lib "awslib14", :path "QuantumTechnologies", :name "BraketChandelier"}
+"Braket QPU"                                               {:lib "awslib14", :path "QuantumTechnologies", :name "BraketQPU"}
+"Braket Simulator"                                         {:lib "awslib14", :path "QuantumTechnologies", :name "BraketSimulator"}
+"Braket Simulator2"                                        {:lib "awslib14", :path "QuantumTechnologies", :name "BraketSimulator2"}
+"Braket Simulator4"                                        {:lib "awslib14", :path "QuantumTechnologies", :name "BraketSimulator4"}
+"Braket Managed Simulator"                                 {:lib "awslib14", :path "QuantumTechnologies", :name "BraketManagedSimulator"}
+"Braket Simulator3"                                        {:lib "awslib14", :path "QuantumTechnologies", :name "BraketSimulator3"}
+"Work Link"                                                {:lib "awslib14", :path "EndUserComputing", :name "WorkLink"}
+"End User Computing"                                       {:lib "awslib14", :path "EndUserComputing", :name "EndUserComputing"}
+"Work Spaces"                                              {:lib "awslib14", :path "EndUserComputing", :name "WorkSpaces"}
+"App Stream"                                               {:lib "awslib14", :path "EndUserComputing", :name "AppStream"}
+"Work Spaces Web"                                          {:lib "awslib14", :path "EndUserComputing", :name "WorkSpacesWeb"}
+"DynamoDB Attributes"                                      {:lib "awslib14", :path "Database", :name "DynamoDBAttributes"}
+"Aurora Oracle Instance Alternate"                         {:lib "awslib14", :path "Database", :name "AuroraOracleInstanceAlternate"}
+"Database Migration Service Database Migration Workflow Job" {:lib "awslib14", :path "Database", :name "DatabaseMigrationServiceDatabasemigrationworkflowjob"}
+"DynamoDB Stream"                                          {:lib "awslib14", :path "Database", :name "DynamoDBStream"}
+"Database"                                                 {:lib "awslib14", :path "Database", :name "Database"}
+"Keyspaces"                                                {:lib "awslib14", :path "Database", :name "Keyspaces"}
+"Timestream"                                               {:lib "awslib14", :path "Database", :name "Timestream"}
+"Aurora PostgreSQL Instance"                               {:lib "awslib14", :path "Database", :name "AuroraPostgreSQLInstance"}
+"DynamoDB"                                                 {:lib "awslib14", :path "Database", :name "DynamoDB"}
+"DynamoDB Standard Access Table Class"                     {:lib "awslib14", :path "Database", :name "DynamoDBStandardAccessTableClass"}
+"Aurora MariaDB Instance Alternate"                        {:lib "awslib14", :path "Database", :name "AuroraMariaDBInstanceAlternate"}
+"Aurora"                                                   {:lib "awslib14", :path "Database", :name "Aurora"}
+"DynamoDB Amazon DynamoDB Accelerator"                     {:lib "awslib14", :path "Database", :name "DynamoDBAmazonDynamoDBAccelerator"}
+"Aurora Amazon RDS Instance"                               {:lib "awslib14", :path "Database", :name "AuroraAmazonRDSInstance"}
+"Aurora Postgre SQL Instance Alternate"                    {:lib "awslib14", :path "Database", :name "AuroraPostgreSQLInstanceAlternate"}
+"ElastiCache ElastiCache for Redis"                        {:lib "awslib14", :path "Database", :name "ElastiCacheElastiCacheforRedis"}
+"Aurora Amazon RDS Instance Aternate"                      {:lib "awslib14", :path "Database", :name "AuroraAmazonRDSInstanceAternate"}
+"DynamoDB Table"                                           {:lib "awslib14", :path "Database", :name "DynamoDBTable"}
+"RDS"                                                      {:lib "awslib14", :path "Database", :name "RDS"}
+"Elasti Cache Cache Node"                                  {:lib "awslib14", :path "Database", :name "ElastiCacheCacheNode"}
+"Elasti Cache"                                             {:lib "awslib14", :path "Database", :name "ElastiCache"}
+"Quantum Ledger Database2"                                 {:lib "awslib14", :path "Database", :name "QuantumLedgerDatabase2"}
+"RDS Multi AZ"                                             {:lib "awslib14", :path "Database", :name "RDSMultiAZ"}
+"Aurora MySQL Instance"                                    {:lib "awslib14", :path "Database", :name "AuroraMySQLInstance"}
+"DynamoDB Item"                                            {:lib "awslib14", :path "Database", :name "DynamoDBItem"}
+"DocumentDB"                                               {:lib "awslib14", :path "Database", :name "DocumentDB"}
+"RDS Proxy Instance Alternate"                             {:lib "awslib14", :path "Database", :name "RDSProxyInstanceAlternate"}
+"Aurora PIOPS Instance"                                    {:lib "awslib14", :path "Database", :name "AuroraPIOPSInstance"}
+"Aurora MySQL Instance Alternate"                          {:lib "awslib14", :path "Database", :name "AuroraMySQLInstanceAlternate"}
+"DynamoDB Attribute"                                       {:lib "awslib14", :path "Database", :name "DynamoDBAttribute"}
+"Aurora Oracle Instance"                                   {:lib "awslib14", :path "Database", :name "AuroraOracleInstance"}
+"RDS on VMware"                                            {:lib "awslib14", :path "Database", :name "RDSonVMware"}
+"Aurora SQL Server Instance Alternate"                     {:lib "awslib14", :path "Database", :name "AuroraSQLServerInstanceAlternate"}
+"RDS Multi AZDB Cluster"                                   {:lib "awslib14", :path "Database", :name "RDSMultiAZDBCluster"}
+"Aurora Instance"                                          {:lib "awslib14", :path "Database", :name "AuroraInstance"}
+"RDS Proxy Instance"                                       {:lib "awslib14", :path "Database", :name "RDSProxyInstance"}
+"Database Migration Service"                               {:lib "awslib14", :path "Database", :name "DatabaseMigrationService"}
+"Aurora MariaDB Instance"                                  {:lib "awslib14", :path "Database", :name "AuroraMariaDBInstance"}
+"Aurora Amazon Aurora Instancealternate"                   {:lib "awslib14", :path "Database", :name "AuroraAmazonAuroraInstancealternate"}
+"DynamoDB Items"                                           {:lib "awslib14", :path "Database", :name "DynamoDBItems"}
+"MemoryDB for Redis"                                       {:lib "awslib14", :path "Database", :name "MemoryDBforRedis"}
+"Aurora SQL Server Instance"                               {:lib "awslib14", :path "Database", :name "AuroraSQLServerInstance"}
+"DynamoDB Standard Infrequent Access Table Class"          {:lib "awslib14", :path "Database", :name "DynamoDBStandardInfrequentAccessTableClass"}
+"ElastiCache ElastiCache for Memcached"                    {:lib "awslib14", :path "Database", :name "ElastiCacheElastiCacheforMemcached"}
+"DynamoDB Global Secondary Index"                          {:lib "awslib14", :path "Database", :name "DynamoDBGlobalsecondaryindex"}
+"Neptune"                                                  {:lib "awslib14", :path "Database", :name "Neptune"}
+"EC2 P3 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2P3Instance"}
+"EC2 X2gd Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2X2gdInstance"}
+"EC2 D L1 Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2DL1Instance"}
+"Thinkbox Stoke"                                           {:lib "awslib14", :path "Compute", :name "ThinkboxStoke"}
+"EC2 C6i Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C6iInstance"}
+"EC2 C5a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C5aInstance"}
+"Serverless Application Repository"                        {:lib "awslib14", :path "Compute", :name "ServerlessApplicationRepository"}
+"EC2 R5 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2R5Instance"}
+"Application Auto Scaling"                                 {:lib "awslib14", :path "Compute", :name "ApplicationAutoScaling"}
+"EC2 Hmi Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2HMIInstance"}
+"Thinkbox X Mesh"                                          {:lib "awslib14", :path "Compute", :name "ThinkboxXMesh"}
+"EC2 D3en Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2D3enInstance"}
+"EC2 G4dn Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2G4dnInstance"}
+"EC2 G4ad Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2G4adInstance"}
+"EC2 H1 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2H1Instance"}
+"EC2 R5d Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R5dInstance"}
+"EC2 C5d Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C5dInstance"}
+"EC2 AWS Inferentia"                                       {:lib "awslib14", :path "Compute", :name "EC2AWSInferentia"}
+"EC2 F1 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2F1Instance"}
+"EC2 Hpc6a Instance"                                       {:lib "awslib14", :path "Compute", :name "EC2Hpc6aInstance"}
+"EC2 C6gn Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2C6gnInstance"}
+"EC2 M6gd Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2M6gdInstance"}
+"EC2 M4 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2M4Instance"}
+"EC2 V T1 Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2VT1Instance"}
+"EC2 M5a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M5aInstance"}
+"Nice Engin Frame"                                         {:lib "awslib14", :path "Compute", :name "NICEEnginFrame"}
+"EC2 I3en Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2I3enInstance"}
+"App Runner"                                               {:lib "awslib14", :path "Compute", :name "AppRunner"}
+"EC2 AMI"                                                  {:lib "awslib14", :path "Compute", :name "EC2AMI"}
+"Lightsail"                                                {:lib "awslib14", :path "Compute", :name "Lightsail"}
+"EC2 D3 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2D3Instance"}
+"Compute Optimizer"                                        {:lib "awslib14", :path "Compute", :name "ComputeOptimizer"}
+"Outposts Servers"                                         {:lib "awslib14", :path "Compute", :name "Outpostsservers"}
+"EC2 X1 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2X1Instance"}
+"EC2 Im4gn Instance"                                       {:lib "awslib14", :path "Compute", :name "EC2Im4gnInstance"}
+"EC2 Spot Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2SpotInstance"}
+"Lambda"                                                   {:lib "awslib14", :path "Compute", :name "Lambda"}
+"EC2 C5n Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C5nInstance"}
+"EC2 R5n Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R5nInstance"}
+"EC2 Aws Microservice Extractorfor Net"                    {:lib "awslib14", :path "Compute", :name "EC2AWSMicroserviceExtractorforNET"}
+"EC2 M5zn Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2M5znInstance"}
+"EC2 Trainium Instance"                                    {:lib "awslib14", :path "Compute", :name "EC2TrainiumInstance"}
+"EC2 P4d Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2P4dInstance"}
+"EC2 P3dn Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2P3dnInstance"}
+"EC2 R5gd Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2R5gdInstance"}
+"EC2 C5 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2C5Instance"}
+"Nitro Enclaves"                                           {:lib "awslib14", :path "Compute", :name "NitroEnclaves"}
+"Wavelength"                                               {:lib "awslib14", :path "Compute", :name "Wavelength"}
+"EC2 C7g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C7gInstance"}
+"Thinkbox Sequoia"                                         {:lib "awslib14", :path "Compute", :name "ThinkboxSequoia"}
+"Compute"                                                  {:lib "awslib14", :path "Compute", :name "Compute"}
+"EC2 Instances"                                            {:lib "awslib14", :path "Compute", :name "EC2Instances"}
+"Bottlerocket"                                             {:lib "awslib14", :path "Compute", :name "Bottlerocket"}
+"EC2 P4 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2P4Instance"}
+"EC2 D2 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2D2Instance"}
+"EC2 G3 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2G3Instance"}
+"NICED CV"                                                 {:lib "awslib14", :path "Compute", :name "NICEDCV"}
+"Thinkbox Krakatoa"                                        {:lib "awslib14", :path "Compute", :name "ThinkboxKrakatoa"}
+"EC2 T3a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2T3aInstance"}
+"Thinkbox Deadline"                                        {:lib "awslib14", :path "Compute", :name "ThinkboxDeadline"}
+"EC2 Instance"                                             {:lib "awslib14", :path "Compute", :name "EC2Instance"}
+"EC2 Elastic IP Address"                                   {:lib "awslib14", :path "Compute", :name "EC2ElasticIPAddress"}
+"EC2 X2idn Instance"                                       {:lib "awslib14", :path "Compute", :name "EC2X2idnInstance"}
+"EC2 I2 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2I2Instance"}
+"EC2 R5ad Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2R5adInstance"}
+"EC2 C5ad Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2C5adInstance"}
+"EC2 M6g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M6gInstance"}
+"Elastic Beanstalk Application"                            {:lib "awslib14", :path "Compute", :name "ElasticBeanstalkApplication"}
+"EC2 R6g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R6gInstance"}
+"EC2 X2iedn Instance"                                      {:lib "awslib14", :path "Compute", :name "EC2X2iednInstance"}
+"EC2 C4 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2C4Instance"}
+"EC2 Habana Gaudi Instance"                                {:lib "awslib14", :path "Compute", :name "EC2HabanaGaudiInstance"}
+"EC2"                                                      {:lib "awslib14", :path "Compute", :name "EC2"}
+"Genomics CLI"                                             {:lib "awslib14", :path "Compute", :name "GenomicsCLI"}
+"EC2 Mac Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2MacInstance"}
+"EC2 R6i Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R6iInstance"}
+"EC2 M5n Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M5nInstance"}
+"EC2 G5 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2G5Instance"}
+"Local Zones"                                              {:lib "awslib14", :path "Compute", :name "LocalZones"}
+"EC2 M5d Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M5dInstance"}
+"EC2 Is4gen Instance"                                      {:lib "awslib14", :path "Compute", :name "EC2Is4genInstance"}
+"EC2 C6gd Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2C6gdInstance"}
+"EC2 Instancewith Cloud Watch"                             {:lib "awslib14", :path "Compute", :name "EC2InstancewithCloudWatch"}
+"Outposts Rack"                                            {:lib "awslib14", :path "Compute", :name "Outpostsrack"}
+"EC2 R4 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2R4Instance"}
+"EC2 Image Builder"                                        {:lib "awslib14", :path "Compute", :name "EC2ImageBuilder"}
+"EC2 M6i Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M6iInstance"}
+"Elastic Fabric Adapter"                                   {:lib "awslib14", :path "Compute", :name "ElasticFabricAdapter"}
+"EC2 T3 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2T3Instance"}
+"EC2 R5a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R5aInstance"}
+"EC2 M1 Mac Instance"                                      {:lib "awslib14", :path "Compute", :name "EC2M1MacInstance"}
+"Parallel Cluster"                                         {:lib "awslib14", :path "Compute", :name "ParallelCluster"}
+"EC2 z1d Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2z1dInstance"}
+"Elastic Beanstalk Deployment"                             {:lib "awslib14", :path "Compute", :name "ElasticBeanstalkDeployment"}
+"Batch"                                                    {:lib "awslib14", :path "Compute", :name "Batch"}
+"EC2 A1 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2A1Instance"}
+"Lambda Lambda Function"                                   {:lib "awslib14", :path "Compute", :name "LambdaLambdaFunction"}
+"Elastic Beanstalk"                                        {:lib "awslib14", :path "Compute", :name "ElasticBeanstalk"}
+"EC2 M6a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2M6aInstance"}
+"Outposts Family"                                          {:lib "awslib14", :path "Compute", :name "Outpostsfamily"}
+"EC2 T2 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2T2Instance"}
+"EC2 DB Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2DBInstance"}
+"EC2 Auto Scaling"                                         {:lib "awslib14", :path "Compute", :name "EC2AutoScaling"}
+"EC2 Auto Scaling Resource"                                {:lib "awslib14", :path "Compute", :name "EC2AutoScalingResource"}
+"EC2 P4de Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2P4deInstance"}
+"EC2 Trn1 Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2Trn1Instance"}
+"EC2 M5 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2M5Instance"}
+"VMware Cloud on AWS"                                      {:lib "awslib14", :path "Compute", :name "VMwareCloudonAWS"}
+"EC2 Rescue"                                               {:lib "awslib14", :path "Compute", :name "EC2Rescue"}
+"EC2 G5g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2G5gInstance"}
+"EC2 Rdn Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2RdnInstance"}
+"EC2 X1e Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2X1eInstance"}
+"EC2 R5b Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2R5bInstance"}
+"EC2 T4g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2T4gInstance"}
+"EC2 I4i Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2I4iInstance"}
+"EC2 I3 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2I3Instance"}
+"Thinkbox Frost"                                           {:lib "awslib14", :path "Compute", :name "ThinkboxFrost"}
+"EC2 M5dn Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2M5dnInstance"}
+"EC2 C6g Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C6gInstance"}
+"EC2 C6a Instance"                                         {:lib "awslib14", :path "Compute", :name "EC2C6aInstance"}
+"EC2 Inf1 Instance"                                        {:lib "awslib14", :path "Compute", :name "EC2Inf1Instance"}
+"EC2 P2 Instance"                                          {:lib "awslib14", :path "Compute", :name "EC2P2Instance"}
+"EC2 X2iezn Instance"                                      {:lib "awslib14", :path "Compute", :name "EC2X2ieznInstance"}
+"Fargate2"                                                 {:lib "awslib14", :path "Compute", :name "Fargate2"}
+"Developer Tools"                                          {:lib "awslib14", :path "DeveloperTools", :name "DeveloperTools"}
+"Cloud Control Api"                                        {:lib "awslib14", :path "DeveloperTools", :name "CloudControlAPI"}
+"Command Line Interface"                                   {:lib "awslib14", :path "DeveloperTools", :name "CommandLineInterface"}
+"Cloud9"                                                   {:lib "awslib14", :path "DeveloperTools", :name "Cloud9"}
+"Corretto"                                                 {:lib "awslib14", :path "DeveloperTools", :name "Corretto"}
+"Code Artifact"                                            {:lib "awslib14", :path "DeveloperTools", :name "CodeArtifact"}
+"Cloud Development Kit"                                    {:lib "awslib14", :path "DeveloperTools", :name "CloudDevelopmentKit"}
+"X Ray"                                                    {:lib "awslib14", :path "DeveloperTools", :name "XRay"}
+"Code Commit"                                              {:lib "awslib14", :path "DeveloperTools", :name "CodeCommit"}
+"Tools and SDKs"                                           {:lib "awslib14", :path "DeveloperTools", :name "ToolsandSDKs"}
+"Cloud9 Cloud9"                                            {:lib "awslib14", :path "DeveloperTools", :name "Cloud9Cloud9"}
+"Cloud Shell"                                              {:lib "awslib14", :path "DeveloperTools", :name "CloudShell"}
+"Code Pipeline"                                            {:lib "awslib14", :path "DeveloperTools", :name "CodePipeline"}
+"Code Star"                                                {:lib "awslib14", :path "DeveloperTools", :name "CodeStar"}
+"Code Deploy"                                              {:lib "awslib14", :path "DeveloperTools", :name "CodeDeploy"}
+"Code Build"                                               {:lib "awslib14", :path "DeveloperTools", :name "CodeBuild"}
+"Elastic File System One Zone"                             {:lib "awslib14", :path "Storage", :name "ElasticFileSystemOneZone"}
+"S3 on Outposts"                                           {:lib "awslib14", :path "Storage", :name "S3onOutposts"}
+"Snowball Snowball Import Export"                          {:lib "awslib14", :path "Storage", :name "SnowballSnowballImportExport"}
+"Elastic File System Standard"                             {:lib "awslib14", :path "Storage", :name "ElasticFileSystemStandard"}
+"Backup Backup Vault"                                      {:lib "awslib14", :path "Storage", :name "BackupBackupVault"}
+"Backup Aws Backupsupportfor Amazon S3"                    {:lib "awslib14", :path "Storage", :name "BackupAWSBackupsupportforAmazonS3"}
+"Storage Gateway File Gateway"                             {:lib "awslib14", :path "Storage", :name "StorageGatewayFileGateway"}
+"Elastic Block Store Amazon Data Lifecycle Manager"        {:lib "awslib14", :path "Storage", :name "ElasticBlockStoreAmazonDataLifecycleManager"}
+"Backup Recovery Time Objective"                           {:lib "awslib14", :path "Storage", :name "BackupRecoveryTimeObjective"}
+"Elastic File System One Zone Infrequent Access"           {:lib "awslib14", :path "Storage", :name "ElasticFileSystemOneZoneInfrequentAccess"}
+"FSx for Lustre"                                           {:lib "awslib14", :path "Storage", :name "FSxforLustre"}
+"FSx for WFS"                                              {:lib "awslib14", :path "Storage", :name "FSxforWFS"}
+"Backup Aws Backupsupportfor Amazon F Sxfor Net App Ontap" {:lib "awslib14", :path "Storage", :name "BackupAWSBackupsupportforAmazonFSxforNetAppONTAP"}
+"Backup Gateway"                                           {:lib "awslib14", :path "Storage", :name "BackupGateway"}
+"Snowcone"                                                 {:lib "awslib14", :path "Storage", :name "Snowcone"}
+"Elastic Block Store Volume"                               {:lib "awslib14", :path "Storage", :name "ElasticBlockStoreVolume"}
+"Backup Database"                                          {:lib "awslib14", :path "Storage", :name "BackupDatabase"}
+"Simple Storage Service"                                   {:lib "awslib14", :path "Storage", :name "SimpleStorageService"}
+"Simple Storage Service S3 Intelligent Tiering"            {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3IntelligentTiering"}
+"Storage Gateway Volume Gateway"                           {:lib "awslib14", :path "Storage", :name "StorageGatewayVolumeGateway"}
+"Simple Storage Service S3 On Outposts"                    {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3OnOutposts"}
+"Backup AWS Backup support for VMware Workloads"           {:lib "awslib14", :path "Storage", :name "BackupAWSBackupsupportforVMwareWorkloads"}
+"Simple Storage Service S3 Replication Time Control"       {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3ReplicationTimeControl"}
+"Storage Gateway Noncached Volume"                         {:lib "awslib14", :path "Storage", :name "StorageGatewayNoncachedVolume"}
+"Simple Storage Service S3 Storage Lens"                   {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3StorageLens"}
+"Elastic Block Store Volumegp3"                            {:lib "awslib14", :path "Storage", :name "ElasticBlockStoreVolumegp3"}
+"Backup Backup Restore"                                    {:lib "awslib14", :path "Storage", :name "BackupBackupRestore"}
+"Simple Storage Service Glacier Vault"                     {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceGlacierVault"}
+"Simple Storage Service Object"                            {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceObject"}
+"Simple Storage Service Bucket With Objects"               {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceBucketWithObjects"}
+"Simple Storage Service Glacier"                           {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceGlacier"}
+"Simple Storage Service S3 Object Lambda"                  {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3ObjectLambda"}
+"Simple Storage Service S3 Glacier Flexible Retrieval"     {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3GlacierFlexibleRetrieval"}
+"Backup Virtual Machine Monitor"                           {:lib "awslib14", :path "Storage", :name "BackupVirtualMachineMonitor"}
+"Backup Backup Plan"                                       {:lib "awslib14", :path "Storage", :name "BackupBackupPlan"}
+"Storage Gateway Amazon FSx File Gateway"                  {:lib "awslib14", :path "Storage", :name "StorageGatewayAmazonFSxFileGateway"}
+"Elastic Block Store Multiple Volumes"                     {:lib "awslib14", :path "Storage", :name "ElasticBlockStoreMultipleVolumes"}
+"Backup Storage"                                           {:lib "awslib14", :path "Storage", :name "BackupStorage"}
+"FSx for Open ZFS"                                         {:lib "awslib14", :path "Storage", :name "FSxforOpenZFS"}
+"Simple Storage Service General Access Points"             {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceGeneralAccessPoints"}
+"Snowball"                                                 {:lib "awslib14", :path "Storage", :name "Snowball"}
+"Simple Storage Service Bucket"                            {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceBucket"}
+"Storage Gateway Amazon S3 File Gateway"                   {:lib "awslib14", :path "Storage", :name "StorageGatewayAmazonS3FileGateway"}
+"Snowmobile"                                               {:lib "awslib14", :path "Storage", :name "Snowmobile"}
+"Elastic File System Intelligent Tiering"                  {:lib "awslib14", :path "Storage", :name "ElasticFileSystemIntelligentTiering"}
+"Storage Gateway Virtual Tape Library"                     {:lib "awslib14", :path "Storage", :name "StorageGatewayVirtualTapeLibrary"}
+"FSx"                                                      {:lib "awslib14", :path "Storage", :name "FSx"}
+"Elastic File System Standard Infrequent Access"           {:lib "awslib14", :path "Storage", :name "ElasticFileSystemStandardInfrequentAccess"}
+"Simple Storage Service S3 Glacier Deep Archive"           {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3GlacierDeepArchive"}
+"Elastic Block Store Snapshot"                             {:lib "awslib14", :path "Storage", :name "ElasticBlockStoreSnapshot"}
+"Storage"                                                  {:lib "awslib14", :path "Storage", :name "Storage"}
+"Simple Storage Service S3 Glacier Instant Retrieval"      {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3GlacierInstantRetrieval"}
+"Simple Storage Service Glacier Archive"                   {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceGlacierArchive"}
+"Simple Storage Service S3 Standard IA"                    {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3StandardIA"}
+"Storage Gateway Tape Gateway"                             {:lib "awslib14", :path "Storage", :name "StorageGatewayTapeGateway"}
+"Simple Storage Service S3 One Zone IA"                    {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3OneZoneIA"}
+"Storage Gateway Cached Volume"                            {:lib "awslib14", :path "Storage", :name "StorageGatewayCachedVolume"}
+"Simple Storage Service S3 Replication"                    {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3Replication"}
+"Backup Virtual Machine"                                   {:lib "awslib14", :path "Storage", :name "BackupVirtualMachine"}
+"Backup Compliance Reporting"                              {:lib "awslib14", :path "Storage", :name "BackupComplianceReporting"}
+"Backup Recovery Point Objective"                          {:lib "awslib14", :path "Storage", :name "BackupRecoveryPointObjective"}
+"EFS"                                                      {:lib "awslib14", :path "Storage", :name "EFS"}
+"Simple Storage Service S3 Standard"                       {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3Standard"}
+"Backup"                                                   {:lib "awslib14", :path "Storage", :name "Backup"}
+"Snowball Edge"                                            {:lib "awslib14", :path "Storage", :name "SnowballEdge"}
+"Simple Storage Service VPC Access Points"                 {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceVPCAccessPoints"}
+"Cloud Endure Disaster Recovery"                           {:lib "awslib14", :path "Storage", :name "CloudEndureDisasterRecovery"}
+"Elastic File System File System"                          {:lib "awslib14", :path "Storage", :name "ElasticFileSystemFileSystem"}
+"FSx for Net App ONTAP"                                    {:lib "awslib14", :path "Storage", :name "FSxforNetAppONTAP"}
+"Backup Compute"                                           {:lib "awslib14", :path "Storage", :name "BackupCompute"}
+"Elastic Block Store"                                      {:lib "awslib14", :path "Storage", :name "ElasticBlockStore"}
+"Storage Gateway"                                          {:lib "awslib14", :path "Storage", :name "StorageGateway"}
+"Simple Storage Service S3 Object Lambda Access Points"    {:lib "awslib14", :path "Storage", :name "SimpleStorageServiceS3ObjectLambdaAccessPoints"}
+"Satellite"                                                {:lib "awslib14", :path "Satellite", :name "Satellite"}
+"Ground Station"                                           {:lib "awslib14", :path "Satellite", :name "GroundStation"}
+"Virtual Private Cloud Vpc"                                {:lib "awslib14", :path "GroupIcons", :name "VirtualPrivateCloudVPC"}
+"VPC Subnet Private"                                       {:lib "awslib14", :path "GroupIcons", :name "VPCSubnetPrivate"}
+"Corporate Data Center"                                    {:lib "awslib14", :path "GroupIcons", :name "CorporateDataCenter"}
+"Region"                                                   {:lib "awslib14", :path "GroupIcons", :name "Region"}
+"Step Function"                                            {:lib "awslib14", :path "GroupIcons", :name "StepFunction"}
+"Spot Fleet"                                               {:lib "awslib14", :path "GroupIcons", :name "SpotFleet"}
+"Cloud"                                                    {:lib "awslib14", :path "GroupIcons", :name "Cloud"}
+"Auto Scaling Group"                                       {:lib "awslib14", :path "GroupIcons", :name "AutoScalingGroup"}
+"Cloudalt"                                                 {:lib "awslib14", :path "GroupIcons", :name "Cloudalt"}
+"EC2 Instance Container"                                   {:lib "awslib14", :path "GroupIcons", :name "EC2InstanceContainer"}
+"VPC Subnet Public"                                        {:lib "awslib14", :path "GroupIcons", :name "VPCSubnetPublic"}
+"Elastic Beanstalk Container"                              {:lib "awslib14", :path "GroupIcons", :name "ElasticBeanstalkContainer"}
+"Server Contents"                                          {:lib "awslib14", :path "GroupIcons", :name "ServerContents"}
+"Public Subnet"                                            {:lib "awslib14", :path "Groups", :name "PublicSubnet"}
+"Generic Purple"                                           {:lib "awslib14", :path "Groups", :name "GenericPurple"}
+"AWS Cloud"                                                {:lib "awslib14", :path "Groups", :name "AWSCloud"}
+"Private Subnet"                                           {:lib "awslib14", :path "Groups", :name "PrivateSubnet"}
+;"Corporate Data Center"                                   {:lib "awslib14", :path "Groups", :name "CorporateDataCenter"}
+"Generic Red"                                              {:lib "awslib14", :path "Groups", :name "GenericRed"}
+"VPC"                                                      {:lib "awslib14", :path "Groups", :name "VPC"}
+"Availability Zone"                                        {:lib "awslib14", :path "Groups", :name "AvailabilityZone"}
+;"Region"                                                  {:lib "awslib14", :path "Groups", :name "Region"}
+"Generic Pink"                                             {:lib "awslib14", :path "Groups", :name "GenericPink"}
+"Generic Blue"                                             {:lib "awslib14", :path "Groups", :name "GenericBlue"}
+"Io T Greengrass"                                          {:lib "awslib14", :path "Groups", :name "IoTGreengrass"}
+;"Spot Fleet"                                              {:lib "awslib14", :path "Groups", :name "SpotFleet"}
+"Generic Orange"                                           {:lib "awslib14", :path "Groups", :name "GenericOrange"}
+"AWS Cloud Alt"                                            {:lib "awslib14", :path "Groups", :name "AWSCloudAlt"}
+"IoT Greengrass Deployment"                                {:lib "awslib14", :path "Groups", :name "IoTGreengrassDeployment"}
+;"Auto Scaling Group"                                      {:lib "awslib14", :path "Groups", :name "AutoScalingGroup"}
+"EC2 Instance Contents"                                    {:lib "awslib14", :path "Groups", :name "EC2InstanceContents"}
+"AWS Account"                                              {:lib "awslib14", :path "Groups", :name "AWSAccount"}
+"Generic Green"                                            {:lib "awslib14", :path "Groups", :name "GenericGreen"}
+"Step Functions Workflow"                                  {:lib "awslib14", :path "Groups", :name "StepFunctionsWorkflow"}
+"Generic"                                                  {:lib "awslib14", :path "Groups", :name "Generic"}
+"Security Group"                                           {:lib "awslib14", :path "Groups", :name "SecurityGroup"}
+;"Elastic Beanstalk Container"                             {:lib "awslib14", :path "Groups", :name "ElasticBeanstalkContainer"}
+"Generic Alt"                                              {:lib "awslib14", :path "Groups", :name "GenericAlt"}
+;"Server Contents"                                         {:lib "awslib14", :path "Groups", :name "ServerContents"}
+"Generic Turquoise"                                        {:lib "awslib14", :path "Groups", :name "GenericTurquoise"}
+"Activate"                                                 {:lib "awslib14", :path "CustomerEnablement", :name "Activate"}
+"Customer Enablement"                                      {:lib "awslib14", :path "CustomerEnablement", :name "CustomerEnablement"}
+"Support"                                                  {:lib "awslib14", :path "CustomerEnablement", :name "Support"}
+"Professional Services"                                    {:lib "awslib14", :path "CustomerEnablement", :name "ProfessionalServices"}
+"RePost"                                                   {:lib "awslib14", :path "CustomerEnablement", :name "rePost"}
+"Managed Services"                                         {:lib "awslib14", :path "CustomerEnablement", :name "ManagedServices"}
+"IQ"                                                       {:lib "awslib14", :path "CustomerEnablement", :name "IQ"}
+"Training Certification"                                   {:lib "awslib14", :path "CustomerEnablement", :name "TrainingCertification"}
+"Serverless"                                               {:lib "awslib14", :path "Serverless", :name "Serverless"}
+"Pinpoint APIs"                                            {:lib "awslib14", :path "BusinessApplications", :name "PinpointAPIs"}
+"Simple Email Service"                                     {:lib "awslib14", :path "BusinessApplications", :name "SimpleEmailService"}
+"Pinpoint"                                                 {:lib "awslib14", :path "BusinessApplications", :name "Pinpoint"}
+"Honeycode"                                                {:lib "awslib14", :path "BusinessApplications", :name "Honeycode"}
+"Chime SDK"                                                {:lib "awslib14", :path "BusinessApplications", :name "ChimeSDK"}
+"Business Applications"                                    {:lib "awslib14", :path "BusinessApplications", :name "BusinessApplications"}
+"Pinpoint Journey"                                         {:lib "awslib14", :path "BusinessApplications", :name "PinpointJourney"}
+"Work Docs SDK"                                            {:lib "awslib14", :path "BusinessApplications", :name "WorkDocsSDK"}
+"Work Docs"                                                {:lib "awslib14", :path "BusinessApplications", :name "WorkDocs"}
+"Simple Email Service Email"                               {:lib "awslib14", :path "BusinessApplications", :name "SimpleEmailServiceEmail"}
+"Alexa For Business"                                       {:lib "awslib14", :path "BusinessApplications", :name "AlexaForBusiness"}
+"Work Mail"                                                {:lib "awslib14", :path "BusinessApplications", :name "WorkMail"}
+"Chime"                                                    {:lib "awslib14", :path "BusinessApplications", :name "Chime"}
+"Connect"                                                  {:lib "awslib14", :path "BusinessApplications", :name "Connect"}
+"Chime Voice Connector"                                    {:lib "awslib14", :path "BusinessApplications", :name "ChimeVoiceConnector"}
+"Magnifying Glass"                                         {:lib "awslib14", :path "General", :name "MagnifyingGlass"}
+"Mobileclient"                                             {:lib "awslib14", :path "General", :name "Mobileclient"}
+"Document"                                                 {:lib "awslib14", :path "General", :name "Document"}
+"Gear"                                                     {:lib "awslib14", :path "General", :name "Gear"}
+"AWS Management Console"                                   {:lib "awslib14", :path "General", :name "AWSManagementConsole"}
+"Generic Application"                                      {:lib "awslib14", :path "General", :name "GenericApplication"}
+"Question"                                                 {:lib "awslib14", :path "General", :name "Question"}
+"Source Code"                                              {:lib "awslib14", :path "General", :name "SourceCode"}
+"Traditional Server"                                       {:lib "awslib14", :path "General", :name "Traditionalserver"}
+"Email"                                                    {:lib "awslib14", :path "General", :name "Email"}
+"Globe"                                                    {:lib "awslib14", :path "General", :name "Globe"}
+"Disk"                                                     {:lib "awslib14", :path "General", :name "Disk"}
+"Shield2"                                                  {:lib "awslib14", :path "General", :name "Shield2"}
+"SAML Token"                                               {:lib "awslib14", :path "General", :name "SAMLtoken"}
+"Alert"                                                    {:lib "awslib14", :path "General", :name "Alert"}
+"Folder"                                                   {:lib "awslib14", :path "General", :name "Folder"}
+"Git Repository"                                           {:lib "awslib14", :path "General", :name "GitRepository"}
+"Internet"                                                 {:lib "awslib14", :path "General", :name "Internet"}
+"Chat"                                                     {:lib "awslib14", :path "General", :name "Chat"}
+"Folders"                                                  {:lib "awslib14", :path "General", :name "Folders"}
+"Documents"                                                {:lib "awslib14", :path "General", :name "Documents"}
+"User"                                                     {:lib "awslib14", :path "General", :name "User"}
+"Marketplace Dark"                                         {:lib "awslib14", :path "General", :name "MarketplaceDark"}
+"Generic Database"                                         {:lib "awslib14", :path "General", :name "Genericdatabase"}
+"Camera"                                                   {:lib "awslib14", :path "General", :name "Camera"}
+"Office Building"                                          {:lib "awslib14", :path "General", :name "Officebuilding"}
+"Forums"                                                   {:lib "awslib14", :path "General", :name "Forums"}
+"SDK"                                                      {:lib "awslib14", :path "General", :name "SDK"}
+"Marketplace Light"                                        {:lib "awslib14", :path "General", :name "MarketplaceLight"}
+"Recover"                                                  {:lib "awslib14", :path "General", :name "Recover"}
+"Toolkit"                                                  {:lib "awslib14", :path "General", :name "Toolkit"}
+"Servers"                                                  {:lib "awslib14", :path "General", :name "Servers"}
+"Multimedia"                                               {:lib "awslib14", :path "General", :name "Multimedia"}
+"Internetalt2"                                             {:lib "awslib14", :path "General", :name "Internetalt2"}
+"Firewall"                                                 {:lib "awslib14", :path "General", :name "Firewall"}
+"Client"                                                   {:lib "awslib14", :path "General", :name "Client"}
+"Internetalt1"                                             {:lib "awslib14", :path "General", :name "Internetalt1"}
+"Tapestorage"                                              {:lib "awslib14", :path "General", :name "Tapestorage"}
+"Users"                                                    {:lib "awslib14", :path "General", :name "Users"}
+"SSL Padlock"                                              {:lib "awslib14", :path "General", :name "SSLpadlock"}
+"Migration Hub Refactor Spaces Applications"               {:lib "awslib14", :path "MigrationTransfer", :name "MigrationHubRefactorSpacesApplications"}
+"Datasync Agent"                                           {:lib "awslib14", :path "MigrationTransfer", :name "DatasyncAgent"}
+"Mainframe Modernization Compiler"                         {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernizationCompiler"}
+"Mainframe Modernization Converter"                        {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernizationConverter"}
+"Mainframe Modernization"                                  {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernization"}
+"Transfer Family"                                          {:lib "awslib14", :path "MigrationTransfer", :name "TransferFamily"}
+"Transfer Family AWS FTP"                                  {:lib "awslib14", :path "MigrationTransfer", :name "TransferFamilyAWSFTP"}
+"Migration Hub"                                            {:lib "awslib14", :path "MigrationTransfer", :name "MigrationHub"}
+"Mainframe Modernization Runtime"                          {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernizationRuntime"}
+"Application Discovery Service"                            {:lib "awslib14", :path "MigrationTransfer", :name "ApplicationDiscoveryService"}
+"Migration Evaluator"                                      {:lib "awslib14", :path "MigrationTransfer", :name "MigrationEvaluator"}
+"Transfer Family AWS FTPS"                                 {:lib "awslib14", :path "MigrationTransfer", :name "TransferFamilyAWSFTPS"}
+"Mainframe Modernization Developer"                        {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernizationDeveloper"}
+"Data Sync"                                                {:lib "awslib14", :path "MigrationTransfer", :name "DataSync"}
+"Transfer Family AWS SFTP"                                 {:lib "awslib14", :path "MigrationTransfer", :name "TransferFamilyAWSSFTP"}
+"Server Migration Service"                                 {:lib "awslib14", :path "MigrationTransfer", :name "ServerMigrationService"}
+"Mainframe Modernization Analyzer"                         {:lib "awslib14", :path "MigrationTransfer", :name "MainframeModernizationAnalyzer"}
+"Migration Hub Refactor Spaces Services"                   {:lib "awslib14", :path "MigrationTransfer", :name "MigrationHubRefactorSpacesServices"}
+"Migration Hub Refactor Spaces Environments"               {:lib "awslib14", :path "MigrationTransfer", :name "MigrationHubRefactorSpacesEnvironments"}
+"Application Migration Service"                            {:lib "awslib14", :path "MigrationTransfer", :name "ApplicationMigrationService"}
+"Migration Transfer"                                       {:lib "awslib14", :path "MigrationTransfer", :name "MigrationTransfer"}
+"Panorama"                                                 {:lib "awslib14", :path "MachineLearning", :name "Panorama"}
+"Lookout for Equipment"                                    {:lib "awslib14", :path "MachineLearning", :name "LookoutforEquipment"}
+"Translate"                                                {:lib "awslib14", :path "MachineLearning", :name "Translate"}
+"Neuron"                                                   {:lib "awslib14", :path "MachineLearning", :name "Neuron"}
+"Code Whisperer"                                           {:lib "awslib14", :path "MachineLearning", :name "CodeWhisperer"}
+"Rekognition Video"                                        {:lib "awslib14", :path "MachineLearning", :name "RekognitionVideo"}
+"Deep Learning Containers"                                 {:lib "awslib14", :path "MachineLearning", :name "DeepLearningContainers"}
+"Kendra"                                                   {:lib "awslib14", :path "MachineLearning", :name "Kendra"}
+"Textract"                                                 {:lib "awslib14", :path "MachineLearning", :name "Textract"}
+"Lookoutfor Vision"                                        {:lib "awslib14", :path "MachineLearning", :name "LookoutforVision"}
+"Sage Maker Notebook"                                      {:lib "awslib14", :path "MachineLearning", :name "SageMakerNotebook"}
+"Sage Maker Train"                                         {:lib "awslib14", :path "MachineLearning", :name "SageMakerTrain"}
+"Deep Composer"                                            {:lib "awslib14", :path "MachineLearning", :name "DeepComposer"}
+"Comprehend"                                               {:lib "awslib14", :path "MachineLearning", :name "Comprehend"}
+"Sage Maker Ground Truth"                                  {:lib "awslib14", :path "MachineLearning", :name "SageMakerGroundTruth"}
+"Comprehend Medical"                                       {:lib "awslib14", :path "MachineLearning", :name "ComprehendMedical"}
+"Apache MXNet on AWS"                                      {:lib "awslib14", :path "MachineLearning", :name "ApacheMXNetonAWS"}
+"Elastic Inference"                                        {:lib "awslib14", :path "MachineLearning", :name "ElasticInference"}
+"Polly"                                                    {:lib "awslib14", :path "MachineLearning", :name "Polly"}
+"Torch Serve"                                              {:lib "awslib14", :path "MachineLearning", :name "TorchServe"}
+"DevOps Guru Insights"                                     {:lib "awslib14", :path "MachineLearning", :name "DevOpsGuruInsights"}
+"Rekognition"                                              {:lib "awslib14", :path "MachineLearning", :name "Rekognition"}
+"Sage Maker Model"                                         {:lib "awslib14", :path "MachineLearning", :name "SageMakerModel"}
+"DevOps Guru"                                              {:lib "awslib14", :path "MachineLearning", :name "DevOpsGuru"}
+"Code Guru"                                                {:lib "awslib14", :path "MachineLearning", :name "CodeGuru"}
+"Deep Learning AMIs"                                       {:lib "awslib14", :path "MachineLearning", :name "DeepLearningAMIs"}
+"Tensor Flow on AWS"                                       {:lib "awslib14", :path "MachineLearning", :name "TensorFlowonAWS"}
+"Augmented AI A2I"                                         {:lib "awslib14", :path "MachineLearning", :name "AugmentedAIA2I"}
+"Health Lake"                                              {:lib "awslib14", :path "MachineLearning", :name "HealthLake"}
+"Machine Learning"                                         {:lib "awslib14", :path "MachineLearning", :name "MachineLearning"}
+"Deep Racer"                                               {:lib "awslib14", :path "MachineLearning", :name "DeepRacer"}
+"Monitron"                                                 {:lib "awslib14", :path "MachineLearning", :name "Monitron"}
+"Rekognition Image"                                        {:lib "awslib14", :path "MachineLearning", :name "RekognitionImage"}
+"Forecast"                                                 {:lib "awslib14", :path "MachineLearning", :name "Forecast"}
+"Sage Maker"                                               {:lib "awslib14", :path "MachineLearning", :name "SageMaker"}
+"Deep Lens"                                                {:lib "awslib14", :path "MachineLearning", :name "DeepLens"}
+"Sage Maker Canvas"                                        {:lib "awslib14", :path "MachineLearning", :name "SageMakerCanvas"}
+"Personalize"                                              {:lib "awslib14", :path "MachineLearning", :name "Personalize"}
+"Sage Maker Studio Lab"                                    {:lib "awslib14", :path "MachineLearning", :name "SageMakerStudioLab"}
+"Transcribe"                                               {:lib "awslib14", :path "MachineLearning", :name "Transcribe"}
+"Fraud Detector"                                           {:lib "awslib14", :path "MachineLearning", :name "FraudDetector"}
+"Lex"                                                      {:lib "awslib14", :path "MachineLearning", :name "Lex"}
+"Lookout for Metrics"                                      {:lib "awslib14", :path "MachineLearning", :name "LookoutforMetrics"}
+"Robo Maker Cloud Extensions Ros"                          {:lib "awslib14", :path "Robotics", :name "RoboMakerCloudExtensionsROS"}
+"Robo Maker"                                               {:lib "awslib14", :path "Robotics", :name "RoboMaker"}
+"Robo Maker Development Environment"                       {:lib "awslib14", :path "Robotics", :name "RoboMakerDevelopmentEnvironment"}
+"Robo Maker Simulation"                                    {:lib "awslib14", :path "Robotics", :name "RoboMakerSimulation"}
+"Robo Maker Fleet Management"                              {:lib "awslib14", :path "Robotics", :name "RoboMakerFleetManagement"}
+"Robotics"                                                 {:lib "awslib14", :path "Robotics", :name "Robotics"}
+"Sumerian"                                                 {:lib "awslib14", :path "VRAR", :name "Sumerian"}
+"VRAR"                                                     {:lib "awslib14", :path "VRAR", :name "VRAR"}
+"Elemental Media Live"                                     {:lib "awslib14", :path "MediaServices", :name "ElementalMediaLive"}
+"Cloud Digital Interface"                                  {:lib "awslib14", :path "MediaServices", :name "CloudDigitalInterface"}
+"Elemental Delta"                                          {:lib "awslib14", :path "MediaServices", :name "ElementalDelta"}
+"Elemental Media Store"                                    {:lib "awslib14", :path "MediaServices", :name "ElementalMediaStore"}
+"Elemental Link"                                           {:lib "awslib14", :path "MediaServices", :name "ElementalLink"}
+"Interactive Video Service"                                {:lib "awslib14", :path "MediaServices", :name "InteractiveVideoService"}
+"Elemental Media Package"                                  {:lib "awslib14", :path "MediaServices", :name "ElementalMediaPackage"}
+"Nimble Studio"                                            {:lib "awslib14", :path "MediaServices", :name "NimbleStudio"}
+"Elemental Media Connect"                                  {:lib "awslib14", :path "MediaServices", :name "ElementalMediaConnect"}
+"Elastic Transcoder"                                       {:lib "awslib14", :path "MediaServices", :name "ElasticTranscoder"}
+"Kinesis Video Streams2"                                   {:lib "awslib14", :path "MediaServices", :name "KinesisVideoStreams2"}
+"Media Services"                                           {:lib "awslib14", :path "MediaServices", :name "MediaServices"}
+"Elemental Media Tailor"                                   {:lib "awslib14", :path "MediaServices", :name "ElementalMediaTailor"}
+"Elemental Media Convert"                                  {:lib "awslib14", :path "MediaServices", :name "ElementalMediaConvert"}
+"Elemental Conductor"                                      {:lib "awslib14", :path "MediaServices", :name "ElementalConductor"}
+"Elemental Appliances Software"                            {:lib "awslib14", :path "MediaServices", :name "ElementalAppliancesSoftware"}
+"Elemental Server"                                         {:lib "awslib14", :path "MediaServices", :name "ElementalServer"}
+"Elemental Live"                                           {:lib "awslib14", :path "MediaServices", :name "ElementalLive"}
+"Game Sparks"                                              {:lib "awslib14", :path "GameTech", :name "GameSparks"}
+"Open3D Engine"                                            {:lib "awslib14", :path "GameTech", :name "Open3DEngine"}
+"Game Lift"                                                {:lib "awslib14", :path "GameTech", :name "GameLift"}
+"Game Tech"                                                {:lib "awslib14", :path "GameTech", :name "GameTech"}
+"Game Kit"                                                 {:lib "awslib14", :path "GameTech", :name "GameKit"}
+"Lumberyard"                                               {:lib "awslib14", :path "GameTech", :name "Lumberyard"}
+"Billing Conductor"                                        {:lib "awslib14", :path "CloudFinancialManagement", :name "BillingConductor"}
+"Application Cost Profiler"                                {:lib "awslib14", :path "CloudFinancialManagement", :name "ApplicationCostProfiler"}
+"Budgets"                                                  {:lib "awslib14", :path "CloudFinancialManagement", :name "Budgets"}
+"Reserved Instance Reporting"                              {:lib "awslib14", :path "CloudFinancialManagement", :name "ReservedInstanceReporting"}
+"Cost Explorer"                                            {:lib "awslib14", :path "CloudFinancialManagement", :name "CostExplorer"}
+"Cloud Financial Management"                               {:lib "awslib14", :path "CloudFinancialManagement", :name "CloudFinancialManagement"}
+"Costand Usage Report"                                     {:lib "awslib14", :path "CloudFinancialManagement", :name "CostandUsageReport"}
+"Savings Plans"                                            {:lib "awslib14", :path "CloudFinancialManagement", :name "SavingsPlans"}
+"Managed Blockchain Blockchain"                            {:lib "awslib14", :path "Blockchain", :name "ManagedBlockchainBlockchain"}
+"Managed Blockchain"                                       {:lib "awslib14", :path "Blockchain", :name "ManagedBlockchain"}
+"Quantum Ledger Database"                                  {:lib "awslib14", :path "Blockchain", :name "QuantumLedgerDatabase"}
+"Blockchain"                                               {:lib "awslib14", :path "Blockchain", :name "Blockchain"}
+"IoT Fleet Wise"                                           {:lib "awslib14", :path "InternetOfThings", :name "IoTFleetWise"}
+"IoT Greengrass Component Private"                         {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassComponentPrivate"}
+"IoT Greengrass Stream Manager"                            {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassStreamManager"}
+"IoT Actuator"                                             {:lib "awslib14", :path "InternetOfThings", :name "IoTActuator"}
+"IoT Echo"                                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTEcho"}
+"IoT Greengrass Component Nucleus"                         {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassComponentNucleus"}
+"IoT Device Defender"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTDeviceDefender"}
+"IoT Topic"                                                {:lib "awslib14", :path "InternetOfThings", :name "IoTTopic"}
+"IoT Thing Stacklight"                                     {:lib "awslib14", :path "InternetOfThings", :name "IoTThingStacklight"}
+"IoT Site Wise Data Streams"                               {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWiseDataStreams"}
+"IoT Thing Thermostat"                                     {:lib "awslib14", :path "InternetOfThings", :name "IoTThingThermostat"}
+"IoT Button"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTButton"}
+"IoT Sailboat"                                             {:lib "awslib14", :path "InternetOfThings", :name "IoTSailboat"}
+"IoT Over Air Update"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTOverAirUpdate"}
+"IoT Thing Car"                                            {:lib "awslib14", :path "InternetOfThings", :name "IoTThingCar"}
+"IoT Alexa Skill"                                          {:lib "awslib14", :path "InternetOfThings", :name "IoTAlexaSkill"}
+"IoT Greengrass Connector"                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassConnector"}
+"IoT Alexa Voice Service"                                  {:lib "awslib14", :path "InternetOfThings", :name "IoTAlexaVoiceService"}
+"IoT Site Wise"                                            {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWise"}
+"IoT Thing House"                                          {:lib "awslib14", :path "InternetOfThings", :name "IoTThingHouse"}
+"IoT Analytics Data Store"                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalyticsDataStore"}
+"IoT Robo Runner"                                          {:lib "awslib14", :path "InternetOfThings", :name "IoTRoboRunner"}
+"IoT Thing Travel"                                         {:lib "awslib14", :path "InternetOfThings", :name "IoTThingTravel"}
+"IoT Greengrass Artifact"                                  {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassArtifact"}
+"IoT Site Wise Asset"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWiseAsset"}
+"IoT Thing Temperature Vibration Sensor"                   {:lib "awslib14", :path "InternetOfThings", :name "IoTThingTemperatureVibrationSensor"}
+"IoT Fire TV Stick"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTFireTVStick"}
+"IoT Analytics Channel"                                    {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalyticsChannel"}
+"IoT Desired State"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTDesiredState"}
+"IoT MQTT Protocol"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTMQTTProtocol"}
+"IoT Twin Maker"                                           {:lib "awslib14", :path "InternetOfThings", :name "IoTTwinMaker"}
+"IoT Device Gateway"                                       {:lib "awslib14", :path "InternetOfThings", :name "IoTDeviceGateway"}
+"IoT Core"                                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTCore"}
+"IoT Device Management Fleet Hub"                          {:lib "awslib14", :path "InternetOfThings", :name "IoTDeviceManagementFleetHub"}
+"IoT Hardware Board"                                       {:lib "awslib14", :path "InternetOfThings", :name "IoTHardwareBoard"}
+"Internet Of Things"                                       {:lib "awslib14", :path "InternetOfThings", :name "InternetOfThings"}
+"IoT Greengrass Component Public"                          {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassComponentPublic"}
+"IoT Things Graph"                                         {:lib "awslib14", :path "InternetOfThings", :name "IoTThingsGraph"}
+"IoT Greengrass Component"                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassComponent"}
+"IoT Edu Kit"                                              {:lib "awslib14", :path "InternetOfThings", :name "IoTEduKit"}
+"IoT Thing Temperature Humidity Sensor"                    {:lib "awslib14", :path "InternetOfThings", :name "IoTThingTemperatureHumiditySensor"}
+"IoT Fire TV"                                              {:lib "awslib14", :path "InternetOfThings", :name "IoTFireTV"}
+"IoT Lambda Function"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTLambdaFunction"}
+"IoT Site Wise Asset Hierarchy"                            {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWiseAssetHierarchy"}
+"IoT Site Wise Asset Model"                                {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWiseAssetModel"}
+;"IoT Greengrass"                                           {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrass"}
+"IoT Alexa Enabled Device"                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTAlexaEnabledDevice"}
+"IoT Site Wise Asset Properties"                           {:lib "awslib14", :path "InternetOfThings", :name "IoTSiteWiseAssetProperties"}
+"IoT Thing Humidity Sensor"                                {:lib "awslib14", :path "InternetOfThings", :name "IoTThingHumiditySensor"}
+"IoT Thing Bank"                                           {:lib "awslib14", :path "InternetOfThings", :name "IoTThingBank"}
+"IoT Thing Windfarm"                                       {:lib "awslib14", :path "InternetOfThings", :name "IoTThingWindfarm"}
+"IoT HTTP2 Protocol"                                       {:lib "awslib14", :path "InternetOfThings", :name "IoTHTTP2Protocol"}
+"IoT Analytics"                                            {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalytics"}
+"IoT Thing Lightbulb"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTThingLightbulb"}
+"IoT Analytics Notebook"                                   {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalyticsNotebook"}
+"IoT Greengrass Component Machine Learning"                {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassComponentMachineLearning"}
+"IoT Thing Vibration Sensor"                               {:lib "awslib14", :path "InternetOfThings", :name "IoTThingVibrationSensor"}
+"IoT Rule"                                                 {:lib "awslib14", :path "InternetOfThings", :name "IoTRule"}
+"IoT LoRaWAN Protocol"                                     {:lib "awslib14", :path "InternetOfThings", :name "IoTLoRaWANProtocol"}
+"IoT Thing Factory"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTThingFactory"}
+"IoT Thing Camera"                                         {:lib "awslib14", :path "InternetOfThings", :name "IoTThingCamera"}
+"IoT Servo"                                                {:lib "awslib14", :path "InternetOfThings", :name "IoTServo"}
+"IoT Thing Coffee Pot"                                     {:lib "awslib14", :path "InternetOfThings", :name "IoTThingCoffeePot"}
+"IoT Thing Generic"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTThingGeneric"}
+"IoT Simulator"                                            {:lib "awslib14", :path "InternetOfThings", :name "IoTSimulator"}
+"IoT Express Link"                                         {:lib "awslib14", :path "InternetOfThings", :name "IoTExpressLink"}
+"IoT Thing Utility"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTThingUtility"}
+"IoT Device Defender IoT Device Jobs"                      {:lib "awslib14", :path "InternetOfThings", :name "IoTDeviceDefenderIoTDeviceJobs"}
+"IoT Greengrass Protocol"                                  {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassProtocol"}
+"IoT Thing Police Emergency"                               {:lib "awslib14", :path "InternetOfThings", :name "IoTThingPoliceEmergency"}
+"IoT Thing PLC"                                            {:lib "awslib14", :path "InternetOfThings", :name "IoTThingPLC"}
+"IoT Greengrass Recipe"                                    {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassRecipe"}
+"IoT Sensor"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTSensor"}
+"IoT Shadow"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTShadow"}
+"IoT Thing Industrial PC"                                  {:lib "awslib14", :path "InternetOfThings", :name "IoTThingIndustrialPC"}
+"IoT Policy"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTPolicy"}
+"Free RTOS"                                                {:lib "awslib14", :path "InternetOfThings", :name "FreeRTOS"}
+"IoT Thing Relay"                                          {:lib "awslib14", :path "InternetOfThings", :name "IoTThingRelay"}
+"IoT Thing Temperature Sensor"                             {:lib "awslib14", :path "InternetOfThings", :name "IoTThingTemperatureSensor"}
+"IoT Thing Door Lock"                                      {:lib "awslib14", :path "InternetOfThings", :name "IoTThingDoorLock"}
+"IoT Thing Bicycle"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTThingBicycle"}
+"IoT HTTP Protocol"                                        {:lib "awslib14", :path "InternetOfThings", :name "IoTHTTPProtocol"}
+"IoT 1 Click"                                              {:lib "awslib14", :path "InternetOfThings", :name "IoT1Click"}
+"IoT Analytics Dataset"                                    {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalyticsDataset"}
+"IoT Events"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTEvents"}
+"IoT Reported State"                                       {:lib "awslib14", :path "InternetOfThings", :name "IoTReportedState"}
+"IoT Analytics Pipeline"                                   {:lib "awslib14", :path "InternetOfThings", :name "IoTAnalyticsPipeline"}
+"IoT Thing Cart"                                           {:lib "awslib14", :path "InternetOfThings", :name "IoTThingCart"}
+"IoT Action"                                               {:lib "awslib14", :path "InternetOfThings", :name "IoTAction"}
+"IoT Thing Free RTOS Device"                               {:lib "awslib14", :path "InternetOfThings", :name "IoTThingFreeRTOSDevice"}
+"IoT Thing Medical Emergency"                              {:lib "awslib14", :path "InternetOfThings", :name "IoTThingMedicalEmergency"}
+"IoT Device Management"                                    {:lib "awslib14", :path "InternetOfThings", :name "IoTDeviceManagement"}
+"IoT Greengrass Interprocess Communication"                {:lib "awslib14", :path "InternetOfThings", :name "IoTGreengrassInterprocessCommunication"}
+"IoT Certificate"                                          {:lib "awslib14", :path "InternetOfThings", :name "IoTCertificate"}
+"VPC Flow Logs"                                            {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCFlowLogs"}
+"VPC Router"                                               {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCRouter"}
+"Cloud Front Streaming Distribution"                       {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudFrontStreamingDistribution"}
+"VPC Carrier Gateway"                                      {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCCarrierGateway"}
+"VPC VPN Gateway"                                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCVPNGateway"}
+"Cloud Map"                                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudMap"}
+"Cloud Front"                                              {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudFront"}
+"VPC Elastic Network Adapter"                              {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCElasticNetworkAdapter"}
+"VPC Peering Connection"                                   {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCPeeringConnection"}
+"Virtual Private Cloud"                                    {:lib "awslib14", :path "NetworkingContentDelivery", :name "VirtualPrivateCloud"}
+"App Mesh Virtual Service"                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshVirtualService"}
+"Route53 Readiness Checks"                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53ReadinessChecks"}
+"Transit Gateway"                                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "TransitGateway"}
+"Cloud Front Functions"                                    {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudFrontFunctions"}
+"Route53 Hosted Zone"                                      {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53HostedZone"}
+"Elastic Load Balancing"                                   {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancing"}
+"App Mesh"                                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMesh"}
+"Networking Content Delivery"                              {:lib "awslib14", :path "NetworkingContentDelivery", :name "NetworkingContentDelivery"}
+"Cloud Front Download Distribution"                        {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudFrontDownloadDistribution"}
+"App Mesh Virtual Node"                                    {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshVirtualNode"}
+"Elastic Load Balancing Application Load Balancer"         {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancingApplicationLoadBalancer"}
+"Cloud Directory2"                                         {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudDirectory2"}
+"VPC Network Access Control List"                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCNetworkAccessControlList"}
+"Cloud WAN Virtual Pop"                                    {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudWANVirtualPoP"}
+"VPC Endpoints"                                            {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCEndpoints"}
+"Direct Connect Gateway"                                   {:lib "awslib14", :path "NetworkingContentDelivery", :name "DirectConnectGateway"}
+"Cloud WAN Core Network Edge"                              {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudWANCoreNetworkEdge"}
+"Private 5G"                                               {:lib "awslib14", :path "NetworkingContentDelivery", :name "Private5G"}
+"Elastic Load Balancing Network Load Balancer"             {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancingNetworkLoadBalancer"}
+"Cloud Map Resource"                                       {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudMapResource"}
+"App Mesh Virtual Router"                                  {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshVirtualRouter"}
+"Direct Connect"                                           {:lib "awslib14", :path "NetworkingContentDelivery", :name "DirectConnect"}
+"VPC Internet Gateway"                                     {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCInternetGateway"}
+"Route53 Resolver Query Logging"                           {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53ResolverQueryLogging"}
+"Private Link"                                             {:lib "awslib14", :path "NetworkingContentDelivery", :name "PrivateLink"}
+"VPC VPN Connection"                                       {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCVPNConnection"}
+"Elastic Load Balancing Gateway Load Balancer"             {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancingGatewayLoadBalancer"}
+"VPC Reachability Analyzer"                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCReachabilityAnalyzer"}
+"Route53 Routing Controls"                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53RoutingControls"}
+"VPC Customer Gateway"                                     {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCCustomerGateway"}
+"Cloud WAN Segment Network"                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudWANSegmentNetwork"}
+"VPC Elastic Network Interface"                            {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCElasticNetworkInterface"}
+"Transit Gateway Attachment"                               {:lib "awslib14", :path "NetworkingContentDelivery", :name "TransitGatewayAttachment"}
+"Cloud Front Edge Location"                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudFrontEdgeLocation"}
+"Cloud Map Service"                                        {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudMapService"}
+"Client VPN"                                               {:lib "awslib14", :path "NetworkingContentDelivery", :name "ClientVPN"}
+"VPC Traffic Mirroring"                                    {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCTrafficMirroring"}
+"Route53 Route Table"                                      {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53RouteTable"}
+"VPC Network Access Analyzer"                              {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCNetworkAccessAnalyzer"}
+"Elastic Load Balancing Classic Load Balancer"             {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancingClassicLoadBalancer"}
+"Route53 Resolver"                                         {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53Resolver"}
+"Cloud WAN"                                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudWAN"}
+"Vpcnat Gateway"                                           {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCNATGateway"}
+"Siteto Site VPN"                                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "SitetoSiteVPN"}
+"Route53 Application Recovery Controller"                  {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53ApplicationRecoveryController"}
+"App Mesh Virtual Gateway"                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshVirtualGateway"}
+"Global Accelerator"                                       {:lib "awslib14", :path "NetworkingContentDelivery", :name "GlobalAccelerator"}
+"Cloud Map Namespace"                                      {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudMapNamespace"}
+"Route53 Resolver DNS Firewall"                            {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53ResolverDNSFirewall"}
+"App Mesh Mesh"                                            {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshMesh"}
+"Route53"                                                  {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53"}
+"Device Farm"                                              {:lib "awslib14", :path "FrontEndWebMobile", :name "DeviceFarm"}
+"Location Service Place"                                   {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationServicePlace"}
+"Location Service Geofence"                                {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationServiceGeofence"}
+"Front End Web Mobile"                                     {:lib "awslib14", :path "FrontEndWebMobile", :name "FrontEndWebMobile"}
+"Location Service Routes"                                  {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationServiceRoutes"}
+"Amplify AWA Amplify Studio"                               {:lib "awslib14", :path "FrontEndWebMobile", :name "AmplifyAWSAmplifyStudio"}
+"Location Service"                                         {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationService"}
+"Location Service Map"                                     {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationServiceMap"}
+"Amplify"                                                  {:lib "awslib14", :path "FrontEndWebMobile", :name "Amplify"}
+"Location Service Track"                                   {:lib "awslib14", :path "FrontEndWebMobile", :name "LocationServiceTrack"}
+"Distrofor Open Telemetry"                                 {:lib "awslib14", :path "ManagementGovernance", :name "DistroforOpenTelemetry"}
+"Control Tower"                                            {:lib "awslib14", :path "ManagementGovernance", :name "ControlTower"}
+"Managed Servicefor Prometheus"                            {:lib "awslib14", :path "ManagementGovernance", :name "ManagedServiceforPrometheus"}
+"Cloud Watch Event Event Based"                            {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchEventEventBased"}
+"Ops Works Monitoring"                                     {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksMonitoring"}
+"Management Governance"                                    {:lib "awslib14", :path "ManagementGovernance", :name "ManagementGovernance"}
+"Trusted Advisor Checklist Security"                       {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisorChecklistSecurity"}
+"Trusted Advisor Checklist Performance"                    {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisorChecklistPerformance"}
+"Cloud Formation"                                          {:lib "awslib14", :path "ManagementGovernance", :name "CloudFormation"}
+"Cloud Formation Template"                                 {:lib "awslib14", :path "ManagementGovernance", :name "CloudFormationTemplate"}
+"Trusted Advisor Checklist Cost"                           {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisorChecklistCost"}
+"Proton"                                                   {:lib "awslib14", :path "ManagementGovernance", :name "Proton"}
+"License Manager"                                          {:lib "awslib14", :path "ManagementGovernance", :name "LicenseManager"}
+"Cloud Watch RUM"                                          {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchRUM"}
+"Resilience Hub"                                           {:lib "awslib14", :path "ManagementGovernance", :name "ResilienceHub"}
+"Organizations Management Account"                         {:lib "awslib14", :path "ManagementGovernance", :name "OrganizationsManagementAccount"}
+"Cloud Watch Alarm"                                        {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchAlarm"}
+"Ops Works Layers"                                         {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksLayers"}
+"Systems Manager"                                          {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManager"}
+"Cloud Formation Stack"                                    {:lib "awslib14", :path "ManagementGovernance", :name "CloudFormationStack"}
+"Systems Manager Change Calendar"                          {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerChangeCalendar"}
+"Cloud Watch"                                              {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatch"}
+"Systems Manager Documents"                                {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerDocuments"}
+"Personal Health Dashboard"                                {:lib "awslib14", :path "ManagementGovernance", :name "PersonalHealthDashboard"}
+"Management Console"                                       {:lib "awslib14", :path "ManagementGovernance", :name "ManagementConsole"}
+"Application Auto Scaling2"                                {:lib "awslib14", :path "ManagementGovernance", :name "ApplicationAutoScaling2"}
+"Ops Works Apps"                                           {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksApps"}
+"Systems Manager Automation"                               {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerAutomation"}
+"Config"                                                   {:lib "awslib14", :path "ManagementGovernance", :name "Config"}
+"Backint Agent"                                            {:lib "awslib14", :path "ManagementGovernance", :name "BackintAgent"}
+"Systems Manager Incident Manager"                         {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerIncidentManager"}
+"Systems Manager Inventory"                                {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerInventory"}
+"Systems Manager Compliance"                               {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerCompliance"}
+"Well Architected Tool"                                    {:lib "awslib14", :path "ManagementGovernance", :name "WellArchitectedTool"}
+"Ops Works"                                                {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorks"}
+"Systems Manager Patch Manager"                            {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerPatchManager"}
+"Managed Grafana"                                          {:lib "awslib14", :path "ManagementGovernance", :name "ManagedGrafana"}
+"Organizations Organizational Unit"                        {:lib "awslib14", :path "ManagementGovernance", :name "OrganizationsOrganizationalUnit"}
+"Trusted Advisor"                                          {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisor"}
+"Service Catalog"                                          {:lib "awslib14", :path "ManagementGovernance", :name "ServiceCatalog"}
+"Systems Manager Run Command"                              {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerRunCommand"}
+"License Manager Application Discovery"                    {:lib "awslib14", :path "ManagementGovernance", :name "LicenseManagerApplicationDiscovery"}
+"Cloud Watch Logs"                                         {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchLogs"}
+"Trusted Advisor Checklist Fault Tolerant"                 {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisorChecklistFaultTolerant"}
+"Launch Wizard"                                            {:lib "awslib14", :path "ManagementGovernance", :name "LaunchWizard"}
+"Organizations Account"                                    {:lib "awslib14", :path "ManagementGovernance", :name "OrganizationsAccount"}
+"Cloud Watch Evidently"                                    {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchEvidently"}
+"Ops Works Stack2"                                         {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksStack2"}
+"App Config"                                               {:lib "awslib14", :path "ManagementGovernance", :name "AppConfig"}
+"Cloud Watch Rule"                                         {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchRule"}
+"Cloud Trail"                                              {:lib "awslib14", :path "ManagementGovernance", :name "CloudTrail"}
+"Systems Manager Change Manager"                           {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerChangeManager"}
+"Systems Manager Session Manager"                          {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerSessionManager"}
+"Fault Injection Simulator"                                {:lib "awslib14", :path "ManagementGovernance", :name "FaultInjectionSimulator"}
+"Systems Manager Maintenance Windows"                      {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerMaintenanceWindows"}
+"Organizations"                                            {:lib "awslib14", :path "ManagementGovernance", :name "Organizations"}
+"Cloud Formation Change Set"                               {:lib "awslib14", :path "ManagementGovernance", :name "CloudFormationChangeSet"}
+"Cloud Watch Synthetics"                                   {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchSynthetics"}
+"Chatbot"                                                  {:lib "awslib14", :path "ManagementGovernance", :name "Chatbot"}
+"Systems Manager State Manager"                            {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerStateManager"}
+"Systems Manager Ops Center"                               {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerOpsCenter"}
+"License Manager License Blending"                         {:lib "awslib14", :path "ManagementGovernance", :name "LicenseManagerLicenseBlending"}
+"Trusted Advisor Checklist"                                {:lib "awslib14", :path "ManagementGovernance", :name "TrustedAdvisorChecklist"}
+"Cloud Watch Event Time Based"                             {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchEventTimeBased"}
+"Ops Works Resources"                                      {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksResources"}
+"Systems Manager Parameter Store"                          {:lib "awslib14", :path "ManagementGovernance", :name "SystemsManagerParameterStore"}
+"Cloud Watch Metrics Insights"                             {:lib "awslib14", :path "ManagementGovernance", :name "CloudWatchMetricsInsights"}
+"Ops Works Instances"                                      {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksInstances"}
+"Auto Scaling"                                             {:lib "awslib14", :path "ManagementGovernance", :name "AutoScaling"}
+"Ops Works Deployments"                                    {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksDeployments"}
+"Ops Works Permissions"                                    {:lib "awslib14", :path "ManagementGovernance", :name "OpsWorksPermissions"}
+"Redshift Dense Storage Node"                              {:lib "awslib14", :path "Analytics", :name "RedshiftDenseStorageNode"}
+"EMR HDFS Cluster"                                         {:lib "awslib14", :path "Analytics", :name "EMRHDFSCluster"}
+"Redshift Dense Compute Node"                              {:lib "awslib14", :path "Analytics", :name "RedshiftDenseComputeNode"}
+"Fin Space"                                                {:lib "awslib14", :path "Analytics", :name "FinSpace"}
+"EMR EMR Engine"                                           {:lib "awslib14", :path "Analytics", :name "EMREMREngine"}
+"Kinesis Data Streams"                                     {:lib "awslib14", :path "Analytics", :name "KinesisDataStreams"}
+"Glue Crawler"                                             {:lib "awslib14", :path "Analytics", :name "GlueCrawler"}
+"Managed Streamingfor Apache Kafka"                        {:lib "awslib14", :path "Analytics", :name "ManagedStreamingforApacheKafka"}
+"EMR"                                                      {:lib "awslib14", :path "Analytics", :name "EMR"}
+"Redshift ML"                                              {:lib "awslib14", :path "Analytics", :name "RedshiftML"}
+"Cloud Search"                                             {:lib "awslib14", :path "Analytics", :name "CloudSearch"}
+"Cloud Search Search Documents"                            {:lib "awslib14", :path "Analytics", :name "CloudSearchSearchDocuments"}
+"Quick Sight"                                              {:lib "awslib14", :path "Analytics", :name "QuickSight"}
+"Redshift"                                                 {:lib "awslib14", :path "Analytics", :name "Redshift"}
+"Kinesis Firehose"                                         {:lib "awslib14", :path "Analytics", :name "KinesisFirehose"}
+"Kinesis Video Streams"                                    {:lib "awslib14", :path "Analytics", :name "KinesisVideoStreams"}
+"Glue Elastic Views"                                       {:lib "awslib14", :path "Analytics", :name "GlueElasticViews"}
+"Redshift RA3"                                             {:lib "awslib14", :path "Analytics", :name "RedshiftRA3"}
+"Data Exchange"                                            {:lib "awslib14", :path "Analytics", :name "DataExchange"}
+"EMR Cluster"                                              {:lib "awslib14", :path "Analytics", :name "EMRCluster"}
+"Open Search Service"                                      {:lib "awslib14", :path "Analytics", :name "OpenSearchService"}
+"Glue"                                                     {:lib "awslib14", :path "Analytics", :name "Glue"}
+"Glue Data Catalog"                                        {:lib "awslib14", :path "Analytics", :name "GlueDataCatalog"}
+"Lake Formation Data Lake"                                 {:lib "awslib14", :path "Analytics", :name "LakeFormationDataLake"}
+"Glue Data Brew"                                           {:lib "awslib14", :path "Analytics", :name "GlueDataBrew"}
+"Kinesis Data Analytics"                                   {:lib "awslib14", :path "Analytics", :name "KinesisDataAnalytics"}
+"Athena"                                                   {:lib "awslib14", :path "Analytics", :name "Athena"}
+"MSK Amazon MSK Connect"                                   {:lib "awslib14", :path "Analytics", :name "MSKAmazonMSKConnect"}
+"Analytics"                                                {:lib "awslib14", :path "Analytics", :name "Analytics"}
+"Lake Formation"                                           {:lib "awslib14", :path "Analytics", :name "LakeFormation"}
+"Data Pipeline"                                            {:lib "awslib14", :path "Analytics", :name "DataPipeline"}
+"Data Exchangefor APIs"                                    {:lib "awslib14", :path "Analytics", :name "DataExchangeforAPIs"}
+"Kinesis"                                                  {:lib "awslib14", :path "Analytics", :name "Kinesis"}
+"Identity Access Management Iam Roles Anywhere"            {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementIAMRolesAnywhere"}
+"WAF Bot Control"                                          {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFBotControl"}
+"Identity Access Management Temporary Security Credential" {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementTemporarySecurityCredential"}
+"Security Hub"                                             {:lib "awslib14", :path "SecurityIdentityCompliance", :name "SecurityHub"}
+"Identity Access Management Encrypted Data"                {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementEncryptedData"}
+"Identity Access Management Role"                          {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementRole"}
+"Directory Service"                                        {:lib "awslib14", :path "SecurityIdentityCompliance", :name "DirectoryService"}
+"Identity Access Management Addon"                         {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementAddon"}
+"Network Firewall"                                         {:lib "awslib14", :path "SecurityIdentityCompliance", :name "NetworkFirewall"}
+"Secrets Manager"                                          {:lib "awslib14", :path "SecurityIdentityCompliance", :name "SecretsManager"}
+"IAM Identity Center"                                      {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IAMIdentityCenter"}
+"Certificate Manager"                                      {:lib "awslib14", :path "SecurityIdentityCompliance", :name "CertificateManager"}
+"Artifact"                                                 {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Artifact"}
+"Cognito"                                                  {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Cognito"}
+"Audit Manager"                                            {:lib "awslib14", :path "SecurityIdentityCompliance", :name "AuditManager"}
+"Identity and Access Management"                           {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityandAccessManagement"}
+"WAF Labels"                                               {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFLabels"}
+"Cloud HSM"                                                {:lib "awslib14", :path "SecurityIdentityCompliance", :name "CloudHSM"}
+"Security Hub Finding"                                     {:lib "awslib14", :path "SecurityIdentityCompliance", :name "SecurityHubFinding"}
+"Certificate Manager Certificate Authority"                {:lib "awslib14", :path "SecurityIdentityCompliance", :name "CertificateManagerCertificateAuthority"}
+"Shield AWS Shield Advanced"                               {:lib "awslib14", :path "SecurityIdentityCompliance", :name "ShieldAWSShieldAdvanced"}
+"WAF Managed Rule"                                         {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFManagedRule"}
+"Macie"                                                    {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Macie"}
+"Identity Access Management MFA Token"                     {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementMFAToken"}
+"Identity Access Management Long Term Security Credential" {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementLongTermSecurityCredential"}
+"Directory Service AWS Managed Microsoft AD"               {:lib "awslib14", :path "SecurityIdentityCompliance", :name "DirectoryServiceAWSManagedMicrosoftAD"}
+"WAF Filtering Rule"                                       {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFFilteringRule"}
+"Key Management Service"                                   {:lib "awslib14", :path "SecurityIdentityCompliance", :name "KeyManagementService"}
+"Firewall Manager"                                         {:lib "awslib14", :path "SecurityIdentityCompliance", :name "FirewallManager"}
+"Signer"                                                   {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Signer"}
+"WAF"                                                      {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAF"}
+"Inspector Agent"                                          {:lib "awslib14", :path "SecurityIdentityCompliance", :name "InspectorAgent"}
+"Detective"                                                {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Detective"}
+"Network Firewall Endpoints"                               {:lib "awslib14", :path "SecurityIdentityCompliance", :name "NetworkFirewallEndpoints"}
+"Directory Service Simple Ad"                              {:lib "awslib14", :path "SecurityIdentityCompliance", :name "DirectoryServiceSimpleAD"}
+"Resource Access Manager"                                  {:lib "awslib14", :path "SecurityIdentityCompliance", :name "ResourceAccessManager"}
+"Identity Access Management AWSSTS Alternate"              {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementAWSSTSAlternate"}
+"Security Identity Compliance"                             {:lib "awslib14", :path "SecurityIdentityCompliance", :name "SecurityIdentityCompliance"}
+"Shield"                                                   {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Shield"}
+"WAF Bot"                                                  {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFBot"}
+"Identity Access Management Permissions"                   {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementPermissions"}
+"Cloud Directory"                                          {:lib "awslib14", :path "SecurityIdentityCompliance", :name "CloudDirectory"}
+"WAF Rule"                                                 {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFRule"}
+"Inspector"                                                {:lib "awslib14", :path "SecurityIdentityCompliance", :name "Inspector"}
+"Directory Service Ad Connector"                           {:lib "awslib14", :path "SecurityIdentityCompliance", :name "DirectoryServiceADConnector"}
+"Identity Access Management Data Encryption Key"           {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementDataEncryptionKey"}
+"Identity Access Management Iam Access Analyzer"           {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementIAMAccessAnalyzer"}
+"WAF Bad Bot"                                              {:lib "awslib14", :path "SecurityIdentityCompliance", :name "WAFBadBot"}
+"Identity Access Management AWSSTS"                        {:lib "awslib14", :path "SecurityIdentityCompliance", :name "IdentityAccessManagementAWSSTS"}
+"Guard Duty"                                               {:lib "awslib14", :path "SecurityIdentityCompliance", :name "GuardDuty"}
+"API Gateway"                                              {:lib "awslib14", :path "ApplicationIntegration", :name "APIGateway"}
+"Event Bridge SaaS Partner Event"                          {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeSaasPartnerEvent"}
+"Express Workflows"                                        {:lib "awslib14", :path "ApplicationIntegration", :name "ExpressWorkflows"}
+"Application Integration"                                  {:lib "awslib14", :path "ApplicationIntegration", :name "ApplicationIntegration"}
+"Simple Queue Service Message"                             {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleQueueServiceMessage"}
+"Console Mobile Application"                               {:lib "awslib14", :path "ApplicationIntegration", :name "ConsoleMobileApplication"}
+"Simple Notification Service Http Notification"            {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleNotificationServiceHTTPNotification"}
+"Event Bridge Event"                                       {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeEvent"}
+"Event Bridge Custom Event Bus"                            {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeCustomEventBus"}
+"Simple Notification Service Email Notification"           {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleNotificationServiceEmailNotification"}
+"Event Bridge Rule"                                        {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeRule"}
+"Step Functions"                                           {:lib "awslib14", :path "ApplicationIntegration", :name "StepFunctions"}
+"MQ Broker"                                                {:lib "awslib14", :path "ApplicationIntegration", :name "MQBroker"}
+"Event Bridge"                                             {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridge"}
+"App Flow"                                                 {:lib "awslib14", :path "ApplicationIntegration", :name "AppFlow"}
+"Simple Notification Service"                              {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleNotificationService"}
+"Simple Queue Service Queue"                               {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleQueueServiceQueue"}
+"Event Bridge Schema"                                      {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeSchema"}
+"API Gateway Endpoint"                                     {:lib "awslib14", :path "ApplicationIntegration", :name "APIGatewayEndpoint"}
+"Managed Workflowsfor Apache Airflow"                      {:lib "awslib14", :path "ApplicationIntegration", :name "ManagedWorkflowsforApacheAirflow"}
+"Event Bridge Default Event Bus"                           {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeDefaultEventBus"}
+"MQ"                                                       {:lib "awslib14", :path "ApplicationIntegration", :name "MQ"}
+"Simple Queue Service"                                     {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleQueueService"}
+"App Sync"                                                 {:lib "awslib14", :path "ApplicationIntegration", :name "AppSync"}
+"Event Bridge Schema Registry"                             {:lib "awslib14", :path "ApplicationIntegration", :name "EventBridgeSchemaRegistry"}
+"Simple Notification Service Topic"                        {:lib "awslib14", :path "ApplicationIntegration", :name "SimpleNotificationServiceTopic"}
+}
