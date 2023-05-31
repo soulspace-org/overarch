@@ -24,7 +24,7 @@ The model and diagram descriptions of the C4 model banking example can be found 
 Models
 ------
 
-THe model contains all the elements relevant in the architecture of the system.
+The model contains all the elements relevant in the architecture of the system.
 Models are specified in the Extensible Data Notation (EDN).
 EDN is a data notation like JSON but with richer data type support.
 Unlike JSON, EDN also supports sets in addition to lists and maps.
