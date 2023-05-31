@@ -2,7 +2,9 @@
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [charred.api :as csv]
-            [org.soulspace.clj.java.file :as file]))
+            [org.soulspace.clj.java.file :as file]
+            [org.soulspace.clj.string :as sstr]
+))
 
 (comment
   ; include icon/sprite sets, if icons are used, e.g. 
@@ -157,6 +159,36 @@
    "Azure Service Environment"         {:lib "azure"
                                         :path "Containers"
                                         :name "AzureServiceEnvironment"}
+   "Azure Application Insights"        {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureApplicationInsights"}
+   "Azure Artifacts"                   {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureArtifacts"}
+   "Azure Boards"                      {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureBoards"}
+   "Azure DevOps"                      {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureDevOps"}
+   "Azure DevOps Organisation"         {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureDevOpsOrganisation"}
+   "Azure Dev Test Labs"               {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureDevTestLabs"}
+   "Azure Lab Services"                {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureLabServices"}
+   "Azure Pipelines"                   {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzurePipelines"}
+   "Azure Repos"                       {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureRepos"}
+   "Azure Test Plans"                   {:lib "azure"
+                                        :path "Devops"
+                                        :name "AzureTestPlans"}
    "Azure"                             {:lib "azure"
                                         :path "General"
                                         :name "Azure"}
@@ -338,6 +370,23 @@
                                         :path "Storage"
                                         :name "AzureStorage"}})
 
+(defn capitalize-parts
+  "Returns a version of the string with capitalized parts, separated by `separator`"
+  [s separator]
+  (->> (str/split s (re-pattern separator))
+       (map str/capitalize)
+       (str/join separator)))
+
+(defn tech-name
+  "Create a tech name from the sprite name s."
+  [s]
+  (-> s
+      (sstr/camel-case-to-hyphen)
+      (str/replace "_" "-")
+      (str/replace "-" " ")
+      (capitalize-parts " ")
+      ))
+
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
   [tech]
@@ -354,6 +403,7 @@
        (map (juxt file/parent-path file/base-name))
        ;(map file/base-name)
        ))
+
 (defn write-csv
   "Writes the collection `coll` in CSV format to `file`."
   [file coll]
@@ -367,17 +417,27 @@
         sprite-lib (first path-entries)
         sprite-path (str/join "/" (rest path-entries))
         sprite-name (last x)
-        sprite-key (last x)]
+        sprite-key (tech-name (last x))]
     [sprite-key {:lib sprite-lib
                  :path sprite-path
                  :name sprite-name}]))
+
+(defn write-sprite-map
+  "Writes the collection `coll` in CSV format to `file`."
+  [file coll]
+  (with-open [wrt (io/writer file)]
+    (binding [*out* wrt]
+      (println "{")
+      (doseq [entry coll]
+        (println (str "  \"" (first entry) "\" " (second entry))))
+      (println "}"))))
 
 (comment
   (count "/home/soulman/devel/tmp/plantuml-stdlib")
   (write-csv "dev/stdlib.csv" (into [] (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib")))
 
-  (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")) 
+  (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
 
   (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
-
+  (write-sprite-map "spritemap.edn" (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
   )
