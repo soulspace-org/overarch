@@ -20,12 +20,13 @@
                   Reads your model and view specifications and exports them
                   into the specified format.")
 
-(def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
-               ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
-               ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
-               ["-f" "--format FORMAT" "Export format (json, plantuml)" :default :plantuml :parse-fn keyword]
-               ["-h" "--help" "Print help"]
-               [nil  "--debug" "Print debug messages" :default false]])
+(def cli-opts
+  [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
+   ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
+   ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
+   ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :parse-fn keyword]
+   ["-h" "--help" "Print help"]
+   [nil  "--debug" "Print debug messages" :default false]])
 
 ;;;
 ;;; Output messages
@@ -64,7 +65,6 @@
 (defn update-and-export!
   "Read models and export the data according to the given `options`."
   [options]
-  (println "Update and export")
   (core/update-state! (:model-dir options))
   (exp/export options))
 
