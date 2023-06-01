@@ -13,7 +13,7 @@
 
   :repl-options {:init-ns org.soulspace.overarch.cli}
 
-  :profiles {:dev {:dependencies [[djblue/portal "0.37.1"]
+  :profiles {:dev {:dependencies [[djblue/portal "0.41.0"]
                                   [criterium/criterium "0.4.6"]
                                   [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
                                   [expound/expound "0.9.0"]]
