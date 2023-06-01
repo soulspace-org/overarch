@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.diagram
+(ns org.soulspace.overarch.view
   "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
             [clojure.set :as set]

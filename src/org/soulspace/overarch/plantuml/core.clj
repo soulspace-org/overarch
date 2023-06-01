@@ -5,7 +5,7 @@
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.diagram :as dia]
+            [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.plantuml.sprites :as sprites]))
 
@@ -94,35 +94,35 @@
    
    Multifunction dispatching on the value of the :el key of the element `e`."
   (fn [diagram indent e] (:el e))
-  :hierarchy #'dia/element-hierarchy)
+  :hierarchy #'view/element-hierarchy)
 
 (defmethod render-element :boundary
   [diagram indent e]
   (if (seq (:ct e))
-    (let [children (dia/elements-to-render diagram (:ct e))]
-      (flatten [(str (dia/render-indent indent)
+    (let [children (view/elements-to-render diagram (:ct e))]
+      (flatten [(str (view/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
-                     (dia/element-name e) "\""
+                     (view/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
                      children)
-                (str (dia/render-indent indent) "}")]))
-    [(str (dia/render-indent indent)
+                (str (view/render-indent indent) "}")]))
+    [(str (view/render-indent indent)
           (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
-          (dia/element-name e) "\""
+          (view/element-name e) "\""
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
 (defmethod render-element :person
   [_ indent e]
-  [(str (dia/render-indent indent)
+  [(str (view/render-indent indent)
         (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (dia/element-name e) "\""
+        (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -130,11 +130,11 @@
 
 (defmethod render-element :system
   [_ indent e]
-  [(str (dia/render-indent indent)
+  [(str (view/render-indent indent)
         (element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (dia/element-name e) "\""
+        (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $type=\"" (:tech e) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -142,12 +142,12 @@
 
 (defmethod render-element :container
   [_ indent e]
-  [(str (dia/render-indent indent)
+  [(str (view/render-indent indent)
         (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (dia/element-name e) "\""
+        (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (sprites/sprite? (:tech e))
@@ -157,12 +157,12 @@
 
 (defmethod render-element :component
   [_ indent e]
-  [(str (dia/render-indent indent)
+  [(str (view/render-indent indent)
         (element->method (:el e))
         (when (:subtype e) (subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
-        (dia/element-name e) "\""
+        (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (when (sprites/sprite? (:tech e)) 
@@ -173,11 +173,11 @@
 (defmethod render-element :node
   [diagram indent e]
   (if (seq (:ct e))
-    (let [children (dia/elements-to-render diagram (:ct e))]
-      (flatten [(str (dia/render-indent indent)
+    (let [children (view/elements-to-render diagram (:ct e))]
+      (flatten [(str (view/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
-                     (dia/element-name e) "\""
+                     (view/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
                      (when (sprites/sprite? (:tech e))
@@ -186,11 +186,11 @@
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
                      children)
-                (str (dia/render-indent indent) "}")]))
-    [(str (dia/render-indent indent)
+                (str (view/render-indent indent) "}")]))
+    [(str (view/render-indent indent)
           (element->method (:el e)) "("
           (alias-name (:id e)) ", \""
-          (dia/element-name e) "\""
+          (view/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $type=\"" (:tech e) "\""))
           (when (sprites/sprite? (:tech e))
@@ -201,12 +201,12 @@
 (defmethod render-element :rel
   [diagram indent e]
   (if (:constraint e) ; TODO :hidden or :constraint
-    [(str (dia/render-indent indent) "Lay"
+    [(str (view/render-indent indent) "Lay"
           (when (:direction e) (directions (:direction e))) "("
           (alias-name (:from e)) ", "
           (alias-name (:to e))
           ")")]
-    [(str (dia/render-indent indent)
+    [(str (view/render-indent indent)
           (element->method (:el e))
           (when (:direction e) (directions (:direction e))) "("
           (alias-name (:from e)) ", "
@@ -228,11 +228,11 @@
 ;;
 
 (defn sprites-for-diagram
-  ""
+  "Collects the sprites for the"
   [diagram]
   (->> diagram
-       (dia/elements-to-render)
-       (dia/collect-technologies)
+       (view/elements-to-render)
+       (view/collect-technologies)
        (filter sprites/sprite?)
        (map #(sprites/tech->sprite %))))
 
@@ -364,7 +364,7 @@
 
 (defn render-diagram
   [options diagram]
-  (let [children (dia/elements-to-render diagram)]
+  (let [children (view/elements-to-render diagram)]
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id diagram)))
               (render-imports diagram)
@@ -381,10 +381,8 @@
 
 (defmethod exp/export-file :plantuml
   [options diagram]
-  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id diagram)))
-        dir (io/as-file dir-name)]
-;    (println "exporting diagram to" dir-name)
-    (file/create-dir dir)
+  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id diagram)))]
+    (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
                      (name (:id diagram)) ".puml"))))
 

@@ -1,8 +1,10 @@
 (ns org.soulspace.overarch.structurizr
   "Functions for the export to structurizr."
   (:require [clojure.string :as str]
+            [clojure.java.io :as io]
+            [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.diagram :as dia]
+            [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.clj.string :as sstr]))
 
@@ -14,14 +16,14 @@
    :component "component"
    :node "deploymentNode"})
 
-(def diagram-type->structurizr
-  "Maps the diagram type"
-  {:system-landscape-diagram "systemlandscape"
-   :context-diagram "systemcontext"
-   :container-diagram "container"
-   :component-diagram "component"
-   :deployment-diagram "deployment"
-   :dynamic-diagram "dynamic"})
+(def view-type->structurizr
+  "Maps the view type"
+  {:system-landscape-view "systemlandscape"
+   :context-view "systemcontext"
+   :container-view "container"
+   :component-view "component"
+   :deployment-view "deployment"
+   :dynamic-view "dynamic"})
 
 (def element-hierarchy
   "Hierarchy for rendering elements."
@@ -46,7 +48,7 @@
 
 (defmethod render-element :rel
   [indent e]
-  [(str (dia/render-indent indent)
+  [(str (view/render-indent indent)
         (alias-name (:from e)) " -> " (alias-name (:to e))
         " \"" (:name e) "\""
         (when (:tech e) (str " \"" (:tech e) "\"")))])
@@ -55,47 +57,47 @@
   [indent e]
   (if (:ct e)
     (let [children (map core/resolve-ref (:ct e))]
-      [(str (dia/render-indent indent) (alias-name (:id e)) " = "
+      [(str (view/render-indent indent) (alias-name (:id e)) " = "
             (element-type->structurizr (:el e))
-            " \"" (dia/element-name e) "\" {")
+            " \"" (view/element-name e) "\" {")
        (map (partial render-element (+ indent 2)) children)
-       (str (dia/render-indent indent) "}")])
-    [(str (dia/render-indent indent) (alias-name (:id e)) " = "
+       (str (view/render-indent indent) "}")])
+    [(str (view/render-indent indent) (alias-name (:id e)) " = "
           (element-type->structurizr (:el e))
-          " \"" (dia/element-name e) "\"")]))
+          " \"" (view/element-name e) "\"")]))
 
 (defn render-model
   "Renders the structurizr model."
   [elements]
-  (flatten [(str (dia/render-indent 2) "model {")
+  (flatten [(str (view/render-indent 2) "model {")
             (map (partial render-element 4)  elements)
-            (str (dia/render-indent 2) "}")])
+            (str (view/render-indent 2) "}")])
   )
 
 (defn render-view
   "Renders a structurizr view."
   [view]
-  (flatten [(str (dia/render-indent 4)
-                 (diagram-type->structurizr (:el view))
+  (flatten [(str (view/render-indent 4)
+                 (view-type->structurizr (:el view))
                  " \"" (sstr/first-upper-case
                         (sstr/hyphen-to-camel-case
-                         (diagram-type->structurizr (:el view)))) "\" {\n")
+                         (view-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
               (let [children (filter core/relation?
-                                     (dia/elements-to-render view))]
+                                     (view/elements-to-render view))]
                 (map (partial render-element 6) children))
-              (str (dia/render-indent 6) "include *\n"))
+              (str (view/render-indent 6) "include *\n"))
             (when (:title view)
-              (str (dia/render-indent 6) "description \"" (:title view) "\"\n"))
-            (str (dia/render-indent 4) "}")]))
+              (str (view/render-indent 6) "description \"" (:title view) "\"\n"))
+            (str (view/render-indent 4) "}")]))
 
 (defn render-views
   "Renders the structurizr views."
   [views]
-  (flatten [(str (dia/render-indent 2) "views {")
+  (flatten [(str (view/render-indent 2) "views {")
             (map render-view views)
-            (str (dia/render-indent 4) "theme default")
-            (str (dia/render-indent 2) "}")])
+            (str (view/render-indent 4) "theme default")
+            (str (view/render-indent 2) "}")])
   )
 
 (defn render-workspace
@@ -103,20 +105,27 @@
   ([]
    [(str "workspace {")
     (render-model (core/get-model-elements))
-    (render-views (core/get-diagrams))
+    (render-views (core/get-views))
     "}"])
   ([m]
    [(str "workspace {")
-    (render-model (core/get-model-elements))
-    (render-views (core/get-diagrams))
+    (render-model (core/get-model-elements m))
+    (render-views (core/get-views m))
     "}"]))
+
+(defmethod exp/export-file :structurizr
+  [options]
+  (let [dir-name (str (:export-dir options) "/structurizr/")
+        workspace (namespace (:id (first (core/get-model-elements))))]
+    (file/create-dir (io/as-file dir-name))
+    (io/as-file (str dir-name "/" workspace ".dsl"))))
 
 (defmethod exp/export :structurizr
   [options]
-  ; 
-  )
+  (with-open [wrt (io/writer (exp/export-file options))]
+    (binding [*out* wrt]
+      (println (str/join "\n" (render-workspace))))))
 
 (comment
   (println (str/join "\n" (flatten (render-workspace))))
   )
-
