@@ -103,15 +103,15 @@
 (defn render-workspace
   "Renders a structurizr workspace."
   ([]
-   [(str "workspace {")
+   (flatten [(str "workspace {")
     (render-model (core/get-model-elements))
     (render-views (core/get-views))
-    "}"])
+    "}"]))
   ([m]
-   [(str "workspace {")
+   (flatten [(str "workspace {")
     (render-model (core/get-model-elements m))
     (render-views (core/get-views m))
-    "}"]))
+    "}"])))
 
 (defmethod exp/export-file :structurizr
   [options]
@@ -124,7 +124,7 @@
   [options]
   (with-open [wrt (io/writer (exp/export-file options))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-workspace))))))
+      (println (str/join "\n" (doall (render-workspace)))))))
 
 (comment
   (println (str/join "\n" (flatten (render-workspace))))

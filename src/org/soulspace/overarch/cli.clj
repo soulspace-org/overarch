@@ -2,13 +2,14 @@
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
+            [hawk.core :as hawk]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]
             ; must be loaded, for registering of the multimethods
             ; require dynamically?
             [org.soulspace.overarch.json :as json]
-            [org.soulspace.overarch.plantuml.core :as puml]
-            [hawk.core :as hawk])
+            [org.soulspace.overarch.structurizr :as structurizr]
+            [org.soulspace.overarch.plantuml.core :as puml])
   (:gen-class))
 
 ;;;
@@ -121,6 +122,7 @@
   (update-and-export! {:model-dir "models"
                        :format :plantuml})
   (-main "--debug" "--format" "json")
+  (-main "--model-dir" "models/banking" "--format" "structurizr")
   (-main "--debug")
   (-main "--help")
   )
