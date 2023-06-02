@@ -4,10 +4,13 @@ Overarch
 ========
 A data driven description of software architecture based on the C4 model.
 
-Describe your model as data and specify/generate representations (e.g. diagrams) for your model. All core and supplementary C4 diagrams except code diagrams are
+Describe your model as data and specify/generate representations (e.g. diagrams)
+for your model. All core and supplementary C4 diagrams except code diagrams are
 supported.
 
-Overarch is not so much about how to model your architecture (see [C4 Model](https://c4model.com) for that), but about making the models composable and reusable.
+Overarch is not so much about how to model your architecture
+(see [C4 Model](https://c4model.com) for that), but about making the models
+composable and reusable.
 
 *Disclaimer: this project is in alpha stage - the data format might change*
 
@@ -15,33 +18,55 @@ Overarch is not so much about how to model your architecture (see [C4 Model](htt
 Rationale
 ---------
 
-C4 models are great to vizualize an architecture on different levels of detail with the various diagrams types. The value lies in an expressive description and visualization of an architecture with different views.
+C4 models are great to vizualize an architecture on different levels of detail
+with the various diagrams types. The value lies in an expressive description
+and visualization of an architecture with different views.
 
-But but the models used for diagram generation with the existing tools are not models in the sense of generality. Especially if you describe your model in PlantUML files, these descriptions are mere textfiles.
+But but the models used for diagram generation with the existing tools are not
+models in the sense of generality. Especially if you describe your model in
+PlantUML files, these descriptions are mere textfiles.
 
-The textfiles don't compose and you can't do anything else with these descriptions other than render them with PlantUML. The parsing process is opaque and you don't have access to the data of the model.
+The textfiles don't compose and you can't do anything else with these
+descriptions other than render them with PlantUML. The parsing process is
+opaque and you don't have access to the data of the model.
 
-Also the model is complected with the diagrams, as layout and rendering information is part of the model description and vice versa.
+Also the model is complected with the diagrams, as layout and rendering
+information is part of the model description and vice versa.
 
-If the model is described as plain *data* in an open format, it can be transformed into a graphical representation, e.g. into PlantUML textfiles.
+If the model is described as plain *data* in an open format, it can be
+transformed into a graphical representation, e.g. into PlantUML textfiles.
 
-The model data should be separated from information about these representations. They can be composed with these information and with other models. By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
+The model data should be separated from information about these representations.
+They can be composed with these information and with other models. By doing so,
+the model may also be used in other ways, e.g. the generation of documentation,
+code or infrastructure.
 
-Even if the model is specified as data, the format should be a text file (EDN, JSON) to be easily edited with text editors by the whole team and to be committed to version control, instead of being in some propriatary binary format.
+Even if the model is specified as data, the format should be a text file (EDN,
+JSON) to be easily edited with text editors by the whole team and to be committed
+to version control, instead of being in some propriatary binary format.
 
-The native format should be Extensible Data Notation (EDN) with representations in other formats like JSON. EDN is a textual format for data, which is human readable. It is directly readable into data structures in clojure code.
+The native format should be Extensible Data Notation (EDN) with representations
+in other formats like JSON. EDN is a textual format for data, which is human
+readable. It is directly readable into data structures in clojure code.
 
-The data format should be open for extension. E.g. it should cope with additional attributes or element types in the data structures.
+The data format should be open for extension. E.g. it should cope with additional
+attributes or element types in the data structures.
 
-The model should describe the architecture (the structure) of your system(s). The elements are based on the C4 model and are a hierarchical composition of the elements of the architecture.
+The model should describe the architecture (the structure) of your system(s).
+The elements are based on the C4 model and are a hierarchical composition of the
+elements of the architecture.
 
-Model references should be used to refer to model elements from representations (e.g. diagrams). To allow references to relations, the definition of a relation must have an id.
+Model references should be used to refer to model elements from representations
+(e.g. diagrams). To allow references to relations, the definition of a relation
+must have an id.
 
-Model references may be enhanced with additional attributes that are specific to the usage context (e.g. a style attribute in the context of a diagram)
+Model references may be enhanced with additional attributes that are specific
+to the usage context (e.g. a style attribute in the context of a diagram)
 
 Examples
 --------
-This is an example of the specification of a model and some diagrams based on the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
+This is an example of the specification of a model and some diagrams based on the
+Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
 The complete model and diagram specifications can be found under
 [models/banking](/models/banking).
@@ -94,7 +119,7 @@ The complete model and diagram specifications can be found under
   :name "E-mail System"
   :desc "The internal Microsoft Exchange email system."}
 
- ; Context diagram relations 
+ ; Context view relations 
  {:el :rel
   :id :banking/personal-customer-uses-internet-banking-system
   :from :banking/personal-customer
@@ -117,10 +142,10 @@ The complete model and diagram specifications can be found under
   :name "Sends e-mail to"}} 
  ```
 
-### Example of a diagrams specification
+### Example of a views specification
 
 ```clojure
-[{:el :context-diagram
+[{:el :context-view
   :id :banking/system-context-view
   :title "System Context View of the Internet Banking System"
   :ct [; model elements
@@ -135,7 +160,7 @@ The complete model and diagram specifications can be found under
        {:ref :banking/internet-banking-system-using-mainframe-banking-system}
        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
- {:el :container-diagram
+ {:el :container-view
   :id :banking/container-view
   :spec {:legend true}
   :title "Container View of the Internet Banking System"
@@ -214,9 +239,9 @@ syntax check and syntax highlighting.
 
 ![Model editing](/doc/overarch_vscode_model.png)
 
-You also get integrated previews of the
-exported PlantUML diagrams and the ability to generate image files in different
-formats (e.g. PNG, SVG, PDF, ...) directly from within Visual Studio Code.
+You also get integrated previews of the exported PlantUML diagrams and the
+ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
+directly from within Visual Studio Code.
 
 ![PlantUML preview](/doc/overarch_plantuml_preview.png)
 
