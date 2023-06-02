@@ -17,14 +17,15 @@
 ;;;
 
 (def appname "overarch")
-(def description "Overarch CLI Exporter
-                  Reads your model and view specifications and exports them
-                  into the specified format.")
+(def description
+  "Overarch CLI Exporter
+   Reads your model and view specifications and exports them
+   into the specified format.")
 
 (def cli-opts [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
                ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
                ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
-               ["-f" "--format FORMAT" "Export format (json, plantuml)" :default :plantuml :parse-fn keyword]
+               ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
                ["-h" "--help" "Print help"]
                [nil  "--debug" "Print debug messages" :default false]])
 
