@@ -40,8 +40,8 @@
  "Azure Workspace"                                 {:lib "azure", :path "Compute", :name "AzureWorkspace"}
  "Azure Server Farm"                               {:lib "azure", :path "Compute", :name "AzureServerFarm"}
  "Azure Web Slot"                                  {:lib "azure", :path "Compute", :name "AzureWebSlot"}
- "Dicom Service"                                   {:lib "azure", :path "Health", :name "DICOMService"}
- "Fhir Service"                                    {:lib "azure", :path "Health", :name "FHIRService"}
+ "DICOM Service"                                   {:lib "azure", :path "Health", :name "DICOMService"}
+ "FHIR Service"                                    {:lib "azure", :path "Health", :name "FHIRService"}
  "Med Tech Service"                                {:lib "azure", :path "Health", :name "MedTechService"}
  "Health Data Services"                            {:lib "azure", :path "Health", :name "HealthDataServices"}
  "Azure Disk Storage Classic"                      {:lib "azure", :path "Storage", :name "AzureDiskStorageClassic"}
