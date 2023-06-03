@@ -370,6 +370,12 @@
                                         :path "Storage"
                                         :name "AzureStorage"}})
 
+; TODOs
+; use (io/resource ) or load sprite mapping from options config dir 
+; convert names correctly
+; find max length of sprite keys and pad/indent maps
+; use text instead of println with *out* binding
+
 (defn capitalize-parts
   "Returns a version of the string with capitalized parts, separated by `separator`"
   [s separator]
