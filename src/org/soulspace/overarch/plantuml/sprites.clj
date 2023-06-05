@@ -415,34 +415,57 @@
   "Prepares sprite entry info from collection PlantUML imports."
   [x]
   (let [path-entries (str/split (first x) #"/")
-        sprite-lib (first path-entries)
+        sprite-prefix (first path-entries)
         sprite-path (str/join "/" (rest path-entries))
         sprite-name (last x)
         sprite-key (tech-name (last x))]
-    {:key sprite-key
-     :lib sprite-lib
-     :path sprite-path
-     :name sprite-name}))
+    (if (= "tupadr3" sprite-prefix)
+      {:key sprite-key
+       :lib sprite-path
+       :prefix sprite-prefix
+       :path sprite-path
+       :name sprite-name}
+      {:key sprite-key
+       :lib sprite-prefix
+       :prefix sprite-prefix
+       :path sprite-path
+       :name sprite-name})))
+
+(defn key-length
+  "Returns the length of the key of `x`."
+  [x]
+  (count (:key x)))
+
 
 ; find max length of sprite keys and pad/indent maps
 ; use text instead of println with *out* binding
 (defn write-sprite-map
-  "Writes the collection `coll` in CSV format to `file`."
+  "Writes the collection `coll` to `file`."
   [file coll]
-  (let [max-length (reduce max 0 (map count coll))]
+  (let [max-length (reduce max 0 (map key-length coll))]
+    (println "max-length " max-length)
     (with-open [wrt (io/writer file)]
       (binding [*out* wrt]
         (println "{")
-        (doseq [entry coll] 
+        (doseq [entry coll]
           (println (str "  \"" (:key entry) "\""
-                        (str/join (repeat (- max-length (count (:key entry))))) " "
-                        " {:lib " (:lib entry)
-                        " :path " (:path entry)
-                        " :name " (:name entry) "}")
-        (println "}")))))))
+;                        (str/join (repeat (- (+ max-length 1) (count (:key entry))) " "))
+                        " {:lib \"" (:lib entry)
+                        "\" :path \"" (:path entry)
+                        "\" :name \"" (:name entry) "\"}")))
+        (println "}")))))
+
+(defn write-sprite-maps
+  "Writes the tech to sprite mappings for the libs in the map."
+  [m]
+  (doseq [[k v] m]
+    (write-sprite-map (str k ".edn") v)))
+
+(def excluded-libs #{"DomainStory"})
+(def included-libs #{"azure" "awslib14" "elastic"})
 
 ; use (io/resource ) or load sprite mapping from options config dir 
-(defn load-tech-sprite-mapping
+(defn load-tech-sprite-mappings
   ""
   [options]
   (if (:config-dir options)
@@ -456,5 +479,9 @@
   (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
 
   (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
-  (write-sprite-map "spritemap.edn" (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+  (write-sprite-map "stdlib" (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+
+  (group-by :lib (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+  (write-sprite-maps (group-by :lib (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))))
+
   )
