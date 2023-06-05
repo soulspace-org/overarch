@@ -3,8 +3,18 @@ Overarch Usage
 
 Overview
 --------
-Overarch can be used as a CLI tool to convert specified models and diagrams into different formats,
-e.g. the rendering of diagrams in PlantUML or the conversion of the data to JSON.
+The usage of Overarch is twofold. On the one hand, it is an open data format
+for the description of software architectures. On the other hand it is a tool
+to transform the architecture description into diagrams or other
+representations.
+
+Overarch can be used as a CLI tool to convert specified models and diagrams
+into different formats, e.g. the rendering of diagrams in PlantUML or the
+conversion of the data to JSON.
+
+Features
+--------
+
 
 Modelling
 ---------
@@ -16,7 +26,8 @@ syntax check and syntax highlighting.
 ![Model editing](/doc/overarch_vscode_model.png)
 
 ### Examples
-The model and diagram descriptions of the C4 model banking example can be found in models/banking folder:
+The model and diagram descriptions of the C4 model banking example can be
+found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
  * [diagrams.edn](/models/banking/diagrams.edn)
 
