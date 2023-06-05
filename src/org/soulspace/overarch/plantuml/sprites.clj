@@ -6,42 +6,39 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.clj.string :as sstr]))
 
-(comment
-  ; include icon/sprite sets, if icons are used, e.g. 
-  "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
-  "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
-  "!include DEVICONS/angular.puml
-   !include DEVICONS/java.puml
-   !include DEVICONS/msql_server.puml
-   !include FONTAWESOME/users.puml
-   ")
+(def excluded-libs #{"aws" "awslib" "awslib10" "archimate" "C4" "classy" "classy-c4" "DomainStory" "kubernetes"})
+(def included-libs #{"azure" "awslib14" "elastic"})
 
 (def sprite-libraries
   "Definition of sprite libraries."
-  {:azure {:name "azure"
-           :local-prefix "azure"
-           :local-imports ["AzureCommon"
-                           "AzureC4Integration"]
-           :remote-prefix "AZURE"
-           :remote-url "https://raw.githubusercontent.com/azure/"
-           :remote-imports ["AzureCommon"
-                            "AzureC4Integration"]}
-   :aws {:name "awslib"
-         :local-prefix "awslib14"
-         :local-imports ["AWSCommon"
-                         "AWSC4Integration"]
-         :remote-prefix "AWS"
-         :remote-url "https://raw.githubusercontent.com/awslib/"
-         :remote-imports ["AWSCommon"
-                          "AWSC4Integration"]}
-   :devicons    {:name "devicons"
-                 :local-prefix "devicons"
-                 :remote-prefix "DEVICONS"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
-   :fontawesome {:name "fontawesome"
-                 :local-prefix "fontawesome"
-                 :remote-prefix "FONTAWESOME"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
+  {:azure          {:name "azure"
+                    :local-prefix "azure"
+                    :local-imports ["AzureCommon"
+                                    "AzureC4Integration"]
+                    :remote-prefix "AZURE"
+                    :remote-url "https://raw.githubusercontent.com/azure/"
+                    :remote-imports ["AzureCommon"
+                                     "AzureC4Integration"]}
+   :aws            {:name "awslib"
+                    :local-prefix "awslib14"
+                    :local-imports ["AWSCommon"
+                                    "AWSC4Integration"]
+                    :remote-prefix "AWS"
+                    :remote-url "https://raw.githubusercontent.com/awslib/"
+                    :remote-imports ["AWSCommon"
+                                     "AWSC4Integration"]}
+   :devicons       {:name "devicons"
+                    :local-prefix "devicons"
+                    :remote-prefix "DEVICONS"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :font-awesome-5 {:name "font-awesome-5"
+                    :local-prefix "font-awesome-5"
+                    :remote-prefix "FONTAWESOME"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}
+   :material       {:name "material"
+                    :local-prefix "material"
+                    :local-imports ["common"]}
+   })
 
 (def tech->sprite
   "Map of technology names to sprite infos."
@@ -451,6 +448,7 @@
           (println (str "  \"" (:key entry) "\""
 ;                        (str/join (repeat (- (+ max-length 1) (count (:key entry))) " "))
                         " {:lib \"" (:lib entry)
+                        "\" :prefix \"" (:prefix entry)
                         "\" :path \"" (:path entry)
                         "\" :name \"" (:name entry) "\"}")))
         (println "}")))))
@@ -460,9 +458,6 @@
   [m]
   (doseq [[k v] m]
     (write-sprite-map (str k ".edn") v)))
-
-(def excluded-libs #{"DomainStory"})
-(def included-libs #{"azure" "awslib14" "elastic"})
 
 ; use (io/resource ) or load sprite mapping from options config dir 
 (defn load-tech-sprite-mappings
