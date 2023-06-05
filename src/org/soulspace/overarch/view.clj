@@ -38,7 +38,8 @@
       (or (and (= :rel (:el e))
                (element-predicate (core/get-model-element (:from e)))
                (element-predicate (core/get-model-element (:to e))))
-          (element-predicate e)))))
+          (and (element-predicate e)
+               (not (:external (core/get-parent-element e))))))))
 
 ; general
 (defn as-boundary?
@@ -49,7 +50,8 @@
    ; has children
    (seq (:ct e))
    ; has a boundary mapping for this diagram-type
-   (element->boundary [view-type (:el e)])))
+   (element->boundary [view-type (:el e)])
+   (not (:external e))))
 
 ;;;
 ;;; Rendering functions
