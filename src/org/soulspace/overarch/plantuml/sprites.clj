@@ -1,10 +1,10 @@
 (ns org.soulspace.overarch.plantuml.sprites
-  (:require [clojure.string :as str]
+  (:require [clojure.edn :as edn]
+            [clojure.string :as str]
             [clojure.java.io :as io]
             [charred.api :as csv]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.clj.string :as sstr]
-))
+            [org.soulspace.clj.string :as sstr]))
 
 (comment
   ; include icon/sprite sets, if icons are used, e.g. 
@@ -370,12 +370,6 @@
                                         :path "Storage"
                                         :name "AzureStorage"}})
 
-; TODOs
-; use (io/resource ) or load sprite mapping from options config dir 
-; convert names correctly
-; find max length of sprite keys and pad/indent maps
-; use text instead of println with *out* binding
-
 (defn capitalize-parts
   "Returns a version of the string with capitalized parts, separated by `separator`"
   [s separator]
@@ -383,6 +377,7 @@
        (map str/capitalize)
        (str/join separator)))
 
+; convert names correctly
 (defn tech-name
   "Create a tech name from the sprite name s."
   [s]
@@ -424,19 +419,35 @@
         sprite-path (str/join "/" (rest path-entries))
         sprite-name (last x)
         sprite-key (tech-name (last x))]
-    [sprite-key {:lib sprite-lib
-                 :path sprite-path
-                 :name sprite-name}]))
+    {:key sprite-key
+     :lib sprite-lib
+     :path sprite-path
+     :name sprite-name}))
 
+; find max length of sprite keys and pad/indent maps
+; use text instead of println with *out* binding
 (defn write-sprite-map
   "Writes the collection `coll` in CSV format to `file`."
   [file coll]
-  (with-open [wrt (io/writer file)]
-    (binding [*out* wrt]
-      (println "{")
-      (doseq [entry coll]
-        (println (str "  \"" (first entry) "\" " (second entry))))
-      (println "}"))))
+  (let [max-length (reduce max 0 (map count coll))]
+    (with-open [wrt (io/writer file)]
+      (binding [*out* wrt]
+        (println "{")
+        (doseq [entry coll] 
+          (println (str "  \"" (:key entry) "\""
+                        (str/join (repeat (- max-length (count (:key entry))))) " "
+                        " {:lib " (:lib entry)
+                        " :path " (:path entry)
+                        " :name " (:name entry) "}")
+        (println "}")))))))
+
+; use (io/resource ) or load sprite mapping from options config dir 
+(defn load-tech-sprite-mapping
+  ""
+  [options]
+  (if (:config-dir options)
+    (println "TODO load from config dir")
+    (edn/read-string (slurp (io/resource "azure.edn")))))
 
 (comment
   (count "/home/soulman/devel/tmp/plantuml-stdlib")
