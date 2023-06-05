@@ -222,7 +222,7 @@ Command Line Interface
 Usage:
 
 ```
-java -jar overarch.jar
+java -jar overarch.jar [options]
 ```
 
 Overarch currently supports these options
@@ -232,10 +232,10 @@ Options:
 
   -m, --model-dir DIRNAME   models    Model directory
   -e, --export-dir DIRNAME  export    Export directory
-  -f, --format FORMAT       plantuml  Export format (json, plantuml)
+  -w, --watch                         Watch model dir for changes and trigger export
+  -f, --format FORMAT       plantuml  Export format (json, plantuml, structurizr)
   -h, --help                          Print help
-      --debug                         Print debug messages
-```
+ ```
 
 
 
