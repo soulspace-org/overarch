@@ -1,6 +1,6 @@
 #{{:el :person
-   :id :overarch/architect
-   :name "Architect"
+   :id :overarch/modeller
+   :name "Modeller"
    :desc "Models the architecture of a system and specifies views of the model."}
   {:el :system
    :id :overarch/editor
@@ -32,16 +32,16 @@
                  :id :overarch/export-component
                  :name "json"}}}}}
   {:el :rel
-   :from :overarch/architect
+   :from :overarch/modeller
    :to :overarch/editor
    :name "models in"}
   {:el :rel
-   :from :overarch/architect
+   :from :overarch/modeller
    :to :overarch/overarch
    :name "uses"
    :desc "Diagram generation, model transformation."}
   {:el :rel
-   :from :overarch/architect
+   :from :overarch/modeller
    :to :overarch/overarch-cli
    :name "uses"
    :desc "Diagram generation, model transformation."}
