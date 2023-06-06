@@ -64,7 +64,7 @@
   (let [boundary (as-boundary? view-type e)]
     (if boundary
     ; e has a boundary type and has children, render as boundary
-      (assoc e :el boundary)
+      (assoc e :el (keyword (str (name (:el e)) "-boundary")))
     ; render e as normal model element
       e)))
 
