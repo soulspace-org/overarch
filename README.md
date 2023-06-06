@@ -145,8 +145,9 @@ The complete model and diagram specifications can be found under
 ### Example of a views specification
 
 ```clojure
-[{:el :context-view
+#{{:el :context-view
   :id :banking/system-context-view
+  :spec {:legend true}
   :title "System Context View of the Internet Banking System"
   :ct [; model elements
        {:ref :banking/personal-customer}
@@ -183,7 +184,7 @@ The complete model and diagram specifications can be found under
        {:ref :banking/api-application-uses-email-system :direction :right}
        {:ref :banking/api-application-uses-mainframe-banking-system}
        ]}
- ]
+}
  ```
 
 ### PlantUML export of the System Context View
