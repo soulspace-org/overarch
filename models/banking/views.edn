@@ -1,6 +1,5 @@
 #{{:el :context-view
   :id :banking/system-context-view
-  :spec {:legend true}
   :title "System Context View of the Internet Banking System"
   :ct [; model elements
        {:ref :banking/personal-customer}
@@ -16,7 +15,6 @@
 
  {:el :container-view
   :id :banking/container-view
-  :spec {:legend true}
   :title "Container View of the Internet Banking System"
   :ct [; model elements
        {:ref :banking/personal-customer}
@@ -39,7 +37,6 @@
 
  {:el :component-view
   :id :banking/api-component-view
-  :spec {:legend true}
   :title "Component View of the API Application"
   :ct [; model elements
        {:ref :banking/single-page-app}
@@ -65,7 +62,6 @@
 
  {:el :system-landscape-view
   :id :banking/system-landscape-view
-  :spec {:legend true}
   :title "System Landscape View of Big Bank plc"
   :ct [; model elements
        {:ref :banking/big-bank-plc}
@@ -84,7 +80,6 @@
 
  {:el :deployment-view
   :id :banking/deployment-view
-  :spec {:legend true}
   :title "Deployment View of Big Bank plc"
   :ct [; model elements
        {:ref :banking/personal-customers-mobile-device}
