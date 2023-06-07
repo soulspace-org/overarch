@@ -3,8 +3,18 @@ Overarch Usage
 
 Overview
 --------
-Overarch can be used as a CLI tool to convert specified models and diagrams into different formats,
-e.g. the rendering of diagrams in PlantUML or the conversion of the data to JSON.
+The usage of Overarch is twofold. On the one hand, it is an open data format
+for the description of software architectures. On the other hand it is a tool
+to transform the architecture description into diagrams or other
+representations.
+
+Overarch can be used as a CLI tool to convert specified models and diagrams
+into different formats, e.g. the rendering of diagrams in PlantUML or the
+conversion of the data to JSON.
+
+Features
+--------
+
 
 Modelling
 ---------
@@ -16,7 +26,8 @@ syntax check and syntax highlighting.
 ![Model editing](/doc/overarch_vscode_model.png)
 
 ### Examples
-The model and diagram descriptions of the C4 model banking example can be found in models/banking folder:
+The model and diagram descriptions of the C4 model banking example can be
+found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
  * [diagrams.edn](/models/banking/diagrams.edn)
 
@@ -28,17 +39,20 @@ The model contains all the elements relevant in the architecture of the system.
 Models are specified in the Extensible Data Notation (EDN).
 EDN is a data notation like JSON but with richer data type support.
 Unlike JSON, EDN also supports sets in addition to lists and maps.
-EDN also supports more primitive types like UUIDs, instants of time, symbols and keywords.
+EDN also supports more primitive types like UUIDs, instants of time, symbols
+and keywords.
 
 Especially keywords are useful as keys in a map or as identifiers.
-Keywords start with a colon (':'), have an optional namespace followed by a slash ('/')
-and a mandatory name, e.g. :namespace/name.
+Keywords start with a colon (':'), have an optional namespace followed by a
+slash ('/') and a mandatory name, e.g. :namespace/name.
 
-The top level element in a model EDN file is a set. It contains the top level model elements.
-Model elements are denoted as maps in the EDN file.
-All model elements have at least two attributes, :el for the type of the element
-and :id for the identifier. Ids should be namespaced keywords, so that different models
-can be composed without collisions of the identifiers.
+The top level element in a model EDN file is a set. It contains the top level
+model elements. Model elements are denoted as maps in the EDN file.
+All model elements have at least two attributes, **:el** for the type of the
+element and **:id** for the identifier. The identifiers should be namespaced
+keywords, so that different modelscan be composed without collisions of the
+identifiers.
+
 
 
 ### Model Elements
@@ -47,27 +61,31 @@ can be composed without collisions of the identifiers.
 Users are internal or external actors of the system.
 
 #### Systems
-A System is the top level element of the C4 model an can contain a set of containers.
+A System is the top level element of the C4 model an can contain a set of
+containers.
 
 #### Containers
-A container is a part of a system. It represents a process of the system (e.g. an executable or a service)
-Containers are composed of a set of components.
+A container is a part of a system. It represents a process of the system
+(e.g. an executable or a service). Containers are composed of a set of
+components.
 
 #### Components
 A component is unit of software, which lives in a container of the system.
 
 #### Nodes
-A node is a unit in a deployment view. Nodes represent parts of the infrastructure in which
-the containers of the system are deployed. They can contain a set of other nodes or containers.
+A node is a unit in a deployment view. Nodes represent parts of the
+infrastructure in which the containers of the system are deployed. They can
+contain a set of other nodes or containers.
 
 #### Relations
 Relations describe the interacions of the parts of a view.
 
 
-Example (exerpt from the banking model containing context and container level elements):
+Example (exerpt from the banking model containing context and container
+level elements):
 
 ```clojure
-[{:el :person
+#{{:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
@@ -132,64 +150,82 @@ Example (exerpt from the banking model containing context and container level el
   :id :banking/email-system-sends-mail-to-personal-customer
   :from :banking/email-system
   :to :banking/personal-customer
-  :name "Sends e-mail to"}] 
+  :name "Sends e-mail to"}} 
  ```
 
+Views
+-----
 
-Diagrams
---------
+### C4 Views
+Overarch supports the description of all C4 core and sublementary views except from code views, which ideally should be generated from the code if needed.
 
-### C4 Diagrams
-Overarch supports the description of all C4 core and sublementary diagrams except from code diagrams, which ideally should be generated from the code if needed.
+The core C4 views form a hierarchy.
 
-The core C4 diagrams form a hierarchy.
-
-#### System Context Diagrams
+#### System Context Views
 Shows the system in the context of the actors and other systems it is interacting with. Contains users, external systems and the system to be described.
 
 ![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
 
-#### Container Diagrams
+#### Container Views
 Shows the containers (e.g. processes, deployment units of the system) and the interactions between them and the outside world. Contains the elements of the system context diagram and the containers of the system to be described. The system to be described is rendered as a system boundary in the container diagram.
 
 ![Container View rendered with PlantUML](/doc/banking_containerView.svg)
 
-#### Component Diagrams
+#### Component Views
 Shows the components and their interactions inside of a container.
 
 ![Component View rendered with PlantUML](/doc/banking_apiComponentView.svg)
 
-#### Code Diagrams
+#### Code Views
 Not supported
 
-#### System Landscape Diagrams
+#### System Landscape Views
 Shows a broader system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/banking_systemLandscapeView.svg)
 
-#### Deployment Diagrams
+#### Deployment Views
 Shows the infrastucture and deployment of the containers of the system.
 
 ![Deployment View rendered with PlantUML](/doc/banking_deploymentView.svg)
 
-#### Dynamic Diagrams
+#### Dynamic Views
 Shows the order of some interactions.
 
 ### Styling
-
 
 
 Exports
 -------
 
 ### JSON
-The model and diagram descriptions can be exported to JSON to make their content
+The model and view descriptions can be exported to JSON to make their content
 available to languages for which no EDN implementation exists.
 
 ### PlantUML
 The the specified views can be exported to PlantUML C4 diagrams.
 These can be rendered into different formats (e.g. SVG, PNG, PDF) with PlantUML.
 
+You can specify PlantUML specific directives with the **:plantuml** key of a
+view spec.
+
+```
+   :spec {:plantuml {:local-imports true
+                     :sprite-libs [:azure]}}
+
+```
+
+#### Sprite Support
+Overarch supports PlantUML sprites to show a visual cue of the technology in
+the elements of a diagram. It does so by matching the value of the **:tech**
+key of a model element to the list of sprites.
+
+The list of sprites contains sprites of the PlantUML standard library, e.g.
+sprites for AWS and Azure. The mapping files from tech name to sprite
+reside in [resources/plantuml](/resources/plantuml). 
+
+
+#### Rendering PlantUML diagrams
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
 diagrams right from the IDE.
 
@@ -197,11 +233,10 @@ diagrams right from the IDE.
 
 PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Eclipse, Maven, Leiningen).
 
-
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
 ### Structurizr
-
+Structurizr is a tool set created by Simon Brown. 
 
 
 
@@ -211,7 +246,7 @@ Command Line Interface
 Usage:
 
 ```
-java -jar overarch.jar
+java -jar overarch.jar [options]
 ```
 
 Overarch currently supports these options
@@ -221,10 +256,10 @@ Options:
 
   -m, --model-dir DIRNAME   models    Model directory
   -e, --export-dir DIRNAME  export    Export directory
-  -f, --format FORMAT       plantuml  Export format (json, plantuml)
+  -w, --watch                         Watch model dir for changes and trigger export
+  -f, --format FORMAT       plantuml  Export format (json, plantuml, structurizr)
   -h, --help                          Print help
-      --debug                         Print debug messages
-```
+ ```
 
 
 

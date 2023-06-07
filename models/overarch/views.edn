@@ -1,0 +1,7 @@
+#{{:el :context-view
+   :id :overarch/context-view
+   :title "Context View of Overarch"
+   :ct [{:ref :overarch/modeller}
+        {:ref :overarch/editor}
+        {:ref :overarch/overarch}]}
+  }

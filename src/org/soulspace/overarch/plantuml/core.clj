@@ -354,7 +354,7 @@
   "Renders the legend for the diagram."
   [diagram]
   (let [spec (:spec diagram)]
-    [(when (:legend spec)
+    [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
 (defn render-title
@@ -380,11 +380,11 @@
 ;;;
 
 (defmethod exp/export-file :plantuml
-  [options diagram]
-  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id diagram)))]
+  [options view]
+  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
-                     (name (:id diagram)) ".puml"))))
+                     (name (:id view)) ".puml"))))
 
 (defmethod exp/export-view :plantuml
   [options view]

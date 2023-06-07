@@ -6,42 +6,39 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.clj.string :as sstr]))
 
-(comment
-  ; include icon/sprite sets, if icons are used, e.g. 
-  "!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
-  "!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"
-  "!include DEVICONS/angular.puml
-   !include DEVICONS/java.puml
-   !include DEVICONS/msql_server.puml
-   !include FONTAWESOME/users.puml
-   ")
+(def excluded-libs #{"aws" "awslib" "awslib10" "archimate" "C4" "classy" "classy-c4" "DomainStory" "kubernetes"})
+(def included-libs #{"azure" "awslib14" "elastic"})
 
 (def sprite-libraries
   "Definition of sprite libraries."
-  {:azure {:name "azure"
-           :local-prefix "azure"
-           :local-imports ["AzureCommon"
-                           "AzureC4Integration"]
-           :remote-prefix "AZURE"
-           :remote-url "https://raw.githubusercontent.com/azure/"
-           :remote-imports ["AzureCommon"
-                            "AzureC4Integration"]}
-   :aws {:name "awslib"
-         :local-prefix "awslib14"
-         :local-imports ["AWSCommon"
-                         "AWSC4Integration"]
-         :remote-prefix "AWS"
-         :remote-url "https://raw.githubusercontent.com/awslib/"
-         :remote-imports ["AWSCommon"
-                          "AWSC4Integration"]}
-   :devicons    {:name "devicons"
-                 :local-prefix "devicons"
-                 :remote-prefix "DEVICONS"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
-   :fontawesome {:name "fontawesome"
-                 :local-prefix "fontawesome"
-                 :remote-prefix "FONTAWESOME"
-                 :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}})
+  {:azure          {:name "azure"
+                    :local-prefix "azure"
+                    :local-imports ["AzureCommon"
+                                    "AzureC4Integration"]
+                    :remote-prefix "AZURE"
+                    :remote-url "https://raw.githubusercontent.com/azure/"
+                    :remote-imports ["AzureCommon"
+                                     "AzureC4Integration"]}
+   :aws            {:name "awslib"
+                    :local-prefix "awslib14"
+                    :local-imports ["AWSCommon"
+                                    "AWSC4Integration"]
+                    :remote-prefix "AWS"
+                    :remote-url "https://raw.githubusercontent.com/awslib/"
+                    :remote-imports ["AWSCommon"
+                                     "AWSC4Integration"]}
+   :devicons       {:name "devicons"
+                    :local-prefix "devicons"
+                    :remote-prefix "DEVICONS"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :font-awesome-5 {:name "font-awesome-5"
+                    :local-prefix "font-awesome-5"
+                    :remote-prefix "FONTAWESOME"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}
+   :material       {:name "material"
+                    :local-prefix "material"
+                    :local-imports ["common"]}
+   })
 
 (def tech->sprite
   "Map of technology names to sprite infos."
@@ -418,34 +415,55 @@
   "Prepares sprite entry info from collection PlantUML imports."
   [x]
   (let [path-entries (str/split (first x) #"/")
-        sprite-lib (first path-entries)
+        sprite-prefix (first path-entries)
         sprite-path (str/join "/" (rest path-entries))
         sprite-name (last x)
         sprite-key (tech-name (last x))]
-    {:key sprite-key
-     :lib sprite-lib
-     :path sprite-path
-     :name sprite-name}))
+    (if (= "tupadr3" sprite-prefix)
+      {:key sprite-key
+       :lib sprite-path
+       :prefix sprite-prefix
+       :path sprite-path
+       :name sprite-name}
+      {:key sprite-key
+       :lib sprite-prefix
+       :prefix sprite-prefix
+       :path sprite-path
+       :name sprite-name})))
+
+(defn key-length
+  "Returns the length of the key of `x`."
+  [x]
+  (count (:key x)))
+
 
 ; find max length of sprite keys and pad/indent maps
 ; use text instead of println with *out* binding
 (defn write-sprite-map
-  "Writes the collection `coll` in CSV format to `file`."
+  "Writes the collection `coll` to `file`."
   [file coll]
-  (let [max-length (reduce max 0 (map count coll))]
+  (let [max-length (reduce max 0 (map key-length coll))]
+    (println "max-length " max-length)
     (with-open [wrt (io/writer file)]
       (binding [*out* wrt]
         (println "{")
-        (doseq [entry coll] 
+        (doseq [entry coll]
           (println (str "  \"" (:key entry) "\""
-                        (str/join (repeat (- max-length (count (:key entry))))) " "
-                        " {:lib " (:lib entry)
-                        " :path " (:path entry)
-                        " :name " (:name entry) "}")
-        (println "}")))))))
+;                        (str/join (repeat (- (+ max-length 1) (count (:key entry))) " "))
+                        " {:lib \"" (:lib entry)
+                        "\" :prefix \"" (:prefix entry)
+                        "\" :path \"" (:path entry)
+                        "\" :name \"" (:name entry) "\"}")))
+        (println "}")))))
+
+(defn write-sprite-maps
+  "Writes the tech to sprite mappings for the libs in the map."
+  [m]
+  (doseq [[k v] m]
+    (write-sprite-map (str k ".edn") v)))
 
 ; use (io/resource ) or load sprite mapping from options config dir 
-(defn load-tech-sprite-mapping
+(defn load-tech-sprite-mappings
   ""
   [options]
   (if (:config-dir options)
@@ -459,5 +477,9 @@
   (count (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
 
   (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))
-  (write-sprite-map "spritemap.edn" (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+  (write-sprite-map "stdlib" (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+
+  (group-by :lib (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/")))
+  (write-sprite-maps (group-by :lib (map sprite-entry (plantuml-imports "/home/soulman/devel/tmp/plantuml-stdlib/"))))
+
   )

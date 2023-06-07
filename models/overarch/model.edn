@@ -1,0 +1,48 @@
+#{{:el :person
+   :id :overarch/modeller
+   :name "Modeller"
+   :desc "Models the architecture of a system and specifies views of the model."}
+  {:el :system
+   :id :overarch/editor
+   :external true
+   :name "Editor/IDE"
+   :desc "Tool for describing the architecture model and the views."}
+  {:el :system
+   :id :overarch/overarch
+   :name "Overarch"
+   :desc "Work with architecture models as data."
+   :ct #{{:el :container
+          :id :overarch/overarch-cli
+          :name "Overarch CLI"
+          :desc "CLI tool for the export of the architecture models into different formats."
+          :tech "Clojure"
+          :ct #{{:el :component
+                 :id :overarch/cli-component
+                 :name "cli"}
+                {:el :component
+                 :id :overarch/core-component
+                 :name "core"}
+                {:el :component
+                 :id :overarch/export-component
+                 :name "export"}
+                {:el :component
+                 :id :overarch/export-component
+                 :name "plantuml"}
+                {:el :component
+                 :id :overarch/export-component
+                 :name "json"}}}}}
+  {:el :rel
+   :from :overarch/modeller
+   :to :overarch/editor
+   :name "models in"}
+  {:el :rel
+   :from :overarch/modeller
+   :to :overarch/overarch
+   :name "uses"
+   :desc "Diagram generation, model transformation."}
+  {:el :rel
+   :from :overarch/modeller
+   :to :overarch/overarch-cli
+   :name "uses"
+   :desc "Diagram generation, model transformation."}
+  }
