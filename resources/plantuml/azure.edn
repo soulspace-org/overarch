@@ -202,7 +202,7 @@
  "Azure SSIS Lift And Shift"                       {:lib "azure", :path "Databases", :name "AzureSSISLiftAndShift"}
  "Azure SQL Virtual Machine"                       {:lib "azure", :path "Databases", :name "AzureSqlVirtualMachine"}
  "Azure SQL Server"                                {:lib "azure", :path "Databases", :name "AzureSqlServer"}
- "Azure Database For Postgre SQL"                  {:lib "azure", :path "Databases", :name "AzureDatabaseForPostgreSQL"}
+ "Azure Database For PostgreSQL"                   {:lib "azure", :path "Databases", :name "AzureDatabaseForPostgreSQL"}
  "Azure Data Factory"                              {:lib "azure", :path "Databases", :name "AzureDataFactory"}
  "Azure Instance Pool"                             {:lib "azure", :path "Databases", :name "AzureInstancePool"}
  "Azure Database For MySql"                        {:lib "azure", :path "Databases", :name "AzureDatabaseForMySQL"}

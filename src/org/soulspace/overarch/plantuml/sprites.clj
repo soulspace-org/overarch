@@ -156,6 +156,9 @@
    "Azure Service Environment"         {:lib "azure"
                                         :path "Containers"
                                         :name "AzureServiceEnvironment"}
+   "Azure Database For PostgreSQL"     {:lib "azure"
+                                        :path "Databases"
+                                        :name "AzureDatabaseForPostgreSQL"} 
    "Azure Application Insights"        {:lib "azure"
                                         :path "Devops"
                                         :name "AzureApplicationInsights"}
@@ -184,8 +187,8 @@
                                         :path "Devops"
                                         :name "AzureRepos"}
    "Azure Test Plans"                   {:lib "azure"
-                                        :path "Devops"
-                                        :name "AzureTestPlans"}
+                                         :path "Devops"
+                                         :name "AzureTestPlans"}
    "Azure"                             {:lib "azure"
                                         :path "General"
                                         :name "Azure"}
