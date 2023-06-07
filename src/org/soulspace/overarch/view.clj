@@ -93,13 +93,13 @@
   "Returns the set of technologies for the elements of the coll."
   ([coll]
    (collect-technologies #{} coll))
-  ([m coll]
+  ([techs coll]
    (if (seq coll)
      (let [e (first coll)]
        (if (:tech e)
-         (recur (collect-technologies (set/union m #{(:tech e)}) (:ct e)) (rest coll))
-         (recur (collect-technologies m (:ct e)) (rest coll))))
-     m)))
+         (recur (collect-technologies (set/union techs #{(:tech e)}) (:ct e)) (rest coll))
+         (recur (collect-technologies techs (:ct e)) (rest coll))))
+     techs)))
 
 ; general
 (defn render-indent
