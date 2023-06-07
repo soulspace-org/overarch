@@ -354,7 +354,7 @@
   "Renders the legend for the diagram."
   [diagram]
   (let [spec (:spec diagram)]
-    [(when (:legend spec)
+    [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
 (defn render-title

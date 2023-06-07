@@ -210,6 +210,9 @@ You can specify PlantUML specific directives with the **:plantuml** key of a
 view spec.
 
 ```
+   :spec {:plantuml {:local-imports true
+                     :sprite-libs [:azure]}}
+
 ```
 
 #### Sprite Support
@@ -218,7 +221,9 @@ the elements of a diagram. It does so by matching the value of the **:tech**
 key of a model element to the list of sprites.
 
 The list of sprites contains sprites of the PlantUML standard library, e.g.
-sprites for AWS and Azure.
+sprites for AWS and Azure. The mapping files from tech name to sprite
+reside in [resources/plantuml](/resources/plantuml). 
+
 
 #### Rendering PlantUML diagrams
 The Visual Studio Code PlantUML Extension allows previewing and exporting these

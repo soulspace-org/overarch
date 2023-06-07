@@ -1,7 +1,6 @@
 #{{:el :dynamic-view
   :id :story1/dynamic-view
   :title "Going to the movies - Coarse Grained"
-  ;:spec {:legend true}
   :ct [{:el :person
         :id :story1/moviegoer
         :exernal true
