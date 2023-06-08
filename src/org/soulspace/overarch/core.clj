@@ -89,38 +89,38 @@
   (contains? view-types (:el e)))
 
 (defn context-level?
-  "Returns true if the given element `e` is rendered in a context diagram."
+  "Returns true if the given element `e` is rendered in a context view."
   [e]
   (contains? context-types (:el e)))
 
 (defn container-level?
-  "Returns true if the given element `e` is rendered in a container diagram."
+  "Returns true if the given element `e` is rendered in a container view."
   [e]
   (contains? container-types (:el e)))
 
 (defn component-level?
-  "Returns true if the given element `e` is rendered in a component diagram."
+  "Returns true if the given element `e` is rendered in a component view."
   [e]
   (contains? component-types (:el e)))
 
 (defn code-level?
-  "Returns true if the given element `e` is rendered in a code diagram."
+  "Returns true if the given element `e` is rendered in a code view."
   [e]
   (contains? code-types (:el e)))
 
 (defn dynamic-level?
-  "Returns true if the given element `e` is rendered in a dynamic diagram."
+  "Returns true if the given element `e` is rendered in a dynamic view."
   [e]
   (contains? dynamic-types (:el e)))
 
 (defn system-landscape-level?
   "Returns true if the given element `e` is rendered
-   in a system landscape diagram."
+   in a system landscape view."
   [e]
   (contains? system-landscape-types (:el e)))
 
 (defn deployment-level?
-  "Returns true if the given element `e` is rendered in a deployment diagram."
+  "Returns true if the given element `e` is rendered in a deployment view."
   [e]
   (contains? deployment-types (:el e)))
 
@@ -129,7 +129,6 @@
 ;;
 
 ;; TODO factor out diagrams
-;; TODO factor out subtypes (db, queue) and extern
 
 (s/def :overarch/el keyword?)
 (s/def :overarch/id keyword?)
@@ -189,7 +188,7 @@
 ;;
 ;; Application state
 ;;
-
+; TODO get rid os global state at some point
 (def state (atom {}))
 
 ;;
@@ -207,14 +206,14 @@
   (filter model-element? coll))
 
 (defn get-views
-  "Returns the collection of diagrams."
+  "Returns the collection of views."
   ([]
    (get-views @state))
   ([m]
    (views (:elements m))))
 
 (defn get-view
-  "Returns the diagram with the given id."
+  "Returns the view with the given id."
   ([id]  
    (get-view @state id))
   ([m id]
