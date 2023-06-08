@@ -12,7 +12,7 @@
     (json/write-json wrt data)))
 
 (defn export-json
-  "Exports the data files in the given directory to JSON"
+  "Exports the data files in the given directory to JSON."
   [options]
   (doseq [file (file/all-files-by-extension "edn" (:model-dir options))]
     (let [out-dir (str (:export-dir options)"/"
