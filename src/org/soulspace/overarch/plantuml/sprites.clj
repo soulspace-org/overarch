@@ -7,7 +7,7 @@
             [org.soulspace.clj.string :as sstr]))
 
 (def excluded-libs #{"aws" "awslib" "awslib10" "archimate" "C4" "classy" "classy-c4" "DomainStory" "kubernetes"})
-(def included-libs #{"azure" "awslib14" "elastic"})
+(def included-libs #{"azure" "awslib14"}) ;  "elastic"
 
 (def sprite-libraries
   "Definition of sprite libraries."
@@ -464,7 +464,7 @@
 
 ; use (io/resource ) or load sprite mapping from options config dir 
 (defn load-tech-sprite-mappings
-  ""
+  "Loads the mappings from tech to sprite."
   [options]
   (if (:config-dir options)
     (println "TODO load from config dir")
