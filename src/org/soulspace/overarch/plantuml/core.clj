@@ -80,12 +80,12 @@
 ;; Elements
 ;; 
 (defn alias-name
-  "Returns a valid PlantUML alias for the namespaced keyword."
+  "Returns a valid PlantUML alias for the namespaced keyword `kw`."
   [kw]
   (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
                (sstr/hyphen-to-camel-case (name kw)))))
 (defn short-name
-  "Returns a valid PlantUML alias for the name part of the keyword."
+  "Returns a valid PlantUML alias for the name part of the keyword `kw`."
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
@@ -93,7 +93,7 @@
   "Renders an element in PlantUML.
    
    Multifunction dispatching on the value of the :el key of the element `e`."
-  (fn [diagram indent e] (:el e))
+  (fn [_ _ e] (:el e))
   :hierarchy #'view/element-hierarchy)
 
 (defmethod render-element :boundary
@@ -253,19 +253,19 @@
 (defn render-sprite-import
   "Renders the import for an sprite."
   [diagram sprite]
-  (if (get-in diagram [:spec :plantuml :local-imports])
-    (local-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))
-    (remote-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))))
+  (if (get-in diagram [:spec :plantuml :remote-imports])
+    (remote-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))
+    (local-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))))
 
 (defn render-spritelib-import
   "Renders the imports for an sprite library."
   [diagram sprite-lib]
-  (if (get-in diagram [:spec :plantuml :local-imports])
-    [(map (partial local-import (:local-prefix (sprites/sprite-libraries sprite-lib)))
-          (:local-imports (sprites/sprite-libraries sprite-lib)))]
+  (if (get-in diagram [:spec :plantuml :remote-imports])
     [(str "!define " (:remote-prefix sprite-lib) (:remote-url sprite-lib))
      (map (partial remote-import (:remote-prefix sprite-lib))
-          (:remote-imports (sprites/sprite-libraries sprite-lib)))]))
+          (:remote-imports (sprites/sprite-libraries sprite-lib)))]
+    [(map (partial local-import (:local-prefix (sprites/sprite-libraries sprite-lib)))
+          (:local-imports (sprites/sprite-libraries sprite-lib)))]))
 
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
@@ -282,11 +282,11 @@
 (defn render-imports
   "Renders the imports for the diagram."
   [diagram]
-  (if (get-in diagram [:spec :plantuml :local-imports])
-    (str "!include <C4/"
-         (view-type->import (:el diagram)) ">")
+  (if (get-in diagram [:spec :plantuml :remote-imports])
     (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
-         (view-type->import (:el diagram)))))
+         (view-type->import (:el diagram)))
+    (str "!include <C4/"
+         (view-type->import (:el diagram)) ">")))
 
 ;;;
 ;;; Diagram Styles
