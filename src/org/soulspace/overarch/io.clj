@@ -22,6 +22,7 @@
 (defn write-json
   "Writes the data as JSON to `filename`."
   [filename data]
+  (io/make-parents filename)
   (with-open [wrt (io/writer filename)]
     (json/write-json wrt data)))
 
