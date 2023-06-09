@@ -39,7 +39,22 @@
   {:el :context-view
    :id :test/plantuml-local-imports
    :title "Local Import Test"
-   :spec {:plantuml {:local-imports true}}
+   :ct [{:el :system
+         :id :test/sys1
+         :name "Sys1"}
+        {:el :system
+         :id :test/sys2
+         :name "Sys2"
+         :external true}
+        {:el :rel
+         :from :test/sys1
+         :to :test/sys2
+         :name "calls"}]}
+
+  {:el :context-view
+   :id :test/plantuml-remote-imports
+   :title "Remote Import Test"
+   :spec {:plantuml {:remote-imports true}}
    :ct [{:el :system
          :id :test/sys1
          :name "Sys1"}
@@ -55,8 +70,7 @@
   {:el :deployment-view
    :id :test/icons
    :title "Icon Test"
-   :spec {:plantuml {:local-imports true
-                     :sprite-libs [:azure]}}
+   :spec {:plantuml {:sprite-libs [:azure]}}
    :ct [{:el :node
          :id :test/azure
          :name "Azure"
