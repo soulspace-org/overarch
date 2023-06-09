@@ -227,21 +227,21 @@
    (model-elements (:elements m))))
 
 (defn get-model-element
-  "Returns the model element with the given id."
+  "Returns the model element with the given `id`."
   ([id]
    (get-model-element @state id))
   ([m id]
    ((:registry m) id)))
 
 (defn get-parent-element
-  "Returns the parent of the element."
+  "Returns the parent of the element `e`."
   ([e]
    (get-parent-element @state e))
   ([m e]
    ((:parents m) (:id e))))
 
 (defn resolve-ref
-  "Resolves the model element for the ref e."
+  "Resolves the model element for the ref `e`."
   ([e]
    (if (:ref e)
      (merge (get-model-element (:ref e)) e)
@@ -252,7 +252,7 @@
      e)))
 
 (defn aggregable-relation?
-  "Returns true, if the relations are aggregable."
+  "Returns true, if the relations `r1` and `r2` are aggregable."
   ([r1 r2]
    (aggregable-relation? @state r1 r2))
   ([m r1 r2]
@@ -271,7 +271,7 @@
 ;;
 
 (defn register-elements
-  "Returns a map of id to element for the elements of the coll."
+  "Returns a map of id to element for the elements of the `coll`."
   ([coll]
    (register-elements {} coll))
   ([m coll]
@@ -283,7 +283,7 @@
      m)))
 
 (defn register-parents
-  "Returns a map of child id to parent element for the elements in coll."
+  "Returns a map of child id to parent element for the elements in `coll`."
   ([coll]
    (register-parents {} nil coll))
   ([m p coll]
@@ -295,7 +295,7 @@
      m)))
 
 (defn build-registry
-  "Returns a map with the original data and a registry by id for lookups.
+  "Returns a map with the original `elements` and a registry by id for lookups.
    
    The map has the following shape:
 
@@ -320,7 +320,7 @@
        (mapcat edn/read-string)))
 
 (defn update-state!
-  "Updates the state with the registered data."
+  "Updates the state with the registered data read from `dir`."
   [dir]
   (->> dir
        (read-elements)
