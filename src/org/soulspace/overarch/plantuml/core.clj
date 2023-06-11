@@ -7,7 +7,7 @@
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.plantuml.sprites :as sprites]))
+            [org.soulspace.overarch.io :as oio]))
 
 ;;;;
 ;;;; PlantUML rendering
@@ -16,6 +16,36 @@
 ;;;
 ;;; PlantUML mappings
 ;;;
+
+(def sprite-libraries
+  "Definition of sprite libraries."
+  {:azure          {:name "azure"
+                    :local-prefix "azure"
+                    :local-imports ["AzureCommon"
+                                    "AzureC4Integration"]
+                    :remote-prefix "AZURE"
+                    :remote-url "https://raw.githubusercontent.com/azure/"
+                    :remote-imports ["AzureCommon"
+                                     "AzureC4Integration"]}
+   :aws            {:name "awslib"
+                    :local-prefix "awslib14"
+                    :local-imports ["AWSCommon"
+                                    "AWSC4Integration"]
+                    :remote-prefix "AWS"
+                    :remote-url "https://raw.githubusercontent.com/awslib/"
+                    :remote-imports ["AWSCommon"
+                                     "AWSC4Integration"]}
+   :devicons       {:name "devicons"
+                    :local-prefix "devicons"
+                    :remote-prefix "DEVICONS"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :font-awesome-5 {:name "font-awesome-5"
+                    :local-prefix "font-awesome-5"
+                    :remote-prefix "FONTAWESOME"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}
+   :material       {:name "material"
+                    :local-prefix "material"
+                    :local-imports ["common"]}})
 
 (def element->method
   "Map from element type to PlantUML method."
@@ -71,6 +101,40 @@
   {:bold   "BoldLine()"
    :dashed "DashedLine()"
    :dotted "DottedLine()"})
+
+;;;
+;;; Tech to Sprite mapping
+;;;
+
+(defn load-sprite-mappings-from-dir
+  "Loads the mappings from the directory `dir` and returns the merged map."
+  [dir]
+  (->> (file/all-files-by-extension ".edn" dir)
+       (map oio/load-edn)
+       (reduce merge)))
+
+(defn load-sprite-mappings-from-resource
+  "Loads the list of `resources` and returns the merged map."
+  [resources]
+  (->> resources
+       (map #(str "plantuml/" % ".edn"))
+       (map oio/load-edn-from-resource)
+       (reduce merge)))
+
+; use (io/resource ) or load sprite mapping from options config dir 
+(defn load-sprite-mappings
+  "Loads the mappings from tech to sprite."
+  [options]
+  (if (:config-dir options)
+    (load-sprite-mappings-from-dir (str (:config-dir options) "/plantuml"))
+    (oio/load-edn-from-resource ["azure" "awslib14"])))
+
+(def tech->sprite (load-sprite-mappings-from-resource ["azure" "awslib14"]))
+
+(defn sprite?
+  "Returns true if the icon-map contains an icon for the given technology."
+  [tech]
+  (tech->sprite tech))
 
 ;;;
 ;;; Rendering
@@ -150,8 +214,8 @@
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (sprites/sprite? (:tech e))
-          (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
+        (when (sprite? (:tech e))
+          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -165,8 +229,8 @@
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (sprites/sprite? (:tech e)) 
-          (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
+        (when (sprite? (:tech e)) 
+          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -180,8 +244,8 @@
                      (view/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-                     (when (sprites/sprite? (:tech e))
-                       (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
+                     (when (sprite? (:tech e))
+                       (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -193,8 +257,8 @@
           (view/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-          (when (sprites/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
+          (when (sprite? (:tech e))
+            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -214,8 +278,8 @@
           (:name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-          (when (sprites/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (sprites/tech->sprite (:tech e))) "\""))
+          (when (sprite? (:tech e))
+            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -233,8 +297,8 @@
   (->> diagram
        (view/elements-to-render)
        (view/collect-technologies)
-       (filter sprites/sprite?)
-       (map #(sprites/tech->sprite %))))
+       (filter sprite?)
+       (map #(tech->sprite %))))
 
 (defn local-import
   "Renders a local import."
@@ -263,9 +327,9 @@
   (if (get-in diagram [:spec :plantuml :remote-imports])
     [(str "!define " (:remote-prefix sprite-lib) (:remote-url sprite-lib))
      (map (partial remote-import (:remote-prefix sprite-lib))
-          (:remote-imports (sprites/sprite-libraries sprite-lib)))]
-    [(map (partial local-import (:local-prefix (sprites/sprite-libraries sprite-lib)))
-          (:local-imports (sprites/sprite-libraries sprite-lib)))]))
+          (:remote-imports (sprite-libraries sprite-lib)))]
+    [(map (partial local-import (:local-prefix (sprite-libraries sprite-lib)))
+          (:local-imports (sprite-libraries sprite-lib)))]))
 
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
@@ -397,3 +461,6 @@
   (doseq [view (core/get-views)]
     (exp/export-view options view)))
 
+(comment
+  (load-sprite-mappings-from-resource ["azure" "awslib14"])
+  )
