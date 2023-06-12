@@ -20,19 +20,19 @@
  "Celluloid" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "celluloid"}
  "Chrome" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "chrome"}
  "Cisco" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cisco"}
- "Clojure" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure"}
- "Clojure Alt" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure_alt"}
- "Cloud9" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cloud9"}
- "Coda" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coda"}
- "Code" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code"}
- "Code Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code_badge"}
- "Codeigniter" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codeigniter"}
- "Codepen" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codepen"}
- "Codrops" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codrops"}
- "Coffeescript" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coffeescript"}
- "Compass" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "compass"}
- "Composer" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "composer"}
- "Creative Commons" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "creativecommons"}
+ "Clojure"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure"}
+ "Clojure Alt"            {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure_alt"}
+ "Cloud9"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cloud9"}
+ "Coda"                   {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coda"}
+ "Code"                   {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code"}
+ "Code Badge"             {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code_badge"}
+ "Codeigniter"            {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codeigniter"}
+ "Codepen"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codepen"}
+ "Codrops"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codrops"}
+ "Coffeescript"           {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coffeescript"}
+ "Compass"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "compass"}
+ "Composer"               {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "composer"}
+ "Creative Commons"       {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "creativecommons"}
  "Creative Commons Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "creativecommons_badge"}
  "CSS3" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "css3"}
  "CSS3 Full" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "css3_full"}

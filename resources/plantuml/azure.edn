@@ -1,264 +1,264 @@
-{"Azure Service Environment"                       {:lib "azure", :path "Containers", :name "AzureServiceEnvironment"}
- "Azure Container Registry"                        {:lib "azure", :path "Containers", :name "AzureContainerRegistry"}
- "Azure Container App"                             {:lib "azure", :path "Containers", :name "AzureContainerApp"}
- "Azure Kubernetes Service"                        {:lib "azure", :path "Containers", :name "AzureKubernetesService"}
- "Azure Container Instance"                        {:lib "azure", :path "Containers", :name "AzureContainerInstance"}
- "Azure Data Box Edge"                             {:lib "azure", :path "Migrate", :name "AzureDataBoxEdge"}
- "Azure Migrate"                                   {:lib "azure", :path "Migrate", :name "AzureMigrate"}
- "Azure Intune Google"                             {:lib "azure", :path "Intune", :name "AzureIntuneGoogle"}
- "Azure Intune"                                    {:lib "azure", :path "Intune", :name "AzureIntune"}
- "Azure Intune Apple"                              {:lib "azure", :path "Intune", :name "AzureIntuneApple"}
- "Azure Intune Windows"                            {:lib "azure", :path "Intune", :name "AzureIntuneWindows"}
- "Azure Virtual Desktop Application Group"         {:lib "azure", :path "Compute", :name "AzureVirtualDesktopApplicationGroup"}
- "Azure Spring Cloud"                              {:lib "azure", :path "Compute", :name "AzureSpringCloud"}
- "Azure App Service"                               {:lib "azure", :path "Compute", :name "AzureAppService"}
- "Azure Batch"                                     {:lib "azure", :path "Compute", :name "AzureBatch"}
- "Azure Container Service"                         {:lib "azure", :path "Compute", :name "AzureContainerService"}
- "Azure Batch Account"                             {:lib "azure", :path "Compute", :name "AzureBatchAccount"}
- "Azure Virtual Machine Classic"                   {:lib "azure", :path "Compute", :name "AzureVirtualMachineClassic"}
- "Azure Shared Image Gallery"                      {:lib "azure", :path "Compute", :name "AzureSharedImageGallery"}
- "Azure Virtual Desktop Workspace"                 {:lib "azure", :path "Compute", :name "AzureVirtualDesktopWorkspace"}
- "Azure Image Version"                             {:lib "azure", :path "Compute", :name "AzureImageVersion"}
- "Azure Image Classic"                             {:lib "azure", :path "Compute", :name "AzureImageClassic"}
- "Azure Virtual Desktop"                           {:lib "azure", :path "Compute", :name "AzureVirtualDesktop"}
- "Azure Cloud Services"                            {:lib "azure", :path "Compute", :name "AzureCloudServices"}
- "Azure Function"                                  {:lib "azure", :path "Compute", :name "AzureFunction"}
- "Azure Service Fabric"                            {:lib "azure", :path "Compute", :name "AzureServiceFabric"}
- "Azure App Service Plan"                          {:lib "azure", :path "Compute", :name "AzureAppServicePlan"}
- "Azure Availabilty Set"                           {:lib "azure", :path "Compute", :name "AzureAvailabiltySet"}
- "Azure Disk Snapshot"                             {:lib "azure", :path "Compute", :name "AzureDiskSnapshot"}
- "Azure Disk"                                      {:lib "azure", :path "Compute", :name "AzureDisk"}
- "Azure App Service Plan Linux"                    {:lib "azure", :path "Compute", :name "AzureAppServicePlanLinux"}
- "Azure Virtual Desktop Host Pool"                 {:lib "azure", :path "Compute", :name "AzureVirtualDesktopHostPool"}
- "Azure Automanaged Virtual Machine"               {:lib "azure", :path "Compute", :name "AzureAutomanagedVirtualMachine"}
- "Azure Image Definition"                          {:lib "azure", :path "Compute", :name "AzureImageDefinition"}
- "Azure Mesh Application"                          {:lib "azure", :path "Compute", :name "AzureMeshApplication"}
- "Azure Virtual Machine"                           {:lib "azure", :path "Compute", :name "AzureVirtualMachine"}
- "Azure Virtual Machine Scale Set"                 {:lib "azure", :path "Compute", :name "AzureVirtualMachineScaleSet"}
- "Azure Disk Encryption Set"                       {:lib "azure", :path "Compute", :name "AzureDiskEncryptionSet"}
- "Azure Web Test"                                  {:lib "azure", :path "Compute", :name "AzureWebTest"}
- "Azure Workspace"                                 {:lib "azure", :path "Compute", :name "AzureWorkspace"}
- "Azure Server Farm"                               {:lib "azure", :path "Compute", :name "AzureServerFarm"}
- "Azure Web Slot"                                  {:lib "azure", :path "Compute", :name "AzureWebSlot"}
- "DICOM Service"                                   {:lib "azure", :path "Health", :name "DICOMService"}
- "FHIR Service"                                    {:lib "azure", :path "Health", :name "FHIRService"}
- "Med Tech Service"                                {:lib "azure", :path "Health", :name "MedTechService"}
- "Health Data Services"                            {:lib "azure", :path "Health", :name "HealthDataServices"}
- "Azure Disk Storage Classic"                      {:lib "azure", :path "Storage", :name "AzureDiskStorageClassic"}
- "Azure Net App Files"                             {:lib "azure", :path "Storage", :name "AzureNetAppFiles"}
- "Azure Data Lake Storage"                         {:lib "azure", :path "Storage", :name "AzureDataLakeStorage"}
- "Azure Storage Classic"                           {:lib "azure", :path "Storage", :name "AzureStorageClassic"}
- "Azure Storage Container"                         {:lib "azure", :path "Storage", :name "AzureStorageContainer"}
- "Azure Data Box"                                  {:lib "azure", :path "Storage", :name "AzureDataBox"}
- "Azure File Storage"                              {:lib "azure", :path "Storage", :name "AzureFileStorage"}
- "Azure Storage"                                   {:lib "azure", :path "Storage", :name "AzureStorage"}
- "Azure Managed Disks"                             {:lib "azure", :path "Storage", :name "AzureManagedDisks"}
- "Azure Disk Storage"                              {:lib "azure", :path "Storage", :name "AzureDiskStorage"}
- "Azure Blob Storage"                              {:lib "azure", :path "Storage", :name "AzureBlobStorage"}
- "Azure Queue Storage"                             {:lib "azure", :path "Storage", :name "AzureQueueStorage"}
- "Azure Stor Simple"                               {:lib "azure", :path "Storage", :name "AzureStorSimple"}
- "Azure Bot Service"                               {:lib "azure", :path "AIMachineLearning", :name "AzureBotService"}
- "Azure Machine Learning Studio Web Service Plan"  {:lib "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioWebServicePlan"}
- "Azure Machine Learning Studio"                   {:lib "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudio"}
- "Azure Translator Text"                           {:lib "azure", :path "AIMachineLearning", :name "AzureTranslatorText"}
- "Microsoft Genomics"                              {:lib "azure", :path "AIMachineLearning", :name "MicrosoftGenomics"}
- "Azure Machine Learning Service"                  {:lib "azure", :path "AIMachineLearning", :name "AzureMachineLearningService"}
- "Azure Machine Learning Studio Workspace"         {:lib "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioWorkspace"}
- "Azure Batch AI"                                  {:lib "azure", :path "AIMachineLearning", :name "AzureBatchAI"}
- "Azure Machine Learning Studio Classic"           {:lib "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioClassic"}
- "Azure Cognitive Services"                        {:lib "azure", :path "AIMachineLearning", :name "AzureCognitiveServices"}
- "Azure Notification Hub Namespace"                {:lib "azure", :path "Mobile", :name "AzureNotificationHubNamespace"}
- "Azure Mobile App"                                {:lib "azure", :path "Mobile", :name "AzureMobileApp"}
- "Azure Notification Hub"                          {:lib "azure", :path "Mobile", :name "AzureNotificationHub"}
- "Azure Notification Hubs"                         {:lib "azure", :path "Mobile", :name "AzureNotificationHubs"}
- "Azure Mobile Engagement"                         {:lib "azure", :path "Mobile", :name "AzureMobileEngagement"}
- "Azure Pipelines"                                 {:lib "azure", :path "DevOps", :name "AzurePipelines"}
- "Azure Boards"                                    {:lib "azure", :path "DevOps", :name "AzureBoards"}
- "Azure DevOps Organisation"                       {:lib "azure", :path "DevOps", :name "AzureDevOpsOrganisation"}
- "Azure Lab Services"                              {:lib "azure", :path "DevOps", :name "AzureLabServices"}
- "Azure Repos"                                     {:lib "azure", :path "DevOps", :name "AzureRepos"}
- "Azure Dev Test Labs"                             {:lib "azure", :path "DevOps", :name "AzureDevTestLabs"}
- "Azure Test Plans"                                {:lib "azure", :path "DevOps", :name "AzureTestPlans"}
- "Azure Artifacts"                                 {:lib "azure", :path "DevOps", :name "AzureArtifacts"}
- "Azure DevOps"                                    {:lib "azure", :path "DevOps", :name "AzureDevOps"}
- "Azure Application Insights"                      {:lib "azure", :path "DevOps", :name "AzureApplicationInsights"}
- "Azure Stack Offer"                               {:lib "azure", :path "Stack", :name "AzureStackOffer"}
- "Azure Stack Infrastructure Backup"               {:lib "azure", :path "Stack", :name "AzureStackInfrastructureBackup"}
- "Azure Stack Capacity"                            {:lib "azure", :path "Stack", :name "AzureStackCapacity"}
- "Azure Stack Update"                              {:lib "azure", :path "Stack", :name "AzureStackUpdate"}
- "Azure Stack Plan"                                {:lib "azure", :path "Stack", :name "AzureStackPlan"}
- "Azure Stack User Subscription"                   {:lib "azure", :path "Stack", :name "AzureStackUserSubscription"}
- "Azure Stack"                                     {:lib "azure", :path "Stack", :name "AzureStack"}
- "Azure Stack Multi Tenancy"                       {:lib "azure", :path "Stack", :name "AzureStackMultiTenancy"}
- "Azure Workflow"                                  {:lib "azure", :path "General", :name "AzureWorkflow"}
- "Azure"                                           {:lib "azure", :path "General", :name "Azure"}
- "Azure Workbook"                                  {:lib "azure", :path "General", :name "AzureWorkbook"}
- "Azure Public IP Prefix"                          {:lib "azure", :path "Networking", :name "AzurePublicIPPrefix"}
- "Azure Azure DDoS Protection"                     {:lib "azure", :path "Networking", :name "AzureAzureDDoSProtection"}
- "Azure Front Door Service"                        {:lib "azure", :path "Networking", :name "AzureFrontDoorService"}
- "Azure NSG"                                       {:lib "azure", :path "Networking", :name "AzureNSG"}
- "Azure Private Link Service"                      {:lib "azure", :path "Networking", :name "AzurePrivateLinkService"}
- "Azure Subnet"                                    {:lib "azure", :path "Networking", :name "AzureSubnet"}
- "Azure Public IP Address Classic"                 {:lib "azure", :path "Networking", :name "AzurePublicIPAddressClassic"}
- "Azure Route Filter"                              {:lib "azure", :path "Networking", :name "AzureRouteFilter"}
- "Azure IP Group"                                  {:lib "azure", :path "Networking", :name "AzureIPGroups"}
- "Azure Private Link"                              {:lib "azure", :path "Networking", :name "AzurePrivateLink"}
- "Azure Firewall"                                  {:lib "azure", :path "Networking", :name "AzureFirewall"}
- "Azure Network Interface"                         {:lib "azure", :path "Networking", :name "AzureNetworkInterface"}
- "Azure WAF Policies"                              {:lib "azure", :path "Networking", :name "AzureWAFPolicies"}
- "Azure Bastion"                                   {:lib "azure", :path "Networking", :name "AzureBastion"}
- "Azure DNS Server"                                {:lib "azure", :path "Networking", :name "AzureDNSServer"}
- "Azure NAT"                                       {:lib "azure", :path "Networking", :name "AzureNAT"}
- "Azure Private Link Hub"                          {:lib "azure", :path "Networking", :name "AzurePrivateLinkHub"}
- "Azure Application Gateway"                       {:lib "azure", :path "Networking", :name "AzureApplicationGateway"}
- "Azure Service Endpoint Policy"                   {:lib "azure", :path "Networking", :name "AzureServiceEndpointPolicy"}
- "Azure Express Route"                             {:lib "azure", :path "Networking", :name "AzureExpressRoute"}
- "Azure IP Address Space"                          {:lib "azure", :path "Networking", :name "AzureIPAddressSpace"}
- "Azure Traffic Manager"                           {:lib "azure", :path "Networking", :name "AzureTrafficManager"}
- "Azure Express Route Direct"                      {:lib "azure", :path "Networking", :name "AzureExpressRouteDirect"}
- "Azure Virtual Network Peering"                   {:lib "azure", :path "Networking", :name "AzureVirtualNetworkPeering"}
- "Azure Virtual WAN"                               {:lib "azure", :path "Networking", :name "AzureVirtualWAN"}
- "Azure Virtual Network"                           {:lib "azure", :path "Networking", :name "AzureVirtualNetwork"}
- "Azure DNS"                                       {:lib "azure", :path "Networking", :name "AzureDNS"}
- "Azure Front Door"                                {:lib "azure", :path "Networking", :name "AzureFrontDoor"}
- "Azure Service Endpoint"                          {:lib "azure", :path "Networking", :name "AzureServiceEndpoint"}
- "Azure Express Route Circuit"                     {:lib "azure", :path "Networking", :name "AzureExpressRouteCircuit"}
- "Azure Cdn Profile"                               {:lib "azure", :path "Networking", :name "AzureCDNProfile"}
- "Azure Public Ip Address"                         {:lib "azure", :path "Networking", :name "AzurePublicIPAddress"}
- "Azure Route Table"                               {:lib "azure", :path "Networking", :name "AzureRouteTable"}
- "Azure Firewall Manager"                          {:lib "azure", :path "Networking", :name "AzureFirewallManager"}
- "Azure Load Balancer"                             {:lib "azure", :path "Networking", :name "AzureLoadBalancer"}
- "Azure VPN Gateway"                               {:lib "azure", :path "Networking", :name "AzureVPNGateway"}
- "Azure Metrics"                                   {:lib "azure", :path "Management", :name "AzureMetrics"}
- "Azure Site Recovery"                             {:lib "azure", :path "Management", :name "AzureSiteRecovery"}
- "Azure Resource Group List"                       {:lib "azure", :path "Management", :name "AzureResourceGroupList"}
- "Azure Scheduler"                                 {:lib "azure", :path "Management", :name "AzureScheduler"}
- "Azure Lighthouse"                                {:lib "azure", :path "Management", :name "AzureLighthouse"}
- "Azure Managed Application Center"                {:lib "azure", :path "Management", :name "AzureManagedApplicationCenter"}
- "Azure Cost Budget"                               {:lib "azure", :path "Management", :name "AzureCostBudget"}
- "Azure Managed Applications"                      {:lib "azure", :path "Management", :name "AzureManagedApplications"}
- "Azure Cost Management"                           {:lib "azure", :path "Management", :name "AzureCostManagement"}
- "Azure Recovery Service Vault"                    {:lib "azure", :path "Management", :name "AzureRecoveryServiceVault"}
- "App Configuration"                               {:lib "azure", :path "Management", :name "AppConfiguration"}
- "Azure Geo Recovery"                              {:lib "azure", :path "Management", :name "AzureGeoRecovery"}
- "Azure Subscription"                              {:lib "azure", :path "Management", :name "AzureSubscription"}
- "Azure Arc Machine"                               {:lib "azure", :path "Management", :name "AzureArcMachine"}
- "Azure Policy"                                    {:lib "azure", :path "Management", :name "AzurePolicy"}
- "Azure Solutions"                                 {:lib "azure", :path "Management", :name "AzureSolutions"}
- "Azure Cost Alert"                                {:lib "azure", :path "Management", :name "AzureCostAlert"}
- "Azure Monitor"                                   {:lib "azure", :path "Management", :name "AzureMonitor"}
- "Azure Log Analytics"                             {:lib "azure", :path "Management", :name "AzureLogAnalytics"}
- "Azure Arc"                                       {:lib "azure", :path "Management", :name "AzureArc"}
- "Azure Cost Management And Billing"               {:lib "azure", :path "Management", :name "AzureCostManagementAndBilling"}
- "Azure Automation"                                {:lib "azure", :path "Management", :name "AzureAutomation"}
- "Azure Backup"                                    {:lib "azure", :path "Management", :name "AzureBackup"}
- "Azure User Privacy"                              {:lib "azure", :path "Management", :name "AzureUserPrivacy"}
- "Azure Resource Group"                            {:lib "azure", :path "Management", :name "AzureResourceGroups"}
- "Azure Management Portal"                         {:lib "azure", :path "Management", :name "AzureManagementPortal"}
- "Azure Resource Graph Explorer"                   {:lib "azure", :path "Management", :name "AzureResourceGraphExplorer"}
- "Azure Compliance"                                {:lib "azure", :path "Management", :name "AzureCompliance"}
- "Azure Blueprints"                                {:lib "azure", :path "Management", :name "AzureBlueprints"}
- "Azure Cost Analysis"                             {:lib "azure", :path "Management", :name "AzureCostAnalysis"}
- "Azure Tag"                                       {:lib "azure", :path "Management", :name "AzureTag"}
- "Azure Resource Linked"                           {:lib "azure", :path "Management", :name "AzureResourceLinked"}
- "Azure Management Groups"                         {:lib "azure", :path "Management", :name "AzureManagementGroups"}
- "Azure Defender"                                  {:lib "azure", :path "Security", :name "AzureDefender"}
- "Azure Access Control"                            {:lib "azure", :path "Security", :name "AzureAccessControl"}
- "Azure Conditional Access"                        {:lib "azure", :path "Security", :name "AzureConditionalAccess"}
- "Azure Sentinel"                                  {:lib "azure", :path "Security", :name "AzureSentinel"}
- "Azure Security Center"                           {:lib "azure", :path "Security", :name "AzureSecurityCenter"}
- "Azure Application Security Group"                {:lib "azure", :path "Security", :name "AzureApplicationSecurityGroup"}
- "Azure Key Vault"                                 {:lib "azure", :path "Security", :name "AzureKeyVault"}
- "Azure Service Bus"                               {:lib "azure", :path "Integration", :name "AzureServiceBus"}
- "Azure System Topic"                              {:lib "azure", :path "Integration", :name "AzureSystemTopic"}
- "Azure Service Bus Topic"                         {:lib "azure", :path "Integration", :name "AzureServiceBusTopic"}
- "Azure Partner Topic"                             {:lib "azure", :path "Integration", :name "AzurePartnerTopic"}
- "Azure Service Bus Queue"                         {:lib "azure", :path "Integration", :name "AzureServiceBusQueue"}
- "Azure Event Grid Subscription"                   {:lib "azure", :path "Integration", :name "AzureEventGridSubscription"}
- "Azure Event Grid Domain"                         {:lib "azure", :path "Integration", :name "AzureEventGridDomain"}
- "Azure Integration Account"                       {:lib "azure", :path "Integration", :name "AzureIntegrationAccount"}
- "Azure Event Grid Topic"                          {:lib "azure", :path "Integration", :name "AzureEventGridTopic"}
- "Azure Event Grid"                                {:lib "azure", :path "Integration", :name "AzureEventGrid"}
- "Azure Biz Talk"                                  {:lib "azure", :path "Integration", :name "AzureBizTalk"}
- "Azure Logic Apps"                                {:lib "azure", :path "Integration", :name "AzureLogicApps"}
- "Azure Blockchain Consortium"                     {:lib "azure", :path "Blockchain", :name "AzureBlockchainConsortium"}
- "Azure Blockchain Connection"                     {:lib "azure", :path "Blockchain", :name "AzureBlockchainConnection"}
- "Azure Blockchain Service"                        {:lib "azure", :path "Blockchain", :name "AzurBlockchainService"}
- "Azure Blockchain Token Service"                  {:lib "azure", :path "Blockchain", :name "AzurBlockchainTokenService"}
- "Azure Blockchain Member"                         {:lib "azure", :path "Blockchain", :name "AzurBlockchainMember"}
- "Azure SQL Data Warehouse"                        {:lib "azure", :path "Databases", :name "AzureSqlDataWarehouse"}
- "Azure Database For Maria DB"                     {:lib "azure", :path "Databases", :name "AzureDatabaseForMariaDB"}
- "Azure Data Explorer Cluster"                     {:lib "azure", :path "Databases", :name "AzureDataExplorerCluster"}
- "Azure SQL Elastic Pool"                          {:lib "azure", :path "Databases", :name "AzureSqlElasticPool"}
- "Azure Cosmos DB"                                 {:lib "azure", :path "Databases", :name "AzureCosmosDb"}
- "Azure SQL Managed Instance"                      {:lib "azure", :path "Databases", :name "AzureSqlManagedInstance"}
- "Azure SQL Database"                              {:lib "azure", :path "Databases", :name "AzureSqlDatabase"}
- "Azure Redis Cache"                               {:lib "azure", :path "Databases", :name "AzureRedisCache"}
- "Azure Database Migration Service"                {:lib "azure", :path "Databases", :name "AzureDatabaseMigrationService"}
- "Azure SQL"                                       {:lib "azure", :path "Databases", :name "AzureSql"}
- "Azure SQL Stretch Database"                      {:lib "azure", :path "Databases", :name "AzureSqlStretchDatabase"}
- "Azure Managed Database"                          {:lib "azure", :path "Databases", :name "AzureManagedDatabase"}
- "Azure Virtual Cluster"                           {:lib "azure", :path "Databases", :name "AzureVirtualCluster"}
- "Azure SSIS Lift And Shift"                       {:lib "azure", :path "Databases", :name "AzureSSISLiftAndShift"}
- "Azure SQL Virtual Machine"                       {:lib "azure", :path "Databases", :name "AzureSqlVirtualMachine"}
- "Azure SQL Server"                                {:lib "azure", :path "Databases", :name "AzureSqlServer"}
- "Azure Database For PostgreSQL"                   {:lib "azure", :path "Databases", :name "AzureDatabaseForPostgreSQL"}
- "Azure Data Factory"                              {:lib "azure", :path "Databases", :name "AzureDataFactory"}
- "Azure Instance Pool"                             {:lib "azure", :path "Databases", :name "AzureInstancePool"}
- "Azure Database For MySql"                        {:lib "azure", :path "Databases", :name "AzureDatabaseForMySQL"}
- "Azure DataBricks"                                {:lib "azure", :path "Databases", :name "AzureDataBricks"}
- "Azure Device Provisioning Service"               {:lib "azure", :path "InternetOfThings", :name "AzureDeviceProvisioningService"}
- "Azure Time Series Insights Environment"          {:lib "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsEnvironment"}
- "Azure Time Series Insights"                      {:lib "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsights"}
- "Azure Time Series Insights Event Source"         {:lib "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsEventSource"}
- "Azure IoT Hub"                                   {:lib "azure", :path "InternetOfThings", :name "AzureIoTHub"}
- "Azure IoT Edge"                                  {:lib "azure", :path "InternetOfThings", :name "AzureIoTEdge"}
- "Azure IoT Central"                               {:lib "azure", :path "InternetOfThings", :name "AzureIoTCentral"}
- "Azure Time Series Insights Access Policy"        {:lib "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsAccessPolicy"}
- "Azure Maps"                                      {:lib "azure", :path "InternetOfThings", :name "AzureMaps"}
- "Azure IoT Central Applications"                  {:lib "azure", :path "InternetOfThings", :name "AzureIoTCentralApplications"}
- "Azure Digital Twins"                             {:lib "azure", :path "InternetOfThings", :name "AzureDigitalTwins"}
- "Azure Time Series Data Set"                      {:lib "azure", :path "InternetOfThings", :name "AzureTimeSeriesDataSet"}
- "Azure Managed Identity"                          {:lib "azure", :path "Identity", :name "AzureManagedIdentity"}
- "Azure Active Directory B2C"                      {:lib "azure", :path "Identity", :name "AzureActiveDirectoryB2C"}
- "Azure Active Directory Identity Protection"      {:lib "azure", :path "Identity", :name "AzureActiveDirectoryIdentityProtection"}
- "Azure App Registration"                          {:lib "azure", :path "Identity", :name "AzureAppRegistration"}
- "Azure Active Directory"                          {:lib "azure", :path "Identity", :name "AzureActiveDirectory"}
- "Azure Identity Governance"                       {:lib "azure", :path "Identity", :name "AzureIdentityGovernance"}
- "Azure Active Directory Roles And Administrators" {:lib "azure", :path "Identity", :name "AzureActiveDirectoryRolesAndAdministrators"}
- "Azure Active Directory Connect Health"           {:lib "azure", :path "Identity", :name "AzureActiveDirectoryConnectHealth"}
- "Azure Active Directory User"                     {:lib "azure", :path "Identity", :name "AzureActiveDirectoryUser"}
- "Azure Active Directory Group"                    {:lib "azure", :path "Identity", :name "AzureActiveDirectoryGroup"}
- "Azure Enterprise Application"                    {:lib "azure", :path "Identity", :name "AzureEnterpriseApplication"}
- "Azure Active Directory Domain Services"          {:lib "azure", :path "Identity", :name "AzureActiveDirectoryDomainServices"}
- "Azure Media File"                                {:lib "azure", :path "Media", :name "AzureMediaFile"}
- "Azure Media"                                     {:lib "azure", :path "Media", :name "AzureMedia"}
- "Azure Media Services"                            {:lib "azure", :path "Media", :name "AzureMediaServices"}
- "Azure Synapse Analytics"                         {:lib "azure", :path "Analytics", :name "AzureSynapseAnalytics"}
- "Azure Databricks"                                {:lib "azure", :path "Analytics", :name "AzureDatabricks"}
- "Azure Log Analytics Workspace"                   {:lib "azure", :path "Analytics", :name "AzureLogAnalyticsWorkspace"}
- "Azure Event Hub Cluster"                         {:lib "azure", :path "Analytics", :name "AzureEventHubCluster"}
- "Azure Stream Analytics Job"                      {:lib "azure", :path "Analytics", :name "AzureStreamAnalyticsJob"}
- "Azure Analysis Services"                         {:lib "azure", :path "Analytics", :name "AzureAnalysisServices"}
- "Azure Data Lake Store Gen1"                      {:lib "azure", :path "Analytics", :name "AzureDataLakeStoreGen1"}
- "Azure Purview Account"                           {:lib "azure", :path "Analytics", :name "AzurePurviewAccount"}
- "Azure PowerBI Embedded"                          {:lib "azure", :path "Analytics", :name "AzurePowerBIEmbedded"}
- "Azure Data Explorer"                             {:lib "azure", :path "Analytics", :name "AzureDataExplorer"}
- "Azure Data Catalog"                              {:lib "azure", :path "Analytics", :name "AzureDataCatalog"}
- "Azure Event Hub"                                 {:lib "azure", :path "Analytics", :name "AzureEventHub"}
- "PowerBI"                                         {:lib "azure", :path "Analytics", :name "PowerBI"}
- "Azure Hd Insight Cluster"                        {:lib "azure", :path "Analytics", :name "AzureHDInsightCluster"}
- "Azure Log Stream"                                {:lib "azure", :path "Web", :name "AzureLogStream"}
- "Azure Properties"                                {:lib "azure", :path "Web", :name "AzureProperties"}
- "Azure App Service Domain"                        {:lib "azure", :path "Web", :name "AzureAppServiceDomain"}
- "Azure Web App"                                   {:lib "azure", :path "Web", :name "AzureWebApp"}
- "Azure CORS"                                      {:lib "azure", :path "Web", :name "AzureCORS"}
- "Azure CDN"                                       {:lib "azure", :path "Web", :name "AzureCDN"}
- "Azure Container Settings"                        {:lib "azure", :path "Web", :name "AzureContainerSettings"}
- "Azure API Management"                            {:lib "azure", :path "Web", :name "AzureAPIManagement"}
- "Azure Deployment Credentials"                    {:lib "azure", :path "Web", :name "AzureDeploymentCredentials"}
- "Azure App Service Certificate"                   {:lib "azure", :path "Web", :name "AzureAppServiceCertificate"}
- "Azure Search"                                    {:lib "azure", :path "Web", :name "AzureSearch"}
- "Azure Advanced Tools"                            {:lib "azure", :path "Web", :name "AzureAdvancedTools"}
- "Azure Signal R Service"                          {:lib "azure", :path "Web", :name "AzureSignalRService"}
- "Azure Quota"                                     {:lib "azure", :path "Web", :name "AzureQuota"}}
+{"Azure Service Environment"                       {:lib "azure", :prefix "azure", :path "Containers", :name "AzureServiceEnvironment"}
+ "Azure Container Registry"                        {:lib "azure", :prefix "azure", :path "Containers", :name "AzureContainerRegistry"}
+ "Azure Container App"                             {:lib "azure", :prefix "azure", :path "Containers", :name "AzureContainerApp"}
+ "Azure Kubernetes Service"                        {:lib "azure", :prefix "azure", :path "Containers", :name "AzureKubernetesService"}
+ "Azure Container Instance"                        {:lib "azure", :prefix "azure", :path "Containers", :name "AzureContainerInstance"}
+ "Azure Data Box Edge"                             {:lib "azure", :prefix "azure", :path "Migrate", :name "AzureDataBoxEdge"}
+ "Azure Migrate"                                   {:lib "azure", :prefix "azure", :path "Migrate", :name "AzureMigrate"}
+ "Azure Intune Google"                             {:lib "azure", :prefix "azure", :path "Intune", :name "AzureIntuneGoogle"}
+ "Azure Intune"                                    {:lib "azure", :prefix "azure", :path "Intune", :name "AzureIntune"}
+ "Azure Intune Apple"                              {:lib "azure", :prefix "azure", :path "Intune", :name "AzureIntuneApple"}
+ "Azure Intune Windows"                            {:lib "azure", :prefix "azure", :path "Intune", :name "AzureIntuneWindows"}
+ "Azure Virtual Desktop Application Group"         {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualDesktopApplicationGroup"}
+ "Azure Spring Cloud"                              {:lib "azure", :prefix "azure", :path "Compute", :name "AzureSpringCloud"}
+ "Azure App Service"                               {:lib "azure", :prefix "azure", :path "Compute", :name "AzureAppService"}
+ "Azure Batch"                                     {:lib "azure", :prefix "azure", :path "Compute", :name "AzureBatch"}
+ "Azure Container Service"                         {:lib "azure", :prefix "azure", :path "Compute", :name "AzureContainerService"}
+ "Azure Batch Account"                             {:lib "azure", :prefix "azure", :path "Compute", :name "AzureBatchAccount"}
+ "Azure Virtual Machine Classic"                   {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualMachineClassic"}
+ "Azure Shared Image Gallery"                      {:lib "azure", :prefix "azure", :path "Compute", :name "AzureSharedImageGallery"}
+ "Azure Virtual Desktop Workspace"                 {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualDesktopWorkspace"}
+ "Azure Image Version"                             {:lib "azure", :prefix "azure", :path "Compute", :name "AzureImageVersion"}
+ "Azure Image Classic"                             {:lib "azure", :prefix "azure", :path "Compute", :name "AzureImageClassic"}
+ "Azure Virtual Desktop"                           {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualDesktop"}
+ "Azure Cloud Services"                            {:lib "azure", :prefix "azure", :path "Compute", :name "AzureCloudServices"}
+ "Azure Function"                                  {:lib "azure", :prefix "azure", :path "Compute", :name "AzureFunction"}
+ "Azure Service Fabric"                            {:lib "azure", :prefix "azure", :path "Compute", :name "AzureServiceFabric"}
+ "Azure App Service Plan"                          {:lib "azure", :prefix "azure", :path "Compute", :name "AzureAppServicePlan"}
+ "Azure Availabilty Set"                           {:lib "azure", :prefix "azure", :path "Compute", :name "AzureAvailabiltySet"}
+ "Azure Disk Snapshot"                             {:lib "azure", :prefix "azure", :path "Compute", :name "AzureDiskSnapshot"}
+ "Azure Disk"                                      {:lib "azure", :prefix "azure", :path "Compute", :name "AzureDisk"}
+ "Azure App Service Plan Linux"                    {:lib "azure", :prefix "azure", :path "Compute", :name "AzureAppServicePlanLinux"}
+ "Azure Virtual Desktop Host Pool"                 {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualDesktopHostPool"}
+ "Azure Automanaged Virtual Machine"               {:lib "azure", :prefix "azure", :path "Compute", :name "AzureAutomanagedVirtualMachine"}
+ "Azure Image Definition"                          {:lib "azure", :prefix "azure", :path "Compute", :name "AzureImageDefinition"}
+ "Azure Mesh Application"                          {:lib "azure", :prefix "azure", :path "Compute", :name "AzureMeshApplication"}
+ "Azure Virtual Machine"                           {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualMachine"}
+ "Azure Virtual Machine Scale Set"                 {:lib "azure", :prefix "azure", :path "Compute", :name "AzureVirtualMachineScaleSet"}
+ "Azure Disk Encryption Set"                       {:lib "azure", :prefix "azure", :path "Compute", :name "AzureDiskEncryptionSet"}
+ "Azure Web Test"                                  {:lib "azure", :prefix "azure", :path "Compute", :name "AzureWebTest"}
+ "Azure Workspace"                                 {:lib "azure", :prefix "azure", :path "Compute", :name "AzureWorkspace"}
+ "Azure Server Farm"                               {:lib "azure", :prefix "azure", :path "Compute", :name "AzureServerFarm"}
+ "Azure Web Slot"                                  {:lib "azure", :prefix "azure", :path "Compute", :name "AzureWebSlot"}
+ "DICOM Service"                                   {:lib "azure", :prefix "azure", :path "Health", :name "DICOMService"}
+ "FHIR Service"                                    {:lib "azure", :prefix "azure", :path "Health", :name "FHIRService"}
+ "Med Tech Service"                                {:lib "azure", :prefix "azure", :path "Health", :name "MedTechService"}
+ "Health Data Services"                            {:lib "azure", :prefix "azure", :path "Health", :name "HealthDataServices"}
+ "Azure Disk Storage Classic"                      {:lib "azure", :prefix "azure", :path "Storage", :name "AzureDiskStorageClassic"}
+ "Azure Net App Files"                             {:lib "azure", :prefix "azure", :path "Storage", :name "AzureNetAppFiles"}
+ "Azure Data Lake Storage"                         {:lib "azure", :prefix "azure", :path "Storage", :name "AzureDataLakeStorage"}
+ "Azure Storage Classic"                           {:lib "azure", :prefix "azure", :path "Storage", :name "AzureStorageClassic"}
+ "Azure Storage Container"                         {:lib "azure", :prefix "azure", :path "Storage", :name "AzureStorageContainer"}
+ "Azure Data Box"                                  {:lib "azure", :prefix "azure", :path "Storage", :name "AzureDataBox"}
+ "Azure File Storage"                              {:lib "azure", :prefix "azure", :path "Storage", :name "AzureFileStorage"}
+ "Azure Storage"                                   {:lib "azure", :prefix "azure", :path "Storage", :name "AzureStorage"}
+ "Azure Managed Disks"                             {:lib "azure", :prefix "azure", :path "Storage", :name "AzureManagedDisks"}
+ "Azure Disk Storage"                              {:lib "azure", :prefix "azure", :path "Storage", :name "AzureDiskStorage"}
+ "Azure Blob Storage"                              {:lib "azure", :prefix "azure", :path "Storage", :name "AzureBlobStorage"}
+ "Azure Queue Storage"                             {:lib "azure", :prefix "azure", :path "Storage", :name "AzureQueueStorage"}
+ "Azure Stor Simple"                               {:lib "azure", :prefix "azure", :path "Storage", :name "AzureStorSimple"}
+ "Azure Bot Service"                               {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureBotService"}
+ "Azure Machine Learning Studio Web Service Plan"  {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioWebServicePlan"}
+ "Azure Machine Learning Studio"                   {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudio"}
+ "Azure Translator Text"                           {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureTranslatorText"}
+ "Microsoft Genomics"                              {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "MicrosoftGenomics"}
+ "Azure Machine Learning Service"                  {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureMachineLearningService"}
+ "Azure Machine Learning Studio Workspace"         {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioWorkspace"}
+ "Azure Batch AI"                                  {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureBatchAI"}
+ "Azure Machine Learning Studio Classic"           {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureMachineLearningStudioClassic"}
+ "Azure Cognitive Services"                        {:lib "azure", :prefix "azure", :path "AIMachineLearning", :name "AzureCognitiveServices"}
+ "Azure Notification Hub Namespace"                {:lib "azure", :prefix "azure", :path "Mobile", :name "AzureNotificationHubNamespace"}
+ "Azure Mobile App"                                {:lib "azure", :prefix "azure", :path "Mobile", :name "AzureMobileApp"}
+ "Azure Notification Hub"                          {:lib "azure", :prefix "azure", :path "Mobile", :name "AzureNotificationHub"}
+ "Azure Notification Hubs"                         {:lib "azure", :prefix "azure", :path "Mobile", :name "AzureNotificationHubs"}
+ "Azure Mobile Engagement"                         {:lib "azure", :prefix "azure", :path "Mobile", :name "AzureMobileEngagement"}
+ "Azure Pipelines"                                 {:lib "azure", :prefix "azure", :path "DevOps", :name "AzurePipelines"}
+ "Azure Boards"                                    {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureBoards"}
+ "Azure DevOps Organisation"                       {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureDevOpsOrganisation"}
+ "Azure Lab Services"                              {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureLabServices"}
+ "Azure Repos"                                     {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureRepos"}
+ "Azure Dev Test Labs"                             {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureDevTestLabs"}
+ "Azure Test Plans"                                {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureTestPlans"}
+ "Azure Artifacts"                                 {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureArtifacts"}
+ "Azure DevOps"                                    {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureDevOps"}
+ "Azure Application Insights"                      {:lib "azure", :prefix "azure", :path "DevOps", :name "AzureApplicationInsights"}
+ "Azure Stack Offer"                               {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackOffer"}
+ "Azure Stack Infrastructure Backup"               {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackInfrastructureBackup"}
+ "Azure Stack Capacity"                            {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackCapacity"}
+ "Azure Stack Update"                              {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackUpdate"}
+ "Azure Stack Plan"                                {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackPlan"}
+ "Azure Stack User Subscription"                   {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackUserSubscription"}
+ "Azure Stack"                                     {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStack"}
+ "Azure Stack Multi Tenancy"                       {:lib "azure", :prefix "azure", :path "Stack", :name "AzureStackMultiTenancy"}
+ "Azure Workflow"                                  {:lib "azure", :prefix "azure", :path "General", :name "AzureWorkflow"}
+ "Azure"                                           {:lib "azure", :prefix "azure", :path "General", :name "Azure"}
+ "Azure Workbook"                                  {:lib "azure", :prefix "azure", :path "General", :name "AzureWorkbook"}
+ "Azure Public IP Prefix"                          {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePublicIPPrefix"}
+ "Azure Azure DDoS Protection"                     {:lib "azure", :prefix "azure", :path "Networking", :name "AzureAzureDDoSProtection"}
+ "Azure Front Door Service"                        {:lib "azure", :prefix "azure", :path "Networking", :name "AzureFrontDoorService"}
+ "Azure NSG"                                       {:lib "azure", :prefix "azure", :path "Networking", :name "AzureNSG"}
+ "Azure Private Link Service"                      {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePrivateLinkService"}
+ "Azure Subnet"                                    {:lib "azure", :prefix "azure", :path "Networking", :name "AzureSubnet"}
+ "Azure Public IP Address Classic"                 {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePublicIPAddressClassic"}
+ "Azure Route Filter"                              {:lib "azure", :prefix "azure", :path "Networking", :name "AzureRouteFilter"}
+ "Azure IP Group"                                  {:lib "azure", :prefix "azure", :path "Networking", :name "AzureIPGroups"}
+ "Azure Private Link"                              {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePrivateLink"}
+ "Azure Firewall"                                  {:lib "azure", :prefix "azure", :path "Networking", :name "AzureFirewall"}
+ "Azure Network Interface"                         {:lib "azure", :prefix "azure", :path "Networking", :name "AzureNetworkInterface"}
+ "Azure WAF Policies"                              {:lib "azure", :prefix "azure", :path "Networking", :name "AzureWAFPolicies"}
+ "Azure Bastion"                                   {:lib "azure", :prefix "azure", :path "Networking", :name "AzureBastion"}
+ "Azure DNS Server"                                {:lib "azure", :prefix "azure", :path "Networking", :name "AzureDNSServer"}
+ "Azure NAT"                                       {:lib "azure", :prefix "azure", :path "Networking", :name "AzureNAT"}
+ "Azure Private Link Hub"                          {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePrivateLinkHub"}
+ "Azure Application Gateway"                       {:lib "azure", :prefix "azure", :path "Networking", :name "AzureApplicationGateway"}
+ "Azure Service Endpoint Policy"                   {:lib "azure", :prefix "azure", :path "Networking", :name "AzureServiceEndpointPolicy"}
+ "Azure Express Route"                             {:lib "azure", :prefix "azure", :path "Networking", :name "AzureExpressRoute"}
+ "Azure IP Address Space"                          {:lib "azure", :prefix "azure", :path "Networking", :name "AzureIPAddressSpace"}
+ "Azure Traffic Manager"                           {:lib "azure", :prefix "azure", :path "Networking", :name "AzureTrafficManager"}
+ "Azure Express Route Direct"                      {:lib "azure", :prefix "azure", :path "Networking", :name "AzureExpressRouteDirect"}
+ "Azure Virtual Network Peering"                   {:lib "azure", :prefix "azure", :path "Networking", :name "AzureVirtualNetworkPeering"}
+ "Azure Virtual WAN"                               {:lib "azure", :prefix "azure", :path "Networking", :name "AzureVirtualWAN"}
+ "Azure Virtual Network"                           {:lib "azure", :prefix "azure", :path "Networking", :name "AzureVirtualNetwork"}
+ "Azure DNS"                                       {:lib "azure", :prefix "azure", :path "Networking", :name "AzureDNS"}
+ "Azure Front Door"                                {:lib "azure", :prefix "azure", :path "Networking", :name "AzureFrontDoor"}
+ "Azure Service Endpoint"                          {:lib "azure", :prefix "azure", :path "Networking", :name "AzureServiceEndpoint"}
+ "Azure Express Route Circuit"                     {:lib "azure", :prefix "azure", :path "Networking", :name "AzureExpressRouteCircuit"}
+ "Azure Cdn Profile"                               {:lib "azure", :prefix "azure", :path "Networking", :name "AzureCDNProfile"}
+ "Azure Public Ip Address"                         {:lib "azure", :prefix "azure", :path "Networking", :name "AzurePublicIPAddress"}
+ "Azure Route Table"                               {:lib "azure", :prefix "azure", :path "Networking", :name "AzureRouteTable"}
+ "Azure Firewall Manager"                          {:lib "azure", :prefix "azure", :path "Networking", :name "AzureFirewallManager"}
+ "Azure Load Balancer"                             {:lib "azure", :prefix "azure", :path "Networking", :name "AzureLoadBalancer"}
+ "Azure VPN Gateway"                               {:lib "azure", :prefix "azure", :path "Networking", :name "AzureVPNGateway"}
+ "Azure Metrics"                                   {:lib "azure", :prefix "azure", :path "Management", :name "AzureMetrics"}
+ "Azure Site Recovery"                             {:lib "azure", :prefix "azure", :path "Management", :name "AzureSiteRecovery"}
+ "Azure Resource Group List"                       {:lib "azure", :prefix "azure", :path "Management", :name "AzureResourceGroupList"}
+ "Azure Scheduler"                                 {:lib "azure", :prefix "azure", :path "Management", :name "AzureScheduler"}
+ "Azure Lighthouse"                                {:lib "azure", :prefix "azure", :path "Management", :name "AzureLighthouse"}
+ "Azure Managed Application Center"                {:lib "azure", :prefix "azure", :path "Management", :name "AzureManagedApplicationCenter"}
+ "Azure Cost Budget"                               {:lib "azure", :prefix "azure", :path "Management", :name "AzureCostBudget"}
+ "Azure Managed Applications"                      {:lib "azure", :prefix "azure", :path "Management", :name "AzureManagedApplications"}
+ "Azure Cost Management"                           {:lib "azure", :prefix "azure", :path "Management", :name "AzureCostManagement"}
+ "Azure Recovery Service Vault"                    {:lib "azure", :prefix "azure", :path "Management", :name "AzureRecoveryServiceVault"}
+ "App Configuration"                               {:lib "azure", :prefix "azure", :path "Management", :name "AppConfiguration"}
+ "Azure Geo Recovery"                              {:lib "azure", :prefix "azure", :path "Management", :name "AzureGeoRecovery"}
+ "Azure Subscription"                              {:lib "azure", :prefix "azure", :path "Management", :name "AzureSubscription"}
+ "Azure Arc Machine"                               {:lib "azure", :prefix "azure", :path "Management", :name "AzureArcMachine"}
+ "Azure Policy"                                    {:lib "azure", :prefix "azure", :path "Management", :name "AzurePolicy"}
+ "Azure Solutions"                                 {:lib "azure", :prefix "azure", :path "Management", :name "AzureSolutions"}
+ "Azure Cost Alert"                                {:lib "azure", :prefix "azure", :path "Management", :name "AzureCostAlert"}
+ "Azure Monitor"                                   {:lib "azure", :prefix "azure", :path "Management", :name "AzureMonitor"}
+ "Azure Log Analytics"                             {:lib "azure", :prefix "azure", :path "Management", :name "AzureLogAnalytics"}
+ "Azure Arc"                                       {:lib "azure", :prefix "azure", :path "Management", :name "AzureArc"}
+ "Azure Cost Management And Billing"               {:lib "azure", :prefix "azure", :path "Management", :name "AzureCostManagementAndBilling"}
+ "Azure Automation"                                {:lib "azure", :prefix "azure", :path "Management", :name "AzureAutomation"}
+ "Azure Backup"                                    {:lib "azure", :prefix "azure", :path "Management", :name "AzureBackup"}
+ "Azure User Privacy"                              {:lib "azure", :prefix "azure", :path "Management", :name "AzureUserPrivacy"}
+ "Azure Resource Group"                            {:lib "azure", :prefix "azure", :path "Management", :name "AzureResourceGroups"}
+ "Azure Management Portal"                         {:lib "azure", :prefix "azure", :path "Management", :name "AzureManagementPortal"}
+ "Azure Resource Graph Explorer"                   {:lib "azure", :prefix "azure", :path "Management", :name "AzureResourceGraphExplorer"}
+ "Azure Compliance"                                {:lib "azure", :prefix "azure", :path "Management", :name "AzureCompliance"}
+ "Azure Blueprints"                                {:lib "azure", :prefix "azure", :path "Management", :name "AzureBlueprints"}
+ "Azure Cost Analysis"                             {:lib "azure", :prefix "azure", :path "Management", :name "AzureCostAnalysis"}
+ "Azure Tag"                                       {:lib "azure", :prefix "azure", :path "Management", :name "AzureTag"}
+ "Azure Resource Linked"                           {:lib "azure", :prefix "azure", :path "Management", :name "AzureResourceLinked"}
+ "Azure Management Groups"                         {:lib "azure", :prefix "azure", :path "Management", :name "AzureManagementGroups"}
+ "Azure Defender"                                  {:lib "azure", :prefix "azure", :path "Security", :name "AzureDefender"}
+ "Azure Access Control"                            {:lib "azure", :prefix "azure", :path "Security", :name "AzureAccessControl"}
+ "Azure Conditional Access"                        {:lib "azure", :prefix "azure", :path "Security", :name "AzureConditionalAccess"}
+ "Azure Sentinel"                                  {:lib "azure", :prefix "azure", :path "Security", :name "AzureSentinel"}
+ "Azure Security Center"                           {:lib "azure", :prefix "azure", :path "Security", :name "AzureSecurityCenter"}
+ "Azure Application Security Group"                {:lib "azure", :prefix "azure", :path "Security", :name "AzureApplicationSecurityGroup"}
+ "Azure Key Vault"                                 {:lib "azure", :prefix "azure", :path "Security", :name "AzureKeyVault"}
+ "Azure Service Bus"                               {:lib "azure", :prefix "azure", :path "Integration", :name "AzureServiceBus"}
+ "Azure System Topic"                              {:lib "azure", :prefix "azure", :path "Integration", :name "AzureSystemTopic"}
+ "Azure Service Bus Topic"                         {:lib "azure", :prefix "azure", :path "Integration", :name "AzureServiceBusTopic"}
+ "Azure Partner Topic"                             {:lib "azure", :prefix "azure", :path "Integration", :name "AzurePartnerTopic"}
+ "Azure Service Bus Queue"                         {:lib "azure", :prefix "azure", :path "Integration", :name "AzureServiceBusQueue"}
+ "Azure Event Grid Subscription"                   {:lib "azure", :prefix "azure", :path "Integration", :name "AzureEventGridSubscription"}
+ "Azure Event Grid Domain"                         {:lib "azure", :prefix "azure", :path "Integration", :name "AzureEventGridDomain"}
+ "Azure Integration Account"                       {:lib "azure", :prefix "azure", :path "Integration", :name "AzureIntegrationAccount"}
+ "Azure Event Grid Topic"                          {:lib "azure", :prefix "azure", :path "Integration", :name "AzureEventGridTopic"}
+ "Azure Event Grid"                                {:lib "azure", :prefix "azure", :path "Integration", :name "AzureEventGrid"}
+ "Azure Biz Talk"                                  {:lib "azure", :prefix "azure", :path "Integration", :name "AzureBizTalk"}
+ "Azure Logic Apps"                                {:lib "azure", :prefix "azure", :path "Integration", :name "AzureLogicApps"}
+ "Azure Blockchain Consortium"                     {:lib "azure", :prefix "azure", :path "Blockchain", :name "AzureBlockchainConsortium"}
+ "Azure Blockchain Connection"                     {:lib "azure", :prefix "azure", :path "Blockchain", :name "AzureBlockchainConnection"}
+ "Azure Blockchain Service"                        {:lib "azure", :prefix "azure", :path "Blockchain", :name "AzurBlockchainService"}
+ "Azure Blockchain Token Service"                  {:lib "azure", :prefix "azure", :path "Blockchain", :name "AzurBlockchainTokenService"}
+ "Azure Blockchain Member"                         {:lib "azure", :prefix "azure", :path "Blockchain", :name "AzurBlockchainMember"}
+ "Azure SQL Data Warehouse"                        {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlDataWarehouse"}
+ "Azure Database For Maria DB"                     {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDatabaseForMariaDB"}
+ "Azure Data Explorer Cluster"                     {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDataExplorerCluster"}
+ "Azure SQL Elastic Pool"                          {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlElasticPool"}
+ "Azure Cosmos DB"                                 {:lib "azure", :prefix "azure", :path "Databases", :name "AzureCosmosDb"}
+ "Azure SQL Managed Instance"                      {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlManagedInstance"}
+ "Azure SQL Database"                              {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlDatabase"}
+ "Azure Redis Cache"                               {:lib "azure", :prefix "azure", :path "Databases", :name "AzureRedisCache"}
+ "Azure Database Migration Service"                {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDatabaseMigrationService"}
+ "Azure SQL"                                       {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSql"}
+ "Azure SQL Stretch Database"                      {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlStretchDatabase"}
+ "Azure Managed Database"                          {:lib "azure", :prefix "azure", :path "Databases", :name "AzureManagedDatabase"}
+ "Azure Virtual Cluster"                           {:lib "azure", :prefix "azure", :path "Databases", :name "AzureVirtualCluster"}
+ "Azure SSIS Lift And Shift"                       {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSSISLiftAndShift"}
+ "Azure SQL Virtual Machine"                       {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlVirtualMachine"}
+ "Azure SQL Server"                                {:lib "azure", :prefix "azure", :path "Databases", :name "AzureSqlServer"}
+ "Azure Database For PostgreSQL"                   {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDatabaseForPostgreSQL"}
+ "Azure Data Factory"                              {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDataFactory"}
+ "Azure Instance Pool"                             {:lib "azure", :prefix "azure", :path "Databases", :name "AzureInstancePool"}
+ "Azure Database For MySql"                        {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDatabaseForMySQL"}
+ "Azure DataBricks"                                {:lib "azure", :prefix "azure", :path "Databases", :name "AzureDataBricks"}
+ "Azure Device Provisioning Service"               {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureDeviceProvisioningService"}
+ "Azure Time Series Insights Environment"          {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsEnvironment"}
+ "Azure Time Series Insights"                      {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsights"}
+ "Azure Time Series Insights Event Source"         {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsEventSource"}
+ "Azure IoT Hub"                                   {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureIoTHub"}
+ "Azure IoT Edge"                                  {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureIoTEdge"}
+ "Azure IoT Central"                               {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureIoTCentral"}
+ "Azure Time Series Insights Access Policy"        {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesInsightsAccessPolicy"}
+ "Azure Maps"                                      {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureMaps"}
+ "Azure IoT Central Applications"                  {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureIoTCentralApplications"}
+ "Azure Digital Twins"                             {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureDigitalTwins"}
+ "Azure Time Series Data Set"                      {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesDataSet"}
+ "Azure Managed Identity"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureManagedIdentity"}
+ "Azure Active Directory B2C"                      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryB2C"}
+ "Azure Active Directory Identity Protection"      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryIdentityProtection"}
+ "Azure App Registration"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureAppRegistration"}
+ "Azure Active Directory"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectory"}
+ "Azure Identity Governance"                       {:lib "azure", :prefix "azure", :path "Identity", :name "AzureIdentityGovernance"}
+ "Azure Active Directory Roles And Administrators" {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryRolesAndAdministrators"}
+ "Azure Active Directory Connect Health"           {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryConnectHealth"}
+ "Azure Active Directory User"                     {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryUser"}
+ "Azure Active Directory Group"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryGroup"}
+ "Azure Enterprise Application"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureEnterpriseApplication"}
+ "Azure Active Directory Domain Services"          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryDomainServices"}
+ "Azure Media File"                                {:lib "azure", :prefix "azure", :path "Media", :name "AzureMediaFile"}
+ "Azure Media"                                     {:lib "azure", :prefix "azure", :path "Media", :name "AzureMedia"}
+ "Azure Media Services"                            {:lib "azure", :prefix "azure", :path "Media", :name "AzureMediaServices"}
+ "Azure Synapse Analytics"                         {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureSynapseAnalytics"}
+ "Azure Databricks"                                {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureDatabricks"}
+ "Azure Log Analytics Workspace"                   {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureLogAnalyticsWorkspace"}
+ "Azure Event Hub Cluster"                         {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureEventHubCluster"}
+ "Azure Stream Analytics Job"                      {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureStreamAnalyticsJob"}
+ "Azure Analysis Services"                         {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureAnalysisServices"}
+ "Azure Data Lake Store Gen1"                      {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureDataLakeStoreGen1"}
+ "Azure Purview Account"                           {:lib "azure", :prefix "azure", :path "Analytics", :name "AzurePurviewAccount"}
+ "Azure PowerBI Embedded"                          {:lib "azure", :prefix "azure", :path "Analytics", :name "AzurePowerBIEmbedded"}
+ "Azure Data Explorer"                             {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureDataExplorer"}
+ "Azure Data Catalog"                              {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureDataCatalog"}
+ "Azure Event Hub"                                 {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureEventHub"}
+ "PowerBI"                                         {:lib "azure", :prefix "azure", :path "Analytics", :name "PowerBI"}
+ "Azure Hd Insight Cluster"                        {:lib "azure", :prefix "azure", :path "Analytics", :name "AzureHDInsightCluster"}
+ "Azure Advanced Tools"                            {:lib "azure", :prefix "azure", :path "Web", :name "AzureAdvancedTools"}
+ "Azure API Management"                            {:lib "azure", :prefix "azure", :path "Web", :name "AzureAPIManagement"}
+ "Azure App Service Certificate"                   {:lib "azure", :prefix "azure", :path "Web", :name "AzureAppServiceCertificate"}
+ "Azure App Service Domain"                        {:lib "azure", :prefix "azure", :path "Web", :name "AzureAppServiceDomain"}
+ "Azure CDN"                                       {:lib "azure", :prefix "azure", :path "Web", :name "AzureCDN"}
+ "Azure Container Settings"                        {:lib "azure", :prefix "azure", :path "Web", :name "AzureContainerSettings"}
+ "Azure CORS"                                      {:lib "azure", :prefix "azure", :path "Web", :name "AzureCORS"}
+ "Azure Deployment Credentials"                    {:lib "azure", :prefix "azure", :path "Web", :name "AzureDeploymentCredentials"}
+ "Azure Log Stream"                                {:lib "azure", :prefix "azure", :path "Web", :name "AzureLogStream"}
+ "Azure Properties"                                {:lib "azure", :prefix "azure", :path "Web", :name "AzureProperties"}
+ "Azure Quota"                                     {:lib "azure", :prefix "azure", :path "Web", :name "AzureQuota"}
+ "Azure Search"                                    {:lib "azure", :prefix "azure", :path "Web", :name "AzureSearch"}
+ "Azure Signal R Service"                          {:lib "azure", :prefix "azure", :path "Web", :name "AzureSignalRService"}
+ "Azure Web App"                                   {:lib "azure", :prefix "azure", :path "Web", :name "AzureWebApp"}}

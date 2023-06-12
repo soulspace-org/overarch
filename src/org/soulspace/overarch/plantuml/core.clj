@@ -17,6 +17,7 @@
 ;;; PlantUML mappings
 ;;;
 
+; FIXME remote urls
 (def sprite-libraries
   "Definition of sprite libraries."
   {:azure          {:name "azure"
@@ -24,7 +25,7 @@
                     :local-imports ["AzureCommon"
                                     "AzureC4Integration"]
                     :remote-prefix "AZURE"
-                    :remote-url "https://raw.githubusercontent.com/azure/master/"
+                    :remote-url ""
                     :remote-imports ["AzureCommon"
                                      "AzureC4Integration"]}
    :awslib         {:name "awslib"
@@ -32,14 +33,19 @@
                     :local-imports ["AWSCommon"
                                     "AWSC4Integration"]
                     :remote-prefix "AWS"
-                    :remote-url "https://raw.githubusercontent.com/awslib/master/"
+                    :remote-url ""
                     :remote-imports ["AWSCommon"
                                      "AWSC4Integration"]}
    :cloudinsight   {:name "cloudinsight"
                     :local-prefix "cloudinsight"
                     :local-imports []
                     :remote-prefix "CLOUDINSIGHT"
-                    :remote-url "https://raw.githubusercontent.com/cloudinsigh/master/"}
+                    :remote-url ""}
+   :cloudogu       {:name "cloudogu"
+                    :local-prefix "cloudogu"
+                    :local-imports ["common"]
+                    :remote-prefix "CLOUDOGU"
+                    :remote-url ""}
    :devicons       {:name "devicons"
                     :local-prefix "tupadr3"
                     :local-imports ["common"]
@@ -327,8 +333,8 @@
   "Renders the import for an sprite."
   [diagram sprite]
   (if (get-in diagram [:spec :plantuml :remote-imports])
-    (remote-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))
-    (local-import (str (:lib sprite) "/" (:path sprite) "/" (:name sprite)))))
+    (remote-import (str (:prefix sprite) "/" (:path sprite) "/" (:name sprite)))
+    (local-import (str (:prefix sprite) "/" (:path sprite) "/" (:name sprite)))))
 
 (defn render-spritelib-import
   "Renders the imports for an sprite library."
