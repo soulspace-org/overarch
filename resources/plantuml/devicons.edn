@@ -1,0 +1,187 @@
+{"Android" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "android"}
+ "Angular" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "angular"}
+ "Appcelerator" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "appcelerator"}
+ "Apple" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "apple"}
+ "Appstore" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "appstore"}
+ "Aptana" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "aptana"}
+ "Asterisk" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "asterisk"}
+ "Atlassian" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "atlassian"}
+ "Atom" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "atom"}
+ "AWS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "aws"}
+ "Backbone" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "backbone"}
+ "Bing Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bing_small"}
+ "Brackets" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "brackets"}
+ "Bintray" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bintray"}
+ "Bitbucket" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bitbucket"}
+ "Blackberry" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "blackberry"}
+ "Bootstrap" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bootstrap"}
+ "Bower" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bower"}
+ "Bugsense" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "bugsense"}
+ "Celluloid" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "celluloid"}
+ "Chrome" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "chrome"}
+ "Cisco" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cisco"}
+ "Clojure" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure"}
+ "Clojure Alt" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "clojure_alt"}
+ "Cloud9" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cloud9"}
+ "Coda" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coda"}
+ "Code" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code"}
+ "Code Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "code_badge"}
+ "Codeigniter" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codeigniter"}
+ "Codepen" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codepen"}
+ "Codrops" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "codrops"}
+ "Coffeescript" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "coffeescript"}
+ "Compass" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "compass"}
+ "Composer" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "composer"}
+ "Creative Commons" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "creativecommons"}
+ "Creative Commons Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "creativecommons_badge"}
+ "CSS3" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "css3"}
+ "CSS3 Full" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "css3_full"}
+ "CSSdeck" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "cssdeck"}
+ "CSS Tricks" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "css_tricks"}
+ "Dart" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dart"}
+ "Database" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "database"}
+ "Debian" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "debian"}
+ "Digital Ocean" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "digital_ocean"}
+ "Django" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "django"}
+ "DLang" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dlang"}
+ "Docker" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "docker"}
+ "Doctrine" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "doctrine"}
+ "Dojo" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dojo"}
+ "DotNet" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dotnet"}
+ "Dreamweaver" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dreamweaver"}
+ "Dropbox" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "dropbox"}
+ "Drupal" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "drupal"}
+ "Eclipse" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "eclipse"}
+ "Ember" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ember"}
+ "Envato" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "envato"}
+ "Erlang" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "erlang"}
+ "ExtJS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "extjs"}
+ "F#" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "fsharp"}
+ "Firebase" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "firebase"}
+ "Firefox" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "firefox"}
+ "Ghost" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ghost"}
+ "Ghost Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ghost_small"}
+ "Git" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git"}
+ "Git Branch" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git_branch"}
+ "Git Commit" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git_commit"}
+ "Git Compare" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git_compare"}
+ "Git Merge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git_merge"}
+ "Git Pull Request" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "git_pull_request"}
+ "Github" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "github"}
+ "Github Alt" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "github_alt"}
+ "Github Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "github_badge"}
+ "Github Full" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "github_full"}
+ "Gnu" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "gnu"}
+ "Google Analytics" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "google_analytics"}
+ "Google Cloud Platform" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "google_cloud_platform"}
+ "Google Drive" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "google_drive"}
+ "Grails" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "grails"}
+ "Groovy" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "groovy"}
+ "Grunt" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "grunt"}
+ "Gulp" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "gulp"}
+ "Hackernews" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "hackernews"}
+ "Haskell" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "haskell"}
+ "Heroku" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "heroku"}
+ "HTML5" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "html5"}
+ "HTML5 3D Effects" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "html5_3d_effects"}
+ "HTML5 Connectivity" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "html5_connectivity"}
+ "HTML5 Device Access" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "html5_device_access"}
+ "HTML5 Multimedia" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "html5_multimedia"}
+ "IE" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ie"}
+ "Illustrator" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "illustrator"}
+ "IntelliJ" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "intellij"}
+ "Ionic" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ionic"}
+ "Jekyll Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "jekyll_small"}
+ "Jira" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "jira"}
+ "JQuery UI" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "jquery_ui"}
+ "Java" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "java"}
+ "Javascript" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "javascript"}
+ "Javascript Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "javascript_badge"}
+ "Javascript Shield" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "javascript_shield"}
+ "Jenkins" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "jenkins"}
+ "Joomla" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "joomla"}
+ "JQuery" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "jquery"}
+ "Komodo" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "komodo"}
+ "KrakenJS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "krakenjs"}
+ "KrakenJS Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "krakenjs_badge"}
+ "Laravel" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "laravel"}
+ "Less" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "less"}
+ "Linux" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "linux"}
+ "Magento" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "magento"}
+ "Mailchimp" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mailchimp"}
+ "Markdown" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "markdown"}
+ "MaterializeCSS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "materializecss"}
+ "Meteor" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "meteor"}
+ "Meteor Full" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "meteorfull"}
+ "MIT Licence" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mitlicence"}
+ "Modernizr" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "modernizr"}
+ "MongoDB" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mongodb"}
+ "Mootools" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mootools"}
+ "Mootools Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mootools_badge"}
+ "Mozilla" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mozilla"}
+ "Nginx" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nginx"} "MSQL Server" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "msql_server"}
+ "MySQL" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "mysql"}
+ "Nancy" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nancy"}
+ "NetBeans" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "netbeans"}
+ "Netmagazine" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "netmagazine"}
+ "NodeJS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nodejs"}
+ "NodeJS Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nodejs_small"}
+ "Npm" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "npm"}
+ "OneDrive" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "onedrive"}
+ "Open Source" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "opensource"}
+ "Openshift" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "openshift"}
+ "Opera" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "opera"}
+ "PHP" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "php"}
+ "Photoshop" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "photoshop"}
+ "PostgreSQL" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "postgresql"}
+ "Prolog" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "prolog"}
+ "Python" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "python"}
+ "Rackspace" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "rackspace"}
+ "Raphael" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "raphael"}
+ "Raspberry Pi" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "raspberry_pi"}
+ "React" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "react"} "Perl" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "perl"}
+ "Redhat" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "redhat"}
+ "Redis" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "redis"}
+ "RequireJS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "requirejs"}
+ "Responsive" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "responsive"}
+ "Phonegap" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "phonegap"}
+ "Ruby" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ruby"}
+ "Ruby On Rails" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ruby_on_rails"}
+ "Ruby Rough" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ruby_rough"}
+ "Rust" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "rust"}
+ "Safari" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "safari"}
+ "Sass" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "sass"}
+ "Scala" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "scala"}
+ "ScriptCS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "scriptcs"}
+ "Scrum" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "scrum"}
+ "Senchatouch" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "senchatouch"}
+ "SizzleJS" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "sizzlejs"}
+ "Smashing Magazine" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "smashing_magazine"}
+ "Snap SVG" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "snap_svg"}
+ "SQLlite" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "sqllite"}
+ "StackOverflow" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "stackoverflow"}
+ "Streamline" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "streamline"}
+ "Stylus" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "stylus"}
+ "Sublime" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "sublime"}
+ "Swift" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "swift"}
+ "Symfony" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "symfony"}
+ "Symfony Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "symfony_badge"}
+ "Techcrunch" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "techcrunch"}
+ "Terminal" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "terminal"}
+ "Terminal Badge" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "terminal_badge"}
+ "Travis" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "travis"} "Typo3" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "typo3"}
+ "Trello" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "trello"}
+ "Ubuntu" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ubuntu"}
+ "UIKit" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "uikit"}
+ "Unity Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "unity_small"}
+ "Vim" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "vim"}
+ "Visual Studio" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "visualstudio"}
+ "W3C" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "w3c"}
+ "Webplatform" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "webplatform"}
+ "Windows" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "windows"}
+ "Wordpress" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "wordpress"}
+ "Yahoo" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yahoo"}
+ "Yahoo Small" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yahoo_small"}
+ "Yeoman" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yeoman"}
+ "Yii" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yii"}
+ "Zend" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "zend"}}

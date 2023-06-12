@@ -24,7 +24,7 @@
                     :local-imports ["AzureCommon"
                                     "AzureC4Integration"]
                     :remote-prefix "AZURE"
-                    :remote-url "https://raw.githubusercontent.com/azure/"
+                    :remote-url "https://raw.githubusercontent.com/azure/master/"
                     :remote-imports ["AzureCommon"
                                      "AzureC4Integration"]}
    :awslib         {:name "awslib"
@@ -32,15 +32,22 @@
                     :local-imports ["AWSCommon"
                                     "AWSC4Integration"]
                     :remote-prefix "AWS"
-                    :remote-url "https://raw.githubusercontent.com/awslib/"
+                    :remote-url "https://raw.githubusercontent.com/awslib/master/"
                     :remote-imports ["AWSCommon"
                                      "AWSC4Integration"]}
+   :cloudinsight   {:name "cloudinsight"
+                    :local-prefix "cloudinsight"
+                    :local-imports []
+                    :remote-prefix "CLOUDINSIGHT"
+                    :remote-url "https://raw.githubusercontent.com/cloudinsigh/master/"}
    :devicons       {:name "devicons"
-                    :local-prefix "devicons"
+                    :local-prefix "tupadr3"
+                    :local-imports ["common"]
                     :remote-prefix "DEVICONS"
                     :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
    :font-awesome-5 {:name "font-awesome-5"
-                    :local-prefix "font-awesome-5"
+                    :local-prefix "tupadr3"
+                    :local-imports ["common"]
                     :remote-prefix "FONTAWESOME"
                     :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5"}
    :material       {:name "material"
@@ -106,6 +113,8 @@
 ;;; Tech to Sprite mapping
 ;;;
 
+(def sprite-mappings ["cloudogu" "cloudinsight" "devicons" "azure" "awslib14"])
+
 (defn load-sprite-mappings-from-dir
   "Loads the mappings from the directory `dir` and returns the merged map."
   [dir]
@@ -127,9 +136,9 @@
   [options]
   (if (:config-dir options)
     (load-sprite-mappings-from-dir (str (:config-dir options) "/plantuml"))
-    (oio/load-edn-from-resource ["azure" "awslib14"])))
+    (oio/load-edn-from-resource sprite-mappings)))
 
-(def tech->sprite (load-sprite-mappings-from-resource ["azure" "awslib14"]))
+(def tech->sprite (load-sprite-mappings-from-resource sprite-mappings))
 
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
