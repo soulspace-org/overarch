@@ -88,6 +88,6 @@
            :name "Azure"
            :tech "AWS Cloud"
            :ct #{{:el :node
-                  :id :test/aws-subscription
-                  :name "Test Subscription"
-                  :tech "AWS Subscription"}}}]}}
+                  :id :test/aws-account
+                  :name "Test Account"
+                  :tech "AWS Account"}}}]}}
