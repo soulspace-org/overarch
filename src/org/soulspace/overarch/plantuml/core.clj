@@ -27,7 +27,7 @@
                     :remote-url "https://raw.githubusercontent.com/azure/"
                     :remote-imports ["AzureCommon"
                                      "AzureC4Integration"]}
-   :aws            {:name "awslib"
+   :awslib         {:name "awslib"
                     :local-prefix "awslib14"
                     :local-imports ["AWSCommon"
                                     "AWSC4Integration"]

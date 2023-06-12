@@ -1,7 +1,7 @@
-{"AWS EKS Anywhere"                                            {:lib "awslib14", :path "Containers", :name "EKSAnywhere"}
- "AWS Elastic Container Service ECS Anywhere"                  {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceECSAnywhere"}
- "AWS Containers"                                              {:lib "awslib14", :path "Containers", :name "Containers"}
- "AWS EKS Cloud"                                               {:lib "awslib14", :path "Containers", :name "EKSCloud"}
+{"AWS EKS Anywhere"                                             {:lib "awslib14", :path "Containers", :name "EKSAnywhere"}
+ "AWS Elastic Container Service ECS Anywhere"                   {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceECSAnywhere"}
+ "AWS Containers"                                               {:lib "awslib14", :path "Containers", :name "Containers"}
+ "AWS EKS Cloud"                                                {:lib "awslib14", :path "Containers", :name "EKSCloud"}
  "AWS Elastic Container Service Container1"                     {:lib "awslib14", :path "Containers", :name "ElasticContainerServiceContainer1"}
  "AWS EKS Distro"                                               {:lib "awslib14", :path "Containers", :name "EKSDistro"}
  "AWS Elastic Container Service"                                {:lib "awslib14", :path "Containers", :name "ElasticContainerService"}
@@ -304,7 +304,7 @@
  "AWS Region"                                                   {:lib "awslib14", :path "GroupIcons", :name "Region"}
  "AWS Step Function"                                            {:lib "awslib14", :path "GroupIcons", :name "StepFunction"}
  "AWS Spot Fleet"                                               {:lib "awslib14", :path "GroupIcons", :name "SpotFleet"}
- "AWS Cloud"                                                    {:lib "awslib14", :path "GroupIcons", :name "Cloud"}
+ ;"AWS Cloud"                                                    {:lib "awslib14", :path "GroupIcons", :name "Cloud"}
  "AWS Auto Scaling Group"                                       {:lib "awslib14", :path "GroupIcons", :name "AutoScalingGroup"}
  "AWS Cloudalt"                                                 {:lib "awslib14", :path "GroupIcons", :name "Cloudalt"}
  "AWS EC2 Instance Container"                                   {:lib "awslib14", :path "GroupIcons", :name "EC2InstanceContainer"}
@@ -313,7 +313,7 @@
  "AWS Server Contents"                                          {:lib "awslib14", :path "GroupIcons", :name "ServerContents"}
  "AWS Public Subnet"                                            {:lib "awslib14", :path "Groups", :name "PublicSubnet"}
  "AWS Generic Purple"                                           {:lib "awslib14", :path "Groups", :name "GenericPurple"}
- ;"AWS Cloud"                                                   {:lib "awslib14", :path "Groups", :name "AWSCloud"}
+ "AWS Cloud"                                                    {:lib "awslib14", :path "Groups", :name "AWSCloud"}
  "AWS Private Subnet"                                           {:lib "awslib14", :path "Groups", :name "PrivateSubnet"}
  ;"Corporate Data Center"                                   {:lib "awslib14", :path "Groups", :name "CorporateDataCenter"}
  "AWS Generic Red"                                              {:lib "awslib14", :path "Groups", :name "GenericRed"}
@@ -329,7 +329,7 @@
  "AWS IoT Greengrass Deployment"                                {:lib "awslib14", :path "Groups", :name "IoTGreengrassDeployment"}
  ;"AWS Auto Scaling Group"                                      {:lib "awslib14", :path "Groups", :name "AutoScalingGroup"}
  "AWS EC2 Instance Contents"                                    {:lib "awslib14", :path "Groups", :name "EC2InstanceContents"}
- "AWS AWS Account"                                              {:lib "awslib14", :path "Groups", :name "AWSAccount"}
+ "AWS Account"                                                  {:lib "awslib14", :path "Groups", :name "AWSAccount"}
  "AWS Generic Green"                                            {:lib "awslib14", :path "Groups", :name "GenericGreen"}
  "AWS Step Functions Workflow"                                  {:lib "awslib14", :path "Groups", :name "StepFunctionsWorkflow"}
  "AWS Generic"                                                  {:lib "awslib14", :path "Groups", :name "Generic"}
@@ -656,8 +656,8 @@
  "AWS Elastic Load Balancing Classic Load Balancer"             {:lib "awslib14", :path "NetworkingContentDelivery", :name "ElasticLoadBalancingClassicLoadBalancer"}
  "AWS Route53 Resolver"                                         {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53Resolver"}
  "AWS Cloud WAN"                                                {:lib "awslib14", :path "NetworkingContentDelivery", :name "CloudWAN"}
- "AWS Vpcnat Gateway"                                           {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCNATGateway"}
- "AWS Siteto Site VPN"                                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "SitetoSiteVPN"}
+ "AWS VPC NAT Gateway"                                          {:lib "awslib14", :path "NetworkingContentDelivery", :name "VPCNATGateway"}
+ "AWS Site to Site VPN"                                         {:lib "awslib14", :path "NetworkingContentDelivery", :name "SitetoSiteVPN"}
  "AWS Route53 Application Recovery Controller"                  {:lib "awslib14", :path "NetworkingContentDelivery", :name "Route53ApplicationRecoveryController"}
  "AWS App Mesh Virtual Gateway"                                 {:lib "awslib14", :path "NetworkingContentDelivery", :name "AppMeshVirtualGateway"}
  "AWS Global Accelerator"                                       {:lib "awslib14", :path "NetworkingContentDelivery", :name "GlobalAccelerator"}
