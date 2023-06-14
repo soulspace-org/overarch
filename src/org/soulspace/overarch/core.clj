@@ -15,7 +15,7 @@
 
 (def context-types
   "Element types of a C4 context view."
-  #{:person :system :boundary :enterprise-boundary})
+  #{:person :system :boundary :enterprise-boundary :context-boundary})
 
 (def container-types
   "Element types of a C4 container view."

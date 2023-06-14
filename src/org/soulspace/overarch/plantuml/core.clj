@@ -69,6 +69,7 @@
    :system-boundary     "System_Boundary"
    :container           "Container"
    :container-boundary  "Container_Boundary"
+   :context-boundary    "Boundary"
    :component           "Component"
    :node                "Node"
    :rel                 "Rel"})

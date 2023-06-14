@@ -123,7 +123,8 @@
   (-> (make-hierarchy)
       (derive :enterprise-boundary :boundary)
       (derive :system-boundary     :boundary)
-      (derive :container-boundary  :boundary)))
+      (derive :container-boundary  :boundary)
+      (derive :context-boundary    :boundary)))
 (defmulti render-diagram
   "Renders a diagram"
   exp/export-format)
