@@ -545,283 +545,283 @@
   "Lightbulb"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "lightbulb"}
   "Folder Open"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "folder_open"}
   "Map Marked"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "map_marked"}
-  "Tv" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tv"}
-  "Hire A Helper" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hire_a_helper"}
-  "Dev" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "dev"}
-  "Cheese" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cheese"}
-  "Sort Amount Down Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_amount_down_alt"}
-  "Clone" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clone"}
-  "Glass Martini Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glass_martini_alt"}
-  "Cube" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cube"}
-  "Hand Point Right" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hand_point_right"}
-  "Magnet" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "magnet"}
-  "Cc Diners Club" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_diners_club"}
-  "Cogs" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cogs"}
-  "Angry" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angry"}
-  "Mug Hot" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "mug_hot"}
-  "Laptop" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laptop"}
-  "Question Circle" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "question_circle"}
-  "Truck" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck"}
-  "Location Arrow" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "location_arrow"}
-  "Money Bill Wave" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "money_bill_wave"}
-  "First Order" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "first_order"}
-  "Money Check" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "money_check"}
-  "Funnel Dollar" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "funnel_dollar"}
-  "Ticket Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ticket_alt"}
-  "Share Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "share_alt"}
-  "Bity" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bity"}
-  "Thermometer Quarter" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "thermometer_quarter"}
-  "Sort Alpha Up" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_up"}
-  "Toilet" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "toilet"}
-  "Folder Plus" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "folder_plus"}
-  "Caret Square Right" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "caret_square_right"}
-  "Firstdraft" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "firstdraft"}
-  "Whatsapp Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "whatsapp_square"}
-  "Sort Alpha Down Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_down_alt"}
-  "Replyd" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "replyd"}
-  "Blogger B" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "blogger_b"}
-  "Users" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "users"}
-  "Affiliatetheme" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "affiliatetheme"}
-  "Google Pay" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "google_pay"}
-  "Cloudflare" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloudflare"}
-  "Grip Vertical" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grip_vertical"}
-  "Git Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "git_square"}
-  "Chess Rook" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_rook"}
-  "Arrow Circle Right" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_right"}
-  "Church" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "church"}
-  "Greater Than" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "greater_than"}
-  "Basketball Ball" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "basketball_ball"}
-  "Backspace" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "backspace"}
-  "Behance" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "behance"}
-  "Chevron Circle Up" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_up"}
-  "Stream" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "stream"}
-  "Skiing Nordic" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "skiing_nordic"}
-  "Gopuram" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gopuram"}
-  "Prescription Bottle Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "prescription_bottle_alt"}
-  "Carrot" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "carrot"}
-  "Flag Usa" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "flag_usa"}
-  "Balance Scale Left" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "balance_scale_left"}
-  "Pause" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pause"}
-  "Female" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "female"}
-  "Trailer" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "trailer"}
-  "Cash Register" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cash_register"}
-  "Atlas" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "atlas"}
-  "Shield Virus" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "shield_virus"}
-  "Play" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "play"}
-  "Sort Alpha Up Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_up_alt"}
-  "Car Crash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_crash"}
-  "Jenkins" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jenkins"}
-  "Box Open" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "box_open"}
-  "Filter" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "filter"}
-  "Cloud Moon" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloud_moon"}
-  "Tachometer Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tachometer_alt"}
-  "Bezier Curve" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bezier_curve"}
-  "Watchman Monitoring" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "watchman_monitoring"}
-  "User Slash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_slash"}
-  "Poo" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "poo"}
-  "User Alt Slash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_alt_slash"}
-  "Swatchbook" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "swatchbook"}
-  "Ethereum" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ethereum"}
-  "Redhat" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "redhat"}
-  "Smile" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "smile"}
-  "Supple" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "supple"}
-  "Allergies" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "allergies"}
-  "Cc Jcb" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_jcb"}
-  "Satellite" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "satellite"}
-  "Pray" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pray"}
-  "Wifi" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "wifi"}
-  "Peace" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "peace"}
-  "Amazon" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "amazon"}
-  "Glide" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glide"}
-  "Github Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "github_alt"}
-  "Mars Stroke" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "mars_stroke"}
-  "Monero" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "monero"}
-  "Less Than Equal" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "less_than_equal"}
-  "Wordpress" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "wordpress"}
-  "Jedi Order" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jedi_order"}
-  "Folder" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "folder"}
-  "Align Center" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "align_center"}
-  "Disease" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "disease"}
-  "Grin Tears" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin_tears"}
-  "File Medical Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_medical_alt"}
-  "Subway" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "subway"}
-  "Grip Horizontal" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grip_horizontal"}
-  "Hospital Symbol" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hospital_symbol"}
-  "Map" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "map"}
-  "Synagogue" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "synagogue"}
-  "Centercode" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "centercode"}
-  "Chess Knight" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_knight"}
-  "Truck Loading" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck_loading"}
-  "Poll" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "poll"}
-  "Redo" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "redo"}
-  "Rockrms" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "rockrms"}
-  "Won Sign" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "won_sign"}
-  "Viadeo Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "viadeo_square"}
-  "Facebook" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "facebook"}
-  "Vaadin" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vaadin"}
-  "Car Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_alt"}
-  "User Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_alt"}
-  "Creative Commons Nd" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_nd"}
-  "Readme" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "readme"}
-  "Users Slash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "users_slash"}
-  "Question" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "question"}
-  "Indent" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "indent"}
-  "Chess Bishop" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_bishop"}
-  "Battery Three Quarters" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "battery_three_quarters"}
-  "Fast Backward" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fast_backward"}
-  "Chevron Right" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_right"}
-  "Dragon" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "dragon"}
-  "Universal Access" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "universal_access"}
-  "Usb" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "usb"}
-  "Map Marked Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "map_marked_alt"}
-  "Angular" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angular"}
-  "Arrow Circle Down" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_down"}
-  "Eye Dropper" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "eye_dropper"}
-  "Heart Broken" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "heart_broken"}
-  "Crow" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "crow"}
-  "Chevron Circle Right" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_right"}
-  "Level Up Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "level_up_alt"}
-  "Greater Than Equal" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "greater_than_equal"}
-  "Vest Patches" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vest_patches"}
-  "Hand Holding Water" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hand_holding_water"}
-  "Instalod" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "instalod"}
-  "D And D" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "d_and_d"}
-  "Hubspot" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hubspot"}
-  "File" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file"}
-  "Strava" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "strava"}
-  "Transgender Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "transgender_alt"}
-  "Hospital Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hospital_alt"}
-  "Grin" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin"}
-  "Chevron Circle Down" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_down"}
-  "List Ol" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "list_ol"}
-  "Baseball Ball" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "baseball_ball"}
-  "Fax" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fax"}
-  "Aviato" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "aviato"}
-  "Node" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "node"}
-  "List Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "list_alt"}
-  "Fedex" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fedex"}
-  "Bacteria" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bacteria"}
-  "Sketch" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sketch"}
-  "Door Open" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "door_open"}
-  "Gg" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gg"}
-  "Tree" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tree"}
-  "Angle Up" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angle_up"}
-  "Cloud Rain" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloud_rain"}
-  "Car Battery" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_battery"}
-  "Route" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "route"}
-  "Laugh Squint" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laugh_squint"}
-  "Transgender" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "transgender"}
-  "Video Slash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "video_slash"}
-  "Anchor" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "anchor"}
-  "Brain" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "brain"}
-  "Openid" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "openid"}
-  "Paint Brush" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "paint_brush"}
-  "Creative Commons Remix" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_remix"}
-  "Glass Martini" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glass_martini"}
-  "Gitlab" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gitlab"}
-  "File Upload" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_upload"}
-  "Firefox Browser" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "firefox_browser"}
-  "Caravan" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "caravan"}
-  "Korvue" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "korvue"}
-  "Github Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "github_square"}
-  "Arrow Circle Up" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_up"}
-  "Spotify" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "spotify"}
-  "Pinterest Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pinterest_square"}
-  "Coffee" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "coffee"}
-  "First Aid" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "first_aid"}
-  "Parking" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "parking"}
-  "User Check" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_check"}
-  "Lyft" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "lyft"}
-  "Sync" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sync"}
-  "R Project" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "r_project"}
-  "Suse" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "suse"}
-  "H Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "h_square"}
-  "Reply" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "reply"}
-  "Studiovinari" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "studiovinari"}
-  "Gripfire" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gripfire"}
-  "Linkedin" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "linkedin"}
-  "Vuejs" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vuejs"}
-  "Btc" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "btc"}
-  "Rev" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "rev"}
-  "Vimeo Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vimeo_square"}
-  "Calendar" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "calendar"}
-  "Utensils" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "utensils"}
-  "Cc Visa" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_visa"}
-  "Sim Card" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sim_card"}
-  "Tablet" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tablet"}
-  "Contao" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "contao"}
-  "Cart Arrow Down" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cart_arrow_down"}
-  "Shoe Prints" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "shoe_prints"}
-  "Cc Paypal" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_paypal"}
-  "Codepen" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "codepen"}
-  "Comment Dots" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "comment_dots"}
-  "Plus Circle" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "plus_circle"}
-  "Truck Monster" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck_monster"}
-  "Hockey Puck" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hockey_puck"}
-  "Apple Pay" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "apple_pay"}
-  "Record Vinyl" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "record_vinyl"}
-  "Cc Stripe" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_stripe"}
-  "Concierge Bell" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "concierge_bell"}
-  "Building" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "building"}
-  "Pencil Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pencil_alt"}
-  "Id Badge" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "id_badge"}
-  "Clock" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clock"}
-  "Award" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "award"}
-  "File Archive" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_archive"}
-  "Envelope Open" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "envelope_open"}
-  "Snowman" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "snowman"}
-  "Apple" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "apple"}
-  "Jira" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jira"}
-  "Asterisk" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "asterisk"}
-  "Hooli" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hooli"}
-  "Windows" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "windows"}
-  "Docker" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "docker"}
-  "Remove Format" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "remove_format"}
-  "Vnv" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vnv"}
-  "Vk" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vk"}
-  "Blender" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "blender"}
-  "Store Slash" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "store_slash"}
-  "Birthday Cake" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "birthday_cake"}
-  "Assistive Listening Systems" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "assistive_listening_systems"}
-  "Twitter Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "twitter_square"}
-  "Database" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "database"}
-  "Php" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "php"}
-  "Igloo" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "igloo"}
-  "Ravelry" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ravelry"}
-  "Euro Sign" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "euro_sign"}
-  "Atlassian" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "atlassian"}
-  "Snowplow" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "snowplow"}
-  "Minus Square" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "minus_square"}
-  "Infinity" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "infinity"}
-  "Bimobject" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bimobject"}
-  "Clipboard List" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clipboard_list"}
-  "Print" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "print"}
-  "Star Half Alt" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "star_half_alt"}
-  "Place Of Worship" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "place_of_worship"}
-  "Hive" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hive"}
-  "Cog" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cog"}
-  "Yarn" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "yarn"}
-  "Hotel" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hotel"}
-  "Spray Can" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "spray_can"}
-  "Sign" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sign"}
-  "Plane" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "plane"}
-  "Cubes" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cubes"}
-  "Vest" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vest"}
-  "Linux" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "linux"}
-  "Bone" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bone"}
-  "Creative Commons Sampling Plus" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_sampling_plus"}
-  "House Damage" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "house_damage"}
-  "Hard Hat" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hard_hat"}
-  "Laptop House" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laptop_house"}
-  "Coins" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "coins"}
-  "User Tie" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_tie"}
-  "Ruble Sign" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ruble_sign"}
-  "Itunes Note" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "itunes_note"}
-  "Flag Checkered" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "flag_checkered"}
-  "Stripe" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "stripe"}
-  "Grin Squint" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin_squint"}
-  "Hat Cowboy" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hat_cowboy"}
-  "Ring" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ring"}
+  "TV"                                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tv"}
+  "Hire A Helper"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hire_a_helper"}
+  "Dev"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "dev"}
+  "Cheese"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cheese"}
+  "Sort Amount Down Alt"                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_amount_down_alt"}
+  "Clone"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clone"}
+  "Glass Martini Alt"                   {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glass_martini_alt"}
+  "Cube"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cube"}
+  "Hand Point Right"                    {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hand_point_right"}
+  "Magnet"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "magnet"}
+  "CC Diners Club"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_diners_club"}
+  "Cogs"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cogs"}
+  "Angry"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angry"}
+  "Mug Hot"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "mug_hot"}
+  "Laptop"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laptop"}
+  "Question Circle"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "question_circle"}
+  "Truck"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck"}
+  "Location Arrow"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "location_arrow"}
+  "Money Bill Wave"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "money_bill_wave"}
+  "First Order"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "first_order"}
+  "Money Check"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "money_check"}
+  "Funnel Dollar"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "funnel_dollar"}
+  "Ticket Alt"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ticket_alt"}
+  "Share Alt"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "share_alt"}
+  "Bity"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bity"}
+  "Thermometer Quarter"                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "thermometer_quarter"}
+  "Sort Alpha Up"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_up"}
+  "Toilet"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "toilet"}
+  "Folder Plus"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "folder_plus"}
+  "Caret Square Right"                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "caret_square_right"}
+  "Firstdraft"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "firstdraft"}
+  "Whatsapp Square"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "whatsapp_square"}
+  "Sort Alpha Down Alt"                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_down_alt"}
+  "Replyd"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "replyd"}
+  "Blogger B"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "blogger_b"}
+  "Users"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "users"}
+  "Affiliatetheme"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "affiliatetheme"}
+  "Google Pay"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "google_pay"}
+  "Cloudflare"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloudflare"}
+  "Grip Vertical"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grip_vertical"}
+  "Git Square"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "git_square"}
+  "Chess Rook"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_rook"}
+  "Arrow Circle Right"                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_right"}
+  "Church"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "church"}
+  "Greater Than"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "greater_than"}
+  "Basketball Ball"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "basketball_ball"}
+  "Backspace"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "backspace"}
+  "Behance"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "behance"}
+  "Chevron Circle Up"                   {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_up"}
+  "Stream"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "stream"}
+  "Skiing Nordic"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "skiing_nordic"}
+  "Gopuram"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gopuram"}
+  "Prescription Bottle Alt"             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "prescription_bottle_alt"}
+  "Carrot"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "carrot"}
+  "Flag USA"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "flag_usa"}
+  "Balance Scale Left"                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "balance_scale_left"}
+  "Pause"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pause"}
+  "Female"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "female"}
+  "Trailer"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "trailer"}
+  "Cash Register"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cash_register"}
+  "Atlas"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "atlas"}
+  "Shield Virus"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "shield_virus"}
+  "Play"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "play"}
+  "Sort Alpha Up Alt"                   {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sort_alpha_up_alt"}
+  "Car Crash"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_crash"}
+  "Jenkins"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jenkins"}
+  "Box Open"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "box_open"}
+  "Filter"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "filter"}
+  "Cloud Moon"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloud_moon"}
+  "Tachometer Alt"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tachometer_alt"}
+  "Bezier Curve"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bezier_curve"}
+  "Watchman Monitoring"                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "watchman_monitoring"}
+  "User Slash"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_slash"}
+  "Poo"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "poo"}
+  "User Alt Slash"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_alt_slash"}
+  "Swatchbook"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "swatchbook"}
+  "Ethereum"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ethereum"}
+  "Redhat"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "redhat"}
+  "Smile"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "smile"}
+  "Supple"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "supple"}
+  "Allergies"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "allergies"}
+  "CC Jcb"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_jcb"}
+  "Satellite"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "satellite"}
+  "Pray"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pray"}
+  "WiFi"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "wifi"}
+  "Peace"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "peace"}
+  "Amazon"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "amazon"}
+  "Glide"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glide"}
+  "Github Alt"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "github_alt"}
+  "Mars Stroke"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "mars_stroke"}
+  "Monero"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "monero"}
+  "Less Than Equal"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "less_than_equal"}
+  "Wordpress"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "wordpress"}
+  "Jedi Order"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jedi_order"}
+  "Folder"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "folder"}
+  "Align Center"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "align_center"}
+  "Disease"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "disease"}
+  "Grin Tears"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin_tears"}
+  "File Medical Alt"                    {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_medical_alt"}
+  "Subway"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "subway"}
+  "Grip Horizontal"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grip_horizontal"}
+  "Hospital Symbol"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hospital_symbol"}
+  "Map"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "map"}
+  "Synagogue"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "synagogue"}
+  "Centercode"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "centercode"}
+  "Chess Knight"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_knight"}
+  "Truck Loading"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck_loading"}
+  "Poll"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "poll"}
+  "Redo"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "redo"}
+  "Rockrms"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "rockrms"}
+  "Won Sign"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "won_sign"}
+  "Viadeo Square"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "viadeo_square"}
+  "Facebook"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "facebook"}
+  "Vaadin"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vaadin"}
+  "Car Alt"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_alt"}
+  "User Alt"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_alt"}
+  "Creative Commons ND"                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_nd"}
+  "Readme"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "readme"}
+  "Users Slash"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "users_slash"}
+  "Question"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "question"}
+  "Indent"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "indent"}
+  "Chess Bishop"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chess_bishop"}
+  "Battery Three Quarters"              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "battery_three_quarters"}
+  "Fast Backward"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fast_backward"}
+  "Chevron Right"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_right"}
+  "Dragon"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "dragon"}
+  "Universal Access"                    {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "universal_access"}
+  "USB"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "usb"}
+  "Map Marked Alt"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "map_marked_alt"}
+  "Angular"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angular"}
+  "Arrow Circle Down"                   {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_down"}
+  "Eye Dropper"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "eye_dropper"}
+  "Heart Broken"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "heart_broken"}
+  "Crow"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "crow"}
+  "Chevron Circle Right"                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_right"}
+  "Level Up Alt"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "level_up_alt"}
+  "Greater Than Equal"                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "greater_than_equal"}
+  "Vest Patches"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vest_patches"}
+  "Hand Holding Water"                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hand_holding_water"}
+  "Instalod"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "instalod"}
+  "D And D"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "d_and_d"}
+  "Hubspot"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hubspot"}
+  "File"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file"}
+  "Strava"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "strava"}
+  "Transgender Alt"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "transgender_alt"}
+  "Hospital Alt"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hospital_alt"}
+  "Grin"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin"}
+  "Chevron Circle Down"                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "chevron_circle_down"}
+  "List Ol"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "list_ol"}
+  "Baseball Ball"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "baseball_ball"}
+  "Fax"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fax"}
+  "Aviato"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "aviato"}
+  "Node"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "node"}
+  "List Alt"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "list_alt"}
+  "Fedex"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "fedex"}
+  "Bacteria"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bacteria"}
+  "Sketch"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sketch"}
+  "Door Open"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "door_open"}
+  "GG"                                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gg"}
+  "Tree"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tree"}
+  "Angle Up"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "angle_up"}
+  "Cloud Rain"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cloud_rain"}
+  "Car Battery"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "car_battery"}
+  "Route"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "route"}
+  "Laugh Squint"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laugh_squint"}
+  "Transgender"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "transgender"}
+  "Video Slash"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "video_slash"}
+  "Anchor"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "anchor"}
+  "Brain"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "brain"}
+  "OpenID"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "openid"}
+  "Paint Brush"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "paint_brush"}
+  "Creative Commons Remix"              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_remix"}
+  "Glass Martini"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "glass_martini"}
+  "Gitlab"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gitlab"}
+  "File Upload"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_upload"}
+  "Firefox Browser"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "firefox_browser"}
+  "Caravan"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "caravan"}
+  "Korvue"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "korvue"}
+  "Github Square"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "github_square"}
+  "Arrow Circle Up"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "arrow_circle_up"}
+  "Spotify"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "spotify"}
+  "Pinterest Square"                    {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pinterest_square"}
+  "Coffee"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "coffee"}
+  "First Aid"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "first_aid"}
+  "Parking"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "parking"}
+  "User Check"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_check"}
+  "Lyft"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "lyft"}
+  "Sync"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sync"}
+  "R Project"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "r_project"}
+  "SuSE"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "suse"}
+  "H Square"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "h_square"}
+  "Reply"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "reply"}
+  "Studiovinari"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "studiovinari"}
+  "Gripfire"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "gripfire"}
+  "LinkedIn"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "linkedin"}
+  "VueJS"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vuejs"}
+  "Btc"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "btc"}
+  "Rev"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "rev"}
+  "Vimeo Square"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vimeo_square"}
+  "Calendar"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "calendar"}
+  "Utensils"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "utensils"}
+  "CC Visa"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_visa"}
+  "Sim Card"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sim_card"}
+  "Tablet"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "tablet"}
+  "Contao"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "contao"}
+  "Cart Arrow Down"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cart_arrow_down"}
+  "Shoe Prints"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "shoe_prints"}
+  "CC Paypal"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_paypal"}
+  "Codepen"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "codepen"}
+  "Comment Dots"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "comment_dots"}
+  "Plus Circle"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "plus_circle"}
+  "Truck Monster"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "truck_monster"}
+  "Hockey Puck"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hockey_puck"}
+  "Apple Pay"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "apple_pay"}
+  "Record Vinyl"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "record_vinyl"}
+  "CC Stripe"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cc_stripe"}
+  "Concierge Bell"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "concierge_bell"}
+  "Building"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "building"}
+  "Pencil Alt"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "pencil_alt"}
+  "ID Badge"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "id_badge"}
+  "Clock"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clock"}
+  "Award"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "award"}
+  "File Archive"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "file_archive"}
+  "Envelope Open"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "envelope_open"}
+  "Snowman"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "snowman"}
+  "Apple"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "apple"}
+  "Jira"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "jira"}
+  "Asterisk"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "asterisk"}
+  "Hooli"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hooli"}
+  "Windows"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "windows"}
+  "Docker"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "docker"}
+  "Remove Format"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "remove_format"}
+  "Vnv"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vnv"}
+  "Vk"                                  {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vk"}
+  "Blender"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "blender"}
+  "Store Slash"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "store_slash"}
+  "Birthday Cake"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "birthday_cake"}
+  "Assistive Listening Systems"         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "assistive_listening_systems"}
+  "Twitter Square"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "twitter_square"}
+  "Database"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "database"}
+  "PHP"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "php"}
+  "Igloo"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "igloo"}
+  "Ravelry"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ravelry"}
+  "Euro Sign"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "euro_sign"}
+  "Atlassian"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "atlassian"}
+  "Snowplow"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "snowplow"}
+  "Minus Square"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "minus_square"}
+  "Infinity"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "infinity"}
+  "Bimobject"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bimobject"}
+  "Clipboard List"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "clipboard_list"}
+  "Print"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "print"}
+  "Star Half Alt"                       {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "star_half_alt"}
+  "Place Of Worship"                    {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "place_of_worship"}
+  "Hive"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hive"}
+  "Cog"                                 {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cog"}
+  "Yarn"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "yarn"}
+  "Hotel"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hotel"}
+  "Spray Can"                           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "spray_can"}
+  "Sign"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "sign"}
+  "Plane"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "plane"}
+  "Cubes"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "cubes"}
+  "Vest"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "vest"}
+  "Linux"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "linux"}
+  "Bone"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "bone"}
+  "Creative Commons Sampling Plus"      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "creative_commons_sampling_plus"}
+  "House Damage"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "house_damage"}
+  "Hard Hat"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hard_hat"}
+  "Laptop House"                        {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "laptop_house"}
+  "Coins"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "coins"}
+  "User Tie"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "user_tie"}
+  "Ruble Sign"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ruble_sign"}
+  "iTunes Note"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "itunes_note"}
+  "Flag Checkered"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "flag_checkered"}
+  "Stripe"                              {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "stripe"}
+  "Grin Squint"                         {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "grin_squint"}
+  "Hat Cowboy"                          {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "hat_cowboy"}
+  "Ring"                                {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "ring"}
   "Poll H" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "poll_h"}
   "Yandex International" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "yandex_international"}
   "Exclamation" {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "exclamation"}
