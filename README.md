@@ -43,7 +43,7 @@ code or infrastructure.
 
 Even if the model is specified as data, the format should be a text file (EDN,
 JSON) to be easily edited with text editors by the whole team and to be committed
-to version control, instead of being in some propriatary binary format.
+to version control, instead of being in some propriatory binary format.
 
 The native format should be Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
