@@ -315,8 +315,6 @@
                  (alias-name (:from e)) ", \"")
             (str (alias-name (:from e)) ", "
                  (alias-name (:to e)) ", \""))
-          (alias-name (:from e)) ", "
-          (alias-name (:to e)) ", \""
           (:name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
