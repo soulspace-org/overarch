@@ -46,6 +46,8 @@
                     :local-imports ["common"]
                     :remote-prefix "CLOUDOGU"
                     :remote-url ""}
+   :logos          {:name "logos"
+                    :local-prefix "logos"}
    :devicons       {:name "devicons"
                     :local-prefix "tupadr3"
                     :local-imports ["common"]
@@ -126,7 +128,7 @@
 ;;;
 
 (def sprite-mappings
-  ["cloudogu" "cloudinsight" "devicons" "devicons2"
+  ["cloudogu" "cloudinsight" "logos" "devicons" "devicons2"
    "font-awesome-5" "azure" "awslib14"])
 
 (defn load-sprite-mappings-from-dir
@@ -224,6 +226,10 @@
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+          (when (sprite? (:tech e))
+            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -237,8 +243,10 @@
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (sprite? (:tech e))
-          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+          (when (sprite? (:tech e))
+            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -252,8 +260,10 @@
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (when (sprite? (:tech e)) 
-          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+          (when (sprite? (:tech e))
+            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
@@ -267,8 +277,10 @@
                      (view/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-                     (when (sprite? (:tech e))
-                       (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
+                     (if (:sprite e)
+                       (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+                       (when (sprite? (:tech e))
+                         (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
                 (map #(render-element diagram (+ indent 2) %)
@@ -280,8 +292,10 @@
           (view/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-          (when (sprite? (:tech e))
-            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
+          (if (:sprite e)
+            (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+            (when (sprite? (:tech e))
+              (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
@@ -296,13 +310,20 @@
     [(str (view/render-indent indent)
           (element->method (:el e))
           (when (:direction e) (directions (:direction e))) "("
+          (if (:reverse e)
+            (str (alias-name (:to e)) ", "
+                 (alias-name (:from e)) ", \"")
+            (str (alias-name (:from e)) ", "
+                 (alias-name (:to e)) ", \""))
           (alias-name (:from e)) ", "
           (alias-name (:to e)) ", \""
           (:name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-          (when (sprite? (:tech e))
-            (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\""))
+          (if (:sprite e)
+            (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+            (when (sprite? (:tech e))
+              (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 

@@ -219,18 +219,18 @@
  "Azure IoT Central Applications"                  {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureIoTCentralApplications"}
  "Azure Digital Twins"                             {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureDigitalTwins"}
  "Azure Time Series Data Set"                      {:lib "azure", :prefix "azure", :path "InternetOfThings", :name "AzureTimeSeriesDataSet"}
- "Azure Managed Identity"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureManagedIdentity"}
- "Azure Active Directory B2C"                      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryB2C"}
- "Azure Active Directory Identity Protection"      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryIdentityProtection"}
- "Azure App Registration"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureAppRegistration"}
  "Azure Active Directory"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectory"}
- "Azure Identity Governance"                       {:lib "azure", :prefix "azure", :path "Identity", :name "AzureIdentityGovernance"}
- "Azure Active Directory Roles And Administrators" {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryRolesAndAdministrators"}
+ "Azure Active Directory B2C"                      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryB2C"}
  "Azure Active Directory Connect Health"           {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryConnectHealth"}
- "Azure Active Directory User"                     {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryUser"}
- "Azure Active Directory Group"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryGroup"}
- "Azure Enterprise Application"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureEnterpriseApplication"}
  "Azure Active Directory Domain Services"          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryDomainServices"}
+ "Azure Active Directory Group"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryGroup"}
+ "Azure Active Directory Identity Protection"      {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryIdentityProtection"}
+ "Azure Active Directory Roles And Administrators" {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryRolesAndAdministrators"}
+ "Azure Active Directory User"                     {:lib "azure", :prefix "azure", :path "Identity", :name "AzureActiveDirectoryUser"}
+ "Azure App Registration"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureAppRegistration"}
+ "Azure Enterprise Application"                    {:lib "azure", :prefix "azure", :path "Identity", :name "AzureEnterpriseApplication"}
+ "Azure Identity Governance"                       {:lib "azure", :prefix "azure", :path "Identity", :name "AzureIdentityGovernance"}
+ "Azure Managed Identity"                          {:lib "azure", :prefix "azure", :path "Identity", :name "AzureManagedIdentity"}
  "Azure Media File"                                {:lib "azure", :prefix "azure", :path "Media", :name "AzureMediaFile"}
  "Azure Media"                                     {:lib "azure", :prefix "azure", :path "Media", :name "AzureMedia"}
  "Azure Media Services"                            {:lib "azure", :prefix "azure", :path "Media", :name "AzureMediaServices"}
