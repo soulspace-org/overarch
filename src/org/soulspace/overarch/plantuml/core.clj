@@ -51,6 +51,11 @@
                     :local-imports ["common"]
                     :remote-prefix "DEVICONS"
                     :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"}
+   :devicons2      {:name "devicons2"
+                    :local-prefix "tupadr3"
+                    :local-imports ["common"]
+                    :remote-prefix "DEVICONS2"
+                    :remote-url "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons2"}
    :font-awesome-5 {:name "font-awesome-5"
                     :local-prefix "tupadr3"
                     :local-imports ["common"]
@@ -120,7 +125,9 @@
 ;;; Tech to Sprite mapping
 ;;;
 
-(def sprite-mappings ["cloudogu" "cloudinsight" "devicons" "azure" "awslib14"])
+(def sprite-mappings
+  ["cloudogu" "cloudinsight" "devicons" "devicons2"
+   "font-awesome-5" "azure" "awslib14"])
 
 (defn load-sprite-mappings-from-dir
   "Loads the mappings from the directory `dir` and returns the merged map."
