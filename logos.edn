@@ -1,0 +1,1175 @@
+{
+  "100tb"                     {:lib "logos" :prefix "logos" :path "" :name "100tb"}
+  "500px"                     {:lib "logos" :prefix "logos" :path "" :name "500px"}
+  "6px"                       {:lib "logos" :prefix "logos" :path "" :name "6px"}
+  "Admob"                     {:lib "logos" :prefix "logos" :path "" :name "admob"}
+  "Adroll"                    {:lib "logos" :prefix "logos" :path "" :name "adroll"}
+  "Adyen"                     {:lib "logos" :prefix "logos" :path "" :name "adyen"}
+  "Aerospike"                 {:lib "logos" :prefix "logos" :path "" :name "aerospike"}
+  "Airbnb"                    {:lib "logos" :prefix "logos" :path "" :name "airbnb"}
+  "Airbrake"                  {:lib "logos" :prefix "logos" :path "" :name "airbrake"}
+  "Airflow"                   {:lib "logos" :prefix "logos" :path "" :name "airflow"}
+  "Airtable"                  {:lib "logos" :prefix "logos" :path "" :name "airtable"}
+  "Akamai"                    {:lib "logos" :prefix "logos" :path "" :name "akamai"}
+  "Akka"                      {:lib "logos" :prefix "logos" :path "" :name "akka"}
+  "Alfresco"                  {:lib "logos" :prefix "logos" :path "" :name "alfresco"}
+  "Algolia"                   {:lib "logos" :prefix "logos" :path "" :name "algolia"}
+  "Alma"                      {:lib "logos" :prefix "logos" :path "" :name "alma"}
+  "Altair"                    {:lib "logos" :prefix "logos" :path "" :name "altair"}
+  "Amazon Chime"              {:lib "logos" :prefix "logos" :path "" :name "amazon-chime"}
+  "Amazon Connect"            {:lib "logos" :prefix "logos" :path "" :name "amazon-connect"}
+  "Amex"                      {:lib "logos" :prefix "logos" :path "" :name "amex"}
+  "Ampersand"                 {:lib "logos" :prefix "logos" :path "" :name "ampersand"}
+  "Android Icon"              {:lib "logos" :prefix "logos" :path "" :name "android-icon"}
+  "Android"                   {:lib "logos" :prefix "logos" :path "" :name "android"}
+  "Angellist"                 {:lib "logos" :prefix "logos" :path "" :name "angellist"}
+  "Angular Icon"              {:lib "logos" :prefix "logos" :path "" :name "angular-icon"}
+  "Angular"                   {:lib "logos" :prefix "logos" :path "" :name "angular"}
+  "Ansible"                   {:lib "logos" :prefix "logos" :path "" :name "ansible"}
+  "Apache Camel"              {:lib "logos" :prefix "logos" :path "" :name "apache-camel"}
+  "Apache Cloudstack"         {:lib "logos" :prefix "logos" :path "" :name "apache_cloudstack"}
+  "Apache"                    {:lib "logos" :prefix "logos" :path "" :name "apache"}
+  "API AI"                    {:lib "logos" :prefix "logos" :path "" :name "api-ai"}
+  "Apiary"                    {:lib "logos" :prefix "logos" :path "" :name "apiary"}
+  "Apigee"                    {:lib "logos" :prefix "logos" :path "" :name "apigee"}
+  "APItools"                  {:lib "logos" :prefix "logos" :path "" :name "apitools"}
+  "Apollostack"               {:lib "logos" :prefix "logos" :path "" :name "apollostack"}
+  "Appbase"                   {:lib "logos" :prefix "logos" :path "" :name "appbase"}
+  "Appcelerator"              {:lib "logos" :prefix "logos" :path "" :name "appcelerator"}
+  "Appcode"                   {:lib "logos" :prefix "logos" :path "" :name "appcode"}
+  "Appdynamics"               {:lib "logos" :prefix "logos" :path "" :name "appdynamics"}
+  "Appfog"                    {:lib "logos" :prefix "logos" :path "" :name "appfog"}
+  "Apphub"                    {:lib "logos" :prefix "logos" :path "" :name "apphub"}
+  "Appium"                    {:lib "logos" :prefix "logos" :path "" :name "appium"}
+  "Apple App Store"           {:lib "logos" :prefix "logos" :path "" :name "apple-app-store"}
+  "Apple"                     {:lib "logos" :prefix "logos" :path "" :name "apple"}
+  "Apple Pay"                 {:lib "logos" :prefix "logos" :path "" :name "apple-pay"}
+  "Appmaker"                  {:lib "logos" :prefix "logos" :path "" :name "appmaker"}
+  "Apportable"                {:lib "logos" :prefix "logos" :path "" :name "apportable"}
+  "Appsignal Icon"            {:lib "logos" :prefix "logos" :path "" :name "appsignal-icon"}
+  "Appsignal"                 {:lib "logos" :prefix "logos" :path "" :name "appsignal"}
+  "Apptentive"                {:lib "logos" :prefix "logos" :path "" :name "apptentive"}
+  "Appveyor"                  {:lib "logos" :prefix "logos" :path "" :name "appveyor"}
+  "ArangoDB"                  {:lib "logos" :prefix "logos" :path "" :name "arangodb"}
+  "ArchLinux"                 {:lib "logos" :prefix "logos" :path "" :name "archlinux"}
+  "Arduino"                   {:lib "logos" :prefix "logos" :path "" :name "arduino"}
+  "Armory"                    {:lib "logos" :prefix "logos" :path "" :name "armory"}
+  "Asana"                     {:lib "logos" :prefix "logos" :path "" :name "asana"}
+  "Astronomer"                {:lib "logos" :prefix "logos" :path "" :name "astronomer"}
+  "Atlassian"                 {:lib "logos" :prefix "logos" :path "" :name "atlassian"}
+  "Atomic"                    {:lib "logos" :prefix "logos" :path "" :name "atomic"}
+  "Atom"                      {:lib "logos" :prefix "logos" :path "" :name "atom"}
+  "Aurelia"                   {:lib "logos" :prefix "logos" :path "" :name "aurelia"}
+  "Aurora"                    {:lib "logos" :prefix "logos" :path "" :name "aurora"}
+  "Aurous"                    {:lib "logos" :prefix "logos" :path "" :name "aurous"}
+  "Auth0"                     {:lib "logos" :prefix "logos" :path "" :name "auth0"}
+  "Authy"                     {:lib "logos" :prefix "logos" :path "" :name "authy"}
+  "Autocode"                  {:lib "logos" :prefix "logos" :path "" :name "autocode"}
+  "AutoIT"                    {:lib "logos" :prefix "logos" :path "" :name "autoit"}
+  "Autoprefixer"              {:lib "logos" :prefix "logos" :path "" :name "autoprefixer"}
+  "Ava"                       {:lib "logos" :prefix "logos" :path "" :name "ava"}
+  "Awesome"                   {:lib "logos" :prefix "logos" :path "" :name "awesome"}
+  "AWS API Gateway"           {:lib "logos" :prefix "logos" :path "" :name "aws-api-gateway"}
+  "AWS Cloudformation"        {:lib "logos" :prefix "logos" :path "" :name "aws-cloudformation"}
+  "AWS Cloudfront"            {:lib "logos" :prefix "logos" :path "" :name "aws-cloudfront"}
+  "AWS Cloudsearch"           {:lib "logos" :prefix "logos" :path "" :name "aws-cloudsearch"}
+  "AWS Cloudwatch"            {:lib "logos" :prefix "logos" :path "" :name "aws-cloudwatch"}
+  "AWS Codedeploy"            {:lib "logos" :prefix "logos" :path "" :name "aws-codedeploy"}
+  "AWS Cognito"               {:lib "logos" :prefix "logos" :path "" :name "aws-cognito"}
+  "AWS DynamoDB"              {:lib "logos" :prefix "logos" :path "" :name "aws-dynamodb"}
+  "AWS EC2"                   {:lib "logos" :prefix "logos" :path "" :name "aws-ec2"}
+  "AWS Elastic Cache"         {:lib "logos" :prefix "logos" :path "" :name "aws-elastic-cache"}
+  "AWS Glacier"               {:lib "logos" :prefix "logos" :path "" :name "aws-glacier"}
+  "AWS IAM"                   {:lib "logos" :prefix "logos" :path "" :name "aws-iam"}
+  "AWS Kinesis"               {:lib "logos" :prefix "logos" :path "" :name "aws-kinesis"}
+  "AWS Lambda"                {:lib "logos" :prefix "logos" :path "" :name "aws-lambda"}
+  "AWS"                       {:lib "logos" :prefix "logos" :path "" :name "aws"}
+  "AWS Mobilehub"             {:lib "logos" :prefix "logos" :path "" :name "aws-mobilehub"}
+  "AWS Opsworks"              {:lib "logos" :prefix "logos" :path "" :name "aws-opsworks"}
+  "AWS Quicksight"            {:lib "logos" :prefix "logos" :path "" :name "aws-quicksight"}
+  "AWS RDS"                   {:lib "logos" :prefix "logos" :path "" :name "aws-rds"}
+  "AWS Route53"               {:lib "logos" :prefix "logos" :path "" :name "aws-route53"}
+  "AWS S3"                    {:lib "logos" :prefix "logos" :path "" :name "aws-s3"}
+  "AWS SES"                   {:lib "logos" :prefix "logos" :path "" :name "aws-ses"}
+  "AWS SNS"                   {:lib "logos" :prefix "logos" :path "" :name "aws-sns"}
+  "AWS SQS"                   {:lib "logos" :prefix "logos" :path "" :name "aws-sqs"}
+  "AWS Waf"                   {:lib "logos" :prefix "logos" :path "" :name "aws-waf"}
+  "Azure"                     {:lib "logos" :prefix "logos" :path "" :name "azure"}
+  "Babel"                     {:lib "logos" :prefix "logos" :path "" :name "babel"}
+  "Backbone Icon"             {:lib "logos" :prefix "logos" :path "" :name "backbone-icon"}
+  "Backbone"                  {:lib "logos" :prefix "logos" :path "" :name "backbone"}
+  "Backerkit"                 {:lib "logos" :prefix "logos" :path "" :name "backerkit"}
+  "Baker Street"              {:lib "logos" :prefix "logos" :path "" :name "baker-street"}
+  "Bamboo"                    {:lib "logos" :prefix "logos" :path "" :name "bamboo"}
+  "Basecamp"                  {:lib "logos" :prefix "logos" :path "" :name "basecamp"}
+  "Basekit"                   {:lib "logos" :prefix "logos" :path "" :name "basekit"}
+  "Bash"                      {:lib "logos" :prefix "logos" :path "" :name "bash"}
+  "Batch"                     {:lib "logos" :prefix "logos" :path "" :name "batch"}
+  "Beats"                     {:lib "logos" :prefix "logos" :path "" :name "beats"}
+  "Behance"                   {:lib "logos" :prefix "logos" :path "" :name "behance"}
+  "Bem 2"                     {:lib "logos" :prefix "logos" :path "" :name "bem-2"}
+  "Bem"                       {:lib "logos" :prefix "logos" :path "" :name "bem"}
+  "Bigpanda"                  {:lib "logos" :prefix "logos" :path "" :name "bigpanda"}
+  "Bing"                      {:lib "logos" :prefix "logos" :path "" :name "bing"}
+  "Bitballoon"                {:lib "logos" :prefix "logos" :path "" :name "bitballoon"}
+  "Bitbucket"                 {:lib "logos" :prefix "logos" :path "" :name "bitbucket"}
+  "Bitcoin"                   {:lib "logos" :prefix "logos" :path "" :name "bitcoin"}
+  "Bitnami"                   {:lib "logos" :prefix "logos" :path "" :name "bitnami"}
+  "Bitrise Icon"              {:lib "logos" :prefix "logos" :path "" :name "bitrise-icon"}
+  "Bitrise"                   {:lib "logos" :prefix "logos" :path "" :name "bitrise"}
+  "Blocs"                     {:lib "logos" :prefix "logos" :path "" :name "blocs"}
+  "Blogger"                   {:lib "logos" :prefix "logos" :path "" :name "blogger"}
+  "Blossom"                   {:lib "logos" :prefix "logos" :path "" :name "blossom"}
+  "Bluemix"                   {:lib "logos" :prefix "logos" :path "" :name "bluemix"}
+  "Blueprint"                 {:lib "logos" :prefix "logos" :path "" :name "blueprint"}
+  "Bluetooth"                 {:lib "logos" :prefix "logos" :path "" :name "bluetooth"}
+  "Bootstrap"                 {:lib "logos" :prefix "logos" :path "" :name "bootstrap"}
+  "Bosun"                     {:lib "logos" :prefix "logos" :path "" :name "bosun"}
+  "Botanalytics"              {:lib "logos" :prefix "logos" :path "" :name "botanalytics"}
+  "Bourbon"                   {:lib "logos" :prefix "logos" :path "" :name "bourbon"}
+  "Bower"                     {:lib "logos" :prefix "logos" :path "" :name "bower"}
+  "Bowtie"                    {:lib "logos" :prefix "logos" :path "" :name "bowtie"}
+  "Box"                       {:lib "logos" :prefix "logos" :path "" :name "box"}
+  "Brackets"                  {:lib "logos" :prefix "logos" :path "" :name "brackets"}
+  "Branch"                    {:lib "logos" :prefix "logos" :path "" :name "branch"}
+  "Brandfolder Icon"          {:lib "logos" :prefix "logos" :path "" :name "brandfolder-icon"}
+  "Brandfolder"               {:lib "logos" :prefix "logos" :path "" :name "brandfolder"}
+  "Brave"                     {:lib "logos" :prefix "logos" :path "" :name "brave"}
+  "Braze"                     {:lib "logos" :prefix "logos" :path "" :name "braze"}
+  "Broccoli"                  {:lib "logos" :prefix "logos" :path "" :name "broccoli"}
+  "Brotli"                    {:lib "logos" :prefix "logos" :path "" :name "brotli"}
+  "Browserify Icon"           {:lib "logos" :prefix "logos" :path "" :name "browserify-icon"}
+  "Browserify"                {:lib "logos" :prefix "logos" :path "" :name "browserify"}
+  "Browserling"               {:lib "logos" :prefix "logos" :path "" :name "browserling"}
+  "Browserslist"              {:lib "logos" :prefix "logos" :path "" :name "browserslist"}
+  "Browserstack"              {:lib "logos" :prefix "logos" :path "" :name "browserstack"}
+  "Browsersync"               {:lib "logos" :prefix "logos" :path "" :name "browsersync"}
+  "Brunch"                    {:lib "logos" :prefix "logos" :path "" :name "brunch"}
+  "Buck"                      {:lib "logos" :prefix "logos" :path "" :name "buck"}
+  "Buddy"                     {:lib "logos" :prefix "logos" :path "" :name "buddy"}
+  "Buffer"                    {:lib "logos" :prefix "logos" :path "" :name "buffer"}
+  "Bugherd"                   {:lib "logos" :prefix "logos" :path "" :name "bugherd"}
+  "Bugsee"                    {:lib "logos" :prefix "logos" :path "" :name "bugsee"}
+  "Bugsnag"                   {:lib "logos" :prefix "logos" :path "" :name "bugsnag"}
+  "Bulma"                     {:lib "logos" :prefix "logos" :path "" :name "bulma"}
+  "Cachet"                    {:lib "logos" :prefix "logos" :path "" :name "cachet"}
+  "Caffe2"                    {:lib "logos" :prefix "logos" :path "" :name "caffe2"}
+  "CakePHP"                   {:lib "logos" :prefix "logos" :path "" :name "cakephp"}
+  "Campaignmonitor Icon"      {:lib "logos" :prefix "logos" :path "" :name "campaignmonitor-icon"}
+  "Campaignmonitor"           {:lib "logos" :prefix "logos" :path "" :name "campaignmonitor"}
+  "Campfire"                  {:lib "logos" :prefix "logos" :path "" :name "campfire"}
+  "CanJS"                     {:lib "logos" :prefix "logos" :path "" :name "canjs"}
+  "Capistrano"                {:lib "logos" :prefix "logos" :path "" :name "capistrano"}
+  "Carbide"                   {:lib "logos" :prefix "logos" :path "" :name "carbide"}
+  "Cassandra"                 {:lib "logos" :prefix "logos" :path "" :name "cassandra"}
+  "Celluloid"                 {:lib "logos" :prefix "logos" :path "" :name "celluloid"}
+  "Centos Icon"               {:lib "logos" :prefix "logos" :path "" :name "centos-icon"}
+  "CentOS"                    {:lib "logos" :prefix "logos" :path "" :name "centos"}
+  "Certbot"                   {:lib "logos" :prefix "logos" :path "" :name "certbot"}
+  "Chai"                      {:lib "logos" :prefix "logos" :path "" :name "chai"}
+  "Chalk"                     {:lib "logos" :prefix "logos" :path "" :name "chalk"}
+  "Changetip"                 {:lib "logos" :prefix "logos" :path "" :name "changetip"}
+  "Chargebee Icon"            {:lib "logos" :prefix "logos" :path "" :name "chargebee-icon"}
+  "Chargebee"                 {:lib "logos" :prefix "logos" :path "" :name "chargebee"}
+  "Chartblocks"               {:lib "logos" :prefix "logos" :path "" :name "chartblocks"}
+  "Chef"                      {:lib "logos" :prefix "logos" :path "" :name "chef"}
+  "Chevereto"                 {:lib "logos" :prefix "logos" :path "" :name "chevereto"}
+  "Chromatic Icon"            {:lib "logos" :prefix "logos" :path "" :name "chromatic-icon"}
+  "Chromatic"                 {:lib "logos" :prefix "logos" :path "" :name "chromatic"}
+  "Chrome"                    {:lib "logos" :prefix "logos" :path "" :name "chrome"}
+  "CircleCI"                  {:lib "logos" :prefix "logos" :path "" :name "circleci"}
+  "Cirrus"                    {:lib "logos" :prefix "logos" :path "" :name "cirrus"}
+  "C"                         {:lib "logos" :prefix "logos" :path "" :name "c"}
+  "Clickdeploy"               {:lib "logos" :prefix "logos" :path "" :name "clickdeploy"}
+  "Clion"                     {:lib "logos" :prefix "logos" :path "" :name "clion"}
+  "Cljs"                      {:lib "logos" :prefix "logos" :path "" :name "cljs"}
+  "Clojure"                   {:lib "logos" :prefix "logos" :path "" :name "clojure"}
+  "Close"                     {:lib "logos" :prefix "logos" :path "" :name "close"}
+  "Cloud9"                    {:lib "logos" :prefix "logos" :path "" :name "cloud9"}
+  "Cloudacademy"              {:lib "logos" :prefix "logos" :path "" :name "cloudacademy"}
+  "Cloudant"                  {:lib "logos" :prefix "logos" :path "" :name "cloudant"}
+  "Cloudcraft"                {:lib "logos" :prefix "logos" :path "" :name "cloudcraft"}
+  "Cloudera"                  {:lib "logos" :prefix "logos" :path "" :name "cloudera"}
+  "Cloudflare"                {:lib "logos" :prefix "logos" :path "" :name "cloudflare"}
+  "Cloudinary"                {:lib "logos" :prefix "logos" :path "" :name "cloudinary"}
+  "Cloudlinux"                {:lib "logos" :prefix "logos" :path "" :name "cloudlinux"}
+  "ClusterHQ"                 {:lib "logos" :prefix "logos" :path "" :name "clusterhq"}
+  "Cobalt"                    {:lib "logos" :prefix "logos" :path "" :name "cobalt"}
+  "Cockpit"                   {:lib "logos" :prefix "logos" :path "" :name "cockpit"}
+  "Cocoapods"                 {:lib "logos" :prefix "logos" :path "" :name "cocoapods"}
+  "Codacy"                    {:lib "logos" :prefix "logos" :path "" :name "codacy"}
+  "Codebase"                  {:lib "logos" :prefix "logos" :path "" :name "codebase"}
+  "Codebeat"                  {:lib "logos" :prefix "logos" :path "" :name "codebeat"}
+  "Codecademy"                {:lib "logos" :prefix "logos" :path "" :name "codecademy"}
+  "Codeception"               {:lib "logos" :prefix "logos" :path "" :name "codeception"}
+  "Codeclimate"               {:lib "logos" :prefix "logos" :path "" :name "codeclimate"}
+  "Codecov"                   {:lib "logos" :prefix "logos" :path "" :name "codecov"}
+  "Codefactor"                {:lib "logos" :prefix "logos" :path "" :name "codefactor"}
+  "Codefund Icon"             {:lib "logos" :prefix "logos" :path "" :name "codefund-icon"}
+  "Codefund"                  {:lib "logos" :prefix "logos" :path "" :name "codefund"}
+  "Codeigniter"               {:lib "logos" :prefix "logos" :path "" :name "codeigniter"}
+  "Codepen Icon"              {:lib "logos" :prefix "logos" :path "" :name "codepen-icon"}
+  "Codepen"                   {:lib "logos" :prefix "logos" :path "" :name "codepen"}
+  "Codepicnic"                {:lib "logos" :prefix "logos" :path "" :name "codepicnic"}
+  "Codepush"                  {:lib "logos" :prefix "logos" :path "" :name "codepush"}
+  "Coderwall"                 {:lib "logos" :prefix "logos" :path "" :name "coderwall"}
+  "Codesandbox"               {:lib "logos" :prefix "logos" :path "" :name "codesandbox"}
+  "Codeschool"                {:lib "logos" :prefix "logos" :path "" :name "codeschool"}
+  "Codeship"                  {:lib "logos" :prefix "logos" :path "" :name "codeship"}
+  "Codio"                     {:lib "logos" :prefix "logos" :path "" :name "codio"}
+  "Codrops"                   {:lib "logos" :prefix "logos" :path "" :name "codrops"}
+  "Coffeescript"              {:lib "logos" :prefix "logos" :path "" :name "coffeescript"}
+  "Compass"                   {:lib "logos" :prefix "logos" :path "" :name "compass"}
+  "Componentkit"              {:lib "logos" :prefix "logos" :path "" :name "componentkit"}
+  "Component"                 {:lib "logos" :prefix "logos" :path "" :name "component"}
+  "Compose"                   {:lib "logos" :prefix "logos" :path "" :name "compose"}
+  "Composer"                  {:lib "logos" :prefix "logos" :path "" :name "composer"}
+  "Concourse"                 {:lib "logos" :prefix "logos" :path "" :name "concourse"}
+  "Concrete5"                 {:lib "logos" :prefix "logos" :path "" :name "concrete5"}
+  "Confluence"                {:lib "logos" :prefix "logos" :path "" :name "confluence"}
+  "Consul"                    {:lib "logos" :prefix "logos" :path "" :name "consul"}
+  "Containership"             {:lib "logos" :prefix "logos" :path "" :name "containership"}
+  "Contentful"                {:lib "logos" :prefix "logos" :path "" :name "contentful"}
+  "Convox"                    {:lib "logos" :prefix "logos" :path "" :name "convox"}
+  "Copyleft"                  {:lib "logos" :prefix "logos" :path "" :name "copyleft"}
+  "Copyleft Pirate"           {:lib "logos" :prefix "logos" :path "" :name "copyleft-pirate"}
+  "Cordova"                   {:lib "logos" :prefix "logos" :path "" :name "cordova"}
+  "Coreos Icon"               {:lib "logos" :prefix "logos" :path "" :name "coreos-icon"}
+  "Coreos"                    {:lib "logos" :prefix "logos" :path "" :name "coreos"}
+  "Couchbase"                 {:lib "logos" :prefix "logos" :path "" :name "couchbase"}
+  "CouchDB Icon"              {:lib "logos" :prefix "logos" :path "" :name "couchdb-icon"}
+  "CouchDB"                   {:lib "logos" :prefix "logos" :path "" :name "couchdb"}
+  "Coursera"                  {:lib "logos" :prefix "logos" :path "" :name "coursera"}
+  "Coveralls"                 {:lib "logos" :prefix "logos" :path "" :name "coveralls"}
+  "Cpanel"                    {:lib "logos" :prefix "logos" :path "" :name "cpanel"}
+  "C++"                       {:lib "logos" :prefix "logos" :path "" :name "c-plusplus"}
+  "CraftCMS"                  {:lib "logos" :prefix "logos" :path "" :name "craftcms"}
+  "Crashlytics"               {:lib "logos" :prefix "logos" :path "" :name "crashlytics"}
+  "CrateIO"                   {:lib "logos" :prefix "logos" :path "" :name "crateio"}
+  "CreateJS"                  {:lib "logos" :prefix "logos" :path "" :name "createjs"}
+  "Cross Browser Testing"     {:lib "logos" :prefix "logos" :path "" :name "cross-browser-testing"}
+  "Crucible"                  {:lib "logos" :prefix "logos" :path "" :name "crucible"}
+  "Crystal"                   {:lib "logos" :prefix "logos" :path "" :name "crystal"}
+  "C#"                        {:lib "logos" :prefix "logos" :path "" :name "c-sharp"}
+  "CSS 3"                     {:lib "logos" :prefix "logos" :path "" :name "css-3"}
+  "CSS 3 Official"            {:lib "logos" :prefix "logos" :path "" :name "css-3_official"}
+  "CSSnext"                   {:lib "logos" :prefix "logos" :path "" :name "cssnext"}
+  "Cucumber"                  {:lib "logos" :prefix "logos" :path "" :name "cucumber"}
+  "CustomerIO"                {:lib "logos" :prefix "logos" :path "" :name "customerio"}
+  "CycleJS"                   {:lib "logos" :prefix "logos" :path "" :name "cyclejs"}
+  "Cypress"                   {:lib "logos" :prefix "logos" :path "" :name "cypress"}
+  "D3"                        {:lib "logos" :prefix "logos" :path "" :name "d3"}
+  "Dapulse"                   {:lib "logos" :prefix "logos" :path "" :name "dapulse"}
+  "Dart"                      {:lib "logos" :prefix "logos" :path "" :name "dart"}
+  "Dashlane"                  {:lib "logos" :prefix "logos" :path "" :name "dashlane"}
+  "Database Labs"             {:lib "logos" :prefix "logos" :path "" :name "database-labs"}
+  "Dat"                       {:lib "logos" :prefix "logos" :path "" :name "dat"}
+  "Dcos"                      {:lib "logos" :prefix "logos" :path "" :name "dcos"}
+  "Debian"                    {:lib "logos" :prefix "logos" :path "" :name "debian"}
+  "Delicious"                 {:lib "logos" :prefix "logos" :path "" :name "delicious"}
+  "Delighted"                 {:lib "logos" :prefix "logos" :path "" :name "delighted"}
+  "DependencyCI"              {:lib "logos" :prefix "logos" :path "" :name "dependencyci"}
+  "Deploy"                    {:lib "logos" :prefix "logos" :path "" :name "deploy"}
+  "Deppbot"                   {:lib "logos" :prefix "logos" :path "" :name "deppbot"}
+  "Derby"                     {:lib "logos" :prefix "logos" :path "" :name "derby"}
+  "Designernews"              {:lib "logos" :prefix "logos" :path "" :name "designernews"}
+  "Desk"                      {:lib "logos" :prefix "logos" :path "" :name "desk"}
+  "Deviantart"                {:lib "logos" :prefix "logos" :path "" :name "deviantart"}
+  "Digital Ocean"             {:lib "logos" :prefix "logos" :path "" :name "digital-ocean"}
+  "Dimer"                     {:lib "logos" :prefix "logos" :path "" :name "dimer"}
+  "Dinersclub"                {:lib "logos" :prefix "logos" :path "" :name "dinersclub"}
+  "Discord"                   {:lib "logos" :prefix "logos" :path "" :name "discord"}
+  "Discover"                  {:lib "logos" :prefix "logos" :path "" :name "discover"}
+  "Disqus"                    {:lib "logos" :prefix "logos" :path "" :name "disqus"}
+  "Django"                    {:lib "logos" :prefix "logos" :path "" :name "django"}
+  "Dockbit"                   {:lib "logos" :prefix "logos" :path "" :name "dockbit"}
+  "Docker Icon"               {:lib "logos" :prefix "logos" :path "" :name "docker-icon"}
+  "Docker"                    {:lib "logos" :prefix "logos" :path "" :name "docker"}
+  "Doctrine"                  {:lib "logos" :prefix "logos" :path "" :name "doctrine"}
+  "Docusaurus"                {:lib "logos" :prefix "logos" :path "" :name "docusaurus"}
+  "Dojo Icon"                 {:lib "logos" :prefix "logos" :path "" :name "dojo-icon"}
+  "Dojo"                      {:lib "logos" :prefix "logos" :path "" :name "dojo"}
+  "Dojo Toolkit"              {:lib "logos" :prefix "logos" :path "" :name "dojo-toolkit"}
+  "Dotnet"                    {:lib "logos" :prefix "logos" :path "" :name "dotnet"}
+  "Doubleclick"               {:lib "logos" :prefix "logos" :path "" :name "doubleclick"}
+  "Dreamfactory"              {:lib "logos" :prefix "logos" :path "" :name "dreamfactory"}
+  "Dreamhost"                 {:lib "logos" :prefix "logos" :path "" :name "dreamhost"}
+  "Dribbble Icon"             {:lib "logos" :prefix "logos" :path "" :name "dribbble-icon"}
+  "Dribbble"                  {:lib "logos" :prefix "logos" :path "" :name "dribbble"}
+  "Drift"                     {:lib "logos" :prefix "logos" :path "" :name "drift"}
+  "Drip"                      {:lib "logos" :prefix "logos" :path "" :name "drip"}
+  "Drone"                     {:lib "logos" :prefix "logos" :path "" :name "drone"}
+  "Dropbox"                   {:lib "logos" :prefix "logos" :path "" :name "dropbox"}
+  "Dropmark"                  {:lib "logos" :prefix "logos" :path "" :name "dropmark"}
+  "Dropzone"                  {:lib "logos" :prefix "logos" :path "" :name "dropzone"}
+  "Drupal Icon"               {:lib "logos" :prefix "logos" :path "" :name "drupal-icon"}
+  "Drupal"                    {:lib "logos" :prefix "logos" :path "" :name "drupal"}
+  "Duckduckgo"                {:lib "logos" :prefix "logos" :path "" :name "duckduckgo"}
+  "Dyndns"                    {:lib "logos" :prefix "logos" :path "" :name "dyndns"}
+  "Eager"                     {:lib "logos" :prefix "logos" :path "" :name "eager"}
+  "Ebanx"                     {:lib "logos" :prefix "logos" :path "" :name "ebanx"}
+  "Eclipse"                   {:lib "logos" :prefix "logos" :path "" :name "eclipse"}
+  "Egghead"                   {:lib "logos" :prefix "logos" :path "" :name "egghead"}
+  "Elasticbox"                {:lib "logos" :prefix "logos" :path "" :name "elasticbox"}
+  "Elasticsearch"             {:lib "logos" :prefix "logos" :path "" :name "elasticsearch"}
+  "Electron"                  {:lib "logos" :prefix "logos" :path "" :name "electron"}
+  "Elemental UI"              {:lib "logos" :prefix "logos" :path "" :name "elemental-ui"}
+  "Elementary"                {:lib "logos" :prefix "logos" :path "" :name "elementary"}
+  "Element"                   {:lib "logos" :prefix "logos" :path "" :name "element"}
+  "Ello"                      {:lib "logos" :prefix "logos" :path "" :name "ello"}
+  "Elm"                       {:lib "logos" :prefix "logos" :path "" :name "elm"}
+  "Elo"                       {:lib "logos" :prefix "logos" :path "" :name "elo"}
+  "Emacs"                     {:lib "logos" :prefix "logos" :path "" :name "emacs"}
+  "Embedly"                   {:lib "logos" :prefix "logos" :path "" :name "embedly"}
+  "Ember"                     {:lib "logos" :prefix "logos" :path "" :name "ember"}
+  "Ember Tomster"             {:lib "logos" :prefix "logos" :path "" :name "ember-tomster"}
+  "Emmet"                     {:lib "logos" :prefix "logos" :path "" :name "emmet"}
+  "Engine Yard"               {:lib "logos" :prefix "logos" :path "" :name "engine-yard"}
+  "Envato"                    {:lib "logos" :prefix "logos" :path "" :name "envato"}
+  "Envoyer"                   {:lib "logos" :prefix "logos" :path "" :name "envoyer"}
+  "Enyo"                      {:lib "logos" :prefix "logos" :path "" :name "enyo"}
+  "Erlang"                    {:lib "logos" :prefix "logos" :path "" :name "erlang"}
+  "ES6"                       {:lib "logos" :prefix "logos" :path "" :name "es6"}
+  "Esdoc"                     {:lib "logos" :prefix "logos" :path "" :name "esdoc"}
+  "Eslint"                    {:lib "logos" :prefix "logos" :path "" :name "eslint"}
+  "Eslint Old"                {:lib "logos" :prefix "logos" :path "" :name "eslint-old"}
+  "Eta Lang"                  {:lib "logos" :prefix "logos" :path "" :name "eta-lang"}
+  "Etcd"                      {:lib "logos" :prefix "logos" :path "" :name "etcd"}
+  "Ethereum"                  {:lib "logos" :prefix "logos" :path "" :name "ethereum"}
+  "Ethnio"                    {:lib "logos" :prefix "logos" :path "" :name "ethnio"}
+  "Eventbrite Icon"           {:lib "logos" :prefix "logos" :path "" :name "eventbrite-icon"}
+  "Eventbrite"                {:lib "logos" :prefix "logos" :path "" :name "eventbrite"}
+  "Eventsentry"               {:lib "logos" :prefix "logos" :path "" :name "eventsentry"}
+  "Expo"                      {:lib "logos" :prefix "logos" :path "" :name "expo"}
+  "Exponent"                  {:lib "logos" :prefix "logos" :path "" :name "exponent"}
+  "Express"                   {:lib "logos" :prefix "logos" :path "" :name "express"}
+  "Fabric IO"                 {:lib "logos" :prefix "logos" :path "" :name "fabric_io"}
+  "Fabric"                    {:lib "logos" :prefix "logos" :path "" :name "fabric"}
+  "Facebook"                  {:lib "logos" :prefix "logos" :path "" :name "facebook"}
+  "Falcor"                    {:lib "logos" :prefix "logos" :path "" :name "falcor"}
+  "Fastlane"                  {:lib "logos" :prefix "logos" :path "" :name "fastlane"}
+  "Fastly"                    {:lib "logos" :prefix "logos" :path "" :name "fastly"}
+  "FeathersJS"                {:lib "logos" :prefix "logos" :path "" :name "feathersjs"}
+  "Fedora"                    {:lib "logos" :prefix "logos" :path "" :name "fedora"}
+  "Figma"                     {:lib "logos" :prefix "logos" :path "" :name "figma"}
+  "Firebase"                  {:lib "logos" :prefix "logos" :path "" :name "firebase"}
+  "Firefox"                   {:lib "logos" :prefix "logos" :path "" :name "firefox"}
+  "Flannel"                   {:lib "logos" :prefix "logos" :path "" :name "flannel"}
+  "Flarum"                    {:lib "logos" :prefix "logos" :path "" :name "flarum"}
+  "Flask"                     {:lib "logos" :prefix "logos" :path "" :name "flask"}
+  "Flattr"                    {:lib "logos" :prefix "logos" :path "" :name "flattr"}
+  "Flat UI"                   {:lib "logos" :prefix "logos" :path "" :name "flat-ui"}
+  "Fleep"                     {:lib "logos" :prefix "logos" :path "" :name "fleep"}
+  "Flexible GS"               {:lib "logos" :prefix "logos" :path "" :name "flexible-gs"}
+  "Flickr"                    {:lib "logos" :prefix "logos" :path "" :name "flickr"}
+  "Flight"                    {:lib "logos" :prefix "logos" :path "" :name "flight"}
+  "Flocker"                   {:lib "logos" :prefix "logos" :path "" :name "flocker"}
+  "Floodio"                   {:lib "logos" :prefix "logos" :path "" :name "floodio"}
+  "Flow"                      {:lib "logos" :prefix "logos" :path "" :name "flow"}
+  "Flowxo"                    {:lib "logos" :prefix "logos" :path "" :name "flowxo"}
+  "Floydhub"                  {:lib "logos" :prefix "logos" :path "" :name "floydhub"}
+  "Flutter"                   {:lib "logos" :prefix "logos" :path "" :name "flutter"}
+  "Flux"                      {:lib "logos" :prefix "logos" :path "" :name "flux"}
+  "Fluxxor"                   {:lib "logos" :prefix "logos" :path "" :name "fluxxor"}
+  "Flyjs"                     {:lib "logos" :prefix "logos" :path "" :name "flyjs"}
+  "Fly"                       {:lib "logos" :prefix "logos" :path "" :name "fly"}
+  "Fomo"                      {:lib "logos" :prefix "logos" :path "" :name "fomo"}
+  "Font Awesome"              {:lib "logos" :prefix "logos" :path "" :name "font-awesome"}
+  "Forest"                    {:lib "logos" :prefix "logos" :path "" :name "forest"}
+  "Forever"                   {:lib "logos" :prefix "logos" :path "" :name "forever"}
+  "Formkeep"                  {:lib "logos" :prefix "logos" :path "" :name "formkeep"}
+  "Foundation"                {:lib "logos" :prefix "logos" :path "" :name "foundation"}
+  "Framework7"                {:lib "logos" :prefix "logos" :path "" :name "framework7"}
+  "Freebsd"                   {:lib "logos" :prefix "logos" :path "" :name "freebsd"}
+  "Freedcamp Icon"            {:lib "logos" :prefix "logos" :path "" :name "freedcamp-icon"}
+  "Freedcamp"                 {:lib "logos" :prefix "logos" :path "" :name "freedcamp"}
+  "Freedomdefined"            {:lib "logos" :prefix "logos" :path "" :name "freedomdefined"}
+  "Frontapp"                  {:lib "logos" :prefix "logos" :path "" :name "frontapp"}
+  "Fsharp"                    {:lib "logos" :prefix "logos" :path "" :name "fsharp"}
+  "Fuchsia"                   {:lib "logos" :prefix "logos" :path "" :name "fuchsia"}
+  "Galliumos"                 {:lib "logos" :prefix "logos" :path "" :name "galliumos"}
+  "Game Analytics"            {:lib "logos" :prefix "logos" :path "" :name "game-analytics"}
+  "Gatsby"                    {:lib "logos" :prefix "logos" :path "" :name "gatsby"}
+  "Gaugeio"                   {:lib "logos" :prefix "logos" :path "" :name "gaugeio"}
+  "Geekbot"                   {:lib "logos" :prefix "logos" :path "" :name "geekbot"}
+  "Gentoo"                    {:lib "logos" :prefix "logos" :path "" :name "gentoo"}
+  "Get Satisfaction"          {:lib "logos" :prefix "logos" :path "" :name "get-satisfaction"}
+  "Ghost"                     {:lib "logos" :prefix "logos" :path "" :name "ghost"}
+  "Giantswarm"                {:lib "logos" :prefix "logos" :path "" :name "giantswarm"}
+  "Gitboard"                  {:lib "logos" :prefix "logos" :path "" :name "gitboard"}
+  "Github Icon"               {:lib "logos" :prefix "logos" :path "" :name "github-icon"}
+  "Github"                    {:lib "logos" :prefix "logos" :path "" :name "github"}
+  "Github Octocat"            {:lib "logos" :prefix "logos" :path "" :name "github-octocat"}
+  "Git Icon"                  {:lib "logos" :prefix "logos" :path "" :name "git-icon"}
+  "Gitkraken"                 {:lib "logos" :prefix "logos" :path "" :name "gitkraken"}
+  "Gitlab"                    {:lib "logos" :prefix "logos" :path "" :name "gitlab"}
+  "Git"                       {:lib "logos" :prefix "logos" :path "" :name "git"}
+  "Gitter"                    {:lib "logos" :prefix "logos" :path "" :name "gitter"}
+  "Gitup"                     {:lib "logos" :prefix "logos" :path "" :name "gitup"}
+  "Glamorous"                 {:lib "logos" :prefix "logos" :path "" :name "glamorous"}
+  "Gleam"                     {:lib "logos" :prefix "logos" :path "" :name "gleam"}
+  "Glimmerjs"                 {:lib "logos" :prefix "logos" :path "" :name "glimmerjs"}
+  "Glint"                     {:lib "logos" :prefix "logos" :path "" :name "glint"}
+  "Gnu"                       {:lib "logos" :prefix "logos" :path "" :name "gnu"}
+  "Gocd"                      {:lib "logos" :prefix "logos" :path "" :name "gocd"}
+  "Go"                        {:lib "logos" :prefix "logos" :path "" :name "go"}
+  "Gomix"                     {:lib "logos" :prefix "logos" :path "" :name "gomix"}
+  "Google 2014"               {:lib "logos" :prefix "logos" :path "" :name "google-2014"}
+  "Google 360suite"           {:lib "logos" :prefix "logos" :path "" :name "google-360suite"}
+  "Google Adsense"            {:lib "logos" :prefix "logos" :path "" :name "google-adsense"}
+  "Google Ads"                {:lib "logos" :prefix "logos" :path "" :name "google-ads"}
+  "Google Adwords"            {:lib "logos" :prefix "logos" :path "" :name "google-adwords"}
+  "Google Analytics"          {:lib "logos" :prefix "logos" :path "" :name "google-analytics"}
+  "Google Calendar"           {:lib "logos" :prefix "logos" :path "" :name "google-calendar"}
+  "Google Cloud Functions"    {:lib "logos" :prefix "logos" :path "" :name "google-cloud-functions"}
+  "Google Cloud"              {:lib "logos" :prefix "logos" :path "" :name "google-cloud"}
+  "Google Cloud Platform"     {:lib "logos" :prefix "logos" :path "" :name "google-cloud-platform"}
+  "Google Cloud Run"          {:lib "logos" :prefix "logos" :path "" :name "google-cloud-run"}
+  "Google Data Studio"        {:lib "logos" :prefix "logos" :path "" :name "google-data-studio"}
+  "Google Developers Icon"    {:lib "logos" :prefix "logos" :path "" :name "google-developers-icon"}
+  "Google Developers"         {:lib "logos" :prefix "logos" :path "" :name "google-developers"}
+  "Google Drive"              {:lib "logos" :prefix "logos" :path "" :name "google-drive"}
+  "Google Gmail"              {:lib "logos" :prefix "logos" :path "" :name "google-gmail"}
+  "Google Gsuite"             {:lib "logos" :prefix "logos" :path "" :name "google-gsuite"}
+  "Google Icon"               {:lib "logos" :prefix "logos" :path "" :name "google-icon"}
+  "Google Inbox"              {:lib "logos" :prefix "logos" :path "" :name "google-inbox"}
+  "Google"                    {:lib "logos" :prefix "logos" :path "" :name "google"}
+  "Google Marketing Platform" {:lib "logos" :prefix "logos" :path "" :name "google-marketing-platform"}
+  "Google Meet"               {:lib "logos" :prefix "logos" :path "" :name "google-meet"}
+  "Google Optimize"           {:lib "logos" :prefix "logos" :path "" :name "google-optimize"}
+  "Google Pay"                {:lib "logos" :prefix "logos" :path "" :name "google-pay"}
+  "Google Photos"             {:lib "logos" :prefix "logos" :path "" :name "google-photos"}
+  "Google Play Icon"          {:lib "logos" :prefix "logos" :path "" :name "google-play-icon"}
+  "Google Play"               {:lib "logos" :prefix "logos" :path "" :name "google-play"}
+  "Google Plus"               {:lib "logos" :prefix "logos" :path "" :name "google-plus"}
+  "Google Tag Manager"        {:lib "logos" :prefix "logos" :path "" :name "google-tag-manager"}
+  "Google Wallet"             {:lib "logos" :prefix "logos" :path "" :name "google-wallet"}
+  "Gopher"                    {:lib "logos" :prefix "logos" :path "" :name "gopher"}
+  "Gordon"                    {:lib "logos" :prefix "logos" :path "" :name "gordon"}
+  "Gradle"                    {:lib "logos" :prefix "logos" :path "" :name "gradle"}
+  "Grafana"                   {:lib "logos" :prefix "logos" :path "" :name "grafana"}
+  "Grails"                    {:lib "logos" :prefix "logos" :path "" :name "grails"}
+  "Grape"                     {:lib "logos" :prefix "logos" :path "" :name "grape"}
+  "Graphcool"                 {:lib "logos" :prefix "logos" :path "" :name "graphcool"}
+  "Graphene"                  {:lib "logos" :prefix "logos" :path "" :name "graphene"}
+  "GraphQL"                   {:lib "logos" :prefix "logos" :path "" :name "graphql"}
+  "Gratipay"                  {:lib "logos" :prefix "logos" :path "" :name "gratipay"}
+  "Gravatar"                  {:lib "logos" :prefix "logos" :path "" :name "gravatar"}
+  "Grav"                      {:lib "logos" :prefix "logos" :path "" :name "grav"}
+  "Graylog"                   {:lib "logos" :prefix "logos" :path "" :name "graylog"}
+  "Gridsome Icon"             {:lib "logos" :prefix "logos" :path "" :name "gridsome-icon"}
+  "Gridsome"                  {:lib "logos" :prefix "logos" :path "" :name "gridsome"}
+  "Grommet"                   {:lib "logos" :prefix "logos" :path "" :name "grommet"}
+  "Groovehq"                  {:lib "logos" :prefix "logos" :path "" :name "groovehq"}
+  "Grove"                     {:lib "logos" :prefix "logos" :path "" :name "grove"}
+  "Grunt"                     {:lib "logos" :prefix "logos" :path "" :name "grunt"}
+  "Gulp"                      {:lib "logos" :prefix "logos" :path "" :name "gulp"}
+  "Gunicorn"                  {:lib "logos" :prefix "logos" :path "" :name "gunicorn"}
+  "Gusto"                     {:lib "logos" :prefix "logos" :path "" :name "gusto"}
+  "GWT"                       {:lib "logos" :prefix "logos" :path "" :name "gwt"}
+  "Hacker One"                {:lib "logos" :prefix "logos" :path "" :name "hacker-one"}
+  "Hack"                      {:lib "logos" :prefix "logos" :path "" :name "hack"}
+  "Hadoop"                    {:lib "logos" :prefix "logos" :path "" :name "hadoop"}
+  "Haiku"                     {:lib "logos" :prefix "logos" :path "" :name "haiku"}
+  "Haml"                      {:lib "logos" :prefix "logos" :path "" :name "haml"}
+  "Hanami"                    {:lib "logos" :prefix "logos" :path "" :name "hanami"}
+  "Handlebars"                {:lib "logos" :prefix "logos" :path "" :name "handlebars"}
+  "Hapi"                      {:lib "logos" :prefix "logos" :path "" :name "hapi"}
+  "Harrow"                    {:lib "logos" :prefix "logos" :path "" :name "harrow"}
+  "Hashnode"                  {:lib "logos" :prefix "logos" :path "" :name "hashnode"}
+  "Haskell Icon"              {:lib "logos" :prefix "logos" :path "" :name "haskell-icon"}
+  "Haskell"                   {:lib "logos" :prefix "logos" :path "" :name "haskell"}
+  "Hasura"                    {:lib "logos" :prefix "logos" :path "" :name "hasura"}
+  "Haxe"                      {:lib "logos" :prefix "logos" :path "" :name "haxe"}
+  "Haxl"                      {:lib "logos" :prefix "logos" :path "" :name "haxl"}
+  "Hbase"                     {:lib "logos" :prefix "logos" :path "" :name "hbase"}
+  "Heap"                      {:lib "logos" :prefix "logos" :path "" :name "heap"}
+  "Helpscout"                 {:lib "logos" :prefix "logos" :path "" :name "helpscout"}
+  "Heroku Icon"               {:lib "logos" :prefix "logos" :path "" :name "heroku-icon"}
+  "Heroku"                    {:lib "logos" :prefix "logos" :path "" :name "heroku"}
+  "Heroku Redis"              {:lib "logos" :prefix "logos" :path "" :name "heroku-redis"}
+  "Heron"                     {:lib "logos" :prefix "logos" :path "" :name "heron"}
+  "Hexo"                      {:lib "logos" :prefix "logos" :path "" :name "hexo"}
+  "Hhvm"                      {:lib "logos" :prefix "logos" :path "" :name "hhvm"}
+  "Hibernate"                 {:lib "logos" :prefix "logos" :path "" :name "hibernate"}
+  "Highcharts"                {:lib "logos" :prefix "logos" :path "" :name "highcharts"}
+  "Hipercard"                 {:lib "logos" :prefix "logos" :path "" :name "hipercard"}
+  "Hoa"                       {:lib "logos" :prefix "logos" :path "" :name "hoa"}
+  "Hoodie"                    {:lib "logos" :prefix "logos" :path "" :name "hoodie"}
+  "Horizon"                   {:lib "logos" :prefix "logos" :path "" :name "horizon"}
+  "Hosted Graphite"           {:lib "logos" :prefix "logos" :path "" :name "hosted-graphite"}
+  "Hostgator"                 {:lib "logos" :prefix "logos" :path "" :name "hostgator"}
+  "HoundCI"                   {:lib "logos" :prefix "logos" :path "" :name "houndci"}
+  "Html5 Boilerplate"         {:lib "logos" :prefix "logos" :path "" :name "html5-boilerplate"}
+  "Html 5"                    {:lib "logos" :prefix "logos" :path "" :name "html-5"}
+  "Hubspot"                   {:lib "logos" :prefix "logos" :path "" :name "hubspot"}
+  "Hugo"                      {:lib "logos" :prefix "logos" :path "" :name "hugo"}
+  "Humongous"                 {:lib "logos" :prefix "logos" :path "" :name "humongous"}
+  "Hyperapp"                  {:lib "logos" :prefix "logos" :path "" :name "hyperapp"}
+  "Hyper"                     {:lib "logos" :prefix "logos" :path "" :name "hyper"}
+  "IBM"                       {:lib "logos" :prefix "logos" :path "" :name "ibm"}
+  "IEEE"                      {:lib "logos" :prefix "logos" :path "" :name "ieee"}
+  "Ifttt"                     {:lib "logos" :prefix "logos" :path "" :name "ifttt"}
+  "Imagemin"                  {:lib "logos" :prefix "logos" :path "" :name "imagemin"}
+  "Immutable"                 {:lib "logos" :prefix "logos" :path "" :name "immutable"}
+  "Impala"                    {:lib "logos" :prefix "logos" :path "" :name "impala"}
+  "Importio"                  {:lib "logos" :prefix "logos" :path "" :name "importio"}
+  "Infer"                     {:lib "logos" :prefix "logos" :path "" :name "infer"}
+  "Inferno"                   {:lib "logos" :prefix "logos" :path "" :name "inferno"}
+  "Influxdb"                  {:lib "logos" :prefix "logos" :path "" :name "influxdb"}
+  "Ink"                       {:lib "logos" :prefix "logos" :path "" :name "ink"}
+  "Instagram Icon"            {:lib "logos" :prefix "logos" :path "" :name "instagram-icon"}
+  "Instagram"                 {:lib "logos" :prefix "logos" :path "" :name "instagram"}
+  "Intellij Idea"             {:lib "logos" :prefix "logos" :path "" :name "intellij-idea"}
+  "Intercom"                  {:lib "logos" :prefix "logos" :path "" :name "intercom"}
+  "Internetexplorer"          {:lib "logos" :prefix "logos" :path "" :name "internetexplorer"}
+  "Invision"                  {:lib "logos" :prefix "logos" :path "" :name "invision"}
+  "Io"                        {:lib "logos" :prefix "logos" :path "" :name "io"}
+  "Ionic"                     {:lib "logos" :prefix "logos" :path "" :name "ionic"}
+  "Ios"                       {:lib "logos" :prefix "logos" :path "" :name "ios"}
+  "Iron Icon"                 {:lib "logos" :prefix "logos" :path "" :name "iron-icon"}
+  "Iron"                      {:lib "logos" :prefix "logos" :path "" :name "iron"}
+  "ITsalive"                  {:lib "logos" :prefix "logos" :path "" :name "itsalive"}
+  "Jade"                      {:lib "logos" :prefix "logos" :path "" :name "jade"}
+  "Jaeger"                    {:lib "logos" :prefix "logos" :path "" :name "jaeger"}
+  "Jamstack"                  {:lib "logos" :prefix "logos" :path "" :name "jamstack"}
+  "Jasmine"                   {:lib "logos" :prefix "logos" :path "" :name "jasmine"}
+  "Java"                      {:lib "logos" :prefix "logos" :path "" :name "java"}
+  "Javascript"                {:lib "logos" :prefix "logos" :path "" :name "javascript"}
+  "JCB"                       {:lib "logos" :prefix "logos" :path "" :name "jcb"}
+  "Jekyll"                    {:lib "logos" :prefix "logos" :path "" :name "jekyll"}
+  "Jelastic"                  {:lib "logos" :prefix "logos" :path "" :name "jelastic"}
+  "Jenkins"                   {:lib "logos" :prefix "logos" :path "" :name "jenkins"}
+  "Jest"                      {:lib "logos" :prefix "logos" :path "" :name "jest"}
+  "JetBrains"                 {:lib "logos" :prefix "logos" :path "" :name "jetbrains"}
+  "JHipster"                  {:lib "logos" :prefix "logos" :path "" :name "jhipster"}
+  "Jira"                      {:lib "logos" :prefix "logos" :path "" :name "jira"}
+  "Joomla"                    {:lib "logos" :prefix "logos" :path "" :name "joomla"}
+  "JQuery"                    {:lib "logos" :prefix "logos" :path "" :name "jquery"}
+  "JQuery Mobile"             {:lib "logos" :prefix "logos" :path "" :name "jquery-mobile"}
+  "JRuby"                     {:lib "logos" :prefix "logos" :path "" :name "jruby"}
+  "JSbin"                     {:lib "logos" :prefix "logos" :path "" :name "jsbin"}
+  "JSdelivr"                  {:lib "logos" :prefix "logos" :path "" :name "jsdelivr"}
+  "JSdom"                     {:lib "logos" :prefix "logos" :path "" :name "jsdom"}
+  "JSfiddle"                  {:lib "logos" :prefix "logos" :path "" :name "jsfiddle"}
+  "JSON"                      {:lib "logos" :prefix "logos" :path "" :name "json"}
+  "JSpm"                      {:lib "logos" :prefix "logos" :path "" :name "jspm"}
+  "Juju"                      {:lib "logos" :prefix "logos" :path "" :name "juju"}
+  "Julia"                     {:lib "logos" :prefix "logos" :path "" :name "julia"}
+  "Jupyter"                   {:lib "logos" :prefix "logos" :path "" :name "jupyter"}
+  "Kafka Icon"                {:lib "logos" :prefix "logos" :path "" :name "kafka-icon"}
+  "Kafka"                     {:lib "logos" :prefix "logos" :path "" :name "kafka"}
+  "Kaios"                     {:lib "logos" :prefix "logos" :path "" :name "kaios"}
+  "Kali"                      {:lib "logos" :prefix "logos" :path "" :name "kali"}
+  "Kallithea"                 {:lib "logos" :prefix "logos" :path "" :name "kallithea"}
+  "Karma"                     {:lib "logos" :prefix "logos" :path "" :name "karma"}
+  "Keen"                      {:lib "logos" :prefix "logos" :path "" :name "keen"}
+  "Kemal"                     {:lib "logos" :prefix "logos" :path "" :name "kemal"}
+  "KeyCDN"                    {:lib "logos" :prefix "logos" :path "" :name "keycdn"}
+  "KeystoneJS"                {:lib "logos" :prefix "logos" :path "" :name "keystonejs"}
+  "Khan Academy"              {:lib "logos" :prefix "logos" :path "" :name "khan_academy"}
+  "Kibana"                    {:lib "logos" :prefix "logos" :path "" :name "kibana"}
+  "Kickstarter"               {:lib "logos" :prefix "logos" :path "" :name "kickstarter"}
+  "Kinto"                     {:lib "logos" :prefix "logos" :path "" :name "kinto"}
+  "Kinvey"                    {:lib "logos" :prefix "logos" :path "" :name "kinvey"}
+  "Kirby"                     {:lib "logos" :prefix "logos" :path "" :name "kirby"}
+  "Kissmetrics"               {:lib "logos" :prefix "logos" :path "" :name "kissmetrics"}
+  "Kitematic"                 {:lib "logos" :prefix "logos" :path "" :name "kitematic"}
+  "Kloudless"                 {:lib "logos" :prefix "logos" :path "" :name "kloudless"}
+  "Knex"                      {:lib "logos" :prefix "logos" :path "" :name "knex"}
+  "Knockout"                  {:lib "logos" :prefix "logos" :path "" :name "knockout"}
+  "Koa"                       {:lib "logos" :prefix "logos" :path "" :name "koa"}
+  "Kong"                      {:lib "logos" :prefix "logos" :path "" :name "kong"}
+  "Kontena"                   {:lib "logos" :prefix "logos" :path "" :name "kontena"}
+  "Kops"                      {:lib "logos" :prefix "logos" :path "" :name "kops"}
+  "Koreio"                    {:lib "logos" :prefix "logos" :path "" :name "koreio"}
+  "Kore"                      {:lib "logos" :prefix "logos" :path "" :name "kore"}
+  "Kotlin"                    {:lib "logos" :prefix "logos" :path "" :name "kotlin"}
+  "KrakenJS"                  {:lib "logos" :prefix "logos" :path "" :name "krakenjs"}
+  "Kraken"                    {:lib "logos" :prefix "logos" :path "" :name "kraken"}
+  "Kubernetes"                {:lib "logos" :prefix "logos" :path "" :name "kubernetes"}
+  "Kustomer"                  {:lib "logos" :prefix "logos" :path "" :name "kustomer"}
+  "Laravel"                   {:lib "logos" :prefix "logos" :path "" :name "laravel"}
+  "Lastfm"                    {:lib "logos" :prefix "logos" :path "" :name "lastfm"}
+  "Lateral"                   {:lib "logos" :prefix "logos" :path "" :name "lateral"}
+  "Launchkit"                 {:lib "logos" :prefix "logos" :path "" :name "launchkit"}
+  "Launchrock"                {:lib "logos" :prefix "logos" :path "" :name "launchrock"}
+  "Leafjet"                   {:lib "logos" :prefix "logos" :path "" :name "leafjet"}
+  "Leankit Icon"              {:lib "logos" :prefix "logos" :path "" :name "leankit-icon"}
+  "Leankit"                   {:lib "logos" :prefix "logos" :path "" :name "leankit"}
+  "Less"                      {:lib "logos" :prefix "logos" :path "" :name "less"}
+  "Let's Encrypt"             {:lib "logos" :prefix "logos" :path "" :name "letsencrypt"}
+  "LevelDB"                   {:lib "logos" :prefix "logos" :path "" :name "leveldb"}
+  "Librato"                   {:lib "logos" :prefix "logos" :path "" :name "librato"}
+  "Liftweb"                   {:lib "logos" :prefix "logos" :path "" :name "liftweb"}
+  "Lighttpd"                  {:lib "logos" :prefix "logos" :path "" :name "lighttpd"}
+  "LinkedIn"                  {:lib "logos" :prefix "logos" :path "" :name "linkedin"}
+  "Linkerd"                   {:lib "logos" :prefix "logos" :path "" :name "linkerd"}
+  "Linode"                    {:lib "logos" :prefix "logos" :path "" :name "linode"}
+  "Linux Mint"                {:lib "logos" :prefix "logos" :path "" :name "linux-mint"}
+  "Linux Tux"                 {:lib "logos" :prefix "logos" :path "" :name "linux-tux"}
+  "Litmus"                    {:lib "logos" :prefix "logos" :path "" :name "litmus"}
+  "Loader"                    {:lib "logos" :prefix "logos" :path "" :name "loader"}
+  "Locent"                    {:lib "logos" :prefix "logos" :path "" :name "locent"}
+  "Lodash"                    {:lib "logos" :prefix "logos" :path "" :name "lodash"}
+  "Logentries"                {:lib "logos" :prefix "logos" :path "" :name "logentries"}
+  "Loggly"                    {:lib "logos" :prefix "logos" :path "" :name "loggly"}
+  "Logmatic"                  {:lib "logos" :prefix "logos" :path "" :name "logmatic"}
+  "Logstash"                  {:lib "logos" :prefix "logos" :path "" :name "logstash"}
+  "Lookback"                  {:lib "logos" :prefix "logos" :path "" :name "lookback"}
+  "Looker"                    {:lib "logos" :prefix "logos" :path "" :name "looker"}
+  "Loopback Icon"             {:lib "logos" :prefix "logos" :path "" :name "loopback-icon"}
+  "Loopback"                  {:lib "logos" :prefix "logos" :path "" :name "loopback"}
+  "Losant"                    {:lib "logos" :prefix "logos" :path "" :name "losant"}
+  "Lua"                       {:lib "logos" :prefix "logos" :path "" :name "lua"}
+  "Lucene"                    {:lib "logos" :prefix "logos" :path "" :name "lucene"}
+  "Lucene Net"                {:lib "logos" :prefix "logos" :path "" :name "lucene.net"}
+  "Lumen"                     {:lib "logos" :prefix "logos" :path "" :name "lumen"}
+  "Lynda"                     {:lib "logos" :prefix "logos" :path "" :name "lynda"}
+  "Mac OS"                    {:lib "logos" :prefix "logos" :path "" :name "macOS"}
+  "Maestro"                   {:lib "logos" :prefix "logos" :path "" :name "maestro"}
+  "Mageia"                    {:lib "logos" :prefix "logos" :path "" :name "mageia"}
+  "Magento"                   {:lib "logos" :prefix "logos" :path "" :name "magento"}
+  "Magneto"                   {:lib "logos" :prefix "logos" :path "" :name "magneto"}
+  "Mailchimp Freddie"         {:lib "logos" :prefix "logos" :path "" :name "mailchimp-freddie"}
+  "Mailchimp"                 {:lib "logos" :prefix "logos" :path "" :name "mailchimp"}
+  "Maildeveloper"             {:lib "logos" :prefix "logos" :path "" :name "maildeveloper"}
+  "Mailgun Icon"              {:lib "logos" :prefix "logos" :path "" :name "mailgun-icon"}
+  "Mailgun"                   {:lib "logos" :prefix "logos" :path "" :name "mailgun"}
+  "Mandrill"                  {:lib "logos" :prefix "logos" :path "" :name "mandrill"}
+  "Mandrill Shield"           {:lib "logos" :prefix "logos" :path "" :name "mandrill-shield"}
+  "ManifoldJS"                {:lib "logos" :prefix "logos" :path "" :name "manifoldjs"}
+  "Mantl"                     {:lib "logos" :prefix "logos" :path "" :name "mantl"}
+  "Manuscript"                {:lib "logos" :prefix "logos" :path "" :name "manuscript"}
+  "Mapbox"                    {:lib "logos" :prefix "logos" :path "" :name "mapbox"}
+  "Maps Me"                   {:lib "logos" :prefix "logos" :path "" :name "maps-me"}
+  "Mapzen"                    {:lib "logos" :prefix "logos" :path "" :name "mapzen"}
+  "MariaDB Icon"              {:lib "logos" :prefix "logos" :path "" :name "mariadb-icon"}
+  "MariaDB"                   {:lib "logos" :prefix "logos" :path "" :name "mariadb"}
+  "Marionette"                {:lib "logos" :prefix "logos" :path "" :name "marionette"}
+  "Markdown"                  {:lib "logos" :prefix "logos" :path "" :name "markdown"}
+  "Marko"                     {:lib "logos" :prefix "logos" :path "" :name "marko"}
+  "Marvel"                    {:lib "logos" :prefix "logos" :path "" :name "marvel"}
+  "Mastercard"                {:lib "logos" :prefix "logos" :path "" :name "mastercard"}
+  "MaterializeCSS"            {:lib "logos" :prefix "logos" :path "" :name "materializecss"}
+  "Material UI"               {:lib "logos" :prefix "logos" :path "" :name "material-ui"}
+  "Mattermost"                {:lib "logos" :prefix "logos" :path "" :name "mattermost"}
+  "MaxCDN"                    {:lib "logos" :prefix "logos" :path "" :name "maxcdn"}
+  "Mdn"                       {:lib "logos" :prefix "logos" :path "" :name "mdn"}
+  "Mdx"                       {:lib "logos" :prefix "logos" :path "" :name "mdx"}
+  "Medium"                    {:lib "logos" :prefix "logos" :path "" :name "medium"}
+  "Memcached"                 {:lib "logos" :prefix "logos" :path "" :name "memcached"}
+  "MemSQL Icon"               {:lib "logos" :prefix "logos" :path "" :name "memsql-icon"}
+  "MemSQL"                    {:lib "logos" :prefix "logos" :path "" :name "memsql"}
+  "Mention"                   {:lib "logos" :prefix "logos" :path "" :name "mention"}
+  "Mercurial"                 {:lib "logos" :prefix "logos" :path "" :name "mercurial"}
+  "Mern"                      {:lib "logos" :prefix "logos" :path "" :name "mern"}
+  "Mesos"                     {:lib "logos" :prefix "logos" :path "" :name "mesos"}
+  "Mesosphere"                {:lib "logos" :prefix "logos" :path "" :name "mesosphere"}
+  "Metabase"                  {:lib "logos" :prefix "logos" :path "" :name "metabase"}
+  "Meteor Icon"               {:lib "logos" :prefix "logos" :path "" :name "meteor-icon"}
+  "Meteor"                    {:lib "logos" :prefix "logos" :path "" :name "meteor"}
+  "Microcosm"                 {:lib "logos" :prefix "logos" :path "" :name "microcosm"}
+  "Microsoft Edge"            {:lib "logos" :prefix "logos" :path "" :name "microsoft-edge"}
+  "Microsoft"                 {:lib "logos" :prefix "logos" :path "" :name "microsoft"}
+  "Microsoft Windows"         {:lib "logos" :prefix "logos" :path "" :name "microsoft-windows"}
+  "Middleman"                 {:lib "logos" :prefix "logos" :path "" :name "middleman"}
+  "Mikrotik"                  {:lib "logos" :prefix "logos" :path "" :name "mikrotik"}
+  "Milligram"                 {:lib "logos" :prefix "logos" :path "" :name "milligram"}
+  "Mint"                      {:lib "logos" :prefix "logos" :path "" :name "mint"}
+  "Mio"                       {:lib "logos" :prefix "logos" :path "" :name "mio"}
+  "Mist"                      {:lib "logos" :prefix "logos" :path "" :name "mist"}
+  "Mithril"                   {:lib "logos" :prefix "logos" :path "" :name "mithril"}
+  "Mixmax"                    {:lib "logos" :prefix "logos" :path "" :name "mixmax"}
+  "Mixpanel"                  {:lib "logos" :prefix "logos" :path "" :name "mixpanel"}
+  "Mlab"                      {:lib "logos" :prefix "logos" :path "" :name "mlab"}
+  "Mobx"                      {:lib "logos" :prefix "logos" :path "" :name "mobx"}
+  "Mocha"                     {:lib "logos" :prefix "logos" :path "" :name "mocha"}
+  "Mockflow"                  {:lib "logos" :prefix "logos" :path "" :name "mockflow"}
+  "Mock Server"               {:lib "logos" :prefix "logos" :path "" :name "mock-server"}
+  "Modernizr"                 {:lib "logos" :prefix "logos" :path "" :name "modernizr"}
+  "Modx"                      {:lib "logos" :prefix "logos" :path "" :name "modx"}
+  "Moltin Icon"               {:lib "logos" :prefix "logos" :path "" :name "moltin-icon"}
+  "Moltin"                    {:lib "logos" :prefix "logos" :path "" :name "moltin"}
+  "MomentJS"                  {:lib "logos" :prefix "logos" :path "" :name "momentjs"}
+  "Monero"                    {:lib "logos" :prefix "logos" :path "" :name "monero"}
+  "MongoDB"                   {:lib "logos" :prefix "logos" :path "" :name "mongodb"}
+  "Mono"                      {:lib "logos" :prefix "logos" :path "" :name "mono"}
+  "Moon"                      {:lib "logos" :prefix "logos" :path "" :name "moon"}
+  "Mootools"                  {:lib "logos" :prefix "logos" :path "" :name "mootools"}
+  "Morpheus"                  {:lib "logos" :prefix "logos" :path "" :name "morpheus"}
+  "Mozilla"                   {:lib "logos" :prefix "logos" :path "" :name "mozilla"}
+  "Mparticle"                 {:lib "logos" :prefix "logos" :path "" :name "mparticle"}
+  "MySQL"                     {:lib "logos" :prefix "logos" :path "" :name "mysql"}
+  "Myth"                      {:lib "logos" :prefix "logos" :path "" :name "myth"}
+  "Namecheap"                 {:lib "logos" :prefix "logos" :path "" :name "namecheap"}
+  "Nanonets" {:lib "logos" :prefix "logos" :path "" :name "nanonets"}
+  "Nativescript" {:lib "logos" :prefix "logos" :path "" :name "nativescript"}
+  "Neat" {:lib "logos" :prefix "logos" :path "" :name "neat"}
+  "Neo4j" {:lib "logos" :prefix "logos" :path "" :name "neo4j"}
+  "Neonmetrics" {:lib "logos" :prefix "logos" :path "" :name "neonmetrics"}
+  "Neovim" {:lib "logos" :prefix "logos" :path "" :name "neovim"}
+  "Nestjs" {:lib "logos" :prefix "logos" :path "" :name "nestjs"}
+  "Netbeans" {:lib "logos" :prefix "logos" :path "" :name "netbeans"}
+  "Netflix Icon" {:lib "logos" :prefix "logos" :path "" :name "netflix-icon"}
+  "Netflix" {:lib "logos" :prefix "logos" :path "" :name "netflix"}
+  "Netlify" {:lib "logos" :prefix "logos" :path "" :name "netlify"}
+  "Netuitive" {:lib "logos" :prefix "logos" :path "" :name "netuitive"}
+  "New Relic" {:lib "logos" :prefix "logos" :path "" :name "new-relic"}
+  "Nextcloud" {:lib "logos" :prefix "logos" :path "" :name "nextcloud"}
+  "Nextjs" {:lib "logos" :prefix "logos" :path "" :name "nextjs"}
+  "Nginx" {:lib "logos" :prefix "logos" :path "" :name "nginx"}
+  "Nightwatch" {:lib "logos" :prefix "logos" :path "" :name "nightwatch"}
+  "Nodal" {:lib "logos" :prefix "logos" :path "" :name "nodal"}
+  "Nodebots" {:lib "logos" :prefix "logos" :path "" :name "nodebots"}
+  "Nodejitsu" {:lib "logos" :prefix "logos" :path "" :name "nodejitsu"}
+  "Nodejs Icon" {:lib "logos" :prefix "logos" :path "" :name "nodejs-icon"}
+  "Nodejs" {:lib "logos" :prefix "logos" :path "" :name "nodejs"}
+  "Nodemon" {:lib "logos" :prefix "logos" :path "" :name "nodemon"}
+  "Nodeos" {:lib "logos" :prefix "logos" :path "" :name "nodeos"}
+  "Node Sass" {:lib "logos" :prefix "logos" :path "" :name "node-sass"}
+  "Nodewebkit" {:lib "logos" :prefix "logos" :path "" :name "nodewebkit"}
+  "Nomad" {:lib "logos" :prefix "logos" :path "" :name "nomad"}
+  "Now" {:lib "logos" :prefix "logos" :path "" :name "now"}
+  "Noysi" {:lib "logos" :prefix "logos" :path "" :name "noysi"}
+  "Npm 2" {:lib "logos" :prefix "logos" :path "" :name "npm-2"}
+  "Npm" {:lib "logos" :prefix "logos" :path "" :name "npm"}
+  "Nuclide" {:lib "logos" :prefix "logos" :path "" :name "nuclide"}
+  "Nuodb" {:lib "logos" :prefix "logos" :path "" :name "nuodb"}
+  "Nuxt" {:lib "logos" :prefix "logos" :path "" :name "nuxt"}
+  "Oauth" {:lib "logos" :prefix "logos" :path "" :name "oauth"}
+  "Ocaml" {:lib "logos" :prefix "logos" :path "" :name "ocaml"}
+  "Octodns" {:lib "logos" :prefix "logos" :path "" :name "octodns"}
+  "Octopus Deploy" {:lib "logos" :prefix "logos" :path "" :name "octopus-deploy"}
+  "Olapic" {:lib "logos" :prefix "logos" :path "" :name "olapic"}
+  "Olark" {:lib "logos" :prefix "logos" :path "" :name "olark"}
+  "Onesignal" {:lib "logos" :prefix "logos" :path "" :name "onesignal"}
+  "Opbeat" {:lib "logos" :prefix "logos" :path "" :name "opbeat"}
+  "Opencart" {:lib "logos" :prefix "logos" :path "" :name "opencart"}
+  "Opencollective" {:lib "logos" :prefix "logos" :path "" :name "opencollective"}
+  "Opencv" {:lib "logos" :prefix "logos" :path "" :name "opencv"}
+  "Opengl" {:lib "logos" :prefix "logos" :path "" :name "opengl"}
+  "Open Graph" {:lib "logos" :prefix "logos" :path "" :name "open-graph"}
+  "Openlayers" {:lib "logos" :prefix "logos" :path "" :name "openlayers"}
+  "Openshift" {:lib "logos" :prefix "logos" :path "" :name "openshift"}
+  "Opensource" {:lib "logos" :prefix "logos" :path "" :name "opensource"}
+  "Openstack" {:lib "logos" :prefix "logos" :path "" :name "openstack"}
+  "Opera" {:lib "logos" :prefix "logos" :path "" :name "opera"}
+  "Opsee" {:lib "logos" :prefix "logos" :path "" :name "opsee"}
+  "Opsgenie" {:lib "logos" :prefix "logos" :path "" :name "opsgenie"}
+  "Optimizely" {:lib "logos" :prefix "logos" :path "" :name "optimizely"}
+  "Oracle" {:lib "logos" :prefix "logos" :path "" :name "oracle"}
+  "Oreilly" {:lib "logos" :prefix "logos" :path "" :name "oreilly"}
+  "Origami" {:lib "logos" :prefix "logos" :path "" :name "origami"}
+  "Origin" {:lib "logos" :prefix "logos" :path "" :name "origin"}
+  "Oshw" {:lib "logos" :prefix "logos" :path "" :name "oshw"}
+  "Osquery" {:lib "logos" :prefix "logos" :path "" :name "osquery"}
+  "Otto" {:lib "logos" :prefix "logos" :path "" :name "otto"}
+  "Packer" {:lib "logos" :prefix "logos" :path "" :name "packer"}
+  "Pagekite" {:lib "logos" :prefix "logos" :path "" :name "pagekite"}
+  "Pagekit" {:lib "logos" :prefix "logos" :path "" :name "pagekit"}
+  "Panda" {:lib "logos" :prefix "logos" :path "" :name "panda"}
+  "Parsehub" {:lib "logos" :prefix "logos" :path "" :name "parsehub"}
+  "Parse" {:lib "logos" :prefix "logos" :path "" :name "parse"}
+  "Passbolt" {:lib "logos" :prefix "logos" :path "" :name "passbolt"}
+  "Passport" {:lib "logos" :prefix "logos" :path "" :name "passport"}
+  "Patreon" {:lib "logos" :prefix "logos" :path "" :name "patreon"}
+  "Paypal" {:lib "logos" :prefix "logos" :path "" :name "paypal"}
+  "Peer5" {:lib "logos" :prefix "logos" :path "" :name "peer5"}
+  "Pepperoni" {:lib "logos" :prefix "logos" :path "" :name "pepperoni"}
+  "Percona" {:lib "logos" :prefix "logos" :path "" :name "percona"}
+  "Percy" {:lib "logos" :prefix "logos" :path "" :name "percy"}
+  "Perf Rocks" {:lib "logos" :prefix "logos" :path "" :name "perf-rocks"}
+  "Periscope" {:lib "logos" :prefix "logos" :path "" :name "periscope"}
+  "Perl" {:lib "logos" :prefix "logos" :path "" :name "perl"}
+  "Phalcon" {:lib "logos" :prefix "logos" :path "" :name "phalcon"}
+  "Phoenix" {:lib "logos" :prefix "logos" :path "" :name "phoenix"}
+  "Phonegap Bot" {:lib "logos" :prefix "logos" :path "" :name "phonegap-bot"}
+  "Phonegap" {:lib "logos" :prefix "logos" :path "" :name "phonegap"}
+  "Php" {:lib "logos" :prefix "logos" :path "" :name "php"}
+  "Phpstorm" {:lib "logos" :prefix "logos" :path "" :name "phpstorm"}
+  "Picasa" {:lib "logos" :prefix "logos" :path "" :name "picasa"}
+  "Pingdom" {:lib "logos" :prefix "logos" :path "" :name "pingdom"}
+  "Pingy" {:lib "logos" :prefix "logos" :path "" :name "pingy"}
+  "Pinterest" {:lib "logos" :prefix "logos" :path "" :name "pinterest"}
+  "Pipedrive" {:lib "logos" :prefix "logos" :path "" :name "pipedrive"}
+  "Pipefy" {:lib "logos" :prefix "logos" :path "" :name "pipefy"}
+  "Pivotal Tracker" {:lib "logos" :prefix "logos" :path "" :name "pivotal_tracker"}
+  "Pixate" {:lib "logos" :prefix "logos" :path "" :name "pixate"}
+  "Pkg" {:lib "logos" :prefix "logos" :path "" :name "pkg"}
+  "Planless" {:lib "logos" :prefix "logos" :path "" :name "planless"}
+  "Plastic Scm" {:lib "logos" :prefix "logos" :path "" :name "plastic-scm"}
+  "Platformio" {:lib "logos" :prefix "logos" :path "" :name "platformio"}
+  "Play" {:lib "logos" :prefix "logos" :path "" :name "play"}
+  "Pm2" {:lib "logos" :prefix "logos" :path "" :name "pm2"}
+  "Podio" {:lib "logos" :prefix "logos" :path "" :name "podio"}
+  "Poeditor" {:lib "logos" :prefix "logos" :path "" :name "poeditor"}
+  "Polymer" {:lib "logos" :prefix "logos" :path "" :name "polymer"}
+  "Positionly" {:lib "logos" :prefix "logos" :path "" :name "positionly"}
+  "Postcss" {:lib "logos" :prefix "logos" :path "" :name "postcss"}
+  "Postgresql" {:lib "logos" :prefix "logos" :path "" :name "postgresql"}
+  "Postman" {:lib "logos" :prefix "logos" :path "" :name "postman"}
+  "Pouchdb" {:lib "logos" :prefix "logos" :path "" :name "pouchdb"}
+  "Preact" {:lib "logos" :prefix "logos" :path "" :name "preact"}
+  "Precursor" {:lib "logos" :prefix "logos" :path "" :name "precursor"}
+  "Prestashop" {:lib "logos" :prefix "logos" :path "" :name "prestashop"}
+  "Presto" {:lib "logos" :prefix "logos" :path "" :name "presto"}
+  "Prettier" {:lib "logos" :prefix "logos" :path "" :name "prettier"}
+  "Prisma" {:lib "logos" :prefix "logos" :path "" :name "prisma"}
+  "Processwire Icon" {:lib "logos" :prefix "logos" :path "" :name "processwire-icon"}
+  "Processwire" {:lib "logos" :prefix "logos" :path "" :name "processwire"}
+  "Productboard" {:lib "logos" :prefix "logos" :path "" :name "productboard"}
+  "Producthunt" {:lib "logos" :prefix "logos" :path "" :name "producthunt"}
+  "Progress" {:lib "logos" :prefix "logos" :path "" :name "progress"}
+  "Prometheus" {:lib "logos" :prefix "logos" :path "" :name "prometheus"}
+  "Promises" {:lib "logos" :prefix "logos" :path "" :name "promises"}
+  "Proofy" {:lib "logos" :prefix "logos" :path "" :name "proofy"}
+  "Prospect" {:lib "logos" :prefix "logos" :path "" :name "prospect"}
+  "Protactor" {:lib "logos" :prefix "logos" :path "" :name "protactor"}
+  "Protoio" {:lib "logos" :prefix "logos" :path "" :name "protoio"}
+  "Protonet" {:lib "logos" :prefix "logos" :path "" :name "protonet"}
+  "Prott" {:lib "logos" :prefix "logos" :path "" :name "prott"}
+  "Pug" {:lib "logos" :prefix "logos" :path "" :name "pug"}
+  "Pumpkindb" {:lib "logos" :prefix "logos" :path "" :name "pumpkindb"}
+  "Puppeteer" {:lib "logos" :prefix "logos" :path "" :name "puppeteer"}
+  "Puppet Icon" {:lib "logos" :prefix "logos" :path "" :name "puppet-icon"}
+  "Puppet" {:lib "logos" :prefix "logos" :path "" :name "puppet"}
+  "Puppy Linux" {:lib "logos" :prefix "logos" :path "" :name "puppy-linux"}
+  "Pushbullet" {:lib "logos" :prefix "logos" :path "" :name "pushbullet"}
+  "Pusher" {:lib "logos" :prefix "logos" :path "" :name "pusher"}
+  "Pycharm" {:lib "logos" :prefix "logos" :path "" :name "pycharm"}
+  "Python" {:lib "logos" :prefix "logos" :path "" :name "python"}
+  "Pytorch" {:lib "logos" :prefix "logos" :path "" :name "pytorch"}
+  "Pyup" {:lib "logos" :prefix "logos" :path "" :name "pyup"}
+  "Q" {:lib "logos" :prefix "logos" :path "" :name "q"}
+  "Qordoba" {:lib "logos" :prefix "logos" :path "" :name "qordoba"}
+  "Qt" {:lib "logos" :prefix "logos" :path "" :name "qt"}
+  "Quay" {:lib "logos" :prefix "logos" :path "" :name "quay"}
+  "Quobyte" {:lib "logos" :prefix "logos" :path "" :name "quobyte"}
+  "Quora" {:lib "logos" :prefix "logos" :path "" :name "quora"}
+  "Rabbitmq" {:lib "logos" :prefix "logos" :path "" :name "rabbitmq"}
+  "Rackspace" {:lib "logos" :prefix "logos" :path "" :name "rackspace"}
+  "Rails" {:lib "logos" :prefix "logos" :path "" :name "rails"}
+  "Ramda" {:lib "logos" :prefix "logos" :path "" :name "ramda"}
+  "Raml" {:lib "logos" :prefix "logos" :path "" :name "raml"}
+  "Rancher" {:lib "logos" :prefix "logos" :path "" :name "rancher"}
+  "Raphael" {:lib "logos" :prefix "logos" :path "" :name "raphael"}
+  "Raspberry Pi" {:lib "logos" :prefix "logos" :path "" :name "raspberry-pi"}
+  "Rax" {:lib "logos" :prefix "logos" :path "" :name "rax"}
+  "Reactivex" {:lib "logos" :prefix "logos" :path "" :name "reactivex"}
+  "React" {:lib "logos" :prefix "logos" :path "" :name "react"}
+  "React Router" {:lib "logos" :prefix "logos" :path "" :name "react-router"}
+  "React Styleguidist" {:lib "logos" :prefix "logos" :path "" :name "react-styleguidist"}
+  "Realm" {:lib "logos" :prefix "logos" :path "" :name "realm"}
+  "Reapp" {:lib "logos" :prefix "logos" :path "" :name "reapp"}
+  "Reasonml Icon" {:lib "logos" :prefix "logos" :path "" :name "reasonml-icon"}
+  "Reasonml" {:lib "logos" :prefix "logos" :path "" :name "reasonml"}
+  "Recast Ai" {:lib "logos" :prefix "logos" :path "" :name "recast.ai"}
+  "Reddit Icon" {:lib "logos" :prefix "logos" :path "" :name "reddit-icon"}
+  "Reddit" {:lib "logos" :prefix "logos" :path "" :name "reddit"}
+  "Redhat" {:lib "logos" :prefix "logos" :path "" :name "redhat"}
+  "Redis" {:lib "logos" :prefix "logos" :path "" :name "redis"}
+  "Redsmin" {:lib "logos" :prefix "logos" :path "" :name "redsmin"}
+  "Redspread" {:lib "logos" :prefix "logos" :path "" :name "redspread"}
+  "Redux" {:lib "logos" :prefix "logos" :path "" :name "redux"}
+  "Redux Observable" {:lib "logos" :prefix "logos" :path "" :name "redux-observable"}
+  "Redux Saga" {:lib "logos" :prefix "logos" :path "" :name "redux-saga"}
+  "Refactor" {:lib "logos" :prefix "logos" :path "" :name "refactor"}
+  "Reindex" {:lib "logos" :prefix "logos" :path "" :name "reindex"}
+  "Relay" {:lib "logos" :prefix "logos" :path "" :name "relay"}
+  "Remergr" {:lib "logos" :prefix "logos" :path "" :name "remergr"}
+  "Require" {:lib "logos" :prefix "logos" :path "" :name "require"}
+  "Rest" {:lib "logos" :prefix "logos" :path "" :name "rest"}
+  "Rest Li" {:lib "logos" :prefix "logos" :path "" :name "rest-li"}
+  "Rethinkdb" {:lib "logos" :prefix "logos" :path "" :name "rethinkdb"}
+  "Riak" {:lib "logos" :prefix "logos" :path "" :name "riak"}
+  "Riot" {:lib "logos" :prefix "logos" :path "" :name "riot"}
+  "Rkt" {:lib "logos" :prefix "logos" :path "" :name "rkt"}
+  "R Lang" {:lib "logos" :prefix "logos" :path "" :name "r-lang"}
+  "Rocket Chat" {:lib "logos" :prefix "logos" :path "" :name "rocket-chat"}
+  "Rocksdb" {:lib "logos" :prefix "logos" :path "" :name "rocksdb"}
+  "Rocky" {:lib "logos" :prefix "logos" :path "" :name "rocky"}
+  "Rollbar" {:lib "logos" :prefix "logos" :path "" :name "rollbar"}
+  "Rollupjs" {:lib "logos" :prefix "logos" :path "" :name "rollupjs"}
+  "Rollup" {:lib "logos" :prefix "logos" :path "" :name "rollup"}
+  "Rsa" {:lib "logos" :prefix "logos" :path "" :name "rsa"}
+  "Rsmq" {:lib "logos" :prefix "logos" :path "" :name "rsmq"}
+  "Rubocop" {:lib "logos" :prefix "logos" :path "" :name "rubocop"}
+  "Rubygems" {:lib "logos" :prefix "logos" :path "" :name "rubygems"}
+  "Ruby" {:lib "logos" :prefix "logos" :path "" :name "ruby"}
+  "Rubymine" {:lib "logos" :prefix "logos" :path "" :name "rubymine"}
+  "Rum" {:lib "logos" :prefix "logos" :path "" :name "rum"}
+  "Run Above" {:lib "logos" :prefix "logos" :path "" :name "run-above"}
+  "Runnable" {:lib "logos" :prefix "logos" :path "" :name "runnable"}
+  "Runscope" {:lib "logos" :prefix "logos" :path "" :name "runscope"}
+  "Rust" {:lib "logos" :prefix "logos" :path "" :name "rust"}
+  "Rxdb" {:lib "logos" :prefix "logos" :path "" :name "rxdb"}
+  "Safari" {:lib "logos" :prefix "logos" :path "" :name "safari"}
+  "Sagui" {:lib "logos" :prefix "logos" :path "" :name "sagui"}
+  "Sails" {:lib "logos" :prefix "logos" :path "" :name "sails"}
+  "Salesforce" {:lib "logos" :prefix "logos" :path "" :name "salesforce"}
+  "Saltstack" {:lib "logos" :prefix "logos" :path "" :name "saltstack"}
+  "Sameroom" {:lib "logos" :prefix "logos" :path "" :name "sameroom"}
+  "Sanity" {:lib "logos" :prefix "logos" :path "" :name "sanity"}
+  "Sass Doc" {:lib "logos" :prefix "logos" :path "" :name "sass-doc"}
+  "Sass" {:lib "logos" :prefix "logos" :path "" :name "sass"}
+  "Saucelabs" {:lib "logos" :prefix "logos" :path "" :name "saucelabs"}
+  "Scala" {:lib "logos" :prefix "logos" :path "" :name "scala"}
+  "Scaledrone" {:lib "logos" :prefix "logos" :path "" :name "scaledrone"}
+  "Scaphold" {:lib "logos" :prefix "logos" :path "" :name "scaphold"}
+  "Scribd" {:lib "logos" :prefix "logos" :path "" :name "scribd"}
+  "Sectionio" {:lib "logos" :prefix "logos" :path "" :name "sectionio"}
+  "Segment" {:lib "logos" :prefix "logos" :path "" :name "segment"}
+  "Selenium" {:lib "logos" :prefix "logos" :path "" :name "selenium"}
+  "Semantic Ui" {:lib "logos" :prefix "logos" :path "" :name "semantic-ui"}
+  "Semantic Web" {:lib "logos" :prefix "logos" :path "" :name "semantic-web"}
+  "Semaphore" {:lib "logos" :prefix "logos" :path "" :name "semaphore"}
+  "Sencha" {:lib "logos" :prefix "logos" :path "" :name "sencha"}
+  "Sendgrid" {:lib "logos" :prefix "logos" :path "" :name "sendgrid"}
+  "Seneca" {:lib "logos" :prefix "logos" :path "" :name "seneca"}
+  "Sensu" {:lib "logos" :prefix "logos" :path "" :name "sensu"}
+  "Sentry" {:lib "logos" :prefix "logos" :path "" :name "sentry"}
+  "Sequelize" {:lib "logos" :prefix "logos" :path "" :name "sequelize"}
+  "Serveless" {:lib "logos" :prefix "logos" :path "" :name "serveless"}
+  "Serverless" {:lib "logos" :prefix "logos" :path "" :name "serverless"}
+  "Sherlock" {:lib "logos" :prefix "logos" :path "" :name "sherlock"}
+  "Shields" {:lib "logos" :prefix "logos" :path "" :name "shields"}
+  "Shipit" {:lib "logos" :prefix "logos" :path "" :name "shipit"}
+  "Shippable" {:lib "logos" :prefix "logos" :path "" :name "shippable"}
+  "Shogun" {:lib "logos" :prefix "logos" :path "" :name "shogun"}
+  "Shopify" {:lib "logos" :prefix "logos" :path "" :name "shopify"}
+  "Sidekick" {:lib "logos" :prefix "logos" :path "" :name "sidekick"}
+  "Sidekiq" {:lib "logos" :prefix "logos" :path "" :name "sidekiq"}
+  "Signal" {:lib "logos" :prefix "logos" :path "" :name "signal"}
+  "Sinatra" {:lib "logos" :prefix "logos" :path "" :name "sinatra"}
+  "Siphon" {:lib "logos" :prefix "logos" :path "" :name "siphon"}
+  "Sitepoint" {:lib "logos" :prefix "logos" :path "" :name "sitepoint"}
+  "Sketchapp" {:lib "logos" :prefix "logos" :path "" :name "sketchapp"}
+  "Sketch" {:lib "logos" :prefix "logos" :path "" :name "sketch"}
+  "Skylight" {:lib "logos" :prefix "logos" :path "" :name "skylight"}
+  "Skype" {:lib "logos" :prefix "logos" :path "" :name "skype"}
+  "Slack Icon" {:lib "logos" :prefix "logos" :path "" :name "slack-icon"}
+  "Slack" {:lib "logos" :prefix "logos" :path "" :name "slack"}
+  "Slides" {:lib "logos" :prefix "logos" :path "" :name "slides"}
+  "Slim" {:lib "logos" :prefix "logos" :path "" :name "slim"}
+  "Smartling" {:lib "logos" :prefix "logos" :path "" :name "smartling"}
+  "Smashingmagazine" {:lib "logos" :prefix "logos" :path "" :name "smashingmagazine"}
+  "Snap Svg" {:lib "logos" :prefix "logos" :path "" :name "snap-svg"}
+  "Sninnaker" {:lib "logos" :prefix "logos" :path "" :name "sninnaker"}
+  "Snupps" {:lib "logos" :prefix "logos" :path "" :name "snupps"}
+  "Snyk" {:lib "logos" :prefix "logos" :path "" :name "snyk"}
+  "Socket Io" {:lib "logos" :prefix "logos" :path "" :name "socket.io"}
+  "Solid" {:lib "logos" :prefix "logos" :path "" :name "solid"}
+  "Solr" {:lib "logos" :prefix "logos" :path "" :name "solr"}
+  "Sonarqube" {:lib "logos" :prefix "logos" :path "" :name "sonarqube"}
+  "Soundcloud" {:lib "logos" :prefix "logos" :path "" :name "soundcloud"}
+  "Sourcegraph" {:lib "logos" :prefix "logos" :path "" :name "sourcegraph"}
+  "Sourcetrail" {:lib "logos" :prefix "logos" :path "" :name "sourcetrail"}
+  "Sourcetree" {:lib "logos" :prefix "logos" :path "" :name "sourcetree"}
+  "Sparkcentral" {:lib "logos" :prefix "logos" :path "" :name "sparkcentral"}
+  "Spark" {:lib "logos" :prefix "logos" :path "" :name "spark"}
+  "Sparkpost" {:lib "logos" :prefix "logos" :path "" :name "sparkpost"}
+  "Speakerdeck" {:lib "logos" :prefix "logos" :path "" :name "speakerdeck"}
+  "Speedcurve" {:lib "logos" :prefix "logos" :path "" :name "speedcurve"}
+  "Spinnaker" {:lib "logos" :prefix "logos" :path "" :name "spinnaker"}
+  "Spree" {:lib "logos" :prefix "logos" :path "" :name "spree"}
+  "Spring" {:lib "logos" :prefix "logos" :path "" :name "spring"}
+  "Sqldep" {:lib "logos" :prefix "logos" :path "" :name "sqldep"}
+  "Sqlite" {:lib "logos" :prefix "logos" :path "" :name "sqlite"}
+  "Square" {:lib "logos" :prefix "logos" :path "" :name "square"}
+  "Squarespace" {:lib "logos" :prefix "logos" :path "" :name "squarespace"}
+  "Stackoverflow Icon" {:lib "logos" :prefix "logos" :path "" :name "stackoverflow-icon"}
+  "Stackoverflow" {:lib "logos" :prefix "logos" :path "" :name "stackoverflow"}
+  "Stackshare" {:lib "logos" :prefix "logos" :path "" :name "stackshare"}
+  "Stacksmith" {:lib "logos" :prefix "logos" :path "" :name "stacksmith"}
+  "Statuspage" {:lib "logos" :prefix "logos" :path "" :name "statuspage"}
+  "Steam" {:lib "logos" :prefix "logos" :path "" :name "steam"}
+  "Steroids" {:lib "logos" :prefix "logos" :path "" :name "steroids"}
+  "Stetho" {:lib "logos" :prefix "logos" :path "" :name "stetho"}
+  "Stickermule" {:lib "logos" :prefix "logos" :path "" :name "stickermule"}
+  "Stitch" {:lib "logos" :prefix "logos" :path "" :name "stitch"}
+  "Stoplight" {:lib "logos" :prefix "logos" :path "" :name "stoplight"}
+  "Stormpath" {:lib "logos" :prefix "logos" :path "" :name "stormpath"}
+  "Storybook Icon" {:lib "logos" :prefix "logos" :path "" :name "storybook-icon"}
+  "Storybook" {:lib "logos" :prefix "logos" :path "" :name "storybook"}
+  "Strapi" {:lib "logos" :prefix "logos" :path "" :name "strapi"}
+  "Strider" {:lib "logos" :prefix "logos" :path "" :name "strider"}
+  "Stripe" {:lib "logos" :prefix "logos" :path "" :name "stripe"}
+  "Struts" {:lib "logos" :prefix "logos" :path "" :name "struts"}
+  "Styleci" {:lib "logos" :prefix "logos" :path "" :name "styleci"}
+  "Stylefmt" {:lib "logos" :prefix "logos" :path "" :name "stylefmt"}
+  "Stylelint" {:lib "logos" :prefix "logos" :path "" :name "stylelint"}
+  "Stylus" {:lib "logos" :prefix "logos" :path "" :name "stylus"}
+  "Subversion" {:lib "logos" :prefix "logos" :path "" :name "subversion"}
+  "Sugarss" {:lib "logos" :prefix "logos" :path "" :name "sugarss"}
+  "Supergiant" {:lib "logos" :prefix "logos" :path "" :name "supergiant"}
+  "Supersonic" {:lib "logos" :prefix "logos" :path "" :name "supersonic"}
+  "Supportkit" {:lib "logos" :prefix "logos" :path "" :name "supportkit"}
+  "Surge" {:lib "logos" :prefix "logos" :path "" :name "surge"}
+  "Survicate" {:lib "logos" :prefix "logos" :path "" :name "survicate"}
+  "Suse" {:lib "logos" :prefix "logos" :path "" :name "suse"}
+  "Susy" {:lib "logos" :prefix "logos" :path "" :name "susy"}
+  "Svelte Icon" {:lib "logos" :prefix "logos" :path "" :name "svelte-icon"}
+  "Svelte" {:lib "logos" :prefix "logos" :path "" :name "svelte"}
+  "Svg" {:lib "logos" :prefix "logos" :path "" :name "svg"}
+  "Swagger" {:lib "logos" :prefix "logos" :path "" :name "swagger"}
+  "Swift" {:lib "logos" :prefix "logos" :path "" :name "swift"}
+  "Swiftype" {:lib "logos" :prefix "logos" :path "" :name "swiftype"}
+  "Symfony" {:lib "logos" :prefix "logos" :path "" :name "symfony"}
+  "Sysdig" {:lib "logos" :prefix "logos" :path "" :name "sysdig"}
+  "T3" {:lib "logos" :prefix "logos" :path "" :name "t3"}
+  "Taiga" {:lib "logos" :prefix "logos" :path "" :name "taiga"}
+  "Tailwindcss Icon" {:lib "logos" :prefix "logos" :path "" :name "tailwindcss-icon"}
+  "Tailwindcss" {:lib "logos" :prefix "logos" :path "" :name "tailwindcss"}
+  "Tapcart" {:lib "logos" :prefix "logos" :path "" :name "tapcart"}
+  "Targetprocess" {:lib "logos" :prefix "logos" :path "" :name "targetprocess"}
+  "Tastejs" {:lib "logos" :prefix "logos" :path "" :name "tastejs"}
+  "Tealium" {:lib "logos" :prefix "logos" :path "" :name "tealium"}
+  "Teamgrid" {:lib "logos" :prefix "logos" :path "" :name "teamgrid"}
+  "Teamwork Icon" {:lib "logos" :prefix "logos" :path "" :name "teamwork-icon"}
+  "Teamwork" {:lib "logos" :prefix "logos" :path "" :name "teamwork"}
+  "Tectonic" {:lib "logos" :prefix "logos" :path "" :name "tectonic"}
+  "Telegram" {:lib "logos" :prefix "logos" :path "" :name "telegram"}
+  "Tensorflow" {:lib "logos" :prefix "logos" :path "" :name "tensorflow"}
+  "Terminal" {:lib "logos" :prefix "logos" :path "" :name "terminal"}
+  "Terraform" {:lib "logos" :prefix "logos" :path "" :name "terraform"}
+  "Testlodge" {:lib "logos" :prefix "logos" :path "" :name "testlodge"}
+  "Testmunk" {:lib "logos" :prefix "logos" :path "" :name "testmunk"}
+  "Thimble" {:lib "logos" :prefix "logos" :path "" :name "thimble"}
+  "Titon" {:lib "logos" :prefix "logos" :path "" :name "titon"}
+  "Tnw" {:lib "logos" :prefix "logos" :path "" :name "tnw"}
+  "Todoist Icon" {:lib "logos" :prefix "logos" :path "" :name "todoist-icon"}
+  "Todoist" {:lib "logos" :prefix "logos" :path "" :name "todoist"}
+  "Todomvc" {:lib "logos" :prefix "logos" :path "" :name "todomvc"}
+  "Tomcat" {:lib "logos" :prefix "logos" :path "" :name "tomcat"}
+  "Torus" {:lib "logos" :prefix "logos" :path "" :name "torus"}
+  "Traackr" {:lib "logos" :prefix "logos" :path "" :name "traackr"}
+  "Trac" {:lib "logos" :prefix "logos" :path "" :name "trac"}
+  "Travis Ci" {:lib "logos" :prefix "logos" :path "" :name "travis-ci"}
+  "Travis Ci Monochrome" {:lib "logos" :prefix "logos" :path "" :name "travis-ci-monochrome"}
+  "Treasuredata" {:lib "logos" :prefix "logos" :path "" :name "treasuredata"}
+  "Treehouse" {:lib "logos" :prefix "logos" :path "" :name "treehouse"}
+  "Trello" {:lib "logos" :prefix "logos" :path "" :name "trello"}
+  "Tsu" {:lib "logos" :prefix "logos" :path "" :name "tsu"}
+  "Tsuru" {:lib "logos" :prefix "logos" :path "" :name "tsuru"}
+  "Tumblr Icon" {:lib "logos" :prefix "logos" :path "" :name "tumblr-icon"}
+  "Tumblr" {:lib "logos" :prefix "logos" :path "" :name "tumblr"}
+  "Tunein" {:lib "logos" :prefix "logos" :path "" :name "tunein"}
+  "Turret" {:lib "logos" :prefix "logos" :path "" :name "turret"}
+  "Tutsplus" {:lib "logos" :prefix "logos" :path "" :name "tutsplus"}
+  "Tutum" {:lib "logos" :prefix "logos" :path "" :name "tutum"}
+  "Tux" {:lib "logos" :prefix "logos" :path "" :name "tux"}
+  "Twilio" {:lib "logos" :prefix "logos" :path "" :name "twilio"}
+  "Twitch" {:lib "logos" :prefix "logos" :path "" :name "twitch"}
+  "Twitter" {:lib "logos" :prefix "logos" :path "" :name "twitter"}
+  "Typeform Icon" {:lib "logos" :prefix "logos" :path "" :name "typeform-icon"}
+  "Typeform" {:lib "logos" :prefix "logos" :path "" :name "typeform"}
+  "Typescript Icon" {:lib "logos" :prefix "logos" :path "" :name "typescript-icon"}
+  "Typescript" {:lib "logos" :prefix "logos" :path "" :name "typescript"}
+  "Ubuntu" {:lib "logos" :prefix "logos" :path "" :name "ubuntu"}
+  "Udacity" {:lib "logos" :prefix "logos" :path "" :name "udacity"}
+  "Udemy" {:lib "logos" :prefix "logos" :path "" :name "udemy"}
+  "Uikit" {:lib "logos" :prefix "logos" :path "" :name "uikit"}
+  "Umu" {:lib "logos" :prefix "logos" :path "" :name "umu"}
+  "Unbounce" {:lib "logos" :prefix "logos" :path "" :name "unbounce"}
+  "Undertow" {:lib "logos" :prefix "logos" :path "" :name "undertow"}
+  "Unionpay" {:lib "logos" :prefix "logos" :path "" :name "unionpay"}
+  "Unitjs" {:lib "logos" :prefix "logos" :path "" :name "unitjs"}
+  "Unito" {:lib "logos" :prefix "logos" :path "" :name "unito"}
+  "Unity" {:lib "logos" :prefix "logos" :path "" :name "unity"}
+  "Upcase" {:lib "logos" :prefix "logos" :path "" :name "upcase"}
+  "Upwork" {:lib "logos" :prefix "logos" :path "" :name "upwork"}
+  "User Testing" {:lib "logos" :prefix "logos" :path "" :name "user-testing"}
+  "Uservoice" {:lib "logos" :prefix "logos" :path "" :name "uservoice"}
+  "V8 Ignition" {:lib "logos" :prefix "logos" :path "" :name "v8-ignition"}
+  "V8" {:lib "logos" :prefix "logos" :path "" :name "v8"}
+  "V8 Turbofan" {:lib "logos" :prefix "logos" :path "" :name "v8-turbofan"}
+  "Vaadin" {:lib "logos" :prefix "logos" :path "" :name "vaadin"}
+  "Vaddy" {:lib "logos" :prefix "logos" :path "" :name "vaddy"}
+  "Vagrant" {:lib "logos" :prefix "logos" :path "" :name "vagrant"}
+  "Vault" {:lib "logos" :prefix "logos" :path "" :name "vault"}
+  "Vernemq" {:lib "logos" :prefix "logos" :path "" :name "vernemq"}
+  "Victorops" {:lib "logos" :prefix "logos" :path "" :name "victorops"}
+  "Vimeo Icon" {:lib "logos" :prefix "logos" :path "" :name "vimeo-icon"}
+  "Vimeo" {:lib "logos" :prefix "logos" :path "" :name "vimeo"}
+  "Vim" {:lib "logos" :prefix "logos" :path "" :name "vim"}
+  "Vine" {:lib "logos" :prefix "logos" :path "" :name "vine"}
+  "Visaelectron" {:lib "logos" :prefix "logos" :path "" :name "visaelectron"}
+  "Visa" {:lib "logos" :prefix "logos" :path "" :name "visa"}
+  "Visual Studio Code" {:lib "logos" :prefix "logos" :path "" :name "visual-studio-code"}
+  "Visual Studio" {:lib "logos" :prefix "logos" :path "" :name "visual-studio"}
+  "Visual Website Optimizer" {:lib "logos" :prefix "logos" :path "" :name "visual_website_optimizer"}
+  "Vivaldi" {:lib "logos" :prefix "logos" :path "" :name "vivaldi"}
+  "Void" {:lib "logos" :prefix "logos" :path "" :name "void"}
+  "Vue" {:lib "logos" :prefix "logos" :path "" :name "vue"}
+  "Vuetifyjs" {:lib "logos" :prefix "logos" :path "" :name "vuetifyjs"}
+  "Vulkan" {:lib "logos" :prefix "logos" :path "" :name "vulkan"}
+  "Vultr" {:lib "logos" :prefix "logos" :path "" :name "vultr"}
+  "W3c" {:lib "logos" :prefix "logos" :path "" :name "w3c"}
+  "Waffle" {:lib "logos" :prefix "logos" :path "" :name "waffle"}
+  "Wagtail" {:lib "logos" :prefix "logos" :path "" :name "wagtail"}
+  "Wakatime" {:lib "logos" :prefix "logos" :path "" :name "wakatime"}
+  "Watchman" {:lib "logos" :prefix "logos" :path "" :name "watchman"}
+  "Weave" {:lib "logos" :prefix "logos" :path "" :name "weave"}
+  "Webassembly" {:lib "logos" :prefix "logos" :path "" :name "webassembly"}
+  "Webcomponents" {:lib "logos" :prefix "logos" :path "" :name "webcomponents"}
+  "Webflow" {:lib "logos" :prefix "logos" :path "" :name "webflow"}
+  "Webhooks" {:lib "logos" :prefix "logos" :path "" :name "webhooks"}
+  "Webmin" {:lib "logos" :prefix "logos" :path "" :name "webmin"}
+  "Webpack" {:lib "logos" :prefix "logos" :path "" :name "webpack"}
+  "Webplatform" {:lib "logos" :prefix "logos" :path "" :name "webplatform"}
+  "Webrtc" {:lib "logos" :prefix "logos" :path "" :name "webrtc"}
+  "Websocket" {:lib "logos" :prefix "logos" :path "" :name "websocket"}
+  "Webstorm" {:lib "logos" :prefix "logos" :path "" :name "webstorm"}
+  "Webtask" {:lib "logos" :prefix "logos" :path "" :name "webtask"}
+  "Webtorrent" {:lib "logos" :prefix "logos" :path "" :name "webtorrent"}
+  "Weebly" {:lib "logos" :prefix "logos" :path "" :name "weebly"}
+  "Wercker" {:lib "logos" :prefix "logos" :path "" :name "wercker"}
+  "Whalar" {:lib "logos" :prefix "logos" :path "" :name "whalar"}
+  "Whatsapp" {:lib "logos" :prefix "logos" :path "" :name "whatsapp"}
+  "Whatwg" {:lib "logos" :prefix "logos" :path "" :name "whatwg"}
+  "Wicket Icon" {:lib "logos" :prefix "logos" :path "" :name "wicket-icon"}
+  "Wicket" {:lib "logos" :prefix "logos" :path "" :name "wicket"}
+  "Wifi" {:lib "logos" :prefix "logos" :path "" :name "wifi"}
+  "Windows" {:lib "logos" :prefix "logos" :path "" :name "windows"}
+  "Wiredtree" {:lib "logos" :prefix "logos" :path "" :name "wiredtree"}
+  "Wire" {:lib "logos" :prefix "logos" :path "" :name "wire"}
+  "Wix" {:lib "logos" :prefix "logos" :path "" :name "wix"}
+  "Woocommerce" {:lib "logos" :prefix "logos" :path "" :name "woocommerce"}
+  "Woopra" {:lib "logos" :prefix "logos" :path "" :name "woopra"}
+  "Wordpress Icon" {:lib "logos" :prefix "logos" :path "" :name "wordpress-icon"}
+  "Wordpress" {:lib "logos" :prefix "logos" :path "" :name "wordpress"}
+  "Workboard" {:lib "logos" :prefix "logos" :path "" :name "workboard"}
+  "Wpengine" {:lib "logos" :prefix "logos" :path "" :name "wpengine"}
+  "Wufoo" {:lib "logos" :prefix "logos" :path "" :name "wufoo"}
+  "Xamarin" {:lib "logos" :prefix "logos" :path "" :name "xamarin"}
+  "Xampp" {:lib "logos" :prefix "logos" :path "" :name "xampp"}
+  "Xcart" {:lib "logos" :prefix "logos" :path "" :name "xcart"}
+  "Xero" {:lib "logos" :prefix "logos" :path "" :name "xero"}
+  "Xplenty" {:lib "logos" :prefix "logos" :path "" :name "xplenty"}
+  "X Ray Goggles" {:lib "logos" :prefix "logos" :path "" :name "x-ray-goggles"}
+  "Xtend" {:lib "logos" :prefix "logos" :path "" :name "xtend"}
+  "Xwiki" {:lib "logos" :prefix "logos" :path "" :name "xwiki"}
+  "Yahoo" {:lib "logos" :prefix "logos" :path "" :name "yahoo"}
+  "Yammer" {:lib "logos" :prefix "logos" :path "" :name "yammer"}
+  "Yandex Ru" {:lib "logos" :prefix "logos" :path "" :name "yandex-ru"}
+  "Yarn" {:lib "logos" :prefix "logos" :path "" :name "yarn"}
+  "Ycombinator" {:lib "logos" :prefix "logos" :path "" :name "ycombinator"}
+  "Yeoman" {:lib "logos" :prefix "logos" :path "" :name "yeoman"}
+  "Yii" {:lib "logos" :prefix "logos" :path "" :name "yii"}
+  "Youtrack" {:lib "logos" :prefix "logos" :path "" :name "youtrack"}
+  "Youtube" {:lib "logos" :prefix "logos" :path "" :name "youtube"}
+  "Zapier" {:lib "logos" :prefix "logos" :path "" :name "zapier"}
+  "Zeit Icon" {:lib "logos" :prefix "logos" :path "" :name "zeit-icon"}
+  "Zeit" {:lib "logos" :prefix "logos" :path "" :name "zeit"}
+  "Zendesk" {:lib "logos" :prefix "logos" :path "" :name "zendesk"}
+  "Zend Framework" {:lib "logos" :prefix "logos" :path "" :name "zend-framework"}
+  "Zenhub" {:lib "logos" :prefix "logos" :path "" :name "zenhub"}
+  "Zeplin" {:lib "logos" :prefix "logos" :path "" :name "zeplin"}
+  "Zest" {:lib "logos" :prefix "logos" :path "" :name "zest"}
+  "Zigbee" {:lib "logos" :prefix "logos" :path "" :name "zigbee"}
+  "Zoho" {:lib "logos" :prefix "logos" :path "" :name "zoho"}
+  "Zube" {:lib "logos" :prefix "logos" :path "" :name "zube"}
+  "Zulip" {:lib "logos" :prefix "logos" :path "" :name "zulip"}
+  "Zwave" {:lib "logos" :prefix "logos" :path "" :name "zwave"}
+}

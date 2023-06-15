@@ -1,370 +1,370 @@
 { 
-  "Django Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "django_line"}
+  "Aarch64"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "aarch64"}
+  "Aftereffects"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "aftereffects"}
+  "Amazon Web Services Original"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "amazonwebservices_original"}
+  "Amazon Web Services Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "amazonwebservices_wordmark"}
+  "Android"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "android"}
+  "Android Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "android_wordmark"}
+  "AngularJS"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "angularjs"}
+  "AngularJS Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "angularjs_wordmark"}
+  "Apache"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache"}
+  "Apache Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_line"}
+  "Apache Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_line_wordmark"}
+  "Apache Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_wordmark"}
+  "Appcelerator Original"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appcelerator_original"}
+  "Appcelerator Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appcelerator_wordmark"}
+  "Apple Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apple_original"}
+  "Appwrite"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appwrite"}
+  "Appwrite Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appwrite_wordmark"}
+  "Atom Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "atom_original"}
+  "Atom Original Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "atom_original_wordmark"}
+  "Babel"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "babel"}
+  "BackboneJS"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "backbonejs"}
+  "BackboneJS Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "backbonejs_wordmark"}
+  "Bash"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bash"}
+  "Behance"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "behance"}
+  "Behance Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "behance_wordmark"}
+  "Bitbucket Original"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bitbucket_original"}
+  "Bitbucket Original Wordmark"    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bitbucket_original_wordmark"}
+  "Bootstrap"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bootstrap"}
+  "Bootstrap Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bootstrap_wordmark"}
+  "Bower"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower"}
+  "Bower Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_line"}
+  "Bower Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_line_wordmark"}
+  "Bower Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_wordmark"}
+  "Bulma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bulma"}
+  "Cakephp"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cakephp"}
+  "CakePHP Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cakephp_wordmark"}
+  "Ceylon"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ceylon"}
+  "Chrome"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "chrome"}
+  "Chrome Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "chrome_wordmark"}
+  "CircleCI"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "circleci"}
+  "CircleCI Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "circleci_wordmark"}
+  "C"                              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "c"}
+  "C++"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cplusplus"}
+  "C#"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "csharp"}
+  "C Line"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "c_line"}
+  "C++ Line"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cplusplus_line"}
+  "C# Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "csharp_line"}
+  "Clojure Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "clojure_line"}
+  "Clojurescript"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "clojurescript"}
+  "CodeCov"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codecov"}
   "Codeigniter"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codeigniter"}
-  "Google"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "google"}
-  "Zend"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zend"}
-  "Jupyter Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jupyter_wordmark"}
-  "VisualStudio"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "visualstudio"}
-  "Swift"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "swift"}
+  "Codeigniter Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codeigniter_wordmark"}
+  "Codepen"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codepen"}
+  "Codepen Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codepen_original_wordmark"}
+  "Coffeescript Original"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "coffeescript_original"}
+  "Coffeescript Original Wordmark" {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "coffeescript_original_wordmark"}
+  "Composer Line"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "composer_line"}
   "Composer Line Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "composer_line_wordmark"}
-  "Redhat Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redhat_wordmark"}
-  "VS Code Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vscode_wordmark"}
+  "Confluence Original"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "confluence_original"}
+  "Confluence Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "confluence_original_wordmark"}
+  "CouchDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "couchdb"}
+  "CouchDB Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "couchdb_wordmark"}
+  "Crystal Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "crystal_original"}
+  "Crystal Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "crystal_original_wordmark"}
+  "CSS3"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "css3"}
+  "CSS3 Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "css3_wordmark"}
+  "Cucumber"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cucumber"}
+  "Cucumber Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cucumber_wordmark"}
+  "D3JS"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "d3js"}
+  "D3JS Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "d3js_original"}
+  "Dart"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dart"}
+  "Dart Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dart_wordmark"}
+  "Debian"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "debian"}
+  "Debian Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "debian_wordmark"}
+  "Devicon"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "devicon"}
+  "Devicon Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "devicon_wordmark"}
+  "Digitalocean"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "digitalocean"}
+  "Digitalocean Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "digitalocean_wordmark"}
+  "Django"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "django"}
+  "Django Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "django_line"}
+  "Docker"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "docker"}
+  "Docker Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "docker_wordmark"}
+  "Doctrine"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine"}
+  "Doctrine Line"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_line"}
+  "Doctrine Line Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_line_wordmark"}
+  "Doctrine Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_wordmark"}
+  "DotNet Core"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dotnetcore"}
+  "DotNet"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dot_net"}
+  "Dot Net Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dot_net_wordmark"}
+  "Drupal"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "drupal"}
+  "Drupal Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "drupal_wordmark"}
+  "Electron Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "electron_original"}
+  "Electron Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "electron_original_wordmark"}
+  "Eleventy"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "eleventy"}
+  "Elixir"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elixir"}
+  "Elixir Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elixir_wordmark"}
+  "Elm"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elm"}
+  "Elm Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elm_wordmark"}
+  "EmbeddedC"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "embeddedc"}
+  "EmbeddedC Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "embeddedc_wordmark"}
+  "Ember Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ember_original_wordmark"}
+  "Erlang"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "erlang"}
+  "Erlang Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "erlang_wordmark"}
+  "Express Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "express_original"}
+  "Express Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "express_original_wordmark"}
+  "Facebook"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "facebook"}
+  "Figma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "figma"}
+  "Firebase"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firebase"}
+  "Firebase Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firebase_wordmark"}
+  "Firefox"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firefox"}
+  "Firefox Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firefox_wordmark"}
   "Flask Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "flask_original"}
-  "VueJS Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_line_wordmark"}
+  "Flask Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "flask_original_wordmark"}
+  "F#"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "fsharp"}
+  "Flutter"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "flutter"}
+  "Foundation"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "foundation"}
+  "Foundation Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "foundation_wordmark"}
+  "Gatling"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatling"}
+  "Gatling Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatling_wordmark"}
+  "Gatsby"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatsby"}
+  "Gatsby Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatsby_wordmark"}
+  "Gimp"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gimp"}
+  "Github Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "github_original"}
+  "Github Original Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "github_original_wordmark"}
+  "Gitlab"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitlab"}
+  "Gitlab Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitlab_wordmark"}
+  "Git"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "git"}
+  "Gitter"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitter"}
+  "Gitter Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitter_wordmark"}
   "Git Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "git_wordmark"}
+  "Godot"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "godot"}
+  "Godot Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "godot_wordmark"}
+  "Go"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "go"}
+  "Go Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "go_line"}
+  "Google Cloud"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "googlecloud"}
+  "Google Cloud Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "googlecloud_wordmark"}
+  "Google"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "google"}
   "Google Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "google_wordmark"}
-  "OCaml"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ocaml"}
-  "Microsoft SQL Server"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "microsoftsqlserver"}
-  "Shopware Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "shopware_original"}
-  "Sourcetree Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sourcetree_original_wordmark"}
-  "MongoDB Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mongodb_wordmark"}
+  "Gradle"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gradle"}
+  "Gradle Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gradle_wordmark"}
+  "Grails"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grails"}
+  "GraphQL"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "graphql"}
+  "GraphQL Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "graphql_wordmark"}
+  "Groovy"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "groovy"}
+  "Grunt"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt"}
+  "Grunt Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_line"}
+  "Grunt Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_line_wordmark"}
+  "Grunt Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_wordmark"}
+  "Gulp"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gulp"}
+  "Handlebars"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "handlebars"}
+  "Handlebars Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "handlebars_wordmark"}
+  "Haskell"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haskell"}
+  "Haskell Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haskell_wordmark"}
+  "Haxe"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haxe"}
+  "Heroku"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku"}
+  "Heroku Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_line"}
+  "Heroku Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_line_wordmark"}
+  "Heroku Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_wordmark"}
+  "Html5"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "html5"}
   "Html5 Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "html5_wordmark"}
   "IE10 Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ie10_original"}
-  "Uwsgi"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "uwsgi"}
-  "MySQL Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mysql_wordmark"}
-  "Weblate"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "weblate"}
-  "EmbeddedC"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "embeddedc"}
-  "SSH Original"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ssh_original"}
-  "Zig Original"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zig_original"}
-  "Dart Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dart_wordmark"}
-  "Safari"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari"}
-  "Typo3"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typo3"}
-  "Ubuntu Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ubuntu_wordmark"}
-  "Babel"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "babel"}
-  "Composer Line"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "composer_line"}
-  "Amazon Web Services Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "amazonwebservices_wordmark"}
-  "Rust"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rust"}
-  "BackboneJS Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "backbonejs_wordmark"}
-  "Handlebars"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "handlebars"}
-  "D3JS Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "d3js_original"}
-  "Godot"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "godot"}
-  "Gimp"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gimp"}
-  "Devicon"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "devicon"}
-  "Bower Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_wordmark"}
-  "Appwrite Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appwrite_wordmark"}
-  "Spring Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spring_wordmark"}
-  "Electron Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "electron_original_wordmark"}
-  "Javascript"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "javascript"}
-  "BackboneJS"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "backbonejs"}
-  "Eleventy"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "eleventy"}
-  "Nodejs Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodejs_wordmark"}
-  "Doctrine Line"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_line"}
-  "XD Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "xd_line"}
-  "Apache"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache"}
-  "Jasmine Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jasmine_wordmark"}
-  "Dart"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dart"}
-  "Ubuntu"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ubuntu"}
-  "IntelliJ Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "intellij_wordmark"}
+  "Illustrator"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "illustrator"}
   "Illustrator Line"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "illustrator_line"}
-  "AngularJS"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "angularjs"}
-  "Grunt"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt"}
-  "ObjectiveC"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "objectivec"}
-  "Jupyter"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jupyter"}
-  "Flask Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "flask_original_wordmark"}
-  "JQuery"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jquery"}
-  "Stylus Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "stylus_original"}
-  "Minitab"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "minitab"}
-  "Magento Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_original_wordmark"}
-  "Bulma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bulma"}
-  "Grails"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grails"}
-  "React Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "react_original"}
-  "Typo3 Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typo3_wordmark"}
-  "Chrome Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "chrome_wordmark"}
-  "Devicon Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "devicon_wordmark"}
-  "Elixir"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elixir"}
-  "Slack"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "slack"}
-  "Safari Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_wordmark"}
-  "PostgreSQL Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "postgresql_wordmark"}
-  "SQLalchemy Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sqlalchemy_original_wordmark"}
-  "Heroku"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku"}
-  "Python"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "python"}
-  "Microsoftsqlserver Wordmark"    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "microsoftsqlserver_wordmark"}
-  "Drupal"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "drupal"}
-  "Rails Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rails_wordmark"}
-  "Cucumber Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cucumber_wordmark"}
-  "CSS3"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "css3"}
-  "R Original"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "r_original"}
-  "SPSS"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spss"}
-  "Modx Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "modx_wordmark"}
-  "Redis"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redis"}
-  "Moodle Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "moodle_wordmark"}
-  "Digitalocean"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "digitalocean"}
-  "Nodewebkit"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit"}
-  "Bower"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower"}
-  "C++ Line"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cplusplus_line"}
-  "Github Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "github_original"}
-  "C Line"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "c_line"}
-  "Gulp"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gulp"}
-  "Spring"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spring"}
-  "PHPstorm Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phpstorm_wordmark"}
-  "Gatling"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatling"}
-  "Ember Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ember_original_wordmark"}
-  "Bitbucket Original"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bitbucket_original"}
-  "Nixos"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nixos"}
-  "Julia Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "julia_wordmark"}
-  "Yarn Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yarn_wordmark"}
-  "Crystal Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "crystal_original"}
-  "Apache Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_wordmark"}
-  "Safari Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_line"}
-  "Pycharm Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "pycharm_wordmark"}
-  "Twitter Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "twitter_original"}
-  "Knockout Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "knockout_wordmark"}
-  "Gitlab Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitlab_wordmark"}
-  "Kubernetes Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kubernetes_wordmark"}
-  "Nodewebkit Line Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_line_wordmark"}
-  "MySQL"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mysql"}
-  "Sketch Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sketch_line"}
-  "Git"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "git"}
-  "Ceylon"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ceylon"}
-  "Jetbrains"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jetbrains"}
-  "NextJS Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nextjs_original"}
-  "Sketch Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sketch_line_wordmark"}
-  "Kubernetes"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kubernetes"}
-  "Drupal Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "drupal_wordmark"}
-  "Heroku Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_line"}
-  "Redux Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redux_original"}
-  "Yii"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yii"}
-  "Debian"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "debian"}
   "Inkscape"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "inkscape"}
-  "Behance Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "behance_wordmark"}
-  "Doctrine Line Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_line_wordmark"}
-  "Travis Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "travis_wordmark"}
-  "Magento Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_line"}
-  "Google Cloud Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "googlecloud_wordmark"}
-  "EmbeddedC Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "embeddedc_wordmark"}
-  "Doctrine Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine_wordmark"}
-  "Laravel Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "laravel_wordmark"}
+  "Inkscape Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "inkscape_wordmark"}
+  "IntelliJ"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "intellij"}
+  "IntelliJ Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "intellij_wordmark"}
+  "Ionic Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ionic_original"}
+  "Ionic Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ionic_original_wordmark"}
+  "Jasmine"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jasmine"}
+  "Jasmine Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jasmine_wordmark"}
+  "Java"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "java"}
+  "Javascript"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "javascript"}
+  "Java Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "java_wordmark"}
   "Jeet"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jeet"}
-  "Behance"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "behance"}
-  "Android Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "android_wordmark"}
-  "Raspberry Pi Line Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "raspberrypi_line_wordmark"}
-  "Jenkins"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jenkins"}
-  "Npm Original Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "npm_original_wordmark"}
-  "Python Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "python_wordmark"}
-  "Ruby"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ruby"}
-  "Docker Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "docker_wordmark"}
-  "Redhat"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redhat"}
-  "Windows8 Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "windows8_original_wordmark"}
-  "Codepen Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codepen_original_wordmark"}
-  "Jenkins Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jenkins_line"}
-  "Webpack"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webpack"}
-  "Scala Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "scala_wordmark"}
-  "Wordpress"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "wordpress"}
-  "Erlang Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "erlang_wordmark"}
-  "Bower Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_line"}
-  "Apache Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_line_wordmark"}
-  "Facebook"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "facebook"}
-  "Photoshop"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "photoshop"}
   "Jeet Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jeet_wordmark"}
-  "Tomcat Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tomcat_line"}
-  "Godot Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "godot_wordmark"}
-  "MaterialUI"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "materialui"}
-  "Foundation Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "foundation_wordmark"}
-  "CodeCov"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codecov"}
-  "Handlebars Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "handlebars_wordmark"}
-  "Webstorm Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webstorm_wordmark"}
-  "AngularJS Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "angularjs_wordmark"}
-  "Tomcat Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tomcat_line_wordmark"}
-  "Protractor"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "protractor"}
-  "Gitlab"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitlab"}
-  "Symfony Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "symfony_original_wordmark"}
-  "Photoshop Line"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "photoshop_line"}
-  "Firebase"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firebase"}
-  "Linkedin Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linkedin_wordmark"}
-  "Codeigniter Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codeigniter_wordmark"}
-  "Linkedin"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linkedin"}
-  "VueJS"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs"}
+  "Jenkins"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jenkins"}
+  "Jenkins Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jenkins_line"}
+  "Jest"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jest"}
+  "Jetbrains"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jetbrains"}
+  "JQuery"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jquery"}
+  "JQuery Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jquery_wordmark"}
+  "Julia"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "julia"}
+  "Julia Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "julia_wordmark"}
+  "Jupyter"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jupyter"}
+  "Jupyter Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jupyter_wordmark"}
+  "Karma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "karma"}
+  "Knockout Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "knockout_wordmark"}
   "Kotlin"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kotlin"}
-  "Nodewebkit Line"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_line"}
-  "Raspberry Pi Line"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "raspberrypi_line"}
-  "Codepen"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "codepen"}
-  "CSS3 Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "css3_wordmark"}
-  "Thealgorithms Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "thealgorithms_wordmark"}
-  "Grunt Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_line_wordmark"}
+  "Kotlin Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kotlin_wordmark"}
+  "KrakenJS"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "krakenjs"}
+  "KrakenJS Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "krakenjs_wordmark"}
+  "Kubernetes"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kubernetes"}
+  "Kubernetes Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kubernetes_wordmark"}
+  "Labview"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "labview"}
+  "Labview Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "labview_wordmark"}
+  "Laravel"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "laravel"}
+  "Laravel Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "laravel_wordmark"}
+  "Less Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "less_wordmark"}
+  "Linkedin"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linkedin"}
+  "Linkedin Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linkedin_wordmark"}
+  "Linux"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linux"}
+  "Lua"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "lua"}
+  "Lua Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "lua_wordmark"}
+  "Magento Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_line"}
+  "Magento Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_original"}
+  "Magento Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_original_wordmark"}
+  "MaterialUI"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "materialui"}
+  "Matlab"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "matlab"}
+  "Matlab Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "matlab_line"}
+  "Meteor"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "meteor"}
+  "Meteor Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "meteor_wordmark"}
+  "Microsoft SQL Server"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "microsoftsqlserver"}
+  "Microsoftsqlserver Wordmark"    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "microsoftsqlserver_wordmark"}
+  "Minitab"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "minitab"}
+  "Mocha"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mocha"}
+  "Modx"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "modx"}
+  "Modx Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "modx_wordmark"}
+  "MongoDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mongodb"}
+  "MongoDB Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mongodb_wordmark"}
+  "Moodle"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "moodle"}
+  "Moodle Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "moodle_wordmark"}
+  "MySQL"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mysql"}
+  "MySQL Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mysql_wordmark"}
+  "Nestjs"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nestjs"}
+  "NestJS Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nestjs_wordmark"}
   "NextJS Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nextjs_line"}
-  "R"                              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "r"}
-  "Confluence Original"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "confluence_original"}
-  "Docker"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "docker"}
+  "NextJS Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nextjs_original"}
+  "NextJS Original Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nextjs_original_wordmark"}
+  "Nginx Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nginx_original"}
+  "Nixos"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nixos"}
+  "Nixos Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nixos_wordmark"}
+  "Nodejs"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodejs"}
+  "Nodejs Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodejs_wordmark"}
+  "Nodewebkit"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit"}
+  "Nodewebkit Line"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_line"}
+  "Nodewebkit Line Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_line_wordmark"}
+  "Nodewebkit Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_wordmark"}
+  "Npm Original Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "npm_original_wordmark"}
+  "ObjectiveC"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "objectivec"}
+  "OCaml"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ocaml"}
+  "OCaml Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ocaml_wordmark"}
+  "Oracle Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "oracle_original"}
+  "Perl"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "perl"}
   "Phalcon"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phalcon"}
   "Phoenix"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phoenix"}
-  "WooCommerce Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "woocommerce_wordmark"}
-  "PHP"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "php"}
-  "Go Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "go_line"}
-  "Inkscape Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "inkscape_wordmark"}
-  "Dot Net Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dot_net_wordmark"}
-  "Sass Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sass_original"}
-  "VueJS Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_line"}
-  "Zend Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zend_wordmark"}
-  "Yarn"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yarn"}
-  "Gatsby"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatsby"}
-  "KrakenJS Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "krakenjs_wordmark"}
-  "Linux"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "linux"}
-  "Haskell Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haskell_wordmark"}
-  "C"                              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "c"}
-  "Amazon Web Services Original"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "amazonwebservices_original"}
-  "Haxe"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haxe"}
-  "Express Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "express_original"}
-  "MongoDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mongodb"}
-  "Tailwindcss Original Wordmark"  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tailwindcss_original_wordmark"}
-  "Salesforce"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "salesforce"}
-  "PHPstorm"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phpstorm"}
-  "Illustrator"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "illustrator"}
-  "Gatsby Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatsby_wordmark"}
-  "Protractor Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "protractor_wordmark"}
-  "Perl"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "perl"}
-  "Digitalocean Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "digitalocean_wordmark"}
-  "Bootstrap"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bootstrap"}
-  "Unix Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "unix_original"}
-  "C#"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "csharp"}
-  "Labview Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "labview_wordmark"}
-  "WooCommerce"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "woocommerce"}
-  "Gatling Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gatling_wordmark"}
-  "VisualStudio Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "visualstudio_wordmark"}
-  "Html5"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "html5"}
-  "Kotlin Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "kotlin_wordmark"}
-  "Rails"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rails"}
-  "Doctrine"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "doctrine"}
-  "Julia"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "julia"}
-  "Lua"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "lua"}
-  "RocksDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rocksdb"}
-  "Jasmine"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jasmine"}
-  "Atom Original Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "atom_original_wordmark"}
-  "Android"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "android"}
-  "IntelliJ"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "intellij"}
-  "Confluence Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "confluence_original_wordmark"}
-  "Less Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "less_wordmark"}
-  "Firebase Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firebase_wordmark"}
-  "Apple Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apple_original"}
-  "Premierepro"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "premierepro"}
-  "Scala"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "scala"}
-  "Modx"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "modx"}
-  "VS Code"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vscode"}
-  "Ruby Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ruby_wordmark"}
-  "Bitbucket Original Wordmark"    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bitbucket_original_wordmark"}
-  "Electron Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "electron_original"}
-  "React Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "react_original_wordmark"}
-  "Foundation"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "foundation"}
-  "Mocha"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "mocha"}
-  "VueJS Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_wordmark"}
-  "Elm Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elm_wordmark"}
-  "Zig Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zig_wordmark"}
-  "Wordpress Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "wordpress_wordmark"}
-  "Nginx Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nginx_original"}
-  "Sourcetree Original"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sourcetree_original"}
-  "Oracle Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "oracle_original"}
-  "Bower Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bower_line_wordmark"}
-  "Yii Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yii_wordmark"}
-  "Pycharm"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "pycharm"}
-  "Slack Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "slack_wordmark"}
-  "Debian Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "debian_wordmark"}
-  "Chrome"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "chrome"}
-  "Express Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "express_original_wordmark"}
-  "Laravel"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "laravel"}
-  "NextJS Original Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nextjs_original_wordmark"}
-  "Gradle Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gradle_wordmark"}
-  "OCaml Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ocaml_wordmark"}
-  "Coffeescript Original Wordmark" {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "coffeescript_original_wordmark"}
   "Phoenix Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phoenix_wordmark"}
-  "Trello"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "trello"}
-  "Safari Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_line_wordmark"}
-  "Typescript"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typescript"}
-  "Cucumber"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cucumber"}
-  "Sequelize"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sequelize"}
-  "Haskell"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "haskell"}
-  "Vim"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vim"}
-  "Xd"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "xd"}
-  "Lua Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "lua_wordmark"}
-  "Aftereffects"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "aftereffects"}
-  "Heroku Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_wordmark"}
-  "Gradle"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gradle"}
-  "Heroku Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "heroku_line_wordmark"}
-  "Moodle"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "moodle"}
-  "Clojurescript"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "clojurescript"}
-  "Yunohost"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yunohost"}
-  "SSH Original Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ssh_original_wordmark"}
-  "Vagrant Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vagrant_wordmark"}
-  "Java"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "java"}
-  "CircleCI Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "circleci_wordmark"}
-  "JQuery Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jquery_wordmark"}
-  "Rubymine Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rubymine_wordmark"}
-  "Swift Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "swift_wordmark"}
-  "Coffeescript Original"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "coffeescript_original"}
-  "CakePHP Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cakephp_wordmark"}
-  "Bootstrap Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bootstrap_wordmark"}
-  "Grunt Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_wordmark"}
-  "Tensorflow Line"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_line"}
-  "Labview"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "labview"}
-  "Windows8 Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "windows8_original"}
-  "Erlang"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "erlang"}
-  "Nestjs"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nestjs"}
-  "TheAlgorithms"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "thealgorithms"}
-  "Github Original Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "github_original_wordmark"}
-  "Jest"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "jest"}
-  "Firefox Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firefox_wordmark"}
-  "Nodewebkit Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodewebkit_wordmark"}
-  "Matlab"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "matlab"}
-  "GraphQL"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "graphql"}
-  "Grunt Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "grunt_line"}
-  "Vuestorefront"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuestorefront"}
-  "Shopware Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "shopware_original_wordmark"}
-  "Atom Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "atom_original"}
-  "DotNet Core"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dotnetcore"}
-  "Java Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "java_wordmark"}
-  "C# Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "csharp_line"}
-  "Appcelerator Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appcelerator_wordmark"}
-  "Elm"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elm"}
-  "Meteor Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "meteor_wordmark"}
-  "Magento Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "magento_original"}
-  "Tensorflow Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_original_wordmark"}
-  "Ionic Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ionic_original_wordmark"}
-  "Gitter Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitter_wordmark"}
-  "DotNet"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "dot_net"}
-  "Groovy"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "groovy"}
-  "Crystal Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "crystal_original_wordmark"}
-  "F#"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "fsharp"}
-  "Apache Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "apache_line"}
-  "Webstorm"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webstorm"}
-  "Ionic Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ionic_original"}
+  "Photoshop"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "photoshop"}
+  "Photoshop Line"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "photoshop_line"}
+  "PHP"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "php"}
+  "PHPstorm"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phpstorm"}
+  "PHPstorm Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "phpstorm_wordmark"}
   "PostgreSQL"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "postgresql"}
-  "Rubymine"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rubymine"}
-  "Matlab Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "matlab_line"}
-  "CouchDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "couchdb"}
-  "Aarch64"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "aarch64"}
-  "D3JS"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "d3js"}
-  "C++"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cplusplus"}
-  "Weblate Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "weblate_wordmark"}
-  "Go"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "go"}
-  "Meteor"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "meteor"}
-  "Nodejs"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nodejs"}
-  "Cakephp"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "cakephp"}
-  "Bash"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "bash"}
-  "Flutter"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "flutter"}
-  "Clojure Line"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "clojure_line"}
-  "CouchDB Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "couchdb_wordmark"}
-  "Vagrant"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vagrant"}
-  "Gitter"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "gitter"}
-  "GraphQL Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "graphql_wordmark"}
-  "Django"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "django"}
+  "PostgreSQL Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "postgresql_wordmark"}
+  "Premierepro"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "premierepro"}
+  "Protractor"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "protractor"}
+  "Protractor Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "protractor_wordmark"}
+  "Pycharm"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "pycharm"}
+  "Pycharm Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "pycharm_wordmark"}
+  "Python"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "python"}
+  "Python Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "python_wordmark"}
+  "Rails"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rails"}
+  "Rails Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rails_wordmark"}
+  "Raspberry Pi Line"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "raspberrypi_line"}
+  "Raspberry Pi Line Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "raspberrypi_line_wordmark"}
+  "React Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "react_original"}
+  "React Original Wordmark"        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "react_original_wordmark"}
+  "Redhat"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redhat"}
+  "Redhat Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redhat_wordmark"}
+  "Redis"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redis"}
   "Redis Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redis_wordmark"}
-  "TailwindCSS"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tailwindcss"}
-  "Trello Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "trello_wordmark"}
-  "Karma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "karma"}
-  "Firefox"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "firefox"}
-  "Figma"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "figma"}
-  "Appcelerator Original"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appcelerator_original"}
-  "Symfony Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "symfony_original"}
-  "KrakenJS"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "krakenjs"}
-  "Webpack Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webpack_wordmark"}
-  "SQLalchemy"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sqlalchemy"}
+  "Redux Original"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "redux_original"}
+  "R"                              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "r"}
+  "RocksDB"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rocksdb"}
+  "R Original"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "r_original"}
   "R Studio"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rstudio"}
-  "Tensorflow Line Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_line_wordmark"}
+  "Ruby"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ruby"}
+  "Rubymine"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rubymine"}
+  "Rubymine Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rubymine_wordmark"}
+  "Ruby Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ruby_wordmark"}
+  "Rust"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "rust"}
+  "Safari"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari"}
+  "Safari Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_line"}
+  "Safari Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_line_wordmark"}
+  "Safari Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "safari_wordmark"}
+  "Salesforce"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "salesforce"}
+  "Sass Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sass_original"}
+  "Scala"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "scala"}
+  "Scala Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "scala_wordmark"}
+  "Sequelize"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sequelize"}
   "Sequelize Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sequelize_wordmark"}
-  "NestJS Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nestjs_wordmark"}
-  "CircleCI"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "circleci"}
-  "Appwrite"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "appwrite"}
-  "Elixir Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "elixir_wordmark"}
-  "Nixos Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "nixos_wordmark"}
-  "Travis"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "travis"}
-  "Google Cloud"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "googlecloud"}
+  "Shopware Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "shopware_original"}
+  "Shopware Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "shopware_original_wordmark"}
+  "Sketch Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sketch_line"}
+  "Sketch Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sketch_line_wordmark"}
+  "Slack"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "slack"}
+  "Slack Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "slack_wordmark"}
+  "Sourcetree Original"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sourcetree_original"}
+  "Sourcetree Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sourcetree_original_wordmark"}
+  "Spring"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spring"}
+  "Spring Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spring_wordmark"}
+  "SPSS"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "spss"}
+  "SQLalchemy"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sqlalchemy"}
+  "SQLalchemy Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "sqlalchemy_original_wordmark"}
+  "SSH Original"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ssh_original"}
+  "SSH Original Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ssh_original_wordmark"}
+  "Stylus Original"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "stylus_original"}
+  "Swift"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "swift"}
+  "Swift Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "swift_wordmark"}
+  "Symfony Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "symfony_original"}
+  "Symfony Original Wordmark"      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "symfony_original_wordmark"}
+  "TailwindCSS"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tailwindcss"}
+  "Tailwindcss Original Wordmark"  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tailwindcss_original_wordmark"}
+  "Tensorflow Line"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_line"}
+  "Tensorflow Line Wordmark"       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_line_wordmark"}
   "Tensorflow Original"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_original"}
+  "Tensorflow Original Wordmark"   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tensorflow_original_wordmark"}
+  "TheAlgorithms"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "thealgorithms"}
+  "Thealgorithms Wordmark"         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "thealgorithms_wordmark"}
+  "Tomcat Line"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tomcat_line"}
+  "Tomcat Line Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "tomcat_line_wordmark"}
+  "Travis"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "travis"}
+  "Travis Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "travis_wordmark"}
+  "Trello"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "trello"}
+  "Trello Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "trello_wordmark"}
+  "Twitter Original"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "twitter_original"}
+  "Typescript"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typescript"}
+  "Typo3"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typo3"}
+  "Typo3 Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "typo3_wordmark"}
+  "Ubuntu"                         {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ubuntu"}
+  "Ubuntu Wordmark"                {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "ubuntu_wordmark"}
+  "Unix Original"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "unix_original"}
+  "Uwsgi"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "uwsgi"}
+  "Vagrant"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vagrant"}
+  "Vagrant Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vagrant_wordmark"}
+  "Vim"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vim"}
+  "VisualStudio"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "visualstudio"}
+  "VisualStudio Wordmark"          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "visualstudio_wordmark"}
+  "VS Code"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vscode"}
+  "VS Code Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vscode_wordmark"}
+  "VueJS"                          {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs"}
+  "VueJS Line"                     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_line"}
+  "VueJS Line Wordmark"            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_line_wordmark"}
+  "VueJS Wordmark"                 {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuejs_wordmark"}
+  "Vuestorefront"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "vuestorefront"}
+  "Weblate"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "weblate"}
+  "Weblate Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "weblate_wordmark"}
+  "Webpack"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webpack"}
+  "Webpack Wordmark"               {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webpack_wordmark"}
+  "Webstorm"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webstorm"}
+  "Webstorm Wordmark"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "webstorm_wordmark"}
+  "Windows8 Original"              {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "windows8_original"}
+  "Windows8 Original Wordmark"     {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "windows8_original_wordmark"}
+  "WooCommerce"                    {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "woocommerce"}
+  "WooCommerce Wordmark"           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "woocommerce_wordmark"}
+  "Wordpress"                      {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "wordpress"}
+  "Wordpress Wordmark"             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "wordpress_wordmark"}
+  "Xd"                             {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "xd"}
+  "XD Line"                        {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "xd_line"}
+  "Yarn"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yarn"}
+  "Yarn Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yarn_wordmark"}
+  "Yii"                            {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yii"}
+  "Yii Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yii_wordmark"}
+  "Yunohost"                       {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "yunohost"}
+  "Zend"                           {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zend"}
+  "Zend Wordmark"                  {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zend_wordmark"}
+  "Zig Original"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zig_original"}
+  "Zig Wordmark"                   {:lib "devicons2" :prefix "tupadr3" :path "devicons2" :name "zig_wordmark"}
 }
