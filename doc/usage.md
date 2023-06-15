@@ -29,7 +29,7 @@ syntax check and syntax highlighting.
 The model and diagram descriptions of the C4 model banking example can be
 found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
- * [viewss.edn](/models/banking/views.edn)
+ * [views.edn](/models/banking/views.edn)
 
 
 Models
