@@ -237,7 +237,11 @@ Installation
 
 If you have a clojure environment in some editor or IDE, just use it. Maybe a PlantUML plugin exists for this environment too.
 
-If not, try Visual Studio Code with the Calva and PlantUML extensions.
+If not, try Visual Studio Code with the **Calva** and **PlantUML** extensions.
+
+![Calva Extension](/doc/images/vscode_calva_ext.png)
+![PlantUML Extension](/doc/images/vscode_plantuml_ext.png)
+
 With this setup you get an editor for the EDN files with code completion,
 syntax check and syntax highlighting.
 
@@ -249,17 +253,19 @@ directly from within Visual Studio Code.
 
 ![PlantUML preview](/doc/images/overarch_plantuml_preview.png)
 
-To get support for icons (PlantUML sprites) from the PlantUML standard library, a recent **plantuml.jar** is highly recommended. Please download it from [](PlantUML Releases) and reference it in the PlantUML extension settings.
+PlantUML also needs an installation of [graphviz](https://graphviz.org/download/).
+Please read the installation instructions in the PlantUML extension on how to
+install graphviz for your operating system.
 
-![PlantUML Extension Settings]()
+To get support for icons (PlantUML sprites) from the PlantUML standard library, a recent **plantuml.jar** is highly recommended. Please download it from [PlantUML Releases](https://github.com/plantuml/plantuml/releases) and reference it in the PlantUML extension settings.
 
-
+![PlantUML Extension Settings](/doc/images/vscode_plantuml_ext_settings.png)
 
 
 Usage
 -----
 
-Use a folder for all the data (e.g. models, view specifications).
+Use a folder for all the data (e.g. models, view specifications) of a project.
 Add EDN files for the model and the view specifications. All the EDN files in the folder will be loaded.
 
 ### Command Line Interface
@@ -273,13 +279,17 @@ Overarch currently supports these options
 ```
 Options:
 
+  Option                    Default   Description
+
   -m, --model-dir DIRNAME   models    Model directory
   -e, --export-dir DIRNAME  export    Export directory
   -w, --watch                         Watch model dir for changes and trigger export
   -f, --format FORMAT       plantuml  Export format (json, plantuml, structurizr)
-  -h, --help                          Print help
+  -h, --help                          Print help message
       --debug                         Print debug messages
 ```
+
+If you use Visual Studio Code as described above, you can start *overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
 
 
 Copyright

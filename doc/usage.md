@@ -23,13 +23,13 @@ If not, try Visual Studio Code with the Calva and PlantUML extensions.
 With this setup you get an editor for the EDN files with code completion,
 syntax check and syntax highlighting.
 
-![Model editing](/doc/overarch_vscode_model.png)
+![Model editing](/doc/images/overarch_vscode_model.png)
 
 ### Examples
 The model and diagram descriptions of the C4 model banking example can be
 found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
- * [diagrams.edn](/models/banking/diagrams.edn)
+ * [viewss.edn](/models/banking/views.edn)
 
 
 Models
@@ -164,17 +164,17 @@ The core C4 views form a hierarchy.
 #### System Context Views
 Shows the system in the context of the actors and other systems it is interacting with. Contains users, external systems and the system to be described.
 
-![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
+![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
 
 #### Container Views
 Shows the containers (e.g. processes, deployment units of the system) and the interactions between them and the outside world. Contains the elements of the system context diagram and the containers of the system to be described. The system to be described is rendered as a system boundary in the container diagram.
 
-![Container View rendered with PlantUML](/doc/banking_containerView.svg)
+![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
 
 #### Component Views
 Shows the components and their interactions inside of a container.
 
-![Component View rendered with PlantUML](/doc/banking_apiComponentView.svg)
+![Component View rendered with PlantUML](/doc/images/banking_apiComponentView.svg)
 
 #### Code Views
 Not supported
@@ -182,12 +182,12 @@ Not supported
 #### System Landscape Views
 Shows a broader system landscape and the interactions of the systems.
 
-![System Landscape View rendered with PlantUML](/doc/banking_systemLandscapeView.svg)
+![System Landscape View rendered with PlantUML](/doc/images/banking_systemLandscapeView.svg)
 
 #### Deployment Views
 Shows the infrastucture and deployment of the containers of the system.
 
-![Deployment View rendered with PlantUML](/doc/banking_deploymentView.svg)
+![Deployment View rendered with PlantUML](/doc/images/banking_deploymentView.svg)
 
 #### Dynamic Views
 Shows the order of some interactions.
@@ -210,9 +210,7 @@ You can specify PlantUML specific directives with the **:plantuml** key of a
 view spec.
 
 ```
-   :spec {:plantuml {:local-imports true
-                     :sprite-libs [:azure]}}
-
+   :spec {:plantuml {:sprite-libs [:azure]}}
 ```
 
 #### Sprite Support
@@ -229,7 +227,7 @@ reside in [resources/plantuml](/resources/plantuml).
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
 diagrams right from the IDE.
 
-![PlantUML preview](/doc/overarch_plantuml_preview.png)
+![PlantUML preview](/doc/images/overarch_plantuml_preview.png)
 
 PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Eclipse, Maven, Leiningen).
 
@@ -237,7 +235,6 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 
 ### Structurizr
 Structurizr is a tool set created by Simon Brown. 
-
 
 
 Command Line Interface
