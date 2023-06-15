@@ -1,4 +1,4 @@
-![overarch - Image © 2019 Ludger Solbach](/doc/overarch.jpg)
+![overarch - Image © 2019 Ludger Solbach](/doc/images/overarch.jpg)
 
 Overarch
 ========
@@ -147,7 +147,6 @@ The complete model and diagram specifications can be found under
 ```clojure
 #{{:el :context-view
   :id :banking/system-context-view
-  :spec {:legend true}
   :title "System Context View of the Internet Banking System"
   :ct [; model elements
        {:ref :banking/personal-customer}
@@ -163,7 +162,6 @@ The complete model and diagram specifications can be found under
 
  {:el :container-view
   :id :banking/container-view
-  :spec {:legend true}
   :title "Container View of the Internet Banking System"
   :ct [; model elements
        {:ref :banking/personal-customer}
@@ -209,15 +207,15 @@ SHOW_LEGEND()
 ```
 
 ### System Context View rendered with PlantUML
-![System Context View rendered with PlantUML](/doc/banking_systemContextView.svg)
+![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
 
 ### Container View rendered with PlantUML
-![Container View rendered with PlantUML](/doc/banking_containerView.svg)
+![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
 
 
 Build
 -----
-Overarch is written in [Clojure](https://clojure.org) and build with
+Overarch is written in [Clojure](https://clojure.org) and gets built with
 [leiningen](https://leiningen.org/). To build it, you need to have Java 11 or higher
 and leiningen installed.
 
@@ -227,30 +225,44 @@ In the cloned overarch repository, run
 lein uberjar
 ```
 
-to build a JAR file with all dependencies.
+to build a JAR file with all dependencies. This JAR file is created in the *target* folder and is named *overarch.jar*
+
 See Usage on how to run it with it's CLI interface.
 
 
-Usage
------
-If you have a clojure environment in some editor or IDE, just use it.
+Installation
+------------
+
+### Visual Studio Code
+
+If you have a clojure environment in some editor or IDE, just use it. Maybe a PlantUML plugin exists for this environment too.
+
 If not, try Visual Studio Code with the Calva and PlantUML extensions.
 With this setup you get an editor for the EDN files with code completion,
 syntax check and syntax highlighting.
 
-![Model editing](/doc/overarch_vscode_model.png)
+![Model editing](/doc/images/overarch_vscode_model.png)
 
 You also get integrated previews of the exported PlantUML diagrams and the
 ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
 directly from within Visual Studio Code.
 
-![PlantUML preview](/doc/overarch_plantuml_preview.png)
+![PlantUML preview](/doc/images/overarch_plantuml_preview.png)
 
-Use a folder for all the data (e.g. models, diagram specifications).
-Add EDN files for the model and the diagram specifications and other representations.
-All the EDN files in the folder will be loaded.
+To get support for icons (PlantUML sprites) from the PlantUML standard library, a recent **plantuml.jar** is highly recommended. Please download it from [](PlantUML Releases) and reference it in the PlantUML extension settings.
 
-Command Line Interface
+![PlantUML Extension Settings]()
+
+
+
+
+Usage
+-----
+
+Use a folder for all the data (e.g. models, view specifications).
+Add EDN files for the model and the view specifications. All the EDN files in the folder will be loaded.
+
+### Command Line Interface
 
 ```
 java -jar overarch.jar [options]
