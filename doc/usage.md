@@ -42,7 +42,8 @@ syntax check and syntax highlighting.
 ### EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
 literals for scalar and composite data types. It is also a subset of the
-Clojure language textual format. Therefore Clojure plugins/extensions for editors or IDEs provide syntax checking/highlighting and code completion.
+Clojure language textual format. Therefore Clojure plugins/extensions for
+editors or IDEs provide syntax checking/highlighting and code completion.
 
 Compared to JSON, EDN provides a richer set of data literals, e.g. integer and floating point numbers, big integers and decimals, strings, symbols and keywords.
 It also provides literals for list, vectors (arrays), sets and maps.
@@ -50,6 +51,9 @@ It also provides literals for list, vectors (arrays), sets and maps.
 The following literals are used in Overarch models and views.
 
 #### Strings
+Strings are used e.g. as names and descriptions of model elements and for the
+title of views.
+
 ```clojure
 "This is a string"
 
@@ -59,22 +63,41 @@ string"
 ```
 
 #### Keywords
+Keywords are used as keys in the maps for model elements and views. They are also
+used as identifiers for model elements and views.
+
+Keywords can be prefixed with a namespace to avoid collisions with keywords for
+other models, which is especially relevant for identifiers or for custom keys
+in the model elements and views.
+
 ```clojure
 :keyword
 :namespaced/keyword
 ```
 
 #### Sets
+Sets are unordered collections of elements without duplicates. They are used as
+top level collections for the model elements and views. They are also used
+as a container for the children of model elements.
+
 ```clojure
 #{"a" "b" "c"}
 ```
 
 #### Maps
+Maps are associative collections of key/value pairs. They are used to describe
+the attributes of model elements and views.
+
 ```clojure
 {:firstname "John" :lastname "Doe" :age 42}
 ```
 
 #### Vectors
+Vectors are ordered collections of elements which may contain an element
+multiple times. They are used for the elements as content of a view because
+the ordering of the elements may be relevant for the rendering of the view
+(e.g. in PlantUML).
+
 ```clojure
 [1 2 3 4]
 ["John" "Doe"]
