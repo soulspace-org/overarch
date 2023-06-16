@@ -340,8 +340,3 @@ Options:
  ```
 
 
-
-Integration
------------
-
-
