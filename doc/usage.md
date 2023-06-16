@@ -15,6 +15,20 @@ conversion of the data to JSON.
 Features
 --------
 
+* models and views as data
+  * C4 model elements and views
+  * hierarchical models
+  * separation of models and views
+  * extensible format
+  * view specific customization of model elements
+* exports
+  * JSON
+  * PlantUML/C4
+    * all views (except code view)
+    * styling and sprite support
+  * Structurizr
+* watch model directory for changes
+
 
 Modelling
 ---------
@@ -24,6 +38,49 @@ With this setup you get an editor for the EDN files with code completion,
 syntax check and syntax highlighting.
 
 ![Model editing](/doc/images/overarch_vscode_model.png)
+
+### EDN Basics
+The Extensible Data Notation EDN is a data notation with a rich set of
+literals for scalar and composite data types. It is also a subset of the
+Clojure language textual format. Therefore Clojure plugins/extensions for editors or IDEs provide syntax checking/highlighting and code completion.
+
+Compared to JSON, EDN provides a richer set of data literals, e.g. integer and floating point numbers, big integers and decimals, strings, symbols and keywords.
+It also provides literals for list, vectors (arrays), sets and maps.
+
+The following literals are used in Overarch models and views.
+
+#### Strings
+```clojure
+"This is a string"
+
+"This is
+a multiline
+string"
+```
+
+#### Keywords
+```clojure
+:keyword
+:namespaced/keyword
+```
+
+#### Sets
+```clojure
+#{"a" "b" "c"}
+```
+
+#### Maps
+```clojure
+{:firstname "John" :lastname "Doe" :age 42}
+```
+
+#### Vectors
+```clojure
+[1 2 3 4]
+["John" "Doe"]
+```
+
+For more information see the [EDN specification](https://github.com/edn-format/edn).
 
 ### Examples
 The model and diagram descriptions of the C4 model banking example can be
@@ -54,7 +111,6 @@ keywords, so that different modelscan be composed without collisions of the
 identifiers.
 
 
-
 ### Model Elements
 
 #### Persons
@@ -78,7 +134,7 @@ infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
 #### Relations
-Relations describe the interacions of the parts of a view.
+Relations describe the connections and interactions of the parts of a view.
 
 
 Example (exerpt from the banking model containing context and container
@@ -215,8 +271,8 @@ view spec.
 
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
-the elements of a diagram. It does so by matching the value of the **:tech**
-key of a model element to the list of sprites.
+the elements of a diagram.
+It does so by matching the value of the **:tech** key of a model element to the list of sprites.
 
 The list of sprites contains sprites of the PlantUML standard library, e.g.
 sprites for AWS and Azure. The mapping files from tech name to sprite
