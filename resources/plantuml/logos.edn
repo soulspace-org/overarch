@@ -1012,164 +1012,164 @@
   "Svelte Icon"               {:lib "logos" :prefix "logos" :path "" :name "svelte-icon"}
   "Svelte"                    {:lib "logos" :prefix "logos" :path "" :name "svelte"}
   "SVG"                       {:lib "logos" :prefix "logos" :path "" :name "svg"}
-  "Swagger" {:lib "logos" :prefix "logos" :path "" :name "swagger"}
-  "Swift" {:lib "logos" :prefix "logos" :path "" :name "swift"}
-  "Swiftype" {:lib "logos" :prefix "logos" :path "" :name "swiftype"}
-  "Symfony" {:lib "logos" :prefix "logos" :path "" :name "symfony"}
-  "Sysdig" {:lib "logos" :prefix "logos" :path "" :name "sysdig"}
-  "T3" {:lib "logos" :prefix "logos" :path "" :name "t3"}
-  "Taiga" {:lib "logos" :prefix "logos" :path "" :name "taiga"}
-  "Tailwindcss Icon" {:lib "logos" :prefix "logos" :path "" :name "tailwindcss-icon"}
-  "Tailwindcss" {:lib "logos" :prefix "logos" :path "" :name "tailwindcss"}
-  "Tapcart" {:lib "logos" :prefix "logos" :path "" :name "tapcart"}
-  "Targetprocess" {:lib "logos" :prefix "logos" :path "" :name "targetprocess"}
-  "Tastejs" {:lib "logos" :prefix "logos" :path "" :name "tastejs"}
-  "Tealium" {:lib "logos" :prefix "logos" :path "" :name "tealium"}
-  "Teamgrid" {:lib "logos" :prefix "logos" :path "" :name "teamgrid"}
-  "Teamwork Icon" {:lib "logos" :prefix "logos" :path "" :name "teamwork-icon"}
-  "Teamwork" {:lib "logos" :prefix "logos" :path "" :name "teamwork"}
-  "Tectonic" {:lib "logos" :prefix "logos" :path "" :name "tectonic"}
-  "Telegram" {:lib "logos" :prefix "logos" :path "" :name "telegram"}
-  "Tensorflow" {:lib "logos" :prefix "logos" :path "" :name "tensorflow"}
-  "Terminal" {:lib "logos" :prefix "logos" :path "" :name "terminal"}
-  "Terraform" {:lib "logos" :prefix "logos" :path "" :name "terraform"}
-  "Testlodge" {:lib "logos" :prefix "logos" :path "" :name "testlodge"}
-  "Testmunk" {:lib "logos" :prefix "logos" :path "" :name "testmunk"}
-  "Thimble" {:lib "logos" :prefix "logos" :path "" :name "thimble"}
-  "Titon" {:lib "logos" :prefix "logos" :path "" :name "titon"}
-  "Tnw" {:lib "logos" :prefix "logos" :path "" :name "tnw"}
-  "Todoist Icon" {:lib "logos" :prefix "logos" :path "" :name "todoist-icon"}
-  "Todoist" {:lib "logos" :prefix "logos" :path "" :name "todoist"}
-  "Todomvc" {:lib "logos" :prefix "logos" :path "" :name "todomvc"}
-  "Tomcat" {:lib "logos" :prefix "logos" :path "" :name "tomcat"}
-  "Torus" {:lib "logos" :prefix "logos" :path "" :name "torus"}
-  "Traackr" {:lib "logos" :prefix "logos" :path "" :name "traackr"}
-  "Trac" {:lib "logos" :prefix "logos" :path "" :name "trac"}
-  "Travis Ci" {:lib "logos" :prefix "logos" :path "" :name "travis-ci"}
-  "Travis Ci Monochrome" {:lib "logos" :prefix "logos" :path "" :name "travis-ci-monochrome"}
-  "Treasuredata" {:lib "logos" :prefix "logos" :path "" :name "treasuredata"}
-  "Treehouse" {:lib "logos" :prefix "logos" :path "" :name "treehouse"}
-  "Trello" {:lib "logos" :prefix "logos" :path "" :name "trello"}
-  "Tsu" {:lib "logos" :prefix "logos" :path "" :name "tsu"}
-  "Tsuru" {:lib "logos" :prefix "logos" :path "" :name "tsuru"}
-  "Tumblr Icon" {:lib "logos" :prefix "logos" :path "" :name "tumblr-icon"}
-  "Tumblr" {:lib "logos" :prefix "logos" :path "" :name "tumblr"}
-  "Tunein" {:lib "logos" :prefix "logos" :path "" :name "tunein"}
-  "Turret" {:lib "logos" :prefix "logos" :path "" :name "turret"}
-  "Tutsplus" {:lib "logos" :prefix "logos" :path "" :name "tutsplus"}
-  "Tutum" {:lib "logos" :prefix "logos" :path "" :name "tutum"}
-  "Tux" {:lib "logos" :prefix "logos" :path "" :name "tux"}
-  "Twilio" {:lib "logos" :prefix "logos" :path "" :name "twilio"}
-  "Twitch" {:lib "logos" :prefix "logos" :path "" :name "twitch"}
-  "Twitter" {:lib "logos" :prefix "logos" :path "" :name "twitter"}
-  "Typeform Icon" {:lib "logos" :prefix "logos" :path "" :name "typeform-icon"}
-  "Typeform" {:lib "logos" :prefix "logos" :path "" :name "typeform"}
-  "Typescript Icon" {:lib "logos" :prefix "logos" :path "" :name "typescript-icon"}
-  "Typescript" {:lib "logos" :prefix "logos" :path "" :name "typescript"}
-  "Ubuntu" {:lib "logos" :prefix "logos" :path "" :name "ubuntu"}
-  "Udacity" {:lib "logos" :prefix "logos" :path "" :name "udacity"}
-  "Udemy" {:lib "logos" :prefix "logos" :path "" :name "udemy"}
-  "Uikit" {:lib "logos" :prefix "logos" :path "" :name "uikit"}
-  "Umu" {:lib "logos" :prefix "logos" :path "" :name "umu"}
-  "Unbounce" {:lib "logos" :prefix "logos" :path "" :name "unbounce"}
-  "Undertow" {:lib "logos" :prefix "logos" :path "" :name "undertow"}
-  "Unionpay" {:lib "logos" :prefix "logos" :path "" :name "unionpay"}
-  "Unitjs" {:lib "logos" :prefix "logos" :path "" :name "unitjs"}
-  "Unito" {:lib "logos" :prefix "logos" :path "" :name "unito"}
-  "Unity" {:lib "logos" :prefix "logos" :path "" :name "unity"}
-  "Upcase" {:lib "logos" :prefix "logos" :path "" :name "upcase"}
-  "Upwork" {:lib "logos" :prefix "logos" :path "" :name "upwork"}
-  "User Testing" {:lib "logos" :prefix "logos" :path "" :name "user-testing"}
-  "Uservoice" {:lib "logos" :prefix "logos" :path "" :name "uservoice"}
-  "V8 Ignition" {:lib "logos" :prefix "logos" :path "" :name "v8-ignition"}
-  "V8" {:lib "logos" :prefix "logos" :path "" :name "v8"}
-  "V8 Turbofan" {:lib "logos" :prefix "logos" :path "" :name "v8-turbofan"}
-  "Vaadin" {:lib "logos" :prefix "logos" :path "" :name "vaadin"}
-  "Vaddy" {:lib "logos" :prefix "logos" :path "" :name "vaddy"}
-  "Vagrant" {:lib "logos" :prefix "logos" :path "" :name "vagrant"}
-  "Vault" {:lib "logos" :prefix "logos" :path "" :name "vault"}
-  "Vernemq" {:lib "logos" :prefix "logos" :path "" :name "vernemq"}
-  "Victorops" {:lib "logos" :prefix "logos" :path "" :name "victorops"}
-  "Vimeo Icon" {:lib "logos" :prefix "logos" :path "" :name "vimeo-icon"}
-  "Vimeo" {:lib "logos" :prefix "logos" :path "" :name "vimeo"}
-  "Vim" {:lib "logos" :prefix "logos" :path "" :name "vim"}
-  "Vine" {:lib "logos" :prefix "logos" :path "" :name "vine"}
-  "Visaelectron" {:lib "logos" :prefix "logos" :path "" :name "visaelectron"}
-  "Visa" {:lib "logos" :prefix "logos" :path "" :name "visa"}
-  "Visual Studio Code" {:lib "logos" :prefix "logos" :path "" :name "visual-studio-code"}
-  "Visual Studio" {:lib "logos" :prefix "logos" :path "" :name "visual-studio"}
-  "Visual Website Optimizer" {:lib "logos" :prefix "logos" :path "" :name "visual_website_optimizer"}
-  "Vivaldi" {:lib "logos" :prefix "logos" :path "" :name "vivaldi"}
-  "Void" {:lib "logos" :prefix "logos" :path "" :name "void"}
-  "Vue" {:lib "logos" :prefix "logos" :path "" :name "vue"}
-  "Vuetifyjs" {:lib "logos" :prefix "logos" :path "" :name "vuetifyjs"}
-  "Vulkan" {:lib "logos" :prefix "logos" :path "" :name "vulkan"}
-  "Vultr" {:lib "logos" :prefix "logos" :path "" :name "vultr"}
-  "W3c" {:lib "logos" :prefix "logos" :path "" :name "w3c"}
-  "Waffle" {:lib "logos" :prefix "logos" :path "" :name "waffle"}
-  "Wagtail" {:lib "logos" :prefix "logos" :path "" :name "wagtail"}
-  "Wakatime" {:lib "logos" :prefix "logos" :path "" :name "wakatime"}
-  "Watchman" {:lib "logos" :prefix "logos" :path "" :name "watchman"}
-  "Weave" {:lib "logos" :prefix "logos" :path "" :name "weave"}
-  "Webassembly" {:lib "logos" :prefix "logos" :path "" :name "webassembly"}
-  "Webcomponents" {:lib "logos" :prefix "logos" :path "" :name "webcomponents"}
-  "Webflow" {:lib "logos" :prefix "logos" :path "" :name "webflow"}
-  "Webhooks" {:lib "logos" :prefix "logos" :path "" :name "webhooks"}
-  "Webmin" {:lib "logos" :prefix "logos" :path "" :name "webmin"}
-  "Webpack" {:lib "logos" :prefix "logos" :path "" :name "webpack"}
-  "Webplatform" {:lib "logos" :prefix "logos" :path "" :name "webplatform"}
-  "Webrtc" {:lib "logos" :prefix "logos" :path "" :name "webrtc"}
-  "Websocket" {:lib "logos" :prefix "logos" :path "" :name "websocket"}
-  "Webstorm" {:lib "logos" :prefix "logos" :path "" :name "webstorm"}
-  "Webtask" {:lib "logos" :prefix "logos" :path "" :name "webtask"}
-  "Webtorrent" {:lib "logos" :prefix "logos" :path "" :name "webtorrent"}
-  "Weebly" {:lib "logos" :prefix "logos" :path "" :name "weebly"}
-  "Wercker" {:lib "logos" :prefix "logos" :path "" :name "wercker"}
-  "Whalar" {:lib "logos" :prefix "logos" :path "" :name "whalar"}
-  "Whatsapp" {:lib "logos" :prefix "logos" :path "" :name "whatsapp"}
-  "Whatwg" {:lib "logos" :prefix "logos" :path "" :name "whatwg"}
-  "Wicket Icon" {:lib "logos" :prefix "logos" :path "" :name "wicket-icon"}
-  "Wicket" {:lib "logos" :prefix "logos" :path "" :name "wicket"}
-  "Wifi" {:lib "logos" :prefix "logos" :path "" :name "wifi"}
-  "Windows" {:lib "logos" :prefix "logos" :path "" :name "windows"}
-  "Wiredtree" {:lib "logos" :prefix "logos" :path "" :name "wiredtree"}
-  "Wire" {:lib "logos" :prefix "logos" :path "" :name "wire"}
-  "Wix" {:lib "logos" :prefix "logos" :path "" :name "wix"}
-  "Woocommerce" {:lib "logos" :prefix "logos" :path "" :name "woocommerce"}
-  "Woopra" {:lib "logos" :prefix "logos" :path "" :name "woopra"}
-  "Wordpress Icon" {:lib "logos" :prefix "logos" :path "" :name "wordpress-icon"}
-  "Wordpress" {:lib "logos" :prefix "logos" :path "" :name "wordpress"}
-  "Workboard" {:lib "logos" :prefix "logos" :path "" :name "workboard"}
-  "Wpengine" {:lib "logos" :prefix "logos" :path "" :name "wpengine"}
-  "Wufoo" {:lib "logos" :prefix "logos" :path "" :name "wufoo"}
-  "Xamarin" {:lib "logos" :prefix "logos" :path "" :name "xamarin"}
-  "Xampp" {:lib "logos" :prefix "logos" :path "" :name "xampp"}
-  "Xcart" {:lib "logos" :prefix "logos" :path "" :name "xcart"}
-  "Xero" {:lib "logos" :prefix "logos" :path "" :name "xero"}
-  "Xplenty" {:lib "logos" :prefix "logos" :path "" :name "xplenty"}
-  "X Ray Goggles" {:lib "logos" :prefix "logos" :path "" :name "x-ray-goggles"}
-  "Xtend" {:lib "logos" :prefix "logos" :path "" :name "xtend"}
-  "Xwiki" {:lib "logos" :prefix "logos" :path "" :name "xwiki"}
-  "Yahoo" {:lib "logos" :prefix "logos" :path "" :name "yahoo"}
-  "Yammer" {:lib "logos" :prefix "logos" :path "" :name "yammer"}
-  "Yandex Ru" {:lib "logos" :prefix "logos" :path "" :name "yandex-ru"}
-  "Yarn" {:lib "logos" :prefix "logos" :path "" :name "yarn"}
-  "Ycombinator" {:lib "logos" :prefix "logos" :path "" :name "ycombinator"}
-  "Yeoman" {:lib "logos" :prefix "logos" :path "" :name "yeoman"}
-  "Yii" {:lib "logos" :prefix "logos" :path "" :name "yii"}
-  "Youtrack" {:lib "logos" :prefix "logos" :path "" :name "youtrack"}
-  "Youtube" {:lib "logos" :prefix "logos" :path "" :name "youtube"}
-  "Zapier" {:lib "logos" :prefix "logos" :path "" :name "zapier"}
-  "Zeit Icon" {:lib "logos" :prefix "logos" :path "" :name "zeit-icon"}
-  "Zeit" {:lib "logos" :prefix "logos" :path "" :name "zeit"}
-  "Zendesk" {:lib "logos" :prefix "logos" :path "" :name "zendesk"}
-  "Zend Framework" {:lib "logos" :prefix "logos" :path "" :name "zend-framework"}
-  "Zenhub" {:lib "logos" :prefix "logos" :path "" :name "zenhub"}
-  "Zeplin" {:lib "logos" :prefix "logos" :path "" :name "zeplin"}
-  "Zest" {:lib "logos" :prefix "logos" :path "" :name "zest"}
-  "Zigbee" {:lib "logos" :prefix "logos" :path "" :name "zigbee"}
-  "Zoho" {:lib "logos" :prefix "logos" :path "" :name "zoho"}
-  "Zube" {:lib "logos" :prefix "logos" :path "" :name "zube"}
-  "Zulip" {:lib "logos" :prefix "logos" :path "" :name "zulip"}
-  "Zwave" {:lib "logos" :prefix "logos" :path "" :name "zwave"}
+  "Swagger"                   {:lib "logos" :prefix "logos" :path "" :name "swagger"}
+  "Swift"                     {:lib "logos" :prefix "logos" :path "" :name "swift"}
+  "Swiftype"                  {:lib "logos" :prefix "logos" :path "" :name "swiftype"}
+  "Symfony"                   {:lib "logos" :prefix "logos" :path "" :name "symfony"}
+  "Sysdig"                    {:lib "logos" :prefix "logos" :path "" :name "sysdig"}
+  "T3"                        {:lib "logos" :prefix "logos" :path "" :name "t3"}
+  "Taiga"                     {:lib "logos" :prefix "logos" :path "" :name "taiga"}
+  "TailwindCSS Icon"          {:lib "logos" :prefix "logos" :path "" :name "tailwindcss-icon"}
+  "TailwindCSS"               {:lib "logos" :prefix "logos" :path "" :name "tailwindcss"}
+  "Tapcart"                   {:lib "logos" :prefix "logos" :path "" :name "tapcart"}
+  "Targetprocess"             {:lib "logos" :prefix "logos" :path "" :name "targetprocess"}
+  "TasteJS"                   {:lib "logos" :prefix "logos" :path "" :name "tastejs"}
+  "Tealium"                   {:lib "logos" :prefix "logos" :path "" :name "tealium"}
+  "Teamgrid"                  {:lib "logos" :prefix "logos" :path "" :name "teamgrid"}
+  "Teamwork Icon"             {:lib "logos" :prefix "logos" :path "" :name "teamwork-icon"}
+  "Teamwork"                  {:lib "logos" :prefix "logos" :path "" :name "teamwork"}
+  "Tectonic"                  {:lib "logos" :prefix "logos" :path "" :name "tectonic"}
+  "Telegram"                  {:lib "logos" :prefix "logos" :path "" :name "telegram"}
+  "Tensorflow"                {:lib "logos" :prefix "logos" :path "" :name "tensorflow"}
+  "Terminal"                  {:lib "logos" :prefix "logos" :path "" :name "terminal"}
+  "Terraform"                 {:lib "logos" :prefix "logos" :path "" :name "terraform"}
+  "Testlodge"                 {:lib "logos" :prefix "logos" :path "" :name "testlodge"}
+  "Testmunk"                  {:lib "logos" :prefix "logos" :path "" :name "testmunk"}
+  "Thimble"                   {:lib "logos" :prefix "logos" :path "" :name "thimble"}
+  "Titon"                     {:lib "logos" :prefix "logos" :path "" :name "titon"}
+  "TNW"                       {:lib "logos" :prefix "logos" :path "" :name "tnw"}
+  "Todoist Icon"              {:lib "logos" :prefix "logos" :path "" :name "todoist-icon"}
+  "Todoist"                   {:lib "logos" :prefix "logos" :path "" :name "todoist"}
+  "TodoMVC"                   {:lib "logos" :prefix "logos" :path "" :name "todomvc"}
+  "Tomcat"                    {:lib "logos" :prefix "logos" :path "" :name "tomcat"}
+  "Torus"                     {:lib "logos" :prefix "logos" :path "" :name "torus"}
+  "Traackr"                   {:lib "logos" :prefix "logos" :path "" :name "traackr"}
+  "Trac"                      {:lib "logos" :prefix "logos" :path "" :name "trac"}
+  "Travis CI"                 {:lib "logos" :prefix "logos" :path "" :name "travis-ci"}
+  "Travis CI Monochrome"      {:lib "logos" :prefix "logos" :path "" :name "travis-ci-monochrome"}
+  "Treasuredata"              {:lib "logos" :prefix "logos" :path "" :name "treasuredata"}
+  "Treehouse"                 {:lib "logos" :prefix "logos" :path "" :name "treehouse"}
+  "Trello"                    {:lib "logos" :prefix "logos" :path "" :name "trello"}
+  "Tsu"                       {:lib "logos" :prefix "logos" :path "" :name "tsu"}
+  "Tsuru"                     {:lib "logos" :prefix "logos" :path "" :name "tsuru"}
+  "Tumblr Icon"               {:lib "logos" :prefix "logos" :path "" :name "tumblr-icon"}
+  "Tumblr"                    {:lib "logos" :prefix "logos" :path "" :name "tumblr"}
+  "TuneIn"                    {:lib "logos" :prefix "logos" :path "" :name "tunein"}
+  "Turret"                    {:lib "logos" :prefix "logos" :path "" :name "turret"}
+  "Tutsplus"                  {:lib "logos" :prefix "logos" :path "" :name "tutsplus"}
+  "Tutum"                     {:lib "logos" :prefix "logos" :path "" :name "tutum"}
+  "Tux"                       {:lib "logos" :prefix "logos" :path "" :name "tux"}
+  "Twilio"                    {:lib "logos" :prefix "logos" :path "" :name "twilio"}
+  "Twitch"                    {:lib "logos" :prefix "logos" :path "" :name "twitch"}
+  "Twitter"                   {:lib "logos" :prefix "logos" :path "" :name "twitter"}
+  "Typeform Icon"             {:lib "logos" :prefix "logos" :path "" :name "typeform-icon"}
+  "Typeform"                  {:lib "logos" :prefix "logos" :path "" :name "typeform"}
+  "Typescript Icon"           {:lib "logos" :prefix "logos" :path "" :name "typescript-icon"}
+  "Typescript"                {:lib "logos" :prefix "logos" :path "" :name "typescript"}
+  "Ubuntu"                    {:lib "logos" :prefix "logos" :path "" :name "ubuntu"}
+  "Udacity"                   {:lib "logos" :prefix "logos" :path "" :name "udacity"}
+  "Udemy"                     {:lib "logos" :prefix "logos" :path "" :name "udemy"}
+  "UIkit"                     {:lib "logos" :prefix "logos" :path "" :name "uikit"}
+  "Umu"                       {:lib "logos" :prefix "logos" :path "" :name "umu"}
+  "Unbounce"                  {:lib "logos" :prefix "logos" :path "" :name "unbounce"}
+  "Undertow"                  {:lib "logos" :prefix "logos" :path "" :name "undertow"}
+  "Unionpay"                  {:lib "logos" :prefix "logos" :path "" :name "unionpay"}
+  "UnitJS"                    {:lib "logos" :prefix "logos" :path "" :name "unitjs"}
+  "Unito"                     {:lib "logos" :prefix "logos" :path "" :name "unito"}
+  "Unity"                     {:lib "logos" :prefix "logos" :path "" :name "unity"}
+  "Upcase"                    {:lib "logos" :prefix "logos" :path "" :name "upcase"}
+  "Upwork"                    {:lib "logos" :prefix "logos" :path "" :name "upwork"}
+  "User Testing"              {:lib "logos" :prefix "logos" :path "" :name "user-testing"}
+  "Uservoice"                 {:lib "logos" :prefix "logos" :path "" :name "uservoice"}
+  "V8 Ignition"               {:lib "logos" :prefix "logos" :path "" :name "v8-ignition"}
+  "V8"                        {:lib "logos" :prefix "logos" :path "" :name "v8"}
+  "V8 Turbofan"               {:lib "logos" :prefix "logos" :path "" :name "v8-turbofan"}
+  "Vaadin"                    {:lib "logos" :prefix "logos" :path "" :name "vaadin"}
+  "Vaddy"                     {:lib "logos" :prefix "logos" :path "" :name "vaddy"}
+  "Vagrant"                   {:lib "logos" :prefix "logos" :path "" :name "vagrant"}
+  "Vault"                     {:lib "logos" :prefix "logos" :path "" :name "vault"}
+  "VerneMQ"                   {:lib "logos" :prefix "logos" :path "" :name "vernemq"}
+  "VictorOps"                 {:lib "logos" :prefix "logos" :path "" :name "victorops"}
+  "Vimeo Icon"                {:lib "logos" :prefix "logos" :path "" :name "vimeo-icon"}
+  "Vimeo"                     {:lib "logos" :prefix "logos" :path "" :name "vimeo"}
+  "Vim"                       {:lib "logos" :prefix "logos" :path "" :name "vim"}
+  "Vine"                      {:lib "logos" :prefix "logos" :path "" :name "vine"}
+  "Visaelectron"              {:lib "logos" :prefix "logos" :path "" :name "visaelectron"}
+  "Visa"                      {:lib "logos" :prefix "logos" :path "" :name "visa"}
+  "Visual Studio Code"        {:lib "logos" :prefix "logos" :path "" :name "visual-studio-code"}
+  "Visual Studio"             {:lib "logos" :prefix "logos" :path "" :name "visual-studio"}
+  "Visual Website Optimizer"  {:lib "logos" :prefix "logos" :path "" :name "visual_website_optimizer"}
+  "Vivaldi"                   {:lib "logos" :prefix "logos" :path "" :name "vivaldi"}
+  "Void"                      {:lib "logos" :prefix "logos" :path "" :name "void"}
+  "Vue"                       {:lib "logos" :prefix "logos" :path "" :name "vue"}
+  "VuetifyJS"                 {:lib "logos" :prefix "logos" :path "" :name "vuetifyjs"}
+  "Vulkan"                    {:lib "logos" :prefix "logos" :path "" :name "vulkan"}
+  "Vultr"                     {:lib "logos" :prefix "logos" :path "" :name "vultr"}
+  "W3C"                       {:lib "logos" :prefix "logos" :path "" :name "w3c"}
+  "Waffle"                    {:lib "logos" :prefix "logos" :path "" :name "waffle"}
+  "Wagtail"                   {:lib "logos" :prefix "logos" :path "" :name "wagtail"}
+  "Wakatime"                  {:lib "logos" :prefix "logos" :path "" :name "wakatime"}
+  "Watchman"                  {:lib "logos" :prefix "logos" :path "" :name "watchman"}
+  "Weave"                     {:lib "logos" :prefix "logos" :path "" :name "weave"}
+  "Webassembly"               {:lib "logos" :prefix "logos" :path "" :name "webassembly"}
+  "WebComponents"             {:lib "logos" :prefix "logos" :path "" :name "webcomponents"}
+  "Webflow"                   {:lib "logos" :prefix "logos" :path "" :name "webflow"}
+  "Webhooks"                  {:lib "logos" :prefix "logos" :path "" :name "webhooks"}
+  "Webmin"                    {:lib "logos" :prefix "logos" :path "" :name "webmin"}
+  "Webpack"                   {:lib "logos" :prefix "logos" :path "" :name "webpack"}
+  "WebPlatform"               {:lib "logos" :prefix "logos" :path "" :name "webplatform"}
+  "WebRTC"                    {:lib "logos" :prefix "logos" :path "" :name "webrtc"}
+  "Websocket"                 {:lib "logos" :prefix "logos" :path "" :name "websocket"}
+  "Webstorm"                  {:lib "logos" :prefix "logos" :path "" :name "webstorm"}
+  "Webtask"                   {:lib "logos" :prefix "logos" :path "" :name "webtask"}
+  "WebTorrent"                {:lib "logos" :prefix "logos" :path "" :name "webtorrent"}
+  "Weebly"                    {:lib "logos" :prefix "logos" :path "" :name "weebly"}
+  "Wercker"                   {:lib "logos" :prefix "logos" :path "" :name "wercker"}
+  "Whalar"                    {:lib "logos" :prefix "logos" :path "" :name "whalar"}
+  "WhatsApp"                  {:lib "logos" :prefix "logos" :path "" :name "whatsapp"}
+  "WhatWG"                    {:lib "logos" :prefix "logos" :path "" :name "whatwg"}
+  "Wicket Icon"               {:lib "logos" :prefix "logos" :path "" :name "wicket-icon"}
+  "Wicket"                    {:lib "logos" :prefix "logos" :path "" :name "wicket"}
+  "WiFi"                      {:lib "logos" :prefix "logos" :path "" :name "wifi"}
+  "Windows"                   {:lib "logos" :prefix "logos" :path "" :name "windows"}
+  "Wiredtree"                 {:lib "logos" :prefix "logos" :path "" :name "wiredtree"}
+  "Wire"                      {:lib "logos" :prefix "logos" :path "" :name "wire"}
+  "Wix"                       {:lib "logos" :prefix "logos" :path "" :name "wix"}
+  "Woocommerce"               {:lib "logos" :prefix "logos" :path "" :name "woocommerce"}
+  "Woopra"                    {:lib "logos" :prefix "logos" :path "" :name "woopra"}
+  "Wordpress Icon"            {:lib "logos" :prefix "logos" :path "" :name "wordpress-icon"}
+  "Wordpress"                 {:lib "logos" :prefix "logos" :path "" :name "wordpress"}
+  "Workboard"                 {:lib "logos" :prefix "logos" :path "" :name "workboard"}
+  "WPengine"                  {:lib "logos" :prefix "logos" :path "" :name "wpengine"}
+  "Wufoo"                     {:lib "logos" :prefix "logos" :path "" :name "wufoo"}
+  "Xamarin"                   {:lib "logos" :prefix "logos" :path "" :name "xamarin"}
+  "Xampp"                     {:lib "logos" :prefix "logos" :path "" :name "xampp"}
+  "Xcart"                     {:lib "logos" :prefix "logos" :path "" :name "xcart"}
+  "Xero"                      {:lib "logos" :prefix "logos" :path "" :name "xero"}
+  "Xplenty"                   {:lib "logos" :prefix "logos" :path "" :name "xplenty"}
+  "X Ray Goggles"             {:lib "logos" :prefix "logos" :path "" :name "x-ray-goggles"}
+  "Xtend"                     {:lib "logos" :prefix "logos" :path "" :name "xtend"}
+  "Xwiki"                     {:lib "logos" :prefix "logos" :path "" :name "xwiki"}
+  "Yahoo"                     {:lib "logos" :prefix "logos" :path "" :name "yahoo"}
+  "Yammer"                    {:lib "logos" :prefix "logos" :path "" :name "yammer"}
+  "Yandex Ru"                 {:lib "logos" :prefix "logos" :path "" :name "yandex-ru"}
+  "Yarn"                      {:lib "logos" :prefix "logos" :path "" :name "yarn"}
+  "YCombinator"               {:lib "logos" :prefix "logos" :path "" :name "ycombinator"}
+  "Yeoman"                    {:lib "logos" :prefix "logos" :path "" :name "yeoman"}
+  "Yii"                       {:lib "logos" :prefix "logos" :path "" :name "yii"}
+  "Youtrack"                  {:lib "logos" :prefix "logos" :path "" :name "youtrack"}
+  "Youtube"                   {:lib "logos" :prefix "logos" :path "" :name "youtube"}
+  "Zapier"                    {:lib "logos" :prefix "logos" :path "" :name "zapier"}
+  "Zeit Icon"                 {:lib "logos" :prefix "logos" :path "" :name "zeit-icon"}
+  "Zeit"                      {:lib "logos" :prefix "logos" :path "" :name "zeit"}
+  "Zendesk"                   {:lib "logos" :prefix "logos" :path "" :name "zendesk"}
+  "Zend Framework"            {:lib "logos" :prefix "logos" :path "" :name "zend-framework"}
+  "Zenhub"                    {:lib "logos" :prefix "logos" :path "" :name "zenhub"}
+  "Zeplin"                    {:lib "logos" :prefix "logos" :path "" :name "zeplin"}
+  "Zest"                      {:lib "logos" :prefix "logos" :path "" :name "zest"}
+  "Zigbee"                    {:lib "logos" :prefix "logos" :path "" :name "zigbee"}
+  "Zoho"                      {:lib "logos" :prefix "logos" :path "" :name "zoho"}
+  "Zube"                      {:lib "logos" :prefix "logos" :path "" :name "zube"}
+  "Zulip"                     {:lib "logos" :prefix "logos" :path "" :name "zulip"}
+  "ZWave"                     {:lib "logos" :prefix "logos" :path "" :name "zwave"}
 }
