@@ -32,20 +32,16 @@ Features
 
 Modelling
 ---------
-If you have a clojure environment in some editor or IDE, just use it.
-If not, try Visual Studio Code with the Calva and PlantUML extensions.
-With this setup you get an editor for the EDN files with code completion,
-syntax check and syntax highlighting.
-
-![Model editing](/doc/images/overarch_vscode_model.png)
-
 ### EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
 literals for scalar and composite data types. It is also a subset of the
 Clojure language textual format. Therefore Clojure plugins/extensions for
 editors or IDEs provide syntax checking/highlighting and code completion.
 
-Compared to JSON, EDN provides a richer set of data literals, e.g. integer and floating point numbers, big integers and decimals, strings, symbols and keywords.
+Compared to JSON which supports literals for numbers, strings, vectors and
+maps, EDN provides a richer set of data literals, e.g. integer and floating
+point numbers, big integers and decimals, strings, symbols, keywords,
+UUIDs and instants of time.
 It also provides literals for list, vectors (arrays), sets and maps.
 
 The following literals are used in Overarch models and views.
@@ -66,7 +62,10 @@ string"
 Keywords are used as keys in the maps for model elements and views. They are also
 used as identifiers for model elements and views.
 
-Keywords can be prefixed with a namespace to avoid collisions with keywords for
+Keywords start with a colon (':'), have an optional namespace followed by a
+slash ('/') and a mandatory name, e.g. :namespace/name.
+
+Keywords should be prefixed with a namespace to avoid collisions with keywords for
 other models, which is especially relevant for identifiers or for custom keys
 in the model elements and views.
 
@@ -103,6 +102,8 @@ the ordering of the elements may be relevant for the rendering of the view
 ["John" "Doe"]
 ```
 
+As you can see in the example models, all collection literals can be nested.
+
 For more information see the [EDN specification](https://github.com/edn-format/edn).
 
 ### Examples
@@ -111,20 +112,19 @@ found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
  * [views.edn](/models/banking/views.edn)
 
+If you have a Clojure environment in some editor or IDE, just use it.
+If not, try Visual Studio Code with the Calva and PlantUML extensions.
+With this setup you get an editor for the EDN files with code completion,
+syntax check and syntax highlighting.
+
+![Model editing](/doc/images/overarch_vscode_model.png)
+
 
 Models
 ------
 
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the Extensible Data Notation (EDN).
-EDN is a data notation like JSON but with richer data type support.
-Unlike JSON, EDN also supports sets in addition to lists and maps.
-EDN also supports more primitive types like UUIDs, instants of time, symbols
-and keywords.
-
-Especially keywords are useful as keys in a map or as identifiers.
-Keywords start with a colon (':'), have an optional namespace followed by a
-slash ('/') and a mandatory name, e.g. :namespace/name.
 
 The top level element in a model EDN file is a set. It contains the top level
 model elements. Model elements are denoted as maps in the EDN file.
@@ -237,8 +237,10 @@ Views
 
 ### C4 Views
 Overarch supports the description of all C4 core and sublementary views except from code views, which ideally should be generated from the code if needed.
+The core C4 views form a hierarchy of views.
 
-The core C4 views form a hierarchy.
+See [c4model.com](https://c4model.com) for the rationale and detailed information
+about the C4 Model.
 
 #### System Context Views
 Shows the system in the context of the actors and other systems it is interacting with. Contains users, external systems and the system to be described.
