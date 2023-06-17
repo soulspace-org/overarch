@@ -31,7 +31,8 @@ descriptions other than render them with PlantUML. The parsing process is
 opaque and you don't have access to the data of the model.
 
 Also the model is complected with the diagrams, as layout and rendering
-information is part of the model description and vice versa.
+information is part of the model description and vice versa. The model should
+capture the essence of the architecture and not its representation.
 
 If the model is described as plain *data* in an open format, it can be
 transformed into a graphical representation, e.g. into PlantUML textfiles.
