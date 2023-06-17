@@ -75,10 +75,12 @@ The complete model and diagram specifications can be found under
 ### Example of a model definition
 
 ```clojure
-#{{:el :person
+#{; actors
+  {:el :person
   :id :banking/personal-customer
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
+ ; system under design
  {:el :system
   :id :banking/internet-banking-system
   :name "Internet Banking System"
@@ -109,6 +111,7 @@ The complete model and diagram specifications can be found under
          :name "Database"
          :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
          :tech "Datomic"}}}
+ ; external systems
  {:el :system
   :id :banking/mainframe-banking-system
   :external true
