@@ -1,4 +1,5 @@
-{"AWS EKS Anywhere"                                             {:lib "awslib14" :prefix "awslib14", :path "Containers" :name "EKSAnywhere"}
+{
+ "AWS EKS Anywhere"                                             {:lib "awslib14" :prefix "awslib14", :path "Containers" :name "EKSAnywhere"}
  "AWS Elastic Container Service ECS Anywhere"                   {:lib "awslib14" :prefix "awslib14", :path "Containers" :name "ElasticContainerServiceECSAnywhere"}
  "AWS Containers"                                               {:lib "awslib14" :prefix "awslib14", :path "Containers" :name "Containers"}
  "AWS EKS Cloud"                                                {:lib "awslib14" :prefix "awslib14", :path "Containers" :name "EKSCloud"}

@@ -1,4 +1,5 @@
-{"Azure Service Environment"                       {:lib "azure", :prefix "azure", :path "Containers", :name "AzureServiceEnvironment"}
+{
+ "Azure Service Environment"                       {:lib "azure", :prefix "azure", :path "Containers", :name "AzureServiceEnvironment"}
  "Azure Container Registry"                        {:lib "azure", :prefix "azure", :path "Containers", :name "AzureContainerRegistry"}
  "Azure Container App"                             {:lib "azure", :prefix "azure", :path "Containers", :name "AzureContainerApp"}
  "Azure Kubernetes Service"                        {:lib "azure", :prefix "azure", :path "Containers", :name "AzureKubernetesService"}
@@ -261,4 +262,5 @@
  "Azure Quota"                                     {:lib "azure", :prefix "azure", :path "Web", :name "AzureQuota"}
  "Azure Search"                                    {:lib "azure", :prefix "azure", :path "Web", :name "AzureSearch"}
  "Azure Signal R Service"                          {:lib "azure", :prefix "azure", :path "Web", :name "AzureSignalRService"}
- "Azure Web App"                                   {:lib "azure", :prefix "azure", :path "Web", :name "AzureWebApp"}}
+ "Azure Web App"                                   {:lib "azure", :prefix "azure", :path "Web", :name "AzureWebApp"}
+ }

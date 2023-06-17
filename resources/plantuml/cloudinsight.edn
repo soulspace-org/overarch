@@ -1,4 +1,5 @@
-{"ActiveMQ"      {:lib "cloudinsight" :prefix "cloudinsight" :path "" :name "activemq"}
+{
+ "ActiveMQ"      {:lib "cloudinsight" :prefix "cloudinsight" :path "" :name "activemq"}
  "AI"            {:lib "cloudinsight" :prefix "cloudinsight" :path "" :name "ai"}
  "Aliyun"        {:lib "cloudinsight" :prefix "cloudinsight" :path "" :name "aliyun"}
  "Apache"        {:lib "cloudinsight" :prefix "cloudinsight" :path "" :name "apache"}

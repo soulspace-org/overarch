@@ -1,4 +1,5 @@
-{"500px"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "500px"}
+{
+ "500px"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "500px"}
  "Accessible Icon"                     {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "accessible_icon"}
  "Accusoft"                            {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "accusoft"}
  "Acquisitions Incorporated"           {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "acquisitions_incorporated"}
@@ -1455,4 +1456,5 @@
  "Yoast"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "yoast"}
  "Youtube"                             {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "youtube"}
  "Youtube Square"                      {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "youtube_square"}
- "Zhihu"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "zhihu"}}
+ "Zhihu"                               {:lib "font-awesome-5" :prefix "tupadr3" :path "font-awesome-5" :name "zhihu"}
+ }

@@ -1,4 +1,5 @@
-{"Android"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "android"}
+{
+ "Android"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "android"}
  "Angular"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "angular"}
  "Appcelerator"           {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "appcelerator"}
  "Apple"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "apple"}
@@ -184,4 +185,5 @@
  "Yahoo Small"            {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yahoo_small"}
  "Yeoman"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yeoman"}
  "Yii"                    {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "yii"}
- "Zend"                   {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "zend"}}
+ "Zend"                   {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "zend"}
+ }
