@@ -19,5 +19,6 @@ Version 0.1.0
 * plantuml export
   * styling support
   * sprite support
-* structurizer export
+* structurizr export
+  * export workspace
   * *experimental yet*
