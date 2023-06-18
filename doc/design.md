@@ -69,13 +69,13 @@ Observations
 Questions
 ---------
 
-Q: What is architecture anyway?
+Q: **What is architecture anyway?**
 
 A: Architecture in the context of information systems can be separated into
    software architecture and system architecture.
 
 
-Q: What is software architecture?
+Q: **What is software architecture?**
 
 A: Software architecture specifies the high level design of a software
    system. With an appropriate architecture (or high level design) the system is
@@ -83,13 +83,13 @@ A: Software architecture specifies the high level design of a software
    system.
 
 
-Q: What is system architecture?
+Q: **What is system architecture?**
 
 A: System architeture specifies the high level design of the runtime
    environment and infrastructure of one or more software systems.
 
 
-Q: What shall be captured in an architectural description model?
+Q: **What shall be captured in an architectural description model?**
 
 A: The hierarchical structure of a system and its context
    * The system context and system landscape (if relevant)
@@ -105,7 +105,7 @@ A: The hierarchical structure of a system and its context
      (if relevant)
 
 
-Q: What could also be captured in an extension of the descriptionẞ
+Q: **What could also be captured in an extension of the description?**
 
 A: An extension of the model could make sense if there is value in the connection
    of the additional elements to the existing elements, e.g. to provide traceability
@@ -114,20 +114,25 @@ A: An extension of the model could make sense if there is value in the connectio
    * Enterprise architecture elements like capabilities
    * Business arcitecture elements like business processes
    * Functional or nonfunctional requirements and crosscutting concerns
+   * Inner workings of some components
+     * e.g. state machines, activty or sequence diagrams
    * ...
 
 
-Q: Shall the boundaries be implicit in the model, e.g. rendering a
-   system as a system-boundary in a container diagram, if it contains    container elements, that are visualized?
+Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
 A: Implicit boundaries make the model more succinct.
    A boundary should be rendered for model elements from a higher level
    containing children on the level of the diagram.
    E.g. a system with containers should be rendered as a system boundary containing the containers.
 
+   Explicit boundaries make sense for grouping elements, e.g. for bounded contexts
+   or for enterprise boundaries.
+   
+   So the model should support explicit boundaries and views should also render implicit boundaries for higher level elements referenced in a specific view.
 
-Q: Shall relations between low level elements (e.g. components) and the
-   outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?
+
+Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
    
    The relation between a user and a user interface component would be rendered directly in a component diagram. In a container diagram, the relation would be rendered between the user and the container of the user interface component. In a system diagram, the relation would be rendered between the user and the system of the user interface component.
 
@@ -143,8 +148,7 @@ Q: Shall relations between low level elements (e.g. components) and the
 A: 
 
 
-Q: Shall relations be automatically included in a view, when the participating
-   components are included?
+Q: **Shall relations be automatically included in a view, when the participating components are included?**
 
    That would make the specification of the views much shorter but relations may be included, that should not be shown in the view. If there has to be an
    exclude mechanism, the usability of automatic inclusion would shrink much.
@@ -152,8 +156,7 @@ Q: Shall relations be automatically included in a view, when the participating
 A: 
 
 
-Q: Shall it be possible to model subcomponents, components that contain
-   components?
+Q: **Shall it be possible to model subcomponents, components that contain components?**
 
    That would require a component boundary and rules, when to render the
    component boundary in the context of a component diagram.
@@ -161,31 +164,31 @@ Q: Shall it be possible to model subcomponents, components that contain
 A: 
 
 
-Q: How can architecture patterns like hexagonal or layered architectures
-   be modelled and visualized appropriately within the C4 models?
+Q: **How can architecture patterns like hexagonal or layered architectures be modelled and visualized appropriately within the C4 models?**
 
 A: Each container would contain components with the responsibilities and
    dependencies as specified by the given architecture. This is perfectly
    possible in the current C4 model (see [hexagonal](/models/hexagonal/)).
 
 
-Q: Should names be generated from ids if missing?
+Q: **Should names be generated from ids if missing?**
 
 A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to First upper case with spaces
    between words.
 
 
-Q: Can views be specified in a generic manner, so that the elements contained
-   in a view are selected with criteria based selectors/filters?
+Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
    
    C4 diagrams would be views that select the content based on the diagram type.
-   Views could also select content based on the namespace of the id or on the element type.
+   Views could also select content based on the namespace of the id or on the
+   element type.
 
 A: 
 
 
-Q: How can duplication reduced in views of specific instanciations of the model?
+Q: **How can duplication reduced in views of specific instanciations of the model?**
+   
    Use case:
    Deployment view to different stages with replacement of the stage variable with the
    name of the stage or stage specific values (e.g. CIDR ranges, ...).
@@ -195,15 +198,13 @@ Q: How can duplication reduced in views of specific instanciations of the model?
 A: Parameterized views, view templates with variable replacement and element merging.
 
 
-Q: How to support different exporting formats, e.g. diagramming tools, and
-   not be specific in the specification of the views/digrams?
+Q: **How to support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/digrams?**
     
 A: Support a generic feature set in views and diagrams with optional specific
    configuration for a specific export format (e.g. PlantUML)
 
 
-Q: How can icons/sprites be implemented in a generic way, so they are not bound
-   to a specific diagram tool?
+Q: **How can icons/sprites be implemented in a generic way, so they are not bound to a specific diagram tool?**
 
 A: The handling of icons is very tool specific an not easily implemented in a generic way.
    As such icons should not be specified explicitly in the model or the view,
@@ -212,7 +213,12 @@ A: The handling of icons is very tool specific an not easily implemented in a ge
    technology exists and the rendering of icons is enabled in the view spec.
 
 
-Q: Which are the levels/granularities of the export?
+Q: **Are notes on model elements and relations possible in the view rendering?**
+
+A: 
+
+
+Q: **Which are the levels/granularities of the export?**
 
 A: It differs on the type of the export.
    
@@ -225,14 +231,12 @@ A: It differs on the type of the export.
    structure of data files intact.
 
 
-Q: How should the export be implemented so that there is a clear separation
-   between the selection of and iteration over the relevant content and the
-   format specific rendering of the content?
+Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
 A: 
 
 
-Q: Why EDN as the specification notation?
+Q: **Why EDN as the specification notation?**
 
 A: Because it is an open and extensible data format
    * simple syntax
@@ -244,8 +248,7 @@ A: Because it is an open and extensible data format
      * IntelliJ + Cursive
      * Emacs + Cider
 
-Q: Why not JSON?
-
+Q: **Why not JSON?**
 
 A: JSON is a format that is widely used and supported by many programming
    languages. But compared to EDN it has a few shortcomings
@@ -260,7 +263,7 @@ A: JSON is a format that is widely used and supported by many programming
    lossy for the reasons above.
 
 
-Q: Why Clojure?
+Q: **Why Clojure?**
 
 A: Clojure is a perfect match
    * data oriented, data driven
@@ -278,7 +281,7 @@ A: Clojure is a perfect match
 PlantUML Export
 ---------------
 
-Q: Is a global configuration (e.g. via config file) needed?
+Q: **Is a global configuration (e.g. via config file) needed?**
 
    A potential use case would be the generation of internal links for imports on
    systems without an internet connection or with proxy restrictions on
