@@ -8,7 +8,7 @@ The various diagrams contain duplicate model information and we don't have a sin
 
 The syntax of the PlantUML is inconsistent, brittle and errors are rendered
 in the generated image and are often not very helpful. On the other hand,
-PlantUML in combination with GraphViz are a pragmatic option to generate
+PlantUML in combination with GraphViz is a pragmatic option to generate
 C4 architecture diagrams.
 
 ### Existing Tools
