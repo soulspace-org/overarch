@@ -156,14 +156,22 @@
 
 (def tech->sprite (load-sprite-mappings-from-resource sprite-resources))
 
+(defn sprite-path
+  "Returns a path for the given `sprite`."
+  [sprite]
+  (str (:prefix sprite) "/"
+       (if (empty? (:path sprite))
+         ""
+         (str (:path sprite) "/"))
+       (:name sprite)))
+
 (defn sorted-sprite-mappings
   "Returns a list of sprite mappings sorted by the key."
   [m]
   (->> m
        (keys)
        (sort)
-       (map (fn [key]
-              (merge {:key key} (m key))))))
+       (map (fn [key] (merge {:key key} (m key))))))
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -171,12 +179,7 @@
    (print-sprite-mappings (sorted-sprite-mappings tech->sprite)))
   ([sprite-mappings]
    (doseq [sprite sprite-mappings]
-     (println (str (:key sprite) " : "
-                   (:prefix sprite) "/"
-                   (if (empty? (:path sprite))
-                     ""
-                     (str (:path sprite) "/"))
-                   (:name sprite))))))
+     (println (str (:key sprite) " : " (sprite-path sprite))))))
 
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
@@ -388,8 +391,8 @@
   "Renders the import for an sprite."
   [diagram sprite]
   (if (get-in diagram [:spec :plantuml :remote-imports])
-    (remote-import (str (:prefix sprite) "/" (:path sprite) "/" (:name sprite)))
-    (local-import (str (:prefix sprite) "/" (:path sprite) "/" (:name sprite)))))
+    (remote-import (sprite-path sprite))
+    (local-import (sprite-path sprite))))
 
 (defn render-spritelib-import
   "Renders the imports for an sprite library."
