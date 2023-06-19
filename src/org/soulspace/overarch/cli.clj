@@ -125,5 +125,5 @@
   (-main "--debug" "--format" "json")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
   (-main "--debug")
-  (-main "--help")
+  (-main "--help") ; ends REPL session
   )
