@@ -34,7 +34,7 @@
       (derive :component :model-element)
       (derive :node :model-element)
       (derive :enterprise-boundary :model-element)
-      ))
+      (derive :context-boundary :model-element)))
 
 (defn alias-name
   "Returns the alias name for the element."
@@ -43,8 +43,7 @@
 
 (defmulti render-element
   "Renders a structurizr model element."
-  (fn [indent e] (:el e))
-  :hierarchy #'element-hierarchy)
+  (fn [indent e] (:el e)) :hierarchy #'element-hierarchy)
 
 (defmethod render-element :rel
   [indent e]
