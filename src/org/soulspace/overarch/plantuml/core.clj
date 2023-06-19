@@ -127,7 +127,7 @@
 ;;; Tech to Sprite mapping
 ;;;
 
-(def sprite-mappings
+(def sprite-resources
   ["cloudogu" "cloudinsight" "logos" "devicons" "devicons2"
    "font-awesome-5" "azure" "awslib14"])
 
@@ -152,14 +152,40 @@
   [options]
   (if (:config-dir options)
     (load-sprite-mappings-from-dir (str (:config-dir options) "/plantuml"))
-    (oio/load-edn-from-resource sprite-mappings)))
+    (oio/load-edn-from-resource sprite-resources)))
 
-(def tech->sprite (load-sprite-mappings-from-resource sprite-mappings))
+(def tech->sprite (load-sprite-mappings-from-resource sprite-resources))
+
+(defn sorted-sprite-mappings
+  "Returns a list of sprite mappings sorted by the key."
+  [m]
+  (->> m
+       (keys)
+       (sort)
+       (map (fn [key]
+              (merge {:key key} (m key))))))
+
+(defn print-sprite-mappings
+  "Prints the given list of the sprite mappings."
+  [sprite-mappings]
+  (doseq [sprite sprite-mappings]
+    (println (str (:key sprite) " : "
+                  (:prefix sprite) "/"
+                  (if (empty? (:path sprite))
+                    ""
+                    (str (:path sprite) "/"))
+                  (:name sprite)))))
 
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
   [tech]
   (tech->sprite tech))
+
+(comment
+  (load-sprite-mappings-from-resource ["azure" "awslib14"])
+  (count (sorted-sprite-mappings tech->sprite))
+  (print-sprite-mappings (sorted-sprite-mappings tech->sprite))
+  )
 
 ;;;
 ;;; Rendering
@@ -503,6 +529,3 @@
   (doseq [view (core/get-views)]
     (exp/export-view options view)))
 
-(comment
-  (load-sprite-mappings-from-resource ["azure" "awslib14"])
-  )
