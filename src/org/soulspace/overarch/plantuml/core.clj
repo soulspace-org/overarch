@@ -167,14 +167,16 @@
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
-  [sprite-mappings]
-  (doseq [sprite sprite-mappings]
-    (println (str (:key sprite) " : "
-                  (:prefix sprite) "/"
-                  (if (empty? (:path sprite))
-                    ""
-                    (str (:path sprite) "/"))
-                  (:name sprite)))))
+  ([]
+   (print-sprite-mappings (sorted-sprite-mappings tech->sprite)))
+  ([sprite-mappings]
+   (doseq [sprite sprite-mappings]
+     (println (str (:key sprite) " : "
+                   (:prefix sprite) "/"
+                   (if (empty? (:path sprite))
+                     ""
+                     (str (:path sprite) "/"))
+                   (:name sprite))))))
 
 (defn sprite?
   "Returns true if the icon-map contains an icon for the given technology."
@@ -184,7 +186,7 @@
 (comment
   (load-sprite-mappings-from-resource ["azure" "awslib14"])
   (count (sorted-sprite-mappings tech->sprite))
-  (print-sprite-mappings (sorted-sprite-mappings tech->sprite))
+  (print-sprite-mappings)
   )
 
 ;;;
