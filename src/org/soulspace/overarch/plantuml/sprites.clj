@@ -24,8 +24,7 @@
       (sstr/camel-case-to-hyphen)
       (str/replace "_" "-")
       (str/replace "-" " ")
-      (capitalize-parts " ")
-      ))
+      (capitalize-parts " ")))
 
 (defn plantuml-imports
   "Returns a collection of vectors of all the PlantUML '*.puml' files in
@@ -35,9 +34,7 @@
   (->> dir
        (file/all-files-by-extension "puml")
        (map (partial file/relative-path dir))
-       (map (juxt file/parent-path file/base-name))
-       ;(map file/base-name)
-       ))
+       (map (juxt file/parent-path file/base-name))))
 
 (defn write-csv
   "Writes the collection `coll` in CSV format to `file`."
