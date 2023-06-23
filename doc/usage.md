@@ -173,7 +173,8 @@ contain a set of other nodes or containers.
 #### Relation (:rel)
 Relations describe the connections and interactions of the parts of a view.
 
-Example (exerpt from the banking model containing context and container
+#### Example
+Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
 level elements):
 
 ```clojure
