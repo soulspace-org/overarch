@@ -32,6 +32,7 @@ Features
 
 Modelling
 ---------
+
 ### EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
 literals for scalar and composite data types. It is also a subset of the
@@ -134,31 +135,43 @@ keywords, so that different modelscan be composed without collisions of the
 identifiers.
 
 
+
+
 ### Model Elements
 
-#### Persons
-Users are internal or external actors of the system.
+The following model elements are supported by Overarch.
 
-#### Systems
+:person, :enterprise-boundary, :system
+
+#### Person (:person)
+Persons are internal or external actors of the system.
+
+```
+{:el :person
+ :id :banking/personal-customer
+ :name "Personal Banking Customer"
+ :desc "A customer of the bank, with personal banking accounts."}
+```
+
+#### System (:system)
 A System is the top level element of the C4 model an can contain a set of
 containers.
 
-#### Containers
+#### Container (:container)
 A container is a part of a system. It represents a process of the system
 (e.g. an executable or a service). Containers are composed of a set of
 components.
 
-#### Components
+#### Component (:component)
 A component is unit of software, which lives in a container of the system.
 
-#### Nodes
+#### Node (:node)
 A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
-#### Relations
+#### Relation (:rel)
 Relations describe the connections and interactions of the parts of a view.
-
 
 Example (exerpt from the banking model containing context and container
 level elements):
@@ -232,49 +245,63 @@ level elements):
   :name "Sends e-mail to"}} 
  ```
 
+
 Views
 -----
 
 ### C4 Views
-Overarch supports the description of all C4 core and sublementary views except from code views, which ideally should be generated from the code if needed.
-The core C4 views form a hierarchy of views.
+Overarch supports the description of all C4 core and supplementary views
+except from code views, which ideally should be generated from the code
+if needed. The core C4 views form a hierarchy of views.
 
-See [c4model.com](https://c4model.com) for the rationale and detailed information
-about the C4 Model.
+See [c4model.com](https://c4model.com) for the rationale and detailed
+information about the C4 Model.
 
-#### System Context Views
-Shows the system in the context of the actors and other systems it is interacting with. Contains users, external systems and the system to be described.
+The views can reference elements from the model as their content. The
+content of a view should be a list instead of a set because the order
+of elements is relevant in a view. 
+
+#### System Context Views (:context-view)
+Shows the system in the context of the actors and other systems it is
+interacting with. Contains users, external systems and the system to be
+described.
 
 ![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
 
-#### Container Views
-Shows the containers (e.g. processes, deployment units of the system) and the interactions between them and the outside world. Contains the elements of the system context diagram and the containers of the system to be described. The system to be described is rendered as a system boundary in the container diagram.
+#### Container Views (:container-view)
+Shows the containers (e.g. processes, deployment units of the system) and
+the interactions between them and the outside world. Contains the elements
+of the system context diagram and the containers of the system to be described.
+The system to be described is rendered as a system boundary in the container
+diagram.
 
 ![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
 
-#### Component Views
-Shows the components and their interactions inside of a container.
+#### Component Views (:component-view)
+Shows the components and their interactions inside of a container and with
+outside systems and actors.
 
 ![Component View rendered with PlantUML](/doc/images/banking_apiComponentView.svg)
 
 #### Code Views
 Not supported
 
-#### System Landscape Views
+#### System Landscape Views (:system-landscape-view)
 Shows a broader system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking_systemLandscapeView.svg)
 
-#### Deployment Views
+#### Deployment Views (:deployment-view)
 Shows the infrastucture and deployment of the containers of the system.
 
 ![Deployment View rendered with PlantUML](/doc/images/banking_deploymentView.svg)
 
-#### Dynamic Views
-Shows the order of some interactions.
+#### Dynamic Views (:dynamic-view)
+Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
 
 ### Styling
 Overarch supports custom styles for elements. For an example see [views.edn](/models/test/views.edn).
+
 
 Exports
 -------
