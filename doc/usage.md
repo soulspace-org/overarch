@@ -274,7 +274,7 @@ Shows the infrastucture and deployment of the containers of the system.
 Shows the order of some interactions.
 
 ### Styling
-
+Overarch supports custom styles for elements. For an example see [views.edn](/models/test/views.edn).
 
 Exports
 -------
@@ -297,12 +297,14 @@ view spec.
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
 the elements of a diagram.
-It does so by matching the value of the **:tech** key of a model element to the list of sprites.
+It does so by matching the value of the **:tech** key of a model element to
+the list of sprites. You can also directly add a **:sprite** key to the
+reference of a model element in a view. The explicit **:sprite** value takes
+precedence over the **:tech** value.
 
 The list of sprites contains sprites of the PlantUML standard library, e.g.
 sprites for AWS and Azure. The mapping files from tech name to sprite
 reside in [resources/plantuml](/resources/plantuml). 
-
 
 #### Rendering PlantUML diagrams
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
