@@ -154,7 +154,6 @@
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
          :relation    :overarch/relation
-         ;:view       :overarch/view
          )))
 
 (s/def :overarch/element
