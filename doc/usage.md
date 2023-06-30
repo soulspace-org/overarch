@@ -174,6 +174,19 @@ contain a set of other nodes or containers.
 #### Relation (:rel)
 Relations describe the connections and interactions of the parts of a view.
 
+#### Boundaries
+Boundaries group related elements and are normaly rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
+
+The implicit boundaries are the system boundary and the container boundary.
+They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
+
+The explicit boundaries are enterprise boundary and context boundary.
+These are explicitly modelled. An enterprise boundary {:el :enterprise-boundary}
+can be used to group systems by enterprise or company. A context boundary
+{:el :context-boundary} can be used to group containers or components by some
+common context, especially by domain contexts in the sense of domain
+driven design.
+
 #### Example
 Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
 level elements):
