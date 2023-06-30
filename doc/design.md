@@ -174,7 +174,7 @@ A: Each container would contain components with the responsibilities and
 Q: **Should names be generated from ids if missing?**
 
 A: That would make the models more concise. Names can be generated from the name
-   part of the keyword by converting kebab case to First upper case with spaces
+   part of the keyword by converting kebab case to first upper case with spaces
    between words.
 
 
@@ -198,7 +198,7 @@ Q: **How can duplication reduced in views of specific instanciations of the mode
 A: Parameterized views, view templates with variable replacement and element merging.
 
 
-Q: **How to support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/digrams?**
+Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
     
 A: Support a generic feature set in views and diagrams with optional specific
    configuration for a specific export format (e.g. PlantUML)
@@ -206,7 +206,7 @@ A: Support a generic feature set in views and diagrams with optional specific
 
 Q: **How can icons/sprites be implemented in a generic way, so they are not bound to a specific diagram tool?**
 
-A: The handling of icons is very tool specific an not easily implemented in a generic way.
+A: The handling of icons is very tool specific and not easily implemented in a generic way.
    As such icons should not be specified explicitly in the model or the view,
    the technologies should be specified. If a diagram tool supports icons,
    they should be rendered automatically based on the technology, if an icon for the
