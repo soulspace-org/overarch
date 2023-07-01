@@ -101,6 +101,19 @@
          (recur (collect-technologies techs (:ct e)) (rest coll))))
      techs)))
 
+(defn collect-view-elements
+  "Collects the elements rendered in the view."
+  ([view]
+   (collect-view-elements #{} view (:ct view)))
+  ([els view coll]
+   (if (seq coll)
+     (let [view-type (:el view) 
+           e (first coll)]
+       ; TODO filter and recur
+       )
+     els
+     )))
+
 ; general
 (defn render-indent
   "Renders an indent of n space chars."

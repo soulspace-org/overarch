@@ -265,32 +265,50 @@
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
 
+
+(defn related-elements
+  "Returns the set of elements that are part of at least one relation."
+  [coll]
+  (->> coll
+       (filter relation?)
+       (map #(#{(:from %) (:to %)}))
+       (reduce set/union)))
+
+(defn unconnected-elements
+  "Returns the set of elements that are not connected with any other element by a relation."
+  ([]
+   (unconnected-elements @state))
+  ([m]
+   (let [component-set (into #{} (filter component-level? (get-model-elements m)))
+         related-set (related-elements (get-model-elements m))]
+     (set/difference component-set related-set))))
+
 ;;
 ;; State preparation
 ;;
 
-(defn register-elements
+(defn build-id->elements
   "Returns a map of id to element for the elements of the `coll`."
   ([coll]
-   (register-elements {} coll))
+   (build-id->elements {} coll))
   ([m coll]
    (if (seq coll)
      (let [e (first coll)]
        (if (identifiable? e)
-         (recur (register-elements (assoc m (:id e) e) (:ct e)) (rest coll))
-         (recur (register-elements m (:ct e)) (rest coll))))
+         (recur (build-id->elements (assoc m (:id e) e) (:ct e)) (rest coll))
+         (recur (build-id->elements m (:ct e)) (rest coll))))
      m)))
 
-(defn register-parents
+(defn build-id->parent
   "Returns a map of child id to parent element for the elements in `coll`."
   ([coll]
-   (register-parents {} nil coll))
+   (build-id->parent {} nil coll))
   ([m p coll]
    (if (seq coll)
      (let [e (first coll)]
        (if (and (identifiable? e) (identifiable? p) (model-element? p))
-         (recur (register-parents (assoc m (:id e) p) e (:ct e)) p (rest coll))
-         (recur (register-parents m e (:ct e)) p (rest coll))))
+         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
+         (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
 
 (defn build-registry
@@ -304,8 +322,8 @@
   [elements]
   (if (s/valid? :overarch/elements elements)
     {:elements elements
-     :registry (register-elements elements)
-     :parents (register-parents elements)}
+     :registry (build-id->elements elements)
+     :parents (build-id->parent elements)}
     (s/explain :overarch/elements elements)))
 
 (s/fdef read-elements
@@ -332,6 +350,6 @@
   (read-elements "models")
 
   (update-state! "models")
-  (register-parents (:elements @state))
+  (build-id->parent (:elements @state))
   (user/data-tapper "State" @state)
   )
