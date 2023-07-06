@@ -27,6 +27,7 @@
    ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
    ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
+;   ["-r" "--report" "Prints a report for the loaded model" :default false]
    ["-h" "--help" "Print help"]
    [nil  "--debug" "Print debug messages" :default false]])
 
@@ -73,7 +74,8 @@
 (defn handle
   "Handle the `options` and generate the requested outputs."
   [options]
-  (update-and-export! options)
+  (core/update-state! (:model-dir options))
+  (exp/export options)
   (when (:watch options)
     ; TODO loop recur this update-and-export! as handler
     (hawk/watch! [{:paths [(:model-dir options)]
@@ -124,6 +126,7 @@
                        :format :plantuml})
   (-main "--debug" "--format" "json")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
+  (-main "--report")
   (-main "--debug")
   (-main "--help") ; ends REPL session
   )
