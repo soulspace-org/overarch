@@ -1,12 +1,8 @@
-(ns org.soulspace.overarch.export
-  "Contains general functions for the export of data."
-  (:require [clojure.string :as str]
-            [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [org.soulspace.overarch.core :as core]))
+(ns org.soulspace.overarch.exports.core
+  "Contains general functions for the export of data.")
 
 ;;;
-;;; Exports
+;;; Export multimethods 
 ;;;
 
 (defn export-format

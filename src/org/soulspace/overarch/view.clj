@@ -2,8 +2,7 @@
   "Functions for the handling of diagrams."
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.export :as exp]))
+            [org.soulspace.overarch.core :as core]))
 
 
 ; general, multimethod?
@@ -138,9 +137,6 @@
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)
       (derive :context-boundary    :boundary)))
-(defmulti render-diagram
-  "Renders a diagram"
-  exp/export-format)
 
 (comment
     (collect-technologies (:elements @core/state))

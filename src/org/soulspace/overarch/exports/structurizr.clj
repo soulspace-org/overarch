@@ -1,11 +1,11 @@
-(ns org.soulspace.overarch.structurizr
+(ns org.soulspace.overarch.exports.structurizr
   "Functions for the export to structurizr."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.export :as exp]
+            [org.soulspace.overarch.exports.core :as exp]
             [org.soulspace.clj.string :as sstr]))
 
 (def element-type->structurizr

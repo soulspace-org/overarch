@@ -250,6 +250,16 @@
      (merge (get-model-element m (:ref e)) e)
      e)))
 
+(defn all-elements
+  "Returns a set of all elements."
+  ([]
+   (all-elements @state))
+  ([m]
+   (->> (:registry m)
+        (vals)
+        (map resolve-ref)
+        (into #{}))))
+
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
   ([r1 r2]
@@ -265,23 +275,29 @@
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
 
-
 (defn related-elements
   "Returns the set of elements that are part of at least one relation."
   [coll]
   (->> coll
        (filter relation?)
-       (map #(#{(:from %) (:to %)}))
-       (reduce set/union)))
+       (map (fn [rel] #{(:from rel) (:to rel)}))
+;       (user/data-tapper "related")
+       (reduce set/union #{})))
 
-(defn unconnected-elements
+(defn unconnected-components
   "Returns the set of elements that are not connected with any other element by a relation."
   ([]
-   (unconnected-elements @state))
+   (unconnected-components @state))
   ([m]
-   (let [component-set (into #{} (filter component-level? (get-model-elements m)))
+   (let [component-set (into #{} (map :id (filter component-level? (all-elements m))))
          related-set (related-elements (get-model-elements m))]
      (set/difference component-set related-set))))
+
+(comment
+  (all-elements)
+  (into #{} (map :id (filter component-level? (all-elements))))
+  (unconnected-components)
+  )
 
 ;;
 ;; State preparation

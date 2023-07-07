@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.plantuml.sprites
+(ns org.soulspace.overarch.util.plantuml-sprites
   (:require [clojure.edn :as edn]
             [clojure.string :as str]
             [clojure.java.io :as io]
