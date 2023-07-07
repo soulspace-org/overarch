@@ -4,7 +4,7 @@
             [clojure.tools.cli :as cli]
             [hawk.core :as hawk]
             [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.exports.core :as exp]
+            [org.soulspace.overarch.export :as exp]
             ; must be loaded here for registering of the multimethods
             ; require dynamically?
             [org.soulspace.overarch.exports.json :as json]
@@ -27,7 +27,9 @@
    ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
    ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
-;   ["-r" "--report" "Prints a report for the loaded model" :default false]
+;   ["-i" "--info" "Returns infos for the loaded model" :default false]
+;   [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
+;   [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
    ["-h" "--help" "Print help"]
    [nil  "--debug" "Print debug messages" :default false]])
 
@@ -137,7 +139,7 @@
   (report {:report true})
   (-main "--debug" "--format" "json")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
-  (-main "--report")
+  (-main "--info")
   (-main "--debug")
   (-main "--help") ; ends REPL session
   )

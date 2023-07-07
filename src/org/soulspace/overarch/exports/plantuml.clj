@@ -6,7 +6,7 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.exports.core :as exp]
+            [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
 
 ;;;;

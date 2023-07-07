@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.exports.core
+(ns org.soulspace.overarch.export
   "Contains general functions for the export of data.")
 
 ;;;
