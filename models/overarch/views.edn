@@ -1,7 +1,14 @@
 #{{:el :context-view
    :id :overarch/context-view
    :title "Context View of Overarch"
-   :ct [{:ref :overarch/modeller}
+   :ct [; actors
+        {:ref :overarch/modeller}
+        ; external systems
         {:ref :overarch/editor}
-        {:ref :overarch/overarch}]}
+        ; internal systems
+        {:ref :overarch/overarch}
+        ; relations
+        {:ref :overarch/modeller-models-in-editor}
+        {:ref :overarch/modeller-uses-overarch}
+        ]}
   }

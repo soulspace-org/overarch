@@ -32,15 +32,19 @@
                  :id :overarch/export-component
                  :name "json"}}}}}
   {:el :rel
+   :id :overarch/modeller-models-in-editor
    :from :overarch/modeller
    :to :overarch/editor
-   :name "models in"}
+   :name "models in"
+   :desc "Models, views."}
   {:el :rel
+   :id :overarch/modeller-uses-overarch
    :from :overarch/modeller
    :to :overarch/overarch
    :name "uses"
    :desc "Diagram generation, model transformation."}
   {:el :rel
+   :id :overarch/modeller-uses-overarch-cli
    :from :overarch/modeller
    :to :overarch/overarch-cli
    :name "uses"
