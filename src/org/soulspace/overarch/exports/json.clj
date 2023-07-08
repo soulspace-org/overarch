@@ -1,8 +1,5 @@
-(ns org.soulspace.overarch.json
-  (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [charred.api :as json]
-            [org.soulspace.clj.java.file :as file]
+(ns org.soulspace.overarch.exports.json
+  (:require [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
 

@@ -5,11 +5,11 @@
             [hawk.core :as hawk]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]
-            ; must be loaded, for registering of the multimethods
+            ; must be loaded here for registering of the multimethods
             ; require dynamically?
-            [org.soulspace.overarch.json :as json]
-            [org.soulspace.overarch.structurizr :as structurizr]
-            [org.soulspace.overarch.plantuml.core :as puml])
+            [org.soulspace.overarch.exports.json :as json]
+            [org.soulspace.overarch.exports.structurizr :as structurizr]
+            [org.soulspace.overarch.exports.plantuml :as puml])
   (:gen-class))
 
 ;;;
@@ -27,7 +27,9 @@
    ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
    ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
-;   ["-r" "--report" "Prints a report for the loaded model" :default false]
+;   ["-i" "--info" "Returns infos for the loaded model" :default false]
+;   [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
+;   [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
    ["-h" "--help" "Print help"]
    [nil  "--debug" "Print debug messages" :default false]])
 
@@ -70,6 +72,16 @@
   [options]
   (core/update-state! (:model-dir options))
   (exp/export options))
+
+(defn report
+  "Reports information about the model and views."
+  [options]
+  (let [element-count (count (remove core/relation? (core/get-model-elements)))
+        view-count (count (core/get-views))
+        unrelated-elements (core/unconnected-components)]
+    {:element-count element-count
+     :view-count view-count
+     :unrelated-elements unrelated-elements}))
 
 (defn handle
   "Handle the `options` and generate the requested outputs."
@@ -124,9 +136,10 @@
 (comment
   (update-and-export! {:model-dir "models"
                        :format :plantuml})
+  (report {:report true})
   (-main "--debug" "--format" "json")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
-  (-main "--report")
+  (-main "--info")
   (-main "--debug")
   (-main "--help") ; ends REPL session
   )

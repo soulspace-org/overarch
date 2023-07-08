@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.plantuml.core
+(ns org.soulspace.overarch.exports.plantuml
   "Functions to export views to PlantUML."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]

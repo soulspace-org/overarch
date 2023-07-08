@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.structurizr
+(ns org.soulspace.overarch.exports.structurizr
   "Functions for the export to structurizr."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
@@ -43,7 +43,7 @@
 
 (defmulti render-element
   "Renders a structurizr model element."
-  (fn [indent e] (:el e)) :hierarchy #'element-hierarchy)
+  (fn [_ e] (:el e)) :hierarchy #'element-hierarchy)
 
 (defmethod render-element :rel
   [indent e]

@@ -17,32 +17,112 @@
           :desc "CLI tool for the export of the architecture models into different formats."
           :tech "Clojure"
           :ct #{{:el :component
-                 :id :overarch/cli-component
-                 :name "cli"}
+                 :id :overarch/cli
+                 :name "cli"
+                 :desc "Parses the command line options and dispatches functions on them."}
                 {:el :component
-                 :id :overarch/core-component
-                 :name "core"}
+                 :id :overarch/core
+                 :name "core"
+                 :desc "Contains the model specification and functions."}
                 {:el :component
-                 :id :overarch/export-component
-                 :name "export"}
+                 :id :overarch/export
+                 :name "export"
+                 :desc "Contains the export multimethods to be implemented by the concrete export components."}
                 {:el :component
-                 :id :overarch/export-component
-                 :name "plantuml"}
+                 :id :overarch/exports-plantuml
+                 :name "exports.plantuml"
+                 :desc "Contains the implementation of the PlantUML export."}
                 {:el :component
-                 :id :overarch/export-component
-                 :name "json"}}}}}
+                 :id :overarch/exports-json
+                 :name "exports.json"
+                 :desc "Contains the implementation of the JSON export."}
+                {:el :component
+                 :id :overarch/exports-structurizr
+                 :name "exports.structurizr"
+                 :desc "Contains the implementation of the Structurizr export."}
+                {:el :component
+                 :id :overarch/view
+                 :name "view"
+                 :desc "Contains view related functions."}
+                {:el :component
+                 :id :overarch/io
+                 :name "io"
+                 :desc "Contains I/O related functions."}}}}}
   {:el :rel
+   :id :overarch/modeller-models-in-editor
    :from :overarch/modeller
    :to :overarch/editor
-   :name "models in"}
+   :name "models in"
+   :desc "Models, views."}
   {:el :rel
+   :id :overarch/modeller-uses-overarch
    :from :overarch/modeller
    :to :overarch/overarch
    :name "uses"
-   :desc "Diagram generation, model transformation."}
+   :desc "for Diagram generation and model transformation."}
   {:el :rel
+   :id :overarch/modeller-uses-overarch-cli
    :from :overarch/modeller
    :to :overarch/overarch-cli
    :name "uses"
-   :desc "Diagram generation, model transformation."}
-  }
+   :desc "for diagram generation and model transformation."}
+  {:el :rel
+   :id :overarch/modeller-starts-cli
+   :from :overarch/modeller
+   :to :overarch/cli
+   :name "starts"
+   :desc "with the provided options."}
+  {:el :rel
+   :id :overarch/cli-loads-data
+   :from :overarch/cli
+   :to :overarch/core
+   :name "loads"
+   :desc "model and views."}
+  {:el :rel
+   :id :overarch/cli-calls-exports
+   :from :overarch/cli
+   :to :overarch/export
+   :name "calls export functions."}
+  {:el :rel
+   :id :overarch/exports-plantuml-implements-export
+   :from :overarch/exports-plantuml
+   :to :overarch/export
+   :name "implements export functions"
+   :desc "for PlantUML diagrams"}
+  {:el :rel
+   :id :overarch/exports-plantuml-accesses-model
+   :from :overarch/exports-plantuml
+   :to :overarch/core
+   :name "accesses"
+   :desc "model and views"}
+  {:el :rel
+   :id :overarch/exports-plantuml-calls-io
+   :from :overarch/exports-plantuml
+   :to :overarch/io
+   :name "calls"
+   :desc "loads sprite mappings"}
+  {:el :rel
+   :id :overarch/exports-json-implements-export
+   :from :overarch/exports-json
+   :to :overarch/export
+   :name "implements export functions"
+   :desc "for JSON"}
+  {:el :rel
+   :id :overarch/exports-json-calls-io
+   :from :overarch/exports-json
+   :to :overarch/io
+   :name "calls"
+   :desc "writes JSON"}
+  {:el :rel
+   :id :overarch/exports-structurizr-implements-export
+   :from :overarch/exports-structurizr
+   :to :overarch/export
+   :name "implements export functions"
+   :desc "for Structurizr"}
+  {:el :rel
+   :id :overarch/exports-structurizr-accesses-model
+   :from :overarch/exports-structurizr
+   :to :overarch/core
+   :name "accesses"
+   :desc "model and views"}
+}
