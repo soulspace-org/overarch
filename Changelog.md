@@ -14,11 +14,13 @@ Version 0.1.0
   * deployment
   * dynamic
 * command line interface
+  * exports to json, plantuml and structurizr
   * file system watch
+  * sprite mappings
 * json export
 * plantuml export
   * styling support
   * sprite support
-* structurizr export
+* structurizr export *experimental*
   * export workspace
-  * *experimental yet*
+
