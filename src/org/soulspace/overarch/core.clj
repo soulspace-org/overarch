@@ -159,7 +159,8 @@
 (s/def :overarch/element
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/name :overarch/desc :overarch/ct
-                   :overarch/subtype :overarch/external]))
+                   :overarch/subtype :overarch/external
+                   :overarch/tech]))
 
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
