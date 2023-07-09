@@ -13,24 +13,6 @@ into different formats, e.g. the rendering of diagrams in PlantUML or the
 conversion of the data to JSON.
 
 
-Features
---------
-
-* models and views as data
-  * C4 model elements and views
-  * hierarchical models
-  * separation of models and views
-  * extensible format
-  * view specific customization of model elements
-* exports
-  * JSON
-  * PlantUML/C4
-    * all views (except code view)
-    * styling and sprite support
-  * Structurizr
-* watch model directory for changes
-
-
 Modelling
 ---------
 

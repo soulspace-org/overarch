@@ -12,7 +12,23 @@ Overarch is not so much about how to model your architecture
 (see [C4 Model](https://c4model.com) for that), but about making the models
 composable and reusable.
 
-*Disclaimer: this project is in alpha stage - the data format might change*
+
+Features
+--------
+
+* models and views as data
+  * C4 model elements and views
+  * hierarchical models
+  * separation of models and views
+  * extensible format
+  * view specific customization of model elements
+* exports
+  * JSON if you need to process models with languages without EDN support
+  * PlantUML/C4
+    * all views (except code view)
+    * styling and sprite support
+  * Structurizr *experimental*
+* watch model directory for changes
 
 
 Rationale
@@ -64,13 +80,17 @@ must have an id.
 Model references may be enhanced with additional attributes that are specific
 to the usage context (e.g. a style attribute in the context of a diagram)
 
+
 Examples
 --------
+
 This is an example of the specification of a model and some diagrams based on the
 Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
 The complete model and diagram specifications can be found under
 [models/banking](/models/banking).
+
+Further information about modelling with *Overarch* can be found in [Usage](doc/usage.md).
 
 ### Example of a model definition
 
@@ -231,8 +251,6 @@ lein uberjar
 
 to build a JAR file with all dependencies. This JAR file is created in the *target* folder and is named *overarch.jar*
 
-See Usage on how to run it with it's CLI interface.
-
 
 Installation
 ------------
@@ -273,34 +291,47 @@ Use a folder for all the data (e.g. models, view specifications) of a project.
 Add EDN files for the model and the view specifications. All the EDN files in the folder will be loaded.
 
 ### Command Line Interface
+Start the the *Overarch* CLI tool with java.
 
 ```
 java -jar overarch.jar [options]
 ```
 
-Overarch currently supports these options
+*Overarch* currently supports these options
 
 ```
 Options:
 
-  Option                    Default   Description
+  Option                       Default   Description
 
-  -m, --model-dir DIRNAME   models    Model directory
-  -e, --export-dir DIRNAME  export    Export directory
-  -w, --watch                         Watch model dir for changes and trigger export
-  -f, --format FORMAT       plantuml  Export format (json, plantuml, structurizr)
-  -h, --help                          Print help message
-      --debug                         Print debug messages
+  -m, --model-dir DIRNAME      models    Model directory
+  -e, --export-dir DIRNAME     export    Export directory
+  -w, --watch                            Watch model dir for changes and trigger export
+  -f, --format FORMAT          plantuml  Export format (json, plantuml, structurizr)
+      --model-info                       Returns infos for the loaded model
+      --plantuml-list-sprites            Lists the loaded PlantUML sprites
+      --debug                            Print debug messages
+  -h, --help                             Print help
 ```
 
-If you use Visual Studio Code as described above, you can start *overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
+If you use Visual Studio Code as described above, you can start *Overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
+
+Documentation
+-------------
+
+See [Usage](doc/usage.md) for additional information on modelling and usage of the *Overarch* CLI tool.
+
+See [Design](doc/design.md) for information about the design of *Overarch*.
 
 
 Copyright
 ---------
+
 © 2023 Ludger Solbach
+
 
 License
 -------
-Eclipse Public License 1.0
+
+Eclipse Public License 1.0 (EPL1.0)
 
