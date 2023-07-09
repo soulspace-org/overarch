@@ -45,7 +45,7 @@ C4 architecture diagrams.
 Observations
 ------------
 * Textual DSLs may provide a compact and succinct language
-* Textual DSLs fall short at least in
+* current Textual DSLs fall short at least in
   * separation between layout and model
   * composablility
   * extendability
@@ -66,8 +66,11 @@ Observations
   * likely not as compact and succint as DSLs
 
 
-Questions
----------
+Design Questions and Answers
+----------------------------
+This section documents design decisions in the form of questions and answers.
+Not all questions that arose have a definitve answer/decision yet.
+
 
 Q: **What is architecture anyway?**
 
@@ -118,6 +121,11 @@ A: An extension of the model could make sense if there is value in the connectio
      * e.g. state machines, activty or sequence diagrams
    * ...
 
+   The schema of the model is open, as the spec just checks for the existence of
+   elements (keys) needed for overarch (e.g. the generation of the implemented
+   view representations). Additional elements can be added without impact on overarch.
+   The keys for additional elements should be prefixed with a meaningful namespace.
+
 
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
@@ -139,11 +147,10 @@ Q: **Shall relations between low level elements (e.g. components) and the outsid
    An advantage would be that relations would have be specified on the
    component level, where the interaction is handled or the concrete dependency exists. But only relations between elements that are included
    in the diagram should be rendered. If a user or an external system is
-   not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted
-   elements.
+   not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted elements.
 
-   Relations of different elements in a lower level could be merged into a relation on a higher level, but some merge rules would have to be
-   established first.
+   Relations of different elements in a lower level could be merged into a relation
+   on a higher level, but some merge rules would have to be established first.
 
 A: 
 
@@ -190,12 +197,15 @@ A:
 Q: **How can duplication reduced in views of specific instanciations of the model?**
    
    Use case:
-   Deployment view to different stages with replacement of the stage variable with the
-   name of the stage or stage specific values (e.g. CIDR ranges, ...).
-   Merging of additional elements in the instantiation with elements in the template,
-   e.g. local queues for testing in the dev stage, which are external in the prod stage.
+   Deployment view to different stages with replacement of the stage
+   variable with the name of the stage or stage specific values (e.g.
+   CIDR ranges, ...).
+   Merging of additional elements in the instantiation with elements in
+   the template, e.g. local queues for testing in the dev stage, which
+   are external in the prod stage.
 
-A: Parameterized views, view templates with variable replacement and element merging.
+A: Parameterized views, view templates with variable replacement and element
+   merging (not implemented yet).
 
 
 Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
@@ -248,6 +258,7 @@ A: Because it is an open and extensible data format
      * IntelliJ + Cursive
      * Emacs + Cider
 
+
 Q: **Why not JSON?**
 
 A: JSON is a format that is widely used and supported by many programming
@@ -291,3 +302,11 @@ Q: **Is a global configuration (e.g. via config file) needed?**
 
 A: 
 
+
+Component Design
+----------------
+The diagram below shows the current structure of the code. The components
+map to clojure namespaces and the diagram describes the reposibilities and
+dependencies of the namespaces.
+
+![Component View of Overarch](/doc/images/overarch_ComponentView.svg)
