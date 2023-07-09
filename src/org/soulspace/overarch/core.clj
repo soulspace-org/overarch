@@ -124,6 +124,36 @@
   [e]
   (contains? deployment-types (:el e)))
 
+(defn person?
+  "Returns true if the given element `e` is a person element."
+  [e]
+  (= :person (:el e)))
+
+(defn system?
+  "Returns true if the given element `e` is a system element."
+  [e]
+  (= :system (:el e)))
+
+(defn container?
+  "Returns true if the given element `e` is a container element."
+  [e]
+  (= :container (:el e)))
+
+(defn component?
+  "Returns true if the given element `e` is a container element."
+  [e]
+  (= :component (:el e)))
+
+(defn node?
+  "Returns true if the given element `e` is a node element."
+  [e]
+  (= :node (:el e)))
+
+(defn external?
+  "Returns true if the given element `e` is external."
+  [e]
+  (:external e))
+
 ;;
 ;; Schema specification
 ;;
@@ -285,13 +315,14 @@
 ;       (user/data-tapper "related")
        (reduce set/union #{})))
 
+
 (defn unconnected-components
   "Returns the set of elements that are not connected with any other element by a relation."
   ([]
    (unconnected-components @state))
   ([m]
    (let [component-set (into #{} (map :id (filter component-level? (all-elements m))))
-         related-set (related-elements (get-model-elements m))]
+         related-set (related-elements (all-elements m))]
      (set/difference component-set related-set))))
 
 (comment

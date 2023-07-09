@@ -27,7 +27,7 @@
    ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
    ["-f" "--format FORMAT" "Export format (json, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
-;   ["-i" "--info" "Returns infos for the loaded model" :default false] 
+   [nil  "--model-info" "Returns infos for the loaded model" :default false] 
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
 ;   [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
    ["-h" "--help" "Print help"]
@@ -63,47 +63,6 @@
   (println msg)
   (System/exit status))
 
-;;;
-;;; Handler logic
-;;;
-
-(defn update-and-export!
-  "Read models and export the data according to the given `options`."
-  [options]
-  (core/update-state! (:model-dir options))
-  (exp/export options))
-
-(defn report
-  "Reports information about the model and views."
-  [options]
-  (let [element-count (count (remove core/relation? (core/get-model-elements)))
-        view-count (count (core/get-views))
-        unrelated-elements (core/unconnected-components)]
-    {:element-count element-count
-     :view-count view-count
-     :unrelated-elements unrelated-elements}))
-
-(defn handle
-  "Handle the `options` and generate the requested outputs."
-  [options]
-  (core/update-state! (:model-dir options))
-  (exp/export options)
-  (when (:plantuml-list-sprites options)
-    (puml/print-sprite-mappings))
-  (when (:watch options)
-    ; TODO loop recur this update-and-export! as handler
-    (hawk/watch! [{:paths [(:model-dir options)]
-                   :handler (fn [ctx e]
-;                              (println "event: " e)
-;                              (println "context: " ctx)
-                              (update-and-export! options))}])
-    (while true
-      (Thread/sleep 5000))))
-
-;;;
-;;; CLI entry 
-;;;
-
 (defn validate-args
   "Validate command line arguments `args` according to the given `cli-opts`.
    Either returns a map indicating the program should exit
@@ -123,6 +82,66 @@
       :else ; failed custom validation => exit with usage summary
       {:exit-message (usage-msg appname description summary)})))
 
+;;;
+;;; Handler logic
+;;;
+
+(defn update-and-export!
+  "Read models and export the data according to the given `options`."
+  [options]
+  (core/update-state! (:model-dir options))
+  (exp/export options))
+
+(defn model-info
+  "Reports information about the model and views."
+  [options]
+  (let [elements (core/all-elements)
+        element-count (count (remove core/relation?
+                                     (filter core/model-element? elements)))
+        unrelated-elements (core/unconnected-components)]
+    {:element-count element-count
+     :view-count (count (filter core/view? elements))
+     :person-count (count (filter core/person? elements))
+     :system-count (count (filter core/system? elements))
+     :container-count (count (filter core/container? elements))
+     :component-count (count (filter core/component? elements))
+     :node-count (count (filter core/node? elements))
+     :relation-count (count (filter core/relation? elements))
+     :external-count (count (filter (comp core/model-element?
+                                          core/external?) elements))
+     :unrelated-elements unrelated-elements}))
+
+(defn print-sprite-mappings
+  "Prints the given list of the sprite mappings."
+  ([]
+   (print-sprite-mappings (puml/sorted-sprite-mappings puml/tech->sprite)))
+  ([sprite-mappings]
+   (doseq [sprite sprite-mappings]
+     (println (str (:key sprite) ": " (puml/sprite-path sprite))))))
+
+(defn handle
+  "Handle the `options` and generate the requested outputs."
+  [options]
+  (core/update-state! (:model-dir options))
+  (exp/export options)
+  (when (:model-info options)
+    (println (model-info options)))
+  (when (:plantuml-list-sprites options)
+    (print-sprite-mappings))
+  (when (:watch options)
+    ; TODO loop recur this update-and-export! as handler
+    (hawk/watch! [{:paths [(:model-dir options)]
+                   :handler (fn [ctx e]
+;                              (println "event: " e)
+;                              (println "context: " ctx)
+                              (update-and-export! options))}])
+    (while true
+      (Thread/sleep 5000))))
+
+;;;
+;;; CLI entry 
+;;;
+
 (defn -main
   "Main function as CLI entry point."
   [& args]
@@ -138,10 +157,11 @@
 (comment
   (update-and-export! {:model-dir "models"
                        :format :plantuml})
-  (report {:report true})
+  (model-info {:model-info true})
+  (print-sprite-mappings)
   (-main "--debug" "--format" "json")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
-  (-main "--info")
+  (-main "--model-info")
   (-main "--debug")
   (-main "--help") ; ends REPL session
   (-main "--plantuml-list-sprites")
