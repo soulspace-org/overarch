@@ -10,7 +10,7 @@
   {:el :system
    :id :overarch/overarch
    :name "Overarch"
-   :desc "Work with architecture models as data."
+   :desc "Provides the schema for architecture models and views. Generates representations like diagrams."
    :ct #{{:el :container
           :id :overarch/overarch-cli
           :name "Overarch CLI"
@@ -82,18 +82,19 @@
    :id :overarch/cli-calls-exports
    :from :overarch/cli
    :to :overarch/export
-   :name "calls export functions."}
+   :name "calls"
+   :desc "export functions"}
   {:el :rel
    :id :overarch/exports-plantuml-implements-export
    :from :overarch/exports-plantuml
    :to :overarch/export
-   :name "implements export functions"
-   :desc "for PlantUML diagrams"}
+   :name "implements"
+   :desc "export functions for PlantUML diagrams"}
   {:el :rel
    :id :overarch/exports-plantuml-accesses-model
    :from :overarch/exports-plantuml
    :to :overarch/core
-   :name "accesses"
+   :name "queries"
    :desc "model and views"}
   {:el :rel
    :id :overarch/exports-plantuml-calls-io
@@ -102,11 +103,17 @@
    :name "calls"
    :desc "loads sprite mappings"}
   {:el :rel
+   :id :overarch/exports-plantuml-calls-view
+   :from :overarch/exports-plantuml
+   :to :overarch/view
+   :name "calls"
+   :desc "view queries and rendering functions"}
+  {:el :rel
    :id :overarch/exports-json-implements-export
    :from :overarch/exports-json
    :to :overarch/export
-   :name "implements export functions"
-   :desc "for JSON"}
+   :name "implements"
+   :desc "export functions for JSON"}
   {:el :rel
    :id :overarch/exports-json-calls-io
    :from :overarch/exports-json
@@ -117,12 +124,17 @@
    :id :overarch/exports-structurizr-implements-export
    :from :overarch/exports-structurizr
    :to :overarch/export
-   :name "implements export functions"
-   :desc "for Structurizr"}
+   :name "implements"
+   :desc "export functions for Structurizr"}
   {:el :rel
    :id :overarch/exports-structurizr-accesses-model
    :from :overarch/exports-structurizr
    :to :overarch/core
-   :name "accesses"
+   :name "queries"
    :desc "model and views"}
-}
+  {:el :rel
+   :id :overarch/view-queries-model
+   :from :overarch/view
+   :to :overarch/core
+   :name "queries"
+   :desc "model and views"}}

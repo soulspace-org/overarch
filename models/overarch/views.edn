@@ -40,10 +40,12 @@
         {:ref :overarch/cli-calls-exports}
         {:ref :overarch/exports-plantuml-implements-export}
         {:ref :overarch/exports-plantuml-accesses-model}
+        {:ref :overarch/exports-plantuml-calls-view}
         {:ref :overarch/exports-plantuml-calls-io}
         {:ref :overarch/exports-json-implements-export}
         {:ref :overarch/exports-json-calls-io}
         {:ref :overarch/exports-structurizr-implements-export}
         {:ref :overarch/exports-structurizr-accesses-model}
+        {:ref :overarch/view-queries-model}
         ]}
   }
