@@ -2,6 +2,7 @@
 
 Overarch
 ========
+
 A data driven description of software architecture based on the C4 model.
 
 Describe your model as data and specify/generate representations (e.g. diagrams)
@@ -11,6 +12,11 @@ supported.
 Overarch is not so much about how to model your architecture
 (see [C4 Model](https://c4model.com) for that), but about making the models
 composable and reusable.
+
+[![Clojars Project](https://img.shields.io/clojars/v/org.soulspace.clj/overarch.svg)](https://clojars.org/org.soulspace.clj/overarch)
+[![cljdoc badge](https://cljdoc.org/badge/org.soulspace.clj/overarch)](https://cljdoc.org/d/org.soulspace.clj/overarch)
+![GitHub](https://img.shields.io/github/license/soulspace-org/overarch)
+
 
 
 Features
