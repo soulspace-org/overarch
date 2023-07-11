@@ -1,6 +1,7 @@
 (ns org.soulspace.overarch.exports.plantuml
   "Functions to export views to PlantUML."
-  (:require [clojure.string :as str]
+  (:require [clojure.set :as set]
+            [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
@@ -354,14 +355,29 @@
 ;;
 ;; Sprite Imports
 ;;
+(defn collect-sprites
+  "Returns the set of sprites for the elements of the coll."
+  ([coll]
+   (collect-sprites #{} coll))
+  ([sprites coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (:sprite e)
+         (recur (collect-sprites (set/union sprites #{(:sprite e)}) (:ct e)) (rest coll))
+         (recur (collect-sprites sprites (:ct e)) (rest coll))))
+     sprites)))
+
+(defn collect-all-sprites
+  "Collects all sprites for the collection of elsements."
+  [coll]
+  (filter sprite? (set/union (view/collect-technologies coll) (collect-sprites coll))))
 
 (defn sprites-for-diagram
   "Collects the sprites for the"
   [diagram]
   (->> diagram
        (view/elements-to-render)
-       (view/collect-technologies)
-       (filter sprite?)
+       (collect-all-sprites) 
        (map #(tech->sprite %))))
 
 (defn local-import
@@ -402,6 +418,9 @@
         icons (sprites-for-diagram diagram)]
     [(map (partial render-spritelib-import diagram) icon-libs)
      (map (partial render-sprite-import diagram) icons)]))
+
+(comment
+  (tech->sprite "Angular"))
 
 ;;
 ;; C4 Imports
