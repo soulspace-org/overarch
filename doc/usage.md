@@ -176,7 +176,7 @@ context of the reference. For example you can mark an internal system as externa
 in the context of a specific view by adding `:external true` to the reference.
 
 #### Boundaries
-Boundaries group related elements and are normaly rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
+Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
 
 The implicit boundaries are the system boundary and the container boundary.
 They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
