@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.2.0
+-------------
+* added sprite includes for :sprite entries
+* enhanced documentation
+
 Version 0.1.0
 -------------
 * initial import
