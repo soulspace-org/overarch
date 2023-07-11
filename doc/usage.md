@@ -110,21 +110,27 @@ Models
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the Extensible Data Notation (EDN).
 
-The top level element in a model EDN file is a set. It contains the top level
+The top level element in a model EDN file is a set which contains the top level
 model elements. Model elements are denoted as maps in the EDN file.
-All model elements have at least two attributes, **:el** for the type of the
+All model elements have at least two keys, **:el** for the type of the
 element and **:id** for the identifier. The identifiers should be namespaced
-keywords, so that different modelscan be composed without collisions of the
+keywords, so that different models can be composed without collisions of the
 identifiers.
 
 
-
+key       | type    | values             | description 
+----------|---------|--------------------|------------
+:el       | keyword | see model elements | type of the model element
+:id       | keyword | namespaced id      | id of the element
+:subtype  | keyword | :database, :queue  | role of the element
+:external | boolean | true false         | default is false
+:name     | string  |                    | name of the element
+:desc     | string  |                    | description of the element
+:tech     | string  |                    | technology of the element
 
 ### Model Elements
 
 The following model elements are supported by Overarch.
-
-:person, :enterprise-boundary, :system
 
 #### Person (:person)
 Persons are internal or external actors of the system.
@@ -155,6 +161,16 @@ contain a set of other nodes or containers.
 
 #### Relation (:rel)
 Relations describe the connections and interactions of the parts of a view.
+
+#### Reference (:ref)
+References refer to a model element with the given id. They are primarily used
+to refer to the model elements to include in views. They can also be used to
+refer to model elements in other model elements, e.g. to split a huge hierarchical
+systems into multiple EDN files.
+
+References can have other keys, which are merged with the referred element in
+context of the reference. For example you can mark an internal system as external
+in the context of a specific view by adding `:external true` to the reference.
 
 #### Boundaries
 Boundaries group related elements and are normaly rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
