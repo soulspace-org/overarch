@@ -117,16 +117,18 @@ element and **:id** for the identifier. The identifiers should be namespaced
 keywords, so that different models can be composed without collisions of the
 identifiers.
 
+### Keys
 
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :el       | keyword | see model elements | type of the model element
 :id       | keyword | namespaced id      | id of the element
-:subtype  | keyword | :database, :queue  | role of the element
+:subtype  | keyword | :database, :queue  | specific role of the element
 :external | boolean | true false         | default is false
 :name     | string  |                    | name of the element
 :desc     | string  |                    | description of the element
 :tech     | string  |                    | technology of the element
+:ct       | set     | model elements     | the children of the model element
 
 ### Model Elements
 
@@ -144,7 +146,8 @@ Persons are internal or external actors of the system.
 
 #### System (:system)
 A System is the top level element of the C4 model an can contain a set of
-containers.
+containers. Systems can be internal or external to the project context.
+The structure of internal systems is modelled with containers.
 
 #### Container (:container)
 A container is a part of a system. It represents a process of the system
@@ -263,6 +266,7 @@ Views
 -----
 
 ### C4 Views
+
 Overarch supports the description of all C4 core and supplementary views
 except from code views, which ideally should be generated from the code
 if needed. The core C4 views form a hierarchy of views.
@@ -273,6 +277,17 @@ information about the C4 Model.
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
 of elements is relevant in a view. 
+
+### Keys
+
+key       | type    | values                   | description 
+----------|---------|--------------------------|------------
+:el       | keyword | see views                | type of the view
+:id       | keyword | namespaced id            | used for export file name
+:title    | string  |                          | rendered title
+:spec     | map     |                          | rendering customization (e.g. styling)
+:ct       | list    | model refs (or elements) | view specific keys possible
+
 
 #### System Context Views (:context-view)
 Shows the system in the context of the actors and other systems it is
@@ -322,6 +337,7 @@ Exports
 ### JSON
 The model and view descriptions can be exported to JSON to make their content
 available to languages for which no EDN implementation exists.
+The export converts each EDN file to JSON.
 
 ### PlantUML
 The the specified views can be exported to PlantUML C4 diagrams.
@@ -346,6 +362,10 @@ The list of sprites contains sprites of the PlantUML standard library, e.g.
 sprites for AWS and Azure. The mapping files from tech name to sprite
 reside in [resources/plantuml](/resources/plantuml). 
 
+The command line interface supports the option `--plantuml-list-sprites`
+which prints the (long) list of sprite mappings. 
+
+
 #### Rendering PlantUML diagrams
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
 diagrams right from the IDE.
@@ -356,8 +376,9 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
-### Structurizr
-Structurizr is a tool set created by Simon Brown. 
+### Structurizr (*experimental*)
+Structurizr is a tool set created by Simon Brown.
+The structurizr export creates a workspace with the loaded model and views.
 
 
 Command Line Interface
@@ -374,11 +395,16 @@ Overarch currently supports these options
 ```
 Options:
 
-  -m, --model-dir DIRNAME   models    Model directory
-  -e, --export-dir DIRNAME  export    Export directory
-  -w, --watch                         Watch model dir for changes and trigger export
-  -f, --format FORMAT       plantuml  Export format (json, plantuml, structurizr)
-  -h, --help                          Print help
+  Option                       Default   Description
+
+  -m, --model-dir DIRNAME      models    Model directory
+  -e, --export-dir DIRNAME     export    Export directory
+  -w, --watch                            Watch model dir for changes and trigger export
+  -f, --format FORMAT          plantuml  Export format (json, plantuml, structurizr)
+      --model-info                       Returns infos for the loaded model
+      --plantuml-list-sprites            Lists the loaded PlantUML sprites
+      --debug                            Print debug messages
+  -h, --help                             Print help
  ```
 
 
