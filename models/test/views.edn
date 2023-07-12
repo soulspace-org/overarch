@@ -1,22 +1,24 @@
 #{{:el :context-view
    :id :test/styles-context-view
-   :spec {:styles #{{:el :rel
-                     :id :dashed-rel
+   :spec {:styles #{{:id :test/dashed-rel
+                     :el :rel
                      :text-color "#000000"
                      :line-color "#000000"
                      :line-style :dashed
                      :tech "async"
                      :legend-text "asynchronous"}
-                    {:el :rel
-                     :id :dotted-rel
-                     :line-style :dotted}
-                    {:el :rel
-                     :id :bold-rel
+                    {:id :test/dotted-rel
+                     :el :rel
+                     :line-style :dotted
+                     :legend-text "dependency"}
+                    {:id :test/bold-rel
+                     :el :rel
                      :line-style :bold
                      :line-color "#007700"
-                     :text-color "#000077"}
-                    {:el :element
-                     :id :red-el
+                     :text-color "#000077"
+                     :legend-text "synchronous"}
+                    {:id :test/critical
+                     :el :element
                      :bg-color "#CC0000"
                      :border-color "#330000"
                      :text-color "#000000"
@@ -25,7 +27,7 @@
    :ct [{:el :system
          :id :test/sys1
          :name "Sys1"
-         :style :red-el}
+         :style :test/critical}
         {:el :system
          :id :test/sys2
          :name "Sys2"
@@ -34,7 +36,7 @@
          :from :test/sys1
          :to :test/sys2
          :name "calls"
-         :style :dashed-rel}]}
+         :style :test/dashed-rel}]}
 
   {:el :context-view
    :id :test/plantuml-local-imports

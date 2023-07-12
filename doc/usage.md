@@ -330,6 +330,18 @@ Shows the order of interactions. The relations get numerated in the given order 
 ### Styling
 Overarch supports custom styles for elements. For an example see [views.edn](/models/test/views.edn).
 
+#### Keys
+
+key           | type    | values                   | description 
+--------------|---------|--------------------------|------------
+:id           | keyword | namespaced id            | used to reference styles
+:el           | keyword | :rel, :element           | element type to be styled
+:line-style   | keyword | :dashed, :dotted, :bold  | for relations
+:line-color   | hex rgb | #0000FF for bright blue  | 
+:border-color | hex rgb | #FF0000 for bright red   |
+:text-color   | hex rgb | #003300 for dark green   |
+:legend-text  | string  |                          | meaningful text to show in legend
+
 
 Exports
 -------

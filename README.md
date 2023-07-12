@@ -5,12 +5,12 @@ Overarch
 
 A data driven description of software architecture based on the C4 model.
 
-Describe your model as data and specify/generate representations (e.g. diagrams)
-for your model. All core and supplementary C4 diagrams except code diagrams are
-supported.
+Describe your model as data and specify/generate representations (e.g.
+diagrams) for your model. All core and supplementary C4 diagrams except code
+diagrams are supported.
 
-Overarch is not so much about how to model your architecture
-(see [C4 Model](https://c4model.com) for that), but about making the models
+Overarch is not so much about how to model your architecture (see
+[C4 Model](https://c4model.com) for that), but about making the models
 composable and reusable.
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.soulspace.clj/overarch.svg)](https://clojars.org/org.soulspace.clj/overarch)
@@ -65,8 +65,9 @@ the model may also be used in other ways, e.g. the generation of documentation,
 code or infrastructure.
 
 Even if the model is specified as data, the format should be a text file (EDN,
-JSON) to be easily edited with text editors by the whole team and to be committed
-to version control, instead of being in some propriatory binary format.
+JSON) to be easily edited with text editors by the whole team and to be
+committed to version control, instead of being in some propriatory binary
+format.
 
 The native format should be Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
