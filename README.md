@@ -44,7 +44,7 @@ C4 models are great to vizualize an architecture on different levels of detail
 with the various diagrams types. The value lies in an expressive description
 and visualization of an architecture with different views.
 
-But but the models used for diagram generation with the existing tools are not
+But the models used for diagram generation with the existing tools are not
 models in the sense of generality. Especially if you describe your model in
 PlantUML files, these descriptions are mere textfiles.
 
