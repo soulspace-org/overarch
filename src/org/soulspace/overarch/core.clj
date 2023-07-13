@@ -353,9 +353,10 @@
    (if (seq coll)
      (let [e (first coll)]
        (if (relation? e)
-         ; not recursive, expects relations to be top level elements
+         ; not recursive, relations have no relations
          (recur (assoc m (:from e) (conj (get m (:from e) #{}) e)) (rest coll))
-         (recur m (rest coll))))
+         ; recursive to pick up relations in model elements
+         (recur (build-referrer-id->rels m (:ct e)) (rest coll))))
      m)))
 
 (defn build-referred-id->rels
@@ -366,9 +367,10 @@
    (if (seq coll)
      (let [e (first coll)]
        (if (relation? e)
-         ; not recursive, expects relations to be top level elements
+         ; not recursive, relations have no relations
          (recur (assoc m (:to e) (conj (get m (:to e) #{}) e)) (rest coll))
-         (recur m (rest coll))))
+         ; recursive to pick up relations in model elements
+         (recur (build-referred-id->rels m (:ct e)) (rest coll))))
      m)))
 
 (defn build-id->elements
@@ -402,7 +404,9 @@
 
    :elements -> the given data
    :registry -> a map from id to element
-   :parents  -> a map from id to parent element"
+   :parents  -> a map from id to parent element
+   :referrer -> a map from id to set of relations where the id is the referrer (:from)
+   :referred -> a map from id to set of relations where the id is referred (:to)"
   [elements]
   (if (s/valid? :overarch/elements elements)
     {:elements elements
