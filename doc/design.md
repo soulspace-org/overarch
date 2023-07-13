@@ -1,6 +1,7 @@
 Design
 ======
 
+
 Situation
 ---------
 Currently we create architecture diagrams with the C4 models and PlantUML.
@@ -42,6 +43,7 @@ C4 architecture diagrams.
   * pure textual representation
   * needs a parser implementation
 
+
 Observations
 ------------
 * Textual DSLs may provide a compact and succinct language
@@ -64,6 +66,7 @@ Observations
 
 * Possible disadvantages
   * likely not as compact and succint as DSLs
+
 
 
 Design Questions and Answers
@@ -194,6 +197,11 @@ Q: **Can views be specified in a generic manner, so that the elements contained 
 A: 
 
 
+Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
+
+A: 
+
+
 Q: **How can duplication reduced in views of specific instanciations of the model?**
    
    Use case:
@@ -206,6 +214,12 @@ Q: **How can duplication reduced in views of specific instanciations of the mode
 
 A: Parameterized views, view templates with variable replacement and element
    merging (not implemented yet).
+
+
+Q: **How can we avoid duplication for style specifications used in multiple views?**
+
+A: Themes could encapsulate the specification of the styles and the can be referenced in the
+   various diagrams to provide a consistent style.
 
 
 Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
@@ -225,7 +239,9 @@ A: The handling of icons is very tool specific and not easily implemented in a g
 
 Q: **Are notes on model elements and relations possible in the view rendering?**
 
-A: 
+A: PlantUML supports notes but as it seems only on elements and not on relations.
+   So if notes would be annotated on elements and relations, the notes on relations
+   could currently not be rendered in PlantUML diagrams.
 
 
 Q: **Which are the levels/granularities of the export?**
@@ -233,17 +249,12 @@ Q: **Which are the levels/granularities of the export?**
 A: It differs on the type of the export.
    
    For PlantUML the export can work on all the loaded model and diagram
-   specifications and generate the relevant diagrams, even for multiple models.
+   specifications and generate all relevant diagrams, even for multiple models.
 
    For Stucturizr the export should work on a model and the associated diagram specifications to generate a Structurizr workspace.
 
    For JSON the export should be done on an individual file level, to keep the
    structure of data files intact.
-
-
-Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
-
-A: 
 
 
 Q: **Why EDN as the specification notation?**
