@@ -315,13 +315,23 @@
 ;       (user/data-tapper "related")
        (reduce set/union #{})))
 
+(defn component-set
+  "Returns the set of model components."
+  ([]
+   (component-set @state))
+  ([m]
+   (->> m
+        (all-elements)
+        (filter component-level?)
+        (map :id)
+        (into #{}))))
 
 (defn unconnected-components
   "Returns the set of elements that are not connected with any other element by a relation."
   ([]
    (unconnected-components @state))
   ([m]
-   (let [component-set (into #{} (map :id (filter component-level? (all-elements m))))
+   (let [component-set (component-set m)
          related-set (related-elements (all-elements m))]
      (set/difference component-set related-set))))
 
@@ -334,6 +344,32 @@
 ;;
 ;; State preparation
 ;;
+
+(defn build-referrer-id->rels
+  "Returns a map of referrer-id to relation for the relations in `coll`."
+  ([coll]
+   (build-referrer-id->rels {} coll))
+  ([m coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (relation? e)
+         ; not recursive, expects relations to be top level elements
+         (recur (assoc m (:from e) (conj (get m (:from e) #{}) e)) (rest coll))
+         (recur m (rest coll))))
+     m)))
+
+(defn build-referred-id->rels
+  "Returns a map of referred-id to relation for the relations in `coll`."
+  ([coll]
+   (build-referred-id->rels {} coll))
+  ([m coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (relation? e)
+         ; not recursive, expects relations to be top level elements
+         (recur (assoc m (:to e) (conj (get m (:to e) #{}) e)) (rest coll))
+         (recur m (rest coll))))
+     m)))
 
 (defn build-id->elements
   "Returns a map of id to element for the elements of the `coll`."
@@ -371,7 +407,9 @@
   (if (s/valid? :overarch/elements elements)
     {:elements elements
      :registry (build-id->elements elements)
-     :parents (build-id->parent elements)}
+     :parents (build-id->parent elements)
+     :referrer (build-referrer-id->rels elements)
+     :referred (build-referred-id->rels elements)}
     (s/explain :overarch/elements elements)))
 
 (s/fdef read-elements
