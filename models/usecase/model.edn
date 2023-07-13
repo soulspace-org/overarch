@@ -1,0 +1,32 @@
+#{
+  ;;;
+  ;;; Actors
+  ;;; 
+  {:el :actor
+   :id :use-case/user
+   :name "User"}
+  {:el :actor
+   :id :use-case/admin
+;   :extends :use-case/user
+   :name "Administrator"}
+
+  ;;; 
+  ;;; Use Cases
+  ;;;
+  {:el :use-case
+   :id :use-case/manage-content
+   :name "Manage Content"}
+  {:el :use-case
+   :id :use-case/manage-users
+   :name "Manage Users"}
+  
+  ;;; 
+  ;;; Relations
+  ;;;
+  {:el :rel
+   :from :use-case/user
+   :to :use-case/manage-content}
+  {:el :rel
+   :from :use-case/admin
+   :to :use-case/manage-users}
+  }
