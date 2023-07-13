@@ -14,6 +14,8 @@
 ;;;; PlantUML rendering
 ;;;;
 
+
+
 ;;;
 ;;; PlantUML mappings
 ;;;
@@ -342,9 +344,9 @@
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
           (if (:sprite e)
-            (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) "\"")
+            (str ", $sprite=\"" (:name (tech->sprite (:sprite e))) ",scale=0.5\"")
             (when (sprite? (:tech e))
-              (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
+              (str ", $sprite=\"" (:name (tech->sprite (:tech e))) ",scale=0.5\"")))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
