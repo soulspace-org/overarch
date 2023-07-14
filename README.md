@@ -60,9 +60,8 @@ If the model is described as plain *data* in an open format, it can be
 transformed into a graphical representation, e.g. into PlantUML textfiles.
 
 The model data should be separated from information about these representations.
-They can be composed with these information and with other models. By doing so,
-the model may also be used in other ways, e.g. the generation of documentation,
-code or infrastructure.
+
+Models can be composed with these information and with other models. By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
 
 Even if the model is specified as data, the format should be a text file (EDN,
 JSON) to be easily edited with text editors by the whole team and to be
@@ -73,12 +72,10 @@ The native format should be Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
 readable. It is directly readable into data structures in clojure code.
 
-The data format should be open for extension. E.g. it should cope with additional
-attributes or element types in the data structures.
+The data format should be open for extension. E.g. it should cope with additional attributes or element types in the data structures.
 
 The model should describe the architecture (the structure) of your system(s).
-The elements are based on the C4 model and are a hierarchical composition of the
-elements of the architecture.
+The elements are based on the C4 model and are a hierarchical composition of the elements of the architecture.
 
 Model references should be used to refer to model elements from representations
 (e.g. diagrams). To allow references to relations, the definition of a relation
@@ -91,8 +88,8 @@ to the usage context (e.g. a style attribute in the context of a diagram)
 Examples
 --------
 
-This is an example of the specification of a model and some diagrams based on the
-Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
+This is an example of the specification of a model and some diagrams based on
+the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
 The complete model and diagram specifications can be found under
 [models/banking](/models/banking).

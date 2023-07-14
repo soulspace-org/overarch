@@ -66,6 +66,15 @@ Observations
   * likely not as compact and succint as DSLs
 
 
+Design Goals
+------------
+
+* Reusable models
+* Reduced duplication of information
+* Extensibility of the data format
+* Extensibility of the tools
+
+
 Design Questions and Answers
 ----------------------------
 This section documents design decisions in the form of questions and answers.
