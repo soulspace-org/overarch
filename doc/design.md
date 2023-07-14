@@ -74,7 +74,7 @@ Design Goals
 * Reusable models
 * Reduced duplication of information
 * Extensibility of the data format
-* Extensibility of the tools
+* Extensibility of the exports
 
 
 Design Questions and Answers
