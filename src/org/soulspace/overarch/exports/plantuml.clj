@@ -391,6 +391,7 @@
 
 (defmethod render-element :state
   [_ indent e]
+  ; TODO render substates
   [(str "state \"" (view/element-name e) "\" as " (alias-name (:id e)))])
 
 (defmethod render-element :start-state
