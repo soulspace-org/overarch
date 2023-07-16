@@ -362,6 +362,7 @@
 
 (defmethod render-element :use-case
   [_ indent e]
+  ; TODO add color based on :level
   [(str "usecase \"" (view/element-name e) "\" as (" (alias-name (:id e)) ")")])
 
 (defmethod render-element :actor
