@@ -71,7 +71,7 @@
                     :local-imports ["common"]}})
 
 (def element->method
-  "Map from element type to PlantUML method."
+  "Map from element type to PlantUML C4 method."
   {:person              "Person"
    :system              "System"
    :boundary            "Boundary"
@@ -195,7 +195,7 @@
   [options diagram]
   (:el diagram))
 
-(defmulti render-diagram
+(defmulti render-view
   "Renders the diagram with PalantUML"
   renderer
   :hierarchy #'view/view-hierarchy)
@@ -221,16 +221,16 @@
   :hierarchy #'view/element-hierarchy)
 
 (defmethod render-element :boundary
-  [diagram indent e]
+  [view indent e]
   (if (seq (:ct e))
-    (let [children (view/elements-to-render diagram (:ct e))]
+    (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
                      (view/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
                      ") {")
-                (map #(render-element diagram (+ indent 2) %)
+                (map #(render-element view (+ indent 2) %)
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
@@ -303,9 +303,9 @@
         ")")])
 
 (defmethod render-element :node
-  [diagram indent e]
+  [view indent e]
   (if (seq (:ct e))
-    (let [children (view/elements-to-render diagram (:ct e))]
+    (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
                      (element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
@@ -318,7 +318,7 @@
                          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
-                (map #(render-element diagram (+ indent 2) %)
+                (map #(render-element view (+ indent 2) %)
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
@@ -335,7 +335,7 @@
           ")")]))
 
 (defmethod render-element :rel
-  [diagram indent e]
+  [_ indent e]
   (if (:constraint e) ; TODO :hidden or :constraint
     [(str (view/render-indent indent) "Lay"
           (when (:direction e) (directions (:direction e))) "("
@@ -359,6 +359,65 @@
               (str ", $sprite=\"" (:name (tech->sprite (:tech e))) ",scale=0.5\"")))
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
+
+(defmethod render-element :use-case
+  [_ indent e]
+  [(str "usecase \"" (view/element-name e) "\" as (" (alias-name (:id e)) ")")])
+
+(defmethod render-element :actor
+  [_ indent e]
+  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+
+(defmethod render-element :goal
+  [_ indent e]
+  [(str (alias-name (:from e)) " --> "
+        (alias-name (:to e)))])
+
+(defmethod render-element :include
+  [_ indent e]
+  [(str (alias-name (:from e)) " ..> "
+        (alias-name (:to e)) " : include")])
+
+(defmethod render-element :extends
+  [_ indent e]
+  [(str (alias-name (:from e)) " ..> "
+        (alias-name (:to e)) " : extends")])
+
+(defmethod render-element :generalizes
+  [_ indent e]
+  [(str (alias-name (:from e)) " --|> "
+        (alias-name (:to e)))])
+
+
+(defmethod render-element :state
+  [_ indent e]
+  [(str "state \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+
+(defmethod render-element :start-state
+  [_ indent e]
+  [(str "state " (alias-name (:id e)) " <<start>>")])
+
+(defmethod render-element :end-state
+  [_ indent e]
+  [(str "state " (alias-name (:id e)) " <<end>>")])
+
+(defmethod render-element :fork
+  [_ indent e]
+  [(str "state " (alias-name (:id e)) " <<fork>>")])
+
+(defmethod render-element :join
+  [_ indent e]
+  [(str "state " (alias-name (:id e)) " <<join>>")])
+
+(defmethod render-element :choice
+  [_ indent e]
+  [(str "state " (alias-name (:id e)) " <<choice>>")])
+
+(defmethod render-element :transition
+  [_ indent e]
+  [(str  (alias-name (:from e)) " --> "
+         (alias-name (:to e)) " : \"" (view/element-name e) "\"" )])
+
 
 ;;;
 ;;; Imports
@@ -386,8 +445,8 @@
 
 (defn sprites-for-diagram
   "Collects the sprites for the"
-  [diagram]
-  (->> diagram
+  [view]
+  (->> view
        (view/elements-to-render)
        (collect-all-sprites) 
        (map #(tech->sprite %))))
@@ -408,15 +467,15 @@
 
 (defn render-sprite-import
   "Renders the import for an sprite."
-  [diagram sprite]
-  (if (get-in diagram [:spec :plantuml :remote-imports])
+  [view sprite]
+  (if (get-in view [:spec :plantuml :remote-imports])
     (remote-import (sprite-path sprite))
     (local-import (sprite-path sprite))))
 
 (defn render-spritelib-import
   "Renders the imports for an sprite library."
-  [diagram sprite-lib]
-  (if (get-in diagram [:spec :plantuml :remote-imports])
+  [view sprite-lib]
+  (if (get-in view [:spec :plantuml :remote-imports])
     [(str "!define " (:remote-prefix sprite-lib) (:remote-url sprite-lib))
      (map (partial remote-import (:remote-prefix sprite-lib))
           (:remote-imports (sprite-libraries sprite-lib)))]
@@ -425,11 +484,11 @@
 
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
-  [diagram]
-  (let [icon-libs (get-in diagram [:spec :plantuml :sprite-libs])
-        icons (sprites-for-diagram diagram)]
-    [(map (partial render-spritelib-import diagram) icon-libs)
-     (map (partial render-sprite-import diagram) icons)]))
+  [view]
+  (let [icon-libs (get-in view [:spec :plantuml :sprite-libs])
+        icons (sprites-for-diagram view)]
+    [(map (partial render-spritelib-import view) icon-libs)
+     (map (partial render-sprite-import view) icons)]))
 
 (comment
   (tech->sprite "Angular"))
@@ -440,12 +499,12 @@
 
 (defn render-imports
   "Renders the imports for the diagram."
-  [diagram]
-  (if (get-in diagram [:spec :plantuml :remote-imports])
+  [view]
+  (if (get-in view [:spec :plantuml :remote-imports])
     (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
-         (view-type->import (:el diagram)))
+         (view-type->import (:el view)))
     (str "!include <C4/"
-         (view-type->import (:el diagram)) ">")))
+         (view-type->import (:el view)) ">")))
 
 ;;;
 ;;; Diagram Styles
@@ -462,11 +521,11 @@
 
 (defmulti render-style
   "Renders a styles for the diagram."
-  (fn [diagram style] (:el style)) :hierarchy #'styles-hierarchy)
+  (fn [view style] (:el style)) :hierarchy #'styles-hierarchy)
 
 ; AddElementTag (tagStereo, ?bgColor, ?fontColor, ?borderColor, ?shadowing, ?shape, ?sprite, ?techn, ?legendText, ?legendSprite)
 (defmethod render-style :element
-  [diagram style]
+  [view style]
   (let [el (:el style)]
     (str (style->method (:el style)) "("
          (short-name (:id style))
@@ -480,7 +539,7 @@
 
 ; AddRelTag (tagStereo, ?textColor, ?lineColor, ?lineStyle, ?sprite, ?techn, ?legendText, ?legendSprite, ?lineThickness)
 (defmethod render-style :rel
-  [diagram style]
+  [view style]
   (let [el (:el style)]
     (str (style->method (:el style)) "("
          (short-name (:id style))
@@ -498,10 +557,10 @@
 
 (defn render-layout
   "Renders the layout for the diagram."
-  [diagram]
-  (let [spec (:spec diagram)]
+  [view]
+  (let [spec (:spec view)]
     (flatten [(when (:styles spec)
-                (into [] (map #(render-style diagram %)) (:styles spec)))
+                (into [] (map #(render-style view %)) (:styles spec)))
               (when (:sketch spec)
                 "LAYOUT_AS_SKETCH()")
               (when (:layout spec)
@@ -511,28 +570,36 @@
 
 (defn render-legend
   "Renders the legend for the diagram."
-  [diagram]
-  (let [spec (:spec diagram)]
+  [view]
+  (let [spec (:spec view)]
     [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
 (defn render-title
   "Renders the title of the diagram."
-  [diagram]
-  (when (:title diagram) (str "title " (:title diagram))))
+  [view]
+  (when (:title view) (str "title " (:title view))))
 
-(defmethod render-diagram :c4-view
-  [options diagram]
-  (let [children (view/elements-to-render diagram)]
+(defmethod render-view :c4-view
+  [options view]
+  (let [children (view/elements-to-render view)]
     ;(user/data-tapper "resolved" children)
-    (flatten [(str "@startuml " (alias-name (:id diagram)))
-              (render-imports diagram)
-              (render-sprite-imports diagram)
-              (render-layout diagram)
-              (render-title diagram)
-              (map #(render-element diagram 0 %) children)
-              (render-legend diagram)
+    (flatten [(str "@startuml " (alias-name (:id view)))
+              (render-imports view)
+              (render-sprite-imports view)
+              (render-layout view)
+              (render-title view)
+              (map #(render-element view 0 %) children)
+              (render-legend view)
               "@enduml"])))
+
+(defmethod render-view :uml-view
+  [options view]
+  (let [children (view/elements-to-render view)]
+    (flatten [(str "@startuml " (alias-name (:id view)))
+             (map #(render-element view 0 %) children)
+              "@enduml"])
+    ))
 
 ;;;
 ;;; PlantUML file export
@@ -549,7 +616,7 @@
   [options view]
   (with-open [wrt (io/writer (exp/export-file options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-diagram options view))))))
+      (println (str/join "\n" (render-view options view))))))
 
 (defmethod exp/export :plantuml
   [options]

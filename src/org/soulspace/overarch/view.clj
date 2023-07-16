@@ -8,13 +8,15 @@
 ; general, multimethod?
 (def view-type->element-predicate
   "Map from diagram type to content-level predicate."
-  {:context-view          core/context-level?
-   :container-view        core/container-level?
-   :component-view        core/component-level?
-   :code-view             core/code-level?
-   :system-landscape-view core/system-landscape-level?
-   :dynamic-view          core/dynamic-level?
-   :deployment-view       core/deployment-level?})
+  {:context-view          core/context-view-element?
+   :container-view        core/container-view-element?
+   :component-view        core/component-view-element?
+   :code-view             core/code-view-element?
+   :system-landscape-view core/system-landscape-view-element?
+   :dynamic-view          core/dynamic-view-element?
+   :deployment-view       core/deployment-view-element?
+   :use-case-view         core/use-case-view-element?
+   :state-view            core/state-view-element?})
 
 ; general
 (def element->boundary
@@ -27,7 +29,6 @@
 ;;; Context based content filtering
 ;;;
 
-; general
 (defn render-predicate
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
@@ -40,7 +41,6 @@
           (and (element-predicate e)
                (not (:external (core/get-parent-element e))))))))
 
-; general
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
@@ -56,7 +56,6 @@
 ;;; Rendering functions
 ;;;
 
-; general
 (defn element-to-render
   "Returns the model element to be rendered in the context of the view."
   [view-type e]
@@ -67,7 +66,6 @@
     ; render e as normal model element
       e)))
 
-; general
 (defn elements-to-render
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
@@ -81,7 +79,6 @@
           (filter (render-predicate view-type))
           (map #(element-to-render view-type %))))))
 
-; general
 (defn relation-to-render
   "Returns the relation to be rendered in the context of the view."
   [view rel]
@@ -104,13 +101,13 @@
   "Collects the elements rendered in the view."
   ([view]
    (collect-view-elements #{} view (:ct view)))
-  ([els view coll]
+  ([elements view coll]
    (if (seq coll)
      (let [view-type (:el view) 
            e (first coll)]
        ; TODO filter and recur
        )
-     els
+     elements
      )))
 
 ; general

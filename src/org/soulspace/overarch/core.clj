@@ -10,7 +10,7 @@
 ;;;
 
 ;;
-;; Category definitions
+;; C4 category definitions
 ;; 
 
 (def context-types
@@ -47,10 +47,34 @@
     :code-view :deployment-view :system-landscape-view
     :dynamic-view})
 
+;;
+;; UML category definitions
+;;
+
+(def use-case-types
+  "Element types of a use case view."
+  #{:use-case :actor :goal :include :extends :generalizes})
+
+(def state-types
+  "Element types of a state view."
+  #{:start-state :end-state :state :transition :fork :join :choice})
+
+(def uml-relation-types
+  "Relation types of UML views."
+  #{:goal :include :extends :generalizes :transition})
+
+(def uml-types
+  "Element types of UML views."
+  (set/union use-case-types state-types))
+
 (def uml-view-types
   "UML view types."
   #{:use-case-view :state-view}
   )
+
+;; 
+;; General category definitions
+;;
 
 (def view-types
   "View types."
@@ -58,7 +82,7 @@
 
 (def relation-types
   "Element types of relations"
-  #{:rel})
+  (set/union #{:rel} uml-relation-types))
 
 (def reference-types
   "Element types of references"
@@ -66,11 +90,7 @@
 
 (def model-types
   "Element types for the architectural model."
-  (set/union component-types deployment-types relation-types))
-
-(def use-case-types
-  ""
-  #{:use-case :actor})
+  (set/union component-types deployment-types uml-types relation-types ))
 
 
 ;;
@@ -91,52 +111,6 @@
   "Returns true if the given element `e` is a reference."
   [e]
   (contains? reference-types (:el e)))
-
-(defn model-element?
-  "Returns true if the given element `e` is a model element."
-  [e]
-  (contains? model-types (:el e)))
-
-(defn view?
-  "Returns true if the given element `e` is a view."
-  [e]
-  (contains? view-types (:el e)))
-
-(defn context-level?
-  "Returns true if the given element `e` is rendered in a context view."
-  [e]
-  (contains? context-types (:el e)))
-
-(defn container-level?
-  "Returns true if the given element `e` is rendered in a container view."
-  [e]
-  (contains? container-types (:el e)))
-
-(defn component-level?
-  "Returns true if the given element `e` is rendered in a component view."
-  [e]
-  (contains? component-types (:el e)))
-
-(defn code-level?
-  "Returns true if the given element `e` is rendered in a code view."
-  [e]
-  (contains? code-types (:el e)))
-
-(defn dynamic-level?
-  "Returns true if the given element `e` is rendered in a dynamic view."
-  [e]
-  (contains? dynamic-types (:el e)))
-
-(defn system-landscape-level?
-  "Returns true if the given element `e` is rendered
-   in a system landscape view."
-  [e]
-  (contains? system-landscape-types (:el e)))
-
-(defn deployment-level?
-  "Returns true if the given element `e` is rendered in a deployment view."
-  [e]
-  (contains? deployment-types (:el e)))
 
 (defn person?
   "Returns true if the given element `e` is a person element."
@@ -167,6 +141,62 @@
   "Returns true if the given element `e` is external."
   [e]
   (:external e))
+
+(defn model-element?
+  "Returns true if the given element `e` is a model element."
+  [e]
+  (contains? model-types (:el e)))
+
+(defn view?
+  "Returns true if the given element `e` is a view."
+  [e]
+  (contains? view-types (:el e)))
+
+(defn context-view-element?
+  "Returns true if the given element `e` is rendered in a C4 context view."
+  [e]
+  (contains? context-types (:el e)))
+
+(defn container-view-element?
+  "Returns true if the given element `e` is rendered in a C4 container view."
+  [e]
+  (contains? container-types (:el e)))
+
+(defn component-view-element?
+  "Returns true if the given element `e` is rendered in a C4 component view."
+  [e]
+  (contains? component-types (:el e)))
+
+(defn code-view-element?
+  "Returns true if the given element `e` is rendered in a code view."
+  [e]
+  (contains? code-types (:el e)))
+
+(defn dynamic-view-element?
+  "Returns true if the given element `e` is rendered in a C4 dynamic view."
+  [e]
+  (contains? dynamic-types (:el e)))
+
+(defn system-landscape-view-element?
+  "Returns true if the given element `e` is rendered
+   in a C4 system landscape view."
+  [e]
+  (contains? system-landscape-types (:el e)))
+
+(defn deployment-view-element?
+  "Returns true if the given element `e` is rendered in a C4 deployment view."
+  [e]
+  (contains? deployment-types (:el e)))
+
+(defn use-case-view-element?
+  "Returns true if the given element `e` is rendered in a UML use case view."
+  [e]
+  (contains? use-case-types (:el e)))
+
+(defn state-view-element?
+  "Returns true if the given element `e` is rendered in a UML state view."
+  [e]
+  (contains? state-types (:el e)))
 
 ;;
 ;; Schema specification
@@ -336,7 +366,7 @@
   ([m]
    (->> m
         (all-elements)
-        (filter component-level?)
+        (filter component-view-element?)
         (map :id)
         (into #{}))))
 
@@ -351,7 +381,7 @@
 
 (comment
   (all-elements)
-  (into #{} (map :id (filter component-level? (all-elements))))
+  (into #{} (map :id (filter component-view-element? (all-elements))))
   (unconnected-components)
   )
 
