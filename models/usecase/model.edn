@@ -1,3 +1,8 @@
+;;;;
+;;;; Example model for use case views
+;;;;
+;;;; Levels based on Cockburn, A.; Writing Effective Use Cases
+;;;;
 #{
   ;;;
   ;;; Actors
@@ -16,11 +21,11 @@
   {:el :use-case
    :id :use-case/manage-content
    :name "Manage Content"
-   :level :summary}
+   :level :user-goal}
   {:el :use-case
    :id :use-case/manage-users
    :name "Manage Users"
-   :level :summary}
+   :level :user-goal}
   {:el :use-case
    :id :use-case/login
    :name "Login"
