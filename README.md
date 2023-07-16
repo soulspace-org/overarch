@@ -328,6 +328,19 @@ See [Usage](doc/usage.md) for additional information on modelling and usage of t
 See [Design](doc/design.md) for information about the design of *Overarch*.
 
 
+Plans
+-----
+
+Here are my current plans to extend overarch in the next releases.
+
+Version 0.2.0
+* Support UML use case and state views
+  * Modelling
+  * PlantUML export
+
+Version 0.3.0
+* simple markdown export for the model information
+
 Copyright
 ---------
 
