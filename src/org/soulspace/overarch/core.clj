@@ -41,11 +41,20 @@
   "Element types of a C4 dynamic view."
   component-types)
 
-(def view-types
+(def c4-view-types
   "C4 view types."
   #{:context-view :container-view :component-view
     :code-view :deployment-view :system-landscape-view
     :dynamic-view})
+
+(def uml-view-types
+  "UML view types."
+  #{:use-case-view :state-view}
+  )
+
+(def view-types
+  "View types."
+  (set/union c4-view-types uml-view-types))
 
 (def relation-types
   "Element types of relations"
@@ -58,6 +67,11 @@
 (def model-types
   "Element types for the architectural model."
   (set/union component-types deployment-types relation-types))
+
+(def use-case-types
+  ""
+  #{:use-case :actor})
+
 
 ;;
 ;; Predicates

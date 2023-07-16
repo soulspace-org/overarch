@@ -129,6 +129,19 @@
          (map str/capitalize)
          (str/join " "))))
 
+(def view-hierarchy
+  "Hierarchy for views"
+  (-> (make-hierarchy)
+      (derive :system-landscape-view :c4-view)
+      (derive :context-view :c4-view)
+      (derive :container-view :c4-view)
+      (derive :component-view :c4-view)
+      (derive :deployment-view :c4-view)
+      (derive :dynamic-view :c4-view)
+      (derive :use-case-view :uml-view)
+      (derive :state-view :uml-view)
+      ))
+
 ; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
