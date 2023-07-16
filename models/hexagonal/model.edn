@@ -21,11 +21,11 @@
              {:el :component
               :id :hexagonal/provided-interface-component
               :name "Provided Interface Adapter"
-              :desc "API/Adapter for consumers of the domain"}
+              :desc "API/Adapter for services of the domain"}
              {:el :component
               :id :hexagonal/consumed-interface-component
               :name "Consumed Interface Adapter"
-              :desc "Adapter for a service consumed for the the domain"}}}
+              :desc "Adapter for a service consumed by the domain"}}}
        {:el :container
         :id :hexagonal/database-container
         :subtype :database
