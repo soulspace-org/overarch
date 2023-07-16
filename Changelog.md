@@ -4,6 +4,7 @@ Changelog
 Version 0.2.0
 -------------
 * added sprite includes for :sprite entries
+* added support for UML use case and state views
 * enhanced documentation
 
 Version 0.1.0
