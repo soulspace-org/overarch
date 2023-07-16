@@ -190,6 +190,16 @@
 ;;; Rendering
 ;;;
 
+(defn renderer
+  "Returns the renderer for the diagram"
+  [options diagram]
+  (:el diagram))
+
+(defmulti render-diagram
+  "Renders the diagram with PalantUML"
+  renderer
+  :hierarchy #'view/view-hierarchy)
+
 ;;
 ;; Elements
 ;; 
@@ -511,7 +521,7 @@
   [diagram]
   (when (:title diagram) (str "title " (:title diagram))))
 
-(defn render-diagram
+(defmethod render-diagram :c4-view
   [options diagram]
   (let [children (view/elements-to-render diagram)]
     ;(user/data-tapper "resolved" children)
