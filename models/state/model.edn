@@ -1,0 +1,33 @@
+;;;;
+;;;; Example model for a state view
+;;;;
+
+#{;;;
+  ;;; States
+  ;;;
+  {:el :start-state
+   :id :state/start}
+  {:el :state
+   :id :state/state1
+   :name "State 1"}
+  {:el :state
+   :id :state/state2
+   :name "State 2"}
+  {:el :end-state
+   :id :state/end}
+  ;;;
+  ;;; Transitions
+  ;;;
+  {:el :transition
+   :id :state/start-to-state1
+   :from :state/start
+   :to :state/state1}
+  {:el :transition
+   :id :state/state1-to-state2
+   :from :state/state1
+   :to :state/state2}
+  {:el :transition
+   :id :state/state2-to-end
+   :from :state/state2
+   :to :state/end}
+  }

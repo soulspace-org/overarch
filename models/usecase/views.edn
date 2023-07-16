@@ -1,0 +1,20 @@
+#{;;;
+  ;;; Views
+  ;;;
+  {:el :use-case-view
+   :id :use-case/use-case-view
+   :title "Use Cases"
+   :ct [;; actors
+        {:ref :use-case/user}
+        {:ref :use-case/admin}
+        ;; use cases
+        {:ref :use-case/manage-content}
+        {:ref :use-case/manage-users}
+        {:ref :use-case/login}
+        ;; relations
+        {:ref :use-case/user-wants-to-manage-content}
+        {:ref :use-case/admin-wants-to-manage-users}
+        {:ref :use-case/manage-content-includes-login}
+        {:ref :use-case/manage-users-includes-login}
+        ]}
+  }

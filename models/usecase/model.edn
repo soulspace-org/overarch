@@ -15,18 +15,35 @@
   ;;;
   {:el :use-case
    :id :use-case/manage-content
-   :name "Manage Content"}
+   :name "Manage Content"
+   :level :summary}
   {:el :use-case
    :id :use-case/manage-users
-   :name "Manage Users"}
-  
+   :name "Manage Users"
+   :level :summary}
+  {:el :use-case
+   :id :use-case/login
+   :name "Login"
+   :level :subfunction}
+
   ;;; 
   ;;; Relations
   ;;;
-  {:el :rel
+  {:el :goal
+   :id :use-case/user-wants-to-manage-content
    :from :use-case/user
    :to :use-case/manage-content}
-  {:el :rel
+  {:el :goal
+   :id :use-case/admin-wants-to-manage-users
    :from :use-case/admin
    :to :use-case/manage-users}
+  {:el :include
+   :id :use-case/manage-content-includes-login
+   :from :use-case/manage-content
+   :to :use-case/login}
+  {:el :include
+   :id :use-case/manage-users-includes-login
+   :from :use-case/manage-users
+   :to :use-case/login}
+  
   }
