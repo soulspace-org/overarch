@@ -281,6 +281,8 @@ to business processes, domain stories and arcitectural elements.
 As such they provide a pivot for the traceability from business processes into
 the design of the system.
 
+#### Example
+Example [Use Case Model](/models/usecase/model.edn)
 
 #### Use Cases (:use-case)
 
@@ -306,11 +308,13 @@ model the scheduling of use cases.
 Relations connect actors to the use cases or use cases with other use cases.
 Use case models support different kinds of relations.
 
-
-### State Model Elements
+### State Machine Model Elements
 
 A state model describes a state machine which can be used to model the states
 a system component can be in and the transition between those states.
+
+#### Example
+Example [State Model](/models/state/model.edn)
 
 #### States (:state, :start, :end, :fork, :join, :choice)
 
