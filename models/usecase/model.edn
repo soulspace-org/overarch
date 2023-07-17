@@ -7,10 +7,10 @@
   ;;;
   ;;; Actors
   ;;; 
-  {:el :actor
+  {:el :person
    :id :use-case/user
    :name "User"}
-  {:el :actor
+  {:el :person
    :id :use-case/admin
 ;   :extends :use-case/user
    :name "Administrator"}
@@ -50,5 +50,4 @@
    :id :use-case/manage-users-includes-login
    :from :use-case/manage-users
    :to :use-case/login}
-  
   }
