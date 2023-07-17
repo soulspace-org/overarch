@@ -34,11 +34,11 @@
   ;;; 
   ;;; Relations
   ;;;
-  {:el :goal
+  {:el :uses
    :id :use-case/user-wants-to-manage-content
    :from :use-case/user
    :to :use-case/manage-content}
-  {:el :goal
+  {:el :uses
    :id :use-case/admin-wants-to-manage-users
    :from :use-case/admin
    :to :use-case/manage-users}
