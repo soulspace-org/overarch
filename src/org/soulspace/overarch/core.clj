@@ -53,7 +53,7 @@
 
 (def use-case-types
   "Element types of a use case view."
-  #{:use-case :actor :goal :include :extends :generalizes})
+  #{:use-case :actor :person :system :context-boundary :uses :include :extends :generalizes})
 
 (def state-types
   "Element types of a state view."

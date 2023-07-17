@@ -85,7 +85,7 @@
    :rel                 "Rel"})
 
 (def view-type->import
-  "Map from diagram type to PlantUML import."
+  "Map from diagram type to PlantUML C4 import."
   {:system-landscape-view "C4_Context.puml"
    :context-view          "C4_Context.puml"
    :container-view        "C4_Container.puml"
@@ -94,37 +94,45 @@
    :deployment-view       "C4_Deployment.puml"})
 
 (def subtype->suffix
-  "Maps the subtype of an element to the PlantUML suffix."
+  "Maps the subtype of an element to the PlantUML C4 suffix."
   {:database "Db"
    :queue "Queue"})
 
 (def layouts
-  "Maps layout keys to PlantUML."
+  "Maps layout keys to PlantUML C4."
   {:landscape "LAYOUT_LANDSCAPE()"
    :left-right "LAYOUT_LEFT_RIGHT()"
    :top-down "LAYOUT_TOP_DOWN()"})
 
 (def linetypes
-  "Maps linetype keys to PlantUML."
+  "Maps linetype keys to PlantUML C4."
   {:orthogonal "skinparam linetype ortho"
    :polygonal  "skinparam linetype polyline"})
 
 (def directions
-  "Maps direction keys to PlantUML Rel suffixes."
+  "Maps direction keys to PlantUML C4 Rel suffixes."
   {:down  "_D"
    :left  "_L"
    :right "_R"
    :up    "_U"})
 
 (def style->method
+  "Maps the style element keys to the PlantUML C4 method."
   {:element  "AddElementTag"
    :rel      "AddRelTag"
    :boundary "AddBoundaryTag"})
 
 (def line-style->method
+  "Maps the line style keys to the PlantUML C4 method."
   {:bold   "BoldLine()"
    :dashed "DashedLine()"
    :dotted "DottedLine()"})
+
+(def use-case-level->color
+  ""
+  {:summary "#FFFFFF"
+   :user-goal "#BBBBFF"
+   :subfunction "#8888DD"})
 
 ;;;
 ;;; Tech to Sprite mapping
@@ -183,8 +191,7 @@
 
 (comment
   (load-sprite-mappings-from-resource ["azure" "awslib14"])
-  (count (sorted-sprite-mappings tech->sprite))
-  )
+  (count (sorted-sprite-mappings tech->sprite)))
 
 ;;;
 ;;; Rendering
@@ -213,14 +220,21 @@
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
-(defmulti render-element
-  "Renders an element in PlantUML.
+(defmulti render-c4-element
+  "Renders a C4 element in PlantUML.
    
    Multifunction dispatching on the value of the :el key of the element `e`."
   (fn [_ _ e] (:el e))
   :hierarchy #'view/element-hierarchy)
 
-(defmethod render-element :boundary
+(defmulti render-uml-element
+  "Renders a UML element in PlantUML.
+   
+   Multifunction dispatching on the value of the :el key of the element `e`."
+  (fn [_ _ e] (:el e))
+  :hierarchy #'view/element-hierarchy)
+
+(defmethod render-c4-element :boundary
   [view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
@@ -230,7 +244,7 @@
                      (view/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
                      ") {")
-                (map #(render-element view (+ indent 2) %)
+                (map #(render-c4-element view (+ indent 2) %)
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
@@ -240,7 +254,7 @@
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
-(defmethod render-element :person
+(defmethod render-c4-element :person
   [_ indent e]
   [(str (view/render-indent indent)
         (element->method (:el e))
@@ -252,7 +266,7 @@
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
-(defmethod render-element :system
+(defmethod render-c4-element :system
   [_ indent e]
   [(str (view/render-indent indent)
         (element->method (:el e))
@@ -268,7 +282,7 @@
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
-(defmethod render-element :container
+(defmethod render-c4-element :container
   [_ indent e]
   [(str (view/render-indent indent)
         (element->method (:el e))
@@ -285,7 +299,7 @@
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
-(defmethod render-element :component
+(defmethod render-c4-element :component
   [_ indent e]
   [(str (view/render-indent indent)
         (element->method (:el e))
@@ -302,7 +316,7 @@
         (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
         ")")])
 
-(defmethod render-element :node
+(defmethod render-c4-element :node
   [view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
@@ -318,7 +332,7 @@
                          (str ", $sprite=\"" (:name (tech->sprite (:tech e))) "\"")))
                      (when (:style e) (str ", $tag=\"" (short-name (:style e)) "\""))
                      ") {")
-                (map #(render-element view (+ indent 2) %)
+                (map #(render-c4-element view (+ indent 2) %)
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
@@ -334,7 +348,7 @@
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
-(defmethod render-element :rel
+(defmethod render-c4-element :rel
   [_ indent e]
   (if (:constraint e) ; TODO :hidden or :constraint
     [(str (view/render-indent indent) "Lay"
@@ -360,65 +374,88 @@
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
           ")")]))
 
-(defmethod render-element :use-case
-  [_ indent e]
-  ; TODO add color based on :level
-  [(str "usecase \"" (view/element-name e) "\" as (" (alias-name (:id e)) ")")])
+(defmethod render-uml-element :context-boundary
+  [view indent e]
+  (when (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str "rectangle \"" (view/element-name e) "\" {"
+                     (map #(render-uml-element view (+ indent 2) %) children)
+                     "}")]))))
 
-(defmethod render-element :actor
+(defmethod render-uml-element :use-case
+  [_ indent e]
+  [(str "usecase \"" (view/element-name e) "\" as ("
+        (alias-name (:id e)) ")"
+        (when (:level e)
+          (str " " (use-case-level->color (:level e)))))])
+
+(defmethod render-uml-element :actor
   [_ indent e]
   [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
 
-(defmethod render-element :goal
+(defmethod render-uml-element :person
+  [_ indent e]
+  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+
+(defmethod render-uml-element :system
+  [_ indent e]
+  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+
+(defmethod render-uml-element :uses
   [_ indent e]
   [(str (alias-name (:from e)) " --> "
         (alias-name (:to e)))])
 
-(defmethod render-element :include
+(defmethod render-uml-element :include
   [_ indent e]
   [(str (alias-name (:from e)) " ..> "
         (alias-name (:to e)) " : include")])
 
-(defmethod render-element :extends
+(defmethod render-uml-element :extends
   [_ indent e]
   [(str (alias-name (:from e)) " ..> "
         (alias-name (:to e)) " : extends")])
 
-(defmethod render-element :generalizes
+(defmethod render-uml-element :generalizes
   [_ indent e]
-  [(str (alias-name (:from e)) " --|> "
-        (alias-name (:to e)))])
+  [str (alias-name (:from e)) " --|> "
+   (alias-name (:to e))])
 
 
-(defmethod render-element :state
-  [_ indent e]
-  ; TODO render substates
-  [(str "state \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+(defmethod render-uml-element :state
+  [view indent e]
+  (if (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str "state \"" (view/element-name e) "\" as "
+                     (alias-name (:id e)) " {"
+                     (map #(render-uml-element view (+ indent 2) %) children)
+                     "}")]))
+    [(str "state \"" (view/element-name e) "\" as " (alias-name (:id e)))]))
 
-(defmethod render-element :start-state
+(defmethod render-uml-element :start-state
   [_ indent e]
   [(str "state " (alias-name (:id e)) " <<start>>")])
 
-(defmethod render-element :end-state
+(defmethod render-uml-element :end-state
   [_ indent e]
   [(str "state " (alias-name (:id e)) " <<end>>")])
 
-(defmethod render-element :fork
+(defmethod render-uml-element :fork
   [_ indent e]
   [(str "state " (alias-name (:id e)) " <<fork>>")])
 
-(defmethod render-element :join
+(defmethod render-uml-element :join
   [_ indent e]
   [(str "state " (alias-name (:id e)) " <<join>>")])
 
-(defmethod render-element :choice
+(defmethod render-uml-element :choice
   [_ indent e]
   [(str "state " (alias-name (:id e)) " <<choice>>")])
 
-(defmethod render-element :transition
+(defmethod render-uml-element :transition
   [_ indent e]
   [(str  (alias-name (:from e)) " --> "
-         (alias-name (:to e)) " : \"" (view/element-name e) "\"" )])
+         (alias-name (:to e)) " : " (view/element-name e))])
 
 
 ;;;
@@ -450,7 +487,7 @@
   [view]
   (->> view
        (view/elements-to-render)
-       (collect-all-sprites) 
+       (collect-all-sprites)
        (map #(tech->sprite %))))
 
 (defn local-import
@@ -591,7 +628,7 @@
               (render-sprite-imports view)
               (render-layout view)
               (render-title view)
-              (map #(render-element view 0 %) children)
+              (map #(render-c4-element view 0 %) children)
               (render-legend view)
               "@enduml"])))
 
@@ -599,9 +636,8 @@
   [options view]
   (let [children (view/elements-to-render view)]
     (flatten [(str "@startuml " (alias-name (:id view)))
-             (map #(render-element view 0 %) children)
-              "@enduml"])
-    ))
+              (map #(render-uml-element view 0 %) children)
+              "@enduml"])))
 
 ;;;
 ;;; PlantUML file export
