@@ -2,32 +2,64 @@
 ;;;; Example model for a state view
 ;;;;
 
-#{;;;
-  ;;; States
-  ;;;
-  {:el :start-state
-   :id :state/start}
-  {:el :state
-   :id :state/state1
-   :name "State 1"}
-  {:el :state
-   :id :state/state2
-   :name "State 2"}
-  {:el :end-state
-   :id :state/end}
-  ;;;
-  ;;; Transitions
-  ;;;
-  {:el :transition
-   :id :state/start-to-state1
-   :from :state/start
-   :to :state/state1}
-  {:el :transition
-   :id :state/state1-to-state2
-   :from :state/state1
-   :to :state/state2}
-  {:el :transition
-   :id :state/state2-to-end
-   :from :state/state2
-   :to :state/end}
-  }
+#{{:el :state-machine
+   :id :state/state-machine1
+   :name "Simple State Machine"
+   :ct [;;;
+        ;;; States
+        ;;;
+        {:el :start-state
+         :id :state/start}
+        {:el :state
+         :id :state/state1
+         :name "State 1"}
+        {:el :state
+         :id :state/state2
+         :name "State 2"}
+        {:el :state
+         :id :state/state3
+         :name "Compound State 3"
+         :ct #{{:el :start-state
+                :id :state/compound-start}
+               {:el :state
+                :id :state/state3-1
+                :name "State 3.1"}
+               {:el :state
+                :id :state/state3-2
+                :name "State 3.2"}
+               {:el :end-state
+                :id :state/compound-end}}}
+        {:el :end-state
+         :id :state/end}
+
+        ;;;
+        ;;; Transitions
+        ;;;
+        {:el :transition
+         :id :state/start-to-state1
+         :from :state/start
+         :to :state/state1}
+        {:el :transition
+         :id :state/state1-to-state2
+         :from :state/state1
+         :to :state/state2}
+        {:el :transition
+         :id :state/state2-to-state3
+         :from :state/state2
+         :to :state/state3}
+        {:el :transition
+         :id :state/compound-start-to-state3-1
+         :from :state/compound-start
+         :to :state/state3-1}
+        {:el :transition
+         :id :state/state3-1-to-state3-2
+         :from :state/state3-1
+         :to :state/state3-2}
+        {:el :transition
+         :id :state/state3-2-to-compound-end
+         :from :state/state3-2
+         :to :state/compound-end}
+        {:el :transition
+         :id :state/state3-to-end
+         :from :state/state3
+         :to :state/end}]}}

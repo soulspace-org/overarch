@@ -57,7 +57,7 @@
 
 (def state-types
   "Element types of a state view."
-  #{:start-state :end-state :state :transition :fork :join :choice})
+  #{:state-machine :start-state :end-state :state :transition :fork :join :choice})
 
 (def uml-relation-types
   "Relation types of UML views."

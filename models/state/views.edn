@@ -3,16 +3,7 @@
 ;;;;
 #{
   {:el :state-view
-   :id :state/simple-state-view
-   :ct [;states
-        {:ref :state/start}
-        {:ref :state/state1}
-        {:ref :state/state2}
-        {:ref :state/end}
-        ;relations
-        {:ref :state/start-to-state1}
-        {:ref :state/state1-to-state2}
-        {:ref :state/state2-to-end}
-        ]}
+   :id :state/simple-statemachine1-view
+   :ct [{:ref :state/state-machine1}]}
   
 }

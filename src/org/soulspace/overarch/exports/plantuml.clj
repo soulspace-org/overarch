@@ -376,59 +376,76 @@
   [view indent e]
   (when (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
-      (flatten [(str "rectangle \"" (view/element-name e) "\" {"
-                     (map #(render-uml-element view (+ indent 2) %) children)
-                     "}")]))))
+      (flatten [(str (view/render-indent indent)
+                     "rectangle \"" (view/element-name e) "\" {")
+                (map #(render-uml-element view (+ indent 2) %) children)
+                "}"]))))
 
 (defmethod render-uml-element :use-case
   [_ indent e]
-  [(str "usecase \"" (view/element-name e) "\" as ("
+  [(str (view/render-indent indent)
+        "usecase \"" (view/element-name e) "\" as ("
         (alias-name (:id e)) ")"
         (when (:level e)
           (str " " (use-case-level->color (:level e)))))])
 
 (defmethod render-uml-element :actor
   [_ indent e]
-  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+  [(str (view/render-indent indent)
+        "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
 
 (defmethod render-uml-element :person
   [_ indent e]
-  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+  [(str (view/render-indent indent)
+        "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
 
 (defmethod render-uml-element :system
   [_ indent e]
-  [(str "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
+  [(str (view/render-indent indent)
+        "actor \"" (view/element-name e) "\" as " (alias-name (:id e)))])
 
 (defmethod render-uml-element :uses
   [_ indent e]
-  [(str (alias-name (:from e)) " --> "
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " --> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :include
   [_ indent e]
-  [(str (alias-name (:from e)) " ..> "
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " ..> "
         (alias-name (:to e)) " : include")])
 
 (defmethod render-uml-element :extends
   [_ indent e]
-  [(str (alias-name (:from e)) " ..> "
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " ..> "
         (alias-name (:to e)) " : extends")])
 
 (defmethod render-uml-element :generalizes
   [_ indent e]
-  [str (alias-name (:from e)) " --|> "
-   (alias-name (:to e))])
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " --|> "
+        (alias-name (:to e)))])
 
+
+(defmethod render-uml-element :state-machine
+  [view indent e]
+  (when (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(map #(render-uml-element view (+ indent 2) %) children)]))))
 
 (defmethod render-uml-element :state
   [view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
-      (flatten [(str "state \"" (view/element-name e) "\" as "
-                     (alias-name (:id e)) " {"
-                     (map #(render-uml-element view (+ indent 2) %) children)
-                     "}")]))
-    [(str "state \"" (view/element-name e) "\" as " (alias-name (:id e)))]))
+      (flatten [(view/render-indent indent)
+                (str "state \"" (view/element-name e) "\" as "
+                     (alias-name (:id e)) " {")
+                (map #(render-uml-element view (+ indent 2) %) children)
+                "}"]))
+    [(str (view/render-indent indent) 
+          "state \"" (view/element-name e) "\" as " (alias-name (:id e)))]))
 
 (defmethod render-uml-element :start-state
   [_ indent e]
@@ -436,25 +453,29 @@
 
 (defmethod render-uml-element :end-state
   [_ indent e]
-  [(str "state " (alias-name (:id e)) " <<end>>")])
+  [(str (view/render-indent indent)
+        "state " (alias-name (:id e)) " <<end>>")])
 
 (defmethod render-uml-element :fork
   [_ indent e]
-  [(str "state " (alias-name (:id e)) " <<fork>>")])
+  [(str (view/render-indent indent)
+        "state " (alias-name (:id e)) " <<fork>>")])
 
 (defmethod render-uml-element :join
   [_ indent e]
-  [(str "state " (alias-name (:id e)) " <<join>>")])
+  [(str (view/render-indent indent)
+        "state " (alias-name (:id e)) " <<join>>")])
 
 (defmethod render-uml-element :choice
   [_ indent e]
-  [(str "state " (alias-name (:id e)) " <<choice>>")])
+  [(str (view/render-indent indent)
+        "state " (alias-name (:id e)) " <<choice>>")])
 
 (defmethod render-uml-element :transition
   [_ indent e]
-  [(str  (alias-name (:from e)) " --> "
-         (alias-name (:to e)) " : " (view/element-name e))])
-
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " --> "
+        (alias-name (:to e)) " : " (view/element-name e))])
 
 ;;;
 ;;; Imports
