@@ -11,10 +11,8 @@
             [org.soulspace.overarch.io :as oio]))
 
 ;;;;
-;;;; PlantUML rendering
+;;;; PlantUML rendering and export
 ;;;;
-
-
 
 ;;;
 ;;; PlantUML mappings
