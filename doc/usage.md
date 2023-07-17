@@ -117,22 +117,28 @@ element and **:id** for the identifier. The identifiers should be namespaced
 keywords, so that different models can be composed without collisions of the
 identifiers.
 
-### Keys
+### Common Keys
 
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :el       | keyword | see model elements | type of the model element
 :id       | keyword | namespaced id      | id of the element
-:subtype  | keyword | :database, :queue  | specific role of the element
-:external | boolean | true false         | default is false
 :name     | string  |                    | name of the element
 :desc     | string  |                    | description of the element
-:tech     | string  |                    | technology of the element
 :ct       | set     | model elements     | the children of the model element
 
-### Model Elements
+### C4 Model Elements
 
-The following model elements are supported by Overarch.
+Overarch supports elements for C4 architecture models.
+
+### Additional Keys for Architecture Model Elements
+
+key       | type    | values             | description 
+----------|---------|--------------------|------------
+:subtype  | keyword | :database, :queue  | specific role of the element
+:external | boolean | true false         | default is false
+:tech     | string  |                    | technology of the element
+
 
 #### Person (:person)
 Persons are internal or external actors of the system.
@@ -260,6 +266,51 @@ level elements):
   :to :banking/personal-customer
   :name "Sends e-mail to"}} 
  ```
+
+### Use Case Model Elements
+
+A use case model captures the functionality a system is suposed to deliver.
+High level use cases provide an overview of this functionality and may link
+to business processes, domain stories and arcitectural elements.
+
+As such they provide a pivot for the traceability from business processes into
+the design of the system.
+
+
+#### Use Case (:use-case)
+
+A use case describes the goal of an actor in the context of the system described. The goal can be a concrete user goal, a high level summary of user goals or a subfunction of a user goal. This is captured by the :level key.
+
+
+key         | type    | values                           | description 
+------------|---------|----------------------------------|------------
+:level      | keyword | :summary :user-goal :subfunction | specific role of the element
+:ext-points | string  |                                  | eextension points of a use case
+
+#### Actor (:actor)
+You can use the :actor element to model actors 
+
+#### Person (:person)
+You can use a person from the architecture model as an actor in the use case
+model.
+
+#### System (:system)
+You can also use a system from the architecture model as an actor in the use
+case model.
+
+#### Relations (:goal :include :extends :generalizes)
+
+
+
+### State Model Elements
+
+A state model describes a state machine which can be used to model the states
+a system component can be in and the transition between those states.
+
+#### States (:state, :start, :end, :fork, :join, :choice)
+
+
+#### Transitions (:transition)
 
 
 Views
