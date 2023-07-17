@@ -3,10 +3,10 @@ Overarch Usage
 
 Overview
 --------
+
 The usage of Overarch is twofold. On the one hand, it is an open data format
-for the description of software architectures. On the other hand it is a tool
-to transform the architecture description into diagrams or other
-representations.
+to describe the functional requirements, architecture, and design
+of software systems. On the other hand it is a tool to transform the description into diagrams or other representations.
 
 Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
@@ -15,6 +15,14 @@ conversion of the data to JSON.
 
 Modelling
 ---------
+
+Overarch supports modelling the functional requirements, the architecture and the design of the system under description.
+
+Modelling a system with overarch should provide a value for the project and
+this guides the selection of model elements and supported abstractions and views.
+
+The model contains all the elements relevant in the architecture of the system.
+Models are specified in the Extensible Data Notation (EDN).
 
 ### EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
@@ -107,9 +115,6 @@ syntax check and syntax highlighting.
 Models
 ------
 
-The model contains all the elements relevant in the architecture of the system.
-Models are specified in the Extensible Data Notation (EDN).
-
 The top level element in a model EDN file is a set which contains the top level
 model elements. Model elements are denoted as maps in the EDN file.
 All model elements have at least two keys, **:el** for the type of the
@@ -127,8 +132,8 @@ key       | type    | values             | description
 :desc     | string  |                    | description of the element
 :ct       | set     | model elements     | the children of the model element
 
-### C4 Model Elements
 
+### C4 Model Elements
 Overarch supports elements for C4 architecture models.
 
 ### Additional Keys for Architecture Model Elements
@@ -277,7 +282,7 @@ As such they provide a pivot for the traceability from business processes into
 the design of the system.
 
 
-#### Use Case (:use-case)
+#### Use Cases (:use-case)
 
 A use case describes the goal of an actor in the context of the system described. The goal can be a concrete user goal, a high level summary of user goals or a subfunction of a user goal. This is captured by the :level key.
 
@@ -287,19 +292,19 @@ key         | type    | values                           | description
 :level      | keyword | :summary :user-goal :subfunction | specific role of the element
 :ext-points | string  |                                  | eextension points of a use case
 
-#### Actor (:actor)
-You can use the :actor element to model actors 
+#### Actors (:person, :system, :actor)
 
-#### Person (:person)
-You can use a person from the architecture model as an actor in the use case
-model.
+Persons and systems from the architecture model should be used as actors in the
+use case model to provide a connection between the to models.
 
-#### System (:system)
-You can also use a system from the architecture model as an actor in the use
-case model.
+You can use the :actor element to model actors not present as persons or systems in the architectural model, but this should be avoided if possible.
+A reason for an :actor element might be the introduction of a time actor to
+model the scheduling of use cases.
 
-#### Relations (:goal :include :extends :generalizes)
+#### Relations (:uses :include :extends :generalizes)
 
+Relations connect actors to the use cases or use cases with other use cases.
+Use case models support different kinds of relations.
 
 
 ### State Model Elements
