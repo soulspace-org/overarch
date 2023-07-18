@@ -85,6 +85,21 @@
   ; TODO promote relations to higher levels?
   )
 
+(defn elements-in-view
+  "Returns the elements rendered in the view."
+  ([view]
+   (elements-in-view #{} view (elements-to-render view (:ct view))))
+  ([elements view coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (recur (elements-in-view (conj elements e)
+                                view
+                                (elements-to-render view (:ct e)))
+              view
+              (rest coll)))
+     elements)))
+
+; TODO reimplement with elements-in-view 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   ([coll]
@@ -97,20 +112,6 @@
                 (rest coll))
          (recur (collect-technologies techs (:ct e)) (rest coll))))
      techs)))
-
-(defn elements-in-view
-  "Returns the elements rendered in the view."
-  ([view]
-   (elements-in-view #{} view (elements-to-render view (:ct view))))
-  ([elements view coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (recur (elements-in-view (conj elements e)
-                                     view
-                                     (elements-to-render view (:ct e)))
-              view
-              (rest coll)))
-     elements)))
 
 ; general
 (defn render-indent
