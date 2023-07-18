@@ -93,22 +93,24 @@
    (if (seq coll)
      (let [e (first coll)]
        (if (:tech e)
-         (recur (collect-technologies (set/union techs #{(:tech e)}) (:ct e)) (rest coll))
+         (recur (collect-technologies (set/union techs #{(:tech e)}) (:ct e))
+                (rest coll))
          (recur (collect-technologies techs (:ct e)) (rest coll))))
      techs)))
 
-(defn collect-view-elements
-  "Collects the elements rendered in the view."
+(defn elements-in-view
+  "Returns the elements rendered in the view."
   ([view]
-   (collect-view-elements #{} view (:ct view)))
+   (elements-in-view #{} view (elements-to-render view (:ct view))))
   ([elements view coll]
    (if (seq coll)
-     (let [view-type (:el view) 
-           e (first coll)]
-       ; TODO filter and recur
-       )
-     elements
-     )))
+     (let [e (first coll)]
+       (recur (elements-in-view (conj elements e)
+                                     view
+                                     (elements-to-render view (:ct e)))
+              view
+              (rest coll)))
+     elements)))
 
 ; general
 (defn render-indent
