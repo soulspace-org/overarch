@@ -68,7 +68,7 @@
                     :local-prefix "material"
                     :local-imports ["common"]}})
 
-(def element->method
+(def c4-element->method
   "Map from element type to PlantUML C4 method."
   {:person              "Person"
    :system              "System"
@@ -82,7 +82,7 @@
    :node                "Node"
    :rel                 "Rel"})
 
-(def view-type->import
+(def c4-view-type->import
   "Map from diagram type to PlantUML C4 import."
   {:system-landscape-view "C4_Context.puml"
    :context-view          "C4_Context.puml"
@@ -91,43 +91,43 @@
    :dynamic-view          "C4_Dynamic.puml"
    :deployment-view       "C4_Deployment.puml"})
 
-(def subtype->suffix
+(def c4-subtype->suffix
   "Maps the subtype of an element to the PlantUML C4 suffix."
   {:database "Db"
    :queue "Queue"})
 
-(def layouts
+(def c4-layouts
   "Maps layout keys to PlantUML C4."
   {:landscape "LAYOUT_LANDSCAPE()"
    :left-right "LAYOUT_LEFT_RIGHT()"
    :top-down "LAYOUT_TOP_DOWN()"})
 
-(def linetypes
+(def c4-linetypes
   "Maps linetype keys to PlantUML C4."
   {:orthogonal "skinparam linetype ortho"
    :polygonal  "skinparam linetype polyline"})
 
-(def directions
+(def c4-directions
   "Maps direction keys to PlantUML C4 Rel suffixes."
   {:down  "_D"
    :left  "_L"
    :right "_R"
    :up    "_U"})
 
-(def style->method
+(def c4-style->method
   "Maps the style element keys to the PlantUML C4 method."
   {:element  "AddElementTag"
    :rel      "AddRelTag"
    :boundary "AddBoundaryTag"})
 
-(def line-style->method
+(def c4-line-style->method
   "Maps the line style keys to the PlantUML C4 method."
   {:bold   "BoldLine()"
    :dashed "DashedLine()"
    :dotted "DottedLine()"})
 
 (def use-case-level->color
-  ""
+  "Maps the use case level to a color."
   {:summary "#FFFFFF"
    :user-goal "#BBBBFF"
    :subfunction "#8888DD"})
@@ -197,11 +197,11 @@
 
 (defn renderer
   "Returns the renderer for the diagram"
-  [options diagram]
+  [_ diagram]
   (:el diagram))
 
 (defmulti render-view
-  "Renders the diagram with PalantUML"
+  "Renders the diagram with PlantUML."
   renderer
   :hierarchy #'view/view-hierarchy)
 
@@ -237,7 +237,7 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
-                     (element->method (:el e)) "("
+                     (c4-element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
                      (view/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -246,7 +246,7 @@
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
-          (element->method (:el e)) "("
+          (c4-element->method (:el e)) "("
           (alias-name (:id e)) ", \""
           (view/element-name e) "\""
           (when (:style e) (str ", $tags=\"" (short-name (:style e)) "\""))
@@ -255,7 +255,7 @@
 (defmethod render-c4-element :person
   [_ indent e]
   [(str (view/render-indent indent)
-        (element->method (:el e))
+        (c4-element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (view/element-name e) "\""
@@ -267,7 +267,7 @@
 (defmethod render-c4-element :system
   [_ indent e]
   [(str (view/render-indent indent)
-        (element->method (:el e))
+        (c4-element->method (:el e))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (view/element-name e) "\""
@@ -283,8 +283,8 @@
 (defmethod render-c4-element :container
   [_ indent e]
   [(str (view/render-indent indent)
-        (element->method (:el e))
-        (when (:subtype e) (subtype->suffix (:subtype e)))
+        (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (view/element-name e) "\""
@@ -300,8 +300,8 @@
 (defmethod render-c4-element :component
   [_ indent e]
   [(str (view/render-indent indent)
-        (element->method (:el e))
-        (when (:subtype e) (subtype->suffix (:subtype e)))
+        (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (alias-name (:id e)) ", \""
         (view/element-name e) "\""
@@ -319,7 +319,7 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
-                     (element->method (:el e)) "("
+                     (c4-element->method (:el e)) "("
                      (alias-name (:id e)) ", \""
                      (view/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -334,7 +334,7 @@
                      children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
-          (element->method (:el e)) "("
+          (c4-element->method (:el e)) "("
           (alias-name (:id e)) ", \""
           (view/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
@@ -350,13 +350,13 @@
   [_ indent e]
   (if (:constraint e) ; TODO :hidden or :constraint
     [(str (view/render-indent indent) "Lay"
-          (when (:direction e) (directions (:direction e))) "("
+          (when (:direction e) (c4-directions (:direction e))) "("
           (alias-name (:from e)) ", "
           (alias-name (:to e))
           ")")]
     [(str (view/render-indent indent)
-          (element->method (:el e))
-          (when (:direction e) (directions (:direction e))) "("
+          (c4-element->method (:el e))
+          (when (:direction e) (c4-directions (:direction e))) "("
           (if (:reverse e)
             (str (alias-name (:to e)) ", "
                  (alias-name (:from e)) ", \"")
@@ -444,7 +444,7 @@
                      (alias-name (:id e)) " {")
                 (map #(render-uml-element view (+ indent 2) %) children)
                 "}"]))
-    [(str (view/render-indent indent) 
+    [(str (view/render-indent indent)
           "state \"" (view/element-name e) "\" as " (alias-name (:id e)))]))
 
 (defmethod render-uml-element :start-state
@@ -555,20 +555,20 @@
 ;; C4 Imports
 ;;
 
-(defn render-imports
+(defn render-c4-imports
   "Renders the imports for the diagram."
   [view]
   (if (get-in view [:spec :plantuml :remote-imports])
     (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
-         (view-type->import (:el view)))
+         (c4-view-type->import (:el view)))
     (str "!include <C4/"
-         (view-type->import (:el view)) ">")))
+         (c4-view-type->import (:el view)) ">")))
 
 ;;;
 ;;; Diagram Styles
 ;;;
 
-(def styles-hierarchy
+(def c4-styles-hierarchy
   "Hierarchy for style methods."
   (-> (make-hierarchy)
       (derive :person :type)
@@ -577,15 +577,15 @@
       (derive :component :type)
       (derive :node :type)))
 
-(defmulti render-style
+(defmulti render-c4-style
   "Renders a styles for the diagram."
-  (fn [view style] (:el style)) :hierarchy #'styles-hierarchy)
+  (fn [view style] (:el style)) :hierarchy #'c4-styles-hierarchy)
 
 ; AddElementTag (tagStereo, ?bgColor, ?fontColor, ?borderColor, ?shadowing, ?shape, ?sprite, ?techn, ?legendText, ?legendSprite)
-(defmethod render-style :element
+(defmethod render-c4-style :element
   [view style]
   (let [el (:el style)]
-    (str (style->method (:el style)) "("
+    (str (c4-style->method (:el style)) "("
          (short-name (:id style))
        ; (alias-name (:id style))
          (when (:bg-color style) (str ", $bgColor=\"" (:bg-color style) "\""))
@@ -596,15 +596,15 @@
          ")")))
 
 ; AddRelTag (tagStereo, ?textColor, ?lineColor, ?lineStyle, ?sprite, ?techn, ?legendText, ?legendSprite, ?lineThickness)
-(defmethod render-style :rel
+(defmethod render-c4-style :rel
   [view style]
   (let [el (:el style)]
-    (str (style->method (:el style)) "("
+    (str (c4-style->method (:el style)) "("
          (short-name (:id style))
        ; (alias-name (:id style))
          (when (:text-color style) (str ", $textColor=\"" (:text-color style) "\""))
          (when (:line-color style) (str ", $lineColor=\"" (:line-color style) "\""))
-         (when (:line-style style) (str ", $lineStyle=\"" (line-style->method (:line-style style)) "\""))
+         (when (:line-style style) (str ", $lineStyle=\"" (c4-line-style->method (:line-style style)) "\""))
          (when (:tech style) (str ", $techn=\"" (:tech style) "\""))
          (when (:legend-text style) (str ", $legendText=\"" (:legend-text style) "\""))
          ")")))
@@ -613,27 +613,27 @@
 ;;; Diagram Layout
 ;;;
 
-(defn render-layout
+(defn render-c4-layout
   "Renders the layout for the diagram."
   [view]
   (let [spec (:spec view)]
     (flatten [(when (:styles spec)
-                (into [] (map #(render-style view %)) (:styles spec)))
+                (into [] (map #(render-c4-style view %)) (:styles spec)))
               (when (:sketch spec)
                 "LAYOUT_AS_SKETCH()")
               (when (:layout spec)
-                (layouts (:layout spec)))
+                (c4-layouts (:layout spec)))
               (when (:linetype spec)
-                (linetypes (:linetype spec)))])))
+                (c4-linetypes (:linetype spec)))])))
 
-(defn render-legend
+(defn render-c4-legend
   "Renders the legend for the diagram."
   [view]
   (let [spec (:spec view)]
     [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
-(defn render-title
+(defn render-c4-title
   "Renders the title of the diagram."
   [view]
   (when (:title view) (str "title " (:title view))))
@@ -643,12 +643,12 @@
   (let [children (view/elements-to-render view)]
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id view)))
-              (render-imports view)
+              (render-c4-imports view)
               (render-sprite-imports view)
-              (render-layout view)
-              (render-title view)
+              (render-c4-layout view)
+              (render-c4-title view)
               (map #(render-c4-element view 0 %) children)
-              (render-legend view)
+              (render-c4-legend view)
               "@enduml"])))
 
 (defmethod render-view :uml-view
