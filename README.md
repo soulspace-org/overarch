@@ -341,6 +341,10 @@ Version 0.2.0
 Version 0.3.0
 * simple markdown export for the model information
 
+Version 0.4.0
+* theme support for diagrams
+
+
 Copyright
 ---------
 
