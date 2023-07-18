@@ -102,7 +102,7 @@
    :left-right "LAYOUT_LEFT_RIGHT()"
    :top-down "LAYOUT_TOP_DOWN()"})
 
-(def c4-linetypes
+(def linetypes
   "Maps linetype keys to PlantUML C4."
   {:orthogonal "skinparam linetype ortho"
    :polygonal  "skinparam linetype polyline"})
@@ -125,6 +125,19 @@
   {:bold   "BoldLine()"
    :dashed "DashedLine()"
    :dotted "DottedLine()"})
+
+(def uml-directions
+  "Maps direction keys to PlantUML UML directions."
+  {:down  "down"
+   :left  "left"
+   :right "right"
+   :up    "up"}
+  )
+
+(def uml-layouts
+  "Maps layout keys to PlantUML UML directives."
+  {:top-down   "top to bottom direction"
+   :left-right "left to right direction"})
 
 (def use-case-level->color
   "Maps the use case level to a color."
@@ -614,7 +627,7 @@
 ;;;
 
 (defn render-c4-layout
-  "Renders the layout for the diagram."
+  "Renders the layout for the C4 diagram."
   [view]
   (let [spec (:spec view)]
     (flatten [(when (:styles spec)
@@ -624,7 +637,7 @@
               (when (:layout spec)
                 (c4-layouts (:layout spec)))
               (when (:linetype spec)
-                (c4-linetypes (:linetype spec)))])))
+                (linetypes (:linetype spec)))])))
 
 (defn render-c4-legend
   "Renders the legend for the diagram."
@@ -633,7 +646,7 @@
     [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
-(defn render-c4-title
+(defn render-title
   "Renders the title of the diagram."
   [view]
   (when (:title view) (str "title " (:title view))))
@@ -646,15 +659,32 @@
               (render-c4-imports view)
               (render-sprite-imports view)
               (render-c4-layout view)
-              (render-c4-title view)
+              (render-title view)
               (map #(render-c4-element view 0 %) children)
               (render-c4-legend view)
               "@enduml"])))
+
+
+(defn render-uml-layout
+  "Renders the layout for the UML diagram."
+  [view]
+  (let [spec (:spec view)]
+    (flatten [;(when (:styles spec)
+              ;  (into [] (map #(render-uml-style view %)) (:styles spec)))
+              (when (:sketch spec)
+                "skinparam handwritten true")
+              (when (:layout spec)
+                (uml-layouts (:layout spec)))
+              (when (:linetype spec)
+                (linetypes (:linetype spec)))])))
+
 
 (defmethod render-view :uml-view
   [options view]
   (let [children (view/elements-to-render view)]
     (flatten [(str "@startuml " (alias-name (:id view)))
+              (render-uml-layout view)
+              (render-title view)
               (map #(render-uml-element view 0 %) children)
               "@enduml"])))
 
