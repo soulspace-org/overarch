@@ -2,4 +2,19 @@
 ;;;; Example Views for Class Model
 ;;;;
 
-#{}
+#{
+  {:el :class-view
+   :id :class/class-view
+   :title "Class View"
+   :ct [; classes
+        {:ref :class/ishape}
+        {:ref :class/shape}
+        {:ref :class/circle}
+        {:ref :class/square}
+        ; relations
+        {:ref :class/shape-extends-ishape}
+        {:ref :class/circle-extends-shape}
+        {:ref :class/square-extends-shape}
+        ]
+   }
+}

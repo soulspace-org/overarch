@@ -7,30 +7,48 @@
   ;;
   {:el :interface
    :id :class/ishape
-   :name "IShape"}
+   :name "IShape"
+   :ct [{:el :method
+         :id :class/ishape-area
+         :name "area"}
+        {:el :method
+         :id :class/ishape-circumference
+         :name "circumference"}]}
   {:el :class
    :id :class/shape
    :name "Shape"
-   :abstract true}
+   :abstract true
+   :ct [{:el :method
+         :id :class/shape-area
+         :name "area"}
+        {:el :method
+         :id :class/shape-circumference
+         :name "circumference"}]}
   {:el :class
    :id :class/circle
-   :name "Circle"}
+   :name "Circle"
+   :ct [{:el :field
+         :id :class/circle-radius
+         :name "radius"}]}
   {:el :class
    :id :class/square
-   :name "Square"}
+   :name "Square"
+   :ct [{:el :field
+         :id :class/square-width
+         :name "width"}]}
 
   ;;
   ;; Relations
   ;;
-  {:el :extends
+  {:el :inherits
    :id :class/shape-extends-ishape
    :from :class/shape
    :to :class/ishape}
-  {:el :extends
+  {:el :inherits
    :id :class/circle-extends-shape
    :from :class/circle
    :to :class/shape}
-  {:el :extends
+  {:el :inherits
    :id :class/square-extends-shape
    :from :class/square
    :to :class/shape}
