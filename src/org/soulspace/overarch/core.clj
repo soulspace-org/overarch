@@ -53,19 +53,27 @@
 
 (def use-case-types
   "Element types of a use case view."
-  #{:use-case :actor :person :system :context-boundary :uses :include :extends :generalizes})
+  #{:use-case :actor :person :system :context-boundary
+    :uses :include :extends :generalizes})
 
 (def state-types
   "Element types of a state view."
-  #{:state-machine :start-state :end-state :state :transition :fork :join :choice})
+  #{:state-machine :start-state :end-state :state :transition
+    :fork :join :choice :history :deep-history})
+
+(def class-types
+  "Element types of a class view."
+  #{:class :interface :extends :composition :aggregation :field :method
+    :stereotype :annotation :protocol})
 
 (def uml-relation-types
   "Relation types of UML views."
-  #{:goal :include :extends :generalizes :transition})
+  #{:goal :include :extends :generalizes :transition :composition
+    :aggregation})
 
 (def uml-types
   "Element types of UML views."
-  (set/union use-case-types state-types))
+  (set/union use-case-types state-types class-types))
 
 (def uml-view-types
   "UML view types."
