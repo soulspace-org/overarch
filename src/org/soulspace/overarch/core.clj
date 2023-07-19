@@ -63,13 +63,13 @@
 
 (def class-types
   "Element types of a class view."
-  #{:class :interface :extends :composition :aggregation :field :method
+  #{:class :interface :inherits :composition :aggregation :field :method
     :package :namespace :stereotype :annotation :protocol})
 
 (def uml-relation-types
   "Relation types of UML views."
   #{:goal :include :extends :generalizes :transition :composition
-    :aggregation})
+    :aggregation :inherits})
 
 (def uml-types
   "Element types of UML views."
@@ -77,7 +77,7 @@
 
 (def uml-view-types
   "UML view types."
-  #{:use-case-view :state-view}
+  #{:use-case-view :state-view :class-view}
   )
 
 ;; 
@@ -205,6 +205,11 @@
   "Returns true if the given element `e` is rendered in a UML state view."
   [e]
   (contains? state-types (:el e)))
+
+(defn class-view-element?
+  "Returns true if the given element `e` is rendered in a UML state view."
+  [e]
+  (contains? class-types (:el e)))
 
 ;;
 ;; Schema specification

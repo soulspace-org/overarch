@@ -16,7 +16,8 @@
    :dynamic-view          core/dynamic-view-element?
    :deployment-view       core/deployment-view-element?
    :use-case-view         core/use-case-view-element?
-   :state-view            core/state-view-element?})
+   :state-view            core/state-view-element?
+   :class-view            core/class-view-element?})
 
 ; general
 (def element->boundary
@@ -140,7 +141,7 @@
       (derive :dynamic-view :c4-view)
       (derive :use-case-view :uml-view)
       (derive :state-view :uml-view)
-      ))
+      (derive :class-view :uml-view)))
 
 ; general?
 (def element-hierarchy

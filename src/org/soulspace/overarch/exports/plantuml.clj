@@ -441,12 +441,44 @@
         (alias-name (:from e)) " --|> "
         (alias-name (:to e)))])
 
+(defmethod render-uml-element :interface
+  [view indent e]
+  (if (seq (:ct e))
+   (let [children (view/elements-to-render view (:ct e))]
+     (flatten [(str (view/render-indent indent)
+                    "interface \"" (view/element-name e)
+                    "\" as " (alias-name (:id e)) " {")
+               (map #(render-uml-element view (+ indent 2) %) children)
+               "}"]))
+   [(str (view/render-indent indent)
+         "class \"" (view/element-name e)
+         "\" as " (alias-name (:id e)))]))
+
 (defmethod render-uml-element :class
   [view indent e]
+  (if (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str (view/render-indent indent)
+                    (when (:abstract e) "abstract ")
+                    "class \"" (view/element-name e)
+                    "\" as " (alias-name (:id e)) " {")
+               (map #(render-uml-element view (+ indent 2) %) children)
+               "}"]))
+    [(str (view/render-indent indent)
+          (when (:abstract e) "abstract ")
+          "class \"" (view/element-name e)
+          "\" as " (alias-name (:id e)))]))
+
+(defmethod render-uml-element :field
+  [view indent e]
   [(str (view/render-indent indent)
-        (when (:abstract e) "abstract ")
         (view/element-name e))]
-  )
+)
+
+(defmethod render-uml-element :method
+  [view indent e]
+  [(str (view/render-indent indent)
+        (view/element-name e) "()")])
 
 (defmethod render-uml-element :composition
   [_ indent e]
@@ -458,6 +490,12 @@
   [_ indent e]
   [(str (view/render-indent indent)
         (alias-name (:from e)) " o--> "
+        (alias-name (:to e)))])
+
+(defmethod render-uml-element :inherits
+  [_ indent e]
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " --|> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :state-machine
