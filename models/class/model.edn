@@ -1,0 +1,37 @@
+;;;;
+;;;; Example Class Model
+;;;;
+
+#{;;
+  ;; Elements
+  ;;
+  {:el :interface
+   :id :class/ishape
+   :name "IShape"}
+  {:el :class
+   :id :class/shape
+   :name "Shape"
+   :abstract true}
+  {:el :class
+   :id :class/circle
+   :name "Circle"}
+  {:el :class
+   :id :class/square
+   :name "Square"}
+
+  ;;
+  ;; Relations
+  ;;
+  {:el :extends
+   :id :class/shape-extends-ishape
+   :from :class/shape
+   :to :class/ishape}
+  {:el :extends
+   :id :class/circle-extends-shape
+   :from :class/circle
+   :to :class/shape}
+  {:el :extends
+   :id :class/square-extends-shape
+   :from :class/square
+   :to :class/shape}
+}
