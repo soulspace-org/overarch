@@ -673,6 +673,8 @@
               ;  (into [] (map #(render-uml-style view %)) (:styles spec)))
               (when (:sketch spec)
                 "skinparam handwritten true")
+              (when (:compact spec)
+                "hide empty description")
               (when (:layout spec)
                 (uml-layouts (:layout spec)))
               (when (:linetype spec)
