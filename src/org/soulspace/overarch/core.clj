@@ -59,7 +59,7 @@
 (def state-types
   "Element types of a state view."
   #{:state-machine :start-state :end-state :state :transition
-    :fork :join :choice :history :deep-history})
+    :fork :join :choice :history-state :deep-history-state})
 
 (def class-types
   "Element types of a class view."
