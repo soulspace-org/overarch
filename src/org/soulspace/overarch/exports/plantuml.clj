@@ -441,6 +441,24 @@
         (alias-name (:from e)) " --|> "
         (alias-name (:to e)))])
 
+(defmethod render-uml-element :class
+  [view indent e]
+  [(str (view/render-indent indent)
+        (when (:abstract e) "abstract ")
+        (view/element-name e))]
+  )
+
+(defmethod render-uml-element :composition
+  [_ indent e]
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " *--> "
+        (alias-name (:to e)))])
+
+(defmethod render-uml-element :aggregation
+  [_ indent e]
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " o--> "
+        (alias-name (:to e)))])
 
 (defmethod render-uml-element :state-machine
   [view indent e]
