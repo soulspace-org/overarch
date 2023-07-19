@@ -131,13 +131,24 @@
   {:down  "down"
    :left  "left"
    :right "right"
-   :up    "up"}
-  )
+   :up    "up"})
+
+(def uml-visibility
+  "Maps visibility keys to PlantUML UML directions."
+  {:private         "-"
+   :protected       "#"
+   :package-private "~"
+   :public          "+"})
 
 (def uml-layouts
   "Maps layout keys to PlantUML UML directives."
   {:top-down   "top to bottom direction"
    :left-right "left to right direction"})
+
+(def uml-hides
+  "Maps view-types to PlantUML UML hide directives for more compact layouts."
+  {:state-view "hide empty description"
+   :class-view "hide empty members"})
 
 (def use-case-level->color
   "Maps the use case level to a color."
@@ -451,8 +462,34 @@
                (map #(render-uml-element view (+ indent 2) %) children)
                "}"]))
    [(str (view/render-indent indent)
-         "class \"" (view/element-name e)
+         "interface \"" (view/element-name e)
          "\" as " (alias-name (:id e)))]))
+
+(defmethod render-uml-element :protocol
+  [view indent e]
+  (if (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str (view/render-indent indent)
+                     "protocol \"" (view/element-name e)
+                     "\" as " (alias-name (:id e)) " {")
+                (map #(render-uml-element view (+ indent 2) %) children)
+                "}"]))
+    [(str (view/render-indent indent)
+          "protocol \"" (view/element-name e)
+          "\" as " (alias-name (:id e)))]))
+
+(defmethod render-uml-element :enum
+  [view indent e]
+  (if (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str (view/render-indent indent)
+                     "enum \"" (view/element-name e)
+                     "\" as " (alias-name (:id e)) " {")
+                (map #(render-uml-element view (+ indent 2) %) children)
+                "}"]))
+    [(str (view/render-indent indent)
+          "enum \"" (view/element-name e)
+          "\" as " (alias-name (:id e)))]))
 
 (defmethod render-uml-element :class
   [view indent e]
@@ -461,23 +498,34 @@
       (flatten [(str (view/render-indent indent)
                     (when (:abstract e) "abstract ")
                     "class \"" (view/element-name e)
+                     (when (:generic e)
+                       (str "<" (:generic e) ">"))
                     "\" as " (alias-name (:id e)) " {")
                (map #(render-uml-element view (+ indent 2) %) children)
                "}"]))
     [(str (view/render-indent indent)
           (when (:abstract e) "abstract ")
           "class \"" (view/element-name e)
+                     (when (:generic e)
+                       (str "<" (:generic e) ">"))
           "\" as " (alias-name (:id e)))]))
 
 (defmethod render-uml-element :field
   [view indent e]
   [(str (view/render-indent indent)
-        (view/element-name e))]
-)
+        (when (:visibility e)
+          (uml-visibility (:visibility e)))
+        (when (:type e)
+          (:type e))
+        (view/element-name e))])
 
 (defmethod render-uml-element :method
   [view indent e]
   [(str (view/render-indent indent)
+        (when (:visibility e)
+          (uml-visibility (:visibility e)))
+        (when (:type e)
+          (:type e))
         (view/element-name e) "()")])
 
 (defmethod render-uml-element :composition
@@ -495,8 +543,8 @@
 (defmethod render-uml-element :inherits
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " --|> "
-        (alias-name (:to e)))])
+        (alias-name (:to e)) " <|-- "
+        (alias-name (:from e)))])
 
 (defmethod render-uml-element :state-machine
   [view indent e]
@@ -730,7 +778,7 @@
               (when (:sketch spec)
                 "skinparam handwritten true")
               (when (:compact spec)
-                "hide empty description")
+                (uml-hides (:el view)))
               (when (:layout spec)
                 (uml-layouts (:layout spec)))
               (when (:linetype spec)
