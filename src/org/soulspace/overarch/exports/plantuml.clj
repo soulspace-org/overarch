@@ -137,7 +137,7 @@
   "Maps visibility keys to PlantUML UML directions."
   {:private         "-"
    :protected       "#"
-   :package-private "~"
+   :package         "~"
    :public          "+"})
 
 (def uml-layouts
