@@ -40,15 +40,15 @@
   ;;
   ;; Relations
   ;;
-  {:el :inherits
+  {:el :implementation
    :id :class/shape-extends-ishape
    :from :class/shape
    :to :class/ishape}
-  {:el :inherits
+  {:el :inheritance
    :id :class/circle-extends-shape
    :from :class/circle
    :to :class/shape}
-  {:el :inherits
+  {:el :inheritance
    :id :class/square-extends-shape
    :from :class/square
    :to :class/shape}
