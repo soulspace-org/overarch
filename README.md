@@ -3,14 +3,16 @@
 Overarch
 ========
 
-A data driven description of software architecture based on the C4 model.
+A data driven description of software architecture based on UML and the C4
+model.
 
 Describe your model as data and specify/generate representations (e.g.
 diagrams) for your model. All core and supplementary C4 diagrams except code
-diagrams are supported.
+diagrams are supported. Also UML use case, state machine and class diagrams
+are supported.
 
 Overarch is not so much about how to model your architecture (see
-[C4 Model](https://c4model.com) for that), but about making the models
+[C4 Model](https://c4model.com) for that), but about making these models
 composable and reusable.
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.soulspace.clj/overarch.svg)](https://clojars.org/org.soulspace.clj/overarch)
@@ -23,15 +25,17 @@ Features
 --------
 
 * models and views as data
-  * C4 model elements and views
-  * hierarchical models
+  * C4 models and views
+  * UML use case, state machine and class models and views
   * separation of models and views
-  * extensible format
+  * hierarchical models and element references
   * view specific customization of model elements
+  * extensible format
 * exports
   * JSON if you need to process models with languages without EDN support
-  * PlantUML/C4
-    * all views (except code view)
+  * PlantUML
+    * all C4 views (except code view)
+    * use case, state machine and class diagrams
     * styling and sprite support
   * Structurizr *experimental*
 * watch model directory for changes
@@ -40,9 +44,9 @@ Features
 Rationale
 ---------
 
-C4 models are great to vizualize an architecture on different levels of detail
-with the various diagrams types. The value lies in an expressive description
-and visualization of an architecture with different views.
+UML and C4 models are great to vizualize an architecture on different levels
+of detail with the various diagrams types. The value lies in an expressive
+description and visualization of an architecture with different views.
 
 But the models used for diagram generation with the existing tools are not
 models in the sense of generality. Especially if you describe your model in
@@ -57,29 +61,28 @@ information is part of the model description and vice versa. The model should
 capture the essence of the architecture and not its representation.
 
 If the model is described as plain *data* in an open format, it can be
-transformed into a graphical representation, e.g. into PlantUML textfiles.
+transformed into a graphical representation, e.g. into PlantUML textfiles, via
+the specification of views on the model.
 
-The model data should be separated from information about these representations.
-
-Models can be composed with these information and with other models. By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
+In Overarch the model data is separated from information about these representations. Models can be composed with these views and with other models. By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
 
 Even if the model is specified as data, the format should be a text file (EDN,
 JSON) to be easily edited with text editors by the whole team and to be
 committed to version control, instead of being in some propriatory binary
 format.
 
-The native format should be Extensible Data Notation (EDN) with representations
+The native format is the Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
-readable. It is directly readable into data structures in clojure code.
+readable. It is also directly readable into data structures in clojure or java
+code.
 
-The data format should be open for extension. E.g. it should cope with additional attributes or element types in the data structures.
+The data format is open for extension. E.g. it copes with additional attributes or element types in the data structures.
 
 The model should describe the architecture (the structure) of your system(s).
-The elements are based on the C4 model and are a hierarchical composition of the elements of the architecture.
+The elements are based on UML and the C4 model and are a hierarchical composition of the elements of the architecture.
 
-Model references should be used to refer to model elements from representations
-(e.g. diagrams). To allow references to relations, the definition of a relation
-must have an id.
+Model references are used to refer to model elements from other models and
+representations (e.g. diagrams). To allow references to elements and  relations, they must be given an id.
 
 Model references may be enhanced with additional attributes that are specific
 to the usage context (e.g. a style attribute in the context of a diagram)

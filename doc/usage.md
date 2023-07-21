@@ -297,7 +297,7 @@ key         | type    | values                           | description
 #### Actors (:person, :system, :actor)
 
 Persons and systems from the architecture model should be used as actors in the
-use case model to provide a connection between the to models.
+use case model to provide a connection between the architecture model and the use case model.
 
 You can use the :actor element to model actors not present as persons or systems in the architectural model, but this should be avoided if possible.
 A reason for an :actor element might be the introduction of a time actor to
@@ -311,15 +311,48 @@ Use case models support different kinds of relations.
 ### State Machine Model Elements
 
 A state model describes a state machine which can be used to model the states
-a system component can be in and the transition between those states.
+a system component can be in and the transition from one state to the next state based on the events the system receives as input.
 
 #### Example
 Example [State Model](/models/state/model.edn)
 
-#### States (:state, :start, :end, :fork, :join, :choice)
+#### State Machine (:state-machine)
+A state machine is the root element for a state machine view. It contains the set of states and transistions as value of the *:ct* key
+
+#### States (:state, :start-state, :end-state)
+A simple state machine has at least one start state, some normal states to model the different states a system can be in, and at least one end state.
+
+A start state starts the state machine.
+An end state terminates the state machine.
+
+#### Forks and Joins (:fork, :join)
 
 
 #### Transitions (:transition)
+A transition connects two states and models the input that leads to the transition from the current state (:from) to the next state (:to).
+
+
+### Class Model Elements
+
+A class model captures the static structure of the code.
+
+The abstraction level of a class model is not very high compared to the actual
+implementation. Therfore modelling and updating a complete class model is not
+of much value. But class models of the domain can be very valuable as a means of communication between domain experts and developers to shape and document
+the domain model for a bounded context.
+
+#### Interfaces (:interface)
+
+#### Protocol (:protocol)
+
+#### Class (:class)
+
+#### Field (:field)
+
+#### Method (:method)
+
+#### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
+
 
 
 Views
