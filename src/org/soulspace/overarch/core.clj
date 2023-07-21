@@ -50,7 +50,6 @@
 ;;
 ;; UML category definitions
 ;;
-
 (def use-case-types
   "Element types of a use case view."
   #{:use-case :actor :person :system :context-boundary
@@ -63,13 +62,13 @@
 
 (def class-types
   "Element types of a class view."
-  #{:class :interface :inherits :composition :aggregation :field :method
+  #{:class :interface :inheritance :implementation :composition :aggregation :field :method
     :package :namespace :stereotype :annotation :protocol})
 
 (def uml-relation-types
   "Relation types of UML views."
   #{:goal :include :extends :generalizes :transition :composition
-    :aggregation :inherits})
+    :aggregation :inheritance :implementation})
 
 (def uml-types
   "Element types of UML views."
@@ -77,8 +76,7 @@
 
 (def uml-view-types
   "UML view types."
-  #{:use-case-view :state-view :class-view}
-  )
+  #{:use-case-view :state-view :class-view})
 
 ;; 
 ;; General category definitions
@@ -240,8 +238,7 @@
   (s/coll-of
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
-         :relation    :overarch/relation
-         )))
+         :relation    :overarch/relation)))
 
 (s/def :overarch/element
   (s/keys :req-un [:overarch/el :overarch/id]
@@ -267,6 +264,7 @@
          :element-ref :overarch/element-ref
          :relation    :overarch/relation
          :view        :overarch/view)))
+
 
 ;;;
 ;;; Data handling
@@ -489,8 +487,7 @@
   (->> dir
        (read-elements)
        (build-registry)
-       (reset! state))
-  nil)
+       (reset! state)))
 
 (comment
   (file/all-files-by-extension "edn" "models")

@@ -540,10 +540,16 @@
         (alias-name (:from e)) " o--> "
         (alias-name (:to e)))])
 
-(defmethod render-uml-element :inherits
+(defmethod render-uml-element :inheritance
   [_ indent e]
   [(str (view/render-indent indent)
         (alias-name (:to e)) " <|-- "
+        (alias-name (:from e)))])
+
+(defmethod render-uml-element :implementation
+  [_ indent e]
+  [(str (view/render-indent indent)
+        (alias-name (:to e)) " <|.. "
         (alias-name (:from e)))])
 
 (defmethod render-uml-element :state-machine
