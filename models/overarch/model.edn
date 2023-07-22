@@ -173,20 +173,22 @@
    :abstract true
    :name "element"
    :desc "An element of data."
-   :ct [{:el :field
-         :name "el"
-         :type "keyword"
-         :desc "The type of the element."}]}
+   :ct #{{:el :field
+          :name "el"
+          :type "keyword"
+          :desc "The type of the element."}}}
+
   {:el :class
    :id :overarch/identifiable-element
    :abstract true
    :name "identifiable-element"
    :desc "An element with an identifier.
           Can be referenced from views and other parts of the model."
-   :ct [{:el :field
-         :name "id"
-         :type "keyword"
-         :desc "The identifier of the element."}]}
+   :ct #{{:el :field
+          :name "id"
+          :type "keyword"
+          :desc "The identifier of the element."}}}
+
   {:el :class
    :id :overarch/compound-element
    :abstract :true
@@ -196,21 +198,24 @@
          :name "ct"
          :type "collection"
          :desc "Collection of elements, e.g. a set or a vector, if the elements need to be in order."}]}
+
   {:el :class
    :id :overarch/named-element
    :abstract true
    :name "named-element"
    :desc "An element with a name and a description."
-   :ct [{:el :field
-         :name "name"
-         :type "string"
-         :desc "Name of the element."}
-        {:el :field
-         :name "desc"
-         :type "string"
-         :desc "Description of the element."}]}
+   :ct #{{:el :field
+          :name "name"
+          :type "string"
+          :desc "Name of the element."}
+         {:el :field
+          :name "desc"
+          :type "string"
+          :desc "Description of the element."}}}
+
   {:el :class
    :id :overarch/identifiable-named-element
+   :abstract true
    :name "identifiable-named-element"
    :desc "An element that is identifiable and named."}
 
@@ -219,22 +224,22 @@
    :abstract true
    :name "architecture-model-element"
    :desc "An element of the architecture model."
-   :ct [:el :field
-        :name "external"
-        :type "boolean"
-        :desc "When true, the element plays a role in the model
+   :ct #{:el :field
+         :name "external"
+         :type "boolean"
+         :desc "When true, the element plays a role in the model
                but it is not in the scope of the project.
-               Defaults to false."]}
+               Defaults to false."}}
 
   {:el :class
    :id :overarch/technical-element
    :abstract true
    :name "technical-element"
    :desc "An element which is implemented in the given technologies."
-   :ct [{:el :field
-         :name "tech"
-         :type "string"
-         :desc "Technology the element is implemented in."}]}
+   :ct #{{:el :field
+          :name "tech"
+          :type "string"
+          :desc "Technology the element is implemented in."}}}
 
   {:el :class
    :id :overarch/relational-element
@@ -251,13 +256,19 @@
           :desc "The identifier of the element being referred by another element."}}}
 
   {:el :class
+   :id :overarch/named-relational-element
+   :abstract true
+   :name "named-relational-element"
+   :desc "A relational element that is named."}
+
+  {:el :class
    :id :overarch/ref
    :name "ref"
    :desc "A reference to an element."
-   :ct {:el :field
-        :name "ref"
-        :type "keyword"
-        :desc "The identifier the reference is referring to."}}
+   :ct #{{:el :field
+          :name "ref"
+          :type "keyword"
+          :desc "The identifier the reference is referring to."}}}
 
   {:el :class
    :id :overarch/person
@@ -376,17 +387,93 @@
   {:el :class
    :id :overarch/field
    :name "field"
-   :desc "A field in a class model element."}
+   :desc "A field in a class model element."
+   :ct #{{:el :field
+          :name "optional"
+          :type "boolean"
+          :desc "When true the field can be null/nil."}
+         {:el :field
+          :name "visibility"
+          :type "keyword"
+          :desc "The visibility of the field."}}}
 
   {:el :class
    :id :overarch/method
    :name "method"
-   :desc "A method in a class model element."}
+   :desc "A method in a class model element."
+   :ct #{{:el :field
+          :name "visibility"
+          :type "keyword"
+          :desc "The visibility of the field."}}}
 
   {:el :class
-   :id :overarch/view-element
+   :id :overarch/implementation
+   :name "implementation"
+   :desc "An implementation relationship between a class and an
+          interface/protocol in the class model."}
+
+  {:el :class
+   :id :overarch/inheritance
+   :name "inheritance"
+   :desc "An inheritance relationship between two classes in the
+          class model."}
+
+  {:el :class
+   :id :overarch/state-machine
+   :name "state-machine"
+   :desc "A state machine as root element of the state machine model.
+          A state machine encapsulates a set of states of a system and
+          the transitions between these states."}
+
+  {:el :class
+   :id :overarch/state
+   :name "state"
+   :desc "A state in a state machine."}
+
+  {:el :class
+   :id :overarch/start-state
+   :name "start-state"
+   :desc "A start state in a state machine."}
+
+  {:el :class
+   :id :overarch/end-state
+   :name "end-state"
+   :desc "A end state in a state machine."}
+
+  {:el :class
+   :id :overarch/fork
+   :name "fork"
+   :desc "A fork of transitions in a state machine.
+          A fork has a single incoming transition and multiple outgoing
+          transitions."}
+
+  {:el :class
+   :id :overarch/join
+   :name "join"
+   :desc "A join of transitions in a state machine.
+          A join has multiple incoming transitions and a single outgoing
+          transition."}
+
+  {:el :class
+   :id :overarch/choice
+   :name "choice"
+   :desc "A choice of transitions in a state machine.
+          A choice has a single incoming transition and multiple outgoing
+          transitions with the result of the condition of the choice."
+   :ct #{{:el :field
+          :name "condition"
+          :type "string"}}}
+
+  {:el :class
+   :id :overarch/transition
+   :name "transition"
+   :desc "A transition from on state to another in effect of an event in
+          the state machine."}
+
+  {:el :class
+   :id :overarch/view
    :abstract true
-   :name "view-element"
+   :name "view"
    :desc "An element for describing a view."
    :ct [{:el :field
          :name "title"
@@ -396,6 +483,12 @@
    :id :overarch/rendering-specification
    :name "spec"
    :desc "A specification for the rendering options for a view."}
+
+  {:el :class
+   :id :overarch/view
+   :abstract true
+   :name "architectural-view"
+   :desc "An architectural view."}
 
   {:el :class
    :id :overarch/system-landscape-view
@@ -461,6 +554,14 @@
           It shows the actors of the system and the summary use cases
           to provide a high level overview of the functionality of the
           system under description."}
+  
+  {:el :class
+   :id :overarch/state-machine-view
+   :name "state-machine-view"
+   :desc "The state-machine view is a behavioural design view.
+          It shows states and transitions of a state machine."}
+
+
 
   ;;
   ;; Relations
@@ -489,6 +590,14 @@
    :id :overarch/relational-element-is-an-identifiable-element
    :to :overarch/identifiable-element
    :from :overarch/relational-element}
+  {:el :inheritance
+   :id :overarch/named-relational-element-is-a-named-element
+   :to :overarch/named-element
+   :from :overarch/named-relational-element}
+  {:el :inheritance
+   :id :overarch/named-relational-element-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/named-relational-element}
 
   {:el :inheritance
    :id :overarch/architecture-model-element-is-an-identifiable-named-element
@@ -571,46 +680,146 @@
    :id :overarch/state-machine-element-is-an-identifiable-named-element
    :to :overarch/identifiable-named-element
    :from :overarch/state-machine-element}
+  {:el :composition
+   :id :overarch/state-machine-contains-state-machine-element
+   :from :overarch/state-machine
+   :to :overarch/state-machine-element
+   :to-card :one-to-many}
+  {:el :inheritance
+   :id :overarch/state-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/state}
+  {:el :composition
+   :id :overarch/state-contains-state-machine-element
+   :from :overarch/state
+   :to :overarch/state-machine-element
+   :to-card :one-to-many}
+  {:el :inheritance
+   :id :overarch/start-state-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/start-state}
+  {:el :inheritance
+   :id :overarch/end-state-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/end-state}
+  {:el :inheritance
+   :id :overarch/fork-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/fork}
+  {:el :inheritance
+   :id :overarch/join-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/join}
+  {:el :inheritance
+   :id :overarch/choice-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/choice}
+
+  {:el :inheritance
+   :id :overarch/transition-is-a-named-relational-element
+   :to :overarch/named-relational-element
+   :from :overarch/transition}
+  {:el :inheritance
+   :id :overarch/transition-is-a-state-machine-element
+   :to :overarch/state-machine-element
+   :from :overarch/transition}
 
   {:el :inheritance
    :id :overarch/class-model-element-is-an-identifiable-named-element
    :to :overarch/identifiable-named-element
    :from :overarch/class-model-element}
+  {:el :inheritance
+   :id :overarch/package-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/package}
+  {:el :inheritance
+   :id :overarch/namespace-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/namespace}
+  {:el :inheritance
+   :id :overarch/interface-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/interface}
+  {:el :inheritance
+   :id :overarch/protocol-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/protocol}
+  {:el :inheritance
+   :id :overarch/class-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/class}
+  {:el :inheritance
+   :id :overarch/enum-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/enum}
+  {:el :inheritance
+   :id :overarch/inheritance-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/inheritance}
+  {:el :inheritance
+   :id :overarch/inheritance-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/inheritance}
+  {:el :inheritance
+   :id :overarch/implementation-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/implementation}
+  {:el :inheritance
+   :id :overarch/implementation-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/implementation}
+
 
   {:el :inheritance
    :id :overarch/view-element-is-an-identifiable-element
    :to :overarch/identifiable-element
-   :from :overarch/view-element}
+   :from :overarch/view}
 
   {:el :inheritance
-   :id :overarch/system-landscape-view-is-a-view-element
-   :to :overarch/view-element
+   :id :overarch/architecture-view-is-a-view
+   :to :overarch/view
+   :from :overarch/architecture-view}
+  
+  {:el :aggregation
+   :from :overarch/architecture-view
+   :to :overarch/architecture-model-element
+   :to-name "ct"
+   :to-card :one-to-many}
+
+  {:el :inheritance
+   :id :overarch/system-landscape-view-is-a-architecture-view
+   :to :overarch/architecture-view
    :from :overarch/system-landscape-view}
-
+  
   {:el :inheritance
-   :id :overarch/context-view-is-a-view-element
-   :to :overarch/view-element
+   :id :overarch/context-view-is-a-architecture-view
+   :to :overarch/architecture-view
    :from :overarch/context-view}
 
   {:el :inheritance
-   :id :overarch/container-view-is-a-view-element
-   :to :overarch/view-element
+   :id :overarch/container-view-is-a-architecture-view
+   :to :overarch/architecture-view
    :from :overarch/container-view}
 
   {:el :inheritance
-   :id :overarch/component-view-is-a-view-element
-   :to :overarch/view-element
+   :id :overarch/component-view-is-a-architecture-view
+   :to :overarch/architecture-view
    :from :overarch/component-view}
 
   {:el :inheritance
-   :id :overarch/deployment-view-is-a-view-element
-   :to :overarch/view-element
+   :id :overarch/dynamic-view-is-a-architecture-view
+   :to :overarch/architecture-view
+   :from :overarch/dynamic-view}
+
+  {:el :inheritance
+   :id :overarch/deployment-view-is-a-view
+   :to :overarch/view
    :from :overarch/deployment-view}
 
   {:el :inheritance
-   :id :overarch/dynamic-view-is-a-view-element
-   :to :overarch/view-element
-   :from :overarch/dynamic-view}
+   :id :overarch/state-machine-view-is-a-view
+   :to :overarch/view
+   :from :overarch/state-machine-view}
 
   ;
   }
