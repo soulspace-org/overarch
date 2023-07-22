@@ -515,18 +515,20 @@
   [(str (view/render-indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
+        (view/element-name e)
         (when (:type e)
-          (:type e))
-        (view/element-name e))])
+          (str " : " (:type e)))
+        )])
 
 (defmethod render-uml-element :method
   [view indent e]
   [(str (view/render-indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
+        (view/element-name e) "()"
         (when (:type e)
-          (:type e))
-        (view/element-name e) "()")])
+          (str " : " (:type e)))
+        )])
 
 (defmethod render-uml-element :composition
   [_ indent e]
