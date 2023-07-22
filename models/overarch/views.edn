@@ -48,4 +48,112 @@
         {:ref :overarch/exports-structurizr-accesses-model}
         {:ref :overarch/view-queries-model}
         ]}
+ 
+  {:el :class-view
+   :id :overarch/model-elements-overview
+   :title "Overview of the Model Elements of the Overarch Data Model"
+   :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/named-element}
+        {:ref :overarch/identifiable-named-element}
+        {:ref :overarch/compound-element}
+        {:ref :overarch/relational-element}
+        {:ref :overarch/technical-element}
+        {:ref :overarch/architecture-model-element}
+        {:ref :overarch/deployment-model-element}
+        {:ref :overarch/state-machine-element}
+        {:ref :overarch/class-model-element}
+        {:ref :overarch/use-case-model-element}
+
+        {:ref :overarch/person}
+        {:ref :overarch/system}
+        {:ref :overarch/container}
+        {:ref :overarch/component}
+        {:ref :overarch/node}
+        {:ref :overarch/actor}
+        {:ref :overarch/use-case}
+
+        {:ref :overview/interface}
+        {:ref :overview/protocol}
+        {:ref :overview/class}
+        {:ref :overview/enum}
+        {:ref :overview/field}
+        {:ref :overview/method}
+
+        ;relations
+        {:ref :overarch/identifiable-element-is-an-element}
+;        {:ref :overarch/compound-element-is-an-identifiable-element}
+        {:ref :overarch/named-element-is-an-element}
+        {:ref :overarch/identifiable-named-element-is-an-identifiable-element}
+        {:ref :overarch/identifiable-named-element-is-a-named-element}
+        {:ref :overarch/relational-element-is-an-identifiable-element}
+
+        {:ref :overarch/architecture-model-element-is-an-identifiable-named-element}
+        {:ref :overarch/architecture-model-element-is-a-named-element}
+
+        {:ref :overarch/person-is-a-architecture-model-element}
+        {:ref :overarch/system-is-a-architecture-model-element}
+        {:ref :overarch/system-contains-containers}
+
+        {:ref :overarch/container-is-a-architecture-model-element}
+        {:ref :overarch/container-contains-components}
+        {:ref :overarch/component-is-a-architecture-model-element}
+
+        {:ref :overarch/deployment-model-element-is-an-identifiable-named-element}
+        {:ref :overarch/deployment-model-element-is-a-named-element}
+
+        {:ref :overarch/node-is-a-deployment-model-element}
+        {:ref :overarch/node-contains-deployment-model-element}
+        {:ref :overarch/container-is-a-deployment-model-element}
+
+        {:ref :overarch/use-case-model-element-is-an-identifiable-named-element}
+        {:ref :overarch/actor-is-a-use-case-model-element}
+        {:ref :overarch/person-is-a-use-case-model-element}
+        {:ref :overarch/system-is-a-use-case-model-element}
+        {:ref :overarch/use-case-is-a-use-case-model-element}
+
+        {:ref :overarch/state-machine-element-is-an-identifiable-named-element}
+
+        {:ref :overarch/class-model-element-is-an-identifiable-named-element}
+
+        ;
+        ]}
+
+    {:el :class-view
+   :id :overarch/view-elements-overview
+   :title "Overview of the View Elements Overarch Data Model"
+   :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+ ;       {:ref :overarch/compound-element}
+        {:ref :overarch/architecture-model-element}
+        {:ref :overarch/deployment-model-element}
+        {:ref :overarch/state-machine-element}
+        {:ref :overarch/class-model-element}
+        {:ref :overarch/use-case-model-element}
+  
+        {:ref :overarch/view-element}
+   
+        {:ref :overarch/system-landscape-view}
+        {:ref :overarch/context-view}
+        {:ref :overarch/container-view}
+        {:ref :overarch/component-view}
+        {:ref :overarch/deployment-view}
+        {:ref :overarch/dynamic-view}
+  
+          ;relations
+        {:ref :overarch/identifiable-element-is-an-element}
+  ;        {:ref :overarch/compound-element-is-an-identifiable-element}
+   
+        {:ref :overarch/view-element-is-an-identifiable-element}
+        {:ref :overarch/system-landscape-view-is-a-view-element}
+        {:ref :overarch/context-view-is-a-view-element}
+        {:ref :overarch/container-view-is-a-view-element}
+        {:ref :overarch/component-view-is-a-view-element}
+        {:ref :overarch/deployment-view-is-a-view-element}
+        {:ref :overarch/dynamic-view-is-a-view-element}
+          ;
+        ]}
+
   }

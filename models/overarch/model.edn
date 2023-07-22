@@ -1,12 +1,31 @@
-#{{:el :person
+;;;;
+;;;; Model of the Overarch System
+;;;;
+
+#{;;;
+  ;;; Architecture
+  ;;;
+
+  ;;
+  ;; Actors
+  ;;
+  {:el :person
    :id :overarch/modeller
    :name "Modeller"
    :desc "Models the architecture of a system and specifies views of the model."}
+
+  ;;
+  ;; External Systems
+  ;;
   {:el :system
    :id :overarch/editor
    :external true
    :name "Editor/IDE"
    :desc "Tool for describing the architecture model and the views."}
+
+  ;;
+  ;; Internal System
+  ;;
   {:el :system
    :id :overarch/overarch
    :name "Overarch"
@@ -48,6 +67,9 @@
                  :id :overarch/io
                  :name "io"
                  :desc "Contains I/O related functions."}}}}}
+  ;;
+  ;; Relations
+  ;;
   {:el :rel
    :id :overarch/modeller-models-in-editor
    :from :overarch/modeller
@@ -137,4 +159,458 @@
    :from :overarch/view
    :to :overarch/core
    :name "queries"
-   :desc "model and views"}}
+   :desc "model and views"}
+
+  ;;;
+  ;;; Data Model
+  ;;;
+
+  ;;
+  ;; Elements
+  ;;
+  {:el :class
+   :id :overarch/element
+   :abstract true
+   :name "element"
+   :desc "An element of data."
+   :ct [{:el :field
+         :name "el"
+         :type "keyword"
+         :desc "The type of the element."}]}
+  {:el :class
+   :id :overarch/identifiable-element
+   :abstract true
+   :name "identifiable-element"
+   :desc "An element with an identifier.
+          Can be referenced from views and other parts of the model."
+   :ct [{:el :field
+         :name "id"
+         :type "keyword"
+         :desc "The identifier of the element."}]}
+  {:el :class
+   :id :overarch/compound-element
+   :abstract :true
+   :name "compound-element"
+   :desc "An element which is composed of other elements."
+   :ct [{:el :field
+         :name "ct"
+         :type "collection"
+         :desc "Collection of elements, e.g. a set or a vector, if the elements need to be in order."}]}
+  {:el :class
+   :id :overarch/named-element
+   :abstract true
+   :name "named-element"
+   :desc "An element with a name and a description."
+   :ct [{:el :field
+         :name "name"
+         :type "string"
+         :desc "Name of the element."}
+        {:el :field
+         :name "desc"
+         :type "string"
+         :desc "Description of the element."}]}
+  {:el :class
+   :id :overarch/identifiable-named-element
+   :name "identifiable-named-element"
+   :desc "An element that is identifiable and named."}
+
+  {:el :class
+   :id :overarch/architecture-model-element
+   :abstract true
+   :name "architecture-model-element"
+   :desc "An element of the architecture model."
+   :ct [:el :field
+        :name "external"
+        :type "boolean"
+        :desc "When true, the element plays a role in the model
+               but it is not in the scope of the project.
+               Defaults to false."]}
+
+  {:el :class
+   :id :overarch/technical-element
+   :abstract true
+   :name "technical-element"
+   :desc "An element which is implemented in the given technologies."
+   :ct [{:el :field
+         :name "tech"
+         :type "string"
+         :desc "Technology the element is implemented in."}]}
+
+  {:el :class
+   :id :overarch/relational-element
+   :abstract true
+   :name "relational-element"
+   :desc "An element which describes the relation of elements."
+   :ct #{{:el :field
+          :name "from"
+          :type "keyword"
+          :desc "The identifier of the element referring to another element."}
+         {:el :field
+          :name "to"
+          :type "keyword"
+          :desc "The identifier of the element being referred by another element."}}}
+
+  {:el :class
+   :id :overarch/ref
+   :name "ref"
+   :desc "A reference to an element."
+   :ct {:el :field
+        :name "ref"
+        :type "keyword"
+        :desc "The identifier the reference is referring to."}}
+
+  {:el :class
+   :id :overarch/person
+   :name "person"
+   :desc "A human actor or role working with the system under description.
+          The person can be used in the use case model and the architecture model."}
+
+  {:el :class
+   :id :overarch/system
+   :name "system"
+   :desc "A system relevant in the architecture.
+          The system can be an external system, which is modelled as a black box
+          or an internal system, a system under description, which is modelled as
+          a compound element with all the containers of the system.
+          The system can be used in the use case model and the architecture model."}
+
+  {:el :class
+   :id :overarch/container
+   :name "container"
+   :desc "A container is a part of a system and describes a deployed process in the
+          architecture (e.g. a service or an application).
+          The container is a compound element which contains the components of the
+          implementation."}
+
+  {:el :class
+   :id :overarch/component
+   :name "component"
+   :desc "A compontent is a part of a container and describes a (logical) building
+          block of a container (e.g. a module or a layer)."}
+
+  {:el :class
+   :id :overarch/deployment-model-element
+   :abstract true
+   :name "deployment-model-element"
+   :desc "An element in the deployment model."}
+
+  {:el :class
+   :id :overarch/node
+   :name "node"
+   :desc "An element of the deployment model of the system under description.
+          A node is a compound element which contains other nodes or containers
+          referenced from the architecture model."}
+
+  {:el :class
+   :id :overarch/state-machine-element
+   :abstract true
+   :name "state-machine-element"
+   :desc "An element in a state machine model."}
+
+  {:el :class
+   :id :overarch/use-case-model-element
+   :abstract true
+   :name "use-case-model-element"
+   :desc "An element in a use case model."}
+
+  {:el :class
+   :id :overarch/actor
+   :name "actor"
+   :desc "An actor (role) in a use case model.
+          The actor can be human or technical, e.g. a system or time.
+          If the architecture model contains persons or systems acting with
+          the use cases, you can replace the actors with these elements."}
+
+  {:el :class
+   :id :overarch/use-case
+   :name "use-case"
+   :desc "A use case in the use case model."
+   :ct #{{:el :field
+          :name "level"
+          :type "keyword"
+          :desc "The level of the use case (:summary, :user-goal, :subfunction)."}}}
+
+
+  {:el :class
+   :id :overarch/class-model-element
+   :abstract true
+   :name "class-model-element"
+   :desc "An element in a class model."}
+
+  {:el :class
+   :id :overarch/package
+   :name "package"
+   :desc "A package in the class model.
+          Packages provide a hierarchical structure for the organisation of the
+          elements of the class model."}
+
+  {:el :class
+   :id :overarch/namespace
+   :name "namespace"
+   :desc "A namespace in the class model.
+          Namespaces provide a hierarchical structure for the organisation of the
+          elements of the class model."}
+
+  {:el :class
+   :id :overarch/interface
+   :name "interface"
+   :desc "An interface in the class model.
+          An interface defines related methods."}
+
+  {:el :class
+   :id :overarch/protocol
+   :name "protocol"
+   :desc "A protocol in the class model.
+          A protocol defines related functions."}
+
+  {:el :class
+   :id :overarch/class
+   :name "class"
+   :desc "A class in the class model."}
+
+  {:el :class
+   :id :overarch/enum
+   :name "enum"
+   :desc "An enumeration of typed related values in the class model."}
+
+  {:el :class
+   :id :overarch/field
+   :name "field"
+   :desc "A field in a class model element."}
+
+  {:el :class
+   :id :overarch/method
+   :name "method"
+   :desc "A method in a class model element."}
+
+  {:el :class
+   :id :overarch/view-element
+   :abstract true
+   :name "view-element"
+   :desc "An element for describing a view."
+   :ct [{:el :field
+         :name "title"
+         :desc "The title of the view."}]}
+
+  {:el :class
+   :id :overarch/rendering-specification
+   :name "spec"
+   :desc "A specification for the rendering options for a view."}
+
+  {:el :class
+   :id :overarch/system-landscape-view
+   :name "system-landscape-view"
+   :desc "The system landscape view is a static architectural view.
+          It shows the broader context of the system under description.
+          It contains the system under descriptions, it's direct users and
+          interacting external systems and maybe additional systems and users
+          which play a role in the broader context of the system under
+          description."}
+
+  {:el :class
+   :id :overarch/context-view
+   :name "context-view"
+   :desc "The (system) context view is a static architectural view.
+          It shows the system under description and the interactions with it's
+          environment consisting of users and external systems."}
+
+  {:el :class
+   :id :overarch/container-view
+   :name "container-view"
+   :desc "The container view is a static architectural view.
+          It shows the process structure of system under description and the
+          interactions between these containers and with it's environment
+          consisting of users and external systems."}
+
+  {:el :class
+   :id :overarch/container-view
+   :name "component-view"
+   :desc "The component view is a static architectural view.
+          It shows the component structure of a container and the
+          interactions between these components and with it's environment
+          consisting of users and external systems."}
+
+  {:el :class
+   :id :overarch/deployment-view
+   :name "deployment-view"
+   :desc "The deployment view is a static architectural view.
+          It shows the deployment of a system with the infrastructure modelled
+          as nodes and the containers of the system deployed in these nodes."}
+
+  {:el :class
+   :id :overarch/dynamic-view
+   :name "dynamic-view"
+   :desc "The dynamic view is an architectural and behavioural view.
+          It shows the order of some interactions between elements of the
+          architecture."}
+
+  {:el :class
+   :id :overarch/use-case-summary-view
+   :name "use-case-summary-view"
+   :desc "The use case view is a behavioural view of the (functional)
+          requirements. 
+          It shows the actors of the system and the summary use cases
+          to provide a high level overview of the functionality of the
+          system under description."}
+
+  {:el :class
+   :id :overarch/use-case-goal-view
+   :name "use-case-goal-view"
+   :desc "The use case view is a behavioural view of the (functional)
+          requirements. 
+          It shows the actors of the system and the summary use cases
+          to provide a high level overview of the functionality of the
+          system under description."}
+
+  ;;
+  ;; Relations
+  ;;
+  {:el :inheritance
+   :id :overarch/identifiable-element-is-an-element
+   :to :overarch/element
+   :from :overarch/identifiable-element}
+  {:el :inheritance
+   :id :overarch/compound-element-is-an-identifiable-element
+   :to :overarch/identifiable-element
+   :from :overarch/compound-element}
+  {:el :inheritance
+   :id :overarch/named-element-is-an-element
+   :to :overarch/element
+   :from :overarch/named-element}
+  {:el :inheritance
+   :id :overarch/identifiable-named-element-is-an-identifiable-element
+   :to :overarch/identifiable-element
+   :from :overarch/identifiable-named-element}
+  {:el :inheritance
+   :id :overarch/identifiable-named-element-is-a-named-element
+   :to :overarch/named-element
+   :from :overarch/identifiable-named-element}
+  {:el :inheritance
+   :id :overarch/relational-element-is-an-identifiable-element
+   :to :overarch/identifiable-element
+   :from :overarch/relational-element}
+
+  {:el :inheritance
+   :id :overarch/architecture-model-element-is-an-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/architecture-model-element}
+
+  {:el :inheritance
+   :id :overarch/person-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/person}
+  {:el :inheritance
+   :id :overarch/system-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/system}
+  {:el :composition
+   :id :overarch/system-contains-containers
+   :from :overarch/system
+   :to :overarch/container
+   :to-name "ct"
+   :to-card :zero-to-many}
+
+  {:el :inheritance
+   :id :overarch/container-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/container}
+  {:el :composition
+   :id :overarch/container-contains-components
+   :from :overarch/container
+   :to :overarch/component
+   :to-name "ct"
+   :to-card :zero-to-many}
+
+  {:el :inheritance
+   :id :overarch/component-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/component}
+
+  {:el :inheritance
+   :id :overarch/deployment-model-element-is-an-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/deployment-model-element}
+
+  {:el :inheritance
+   :id :overarch/node-is-a-deployment-model-element
+   :to :overarch/deployment-model-element
+   :from :overarch/node}
+  {:el :composition
+   :id :overarch/node-contains-deployment-model-element
+   :from :overarch/node
+   :to :overarch/deployment-model-element
+   :to-name "ct"
+   :to-card :zero-to-many}
+  {:el :inheritance
+   :id :overarch/container-is-a-deployment-model-element
+   :to :overarch/deployment-model-element
+   :from :overarch/container}
+
+  {:el :inheritance
+   :id :overarch/use-case-model-element-is-an-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/use-case-model-element}
+  {:el :inheritance
+   :id :overarch/actor-is-a-use-case-model-element
+   :to :overarch/use-case-model-element
+   :from :overarch/actor}
+  {:el :inheritance
+   :id :overarch/person-is-a-use-case-model-element
+   :to :overarch/use-case-model-element
+   :from :overarch/person}
+  {:el :inheritance
+   :id :overarch/system-is-a-use-case-model-element
+   :to :overarch/use-case-model-element
+   :from :overarch/system}
+  {:el :inheritance
+   :id :overarch/use-case-is-a-use-case-model-element
+   :to :overarch/use-case-model-element
+   :from :overarch/use-case}
+
+  {:el :inheritance
+   :id :overarch/state-machine-element-is-an-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/state-machine-element}
+
+  {:el :inheritance
+   :id :overarch/class-model-element-is-an-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/class-model-element}
+
+  {:el :inheritance
+   :id :overarch/view-element-is-an-identifiable-element
+   :to :overarch/identifiable-element
+   :from :overarch/view-element}
+
+  {:el :inheritance
+   :id :overarch/system-landscape-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/system-landscape-view}
+
+  {:el :inheritance
+   :id :overarch/context-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/context-view}
+
+  {:el :inheritance
+   :id :overarch/container-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/container-view}
+
+  {:el :inheritance
+   :id :overarch/component-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/component-view}
+
+  {:el :inheritance
+   :id :overarch/deployment-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/deployment-view}
+
+  {:el :inheritance
+   :id :overarch/dynamic-view-is-a-view-element
+   :to :overarch/view-element
+   :from :overarch/dynamic-view}
+
+  ;
+  }
