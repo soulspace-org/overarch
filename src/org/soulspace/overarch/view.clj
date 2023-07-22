@@ -16,7 +16,7 @@
    :dynamic-view          core/dynamic-view-element?
    :deployment-view       core/deployment-view-element?
    :use-case-view         core/use-case-view-element?
-   :state-view            core/state-view-element?
+   :state-machine-view    core/state-machine-view-element?
    :class-view            core/class-view-element?})
 
 ; general
@@ -62,9 +62,9 @@
   [view-type e]
   (let [boundary (as-boundary? view-type e)]
     (if boundary
-    ; e has a boundary type and has children, render as boundary
+      ; e has a boundary type and has children, render as boundary
       (assoc e :el (keyword (str (name (:el e)) "-boundary")))
-    ; render e as normal model element
+      ; render e as normal model element
       e)))
 
 (defn elements-to-render
@@ -129,19 +129,6 @@
          (#(str/split % #"-"))
          (map str/capitalize)
          (str/join " "))))
-
-(def view-hierarchy
-  "Hierarchy for views"
-  (-> (make-hierarchy)
-      (derive :system-landscape-view :c4-view)
-      (derive :context-view :c4-view)
-      (derive :container-view :c4-view)
-      (derive :component-view :c4-view)
-      (derive :deployment-view :c4-view)
-      (derive :dynamic-view :c4-view)
-      (derive :use-case-view :uml-view)
-      (derive :state-view :uml-view)
-      (derive :class-view :uml-view)))
 
 ; general?
 (def element-hierarchy

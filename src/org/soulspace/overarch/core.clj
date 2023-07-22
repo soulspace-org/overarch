@@ -55,8 +55,8 @@
   #{:use-case :actor :person :system :context-boundary
     :uses :include :extends :generalizes})
 
-(def state-types
-  "Element types of a state view."
+(def state-machine-types
+  "Element types of a state machine view."
   #{:state-machine :start-state :end-state :state :transition
     :fork :join :choice :history-state :deep-history-state})
 
@@ -72,11 +72,11 @@
 
 (def uml-types
   "Element types of UML views."
-  (set/union use-case-types state-types class-types))
+  (set/union use-case-types state-machine-types class-types))
 
 (def uml-view-types
   "UML view types."
-  #{:use-case-view :state-view :class-view})
+  #{:use-case-view :state-machine-view :class-view})
 
 ;; 
 ;; General category definitions
@@ -199,10 +199,10 @@
   [e]
   (contains? use-case-types (:el e)))
 
-(defn state-view-element?
+(defn state-machine-view-element?
   "Returns true if the given element `e` is rendered in a UML state view."
   [e]
-  (contains? state-types (:el e)))
+  (contains? state-machine-types (:el e)))
 
 (defn class-view-element?
   "Returns true if the given element `e` is rendered in a UML state view."

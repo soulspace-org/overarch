@@ -68,6 +68,19 @@
                     :local-prefix "material"
                     :local-imports ["common"]}})
 
+(def view-hierarchy
+  "Hierarchy for views"
+  (-> (make-hierarchy)
+      (derive :system-landscape-view :c4-view)
+      (derive :context-view          :c4-view)
+      (derive :container-view        :c4-view)
+      (derive :component-view        :c4-view)
+      (derive :deployment-view       :c4-view)
+      (derive :dynamic-view          :c4-view)
+      (derive :use-case-view         :uml-view)
+      (derive :state-machine-view    :uml-view)
+      (derive :class-view            :uml-view)))
+
 (def c4-element->method
   "Map from element type to PlantUML C4 method."
   {:person              "Person"
@@ -227,7 +240,7 @@
 (defmulti render-view
   "Renders the diagram with PlantUML."
   renderer
-  :hierarchy #'view/view-hierarchy)
+  :hierarchy #'view-hierarchy)
 
 ;;
 ;; Elements
