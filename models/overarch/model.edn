@@ -419,6 +419,24 @@
           class model."}
 
   {:el :class
+   :id :overarch/composition
+   :name "composition"
+   :desc "A composition relationship between two classes in the
+          class model."}
+
+  {:el :class
+   :id :overarch/aggregation
+   :name "aggregation"
+   :desc "A aggregation relationship between two classes in the
+          class model."}
+
+  {:el :class
+   :id :overarch/association
+   :name "association"
+   :desc "A association relationship between two classes in the
+          class model."}
+
+  {:el :class
    :id :overarch/state-machine
    :name "state-machine"
    :desc "A state machine as root element of the state machine model.
@@ -469,7 +487,9 @@
    :name "transition"
    :desc "A transition from on state to another in effect of an event in
           the state machine."}
-
+  ;;
+  ;; Views
+  ;;
   {:el :class
    :id :overarch/view
    :abstract true
@@ -485,9 +505,9 @@
    :desc "A specification for the rendering options for a view."}
 
   {:el :class
-   :id :overarch/view
+   :id :overarch/architecture-view
    :abstract true
-   :name "architectural-view"
+   :name "architecture-view"
    :desc "An architectural view."}
 
   {:el :class
@@ -554,13 +574,18 @@
           It shows the actors of the system and the summary use cases
           to provide a high level overview of the functionality of the
           system under description."}
-  
+
+  {:el :class
+   :id :overarch/class-view
+   :name "class-view"
+   :desc "The class view is a static design view.
+          It shows class structure of some components of the system."}
+
   {:el :class
    :id :overarch/state-machine-view
    :name "state-machine-view"
-   :desc "The state-machine view is a behavioural design view.
+   :desc "The state machine view is a behavioural design view.
           It shows states and transitions of a state machine."}
-
 
 
   ;;
@@ -768,6 +793,30 @@
    :id :overarch/implementation-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/implementation}
+  {:el :inheritance
+   :id :overarch/composition-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/composition}
+  {:el :inheritance
+   :id :overarch/composition-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/composition}
+  {:el :inheritance
+   :id :overarch/aggregation-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/aggregation}
+  {:el :inheritance
+   :id :overarch/aggregation-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/aggregation}
+  {:el :inheritance
+   :id :overarch/association-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/association}
+  {:el :inheritance
+   :id :overarch/association-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/association}
 
 
   {:el :inheritance
@@ -779,7 +828,7 @@
    :id :overarch/architecture-view-is-a-view
    :to :overarch/view
    :from :overarch/architecture-view}
-  
+
   {:el :aggregation
    :from :overarch/architecture-view
    :to :overarch/architecture-model-element
@@ -790,7 +839,7 @@
    :id :overarch/system-landscape-view-is-a-architecture-view
    :to :overarch/architecture-view
    :from :overarch/system-landscape-view}
-  
+
   {:el :inheritance
    :id :overarch/context-view-is-a-architecture-view
    :to :overarch/architecture-view
@@ -815,6 +864,11 @@
    :id :overarch/deployment-view-is-a-view
    :to :overarch/view
    :from :overarch/deployment-view}
+
+  {:el :inheritance
+   :id :overarch/class-view-is-a-view
+   :to :overarch/view
+   :from :overarch/class-view}
 
   {:el :inheritance
    :id :overarch/state-machine-view-is-a-view

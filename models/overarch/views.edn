@@ -98,6 +98,9 @@
         {:ref :overarch/method}
         {:ref :overarch/implementation}
         {:ref :overarch/inheritance}
+        {:ref :overarch/composition}
+        {:ref :overarch/aggregation}
+        {:ref :overarch/association}
 
         {:ref :overarch/state-machine}
         {:ref :overarch/start-state}
@@ -117,6 +120,8 @@
         {:ref :overarch/component-view}
         {:ref :overarch/deployment-view}
         {:ref :overarch/dynamic-view}
+        {:ref :overarch/class-view}
+        {:ref :overarch/state-machine-view}
 
         ;relations
         {:ref :overarch/identifiable-element-is-an-element}
@@ -175,6 +180,12 @@
         {:ref :overarch/implementation-is-a-class-model-element}
         {:ref :overarch/inheritance-is-a-relational-element}
         {:ref :overarch/inheritance-is-a-class-model-element}
+        {:ref :overarch/composition-is-a-relational-element}
+        {:ref :overarch/composition-is-a-class-model-element}
+        {:ref :overarch/aggregation-is-a-relational-element}
+        {:ref :overarch/aggregation-is-a-class-model-element}
+        {:ref :overarch/association-is-a-relational-element}
+        {:ref :overarch/association-is-a-class-model-element}
 
         {:ref :overarch/view-is-an-identifiable-element}
         {:ref :overarch/architecture-view-is-a-view}
@@ -184,6 +195,8 @@
         {:ref :overarch/component-view-is-a-architecture-view}
         {:ref :overarch/dynamic-view-is-a-architecture-view}
         {:ref :overarch/deployment-view-is-a-view}
+        {:ref :overarch/class-view-is-a-view}
+        {:ref :overarch/state-machine-view-is-a-view}
         ;
         ]}
 
@@ -267,7 +280,12 @@
      :ct [;elements
           {:ref :overarch/element}
           {:ref :overarch/identifiable-element}
- ;        {:ref :overarch/compound-element}
+          {:ref :overarch/named-element}
+          {:ref :overarch/identifiable-named-element}
+;        {:ref :overarch/compound-element}
+          {:ref :overarch/relational-element}
+          {:ref :overarch/named-relational-element}
+          {:ref :overarch/technical-element}
           {:ref :overarch/architecture-model-element}
           {:ref :overarch/deployment-model-element}
           {:ref :overarch/state-machine-element}
@@ -276,26 +294,33 @@
 
           {:ref :overarch/ref}
 
-          {:ref :overarch/view-element}
 
+          {:ref :overarch/view}
+
+          {:ref :overarch/architecture-view}
           {:ref :overarch/system-landscape-view}
           {:ref :overarch/context-view}
           {:ref :overarch/container-view}
           {:ref :overarch/component-view}
           {:ref :overarch/deployment-view}
           {:ref :overarch/dynamic-view}
+          {:ref :overarch/class-view}
+          {:ref :overarch/state-machine-view}
 
           ;relations
           {:ref :overarch/identifiable-element-is-an-element}
   ;        {:ref :overarch/compound-element-is-an-identifiable-element}
 
-          {:ref :overarch/view-element-is-an-identifiable-element}
-          {:ref :overarch/system-landscape-view-is-a-view-element}
-          {:ref :overarch/context-view-is-a-view-element}
-          {:ref :overarch/container-view-is-a-view-element}
-          {:ref :overarch/component-view-is-a-view-element}
-          {:ref :overarch/deployment-view-is-a-view-element}
-          {:ref :overarch/dynamic-view-is-a-view-element}
+          {:ref :overarch/view-is-an-identifiable-element}
+          {:ref :overarch/architecture-view-is-a-view}
+          {:ref :overarch/system-landscape-view-is-a-architecture-view}
+          {:ref :overarch/context-view-is-a-architecture-view}
+          {:ref :overarch/container-view-is-architecture-view}
+          {:ref :overarch/component-view-is-a-architecture-view}
+          {:ref :overarch/dynamic-view-is-a-architecture-view}
+          {:ref :overarch/deployment-view-is-a-view}
+          {:ref :overarch/class-view-is-a-view}
+          {:ref :overarch/state-machine-view-is-a-view}
           ;
           ]}
 
