@@ -345,7 +345,7 @@ records in Overarch. Overarch treats the model as plain data and doesn't care
 about additional fields or elements. But this logical model shows the
 structure of the data model Overarch cares about and acts on.
 
-![Overview of the Data Model of Overarch](doc/images/overarch_dataModelOverview.svg)
+![Overview of the Data Model of Overarch](/doc/images/overarch_dataModelOverview.svg)
 
 ### Remarks
 Abstract elements in the logical data model, denoted by the (A) in the class,
