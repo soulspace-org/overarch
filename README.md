@@ -337,7 +337,7 @@ Plans
 Here are my current plans to extend overarch in the next releases.
 
 Version 0.2.0
-* Support UML use case and state views
+* Support UML use case, class and state machine views (work in progress)
   * Modelling
   * PlantUML export
 
