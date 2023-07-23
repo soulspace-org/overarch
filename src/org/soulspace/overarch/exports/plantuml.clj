@@ -1,3 +1,6 @@
+;;;;
+;;;; PlantUML rendering and export
+;;;;
 (ns org.soulspace.overarch.exports.plantuml
   "Functions to export views to PlantUML."
   (:require [clojure.set :as set]
@@ -9,10 +12,6 @@
             [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
-
-;;;;
-;;;; PlantUML rendering and export
-;;;;
 
 ;;;
 ;;; PlantUML mappings
@@ -545,14 +544,26 @@
 
 (defmethod render-uml-element :composition
   [_ indent e]
+  ; TODO render roles and cardinalities
   [(str (view/render-indent indent)
         (alias-name (:from e)) " *--> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :aggregation
   [_ indent e]
+  ; TODO render roles and cardinalities
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " o--> "
+        (alias-name (:from e))
+        (when (:from-card e)
+          " \"" (:from-card e) "\"")
+        " o--> "
+        (alias-name (:to e)))])
+
+(defmethod render-uml-element :association
+  [_ indent e]
+  ; TODO render roles and cardinalities
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " --> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :inheritance
