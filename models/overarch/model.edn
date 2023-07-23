@@ -927,6 +927,13 @@
    :id :overarch/deployment-view-is-a-view
    :to :overarch/view
    :from :overarch/deployment-view}
+  {:el :aggregation
+   :id :overarch/deployment-view-contains-deployment-model-element
+   :from :overarch/deployment-view
+   :to :overarch/deployment-model-element
+   :to-name "ct"
+   :to-card :one-to-many}
+
 
   {:el :inheritance
    :id :overarch/class-view-is-a-view

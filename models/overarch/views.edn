@@ -209,6 +209,7 @@
         {:ref :overarch/component-view-is-a-architecture-view}
         {:ref :overarch/dynamic-view-is-a-architecture-view}
         {:ref :overarch/deployment-view-is-a-view}
+        {:ref :overarch/deployment-view-contains-deployment-model-element}
         {:ref :overarch/class-view-is-a-view}
         {:ref :overarch/class-view-contains-class-model-element}
         {:ref :overarch/state-machine-view-is-a-view}
