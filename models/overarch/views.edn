@@ -77,6 +77,8 @@
 
         {:ref :overarch/ref}
 
+        {:ref :overarch/context-boundary}
+        {:ref :overarch/enterprise-boundary}
         {:ref :overarch/person}
         {:ref :overarch/system}
         {:ref :overarch/container}
@@ -139,6 +141,8 @@
         {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
         {:ref :overarch/technical-architecture-element-is-a-technical-element}
 
+        {:ref :overarch/context-boundary-is-a-architecture-model-element}
+        {:ref :overarch/enterprise-boundary-is-a-architecture-model-element}
         {:ref :overarch/person-is-a-architecture-model-element}
         {:ref :overarch/system-is-a-technical-architecture-element}
         {:ref :overarch/system-contains-containers}

@@ -292,12 +292,6 @@
           :desc "Subtype of the element, one of :database or :queue."}}}
 
   {:el :class
-   :id :overarch/technical-architecture-element
-   :abstract true
-   :name "technical-architecture-element"
-   :desc "A technical element of the architecture, e.g. a system or container."}
-
-  {:el :class
    :id :overarch/ref
    :name "ref"
    :desc "A reference to an element."
@@ -307,10 +301,26 @@
           :desc "The identifier the reference is referring to."}}}
 
   {:el :class
+   :id :overarch/context-boundary
+   :name "context-boundary"
+   :desc "A boundary of a bounded context."}
+
+  {:el :class
+   :id :overarch/enterprise-boundary
+   :name "enterprise-boundary"
+   :desc "A boundary of an enterprise or a company."}
+
+  {:el :class
    :id :overarch/person
    :name "person"
    :desc "A human actor or role working with the system under description.
           The person can be used in the use case model and the architecture model."}
+
+  {:el :class
+   :id :overarch/technical-architecture-element
+   :abstract true
+   :name "technical-architecture-element"
+   :desc "A technical element of the architecture, e.g. a system or container."}
 
   {:el :class
    :id :overarch/system
@@ -664,6 +674,14 @@
    :id :overarch/architecture-model-element-is-a-identifiable-named-element
    :to :overarch/identifiable-named-element
    :from :overarch/architecture-model-element}
+  {:el :inheritance
+   :id :overarch/context-boundary-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/context-boundary}
+  {:el :inheritance
+   :id :overarch/enterprise-boundary-is-a-architecture-model-element
+   :to :overarch/architecture-model-element
+   :from :overarch/enterprise-boundary}
   {:el :inheritance
    :id :overarch/person-is-a-architecture-model-element
    :to :overarch/architecture-model-element
