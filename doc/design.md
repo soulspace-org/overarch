@@ -335,3 +335,26 @@ map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
 
 ![Component View of Overarch](/doc/images/overarch_componentView.svg)
+
+
+Data Model
+----------
+The diagram below gives an overview of the current logical data model of
+Overarch. It is a logical model, because it is not modelled as classes or
+records in Overarch. Overarch treats the model as plain data and doesn't care
+about additional fields or elements. But this logical model shows the
+structure of the data model Overarch cares about and acts on.
+
+![Overview of the Data Model of Overarch](doc/images/overarch_dataModelOverview.svg)
+
+### Remarks
+Abstract elements in the logical data model, denoted by the (A) in the class,
+are just a way to structure the logical data model and to reduce redundancy
+by not repeating the inherited keys on every element. The elements used to
+model a system are only the concrete elements in the logical data model, which
+are denoted by the (C) in the diagram.
+
+A *ref* to an *identifiable element* could be used anywhere, where this element could have been modelled in the first place. Refs are mostly used to
+pull model elements into a view, but they could also be used in the model
+itself, e.g. to split the model of a huge system into different files.
+
