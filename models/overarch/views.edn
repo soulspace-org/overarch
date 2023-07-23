@@ -69,6 +69,7 @@
         {:ref :overarch/named-relational-element}
         {:ref :overarch/technical-element}
         {:ref :overarch/architecture-model-element}
+        {:ref :overarch/technical-architecture-element}
         {:ref :overarch/deployment-model-element}
         {:ref :overarch/state-machine-element}
         {:ref :overarch/class-model-element}
@@ -80,7 +81,9 @@
         {:ref :overarch/system}
         {:ref :overarch/container}
         {:ref :overarch/component}
+
         {:ref :overarch/node}
+
         {:ref :overarch/actor}
         {:ref :overarch/use-case}
 
@@ -133,18 +136,21 @@
 
         {:ref :overarch/architecture-model-element-is-a-identifiable-named-element}
         {:ref :overarch/architecture-model-element-is-a-named-element}
+        {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
+        {:ref :overarch/technical-architecture-element-is-a-technical-element}
 
         {:ref :overarch/person-is-a-architecture-model-element}
-        {:ref :overarch/system-is-a-architecture-model-element}
+        {:ref :overarch/system-is-a-technical-architecture-element}
         {:ref :overarch/system-contains-containers}
 
-        {:ref :overarch/container-is-a-architecture-model-element}
+        {:ref :overarch/container-is-a-technical-architecture-element}
         {:ref :overarch/container-contains-components}
-        {:ref :overarch/component-is-a-architecture-model-element}
+        {:ref :overarch/component-is-a-technical-architecture-element}
 
         {:ref :overarch/deployment-model-element-is-a-identifiable-named-element}
         {:ref :overarch/deployment-model-element-is-a-named-element}
 
+        {:ref :overarch/deployment-model-element-is-a-technical-element}
         {:ref :overarch/node-is-a-deployment-model-element}
         {:ref :overarch/node-contains-deployment-model-element}
         {:ref :overarch/container-is-a-deployment-model-element}
@@ -169,10 +175,16 @@
 
         {:ref :overarch/class-model-element-is-a-identifiable-named-element}
         {:ref :overarch/package-is-a-class-model-element}
+        {:ref :overarch/package-contains-class-model-element}
         {:ref :overarch/namespace-is-a-class-model-element}
+        {:ref :overarch/namespace-contains-class-model-element}
         {:ref :overarch/interface-is-a-class-model-element}
+        {:ref :overarch/interface-contains-method}
         {:ref :overarch/protocol-is-a-class-model-element}
+        {:ref :overarch/protocol-contains-method}
         {:ref :overarch/class-is-a-class-model-element}
+        {:ref :overarch/class-contains-field}
+        {:ref :overarch/class-contains-method}
         {:ref :overarch/enum-is-a-class-model-element}
         {:ref :overarch/implementation-is-a-relational-element}
         {:ref :overarch/implementation-is-a-class-model-element}

@@ -232,16 +232,6 @@
                Defaults to false."}}
 
   {:el :class
-   :id :overarch/technical-element
-   :abstract true
-   :name "technical-element"
-   :desc "An element which is implemented in the given technologies."
-   :ct #{{:el :field
-          :name "tech"
-          :type "string"
-          :desc "Technology the element is implemented in."}}}
-
-  {:el :class
    :id :overarch/relational-element
    :abstract true
    :name "relational-element"
@@ -260,6 +250,27 @@
    :abstract true
    :name "named-relational-element"
    :desc "A relational element that is named."}
+
+  {:el :class
+   :id :overarch/technical-element
+   :abstract true
+   :name "technical-element"
+   :desc "An element which is implemented in the given technologies."
+   :ct #{{:el :field
+          :name "tech"
+          :type "string"
+          :desc "Technology the element is implemented in."}
+         {:el :subtype
+          :name "subtype"
+          :type "string"
+          :optional true
+          :desc "Subtype of the element, one of :database or :queue."}}}
+
+  {:el :class
+   :id :overarch/technical-architecture-element
+   :abstract true
+   :name "technical-architecture-element"
+   :desc "A technical element of the architecture, e.g. a system or container."}
 
   {:el :class
    :id :overarch/ref
@@ -633,8 +644,12 @@
    :to :overarch/architecture-model-element
    :from :overarch/person}
   {:el :inheritance
-   :id :overarch/system-is-a-architecture-model-element
+   :id :overarch/technical-architecture-element-is-a-architecture-model-element
    :to :overarch/architecture-model-element
+   :from :overarch/technical-architecture-element}
+  {:el :inheritance
+   :id :overarch/system-is-a-technical-architecture-element
+   :to :overarch/technical-architecture-element
    :from :overarch/system}
   {:el :composition
    :id :overarch/system-contains-containers
@@ -643,8 +658,8 @@
    :to-name "ct"
    :to-card :zero-to-many}
   {:el :inheritance
-   :id :overarch/container-is-a-architecture-model-element
-   :to :overarch/architecture-model-element
+   :id :overarch/container-is-a-technical-architecture-element
+   :to :overarch/technical-architecture-element
    :from :overarch/container}
   {:el :composition
    :id :overarch/container-contains-components
@@ -653,14 +668,18 @@
    :to-name "ct"
    :to-card :zero-to-many}
   {:el :inheritance
-   :id :overarch/component-is-a-architecture-model-element
-   :to :overarch/architecture-model-element
+   :id :overarch/component-is-a-technical-architecture-element
+   :to :overarch/technical-architecture-element
    :from :overarch/component}
 
   ;; Deployment Model Relations
   {:el :inheritance
    :id :overarch/deployment-model-element-is-a-identifiable-named-element
    :to :overarch/identifiable-named-element
+   :from :overarch/deployment-model-element}
+  {:el :inheritance
+   :id :overarch/deployment-model-element-is-a-technical-element
+   :to :overarch/technical-element
    :from :overarch/deployment-model-element}
   {:el :inheritance
    :id :overarch/node-is-a-deployment-model-element
@@ -756,22 +775,52 @@
    :id :overarch/package-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/package}
+  {:el :composition
+   :id :overarch/package-contains-class-model-element
+   :from :overarch/package
+   :to :overarch/class-model-element
+   :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch/namespace-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/namespace}
+  {:el :composition
+   :id :overarch/namespace-contains-class-model-element
+   :from :overarch/namespace
+   :to :overarch/class-model-element
+   :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch/interface-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/interface}
+  {:el :composition
+   :id :overarch/interface-contains-method
+   :from :overarch/interface
+   :to :overarch/method
+   :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch/protocol-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/protocol}
+  {:el :composition
+   :id :overarch/protocol-contains-method
+   :from :overarch/protocol
+   :to :overarch/method
+   :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch/class-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/class}
+  {:el :composition
+   :id :overarch/class-contains-field
+   :from :overarch/class
+   :to :overarch/field
+   :to-card :zero-to-many}
+  {:el :composition
+   :id :overarch/class-contains-method
+   :from :overarch/class
+   :to :overarch/method
+   :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch/enum-is-a-class-model-element
    :to :overarch/class-model-element
@@ -824,7 +873,7 @@
    :id :overarch/method-is-a-named-element
    :to :overarch/named-element
    :from :overarch/method}
-  
+
 
   ;; View Relations
   {:el :inheritance
