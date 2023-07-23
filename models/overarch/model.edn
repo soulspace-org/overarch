@@ -162,6 +162,31 @@
    :desc "model and views"}
 
   ;;;
+  ;;; Use Cases
+  ;;;
+  {:el :use-case
+   :id :overarch/uc-model-system
+   :level :user-goal
+   :name "model system"
+   :desc "Textually model the system in the Overarch data model."}
+  {:el :use-case
+   :id :overarch/uc-export-model
+   :level :user-goal
+   :name "export model"
+   :desc "Export the model of the system."}
+  {:el :use-case
+   :id :overarch/uc-export-json
+   :level :user-goal
+   :name "export JSON"
+   :desc "Export the model to JSON."}
+  {:el :use-case
+   :id :overarch/uc-export-json
+   :level :user-goal
+   :name "export PlantUML"
+   :desc "Export the views to PlantUML."}
+  
+  
+  ;;;
   ;;; Data Model
   ;;;
 
@@ -933,7 +958,6 @@
    :to :overarch/deployment-model-element
    :to-name "ct"
    :to-card :one-to-many}
-
 
   {:el :inheritance
    :id :overarch/class-view-is-a-view
