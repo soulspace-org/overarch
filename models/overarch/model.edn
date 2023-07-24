@@ -285,7 +285,7 @@
           :name "tech"
           :type "string"
           :desc "Technology the element is implemented in."}
-         {:el :subtype
+         {:el :field
           :name "subtype"
           :type "string"
           :optional true
