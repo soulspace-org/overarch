@@ -152,6 +152,13 @@
    :package         "~"
    :public          "+"})
 
+(def uml-cardinality
+  "Maps cardinality keys to PlantUML UML cardinalities."
+  {:zero-to-one  "0..1"
+   :zero-to-many "0..n"
+   :one          "1"
+   :one-to-many  "1..n"})
+
 (def uml-layouts
   "Maps layout keys to PlantUML UML directives."
   {:top-down   "top to bottom direction"
@@ -544,26 +551,34 @@
 
 (defmethod render-uml-element :composition
   [_ indent e]
-  ; TODO render roles and cardinalities
+  ; TODO render roles
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " *--> "
+        (alias-name (:from e))
+        " *--> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :aggregation
   [_ indent e]
-  ; TODO render roles and cardinalities
+  ; TODO render roles
   [(str (view/render-indent indent)
         (alias-name (:from e))
         (when (:from-card e)
-          " \"" (:from-card e) "\"")
+          (str " \"" (uml-cardinality (:from-card e)) "\" "))
         " o--> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :association
   [_ indent e]
-  ; TODO render roles and cardinalities
+  ; TODO render roles
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " --> "
+        (alias-name (:from e))
+        " --> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :inheritance
