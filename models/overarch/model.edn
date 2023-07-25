@@ -249,12 +249,13 @@
    :abstract true
    :name "architecture-model-element"
    :desc "An element of the architecture model."
-   :ct #{:el :field
-         :name "external"
-         :type "boolean"
-         :desc "When true, the element plays a role in the model
+   :ct #{{:el :field
+          :name "external"
+          :type "boolean"
+          :optional true
+          :desc "When true, the element plays a role in the model
                but it is not in the scope of the project.
-               Defaults to false."}}
+               Defaults to false."}}}
 
   {:el :class
    :id :overarch/relational-element
@@ -345,6 +346,11 @@
    :desc "A compontent is a part of a container and describes a (logical) building
           block of a container (e.g. a module or a layer)."}
 
+  {:el :class
+   :id :overarch/rel
+   :name "rel"
+   :desc "A relation between two elements of the architecture."}
+  
   {:el :class
    :id :overarch/deployment-model-element
    :abstract true
@@ -714,7 +720,15 @@
    :id :overarch/component-is-a-technical-architecture-element
    :to :overarch/technical-architecture-element
    :from :overarch/component}
-
+  {:el :inheritance
+   :id :overarch/rel-is-a-named-relational-element
+   :to :overarch/named-relational-element
+   :from :overarch/rel}
+  {:el :inheritance
+   :id :overarch/rel-is-a-technical-architecture-element
+   :to :overarch/technical-architecture-element
+   :from :overarch/rel}
+  
   ;; Deployment Model Relations
   {:el :inheritance
    :id :overarch/deployment-model-element-is-a-identifiable-named-element
@@ -997,7 +1011,7 @@
    :from :overarch/state-machine-view
    :to :overarch/state-machine
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one}
 
   {:el :inheritance
    :id :overarch/use-case-view-is-a-view

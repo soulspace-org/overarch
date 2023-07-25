@@ -64,7 +64,6 @@
         {:ref :overarch/identifiable-element}
         {:ref :overarch/named-element}
         {:ref :overarch/identifiable-named-element}
-;        {:ref :overarch/compound-element}
         {:ref :overarch/relational-element}
         {:ref :overarch/named-relational-element}
         {:ref :overarch/technical-element}
@@ -83,6 +82,7 @@
         {:ref :overarch/system}
         {:ref :overarch/container}
         {:ref :overarch/component}
+        {:ref :overarch/rel}
 
         {:ref :overarch/node}
 
@@ -128,7 +128,6 @@
 
         ;relations
         {:ref :overarch/identifiable-element-is-a-element}
-;        {:ref :overarch/compound-element-is-a-identifiable-element}
         {:ref :overarch/named-element-is-a-element}
         {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch/identifiable-named-element-is-a-named-element}
@@ -140,16 +139,16 @@
         {:ref :overarch/architecture-model-element-is-a-named-element}
         {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
         {:ref :overarch/technical-architecture-element-is-a-technical-element}
-
         {:ref :overarch/context-boundary-is-a-architecture-model-element}
         {:ref :overarch/enterprise-boundary-is-a-architecture-model-element}
         {:ref :overarch/person-is-a-architecture-model-element}
         {:ref :overarch/system-is-a-technical-architecture-element}
         {:ref :overarch/system-contains-containers}
-
         {:ref :overarch/container-is-a-technical-architecture-element}
         {:ref :overarch/container-contains-components}
         {:ref :overarch/component-is-a-technical-architecture-element}
+        {:ref :overarch/rel-is-a-named-relational-element}
+        {:ref :overarch/rel-is-a-technical-architecture-element}
 
         {:ref :overarch/deployment-model-element-is-a-identifiable-named-element}
         {:ref :overarch/deployment-model-element-is-a-named-element}
@@ -224,21 +223,265 @@
         ]}
 
   {:el :class-view
-   :id :overarch/model-elements-overview
-   :title "Overview of the Model Elements of the Overarch Data Model"
+   :id :overarch/architecture-model-elements-overview
+;   :spec {:layout :left-right}
+   :title "Overview of the Architecture and Deployment Model Elements"
    :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/named-element}
+        {:ref :overarch/identifiable-named-element}
+        {:ref :overarch/relational-element}
+        {:ref :overarch/named-relational-element}
+        {:ref :overarch/technical-element}
+        {:ref :overarch/architecture-model-element}
+        {:ref :overarch/technical-architecture-element}
+        {:ref :overarch/deployment-model-element}
+
+        {:ref :overarch/context-boundary}
+        {:ref :overarch/enterprise-boundary}
+        {:ref :overarch/person}
+        {:ref :overarch/system}
+        {:ref :overarch/container}
+        {:ref :overarch/component}
+        {:ref :overarch/rel}
+
+        {:ref :overarch/node}
 
         ;relations
+        {:ref :overarch/identifiable-element-is-a-element}
+        {:ref :overarch/named-element-is-a-element}
+        {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch/identifiable-named-element-is-a-named-element}
+        {:ref :overarch/relational-element-is-a-identifiable-element}
+        {:ref :overarch/named-relational-element-is-a-named-element}
+        {:ref :overarch/named-relational-element-is-a-relational-element}
+
+        {:ref :overarch/architecture-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/architecture-model-element-is-a-named-element}
+        {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
+        {:ref :overarch/technical-architecture-element-is-a-technical-element}
+        {:ref :overarch/context-boundary-is-a-architecture-model-element}
+        {:ref :overarch/enterprise-boundary-is-a-architecture-model-element}
+        {:ref :overarch/person-is-a-architecture-model-element}
+        {:ref :overarch/system-is-a-technical-architecture-element}
+        {:ref :overarch/system-contains-containers}
+        {:ref :overarch/container-is-a-technical-architecture-element}
+        {:ref :overarch/container-contains-components}
+        {:ref :overarch/component-is-a-technical-architecture-element}
+        {:ref :overarch/rel-is-a-named-relational-element}
+        {:ref :overarch/rel-is-a-technical-architecture-element}
+
+        {:ref :overarch/deployment-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/deployment-model-element-is-a-named-element}
+
+        {:ref :overarch/deployment-model-element-is-a-technical-element}
+        {:ref :overarch/node-is-a-deployment-model-element}
+        {:ref :overarch/node-contains-deployment-model-element}
+        {:ref :overarch/container-is-a-deployment-model-element}
 
         ;
         ]}
 
   {:el :class-view
-   :id :overarch/view-elements-overview
-   :title "Overview of the View Elements Overarch Data Model"
+   :id :overarch/class-model-elements-overview
+;   :spec {:layout :left-right}
+   :title "Overview of the Class Model Elements"
    :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/named-element}
+        {:ref :overarch/identifiable-named-element}
+        {:ref :overarch/relational-element}
+        {:ref :overarch/named-relational-element}
+        {:ref :overarch/technical-element}
+        {:ref :overarch/class-model-element}
 
-          ;relations
+        {:ref :overarch/package}
+        {:ref :overarch/namespace}
+        {:ref :overarch/interface}
+        {:ref :overarch/protocol}
+        {:ref :overarch/class}
+        {:ref :overarch/enum}
+        {:ref :overarch/field}
+        {:ref :overarch/method}
+        {:ref :overarch/implementation}
+        {:ref :overarch/inheritance}
+        {:ref :overarch/composition}
+        {:ref :overarch/aggregation}
+        {:ref :overarch/association}
+
+        ;relations
+        {:ref :overarch/identifiable-element-is-a-element}
+        {:ref :overarch/named-element-is-a-element}
+        {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch/identifiable-named-element-is-a-named-element}
+        {:ref :overarch/relational-element-is-a-identifiable-element}
+        {:ref :overarch/named-relational-element-is-a-named-element}
+        {:ref :overarch/named-relational-element-is-a-relational-element}
+
+        {:ref :overarch/class-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/package-is-a-class-model-element}
+        {:ref :overarch/package-contains-class-model-element}
+        {:ref :overarch/namespace-is-a-class-model-element}
+        {:ref :overarch/namespace-contains-class-model-element}
+        {:ref :overarch/interface-is-a-class-model-element}
+        {:ref :overarch/interface-contains-method}
+        {:ref :overarch/protocol-is-a-class-model-element}
+        {:ref :overarch/protocol-contains-method}
+        {:ref :overarch/class-is-a-class-model-element}
+        {:ref :overarch/class-contains-field}
+        {:ref :overarch/class-contains-method}
+        {:ref :overarch/enum-is-a-class-model-element}
+        {:ref :overarch/implementation-is-a-relational-element}
+        {:ref :overarch/implementation-is-a-class-model-element}
+        {:ref :overarch/inheritance-is-a-relational-element}
+        {:ref :overarch/inheritance-is-a-class-model-element}
+        {:ref :overarch/composition-is-a-relational-element}
+        {:ref :overarch/composition-is-a-class-model-element}
+        {:ref :overarch/aggregation-is-a-relational-element}
+        {:ref :overarch/aggregation-is-a-class-model-element}
+        {:ref :overarch/association-is-a-relational-element}
+        {:ref :overarch/association-is-a-class-model-element}
+        {:ref :overarch/field-is-a-named-element}
+        {:ref :overarch/method-is-a-named-element}
+        ;
+        ]}
+
+  {:el :class-view
+   :id :overarch/use-case-model-elements-overview
+;   :spec {:layout :left-right}
+   :title "Overview of the Use Case Model Elements"
+   :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/named-element}
+        {:ref :overarch/identifiable-named-element}
+        {:ref :overarch/relational-element}
+        {:ref :overarch/named-relational-element}
+        {:ref :overarch/use-case-model-element}
+
+        {:ref :overarch/person}
+        {:ref :overarch/system}
+        {:ref :overarch/actor}
+        {:ref :overarch/use-case}
+
+        ;relations
+        {:ref :overarch/identifiable-element-is-a-element}
+        {:ref :overarch/named-element-is-a-element}
+        {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch/identifiable-named-element-is-a-named-element}
+        {:ref :overarch/relational-element-is-a-identifiable-element}
+        {:ref :overarch/named-relational-element-is-a-named-element}
+        {:ref :overarch/named-relational-element-is-a-relational-element}
+
+        {:ref :overarch/use-case-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/actor-is-a-use-case-model-element}
+        {:ref :overarch/person-is-a-use-case-model-element}
+        {:ref :overarch/system-is-a-use-case-model-element}
+        {:ref :overarch/use-case-is-a-use-case-model-element}
+        ;
+        ]}
+
+  {:el :class-view
+   :id :overarch/state-machine-elements-overview
+;   :spec {:layout :left-right}
+   :title "Overview of the State Machine Elements"
+   :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/named-element}
+        {:ref :overarch/identifiable-named-element}
+;        {:ref :overarch/compound-element}
+        {:ref :overarch/relational-element}
+        {:ref :overarch/named-relational-element}
+        {:ref :overarch/state-machine-element}
+
+        {:ref :overarch/state-machine}
+        {:ref :overarch/start-state}
+        {:ref :overarch/state}
+        {:ref :overarch/end-state}
+        {:ref :overarch/fork}
+        {:ref :overarch/join}
+        {:ref :overarch/choice}
+        {:ref :overarch/transition}
+
+        ;relations
+        {:ref :overarch/identifiable-element-is-a-element}
+        {:ref :overarch/named-element-is-a-element}
+        {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch/identifiable-named-element-is-a-named-element}
+        {:ref :overarch/relational-element-is-a-identifiable-element}
+        {:ref :overarch/named-relational-element-is-a-named-element}
+        {:ref :overarch/named-relational-element-is-a-relational-element}
+
+        {:ref :overarch/state-machine-element-is-a-identifiable-named-element}
+        {:ref :overarch/state-machine-contains-state-machine-element}
+        {:ref :overarch/start-state-is-a-state-machine-element}
+        {:ref :overarch/state-is-a-state-machine-element}
+        {:ref :overarch/state-contains-state-machine-element}
+        {:ref :overarch/end-state-is-a-state-machine-element}
+        {:ref :overarch/fork-is-a-state-machine-element}
+        {:ref :overarch/join-is-a-state-machine-element}
+        {:ref :overarch/choice-is-a-state-machine-element}
+        {:ref :overarch/transition-is-a-named-relational-element}
+        {:ref :overarch/transition-is-a-state-machine-element}
+        ;
+        ]}
+
+  {:el :class-view
+   :id :overarch/view-elements-overview
+   :spec {:layout :left-right}
+   :title "Overview of the View Elements"
+   :ct [;elements
+        {:ref :overarch/element}
+        {:ref :overarch/identifiable-element}
+        {:ref :overarch/architecture-model-element}
+        {:ref :overarch/deployment-model-element}
+;        {:ref :overarch/state-machine-element}
+        {:ref :overarch/class-model-element}
+        {:ref :overarch/use-case-model-element}
+        {:ref :overarch/state-machine}
+
+        {:ref :overarch/ref}
+
+        {:ref :overarch/view}
+        {:ref :overarch/rendering-spec}
+
+        {:ref :overarch/architecture-view}
+        {:ref :overarch/system-landscape-view}
+        {:ref :overarch/context-view}
+        {:ref :overarch/container-view}
+        {:ref :overarch/component-view}
+        {:ref :overarch/deployment-view}
+        {:ref :overarch/dynamic-view}
+        {:ref :overarch/class-view}
+        {:ref :overarch/state-machine-view}
+        {:ref :overarch/use-case-view}
+
+        ;relations
+        {:ref :overarch/identifiable-element-is-a-element}
+;        {:ref :overarch/named-element-is-a-element}
+;        {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
+;        {:ref :overarch/identifiable-named-element-is-a-named-element}
+
+        {:ref :overarch/view-is-a-identifiable-element}
+        {:ref :overarch/view-contains-rendering-spec}
+        {:ref :overarch/architecture-view-is-a-view}
+        {:ref :overarch/architecture-view-contains-architecture-model-element}
+        {:ref :overarch/system-landscape-view-is-a-architecture-view}
+        {:ref :overarch/context-view-is-a-architecture-view}
+        {:ref :overarch/container-view-is-a-architecture-view}
+        {:ref :overarch/component-view-is-a-architecture-view}
+        {:ref :overarch/dynamic-view-is-a-architecture-view}
+        {:ref :overarch/deployment-view-is-a-view}
+        {:ref :overarch/deployment-view-contains-deployment-model-element}
+        {:ref :overarch/class-view-is-a-view}
+        {:ref :overarch/class-view-contains-class-model-element}
+        {:ref :overarch/state-machine-view-is-a-view}
+        {:ref :overarch/state-machine-view-contains-state-machine}
+        {:ref :overarch/use-case-view-is-a-view}
+        {:ref :overarch/use-case-view-contains-use-case-model-element}
 
           ;
         ]}}
