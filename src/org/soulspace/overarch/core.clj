@@ -15,7 +15,7 @@
 
 (def context-types
   "Element types of a C4 context view."
-  #{:person :system :boundary :enterprise-boundary :context-boundary})
+  #{:rel :person :system :boundary :enterprise-boundary :context-boundary})
 
 (def container-types
   "Element types of a C4 container view."
@@ -116,7 +116,7 @@
 (defn reference?
   "Returns true if the given element `e` is a reference."
   [e]
-  (contains? reference-types (:el e)))
+  (:ref e))
 
 (defn person?
   "Returns true if the given element `e` is a person element."
