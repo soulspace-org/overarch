@@ -92,6 +92,7 @@
        {:ref :banking/web-app-deliveres-single-page-app}
        {:ref :banking/api-application-uses-mainframe-banking-system}
        {:ref :banking/api-application-uses-database}
+       ; add relations for the read database
        {:el :rel
         :id :banking/api-application-uses-database-read
         :from :banking/api-application

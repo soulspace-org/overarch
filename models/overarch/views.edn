@@ -57,9 +57,10 @@
   ;;
   {:el :class-view
    :id :overarch/data-model-overview
-   :spec {:layout :left-right}
+   :spec {:layout :left-right
+          :include :relations}
    :title "Overview of the Overarch Data Model"
-   :ct [;elements
+   :ct [;; elements
         {:ref :overarch/element}
         {:ref :overarch/identifiable-element}
         {:ref :overarch/named-element}
@@ -126,7 +127,7 @@
         {:ref :overarch/state-machine-view}
         {:ref :overarch/use-case-view}
 
-        ;relations
+        ;; relations
         {:ref :overarch/identifiable-element-is-a-element}
         {:ref :overarch/named-element-is-a-element}
         {:ref :overarch/identifiable-named-element-is-a-identifiable-element}
