@@ -67,6 +67,25 @@
       ; render e as normal model element
       e)))
 
+(defn render-relation?
+  "Returns true if the relation should be rendered in the context of the view."
+  [rel pred]
+  (let [rendered? pred
+        from (core/resolve-ref (:from rel))
+        to   (core/resolve-ref (:to rel))]
+    (when (and (rendered? rel) (rendered? from) (rendered? to))
+      rel)))
+
+(defn relation-to-render
+  "Returns the relation to be rendered in the context of the view."
+  [view rel]
+  (let [view-type (:el view)
+        rendered? (render-predicate view-type)
+        from (core/resolve-ref (:from rel))
+        to   (core/resolve-ref (:to rel))]
+  ; TODO promote relations to higher levels?
+  ))
+
 (defn elements-to-render
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
@@ -79,12 +98,6 @@
           (map core/resolve-ref)
           (filter (render-predicate view-type))
           (map #(element-to-render view-type %))))))
-
-(defn relation-to-render
-  "Returns the relation to be rendered in the context of the view."
-  [view rel]
-  ; TODO promote relations to higher levels?
-  )
 
 (defn elements-in-view
   "Returns the elements rendered in the view."
@@ -114,6 +127,24 @@
          (recur (collect-technologies techs (:ct e)) (rest coll))))
      techs)))
 
+(defn technologies-in-view
+  [view]
+  (->> view
+       (elements-in-view)
+       (map :tech)
+       (remove nil?)
+       (into #{})
+       ))
+
+(defn relations-for-view
+  [view]
+  (let [view-elements (elements-in-view view)
+        relations (core/get-model-elements)]
+
+    ; TODO
+    ))
+
+
 ; general
 (defn render-indent
   "Renders an indent of n space chars."
@@ -140,5 +171,7 @@
       (derive :context-boundary    :boundary)))
 
 (comment
-    (collect-technologies (:elements @core/state))
+  (collect-technologies (:elements @core/state))
+  (elements-in-view (core/get-view @core/state :banking/container-view))
+  (technologies-in-view (core/get-view @core/state :banking/container-view))
   )
