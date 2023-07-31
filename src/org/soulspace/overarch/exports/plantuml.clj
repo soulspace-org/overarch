@@ -549,6 +549,15 @@
           (str " : " (:type e)))
         )])
 
+(defmethod render-uml-element :function
+  [view indent e]
+  [(str (view/render-indent indent)
+        (when (:visibility e)
+          (uml-visibility (:visibility e)))
+        (view/element-name e) "()"
+        (when (:type e)
+          (str " : " (:type e))))])
+
 (defmethod render-uml-element :composition
   [_ indent e]
   ; TODO render roles
