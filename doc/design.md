@@ -339,8 +339,11 @@ dependencies of the namespaces.
 
 Data Model
 ----------
-The diagram below gives an overview of the current logical data model of
-Overarch. It is a logical model, because it is not modelled as classes or
+The diagram below is a reference of the current logical data model of Overarch.
+It contains all elements currently implemented by Overarch.
+The [usage doc](/doc/usage.md) contains views of relevant parts of the model.
+
+It is a logical model, because it is not modelled as classes or
 records in Overarch. Overarch treats the model as plain data and doesn't care
 about additional fields or elements. But this logical model shows the
 structure of the data model Overarch cares about and acts on.
