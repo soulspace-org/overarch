@@ -360,16 +360,35 @@ the domain model for a bounded context.
 #### Logical Data Model for the Class Model Elements
 ![Class Model Elements](/doc/images/overarch_classModelElementsOverview.svg)
 
+#### Packages/Namespace (:package, :namespace)
+Packages and namespaces provide a hierarchical structure for the organisation
+of the elements of the class model.
 
-#### Interfaces (:interface)
+Use what suits your system best.
 
-#### Protocol (:protocol)
+
+#### Interfaces/Protocols (:interface, :protocol)
+Interfaces and protocols specify related methods. Interfaces also provide a
+type for the static type system.
+Use what suits your system best.
 
 #### Class (:class)
+A class in object orientation is a typed element that encapsulates state and
+behaviour. The state is modelled with fields, the behaviour with methods.
+
+In functional programming, you can use classes to model the values of your
+system.
+
+#### Enumeration (:enum)
+An enumeration is a typed enumeration of values.
 
 #### Field (:field)
+A field is part of the state of a class.
 
 #### Method (:method)
+A method is part of the behaviour of a class or an interface.
+
+#### Function (:function)
 
 #### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
