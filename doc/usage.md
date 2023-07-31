@@ -360,12 +360,17 @@ the domain model for a bounded context.
 #### Logical Data Model for the Class Model Elements
 ![Class Model Elements](/doc/images/overarch_classModelElementsOverview.svg)
 
+#### Packages/Namespace (:package, :namespace)
+Packages and namespaces provide a hierarchical structure for the organisation
+of the elements of the class model. Use what suits your system best.
 
-#### Interfaces (:interface)
-
-#### Protocol (:protocol)
+#### Interfaces/Protocols (:interface, :protocol)
+Interfaces and protocols specify related methods. Interfaces also provide a
+type for the static type system. Use what suits your system best.
 
 #### Class (:class)
+
+#### Enumeration (:enum)
 
 #### Field (:field)
 
