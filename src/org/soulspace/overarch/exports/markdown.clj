@@ -13,10 +13,21 @@
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
 
+(def markdown-views
+  "Contains the views rendered with markdown."
+  #{:glossary-view})
+
+(defn render-element
+  "Renders an `element` with markdown according to the given `options`."
+  [e options]
+  (println (str (:name e) "(" (name (:el e)) ")"))
+  (println (:desc e)))
+
 
 (defn render-view
-  "Renders the `view` in markdown according to the given `options`."
+  "Renders the `view` with markdown according to the given `options`."
   [options view]
+
   ; TODO implement
   )
 
@@ -28,7 +39,7 @@
     (io/as-file (str dir-name "/"
                      (name (:id view)) ".md"))))
 
-(defmethod exp/export-view :plantuml
+(defmethod exp/export-view :markdown
   [options view]
   (with-open [wrt (io/writer (exp/export-file options view))]
     (binding [*out* wrt]
