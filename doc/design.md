@@ -199,7 +199,9 @@ Q: **Should names be generated from ids if missing?**
 
 A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to first upper case with spaces
-   between words.
+   between words. But the models should contain names to make them more readable,
+   so the generated names should be just a fallback, not an exuse for not
+   specifying names in the first place.
 
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
