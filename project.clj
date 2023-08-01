@@ -9,7 +9,8 @@
                  [org.clojure/tools.cli "1.0.206"]
                  [com.cnuernber/charred "1.028"]
                  [hawk/hawk "0.2.11"]
-                 [org.soulspace.clj/clj.java "0.9.1"]]
+                 [org.soulspace.clj/clj.java "0.9.1"]
+                 [org.soulspace.clj/cmp.markdown "0.4.1"]]
 
   :repl-options {:init-ns org.soulspace.overarch.cli}
 
