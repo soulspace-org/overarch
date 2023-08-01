@@ -208,8 +208,13 @@ Q: **Can views be specified in a generic manner, so that the elements contained 
    Views could also select content based on the namespace of the id or on the
    element type.
 
-A: 
-
+A: An :include option in the view spec could contain different strategies for the
+   automatic selection of content, e.g.
+   * :relations to select all relations for the referenced model elements
+   * :related to select all elements for the referenced relations
+   * :transitive or :convex-hull to select all elements reachable from the
+     referenced elements
+   * a map of selection criteria on the element attributes
 
 Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
