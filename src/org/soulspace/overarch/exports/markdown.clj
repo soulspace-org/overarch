@@ -7,29 +7,33 @@
             [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
+            [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
 
-(def markdown-views
-  "Contains the views rendered with markdown."
-  #{:glossary-view})
-
 (defn render-element
   "Renders an `element` with markdown according to the given `options`."
-  [e options]
-  (println (str (:name e) "(" (name (:el e)) ")"))
-  (println (:desc e)))
-
+  [e options view]
+  [(md/h1 (str (:name e) "(" (name (:el e)) ")"))
+   (md/p (:desc e))])
 
 (defn render-view
   "Renders the `view` with markdown according to the given `options`."
   [options view]
+  (let [children (view/elements-to-render view)]
+    (flatten (map #(render-element % options view) children))))
 
-  ; TODO implement
-  )
+(def markdown-views
+  "Contains the views rendered with markdown."
+  #{:glossary-view})
+
+(defn markdown-view?
+  "Returns true, if the view is to be rendered with markdown."
+  [view]
+  (contains? markdown-views (:el view)))
 
 (defmethod exp/export-file :markdown
   [options view]
@@ -48,5 +52,6 @@
 (defmethod exp/export :markdown
   [options]
   (doseq [view (core/get-views)]
-    (exp/export-view options view)))
+    (when (markdown-view? view)
+      (exp/export-view options view))))
 

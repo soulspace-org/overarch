@@ -853,6 +853,16 @@
 ;;;
 ;;; PlantUML file export
 ;;;
+(def plantuml-views
+  "Contains the views to be rendered with plantuml."
+  #{:system-landscape-view :context-view :container-view :component-view
+    :deployment-view :dynamic-view :class-view :use-case-view
+    :state-machine-view})
+
+(defn plantuml-view?
+  "Returns true, if the view is to be rendered with plantuml."
+  [view]
+  (contains? plantuml-views (:el view)))
 
 (defmethod exp/export-file :plantuml
   [options view]
@@ -870,5 +880,6 @@
 (defmethod exp/export :plantuml
   [options]
   (doseq [view (core/get-views)]
-    (exp/export-view options view)))
+    (when (plantuml-view? view)
+      (exp/export-view options view))))
 
