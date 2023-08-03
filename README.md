@@ -334,16 +334,13 @@ See [Design](doc/design.md) for information about the design of *Overarch*.
 Plans
 -----
 
-Here are my current plans to extend overarch in the next releases.
+Here are my current plans to enhance overarch in the next releases.
 
-Version 0.3.0
-* simple markdown export for the model information
-
-Version 0.4.0
 * enhanced conveniance in view specifications
-  * automatic includes of elements (e.g. include relations for referenced elements)
-
-Version 0.5.0
+  * automatic includes of elements e.g.
+    * include relations for referenced elements
+    * includes based on selection criteria
+* markdown export for the textual information in views also rendered as diagrams
 * theme support for diagrams
 
 
