@@ -133,6 +133,7 @@ key       | type    | values             | description
 :ct       | set     | model elements     | the children of the model element
 
 
+
 ### Architecture and Deployment Model Elements
 Overarch supports elements for C4 architecture and deployment models.
 
@@ -277,6 +278,15 @@ level elements):
   :name "Sends e-mail to"}} 
  ```
 
+### Concept Model Elements
+
+A concept model captures relevant concepts of the domain(s) of the system.
+The concepts could be part of the ubiquous language of the systems domain.
+
+A concept model can contain the concepts of the domain and the high level elements
+of the architecture model, e.g. the persons (actors), external systems and the
+system itself with it's containers.
+
 ### Use Case Model Elements
 
 A use case model captures the functionality a system is suposed to deliver.
@@ -393,9 +403,18 @@ A method is part of the behaviour of a class or an interface.
 #### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
 
-
 Views
 -----
+To show model elements in diagrams or in textual representations you can define
+different kind of views. The kind of view defines the visual rendering of the
+elements and the kind of elements and relations that are shown.
+
+In a specific view you can reference the model elements you want to include in
+this view. A Model element can be included in as many views as you want, but the
+element has to match the expected kinds of model elements to be shown. 
+For example, a system landscape view renders person and system elements but no
+use cases or state machines, even if they are referenced in the view. Please consult
+the models for the model and view elements.
 
 #### Logical Data Model for the View Elements
 ![View Elements](/doc/images/overarch_viewElementsOverview.svg)
@@ -449,21 +468,51 @@ outside systems and actors.
 
 ![Component View rendered with PlantUML](/doc/images/banking_apiComponentView.svg)
 
-#### Code Views
-Not supported
+#### C4 Code Views
+A C4 code view is not supported, the level of abstraction for implementation details
+is usually not high enough to justify modelling implemeted code. Also the speed of
+change in the code is most likely to high and renders a code model obsolete fast.
+If you want to visualize existing code, you can use the features of your IDE to generate
+a diagram of it.
+
+On the other hand it can be useful to create a view of code not yet implemented.
+UML class view can be used to model a domain and communicate a design. See UML views for that. 
 
 #### System Landscape Views (:system-landscape-view)
-Shows a broader system landscape and the interactions of the systems.
+The system landscape view shows a high level picture, a broader view of the system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking_systemLandscapeView.svg)
 
 #### Deployment Views (:deployment-view)
-Shows the infrastucture and deployment of the containers of the system.
+The deployment view shows the infrastucture and deployment of the containers of the system.
 
 ![Deployment View rendered with PlantUML](/doc/images/banking_deploymentView.svg)
 
 #### Dynamic Views (:dynamic-view)
 Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
+
+### UML Views
+Overarch supports selected UML views to show aspects of a system that are not covered by the C4
+Model.
+
+#### Use Case View
+A use case view is used to show the actors of the system under design and their goals using this
+system.
+
+#### State Machine Views
+A state machine view is used to show the different states a component can be in. It also shows the
+transitions between these states based on the input events, the component receives. 
+
+#### Class Views
+A class view is used to show the design of parts of the software. You can use it e.g. to model a
+domain and to communicate the model with domain experts.
+
+### Textual Views
+Overarch also supports textual views as part of the documentation of the system. Textual views are
+used to leverage the information present in the model.
+
+#### Glossary View
+The glossary view is a sorted list of elements with their type and their descriptions.
 
 ### Styling
 Overarch supports custom styles for elements. For an example see [views.edn](/models/test/views.edn).
@@ -499,6 +548,8 @@ view spec.
 ```
    :spec {:plantuml {:sprite-libs [:azure]}}
 ```
+
+### Markdown
 
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
