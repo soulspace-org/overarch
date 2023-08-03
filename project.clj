@@ -1,6 +1,5 @@
-(defproject org.soulspace.clj/overarch "0.3.0-SNAPSHOT"
-  :description "OverArch provides architecture description as data based on C4 models,
-                opening multiple use cases for this data."
+(defproject org.soulspace.clj/overarch "0.3.0"
+  :description "Overarch provides a data model for the holistic description of a software system, opening multiple use cases on the model data."
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
