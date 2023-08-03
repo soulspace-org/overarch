@@ -72,6 +72,7 @@ Design Goals
 ------------
 
 * Reusable models
+* Holistic model of the system under description
 * Reduced duplication of information
 * Extensibility of the data format
 * Extensibility of the exports
@@ -121,8 +122,9 @@ A: The hierarchical structure of a system and its context
 
 Q: **How can reusability of the models and views be achieved?**
 
-A: With :ref the reusablility of model elements in different diagrams is
-   archieved, which is a benefit over the diagram focused specification in the PlantUML C4 DSL, where you often have to duplicate information in the different diagrams.
+A: With :ref the reusablility of model elements in different views is archieved,
+   which is a benefit over the diagram focused specification in the PlantUML
+   C4 DSL, where you often have to duplicate information in the different diagrams.
 
    Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
 
@@ -199,7 +201,9 @@ Q: **Should names be generated from ids if missing?**
 
 A: That would make the models more concise. Names can be generated from the name
    part of the keyword by converting kebab case to first upper case with spaces
-   between words.
+   between words. But the models should contain names to make them more readable,
+   so the generated names should be just a fallback, not an exuse for not
+   specifying names in the first place.
 
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
@@ -208,8 +212,13 @@ Q: **Can views be specified in a generic manner, so that the elements contained 
    Views could also select content based on the namespace of the id or on the
    element type.
 
-A: 
-
+A: An :include option in the view spec could contain different strategies for the
+   automatic selection of content, e.g.
+   * :relations to select all relations for the referenced model elements
+   * :related to select all elements for the referenced relations
+   * :transitive or :convex-hull to select all elements reachable from the
+     referenced elements
+   * a map of selection criteria on the element attributes
 
 Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
@@ -270,6 +279,24 @@ A: It differs on the type of the export.
    For JSON the export should be done on an individual file level, to keep the
    structure of data files intact.
 
+
+Q: **What textual views/exports make sense?**
+
+A: The model should contain information like names and descriptions for most
+   elements, e.g. to render this information in C4 views. Even if the description
+   of an element is not rendered in an UML view, the element should be described
+   in the model. With consistent desciptions of the model elements and relations,
+   textual representations of the views can be rendered, which describe the elements
+   visible in the view.
+
+   Also text-only views on the model make sense, e.g. a glossary view, which
+   contains the main elements of the model with their names, types and descripions
+   alphabetically sorted by name. So the information in the model can be used to
+   create more value than just for the creation of diagrams.
+
+   For the glossary it might be useful to add concepts to the model to describe
+   the parts of the language of the system, which are not directly represented by
+   elements of the architecture.
 
 Q: **Why EDN as the specification notation?**
 
@@ -335,3 +362,29 @@ map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
 
 ![Component View of Overarch](/doc/images/overarch_componentView.svg)
+
+
+Data Model
+----------
+The diagram below is a reference of the current logical data model of Overarch.
+It contains all elements currently implemented by Overarch.
+The [usage doc](/doc/usage.md) contains views of relevant parts of the model.
+
+It is a logical model, because it is not modelled as classes or
+records in Overarch. Overarch treats the model as plain data and doesn't care
+about additional fields or elements. But this logical model shows the
+structure of the data model Overarch cares about and acts on.
+
+![Overview of the Data Model of Overarch](/doc/images/overarch_dataModelOverview.svg)
+
+### Remarks
+Abstract elements in the logical data model, denoted by the (A) in the class,
+are just a way to structure the logical data model and to reduce redundancy
+by not repeating the inherited keys on every element. The elements used to
+model a system are only the concrete elements in the logical data model, which
+are denoted by the (C) in the diagram.
+
+A *ref* to an *identifiable element* could be used anywhere, where this element could have been modelled in the first place. Refs are mostly used to
+pull model elements into a view, but they could also be used in the model
+itself, e.g. to split the model of a huge system into different files.
+

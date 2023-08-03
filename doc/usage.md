@@ -133,10 +133,15 @@ key       | type    | values             | description
 :ct       | set     | model elements     | the children of the model element
 
 
-### C4 Model Elements
-Overarch supports elements for C4 architecture models.
+### Architecture and Deployment Model Elements
+Overarch supports elements for C4 architecture and deployment models.
 
-### Additional Keys for Architecture Model Elements
+#### Logical Data Model for the Architecture and Deployment Model Elements
+![Architecture and Deployment Model Elements](/doc/images/overarch_architectureModelElementsOverview.svg)
+
+
+
+#### Additional Keys for Architecture Model Elements
 
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
@@ -281,6 +286,9 @@ to business processes, domain stories and arcitectural elements.
 As such they provide a pivot for the traceability from business processes into
 the design of the system.
 
+#### Logical Data Model for the Use Case Elements
+![Use Case Model Elements](/doc/images/overarch_useCaseModelElementsOverview.svg)
+
 #### Example
 Example [Use Case Model](/models/usecase/model.edn)
 
@@ -312,6 +320,9 @@ Use case models support different kinds of relations.
 
 A state model describes a state machine which can be used to model the states
 a system component can be in and the transition from one state to the next state based on the events the system receives as input.
+
+#### Logical Data Model for the State Machine Elements
+![State Machine Elements](/doc/images/overarch_stateMachineElementsOverview.svg)
 
 #### Example
 Example [State Model](/models/state/model.edn)
@@ -346,15 +357,38 @@ implementation. Therfore modelling and updating a complete class model is not
 of much value. But class models of the domain can be very valuable as a means of communication between domain experts and developers to shape and document
 the domain model for a bounded context.
 
-#### Interfaces (:interface)
+#### Logical Data Model for the Class Model Elements
+![Class Model Elements](/doc/images/overarch_classModelElementsOverview.svg)
 
-#### Protocol (:protocol)
+#### Packages/Namespace (:package, :namespace)
+Packages and namespaces provide a hierarchical structure for the organisation
+of the elements of the class model.
+
+Use what suits your system best.
+
+
+#### Interfaces/Protocols (:interface, :protocol)
+Interfaces and protocols specify related methods. Interfaces also provide a
+type for the static type system.
+Use what suits your system best.
 
 #### Class (:class)
+A class in object orientation is a typed element that encapsulates state and
+behaviour. The state is modelled with fields, the behaviour with methods.
+
+In functional programming, you can use classes to model the values of your
+system.
+
+#### Enumeration (:enum)
+An enumeration is a typed enumeration of values.
 
 #### Field (:field)
+A field is part of the state of a class.
 
 #### Method (:method)
+A method is part of the behaviour of a class or an interface.
+
+#### Function (:function)
 
 #### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
@@ -363,7 +397,11 @@ the domain model for a bounded context.
 Views
 -----
 
-### C4 Views
+#### Logical Data Model for the View Elements
+![View Elements](/doc/images/overarch_viewElementsOverview.svg)
+
+
+### Architecture and Deployment Views (C4 Model)
 
 Overarch supports the description of all C4 core and supplementary views
 except from code views, which ideally should be generated from the code
@@ -376,7 +414,9 @@ The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
 of elements is relevant in a view. 
 
-### Keys
+
+
+#### Keys
 
 key       | type    | values                   | description 
 ----------|---------|--------------------------|------------

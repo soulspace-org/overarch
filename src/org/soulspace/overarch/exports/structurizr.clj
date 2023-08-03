@@ -1,3 +1,6 @@
+;;;;
+;;;; Structurizr export (architecture model and views only)
+;;;;
 (ns org.soulspace.overarch.exports.structurizr
   "Functions for the export to structurizr."
   (:require [clojure.string :as str]

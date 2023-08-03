@@ -15,7 +15,7 @@
 
 (def context-types
   "Element types of a C4 context view."
-  #{:person :system :boundary :enterprise-boundary :context-boundary})
+  #{:rel :person :system :boundary :enterprise-boundary :context-boundary})
 
 (def container-types
   "Element types of a C4 container view."
@@ -55,14 +55,14 @@
   #{:use-case :actor :person :system :context-boundary
     :uses :include :extends :generalizes})
 
-(def state-types
-  "Element types of a state view."
+(def state-machine-types
+  "Element types of a state machine view."
   #{:state-machine :start-state :end-state :state :transition
     :fork :join :choice :history-state :deep-history-state})
 
 (def class-types
   "Element types of a class view."
-  #{:class :interface :inheritance :implementation :composition :aggregation :field :method
+  #{:class :enum :interface :inheritance :implementation :composition :aggregation :association :field :method
     :package :namespace :stereotype :annotation :protocol})
 
 (def uml-relation-types
@@ -72,11 +72,19 @@
 
 (def uml-types
   "Element types of UML views."
-  (set/union use-case-types state-types class-types))
+  (set/union use-case-types state-machine-types class-types))
 
 (def uml-view-types
   "UML view types."
-  #{:use-case-view :state-view :class-view})
+  #{:use-case-view :state-machine-view :class-view})
+
+(def glossary-types
+  "Element types of a glossary view."
+  (set/union container-types #{:concept}))
+
+(def doc-view-types
+  "Textual documentation views."
+  #{:glossary-view})
 
 ;; 
 ;; General category definitions
@@ -84,7 +92,7 @@
 
 (def view-types
   "View types."
-  (set/union c4-view-types uml-view-types))
+  (set/union c4-view-types uml-view-types doc-view-types))
 
 (def relation-types
   "Element types of relations"
@@ -116,7 +124,7 @@
 (defn reference?
   "Returns true if the given element `e` is a reference."
   [e]
-  (contains? reference-types (:el e)))
+  (:ref e))
 
 (defn person?
   "Returns true if the given element `e` is a person element."
@@ -199,15 +207,20 @@
   [e]
   (contains? use-case-types (:el e)))
 
-(defn state-view-element?
+(defn state-machine-view-element?
   "Returns true if the given element `e` is rendered in a UML state view."
   [e]
-  (contains? state-types (:el e)))
+  (contains? state-machine-types (:el e)))
 
 (defn class-view-element?
   "Returns true if the given element `e` is rendered in a UML state view."
   [e]
   (contains? class-types (:el e)))
+
+(defn glossary-view-element?
+  "Returns true if the given element `e` is rendered in a glossary view."
+  [e]
+  (contains? glossary-types (:el e)))
 
 ;;
 ;; Schema specification

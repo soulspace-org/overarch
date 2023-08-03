@@ -1,3 +1,6 @@
+;;;;
+;;;; PlantUML rendering and export
+;;;;
 (ns org.soulspace.overarch.exports.plantuml
   "Functions to export views to PlantUML."
   (:require [clojure.set :as set]
@@ -9,10 +12,6 @@
             [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
-
-;;;;
-;;;; PlantUML rendering and export
-;;;;
 
 ;;;
 ;;; PlantUML mappings
@@ -67,6 +66,19 @@
    :material       {:name "material"
                     :local-prefix "material"
                     :local-imports ["common"]}})
+
+(def view-hierarchy
+  "Hierarchy for views"
+  (-> (make-hierarchy)
+      (derive :system-landscape-view :c4-view)
+      (derive :context-view          :c4-view)
+      (derive :container-view        :c4-view)
+      (derive :component-view        :c4-view)
+      (derive :deployment-view       :c4-view)
+      (derive :dynamic-view          :c4-view)
+      (derive :use-case-view         :uml-view)
+      (derive :state-machine-view    :uml-view)
+      (derive :class-view            :uml-view)))
 
 (def c4-element->method
   "Map from element type to PlantUML C4 method."
@@ -139,6 +151,13 @@
    :protected       "#"
    :package         "~"
    :public          "+"})
+
+(def uml-cardinality
+  "Maps cardinality keys to PlantUML UML cardinalities."
+  {:zero-to-one  "0..1"
+   :zero-to-many "0..n"
+   :one          "1"
+   :one-to-many  "1..n"})
 
 (def uml-layouts
   "Maps layout keys to PlantUML UML directives."
@@ -227,7 +246,7 @@
 (defmulti render-view
   "Renders the diagram with PlantUML."
   renderer
-  :hierarchy #'view/view-hierarchy)
+  :hierarchy #'view-hierarchy)
 
 ;;
 ;; Elements
@@ -515,29 +534,60 @@
   [(str (view/render-indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
+        (view/element-name e)
         (when (:type e)
-          (:type e))
-        (view/element-name e))])
+          (str " : " (:type e)))
+        )])
 
 (defmethod render-uml-element :method
   [view indent e]
   [(str (view/render-indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
+        (view/element-name e) "()"
         (when (:type e)
-          (:type e))
-        (view/element-name e) "()")])
+          (str " : " (:type e)))
+        )])
+
+(defmethod render-uml-element :function
+  [view indent e]
+  [(str (view/render-indent indent)
+        (when (:visibility e)
+          (uml-visibility (:visibility e)))
+        (view/element-name e) "()"
+        (when (:type e)
+          (str " : " (:type e))))])
 
 (defmethod render-uml-element :composition
   [_ indent e]
+  ; TODO render roles
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " *--> "
+        (alias-name (:from e))
+        " *--> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :aggregation
   [_ indent e]
+  ; TODO render roles
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " o--> "
+        (alias-name (:from e))
+        (when (:from-card e)
+          (str " \"" (uml-cardinality (:from-card e)) "\" "))
+        " o--> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
+        (alias-name (:to e)))])
+
+(defmethod render-uml-element :association
+  [_ indent e]
+  ; TODO render roles
+  [(str (view/render-indent indent)
+        (alias-name (:from e))
+        " --> "
+        (when (:to-card e)
+          (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :inheritance
@@ -620,7 +670,7 @@
      sprites)))
 
 (defn collect-all-sprites
-  "Collects all sprites for the collection of elsements."
+  "Collects all sprites for the collection of elements."
   [coll]
   (filter sprite? (set/union (view/collect-technologies coll) (collect-sprites coll))))
 
@@ -803,6 +853,16 @@
 ;;;
 ;;; PlantUML file export
 ;;;
+(def plantuml-views
+  "Contains the views to be rendered with plantuml."
+  #{:system-landscape-view :context-view :container-view :component-view
+    :deployment-view :dynamic-view :class-view :use-case-view
+    :state-machine-view})
+
+(defn plantuml-view?
+  "Returns true, if the view is to be rendered with plantuml."
+  [view]
+  (contains? plantuml-views (:el view)))
 
 (defmethod exp/export-file :plantuml
   [options view]
@@ -820,5 +880,6 @@
 (defmethod exp/export :plantuml
   [options]
   (doseq [view (core/get-views)]
-    (exp/export-view options view)))
+    (when (plantuml-view? view)
+      (exp/export-view options view))))
 

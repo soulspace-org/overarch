@@ -4,8 +4,6 @@
             [clojure.set :as set]
             [org.soulspace.overarch.core :as core]))
 
-
-; general, multimethod?
 (def view-type->element-predicate
   "Map from diagram type to content-level predicate."
   {:context-view          core/context-view-element?
@@ -16,10 +14,12 @@
    :dynamic-view          core/dynamic-view-element?
    :deployment-view       core/deployment-view-element?
    :use-case-view         core/use-case-view-element?
-   :state-view            core/state-view-element?
-   :class-view            core/class-view-element?})
+   :state-machine-view    core/state-machine-view-element?
+   :class-view            core/class-view-element?
+   :glossary-view         core/glossary-view-element?
+   ;:concept-view          core/concept-view-element?
+   })
 
-; general
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
   {[:container-view :system]          :system-boundary
@@ -62,10 +62,29 @@
   [view-type e]
   (let [boundary (as-boundary? view-type e)]
     (if boundary
-    ; e has a boundary type and has children, render as boundary
+      ; e has a boundary type and has children, render as boundary
       (assoc e :el (keyword (str (name (:el e)) "-boundary")))
-    ; render e as normal model element
+      ; render e as normal model element
       e)))
+
+(defn render-relation?
+  "Returns true if the relation should be rendered in the context of the view."
+  [rel pred]
+  (let [rendered? pred
+        from (core/resolve-ref (:from rel))
+        to   (core/resolve-ref (:to rel))]
+    (when (and (rendered? rel) (rendered? from) (rendered? to))
+      rel)))
+
+(defn relation-to-render
+  "Returns the relation to be rendered in the context of the view."
+  [view rel]
+  (let [view-type (:el view)
+        rendered? (render-predicate view-type)
+        from (core/resolve-ref (:from rel))
+        to   (core/resolve-ref (:to rel))]
+  ; TODO promote relations to higher levels?
+  ))
 
 (defn elements-to-render
   "Returns the list of elements to render from the view
@@ -79,12 +98,6 @@
           (map core/resolve-ref)
           (filter (render-predicate view-type))
           (map #(element-to-render view-type %))))))
-
-(defn relation-to-render
-  "Returns the relation to be rendered in the context of the view."
-  [view rel]
-  ; TODO promote relations to higher levels?
-  )
 
 (defn elements-in-view
   "Returns the elements rendered in the view."
@@ -114,6 +127,24 @@
          (recur (collect-technologies techs (:ct e)) (rest coll))))
      techs)))
 
+(defn technologies-in-view
+  [view]
+  (->> view
+       (elements-in-view)
+       (map :tech)
+       (remove nil?)
+       (into #{})
+       ))
+
+(defn relations-for-view
+  [view]
+  (let [view-elements (elements-in-view view)
+        relations (core/get-model-elements)]
+
+    ; TODO
+    ))
+
+
 ; general
 (defn render-indent
   "Renders an indent of n space chars."
@@ -130,19 +161,6 @@
          (map str/capitalize)
          (str/join " "))))
 
-(def view-hierarchy
-  "Hierarchy for views"
-  (-> (make-hierarchy)
-      (derive :system-landscape-view :c4-view)
-      (derive :context-view :c4-view)
-      (derive :container-view :c4-view)
-      (derive :component-view :c4-view)
-      (derive :deployment-view :c4-view)
-      (derive :dynamic-view :c4-view)
-      (derive :use-case-view :uml-view)
-      (derive :state-view :uml-view)
-      (derive :class-view :uml-view)))
-
 ; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
@@ -153,5 +171,7 @@
       (derive :context-boundary    :boundary)))
 
 (comment
-    (collect-technologies (:elements @core/state))
+  (collect-technologies (:elements @core/state))
+  (elements-in-view (core/get-view @core/state :banking/container-view))
+  (technologies-in-view (core/get-view @core/state :banking/container-view))
   )

@@ -8,6 +8,7 @@
             ; must be loaded here for registering of the multimethods
             ; require dynamically?
             [org.soulspace.overarch.exports.json :as json]
+            [org.soulspace.overarch.exports.markdown :as markdown]
             [org.soulspace.overarch.exports.structurizr :as structurizr]
             [org.soulspace.overarch.exports.plantuml :as puml])
   (:gen-class))
@@ -160,6 +161,7 @@
   (model-info {:model-info true})
   (print-sprite-mappings)
   (-main "--debug" "--format" "json")
+  (-main "--debug" "--format" "markdown")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
   (-main "--model-info")
   (-main "--debug")

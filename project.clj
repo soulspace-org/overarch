@@ -1,4 +1,4 @@
-(defproject org.soulspace.clj/overarch "0.2.0-SNAPSHOT"
+(defproject org.soulspace.clj/overarch "0.3.0-SNAPSHOT"
   :description "OverArch provides architecture description as data based on C4 models,
                 opening multiple use cases for this data."
   :license {:name "Eclipse Public License"
@@ -9,7 +9,9 @@
                  [org.clojure/tools.cli "1.0.206"]
                  [com.cnuernber/charred "1.028"]
                  [hawk/hawk "0.2.11"]
-                 [org.soulspace.clj/clj.java "0.9.1"]]
+                 [org.soulspace.clj/clj.java "0.9.1"]
+                 [org.soulspace.clj/cmp.markdown "0.4.1"]
+                 ]
 
   :repl-options {:init-ns org.soulspace.overarch.cli}
 
