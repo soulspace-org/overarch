@@ -551,10 +551,10 @@
           the state machine."}
 
   {:el :class
-   :id :overarch/glossary-model-element
+   :id :overarch/concept-model-element
    :abstract true
-   :name "glossary-model-element"
-   :desc "An element in the glossary model."}
+   :name "concept-model-element"
+   :desc "An element in the concept model."}
 
   {:el :class
    :id :overarch/concept
@@ -950,35 +950,35 @@
    :to :overarch/named-element
    :from :overarch/method}
 
-  ;; Glossary Model Relations
+  ;; Concept Model Relations
   {:el :inheritance
-   :id :overarch/glossary-model-element-is-a-identifiable-named-element
+   :id :overarch/concept-model-element-is-a-identifiable-named-element
    :to :overarch/identifiable-named-element
-   :from :overarch/glossary-model-element}
+   :from :overarch/concept-model-element}
 
   {:el :inheritance
-   :id :overarch/concept-element-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/concept-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/concept}
   {:el :inheritance
-   :id :overarch/context-boundary-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/context-boundary-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/context-boundary}
   {:el :inheritance
-   :id :overarch/enterprise-boundary-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/enterprise-boundary-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/enterprise-boundary}
   {:el :inheritance
-   :id :overarch/person-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/person-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/person}
   {:el :inheritance
-   :id :overarch/system-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/system-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/system}
   {:el :inheritance
-   :id :overarch/container-is-a-glossary-model-element
-   :to :overarch/glossary-model-element
+   :id :overarch/container-is-a-concept-model-element
+   :to :overarch/concept-model-element
    :from :overarch/container}
 
   ;; View Relations
@@ -1078,11 +1078,10 @@
    :to :overarch/view
    :from :overarch/glossary-view}
   {:el :aggregation
-   :id :overarch/glossary-view-contains-glossary-model-element
+   :id :overarch/glossary-view-contains-concept-model-element
    :from :overarch/glossary-view
-   :to :overarch/glossary-model-element
+   :to :overarch/concept-model-element
    :to-name "ct"
    :to-card :one-to-many}
-
   ;
   }

@@ -74,7 +74,7 @@
         {:ref :overarch/state-machine-element}
         {:ref :overarch/class-model-element}
         {:ref :overarch/use-case-model-element}
-        {:ref :overarch/glossary-model-element}
+        {:ref :overarch/concept-model-element}
 
         {:ref :overarch/ref}
 
@@ -206,13 +206,13 @@
         {:ref :overarch/system-is-a-use-case-model-element}
         {:ref :overarch/use-case-is-a-use-case-model-element}
 
-        {:ref :overarch/glossary-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/concept-is-a-glossary-model-element}
-        {:ref :overarch/enterprise-boundary-is-a-glossary-model-element}
-        {:ref :overarch/context-boundary-is-a-glossary-model-element}
-        {:ref :overarch/person-is-a-glossary-model-element}
-        {:ref :overarch/system-is-a-glossary-model-element}
-        {:ref :overarch/container-is-a-glossary-model-element}
+        {:ref :overarch/concept-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/concept-is-a-concept-model-element}
+        {:ref :overarch/enterprise-boundary-is-a-concept-model-element}
+        {:ref :overarch/context-boundary-is-a-concept-model-element}
+        {:ref :overarch/person-is-a-concept-model-element}
+        {:ref :overarch/system-is-a-concept-model-element}
+        {:ref :overarch/container-is-a-concept-model-element}
 
         {:ref :overarch/view-is-a-identifiable-element}
         {:ref :overarch/view-contains-rendering-spec}
@@ -232,7 +232,7 @@
         {:ref :overarch/use-case-view-is-a-view}
         {:ref :overarch/use-case-view-contains-use-case-model-element}
         {:ref :overarch/glossary-view-is-a-view}
-        {:ref :overarch/glossary-view-contains-glossary-model-element}
+        {:ref :overarch/glossary-view-contains-concept-model-element}
         ;
         ]}
 
@@ -443,9 +443,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch/glossary-model-elements-overview
+   :id :overarch/concept-model-elements-overview
 ;   :spec {:layout :left-right}
-   :title "Overview of the Glossary Model Elements"
+   :title "Overview of the Concept Model Elements"
    :ct [;elements
         {:ref :overarch/element}
         {:ref :overarch/identifiable-element}
@@ -454,7 +454,8 @@
         {:ref :overarch/relational-element}
         {:ref :overarch/named-relational-element}
         {:ref :overarch/use-case-model-element}
-
+        {:ref :overarch/concept-model-element}
+        
         {:ref :overarch/concept}
         {:ref :overarch/person}
         {:ref :overarch/context-boundary}
@@ -471,13 +472,13 @@
         {:ref :overarch/named-relational-element-is-a-named-element}
         {:ref :overarch/named-relational-element-is-a-relational-element}
 
-        {:ref :overarch/glossary-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/concept-is-a-glossary-model-element}
-        {:ref :overarch/enterprise-boundary-is-a-glossary-model-element}
-        {:ref :overarch/context-boundary-is-a-glossary-model-element}
-        {:ref :overarch/person-is-a-glossary-model-element}
-        {:ref :overarch/system-is-a-glossary-model-element}
-        {:ref :overarch/container-is-a-glossary-model-element}
+        {:ref :overarch/concept-model-element-is-a-identifiable-named-element}
+        {:ref :overarch/concept-is-a-concept-model-element}
+        {:ref :overarch/enterprise-boundary-is-a-concept-model-element}
+        {:ref :overarch/context-boundary-is-a-concept-model-element}
+        {:ref :overarch/person-is-a-concept-model-element}
+        {:ref :overarch/system-is-a-concept-model-element}
+        {:ref :overarch/container-is-a-concept-model-element}
 
         ;
         ]}
@@ -494,7 +495,7 @@
         {:ref :overarch/class-model-element}
         {:ref :overarch/use-case-model-element}
         {:ref :overarch/state-machine}
-        {:ref :overarch/glossary-model-element}
+        {:ref :overarch/concept-model-element}
 
         {:ref :overarch/ref}
 
@@ -537,6 +538,6 @@
         {:ref :overarch/use-case-view-is-a-view}
         {:ref :overarch/use-case-view-contains-use-case-model-element}
         {:ref :overarch/glossary-view-is-a-view}
-        {:ref :overarch/glossary-view-contains-glossary-model-element}
+        {:ref :overarch/glossary-view-contains-concept-model-element}
           ;
         ]}}

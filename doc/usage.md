@@ -287,6 +287,8 @@ A concept model can contain the concepts of the domain and the high level elemen
 of the architecture model, e.g. the persons (actors), external systems and the
 system itself with it's containers.
 
+![Concept Model Elements](/doc/images/overarch_conceptModelElementsOverview.svg)
+
 ### Use Case Model Elements
 
 A use case model captures the functionality a system is suposed to deliver.
@@ -310,7 +312,7 @@ A use case describes the goal of an actor in the context of the system described
 key         | type    | values                           | description 
 ------------|---------|----------------------------------|------------
 :level      | keyword | :summary :user-goal :subfunction | specific role of the element
-:ext-points | string  |                                  | eextension points of a use case
+:ext-points | string  |                                  | extension points of a use case
 
 #### Actors (:person, :system, :actor)
 
