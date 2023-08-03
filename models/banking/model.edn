@@ -1,4 +1,10 @@
-#{; actors
+#{
+  ; concepts
+  {:el :concept
+   :id :banking/internet-banking-concept
+   :name "Internet Banking"
+   :desc "Describes banking services provided over the internet. Customers can interact with the bank with their computers or mobile devices."}
+  ; actors
   {:el :person
    :id :banking/personal-customer
    :name "Personal Banking Customer"
@@ -337,4 +343,5 @@
    :from :banking/backoffice-stuff
    :to :banking/mainframe-banking-system
    :name "Uses"}
+  ;
   }

@@ -112,5 +112,6 @@
    :ct [{:ref :banking/personal-customer}
         {:ref :banking/email-system}
         {:ref :banking/mainframe-banking-system}
-        {:ref :banking/internet-banking-system}]}
+        {:ref :banking/internet-banking-system}
+        {:ref :banking/internet-banking-concept}]}
   }
