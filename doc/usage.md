@@ -496,8 +496,10 @@ Overarch supports selected UML views to show aspects of a system that are not co
 Model.
 
 #### Use Case View
-A use case view is used to show the actors of the system under design and their goals using this
-system.
+A use case view is used to show the actors of the system under design and their
+goals using this system.
+
+![Use Case View rendered with PlantUML](/doc/images/banking_useCaseView.svg)
 
 #### State Machine Views
 A state machine view is used to show the different states a component can be in. It also shows the

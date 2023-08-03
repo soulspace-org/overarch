@@ -1,18 +1,30 @@
-#{
-  ; concepts
+#{; concepts
   {:el :concept
    :id :banking/internet-banking-concept
    :name "Internet Banking"
    :desc "Describes banking services provided over the internet. Customers can interact with the bank with their computers or mobile devices."}
+
   ; actors
   {:el :person
    :id :banking/personal-customer
    :name "Personal Banking Customer"
    :desc "A customer of the bank, with personal banking accounts."}
+  {:el :use-case
+   :id :banking/view-account
+   :name "view account"
+   :desc "view the account details"
+   :level :user-goal}
+
+  {:el :use-case
+   :id :banking/make-transaction
+   :name "transfer money"
+   :desc "make a monetary transaction"
+   :level :user-goal}
+
   {:el :enterprise-boundary
    :id :banking/big-bank-plc
    :name "Big Bank plc"
-   :ct #{ ; systems under design
+   :ct #{; systems under design
          {:el :system
           :id :banking/internet-banking-system
           :name "Internet Banking System"
@@ -165,9 +177,21 @@
                  :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
                  :tech "Datomic"}}}}}
 
- ;;
- ;; Context level relations 
- ;;
+  ;;
+  ;; Use case relations
+  ;;
+  {:el :uses
+   :id :banking/personal-customer-uses-view-account
+   :from :banking/personal-customer
+   :to :banking/view-account}
+  {:el :uses
+   :id :banking/personal-customer-uses-make-transaction
+   :from :banking/personal-customer
+   :to :banking/make-transaction}
+
+  ;;
+  ;; Context level relations 
+  ;;
   {:el :rel
    :id :banking/personal-customer-uses-internet-banking-system
    :from :banking/personal-customer
