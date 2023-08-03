@@ -72,6 +72,7 @@ Design Goals
 ------------
 
 * Reusable models
+* Holistic model of the system under description
 * Reduced duplication of information
 * Extensibility of the data format
 * Extensibility of the exports
@@ -121,8 +122,9 @@ A: The hierarchical structure of a system and its context
 
 Q: **How can reusability of the models and views be achieved?**
 
-A: With :ref the reusablility of model elements in different diagrams is
-   archieved, which is a benefit over the diagram focused specification in the PlantUML C4 DSL, where you often have to duplicate information in the different diagrams.
+A: With :ref the reusablility of model elements in different views is archieved,
+   which is a benefit over the diagram focused specification in the PlantUML
+   C4 DSL, where you often have to duplicate information in the different diagrams.
 
    Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
 
@@ -277,6 +279,24 @@ A: It differs on the type of the export.
    For JSON the export should be done on an individual file level, to keep the
    structure of data files intact.
 
+
+Q: **What textual views/exports make sense?**
+
+A: The model should contain information like names and descriptions for most
+   elements, e.g. to render this information in C4 views. Even if the description
+   of an element is not rendered in an UML view, the element should be described
+   in the model. With consistent desciptions of the model elements and relations,
+   textual representations of the views can be rendered, which describe the elements
+   visible in the view.
+
+   Also text-only views on the model make sense, e.g. a glossary view, which
+   contains the main elements of the model with their names, types and descripions
+   alphabetically sorted by name. So the information in the model can be used to
+   create more value than just for the creation of diagrams.
+
+   For the glossary it might be useful to add concepts to the model to describe
+   the parts of the language of the system, which are not directly represented by
+   elements of the architecture.
 
 Q: **Why EDN as the specification notation?**
 
