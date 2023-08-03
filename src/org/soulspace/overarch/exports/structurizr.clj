@@ -97,7 +97,7 @@
   "Renders the structurizr views."
   [views]
   (flatten [(str (view/render-indent 2) "views {")
-            (map render-view views)
+            (map render-view (filter #(view-type->structurizr %) views))
             (str (view/render-indent 4) "theme default")
             (str (view/render-indent 2) "}")])
   )
