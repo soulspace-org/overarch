@@ -605,7 +605,7 @@ Options:
   -m, --model-dir DIRNAME      models    Model directory
   -e, --export-dir DIRNAME     export    Export directory
   -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (json, plantuml, structurizr)
+  -f, --format FORMAT          plantuml  Export format (json, markdown, plantuml, structurizr)
       --model-info                       Returns infos for the loaded model
       --plantuml-list-sprites            Lists the loaded PlantUML sprites
       --debug                            Print debug messages

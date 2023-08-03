@@ -1,6 +1,14 @@
 Changelog
 =========
 
+Version 0.3.0
+-------------
+* added first markdown export
+* added concept model elements
+* added glossary view (textual view)
+* added logical data model for overarch
+* enhanced documentation and examples
+
 Version 0.2.0
 -------------
 * added sprite includes for :sprite entries

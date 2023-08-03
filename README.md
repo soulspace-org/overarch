@@ -314,7 +314,7 @@ Options:
   -m, --model-dir DIRNAME      models    Model directory
   -e, --export-dir DIRNAME     export    Export directory
   -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (json, plantuml, structurizr)
+  -f, --format FORMAT          plantuml  Export format (json, markdown, plantuml, structurizr)
       --model-info                       Returns infos for the loaded model
       --plantuml-list-sprites            Lists the loaded PlantUML sprites
       --debug                            Print debug messages
@@ -340,6 +340,10 @@ Version 0.3.0
 * simple markdown export for the model information
 
 Version 0.4.0
+* enhanced conveniance in view specifications
+  * automatic includes of elements (e.g. include relations for referenced elements)
+
+Version 0.5.0
 * theme support for diagrams
 
 
