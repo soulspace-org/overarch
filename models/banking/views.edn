@@ -1,107 +1,116 @@
 #{{:el :context-view
-  :id :banking/system-context-view
-  :title "System Context View of the Internet Banking System"
-  :ct [; model elements
-       {:ref :banking/personal-customer}
-       {:ref :banking/email-system}
-       {:ref :banking/mainframe-banking-system}
-       {:ref :banking/internet-banking-system}
+   :id :banking/system-context-view
+   :title "System Context View of the Internet Banking System"
+   :ct [; model elements
+        {:ref :banking/personal-customer}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
+        {:ref :banking/internet-banking-system}
 
        ; relations
-       {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
-       {:ref :banking/internet-banking-system-uses-email-system :direction :right}
-       {:ref :banking/internet-banking-system-using-mainframe-banking-system}
-       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
+        {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
+        {:ref :banking/internet-banking-system-uses-email-system :direction :right}
+        {:ref :banking/internet-banking-system-using-mainframe-banking-system}
+        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
- {:el :container-view
-  :id :banking/container-view
-  :title "Container View of the Internet Banking System"
-  :ct [; model elements
-       {:ref :banking/personal-customer}
-       {:ref :banking/internet-banking-system}
-       {:ref :banking/email-system}
-       {:ref :banking/mainframe-banking-system}
-
-       ; relations
-       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
-       {:ref :banking/personal-customer-uses-web-app}
-       {:ref :banking/personal-customer-uses-single-page-app}
-       {:ref :banking/personal-customer-uses-mobile-app}
-
-       {:ref :banking/web-app-deliveres-single-page-app :direction :right}
-       {:ref :banking/single-page-app-calls-api-application}
-       {:ref :banking/mobile-app-calls-api-application}
-       {:ref :banking/api-application-uses-database :direction :left}
-       {:ref :banking/api-application-uses-email-system :direction :right}
-       {:ref :banking/api-application-uses-mainframe-banking-system}]}
-
- {:el :component-view
-  :id :banking/api-component-view
-  :title "Component View of the API Application"
-  :ct [; model elements
-       {:ref :banking/single-page-app}
-       {:ref :banking/mobile-app}
-       {:ref :banking/api-application}
-       {:ref :banking/database}
-       {:ref :banking/email-system}
-       {:ref :banking/mainframe-banking-system}
+  {:el :container-view
+   :id :banking/container-view
+   :title "Container View of the Internet Banking System"
+   :ct [; model elements
+        {:ref :banking/personal-customer}
+        {:ref :banking/internet-banking-system}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
 
        ; relations
-       {:ref :banking/single-page-app-calls-sign-in-controller}
-       {:ref :banking/single-page-app-calls-reset-password-controller}
-       {:ref :banking/single-page-app-calls-accounts-summary-controller}
-       {:ref :banking/mobile-app-calls-sign-in-controller}
-       {:ref :banking/mobile-app-calls-reset-password-controller}
-       {:ref :banking/mobile-app-calls-accounts-summary-controller}
-       {:ref :banking/sign-in-controller-uses-security-component}
-       {:ref :banking/reset-password-controller-uses-email-component}
-       {:ref :banking/accounts-summary-controller-uses-mainframe-banking-system-facade}
-       {:ref :banking/security-component-uses-database}
-       {:ref :banking/email-component-uses-email-system}
-       {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
+        {:ref :banking/personal-customer-uses-web-app}
+        {:ref :banking/personal-customer-uses-single-page-app}
+        {:ref :banking/personal-customer-uses-mobile-app}
 
- {:el :system-landscape-view
-  :id :banking/system-landscape-view
-  :title "System Landscape View of Big Bank plc"
-  :ct [; model elements
-       {:ref :banking/big-bank-plc}
-       {:ref :banking/personal-customer}
-       
-       ; relations
-       {:ref :banking/personal-customer-uses-atm}
-       {:ref :banking/atm-uses-mainframe-banking-system}
-       {:ref :banking/personal-customer-asks-customer-service-stuff}
-       {:ref :banking/personal-customer-uses-internet-banking-system}
-       {:ref :banking/email-system-sends-mail-to-personal-customer}
-       {:ref :banking/backoffice-stuff-uses-mainframe-banking-system :direction :right}
-       {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
-       {:ref :banking/internet-banking-system-uses-email-system}
-       {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
+        {:ref :banking/web-app-deliveres-single-page-app :direction :right}
+        {:ref :banking/single-page-app-calls-api-application}
+        {:ref :banking/mobile-app-calls-api-application}
+        {:ref :banking/api-application-uses-database :direction :left}
+        {:ref :banking/api-application-uses-email-system :direction :right}
+        {:ref :banking/api-application-uses-mainframe-banking-system}]}
 
- {:el :deployment-view
-  :id :banking/deployment-view
-  :title "Deployment View of Big Bank plc"
-  :ct [; model elements
-       {:ref :banking/personal-customers-mobile-device}
-       {:ref :banking/personal-customers-computer}
-       {:ref :banking/big-bank-plc-datacenter}
+  {:el :component-view
+   :id :banking/api-component-view
+   :title "Component View of the API Application"
+   :ct [; model elements
+        {:ref :banking/single-page-app}
+        {:ref :banking/mobile-app}
+        {:ref :banking/api-application}
+        {:ref :banking/database}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
 
        ; relations
-       {:ref :banking/single-page-app-calls-api-application}
-       {:ref :banking/mobile-app-calls-api-application}
-       {:ref :banking/web-app-deliveres-single-page-app}
-       {:ref :banking/api-application-uses-mainframe-banking-system}
-       {:ref :banking/api-application-uses-database}
+        {:ref :banking/single-page-app-calls-sign-in-controller}
+        {:ref :banking/single-page-app-calls-reset-password-controller}
+        {:ref :banking/single-page-app-calls-accounts-summary-controller}
+        {:ref :banking/mobile-app-calls-sign-in-controller}
+        {:ref :banking/mobile-app-calls-reset-password-controller}
+        {:ref :banking/mobile-app-calls-accounts-summary-controller}
+        {:ref :banking/sign-in-controller-uses-security-component}
+        {:ref :banking/reset-password-controller-uses-email-component}
+        {:ref :banking/accounts-summary-controller-uses-mainframe-banking-system-facade}
+        {:ref :banking/security-component-uses-database}
+        {:ref :banking/email-component-uses-email-system}
+        {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+
+  {:el :system-landscape-view
+   :id :banking/system-landscape-view
+   :title "System Landscape View of Big Bank plc"
+   :ct [; model elements
+        {:ref :banking/big-bank-plc}
+        {:ref :banking/personal-customer}
+
+       ; relations
+        {:ref :banking/personal-customer-uses-atm}
+        {:ref :banking/atm-uses-mainframe-banking-system}
+        {:ref :banking/personal-customer-asks-customer-service-stuff}
+        {:ref :banking/personal-customer-uses-internet-banking-system}
+        {:ref :banking/email-system-sends-mail-to-personal-customer}
+        {:ref :banking/backoffice-stuff-uses-mainframe-banking-system :direction :right}
+        {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
+        {:ref :banking/internet-banking-system-uses-email-system}
+        {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
+
+  {:el :deployment-view
+   :id :banking/deployment-view
+   :title "Deployment View of Big Bank plc"
+   :ct [; model elements
+        {:ref :banking/personal-customers-mobile-device}
+        {:ref :banking/personal-customers-computer}
+        {:ref :banking/big-bank-plc-datacenter}
+
+       ; relations
+        {:ref :banking/single-page-app-calls-api-application}
+        {:ref :banking/mobile-app-calls-api-application}
+        {:ref :banking/web-app-deliveres-single-page-app}
+        {:ref :banking/api-application-uses-mainframe-banking-system}
+        {:ref :banking/api-application-uses-database}
        ; add relations for the read database
-       {:el :rel
-        :id :banking/api-application-uses-database-read
-        :from :banking/api-application
-        :to :banking/database-read
-        :name "Reads from"
-        :tech "Datalog"}
-       {:el :rel
-        :id :banking/database-sync
-        :from :banking/database
-        :to :banking/database-read
-        :name "synchronises"
-        :direction :right}]}}
+        {:el :rel
+         :id :banking/api-application-uses-database-read
+         :from :banking/api-application
+         :to :banking/database-read
+         :name "Reads from"
+         :tech "Datalog"}
+        {:el :rel
+         :id :banking/database-sync
+         :from :banking/database
+         :to :banking/database-read
+         :name "synchronises"
+         :direction :right}]}
+
+  {:el :glossary-view
+   :id :banking/glossary-view
+   :title "Glossary of the Banking System"
+   :ct [{:ref :banking/personal-customer}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
+        {:ref :banking/internet-banking-system}]}
+  }

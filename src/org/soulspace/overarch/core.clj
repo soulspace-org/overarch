@@ -78,13 +78,17 @@
   "UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
+(def doc-view-types
+  "Textual documentation views."
+  #{:glossary-view})
+
 ;; 
 ;; General category definitions
 ;;
 
 (def view-types
   "View types."
-  (set/union c4-view-types uml-view-types))
+  (set/union c4-view-types uml-view-types doc-view-types))
 
 (def relation-types
   "Element types of relations"

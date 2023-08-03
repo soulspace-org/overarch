@@ -17,14 +17,15 @@
 (defn render-element
   "Renders an `element` with markdown according to the given `options`."
   [e options view]
-  [(md/h1 (str (:name e) "(" (name (:el e)) ")"))
+  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
 
 (defn render-view
   "Renders the `view` with markdown according to the given `options`."
   [options view]
-  (let [children (view/elements-to-render view)]
-    (flatten (map #(render-element % options view) children))))
+  (let [children (sort-by :name (view/elements-in-view view))]
+    (flatten [(md/h1 (:title view))
+              (map #(render-element % options view) children)])))
 
 (def markdown-views
   "Contains the views rendered with markdown."
@@ -54,4 +55,3 @@
   (doseq [view (core/get-views)]
     (when (markdown-view? view)
       (exp/export-view options view))))
-

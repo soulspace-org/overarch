@@ -17,7 +17,8 @@
    :deployment-view       core/deployment-view-element?
    :use-case-view         core/use-case-view-element?
    :state-machine-view    core/state-machine-view-element?
-   :class-view            core/class-view-element?})
+   :class-view            core/class-view-element?
+   :glossary-view         core/container-view-element?})
 
 ; general
 (def element->boundary
