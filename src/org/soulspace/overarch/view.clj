@@ -4,8 +4,6 @@
             [clojure.set :as set]
             [org.soulspace.overarch.core :as core]))
 
-
-; general, multimethod?
 (def view-type->element-predicate
   "Map from diagram type to content-level predicate."
   {:context-view          core/context-view-element?
@@ -18,9 +16,10 @@
    :use-case-view         core/use-case-view-element?
    :state-machine-view    core/state-machine-view-element?
    :class-view            core/class-view-element?
-   :glossary-view         core/container-view-element?})
+   :glossary-view         core/glossary-view-element?
+   ;:concept-view          core/concept-view-element?
+   })
 
-; general
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
   {[:container-view :system]          :system-boundary

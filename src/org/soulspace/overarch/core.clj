@@ -78,6 +78,10 @@
   "UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
+(def glossary-types
+  "Element types of a glossary view."
+  (set/union container-types #{:concept}))
+
 (def doc-view-types
   "Textual documentation views."
   #{:glossary-view})
@@ -212,6 +216,11 @@
   "Returns true if the given element `e` is rendered in a UML state view."
   [e]
   (contains? class-types (:el e)))
+
+(defn glossary-view-element?
+  "Returns true if the given element `e` is rendered in a glossary view."
+  [e]
+  (contains? glossary-types (:el e)))
 
 ;;
 ;; Schema specification
