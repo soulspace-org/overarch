@@ -224,15 +224,17 @@
 (s/def :overarch/tech string?) ; check
 (s/def :overarch/tags map?)    ; check
 (s/def :overarch/icon string?) ; check
-(s/def :overarch/link string?) ; check
 (s/def :overarch/type string?) ; check
-(s/def :overarch/index int?)   ; check
+;(s/def :overarch/index int?)   ; check
 (s/def :overarch/ref keyword?)
 (s/def :overarch/from keyword?)
 (s/def :overarch/to keyword?)
+(s/def :overarch/href string?) ; TODO url?
 
 (s/def :overarch/spec map?)
 (s/def :overarch/title string?)
+
+(s/def :overarch/link (s/keys :req-un [:overarch/name :overarch/href]))
 
 (s/def :overarch/ct
   (s/coll-of
@@ -258,6 +260,8 @@
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/spec :overarch/title]))
 
+(s/def :overarch/system (s/and :overarch/element system?))
+
 (s/def :overarch/elements
   (s/coll-of
    (s/or :element     :overarch/element
@@ -273,7 +277,7 @@
 ;;
 ;; Application state
 ;;
-; TODO get rid os global state at some point
+; TODO get rid of global state at some point
 (def state (atom {}))
 
 ;;
