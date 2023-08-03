@@ -184,8 +184,8 @@
    :level :user-goal
    :name "export PlantUML"
    :desc "Export the views to PlantUML."}
-  
-  
+
+
   ;;;
   ;;; Data Model
   ;;;
@@ -350,7 +350,7 @@
    :id :overarch/rel
    :name "rel"
    :desc "A relation between two elements of the architecture."}
-  
+
   {:el :class
    :id :overarch/deployment-model-element
    :abstract true
@@ -549,6 +549,18 @@
    :name "transition"
    :desc "A transition from on state to another in effect of an event in
           the state machine."}
+
+  {:el :class
+   :id :overarch/glossary-model-element
+   :abstract true
+   :name "glossary-model-element"
+   :desc "An element in the glossary model."}
+
+  {:el :class
+   :id :overarch/concept
+   :name "concept"
+   :desc "A concept in the (ubiquous) language of the system."}
+
   ;;
   ;; Views
   ;;
@@ -593,8 +605,8 @@
    :id :overarch/container-view
    :name "container-view"
    :desc "The container view is a static architectural view.
-          It shows the process structure of system under description and the
-          interactions between these containers and with it's environment
+          It shows the process structure of the system under description and
+          the interactions between these containers and with it's environment
           consisting of users and external systems."}
 
   {:el :class
@@ -638,6 +650,13 @@
    :name "state-machine-view"
    :desc "The state machine view is a behavioural design view.
           It shows states and transitions of a state machine."}
+
+  {:el :class
+   :id :overarch/glossary-view
+   :name "glossary-view"
+   :desc "The glossary view is a textual view.
+          It shows the main elements and concepts of the system under description
+          alphabetically sorted."}
 
   ;;
   ;; Relations
@@ -728,7 +747,7 @@
    :id :overarch/rel-is-a-technical-architecture-element
    :to :overarch/technical-architecture-element
    :from :overarch/rel}
-  
+
   ;; Deployment Model Relations
   {:el :inheritance
    :id :overarch/deployment-model-element-is-a-identifiable-named-element
@@ -931,6 +950,36 @@
    :to :overarch/named-element
    :from :overarch/method}
 
+  ;; Glossary Model Relations
+  {:el :inheritance
+   :id :overarch/glossary-model-element-is-a-identifiable-named-element
+   :to :overarch/identifiable-named-element
+   :from :overarch/glossary-model-element}
+
+  {:el :inheritance
+   :id :overarch/concept-element-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/concept}
+  {:el :inheritance
+   :id :overarch/context-boundary-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/context-boundary}
+  {:el :inheritance
+   :id :overarch/enterprise-boundary-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/enterprise-boundary}
+  {:el :inheritance
+   :id :overarch/person-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/person}
+  {:el :inheritance
+   :id :overarch/system-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/system}
+  {:el :inheritance
+   :id :overarch/container-is-a-glossary-model-element
+   :to :overarch/glossary-model-element
+   :from :overarch/container}
 
   ;; View Relations
   {:el :inheritance
@@ -1021,6 +1070,17 @@
    :id :overarch/use-case-view-contains-use-case-model-element
    :from :overarch/use-case-view
    :to :overarch/use-case-model-element
+   :to-name "ct"
+   :to-card :one-to-many}
+
+  {:el :inheritance
+   :id :overarch/glossary-view-is-a-view
+   :to :overarch/view
+   :from :overarch/glossary-view}
+  {:el :aggregation
+   :id :overarch/glossary-view-contains-glossary-model-element
+   :from :overarch/glossary-view
+   :to :overarch/glossary-model-element
    :to-name "ct"
    :to-card :one-to-many}
 
