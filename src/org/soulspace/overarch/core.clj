@@ -111,10 +111,35 @@
 ;; Predicates
 ;;
 
-(defn identifiable?
-  "Returns true if the given element `e` has an ID."
+(defn element?
+  "Returns true if the given element `e` has a type (:el key)."
+  [e]
+  (not= nil (:el e)))
+
+(defn identifiable-element?
+  "Returns true if the given element `e` has an ID (:id key)."
   [e]
   (not= nil (:id e)))
+
+(defn named-element?
+  "Returns true if the given element `e` has a name (:name key)."
+  [e]
+  (not= nil (:name e)))
+
+(defn identifiable-named-element?
+  "Returns true if the given element `e` is identifiable and named."
+  [e]
+  (and (identifiable-element? e) (named-element? e)))
+
+(defn relational-element?
+  "Returns true if the given element `e` is a relation."
+  [e]
+  (and (identifiable-element? e) (not= nil (:from e)) (not= nil (:to e))))
+
+(defn named-relational-element
+  "Returns true if the given element `e` is a named relation."
+  [e]
+  (and (named-element? e) (relational-element? e)))
 
 (defn relation?
   "Returns true if the given element `e` is a relation."
@@ -452,7 +477,7 @@
   ([m coll]
    (if (seq coll)
      (let [e (first coll)]
-       (if (identifiable? e)
+       (if (identifiable-element? e)
          (recur (build-id->elements (assoc m (:id e) e) (:ct e)) (rest coll))
          (recur (build-id->elements m (:ct e)) (rest coll))))
      m)))
@@ -464,7 +489,7 @@
   ([m p coll]
    (if (seq coll)
      (let [e (first coll)]
-       (if (and (identifiable? e) (identifiable? p) (model-element? p))
+       (if (and (identifiable-element? e) (identifiable-element? p) (model-element? p))
          (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
