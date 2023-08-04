@@ -1,4 +1,4 @@
-(defproject org.soulspace.clj/overarch "0.3.0"
+(defproject org.soulspace.clj/overarch "0.3.1-SNAPSHOT"
   :description "Overarch provides a data model for the holistic description of a software system, opening multiple use cases on the model data."
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
@@ -9,8 +9,7 @@
                  [com.cnuernber/charred "1.028"]
                  [hawk/hawk "0.2.11"]
                  [org.soulspace.clj/clj.java "0.9.1"]
-                 [org.soulspace.clj/cmp.markdown "0.4.1"]
-                 ]
+                 [org.soulspace.clj/cmp.markdown "0.4.1"]]
 
   :repl-options {:init-ns org.soulspace.overarch.cli}
 

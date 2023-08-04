@@ -1,7 +1,8 @@
 ;;;;
 ;;;; Views of the Overarch Model
 ;;;;
-#{;;
+#{
+  ;;
   ;; Architecture Views
   ;;
   {:el :context-view
