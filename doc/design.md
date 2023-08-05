@@ -293,15 +293,29 @@ A: PlantUML supports notes but as it seems only on elements and not on relations
 
 Q: **Which are the levels/granularities of the export?**
 
-A: It differs on the type of the export.
+A: It differs on the type of the export. There are different type of exports.
+   The JSON and structurizr exports export the model elements and the views to
+   make them available for other tools. The view exports (e.g. PlantUML,
+   Markdown or Graphviz) render the defined views on the model but do not
+   export the model data as is.
    
-   For PlantUML the export can work on all the loaded model and diagram
-   specifications and generate all relevant diagrams, even for multiple models.
-
-   For Stucturizr the export should work on a model and the associated diagram specifications to generate a Structurizr workspace.
-
    For JSON the export should be done on an individual file level, to keep the
-   structure of data files intact.
+   structure of data files intact. The only problem is that file comments will
+   not be exported because they are ignored by the EDN reader and not available
+   in the JSON export. 
+
+   For Stucturizr the export should work on the architecture model and the
+   associated diagram specifications to generate a Structurizr workspace.
+   Other models (e.g. use-cases, state machines or concepts) have to be ignored
+   because they are (currently) not supported by Structurizr.
+
+   For view exports like the PlantUML export the export can work on all the
+   loaded model and view specifications and generate all relevant renderings,
+   even for multiple models.
+
+Q: **Should the different granularities of exports made explicit in the code?**
+
+A: 
 
 
 Q: **What textual views/exports make sense?**
