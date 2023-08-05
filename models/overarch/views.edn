@@ -15,6 +15,7 @@
 
         ;; use cases
         {:ref :overarch/uc-model-system}
+        {:ref :overarch/uc-define-views}
         {:ref :overarch/uc-export-model}
         {:ref :overarch/uc-export-json}
         {:ref :overarch/uc-export-plantuml}
@@ -25,13 +26,14 @@
         ;; relations
         {:ref :overarch/modeller-wants-to-model-system}
         {:ref :overarch/uc-model-system-uses-editor}
+        {:ref :overarch/modeller-wants-to-define-views}
+        {:ref :overarch/uc-define-views-uses-editor}
         {:ref :overarch/modeller-wants-to-export-model}
         {:ref :overarch/uc-export-json-extends-uc-export-model :direction :up}
         {:ref :overarch/uc-export-plantuml-extends-uc-export-model :direction :up}
         {:ref :overarch/uc-export-markdown-extends-uc-export-model :direction :up}
         {:ref :overarch/uc-export-graphviz-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}
-        ]}
+        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}]}
   
   ;;;
   ;;; Architecture Views

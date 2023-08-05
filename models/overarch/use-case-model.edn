@@ -1,7 +1,8 @@
 ;;;;
 ;;;; Use Case Model for Overarch
 ;;;;
-#{;;;
+#{
+  ;;;
   ;;; Use Case Model Elements
   ;;;
   {:el :use-case
@@ -9,6 +10,11 @@
    :level :user-goal
    :name "model system"
    :desc "Textually model the system in the Overarch data model."}
+  {:el :use-case
+   :id :overarch/uc-define-views
+   :level :user-goal
+   :name "define views"
+   :desc "Textually define views of the system in the Overarch view model."}
   {:el :use-case
    :id :overarch/uc-export-model
    :level :user-goal
@@ -50,6 +56,14 @@
   {:el :uses
    :id :overarch/uc-model-system-uses-editor
    :from :overarch/uc-model-system
+   :to :overarch/editor}
+  {:el :uses
+   :id :overarch/modeller-wants-to-define-views
+   :from :overarch/modeller
+   :to :overarch/uc-define-views}
+  {:el :uses
+   :id :overarch/uc-define-views-uses-editor
+   :from :overarch/uc-define-views
    :to :overarch/editor}
   {:el :uses
    :id :overarch/modeller-wants-to-export-model
