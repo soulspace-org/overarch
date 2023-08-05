@@ -450,25 +450,37 @@
 (defmethod render-uml-element :uses
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " --> "
+        (alias-name (:from e)) " -"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :include
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " ..> "
+        (alias-name (:from e)) " ."
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        ".> "
         (alias-name (:to e)) " : include")])
 
 (defmethod render-uml-element :extends
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " ..> "
+        (alias-name (:from e)) " ."
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        ".> "
         (alias-name (:to e)) " : extends")])
 
 (defmethod render-uml-element :generalizes
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " --|> "
+        (alias-name (:from e)) " -"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-|> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :interface
