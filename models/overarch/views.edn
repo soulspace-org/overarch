@@ -2,43 +2,74 @@
 ;;;; Views of the Overarch Model
 ;;;;
 #{
-  ;;
-  ;; Architecture Views
-  ;;
+  ;;;
+  ;;; Use Case Views
+  ;;;
+  {:el :use-case-view
+   :id :overarch/use-case-view
+   :spec {:layout :left-right}
+   :title "Use Case View of Overarch"
+   :ct [;; actors
+        {:ref :overarch/modeller}
+        {:ref :overarch/editor}
+
+        ;; use cases
+        {:ref :overarch/uc-model-system}
+        {:ref :overarch/uc-export-model}
+        {:ref :overarch/uc-export-json}
+        {:ref :overarch/uc-export-plantuml}
+        {:ref :overarch/uc-export-markdown}
+        {:ref :overarch/uc-export-graphviz}
+        {:ref :overarch/uc-export-structurizr}
+
+        ;; relations
+        {:ref :overarch/modeller-wants-to-model-system}
+        {:ref :overarch/uc-model-system-uses-editor}
+        {:ref :overarch/modeller-wants-to-export-model}
+        {:ref :overarch/uc-export-json-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-export-plantuml-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-export-markdown-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-export-graphviz-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}
+        ]}
+  
+  ;;;
+  ;;; Architecture Views
+  ;;;
   {:el :context-view
    :id :overarch/context-view
    :title "Context View of Overarch"
-   :ct [; actors
+   :ct [;; actors
         {:ref :overarch/modeller}
-        ; external systems
+        ;; external systems
         {:ref :overarch/editor}
-        ; internal systems
+        ;; internal systems
         {:ref :overarch/overarch}
-        ; relations
+        ;; relations
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-uses-overarch}]}
   {:el :container-view
    :id :overarch/container-view
    :title "Container View of Overarch"
-   :ct [; actors
+   :ct [;; actors
         {:ref :overarch/modeller}
-        ; external systems
+        ;; external systems
         {:ref :overarch/editor}
-        ; internal systems
+        ;; internal systems
         {:ref :overarch/overarch}
-        ; relations
+        ;; relations
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-uses-overarch-cli}]}
   {:el :component-view
    :id :overarch/component-view
    :title "Component View of Overarch"
-   :ct [; actors
+   :ct [;; actors
         {:ref :overarch/modeller}
-        ; external systems
+        ;; external systems
         {:ref :overarch/editor}
-        ; internal systems
+        ;; internal systems
         {:ref :overarch/overarch}
-        ; relations
+        ;; relations
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-starts-cli}
         {:ref :overarch/cli-loads-data}
