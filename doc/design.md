@@ -81,6 +81,7 @@ Design Goals
 Design Questions and Answers
 ----------------------------
 This section documents design decisions in the form of questions and answers.
+It represents some of the inner dialogue in finding good solutions.
 Not all questions that arose have a definitve answer/decision yet.
 
 
