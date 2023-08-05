@@ -1,197 +1,14 @@
 ;;;;
-;;;; Model of the Overarch System
+;;;; Logical Data Model of Overarch
 ;;;;
 
-#{;;;
-  ;;; Architecture
+#{
+  ;;;
+  ;;; Data Model Elements
   ;;;
 
   ;;
-  ;; Actors
-  ;;
-  {:el :person
-   :id :overarch/modeller
-   :name "Modeller"
-   :desc "Models the architecture of a system and specifies views of the model."}
-
-  ;;
-  ;; External Systems
-  ;;
-  {:el :system
-   :id :overarch/editor
-   :external true
-   :name "Editor/IDE"
-   :desc "Tool for describing the architecture model and the views."}
-
-  ;;
-  ;; Internal System
-  ;;
-  {:el :system
-   :id :overarch/overarch
-   :name "Overarch"
-   :desc "Provides the schema for architecture models and views. Generates representations like diagrams."
-   :ct #{{:el :container
-          :id :overarch/overarch-cli
-          :name "Overarch CLI"
-          :desc "CLI tool for the export of the architecture models into different formats."
-          :tech "Clojure"
-          :ct #{{:el :component
-                 :id :overarch/cli
-                 :name "cli"
-                 :desc "Parses the command line options and dispatches functions on them."}
-                {:el :component
-                 :id :overarch/core
-                 :name "core"
-                 :desc "Contains the model specification and functions."}
-                {:el :component
-                 :id :overarch/export
-                 :name "export"
-                 :desc "Contains the export multimethods to be implemented by the concrete export components."}
-                {:el :component
-                 :id :overarch/exports-plantuml
-                 :name "exports.plantuml"
-                 :desc "Contains the implementation of the PlantUML export."}
-                {:el :component
-                 :id :overarch/exports-json
-                 :name "exports.json"
-                 :desc "Contains the implementation of the JSON export."}
-                {:el :component
-                 :id :overarch/exports-structurizr
-                 :name "exports.structurizr"
-                 :desc "Contains the implementation of the Structurizr export."}
-                {:el :component
-                 :id :overarch/view
-                 :name "view"
-                 :desc "Contains view related functions."}
-                {:el :component
-                 :id :overarch/io
-                 :name "io"
-                 :desc "Contains I/O related functions."}}}}}
-  ;;
-  ;; Relations
-  ;;
-  {:el :rel
-   :id :overarch/modeller-models-in-editor
-   :from :overarch/modeller
-   :to :overarch/editor
-   :name "models in"
-   :desc "Models, views."}
-  {:el :rel
-   :id :overarch/modeller-uses-overarch
-   :from :overarch/modeller
-   :to :overarch/overarch
-   :name "uses"
-   :desc "for Diagram generation and model transformation."}
-  {:el :rel
-   :id :overarch/modeller-uses-overarch-cli
-   :from :overarch/modeller
-   :to :overarch/overarch-cli
-   :name "uses"
-   :desc "for diagram generation and model transformation."}
-  {:el :rel
-   :id :overarch/modeller-starts-cli
-   :from :overarch/modeller
-   :to :overarch/cli
-   :name "starts"
-   :desc "with the provided options."}
-  {:el :rel
-   :id :overarch/cli-loads-data
-   :from :overarch/cli
-   :to :overarch/core
-   :name "loads"
-   :desc "model and views."}
-  {:el :rel
-   :id :overarch/cli-calls-exports
-   :from :overarch/cli
-   :to :overarch/export
-   :name "calls"
-   :desc "export functions"}
-  {:el :rel
-   :id :overarch/exports-plantuml-implements-export
-   :from :overarch/exports-plantuml
-   :to :overarch/export
-   :name "implements"
-   :desc "export functions for PlantUML diagrams"}
-  {:el :rel
-   :id :overarch/exports-plantuml-accesses-model
-   :from :overarch/exports-plantuml
-   :to :overarch/core
-   :name "queries"
-   :desc "model and views"}
-  {:el :rel
-   :id :overarch/exports-plantuml-calls-io
-   :from :overarch/exports-plantuml
-   :to :overarch/io
-   :name "calls"
-   :desc "loads sprite mappings"}
-  {:el :rel
-   :id :overarch/exports-plantuml-calls-view
-   :from :overarch/exports-plantuml
-   :to :overarch/view
-   :name "calls"
-   :desc "view queries and rendering functions"}
-  {:el :rel
-   :id :overarch/exports-json-implements-export
-   :from :overarch/exports-json
-   :to :overarch/export
-   :name "implements"
-   :desc "export functions for JSON"}
-  {:el :rel
-   :id :overarch/exports-json-calls-io
-   :from :overarch/exports-json
-   :to :overarch/io
-   :name "calls"
-   :desc "writes JSON"}
-  {:el :rel
-   :id :overarch/exports-structurizr-implements-export
-   :from :overarch/exports-structurizr
-   :to :overarch/export
-   :name "implements"
-   :desc "export functions for Structurizr"}
-  {:el :rel
-   :id :overarch/exports-structurizr-accesses-model
-   :from :overarch/exports-structurizr
-   :to :overarch/core
-   :name "queries"
-   :desc "model and views"}
-  {:el :rel
-   :id :overarch/view-queries-model
-   :from :overarch/view
-   :to :overarch/core
-   :name "queries"
-   :desc "model and views"}
-
-  ;;;
-  ;;; Use Cases
-  ;;;
-  {:el :use-case
-   :id :overarch/uc-model-system
-   :level :user-goal
-   :name "model system"
-   :desc "Textually model the system in the Overarch data model."}
-  {:el :use-case
-   :id :overarch/uc-export-model
-   :level :user-goal
-   :name "export model"
-   :desc "Export the model of the system."}
-  {:el :use-case
-   :id :overarch/uc-export-json
-   :level :user-goal
-   :name "export JSON"
-   :desc "Export the model to JSON."}
-  {:el :use-case
-   :id :overarch/uc-export-json
-   :level :user-goal
-   :name "export PlantUML"
-   :desc "Export the views to PlantUML."}
-
-
-  ;;;
-  ;;; Data Model
-  ;;;
-
-  ;;
-  ;; Elements
+  ;; Abstract types
   ;;
   {:el :class
    :id :overarch/element
@@ -658,9 +475,10 @@
           It shows the main elements and concepts of the system under description
           alphabetically sorted."}
 
-  ;;
-  ;; Relations
-  ;;
+
+  ;;;
+  ;;; Data Model Relations
+  ;;;
   {:el :inheritance
    :id :overarch/identifiable-element-is-a-element
    :to :overarch/element
@@ -1084,4 +902,4 @@
    :to-name "ct"
    :to-card :one-to-many}
   ;
-  }
+}
