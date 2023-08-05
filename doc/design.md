@@ -220,6 +220,22 @@ A: An :include option in the view spec could contain different strategies for th
      referenced elements
    * a map of selection criteria on the element attributes
 
+   It might make sense to combine (some of) these include options.
+
+   Some views are rendered in a hierachical way, where only some top level
+   elements have to be specified, and the content of these top level elements
+   is rendered recursively according to the rules of the view. For example in
+   a component-view it is fine to reference the internal system and the
+   elements of this system are rendered recursively down to the the components
+   of the system.
+
+   Other views may only render the elements directly specified in a flat list.
+   
+   The include option should work for both kind of views by only make it more
+   convenient to specify the elements as you would normally without the
+   includes. It should have no influence on the rendering rules of the views.
+
+
 Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
 A: 
