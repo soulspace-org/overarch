@@ -1,5 +1,5 @@
 ;;;;
-;;;; Markdown export
+;;;; Markdown rendering and export
 ;;;;
 (ns org.soulspace.overarch.exports.markdown
   "Functions to export views to markdown."
@@ -14,8 +14,11 @@
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.io :as oio]))
 
+;;;
+;;; Rendering
+;;;
 (defn render-element
-  "Renders an `element` with markdown according to the given `options`."
+  "Renders an `element` in the `view` with markdown according to the given `options`."
   [e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
@@ -27,6 +30,9 @@
     (flatten [(md/h1 (:title view))
               (map #(render-element % options view) children)])))
 
+;;;
+;;; Export
+;;;
 (def markdown-views
   "Contains the views rendered with markdown."
   #{:glossary-view})
