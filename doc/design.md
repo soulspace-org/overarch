@@ -125,17 +125,20 @@ Q: **How can reusability of the models and views be achieved?**
 A: With :ref the reusablility of model elements in different views is archieved,
    which is a benefit over the diagram focused specification in the PlantUML
    C4 DSL, where you often have to duplicate information in the different diagrams.
+   Also the same view may be rendered in different formats, e.g. a diagram and a
+   textual description of the elements shown in the diagram.
 
    Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
 
-   Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to overarch as a specific tool but stands for itself.
+   Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
-Q: **What could also be captured in an extension of the description?**
+Q: **What could also be captured in extensions of the model?**
 
 A: An extension of the model could make sense if there is value in the
-   connection of the additional elements to the existing elements, e.g. to provide traceability
+   connection of the additional elements to the existing elements, e.g. to provide traceability or insights
 
    Additional elements could be
+   * Concepts that have not a direct representation in the system (yet)
    * Enterprise architecture elements like capabilities
    * Business arcitecture elements like business processes
    * Functional or nonfunctional requirements and crosscutting concerns
@@ -143,8 +146,10 @@ A: An extension of the model could make sense if there is value in the
      * e.g. state machines, activty or sequence diagrams
    * ...
 
+   Some or all of these extensions might be added to Overarch in the future.
+
    The schema of the model is open, as the spec just checks for the existence
-   of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on overarch. The keys for additional elements should be prefixed with a meaningful namespace.
+   of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overach.
 
 
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
@@ -152,11 +157,13 @@ Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a
 A: Implicit boundaries make the model more succinct.
    A boundary should be rendered for model elements from a higher level
    containing children on the level of the diagram.
-   E.g. a system with containers should be rendered as a system boundary containing the containers.
+   For example a system with containers should be rendered as a system boundary containing the containers.
 
-   Explicit boundaries make sense for grouping elements, e.g. for bounded contexts or for enterprise boundaries.
+   Explicit boundaries make sense for grouping elements, e.g. for bounded
+   contexts or for enterprise boundaries.
    
-   So the model should support explicit boundaries and views should also render implicit boundaries for higher level elements referenced in a specific view.
+   So the model should support explicit boundaries and views should also render implicit boundaries for higher level elements referenced in a specific view,
+   for example in the C4 container and component views.
 
 
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
