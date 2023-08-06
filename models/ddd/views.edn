@@ -1,0 +1,133 @@
+;;;;
+;;;; Example for Domain Driven Design with a Hexagonal Architecture
+;;;;
+#{
+  ;;;
+  ;;; Concept Model Views
+  ;;;
+  {:el :concept-view
+   :id :ddd/concept-view
+   ; :spec {:layout :left-right}
+   :title "Concept Map of the Domain Driven Design Patterns"
+   :ct [;;
+        ;; Concepts
+        ;;
+        {:ref :ddd/c-aggregates}
+        {:ref :ddd/c-anti-corruption-layer}
+        {:ref :ddd/c-big-ball-of-mud}
+        {:ref :ddd/c-bounded-context}
+        {:ref :ddd/c-conformist}
+        {:ref :ddd/c-context-map}
+        {:ref :ddd/c-continuous-integration}
+        {:ref :ddd/c-core-domain}
+        {:ref :ddd/c-customer-supplier}
+        {:ref :ddd/c-domain-events}
+        {:ref :ddd/c-entities}
+        {:ref :ddd/c-factories}
+        {:ref :ddd/c-generic-subdomains}
+        {:ref :ddd/c-hexagonal-architecture}
+        {:ref :ddd/c-model-driven-design}
+        {:ref :ddd/c-open-host-service}
+        {:ref :ddd/c-partnership}
+        {:ref :ddd/c-published-language}
+        {:ref :ddd/c-repositories}
+        {:ref :ddd/c-separate-ways}
+        {:ref :ddd/c-services}
+        {:ref :ddd/c-shared-kernel}
+        {:ref :ddd/c-ubiquitous-language}
+        {:ref :ddd/c-value-objects}
+        ;;
+        ;; Relations
+        ;;
+        {:ref :ddd/c-aggregates-access-with-c-repositories}
+        {:ref :ddd/c-aggregates-encapsulate-with-c-factories}
+        {:ref :ddd/c-bounded-context-names-enter-c-ubiquitous-language}
+        {:ref :ddd/c-bounded-context-overview-with-c-context-map}
+        {:ref :ddd/c-bounded-context-with-c-continuous-integration}
+        {:ref :ddd/c-context-map-coordinate-c-customer-supplier}
+        {:ref :ddd/c-context-map-coordinate-with-c-partnership}
+        {:ref :ddd/c-context-map-go-c-separate-ways}
+        {:ref :ddd/c-context-map-overlap-c-conformist}
+        {:ref :ddd/c-context-map-overlap-contexts-c-shared-kernel}
+        {:ref :ddd/c-context-map-seggregate-c-big-ball-of-mud}
+        {:ref :ddd/c-context-map-support-c-open-host-service}
+        {:ref :ddd/c-context-map-translate-c-anti-corruption-layer}
+        {:ref :ddd/c-core-domain-to-c-ubiquitous-language}
+        {:ref :ddd/c-core-domain-work-in-c-bounded-context}
+        {:ref :ddd/c-core-domain-to-c-generic-subdomains}
+        {:ref :ddd/c-entities-access-with-c-repositories}
+        {:ref :ddd/c-entities-encapsulate-with-c-aggregates}
+        {:ref :ddd/c-entities-encapsulate-with-c-factories}
+        {:ref :ddd/c-entities-push-change-with-c-domain-events}
+        {:ref :ddd/c-entities-root-of-c-aggregates}
+        {:ref :ddd/c-model-driven-design-express-with-c-domain-events}
+        {:ref :ddd/c-model-driven-design-express-with-c-entities}
+        {:ref :ddd/c-model-driven-design-express-with-c-services}
+        {:ref :ddd/c-model-driven-design-express-with-c-value-objects}
+        {:ref :ddd/c-model-driven-design-isolate-with-c-hexagonal-architecture}
+        {:ref :ddd/c-model-driven-design-structures-c-ubiquitous-language}
+        {:ref :ddd/c-model-driven-design-within-c-bounded-context}
+        {:ref :ddd/c-open-host-service-formalized-as-c-published-language}
+        {:ref :ddd/c-value-objects-encapsulate-with-c-aggregates}
+        {:ref :ddd/c-value-objects-encapsulate-with-c-factories}
+        ]}
+
+    {:el :glossary-view
+     :id :ddd/glossary-view
+     :title "Concept Map of the Domain Driven Design Patterns"
+     :ct [;;
+        ;; Concepts
+        ;;
+          {:ref :ddd/c-aggregates}
+          {:ref :ddd/c-anti-corruption-layer}
+          {:ref :ddd/c-big-ball-of-mud}
+          {:ref :ddd/c-bounded-context}
+          {:ref :ddd/c-conformist}
+          {:ref :ddd/c-context}
+          {:ref :ddd/c-context-map}
+          {:ref :ddd/c-continuous-integration}
+          {:ref :ddd/c-core-domain}
+          {:ref :ddd/c-customer-supplier}
+          {:ref :ddd/c-domain}
+          {:ref :ddd/c-domain-core}
+          {:ref :ddd/c-domain-events}
+          {:ref :ddd/c-entities}
+          {:ref :ddd/c-factories}
+          {:ref :ddd/c-generic-subdomains}
+          {:ref :ddd/c-hexagonal-architecture}
+          {:ref :ddd/c-model}
+          {:ref :ddd/c-model-driven-design}
+          {:ref :ddd/c-open-host-service}
+          {:ref :ddd/c-partnership}
+          {:ref :ddd/c-published-language}
+          {:ref :ddd/c-repositories}
+          {:ref :ddd/c-separate-ways}
+          {:ref :ddd/c-services}
+          {:ref :ddd/c-shared-kernel}
+          {:ref :ddd/c-ubiquitous-language}
+          {:ref :ddd/c-value-objects}]}
+
+  ;;; Architecture Model Views (C4)
+  {:el :context-view
+  :id :ddd/system-context-view
+  :title "System Context View of a Hexagonal Architecture"
+  :ct [{:ref :ddd/system}]}
+
+ {:el :container-view
+  :id :ddd/container-view
+  :title "Container View of a Hexagonal Arcitecture"
+  :ct [{:ref :ddd/system}]}
+
+ {:el :component-view
+  :id :ddd/component-view
+  :title "Component View of a Hexagonal Arcitecture"
+  :ct [{:ref :ddd/container}
+       {:ref :ddd/database-container}
+       {:ref :ddd/queue-container}
+
+       {:ref :ddd/application-logic-uses-domain-core}
+       {:ref :ddd/application-logic-uses-repository-component}
+       {:ref :ddd/provided-interface-component-uses-application-logic}
+       {:ref :ddd/application-logic-uses-cosumed-interface-component}
+       {:ref :ddd/incoming-domain-events-triggers-application-logic}
+       {:ref :ddd/application-logic-sends-outgoing-domain-events}]}}
