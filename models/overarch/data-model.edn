@@ -2,8 +2,7 @@
 ;;;; Logical Data Model of Overarch
 ;;;;
 
-#{
-  ;;;
+#{;;;
   ;;; Data Model Elements
   ;;;
 
@@ -469,6 +468,12 @@
           It shows states and transitions of a state machine."}
 
   {:el :class
+   :id :overarch/concept-view
+   :name "concept-view"
+   :desc "The concept view is a graphical view.
+          It shows the concepts as a concept map with the relations between the concepts."}
+
+  {:el :class
    :id :overarch/glossary-view
    :name "glossary-view"
    :desc "The glossary view is a textual view.
@@ -892,6 +897,17 @@
    :to-card :one-to-many}
 
   {:el :inheritance
+   :id :overarch/concept-view-is-a-view
+   :to :overarch/view
+   :from :overarch/concept-view}
+  {:el :aggregation
+   :id :overarch/concept-view-contains-concept-model-element
+   :from :overarch/concept-view
+   :to :overarch/concept-model-element
+   :to-name "ct"
+   :to-card :one-to-many}
+
+  {:el :inheritance
    :id :overarch/glossary-view-is-a-view
    :to :overarch/view
    :from :overarch/glossary-view}
@@ -902,4 +918,4 @@
    :to-name "ct"
    :to-card :one-to-many}
   ;
-}
+  }

@@ -162,6 +162,7 @@
         {:ref :overarch/class-view}
         {:ref :overarch/state-machine-view}
         {:ref :overarch/use-case-view}
+        {:ref :overarch/concept-view}
         {:ref :overarch/glossary-view}
 
         ;; relations
@@ -265,6 +266,8 @@
         {:ref :overarch/state-machine-view-contains-state-machine}
         {:ref :overarch/use-case-view-is-a-view}
         {:ref :overarch/use-case-view-contains-use-case-model-element}
+        {:ref :overarch/concept-view-is-a-view}
+        {:ref :overarch/concept-view-contains-concept-model-element}
         {:ref :overarch/glossary-view-is-a-view}
         {:ref :overarch/glossary-view-contains-concept-model-element}
         ;
@@ -546,6 +549,7 @@
         {:ref :overarch/class-view}
         {:ref :overarch/state-machine-view}
         {:ref :overarch/use-case-view}
+        {:ref :overarch/concept-view}
         {:ref :overarch/glossary-view}
 
         ;relations
@@ -571,6 +575,8 @@
         {:ref :overarch/state-machine-view-contains-state-machine}
         {:ref :overarch/use-case-view-is-a-view}
         {:ref :overarch/use-case-view-contains-use-case-model-element}
+        {:ref :overarch/concept-view-is-a-view}
+        {:ref :overarch/concept-view-contains-concept-model-element}
         {:ref :overarch/glossary-view-is-a-view}
         {:ref :overarch/glossary-view-contains-concept-model-element}
           ;
