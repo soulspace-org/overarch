@@ -16,18 +16,24 @@
 ;;;
 ;;; Rendering
 ;;;
-(defn render-element
-  "Renders an `element` in the `view` with markdown according to the given `options`."
-  [e options view]
-  ; TODO implement for elements and relations
-  )
+(defmulti render-element
+  "Renders an element `e` in the `view` with markdown according to the given `options`."
+  (fn [e _ _] (:el e)))
+
+(defmethod render-element :concept
+  [e indent view]
+  [(str (:name e) ";")])
+
+(defmethod render-element :rel
+  [e indent view]
+  [(str (:from e) " -> " (:to e) "[label=\""  (:name e) "\"];")])
 
 (defn render-view
   "Renders the `view` with graphviz according to the given `options`."
   [options view]
   (let [children (sort-by :name (view/elements-in-view view))]
-    (flatten [(str "digraph "(:title view) "{")
-              (map #(render-element % options view) children)
+    (flatten [(str "digraph \""(:title view) "\" {")
+              (map #(render-element % 0 view) children)
               "}"])))
 
 ;;;
