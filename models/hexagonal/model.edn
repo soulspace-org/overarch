@@ -1,72 +1,397 @@
-#{{:el :system
-  :id :hexagonal/system
-  :name "Hexagonal Architecture"
-  :desc "describing structure and dependencies of a system of bounded domain context."
-  :ct #{{:el :container
-        :id :hexagonal/container
-        :name "Container"
-        :desc "can be e.g. an application or a service"
-        :ct #{{:el :component
-              :id :hexagonal/domain-core
-              :name "Domain Core"
-              :desc "contains the functional core of the domain"}
-             {:el :component
-              :id :hexagonal/application-logic
-              :name "Application Logic"
-              :desc "contains the process and use-case orchestration of the domain."}
-             {:el :component
-              :id :hexagonal/repository-component
-              :name "Repository"
-              :desc "Adapter to the persistent data of the domain"}
-             {:el :component
-              :id :hexagonal/provided-interface-component
-              :name "Provided Interface Adapter"
-              :desc "API/Adapter for services of the domain"}
-             {:el :component
-              :id :hexagonal/consumed-interface-component
-              :name "Consumed Interface Adapter"
-              :desc "Adapter for a service consumed by the domain"}}}
-       {:el :container
-        :id :hexagonal/database-container
-        :subtype :database
-        :name "Database"
-        :desc "stores the data for this bounded context"}
-       {:el :container
-        :id :hexagonal/queue-container
-        :subtype :queue
-        :name "Queue"
-        :desc "streams of domain events"
-        :ct #{{:el :component
-              :id :hexagonal/incoming-domain-events
-              :subtype :queue
-              :name "Incoming Domain Events"
-              :desc "notification of facts as domain events relevant for the bounded context"}
-             {:el :component
-              :id :hexagonal/outgoing-domain-events
-              :subtype :queue
-              :name "Outgoing Domain Events"
-              :desc "notification of facts originating in this bounded context as domain events"}}}}}
+;;;;
+;;;; Example for Domain Driven Design with a Hexagonal Architecture
+;;;;
+#{;;;
+  ;;; Concept Model
+  ;;;
+  ;;
+  ;; Concepts
+  ;;
+  {:el :concept
+   :id :ddd/c-aggregates
+   :name "Aggregates"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-anti-corruption-layer
+   :name "Anti-Corruption Layer"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-big-ball-of-mud
+   :name "Big Ball of Mud"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-bounded-context
+   :name "Bounded Context"
+   :desc 
+"A descrition of a boundary (typically a subsystem or the work of
+a particular team) within which a particular model is defined and applicable."}
+  {:el :concept
+   :id :ddd/c-conformist
+   :name "Conformist"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-context
+   :name "Context"
+   :desc
+"The setting in which a word or statement appears that determines its meaning.
+Statements about a model can only be understood in a context."}
+  {:el :concept
+   :id :ddd/c-context-map
+   :name "Context Map"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-continuous-integration
+   :name "Continuous Integration"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-core-domain
+   :name "Core Domain"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-customer-supplier
+   :name "Customer/Supplier"
+   :desc ""}
+  {:el :concept
+   :id :ddd/domain
+   :name "Domain"
+   :desc
+"A sphere of knowledge, influence or activity.
+The subject area to which a user applies a program is the domain of the software."}
+  {:el :concept
+   :id :ddd/c-domain-events
+   :name "Domain Events"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-entities
+   :name "Entities"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-factories
+   :name "Factories"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-generic-subdomains
+   :name "Generic Subdomains"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-hexagonal-architecture
+   :name "Hexagonal Architecture"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-layered-archtecture
+   :name "Layered Architecture"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-model
+   :name "Model"
+   :desc 
+"A system of abstractions that describes selected aspects of a domain
+and can be used to solve problems related to that domain."}
+  {:el :concept
+   :id :ddd/c-model-driven-design
+   :name "Model Driven Design"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-open-host-service
+   :name "Open Host Service"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-partnership
+   :name "Partnership"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-published-language
+   :name "Published Language"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-repositories
+   :name "Repositories"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-separate-ways
+   :name "Separate Ways"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-services
+   :name "Services"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-shared-kernel
+   :name "Shared Kernel"
+   :desc ""}
+  {:el :concept
+   :id :ddd/c-ubiquitous-language
+   :name "Ubiquitous Language"
+   :desc
+"A language around the domain model used by all team members within a
+bounded context to connect all the activities of the team with the software."}
+  {:el :concept
+   :id :ddd/c-value-objects
+   :name "Value Objects"
+   :desc ""}
 
- {:el :rel
-  :id :hexagonal/application-logic-uses-domain-core
-  :from :hexagonal/application-logic
-  :to :hexagonal/domain-core
-  :name "calls"}
- {:el :rel
-  :id :hexagonal/application-logic-uses-repository-component
-  :from :hexagonal/application-logic
-  :to :hexagonal/repository-component
-  :name "calls"}
- {:el :rel
-  :id :hexagonal/provided-interface-component-calls-application-logic
-  :from :hexagonal/provided-interface-component
-  :to :hexagonal/application-logic
-  :name "calls"}
- {:el :rel
-  :id :hexagonal/incoming-domain-events-triggers-application-logic
-  :from :hexagonal/incoming-domain-events
-  :to :hexagonal/application-logic
-  :name "triggers"}
+  ;;
+  ;; Relations
+  ;;
+  {:el :rel
+   :id :ddd/c-core-domain-to-c-ubiquitous-language
+   :from :ddd/c-core-domain
+   :to :ddd/c-ubiquitous-language
+   :name "culivate rich model with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-core-domain-to-c-generic-subdomains
+   :from :ddd/c-core-domain
+   :to :ddd/c-generic-subdomains
+   :name "avoid overinvesting in"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-core-domain-work-in-c-bounded-context
+   :from :ddd/c-core-domain
+   :to :ddd/c-bounded-context
+   :name "work in autonomous, clean"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-bounded-context-names-enter-c-ubiquitous-language
+   :from :ddd/c-bounded-context
+   :to :ddd/c-ubiquitous-language
+   :name "names enter"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-bounded-context-overview-with-c-context-map
+   :from :ddd/c-bounded-context
+   :to :ddd/c-context-map
+   :name "assess/overview relationships with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-bounded-context-with-c-continuous-integration
+   :from :ddd/c-bounded-context
+   :to :ddd/c-continuous-integration
+   :name "keep model unified with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-structures-c-ubiquitous-language
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-ubiquitous-language
+   :name "model gives structure to"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-within-c-bounded-context
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-bounded-context
+   :name "define model within"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-express-with-c-services
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-services
+   :name "express model with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-express-with-c-domain-events
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-domain-events
+   :name "express change with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-express-with-c-entities
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-entities
+   :name "express identity with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-express-with-c-value-objects
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-value-objects
+   :name "express state and computation with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-model-driven-design-isolate-with-c-hexagonal-architecture
+   :from :ddd/c-model-driven-design
+   :to :ddd/c-hexagonal-architecture
+   :name "isolate domain expressions with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-entities-push-change-with-c-domain-events
+   :from :ddd/c-entities
+   :to :ddd/c-domain-events
+   :name "push state change with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-entities-access-with-c-repositories
+   :from :ddd/c-entities
+   :to :ddd/c-repositories
+   :name "access with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-entities-encapsulate-with-c-aggregates
+   :from :ddd/c-entities
+   :to :ddd/c-aggregates
+   :name "encapsulate with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-entities-root-of-c-aggregates
+   :from :ddd/c-entities
+   :to :ddd/c-aggregates
+   :name "act as root of"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-entities-encapsulate-with-c-factories
+   :from :ddd/c-entities
+   :to :ddd/c-factories
+   :name "encapsulate with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-value-objects-encapsulate-with-c-aggregates
+   :from :ddd/c-value-objects
+   :to :ddd/c-aggregates
+   :name "encapsulate with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-value-objects-encapsulate-with-c-factories
+   :from :ddd/c-value-objects
+   :to :ddd/c-factories
+   :name "encapsulate with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-aggregates-encapsulate-with-c-factories
+   :from :ddd/c-aggregates
+   :to :ddd/c-factories
+   :name "encapsulate with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-aggregates-access-with-c-repositories
+   :from :ddd/c-aggregates
+   :to :ddd/c-repositories
+   :name "access with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-coordinate-with-c-partnership
+   :from :ddd/c-context-map
+   :to :ddd/c-partnership
+   :name "coordinate interdependent contexts"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-overlap-contexts-c-shared-kernel
+   :from :ddd/c-context-map
+   :to :ddd/c-shared-kernel
+   :name "overlap contexts"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-coordinate-c-customer-supplier
+   :from :ddd/c-context-map
+   :to :ddd/c-customer-supplier
+   :name "coordinate upstream/downstream"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-overlap-c-conformist
+   :from :ddd/c-context-map
+   :to :ddd/c-conformist
+   :name "overlap unilaterally as"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-translate-c-anti-corruption-layer
+   :from :ddd/c-context-map
+   :to :ddd/c-anti-corruption-layer
+   :name "translate and isolate unilaterally with"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-support-c-open-host-service
+   :from :ddd/c-context-map
+   :to :ddd/c-open-host-service
+   :name "support multiple clients through"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-go-c-separate-ways
+   :from :ddd/c-context-map
+   :to :ddd/c-separate-ways
+   :name "free teams to go"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-context-map-seggregate-c-big-ball-of-mud
+   :from :ddd/c-context-map
+   :to :ddd/c-big-ball-of-mud
+   :name "seggregate the conceptual messes"
+   :desc ""}
+  {:el :rel
+   :id :ddd/c-open-host-service-formalized-as-c-published-language
+   :from :ddd/c-open-host-service
+   :to :ddd/c-published-language
+   :name "formalized as"
+   :desc ""}
+
+  ;;;
+  ;;; Architecture
+  ;;;
+  {:el :system
+   :id :hexagonal/system
+   :name "Hexagonal Architecture"
+   :desc "describing structure and dependencies of a system of bounded domain context."
+   :ct #{{:el :container
+          :id :hexagonal/container
+          :name "Container"
+          :desc "can be e.g. an application or a service"
+          :ct #{{:el :component
+                 :id :hexagonal/domain-core
+                 :name "Domain Core"
+                 :desc "contains the functional core of the domain"}
+                {:el :component
+                 :id :hexagonal/application-logic
+                 :name "Application Logic"
+                 :desc "contains the process and use-case orchestration of the domain."}
+                {:el :component
+                 :id :hexagonal/repository-component
+                 :name "Repository"
+                 :desc "Adapter to the persistent data of the domain"}
+                {:el :component
+                 :id :hexagonal/provided-interface-component
+                 :name "Provided Interface Adapter"
+                 :desc "API/Adapter for services of the domain"}
+                {:el :component
+                 :id :hexagonal/consumed-interface-component
+                 :name "Consumed Interface Adapter"
+                 :desc "Adapter for a service consumed by the domain"}}}
+         {:el :container
+          :id :hexagonal/database-container
+          :subtype :database
+          :name "Database"
+          :desc "stores the data for this bounded context"}
+         {:el :container
+          :id :hexagonal/queue-container
+          :subtype :queue
+          :name "Queue"
+          :desc "streams of domain events"
+          :ct #{{:el :component
+                 :id :hexagonal/incoming-domain-events
+                 :subtype :queue
+                 :name "Incoming Domain Events"
+                 :desc "notification of facts as domain events relevant for the bounded context"}
+                {:el :component
+                 :id :hexagonal/outgoing-domain-events
+                 :subtype :queue
+                 :name "Outgoing Domain Events"
+                 :desc "notification of facts originating in this bounded context as domain events"}}}}}
+
+  {:el :rel
+   :id :hexagonal/application-logic-uses-domain-core
+   :from :hexagonal/application-logic
+   :to :hexagonal/domain-core
+   :name "calls"}
+  {:el :rel
+   :id :hexagonal/application-logic-uses-repository-component
+   :from :hexagonal/application-logic
+   :to :hexagonal/repository-component
+   :name "calls"}
+  {:el :rel
+   :id :hexagonal/provided-interface-component-calls-application-logic
+   :from :hexagonal/provided-interface-component
+   :to :hexagonal/application-logic
+   :name "calls"}
+  {:el :rel
+   :id :hexagonal/incoming-domain-events-triggers-application-logic
+   :from :hexagonal/incoming-domain-events
+   :to :hexagonal/application-logic
+   :name "triggers"}
   {:el :rel
    :id :hexagonal/application-logic-uses-consumed-interface-component
    :from :hexagonal/application-logic
