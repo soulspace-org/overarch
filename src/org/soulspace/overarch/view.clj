@@ -17,7 +17,7 @@
    :state-machine-view    core/state-machine-view-element?
    :class-view            core/class-view-element?
    :glossary-view         core/glossary-view-element?
-   ;:concept-view          core/concept-view-element?
+   :concept-view          core/concept-view-element?
    })
 
 (def element->boundary
