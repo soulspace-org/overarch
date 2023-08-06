@@ -78,13 +78,13 @@
   "UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
-(def glossary-types
+(def concept-types
   "Element types of a glossary view."
   (set/union container-types #{:concept}))
 
-(def doc-view-types
-  "Textual documentation views."
-  #{:glossary-view})
+(def concept-view-types
+  "Concept views types."
+  #{:concept-view :glossary-view})
 
 ;; 
 ;; General category definitions
@@ -92,7 +92,7 @@
 
 (def view-types
   "View types."
-  (set/union c4-view-types uml-view-types doc-view-types))
+  (set/union c4-view-types uml-view-types concept-view-types))
 
 (def relation-types
   "Element types of relations"
@@ -245,7 +245,12 @@
 (defn glossary-view-element?
   "Returns true if the given element `e` is rendered in a glossary view."
   [e]
-  (contains? glossary-types (:el e)))
+  (contains? concept-types (:el e)))
+
+(defn concept-view-element?
+  "Returns true if the given element `e` is rendered in a context view."
+  [e]
+  (contains? concept-types (:el e)))
 
 ;;
 ;; Schema specification
