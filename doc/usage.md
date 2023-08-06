@@ -436,7 +436,6 @@ content of a view should be a list instead of a set because the order
 of elements is relevant in a view. 
 
 
-
 #### Keys
 
 key       | type    | values                   | description 
@@ -511,15 +510,26 @@ transitions between these states based on the input events, the component receiv
 A class view is used to show the design of parts of the software. You can use it e.g. to model a
 domain and to communicate the model with domain experts.
 
-### Textual Views
-Overarch also supports textual views as part of the documentation of the system. Textual views are
-used to leverage the information present in the model.
+### Conceptual Views
+Overarch also supports conceptual views as part of the documentation of the
+system. Conceptual views can be used in early stages of the development project,
+when the requirements and the architecture are not yet fixed, to get an overview
+of the system to be designed. They can also be used to document the relevant
+concept ofthe domain of the system for discussion, onboarding and learning.
+Concepts should also be part of the glossary, as well as actors, systems and
+the applications and containers developed for the system.
+
+#### Concept View
+The concept view is a graphical view. It shows the concepts as a concept map
+with the relations between the concepts.
 
 #### Glossary View
-The glossary view is a sorted list of elements with their type and their descriptions.
+The glossary view is a textual view. It shows a sorted list of elements with
+their type and their descriptions.
 
 ### Styling
-Overarch supports custom styles for elements. For an example see [views.edn](/models/test/views.edn).
+Overarch supports custom styles for elements. For an example see
+[views.edn](/models/test/views.edn).
 
 #### Keys
 
@@ -543,8 +553,9 @@ available to languages for which no EDN implementation exists.
 The export converts each EDN file to JSON.
 
 ### PlantUML
-The the specified views can be exported to PlantUML C4 diagrams.
-These can be rendered into different formats (e.g. SVG, PNG, PDF) with PlantUML.
+The specified views C4 architecture and UML viewscan be exported to PlantUML
+diagrams. These can be rendered into different formats (e.g. SVG, PNG, PDF)
+with PlantUML.
 
 You can specify PlantUML specific directives with the **:plantuml** key of a
 view spec.
@@ -552,8 +563,6 @@ view spec.
 ```
    :spec {:plantuml {:sprite-libs [:azure]}}
 ```
-
-### Markdown
 
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
@@ -570,7 +579,6 @@ reside in [resources/plantuml](/resources/plantuml).
 The command line interface supports the option `--plantuml-list-sprites`
 which prints the (long) list of sprite mappings. 
 
-
 #### Rendering PlantUML diagrams
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
 diagrams right from the IDE.
@@ -581,9 +589,23 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
+
+### GraphViz
+The concept view can be exported as a concept map to a GraphViz *.dot file.
+
+#### Rendering GraphViz diagrams
+For GraphViz there are a few Visual Studio Code  extensions available that allow
+previews of the generated Graphviz files. 
+
+### Markdown
+Markdown is used to render textual representations of the views.
+You can use converters to generate other formats like HTML or PDF from markdown.
+
 ### Structurizr (*experimental*)
 Structurizr is a tool set created by Simon Brown.
-The structurizr export creates a workspace with the loaded model and views.
+The Structurizr export creates a workspace with the loaded model and views.
+As Structurizr currently only supports the C4 architecture model and views,
+only these will be included in the Structurizr workspace.
 
 
 Command Line Interface

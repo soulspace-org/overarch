@@ -161,12 +161,12 @@
                        :format :plantuml})
   (model-info {:model-info true})
   (print-sprite-mappings)
+  (-main "--debug")
   (-main "--debug" "--format" "json")
   (-main "--debug" "--format" "markdown")
   (-main "--debug" "--format" "graphviz")
   (-main "--model-dir" "models/banking" "--format" "structurizr")
   (-main "--model-info")
-  (-main "--debug")
   (-main "--help") ; ends REPL session
   (-main "--plantuml-list-sprites")
   )
