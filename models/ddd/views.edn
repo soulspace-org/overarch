@@ -7,7 +7,7 @@
   ;;;
   {:el :concept-view
    :id :ddd/concept-view
-   ; :spec {:layout :left-right}
+   :spec {:layout :left-right}
    :title "Concept Map of the Domain Driven Design Patterns"
    :ct [;;
         ;; Concepts
