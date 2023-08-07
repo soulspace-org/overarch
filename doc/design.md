@@ -462,7 +462,9 @@ itself, e.g. to split the model of a huge system into different files.
 
 Ideas
 -----
-This section collects ideas that came to my mind.
+This section collects ideas that may make sense to implement in the future.
 
-* Inference on model information e.g. with core logic
 * Consistence checks and reports
+* Inference on model information e.g. with
+  * core.logic
+  * Hyperdimensional Vectors
