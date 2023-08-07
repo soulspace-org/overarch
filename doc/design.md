@@ -105,7 +105,7 @@ A: System architeture specifies the high level design of the runtime
    environment and infrastructure of one or more software systems.
 
 
-Q: **What shall be captured in an architectural description model?**
+Q: **What shall be captured in an architectural model?**
 
 A: The hierarchical structure of a system and its context
    * The system context and system landscape (if relevant)
@@ -120,18 +120,6 @@ A: The hierarchical structure of a system and its context
    * The deployment of the containers in the infrastructure for the system
      (if relevant)
 
-
-Q: **How can reusability of the models and views be achieved?**
-
-A: With :ref the reusablility of model elements in different views is archieved,
-   which is a benefit over the diagram focused specification in the PlantUML
-   C4 DSL, where you often have to duplicate information in the different diagrams.
-   Also the same view may be rendered in different formats, e.g. a diagram and a
-   textual description of the elements shown in the diagram.
-
-   Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
-
-   Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
 Q: **What could also be captured in extensions of the model?**
 
@@ -152,6 +140,18 @@ A: An extension of the model could make sense if there is value in the
    The schema of the model is open, as the spec just checks for the existence
    of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overach.
 
+
+Q: **How can reusability of the models and views be achieved?**
+
+A: With :ref the reusablility of model elements in different views is archieved,
+   which is a benefit over the diagram focused specification in the PlantUML
+   C4 DSL, where you often have to duplicate information in the different diagrams.
+   Also the same view may be rendered in different formats, e.g. a diagram and a
+   textual description of the elements shown in the diagram.
+
+   Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
+
+   Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
@@ -207,11 +207,11 @@ A: Each container would contain components with the responsibilities and
 
 Q: **Should names be generated from ids if missing?**
 
-A: That would make the models more concise. Names can be generated from the name
-   part of the keyword by converting kebab case to first upper case with spaces
-   between words. But the models should contain names to make them more readable,
-   so the generated names should be just a fallback, not an exuse for not
-   specifying names in the first place.
+A: That would make the models more concise. Names can be generated from the
+   name part of the keyword by converting kebab case to first upper case with
+   spaces between words. But the models should contain names to make them more
+   readable, so the generated names should be just a fallback, not an exuse
+   for not specifying names in the first place.
 
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
@@ -220,8 +220,8 @@ Q: **Can views be specified in a generic manner, so that the elements contained 
    Views could also select content based on the namespace of the id or on the
    element type.
 
-A: An :include option in the view spec could contain different strategies for the
-   automatic selection of content, e.g.
+A: An :include option in the view spec could contain different strategies for
+   the automatic selection of content, e.g.
    * :relations to select all relations for the referenced model elements
    * :related to select all elements for the referenced relations
    * :transitive or :convex-hull to select all elements reachable from the
@@ -246,7 +246,22 @@ A: An :include option in the view spec could contain different strategies for th
 
 Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
-A: 
+A: As said above, the rendering can be flat or hierarchical, depending on the
+   type of view to be rendered. Both the selection and the iteration for
+   rendering have to take this difference into account.
+
+   It is not sufficent to just collect all the elements to be rendered in a
+   view upfront and pass them to the rendering function as this would only
+   work in the case of flat rendering. In the case of hierarchical rendering
+   the render function has to recursively traverse the elements to be rendered
+   to render the correct structure.
+
+   Nevertheless it can still be useful to know all the elements to be rendered
+   upfront, e.g. to automatically select all relevant relations between those
+   elements or to collect the information needed for the imports in PlantUML.
+
+   Thus the traversal logic has to be replicated in the upfront collection of
+   elements and in the rendering functions.
 
 
 Q: **How can duplication reduced in views of specific instanciations of the model?**
@@ -265,8 +280,8 @@ A: Parameterized views, view templates with variable replacement and element
 
 Q: **How can we avoid duplication for style specifications used in multiple views?**
 
-A: Themes could encapsulate the specification of the styles and the can be referenced in the
-   various diagrams to provide a consistent style.
+A: Themes could encapsulate the specification of the styles and the can be
+   referenced in the various diagrams to provide a consistent style.
 
 
 Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
@@ -277,18 +292,17 @@ A: Support a generic feature set in views and diagrams with optional specific
 
 Q: **How can icons/sprites be implemented in a generic way, so they are not bound to a specific diagram tool?**
 
-A: The handling of icons is very tool specific and not easily implemented in a generic way.
-   As such icons should not be specified explicitly in the model or the view,
-   the technologies should be specified. If a diagram tool supports icons,
-   they should be rendered automatically based on the technology, if an icon for the
-   technology exists and the rendering of icons is enabled in the view spec.
+A: The handling of icons is very tool specific and not easily implemented in a
+   generic way. As such icons should not be specified explicitly in the model
+   or the view, the technologies should be specified. If a diagram tool supports icons, they should be rendered automatically based on the technology, if an icon for the technology exists and the rendering of icons
+   is enabled in the view spec.
 
 
 Q: **Are notes on model elements and relations possible in the view rendering?**
 
-A: PlantUML supports notes but as it seems only on elements and not on relations.
-   So if notes would be annotated on elements and relations, the notes on relations
-   could currently not be rendered in PlantUML diagrams.
+A: PlantUML supports notes but as it seems only on elements and not on
+   relations. So if notes would be annotated on elements and relations, the
+   notes on relations could currently not be rendered in PlantUML diagrams.
 
 
 Q: **Which are the levels/granularities of the export?**
@@ -315,26 +329,42 @@ A: It differs on the type of the export. There are different type of exports.
 
 Q: **Should the different granularities of exports made explicit in the code?**
 
+   Currently in v0.3.0 all exports are implementing the same export functions.
+   The logic for the granularity of the export is implemented in the specific
+   implementation for the export format. There is no distinction between the
+   levels/granularities on which the export is done.
+
+A: 
+
+
+Q: **How shall multiple export formats be specified and implemented?**
+
+   Currently there is a --format command line option and the export multifn
+   dispatches on the value of this option. Thus it is currently not possible to
+   export more than one format per execution.
+
+   It shoud be possible to specify multiple formats on the command line and all
+   of the specified formats should be exported.
+
 A: 
 
 
 Q: **What textual views/exports make sense?**
 
 A: The model should contain information like names and descriptions for most
-   elements, e.g. to render this information in C4 views. Even if the description
-   of an element is not rendered in an UML view, the element should be described
-   in the model. With consistent desciptions of the model elements and relations,
-   textual representations of the views can be rendered, which describe the elements
-   visible in the view.
+   elements, e.g. to render this information in C4 views. Even if the
+   description of an element is not rendered in an UML view, the element should
+   be described in the model. With consistent desciptions of the model elements
+   and relations, textual representations of the views can be rendered, which describe the elements visible in the view.
 
    Also text-only views on the model make sense, e.g. a glossary view, which
-   contains the main elements of the model with their names, types and descripions
-   alphabetically sorted by name. So the information in the model can be used to
-   create more value than just for the creation of diagrams.
+   contains the main elements of the model with their names, types and descripions alphabetically sorted by name. So the information in the model
+   can be used to create more value than just for the creation of diagrams.
 
    For the glossary it might be useful to add concepts to the model to describe
-   the parts of the language of the system, which are not directly represented by
-   elements of the architecture.
+   the parts of the language of the system, which are not directly represented
+   by elements of the architecture.
+
 
 Q: **Why EDN as the specification notation?**
 
@@ -342,7 +372,8 @@ A: Because it is an open and extensible data format
    * simple syntax
    * richer semantics than JSON
      * keywords, sets, tagged values
-   * no parsers needed, read directly into data structures (at least for clojure)
+   * no parsers needed, read directly into data structures (at least for
+     clojure and its host languages)
    * good tooling support with type completion
      * VS Code + Calva
      * IntelliJ + Cursive
@@ -375,7 +406,8 @@ A: Clojure is a perfect match
      * easy to reason about
      * explicit state when needed
    * clojure.spec
-     * validation where and when it's needed
+     * flexible validation where and when it's needed
+     * open for custom extensions of the data
    * multiple value dispatch for export plugins
 
 
@@ -415,6 +447,7 @@ structure of the data model Overarch cares about and acts on.
 
 ![Overview of the Data Model of Overarch](/doc/images/overarch_dataModelOverview.svg)
 
+
 ### Remarks
 Abstract elements in the logical data model, denoted by the (A) in the class,
 are just a way to structure the logical data model and to reduce redundancy
@@ -426,3 +459,10 @@ A *ref* to an *identifiable element* could be used anywhere, where this element 
 pull model elements into a view, but they could also be used in the model
 itself, e.g. to split the model of a huge system into different files.
 
+
+Ideas
+-----
+This section collects ideas that came to my mind.
+
+* Inference on model information e.g. with core logic
+* Consistence checks and reports
