@@ -184,7 +184,8 @@ A:
 
 Q: **Shall relations be automatically included in a view, when the participating components are included?**
 
-   That would make the specification of the views much shorter but relations may be included, that should not be shown in the view. If there has to be an
+   That would make the specification of the views much shorter but relations
+   may be included, that should not be shown in the view. If there has to be an
    exclude mechanism, the usability of automatic inclusion would shrink much.
 
 A: 
@@ -195,14 +196,28 @@ Q: **Shall it be possible to model subcomponents, components that contain compon
    That would require a component boundary and rules, when to render the
    component boundary in the context of a component diagram.
 
-A: 
+A: Deeper levels than components are not supported in the architecture models.
+    
+   The class model can be used to model packages, interfaces and classes.
+   So a class view provides a way to show more detail than a component view.
+
+   On the other hand, components do not have to be all on the same abstraction
+   level. If you model components on different levels of abstraction, they can
+   be shown together with their relations in a component view.
 
 
-Q: **How can architecture patterns like hexagonal or layered architectures be modelled and visualized appropriately within the C4 models?**
+Q: **How can methods like domain driven design or architecture patterns like hexagonal architecture be modelled and visualized appropriately within Overarch?**
 
-A: Each container would contain components with the responsibilities and
+A: Concepts and patterns like the ones from Domain Driven Design can be
+   modelled as concepts and rendered as a glossary or a concept map.
+
+   For architecture patterns a generic or sample instance of the architecture
+   can be modeled as a system in the architecture model.
+   Each container would contain components with the responsibilities and
    dependencies as specified by the given architecture. This is perfectly
-   possible in the current C4 model (see [hexagonal](/models/hexagonal/)).
+   possible in the current C4 model (see [DDD example](/models/ddd/)).
+
+   The same approach would be possible e.g. for deployment blueprints.
 
 
 Q: **Should names be generated from ids if missing?**
