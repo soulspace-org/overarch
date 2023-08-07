@@ -51,6 +51,14 @@
                  :name "exports.plantuml"
                  :desc "Contains the implementation of the PlantUML export."}
                 {:el :component
+                 :id :overarch/exports-markdown
+                 :name "exports.markdown"
+                 :desc "Contains the implementation of the Markdown export."}
+                {:el :component
+                 :id :overarch/exports-graphviz
+                 :name "exports.graphviz"
+                 :desc "Contains the implementation of the Graphviz export."}
+                {:el :component
                  :id :overarch/exports-json
                  :name "exports.json"
                  :desc "Contains the implementation of the JSON export."}
@@ -127,6 +135,42 @@
   {:el :rel
    :id :overarch/exports-plantuml-calls-view
    :from :overarch/exports-plantuml
+   :to :overarch/view
+   :name "calls"
+   :desc "view queries and rendering functions"}
+  {:el :rel
+   :id :overarch/exports-markdown-implements-export
+   :from :overarch/exports-markdown
+   :to :overarch/export
+   :name "implements"
+   :desc "export functions for Markdown representations"}
+  {:el :rel
+   :id :overarch/exports-markdown-accesses-model
+   :from :overarch/exports-markdown
+   :to :overarch/core
+   :name "queries"
+   :desc "model and views"}
+  {:el :rel
+   :id :overarch/exports-markdown-calls-view
+   :from :overarch/exports-markdown
+   :to :overarch/view
+   :name "calls"
+   :desc "view queries and rendering functions"}
+  {:el :rel
+   :id :overarch/exports-graphviz-implements-export
+   :from :overarch/exports-graphviz
+   :to :overarch/export
+   :name "implements"
+   :desc "export functions for GraphViz diagrams"}
+  {:el :rel
+   :id :overarch/exports-graphviz-accesses-model
+   :from :overarch/exports-graphviz
+   :to :overarch/core
+   :name "queries"
+   :desc "model and views"}
+  {:el :rel
+   :id :overarch/exports-graphviz-calls-view
+   :from :overarch/exports-graphviz
    :to :overarch/view
    :name "calls"
    :desc "view queries and rendering functions"}
