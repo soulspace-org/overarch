@@ -64,7 +64,11 @@ The subject area to which a user applies a program is the domain of the software
   {:el :concept
    :id :ddd/c-entities
    :name "Entities"
-   :desc ""}
+   :desc 
+"Objects in the domain model which are defined by their identity rather than
+by their state. For example a Person is normally modelled as an entity. It
+represents the same person even when the attributes change. It is also a
+different person, even if it has the same state as another person."}
   {:el :concept
    :id :ddd/c-factories
    :name "Factories"
@@ -128,8 +132,9 @@ bounded context to connect all the activities of the team with the software."}
   {:el :concept
    :id :ddd/c-value-objects
    :name "Value Objects"
-   :desc ""}
-
+   :desc
+"An object in the domain model, which has no conceptional identity but are
+identified by their state. Value objects should be modelled as immutable."}
   ;;
   ;; Relations
   ;;
@@ -401,4 +406,5 @@ bounded context to connect all the activities of the team with the software."}
    :id :ddd/application-logic-sends-outgoing-domain-events
    :from :ddd/application-logic
    :to :ddd/outgoing-domain-events
-   :name "sends domain events to"}}
+   :name "sends domain events to"}
+}
