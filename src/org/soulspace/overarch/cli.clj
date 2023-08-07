@@ -28,7 +28,7 @@
   [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
    ["-e" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger export" :default false]
-   ["-f" "--format FORMAT" "Export format (json, markdown, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
+   ["-f" "--format FORMAT" "Export format (graphviz, json, markdown, plantuml, structurizr)" :default :plantuml :default-desc "plantuml" :parse-fn keyword]
    [nil  "--model-info" "Returns infos for the loaded model" :default false] 
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
 ;   [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
