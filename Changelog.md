@@ -6,6 +6,7 @@ Version 0.4.0
 * added concept view for concept maps
 * added graphviz export for concept view
 * updated logical data model to incorporate enhancements
+* enhanced example models
 * updated and enhanced usage documentation
 * updated design document
 
