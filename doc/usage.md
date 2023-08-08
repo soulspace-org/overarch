@@ -597,6 +597,10 @@ The concept view can be exported as a concept map to a GraphViz *.dot file.
 For GraphViz there are a few Visual Studio Code  extensions available that allow
 previews of the generated Graphviz files. 
 
+The images can be created with the *dot* executable, which resides in the bin
+directory of the GraphViz installation.
+
+
 ### Markdown
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
@@ -627,7 +631,7 @@ Options:
   -m, --model-dir DIRNAME      models    Model directory
   -e, --export-dir DIRNAME     export    Export directory
   -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (json, markdown, plantuml, structurizr)
+  -f, --format FORMAT          plantuml  Export format (graphviz, json, markdown, plantuml, structurizr)
       --model-info                       Returns infos for the loaded model
       --plantuml-list-sprites            Lists the loaded PlantUML sprites
       --debug                            Print debug messages

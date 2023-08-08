@@ -27,6 +27,7 @@ Features
 * models and views as data
   * C4 models and views
   * UML use case, state machine and class models and views
+  * Concept model, concept maps and glossaries
   * separation of models and views
   * hierarchical models and element references
   * view specific customization of model elements
@@ -314,7 +315,7 @@ Options:
   -m, --model-dir DIRNAME      models    Model directory
   -e, --export-dir DIRNAME     export    Export directory
   -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (json, markdown, plantuml, structurizr)
+  -f, --format FORMAT          plantuml  Export format (graphviz, json, markdown, plantuml, structurizr)
       --model-info                       Returns infos for the loaded model
       --plantuml-list-sprites            Lists the loaded PlantUML sprites
       --debug                            Print debug messages
