@@ -17,11 +17,35 @@
 ;;;
 ;;; Rendering
 ;;;
-(defn render-element
+(def element-hierarchy
+  "Hierarchy for elements to render."
+  (-> (make-hierarchy)
+      (derive :system    :architecture-model-element)
+      (derive :container :architecture-model-element)))
+
+(defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
+  (fn [e _ _] (:el e))
+  :hierarchy #'element-hierarchy)
+
+(defmethod render-element :concept
   [e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
+
+(defmethod render-element :person
+  [e options view]
+  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+   (md/p (:desc e))])
+
+(defmethod render-element :architecture-model-element
+  [e options view]
+  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+   (md/p (:desc e))])
+
+(defmethod render-element :rel
+  [e options view]
+  "")
 
 (defn render-view
   "Renders the `view` with markdown according to the given `options`."
@@ -35,7 +59,7 @@
 ;;;
 (def markdown-views
   "Contains the views rendered with markdown."
-  #{:glossary-view})
+  #{:concept-view :glossary-view :context-view})
 
 (defn markdown-view?
   "Returns true, if the view is to be rendered with markdown."
