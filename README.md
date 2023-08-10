@@ -27,7 +27,7 @@ Features
 * models and views as data
   * C4 models and views
   * UML use case, state machine and class models and views
-  * Concept model, concept maps and glossaries
+  * Concept models, concept maps and glossaries
   * separation of models and views
   * hierarchical models and element references
   * view specific customization of model elements
@@ -38,6 +38,10 @@ Features
     * all C4 views (except code view)
     * use case, state machine and class diagrams
     * styling and sprite support
+  * GraphViz
+    * Concept maps
+  * Markdown
+    * Glossary, textual representations of graphical views
   * Structurizr *experimental*
 * watch model directory for changes
 
