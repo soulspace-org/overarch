@@ -109,8 +109,10 @@
      :component-count (count (filter core/component? elements))
      :node-count (count (filter core/node? elements))
      :relation-count (count (filter core/relation? elements))
-     :external-count (count (filter (comp core/model-element?
-                                          core/external?) elements))
+     :external-count (count
+                      (filter
+                       #(and (core/model-element? %) (core/external? %))
+                       elements))
      :unrelated-elements unrelated-elements}))
 
 (defn print-sprite-mappings
