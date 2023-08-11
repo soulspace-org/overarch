@@ -254,7 +254,7 @@
 (defn alias-name
   "Returns a valid PlantUML alias for the namespaced keyword `kw`."
   [kw]
-  (symbol (str (sstr/hyphen-to-camel-case (namespace kw)) "_"
+  (symbol (str (str/replace (sstr/hyphen-to-camel-case (namespace kw)) \. \_) "_"
                (sstr/hyphen-to-camel-case (name kw)))))
 (defn short-name
   "Returns a valid PlantUML alias for the name part of the keyword `kw`."
