@@ -127,4 +127,13 @@
         {:ref :banking/mainframe-banking-system}
         {:ref :banking/internet-banking-system}
         {:ref :banking/internet-banking-concept}]}
+  
+  {:el :concept-view
+   :id :banking/concept-view
+   :title "Concept Map for the Banking System"
+   :ct [{:ref :banking/personal-customer}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
+        {:ref :banking/internet-banking-system}
+        {:ref :banking/internet-banking-concept}]}
   }
