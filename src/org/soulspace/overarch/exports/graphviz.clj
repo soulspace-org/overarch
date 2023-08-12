@@ -11,7 +11,8 @@
            [org.soulspace.overarch.core :as core]
            [org.soulspace.overarch.view :as view]
            [org.soulspace.overarch.export :as exp]
-           [org.soulspace.overarch.io :as oio]))
+           [org.soulspace.overarch.io :as oio]
+           [org.soulspace.overarch.exports.graphviz :as graphviz]))
 
 ;;;
 ;;; Rendering
@@ -42,9 +43,12 @@
 (defn render-layout
   "Renders the layout options for the `view`."
   [view]
-  (let [spec (:spec view)]
+  (let [spec (:spec view)
+        graphviz (:graphviz spec)]
     (flatten [(when (= :left-right (:layout spec))
-                "rankdir= \"LR\"")])))
+                "rankdir=\"LR\"")
+              (when (:engine graphviz)
+                (str "layout=\"" (name (:engine graphviz)) "\""))])))
 
 (defn render-view
   "Renders the `view` with graphviz according to the given `options`."
