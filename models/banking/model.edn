@@ -1,26 +1,53 @@
-#{; concepts
+;;;;
+;;;; Model for the Internet Banking System
+;;;;
+#{;;;
+  ;;; Concept Model
+  ;;;
+  {:el :concept
+   :id :banking/account-concept
+   :name "Account"
+   :desc "Records the transactions of a customer."}
+  {:el :concept
+   :id :banking/bank-concept
+   :name "Bank"
+   :desc "A company providing monetary services for customers."}
   {:el :concept
    :id :banking/internet-banking-concept
    :name "Internet Banking"
    :desc "Describes banking services provided over the internet. Customers can interact with the bank with their computers or mobile devices."}
+  {:el :concept
+   :id :banking/transaction-concept
+   :name "Transaction"
+   :desc "An action done on the account, e.g. a withdrawal or a money transfer."}
 
-  ; actors
+  ;;;
+  ;;; Use Case Model
+  ;;;
+  ;;
+  ;; Actors
+  ;;
   {:el :person
    :id :banking/personal-customer
    :name "Personal Banking Customer"
    :desc "A customer of the bank, with personal banking accounts."}
+  ;;
+  ;; Use Cases
+  ;;
   {:el :use-case
    :id :banking/view-account
    :name "view account"
    :desc "view the account details"
    :level :user-goal}
-
   {:el :use-case
    :id :banking/make-transaction
    :name "transfer money"
    :desc "make a monetary transaction"
    :level :user-goal}
 
+  ;;;
+  ;;; Architecture Model
+  ;;;
   {:el :enterprise-boundary
    :id :banking/big-bank-plc
    :name "Big Bank plc"
@@ -112,9 +139,9 @@
           :name "Backoffice Stuff"
           :desc "Administration and support stuff within the bank."}}}
 
-  ;;
-  ;; Deployment
-  ;;
+  ;;;
+  ;;; Deployment Model
+  ;;;
   {:el :node
    :id :banking/personal-customers-computer
    :name "Customer's Computer"
@@ -213,9 +240,9 @@
    :to :banking/personal-customer
    :name "Sends e-mail to"}
 
- ;;
- ;; Container level relations 
- ;;
+  ;;
+  ;; Container level relations 
+  ;;
   {:el :rel
    :id :banking/personal-customer-uses-web-app
    :from :banking/personal-customer
@@ -267,9 +294,9 @@
    :name "Makes API calls to"
    :tech "XML/HTTPS"}
 
- ;;
- ;; Component level relations
- ;;
+  ;;
+  ;; Component level relations
+  ;;
   {:el :rel
    :id :banking/single-page-app-calls-sign-in-controller
    :from :banking/single-page-app
@@ -339,9 +366,9 @@
    :name "Makes API calls to"
    :tech "XML/HTTPS"}
 
- ;;
- ;; System landscape relations
- ;;
+  ;;
+  ;; System landscape relations
+  ;;
   {:el :rel
    :id :banking/personal-customer-uses-atm
    :from :banking/personal-customer

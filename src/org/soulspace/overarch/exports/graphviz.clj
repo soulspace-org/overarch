@@ -3,15 +3,14 @@
 ;;;;
 (ns org.soulspace.overarch.exports.graphviz
   "Functions to export views to GraphViz."
-  (:require [clojure.set :as set]
-           [clojure.string :as str]
-           [clojure.java.io :as io]
-           [org.soulspace.clj.string :as sstr]
-           [org.soulspace.clj.java.file :as file]
-           [org.soulspace.overarch.core :as core]
-           [org.soulspace.overarch.view :as view]
-           [org.soulspace.overarch.export :as exp]
-           [org.soulspace.overarch.io :as oio]))
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]
+            [org.soulspace.clj.string :as sstr]
+            [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.core :as core]
+            [org.soulspace.overarch.view :as view]
+            [org.soulspace.overarch.export :as exp]
+            [org.soulspace.overarch.exports.graphviz :as graphviz]))
 
 ;;;
 ;;; Rendering
@@ -32,19 +31,22 @@
 
 (defmethod render-element :concept
   [e indent view]
-  [(str (alias-name (:id e)) "[label=\""  (:name e) "\"];")])
+  [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
 (defmethod render-element :rel
   [e indent view]
   [(str (alias-name (:from e)) " -> " (alias-name (:to e))
-        " [label=\""  (:name e) "\"];")])
+        " [label=\"" (:name e) "\"];")])
 
 (defn render-layout
   "Renders the layout options for the `view`."
   [view]
-  (let [spec (:spec view)]
+  (let [spec (:spec view)
+        graphviz (:graphviz spec)]
     (flatten [(when (= :left-right (:layout spec))
-                "rankdir= \"LR\"")])))
+                "rankdir=\"LR\"")
+              (when (:engine graphviz)
+                (str "layout=\"" (name (:engine graphviz)) "\""))])))
 
 (defn render-view
   "Renders the `view` with graphviz according to the given `options`."
