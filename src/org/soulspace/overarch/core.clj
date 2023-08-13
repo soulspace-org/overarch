@@ -8,11 +8,9 @@
 ;;;
 ;;; Schema definitions
 ;;;
-
 ;;
 ;; C4 category definitions
 ;; 
-
 (def context-types
   "Element types of a C4 context view."
   #{:rel :person :system :boundary :enterprise-boundary :context-boundary})
@@ -89,7 +87,6 @@
 ;; 
 ;; General category definitions
 ;;
-
 (def view-types
   "View types."
   (set/union c4-view-types uml-view-types concept-view-types))

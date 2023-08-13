@@ -171,7 +171,7 @@
       (derive :context-boundary    :boundary)))
 
 (comment
-  (collect-technologies (:elements @core/state))
+  ;(collect-technologies (:elements @core/state))
   (elements-in-view (core/get-view @core/state :banking/container-view))
   (technologies-in-view (core/get-view @core/state :banking/container-view))
   )
