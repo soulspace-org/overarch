@@ -25,11 +25,26 @@
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
+(def element-hierarchy
+  "Hierarchy for elements to render."
+  (-> (make-hierarchy)
+      (derive :system    :architecture-model-element)
+      (derive :container :architecture-model-element)))
+
 (defmulti render-element
   "Renders an element `e` in the `view` with markdown according to the given `options`."
-  (fn [e _ _] (:el e)))
+  (fn [e _ _] (:el e))
+  :hierarchy #'element-hierarchy)
 
 (defmethod render-element :concept
+  [e indent view]
+  [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
+
+(defmethod render-element :architecture-model-element
+  [e indent view]
+  [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
+
+(defmethod render-element :person
   [e indent view]
   [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
