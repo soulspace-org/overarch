@@ -26,6 +26,26 @@
    [:component-view :system]          :system-boundary
    [:component-view :container]       :container-boundary})
 
+
+(defn include-criteria?
+  "Returns true, if the `view` should include elements selected by criteria."
+  [view]
+  )
+
+(defn include-relations?
+  "Returns true, if the `view` should include the relations to the shown elements."
+  [view]
+  )
+
+(defn include-related?
+  "Returns true, if the `view` should include the elements for the shown relations."
+  [view])
+
+(defn include-transitive?
+  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
+  [view]
+  )
+
 ;;;
 ;;; Context based content filtering
 ;;;
@@ -135,14 +155,15 @@
        (remove nil?)
        (into #{})))
        
-
 (defn relations-for-view
   [view]
   (let [view-elements (elements-in-view view)
-        relations (core/get-model-elements)]))
-
+        relations (core/get-model-elements)]
     ; TODO
-    
+    ))
+
+
+; TODO Replace functions above with the functions below.
 (defn specified-elements
   "Returns the collection of model elements (without relations) specified in this `view`.
 When the view is rendered hierachically, additional, not directly specified elements may be rendered."
@@ -153,6 +174,8 @@ When the view is rendered hierachically, additional, not directly specified elem
   ([view]
    (specified-relations view (specified-elements view)))
   ([view elements]
+   (let [element-ids (core/id-set elements)]
+     )
    ))
    
 (defn all-specified
@@ -173,6 +196,8 @@ When the view is rendered hierachically, additional, not directly specified elem
   "Returns the collection of relations rendered in this `view `."
   ([view])
   ([view elements]
+   (let [element-ids (core/id-set elements)]
+     )
    ))
 
 (defn all-rendered
