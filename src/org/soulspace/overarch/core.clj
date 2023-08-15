@@ -323,6 +323,13 @@
 ;;
 ;; Accessors
 ;;
+(defn id-set
+  "Returns a set of id's for the elements in `coll`."
+  [coll]
+  (->> coll
+       (map :id)
+       (remove nil?)
+       (into #{})))
 
 (defn views
   "Filters the given collection of elements `coll` for views."
