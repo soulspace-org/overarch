@@ -28,8 +28,10 @@
 (def element-hierarchy
   "Hierarchy for elements to render."
   (-> (make-hierarchy)
-      (derive :system    :architecture-model-element)
-      (derive :container :architecture-model-element)))
+      (derive :enterprise-boundary :architecture-model-element)
+      (derive :context-boundary    :architecture-model-element)
+      (derive :system              :architecture-model-element)
+      (derive :container           :architecture-model-element)))
 
 (defmulti render-element
   "Renders an element `e` in the `view` with markdown according to the given `options`."
