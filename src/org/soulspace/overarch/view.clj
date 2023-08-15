@@ -19,7 +19,6 @@
    :glossary-view         core/glossary-view-element?
    :concept-view          core/concept-view-element?})
    
-
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
   {[:container-view :system]          :system-boundary
@@ -30,21 +29,22 @@
 (defn include-criteria?
   "Returns true, if the `view` should include elements selected by criteria."
   [view]
-  )
+  (map? (get-in view [:spec :include])))
 
 (defn include-relations?
   "Returns true, if the `view` should include the relations to the shown elements."
   [view]
-  )
+  (= :relations (get-in view [:spec :include])))
 
-(defn include-related?
-  "Returns true, if the `view` should include the elements for the shown relations."
-  [view])
+;(defn include-related?
+;  "Returns true, if the `view` should include the elements for the shown relations."
+;  [view]
+;  (= :related (get-in view [:spec :include])))
 
-(defn include-transitive?
-  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
-  [view]
-  )
+;(defn include-transitive?
+;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
+;  [view]
+;  (= :transitive (get-in view [:spec :include])))
 
 ;;;
 ;;; Context based content filtering
@@ -76,7 +76,6 @@
 ;;;
 ;;; Rendering functions
 ;;;
-
 (defn element-to-render
   "Returns the model element to be rendered in the context of the view."
   [view-type e]
@@ -105,7 +104,6 @@
         to   (core/resolve-ref (:to rel))]))
   ; TODO promote relations to higher levels?
   
-
 (defn elements-to-render
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
@@ -167,7 +165,8 @@
 (defn specified-elements
   "Returns the collection of model elements (without relations) specified in this `view`.
 When the view is rendered hierachically, additional, not directly specified elements may be rendered."
-  [view])
+  [view]
+  )
 
 (defn specified-relations
   "Returns the collection of relations specified in this `view `."
