@@ -17,8 +17,8 @@
    :state-machine-view    core/state-machine-view-element?
    :class-view            core/class-view-element?
    :glossary-view         core/glossary-view-element?
-   :concept-view          core/concept-view-element?
-   })
+   :concept-view          core/concept-view-element?})
+   
 
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
@@ -82,9 +82,9 @@
   (let [view-type (:el view)
         rendered? (render-predicate view-type)
         from (core/resolve-ref (:from rel))
-        to   (core/resolve-ref (:to rel))]
+        to   (core/resolve-ref (:to rel))]))
   ; TODO promote relations to higher levels?
-  ))
+  
 
 (defn elements-to-render
   "Returns the list of elements to render from the view
@@ -133,16 +133,56 @@
        (elements-in-view)
        (map :tech)
        (remove nil?)
-       (into #{})
-       ))
+       (into #{})))
+       
 
 (defn relations-for-view
   [view]
   (let [view-elements (elements-in-view view)
-        relations (core/get-model-elements)]
+        relations (core/get-model-elements)]))
 
     ; TODO
-    ))
+    
+(defn specified-elements
+  "Returns the collection of model elements (without relations) specified in this `view`.
+When the view is rendered hierachically, additional, not directly specified elements may be rendered."
+  [view])
+
+(defn specified-relations
+  "Returns the collection of relations specified in this `view `."
+  ([view]
+   (specified-relations view (specified-elements view)))
+  ([view elements]
+   ))
+   
+(defn all-specified
+  "Returns the collection of model elements and relations specified in this `view `."
+  [view]
+  (let [elements (specified-elements view)
+        relations (specified-relations view elements)]
+    {:specified-elements elements
+     :specified-relations relations}))
+
+(defn rendered-elements
+  "Returns the collection of model elements (without relations) rendered in this `view`.
+When the view is rendered hierachically, additional, not directly specified elements may be rendered."
+  [view]
+  )
+
+(defn rendered-relations
+  "Returns the collection of relations rendered in this `view `."
+  ([view])
+  ([view elements]
+   ))
+
+(defn all-rendered
+  "Returns the collection of model elements and relations rendered in this `view `."
+  [view]
+  (let [elements (rendered-elements view)
+        relations (rendered-relations view elements)]
+    {:rendered-elements elements
+     :rendered-relations relations}))
+
 
 
 ; general
@@ -173,5 +213,5 @@
 (comment
   ;(collect-technologies (:elements @core/state))
   (elements-in-view (core/get-view @core/state :banking/container-view))
-  (technologies-in-view (core/get-view @core/state :banking/container-view))
-  )
+  (technologies-in-view (core/get-view @core/state :banking/container-view)))
+  
