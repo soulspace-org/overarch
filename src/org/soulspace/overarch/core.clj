@@ -133,7 +133,7 @@
   [e]
   (and (identifiable-element? e) (not= nil (:from e)) (not= nil (:to e))))
 
-(defn named-relational-element
+(defn named-relational-element?
   "Returns true if the given element `e` is a named relation."
   [e]
   (and (named-element? e) (relational-element? e)))
