@@ -77,7 +77,8 @@
 ;;; Rendering functions
 ;;;
 (defn element-to-render
-  "Returns the model element to be rendered in the context of the view."
+  "Returns the model element to be rendered for element `e` for the `view-type`.
+   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   [view-type e]
   (let [boundary (as-boundary? view-type e)]
     (if boundary
@@ -161,11 +162,29 @@
     ))
 
 
-; TODO Replace functions above with the functions below.
-(defn specified-elements
-  "Returns the collection of model elements (without relations) specified in this `view`.
-When the view is rendered hierachically, additional, not directly specified elements may be rendered."
+;; TODO Replace functions above with the functions below.
+(defn referenced-elements
+  "Returns the collection of referenced elements in the `view`."
   [view]
+  (let [view-type (:el view)
+        coll (:ct view)]
+    (->> coll
+         (map core/resolve-ref)
+         (filter (render-predicate view-type))
+         (map #(element-to-render view-type %)))))
+
+(defn specified-elements
+  "Returns the collection of model elements (without relations) specified in this `view`. 
+ Also includes model elements, which are specified by include selectors in the view.
+ When the view is rendered hierachically, additional, not directly specified elements may be rendered."
+  [view]
+  (let [referenced (referenced-elements view)
+        referenced-model-elements (remove core/relational-element?
+                                          referenced)
+        referenced-relations (filter core/relational-element?
+                                  referenced)
+        ]
+    )
   )
 
 (defn specified-relations
