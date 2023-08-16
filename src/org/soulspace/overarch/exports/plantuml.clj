@@ -483,6 +483,19 @@
         "-|> "
         (alias-name (:to e)))])
 
+(defmethod render-uml-element :package
+  [view indent e]
+  (if (seq (:ct e))
+    (let [children (view/elements-to-render view (:ct e))]
+      (flatten [(str (view/render-indent indent)
+                     "package \"" (view/element-name e)
+                     "\" as " (alias-name (:id e)) " {")
+                (map #(render-uml-element view (+ indent 2) %) children)
+                "}"]))
+    [(str (view/render-indent indent)
+          "package \"" (view/element-name e)
+          "\" as " (alias-name (:id e)))]))
+
 (defmethod render-uml-element :interface
   [view indent e]
   (if (seq (:ct e))
