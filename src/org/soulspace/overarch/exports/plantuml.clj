@@ -515,12 +515,18 @@
    (let [children (view/elements-to-render view (:ct e))]
      (flatten [(str (view/render-indent indent)
                     "interface \"" (view/element-name e)
-                    "\" as " (alias-name (:id e)) " {")
+                    "\" as " (alias-name (:id e))
+                    (when (:stereotype e)
+                      (str " <<" (:stereotype e) ">>"))
+                    " {")
                (map #(render-uml-element view (+ indent 2) %) children)
                (str (view/render-indent indent) "}")]))
    [(str (view/render-indent indent)
          "interface \"" (view/element-name e)
-         "\" as " (alias-name (:id e)) " {}")]))
+         "\" as " (alias-name (:id e))
+         (when (:stereotype e)
+           (str " <<" (:stereotype e) ">>"))
+         " {}")]))
 
 (defmethod render-uml-element :protocol
   [view indent e]
@@ -528,12 +534,18 @@
     (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
                      "protocol \"" (view/element-name e)
-                     "\" as " (alias-name (:id e)) " {")
+                     "\" as " (alias-name (:id e))
+                     (when (:stereotype e)
+                       (str " <<" (:stereotype e) ">>"))
+                     " {")
                 (map #(render-uml-element view (+ indent 2) %) children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
           "protocol \"" (view/element-name e)
-          "\" as " (alias-name (:id e)) " {}")]))
+          "\" as " (alias-name (:id e))
+          (when (:stereotype e)
+            (str " <<" (:stereotype e) ">>"))
+          " {}")]))
 
 (defmethod render-uml-element :enum
   [view indent e]
@@ -541,31 +553,43 @@
     (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
                      "enum \"" (view/element-name e)
-                     "\" as " (alias-name (:id e)) " {")
+                     "\" as " (alias-name (:id e))
+                     (when (:stereotype e)
+                       (str " <<" (:stereotype e) ">>"))
+                     " {")
                 (map #(render-uml-element view (+ indent 2) %) children)
                 (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
           "enum \"" (view/element-name e)
-          "\" as " (alias-name (:id e)) " {}")]))
+          "\" as " (alias-name (:id e))
+          (when (:stereotype e)
+            (str " <<" (:stereotype e) ">>"))
+          " {}")]))
 
 (defmethod render-uml-element :class
   [view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render view (:ct e))]
       (flatten [(str (view/render-indent indent)
-                    (when (:abstract e) "abstract ")
-                    "class \"" (view/element-name e)
+                     (when (:abstract e) "abstract ")
+                     "class \"" (view/element-name e)
                      (when (:generic e)
                        (str "<" (:generic e) ">"))
-                    "\" as " (alias-name (:id e)) " {")
+                     "\" as " (alias-name (:id e))
+                     (when (:stereotype e)
+                       (str " <<" (:stereotype e) ">>"))
+                     " {")
                (map #(render-uml-element view (+ indent 2) %) children)
                (str (view/render-indent indent) "}")]))
     [(str (view/render-indent indent)
           (when (:abstract e) "abstract ")
           "class \"" (view/element-name e)
-                     (when (:generic e)
-                       (str "<" (:generic e) ">"))
-          "\" as " (alias-name (:id e)) " {}")]))
+          (when (:generic e)
+            (str "<" (:generic e) ">"))
+          "\" as " (alias-name (:id e))
+          (when (:stereotype e)
+            (str " <<" (:stereotype e) ">>"))
+          " {}")]))
 
 (defmethod render-uml-element :field
   [view indent e]
@@ -639,6 +663,12 @@
   [(str (view/render-indent indent)
         (alias-name (:to e)) " <|.. "
         (alias-name (:from e)))])
+
+(defmethod render-uml-element :dependency
+  [_ indent e]
+  [(str (view/render-indent indent)
+        (alias-name (:from e)) " ..> "
+        (alias-name (:to e)))])
 
 (defmethod render-uml-element :state-machine
   [view indent e]

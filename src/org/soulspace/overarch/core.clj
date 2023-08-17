@@ -60,7 +60,9 @@
 
 (def class-types
   "Element types of a class view."
-  #{:class :enum :interface :inheritance :implementation :composition :aggregation :association :field :method
+  #{:class :enum :interface
+    :field :method
+    :inheritance :implementation :composition :aggregation :association :dependency
     :package :namespace :stereotype :annotation :protocol})
 
 (def uml-relation-types

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.5.0
+-------------
+* fixed and enhanced class view rendering
+* enhanced example models
+
+
 Version 0.4.0
 -------------
 * added concept view for concept maps
@@ -19,11 +25,13 @@ Version 0.3.0
 * added logical data model for overarch
 * enhanced documentation and examples
 
+
 Version 0.2.0
 -------------
 * added sprite includes for :sprite entries
 * added support for UML use case, state and class views/diagrams
 * enhanced documentation
+
 
 Version 0.1.0
 -------------

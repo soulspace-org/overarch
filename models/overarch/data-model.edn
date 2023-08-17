@@ -315,6 +315,12 @@
           class model."}
 
   {:el :class
+   :id :overarch/dependency
+   :name "ependency"
+   :desc "A dependency relationship between two elements in the
+          class model."}
+
+  {:el :class
    :id :overarch/state-machine
    :name "state-machine"
    :desc "A state machine as root element of the state machine model.
@@ -764,6 +770,14 @@
    :id :overarch/association-is-a-class-model-element
    :to :overarch/class-model-element
    :from :overarch/association}
+  {:el :inheritance
+   :id :overarch/dependency-is-a-relational-element
+   :to :overarch/relational-element
+   :from :overarch/dependency}
+  {:el :inheritance
+   :id :overarch/dependency-is-a-class-model-element
+   :to :overarch/class-model-element
+   :from :overarch/dependency}
   {:el :inheritance
    :id :overarch/field-is-a-named-element
    :to :overarch/named-element
