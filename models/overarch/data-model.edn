@@ -316,7 +316,7 @@
 
   {:el :class
    :id :overarch/dependency
-   :name "ependency"
+   :name "dependency"
    :desc "A dependency relationship between two elements in the
           class model."}
 
