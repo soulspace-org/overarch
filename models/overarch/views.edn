@@ -139,6 +139,7 @@
         {:ref :overarch/composition}
         {:ref :overarch/aggregation}
         {:ref :overarch/association}
+        {:ref :overarch/dependency}
 
         {:ref :overarch/state-machine}
         {:ref :overarch/start-state}
@@ -232,6 +233,8 @@
         {:ref :overarch/aggregation-is-a-class-model-element}
         {:ref :overarch/association-is-a-relational-element}
         {:ref :overarch/association-is-a-class-model-element}
+        {:ref :overarch/dependency-is-a-relational-element}
+        {:ref :overarch/dependency-is-a-class-model-element}
         {:ref :overarch/field-is-a-named-element}
         {:ref :overarch/method-is-a-named-element}
 
@@ -361,6 +364,7 @@
         {:ref :overarch/composition}
         {:ref :overarch/aggregation}
         {:ref :overarch/association}
+        {:ref :overarch/dependency}
 
         ;relations
         {:ref :overarch/identifiable-element-is-a-element}
@@ -394,6 +398,8 @@
         {:ref :overarch/aggregation-is-a-class-model-element}
         {:ref :overarch/association-is-a-relational-element}
         {:ref :overarch/association-is-a-class-model-element}
+        {:ref :overarch/dependency-is-a-relational-element}
+        {:ref :overarch/dependency-is-a-class-model-element}
         {:ref :overarch/field-is-a-named-element}
         {:ref :overarch/method-is-a-named-element}
         ;
