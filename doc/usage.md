@@ -401,6 +401,8 @@ A field is part of the state of a class.
 A method is part of the behaviour of a class or an interface.
 
 #### Function (:function)
+A function is a first class element in functional programming.
+It has input parameters and calculates results.
 
 #### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
