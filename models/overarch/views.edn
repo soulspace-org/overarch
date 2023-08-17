@@ -6,7 +6,7 @@
   ;;; Use Case Views
   ;;;
   {:el :use-case-view
-   :id :overarch/use-case-view
+   :id :overarch/overarch-use-case-view
    :spec {:layout :left-right}
    :title "Use Case View of Overarch"
    :ct [;; actors
@@ -39,7 +39,7 @@
   ;;; Architecture Views
   ;;;
   {:el :context-view
-   :id :overarch/context-view
+   :id :overarch/overarch-context-view
    :title "Context View of Overarch"
    :ct [;; actors
         {:ref :overarch/modeller}
@@ -51,7 +51,7 @@
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-uses-overarch}]}
   {:el :container-view
-   :id :overarch/container-view
+   :id :overarch/overarch-container-view
    :title "Container View of Overarch"
    :ct [;; actors
         {:ref :overarch/modeller}
@@ -63,7 +63,7 @@
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-uses-overarch-cli}]}
   {:el :component-view
-   :id :overarch/component-view
+   :id :overarch/overarch-component-view
    :title "Component View of Overarch"
    :ct [;; actors
         {:ref :overarch/modeller}
