@@ -131,9 +131,20 @@
   {:el :concept-view
    :id :banking/concept-view
    :title "Concept Map for the Banking System"
-   :ct [{:ref :banking/personal-customer}
+   :ct [;; concepts
+        {:ref :banking/account-concept}
+        {:ref :banking/transaction-concept}
+        ;; actors
+        {:ref :banking/personal-customer}
+        ;; systems
         {:ref :banking/email-system}
         {:ref :banking/mainframe-banking-system}
         {:ref :banking/internet-banking-system}
-        {:ref :banking/internet-banking-concept}]}
+        {:ref :banking/internet-banking-concept}
+        ;; relations
+        {:ref :banking/account-reflects-transaction}
+        {:ref :banking/internet-banking-system-implements-internet-banking}
+        {:ref :banking/personal-customer-has-account}
+        {:ref :banking/personal-customer-performs-transaction}
+        {:ref :banking/personal-customer-uses-internet-banking-system}]}
   }

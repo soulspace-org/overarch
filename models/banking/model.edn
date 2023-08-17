@@ -204,6 +204,34 @@
                  :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
                  :tech "Datomic"}}}}}
 
+  ;;;
+  ;;; Relations
+  ;;;
+  ;;
+  ;; Concept relations
+  ;;
+  {:el :rel
+   :id :banking/account-reflects-transaction
+   :from :banking/account-concept
+   :to :banking/transaction-concept
+   :name "reflects"}
+  {:el :rel
+   :id :banking/internet-banking-system-implements-internet-banking
+   :from :banking/internet-banking-system
+   :to :banking/internet-banking-concept
+   :name "implements"}
+  {:el :rel
+   :id :banking/personal-customer-has-account
+   :from :banking/personal-customer
+   :to :banking/account-concept
+   :name "has"}
+  {:el :rel
+   :id :banking/personal-customer-performs-transaction
+   :from :banking/personal-customer
+   :to :banking/transaction-concept
+   :name "performs"}
+  
+  
   ;;
   ;; Use case relations
   ;;
