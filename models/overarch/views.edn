@@ -77,15 +77,25 @@
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-starts-cli}
         {:ref :overarch/cli-loads-data}
-        {:ref :overarch/cli-calls-exports}
-        {:ref :overarch/exports-plantuml-implements-export}
-        {:ref :overarch/exports-plantuml-accesses-model}
-        {:ref :overarch/exports-plantuml-calls-view}
-        {:ref :overarch/exports-plantuml-calls-io}
+        {:ref :overarch/cli-calls-export}
+        {:ref :overarch/cli-calls-render}
         {:ref :overarch/exports-json-implements-export}
         {:ref :overarch/exports-json-calls-io}
         {:ref :overarch/exports-structurizr-implements-export}
         {:ref :overarch/exports-structurizr-accesses-model}
+        {:ref :overarch/render-graphviz-implements-render}
+        {:ref :overarch/render-graphviz-accesses-model}
+        {:ref :overarch/render-graphviz-calls-view}
+;        {:ref :overarch/render-graphviz-calls-io}
+        {:ref :overarch/render-markdown-implements-render}
+        {:ref :overarch/render-markdown-accesses-model}
+        {:ref :overarch/render-markdown-calls-view}
+;        {:ref :overarch/render-markdown-calls-io}
+        {:ref :overarch/render-plantuml-implements-render}
+        {:ref :overarch/render-plantuml-accesses-model}
+        {:ref :overarch/render-plantuml-calls-view}
+        {:ref :overarch/render-plantuml-calls-io}
+
         {:ref :overarch/view-queries-model}]}
 
   ;;
