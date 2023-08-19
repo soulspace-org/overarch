@@ -12,6 +12,7 @@ Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
 conversion of the data to JSON.
 
+[Use Cases of Overarch](/doc/images/overarch_overarchUseCaseView.svg)
 
 Modelling
 ---------

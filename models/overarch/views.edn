@@ -18,10 +18,11 @@
         {:ref :overarch/uc-define-views}
         {:ref :overarch/uc-export-model}
         {:ref :overarch/uc-export-json}
-        {:ref :overarch/uc-export-plantuml}
-        {:ref :overarch/uc-export-markdown}
-        {:ref :overarch/uc-export-graphviz}
         {:ref :overarch/uc-export-structurizr}
+        {:ref :overarch/uc-render-views}
+        {:ref :overarch/uc-render-plantuml}
+        {:ref :overarch/uc-render-markdown}
+        {:ref :overarch/uc-render-graphviz}
 
         ;; relations
         {:ref :overarch/modeller-wants-to-model-system}
@@ -29,11 +30,12 @@
         {:ref :overarch/modeller-wants-to-define-views}
         {:ref :overarch/uc-define-views-uses-editor}
         {:ref :overarch/modeller-wants-to-export-model}
+        {:ref :overarch/modeller-wants-to-render-views}
         {:ref :overarch/uc-export-json-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-plantuml-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-markdown-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-graphviz-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}]}
+        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-render-graphviz-extends-uc-render-views :direction :up}
+        {:ref :overarch/uc-render-markdown-extends-uc-render-views :direction :up}
+        {:ref :overarch/uc-render-plantuml-extends-uc-render-views :direction :up}]}
   
   ;;;
   ;;; Architecture Views
