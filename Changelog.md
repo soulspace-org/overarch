@@ -6,7 +6,9 @@ Version 0.6.0
 * refactored exports, distinguish between
   * exports of model data (to JSON, structurizr)
   * rendering of views (e.g. to PlantUML)
-* updated design document
+* changed command line options to reflect the refactoring
+* added render-format 'all' to generate all formats in one go
+* updated usage and design documentation and diagrams
 
 
 Version 0.5.0
