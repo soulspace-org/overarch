@@ -462,7 +462,7 @@ The diagram below shows the current structure of the code. The components
 map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
 
-![Component View of Overarch](/doc/images/overarch_componentView.svg)
+![Component View of Overarch](/doc/images/overarch_overarchComponentView.svg)
 
 
 Data Model
