@@ -10,7 +10,7 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.export :as exp]
+            [org.soulspace.overarch.render :as rndr]
             [org.soulspace.overarch.io :as oio]))
 
 ;;;
@@ -243,7 +243,7 @@
   [_ diagram]
   (:el diagram))
 
-(defmulti render-view
+(defmulti render-plantuml-view
   "Renders the diagram with PlantUML."
   renderer
   :hierarchy #'view-hierarchy)
@@ -879,7 +879,7 @@
   [view]
   (when (:title view) (str "title " (:title view))))
 
-(defmethod render-view :c4-view
+(defmethod render-plantuml-view :c4-view
   [options view]
   (let [children (view/elements-to-render view)]
     ;(user/data-tapper "resolved" children)
@@ -909,7 +909,7 @@
                 (linetypes (:linetype spec)))])))
 
 
-(defmethod render-view :uml-view
+(defmethod render-plantuml-view :uml-view
   [options view]
   (let [children (view/elements-to-render view)]
     (flatten [(str "@startuml " (alias-name (:id view)))
@@ -919,7 +919,7 @@
               "@enduml"])))
 
 ;;;
-;;; PlantUML file export
+;;; PlantUML Rendering dispatch
 ;;;
 (def plantuml-views
   "Contains the views to be rendered with plantuml."
@@ -932,22 +932,22 @@
   [view]
   (contains? plantuml-views (:el view)))
 
-(defmethod exp/export-file :plantuml
-  [options view]
-  (let [dir-name (str (:export-dir options) "/plantuml/" (namespace (:id view)))]
+(defmethod rndr/render-file :plantuml
+  [format options view]
+  (let [dir-name (str (:render-dir options) "/plantuml/" (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
                      (name (:id view)) ".puml"))))
 
-(defmethod exp/export-view :plantuml
-  [options view]
-  (with-open [wrt (io/writer (exp/export-file options view))]
+(defmethod rndr/render-view :plantuml
+  [format options view]
+  (with-open [wrt (io/writer (rndr/render-file format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-view options view))))))
+      (println (str/join "\n" (render-plantuml-view options view))))))
 
-(defmethod exp/export :plantuml
-  [options]
+(defmethod rndr/render :plantuml
+  [format options]
   (doseq [view (core/get-views)]
     (when (plantuml-view? view)
-      (exp/export-view options view))))
+      (rndr/render-view format options view))))
 

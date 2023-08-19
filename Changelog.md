@@ -1,6 +1,14 @@
 Changelog
 =========
 
+Version 0.6.0
+-------------
+* refactored exports, distinguish between
+  * exports of model data (to JSON, structurizr)
+  * rendering of views (e.g. to PlantUML)
+* updated design document
+
+
 Version 0.5.0
 -------------
 * fixed and enhanced class view rendering

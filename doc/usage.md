@@ -546,13 +546,9 @@ key           | type    | values                   | description
 :legend-text  | string  |                          | meaningful text to show in legend
 
 
-Exports
--------
 
-### JSON
-The model and view descriptions can be exported to JSON to make their content
-available to languages for which no EDN implementation exists.
-The export converts each EDN file to JSON.
+Renderings
+----------
 
 ### PlantUML
 The specified views C4 architecture and UML viewscan be exported to PlantUML
@@ -607,11 +603,22 @@ directory of the GraphViz installation.
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
 
+
+Exports
+-------
+
+### JSON
+The model and view descriptions can be exported to JSON to make their content
+available to languages for which no EDN implementation exists.
+The export converts each EDN file in the model directory to JSON.
+
+
 ### Structurizr (*experimental*)
 Structurizr is a tool set created by Simon Brown.
 The Structurizr export creates a workspace with the loaded model and views.
+
 As Structurizr currently only supports the C4 architecture model and views,
-only these will be included in the Structurizr workspace.
+only these elements will be included in the Structurizr workspace.
 
 
 Command Line Interface

@@ -78,6 +78,9 @@
   "UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
+;;
+;; Concept category definitions
+;;
 (def concept-types
   "Element types of a glossary view."
   (set/union container-types #{:concept}))

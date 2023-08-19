@@ -1,16 +1,19 @@
 Design
 ======
 
-
 Situation
 ---------
-Currently we create architecture diagrams with the C4 models and PlantUML.
-The various diagrams contain duplicate model information and we don't have a single model description. Changes are made in specific diagrams and are missing from others.
+When you architecture diagrams with the C4 models and PlantUML, the various diagrams contain duplicate model information and there isn't a single model description. Changes are made in specific diagrams and are missing from others.
 
-The syntax of the PlantUML is inconsistent, brittle and errors are rendered
+The DSL of C4/PlantUML is not very consistent and errors are rendered
 in the generated image and are often not very helpful. On the other hand,
 PlantUML in combination with GraphViz is a pragmatic option to generate
 C4 architecture diagrams.
+
+Therefore a model description as data and views specification based on this model would solve the problem of duplicated information. The model description
+as pure data would also solve the problem of DSL parsers and would make the
+model information reusable.
+
 
 ### Existing Tools
 
@@ -75,7 +78,7 @@ Design Goals
 * Holistic model of the system under description
 * Reduced duplication of information
 * Extensibility of the data format
-* Extensibility of the exports
+* Extensibility of the renderings and exports
 
 
 Design Questions and Answers
@@ -381,6 +384,19 @@ A: The model should contain information like names and descriptions for most
    by elements of the architecture.
 
 
+Q: **Should exporting and rendering be separated in the code?**
+
+A: Exporting of the model and view information into other formats (e.g. JSON or
+   structurizr) and rendering of the views to some target formats (e.g.
+   PlantUML or markdown) are currently (v0.5.0) handled by the same multi methods. With more rendering and export formats, specifying the formats and
+   dispatching to multiple rendering and export formats will be problematic and complected with the current implementation. For example it is useful to
+   render the views to the different formats in one go without exporting the data to JSON and structurizr in the same invocation.
+
+   To decomplect the specifications and transformations, exports and rendering
+   should be separated into different modules/methods and specified with
+   different command line options.
+
+
 Q: **Why EDN as the specification notation?**
 
 A: Because it is an open and extensible data format
@@ -479,7 +495,7 @@ Ideas
 -----
 This section collects ideas that may make sense to implement in the future.
 
-* Consistence checks and reports
+* Consistency checks and reports
 * Inference on model information e.g. with
   * core.logic
   * Hyperdimensional Vectors
