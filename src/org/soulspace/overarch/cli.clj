@@ -22,6 +22,7 @@
 (def appname "overarch")
 (def description
   "Overarch CLI Exporter
+   
    Reads your model and view specifications and renders or exports
    into the specified formats.")
 
@@ -51,8 +52,7 @@
   ([name description summary]
    (str/join "\n\n"
              [description
-              (str "Usage: java --jar " name ".jar [options].")
-              ""
+              (str "Usage: java -jar " name ".jar [options].")
               "Options:"
               summary])))
 
