@@ -1,7 +1,7 @@
 ;;;;
 ;;;; PlantUML rendering and export
 ;;;;
-(ns org.soulspace.overarch.exports.plantuml
+(ns org.soulspace.overarch.render.plantuml
   "Functions to export views to PlantUML."
   (:require [clojure.set :as set]
             [clojure.string :as str]

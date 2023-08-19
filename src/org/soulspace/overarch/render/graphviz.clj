@@ -1,7 +1,7 @@
 ;;;;
 ;;;; GraphViz rendering and export
 ;;;;
-(ns org.soulspace.overarch.exports.graphviz
+(ns org.soulspace.overarch.render.graphviz
   "Functions to export views to GraphViz."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
@@ -10,7 +10,7 @@
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
             [org.soulspace.overarch.render :as rndr]
-            [org.soulspace.overarch.exports.graphviz :as graphviz]))
+            [org.soulspace.overarch.render.graphviz :as graphviz]))
 
 ;;;
 ;;; Rendering

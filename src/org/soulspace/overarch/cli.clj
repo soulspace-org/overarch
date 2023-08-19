@@ -9,10 +9,10 @@
             ; must be loaded here for registering of the multimethods
             ; require dynamically?
             [org.soulspace.overarch.exports.json :as json]
-            [org.soulspace.overarch.exports.graphviz :as graphviz]
-            [org.soulspace.overarch.exports.markdown :as markdown]
             [org.soulspace.overarch.exports.structurizr :as structurizr]
-            [org.soulspace.overarch.exports.plantuml :as puml])
+            [org.soulspace.overarch.render.graphviz :as graphviz]
+            [org.soulspace.overarch.render.markdown :as markdown]
+            [org.soulspace.overarch.render.plantuml :as puml])
   (:gen-class))
 
 ;;;
