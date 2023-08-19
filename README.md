@@ -345,6 +345,9 @@ Here are my current plans to enhance overarch in the next releases.
   * automatic includes of elements e.g.
     * include relations for referenced elements
     * includes based on selection criteria
+* provide relations between elements of the different models to model
+  traceability information (e.g. from use cases to the containers implementing
+  them or from domain concepts to domain model elements)
 * markdown export for the textual information in views also rendered as diagrams
 * theme support for diagrams
 
