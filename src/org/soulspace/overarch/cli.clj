@@ -90,6 +90,28 @@
 ;;;
 ;;; Handler logic
 ;;;
+(def export-formats
+  "Contains the supported render formats."
+  #{:json :structurizr})
+
+(defmethod exp/export :all
+  [format options]
+  (doseq [current-format export-formats]
+    (when (:debug options)
+      (println "Exporting " current-format))
+    (exp/export current-format options)))
+
+(def render-formats
+  "Contains the supported render formats."
+  #{:graphviz :markdown :plantuml})
+
+(defmethod rndr/render :all
+  [format options]
+  (doseq [current-format render-formats]
+    (when (:debug options)
+      (println "Rendering " current-format))
+    (rndr/render current-format options)))
+
 (defn model-info
   "Reports information about the model and views."
   [options]
@@ -145,8 +167,11 @@
     ; TODO loop recur this update-and-export! as handler
     (hawk/watch! [{:paths [(:model-dir options)]
                    :handler (fn [ctx e]
-;                              (println "event: " e)
-;                              (println "context: " ctx)
+                              (when (:debug options)
+                                (println "Filesystem watch:")
+                                (println "event: " e)
+                                (println "context: " ctx)
+                                (println options))
                               (update-and-dispatch! options))}])
     (while true
       (Thread/sleep 5000))))
@@ -176,6 +201,7 @@
   (-main "--debug" "--render-format" "plantuml")
   (-main "--debug" "--render-format" "markdown")
   (-main "--debug" "--render-format" "graphviz")
+  (-main "--debug" "--render-format" "all")
   (-main "--debug" "--export-format" "json")
   (-main "--model-dir" "models/banking" "--export-format" "structurizr")
   (-main "--model-info")
