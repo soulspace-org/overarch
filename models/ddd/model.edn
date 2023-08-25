@@ -10,11 +10,21 @@
   {:el :concept
    :id :ddd/c-aggregates
    :name "Aggregates"
-   :desc ""}
+   :desc 
+"Aggregates are collections of entities and value objects with their
+associations and form a transactional unit. Aggregates are referenced as a
+whole by an aggregate root entity, parts of the aggregate must not be
+referenced from outside. The aggregate root is responsible for the enforcement
+of the busines rules and invariants of the aggregate."}
   {:el :concept
    :id :ddd/c-anti-corruption-layer
    :name "Anti-Corruption Layer"
-   :desc ""}
+   :desc 
+"The anti-corruption layer is an architectural layer to separate the domain
+model from outside models. It enables the domain model to access the data of
+the outside model as expected by the domain model.
+In a clean architecture, an adapter is the place to implement the anti-
+corruption layer by mapping the outside model to the domain model."}
   {:el :concept
    :id :ddd/c-big-ball-of-mud
    :name "Big Ball of Mud"
@@ -38,7 +48,9 @@ Statements about a model can only be understood in a context."}
   {:el :concept
    :id :ddd/c-context-map
    :name "Context Map"
-   :desc ""}
+   :desc 
+" The context map provides an overview for all models and their boundaries and
+interfaces."}
   {:el :concept
    :id :ddd/c-continuous-integration
    :name "Continuous Integration"
@@ -78,8 +90,8 @@ different person, even if it has the same state as another person."}
    :name "Generic Subdomains"
    :desc ""}
   {:el :concept
-   :id :ddd/c-hexagonal-architecture
-   :name "Hexagonal Architecture"
+   :id :ddd/c-clean-architecture
+   :name "Clean Architecture"
    :desc ""}
   {:el :concept
    :id :ddd/c-layered-archtecture
@@ -213,7 +225,7 @@ identified by their state. Value objects should be modelled as immutable."}
   {:el :rel
    :id :ddd/c-model-driven-design-isolate-with-c-hexagonal-architecture
    :from :ddd/c-model-driven-design
-   :to :ddd/c-hexagonal-architecture
+   :to :ddd/c-clean-architecture
    :name "isolate domain expressions with"
    :desc ""}
   {:el :rel
