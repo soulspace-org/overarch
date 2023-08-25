@@ -12,6 +12,7 @@ Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
 conversion of the data to JSON.
 
+![Use Cases of Overarch](/doc/images/overarch_overarchUseCaseView.svg)
 
 Modelling
 ---------
@@ -546,13 +547,9 @@ key           | type    | values                   | description
 :legend-text  | string  |                          | meaningful text to show in legend
 
 
-Exports
--------
 
-### JSON
-The model and view descriptions can be exported to JSON to make their content
-available to languages for which no EDN implementation exists.
-The export converts each EDN file to JSON.
+Renderings
+----------
 
 ### PlantUML
 The specified views C4 architecture and UML viewscan be exported to PlantUML
@@ -607,37 +604,46 @@ directory of the GraphViz installation.
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
 
+
+Exports
+-------
+
+### JSON
+The model and view descriptions can be exported to JSON to make their content
+available to languages for which no EDN implementation exists.
+The export converts each EDN file in the model directory to JSON.
+
+
 ### Structurizr (*experimental*)
 Structurizr is a tool set created by Simon Brown.
 The Structurizr export creates a workspace with the loaded model and views.
+
 As Structurizr currently only supports the C4 architecture model and views,
-only these will be included in the Structurizr workspace.
+only these elements will be included in the Structurizr workspace.
 
 
 Command Line Interface
 ----------------------
 
+```
+Overarch CLI Exporter
+   
+  Reads your model and view specifications and renders or exports
+  into the specified formats.
+
 Usage:
+  java -jar overarch.jar [options].
 
-```
-java -jar overarch.jar [options]
-```
-
-Overarch currently supports these options
-
-```
 Options:
 
-  Option                       Default   Description
-
-  -m, --model-dir DIRNAME      models    Model directory
-  -e, --export-dir DIRNAME     export    Export directory
-  -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (graphviz, json, markdown, plantuml, structurizr)
-      --model-info                       Returns infos for the loaded model
-      --plantuml-list-sprites            Lists the loaded PlantUML sprites
-      --debug                            Print debug messages
-  -h, --help                             Print help
+  -m, --model-dir DIRNAME      models  Model directory
+  -r, --render-format FORMAT           Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME     export  Export directory
+  -x, --export-format FORMAT           Export format (json, structurizr)
+  -X, --export-dir DIRNAME     export  Export directory
+  -w, --watch                          Watch model dir for changes and trigger action
+      --model-info                     Returns infos for the loaded model
+      --plantuml-list-sprites          Lists the loaded PlantUML sprites
+  -h, --help                           Print help
+      --debug                          Print debug messages
  ```
-
-

@@ -20,7 +20,7 @@
            (oio/write-json out-file)))))
 
 (defmethod exp/export :json
-  [options]
+  [format options]
   (export-json options))
 
 (comment

@@ -18,10 +18,11 @@
         {:ref :overarch/uc-define-views}
         {:ref :overarch/uc-export-model}
         {:ref :overarch/uc-export-json}
-        {:ref :overarch/uc-export-plantuml}
-        {:ref :overarch/uc-export-markdown}
-        {:ref :overarch/uc-export-graphviz}
         {:ref :overarch/uc-export-structurizr}
+        {:ref :overarch/uc-render-views}
+        {:ref :overarch/uc-render-plantuml}
+        {:ref :overarch/uc-render-markdown}
+        {:ref :overarch/uc-render-graphviz}
 
         ;; relations
         {:ref :overarch/modeller-wants-to-model-system}
@@ -29,11 +30,12 @@
         {:ref :overarch/modeller-wants-to-define-views}
         {:ref :overarch/uc-define-views-uses-editor}
         {:ref :overarch/modeller-wants-to-export-model}
+        {:ref :overarch/modeller-wants-to-render-views}
         {:ref :overarch/uc-export-json-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-plantuml-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-markdown-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-graphviz-extends-uc-export-model :direction :up}
-        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}]}
+        {:ref :overarch/uc-export-structurizr-extends-uc-export-model :direction :up}
+        {:ref :overarch/uc-render-graphviz-extends-uc-render-views :direction :up}
+        {:ref :overarch/uc-render-markdown-extends-uc-render-views :direction :up}
+        {:ref :overarch/uc-render-plantuml-extends-uc-render-views :direction :up}]}
   
   ;;;
   ;;; Architecture Views
@@ -75,15 +77,25 @@
         {:ref :overarch/modeller-models-in-editor}
         {:ref :overarch/modeller-starts-cli}
         {:ref :overarch/cli-loads-data}
-        {:ref :overarch/cli-calls-exports}
-        {:ref :overarch/exports-plantuml-implements-export}
-        {:ref :overarch/exports-plantuml-accesses-model}
-        {:ref :overarch/exports-plantuml-calls-view}
-        {:ref :overarch/exports-plantuml-calls-io}
+        {:ref :overarch/cli-calls-export}
+        {:ref :overarch/cli-calls-render}
         {:ref :overarch/exports-json-implements-export}
         {:ref :overarch/exports-json-calls-io}
         {:ref :overarch/exports-structurizr-implements-export}
         {:ref :overarch/exports-structurizr-accesses-model}
+        {:ref :overarch/render-graphviz-implements-render}
+        {:ref :overarch/render-graphviz-accesses-model}
+        {:ref :overarch/render-graphviz-calls-view}
+;        {:ref :overarch/render-graphviz-calls-io}
+        {:ref :overarch/render-markdown-implements-render}
+        {:ref :overarch/render-markdown-accesses-model}
+        {:ref :overarch/render-markdown-calls-view}
+;        {:ref :overarch/render-markdown-calls-io}
+        {:ref :overarch/render-plantuml-implements-render}
+        {:ref :overarch/render-plantuml-accesses-model}
+        {:ref :overarch/render-plantuml-calls-view}
+        {:ref :overarch/render-plantuml-calls-io}
+
         {:ref :overarch/view-queries-model}]}
 
   ;;

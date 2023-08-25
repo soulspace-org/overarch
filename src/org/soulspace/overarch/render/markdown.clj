@@ -1,18 +1,15 @@
 ;;;;
 ;;;; Markdown rendering and export
 ;;;;
-(ns org.soulspace.overarch.exports.markdown
+(ns org.soulspace.overarch.render.markdown
   "Functions to export views to markdown."
-  (:require [clojure.set :as set]
-            [clojure.string :as str]
+  (:require [clojure.string :as str]
             [clojure.java.io :as io]
-            [org.soulspace.clj.string :as sstr]
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.io :as oio]))
+            [org.soulspace.overarch.render :as rndr]))
 
 ;;;
 ;;; Rendering
@@ -22,8 +19,12 @@
   (-> (make-hierarchy)
       (derive :enterprise-boundary :architecture-model-element)
       (derive :context-boundary    :architecture-model-element)
+      (derive :system-boundary     :architecture-model-element)
+      (derive :container-boundary  :architecture-model-element)
       (derive :system              :architecture-model-element)
-      (derive :container           :architecture-model-element)))
+      (derive :container           :architecture-model-element)
+      (derive :component           :architecture-model-element)
+      ))
 
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
@@ -49,7 +50,7 @@
   [e options view]
   "")
 
-(defn render-view
+(defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
   [options view]
   (let [children (sort-by :name (view/elements-in-view view))]
@@ -57,33 +58,34 @@
               (map #(render-element % options view) children)])))
 
 ;;;
-;;; Export
+;;; Markdown Rendering dispatch
 ;;;
 (def markdown-views
   "Contains the views rendered with markdown."
-  #{:concept-view :glossary-view :context-view})
+  #{:concept-view :glossary-view
+    :context-view :container-view :component-view :system-landscape-view})
 
 (defn markdown-view?
   "Returns true, if the view is to be rendered with markdown."
   [view]
   (contains? markdown-views (:el view)))
 
-(defmethod exp/export-file :markdown
-  [options view]
-  (let [dir-name (str (:export-dir options) "/markdown/"
+(defmethod rndr/render-file :markdown
+  [format options view]
+  (let [dir-name (str (:render-dir options) "/markdown/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
                      (name (:id view)) ".md"))))
 
-(defmethod exp/export-view :markdown
-  [options view]
-  (with-open [wrt (io/writer (exp/export-file options view))]
+(defmethod rndr/render-view :markdown
+  [format options view]
+  (with-open [wrt (io/writer (rndr/render-file format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-view options view))))))
+      (println (str/join "\n" (render-markdown-view options view))))))
 
-(defmethod exp/export :markdown
-  [options]
+(defmethod rndr/render :markdown
+  [format options]
   (doseq [view (core/get-views)]
     (when (markdown-view? view)
-      (exp/export-view options view))))
+      (rndr/render-view format options view))))

@@ -1,5 +1,5 @@
 (ns org.soulspace.overarch.export
-  "Contains general functions for the export of data.")
+  "Contains general functions for the export of the model data.")
 
 ;;;
 ;;; Export multimethods 
@@ -7,17 +7,13 @@
 
 (defn export-format
   "Returns the export format for the data."
-  ([options]
-   (:format options))
-  ([options _]
-   (:format options)))
+  ([format options]
+   format)
+  ([format options _]
+   format))
 
 (defmulti export-file
-  "Returns the export directory for the format."
-  export-format)
-
-(defmulti export-view
-  "Exports the view in the given format."
+  "Returns the export file for the given format."
   export-format)
 
 (defmulti export

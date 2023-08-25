@@ -1,8 +1,7 @@
 ;;;;
 ;;;; Use Case Model for Overarch
 ;;;;
-#{
-  ;;;
+#{;;;
   ;;; Use Case Model Elements
   ;;;
   {:el :use-case
@@ -26,25 +25,30 @@
    :name "export JSON"
    :desc "Export the model and views to JSON."}
   {:el :use-case
-   :id :overarch/uc-export-plantuml
-   :level :subfunction
-   :name "export PlantUML"
-   :desc "Export the relevant views to PlantUML."}
-  {:el :use-case
-   :id :overarch/uc-export-markdown
-   :level :subfunction
-   :name "export Markdown"
-   :desc "Export the relevant views to Markdown."}
-  {:el :use-case
-   :id :overarch/uc-export-graphviz
-   :level :subfunction
-   :name "export GraphViz"
-   :desc "Export the relevant views to GraphViz."}
-  {:el :use-case
    :id :overarch/uc-export-structurizr
    :level :subfunction
    :name "export Structurizr"
    :desc "Export the architecture model and views as a Structurizr workspace."}
+  {:el :use-case
+   :id :overarch/uc-render-views
+   :level :user-goal
+   :name "render views"
+   :desc "Render the views of the system."}
+  {:el :use-case
+   :id :overarch/uc-render-plantuml
+   :level :subfunction
+   :name "render PlantUML"
+   :desc "Render the relevant views to PlantUML."}
+  {:el :use-case
+   :id :overarch/uc-render-markdown
+   :level :subfunction
+   :name "export Markdown"
+   :desc "Export the relevant views to Markdown."}
+  {:el :use-case
+   :id :overarch/uc-render-graphviz
+   :level :subfunction
+   :name "export GraphViz"
+   :desc "Export the relevant views to GraphViz."}
 
   ;;;
   ;;; Use Case Model Relations
@@ -74,20 +78,24 @@
    :from :overarch/uc-export-json
    :to :overarch/uc-export-model}
   {:el :extends
-   :id :overarch/uc-export-plantuml-extends-uc-export-model
-   :from :overarch/uc-export-plantuml
-   :to :overarch/uc-export-model}
-  {:el :extends
-   :id :overarch/uc-export-markdown-extends-uc-export-model
-   :from :overarch/uc-export-markdown
-   :to :overarch/uc-export-model}
-  {:el :extends
-   :id :overarch/uc-export-graphviz-extends-uc-export-model
-   :from :overarch/uc-export-graphviz
-   :to :overarch/uc-export-model}
-  {:el :extends
    :id :overarch/uc-export-structurizr-extends-uc-export-model
    :from :overarch/uc-export-structurizr
    :to :overarch/uc-export-model}
+  {:el :uses
+   :id :overarch/modeller-wants-to-render-views
+   :from :overarch/modeller
+   :to :overarch/uc-render-views}
+  {:el :extends
+   :id :overarch/uc-render-plantuml-extends-uc-render-views
+   :from :overarch/uc-render-plantuml
+   :to :overarch/uc-render-views}
+  {:el :extends
+   :id :overarch/uc-render-markdown-extends-uc-render-views
+   :from :overarch/uc-render-markdown
+   :to :overarch/uc-render-views}
+  {:el :extends
+   :id :overarch/uc-render-graphviz-extends-uc-render-views
+   :from :overarch/uc-render-graphviz
+   :to :overarch/uc-render-views}
   ;
   }

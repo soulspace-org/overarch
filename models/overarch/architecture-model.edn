@@ -47,17 +47,21 @@
                  :name "export"
                  :desc "Contains the export multimethods to be implemented by the concrete export components."}
                 {:el :component
-                 :id :overarch/exports-plantuml
-                 :name "exports.plantuml"
-                 :desc "Contains the implementation of the PlantUML export."}
+                 :id :overarch/render-plantuml
+                 :name "render.plantuml"
+                 :desc "Contains the implementation of the PlantUML rendering."}
                 {:el :component
-                 :id :overarch/exports-markdown
-                 :name "exports.markdown"
-                 :desc "Contains the implementation of the Markdown export."}
+                 :id :overarch/render-markdown
+                 :name "render.markdown"
+                 :desc "Contains the implementation of the Markdown rendering."}
                 {:el :component
-                 :id :overarch/exports-graphviz
-                 :name "exports.graphviz"
-                 :desc "Contains the implementation of the Graphviz export."}
+                 :id :overarch/render-graphviz
+                 :name "render.graphviz"
+                 :desc "Contains the implementation of the Graphviz rendering."}
+                {:el :component
+                 :id :overarch/render
+                 :name "render"
+                 :desc "Contains the render multimethods to be implemented by the concrete render components."}
                 {:el :component
                  :id :overarch/exports-json
                  :name "exports.json"
@@ -109,68 +113,74 @@
    :name "loads"
    :desc "model and views."}
   {:el :rel
-   :id :overarch/cli-calls-exports
+   :id :overarch/cli-calls-render
+   :from :overarch/cli
+   :to :overarch/render
+   :name "calls"
+   :desc "render functions"}
+  {:el :rel
+   :id :overarch/cli-calls-export
    :from :overarch/cli
    :to :overarch/export
    :name "calls"
    :desc "export functions"}
   {:el :rel
-   :id :overarch/exports-plantuml-implements-export
-   :from :overarch/exports-plantuml
-   :to :overarch/export
+   :id :overarch/render-plantuml-implements-render
+   :from :overarch/render-plantuml
+   :to :overarch/render
    :name "implements"
-   :desc "export functions for PlantUML diagrams"}
+   :desc "render functions for PlantUML diagrams"}
   {:el :rel
-   :id :overarch/exports-plantuml-accesses-model
-   :from :overarch/exports-plantuml
+   :id :overarch/render-plantuml-accesses-model
+   :from :overarch/render-plantuml
    :to :overarch/core
    :name "queries"
    :desc "model and views"}
   {:el :rel
-   :id :overarch/exports-plantuml-calls-io
-   :from :overarch/exports-plantuml
+   :id :overarch/render-plantuml-calls-io
+   :from :overarch/render-plantuml
    :to :overarch/io
    :name "calls"
    :desc "loads sprite mappings"}
   {:el :rel
-   :id :overarch/exports-plantuml-calls-view
-   :from :overarch/exports-plantuml
+   :id :overarch/render-plantuml-calls-view
+   :from :overarch/render-plantuml
    :to :overarch/view
    :name "calls"
    :desc "view queries and rendering functions"}
   {:el :rel
-   :id :overarch/exports-markdown-implements-export
-   :from :overarch/exports-markdown
-   :to :overarch/export
+   :id :overarch/render-markdown-implements-render
+   :from :overarch/render-markdown
+   :to :overarch/render
    :name "implements"
-   :desc "export functions for Markdown representations"}
+   :desc "render functions for Markdown representations"}
   {:el :rel
-   :id :overarch/exports-markdown-accesses-model
-   :from :overarch/exports-markdown
+   :id :overarch/render-markdown-accesses-model
+   :from :overarch/render-markdown
    :to :overarch/core
    :name "queries"
    :desc "model and views"}
   {:el :rel
-   :id :overarch/exports-markdown-calls-view
-   :from :overarch/exports-markdown
+   :id :overarch/render-markdown-calls-view
+   :from :overarch/render-markdown
    :to :overarch/view
    :name "calls"
    :desc "view queries and rendering functions"}
   {:el :rel
-   :id :overarch/exports-graphviz-implements-export
-   :from :overarch/exports-graphviz
-   :to :overarch/export
+   :id :overarch/render-graphviz-implements-render
+   :from :overarch/render-graphviz
+   :to :overarch/render
    :name "implements"
-   :desc "export functions for GraphViz diagrams"}
+   :desc "render functions for GraphViz diagrams"}
   {:el :rel
-   :id :overarch/exports-graphviz-accesses-model
-   :from :overarch/exports-graphviz
+   :id :overarch/render-graphviz-accesses-model
+   :from :overarch/render-graphviz
    :to :overarch/core
    :name "queries"
    :desc "model and views"}
   {:el :rel
-   :id :overarch/exports-graphviz-calls-view
-   :from :overarch/exports-graphviz
+   :id :overarch/render-graphviz-calls-view
+   :from :overarch/render-graphviz
    :to :overarch/view
    :name "calls"
    :desc "view queries and rendering functions"}

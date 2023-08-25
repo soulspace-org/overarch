@@ -1,7 +1,7 @@
 ;;;;
 ;;;; GraphViz rendering and export
 ;;;;
-(ns org.soulspace.overarch.exports.graphviz
+(ns org.soulspace.overarch.render.graphviz
   "Functions to export views to GraphViz."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
@@ -9,8 +9,8 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.exports.graphviz :as graphviz]))
+            [org.soulspace.overarch.render :as rndr]
+            [org.soulspace.overarch.render.graphviz :as graphviz]))
 
 ;;;
 ;;; Rendering
@@ -65,7 +65,7 @@
               (when (:engine graphviz)
                 (str "layout=\"" (name (:engine graphviz)) "\""))])))
 
-(defn render-view
+(defn render-graphviz-view
   "Renders the `view` with graphviz according to the given `options`."
   [options view]
   (let [children (sort-by :name (view/elements-in-view view))]
@@ -77,7 +77,7 @@
               "}"])))
 
 ;;;
-;;; Export
+;;; Graphviz Rendering dispatch
 ;;;
 (def graphviz-views
   "Contains the views rendered with graphviz."
@@ -88,22 +88,22 @@
   [view]
   (contains? graphviz-views (:el view)))
 
-(defmethod exp/export-file :graphviz
-  [options view]
-  (let [dir-name (str (:export-dir options) "/graphviz/"
+(defmethod rndr/render-file :graphviz
+  [format options view]
+  (let [dir-name (str (:render-dir options) "/graphviz/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
                      (name (:id view)) ".dot"))))
 
-(defmethod exp/export-view :graphviz
-  [options view]
-  (with-open [wrt (io/writer (exp/export-file options view))]
+(defmethod rndr/render-view :graphviz
+  [format options view]
+  (with-open [wrt (io/writer (rndr/render-file format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-view options view))))))
+      (println (str/join "\n" (render-graphviz-view options view))))))
 
-(defmethod exp/export :graphviz
-  [options]
+(defmethod rndr/render :graphviz
+  [format options]
   (doseq [view (core/get-views)]
     (when (graphviz-view? view)
-      (exp/export-view options view))))
+      (rndr/render-view format options view))))

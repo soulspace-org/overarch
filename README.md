@@ -312,18 +312,25 @@ java -jar overarch.jar [options]
 *Overarch* currently supports these options
 
 ```
+Overarch CLI Exporter
+   
+  Reads your model and view specifications and renders or exports
+  into the specified formats.
+
+Usage:
+  java -jar overarch.jar [options].
+
 Options:
-
-  Option                       Default   Description
-
-  -m, --model-dir DIRNAME      models    Model directory
-  -e, --export-dir DIRNAME     export    Export directory
-  -w, --watch                            Watch model dir for changes and trigger export
-  -f, --format FORMAT          plantuml  Export format (graphviz, json, markdown, plantuml, structurizr)
-      --model-info                       Returns infos for the loaded model
-      --plantuml-list-sprites            Lists the loaded PlantUML sprites
-      --debug                            Print debug messages
-  -h, --help                             Print help
+  -m, --model-dir DIRNAME      models  Model directory
+  -r, --render-format FORMAT           Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME     export  Export directory
+  -x, --export-format FORMAT           Export format (json, structurizr)
+  -X, --export-dir DIRNAME     export  Export directory
+  -w, --watch                          Watch model dir for changes and trigger action
+      --model-info                     Returns infos for the loaded model
+      --plantuml-list-sprites          Lists the loaded PlantUML sprites
+  -h, --help                           Print help
+      --debug                          Print debug messages
 ```
 
 If you use Visual Studio Code as described above, you can start *Overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
@@ -345,6 +352,9 @@ Here are my current plans to enhance overarch in the next releases.
   * automatic includes of elements e.g.
     * include relations for referenced elements
     * includes based on selection criteria
+* provide relations between elements of the different models to model
+  traceability information (e.g. from use cases to the containers implementing
+  them or from domain concepts to domain model elements)
 * markdown export for the textual information in views also rendered as diagrams
 * theme support for diagrams
 
