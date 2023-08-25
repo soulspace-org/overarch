@@ -637,7 +637,10 @@
         (alias-name (:from e))
         (when (:from-card e)
           (str " \"" (uml-cardinality (:from-card e)) "\" "))
-        " o--> "
+        " o-"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-> "
         (when (:to-card e)
           (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
@@ -647,7 +650,10 @@
   ; TODO render roles
   [(str (view/render-indent indent)
         (alias-name (:from e))
-        " --> "
+        " -"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-> "
         (when (:to-card e)
           (str " \"" (uml-cardinality (:to-card e)) "\" "))
         (alias-name (:to e)))])
@@ -655,19 +661,28 @@
 (defmethod render-uml-element :inheritance
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:to e)) " <|-- "
+        (alias-name (:to e)) " <|-"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "- "
         (alias-name (:from e)))])
 
 (defmethod render-uml-element :implementation
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:to e)) " <|.. "
+        (alias-name (:to e)) " <|."
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        ". "
         (alias-name (:from e)))])
 
 (defmethod render-uml-element :dependency
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " ..> "
+        (alias-name (:from e)) " ."
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        ".> "
         (alias-name (:to e)))])
 
 (defmethod render-uml-element :state-machine
@@ -715,7 +730,10 @@
 (defmethod render-uml-element :transition
   [_ indent e]
   [(str (view/render-indent indent)
-        (alias-name (:from e)) " --> "
+        (alias-name (:from e)) " -"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-> "
         (alias-name (:to e)) " : " (view/element-name e))])
 
 ;;;

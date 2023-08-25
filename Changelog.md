@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.6.0
+-------------
+* added direction rendering to relations in class and state machine views
+* enhanced example models
+
+
 Version 0.5.0
 -------------
 * fixed and enhanced class view rendering
