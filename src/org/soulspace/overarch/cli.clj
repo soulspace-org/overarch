@@ -3,6 +3,7 @@
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
             [hawk.core :as hawk]
+            ;[nextjournal.beholder :as beholder]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.render :as rndr]
@@ -158,6 +159,11 @@
   [options]
   (core/update-state! (:model-dir options))
   (dispatch options))
+
+(defn watch-fn
+  [options]
+  (partial update-and-dispatch! options)
+  )
 
 (defn handle
   "Handle the `options` and generate the requested outputs."
