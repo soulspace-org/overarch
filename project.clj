@@ -7,8 +7,7 @@
                  [org.clojure/data.json "2.4.0"]
                  [org.clojure/tools.cli "1.0.206"]
                  [com.cnuernber/charred "1.028"]
-;                 [com.nextjournal/beholder "1.0.2"]
-                 [hawk/hawk "0.2.11"]
+                 [com.nextjournal/beholder "1.0.2"]
                  [org.soulspace.clj/clj.java "0.9.1"]
                  [org.soulspace.clj/cmp.markdown "0.4.1"]]
 

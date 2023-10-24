@@ -2,8 +2,7 @@
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
-            [hawk.core :as hawk]
-            ;[nextjournal.beholder :as beholder]
+            [nextjournal.beholder :as beholder]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.render :as rndr]
@@ -171,12 +170,12 @@
   (update-and-dispatch! options)
   (when (:watch options)
     ; TODO loop recur this update-and-export! as handler
-    (hawk/watch! [{:paths [(:model-dir options)]
-                   :handler (fn [ctx e]
+    (beholder/watch [{:paths [(:model-dir options)]
+                   :handler (fn [m]
                               (when (:debug options)
                                 (println "Filesystem watch:")
-                                (println "event: " e)
-                                (println "context: " ctx)
+                                (println "event: " (:type m))
+                                (println "context: " (:path m))
                                 (println options))
                               (update-and-dispatch! options))}])
     (while true
