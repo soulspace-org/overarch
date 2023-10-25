@@ -170,14 +170,15 @@
   (update-and-dispatch! options)
   (when (:watch options)
     ; TODO loop recur this update-and-export! as handler
-    (beholder/watch [{:paths [(:model-dir options)]
-                   :handler (fn [m]
-                              (when (:debug options)
-                                (println "Filesystem watch:")
-                                (println "event: " (:type m))
-                                (println "context: " (:path m))
-                                (println options))
-                              (update-and-dispatch! options))}])
+    (beholder/watch
+     (fn [m]
+       (when (:debug options)
+         (println "Filesystem watch:")
+         (println "event: " (:type m))
+         (println "context: " (:path m))
+         (println options))
+       (update-and-dispatch! options))
+     (:model-dir options))
     (while true
       (Thread/sleep 5000))))
 
