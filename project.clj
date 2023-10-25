@@ -8,6 +8,7 @@
                  [org.clojure/tools.cli "1.0.206"]
                  [com.cnuernber/charred "1.028"]
                  [com.nextjournal/beholder "1.0.2"]
+                 [org.slf4j/slf4j-nop "1.7.36"]
                  [org.soulspace.clj/clj.java "0.9.1"]
                  [org.soulspace.clj/cmp.markdown "0.4.1"]]
 
