@@ -2,7 +2,7 @@
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
-            [hawk.core :as hawk]
+            [nextjournal.beholder :as beholder]
             [org.soulspace.overarch.core :as core]
             [org.soulspace.overarch.export :as exp]
             [org.soulspace.overarch.render :as rndr]
@@ -159,20 +159,26 @@
   (core/update-state! (:model-dir options))
   (dispatch options))
 
+(defn watch-fn
+  [options]
+  (partial update-and-dispatch! options)
+  )
+
 (defn handle
   "Handle the `options` and generate the requested outputs."
   [options]
   (update-and-dispatch! options)
   (when (:watch options)
     ; TODO loop recur this update-and-export! as handler
-    (hawk/watch! [{:paths [(:model-dir options)]
-                   :handler (fn [ctx e]
-                              (when (:debug options)
-                                (println "Filesystem watch:")
-                                (println "event: " e)
-                                (println "context: " ctx)
-                                (println options))
-                              (update-and-dispatch! options))}])
+    (beholder/watch
+     (fn [m]
+       (when (:debug options)
+         (println "Filesystem watch:")
+         (println "event: " (:type m))
+         (println "context: " (:path m))
+         (println options))
+       (update-and-dispatch! options))
+     (:model-dir options))
     (while true
       (Thread/sleep 5000))))
 

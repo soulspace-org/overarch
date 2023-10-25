@@ -3,6 +3,7 @@ Changelog
 
 Version 0.7.0
 -------------
+* make file watches work on Macs by using beholder instead of hawk 
 * added direction rendering to relations in class and state machine views
 * enhanced example models
 
