@@ -402,6 +402,27 @@
         (map resolve-ref)
         (into #{}))))
 
+
+(defn related
+  "Returns the related elements for the given collection of relations"
+  ([coll]
+   (related @state coll))
+  ([m coll]
+   (->> coll
+        (mapcat (fn [e] [(:from e) (:to e)]))
+        (map (partial get-model-element m))
+        (into #{}))))
+
+(defn relations-of-elements
+  "Returns the relations connecting elements from the given collection of model elements."
+  ([coll]
+   (relations-of-elements @state coll))
+  ([m coll]
+   (let [els (into #{} (map :id coll))
+         rels (filter relation? (get-model-elements m))]
+     (->> rels
+          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
+
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
   ([r1 r2]
@@ -484,13 +505,13 @@
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
   [view-type]
-  (let [element-predicate (core/view-type->element-predicate view-type)]
+  (let [element-predicate (view-type->element-predicate view-type)]
     (fn [e]
       (or (and (= :rel (:el e))
-               (element-predicate (core/get-model-element (:from e)))
-               (element-predicate (core/get-model-element (:to e))))
+               (element-predicate (get-model-element (:from e)))
+               (element-predicate (get-model-element (:to e))))
           (and (element-predicate e)
-               (not (:external (core/get-parent-element e))))))))
+               (not (:external (get-parent-element e))))))))
 
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
@@ -527,24 +548,31 @@
   "Returns the model elements specified in the given view.
    Takes the view spec into account for resolving model elements not explicitly referenced."
   [view]
-  (let [selector (get-in view [:spec :selector] :referenced)]
+  (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced (referenced-model-elements view))))
+      :referenced-only (referenced-model-elements view)
+      :relations (referenced-model-elements view)
+      :related (referenced-model-elements view) ; TODO implement
+      )))
 
 (defn specified-relations
   "Returns the relations specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [view]
-  (let [selector (get-in view [:spec :selector] :referenced)]
+  (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced (referenced-relations view))))
+      :referenced-only (referenced-relations view)
+      :relations (referenced-relations view) ; TODO implement
+      :related (referenced-relations view)
+      )))
 
 (defn specified-elements
   "Returns the model elements and relations explicitly specified in the given view."
   [view]
-  (let [selector (get-in view [:spec :selector] :referenced)]
+  (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced (referenced-elements view))))
+      :referenced-only (referenced-elements view)
+      :relations (concat (specified-model-elements view) (specified-relations view)))))
 
 (defn rendered-model-elements
   "Returns the model elements to be rendered by the given view."
