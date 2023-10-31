@@ -452,6 +452,117 @@
   (unconnected-components)
   )
 
+;;;
+;;; View functions
+;;;
+;;
+;; Context based content filtering
+;;
+(def view-type->element-predicate
+  "Map from diagram type to content-level predicate."
+  {:context-view          context-view-element?
+   :container-view        container-view-element?
+   :component-view        component-view-element?
+   :code-view             code-view-element?
+   :system-landscape-view system-landscape-view-element?
+   :dynamic-view          dynamic-view-element?
+   :deployment-view       deployment-view-element?
+   :use-case-view         use-case-view-element?
+   :state-machine-view    state-machine-view-element?
+   :class-view            class-view-element?
+   :glossary-view         glossary-view-element?
+   :concept-view          concept-view-element?})   
+
+
+(def element->boundary
+  "Maps model types to boundary types depending on the view type."
+  {[:container-view :system]          :system-boundary
+   [:component-view :system]          :system-boundary
+   [:component-view :container]       :container-boundary})
+
+(defn render-predicate
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [view-type]
+  (let [element-predicate (core/view-type->element-predicate view-type)]
+    (fn [e]
+      (or (and (= :rel (:el e))
+               (element-predicate (core/get-model-element (:from e)))
+               (element-predicate (core/get-model-element (:to e))))
+          (and (element-predicate e)
+               (not (:external (core/get-parent-element e))))))))
+
+(defn as-boundary?
+  "Returns the boundary element, if the element should be rendered
+   as a boundary for this view type, false otherwise."
+  [view-type e]
+  (and
+   ; has children
+   (seq (:ct e))
+   ; has a boundary mapping for this diagram-type
+   (element->boundary [view-type (:el e)])
+   (not (:external e))))
+
+(defn referenced-model-elements
+  "Returns the model elements explicitly referenced in the given view."
+  [view]
+  (->> (:ct view)
+       (map resolve-ref)
+       (filter model-element?)))
+
+(defn referenced-relations
+  "Returns the relations explicitly referenced in the given view."
+  [view]
+  (->> (:ct view)
+       (map resolve-ref)
+       (filter relation?)))
+
+(defn referenced-elements
+  "Returns the relations explicitly referenced in the given view."
+  [view]
+  (->> (:ct view)
+       (map resolve-ref)))
+
+(defn specified-model-elements
+  "Returns the model elements specified in the given view.
+   Takes the view spec into account for resolving model elements not explicitly referenced."
+  [view]
+  (let [selector (get-in view [:spec :selector] :referenced)]
+    (case selector
+      :referenced (referenced-model-elements view))))
+
+(defn specified-relations
+  "Returns the relations specified in the given view.
+   Takes the view spec into account for resolving relations not explicitly referenced."
+  [view]
+  (let [selector (get-in view [:spec :selector] :referenced)]
+    (case selector
+      :referenced (referenced-relations view))))
+
+(defn specified-elements
+  "Returns the model elements and relations explicitly specified in the given view."
+  [view]
+  (let [selector (get-in view [:spec :selector] :referenced)]
+    (case selector
+      :referenced (referenced-elements view))))
+
+(defn rendered-model-elements
+  "Returns the model elements to be rendered by the given view."
+  [view]
+  )
+
+(defn rendered-relations
+  "Returns the relations to be rendered by the given view.
+   Takes the view spec into account for resolving relations not explicitly specified."
+  [view]
+  )
+
+(defn rendered-elements
+  "Returns the model elements to be rendered by the given view.
+   Takes the view spec into account for resolving model elements not explicitly specified."
+  [view]
+  )
+
 ;;
 ;; State preparation
 ;;
