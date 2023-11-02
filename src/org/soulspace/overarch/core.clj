@@ -402,7 +402,6 @@
         (map resolve-ref)
         (into #{}))))
 
-
 (defn related
   "Returns the related elements for the given collection of relations"
   ([coll]
@@ -523,6 +522,8 @@
    ; has a boundary mapping for this diagram-type
    (element->boundary [view-type (:el e)])
    (not (:external e))))
+
+;; TODO rename to model-nodes/model-relations?
 
 (defn referenced-model-elements
   "Returns the model elements explicitly referenced in the given view."
@@ -691,4 +692,8 @@
   (update-state! "models")
   (build-id->parent (:elements @state))
   (user/data-tapper "State" @state)
+
+  (specified-model-elements (get-view :banking/system-context-view))
+  (specified-relations (get-view :banking/system-context-view))
+  (specified-elements (get-view :banking/system-context-view))
   )
