@@ -4,6 +4,50 @@
             [clojure.set :as set]
             [org.soulspace.overarch.core :as core]))
 
+(def view-type->element-predicate
+  "Map from diagram type to content-level predicate."
+  {:context-view          core/context-view-element?
+   :container-view        core/container-view-element?
+   :component-view        core/component-view-element?
+   :code-view             core/code-view-element?
+   :system-landscape-view core/system-landscape-view-element?
+   :dynamic-view          core/dynamic-view-element?
+   :deployment-view       core/deployment-view-element?
+   :use-case-view         core/use-case-view-element?
+   :state-machine-view    core/state-machine-view-element?
+   :class-view            core/class-view-element?
+   :glossary-view         core/glossary-view-element?
+   :concept-view          core/concept-view-element?})
+
+(def element->boundary
+  "Maps model types to boundary types depending on the view type."
+  {[:container-view :system]          :system-boundary
+   [:component-view :system]          :system-boundary
+   [:component-view :container]       :container-boundary})
+
+(defn render-predicate
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [view-type]
+  (let [element-predicate (view-type->element-predicate view-type)]
+    (fn [e]
+      (or (and (= :rel (:el e))
+               (element-predicate (core/get-model-element (:from e)))
+               (element-predicate (core/get-model-element (:to e))))
+          (and (element-predicate e)
+               (not (:external (core/get-parent-element e))))))))
+
+(defn as-boundary?
+  "Returns the boundary element, if the element should be rendered
+   as a boundary for this view type, false otherwise."
+  [view-type e]
+  (and
+   ; has children
+   (seq (:ct e))
+   ; has a boundary mapping for this diagram-type
+   (element->boundary [view-type (:el e)])
+   (not (:external e))))
+
 
 (defn include-criteria?
   "Returns true, if the `view` should include elements selected by criteria."
@@ -67,7 +111,7 @@
    (let [view-type (:el view)]
      (->> coll
           (map core/resolve-ref)
-          (filter (core/render-predicate view-type))
+          (filter (render-predicate view-type))
           (map #(element-to-render view-type %))))))
 
 (defn elements-in-view

@@ -188,6 +188,12 @@
   [e]
   (contains? model-types (:el e)))
 
+(defn model-node?
+  "Returns true if the given element is a node in the model element graph.
+   A model node is a model element which is not a relation."
+  [e]
+  (and (model-element? e) (not (relation? e))))
+
 (defn view?
   "Returns true if the given element `e` is a view."
   [e]
@@ -412,16 +418,6 @@
         (map (partial get-model-element m))
         (into #{}))))
 
-(defn relations-of-elements
-  "Returns the relations connecting elements from the given collection of model elements."
-  ([coll]
-   (relations-of-elements @state coll))
-  ([m coll]
-   (let [els (into #{} (map :id coll))
-         rels (filter relation? (get-model-elements m))]
-     (->> rels
-          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
-
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
   ([r1 r2]
@@ -437,6 +433,16 @@
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
 
+(defn relations-of-elements
+  "Returns the relations connecting elements from the given collection of model elements."
+  ([coll]
+   (relations-of-elements @state coll))
+  ([m coll]
+   (let [els (into #{} (map :id coll))
+         rels (filter relation? (get-model-elements m))]
+     (->> rels
+          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
+
 (defn related-elements
   "Returns the set of elements that are part of at least one relation."
   [coll]
@@ -445,6 +451,7 @@
        (map (fn [rel] #{(:from rel) (:to rel)}))
 ;       (user/data-tapper "related")
        (reduce set/union #{})))
+
 
 (defn component-set
   "Returns the set of model components."
@@ -478,51 +485,6 @@
 ;;
 ;; Context based content filtering
 ;;
-(def view-type->element-predicate
-  "Map from diagram type to content-level predicate."
-  {:context-view          context-view-element?
-   :container-view        container-view-element?
-   :component-view        component-view-element?
-   :code-view             code-view-element?
-   :system-landscape-view system-landscape-view-element?
-   :dynamic-view          dynamic-view-element?
-   :deployment-view       deployment-view-element?
-   :use-case-view         use-case-view-element?
-   :state-machine-view    state-machine-view-element?
-   :class-view            class-view-element?
-   :glossary-view         glossary-view-element?
-   :concept-view          concept-view-element?})   
-
-
-(def element->boundary
-  "Maps model types to boundary types depending on the view type."
-  {[:container-view :system]          :system-boundary
-   [:component-view :system]          :system-boundary
-   [:component-view :container]       :container-boundary})
-
-(defn render-predicate
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [view-type]
-  (let [element-predicate (view-type->element-predicate view-type)]
-    (fn [e]
-      (or (and (= :rel (:el e))
-               (element-predicate (get-model-element (:from e)))
-               (element-predicate (get-model-element (:to e))))
-          (and (element-predicate e)
-               (not (:external (get-parent-element e))))))))
-
-(defn as-boundary?
-  "Returns the boundary element, if the element should be rendered
-   as a boundary for this view type, false otherwise."
-  [view-type e]
-  (and
-   ; has children
-   (seq (:ct e))
-   ; has a boundary mapping for this diagram-type
-   (element->boundary [view-type (:el e)])
-   (not (:external e))))
-
 ;; TODO rename to model-nodes/model-relations?
 
 (defn referenced-model-elements
@@ -530,7 +492,7 @@
   [view]
   (->> (:ct view)
        (map resolve-ref)
-       (filter model-element?)))
+       (filter model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
@@ -553,7 +515,10 @@
     (case selector
       :referenced-only (referenced-model-elements view)
       :relations (referenced-model-elements view)
-      :related (referenced-model-elements view) ; TODO implement
+      :related (let [referenced-nodes (referenced-model-elements view)
+                     referenced-rels (referenced-relations view)
+                     related-nodes (into #{} (map resolve-ref (related-elements referenced-rels)))]
+                 (set/union referenced-nodes related-nodes)) ; TODO check
       )))
 
 (defn specified-relations
@@ -563,7 +528,10 @@
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
       :referenced-only (referenced-relations view)
-      :relations (referenced-relations view) ; TODO implement
+      :relations (let [referenced-nodes (referenced-model-elements view)
+                       referenced-rels (referenced-relations view)
+                       related-rels (into #{} (relations-of-elements referenced-nodes))]
+                   (set/union referenced-rels related-rels))
       :related (referenced-relations view)
       )))
 
@@ -696,4 +664,6 @@
   (specified-model-elements (get-view :banking/system-context-view))
   (specified-relations (get-view :banking/system-context-view))
   (specified-elements (get-view :banking/system-context-view))
+  (related-elements (referenced-relations (get-view :banking/system-context-view)))
+  (relations-of-elements (referenced-model-elements (get-view :banking/system-context-view)))
   )
