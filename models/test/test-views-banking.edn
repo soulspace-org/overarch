@@ -1,0 +1,70 @@
+#{
+   {:el :container-view
+    :id :test/banking-container-view-relations
+    :spec {:include :relations}
+    :title "Container View of the Internet Banking System"
+    :ct [; model elements
+         {:ref :banking/personal-customer}
+         {:ref :banking/internet-banking-system}
+         {:ref :banking/email-system}
+         {:ref :banking/mainframe-banking-system}
+
+         ; relations
+         ]}
+  
+   {:el :container-view
+    :id :test/banking-container-view-related
+    :spec {:include :related}
+    :title "Container View of the Internet Banking System"
+    :ct [; model elements
+
+         ; relations
+         {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
+         {:ref :banking/personal-customer-uses-web-app}
+         {:ref :banking/personal-customer-uses-single-page-app}
+         {:ref :banking/personal-customer-uses-mobile-app}
+
+         {:ref :banking/web-app-deliveres-single-page-app :direction :right}
+         {:ref :banking/single-page-app-calls-api-application}
+         {:ref :banking/mobile-app-calls-api-application}
+         {:ref :banking/api-application-uses-database :direction :left}
+         {:ref :banking/api-application-uses-email-system :direction :right}
+         {:ref :banking/api-application-uses-mainframe-banking-system}]}
+
+ 
+  {:el :component-view
+   :id :test/banking-api-component-view-relations
+   :spec {:include :relations}
+   :title "Component View of the API Application"
+   :ct [; model elements
+        {:ref :banking/single-page-app}
+        {:ref :banking/mobile-app}
+        {:ref :banking/api-application}
+        {:ref :banking/database}
+        {:ref :banking/email-system}
+        {:ref :banking/mainframe-banking-system}
+
+       ; relations
+        ]}
+
+  {:el :component-view
+   :id :test/banking-api-component-view-related
+   :spec {:include :related}
+   :title "Component View of the API Application"
+   :ct [; model elements
+
+        ; relations
+        {:ref :banking/single-page-app-calls-sign-in-controller}
+        {:ref :banking/single-page-app-calls-reset-password-controller}
+        {:ref :banking/single-page-app-calls-accounts-summary-controller}
+        {:ref :banking/mobile-app-calls-sign-in-controller}
+        {:ref :banking/mobile-app-calls-reset-password-controller}
+        {:ref :banking/mobile-app-calls-accounts-summary-controller}
+        {:ref :banking/sign-in-controller-uses-security-component}
+        {:ref :banking/reset-password-controller-uses-email-component}
+        {:ref :banking/accounts-summary-controller-uses-mainframe-banking-system-facade}
+        {:ref :banking/security-component-uses-database}
+        {:ref :banking/email-component-uses-email-system}
+        {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+
+}
