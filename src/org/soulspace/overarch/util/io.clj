@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.io
+(ns org.soulspace.overarch.util.io
   "Contains I/O related functions."
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]

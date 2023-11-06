@@ -1,17 +1,17 @@
 ;;;;
 ;;;; PlantUML rendering and export
 ;;;;
-(ns org.soulspace.overarch.render.plantuml
+(ns org.soulspace.overarch.adapter.render.plantuml
   "Functions to export views to PlantUML."
   (:require [clojure.set :as set]
             [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.render :as rndr]
-            [org.soulspace.overarch.io :as oio]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.render :as rndr]
+            [org.soulspace.overarch.util.io :as oio]))
 
 ;;;
 ;;; PlantUML mappings
@@ -965,7 +965,9 @@
 
 (defmethod rndr/render :plantuml
   [format options]
-  (doseq [view (core/get-views)]
+  (doseq [view (model/get-views)]
     (when (plantuml-view? view)
-      (rndr/render-view format options view))))
+      (rndr/render-view format options
+                        (assoc view :ct (model/specified-elements view)) ; TODO do preprocessing once in build phase?
+                        ))))
 

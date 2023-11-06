@@ -1,16 +1,15 @@
 ;;;;
 ;;;; GraphViz rendering and export
 ;;;;
-(ns org.soulspace.overarch.render.graphviz
+(ns org.soulspace.overarch.adapter.render.graphviz
   "Functions to export views to GraphViz."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.render :as rndr]
-            [org.soulspace.overarch.render.graphviz :as graphviz]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.render :as rndr]))
 
 ;;;
 ;;; Rendering
@@ -104,6 +103,6 @@
 
 (defmethod rndr/render :graphviz
   [format options]
-  (doseq [view (core/get-views)]
+  (doseq [view (model/get-views)]
     (when (graphviz-view? view)
       (rndr/render-view format options view))))

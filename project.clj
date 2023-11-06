@@ -21,7 +21,7 @@
                    :global-vars {*warn-on-reflection* true}}}
 
   :uberjar-name "overarch.jar"
-  :main org.soulspace.overarch.cli
+  :main org.soulspace.overarch.adapter.ui.cli
 
   :scm {:name "git" :url "https://github.com/soulspace-org/overarch"}
   :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]]

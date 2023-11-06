@@ -1,15 +1,15 @@
 ;;;;
 ;;;; Markdown rendering and export
 ;;;;
-(ns org.soulspace.overarch.render.markdown
+(ns org.soulspace.overarch.adapter.render.markdown
   "Functions to export views to markdown."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.render :as rndr]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.render :as rndr]))
 
 ;;;
 ;;; Rendering
@@ -86,6 +86,6 @@
 
 (defmethod rndr/render :markdown
   [format options]
-  (doseq [view (core/get-views)]
+  (doseq [view (model/get-views)]
     (when (markdown-view? view)
       (rndr/render-view format options view))))

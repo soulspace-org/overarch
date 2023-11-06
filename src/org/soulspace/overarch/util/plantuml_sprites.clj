@@ -5,7 +5,7 @@
             [charred.api :as csv]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.clj.string :as sstr]
-            [org.soulspace.overarch.io :as oio]))
+            [org.soulspace.overarch.util.io :as oio]))
 
 (def excluded-libs #{"aws" "awslib" "awslib10" "archimate" "C4" "classy" "classy-c4" "DomainStory" "kubernetes"})
 

@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.render
+(ns org.soulspace.overarch.application.render
   "Contains dispatch functions for the rendering of the views.")
 
 ;;;

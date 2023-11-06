@@ -1,18 +1,18 @@
-(ns org.soulspace.overarch.cli
+(ns org.soulspace.overarch.adapter.ui.cli
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.render :as rndr]
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.application.export :as exp]
+            [org.soulspace.overarch.application.render :as rndr]
             ; must be loaded here for registering of the multimethods
             ; require dynamically?
-            [org.soulspace.overarch.exports.json :as json]
-            [org.soulspace.overarch.exports.structurizr :as structurizr]
-            [org.soulspace.overarch.render.graphviz :as graphviz]
-            [org.soulspace.overarch.render.markdown :as markdown]
-            [org.soulspace.overarch.render.plantuml :as puml])
+            [org.soulspace.overarch.adapter.exports.json :as json]
+            [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
+            [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
+            [org.soulspace.overarch.adapter.render.markdown :as markdown]
+            [org.soulspace.overarch.adapter.render.plantuml :as puml])
   (:gen-class))
 
 ;;;
@@ -115,23 +115,24 @@
 (defn model-info
   "Reports information about the model and views."
   [options]
-  (let [elements (core/all-elements)
-        element-count (count (remove core/relation?
-                                     (filter core/model-element? elements)))
-        unrelated-elements (core/unconnected-components)]
+  (let [elements (model/all-elements)
+        element-count (count (remove model/relation?
+                                     (filter model/model-element? elements)))]
+    ; TODO replace by frequency on :el
     {:element-count element-count
-     :view-count (count (filter core/view? elements))
-     :person-count (count (filter core/person? elements))
-     :system-count (count (filter core/system? elements))
-     :container-count (count (filter core/container? elements))
-     :component-count (count (filter core/component? elements))
-     :node-count (count (filter core/node? elements))
-     :relation-count (count (filter core/relation? elements))
+     :view-count (count (filter view/view? elements))
+     :person-count (count (filter model/person? elements))
+     :system-count (count (filter model/system? elements))
+     :container-count (count (filter model/container? elements))
+     :component-count (count (filter model/component? elements))
+     :node-count (count (filter model/node? elements))
+     :relation-count (count (filter model/relation? elements))
      :external-count (count
                       (filter
-                       #(and (core/model-element? %) (core/external? %))
+                       #(and (model/model-element? %) (model/external? %))
                        elements))
-     :unrelated-elements unrelated-elements}))
+     ;:unrelated-elements (model/unconnected-components)
+     }))
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -156,7 +157,7 @@
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
-  (core/update-state! (:model-dir options))
+  (model/update-state! (:model-dir options))
   (dispatch options))
 
 (defn watch-fn

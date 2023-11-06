@@ -44,7 +44,7 @@
         {:ref :banking/email-system}
         {:ref :banking/mainframe-banking-system}
 
-       ; relations
+        ; relations
         ]}
 
   {:el :component-view
