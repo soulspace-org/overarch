@@ -7,7 +7,6 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]))
 
@@ -66,8 +65,8 @@
 
 (defn render-graphviz-view
   "Renders the `view` with graphviz according to the given `options`."
-  [options view]
-  (let [children (sort-by :name (view/elements-in-view view))]
+  [m options view]
+  (let [children (sort-by :name (view/elements-in-view m view))]
     (flatten [(str "digraph \"" (:title view) "\" {")
               "labelloc= \"t\""
               (str "label=\"" (:title view) "\"")
@@ -88,7 +87,7 @@
   (contains? graphviz-views (:el view)))
 
 (defmethod rndr/render-file :graphviz
-  [format options view]
+  [m format options view]
   (let [dir-name (str (:render-dir options) "/graphviz/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
@@ -96,13 +95,13 @@
                      (name (:id view)) ".dot"))))
 
 (defmethod rndr/render-view :graphviz
-  [format options view]
-  (with-open [wrt (io/writer (rndr/render-file format options view))]
+  [m format options view]
+  (with-open [wrt (io/writer (rndr/render-file m format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-graphviz-view options view))))))
+      (println (str/join "\n" (render-graphviz-view m options view))))))
 
 (defmethod rndr/render :graphviz
-  [format options]
-  (doseq [view (model/get-views)]
+  [m format options]
+  (doseq [view (view/get-views m)]
     (when (graphviz-view? view)
-      (rndr/render-view format options view))))
+      (rndr/render-view m format options view))))

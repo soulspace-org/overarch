@@ -20,8 +20,5 @@
            (oio/write-json out-file)))))
 
 (defmethod exp/export :json
-  [format options]
+  [_ _ options]
   (export-json options))
-
-(comment
-  (export-json "models"))

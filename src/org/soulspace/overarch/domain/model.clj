@@ -258,31 +258,21 @@
 
 (defn get-model-elements
   "Returns the collection of model elements."
-  ([]
-   (get-model-elements @state))
   ([m]
    (model-elements (:elements m))))
 
 (defn get-model-element
   "Returns the model element with the given `id`."
-  ([id]
-   (get-model-element @state id))
   ([m id]
    ((:registry m) id)))
 
 (defn get-parent-element
   "Returns the parent of the element `e`."
-  ([e]
-   (get-parent-element @state e))
   ([m e]
    ((:parents m) (:id e))))
 
 (defn resolve-ref
   "Resolves the model element for the ref `e`."
-  ([e]
-   (if (:ref e)
-     (merge (get-model-element (:ref e)) e)
-     e))
   ([m e]
    (if (:ref e)
      (merge (get-model-element m (:ref e)) e)
@@ -290,28 +280,22 @@
 
 (defn all-elements
   "Returns a set of all elements."
-  ([]
-   (all-elements @state))
   ([m]
    (->> (:registry m)
         (vals)
-        (map resolve-ref)
+        (map (partial resolve-ref m))
         (into #{}))))
 
 (defn related
   "Returns the related elements for the given collection of relations"
-  ([coll]
-   (related @state coll))
   ([m coll]
    (->> coll
         (mapcat (fn [e] [(:from e) (:to e)]))
-        (map (partial get-model-element m))
+        (map (partial resolve-ref m))
         (into #{}))))
 
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
-  ([r1 r2]
-   (aggregable-relation? @state r1 r2))
   ([m r1 r2]
    (and (= (:name r1) (:name r2))
         (= (:tech r1) (:tech r2))
@@ -325,8 +309,6 @@
 
 (defn relations-of-nodes
   "Returns the relations connecting nodes from the given collection of model nodes."
-  ([coll]
-   (relations-of-nodes @state coll))
   ([m coll]
    (let [els (into #{} (map :id coll))
          rels (filter relation? (get-model-elements m))]
@@ -335,13 +317,12 @@
 
 (defn related-nodes
   "Returns the set of nodes that are part of at least one relation."
-  [coll]
+  [m coll]
   (->> coll
        (filter relation?)
-       (map (fn [rel] #{(:from rel) (:to rel)}))
-;       (user/data-tapper "related")
+       (map (fn [rel] #{(:from rel) (:to rel)})) 
+       ; TODO resolve refs
        (reduce set/union #{})))
-
 
 ;;
 ;; State preparation

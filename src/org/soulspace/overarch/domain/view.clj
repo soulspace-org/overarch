@@ -13,32 +13,40 @@
 ;; C4 category definitions
 ;; 
 (def c4-view-types
-  "C4 view types."
+  "The set of C4 view types."
   #{:context-view :container-view :component-view
-    :code-view :deployment-view :system-landscape-view
+    :deployment-view :system-landscape-view
     :dynamic-view})
 
 ;;
 ;; UML category definitions
 ;;
 (def uml-view-types
-  "UML view types."
+  "The set of UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
 ;;
 ;; Concept category definitions
 ;;
 (def concept-view-types
-  "Concept views types."
+  "The set of concept views types."
   #{:concept-view :glossary-view})
 
 ;; 
 ;; General category definitions
 ;;
 (def view-types
-  "View types."
+  "The set of view types."
   (set/union c4-view-types uml-view-types concept-view-types))
 
+(def hierarchical-view-types
+  "The set of hierarchical view types."
+  #{:context-view :container-view :component-view
+    :deployment-view :system-landscape-view
+    ;:dynamic-view
+    :state-machine-view :class-view
+    :glossary-view
+    })
 
 ;;
 ;; Predicates
@@ -47,6 +55,11 @@
   "Returns true if the given element `e` is a view."
   [e]
   (contains? view-types (:el e)))
+
+(defn hierarchical-view?
+  "Returns true if the given element `e` is a hierarchical view."
+  [e]
+  (contains? hierarchical-view-types (:el e)))
 
 (defn context-view-element?
   "Returns true if the given element `e` is rendered in a C4 context view."
@@ -137,101 +150,78 @@
    ((:registry m) id)))
 
 
-(defn component-set
-  "Returns the set of model components."
-  ([m]
-   (->> m
-        (model/all-elements)
-        (filter component-view-element?)
-        (map :id)
-        (into #{}))))
-
-(defn unconnected-components
-  "Returns the set of elements that are not connected with any other element by a relation."
-  ([m]
-   (let [component-set (component-set m)
-         related-set (model/related-nodes (model/all-elements m))]
-     (set/difference component-set related-set))))
-
-(comment
-  (model/all-elements)
-  (into #{} (map :id (filter component-view-element? (model/all-elements))))
-  ; (unconnected-components) ; TODO provide elements map
-  )
-
 ;;;
 ;;; View functions
 ;;;
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
-  [view]
+  [m view]
   (->> (:ct view)
-       (map model/resolve-ref)
+       (map (partial model/resolve-ref m))
        (filter model/model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
-  [view]
+  [m view]
   (->> (:ct view)
-       (map model/resolve-ref)
+       (map (partial model/resolve-ref m))
        (filter model/relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."
-  [view]
+  [m view]
   (->> (:ct view)
-       (map model/resolve-ref)))
+       (map (partial model/resolve-ref m))))
 
 (defn specified-model-nodes
   "Returns the model nodes specified in the given view.
    Takes the view spec into account for resolving model nodes not explicitly referenced."
-  [view]
+  [m view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-model-nodes view)
-      :relations (referenced-model-nodes view)
-      :related (let [referenced-nodes (referenced-model-nodes view)
-                     referenced-rels (referenced-relations view)
-                     related-nodes (into #{} (map model/resolve-ref (model/related-nodes referenced-rels)))]
+      :referenced-only (referenced-model-nodes m view)
+      :relations (referenced-model-nodes m view)
+      :related (let [referenced-nodes (referenced-model-nodes m view)
+                     referenced-rels (referenced-relations m view)
+                     related-nodes (into #{} (map (partial model/resolve-ref m) (model/related-nodes m referenced-rels)))]
                  (set/union referenced-nodes related-nodes)) ; TODO check
       )))
 
 (defn specified-relations
   "Returns the relations specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
-  [view]
+  [m view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-relations view)
-      :relations (let [referenced-nodes (referenced-model-nodes view)
-                       referenced-rels (referenced-relations view)
-                       related-rels (into #{} (model/relations-of-nodes referenced-nodes))]
+      :referenced-only (referenced-relations m view)
+      :relations (let [referenced-nodes (referenced-model-nodes m view)
+                       referenced-rels (referenced-relations m view)
+                       related-rels (into #{} (model/relations-of-nodes m referenced-nodes))]
                    (set/union referenced-rels related-rels))
-      :related (referenced-relations view))))
+      :related (referenced-relations m view))))
 
 (defn specified-elements
   "Returns the model elements and relations explicitly specified in the given view."
-  [view]
+  [m view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-elements view)
-      :relations (concat (specified-model-nodes view) (specified-relations view))
-      :related (concat (specified-model-nodes view) (specified-relations view)))))
+      :referenced-only (referenced-elements m view)
+      :relations (concat (specified-model-nodes m view) (specified-relations m view))
+      :related (concat (specified-model-nodes m view) (specified-relations m view)))))
 
 (defn rendered-model-nodes
   "Returns the model nodes to be rendered by the given view."
-  [view])
+  [m view])
 
 (defn rendered-relations
   "Returns the relations to be rendered by the given view.
    Takes the view spec into account for resolving relations not explicitly specified."
-  [view])
+  [m view])
 
 (defn rendered-elements
   "Returns the model elements to be rendered by the given view.
    Takes the view spec into account for resolving model elements not explicitly specified."
-  [view])
-
+  [m view])
 
 
 ;;
@@ -256,14 +246,14 @@
 (defn render-predicate
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
-  [view-type]
+  [m view-type]
   (let [element-predicate (view-type->element-predicate view-type)]
     (fn [e]
       (or (and (= :rel (:el e))
-               (element-predicate (model/get-model-element (:from e)))
-               (element-predicate (model/get-model-element (:to e))))
+               (element-predicate (model/get-model-element m (:from e)))
+               (element-predicate (model/get-model-element m (:to e))))
           (and (element-predicate e)
-               (not (:external (model/get-parent-element e))))))))
+               (not (:external (model/get-parent-element m e))))))))
 
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
@@ -283,26 +273,6 @@
    (not (:external e))))
 
 
-(defn include-criteria?
-  "Returns true, if the `view` should include elements selected by criteria."
-  [view]
-  (map? (get-in view [:spec :include])))
-
-(defn include-relations?
-  "Returns true, if the `view` should include the relations to the shown elements."
-  [view]
-  (= :relations (get-in view [:spec :include])))
-
-;(defn include-related?
-;  "Returns true, if the `view` should include the elements for the shown relations."
-;  [view]
-;  (= :related (get-in view [:spec :include])))
-
-;(defn include-transitive?
-;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
-;  [view]
-;  (= :transitive (get-in view [:spec :include])))
-
 ;;;
 ;;; Rendering functions
 ;;;
@@ -317,47 +287,29 @@
       ; render e as normal model element
       e)))
 
-(defn render-relation?
-  "Returns true if the relation should be rendered in the context of the view."
-  [rel pred]
-  (let [rendered? pred
-        from (model/resolve-ref (:from rel))
-        to   (model/resolve-ref (:to rel))]
-    (when (and (rendered? rel) (rendered? from) (rendered? to))
-      rel)))
-
-(defn relation-to-render
-  "Returns the relation to be rendered in the context of the view."
-  [view rel]
-  (let [view-type (:el view)
-        rendered? (render-predicate view-type)
-        from (model/resolve-ref (:from rel))
-        to   (model/resolve-ref (:to rel))]))
-  ; TODO promote relations to higher levels?
-  
 (defn elements-to-render
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
    of the view."
-  ([view]
-   (elements-to-render view (:ct view)))
-  ([view coll]
+  ([m view]
+   (elements-to-render m view (:ct view)))
+  ([m view coll]
    (let [view-type (:el view)]
      (->> coll
-          (map model/resolve-ref)
-          (filter (render-predicate view-type))
+          (map (partial model/resolve-ref m))
+          (filter (render-predicate m view-type))
           (map #(element-to-render view-type %))))))
 
 (defn elements-in-view
   "Returns the elements rendered in the view."
-  ([view]
-   (elements-in-view #{} view (elements-to-render view (:ct view))))
-  ([elements view coll]
+  ([m view]
+   (elements-in-view m #{} view (elements-to-render m view (:ct view))))
+  ([m elements view coll]
    (if (seq coll)
      (let [e (first coll)]
-       (recur (elements-in-view (conj elements e)
+       (recur m (elements-in-view m (conj elements e)
                                 view
-                                (elements-to-render view (:ct e)))
+                                (elements-to-render m view (:ct e)))
               view
               (rest coll)))
      elements)))
@@ -377,20 +329,13 @@
      techs)))
 
 (defn technologies-in-view
-  [view]
+  [m view]
   (->> view
-       (elements-in-view)
+       (elements-in-view m)
        (map :tech)
        (remove nil?)
        (into #{})))
        
-(defn relations-for-view
-  [view]
-  (let [view-elements (elements-in-view view)
-        relations (model/get-model-elements)]
-    ; TODO
-    ))
-
 ; general
 (defn render-indent
   "Renders an indent of n space chars."
@@ -416,17 +361,58 @@
       (derive :container-boundary  :boundary)
       (derive :context-boundary    :boundary)))
 
+
+(defn include-criteria?
+  "Returns true, if the `view` should include elements selected by criteria."
+  [view]
+  (map? (get-in view [:spec :include])))
+
+(defn include-relations?
+  "Returns true, if the `view` should include the relations to the shown elements."
+  [view]
+  (= :relations (get-in view [:spec :include])))
+
+;(defn include-related?
+;  "Returns true, if the `view` should include the elements for the shown relations."
+;  [view]
+;  (= :related (get-in view [:spec :include])))
+
+;(defn include-transitive?
+;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
+;  [view]
+;  (= :transitive (get-in view [:spec :include])))
+
+(defn render-relation?
+  "Returns true if the relation should be rendered in the context of the view."
+  [m rel pred]
+  (let [rendered? pred
+        from (model/resolve-ref m (:from rel))
+        to   (model/resolve-ref m (:to rel))]
+    (when (and (rendered? rel) (rendered? from) (rendered? to))
+      rel)))
+
+(defn relation-to-render
+  "Returns the relation to be rendered in the context of the view."
+  [m view rel]
+  (let [view-type (:el view)
+        rendered? (render-predicate m view-type)
+        from (model/resolve-ref m (:from rel))
+        to   (model/resolve-ref m (:to rel))]))
+  ; TODO promote relations to higher levels?
+  
+
+
 (comment
   ;(collect-technologies (:elements @model/state))
-  (specified-model-nodes (get-view @model/state :banking/system-context-view))
-  (specified-relations (get-view @model/state :banking/system-context-view))
-  (specified-elements (get-view @model/state :test/banking-container-view-related))
-  (specified-elements (get-view @model/state :test/banking-container-view-relations))
+  (specified-model-nodes @model/state (get-view @model/state :banking/system-context-view))
+  (specified-relations @model/state (get-view @model/state :banking/system-context-view))
+  (specified-elements @model/state (get-view @model/state :test/banking-container-view-related))
+  (specified-elements @model/state (get-view @model/state :test/banking-container-view-relations))
   
-  (model/related-nodes (referenced-relations (get-view @model/state :test/banking-container-view-related)))
-  (model/relations-of-nodes (referenced-model-nodes (get-view @model/state :test/banking-container-view-relations)))
+  (model/related-nodes @model/state (referenced-relations @model/state (get-view @model/state :test/banking-container-view-related)))
+  (model/relations-of-nodes @model/state (referenced-model-nodes @model/state (get-view @model/state :test/banking-container-view-relations)))
 
-  (elements-in-view (get-view @model/state :banking/container-view))
-  (technologies-in-view (get-view @model/state :banking/container-view))
+  (elements-in-view @model/state (get-view @model/state :banking/container-view))
+  (technologies-in-view @model/state (get-view @model/state :banking/container-view))
   ;
   )

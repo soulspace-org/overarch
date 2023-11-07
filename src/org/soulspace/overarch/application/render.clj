@@ -7,11 +7,11 @@
 
 (defn render-format
   "Returns the render format for the multimethod invocation."
-  ([format]
+  ([m format]
    format)
-  ([format options]
+  ([m format options]
    format)
-  ([format options view]
+  ([m format options view]
    format))
 
 (defmulti render-file

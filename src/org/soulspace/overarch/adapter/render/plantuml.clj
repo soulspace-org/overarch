@@ -240,7 +240,7 @@
 
 (defn renderer
   "Returns the renderer for the diagram"
-  [_ diagram]
+  [_ _ diagram]
   (:el diagram))
 
 (defmulti render-plantuml-view
@@ -762,9 +762,9 @@
 
 (defn sprites-for-diagram
   "Collects the sprites for the"
-  [view]
+  [m view]
   (->> view
-       (view/elements-to-render)
+       (view/elements-to-render m)
        (collect-all-sprites)
        (map #(tech->sprite %))))
 
@@ -801,9 +801,9 @@
 
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
-  [view]
+  [m view]
   (let [icon-libs (get-in view [:spec :plantuml :sprite-libs])
-        icons (sprites-for-diagram view)]
+        icons (sprites-for-diagram m view)]
     [(map (partial render-spritelib-import view) icon-libs)
      (map (partial render-sprite-import view) icons)]))
 
@@ -898,12 +898,12 @@
   (when (:title view) (str "title " (:title view))))
 
 (defmethod render-plantuml-view :c4-view
-  [options view]
-  (let [children (view/elements-to-render view)]
+  [m options view]
+  (let [children (view/elements-to-render m view)]
     ;(user/data-tapper "resolved" children)
     (flatten [(str "@startuml " (alias-name (:id view)))
               (render-c4-imports view)
-              (render-sprite-imports view)
+              (render-sprite-imports m view)
               (render-c4-layout view)
               (render-title view)
               (map #(render-c4-element view 0 %) children)
@@ -928,8 +928,8 @@
 
 
 (defmethod render-plantuml-view :uml-view
-  [options view]
-  (let [children (view/elements-to-render view)]
+  [m options view]
+  (let [children (view/elements-to-render m view)]
     (flatten [(str "@startuml " (alias-name (:id view)))
               (render-uml-layout view)
               (render-title view)
@@ -951,23 +951,22 @@
   (contains? plantuml-views (:el view)))
 
 (defmethod rndr/render-file :plantuml
-  [format options view]
+  [m format options view]
   (let [dir-name (str (:render-dir options) "/plantuml/" (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"
                      (name (:id view)) ".puml"))))
 
 (defmethod rndr/render-view :plantuml
-  [format options view]
-  (with-open [wrt (io/writer (rndr/render-file format options view))]
+  [m format options view]
+  (with-open [wrt (io/writer (rndr/render-file m format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-plantuml-view options view))))))
+      (println (str/join "\n" (render-plantuml-view m options view))))))
 
 (defmethod rndr/render :plantuml
-  [format options]
-  (doseq [view (model/get-views)]
+  [m format options]
+  (doseq [view (view/get-views m)]
     (when (plantuml-view? view)
-      (rndr/render-view format options
-                        (assoc view :ct (model/specified-elements view)) ; TODO do preprocessing once in build phase?
+      (rndr/render-view m format options
+                        (assoc view :ct (view/specified-elements m view)) ; TODO do preprocessing once in build phase?
                         ))))
-

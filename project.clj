@@ -12,7 +12,7 @@
                  [org.soulspace.clj/clj.java "0.9.1"]
                  [org.soulspace.clj/cmp.markdown "0.4.1"]]
 
-  :repl-options {:init-ns org.soulspace.overarch.cli}
+  :repl-options {:init-ns org.soulspace.overarch.adapter.ui.cli}
 
   :profiles {:dev {:dependencies [[djblue/portal "0.41.0"]
                                   [criterium/criterium "0.4.6"]

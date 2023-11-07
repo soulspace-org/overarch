@@ -7,9 +7,9 @@
 
 (defn export-format
   "Returns the export format for the data."
-  ([format options]
+  ([m format options]
    format)
-  ([format options _]
+  ([m format options _]
    format))
 
 (defmulti export-file
