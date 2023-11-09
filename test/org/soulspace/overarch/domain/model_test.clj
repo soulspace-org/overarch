@@ -4,6 +4,25 @@
             [org.soulspace.overarch.domain.model :refer :all]))
 
 
+(def c4-model
+  #{{:el :person
+     :id :test/user1
+     :name "User 1"}
+    {:el :system
+     :id :test/system1
+     :name "Test System"
+     :ct #{{:el :container
+            :id :test/container1
+            :name "Test Container 1"
+            :ct #{{:el :component
+                   :id :test/component11
+                   :name "Test Component 11"}}}}}
+    {:el :rel
+     :id :test/user1-uses-system1
+     :from :test/user1
+     :to :test/system1
+     :name "uses"}})
+
 (deftest model-predicates-test
   (testing "element?"
     (are [x y] (= x (fns/truthy? (element? y)))
@@ -37,12 +56,11 @@
       false {:external false}
       false {}
       false {:type :person}))
-  
+
   (testing "reference?"
     (are [x y] (= x (fns/truthy? (reference? y)))
       true {:ref :abc}
       true {:ref :a/abc}
       false {}
-      false {:type :person}))
-  )
+      false {:type :person})))
 
