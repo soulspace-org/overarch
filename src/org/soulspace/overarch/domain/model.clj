@@ -6,8 +6,9 @@
             [org.soulspace.clj.java.file :as file]))
 
 ;;;
-;;; Schema definitions
+;;; Category definitions
 ;;;
+
 ;;
 ;; C4 category definitions
 ;; 
@@ -88,7 +89,7 @@
 
 (def model-types
   "Element types for the architectural model."
-  (set/union component-types deployment-types uml-types relation-types ))
+  (set/union component-types deployment-types uml-types relation-types))
 
 
 ;;
@@ -223,7 +224,8 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/href string?) ; TODO url?
 
-(s/def :overarch/link (s/keys :req-un [:overarch/name :overarch/href]))
+(s/def :overarch/link
+  (s/keys :req-un [:overarch/name :overarch/href]))
 
 (s/def :overarch/ct
   (s/coll-of
@@ -232,10 +234,17 @@
          :relation    :overarch/relation)))
 
 (s/def :overarch/element
-  (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/name :overarch/desc :overarch/ct
+  (s/keys :req-un [:overarch/el]
+          :opt-un [:overarch/id
+                   :overarch/name :overarch/desc :overarch/ct
                    :overarch/subtype :overarch/external
                    :overarch/tech]))
+
+(s/def :overarch/identifiable
+  (s/keys :req-un [:overarch/id]))
+
+(s/def :overarch/named
+  (s/keys :req-un [:overarch/name]))
 
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
@@ -345,7 +354,7 @@
   [m coll]
   (->> coll
        (filter relation?)
-       (map (fn [rel] #{(:from rel) (:to rel)})) 
+       (map (fn [rel] #{(:from rel) (:to rel)}))
        ; TODO resolve refs
        (reduce set/union #{})))
 
@@ -451,5 +460,4 @@
   (update-state! "models")
   (build-id->parent (:elements @state))
   (user/data-tapper "State" @state)
-
   )
