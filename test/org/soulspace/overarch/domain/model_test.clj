@@ -31,9 +31,10 @@
       false {}
       false {:type :person}))
 
-  (testing "technical?"
-    (are [x y] (= x (fns/truthy? (technical? y)))
-      true {:tech "abc"}
+  (testing "external?"
+    (are [x y] (= x (fns/truthy? (external? y)))
+      true {:external true}
+      false {:external false}
       false {}
       false {:type :person}))
   

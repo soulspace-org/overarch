@@ -149,7 +149,6 @@
   ([m id]
    ((:registry m) id)))
 
-
 ;;;
 ;;; View functions
 ;;;
