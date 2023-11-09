@@ -73,6 +73,10 @@
 ;; Concept category definitions
 ;;
 (def concept-types
+  "Element types of a concept view."
+  (set/union container-types #{:concept}))
+
+(def glossary-types
   "Element types of a glossary view."
   (set/union container-types #{:concept}))
 

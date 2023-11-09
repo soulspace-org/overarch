@@ -79,7 +79,8 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
-      false {:el :protocol})))
+      false {:el :protocol}
+      false {:el :concept})))
 
 
 (deftest container-view-element?-test
@@ -126,7 +127,8 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
-      false {:el :protocol})))
+      false {:el :protocol}
+      false {:el :concept})))
 
 (deftest component-view-element?-test
   (testing "component-view-element?"
@@ -172,7 +174,8 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
-      false {:el :protocol})))
+      false {:el :protocol}
+      false {:el :concept})))
 
 (deftest deployment-view-element?-test
   (testing "deployment-view-element?"
@@ -218,7 +221,8 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
-      false {:el :protocol})))
+      false {:el :protocol}
+      false {:el :concept})))
 
 
 (deftest use-case-view-element?-test
@@ -265,7 +269,8 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
-      false {:el :protocol})))
+      false {:el :protocol}
+      false {:el :concept})))
 
 (deftest state-machine-view-element?-test
   (testing "state-machine-view-element?"
@@ -280,7 +285,7 @@
       true {:el :choice}
       true {:el :history-state}
       true {:el :deep-history-state}
-      true {:el :context-boundary}
+      false {:el :context-boundary}
       false {:el :person}
       false {:el :system}
       false {:el :actor}
@@ -311,4 +316,147 @@
       false {:el :annotation}
       false {:el :namespace}
       false {:el :function}
+      false {:el :protocol}
+      false {:el :concept})))
+
+(deftest state-machine-view-element?-test
+  (testing "state-machine-view-element?"
+    (are [x y] (= x (fns/truthy? (state-machine-view-element? y)))
+      true {:el :state-machine}
+      true {:el :start-state}
+      true {:el :state}
+      true {:el :end-state}
+      true {:el :transition}
+      true {:el :fork}
+      true {:el :join}
+      true {:el :choice}
+      true {:el :history-state}
+      true {:el :deep-history-state}
+      false {:el :context-boundary}
+      false {:el :person}
+      false {:el :system}
+      false {:el :actor}
+      false {:el :use-case}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :enterprise-boundary}
+      false {:el :system-boundary}
+      false {:el :container}
+      false {:el :node}
+      false {:el :container-boundary}
+      false {:el :component}
+      false {:el :package}
+      false {:el :class}
+      false {:el :field}
+      false {:el :method}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :namespace}
+      false {:el :function}
+      false {:el :protocol}
+      false {:el :concept})))
+
+(deftest concept-view-element?-test
+  (testing "concept-view-element?"
+    (are [x y] (= x (fns/truthy? (concept-view-element? y)))
+      true {:el :concept}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :person}
+      true {:el :system}
+      true {:el :system-boundary}
+      true {:el :container}
+      false {:el :container-boundary}
+      false {:el :component}
+      false {:el :node}
+      false {:el :actor}
+      false {:el :use-case}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :transition}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :package}
+      false {:el :class}
+      false {:el :field}
+      false {:el :method}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :namespace}
+      false {:el :function}
       false {:el :protocol})))
+
+(deftest glossary-view-element?-test
+  (testing "glossary-view-element?"
+    (are [x y] (= x (fns/truthy? (glossary-view-element? y)))
+      true {:el :concept}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :person}
+      true {:el :system}
+      true {:el :system-boundary}
+      true {:el :container}
+      false {:el :container-boundary}
+      false {:el :component}
+      false {:el :node}
+      false {:el :actor}
+      false {:el :use-case}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :transition}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :package}
+      false {:el :class}
+      false {:el :field}
+      false {:el :method}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :namespace}
+      false {:el :function}
+      false {:el :protocol})))
+
