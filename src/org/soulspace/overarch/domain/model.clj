@@ -100,25 +100,50 @@
   [e]
   (not= nil (:el e)))
 
-(defn identifiable-element?
+(defn identifiable?
   "Returns true if the given element `e` has an ID (:id key)."
   [e]
   (not= nil (:id e)))
 
-(defn named-element?
+(defn identifiable-element?
+  "Returns true if the given element `e` is an element and identifiable."
+  [e]
+  (and (element? e) (identifiable? e)))
+
+(defn named?
   "Returns true if the given element `e` has a name (:name key)."
   [e]
   (not= nil (:name e)))
 
-(defn identifiable-named-element?
-  "Returns true if the given element `e` is identifiable and named."
+(defn technical?
+  "Returns true if the given element `e` has a tech (:tech key)."
   [e]
-  (and (identifiable-element? e) (named-element? e)))
+  (not= nil (:tech e)))
+
+(defn named-element?
+  "Returns true if the given element `e` is an element and named."
+  [e]
+  (and (element? e) (named? e)))
+
+(defn identifiable-named-element?
+  "Returns true if the given element `e` is an element, identifiable and named."
+  [e]
+  (and (element? e) (identifiable? e) (named? e)))
+
+(defn relational?
+  "Returns true if the given element `e` is a relation."
+  [e]
+  (and (not= nil (:from e)) (not= nil (:to e))))
 
 (defn relational-element?
   "Returns true if the given element `e` is a relation."
   [e]
-  (and (identifiable-element? e) (not= nil (:from e)) (not= nil (:to e))))
+  (and (element? e) (not= nil (:from e)) (not= nil (:to e))))
+
+(defn identifiable-relational-element?
+  "Returns true if the given element `e` is an identifiable relation."
+  [e]
+  (and (element? e) (identifiable? e) (relational? e)))
 
 (defn named-relational-element?
   "Returns true if the given element `e` is a named relation."
