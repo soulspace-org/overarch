@@ -4,7 +4,7 @@
             [org.soulspace.overarch.domain.model :refer :all]))
 
 
-(def c4-model
+(def c4-model1
   #{{:el :person
      :id :test/user1
      :name "User 1"}
@@ -23,7 +23,7 @@
      :to :test/system1
      :name "uses"}})
 
-(def concept-model
+(def concept-model1
   #{{:el :concept
      :id :test/concept1
      :name "Concept 1"}
@@ -94,14 +94,43 @@
 (deftest build-id->elements-test
       (testing "build-id->elements"
         (are [x y] (= x y)
-          5 (count (build-id->elements c4-model))
-          5 (count (build-id->elements concept-model))
+          5 (count (build-id->elements c4-model1))
+          5 (count (build-id->elements concept-model1))
           )))
 
 (deftest build-id->parent-test
   (testing "build-id->parent"
     (are [x y] (= x y)
-      2 (count (build-id->parent c4-model))
-      0 (count (build-id->parent concept-model)))))
+      2 (count (build-id->parent c4-model1))
+      0 (count (build-id->parent concept-model1)))))
+
+(deftest build-referrer-id->rels-test
+  (testing "build-referrer-id->rels"
+    (are [x y] (= x y)
+      1 (count (build-referrer-id->rels c4-model1))
+      1 (count (build-referrer-id->rels concept-model1))
+      1 (count (:test/user1 (build-referrer-id->rels c4-model1)))
+      0 (count (:test/system1 (build-referrer-id->rels c4-model1)))
+      2 (count (:test/concept1 (build-referrer-id->rels concept-model1)))
+      0 (count (:test/concept2 (build-referrer-id->rels concept-model1)))
+      0 (count (:test/concept3 (build-referrer-id->rels concept-model1)))
+      )))
+
+(deftest build-referred-id->rels-test
+  (testing "build-referrer-id->rels"
+    (are [x y] (= x y)
+      1 (count (build-referred-id->rels c4-model1))
+      2 (count (build-referred-id->rels concept-model1))
+      0 (count (:test/user1 (build-referred-id->rels c4-model1)))
+      1 (count (:test/system1 (build-referred-id->rels c4-model1)))
+      0 (count (:test/concept1 (build-referred-id->rels concept-model1)))
+      1 (count (:test/concept2 (build-referred-id->rels concept-model1)))
+      1 (count (:test/concept3 (build-referred-id->rels concept-model1)))
+      )))
 
 
+(comment
+  :test/user1
+  (type (build-referrer-id->rels c4-model1))
+  (build-referrer-id->rels concept-model1)
+  )
