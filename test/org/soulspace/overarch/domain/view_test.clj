@@ -3,6 +3,15 @@
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]))
 
+(def context-view1
+  {:el :context-view
+   :id :test/context-view1
+   :title "Context View 1"
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/user1-uses-system1}]}
+  )
+
 (deftest view?-test
   (testing "view?"
     (are [x y] (= x (fns/truthy? (view? y)))

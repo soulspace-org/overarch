@@ -9,6 +9,10 @@
      :id :test/user1
      :name "User 1"}
     {:el :system
+     :id :test/ext-system1
+     :external true
+     :name "External System 1"}
+    {:el :system
      :id :test/system1
      :name "Test System"
      :ct #{{:el :container
@@ -21,7 +25,12 @@
      :id :test/user1-uses-system1
      :from :test/user1
      :to :test/system1
-     :name "uses"}})
+     :name "uses"}
+    {:el :rel
+     :id :test/system1-calls-ext-system1
+     :from :test/system1
+     :to :test/ext-system1
+     :name "calls"}})
 
 (def concept-model1
   #{{:el :concept
