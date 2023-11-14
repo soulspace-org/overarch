@@ -1,7 +1,9 @@
 (ns org.soulspace.overarch.domain.view-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
-            [org.soulspace.overarch.domain.view :refer :all]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (def context-view1
   {:el :context-view
@@ -9,8 +11,34 @@
    :title "Context View 1"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
-        {:ref :test/user1-uses-system1}]}
-  )
+        {:ref :test/user1-uses-system1}]})
+
+(def concept-view1
+  {:el :concept-view
+   :id :test/concept-view1
+   :title "Concept View 1"
+   :ct [{:ref :test/concept1}
+        {:ref :test/concept2}
+        {:ref :test/concept3}
+        {:ref :test/concept1-has-a-concept2}
+        {:ref :test/concept1-is-a-concept3}]})
+
+(def concept-view1-related
+  {:el :concept-view
+   :id :test/concept-view1 
+   :title "Concept View 1"
+   :spec {:include :related}
+   :ct [{:ref :test/concept1-has-a-concept2}
+        {:ref :test/concept1-is-a-concept3}]})
+
+(def concept-view1-relations
+  {:el :concept-view
+   :id :test/concept-view1
+   :title "Concept View 1"
+   :spec {:include :relations}
+   :ct [{:ref :test/concept1}
+        {:ref :test/concept2}
+        {:ref :test/concept3}]})
 
 (deftest view?-test
   (testing "view?"
@@ -469,3 +497,28 @@
       false {:el :function}
       false {:el :protocol})))
 
+(deftest referenced-elements-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "referenced-elements"
+      (are [x y] (= x y)
+        5 (count (referenced-elements concept1 concept-view1))
+        2 (count (referenced-elements concept1 concept-view1-related))
+        3 (count (referenced-elements concept1 concept-view1-relations))))))
+
+(deftest specified-elements-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "specified-elements"
+      (are [x y] (= x y)
+        5 (count (specified-elements concept1 concept-view1))
+        5 (count (specified-elements concept1 concept-view1-related))
+        5 (count (specified-elements concept1 concept-view1-relations))))))
+
+(comment
+  (def concept1 (model/build-registry model-test/concept-model1))
+  (referenced-elements concept1 concept-view1)
+  (referenced-elements concept1 concept-view1-related)
+  (referenced-elements concept1 concept-view1-relations)
+  (specified-elements concept1 concept-view1)
+  (specified-elements concept1 concept-view1-related)
+  (specified-elements concept1 concept-view1-relations)
+  )

@@ -5,6 +5,7 @@
 
 
 (def c4-model1
+  "Simple test model for C4 Architecture"
   #{{:el :person
      :id :test/user1
      :name "User 1"}
@@ -20,7 +21,18 @@
             :name "Test Container 1"
             :ct #{{:el :component
                    :id :test/component11
-                   :name "Test Component 11"}}}}}
+                   :name "Test Component 11"}
+                  {:el :component
+                   :id :test/component12
+                   :name "Test Component 12"}}}
+           {:el :container
+            :id :test/container-db1
+            :subtype :database
+            :name "Test DB Container 1"}
+           {:el :container
+            :id :test/container-queue1
+            :subtype :queue
+            :name "Test Queue Container 1"}}}
     {:el :rel
      :id :test/user1-uses-system1
      :from :test/user1
@@ -30,7 +42,18 @@
      :id :test/system1-calls-ext-system1
      :from :test/system1
      :to :test/ext-system1
-     :name "calls"}})
+     :name "calls"}
+    {:el :rel
+     :id :test/user1-uses-container1
+     :from :test/user1
+     :to :test/container1
+     :name "uses"}
+    {:el :rel
+     :id :test/container1-calls-ext-system1
+     :from :test/container1
+     :to :test/ext-system1
+     :name "calls"}
+    })
 
 (def concept-model1
   #{{:el :concept
@@ -101,25 +124,25 @@
       false {:type :person})))
 
 (deftest build-id->elements-test
-      (testing "build-id->elements"
-        (are [x y] (= x y)
-          5 (count (build-id->elements c4-model1))
-          5 (count (build-id->elements concept-model1))
-          )))
+  (testing "build-id->elements"
+    (are [x y] (= x y)
+      12 (count (build-id->elements c4-model1))
+      5 (count (build-id->elements concept-model1)))))
 
 (deftest build-id->parent-test
   (testing "build-id->parent"
     (are [x y] (= x y)
-      2 (count (build-id->parent c4-model1))
+      5 (count (build-id->parent c4-model1))
       0 (count (build-id->parent concept-model1)))))
 
 (deftest build-referrer-id->rels-test
   (testing "build-referrer-id->rels"
     (are [x y] (= x y)
-      1 (count (build-referrer-id->rels c4-model1))
+      3 (count (build-referrer-id->rels c4-model1))
       1 (count (build-referrer-id->rels concept-model1))
-      1 (count (:test/user1 (build-referrer-id->rels c4-model1)))
-      0 (count (:test/system1 (build-referrer-id->rels c4-model1)))
+      2 (count (:test/user1 (build-referrer-id->rels c4-model1)))
+      1 (count (:test/system1 (build-referrer-id->rels c4-model1)))
+      0 (count (:test/ext-system1 (build-referrer-id->rels c4-model1)))
       2 (count (:test/concept1 (build-referrer-id->rels concept-model1)))
       0 (count (:test/concept2 (build-referrer-id->rels concept-model1)))
       0 (count (:test/concept3 (build-referrer-id->rels concept-model1)))
@@ -128,10 +151,11 @@
 (deftest build-referred-id->rels-test
   (testing "build-referrer-id->rels"
     (are [x y] (= x y)
-      1 (count (build-referred-id->rels c4-model1))
+      3 (count (build-referred-id->rels c4-model1))
       2 (count (build-referred-id->rels concept-model1))
       0 (count (:test/user1 (build-referred-id->rels c4-model1)))
       1 (count (:test/system1 (build-referred-id->rels c4-model1)))
+      2 (count (:test/ext-system1 (build-referred-id->rels c4-model1)))
       0 (count (:test/concept1 (build-referred-id->rels concept-model1)))
       1 (count (:test/concept2 (build-referred-id->rels concept-model1)))
       1 (count (:test/concept3 (build-referred-id->rels concept-model1)))

@@ -312,9 +312,10 @@
 (defn resolve-ref
   "Resolves the model element for the ref `e`."
   ([m e]
-   (if (:ref e)
-     (merge (get-model-element m (:ref e)) e)
-     e)))
+   (cond
+     (keyword? e) (get-model-element m e)
+     (:ref e) (merge (get-model-element m (:ref e)) e)
+     :else e)))
 
 (defn all-elements
   "Returns a set of all elements."
