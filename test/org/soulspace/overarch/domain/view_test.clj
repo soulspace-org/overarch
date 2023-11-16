@@ -11,7 +11,17 @@
    :title "Context View 1"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
-        {:ref :test/user1-uses-system1}]})
+        {:ref :test/user1-uses-system1}
+        {:ref :test/system1-calls-ext-system1}]})
+
+(def container-view1
+  {:el :container-view
+   :id :test/container-view1
+   :title "Container View 1"
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/user1-uses-container1}
+        {:ref :test/container1-calls-ext-system1}]})
 
 (def concept-view1
   {:el :concept-view
@@ -497,6 +507,22 @@
       false {:el :function}
       false {:el :protocol})))
 
+
+(deftest as-boundary?-test
+  (testing "as-boundary?"
+    (are [x y] (= x (fns/truthy? (apply as-boundary? y)))
+      true [:container-view {:el :system :ct #{{:el :container}}}]
+      true [:component-view {:el :system :ct #{{:el :container}}}]
+      true [:component-view {:el :container :ct #{{:el :component}}}]
+
+      false [:container-view {:el :system}]
+      false [:container-view {:el :container}]
+      false [:container-view {:el :container :ct #{{:el :component}}}]
+      false [:component-view {:el :system}]
+      false [:component-view {:el :container}]
+      false [:component-view {:el :component}]
+      )))
+
 (deftest referenced-elements-test
   (let [concept1 (model/build-registry model-test/concept-model1)]
     (testing "referenced-elements"
@@ -514,6 +540,22 @@
         5 (count (specified-elements concept1 concept-view1-relations))))))
 
 (comment
+  (as-boundary? :container-view {:el :system :ct #{{:el :container}}})
+  (def c4-1 (model/build-registry model-test/c4-model1))
+  (referenced-model-nodes c4-1 context-view1)
+  (referenced-relations c4-1 context-view1)
+  (referenced-elements c4-1 context-view1)
+  (specified-model-nodes c4-1 context-view1)
+  (specified-relations c4-1 context-view1)
+  (specified-elements c4-1 context-view1)
+
+  (elements-to-render c4-1 context-view1)
+  (elements-to-render c4-1 context-view1 (:ct context-view1))
+
+  (elements-to-render c4-1 container-view1)
+  (elements-to-render c4-1 container-view1 (:ct container-view1))
+  (elements-to-render c4-1 container-view1 (:ct (model/resolve-ref c4-1 :test/system1)))
+
   (def concept1 (model/build-registry model-test/concept-model1))
   (referenced-model-nodes concept1 concept-view1)
   (referenced-model-nodes concept1 concept-view1-related)
@@ -533,4 +575,5 @@
   (specified-elements concept1 concept-view1)
   (specified-elements concept1 concept-view1-related)
   (specified-elements concept1 concept-view1-relations)
+
   )
