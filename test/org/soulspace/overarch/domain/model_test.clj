@@ -115,6 +115,99 @@
       false {}
       false {:type :person})))
 
+(deftest model-element?-test
+  (testing ""
+    (are [x y] (= x (fns/truthy? (model-element? y)))
+      true {:el :person}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :node}
+      true {:el :concept}
+      true {:el :use-case}
+      true {:el :actor}
+      true {:el :package}
+      true {:el :namespace}
+      true {:el :class}
+      true {:el :interface}
+      true {:el :enum}
+      true {:el :field}
+      true {:el :method}
+      true {:el :stereotype}
+      true {:el :annotation}
+      true {:el :protocol}
+      true {:el :state-machine}
+      true {:el :start-state}
+      true {:el :state}
+      true {:el :end-state}
+      true {:el :fork}
+      true {:el :join}
+      true {:el :choice}
+      true {:el :history-state}
+      true {:el :deep-history-state}
+      true {:el :rel}
+      true {:el :uses}
+      true {:el :include}
+      true {:el :extends}
+      true {:el :generalizes}
+      true {:el :inheritance}
+      true {:el :implementation}
+      true {:el :composition}
+      true {:el :aggregation}
+      true {:el :association}
+      true {:el :dependency}
+      true {:el :transition}
+      false {:el :ref})))
+
+(deftest model-node?-test
+  (testing ""
+    (are [x y] (= x (fns/truthy? (model-node? y)))
+      true {:el :person}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :node}
+      true {:el :concept}
+      true {:el :use-case}
+      true {:el :actor}
+      true {:el :package}
+      true {:el :namespace}
+      true {:el :class}
+      true {:el :interface}
+      true {:el :enum}
+      true {:el :field}
+      true {:el :method}
+      true {:el :stereotype}
+      true {:el :annotation}
+      true {:el :protocol}
+      true {:el :state-machine}
+      true {:el :start-state}
+      true {:el :state}
+      true {:el :end-state}
+      true {:el :fork}
+      true {:el :join}
+      true {:el :choice}
+      true {:el :history-state}
+      true {:el :deep-history-state}
+
+      false {:el :rel}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
 (deftest reference?-test
   (testing "reference?"
     (are [x y] (= x (fns/truthy? (reference? y)))

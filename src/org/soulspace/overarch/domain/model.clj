@@ -62,8 +62,8 @@
 
 (def uml-relation-types
   "Relation types of UML views."
-  #{:goal :include :extends :generalizes :transition :composition
-    :aggregation :inheritance :implementation})
+  #{:uses :include :extends :generalizes :transition :composition
+    :aggregation :dependency :association :inheritance :implementation})
 
 (def uml-types
   "Element types of UML views."
@@ -93,7 +93,7 @@
 
 (def model-types
   "Element types for the architectural model."
-  (set/union component-types deployment-types uml-types relation-types))
+  (set/union component-types deployment-types uml-types concept-types relation-types))
 
 
 ;;
