@@ -523,6 +523,22 @@
       false [:component-view {:el :component}]
       )))
 
+(deftest referenced-model-nodes-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "referenced-model-nodes"
+      (are [x y] (= x y)
+        3 (count (referenced-model-nodes concept1 concept-view1))
+        0 (count (referenced-model-nodes concept1 concept-view1-related))
+        3 (count (referenced-model-nodes concept1 concept-view1-relations))))))
+
+(deftest referenced-relations-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "referenced-relations"
+      (are [x y] (= x y)
+        2 (count (referenced-relations concept1 concept-view1))
+        2 (count (referenced-relations concept1 concept-view1-related))
+        0 (count (referenced-relations concept1 concept-view1-relations))))))
+
 (deftest referenced-elements-test
   (let [concept1 (model/build-registry model-test/concept-model1)]
     (testing "referenced-elements"
@@ -530,6 +546,22 @@
         5 (count (referenced-elements concept1 concept-view1))
         2 (count (referenced-elements concept1 concept-view1-related))
         3 (count (referenced-elements concept1 concept-view1-relations))))))
+
+(deftest specified-model-nodes-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "specified-model-nodes"
+      (are [x y] (= x y)
+        3 (count (specified-model-nodes concept1 concept-view1))
+        3 (count (specified-model-nodes concept1 concept-view1-related))
+        3 (count (specified-model-nodes concept1 concept-view1-relations))))))
+
+(deftest specified-relations-test
+  (let [concept1 (model/build-registry model-test/concept-model1)]
+    (testing "specified-relations"
+      (are [x y] (= x y)
+        2 (count (specified-relations concept1 concept-view1))
+        2 (count (specified-relations concept1 concept-view1-related))
+        2 (count (specified-relations concept1 concept-view1-relations))))))
 
 (deftest specified-elements-test
   (let [concept1 (model/build-registry model-test/concept-model1)]
