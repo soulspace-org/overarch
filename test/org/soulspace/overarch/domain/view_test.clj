@@ -5,51 +5,6 @@
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(def context-view1
-  {:el :context-view
-   :id :test/context-view1
-   :title "Context View 1"
-   :ct [{:ref :test/user1}
-        {:ref :test/system1}
-        {:ref :test/user1-uses-system1}
-        {:ref :test/system1-calls-ext-system1}]})
-
-(def container-view1
-  {:el :container-view
-   :id :test/container-view1
-   :title "Container View 1"
-   :ct [{:ref :test/user1}
-        {:ref :test/system1}
-        {:ref :test/user1-uses-container1}
-        {:ref :test/container1-calls-ext-system1}]})
-
-(def concept-view1
-  {:el :concept-view
-   :id :test/concept-view1
-   :title "Concept View 1"
-   :ct [{:ref :test/concept1}
-        {:ref :test/concept2}
-        {:ref :test/concept3}
-        {:ref :test/concept1-has-a-concept2}
-        {:ref :test/concept1-is-a-concept3}]})
-
-(def concept-view1-related
-  {:el :concept-view
-   :id :test/concept-view1 
-   :title "Concept View 1"
-   :spec {:include :related}
-   :ct [{:ref :test/concept1-has-a-concept2}
-        {:ref :test/concept1-is-a-concept3}]})
-
-(def concept-view1-relations
-  {:el :concept-view
-   :id :test/concept-view1
-   :title "Concept View 1"
-   :spec {:include :relations}
-   :ct [{:ref :test/concept1}
-        {:ref :test/concept2}
-        {:ref :test/concept3}]})
-
 (deftest view?-test
   (testing "view?"
     (are [x y] (= x (fns/truthy? (view? y)))
@@ -514,58 +469,171 @@
       true [:container-view {:el :system :ct #{{:el :container}}}]
       true [:component-view {:el :system :ct #{{:el :container}}}]
       true [:component-view {:el :container :ct #{{:el :component}}}]
-
       false [:container-view {:el :system}]
       false [:container-view {:el :container}]
       false [:container-view {:el :container :ct #{{:el :component}}}]
       false [:component-view {:el :system}]
       false [:component-view {:el :container}]
-      false [:component-view {:el :component}]
-      )))
+      false [:component-view {:el :component}])))
+
+(def context-view1
+  {:el :context-view
+   :id :test/context-view1
+   :title "Context View 1"
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/ext-system1}
+        {:ref :test/user1-uses-system1}
+        {:ref :test/system1-calls-ext-system1}]})
+
+(def context-view1-related
+  {:el :context-view
+   :id :test/context-view1-related
+   :title "Context View 1"
+   :spec {:include :related}
+   :ct [{:ref :test/user1-uses-system1}
+        {:ref :test/system1-calls-ext-system1}]})
+
+(def context-view1-relations
+  {:el :context-view
+   :id :test/context-view1-relations
+   :title "Context View 1"
+   :spec {:include :relations}
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/ext-system1}]})
+
+(def container-view1
+  {:el :container-view
+   :id :test/container-view1
+   :title "Container View 1"
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/ext-system1}
+        {:ref :test/user1-uses-container1}
+        {:ref :test/container1-calls-ext-system1}]})
+
+(def container-view1-related
+  {:el :container-view
+   :id :test/container-view1-related
+   :title "Container View 1"
+   :ct [{:ref :test/user1-uses-container1}
+        {:ref :test/container1-calls-ext-system1}]})
+
+(def container-view1-relations
+  {:el :container-view
+   :id :test/container-view1-relations
+   :title "Container View 1"
+   :ct [{:ref :test/user1}
+        {:ref :test/system1}
+        {:ref :test/ext-system1}]})
+
+(def concept-view1
+  {:el :concept-view
+   :id :test/concept-view1
+   :title "Concept View 1"
+   :ct [{:ref :test/concept1}
+        {:ref :test/concept2}
+        {:ref :test/concept3}
+        {:ref :test/concept1-has-a-concept2}
+        {:ref :test/concept1-is-a-concept3}]})
+
+(def concept-view1-related
+  {:el :concept-view
+   :id :test/concept-view1-related
+   :title "Concept View 1"
+   :spec {:include :related}
+   :ct [{:ref :test/concept1-has-a-concept2}
+        {:ref :test/concept1-is-a-concept3}]})
+
+(def concept-view1-relations
+  {:el :concept-view
+   :id :test/concept-view1-relations
+   :title "Concept View 1"
+   :spec {:include :relations}
+   :ct [{:ref :test/concept1}
+        {:ref :test/concept2}
+        {:ref :test/concept3}]})
 
 (deftest referenced-model-nodes-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "referenced-model-nodes"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "referenced-model-nodes for context view"
+      (are [x y] (= x y)
+        3 (count (referenced-model-nodes c4-1 context-view1))
+        0 (count (referenced-model-nodes c4-1 context-view1-related))
+        3 (count (referenced-model-nodes c4-1 context-view1-relations))))
+    (testing "referenced-model-nodes for container view"
+      (are [x y] (= x y)
+        3 (count (referenced-model-nodes c4-1 container-view1))
+        0 (count (referenced-model-nodes c4-1 container-view1-related))
+        3 (count (referenced-model-nodes c4-1 container-view1-relations))))
+    (testing "referenced-model-nodes for concept view"
       (are [x y] (= x y)
         3 (count (referenced-model-nodes concept1 concept-view1))
         0 (count (referenced-model-nodes concept1 concept-view1-related))
         3 (count (referenced-model-nodes concept1 concept-view1-relations))))))
 
 (deftest referenced-relations-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "referenced-relations"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "referenced-relations for context view"
+      (are [x y] (= x y)
+        2 (count (referenced-relations c4-1 context-view1))
+        2 (count (referenced-relations c4-1 context-view1-related))
+        0 (count (referenced-relations c4-1 context-view1-relations))))
+    (testing "referenced-relations for container view"
+      (are [x y] (= x y)
+        2 (count (referenced-relations c4-1 container-view1))
+        2 (count (referenced-relations c4-1 container-view1-related))
+        0 (count (referenced-relations c4-1 container-view1-relations))))
+    (testing "referenced-relations for concept view"
       (are [x y] (= x y)
         2 (count (referenced-relations concept1 concept-view1))
         2 (count (referenced-relations concept1 concept-view1-related))
         0 (count (referenced-relations concept1 concept-view1-relations))))))
 
 (deftest referenced-elements-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "referenced-elements"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "referenced-elements for context view"
+      (are [x y] (= x y)
+        5 (count (referenced-elements c4-1 context-view1))
+        2 (count (referenced-elements c4-1 context-view1-related))
+        3 (count (referenced-elements c4-1 context-view1-relations))))
+    (testing "referenced-elements for container view"
+      (are [x y] (= x y)
+        5 (count (referenced-elements c4-1 container-view1))
+        2 (count (referenced-elements c4-1 container-view1-related))
+        3 (count (referenced-elements c4-1 container-view1-relations))))
+    (testing "referenced-elements for concept view"
       (are [x y] (= x y)
         5 (count (referenced-elements concept1 concept-view1))
         2 (count (referenced-elements concept1 concept-view1-related))
         3 (count (referenced-elements concept1 concept-view1-relations))))))
 
 (deftest specified-model-nodes-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "specified-model-nodes"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "specified-model-nodes for concept view"
       (are [x y] (= x y)
         3 (count (specified-model-nodes concept1 concept-view1))
         3 (count (specified-model-nodes concept1 concept-view1-related))
         3 (count (specified-model-nodes concept1 concept-view1-relations))))))
 
 (deftest specified-relations-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "specified-relations"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "specified-relations for concept view"
       (are [x y] (= x y)
         2 (count (specified-relations concept1 concept-view1))
         2 (count (specified-relations concept1 concept-view1-related))
         2 (count (specified-relations concept1 concept-view1-relations))))))
 
 (deftest specified-elements-test
-  (let [concept1 (model/build-registry model-test/concept-model1)]
-    (testing "specified-elements"
+  (let [concept1 (model/build-registry model-test/concept-model1)
+        c4-1 (model/build-registry model-test/c4-model1)]
+    (testing "specified-elements for concept view"
       (are [x y] (= x y)
         5 (count (specified-elements concept1 concept-view1))
         5 (count (specified-elements concept1 concept-view1-related))
@@ -575,6 +643,10 @@
   (as-boundary? :container-view {:el :system :ct #{{:el :container}}})
   (def c4-1 (model/build-registry model-test/c4-model1))
   (referenced-model-nodes c4-1 context-view1)
+  (referenced-model-nodes c4-1 context-view1-related)
+  (referenced-model-nodes c4-1 context-view1-relations)
+  (referenced-model-nodes c4-1 container-view1-related)
+
   (referenced-relations c4-1 context-view1)
   (referenced-elements c4-1 context-view1)
   (specified-model-nodes c4-1 context-view1)
