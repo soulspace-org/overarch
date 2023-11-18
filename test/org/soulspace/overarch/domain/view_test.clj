@@ -615,6 +615,17 @@
 (deftest specified-model-nodes-test
   (let [concept1 (model/build-registry model-test/concept-model1)
         c4-1 (model/build-registry model-test/c4-model1)]
+    ; TODO check
+    (testing "specified-model-nodes for context view"
+      (are [x y] (= x y)
+        3 (count (specified-model-nodes c4-1 context-view1))
+        3 (count (specified-model-nodes c4-1 context-view1-related))
+        3 (count (specified-model-nodes c4-1 context-view1-relations))))
+    (testing "specified-model-nodes for container view"
+      (are [x y] (= x y)
+        3 (count (specified-model-nodes c4-1 container-view1))
+        3 (count (specified-model-nodes c4-1 container-view1-related))
+        3 (count (specified-model-nodes c4-1 container-view1-relations))))
     (testing "specified-model-nodes for concept view"
       (are [x y] (= x y)
         3 (count (specified-model-nodes concept1 concept-view1))
@@ -624,6 +635,17 @@
 (deftest specified-relations-test
   (let [concept1 (model/build-registry model-test/concept-model1)
         c4-1 (model/build-registry model-test/c4-model1)]
+    ; TODO check
+    (testing "specified-relations for context view"
+      (are [x y] (= x y)
+        2 (count (specified-relations c4-1 context-view1))
+        2 (count (specified-relations c4-1 context-view1-related))
+        2 (count (specified-relations c4-1 context-view1-relations))))
+    (testing "specified-relations for container view"
+      (are [x y] (= x y)
+        2 (count (specified-relations c4-1 container-view1))
+        2 (count (specified-relations c4-1 container-view1-related))
+        2 (count (specified-relations c4-1 container-view1-relations))))
     (testing "specified-relations for concept view"
       (are [x y] (= x y)
         2 (count (specified-relations concept1 concept-view1))
@@ -633,6 +655,17 @@
 (deftest specified-elements-test
   (let [concept1 (model/build-registry model-test/concept-model1)
         c4-1 (model/build-registry model-test/c4-model1)]
+    ; TODO check
+    (testing "specified-elements for context view"
+      (are [x y] (= x y)
+        5 (count (specified-elements c4-1 context-view1))
+        5 (count (specified-elements c4-1 context-view1-related))
+        5 (count (specified-elements c4-1 context-view1-relations))))
+    (testing "specified-elements for container view"
+      (are [x y] (= x y)
+        5 (count (specified-elements c4-1 container-view1))
+        5 (count (specified-elements c4-1 container-view1-related))
+        5 (count (specified-elements c4-1 container-view1-relations))))
     (testing "specified-elements for concept view"
       (are [x y] (= x y)
         5 (count (specified-elements concept1 concept-view1))
