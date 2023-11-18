@@ -122,6 +122,29 @@
   [e]
   (contains? model/concept-types (:el e)))
 
+(defn context-view-rel-participant?
+  "Returns true, if the given element `e` can be a participant in a container relation."
+  [e]
+  (context-view-element? e))
+
+(defn container-view-rel-participant?
+  "Returns true, if the given element `e` can be a participant in a container relation."
+  [e]
+  (and (container-view-element? e)
+       ; exclude internal systems
+       (not (and (model/system? e)
+                 (not (model/external? e))))))
+
+(defn component-view-rel-participant?
+  "Returns true, if the given element `e` can be a participant in a component."
+  [e]
+  (and (container-view-element? e)
+       ; exclude internal systems and containers
+       (not (and (model/system? e)
+                 (not (model/external? e))))
+       (not (and (model/container? e)
+                 (not (model/external? e))))))
+
 ;;;
 ;;; Schema definitions
 ;;;
@@ -132,7 +155,6 @@
 (s/def :overarch/view
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/spec :overarch/title]))
-
 
 (defn views
   "Filters the given collection of elements `coll` for views."
@@ -335,7 +357,6 @@
        (remove nil?)
        (into #{})))
        
-; general
 (defn render-indent
   "Renders an indent of n space chars."
   [n]
@@ -351,7 +372,6 @@
          (map str/capitalize)
          (str/join " "))))
 
-; general?
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
