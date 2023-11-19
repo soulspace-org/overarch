@@ -59,7 +59,7 @@
 (def class-types
   "Element types of a class view."
   #{:class :enum :interface
-    :field :method
+    :field :method :function
     :inheritance :implementation :composition :aggregation :association :dependency
     :package :namespace :stereotype :annotation :protocol})
 
