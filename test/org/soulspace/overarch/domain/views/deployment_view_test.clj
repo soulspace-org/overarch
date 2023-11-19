@@ -2,11 +2,12 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.deployment-view :as deployment-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest deployment-view-element?-test
-  (testing "deployment-view-element?"
-    (are [x y] (= x (fns/truthy? (deployment-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :deployment-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :person}

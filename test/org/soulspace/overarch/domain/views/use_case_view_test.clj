@@ -2,11 +2,12 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.use-case-view :as use-case-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest use-case-view-element?-test
-  (testing "use-case-view-element?"
-    (are [x y] (= x (fns/truthy? (use-case-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :use-case-view} y)))
       true {:el :context-boundary}
       true {:el :person}
       true {:el :system}

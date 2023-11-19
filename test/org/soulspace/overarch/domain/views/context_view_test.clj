@@ -2,12 +2,13 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.context-view :as context-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 
-(deftest context-view-element?-test
-  (testing "context-view-element?"
-    (are [x y] (= x (fns/truthy? (context-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :context-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}

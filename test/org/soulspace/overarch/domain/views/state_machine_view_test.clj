@@ -2,11 +2,12 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.state-machine-view :as state-machine-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest state-machine-view-element?-test
-  (testing "state-machine-view-element?"
-    (are [x y] (= x (fns/truthy? (state-machine-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :state-machine-view} y)))
       true {:el :state-machine}
       true {:el :start-state}
       true {:el :state}

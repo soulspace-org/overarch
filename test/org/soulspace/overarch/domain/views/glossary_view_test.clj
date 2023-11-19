@@ -2,11 +2,12 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.glossary-view :as glossary-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest glossary-view-element?-test
-  (testing "glossary-view-element?"
-    (are [x y] (= x (fns/truthy? (glossary-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :glossary-view} y)))
       true {:el :concept}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}

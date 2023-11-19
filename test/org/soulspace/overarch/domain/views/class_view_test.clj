@@ -2,11 +2,12 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
+            [org.soulspace.overarch.domain.views.class-view :as class-view] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest class-view-element?-test
-  (testing "class-view-element?"
-    (are [x y] (= x (fns/truthy? (class-view-element? y)))
+(deftest render-element?-test
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-element? {:el :class-view} y)))
       true {:el :package}
       true {:el :class}
       true {:el :field}
