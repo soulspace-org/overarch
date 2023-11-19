@@ -1,10 +1,10 @@
 ;;;;
 ;;;; JSON export
 ;;;;
-(ns org.soulspace.overarch.exports.json
+(ns org.soulspace.overarch.adapter.exports.json
   (:require [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.export :as exp]
-            [org.soulspace.overarch.io :as oio]))
+            [org.soulspace.overarch.application.export :as exp]
+            [org.soulspace.overarch.util.io :as oio]))
 (defn export-json
   "Exports the data files in the model directory, as specified by `options`,
    to JSON."
@@ -20,8 +20,5 @@
            (oio/write-json out-file)))))
 
 (defmethod exp/export :json
-  [format options]
+  [_ _ options]
   (export-json options))
-
-(comment
-  (export-json "models"))

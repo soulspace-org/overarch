@@ -1,4 +1,4 @@
-(defproject org.soulspace.clj/overarch "0.7.0"
+(defproject org.soulspace.clj/overarch "0.8.0-SNAPSHOT"
   :description "Overarch provides a data model for the holistic description of a software system, opening multiple use cases on the model data."
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
@@ -12,7 +12,7 @@
                  [org.soulspace.clj/clj.java "0.9.1"]
                  [org.soulspace.clj/cmp.markdown "0.4.1"]]
 
-  :repl-options {:init-ns org.soulspace.overarch.cli}
+  :repl-options {:init-ns org.soulspace.overarch.adapter.ui.cli}
 
   :profiles {:dev {:dependencies [[djblue/portal "0.41.0"]
                                   [criterium/criterium "0.4.6"]
@@ -21,7 +21,7 @@
                    :global-vars {*warn-on-reflection* true}}}
 
   :uberjar-name "overarch.jar"
-  :main org.soulspace.overarch.cli
+  :main org.soulspace.overarch.adapter.ui.cli
 
   :scm {:name "git" :url "https://github.com/soulspace-org/overarch"}
   :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]]

@@ -1,15 +1,14 @@
 ;;;;
 ;;;; Markdown rendering and export
 ;;;;
-(ns org.soulspace.overarch.render.markdown
+(ns org.soulspace.overarch.adapter.render.markdown
   "Functions to export views to markdown."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.core :as core]
-            [org.soulspace.overarch.view :as view]
-            [org.soulspace.overarch.render :as rndr]))
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.render :as rndr]))
 
 ;;;
 ;;; Rendering
@@ -52,8 +51,8 @@
 
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
-  [options view]
-  (let [children (sort-by :name (view/elements-in-view view))]
+  [m options view]
+  (let [children (sort-by :name (view/elements-in-view m view))]
     (flatten [(md/h1 (:title view))
               (map #(render-element % options view) children)])))
 
@@ -71,7 +70,7 @@
   (contains? markdown-views (:el view)))
 
 (defmethod rndr/render-file :markdown
-  [format options view]
+  [m format options view]
   (let [dir-name (str (:render-dir options) "/markdown/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
@@ -79,13 +78,13 @@
                      (name (:id view)) ".md"))))
 
 (defmethod rndr/render-view :markdown
-  [format options view]
-  (with-open [wrt (io/writer (rndr/render-file format options view))]
+  [m format options view]
+  (with-open [wrt (io/writer (rndr/render-file m format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-markdown-view options view))))))
+      (println (str/join "\n" (render-markdown-view m options view))))))
 
 (defmethod rndr/render :markdown
-  [format options]
-  (doseq [view (core/get-views)]
+  [m format options]
+  (doseq [view (view/get-views m)]
     (when (markdown-view? view)
-      (rndr/render-view format options view))))
+      (rndr/render-view m format options view))))

@@ -1,4 +1,7 @@
-(ns org.soulspace.overarch.core
+;;;;
+;;;; Functions for the definition and handling of the overarch model
+;;;;
+(ns org.soulspace.overarch.domain.model
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
@@ -6,8 +9,9 @@
             [org.soulspace.clj.java.file :as file]))
 
 ;;;
-;;; Schema definitions
+;;; Category definitions
 ;;;
+
 ;;
 ;; C4 category definitions
 ;; 
@@ -39,12 +43,6 @@
   "Element types of a C4 dynamic view."
   component-types)
 
-(def c4-view-types
-  "C4 view types."
-  #{:context-view :container-view :component-view
-    :code-view :deployment-view :system-landscape-view
-    :dynamic-view})
-
 ;;
 ;; UML category definitions
 ;;
@@ -61,41 +59,33 @@
 (def class-types
   "Element types of a class view."
   #{:class :enum :interface
-    :field :method
+    :field :method :function
     :inheritance :implementation :composition :aggregation :association :dependency
     :package :namespace :stereotype :annotation :protocol})
 
 (def uml-relation-types
   "Relation types of UML views."
-  #{:goal :include :extends :generalizes :transition :composition
-    :aggregation :inheritance :implementation})
+  #{:uses :include :extends :generalizes :transition :composition
+    :aggregation :dependency :association :inheritance :implementation})
 
 (def uml-types
   "Element types of UML views."
   (set/union use-case-types state-machine-types class-types))
 
-(def uml-view-types
-  "UML view types."
-  #{:use-case-view :state-machine-view :class-view})
-
 ;;
 ;; Concept category definitions
 ;;
 (def concept-types
-  "Element types of a glossary view."
+  "Element types of a concept view."
   (set/union container-types #{:concept}))
 
-(def concept-view-types
-  "Concept views types."
-  #{:concept-view :glossary-view})
+(def glossary-types
+  "Element types of a glossary view."
+  (set/union container-types #{:concept}))
 
 ;; 
 ;; General category definitions
 ;;
-(def view-types
-  "View types."
-  (set/union c4-view-types uml-view-types concept-view-types))
-
 (def relation-types
   "Element types of relations"
   (set/union #{:rel} uml-relation-types))
@@ -106,7 +96,7 @@
 
 (def model-types
   "Element types for the architectural model."
-  (set/union component-types deployment-types uml-types relation-types ))
+  (set/union component-types deployment-types uml-types concept-types relation-types))
 
 
 ;;
@@ -118,25 +108,50 @@
   [e]
   (not= nil (:el e)))
 
-(defn identifiable-element?
+(defn identifiable?
   "Returns true if the given element `e` has an ID (:id key)."
   [e]
   (not= nil (:id e)))
 
-(defn named-element?
+(defn identifiable-element?
+  "Returns true if the given element `e` is an element and identifiable."
+  [e]
+  (and (element? e) (identifiable? e)))
+
+(defn named?
   "Returns true if the given element `e` has a name (:name key)."
   [e]
   (not= nil (:name e)))
 
-(defn identifiable-named-element?
-  "Returns true if the given element `e` is identifiable and named."
+(defn technical?
+  "Returns true if the given element `e` has a tech (:tech key)."
   [e]
-  (and (identifiable-element? e) (named-element? e)))
+  (not= nil (:tech e)))
+
+(defn named-element?
+  "Returns true if the given element `e` is an element and named."
+  [e]
+  (and (element? e) (named? e)))
+
+(defn identifiable-named-element?
+  "Returns true if the given element `e` is an element, identifiable and named."
+  [e]
+  (and (element? e) (identifiable? e) (named? e)))
+
+(defn relational?
+  "Returns true if the given element `e` is a relation."
+  [e]
+  (and (not= nil (:from e)) (not= nil (:to e))))
 
 (defn relational-element?
   "Returns true if the given element `e` is a relation."
   [e]
-  (and (identifiable-element? e) (not= nil (:from e)) (not= nil (:to e))))
+  (and (element? e) (not= nil (:from e)) (not= nil (:to e))))
+
+(defn identifiable-relational-element?
+  "Returns true if the given element `e` is an identifiable relation."
+  [e]
+  (and (element? e) (identifiable? e) (relational? e)))
 
 (defn named-relational-element?
   "Returns true if the given element `e` is a named relation."
@@ -183,76 +198,21 @@
   [e]
   (:external e))
 
+(defn internal?
+  "Returns true if the given element `e` is internal."
+  [e]
+  (not (external? e)))
+
 (defn model-element?
   "Returns true if the given element `e` is a model element."
   [e]
   (contains? model-types (:el e)))
 
-(defn view?
-  "Returns true if the given element `e` is a view."
+(defn model-node?
+  "Returns true if the given element is a node in the model element graph.
+   A model node is a model element which is not a relation."
   [e]
-  (contains? view-types (:el e)))
-
-(defn context-view-element?
-  "Returns true if the given element `e` is rendered in a C4 context view."
-  [e]
-  (contains? context-types (:el e)))
-
-(defn container-view-element?
-  "Returns true if the given element `e` is rendered in a C4 container view."
-  [e]
-  (contains? container-types (:el e)))
-
-(defn component-view-element?
-  "Returns true if the given element `e` is rendered in a C4 component view."
-  [e]
-  (contains? component-types (:el e)))
-
-(defn code-view-element?
-  "Returns true if the given element `e` is rendered in a code view."
-  [e]
-  (contains? code-types (:el e)))
-
-(defn dynamic-view-element?
-  "Returns true if the given element `e` is rendered in a C4 dynamic view."
-  [e]
-  (contains? dynamic-types (:el e)))
-
-(defn system-landscape-view-element?
-  "Returns true if the given element `e` is rendered
-   in a C4 system landscape view."
-  [e]
-  (contains? system-landscape-types (:el e)))
-
-(defn deployment-view-element?
-  "Returns true if the given element `e` is rendered in a C4 deployment view."
-  [e]
-  (contains? deployment-types (:el e)))
-
-(defn use-case-view-element?
-  "Returns true if the given element `e` is rendered in a UML use case view."
-  [e]
-  (contains? use-case-types (:el e)))
-
-(defn state-machine-view-element?
-  "Returns true if the given element `e` is rendered in a UML state view."
-  [e]
-  (contains? state-machine-types (:el e)))
-
-(defn class-view-element?
-  "Returns true if the given element `e` is rendered in a UML state view."
-  [e]
-  (contains? class-types (:el e)))
-
-(defn glossary-view-element?
-  "Returns true if the given element `e` is rendered in a glossary view."
-  [e]
-  (contains? concept-types (:el e)))
-
-(defn concept-view-element?
-  "Returns true if the given element `e` is rendered in a context view."
-  [e]
-  (contains? concept-types (:el e)))
+  (and (model-element? e) (not (relation? e))))
 
 ;;
 ;; Schema specification
@@ -266,7 +226,7 @@
 (s/def :overarch/desc string?)
 (s/def :overarch/subtype keyword?)
 (s/def :overarch/external boolean?)
-(s/def :overarch/tech string?) ; check
+(s/def :overarch/tech string?)
 (s/def :overarch/tags map?)    ; check
 (s/def :overarch/icon string?) ; check
 (s/def :overarch/type string?) ; check
@@ -276,10 +236,8 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/href string?) ; TODO url?
 
-(s/def :overarch/spec map?)
-(s/def :overarch/title string?)
-
-(s/def :overarch/link (s/keys :req-un [:overarch/name :overarch/href]))
+(s/def :overarch/link
+  (s/keys :req-un [:overarch/name :overarch/href]))
 
 (s/def :overarch/ct
   (s/coll-of
@@ -288,10 +246,17 @@
          :relation    :overarch/relation)))
 
 (s/def :overarch/element
-  (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/name :overarch/desc :overarch/ct
+  (s/keys :req-un [:overarch/el]
+          :opt-un [:overarch/id
+                   :overarch/name :overarch/desc :overarch/ct
                    :overarch/subtype :overarch/external
                    :overarch/tech]))
+
+(s/def :overarch/identifiable
+  (s/keys :req-un [:overarch/id]))
+
+(s/def :overarch/named
+  (s/keys :req-un [:overarch/name]))
 
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
@@ -300,10 +265,6 @@
 (s/def :overarch/relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
           :opt-un [:overarch/name :overarch/desc]))
-
-(s/def :overarch/view
-  (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/spec :overarch/title]))
 
 (s/def :overarch/system (s/and :overarch/element system?))
 
@@ -336,76 +297,52 @@
        (remove nil?)
        (into #{})))
 
-(defn views
-  "Filters the given collection of elements `coll` for views."
-  [coll]
-  (filter view? coll))
-
 (defn model-elements
   "Filters the given collection of elements `coll` for model elements."
   [coll]
   (filter model-element? coll))
 
-(defn get-views
-  "Returns the collection of views."
-  ([]
-   (get-views @state))
-  ([m]
-   (views (:elements m))))
-
-(defn get-view
-  "Returns the view with the given id."
-  ([id]  
-   (get-view @state id))
-  ([m id]
-   ((:registry m) id)))
-
 (defn get-model-elements
   "Returns the collection of model elements."
-  ([]
-   (get-model-elements @state))
   ([m]
    (model-elements (:elements m))))
 
 (defn get-model-element
   "Returns the model element with the given `id`."
-  ([id]
-   (get-model-element @state id))
   ([m id]
    ((:registry m) id)))
 
 (defn get-parent-element
   "Returns the parent of the element `e`."
-  ([e]
-   (get-parent-element @state e))
   ([m e]
    ((:parents m) (:id e))))
 
 (defn resolve-ref
   "Resolves the model element for the ref `e`."
-  ([e]
-   (if (:ref e)
-     (merge (get-model-element (:ref e)) e)
-     e))
   ([m e]
-   (if (:ref e)
-     (merge (get-model-element m (:ref e)) e)
-     e)))
+   (cond
+     (keyword? e) (get-model-element m e)
+     (:ref e) (merge (get-model-element m (:ref e)) e)
+     :else e)))
 
 (defn all-elements
   "Returns a set of all elements."
-  ([]
-   (all-elements @state))
   ([m]
    (->> (:registry m)
         (vals)
-        (map resolve-ref)
+        (map (partial resolve-ref m))
+        (into #{}))))
+
+(defn related
+  "Returns the related elements for the given collection of relations"
+  ([m coll]
+   (->> coll
+        (mapcat (fn [e] [(:from e) (:to e)]))
+        (map (partial resolve-ref m))
         (into #{}))))
 
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
-  ([r1 r2]
-   (aggregable-relation? @state r1 r2))
   ([m r1 r2]
    (and (= (:name r1) (:name r2))
         (= (:tech r1) (:tech r2))
@@ -417,40 +354,22 @@
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
 
-(defn related-elements
-  "Returns the set of elements that are part of at least one relation."
-  [coll]
+(defn relations-of-nodes
+  "Returns the relations connecting nodes from the given collection of model nodes."
+  ([m coll]
+   (let [els (into #{} (map :id coll))
+         rels (filter relation? (get-model-elements m))]
+     (->> rels
+          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
+
+(defn related-nodes
+  "Returns the set of nodes that are part of at least one relation."
+  [m coll]
   (->> coll
        (filter relation?)
        (map (fn [rel] #{(:from rel) (:to rel)}))
-;       (user/data-tapper "related")
+       ; TODO resolve refs
        (reduce set/union #{})))
-
-(defn component-set
-  "Returns the set of model components."
-  ([]
-   (component-set @state))
-  ([m]
-   (->> m
-        (all-elements)
-        (filter component-view-element?)
-        (map :id)
-        (into #{}))))
-
-(defn unconnected-components
-  "Returns the set of elements that are not connected with any other element by a relation."
-  ([]
-   (unconnected-components @state))
-  ([m]
-   (let [component-set (component-set m)
-         related-set (related-elements (all-elements m))]
-     (set/difference component-set related-set))))
-
-(comment
-  (all-elements)
-  (into #{} (map :id (filter component-view-element? (all-elements))))
-  (unconnected-components)
-  )
 
 ;;
 ;; State preparation
@@ -527,6 +446,7 @@
      :referred (build-referred-id->rels elements)}
     (s/explain :overarch/elements elements)))
 
+; TODO move to application
 (s/fdef read-elements
   :args [string?]
   :ret :overarch/ct)
@@ -537,6 +457,7 @@
        (map slurp)
        (mapcat edn/read-string)))
 
+; TODO move to application
 (defn update-state!
   "Updates the state with the registered data read from `dir`."
   [dir]

@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.export
+(ns org.soulspace.overarch.application.export
   "Contains general functions for the export of the model data.")
 
 ;;;
@@ -7,9 +7,9 @@
 
 (defn export-format
   "Returns the export format for the data."
-  ([format options]
+  ([m format options]
    format)
-  ([format options _]
+  ([m format options _]
    format))
 
 (defmulti export-file
