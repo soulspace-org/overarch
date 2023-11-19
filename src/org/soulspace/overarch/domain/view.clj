@@ -66,8 +66,10 @@
 
 (defn view-type
   "Returns the type of the `view`."
-  [view]
-  {:el view})
+  ([view]
+   (:el view))
+  ([view & _]
+   (view-type view)))
 
 (defmulti render-element?
   "Returns true if the element `e` is rendered in the `view`"
