@@ -80,79 +80,16 @@
   view-type)
 
 (comment
-  (defn context-view-element?
-  "Returns true if the given element `e` is rendered in a C4 context view."
-  [e]
-  (contains? model/context-types (:el e)))
-
-(defn container-view-element?
-  "Returns true if the given element `e` is rendered in a C4 container view."
-  [e]
-  (contains? model/container-types (:el e)))
-
-(defn component-view-element?
-  "Returns true if the given element `e` is rendered in a C4 component view."
-  [e]
-  (contains? model/component-types (:el e)))
-
-(defn code-view-element?
-  "Returns true if the given element `e` is rendered in a code view."
-  [e]
-  (contains? model/code-types (:el e)))
-
-(defn dynamic-view-element?
-  "Returns true if the given element `e` is rendered in a C4 dynamic view."
-  [e]
-  (contains? model/dynamic-types (:el e)))
-
-(defn system-landscape-view-element?
-  "Returns true if the given element `e` is rendered
-   in a C4 system landscape view."
-  [e]
-  (contains? model/system-landscape-types (:el e)))
-
-(defn deployment-view-element?
-  "Returns true if the given element `e` is rendered in a C4 deployment view."
-  [e]
-  (contains? model/deployment-types (:el e)))
-
-(defn use-case-view-element?
-  "Returns true if the given element `e` is rendered in a UML use case view."
-  [e]
-  (contains? model/use-case-types (:el e)))
-
-(defn state-machine-view-element?
-  "Returns true if the given element `e` is rendered in a UML state view."
-  [e]
-  (contains? model/state-machine-types (:el e)))
-
-(defn class-view-element?
-  "Returns true if the given element `e` is rendered in a UML state view."
-  [e]
-  (contains? model/class-types (:el e)))
-
-(defn glossary-view-element?
-  "Returns true if the given element `e` is rendered in a glossary view."
-  [e]
-  (contains? model/concept-types (:el e)))
-
-(defn concept-view-element?
-  "Returns true if the given element `e` is rendered in a context view."
-  [e]
-  (contains? model/concept-types (:el e)))
-
-)
-
-(comment
   (defn context-view-rel-participant?
     "Returns true, if the given element `e` can be a participant in a container relation."
     [e]
-    (context-view-element? e))
+    ;(context-view-element? e)
+    )
 
   (defn container-view-rel-participant?
     "Returns true, if the given element `e` can be a participant in a container relation."
     [e]
-    (and (container-view-element? e)
+    (and ;(container-view-element? e)
        ; exclude internal systems
          (not (and (model/system? e)
                    (not (model/external? e))))))
@@ -160,7 +97,7 @@
   (defn component-view-rel-participant?
     "Returns true, if the given element `e` can be a participant in a component."
     [e]
-    (and (container-view-element? e)
+    (and ;(container-view-element? e)
        ; exclude internal systems and containers
          (not (and (model/system? e)
                    (not (model/external? e))))
@@ -197,6 +134,27 @@
 ;;;
 ;;; View functions
 ;;;
+
+;(defn include-criteria?
+;  "Returns true, if the `view` should include elements selected by criteria."
+;  [view]
+;  (map? (get-in view [:spec :include])))
+
+;(defn include-relations?
+;  "Returns true, if the `view` should include the relations to the shown elements."
+;  [view]
+;  (= :relations (get-in view [:spec :include])))
+
+;(defn include-related?
+;  "Returns true, if the `view` should include the elements for the shown relations."
+;  [view]
+;  (= :related (get-in view [:spec :include])))
+
+;(defn include-transitive?
+;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
+;  [view]
+;  (= :transitive (get-in view [:spec :include])))
+
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
   [model view]
@@ -290,35 +248,6 @@
   view-type)
 
 
-(comment
-(def view-type->element-predicate
-  "Map from diagram type to content-level predicate."
-  {:context-view          context-view-element?
-   :container-view        container-view-element?
-   :component-view        component-view-element?
-   :code-view             code-view-element?
-   :system-landscape-view system-landscape-view-element?
-   :dynamic-view          dynamic-view-element?
-   :deployment-view       deployment-view-element?
-   :use-case-view         use-case-view-element?
-   :state-machine-view    state-machine-view-element?
-   :class-view            class-view-element?
-   :glossary-view         glossary-view-element?
-   :concept-view          concept-view-element?})
-
-(defn render-predicate
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [m view-type]
-  (let [element-predicate (view-type->element-predicate view-type)]
-    (fn [e]
-      (or (and (= :rel (:el e))
-               (element-predicate (model/get-model-element m (:from e)))
-               (element-predicate (model/get-model-element m (:to e))))
-          (and (element-predicate e)
-               (not (:external (model/get-parent-element m e))))))))
-)
-
 ;;;
 ;;; Rendering functions
 ;;;
@@ -394,26 +323,6 @@
       (derive :context-boundary    :boundary)))
 
 
-(defn include-criteria?
-  "Returns true, if the `view` should include elements selected by criteria."
-  [view]
-  (map? (get-in view [:spec :include])))
-
-(defn include-relations?
-  "Returns true, if the `view` should include the relations to the shown elements."
-  [view]
-  (= :relations (get-in view [:spec :include])))
-
-;(defn include-related?
-;  "Returns true, if the `view` should include the elements for the shown relations."
-;  [view]
-;  (= :related (get-in view [:spec :include])))
-
-;(defn include-transitive?
-;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
-;  [view]
-;  (= :transitive (get-in view [:spec :include])))
-
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
   [model rel pred]
@@ -431,7 +340,6 @@
         to   (model/resolve-ref model (:to rel))]))
   ; TODO promote relations to higher levels?
   
-
 
 (comment
   ;(collect-technologies (:elements @model/state))
