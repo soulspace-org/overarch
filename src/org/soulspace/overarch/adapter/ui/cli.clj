@@ -13,7 +13,10 @@
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
             [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
             [org.soulspace.overarch.adapter.render.markdown :as markdown]
-            [org.soulspace.overarch.adapter.render.plantuml :as puml])
+            [org.soulspace.overarch.adapter.render.plantuml :as puml]
+            [org.soulspace.overarch.adapter.render.plantuml.c4-renderer :as c4]
+            [org.soulspace.overarch.adapter.render.plantuml.uml-renderer :as uml]
+            )
   (:gen-class))
 
 ;;;
