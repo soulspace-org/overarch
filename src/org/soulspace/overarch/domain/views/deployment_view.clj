@@ -10,3 +10,6 @@
   [view e]
   (contains? model/deployment-types (:el e)))
 
+(defmethod view/element-to-render :deployment-view
+  [view e]
+  e)

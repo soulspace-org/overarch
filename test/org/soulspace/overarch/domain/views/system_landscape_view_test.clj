@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.system-landscape-view :as system-landscape-view] 
+            [org.soulspace.overarch.domain.views.system-landscape-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-element?-test

@@ -10,3 +10,6 @@
   [view e]
   (contains? model/glossary-types (:el e)))
 
+(defmethod view/element-to-render :glossary-view
+  [view e]
+  e)

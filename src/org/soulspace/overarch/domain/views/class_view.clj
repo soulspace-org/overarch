@@ -10,3 +10,6 @@
   [view e]
   (contains? model/class-types (:el e)))
 
+(defmethod view/element-to-render :class-view
+  [view e]
+  e)

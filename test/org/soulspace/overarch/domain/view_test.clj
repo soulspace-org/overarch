@@ -37,19 +37,5 @@
       false {:el :concept-view :id :concept-view}
       false {:el :abcd-view :id :abcd-view})))
 
-(deftest as-boundary?-test
-  (testing "as-boundary?"
-    (are [x y] (= x (fns/truthy? (apply as-boundary? y)))
-      true [:container-view {:el :system :ct #{{:el :container}}}]
-      true [:component-view {:el :system :ct #{{:el :container}}}]
-      true [:component-view {:el :container :ct #{{:el :component}}}]
-      false [:container-view {:el :system}]
-      false [:container-view {:el :container}]
-      false [:container-view {:el :container :ct #{{:el :component}}}]
-      false [:component-view {:el :system}]
-      false [:component-view {:el :container}]
-      false [:component-view {:el :component}])))
-
 (comment
-  (as-boundary? :container-view {:el :system :ct #{{:el :container}}})
   )

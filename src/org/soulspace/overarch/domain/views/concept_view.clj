@@ -10,3 +10,6 @@
   [view e]
   (contains? model/concept-types (:el e)))
 
+(defmethod view/element-to-render :concept-view
+  [view e]
+  e)

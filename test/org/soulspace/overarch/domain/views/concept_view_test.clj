@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.concept-view :as concept-view] 
+            [org.soulspace.overarch.domain.views.concept-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 

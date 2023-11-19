@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.glossary-view :as glossary-view] 
+            [org.soulspace.overarch.domain.views.glossary-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-element?-test

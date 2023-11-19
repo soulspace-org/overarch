@@ -10,3 +10,6 @@
   [view e]
   (contains? model/use-case-types (:el e)))
 
+(defmethod view/element-to-render :use-case-view
+  [view e]
+  e)

@@ -10,3 +10,6 @@
   [view e]
   (contains? model/context-types (:el e)))
 
+(defmethod view/element-to-render :system-landscape-view
+  [view e]
+  e)

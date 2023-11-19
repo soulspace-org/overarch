@@ -294,38 +294,14 @@
           (and (element-predicate e)
                (not (:external (model/get-parent-element m e))))))))
 
-(def element->boundary
-  "Maps model types to boundary types depending on the view type."
-  {[:container-view :system]          :system-boundary
-   [:component-view :system]          :system-boundary
-   [:component-view :container]       :container-boundary})
-
-(defn as-boundary?
-  "Returns the boundary element, if the element should be rendered
-   as a boundary for this view type, false otherwise."
-  [view-type e]
-  (and
-   ; has children
-   (seq (:ct e))
-   ; has a boundary mapping for this diagram-type
-   (element->boundary [view-type (:el e)])
-   (not (:external e))))
-
+(defmulti element-to-render
+  "Returns the model element to be rendered for element `e` for the `view`.
+   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
+  view-type)
 
 ;;;
 ;;; Rendering functions
 ;;;
-(defn element-to-render
-  "Returns the model element to be rendered for element `e` for the `view-type`.
-   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
-  [view-type e]
-  (let [boundary (as-boundary? view-type e)]
-    (if boundary
-      ; e has a boundary type and has children, render as boundary
-      (assoc e :el (keyword (str (name (:el e)) "-boundary")))
-      ; render e as normal model element
-      e)))
-
 (defn elements-to-render
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
@@ -337,7 +313,7 @@
      (->> coll
           (map (partial model/resolve-ref m))
           (filter (render-predicate m view-type))
-          (map #(element-to-render view-type %))))))
+          (map #(element-to-render view %))))))
 
 (defn elements-in-view
   "Returns the elements rendered in the view."

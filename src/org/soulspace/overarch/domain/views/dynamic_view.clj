@@ -10,3 +10,6 @@
   [view e]
   (contains? model/dynamic-types (:el e)))
 
+(defmethod view/element-to-render :dynamic-view
+  [view e]
+  e)

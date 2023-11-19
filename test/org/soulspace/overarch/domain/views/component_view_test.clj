@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.component-view :as component-view]
+            [org.soulspace.overarch.domain.views.component-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-element?-test
@@ -51,4 +51,13 @@
       false {:el :function}
       false {:el :protocol}
       false {:el :concept})))
+
+(deftest as-boundary?-test
+  (testing "as-boundary?"
+    (are [x y] (= x (fns/truthy? (as-boundary? y)))
+      true {:el :system :ct #{{:el :container}}}
+      true {:el :container :ct #{{:el :component}}}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component})))
 

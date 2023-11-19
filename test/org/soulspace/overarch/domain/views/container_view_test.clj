@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.container-view :as container-view]
+            [org.soulspace.overarch.domain.views.container-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 
@@ -52,6 +52,15 @@
       false {:el :function}
       false {:el :protocol}
       false {:el :concept})))
+
+(deftest as-boundary?-test
+  (testing "as-boundary?"
+    (are [x y] (= x (fns/truthy? (as-boundary? y)))
+      true {:el :system :ct #{{:el :container}}}
+      false {:el :container :ct #{{:el :component}}}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component})))
 
 (def container-view1
   {:el :container-view
@@ -130,7 +139,6 @@
         5 (count (specified-elements c4-1 container-view1-relations))))))
 
 (comment
-  (as-boundary? :container-view {:el :system :ct #{{:el :container}}})
   (def c4-1 (model/build-registry model-test/c4-model1))
   (referenced-model-nodes c4-1 container-view1-related)
 
