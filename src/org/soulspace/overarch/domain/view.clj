@@ -186,87 +186,90 @@
 
 (defn get-views
   "Returns the collection of views."
-  ([m]
-   (views (:elements m))))
+  ([model]
+   (views (:elements model))))
 
 (defn get-view
   "Returns the view with the given id."
-  ([m id]
-   ((:registry m) id)))
+  ([model id]
+   ((:registry model) id)))
 
 ;;;
 ;;; View functions
 ;;;
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
-  [m view]
+  [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref m))
+       (map (partial model/resolve-ref model))
        (filter model/model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
-  [m view]
+  [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref m))
+       (map (partial model/resolve-ref model))
        (filter model/relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."
-  [m view]
+  [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref m))))
+       (map (partial model/resolve-ref model))))
 
 (defn specified-model-nodes
   "Returns the model nodes specified in the given view.
    Takes the view spec into account for resolving model nodes not explicitly referenced."
-  [m view]
+  [model view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-model-nodes m view)
-      :relations (referenced-model-nodes m view)
-      :related (let [referenced-nodes (referenced-model-nodes m view)
-                     referenced-rels (referenced-relations m view)
-                     related-nodes (into #{} (map (partial model/resolve-ref m) (model/related-nodes m referenced-rels)))]
+      :referenced-only (referenced-model-nodes model view)
+      :relations (referenced-model-nodes model view)
+      :related (let [referenced-nodes (referenced-model-nodes model view)
+                     referenced-rels (referenced-relations model view)
+                     related-nodes (into #{}
+                                         (map (partial model/resolve-ref model)
+                                              (model/related-nodes model referenced-rels)))]
                  (set/union referenced-nodes related-nodes)) ; TODO check
       )))
 
 (defn specified-relations
   "Returns the relations specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
-  [m view]
+  [model view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-relations m view)
-      :relations (let [referenced-nodes (referenced-model-nodes m view)
-                       referenced-rels (referenced-relations m view)
-                       related-rels (into #{} (model/relations-of-nodes m referenced-nodes))]
+      :referenced-only (referenced-relations model view)
+      :relations (let [referenced-nodes (referenced-model-nodes model view)
+                       referenced-rels (referenced-relations model view)
+                       related-rels (into #{} (model/relations-of-nodes model referenced-nodes))]
                    (set/union referenced-rels related-rels))
-      :related (referenced-relations m view))))
+      :related (referenced-relations model view))))
 
 (defn specified-elements
   "Returns the model elements and relations explicitly specified in the given view."
-  [m view]
+  [model view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-elements m view)
-      :relations (concat (specified-model-nodes m view) (specified-relations m view))
-      :related (concat (specified-model-nodes m view) (specified-relations m view)))))
+      :referenced-only (referenced-elements model view)
+      :relations (concat (specified-model-nodes model view)
+                         (specified-relations model view))
+      :related (concat (specified-model-nodes model view)
+                       (specified-relations model view)))))
 
 (defn rendered-model-nodes
   "Returns the model nodes to be rendered by the given view."
-  [m view])
+  [model view])
 
 (defn rendered-relations
   "Returns the relations to be rendered by the given view.
    Takes the view spec into account for resolving relations not explicitly specified."
-  [m view])
+  [model view])
 
 (defn rendered-elements
   "Returns the model elements to be rendered by the given view.
    Takes the view spec into account for resolving model elements not explicitly specified."
-  [m view])
-
+  [model view])
 
 ;;
 ;; Context based content filtering
@@ -274,12 +277,12 @@
 (defn render-element?
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
-  [view m e]
+  [model view e]
   (or (and (= :rel (:el e))
-           (render-model-node? view (model/get-model-element m (:from e)))
-           (render-model-node? view  (model/get-model-element m (:to e))))
-      (and (render-model-node? view  e)
-           (not (:external (model/get-parent-element m e))))))
+           (render-model-node? view (model/get-model-element model (:from e)))
+           (render-model-node? view (model/get-model-element model (:to e))))
+      (and (render-model-node? view e)
+           (model/internal? (model/get-parent-element model e)))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
@@ -323,25 +326,24 @@
   "Returns the list of elements to render from the view
    or the given collection of elements, depending on the type
    of the view."
-  ([m view]
-   (elements-to-render m view (:ct view)))
-  ([m view coll]
-   (let [view-type (:el view)]
-     (->> coll
-          (map (partial model/resolve-ref m))
-          (filter (partial render-element? view m))
-          (map #(element-to-render view %))))))
+  ([model view]
+   (elements-to-render model view (:ct view)))
+  ([model view coll]
+   (->> coll
+        (map (partial model/resolve-ref model))
+        (filter (partial render-element? model view))
+        (map #(element-to-render view %)))))
 
 (defn elements-in-view
   "Returns the elements rendered in the view."
-  ([m view]
-   (elements-in-view m #{} view (elements-to-render m view (:ct view))))
-  ([m elements view coll]
+  ([model view]
+   (elements-in-view model #{} view (elements-to-render model view (:ct view))))
+  ([model elements view coll]
    (if (seq coll)
      (let [e (first coll)]
-       (recur m (elements-in-view m (conj elements e)
+       (recur model (elements-in-view model (conj elements e)
                                 view
-                                (elements-to-render m view (:ct e)))
+                                (elements-to-render model view (:ct e)))
               view
               (rest coll)))
      elements)))
@@ -361,9 +363,9 @@
      techs)))
 
 (defn technologies-in-view
-  [m view]
+  [model view]
   (->> view
-       (elements-in-view m)
+       (elements-in-view model)
        (map :tech)
        (remove nil?)
        (into #{})))
@@ -414,19 +416,19 @@
 
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
-  [m rel pred]
+  [model rel pred]
   (let [rendered? pred
-        from (model/resolve-ref m (:from rel))
-        to   (model/resolve-ref m (:to rel))]
+        from (model/resolve-ref model (:from rel))
+        to   (model/resolve-ref model (:to rel))]
     (when (and (rendered? rel) (rendered? from) (rendered? to))
       rel)))
 
 (defn relation-to-render
   "Returns the relation to be rendered in the context of the view."
-  [m view rel]
+  [model view rel]
   (let [; rendered? (render-predicate m view-type)
-        from (model/resolve-ref m (:from rel))
-        to   (model/resolve-ref m (:to rel))]))
+        from (model/resolve-ref model (:from rel))
+        to   (model/resolve-ref model (:to rel))]))
   ; TODO promote relations to higher levels?
   
 
