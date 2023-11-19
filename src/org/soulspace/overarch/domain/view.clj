@@ -71,7 +71,7 @@
   ([view & _]
    (view-type view)))
 
-(defmulti render-element?
+(defmulti render-model-node?
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
 
@@ -79,7 +79,8 @@
   "Returns true if the content of element `e` is rendered in the `view`"
   view-type)
 
-(defn context-view-element?
+(comment
+  (defn context-view-element?
   "Returns true if the given element `e` is rendered in a C4 context view."
   [e]
   (contains? model/context-types (:el e)))
@@ -140,6 +141,7 @@
   [e]
   (contains? model/concept-types (:el e)))
 
+)
 (defn context-view-rel-participant?
   "Returns true, if the given element `e` can be a participant in a container relation."
   [e]
@@ -266,7 +268,7 @@
 ;;
 ;; Context based content filtering
 ;;
-
+(comment
 (def view-type->element-predicate
   "Map from diagram type to content-level predicate."
   {:context-view          context-view-element?
@@ -293,6 +295,17 @@
                (element-predicate (model/get-model-element m (:to e))))
           (and (element-predicate e)
                (not (:external (model/get-parent-element m e))))))))
+)
+
+(defn render-element?
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [view m e]
+  (or (and (= :rel (:el e))
+           (render-model-node? view (model/get-model-element m (:from e)))
+           (render-model-node? view  (model/get-model-element m (:to e))))
+      (and (render-model-node? view  e)
+           (not (:external (model/get-parent-element m e))))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
@@ -312,7 +325,7 @@
    (let [view-type (:el view)]
      (->> coll
           (map (partial model/resolve-ref m))
-          (filter (render-predicate m view-type))
+          (filter (partial render-element? view m))
           (map #(element-to-render view %))))))
 
 (defn elements-in-view

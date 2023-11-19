@@ -19,7 +19,7 @@
    (element->boundary (:el e))
    (not (:external e))))
 
-(defmethod view/render-element? :container-view
+(defmethod view/render-model-node? :container-view
   [view e]
   (contains? model/container-types (:el e)))
 
@@ -27,7 +27,7 @@
   [view e]
   (contains? model/container-types (:el e)))
 
-(defmethod view/element-to-render :component-view
+(defmethod view/element-to-render :container-view
   [view e]
   (if (as-boundary? e)
       ; e has a boundary type and has children, render as boundary

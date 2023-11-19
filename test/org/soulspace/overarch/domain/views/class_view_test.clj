@@ -7,7 +7,7 @@
 
 (deftest render-element?-test
   (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-element? {:el :class-view} y)))
+    (are [x y] (= x (fns/truthy? (render-model-node? {:el :class-view} y)))
       true {:el :package}
       true {:el :class}
       true {:el :field}

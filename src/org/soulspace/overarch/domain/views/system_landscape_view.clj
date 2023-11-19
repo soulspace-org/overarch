@@ -2,7 +2,7 @@
   (:require [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.model :as model]))
 
-(defmethod view/render-element? :system-landscape-view
+(defmethod view/render-model-node? :system-landscape-view
   [view e]
   (contains? model/context-types (:el e)))
 

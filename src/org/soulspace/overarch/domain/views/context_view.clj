@@ -4,7 +4,7 @@
 
 
 
-(defmethod view/render-element? :context-view
+(defmethod view/render-model-node? :context-view
   [view e]
   (contains? model/context-types (:el e)))
 

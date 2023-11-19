@@ -7,7 +7,7 @@
 
 (deftest render-element?-test
   (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-element? {:el :state-machine-view} y)))
+    (are [x y] (= x (fns/truthy? (render-model-node? {:el :state-machine-view} y)))
       true {:el :state-machine}
       true {:el :start-state}
       true {:el :state}

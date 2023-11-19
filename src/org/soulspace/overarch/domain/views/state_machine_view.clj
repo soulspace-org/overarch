@@ -2,7 +2,7 @@
   (:require [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.model :as model]))
 
-(defmethod view/render-element? :state-machine-view
+(defmethod view/render-model-node? :state-machine-view
   [view e]
   (contains? model/state-machine-types (:el e)))
 

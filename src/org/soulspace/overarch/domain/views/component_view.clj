@@ -18,7 +18,7 @@
    (element->boundary (:el e))
    (not (:external e))))
 
-(defmethod view/render-element? :component-view
+(defmethod view/render-model-node? :component-view
   [view e]
   (contains? model/component-types (:el e)))
 

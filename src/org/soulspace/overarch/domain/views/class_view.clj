@@ -2,7 +2,7 @@
   (:require [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.model :as model]))
 
-(defmethod view/render-element? :class-view
+(defmethod view/render-model-node? :class-view
   [view e]
   (contains? model/class-types (:el e)))
 

@@ -8,7 +8,7 @@
 
 (deftest render-element?-test
   (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-element? {:el :container-view} y)))
+    (are [x y] (= x (fns/truthy? (render-model-node? {:el :container-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :person}
