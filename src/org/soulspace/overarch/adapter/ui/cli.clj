@@ -7,7 +7,7 @@
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.export :as exp]
             [org.soulspace.overarch.application.render :as rndr]
-            ; must be loaded here for registering of the multimethods
+            ; require exports and renderers here register multimethods
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
