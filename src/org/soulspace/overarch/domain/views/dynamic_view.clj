@@ -6,7 +6,7 @@
   [view e]
   (contains? model/dynamic-types (:el e)))
 
-(defmethod view/render-content? :dynamic-view
+(defmethod view/include-content? :dynamic-view
   [view e]
   (contains? model/dynamic-types (:el e)))
 

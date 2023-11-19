@@ -6,7 +6,7 @@
   [view e]
   (contains? model/glossary-types (:el e)))
 
-(defmethod view/render-content? :glossary-view
+(defmethod view/include-content? :glossary-view
   [view e]
   (contains? model/glossary-types (:el e)))
 

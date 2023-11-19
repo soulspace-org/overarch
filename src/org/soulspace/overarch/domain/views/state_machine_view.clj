@@ -6,7 +6,7 @@
   [view e]
   (contains? model/state-machine-types (:el e)))
 
-(defmethod view/render-content? :state-machine-view
+(defmethod view/include-content? :state-machine-view
   [view e]
   (contains? model/state-machine-types (:el e)))
 

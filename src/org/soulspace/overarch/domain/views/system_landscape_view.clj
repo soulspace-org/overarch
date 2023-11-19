@@ -6,7 +6,7 @@
   [view e]
   (contains? model/context-types (:el e)))
 
-(defmethod view/render-content? :ystem-landscape-view
+(defmethod view/include-content? :ystem-landscape-view
   [view e]
   (contains? model/context-types (:el e)))
 

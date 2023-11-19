@@ -73,7 +73,7 @@
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
 
-(defmulti render-content?
+(defmulti include-content?
   "Returns true if the content of element `e` is rendered in the `view`"
   view-type)
 

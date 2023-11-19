@@ -6,7 +6,7 @@
   [view e]
   (contains? model/use-case-types (:el e)))
 
-(defmethod view/render-content? :context-view
+(defmethod view/include-content? :context-view
   [view e]
   (contains? model/use-case-types (:el e)))
 

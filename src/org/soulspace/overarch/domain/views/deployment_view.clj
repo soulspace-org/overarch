@@ -6,7 +6,7 @@
   [view e]
   (contains? model/deployment-types (:el e)))
 
-(defmethod view/render-content? :deployment-view
+(defmethod view/include-content? :deployment-view
   [view e]
   (contains? model/deployment-types (:el e)))
 

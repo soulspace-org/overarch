@@ -6,7 +6,7 @@
   [view e]
   (contains? model/concept-types (:el e)))
 
-(defmethod view/render-content? :concept-view
+(defmethod view/include-content? :concept-view
   [view e]
   (contains? model/concept-types (:el e)))
 

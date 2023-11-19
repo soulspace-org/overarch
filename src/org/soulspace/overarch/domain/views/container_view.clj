@@ -6,7 +6,7 @@
   [view e]
   (contains? model/container-types (:el e)))
 
-(defmethod view/render-content? :container-view
+(defmethod view/include-content? :container-view
   [view e]
   (contains? model/container-types (:el e)))
 

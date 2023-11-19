@@ -6,7 +6,7 @@
   [view e]
   (contains? model/class-types (:el e)))
 
-(defmethod view/render-content? :class-view
+(defmethod view/include-content? :class-view
   [view e]
   (contains? model/class-types (:el e)))
 
