@@ -8,7 +8,6 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
             [org.soulspace.overarch.util.io :as oio]))
@@ -705,7 +704,8 @@
 
 (defmethod render-uml-element :start-state
   [_ indent e]
-  [(str "state " (alias-name (:id e)) " <<start>>")])
+  [(str (view/render-indent indent)
+        "state " (alias-name (:id e)) " <<start>>")])
 
 (defmethod render-uml-element :end-state
   [_ indent e]
@@ -925,7 +925,6 @@
                 (uml-layouts (:layout spec)))
               (when (:linetype spec)
                 (linetypes (:linetype spec)))])))
-
 
 (defmethod render-plantuml-view :uml-view
   [m options view]
