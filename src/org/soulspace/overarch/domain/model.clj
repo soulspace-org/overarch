@@ -198,6 +198,11 @@
   [e]
   (:external e))
 
+(defn internal?
+  "Returns true if the given element `e` is internal."
+  [e]
+  (not (external? e)))
+
 (defn model-element?
   "Returns true if the given element `e` is a model element."
   [e]
