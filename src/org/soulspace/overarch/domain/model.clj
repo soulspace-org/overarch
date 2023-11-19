@@ -1,3 +1,6 @@
+;;;;
+;;;; Functions for the definition and handling of the overarch model
+;;;;
 (ns org.soulspace.overarch.domain.model
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.edn :as edn]
