@@ -1,3 +1,6 @@
+;;;;
+;;;; Functions for the definition and handling of views
+;;;;
 (ns org.soulspace.overarch.domain.view
   "Functions for the definition and handling of views."
   (:require [clojure.string :as str]
@@ -60,6 +63,19 @@
   "Returns true if the given element `e` is a hierarchical view."
   [e]
   (contains? hierarchical-view-types (:el e)))
+
+(defn view-type
+  "Returns the type of the `view`."
+  [view]
+  {:el view})
+
+(defmulti render-element?
+  "Returns true if the element `e` is rendered in the `view`"
+  view-type)
+
+(defmulti render-content?
+  "Returns true if the content of element `e` is rendered in the `view`"
+  view-type)
 
 (defn context-view-element?
   "Returns true if the given element `e` is rendered in a C4 context view."
