@@ -142,28 +142,31 @@
   (contains? model/concept-types (:el e)))
 
 )
-(defn context-view-rel-participant?
-  "Returns true, if the given element `e` can be a participant in a container relation."
-  [e]
-  (context-view-element? e))
 
-(defn container-view-rel-participant?
-  "Returns true, if the given element `e` can be a participant in a container relation."
-  [e]
-  (and (container-view-element? e)
+(comment
+  (defn context-view-rel-participant?
+    "Returns true, if the given element `e` can be a participant in a container relation."
+    [e]
+    (context-view-element? e))
+
+  (defn container-view-rel-participant?
+    "Returns true, if the given element `e` can be a participant in a container relation."
+    [e]
+    (and (container-view-element? e)
        ; exclude internal systems
-       (not (and (model/system? e)
-                 (not (model/external? e))))))
+         (not (and (model/system? e)
+                   (not (model/external? e))))))
 
-(defn component-view-rel-participant?
-  "Returns true, if the given element `e` can be a participant in a component."
-  [e]
-  (and (container-view-element? e)
+  (defn component-view-rel-participant?
+    "Returns true, if the given element `e` can be a participant in a component."
+    [e]
+    (and (container-view-element? e)
        ; exclude internal systems and containers
-       (not (and (model/system? e)
-                 (not (model/external? e))))
-       (not (and (model/container? e)
-                 (not (model/external? e))))))
+         (not (and (model/system? e)
+                   (not (model/external? e))))
+         (not (and (model/container? e)
+                   (not (model/external? e))))))
+  )
 
 ;;;
 ;;; Schema definitions
@@ -268,6 +271,22 @@
 ;;
 ;; Context based content filtering
 ;;
+(defn render-element?
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [view m e]
+  (or (and (= :rel (:el e))
+           (render-model-node? view (model/get-model-element m (:from e)))
+           (render-model-node? view  (model/get-model-element m (:to e))))
+      (and (render-model-node? view  e)
+           (not (:external (model/get-parent-element m e))))))
+
+(defmulti element-to-render
+  "Returns the model element to be rendered for element `e` for the `view`.
+   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
+  view-type)
+
+
 (comment
 (def view-type->element-predicate
   "Map from diagram type to content-level predicate."
@@ -296,21 +315,6 @@
           (and (element-predicate e)
                (not (:external (model/get-parent-element m e))))))))
 )
-
-(defn render-element?
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [view m e]
-  (or (and (= :rel (:el e))
-           (render-model-node? view (model/get-model-element m (:from e)))
-           (render-model-node? view  (model/get-model-element m (:to e))))
-      (and (render-model-node? view  e)
-           (not (:external (model/get-parent-element m e))))))
-
-(defmulti element-to-render
-  "Returns the model element to be rendered for element `e` for the `view`.
-   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
-  view-type)
 
 ;;;
 ;;; Rendering functions
@@ -420,8 +424,7 @@
 (defn relation-to-render
   "Returns the relation to be rendered in the context of the view."
   [m view rel]
-  (let [view-type (:el view)
-        rendered? (render-predicate m view-type)
+  (let [; rendered? (render-predicate m view-type)
         from (model/resolve-ref m (:from rel))
         to   (model/resolve-ref m (:to rel))]))
   ; TODO promote relations to higher levels?
