@@ -96,20 +96,25 @@
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/spec :overarch/title]))
 
-(defn views
-  "Filters the given collection of elements `coll` for views."
-  [coll]
-  (filter view? coll))
-
 (defn get-views
-  "Returns the collection of views."
+  "Returns the collection of views from the `model`."
   ([model]
-   (views (:elements model))))
+   (filter view? (:elements model))))
 
 (defn get-view
-  "Returns the view with the given id."
+  "Returns the view with the given `id` from the `model`."
   ([model id]
    ((:registry model) id)))
+
+(defn include-spec
+  "Returns the include specification for the `view`."
+  ([view]
+   (get-in view [:spec :include] :referenced-only)))
+
+(defn layout-spec
+  "Returns the layout specification for the `view`."
+  ([view]
+   (get-in view [:spec :layout] :top-down)))
 
 ;;;
 ;;; View functions
@@ -134,6 +139,25 @@
 ;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
 ;  [view]
 ;  (= :transitive (get-in view [:spec :include])))
+
+(defn render-relation?
+  "Returns true if the relation should be rendered in the context of the view."
+  [model rel pred]
+  (let [rendered? pred
+        from (model/resolve-ref model (:from rel))
+        to   (model/resolve-ref model (:to rel))]
+    (when (and (rendered? rel) (rendered? from) (rendered? to))
+      rel)))
+
+(defn relation-to-render
+  "Returns the relation to be rendered in the context of the view."
+  [model view rel]
+  (let [; rendered? (render-predicate m view-type)
+        from (model/resolve-ref model (:from rel))
+        to   (model/resolve-ref model (:to rel))]))
+  ; TODO promote relations to higher levels?
+  
+
 
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
@@ -301,25 +325,6 @@
       (derive :system-boundary     :boundary)
       (derive :container-boundary  :boundary)
       (derive :context-boundary    :boundary)))
-
-
-(defn render-relation?
-  "Returns true if the relation should be rendered in the context of the view."
-  [model rel pred]
-  (let [rendered? pred
-        from (model/resolve-ref model (:from rel))
-        to   (model/resolve-ref model (:to rel))]
-    (when (and (rendered? rel) (rendered? from) (rendered? to))
-      rel)))
-
-(defn relation-to-render
-  "Returns the relation to be rendered in the context of the view."
-  [model view rel]
-  (let [; rendered? (render-predicate m view-type)
-        from (model/resolve-ref model (:from rel))
-        to   (model/resolve-ref model (:to rel))]))
-  ; TODO promote relations to higher levels?
-  
 
 (comment
   ;(collect-technologies (:elements @model/state))
