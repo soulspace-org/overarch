@@ -341,6 +341,22 @@
         (map (partial resolve-ref m))
         (into #{}))))
 
+(defn relations-of-nodes
+  "Returns the relations of the model `m` connecting nodes from the given collection of model nodes."
+  ([m coll]
+   (let [els (into #{} (map :id coll))
+         rels (filter relation? (get-model-elements m))]
+     (->> rels
+          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
+
+(defn related-nodes
+  "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
+  [m coll]
+  (->> coll
+       (filter relation?)
+       (map (fn [rel] #{(resolve-ref m (:from rel)) (resolve-ref m (:to rel))}))
+       (reduce set/union #{})))
+
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
   ([m r1 r2]
@@ -353,23 +369,6 @@
         (or (= (:to r1) (:to r2))
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
-
-(defn relations-of-nodes
-  "Returns the relations connecting nodes from the given collection of model nodes."
-  ([m coll]
-   (let [els (into #{} (map :id coll))
-         rels (filter relation? (get-model-elements m))]
-     (->> rels
-          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
-
-(defn related-nodes
-  "Returns the set of nodes that are part of at least one relation."
-  [m coll]
-  (->> coll
-       (filter relation?)
-       (map (fn [rel] #{(:from rel) (:to rel)}))
-       ; TODO resolve refs
-       (reduce set/union #{})))
 
 ;;
 ;; State preparation
