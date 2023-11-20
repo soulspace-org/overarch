@@ -62,6 +62,16 @@
       false {:el :container}
       false {:el :component})))
 
+(deftest render-relation-node?-test
+  (testing "render-relation-node?"
+    (are [x y] (= x (fns/truthy? (render-relation-node? {:el :container-view} y)))
+      true {:el :person}
+      true {:el :system :external true}
+      true {:el :container}
+      true {:el :system :external false}
+      false {:el :system :external false :ct #{{:el :container}}}
+      false {:el :component})))
+
 (def container-view1
   {:el :container-view
    :id :test/container-view1

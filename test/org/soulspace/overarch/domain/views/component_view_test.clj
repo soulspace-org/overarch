@@ -61,3 +61,14 @@
       false {:el :container}
       false {:el :component})))
 
+(deftest render-relation-node?-test
+  (testing "render-relation-node?"
+    (are [x y] (= x (fns/truthy? (render-relation-node? {:el :component-view} y)))
+      true {:el :person}
+      true {:el :system :external true}
+      true {:el :system :external false}
+      true {:el :container :external true}
+      true {:el :container :external false}
+      true {:el :component}
+      false {:el :system :external false :ct #{{:el :container}}}
+      false {:el :container :external false :ct #{{:el :component}}})))
