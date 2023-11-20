@@ -12,6 +12,10 @@
   [view e]
   (contains? model/context-types (:el e)))
 
+(defmethod view/render-relation-node? :context-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :context-view
   [view e]
   e)

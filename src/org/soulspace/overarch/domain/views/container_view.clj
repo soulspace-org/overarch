@@ -17,7 +17,7 @@
    (seq (:ct e))
    ; has a boundary mapping for this diagram-type
    (element->boundary (:el e))
-   (not (:external e))))
+   (model/internal? e)))
 
 (defmethod view/render-model-node? :container-view
   [view e]
@@ -26,6 +26,12 @@
 (defmethod view/include-content? :container-view
   [view e]
   (contains? model/container-types (:el e)))
+
+(defmethod view/render-relation-node? :container-view
+  [view e]
+  (and (view/render-model-node? view e)
+       ; exclude system boundaries
+       (not (as-boundary? e))))
 
 (defmethod view/element-to-render :container-view
   [view e]

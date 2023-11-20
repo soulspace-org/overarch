@@ -10,6 +10,10 @@
   [view e]
   (contains? model/context-types (:el e)))
 
+(defmethod view/render-relation-node? :system-landscape-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :system-landscape-view
   [view e]
   e)

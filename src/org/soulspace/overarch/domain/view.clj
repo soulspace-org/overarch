@@ -79,31 +79,11 @@
   "Returns true if the content of element `e` is rendered in the `view`"
   view-type)
 
-(comment
-  (defn context-view-rel-participant?
-    "Returns true, if the given element `e` can be a participant in a container relation."
-    [e]
-    ;(context-view-element? e)
-    )
-
-  (defn container-view-rel-participant?
-    "Returns true, if the given element `e` can be a participant in a container relation."
-    [e]
-    (and ;(container-view-element? e)
-       ; exclude internal systems
-         (not (and (model/system? e)
-                   (not (model/external? e))))))
-
-  (defn component-view-rel-participant?
-    "Returns true, if the given element `e` can be a participant in a component."
-    [e]
-    (and ;(container-view-element? e)
-       ; exclude internal systems and containers
-         (not (and (model/system? e)
-                   (not (model/external? e))))
-         (not (and (model/container? e)
-                   (not (model/external? e))))))
-  )
+;; TODO find good names for model elements, nodes relations,
+;; relation participants, etc.
+(defmulti render-relation-node?
+  "Returns true if the node will"
+  view-type)
 
 ;;;
 ;;; Schema definitions

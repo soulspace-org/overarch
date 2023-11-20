@@ -10,6 +10,10 @@
   [view e]
   (contains? model/glossary-types (:el e)))
 
+(defmethod view/render-relation-node? :glossary-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :glossary-view
   [view e]
   e)

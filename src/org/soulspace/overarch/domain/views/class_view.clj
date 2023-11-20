@@ -10,6 +10,10 @@
   [view e]
   (contains? model/class-types (:el e)))
 
+(defmethod view/render-relation-node? :class-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :class-view
   [view e]
   e)

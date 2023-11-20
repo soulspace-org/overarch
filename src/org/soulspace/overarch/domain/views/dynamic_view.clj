@@ -10,6 +10,10 @@
   [view e]
   (contains? model/dynamic-types (:el e)))
 
+(defmethod view/render-relation-node? :dynamic-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :dynamic-view
   [view e]
   e)

@@ -10,6 +10,10 @@
   [view e]
   (contains? model/state-machine-types (:el e)))
 
+(defmethod view/render-relation-node? :state-machine-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :state-machine-view
   [view e]
   e)

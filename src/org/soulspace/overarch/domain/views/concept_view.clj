@@ -10,6 +10,10 @@
   [view e]
   (contains? model/concept-types (:el e)))
 
+(defmethod view/render-relation-node? :concept-view
+  [view e]
+  (view/render-model-node? view e))
+
 (defmethod view/element-to-render :concept-view
   [view e]
   e)
