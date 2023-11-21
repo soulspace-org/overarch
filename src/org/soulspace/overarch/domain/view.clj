@@ -71,6 +71,8 @@
   ([view & _]
    (view-type view)))
 
+;; TODO find good names for model elements, nodes relations,
+;; relation participants, etc.
 (defmulti render-model-node?
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
@@ -79,8 +81,6 @@
   "Returns true if the content of element `e` is rendered in the `view`"
   view-type)
 
-;; TODO find good names for model elements, nodes relations,
-;; relation participants, etc.
 (defmulti render-relation-node?
   "Returns true if the node will"
   view-type)

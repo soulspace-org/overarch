@@ -3,14 +3,14 @@
             [org.soulspace.overarch.domain.model :as model]))
 
 
-
 (defmethod view/render-model-node? :context-view
   [view e]
   (contains? model/context-types (:el e)))
 
 (defmethod view/include-content? :context-view
   [view e]
-  (contains? model/context-types (:el e)))
+  (and (contains? model/context-types (:el e))
+       (model/boundary? e)))
 
 (defmethod view/render-relation-node? :context-view
   [view e]

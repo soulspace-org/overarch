@@ -24,7 +24,8 @@
 
 (defmethod view/include-content? :component-view
   [view e]
-  (contains? model/component-types (:el e)))
+  (and (contains? model/component-types (:el e))
+       (model/boundary? e)))
 
 (defmethod view/render-relation-node? :component-view
   [view e]

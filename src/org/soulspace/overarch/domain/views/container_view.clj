@@ -25,7 +25,8 @@
 
 (defmethod view/include-content? :container-view
   [view e]
-  (contains? model/container-types (:el e)))
+  (and (contains? model/container-types (:el e))
+       (model/boundary? e)))
 
 (defmethod view/render-relation-node? :container-view
   [view e]
