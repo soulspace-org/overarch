@@ -3,7 +3,6 @@
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.model :refer :all]))
 
-
 (def c4-model1
   "Simple test model for C4 Architecture"
   #{{:el :person
@@ -215,6 +214,30 @@
       true {:ref :a/abc}
       false {}
       false {:type :person})))
+
+(deftest boundary?-test
+  (testing "boundary?"
+    (are [x y] (= x (fns/truthy? (boundary? y)))
+      true {:el :context-boundary}
+      true {:el :enterprise-boundary}
+      true {:el :system-boundary}
+      true {:el :container-boundary}
+      false {}
+      false {:el :person})))
+
+(deftest external?-test
+  (testing "external?"
+    (are [x y] (= x (fns/truthy? (external? y)))
+      false {:el :person}
+      false {:el :person :external false}
+      true {:el :person :external true})))
+
+(deftest internal?-test
+  (testing "internal?"
+    (are [x y] (= x (fns/truthy? (internal? y)))
+      true {:el :person}
+      true {:el :person :external false}
+      false {:el :person :external true})))
 
 (deftest build-id->elements-test
   (testing "build-id->elements"

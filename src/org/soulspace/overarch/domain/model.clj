@@ -17,7 +17,7 @@
 ;; 
 (def context-types
   "Element types of a C4 context view."
-  #{:rel :person :system :boundary :enterprise-boundary :context-boundary})
+  #{:rel :person :system :enterprise-boundary :context-boundary})
 
 (def container-types
   "Element types of a C4 container view."
@@ -86,6 +86,10 @@
 ;; 
 ;; General category definitions
 ;;
+(def boundary-types
+  "Element types of boundaries"
+  #{:enterprise-boundary :context-boundary :system-boundary :container-boundary})
+
 (def relation-types
   "Element types of relations"
   (set/union #{:rel} uml-relation-types))
@@ -168,6 +172,32 @@
   [e]
   (:ref e))
 
+(defn model-element?
+  "Returns true if the given element `e` is a model element."
+  [e]
+  (contains? model-types (:el e)))
+
+(defn model-node?
+  "Returns true if the given element is a node in the model element graph.
+   A model node is a model element which is not a relation."
+  [e]
+  (and (model-element? e) (not (relation? e))))
+
+(defn boundary?
+  "Returns true if `e` is a boundary."
+  [e]
+  (contains? boundary-types (:el e)))
+
+(defn external?
+  "Returns true if the given element `e` is external."
+  [e]
+  (:external e))
+
+(defn internal?
+  "Returns true if the given element `e` is internal."
+  [e]
+  (not (external? e)))
+
 (defn person?
   "Returns true if the given element `e` is a person element."
   [e]
@@ -192,27 +222,6 @@
   "Returns true if the given element `e` is a node element."
   [e]
   (= :node (:el e)))
-
-(defn external?
-  "Returns true if the given element `e` is external."
-  [e]
-  (:external e))
-
-(defn internal?
-  "Returns true if the given element `e` is internal."
-  [e]
-  (not (external? e)))
-
-(defn model-element?
-  "Returns true if the given element `e` is a model element."
-  [e]
-  (contains? model-types (:el e)))
-
-(defn model-node?
-  "Returns true if the given element is a node in the model element graph.
-   A model node is a model element which is not a relation."
-  [e]
-  (and (model-element? e) (not (relation? e))))
 
 ;;
 ;; Schema specification
