@@ -120,26 +120,6 @@
 ;;; View functions
 ;;;
 
-;(defn include-criteria?
-;  "Returns true, if the `view` should include elements selected by criteria."
-;  [view]
-;  (map? (get-in view [:spec :include])))
-
-;(defn include-relations?
-;  "Returns true, if the `view` should include the relations to the shown elements."
-;  [view]
-;  (= :relations (get-in view [:spec :include])))
-
-;(defn include-related?
-;  "Returns true, if the `view` should include the elements for the shown relations."
-;  [view]
-;  (= :related (get-in view [:spec :include])))
-
-;(defn include-transitive?
-;  "Returns true, if the `view` should include the transitve (convex) hull of the shown elements."
-;  [view]
-;  (= :transitive (get-in view [:spec :include])))
-
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
   [model rel pred]
@@ -157,7 +137,6 @@
         to   (model/resolve-ref model (:to rel))]))
   ; TODO promote relations to higher levels?
   
-
 
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
