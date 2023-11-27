@@ -122,7 +122,7 @@
 (def container-view1
   {:el :container-view
    :id :test/container-view1
-;   :spec {:include :referenced-only}
+   :spec {:include :referenced-only}
    :title "Container View 1"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
@@ -133,7 +133,7 @@
 (def container-view2
   {:el :container-view
    :id :test/container-view1
-;   :spec {:include :referenced-only}
+   :spec {:include :referenced-only}
    :title "Container View 2"
    :ct [{:ref :test/user1}
         {:ref :test/ext-system1}
@@ -148,7 +148,7 @@
 (def container-view1-related
   {:el :container-view
    :id :test/container-view1-related
-;   :spec {:include :related}
+   :spec {:include :related}
    :title "Container View 1 related"
    :ct [{:ref :test/user1-uses-container1}
         {:ref :test/container1-calls-ext-system1}
@@ -158,7 +158,7 @@
 (def container-view1-relations
   {:el :container-view
    :id :test/container-view1-relations
-;   :spec {:include :relations}
+   :spec {:include :relations}
    :title "Container View 1 relations"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
@@ -167,7 +167,7 @@
 (def container-view2-relations
   {:el :container-view
    :id :test/container-view2-relations
-;   :spec {:include :relations}
+   :spec {:include :relations}
    :title "Container View 2 relations"
    :ct [{:ref :test/user1}
         {:ref :test/container1}
@@ -212,7 +212,7 @@
       (are [x y] (= x y)
         3 (count (specified-model-nodes c4-1 container-view1))
         5 (count (specified-model-nodes c4-1 container-view2))
-        3 (count (specified-model-nodes c4-1 container-view1-related))
+        5 (count (specified-model-nodes c4-1 container-view1-related))
         3 (count (specified-model-nodes c4-1 container-view1-relations))
         5 (count (specified-model-nodes c4-1 container-view2-relations))))))
 
