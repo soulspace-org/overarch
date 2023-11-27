@@ -103,8 +103,7 @@
   ;;
   {:el :class-view
    :id :overarch/data-model-overview
-   :spec {:layout :left-right
-          :include :relations}
+   :spec {:layout :left-right}
    :title "Overview of the Overarch Data Model"
    :ct [;; elements
         {:ref :overarch/element}
