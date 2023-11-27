@@ -6,7 +6,8 @@
   (:require [clojure.edn :as edn]
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
-            [org.soulspace.clj.java.file :as file]))
+            [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Category definitions
@@ -354,9 +355,10 @@
   "Returns the relations of the model `m` connecting nodes from the given collection of model nodes."
   ([m coll]
    (let [els (into #{} (map :id coll))
-         rels (filter relation? (get-model-elements m))]
-     (->> rels
-          (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r)))))))))
+         rels (filter relation? (get-model-elements m))
+         filtered (->> rels
+                       (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r))))))
+         _ (fns/data-tapper {:els els :rels rels :filtered filtered})])))
 
 (defn related-nodes
   "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
@@ -480,5 +482,5 @@
 
   (update-state! "models")
   (build-id->parent (:elements @state))
-  (user/data-tapper "State" @state)
+  (fns/data-tapper "State" @state)
   )

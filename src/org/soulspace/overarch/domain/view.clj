@@ -6,7 +6,8 @@
   (:require [clojure.string :as str]
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model] 
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Type definitions
@@ -164,28 +165,64 @@
   [model view]
   (let [selector (get-in view [:spec :include] :referenced-only)]
     (case selector
-      :referenced-only (referenced-model-nodes model view)
-      :relations (referenced-model-nodes model view)
+      :referenced-only (let [referenced-nodes (referenced-model-nodes model view)
+                             _ (fns/data-tapper {:fn "specified-relations"
+                                                 :view (:id view)
+                                                 :selector selector
+                                                 :referenced-rels referenced-nodes})]
+                         referenced-nodes)
+      :relations (let [referenced-nodes (referenced-model-nodes model view)
+                       _ (fns/data-tapper {:fn "specified-relations"
+                                           :view (:id view)
+                                           :selector selector
+                                           :referenced-rels referenced-nodes})]
+                   referenced-nodes)
       :related (let [referenced-nodes (referenced-model-nodes model view)
                      referenced-rels (referenced-relations model view)
                      related-nodes (into #{}
                                          (map (partial model/resolve-ref model)
-                                              (model/related-nodes model referenced-rels)))]
-                 (set/union referenced-nodes related-nodes)) ; TODO check
+                                              (model/related-nodes model referenced-rels)))
+                     specified-nodes (set/union referenced-nodes related-nodes)
+                     _ (fns/data-tapper {:fn "specified-model-nodes"
+                                         :view (:id view)
+                                         :selector selector
+                                         :referenced-nodes referenced-nodes
+                                         :referenced-rels referenced-rels
+                                         :related-nodes related-nodes
+                                         :specified-nodes specified-nodes})]
+                 specified-nodes) ; TODO check
       )))
 
 (defn specified-relations
   "Returns the relations specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [model view]
-  (let [selector (get-in view [:spec :include] :referenced-only)]
+  (let [selector (get-in view [:spec :include] :referenced-only)] 
     (case selector
-      :referenced-only (referenced-relations model view)
+      :referenced-only (let [referenced-rels (referenced-relations model view)
+                             _ (fns/data-tapper {:fn "specified-relations"
+                                                 :view (:id view)
+                                                 :selector selector
+                                                 :referenced-rels referenced-rels})]
+                         referenced-rels)
       :relations (let [referenced-nodes (referenced-model-nodes model view)
                        referenced-rels (referenced-relations model view)
-                       related-rels (into #{} (model/relations-of-nodes model referenced-nodes))]
-                   (set/union referenced-rels related-rels))
-      :related (referenced-relations model view))))
+                       related-rels (into #{} (model/relations-of-nodes model referenced-nodes))
+                       specified-rels (set/union referenced-rels related-rels)
+                       _ (fns/data-tapper {:fn "specified-relations"
+                                           :view (:id view)
+                                           :selector selector
+                                           :referenced-nodes referenced-nodes
+                                           :referenced-rels referenced-rels
+                                           :related-rels related-rels
+                                           :specified-rels specified-rels})]
+                   specified-rels)
+      :related (let [referenced-rels (referenced-relations model view)
+                     _ (fns/data-tapper {:fn "specified-relations"
+                                         :view (:id view)
+                                         :selector selector
+                                         :referenced-rels referenced-rels})]
+                 referenced-rels))))
 
 (defn specified-elements
   "Returns the model elements and relations explicitly specified in the given view."

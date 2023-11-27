@@ -52,7 +52,17 @@
      :from :test/container1
      :to :test/ext-system1
      :name "calls"}
-    })
+    {:el :rel
+     :id :test/container1-stores-in-container-db1
+     :from :test/container1
+     :to :test/container-db1
+     :name "stores in"}
+    {:el :rel
+     :id :test/container1-sends-to-container-queue1
+     :from :test/container1
+     :to :test/container-queue1
+     :name "sends to"}})
+
 
 (def concept-model1
   #{{:el :concept
@@ -73,8 +83,10 @@
      :id :test/concept1-is-a-concept3
      :from :test/concept1
      :to :test/concept3
-     :name "is a"}
-    })
+     :name "is a"}})
+
+(def c4-registry1 (build-registry c4-model1))
+(def concept-registry1 (build-registry concept-model1))
 
 (deftest element?-test
   (testing "element?"
@@ -242,7 +254,7 @@
 (deftest build-id->elements-test
   (testing "build-id->elements"
     (are [x y] (= x y)
-      12 (count (build-id->elements c4-model1))
+      14 (count (build-id->elements c4-model1))
       5 (count (build-id->elements concept-model1)))))
 
 (deftest build-id->parent-test
@@ -267,7 +279,7 @@
 (deftest build-referred-id->rels-test
   (testing "build-referrer-id->rels"
     (are [x y] (= x y)
-      3 (count (build-referred-id->rels c4-model1))
+      5 (count (build-referred-id->rels c4-model1))
       2 (count (build-referred-id->rels concept-model1))
       0 (count (:test/user1 (build-referred-id->rels c4-model1)))
       1 (count (:test/system1 (build-referred-id->rels c4-model1)))
@@ -282,4 +294,5 @@
   :test/user1
   (type (build-referrer-id->rels c4-model1))
   (build-referrer-id->rels concept-model1)
+  (relations-of-nodes c4-registry1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
   )
