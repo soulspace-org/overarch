@@ -113,16 +113,16 @@
 (def context-view1-related
   {:el :context-view
    :id :test/context-view1-related
-   :title "Context View 1"
    :spec {:include :related}
+   :title "Context View 1"
    :ct [{:ref :test/user1-uses-system1}
         {:ref :test/system1-calls-ext-system1}]})
 
 (def context-view1-relations
   {:el :context-view
    :id :test/context-view1-relations
-   :title "Context View 1"
    :spec {:include :relations}
+   :title "Context View 1"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
         {:ref :test/ext-system1}]})

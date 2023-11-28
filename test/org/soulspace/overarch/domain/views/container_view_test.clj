@@ -122,7 +122,6 @@
 (def container-view1
   {:el :container-view
    :id :test/container-view1
-   :spec {:include :referenced-only}
    :title "Container View 1"
    :ct [{:ref :test/user1}
         {:ref :test/system1}
@@ -133,7 +132,6 @@
 (def container-view2
   {:el :container-view
    :id :test/container-view1
-   :spec {:include :referenced-only}
    :title "Container View 2"
    :ct [{:ref :test/user1}
         {:ref :test/ext-system1}
