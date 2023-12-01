@@ -3,11 +3,13 @@
   (:require [clojure.string :as str]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
+            [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
             [org.soulspace.overarch.application.render :as rndr]
-            ; require exports and renderers here register multimethods
+            ; require adapters here to register multimethods
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
@@ -16,7 +18,7 @@
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.adapter.render.plantuml.c4-renderer :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml-renderer :as uml]
-            )
+            [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo])
   (:gen-class))
 
 ;;;
@@ -32,6 +34,7 @@
 
 (def cli-opts
   [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
+   ["-M" "--model-path PATH" "Model path" :default []] ; TODO add parse-fn to split path into sequence 
    ["-r" "--render-format FORMAT" "Render format (all, graphviz, markdown, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
    ["-R" "--render-dir DIRNAME" "Export directory" :default "export"]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
@@ -163,7 +166,8 @@
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
-  (let [m (model/update-state! (:model-dir options))]
+  ; TODO check for model path and read all dirs if set
+  (let [m (repo/update-state! (:model-dir options))]
     (dispatch m options)))
 
 (defn handle

@@ -285,16 +285,9 @@
          :relation    :overarch/relation
          :view        :overarch/view)))
 
-
 ;;;
 ;;; Data handling
 ;;;
-
-;;
-;; Application state
-;;
-; TODO get rid of global state at some point
-(def state (atom {}))
 
 ;;
 ;; Accessors
@@ -327,7 +320,7 @@
   ([m e]
    ((:parents m) (:id e))))
 
-(defn resolve-ref
+(defn resolve-element
   "Resolves the model element for the ref `e`."
   ([m e]
    (cond
@@ -340,7 +333,7 @@
   ([m]
    (->> (:registry m)
         (vals)
-        (map (partial resolve-ref m))
+        (map (partial resolve-element m))
         (into #{}))))
 
 (defn related
@@ -348,7 +341,7 @@
   ([m coll]
    (->> coll
         (mapcat (fn [e] [(:from e) (:to e)]))
-        (map (partial resolve-ref m))
+        (map (partial resolve-element m))
         (into #{}))))
 
 (defn relations-of-nodes
@@ -358,14 +351,15 @@
          rels (filter relation? (get-model-elements m))
          filtered (->> rels
                        (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r))))))
-         _ (fns/data-tapper {:els els :rels rels :filtered filtered})])))
+         _ (fns/data-tapper {:els els :rels rels :filtered filtered})]
+     filtered)))
 
 (defn related-nodes
   "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
   [m coll]
   (->> coll
        (filter relation?)
-       (map (fn [rel] #{(resolve-ref m (:from rel)) (resolve-ref m (:to rel))}))
+       (map (fn [rel] #{(resolve-element m (:from rel)) (resolve-element m (:to rel))}))
        (reduce set/union #{})))
 
 (defn aggregable-relation?
@@ -456,31 +450,14 @@
      :referred (build-referred-id->rels elements)}
     (s/explain :overarch/elements elements)))
 
-; TODO move to application
-(s/fdef read-elements
-  :args [string?]
-  :ret :overarch/ct)
-(defn read-elements
-  "Reads the elements of data from the given directory `dir`."
-  [dir]
-  (->> (file/all-files-by-extension "edn" dir)
-       (map slurp)
-       (mapcat edn/read-string)))
-
-; TODO move to application
-(defn update-state!
-  "Updates the state with the registered data read from `dir`."
-  [dir]
-  (->> dir
-       (read-elements)
-       (build-registry)
-       (reset! state)))
-
 (comment
   (file/all-files-by-extension "edn" "models")
-  (read-elements "models")
 
-  (update-state! "models")
-  (build-id->parent (:elements @state))
-  (fns/data-tapper "State" @state)
+  ; TODO move to application
+  (defn read-elements
+    "Reads the elements of data from the given directory `dir`."
+    [dir]
+    (->> (file/all-files-by-extension "edn" dir)
+         (map slurp)
+         (mapcat edn/read-string)))
   )

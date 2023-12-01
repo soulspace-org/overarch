@@ -278,6 +278,6 @@
 
   (elements-to-render c4-1 container-view1)
   (elements-to-render c4-1 container-view1 (:ct container-view1))
-  (elements-to-render c4-1 container-view1 (:ct (model/resolve-ref c4-1 :test/system1)))
+  (elements-to-render c4-1 container-view1 (:ct (model/resolve-element c4-1 :test/system1)))
 
   )

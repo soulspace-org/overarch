@@ -125,8 +125,8 @@
   "Returns true if the relation should be rendered in the context of the view."
   [model rel pred]
   (let [rendered? pred
-        from (model/resolve-ref model (:from rel))
-        to   (model/resolve-ref model (:to rel))]
+        from (model/resolve-element model (:from rel))
+        to   (model/resolve-element model (:to rel))]
     (when (and (rendered? rel) (rendered? from) (rendered? to))
       rel)))
 
@@ -134,8 +134,8 @@
   "Returns the relation to be rendered in the context of the view."
   [model view rel]
   (let [; rendered? (render-predicate m view-type)
-        from (model/resolve-ref model (:from rel))
-        to   (model/resolve-ref model (:to rel))]))
+        from (model/resolve-element model (:from rel))
+        to   (model/resolve-element model (:to rel))]))
   ; TODO promote relations to higher levels?
   
 
@@ -143,21 +143,21 @@
   "Returns the model nodes explicitly referenced in the given view."
   [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref model))
+       (map (partial model/resolve-element model))
        (filter model/model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
   [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref model))
+       (map (partial model/resolve-element model))
        (filter model/relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."
   [model view]
   (->> (:ct view)
-       (map (partial model/resolve-ref model))))
+       (map (partial model/resolve-element model))))
 
 (defn specified-model-nodes
   "Returns the model nodes specified in the given view.
@@ -180,7 +180,7 @@
       :related (let [referenced-nodes (referenced-model-nodes model view)
                      referenced-rels (referenced-relations model view)
                      related-nodes (into #{}
-                                         (map (partial model/resolve-ref model)
+                                         (map (partial model/resolve-element model)
                                               (model/related-nodes model referenced-rels)))
                      specified-nodes (set/union referenced-nodes related-nodes)
                      _ (fns/data-tapper {:fn "specified-model-nodes"
@@ -279,7 +279,7 @@
    (elements-to-render model view (:ct view)))
   ([model view coll]
    (->> coll
-        (map (partial model/resolve-ref model))
+        (map (partial model/resolve-element model))
         (filter (partial render-element? model view))
         (map #(element-to-render view %)))))
 

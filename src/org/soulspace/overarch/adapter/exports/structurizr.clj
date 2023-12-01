@@ -78,7 +78,7 @@
 (defmethod render-element :model-element
   [m indent e]
   (if (:ct e)
-    (let [children (map (partial model/resolve-ref m) (:ct e))]
+    (let [children (map (partial model/resolve-element m) (:ct e))]
       [(str (view/render-indent indent) (alias-name (:id e)) " = "
             (element-type->structurizr (:el e))
             " \"" (view/element-name e) "\" {")

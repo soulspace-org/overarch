@@ -1,6 +1,15 @@
 Changelog
 =========
 
+Version 0.8.0
+-------------
+* (WIP) adding include specification for views
+* refactored codebase to clean architecture for better maintainablity/extensibility
+* added a namespace for each kind of view for view specific logic
+* added separate namespaces for plantuml UML and C4 rendering
+* added tests for model and view logic
+
+
 Version 0.7.0
 -------------
 * make file watches work on Macs by using beholder instead of hawk 
