@@ -3,6 +3,7 @@ Changelog
 
 Version 0.8.0
 -------------
+* support for loading models from multiple locations by specifying a model path
 * (WIP) adding include specification for views
 * refactored codebase to clean architecture for better maintainablity/extensibility
 * added a namespace for each kind of view for view specific logic

@@ -6,9 +6,9 @@
             [clojure.string :as str]))
 
 (defn windows-path?
-  "Returns true, if the given `path` contains semicolons, which are the path separators on a windows system."
+  "Returns true, if the path is of a windows system."
   [path]
-  (str/index-of path \;))
+  (or (str/index-of path \;) (re-matches #"[A-Za-z]:.*" path)))
 
 (defn split-path
   "Splits a path into a sequence of file entries."
@@ -43,8 +43,11 @@
       (file/split-path))
 
   (str/split "\\C:\\p1\\models;\\C:\\p2\\models" #";")
+  (re-matches #"[A-Za-z]:.*" "C:\\path")
   (windows-path? "/p1/models:/p2/models")
   (windows-path? "\\C:\\p1\\models;\\C:\\p2\\models")
+  (windows-path? "C:\\p1\\models")
+  (windows-path? "C:/p1/models")
   (split-path "/p1/models")
   (split-path "/p1/models:/p2/models")
   (split-path "\\C:\\p1\\models;\\C:\\p2\\models")
