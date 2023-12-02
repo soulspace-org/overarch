@@ -8,10 +8,6 @@
   ([rtype _]
    rtype))
 
-(defmulti read-model 
-  "Reads the model with the repository of type `rtype` from the given `location`."
-  repo-type)
-
 (defmulti read-models
   "Reads the models with the repository of type `rtype` from all locations of the given `path`."
   repo-type)
@@ -26,6 +22,6 @@
   "Updates the state with the registered data read from `dir`."
   [dir]
   (->> dir
-       (read-model :filesystem) ; TODO don't hardcode repo type
+       (read-models :file) ; TODO don't hardcode repo type
        (m/build-registry)
        (reset! state)))

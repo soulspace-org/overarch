@@ -17,27 +17,20 @@
     (str/split path #";")
     (str/split path #":")))
 
-(defn load-model
+(defn read-model
   [dir]
   (->> (file/all-files-by-extension "edn" dir)
        (map slurp)
        (mapcat edn/read-string)))
 
-(s/fdef read-model
-  :args [string?]
-  :ret :overarch/ct)
-(defmethod mr/read-model :filesystem
-  [rtype dir]
-  (load-model dir))
-
 (s/fdef read-models
   :args [string?]
   :ret :overarch/ct)
-(defmethod mr/read-models :filesystem
+(defmethod mr/read-models :file
   [rtype path]
   (->> path
        (split-path)
-       (mapcat load-model)))
+       (mapcat read-model)))
 
 (comment
   (java.io.File/separator)
@@ -52,6 +45,7 @@
   (str/split "\\C:\\p1\\models;\\C:\\p2\\models" #";")
   (windows-path? "/p1/models:/p2/models")
   (windows-path? "\\C:\\p1\\models;\\C:\\p2\\models")
+  (split-path "/p1/models")
   (split-path "/p1/models:/p2/models")
   (split-path "\\C:\\p1\\models;\\C:\\p2\\models")
   ;

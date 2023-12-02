@@ -33,8 +33,7 @@
    into the specified formats.")
 
 (def cli-opts
-  [["-m" "--model-dir DIRNAME" "Model directory" :default "models"]
-   ["-M" "--model-path PATH" "Model path" :default []] ; TODO add parse-fn to split path into sequence 
+  [["-m" "--model-dir PATH" "Models path" :default "models"]
    ["-r" "--render-format FORMAT" "Render format (all, graphviz, markdown, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
    ["-R" "--render-dir DIRNAME" "Export directory" :default "export"]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
@@ -207,7 +206,7 @@
 (comment
   (update-and-dispatch! {:model-dir "models"
                          :render-format :plantuml})
-  (model-info (model/update-state! "models") {:model-info true})
+  (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
   (print-sprite-mappings)
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
