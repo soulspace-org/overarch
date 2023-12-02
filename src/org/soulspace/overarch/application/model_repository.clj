@@ -3,20 +3,23 @@
 
 (defn repo-type
   "Returns the repository type."
-  ([r-type]
-   r-type)
-  ([r-type location]
-   r-type))
+  ([rtype]
+   rtype)
+  ([rtype _]
+   rtype))
 
 (defmulti read-model 
-  "Reads the model with the repository of type `r-type` from the given `location`."
-  repo-type
-  )
+  "Reads the model with the repository of type `rtype` from the given `location`."
+  repo-type)
+
+(defmulti read-models
+  "Reads the models with the repository of type `rtype` from all locations of the given `path`."
+  repo-type)
 
 ;;
 ;; Application state
 ;;
-; TODO get rid of global state at some point
+; Application state is not needed for the overarch CLI, but maybe helpful for other clients
 (def state (atom {}))
 
 (defn update-state!
