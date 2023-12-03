@@ -19,9 +19,9 @@
 (def state (atom {}))
 
 (defn update-state!
-  "Updates the state with the registered data read from `dir`."
-  [dir]
-  (->> dir
+  "Updates the state with the registered data read from `path`."
+  [path]
+  (->> path
        (read-models :file) ; TODO don't hardcode repo type
        (m/build-registry)
        (reset! state)))
