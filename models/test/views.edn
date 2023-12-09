@@ -81,15 +81,34 @@
                 :id :test/azure-subscription
                 :name "Test Subscription"
                 :tech "Azure Subscription"}}}]}
-    {:el :deployment-view
-     :id :test/aws-icons
-     :title "AWS Icon Test"
-     :spec {:plantuml {:sprite-libs [:awslib]}}
-     :ct [{:el :node
-           :id :test/aws
-           :name "Azure"
-           :tech "AWS Cloud"
-           :ct #{{:el :node
-                  :id :test/aws-account
-                  :name "Test Account"
-                  :tech "AWS Account"}}}]}}
+  
+  {:el :deployment-view
+   :id :test/aws-icons
+   :title "AWS Icon Test"
+   :spec {:plantuml {:sprite-libs [:awslib]}}
+   :ct [{:el :node
+         :id :test/aws
+         :name "Azure"
+         :tech "AWS Cloud"
+         :ct #{{:el :node
+                :id :test/aws-account
+                :name "Test Account"
+                :tech "AWS Account"}}}]}
+  
+  {:el :context-view
+   :id :test/without-legend
+   :spec {:no-legend true}
+   :title "View without legend"
+   :ct [{:el :system
+         :id :test/sys1
+         :name "Sys1"}
+        {:el :system
+         :id :test/sys2
+         :name "Sys2"
+         :external true}
+        {:el :rel
+         :from :test/sys1
+         :to :test/sys2
+         :name "calls"}]}
+    ;
+  }
