@@ -9,7 +9,7 @@
   "Returns the export format for the data."
   ([m format options]
    format)
-  ([m format options _]
+  ([m format options & args]
    format))
 
 (defmulti export-file
