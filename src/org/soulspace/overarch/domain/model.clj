@@ -379,6 +379,70 @@
 ;; State preparation
 ;;
 
+(defn traverse
+  "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
+   and transformed by the `transform-fn`.
+
+   select-fn - a predicate on the current element
+   transform-fn - a function with two signatures [] and [acc e]
+   
+   The no args signature should return an empty accumulator, the 2 args signature
+   receives the accumulator and the current element and should add the transformed
+   element to the accumulator."
+  ([model select-fn transform-fn coll]
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (if (select-fn e)
+                   (recur (trav (transform-fn acc e) (:ct e))
+                          (rest coll))
+                   (recur (trav acc (:ct e))
+                          (rest coll))))
+               acc))]
+     (trav (transform-fn) coll))))
+
+(defn id->element
+  "Adds the association of the id of the element `e` to the map `m`."
+  ([] {})
+  ([m e]
+   (assoc m (:id e) e)))
+
+(defn referrer-id->rel
+  "Adds the relation `r` to the set associated with the id of the :from reference in the map `m`."
+  ([] {})
+  ([m e]
+   (assoc m (:from e) (conj (get m (:from e) #{}) e))))
+
+(defn referred-id->rel
+  "Adds the relation `r` to the set associated with the id of the :to reference in the map `m`."
+  ([] {})
+  ([m r]
+   (assoc m (:to r) (conj (get m (:to r) #{}) r))))
+
+(defn build-id->elements
+  "Returns a map of id to element for the elements of the `coll`."
+  ([coll]
+   (build-id->elements {} coll))
+  ([m coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (identifiable-element? e)
+         (recur (build-id->elements (assoc m (:id e) e) (:ct e)) (rest coll))
+         (recur (build-id->elements m (:ct e)) (rest coll))))
+     m)))
+
+(defn build-id->parent
+  "Returns a map of child id to parent element for the elements in `coll`."
+  ([coll]
+   (build-id->parent {} nil coll))
+  ([m p coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (and (identifiable-element? e) (identifiable-element? p) (model-element? p))
+         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
+         (recur (build-id->parent m e (:ct e)) p (rest coll))))
+     m)))
+
 (defn build-referrer-id->rels
   "Returns a map of referrer-id to relation for the relations in `coll`."
   ([coll]
@@ -405,30 +469,6 @@
          (recur (assoc m (:to e) (conj (get m (:to e) #{}) e)) (rest coll))
          ; recursive to pick up relations in model elements
          (recur (build-referred-id->rels m (:ct e)) (rest coll))))
-     m)))
-
-(defn build-id->elements
-  "Returns a map of id to element for the elements of the `coll`."
-  ([coll]
-   (build-id->elements {} coll))
-  ([m coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (identifiable-element? e)
-         (recur (build-id->elements (assoc m (:id e) e) (:ct e)) (rest coll))
-         (recur (build-id->elements m (:ct e)) (rest coll))))
-     m)))
-
-(defn build-id->parent
-  "Returns a map of child id to parent element for the elements in `coll`."
-  ([coll]
-   (build-id->parent {} nil coll))
-  ([m p coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (and (identifiable-element? e) (identifiable-element? p) (model-element? p))
-         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
-         (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
 
 (defn build-registry
@@ -460,4 +500,6 @@
     (->> (file/all-files-by-extension "edn" dir)
          (map slurp)
          (mapcat edn/read-string)))
+  
+
   )
