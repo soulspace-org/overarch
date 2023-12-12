@@ -22,7 +22,7 @@
 (def state (atom {}))
 
 (defn check
-  ""
+  "Check model specification."
   [elements]
   (if (s/valid? :overarch/model elements)
     elements
