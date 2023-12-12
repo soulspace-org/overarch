@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.application.model-repository
-  (:require [clojure.spec.alpha :as s]
-            [org.soulspace.overarch.domain.model :as model]
+  (:require [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.spec :as spec]))
 
 (defn repo-type
@@ -21,19 +20,12 @@
 ; Application state is not needed for the overarch CLI, but maybe helpful for other clients
 (def state (atom {}))
 
-(defn check
-  "Check model specification."
-  [elements]
-  (if (s/valid? :overarch/model elements)
-    elements
-    (s/explain :overarch/model elements)))
-
 (defn update-state!
   "Updates the state with the registered data read from `path`."
   [path]
   (->> path
        (read-models :file) ; TODO don't hardcode repo type
-       (check)
+       (spec/check)
        (model/build-registry)
        (reset! state)))
 
