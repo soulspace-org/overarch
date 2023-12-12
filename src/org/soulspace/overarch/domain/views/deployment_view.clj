@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.deployment-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-node? :deployment-view
   [view e]
-  (contains? model/deployment-types (:el e)))
+  (contains? e/deployment-types (:el e)))
 
 (defmethod view/include-content? :deployment-view
   [view e]
-  (contains? model/deployment-types (:el e)))
+  (contains? e/deployment-types (:el e)))
 
 (defmethod view/render-relation-node? :deployment-view
   [view e]

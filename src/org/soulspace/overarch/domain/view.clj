@@ -7,6 +7,7 @@
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
             [org.soulspace.overarch.domain.model :as model] 
+            [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
@@ -144,14 +145,14 @@
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
-       (filter model/model-node?)))
+       (filter e/model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
-       (filter model/relation?)))
+       (filter e/relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."
@@ -260,13 +261,12 @@
            (render-model-node? view (model/get-model-element model (:from e)))
            (render-model-node? view (model/get-model-element model (:to e))))
       (and (render-model-node? view e)
-           (model/internal? (model/get-parent-element model e)))))
+           (e/internal? (model/get-parent-element model e)))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
    Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   view-type)
-
 
 ;;;
 ;;; Rendering functions
@@ -297,21 +297,8 @@
               (rest coll)))
      elements)))
 
-; TODO reimplement with elements-in-view 
-(defn collect-technologies
-  "Returns the set of technologies for the elements of the coll."
-  ([coll]
-   (collect-technologies #{} coll))
-  ([techs coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (:tech e)
-         (recur (collect-technologies (set/union techs #{(:tech e)}) (:ct e))
-                (rest coll))
-         (recur (collect-technologies techs (:ct e)) (rest coll))))
-     techs)))
-
 (defn technologies-in-view
+  "Returns the technologies in the view."
   [model view]
   (->> view
        (elements-in-view model)
@@ -319,6 +306,17 @@
        (remove nil?)
        (into #{})))
        
+(defn tech-collector
+  "Adds the tech of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc e] (set/union acc #{(:tech e)})))
+
+; TODO reimplement with elements-in-view 
+(defn collect-technologies
+  "Returns the set of technologies for the elements of the coll."
+  [coll]
+  (model/traverse :tech tech-collector coll))
+
 (defn render-indent
   "Renders an indent of n space chars."
   [n]

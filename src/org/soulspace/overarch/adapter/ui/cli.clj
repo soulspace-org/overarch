@@ -4,6 +4,7 @@
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.model-repository :as repo]
@@ -121,24 +122,7 @@
 (defn model-info
   "Reports information about the model and views."
   [m options]
-  (let [elements (model/all-elements m)
-        element-count (count (remove model/relation?
-                                     (filter model/model-element? elements)))]
-    ; TODO replace by frequency on :el
-    {:element-count element-count
-     :view-count (count (filter view/view? elements))
-     :person-count (count (filter model/person? elements))
-     :system-count (count (filter model/system? elements))
-     :container-count (count (filter model/container? elements))
-     :component-count (count (filter model/component? elements))
-     :node-count (count (filter model/node? elements))
-     :relation-count (count (filter model/relation? elements))
-     :external-count (count
-                      (filter
-                       #(and (model/model-element? %) (model/external? %))
-                       elements))
-     ;:unrelated-elements (model/unconnected-components)
-     }
+  (let [elements (model/all-elements m)]
     (frequencies (map :el elements))
     ))
 

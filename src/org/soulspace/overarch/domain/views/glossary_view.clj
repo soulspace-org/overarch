@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.glossary-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-node? :glossary-view
   [view e]
-  (contains? model/glossary-types (:el e)))
+  (contains? e/glossary-types (:el e)))
 
 (defmethod view/include-content? :glossary-view
   [view e]
-  (contains? model/glossary-types (:el e)))
+  (contains? e/glossary-types (:el e)))
 
 (defmethod view/render-relation-node? :glossary-view
   [view e]

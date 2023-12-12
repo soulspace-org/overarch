@@ -7,6 +7,7 @@
             [clojure.set :as set]
             [clojure.java.io :as io]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.export :as exp]
@@ -42,7 +43,7 @@
 
 (def structurizr-elements
   "Contains the model element types exported to structurizr."
-  (set/union model/component-types model/deployment-types))
+  (set/union e/component-types e/deployment-types))
 
 (defn structurizr-element?
   "Returns true, if the element `e` is to be exported to structurizr."
@@ -106,7 +107,7 @@
                         (sstr/hyphen-to-camel-case
                          (view-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
-              (let [children (filter model/relation?
+              (let [children (filter e/relation?
                                      (view/elements-to-render m view))]
                 (map (partial render-element m 6) children))
               (str (view/render-indent 6) "include *\n"))

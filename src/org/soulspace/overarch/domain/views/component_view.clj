@@ -1,6 +1,6 @@
 (ns org.soulspace.overarch.domain.views.component-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
@@ -16,16 +16,16 @@
    (seq (:ct e))
    ; has a boundary mapping for this diagram-type
    (element->boundary (:el e))
-   (model/internal? e)))
+   (e/internal? e)))
 
 (defmethod view/render-model-node? :component-view
   [view e]
-  (contains? model/component-types (:el e)))
+  (contains? e/component-types (:el e)))
 
 (defmethod view/include-content? :component-view
   [view e]
-  (and (contains? model/component-types (:el e))
-       (model/boundary? e)))
+  (and (contains? e/component-types (:el e))
+       (e/boundary? e)))
 
 (defmethod view/render-relation-node? :component-view
   [view e]

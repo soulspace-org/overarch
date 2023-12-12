@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.system-landscape-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-node? :system-landscape-view
   [view e]
-  (contains? model/context-types (:el e)))
+  (contains? e/context-types (:el e)))
 
 (defmethod view/include-content? :system-landscape-view
   [view e]
-  (contains? model/context-types (:el e)))
+  (contains? e/context-types (:el e)))
 
 (defmethod view/render-relation-node? :system-landscape-view
   [view e]

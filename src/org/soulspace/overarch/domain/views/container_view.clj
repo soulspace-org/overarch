@@ -1,6 +1,6 @@
 (ns org.soulspace.overarch.domain.views.container-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 
 (def element->boundary
@@ -17,16 +17,16 @@
    (seq (:ct e))
    ; has a boundary mapping for this diagram-type
    (element->boundary (:el e))
-   (model/internal? e)))
+   (e/internal? e)))
 
 (defmethod view/render-model-node? :container-view
   [view e]
-  (contains? model/container-types (:el e)))
+  (contains? e/container-types (:el e)))
 
 (defmethod view/include-content? :container-view
   [view e]
-  (and (contains? model/container-types (:el e))
-       (model/boundary? e)))
+  (and (contains? e/container-types (:el e))
+       (e/boundary? e)))
 
 (defmethod view/render-relation-node? :container-view
   [view e]

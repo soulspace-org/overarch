@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.class-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-node? :class-view
   [view e]
-  (contains? model/class-types (:el e)))
+  (contains? e/class-types (:el e)))
 
 (defmethod view/include-content? :class-view
   [view e]
-  (contains? model/class-types (:el e)))
+  (contains? e/class-types (:el e)))
 
 (defmethod view/render-relation-node? :class-view
   [view e]

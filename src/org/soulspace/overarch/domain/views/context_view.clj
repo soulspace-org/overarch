@@ -1,16 +1,16 @@
 (ns org.soulspace.overarch.domain.views.context-view
-  (:require [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.domain.model :as model]))
+  (:require [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.view :as view]))
 
 
 (defmethod view/render-model-node? :context-view
   [view e]
-  (contains? model/context-types (:el e)))
+  (contains? e/context-types (:el e)))
 
 (defmethod view/include-content? :context-view
   [view e]
-  (and (contains? model/context-types (:el e))
-       (model/boundary? e)))
+  (and (contains? e/context-types (:el e))
+       (e/boundary? e)))
 
 (defmethod view/render-relation-node? :context-view
   [view e]

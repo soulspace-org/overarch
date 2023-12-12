@@ -8,6 +8,7 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
             [org.soulspace.overarch.util.io :as oio]))
@@ -191,17 +192,17 @@
 ;;
 ;; Sprite Imports
 ;;
+
+(defn sprite-collector
+  "Adds the sprite of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc e]
+   (set/union acc #{(:sprite e)})))
+
 (defn collect-sprites
   "Returns the set of sprites for the elements of the `coll`."
-  ([coll]
-   (collect-sprites #{} coll))
-  ([sprites coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (:sprite e)
-         (recur (collect-sprites (set/union sprites #{(:sprite e)}) (:ct e)) (rest coll))
-         (recur (collect-sprites sprites (:ct e)) (rest coll))))
-     sprites)))
+  [coll]
+  (model/traverse :sprite sprite-collector coll))
 
 (defn collect-all-sprites
   "Collects all sprites for the collection of elements."
