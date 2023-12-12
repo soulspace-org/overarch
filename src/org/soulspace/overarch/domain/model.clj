@@ -159,6 +159,24 @@
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
 
+(defn build-registry
+  "Returns a map with the original `elements` and a registry by id for lookups.
+   
+   The map has the following shape:
+
+   :elements -> the given data
+   :registry -> a map from id to element
+   :parents  -> a map from id to parent element
+   :referrer -> a map from id to set of relations where the id is the referrer (:from)
+   :referred -> a map from id to set of relations where the id is referred (:to)"
+  [elements]
+  {:elements elements
+   :registry (traverse e/identifiable? id->element elements)
+   :parents (build-id->parent elements)
+   :referrer (traverse e/relation? referrer-id->rel elements)
+   :referred (traverse e/relation? referred-id->rel elements)})
+
+
 (comment
 
   ;
