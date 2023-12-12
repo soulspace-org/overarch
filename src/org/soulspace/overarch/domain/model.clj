@@ -4,7 +4,6 @@
 (ns org.soulspace.overarch.domain.model
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.set :as set]
-            [clojure.spec.alpha :as s]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as e]))
 

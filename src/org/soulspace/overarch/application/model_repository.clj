@@ -24,7 +24,8 @@
   "Updates the state with the registered data read from `path`."
   [path]
   (->> path
-       (read-models :file) ; TODO don't hardcode repo type
+       ; TODO don't hardcode repo type
+       (read-models :file)
        (spec/check)
        (model/build-registry)
        (reset! state)))

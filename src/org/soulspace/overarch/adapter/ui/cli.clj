@@ -1,12 +1,14 @@
 (ns org.soulspace.overarch.adapter.ui.cli
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
+            [clojure.pprint :as pp]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.domain.analytics :as al]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
             [org.soulspace.overarch.application.render :as rndr]
@@ -122,9 +124,11 @@
 (defn model-info
   "Reports information about the model and views."
   [m options]
-  (let [elements (model/all-elements m)]
-    (frequencies (map :el elements))
-    ))
+  (->> (model/all-elements m)
+       (map :el)
+       (frequencies)
+       (into (sorted-map))
+       (pp/pprint)))
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -190,8 +194,16 @@
 (comment
   (update-and-dispatch! {:model-dir "models"
                          :render-format :plantuml})
+
   (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
   (print-sprite-mappings)
+
+  (al/count-namespaces (:elements @repo/state))
+  (al/count-relations (:elements @repo/state))
+  (al/count-views (:elements @repo/state))
+  (al/unidentifiable-elements (:elements @repo/state))
+  (al/unrelated @repo/state)
+
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
   (-main "--debug" "--render-format" "markdown")

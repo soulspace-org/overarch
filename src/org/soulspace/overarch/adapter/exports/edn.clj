@@ -6,8 +6,14 @@
 ;;;; export model into edn files structured according to the types and namespaces of the elements
 ;;;;
 
-(defn export-model
+(defn elements-by-namespace
   ""
+  [model]
+  )
+
+
+(defn export-model
+  "Exports the model as EDN files."
   [m])
 
 (defmethod exp/export-file :edn
