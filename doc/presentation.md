@@ -129,17 +129,19 @@ Subset of Clojure
 
 # EDN - Primitives
 
-Numbers
-Strings
-Keywords
+Numbers: ```123```
+Strings: ```"Hello"```
+Keywords: ```:keyword```, ```:namespaced/keyword```
 
 ---
 
 # EDN - Data Structures
 
-Vectors
-Sets
-Maps
+Vectors: ```["a" "b" "c"]```
+Sets: ```#{"a" "b" "c"}```
+Maps: ```{:a "a" :b "b" :c "c"}```
+
+Data structures can be nested
 
 ---
 
