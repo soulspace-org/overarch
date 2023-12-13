@@ -145,6 +145,94 @@ Data structures can be nested
 
 ---
 
+# Model
+
+---
+
+# Architecture Model
+
+Methodology
+C4 Model
+
+Elements
+Persons, Systems, Containers, Components
+Relations
+
+---
+
+# Deployment Model
+
+Methodology
+C4 Model
+
+Elements
+Nodes, Systems, Containers, Components
+
+---
+
+# Dynamic Model
+
+Methodology
+C4 Model
+
+Elements
+from architecture model
+
+---
+
+# Use Case Model
+
+Methology
+UML
+
+Elements
+Actor, Use Case, Person, System
+
+Relations
+Uses, Includes, Extends, Generalizes
+
+
+---
+
+# State Machine
+
+
+---
+
+# Class Model
+
+
+
+---
+
+# Concept Model
+
+
+
+---
+
+
+# Views
+
+
+
+---
+
+# Rendering
+
+
+---
+
+# Export
+
+JSON
+Structurizr (architecture/deployment model and views only)
+EDN
+
+---
+
+
+
 
 
 
