@@ -145,72 +145,101 @@ Data structures can be nested
 
 ---
 
-# Model
+# Modelling Example
+```clojure
+#{ ; set of model elements
+  {:el :system
+   :id :example/system1
+   :name "Example System"
+   :desc "An example system to show how to model in overarch"
+   :ct #{ ; set of children
+         {:el :container
+          :id :example/container1
+          :name "Example Container"
+          :tech "Java"
+          :desc "Deployable application in the example system"}}}
+}
+```
+
+---
+
+# Modelling Methods
+
+**C4 Model**: Architecture Model, Deployment Model, Dynamic Model
+**UML**: Use Case Model, Class Model, State Machines
+**Concept Maps**: Concept Model
 
 ---
 
 # Architecture Model
 
-Methodology
-C4 Model
+#### Elements
+:person :system :container :component
+:enterprise-boundary :context-boundary
 
-Elements
-Persons, Systems, Containers, Components
-Relations
+#### Relations
 
 ---
 
 # Deployment Model
 
-Methodology
-C4 Model
+#### Elements
+:node :system :container :component
 
-Elements
-Nodes, Systems, Containers, Components
+#### Relations
 
 ---
 
 # Dynamic Model
 
-Methodology
-C4 Model
+#### Elements
+:person :system :container :component
 
-Elements
-from architecture model
+#### Relations
 
 ---
 
 # Use Case Model
 
-Methology
-UML
+#### Elements
+:use-case :actor :person :system :context-boundary
 
-Elements
-Actor, Use Case, Person, System
-
-Relations
-Uses, Includes, Extends, Generalizes
-
+#### Relations
+:uses :include :extends :generalizes
 
 ---
 
 # State Machine
 
+#### Elements
+:state-machine :start-state :state :end-state :fork :join
+:choice :history-state :deep-history-state
+
+#### Relations
+:transition
 
 ---
 
 # Class Model
 
-
+#### Elements
+:class :enum :interface :field :method :function
+:package :namespace :stereotype :annotation :protocol
+    
+#### Relations
+:inheritance :implementation :composition :aggregation :association :dependency
 
 ---
 
 # Concept Model
 
+#### Elements
+:concept :person :system :container
+:enterprise-boundary :context-boundary
 
+#### Relations
 
 ---
-
 
 # Views
 
@@ -226,8 +255,8 @@ Uses, Includes, Extends, Generalizes
 # Export
 
 JSON
-Structurizr (architecture/deployment model and views only)
 EDN
+Structurizr (architecture/deployment model and views only)
 
 ---
 
