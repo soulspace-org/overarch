@@ -243,7 +243,9 @@ Data structures can be nested
 
 # Views
 
-
+Views define
+ * which model elements rendered
+ * how the model elements are rendered
 
 ---
 
