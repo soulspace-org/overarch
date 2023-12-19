@@ -196,6 +196,7 @@
 (defn sprite-collector
   "Adds the sprite of `e` to the accumulator `acc`."
   ([] #{})
+  ([acc] acc)
   ([acc e]
    (set/union acc #{(:sprite e)})))
 

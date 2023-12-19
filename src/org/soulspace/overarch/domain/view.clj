@@ -309,6 +309,7 @@
 (defn tech-collector
   "Adds the tech of `e` to the accumulator `acc`."
   ([] #{})
+  ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
 ; TODO reimplement with elements-in-view 

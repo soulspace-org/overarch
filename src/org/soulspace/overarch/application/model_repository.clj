@@ -1,5 +1,6 @@
 (ns org.soulspace.overarch.application.model-repository
-  (:require [org.soulspace.overarch.domain.model :as model]
+  (:require [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.spec :as spec]))
 
 (defn repo-type
@@ -33,9 +34,10 @@
 
 (comment
   (update-state! "models")
-  (= (:registry @state) (model/traverse model/identifiable? model/id->element (:elements @state)))
-  (= (:referred @state) (model/traverse model/relation? model/referred-id->rel (:elements @state)))
-  (= (:referrer @state) (model/traverse model/relation? model/referrer-id->rel (:elements @state)))
+  (= (:registry @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
+  (= (:parents @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
+  (= (:referred @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
+  (= (:referrer @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
 
   ;
   :rcf)

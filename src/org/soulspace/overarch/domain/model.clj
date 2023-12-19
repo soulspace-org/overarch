@@ -99,19 +99,22 @@
 
 ; TODOs
 ; ctx/ctx-fn - capture context, e.g. parent, indent
+;            -> 2 arity of the reducing fn with compound acc
 ; post-fn    - do something if (seq coll) is false
+;            -> 1 aritiy of the reducing function
 ; follow-fn  - filter coll
 
 (defn traverse
   "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
-   and transformed by the `transform-fn`.
+   and transformed by the `step-fn`.
 
    select-fn - a predicate on the current element
-   transform-fn - a function with two signatures [] and [acc e]
+   step-fn - a function with three signatures [], [acc] and [acc e]
    
-   The no args signature should return an empty accumulator, the 2 args signature
-   receives the accumulator and the current element and should add the transformed
-   element to the accumulator."
+   The no args signature of the step-fn should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
   ([select-fn transform-fn coll]
    (letfn [(trav [acc coll]
              (if (seq coll)
@@ -121,7 +124,7 @@
                           (rest coll))
                    (recur (trav acc (:ct e))
                           (rest coll))))
-               acc))]
+               (transform-fn acc)))]
      (trav (transform-fn) coll))))
 
 ;;
@@ -129,22 +132,34 @@
 ;;
 
 (defn id->element
-  "Adds the association of the id of the element `e` to the map `m`."
+  "Adds the association of the id of the element `e` to the map `acc`."
   ([] {})
-  ([m e]
-   (assoc m (:id e) e)))
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:id e) e)))
 
 (defn referrer-id->rel
-  "Adds the relation `r` to the set associated with the id of the :from reference in the map `m`."
+  "Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
   ([] {})
-  ([m e]
-   (assoc m (:from e) (conj (get m (:from e) #{}) e))))
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
 
 (defn referred-id->rel
-  "Adds the relation `r` to the set associated with the id of the :to reference in the map `m`."
+  "Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
   ([] {})
-  ([m r]
-   (assoc m (:to r) (conj (get m (:to r) #{}) r))))
+  ([acc] acc)
+  ([acc r]
+   (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
+
+(defn id->parent
+  "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
+  ([] [{} nil])
+  ([acc] acc)
+  ([[res p] e]
+   (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
+     [(assoc res (:id e) p) e]
+     [res e])))
 
 (defn build-id->parent
   "Returns a map of child id to parent element for the elements in `coll`."
