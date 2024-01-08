@@ -6,7 +6,7 @@ class: invert
 author: "Ludger Solbach"
 ---
 ## overarch
-### data driven modelling
+### data driven system modelling
 ### Ludger Solbach
 ![bg cover 100%](./images/overarch.jpg)
 
