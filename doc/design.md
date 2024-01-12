@@ -231,6 +231,15 @@ A: That would make the models more concise. Names can be generated from the
    readable, so the generated names should be just a fallback, not an exuse
    for not specifying names in the first place.
 
+Q: **Should a flat model be used (internally)?**
+   
+   The model is currently hierarchical, e.g. systems contain containers, which
+   contain components. The elements have the ```:ct``` key, which has to be
+   traversed recursively in the code. The parent-child relation could
+   alternatively modelled as a relation, which would make some model queries
+   simpler.
+
+A:  
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
    
