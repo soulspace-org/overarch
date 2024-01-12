@@ -156,6 +156,9 @@ A: With :ref the reusablility of model elements in different views is archieved,
 
    Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
+   Implemented.
+
+
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
 A: Implicit boundaries make the model more succinct.
@@ -168,6 +171,8 @@ A: Implicit boundaries make the model more succinct.
    
    So the model should support explicit boundaries and views should also render implicit boundaries for higher level elements referenced in a specific view,
    for example in the C4 container and component views.
+
+   Implemented.
 
 
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
@@ -231,6 +236,9 @@ A: That would make the models more concise. Names can be generated from the
    readable, so the generated names should be just a fallback, not an exuse
    for not specifying names in the first place.
 
+   Implemented.
+
+
 Q: **Should a flat model be used (internally)?**
    
    The model is currently hierarchical, e.g. systems contain containers, which
@@ -240,6 +248,7 @@ Q: **Should a flat model be used (internally)?**
    simpler.
 
 A:  
+
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
    
@@ -271,7 +280,7 @@ A: An :include option in the view spec could contain different strategies for
    includes. It should have no influence on the rendering rules of the views.
 
 
-Q: **How should the export be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
+Q: **How should the rendering be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
 
 A: As said above, the rendering can be flat or hierarchical, depending on the
    type of view to be rendered. Both the selection and the iteration for
@@ -316,6 +325,8 @@ Q: **How can we support different exporting formats, e.g. diagramming tools, and
 A: Support a generic feature set in views and diagrams with optional specific
    configuration for a specific export format (e.g. PlantUML)
 
+   Implemented.
+
 
 Q: **How can icons/sprites be implemented in a generic way, so they are not bound to a specific diagram tool?**
 
@@ -350,9 +361,12 @@ A: It differs on the type of the export. There are different type of exports.
    Other models (e.g. use-cases, state machines or concepts) have to be ignored
    because they are (currently) not supported by Structurizr.
 
-   For view exports like the PlantUML export the export can work on all the
+   For view rendering like PlantUML the rendering can work on all the
    loaded model and view specifications and generate all relevant renderings,
    even for multiple models.
+
+   Implemented.
+
 
 Q: **Should the different granularities of exports made explicit in the code?**
 
@@ -361,7 +375,9 @@ Q: **Should the different granularities of exports made explicit in the code?**
    implementation for the export format. There is no distinction between the
    levels/granularities on which the export is done.
 
-A: 
+A: Distinguish between data exports and view rendering.
+
+   Implemented.
 
 
 Q: **How shall multiple export formats be specified and implemented?**
@@ -373,7 +389,24 @@ Q: **How shall multiple export formats be specified and implemented?**
    It shoud be possible to specify multiple formats on the command line and all
    of the specified formats should be exported.
 
-A: 
+A: Distinguish between data exports and view rendering.
+
+   Implemented. 
+
+
+Q: **Should exporting and rendering be separated in the code?**
+
+A: Exporting of the model and view information into other formats (e.g. JSON or
+   structurizr) and rendering of the views to some target formats (e.g.
+   PlantUML or markdown) are currently (v0.5.0) handled by the same multi methods. With more rendering and export formats, specifying the formats and
+   dispatching to multiple rendering and export formats will be problematic and complected with the current implementation. For example it is useful to
+   render the views to the different formats in one go without exporting the data to JSON and structurizr in the same invocation.
+
+   To decomplect the specifications and transformations, exports and rendering
+   should be separated into different modules/methods and specified with
+   different command line options.
+
+   Implemented.
 
 
 Q: **What textual views/exports make sense?**
@@ -392,18 +425,7 @@ A: The model should contain information like names and descriptions for most
    the parts of the language of the system, which are not directly represented
    by elements of the architecture.
 
-
-Q: **Should exporting and rendering be separated in the code?**
-
-A: Exporting of the model and view information into other formats (e.g. JSON or
-   structurizr) and rendering of the views to some target formats (e.g.
-   PlantUML or markdown) are currently (v0.5.0) handled by the same multi methods. With more rendering and export formats, specifying the formats and
-   dispatching to multiple rendering and export formats will be problematic and complected with the current implementation. For example it is useful to
-   render the views to the different formats in one go without exporting the data to JSON and structurizr in the same invocation.
-
-   To decomplect the specifications and transformations, exports and rendering
-   should be separated into different modules/methods and specified with
-   different command line options.
+   Implemented. 
 
 
 Q: **Why EDN as the specification notation?**
