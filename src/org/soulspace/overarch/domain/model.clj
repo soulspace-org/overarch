@@ -115,21 +115,44 @@
    the one args signature extracts the result from the accumulator on return
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
-  ([select-fn transform-fn coll]
+  ([select-fn step-fn coll]
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (first coll)]
                  (if (select-fn e)
-                   (recur (trav (transform-fn acc e) (:ct e))
+                   (recur (trav (step-fn acc e) (:ct e))
                           (rest coll))
                    (recur (trav acc (:ct e))
                           (rest coll))))
-               (transform-fn acc)))]
-     (trav (transform-fn) coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
 
 ;;
 ;; State preparation
 ;;
+
+(defn build-id->parent
+  "Returns a map of child id to parent element for the elements in `coll`."
+  ([coll]
+   (build-id->parent {} nil coll))
+  ([m p coll]
+   (if (seq coll)
+     (let [e (first coll)]
+       (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
+         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
+         (recur (build-id->parent m e (:ct e)) p (rest coll))))
+     m)))
+
+(defn id->parent
+  "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
+; TODO does not work, as p is not on the call stack of trav and does not get unrolled
+; maybe a stack in the accumulator could work, if it's clear when to push and pop the parent
+  ([] [{} nil])
+  ([acc] acc)
+  ([[res p] e]
+   (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
+     [(assoc res (:id e) p) e]
+     [res e])))
 
 (defn id->element
   "Adds the association of the id of the element `e` to the map `acc`."
@@ -152,29 +175,6 @@
   ([acc r]
    (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
 
-(defn id->parent
-  "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
-; TODO does not work, as p is not on the call stack of trav and does not get unrolled
-; maybe a stack in the accumulator could work, if it's clear when to push and pop the parent
-  ([] [{} nil])
-  ([acc] acc)
-  ([[res p] e]
-   (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
-     [(assoc res (:id e) p) e]
-     [res e])))
-
-(defn build-id->parent
-  "Returns a map of child id to parent element for the elements in `coll`."
-  ([coll]
-   (build-id->parent {} nil coll))
-  ([m p coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
-         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
-         (recur (build-id->parent m e (:ct e)) p (rest coll))))
-     m)))
-
 (defn build-registry
   "Returns a map with the original `elements` and a registry by id for lookups.
    
@@ -186,14 +186,29 @@
    :referrer -> a map from id to set of relations where the id is the referrer (:from)
    :referred -> a map from id to set of relations where the id is referred (:to)"
   [elements]
+  ; TODO add additional keys :nodes, :relations, :views
+  ; :nodes -> flat model nodes, no content
+  ; :relations -> uniform relations
+  ; :views -> views with content
+  (let [registry (traverse e/identifiable? id->element elements)
+        parents (build-id->parent elements)
+        referrer (traverse e/relation? referrer-id->rel elements)
+        referred (traverse e/relation? referred-id->rel elements)]
   {:elements elements
-   :registry (traverse e/identifiable? id->element elements)
-   :parents (build-id->parent elements)
-   :referrer (traverse e/relation? referrer-id->rel elements)
-   :referred (traverse e/relation? referred-id->rel elements)})
+   :registry registry
+   :parents parents
+   :referrer referrer 
+   :referred referred}   
+  )
+)
 
+(defn flatten-model
+  "Flattens the hierarchical model `m`."
+  [m]
+  
+  )
 
 (comment
-
+  
   ;
   :rcf)
