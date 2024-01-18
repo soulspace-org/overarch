@@ -175,7 +175,7 @@
 
 (defmethod puml/render-c4-element :rel
   [_ _ indent e]
-  (if (:constraint e) ; TODO :hidden or :constraint
+  (if (:constraint e)
     [(str (view/render-indent indent) "Lay"
           (when (:direction e) (c4-directions (:direction e))) "("
           (puml/alias-name (:from e)) ", "

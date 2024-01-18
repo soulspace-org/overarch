@@ -194,19 +194,11 @@
         parents (build-id->parent elements)
         referrer (traverse e/relation? referrer-id->rel elements)
         referred (traverse e/relation? referred-id->rel elements)]
-  {:elements elements
-   :registry registry
-   :parents parents
-   :referrer referrer 
-   :referred referred}   
-  )
-)
-
-(defn flatten-model
-  "Flattens the hierarchical model `m`."
-  [m]
-  
-  )
+    {:elements elements
+     :registry registry
+     :parents parents
+     :referrer referrer
+     :referred referred}))
 
 (comment
   
