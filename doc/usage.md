@@ -382,10 +382,10 @@ of the elements of the class model.
 
 Use what suits your system best.
 
-
 #### Interfaces/Protocols (:interface, :protocol)
 Interfaces and protocols specify related methods. Interfaces also provide a
 type for the static type system.
+
 Use what suits your system best.
 
 #### Class (:class)
@@ -427,7 +427,6 @@ the models for the model and view elements.
 #### Logical Data Model for the View Elements
 ![View Elements](/doc/images/overarch_viewElementsOverview.svg)
 
-
 ### Architecture and Deployment Views (C4 Model)
 
 Overarch supports the description of all C4 core and supplementary views
@@ -439,8 +438,7 @@ information about the C4 Model.
 
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
-of elements is relevant in a view. 
-
+of elements may be relevant in the rendering of a view. 
 
 #### Keys
 
@@ -449,9 +447,8 @@ key       | type    | values                   | description
 :el       | keyword | see views                | type of the view
 :id       | keyword | namespaced id            | used for export file name
 :title    | string  |                          | rendered title
-:spec     | map     |                          | rendering customization (e.g. styling)
+:spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
-
 
 #### System Context Views (:context-view)
 Shows the system in the context of the actors and other systems it is
