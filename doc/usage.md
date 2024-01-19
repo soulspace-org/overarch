@@ -6,7 +6,8 @@ Overview
 
 The usage of Overarch is twofold. On the one hand, it is an open data format
 to describe the functional requirements, architecture, and design
-of software systems. On the other hand it is a tool to transform the description into diagrams or other representations.
+of software systems. On the other hand it is a tool to transform the
+description into diagrams or other representations.
 
 Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
@@ -17,13 +18,16 @@ conversion of the data to JSON.
 Modelling
 ---------
 
-Overarch supports modelling the functional requirements, the architecture and the design of the system under description.
+Overarch supports modelling the functional requirements, the architecture and
+the design of the system under description.
 
 Modelling a system with overarch should provide a value for the project and
-this guides the selection of model elements and supported abstractions and views.
+this guides the selection of model elements and supported abstractions and
+views.
 
 The model contains all the elements relevant in the architecture of the system.
-Models are specified in the Extensible Data Notation (EDN).
+Models are specified in the
+[Extensible Data Notation (EDN)](https://github.com/edn-format/edn).
 
 ### EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
@@ -31,11 +35,11 @@ literals for scalar and composite data types. It is also a subset of the
 Clojure language textual format. Therefore Clojure plugins/extensions for
 editors or IDEs provide syntax checking/highlighting and code completion.
 
-Compared to JSON which supports literals for numbers, strings, vectors and
-maps, EDN provides a richer set of data literals, e.g. integer and floating
-point numbers, big integers and decimals, strings, symbols, keywords,
-UUIDs and instants of time.
-It also provides literals for list, vectors (arrays), sets and maps.
+Compared to JSON, which only supports literals for numbers, strings, vectors
+(arrays) and maps, EDN provides a richer set of data literals, e.g. integer and
+floating point numbers, big integers and decimals, strings, symbols, keywords,
+UUIDs and instants of time. It also provides literals for list, vectors, sets
+and maps.
 
 The following literals are used in Overarch models and views.
 
@@ -142,13 +146,12 @@ Overarch supports elements for C4 architecture and deployment models.
 ![Architecture and Deployment Model Elements](/doc/images/overarch_architectureModelElementsOverview.svg)
 
 
-
 #### Additional Keys for Architecture Model Elements
 
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :subtype  | keyword | :database, :queue  | specific role of the element
-:external | boolean | true false         | default is false
+:external | boolean | true, false        | default is false
 :tech     | string  |                    | technology of the element
 
 
@@ -379,10 +382,10 @@ of the elements of the class model.
 
 Use what suits your system best.
 
-
 #### Interfaces/Protocols (:interface, :protocol)
 Interfaces and protocols specify related methods. Interfaces also provide a
 type for the static type system.
+
 Use what suits your system best.
 
 #### Class (:class)
@@ -424,7 +427,6 @@ the models for the model and view elements.
 #### Logical Data Model for the View Elements
 ![View Elements](/doc/images/overarch_viewElementsOverview.svg)
 
-
 ### Architecture and Deployment Views (C4 Model)
 
 Overarch supports the description of all C4 core and supplementary views
@@ -436,8 +438,7 @@ information about the C4 Model.
 
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
-of elements is relevant in a view. 
-
+of elements may be relevant in the rendering of a view. 
 
 #### Keys
 
@@ -446,9 +447,8 @@ key       | type    | values                   | description
 :el       | keyword | see views                | type of the view
 :id       | keyword | namespaced id            | used for export file name
 :title    | string  |                          | rendered title
-:spec     | map     |                          | rendering customization (e.g. styling)
+:spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
-
 
 #### System Context Views (:context-view)
 Shows the system in the context of the actors and other systems it is
@@ -530,7 +530,19 @@ with the relations between the concepts.
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
 
-### Styling
+### View Specs
+Views can be customized with the `:spec` key. View specs may include general
+directives for a view or directives for specific renderers (e.g. PlantUML).
+
+key           | type    | values                   | description 
+--------------|---------|--------------------------|------------
+:layout       | keyword | :top-down, :left-right   | rendering direction
+:linetype     | keyword | :orthogonal, :polygonal  | different line types for relations
+:sketch       | boolean | true, false              | visual clue for sketches
+:styles       | set     | see Styling              | visual customization of elements
+
+
+#### Styling
 Overarch supports custom styles for elements. For an example see
 [views.edn](/models/test/views.edn).
 
@@ -540,12 +552,11 @@ key           | type    | values                   | description
 --------------|---------|--------------------------|------------
 :id           | keyword | namespaced id            | used to reference styles
 :el           | keyword | :rel, :element           | element type to be styled
-:line-style   | keyword | :dashed, :dotted, :bold  | for relations
-:line-color   | hex rgb | #0000FF for bright blue  | 
-:border-color | hex rgb | #FF0000 for bright red   |
-:text-color   | hex rgb | #003300 for dark green   |
+:line-style   | keyword | :dashed, :dotted, :bold  | line style for relations
+:line-color   | hex rgb | #0000FF for bright blue  | line color for relations
+:border-color | hex rgb | #FF0000 for bright red   | border color for nodes
+:text-color   | hex rgb | #003300 for dark green   | text color for names and descriptions
 :legend-text  | string  |                          | meaningful text to show in legend
-
 
 
 Renderings
