@@ -7,7 +7,7 @@
 '!include <awslib/ApplicationIntegration/all.puml>
 '!include <awslib/Blockchain/all.puml>
 '!include <awslib/BusinessApplications/all.puml>
-''!include <awslib/CloudFinancialManagement/all.puml>
+'!include <awslib/CloudFinancialManagement/all.puml>
 '!include <awslib/Compute/all.puml>
 '!include <awslib/Containers/all.puml>
 '!include <awslib/CustomerEnablement/all.puml>
@@ -18,7 +18,7 @@
 '!include <awslib/GameTech/all.puml>
 '!include <awslib/General/all.puml>
 '!include <awslib/GroupIcons/all.puml>
-''!include <awslib/Groups/all.puml>
+'!include <awslib/Groups/all.puml>
 '!include <awslib/InternetOfThings/all.puml>
 '!include <awslib/MachineLearning/all.puml>
 '!include <awslib/ManagementGovernance/all.puml>
@@ -27,7 +27,7 @@
 '!include <awslib/NetworkingContentDelivery/all.puml>
 '!include <awslib/QuantumTechnologies/all.puml>
 '!include <awslib/Robotics/all.puml>
-''!include <awslib/Satellite/all.puml>
+'!include <awslib/Satellite/all.puml>
 '!include <awslib/SecurityIdentityCompliance/all.puml>
 '!include <awslib/Serverless/all.puml>
 '!include <awslib/Storage/all.puml>
