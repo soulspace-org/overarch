@@ -42,6 +42,18 @@
   ([m e]
    ((:parents m) (:id e))))
 
+(defn parent
+  "Returns the parent of the element `e`."
+  [m e]
+  ; TODO  implement based on relations
+  ((:parents m) (:id e)))
+
+(defn children
+  "Returns the children of the element `e`."
+  [m e]
+  ; TODO implement based on relations
+  )
+
 (defn resolve-element
   "Resolves the model element for the ref `e`."
   ([m e]
