@@ -4,7 +4,6 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]))
 
-
 ;;;
 ;;; Analytics
 ;;;
@@ -43,6 +42,12 @@
   [coll]
   (->> coll
        (remove e/identifiable?)))
+
+(defn unnamed-elements
+  "Returns the elements without an id."
+  [coll]
+  (->> coll
+       (remove e/named?)))
 
 (defn key-set
   "Returns a set of the keys of a map."
