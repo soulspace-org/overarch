@@ -55,7 +55,7 @@
   (into #{} (keys m)))
 
 (defn unrelated
-  "Returns the set of ids of identifiable elements not taking part in any relation."
+  "Returns the set of ids of identifiable model nodes not taking part in any relation."
   [model]
   ; TODO registry contains relations and views
   (let [id-set (->> (:elements model)

@@ -11,6 +11,7 @@ Version 0.8.0
 * added tests for model and view logic
 * added analytics namespace for model analytics
 * extracted spec namespace
+* added compilation tests for each namespace
 
 
 Version 0.7.0

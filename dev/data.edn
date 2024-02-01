@@ -35,6 +35,7 @@
   :publish
   :subscribe
   :dataflow
+  :controlflow
   ;
   }
 

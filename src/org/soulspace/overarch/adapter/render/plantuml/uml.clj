@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.adapter.render.plantuml.uml-renderer
+(ns org.soulspace.overarch.adapter.render.plantuml.uml
   (:require [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]))
 

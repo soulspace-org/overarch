@@ -19,8 +19,8 @@
             [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
             [org.soulspace.overarch.adapter.render.markdown :as markdown]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
-            [org.soulspace.overarch.adapter.render.plantuml.c4-renderer :as c4]
-            [org.soulspace.overarch.adapter.render.plantuml.uml-renderer :as uml]
+            [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
+            [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
             [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo])
   (:gen-class))
 
@@ -36,7 +36,7 @@
    into the specified formats.")
 
 (def cli-opts
-  [["-m" "--model-dir PATH" "Models path" :default "models"]
+  [["-m" "--model-dir PATH" "Models directory or path" :default "models"]
    ["-r" "--render-format FORMAT" "Render format (all, graphviz, markdown, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
    ["-R" "--render-dir DIRNAME" "Export directory" :default "export"]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
