@@ -647,7 +647,7 @@ Usage:
 
 Options:
 
-  -m, --model-dir DIRNAME      models  Model directory
+  -m, --model-dir PATH         models  Model directory or path
   -r, --render-format FORMAT           Render format (all, graphviz, markdown, plantuml)
   -R, --render-dir DIRNAME     export  Export directory
   -x, --export-format FORMAT           Export format (json, structurizr)
