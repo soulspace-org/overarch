@@ -1,3 +1,7 @@
+;;;;
+;;;; Functions for a structured EDN export
+;;;;
+
 (ns org.soulspace.overarch.adapter.exports.edn 
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
@@ -5,9 +9,9 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.application.export :as exp]))
 
-;;;;
-;;;; export model into edn files structured according to the types and namespaces of the elements
-;;;;
+;;
+;; export model into edn files structured according to the types and namespaces of the elements
+;;
 
 (defn elements-by-namespace
   ""
@@ -32,4 +36,3 @@
   (with-open [wrt (io/writer (exp/export-file m format options))]
     (binding [*out* wrt]
       (println (str/join "\n" (doall (export-model m)))))))
-

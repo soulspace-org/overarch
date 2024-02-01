@@ -9,6 +9,8 @@ Version 0.8.0
 * added a namespace for each kind of view for view specific logic
 * added separate namespaces for plantuml UML and C4 rendering
 * added tests for model and view logic
+* added analytics namespace for model analytics
+* extracted spec namespace
 
 
 Version 0.7.0

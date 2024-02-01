@@ -1,3 +1,6 @@
+;;;;
+;;;; Schema specification and functions
+;;;;
 (ns org.soulspace.overarch.domain.spec
   (:require [clojure.spec.alpha :as s]
             [org.soulspace.overarch.domain.element :as e]
