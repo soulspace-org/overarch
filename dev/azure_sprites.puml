@@ -5,24 +5,24 @@
 
 '!include <azure/AIMachineLearning/all>
 !include <azure/Analytics/all>
-''!include <azure/Blockchain/all>
+'!include <azure/Blockchain/all>
 '!include <azure/Compute/all>
 '!include <azure/Containers/all>
 '!include <azure/Databases/all>
 '!include <azure/Devops/all>
 '!include <azure/General/all>
-''!include <azure/Health/all>
+'!include <azure/Health/all>
 '!include <azure/Identity/all>
 '!include <azure/Integration/all>
 '!include <azure/InternetOfThings/all>
-''!include <azure/Intune/all>
+'!include <azure/Intune/all>
 '!include <azure/Management/all>
 '!include <azure/Media/all>
-''!include <azure/Migrate/all>
+'!include <azure/Migrate/all>
 '!include <azure/Mobile/all>
 '!include <azure/Networking/all>
 '!include <azure/Security/all>
-''!include <azure/Stack/all>
+'!include <azure/Stack/all>
 '!include <azure/Storage/all>
 '!include <azure/Web/all>
 
