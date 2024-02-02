@@ -21,7 +21,8 @@
 
 (defn export-model
   "Exports the model as EDN files."
-  [m])
+  [m]
+  )
 
 (defmethod exp/export-file :edn
   [m format options ]

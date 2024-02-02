@@ -127,8 +127,7 @@
   (->> (model/all-elements m)
        (map :el)
        (frequencies)
-       (into (sorted-map))
-       (pp/pprint)))
+       (into (sorted-map))))
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -142,7 +141,7 @@
   "Dispatch on `options` to the requested actions."
   [m options]
   (when (:model-info options)
-    (println (model-info m options)))
+    (pp/pprint (model-info m options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
