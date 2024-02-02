@@ -7,6 +7,7 @@
 ;;;
 ;;; Analytics
 ;;;
+
 (defn namespaces-xf
   "Returns a transducer to extract the namespaces of some elements."
   []
