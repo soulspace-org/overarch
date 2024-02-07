@@ -25,6 +25,13 @@
       false {}
       false {:type :person})))
 
+(deftest namespaced?-test
+  (testing "namespaced?"
+    (are [x y] (= x (fns/truthy? (namespaced? y)))
+      true {:id :a/bc}
+      false {}
+      false {:id :abc})))
+
 (deftest relational?-test
   (testing "relational?"
     (are [x y] (= x (fns/truthy? (relational? y)))

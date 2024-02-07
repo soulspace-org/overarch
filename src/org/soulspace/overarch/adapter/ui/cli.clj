@@ -197,11 +197,12 @@
   (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
   (print-sprite-mappings)
 
-  (al/count-namespaces (:elements @repo/state))
-  (al/count-relations (:elements @repo/state))
-  (al/count-views (:elements @repo/state))
-  (al/unidentifiable-elements (:elements @repo/state))
-  (al/unrelated @repo/state)
+  (al/count-namespaces (repo/elements))
+  (al/count-relations (repo/elements))
+  (al/count-views (repo/elements))
+  (al/unidentifiable-elements (repo/elements))
+  (al/unnamespaced-elements (repo/elements))
+  (al/unrelated-nodes @repo/state)
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
