@@ -31,6 +31,11 @@
        (model/build-registry)
        (reset! state)))
 
+(defn elements
+  "Returns the set of elements."
+  []
+  (:elements @state))
+
 
 (comment
   (update-state! "models")

@@ -108,8 +108,6 @@
 ;;
 ;; Predicates
 ;;
-
-
 (defn element?
   "Returns true if the given element `e` has a type (:el key)."
   [e]
@@ -125,6 +123,11 @@
   [e]
   (and (element? e) (identifiable? e)))
 
+(defn namespaced?
+  "Returns true, if the id of element `e` has a namespace."
+  [e]
+  (and (:id e) (not= nil (namespace (:id e)))))
+
 (defn named?
   "Returns true if the given element `e` has a name (:name key)."
   [e]
@@ -139,7 +142,6 @@
   "Returns true if the given element `e` is an element, identifiable and named."
   [e]
   (and (element? e) (identifiable? e) (named? e)))
-
 
 (defn relational?
   "Returns true if the given element `e` is a relation."
@@ -189,7 +191,6 @@
   (and (model-element? e) (not (relation? e))))
 
 
-
 (defn tech?
   "Returns true if the given element `e` has a tech (:tech key)."
   [e]
@@ -225,12 +226,15 @@
   [e]
   (= :node (:el e)))
 
-
-
 (defn reference?
   "Returns true if the given element `e` is a reference."
   [e]
   (:ref e))
 
-
-
+;;
+;; Functions 
+;;
+(defn element-namespace
+  "Returns the namespace of the element `e`."
+  [e]
+  (namespace (:id e)))

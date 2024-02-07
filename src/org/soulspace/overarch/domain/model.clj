@@ -14,6 +14,7 @@
 ;;
 ;; Accessors
 ;;
+
 (defn id-set
   "Returns a set of id's for the elements in `coll`."
   [coll]
@@ -163,8 +164,8 @@
   ([acc] acc)
   ([[res p] e]
    (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
-     [(assoc res (:id e) p) e]
-     [res e])))
+     [[(assoc res (:id e)) p] e]
+     [[res p] e])))
 
 (defn id->element
   "Adds the association of the id of the element `e` to the map `acc`."
@@ -200,7 +201,7 @@
   [elements]
   ; TODO add additional keys :nodes, :relations, :views
   ; :nodes -> flat model nodes, no content
-  ; :relations -> uniform relations
+  ; :relations -> uniform relations (incl. parent/child)
   ; :views -> views with content
   (let [registry (traverse e/identifiable? id->element elements)
         parents (build-id->parent elements)

@@ -7,6 +7,7 @@
 ;;;
 ;;; Analytics
 ;;;
+
 (defn namespaces-xf
   "Returns a transducer to extract the namespaces of some elements."
   []
@@ -43,6 +44,12 @@
   (->> coll
        (remove e/identifiable?)))
 
+(defn unnamespaced-elements
+  "Returns the elements without a namespaced id."
+  [coll]
+  (->> coll
+       (remove e/namespaced?)))
+
 (defn unnamed-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
@@ -54,7 +61,7 @@
   [m]
   (into #{} (keys m)))
 
-(defn unrelated
+(defn unrelated-nodes
   "Returns the set of ids of identifiable model nodes not taking part in any relation."
   [model]
   ; TODO registry contains relations and views
