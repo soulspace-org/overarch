@@ -110,5 +110,11 @@
          :from :test/sys1
          :to :test/sys2
          :name "calls"}]}
+  
+  {:el :context-view
+   :id :test/missing-elements
+   :title "View referencing missing elements"
+   :ct [{:ref :foon/bar}
+        {:ref :foon/baz}]}
     ;
   }
