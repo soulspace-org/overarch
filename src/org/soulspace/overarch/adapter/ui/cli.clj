@@ -192,10 +192,15 @@
 
 (comment
   (update-and-dispatch! {:model-dir "models"
-                         :render-format :plantuml})
+                         :export-dir "export"
+                         :render-dir "export"
+                         :render-format :plantuml
+                         :debug true})
 
   (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
   (print-sprite-mappings)
+
+  (repo/update-state! "models")
 
   (al/count-namespaces (repo/elements))
   (al/count-relations (repo/elements))
@@ -203,6 +208,9 @@
   (al/unidentifiable-elements (repo/elements))
   (al/unnamespaced-elements (repo/elements))
   (al/unrelated-nodes @repo/state)
+
+  (view/check-views @repo/state)
+  (view/check-view  @repo/state (model/resolve-element @repo/state :test/missing-elements))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")

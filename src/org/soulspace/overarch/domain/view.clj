@@ -318,6 +318,24 @@
   [coll]
   (model/traverse :tech tech-collector coll))
 
+;; TODO return missing elements
+; TODO include view id
+(defn check-view
+  "Checks references in a view."
+  [model view]
+  (->> (:ct view)
+       (filter e/reference?)
+       (map (juxt :ref (partial model/resolve-element model)))
+       ;(filter #(nil? (second %)))
+       ))
+
+(defn check-views
+  "Checks the references in the views."
+  [model]
+  (->> (get-views model)
+       (map (partial check-view model))
+       (flatten)))
+
 (defn render-indent
   "Renders an indent of n space chars."
   [n]
