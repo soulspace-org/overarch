@@ -14,7 +14,8 @@
 ;; 
 (def context-types
   "Element types of a C4 context view."
-  #{:rel :person :system :enterprise-boundary :context-boundary})
+  #{:person :system :enterprise-boundary :context-boundary
+    :rel :request :response :publish :subscribe :send})
 
 (def container-types
   "Element types of a C4 container view."
@@ -39,6 +40,10 @@
 (def dynamic-types
   "Element types of a C4 dynamic view."
   component-types)
+
+(def architecture-relation-types
+  "Relation types in the architecture model."
+  #{:rel :request :response :publish :subscribe :send})
 
 ;;
 ;; UML category definitions
