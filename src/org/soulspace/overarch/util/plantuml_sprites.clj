@@ -18,7 +18,7 @@
 
 ; convert names correctly
 (defn tech-name
-  "Create a tech name from the sprite name s."
+  "Create a tech name from the sprite name `s`."
   [s]
   (-> s
       (sstr/camel-case-to-hyphen)
@@ -87,7 +87,7 @@
         (println "}")))))
 
 (defn write-sprite-maps
-  "Writes the tech to sprite mappings for the libs in the map."
+  "Writes the tech to sprite mappings for the libs in the map `m`."
   [m]
   (doseq [[k v] m]
     (write-sprite-map (str k ".edn") v)))

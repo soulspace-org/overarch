@@ -15,14 +15,14 @@
    (map namespace)))
 
 (defn count-namespaces
-  "Returns a map with the count of identifiable elements per namespace in the given coll."
+  "Returns a map with the count of identifiable elements per namespace in the given `coll`."
   [coll]
   (->> coll
        (eduction (namespaces-xf))
        (frequencies)))
 
 (defn count-relations
-  "Returns a map with the count of relations per type in the given coll."
+  "Returns a map with the count of relations per type in the given `coll`."
   [coll]
   (->> coll
        (filter e/relational?)
@@ -30,7 +30,7 @@
        (frequencies)))
 
 (defn count-views
-  "Returns a map with the count of views per type in the given coll."
+  "Returns a map with the count of views per type in the given `coll`."
   [coll]
   (->> coll
        (filter view/view?)
@@ -38,19 +38,19 @@
        (frequencies)))
 
 (defn unidentifiable-elements
-  "Returns the elements without an id."
+  "Returns the elements without an id in the given `coll`."
   [coll]
   (->> coll
        (remove e/identifiable?)))
 
 (defn unnamed-elements
-  "Returns the elements without an id."
+  "Returns the elements without an id in the given `coll`."
   [coll]
   (->> coll
        (remove e/named?)))
 
 (defn key-set
-  "Returns a set of the keys of a map."
+  "Returns a set of the keys of the map `m`."
   [m]
   (into #{} (keys m)))
 
