@@ -14,14 +14,15 @@
 ;;
 
 (defn elements-by-namespace
-  ""
+  "Returns the elements of the `model` grouped by namespace."
   [model]
+  
   )
 
 
 (defn export-model
-  "Exports the model as EDN files."
-  [m]
+  "Exports the `model` as EDN files."
+  [model]
   )
 
 (defmethod exp/export-file :edn
