@@ -5,7 +5,7 @@
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.set :as set]
             [org.soulspace.overarch.util.functions :as fns]
-            [org.soulspace.overarch.domain.element :as e]))
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
 ;;; Data handling
@@ -26,7 +26,7 @@
 (defn model-elements
   "Filters the given collection of elements `coll` for model elements."
   [coll]
-  (filter e/model-element? coll))
+  (filter el/model-element? coll))
 
 (defn get-model-elements
   "Returns the collection of model elements."
@@ -55,12 +55,19 @@
   ; TODO implement based on relations
   )
 
+(defn resolve-ref
+  "Resolves the model element for the ref `r`."
+  [m r]
+  (if (el/reference? r)
+    (merge (get-model-element m (:ref r)) (dissoc r :ref))
+    {:unresolved (:ref r)}))
+
 (defn resolve-element
   "Resolves the model element for the ref `e`."
   ([m e]
    (cond
      (keyword? e) (get-model-element m e)
-     (:ref e) (merge (get-model-element m (:ref e)) e)
+     (:ref e) (resolve-ref m e)
      :else e)))
 
 (defn all-elements
@@ -83,7 +90,7 @@
   "Returns the relations of the model `m` connecting nodes from the given collection of model nodes."
   ([m coll]
    (let [els (into #{} (map :id coll))
-         rels (filter e/relation? (get-model-elements m))
+         rels (filter el/relation? (get-model-elements m))
          filtered (->> rels
                        (filter (fn [r] (and (contains? els (:from r)) (contains? els (:to r))))))
          _ (fns/data-tapper {:els els :rels rels :filtered filtered})]
@@ -93,7 +100,7 @@
   "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
   [m coll]
   (->> coll
-       (filter e/relation?)
+       (filter el/relation?)
        (map (fn [rel] #{(resolve-element m (:from rel)) (resolve-element m (:to rel))}))
        (reduce set/union #{})))
 
@@ -151,7 +158,7 @@
   ([m p coll]
    (if (seq coll)
      (let [e (first coll)]
-       (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
+       (if (and (el/identifiable-element? e) (el/identifiable-element? p) (el/model-element? p))
          (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
@@ -163,7 +170,7 @@
   ([] [{} nil])
   ([acc] acc)
   ([[res p] e]
-   (if (and (e/identifiable-element? e) (e/identifiable-element? p) (e/model-element? p))
+   (if (and (el/identifiable-element? e) (el/identifiable-element? p) (el/model-element? p))
      [[(assoc res (:id e)) p] e]
      [[res p] e])))
 
@@ -203,10 +210,10 @@
   ; :nodes -> flat model nodes, no content
   ; :relations -> uniform relations (incl. parent/child)
   ; :views -> views with content
-  (let [registry (traverse e/identifiable? id->element elements)
+  (let [registry (traverse el/identifiable? id->element elements)
         parents (build-id->parent elements)
-        referrer (traverse e/relation? referrer-id->rel elements)
-        referred (traverse e/relation? referred-id->rel elements)]
+        referrer (traverse el/relation? referrer-id->rel elements)
+        referred (traverse el/relation? referred-id->rel elements)]
     {:elements elements
      :registry registry
      :parents parents
