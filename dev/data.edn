@@ -27,13 +27,13 @@
              {:ref :system-b}
              ;
              ]}
-
   
   :dependency
   :request
   :response
   :publish
   :subscribe
+  :send
   :dataflow
   :controlflow
   ;
