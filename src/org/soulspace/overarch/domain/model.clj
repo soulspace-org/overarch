@@ -58,16 +58,16 @@
 (defn resolve-ref
   "Resolves the model element for the ref `r`."
   [m r]
-  (if (el/reference? r)
-    (merge (get-model-element m (:ref r)) (dissoc r :ref))
-    {:unresolved (:ref r)}))
+  (if-let [e (get-model-element m (:ref r))]
+    (merge e (dissoc r :ref))
+    {:unresolved-ref (:ref r)}))
 
 (defn resolve-element
   "Resolves the model element for the ref `e`."
   ([m e]
    (cond
      (keyword? e) (get-model-element m e)
-     (:ref e) (resolve-ref m e)
+     (el/reference? e) (resolve-ref m e)
      :else e)))
 
 (defn all-elements
@@ -171,7 +171,7 @@
   ([acc] acc)
   ([[res p] e]
    (if (and (el/identifiable-element? e) (el/identifiable-element? p) (el/model-element? p))
-     [[(assoc res (:id e)) p] e]
+     [[(assoc res (:id e) p) p] e]
      [[res p] e])))
 
 (defn id->element

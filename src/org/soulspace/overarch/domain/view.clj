@@ -7,8 +7,8 @@
             [clojure.set :as set]
             [clojure.spec.alpha :as s]
             [org.soulspace.overarch.domain.model :as model] 
-            [org.soulspace.overarch.domain.element :as e]
-            [org.soulspace.overarch.util.functions :as fns]))
+            [org.soulspace.overarch.util.functions :as fns]
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
 ;;; Type definitions
@@ -145,14 +145,14 @@
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
-       (filter e/model-node?)))
+       (filter el/model-node?)))
 
 (defn referenced-relations
   "Returns the relations explicitly referenced in the given view."
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
-       (filter e/relation?)))
+       (filter el/relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."
@@ -261,7 +261,7 @@
            (render-model-node? view (model/get-model-element model (:from e)))
            (render-model-node? view (model/get-model-element model (:to e))))
       (and (render-model-node? view e)
-           (e/internal? (model/get-parent-element model e)))))
+           (el/internal? (model/get-parent-element model e)))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
@@ -324,10 +324,10 @@
   "Checks references in a view."
   [model view]
   (->> (:ct view)
-       (filter e/reference?)
-       (map (juxt :ref (partial model/resolve-element model)))
-       ;(filter #(nil? (second %)))
-       ))
+       (filter el/reference?)
+       (map (partial model/resolve-ref model))
+       (filter el/unresolved-ref?)
+       (map #(assoc % :view (:id view)))))
 
 (defn check-views
   "Checks the references in the views."

@@ -231,6 +231,11 @@
   [e]
   (:ref e))
 
+(defn unresolved-ref?
+  "Returns true if the given element `e` is a reference."
+  [e]
+  (:unresolved-ref e))
+
 ;;
 ;; Functions 
 ;;
