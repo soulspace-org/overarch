@@ -114,7 +114,7 @@
   {:el :context-view
    :id :test/missing-elements
    :title "View referencing missing elements"
-   :ct [{:ref :foon/bar}
-        {:ref :foon/baz}]}
+   :ct [{:ref :foo/bar}
+        {:ref :foo/baz}]}
     ;
   }
