@@ -5,7 +5,7 @@ Version 0.9.0
 -------------
 * changed reference resolution
 * added reporting for unresolvable references
-
+* added support for skinparams nodesep and ranksep for plantuml
 
 Version 0.8.0
 -------------

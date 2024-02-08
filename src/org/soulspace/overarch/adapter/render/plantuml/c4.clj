@@ -265,7 +265,8 @@
 (defn render-c4-layout
   "Renders the layout for the C4 diagram."
   [view]
-  (let [spec (:spec view)]
+  (let [spec (:spec view)
+        plantuml-spec (:plantuml spec)]
     (flatten [(when (:styles spec)
                 (into [] (map #(render-c4-style view %)) (:styles spec)))
               (when (:sketch spec)
@@ -273,7 +274,11 @@
               (when (:layout spec)
                 (c4-layouts (:layout spec)))
               (when (:linetype spec)
-                (puml/linetypes (:linetype spec)))])))
+                (puml/linetypes (:linetype spec)))
+              (when (:node-separation plantuml-spec)
+                (str "skinparam nodesep " (:node-separation plantuml-spec)))
+              (when (:rank-separation plantuml-spec)
+                (str "skinparam ranksep " (:rank-separation plantuml-spec)))])))
 
 (defn render-c4-legend
   "Renders the legend for the diagram."

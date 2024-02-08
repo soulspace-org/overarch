@@ -574,6 +574,14 @@ view spec.
    :spec {:plantuml {:sprite-libs [:azure]}}
 ```
 
+#### Keys
+
+key              | type    | values                   | description 
+-----------------|---------|--------------------------|------------
+:node-separation | integer | 50 (for 50 pixels)       | separation between nodes
+:rank-separation | integer | 250 (for 250 pixels)     | separation between ranks
+:sprite-libs     | vector  | sprite-lib keywords      | used to render sprites for techs
+
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
 the elements of a diagram.
