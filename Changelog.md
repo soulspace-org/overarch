@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.9.0
+-------------
+* changed reference resolution
+* added reporting for unresolvable references
+
+
 Version 0.8.0
 -------------
 * support for loading models from multiple locations by specifying a model path
