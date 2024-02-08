@@ -318,24 +318,6 @@
   [coll]
   (model/traverse :tech tech-collector coll))
 
-;; TODO return missing elements
-; TODO include view id
-(defn check-view
-  "Checks references in a view."
-  [model view]
-  (->> (:ct view)
-       (filter el/reference?)
-       (map (partial model/resolve-ref model))
-       (filter el/unresolved-ref?)
-       (map #(assoc % :view (:id view)))))
-
-(defn check-views
-  "Checks the references in the views."
-  [model]
-  (->> (get-views model)
-       (map (partial check-view model))
-       (flatten)))
-
 (defn render-indent
   "Renders an indent of n space chars."
   [n]
@@ -354,10 +336,27 @@
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
-      (derive :enterprise-boundary :boundary)
-      (derive :system-boundary     :boundary)
-      (derive :container-boundary  :boundary)
-      (derive :context-boundary    :boundary)))
+      (derive :enterprise-boundary   :boundary)
+      (derive :system-boundary       :boundary)
+      (derive :container-boundary    :boundary)
+      (derive :context-boundary      :boundary)
+      (derive :request               :architecture-relation)
+      (derive :response              :architecture-relation)
+      (derive :publish               :architecture-relation)
+      (derive :subscribe             :architecture-relation)
+      (derive :send                  :architecture-relation)
+      (derive :dataflow              :architecture-relation)
+      (derive :link                  :deployment-relation)
+      (derive :architecture-relation :relation)
+      (derive :deployment-relation   :relation)
+      (derive :rel                   :relation)
+      ))
+
+(def relation-hierarchy
+  ""
+  (-> (make-hierarchy)
+      ))
+
 
 (comment
   ;(collect-technologies (:elements @model/state))

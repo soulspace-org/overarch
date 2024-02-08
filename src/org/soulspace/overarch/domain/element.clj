@@ -15,7 +15,7 @@
 (def context-types
   "Element types of a C4 context view."
   #{:person :system :enterprise-boundary :context-boundary
-    :rel :request :response :publish :subscribe :send})
+    :rel :request :response :publish :subscribe :send :dataflow})
 
 (def container-types
   "Element types of a C4 container view."
