@@ -12,10 +12,13 @@
 ;;
 ;; C4 category definitions
 ;; 
+(def architecture-relation-types
+  "Relation types in the architecture model."
+  #{:rel :request :response :publish :subscribe :send :dataflow})
+
 (def context-types
   "Element types of a C4 context view."
-  #{:person :system :enterprise-boundary :context-boundary
-    :rel :request :response :publish :subscribe :send :dataflow})
+  (set/union architecture-relation-types #{:person :system :enterprise-boundary :context-boundary}))
 
 (def container-types
   "Element types of a C4 container view."
@@ -33,17 +36,17 @@
   "Element types of a C4 system-landscape view."
   context-types)
 
+(def deployment-relation-types
+  "Relation types for deployment models."
+  #{:link})
+
 (def deployment-types
   "Element types of a C4 deployment view."
-  (set/union container-types #{:node}))
+  (set/union container-types deployment-relation-types #{:node}))
 
 (def dynamic-types
   "Element types of a C4 dynamic view."
   component-types)
-
-(def architecture-relation-types
-  "Relation types in the architecture model."
-  #{:rel :request :response :publish :subscribe :send})
 
 ;;
 ;; UML category definitions
