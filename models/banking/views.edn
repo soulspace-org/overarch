@@ -15,6 +15,7 @@
 
   {:el :container-view
    :id :banking/container-view
+   :spec {:plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "Container View of the Internet Banking System"
    :ct [; model elements
         {:ref :banking/personal-customer}
