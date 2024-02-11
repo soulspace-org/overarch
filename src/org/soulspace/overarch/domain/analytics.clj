@@ -40,6 +40,14 @@
        (eduction (namespaces-xf))
        (frequencies)))
 
+(defn count-nodes
+  "Returns a map with the count of relations per type in the given `coll`."
+  [coll]
+  (->> coll
+       (filter el/model-node?)
+       (map :el)
+       (frequencies)))
+
 (defn count-relations
   "Returns a map with the count of relations per type in the given `coll`."
   [coll]
@@ -55,6 +63,14 @@
        (filter view/view?)
        (map :el)
        (frequencies)))
+
+(defn count-elements
+  "Returns a map with the count of views per type in the given `coll`."
+  [coll]
+  (->> coll
+       (map :el)
+       (frequencies)
+       (into (sorted-map))))
 
 (defn unidentifiable-elements
   "Returns the elements without an id in the given `coll`."

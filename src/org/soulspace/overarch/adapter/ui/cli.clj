@@ -141,6 +141,7 @@
   "Dispatch on `options` to the requested actions."
   [m options]
   (when (:model-info options)
+    (println "Model Information:")
     (pp/pprint (model-info m options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
