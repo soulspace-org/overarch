@@ -5,7 +5,9 @@ Version 0.9.0
 -------------
 * changed reference resolution
 * added reporting for unresolvable references
+* enhanced model analytics functions
 * added support for skinparams nodesep and ranksep for plantuml
+* (WIP) added support for new relation types in architecture and deployment models
 
 Version 0.8.0
 -------------
