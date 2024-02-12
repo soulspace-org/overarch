@@ -42,6 +42,7 @@
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
    ["-X" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
+   [nil  "--model-warnings" "Returns warnings for the loaded model" :default true] 
    [nil  "--model-info" "Returns infos for the loaded model" :default false] 
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
 ;   [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
@@ -121,13 +122,23 @@
       (println "Rendering " current-format))
     (rndr/render m current-format options)))
 
+(defn model-warnings
+  "Reports warnings about the model and views."
+  [m options]
+  {:unresolved (al/validate-views m)
+   ;:unnamespaced (al/unnamespaced-elements m)
+   ;:unidentifiable (al/unidentifiable-elements m)
+   ;:unnamed (al/unnamed-elements m)
+   ;:unrelated (al/unrelated-nodes m)
+   })
+
 (defn model-info
   "Reports information about the model and views."
   [m options]
-  (->> (model/all-elements m)
-       (map :el)
-       (frequencies)
-       (into (sorted-map))))
+  {:nodes (into (sorted-map) (al/count-nodes m))
+   :relations (into (sorted-map) (al/count-relations m))
+   :views (into (sorted-map) (al/count-views m))
+   :namespaces (into (sorted-map) (al/count-namespaces m))})
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -140,6 +151,9 @@
 (defn dispatch
   "Dispatch on `options` to the requested actions."
   [m options]
+  (when (:model-warnings options)
+    (println "Model Warnings:")
+    (pp/pprint (model-warnings m options)))
   (when (:model-info options)
     (println "Model Information:")
     (pp/pprint (model-info m options)))
@@ -204,14 +218,16 @@
   (repo/update-state! "models")
 
   (al/count-namespaces (repo/elements))
+  (al/count-elements (repo/elements))
+  (al/count-nodes (repo/elements))
   (al/count-relations (repo/elements))
   (al/count-views (repo/elements))
   (al/unidentifiable-elements (repo/elements))
   (al/unnamespaced-elements (repo/elements))
   (al/unrelated-nodes @repo/state)
 
-  (view/check-views @repo/state)
-  (view/check-view  @repo/state (model/resolve-element @repo/state :test/missing-elements))
+  (al/validate-views @repo/state)
+  (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")

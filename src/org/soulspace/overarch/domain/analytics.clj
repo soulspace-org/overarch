@@ -82,13 +82,15 @@
   "Returns the elements without a namespaced id."
   [coll]
   (->> coll
-       (remove el/namespaced?)))
+       (remove el/namespaced?)
+       (map :id)))
 
 (defn unnamed-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
   (->> coll
-       (remove el/named?)))
+       (remove el/named?)
+       (map :id)))
 
 (defn key-set
   "Returns a set of the keys of the map `m`."
