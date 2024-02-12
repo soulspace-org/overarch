@@ -1,7 +1,8 @@
 (ns org.soulspace.overarch.application.model-repository
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.domain.spec :as spec]))
+            [org.soulspace.overarch.domain.spec :as spec]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (defn repo-type
   "Returns the repository type."
@@ -36,6 +37,34 @@
   []
   (:elements @state))
 
+(defn update-relational-acc
+  "Update the accumulator `acc` of the hierarchical model with the element `e`."
+  [acc e]
+  (cond
+    ; TODO convert (hierarchical) nodes
+    (el/model-node? e) (assoc acc :nodes (conj (:nodes acc) (dissoc e :ct)))
+    (el/relation? e) (assoc acc :relations (conj (:relations acc) e))
+    (view/view? e)  (assoc acc :views (conj (:views acc) e))
+    :else acc))
+
+(defn relational-model-fn
+  "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
+  ([] {:nodes #{}
+       :relations #{}
+       :views #{}})
+  ([acc] acc)
+  ([acc e]
+   (println "Element" (:id e) (:name e))
+;   (println "Accu Pre" acc)
+   (let [new-acc (update-relational-acc acc e)]
+;     (println "Accu Post" new-acc)
+     new-acc)))
+
+(defn build-relational-model
+  "Builds a relational working model from the hierarchical inpur model."
+  []
+  (model/traverse el/element? relational-model-fn (elements)))
+
 
 (comment
   (update-state! "models")
@@ -43,6 +72,7 @@
   (= (:parents @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
   (= (:referred @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
   (= (:referrer @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
+  (build-relational-model)
 
   ;
   :rcf)
