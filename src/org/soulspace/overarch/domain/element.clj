@@ -107,7 +107,6 @@
   "Element types for the architectural model."
   (set/union component-types deployment-types uml-types concept-types relation-types))
 
-
 ;;
 ;; Predicates
 ;;

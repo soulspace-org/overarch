@@ -117,8 +117,13 @@
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
 
+(defn validate-refs
+  "Validates the references in the model."
+  []
+  )
+
 (defn validate-views
-  "Checks the references in the views."
+  "Validates the references in the views."
   [model]
   (->> (view/get-views model)
        (map (partial unresolved-refs model))

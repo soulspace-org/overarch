@@ -126,19 +126,19 @@
   "Reports warnings about the model and views."
   [model options]
   {:unresolved (al/validate-views model)
-   ;:unnamespaced (al/unnamespaced-elements model)
-   ;:unidentifiable (al/unidentifiable-elements model)
-   ;:unnamed (al/unnamed-elements model)
-   ;:unrelated (al/unrelated-nodes model)
+   ;:unnamespaced (al/unnamespaced-elements (repo/elements))
+   ;:unidentifiable (al/unidentifiable-elements (repo/elements))
+   ;:unnamed (al/unnamed-elements (repo/elements))
+   ;:unrelated (al/unrelated-nodes (repo/elements))
    })
 
 (defn model-info
   "Reports information about the model and views."
   [model options]
-  {:nodes     (al/count-nodes model) ; (into (sorted-map) )
-   :relations (al/count-relations model) ; (into (sorted-map) )
-   :views     (al/count-views model) ;(into (sorted-map) )
-   ;:namespaces (into (sorted-map) (al/count-namespaces model))
+  {:nodes     (into (sorted-map) (al/count-nodes (repo/elements)))
+   :relations (into (sorted-map) (al/count-relations (repo/elements)))
+   :views     (into (sorted-map) (al/count-views (repo/elements)))
+   ;:namespaces (into (sorted-map) (al/count-namespaces (repo/elements)))
    })
 
 (defn print-sprite-mappings
