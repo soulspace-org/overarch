@@ -9,6 +9,7 @@ Version 0.9.0
 * added support for skinparams nodesep and ranksep for plantuml
 * (WIP) added support for new relation types in architecture and deployment models
 
+
 Version 0.8.0
 -------------
 * support for loading models from multiple locations by specifying a model path
