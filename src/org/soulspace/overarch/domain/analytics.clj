@@ -123,5 +123,3 @@
   (->> (view/get-views model)
        (map (partial unresolved-refs model))
        (flatten)))
-
-

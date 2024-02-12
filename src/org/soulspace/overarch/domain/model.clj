@@ -107,9 +107,9 @@
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
   ([m r1 r2]
-   (and (= (:name r1) (:name r2))
-        (= (:tech r1) (:tech r2))
-        (= (:desc r1) (:desc r2))
+   (and (= (:tech r1) (:tech r2))
+        ; (= (:name r1) (:name r2))
+        ; (= (:desc r1) (:desc r2))
         (or (= (:from r1) (:from r2))
             (= (get-parent-element m (:from r1))
                (get-parent-element m (:from r2))))
