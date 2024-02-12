@@ -18,6 +18,7 @@
         {:ref :ddd/c-anti-corruption-layer}
         {:ref :ddd/c-big-ball-of-mud}
         {:ref :ddd/c-bounded-context}
+        {:ref :ddd/c-clean-architecture}
         {:ref :ddd/c-conformist}
         {:ref :ddd/c-context-map}
         {:ref :ddd/c-continuous-integration}
@@ -27,7 +28,6 @@
         {:ref :ddd/c-entities}
         {:ref :ddd/c-factories}
         {:ref :ddd/c-generic-subdomains}
-        {:ref :ddd/c-hexagonal-architecture}
         {:ref :ddd/c-model-driven-design}
         {:ref :ddd/c-open-host-service}
         {:ref :ddd/c-partnership}
@@ -84,6 +84,7 @@
           {:ref :ddd/c-anti-corruption-layer}
           {:ref :ddd/c-big-ball-of-mud}
           {:ref :ddd/c-bounded-context}
+          {:ref :ddd/c-clean-architecture}
           {:ref :ddd/c-conformist}
           {:ref :ddd/c-context}
           {:ref :ddd/c-context-map}
@@ -91,12 +92,10 @@
           {:ref :ddd/c-core-domain}
           {:ref :ddd/c-customer-supplier}
           {:ref :ddd/c-domain}
-          {:ref :ddd/c-domain-core}
           {:ref :ddd/c-domain-events}
           {:ref :ddd/c-entities}
           {:ref :ddd/c-factories}
           {:ref :ddd/c-generic-subdomains}
-          {:ref :ddd/c-hexagonal-architecture}
           {:ref :ddd/c-model}
           {:ref :ddd/c-model-driven-design}
           {:ref :ddd/c-open-host-service}
