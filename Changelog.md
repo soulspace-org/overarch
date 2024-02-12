@@ -6,6 +6,8 @@ Version 0.9.0
 * changed reference resolution
 * added reporting for unresolvable references
 * enhanced model analytics functions
+* enhanced model information
+* added model warnings for inconsistencies
 * added support for skinparams nodesep and ranksep for plantuml
 * (WIP) added support for new semantical relation types in architecture and deployment models
 * (WIP) provide an inernal relational working model in addition to the hierarchical input model
