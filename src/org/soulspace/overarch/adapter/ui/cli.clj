@@ -105,40 +105,41 @@
   #{:json :structurizr})
 
 (defmethod exp/export :all
-  [m format options]
+  [model format options]
   (doseq [current-format export-formats]
     (when (:debug options)
       (println "Exporting " current-format))
-    (exp/export m current-format options)))
+    (exp/export model current-format options)))
 
 (def render-formats
   "Contains the supported render formats."
   #{:graphviz :markdown :plantuml})
 
 (defmethod rndr/render :all
-  [m format options]
+  [model format options]
   (doseq [current-format render-formats]
     (when (:debug options)
       (println "Rendering " current-format))
-    (rndr/render m current-format options)))
+    (rndr/render model current-format options)))
 
 (defn model-warnings
   "Reports warnings about the model and views."
-  [m options]
-  {:unresolved (al/validate-views m)
-   ;:unnamespaced (al/unnamespaced-elements m)
-   ;:unidentifiable (al/unidentifiable-elements m)
-   ;:unnamed (al/unnamed-elements m)
-   ;:unrelated (al/unrelated-nodes m)
+  [model options]
+  {:unresolved (al/validate-views model)
+   ;:unnamespaced (al/unnamespaced-elements model)
+   ;:unidentifiable (al/unidentifiable-elements model)
+   ;:unnamed (al/unnamed-elements model)
+   ;:unrelated (al/unrelated-nodes model)
    })
 
 (defn model-info
   "Reports information about the model and views."
-  [m options]
-  {:nodes (into (sorted-map) (al/count-nodes m))
-   :relations (into (sorted-map) (al/count-relations m))
-   :views (into (sorted-map) (al/count-views m))
-   :namespaces (into (sorted-map) (al/count-namespaces m))})
+  [model options]
+  {:nodes     (al/count-nodes model) ; (into (sorted-map) )
+   :relations (al/count-relations model) ; (into (sorted-map) )
+   :views     (al/count-views model) ;(into (sorted-map) )
+   ;:namespaces (into (sorted-map) (al/count-namespaces model))
+   })
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -150,26 +151,26 @@
 
 (defn dispatch
   "Dispatch on `options` to the requested actions."
-  [m options]
+  [model options]
   (when (:model-warnings options)
     (println "Model Warnings:")
-    (pp/pprint (model-warnings m options)))
+    (pp/pprint (model-warnings model options)))
   (when (:model-info options)
     (println "Model Information:")
-    (pp/pprint (model-info m options)))
+    (pp/pprint (model-info model options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
-    (rndr/render m (:render-format options) options))
+    (rndr/render model (:render-format options) options))
   (when (:export-format options)
-    (exp/export m (:export-format options) options)))
+    (exp/export model (:export-format options) options)))
 
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
   ; TODO check for model path and read all dirs if set
-  (let [m (repo/update-state! (:model-dir options))]
-    (dispatch m options)))
+  (let [model (repo/update-state! (:model-dir options))]
+    (dispatch model options)))
 
 (defn handle
   "Handle the `options` and generate the requested outputs."
