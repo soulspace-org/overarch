@@ -11,16 +11,14 @@
 ;;
 ;; Transducer fuctions
 ;;
-(defn namespaces-xf
+(def namespaces-xf
   "Returns a transducer to extract the namespaces of some elements."
-  []
   (comp
    (map :id)
    (map namespace)))
 
-(defn node-ids-xf
+(def node-ids-xf
   "Returns a transducer to extract the id of each node."
-  []
   (comp (filter el/identifiable?)
         (remove el/relational?)
         (remove view/view?)
@@ -37,8 +35,9 @@
   "Returns a map with the count of identifiable elements per namespace in the given `coll`."
   [coll]
   (->> coll
-       (eduction (namespaces-xf))
-       (frequencies)))
+       (eduction namespaces-xf)
+       (frequencies)
+       (into (sorted-map))))
 
 (defn count-nodes
   "Returns a map with the count of relations per type in the given `coll`."
@@ -46,7 +45,8 @@
   (->> coll
        (filter el/model-node?)
        (map :el)
-       (frequencies)))
+       (frequencies)
+       (into (sorted-map))))
 
 (defn count-relations
   "Returns a map with the count of relations per type in the given `coll`."
@@ -54,7 +54,8 @@
   (->> coll
        (filter el/relational?)
        (map :el)
-       (frequencies)))
+       (frequencies)
+       (into (sorted-map))))
 
 (defn count-views
   "Returns a map with the count of views per type in the given `coll`."
@@ -62,7 +63,8 @@
   (->> coll
        (filter view/view?)
        (map :el)
-       (frequencies)))
+       (frequencies)
+       (into (sorted-map))))
 
 (defn count-elements
   "Returns a map with the count of views per type in the given `coll`."
@@ -101,7 +103,7 @@
   "Returns the set of ids of identifiable model nodes not taking part in any relation."
   [model]
   ; TODO registry contains relations and views
-  (let [id-set (into #{} node-ids-xf (:elements model))]
+  (let [id-set (into #{} node-ids-xf (model/all-elements model))]
     (set/difference id-set
                     (key-set (:referrer model))
                     (key-set (:referred model)))))
