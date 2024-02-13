@@ -148,8 +148,8 @@
      (trav (step-fn) coll))))
 
 ; TODO
-; ctx/ctx-fn - capture context, e.g. parent, indent
-;              use ctx in 2-arity select-fn
+; context - capture context, e.g. parent, indent
+;           use acc as context in 2-arity select-fn
 (defn traverse-with-context
   "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
    and transformed by the `step-fn`.
@@ -165,7 +165,8 @@
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (first coll)]
-                 (if (select-fn e)
+                 ; acc contains the context for the selection
+                 (if (select-fn acc e)
                    (recur (trav (step-fn acc e) (:ct e))
                           (rest coll))
                    (recur (trav acc (:ct e))
