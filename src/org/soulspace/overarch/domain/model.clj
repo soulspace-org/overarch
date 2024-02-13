@@ -117,13 +117,6 @@
             (= (get-parent-element m (:to r1))
                (get-parent-element m (:to r2)))))))
 
-; TODOs
-; ctx/ctx-fn - capture context, e.g. parent, indent
-;            -> 2 arity of the reducing fn with compound acc
-; post-fn    - do something if (seq coll) is false
-;            -> 1 aritiy of the reducing function
-; follow-fn  - filter coll
-
 (defn traverse
   "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
    and transformed by the `step-fn`.
@@ -135,6 +128,15 @@
    the one args signature extracts the result from the accumulator on return
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
+  ([step-fn coll]
+   ; selection might be handled in the step function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (recur (trav (step-fn acc e) (:ct e))
+                        (rest coll)))
+               (step-fn acc)))]
+     (trav (step-fn) coll)))
   ([select-fn step-fn coll]
    (letfn [(trav [acc coll]
              (if (seq coll)
@@ -146,39 +148,6 @@
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
-
-; TODO
-; context - capture context, e.g. parent, indent
-;           use acc as context in 2-arity select-fn
-(defn traverse-with-acc-context
-  "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
-   and transformed by the `step-fn`.
-
-   select-fn - a predicate on the current element and context.
-   step-fn - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the step-fn should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator."
-  ([select-fn step-fn coll]
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (first coll)]
-                 ; acc contains the context for the selection
-                 (if (select-fn acc e)
-                   (recur (trav (step-fn acc e) (:ct e))
-                          (rest coll))
-                   (recur (trav acc (:ct e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
-
-; TODO add traverse-with-stack-context
-; where the context resides on the call stack
-; and is unwinded on return
-; (also check usage of a stack in the acc
-; and when to push/peek/pop)
 
 ;;
 ;; State preparation
@@ -196,16 +165,20 @@
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
 
-(defn id->parent
-  "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
 ; TODO does not work, as p is not on the call stack of trav and does not get unrolled
 ; maybe a stack in the accumulator could work, if it's clear when to push and pop the parent
-  ([] [{} nil])
-  ([acc] acc)
-  ([[res p] e]
-   (if (el/child? e p)
-     [[(assoc res (:id e) p) p] e]
-     [[res p] e])))
+(defn id->parent
+  "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
+  ([] [{} '()])
+  ([[res ctx]]
+   (if-not (empty? ctx)
+     [res (pop ctx)]
+     res))
+  ([[res ctx] e]
+   (let [p (peek ctx)]
+     (if (el/child? e p)
+       [(assoc res (:id e) p) (conj ctx e)]
+       [res (conj ctx e)]))))
 
 (defn id->element
   "Adds the association of the id of the element `e` to the map `acc`."

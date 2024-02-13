@@ -37,9 +37,9 @@
   []
   (:elements @state))
 
-(defn update-relational-acc
+(defn update-acc
   "Update the accumulator `acc` of the hierarchical model with the element `e`."
-  [acc e]
+  [acc p e]
   (cond
     ; TODO convert (hierarchical) nodes
     (el/model-node? e) (assoc acc :nodes (conj (:nodes acc) (dissoc e :ct)))
@@ -49,25 +49,34 @@
 
 (defn relational-model-fn
   "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
-  ([] {:nodes #{}
+  ([] [{:nodes #{}
        :relations #{}
-       :views #{}})
-  ([acc] acc)
-  ([acc e]
-   (println "Element" (:id e) (:name e))
+       :views #{}} '()])
+  ([[res ctx]]
+   (if-not (empty? ctx)
+     [res (pop ctx)]
+     res))
+  ([[res ctx] e]
+   (let [p (peek ctx)]
+     [(update-acc res p e) (conj ctx e)])))
+
+;  ([[res ctx] e]
+;   (println "Element" (:id e) (:name e))
 ;   (println "Accu Pre" acc)
-   (let [new-acc (update-relational-acc acc e)]
+;   (let [new-acc (update-relational-acc acc e)]
 ;     (println "Accu Post" new-acc)
-     new-acc)))
+;     new-acc)))
 
 (defn build-relational-model
   "Builds a relational working model from the hierarchical inpur model."
   []
-  (model/traverse el/element? relational-model-fn (elements)))
+  (model/traverse relational-model-fn (elements)))
 
 
 (comment
   (update-state! "models")
+  
+  (= (:parents @state) (model/traverse model/id->parent (:elements @state)))
   (= (:registry @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
   (= (:parents @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
   (= (:referred @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
