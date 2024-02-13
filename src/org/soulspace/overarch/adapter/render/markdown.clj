@@ -46,8 +46,8 @@
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))
    ; TODO model
-   ;(when ()
-   ;  (md/h3 "Relates to "))
+   ;(when ((:id e) (:referred model))
+   ;  (md/h3 "Referres to "))
    ])
 
 (defmethod render-element :rel
