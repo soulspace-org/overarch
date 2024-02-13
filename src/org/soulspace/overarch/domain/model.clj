@@ -200,7 +200,7 @@
    (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
 
 (defn build-registry
-  "Returns a map with the original `elements` and a registry by id for lookups.
+  "Returns a map with the original `elements` and registries by id for lookups.
    
    The map has the following shape:
 
@@ -215,7 +215,7 @@
   ; :relations -> uniform relations (incl. parent/child)
   ; :views -> views with content
   (let [registry (traverse el/identifiable? id->element elements)
-        parents (build-id->parent elements)
+        parents (traverse id->parent elements)
         referrer (traverse el/relation? referrer-id->rel elements)
         referred (traverse el/relation? referred-id->rel elements)]
     {:elements elements
