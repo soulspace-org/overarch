@@ -147,6 +147,32 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+; TODO
+; ctx/ctx-fn - capture context, e.g. parent, indent
+;              use ctx in 2-arity select-fn
+(defn traverse-with-context
+  "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
+   and transformed by the `step-fn`.
+
+   select-fn - a predicate on the current element and context.
+   step-fn - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the step-fn should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([select-fn step-fn coll]
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (if (select-fn e)
+                   (recur (trav (step-fn acc e) (:ct e))
+                          (rest coll))
+                   (recur (trav acc (:ct e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
 ;;
 ;; State preparation
 ;;
@@ -158,7 +184,7 @@
   ([m p coll]
    (if (seq coll)
      (let [e (first coll)]
-       (if (and (el/identifiable-element? e) (el/identifiable-element? p) (el/model-element? p))
+       (if (el/child? e p)
          (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
@@ -170,7 +196,7 @@
   ([] [{} nil])
   ([acc] acc)
   ([[res p] e]
-   (if (and (el/identifiable-element? e) (el/identifiable-element? p) (el/model-element? p))
+   (if (el/child? e p)
      [[(assoc res (:id e) p) p] e]
      [[res p] e])))
 

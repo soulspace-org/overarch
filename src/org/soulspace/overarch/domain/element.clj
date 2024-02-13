@@ -192,6 +192,13 @@
   [e]
   (and (model-element? e) (not (relation? e))))
 
+(defn child?
+  "Returns true, if element `e` is a child of model element `p`."
+  [e p]
+  ; TODO check (:ct p) for e
+  (and (identifiable-element? e)
+       (identifiable-element? p)
+       (model-element? p)))
 
 (defn tech?
   "Returns true if the given element `e` has a tech (:tech key)."
