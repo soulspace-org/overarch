@@ -41,11 +41,38 @@
   "Update the accumulator `acc` of the hierarchical model with the element `e`."
   [acc p e]
   (cond
-    ; TODO convert (hierarchical) nodes
-    (el/model-node? e) (assoc acc :nodes (conj (:nodes acc) (dissoc e :ct)))
-    (el/relation? e) (assoc acc :relations (conj (:relations acc) e))
-    (view/view? e)  (assoc acc :views (conj (:views acc) e))
-    :else acc))
+    ; TODO handle refs
+    (el/model-node? e)
+    (if (el/child? e p)
+      (assoc acc
+             :nodes (conj (:nodes acc) (dissoc e :ct))
+             :relations (conj (:relations acc)
+                              {:el :parent-of
+                               :id (el/relation-id :parent-of (:id p) (:id e))
+                               :from (:id p)
+                               :to (:id e)}))
+      (assoc acc :nodes (conj (:nodes acc) (dissoc e :ct))))
+
+    (el/relation? e)
+    (assoc acc :relations (conj (:relations acc) e))
+
+    (view/view? e)
+    (assoc acc :views (conj (:views acc) e))
+
+    (el/reference? e)
+    (if (el/model-node? p)
+      ; reference is a child of a node, create relation
+      (assoc acc
+             :relations (conj (:relations acc)
+                              {:el :parent-of
+                               :id (el/relation-id :parent-of (:id p) (:ref e))
+                               :from (:id p)
+                               :to (:ref e)}))
+      ; reference is a child of a view, leave as is
+      acc)
+    
+    ; unhandled element
+    :else (do (println "Unhandled:" e) acc)))
 
 (defn relational-model-fn
   "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
@@ -60,18 +87,15 @@
    (let [p (peek ctx)]
      [(update-acc res p e) (conj ctx e)])))
 
-;  ([[res ctx] e]
-;   (println "Element" (:id e) (:name e))
-;   (println "Accu Pre" acc)
-;   (let [new-acc (update-relational-acc acc e)]
-;     (println "Accu Post" new-acc)
-;     new-acc)))
-
 (defn build-relational-model
   "Builds a relational working model from the hierarchical inpur model."
-  []
-  (model/traverse relational-model-fn (elements)))
-
+  [coll]
+  (let [relational (model/traverse relational-model-fn coll)]
+    ; TODO add registries
+    ; :id->element
+    ; :id->referred-relations
+    ; :id->referrer-relations
+    relational))
 
 (comment
   (update-state! "models")
@@ -81,7 +105,7 @@
   (= (:parents @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
   (= (:referred @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
   (= (:referrer @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
-  (build-relational-model)
+  (build-relational-model (elements))
 
   ;
   :rcf)
