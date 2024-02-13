@@ -3,15 +3,16 @@ Changelog
 
 Version 0.9.0
 -------------
-* changed reference resolution
-* enhanced model analytics functions
-* enhanced model information
 * added model warnings for inconsistencies
 * added reporting for unresolvable references
 * added support for skinparams nodesep and ranksep for plantuml
+* enhanced model analytics functions
+* enhanced model information
+* refactored reference resolution
 * refactored and enhanced hierarchical model traversal
 * (WIP) added support for new semantical relation types in architecture and deployment models
-* (WIP) provide an internal relational working model in addition to the hierarchical input model
+* (WIP) separated domain model from external data representation
+  * provide an internal relational working model in addition to the hierarchical input model
 
 
 Version 0.8.0
