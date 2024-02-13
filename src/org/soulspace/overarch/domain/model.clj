@@ -165,8 +165,6 @@
          (recur (build-id->parent m e (:ct e)) p (rest coll))))
      m)))
 
-; TODO does not work, as p is not on the call stack of trav and does not get unrolled
-; maybe a stack in the accumulator could work, if it's clear when to push and pop the parent
 (defn id->parent
   "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
   ([] [{} '()])
