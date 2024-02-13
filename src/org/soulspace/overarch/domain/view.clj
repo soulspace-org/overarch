@@ -352,11 +352,6 @@
       (derive :rel                   :relation)
       ))
 
-(def relation-hierarchy
-  ""
-  (-> (make-hierarchy)
-      ))
-
 
 (comment
   ;(collect-technologies (:elements @model/state))
