@@ -252,3 +252,11 @@
   "Returns the namespace of the element `e`."
   [e]
   (namespace (:id e)))
+
+(defn relation-id
+  "Generates an identifier for a relation `r`."
+  ([{:keys [el from to]}]
+   (relation-id el from to))
+  ([el from to]
+   (keyword (str (namespace from) "/"
+                 (name from) "-" (name el) "-" (name to)))))
