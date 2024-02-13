@@ -25,6 +25,7 @@
       (derive :component           :architecture-model-element)
       ))
 
+; TODO add model parameter to resolve referrers and referred
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
   (fn [e _ _] (:el e))
@@ -43,7 +44,11 @@
 (defmethod render-element :architecture-model-element
   [e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))])
+   (md/p (:desc e))
+   ; TODO model
+   ;(when ()
+   ;  (md/h3 "Relates to "))
+   ])
 
 (defmethod render-element :rel
   [e options view]
