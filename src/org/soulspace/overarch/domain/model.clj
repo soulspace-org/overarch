@@ -150,7 +150,7 @@
 ; TODO
 ; context - capture context, e.g. parent, indent
 ;           use acc as context in 2-arity select-fn
-(defn traverse-with-context
+(defn traverse-with-acc-context
   "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
    and transformed by the `step-fn`.
 
@@ -173,6 +173,12 @@
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
+
+; TODO add traverse-with-stack-context
+; where the context resides on the call stack
+; and is unwinded on return
+; (also check usage of a stack in the acc
+; and when to push/peek/pop)
 
 ;;
 ;; State preparation
