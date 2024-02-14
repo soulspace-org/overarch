@@ -153,18 +153,6 @@
 ;; State preparation
 ;;
 
-(defn build-id->parent
-  "Returns a map of child id to parent element for the elements in `coll`."
-  ([coll]
-   (build-id->parent {} nil coll))
-  ([m p coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (if (el/child? e p)
-         (recur (build-id->parent (assoc m (:id e) p) e (:ct e)) p (rest coll))
-         (recur (build-id->parent m e (:ct e)) p (rest coll))))
-     m)))
-
 (defn id->parent
   "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
   ([] [{} '()])
@@ -223,8 +211,3 @@
      :parents parents
      :referrer referrer
      :referred referred}))
-
-(comment
-  
-  ;
-  :rcf)
