@@ -203,11 +203,12 @@ The implicit boundaries are the system boundary and the container boundary.
 They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
 
 The explicit boundaries are enterprise boundary and context boundary.
-These are explicitly modelled. An enterprise boundary {:el :enterprise-boundary}
-can be used to group systems by enterprise or company. A context boundary
-{:el :context-boundary} can be used to group containers or components by some
-common context, especially by domain contexts in the sense of domain
-driven design.
+These are explicitly modelled.
+An enterprise boundary `{:el :enterprise-boundary}` can be used to group
+systems by enterprise or company.
+A context boundary `{:el :context-boundary}` can be used to group containers
+or components by some common context, especially by domain contexts in the
+sense of domain driven design.
 
 #### Example
 Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
@@ -534,13 +535,22 @@ their type and their descriptions.
 Views can be customized with the `:spec` key. View specs may include general
 directives for a view or directives for specific renderers (e.g. PlantUML).
 
-key           | type    | values                   | description 
---------------|---------|--------------------------|------------
-:layout       | keyword | :top-down, :left-right   | rendering direction
-:linetype     | keyword | :orthogonal, :polygonal  | different line types for relations
-:sketch       | boolean | true, false              | visual clue for sketches
-:styles       | set     | see Styling              | visual customization of elements
+key           | type    | values                    | description 
+--------------|---------|---------------------------|------------
+:include      | keyword | :referenced-only :related | 
+:layout       | keyword | :top-down, :left-right    | rendering direction
+:linetype     | keyword | :orthogonal, :polygonal   | different line types for relations
+:sketch       | boolean | true, false               | visual clue for sketches
+:styles       | set     | see Styling               | visual customization of elements
 
+#### Includes
+With the `:include` key elements can be automatically included in a view. 
+The default behaviour is `:referenced-only` which only includes the referenced
+elements.
+
+With the value `:related` all elements participating in the referenced
+relations will be automatically included in addidtion to the referenced
+elements.
 
 #### Styling
 Overarch supports custom styles for elements. For an example see
