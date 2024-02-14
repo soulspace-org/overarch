@@ -327,7 +327,8 @@ Options:
   -x, --export-format FORMAT           Export format (json, structurizr)
   -X, --export-dir DIRNAME     export  Export directory
   -w, --watch                          Watch model dir for changes and trigger action
-      --model-info                     Returns infos for the loaded model
+      --model-warnings                 Returns warnings for the loaded model (default true)
+      --model-info                     Returns infos for the loaded model (default false)
       --plantuml-list-sprites          Lists the loaded PlantUML sprites
   -h, --help                           Print help
       --debug                          Print debug messages
