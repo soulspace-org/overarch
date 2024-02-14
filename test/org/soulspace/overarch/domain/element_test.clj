@@ -4,52 +4,59 @@
             [org.soulspace.overarch.domain.element :refer :all]))
 
 (deftest element?-test
-  (testing "element?"
+  (testing "element? true"
     (are [x y] (= x (fns/truthy? (element? y)))
-      true {:el :person}
+      true {:el :person}))
+  
+  (testing "element? false"
+    (are [x y] (= x (fns/truthy? (element? y)))
       false {}
       false {:type :person})))
 
 (deftest identifiable?-test
-  (testing "identifiable?"
+  (testing "identifiable? true"
     (are [x y] (= x (fns/truthy? (identifiable? y)))
       true {:id :abc}
-      true {:id :a/abc}
+      true {:id :a/abc}))
+
+  (testing "identifiable? false"
+    (are [x y] (= x (fns/truthy? (identifiable? y)))
       false {}
       false {:type :person})))
 
 (deftest named?-test
-  (testing "named?"
+  (testing "named? true"
     (are [x y] (= x (fns/truthy? (named? y)))
-      true {:name "abc"}
+      true {:name "abc"}))
+
+  (testing "named? false"
+    (are [x y] (= x (fns/truthy? (named? y)))
       false {}
       false {:type :person})))
 
 (deftest namespaced?-test
-  (testing "namespaced?"
+  (testing "namespaced? true"
     (are [x y] (= x (fns/truthy? (namespaced? y)))
-      true {:id :a/bc}
+      true {:id :a/bc}))
+
+  (testing "namespaced? false"
+    (are [x y] (= x (fns/truthy? (namespaced? y)))
       false {}
       false {:id :abc})))
 
 (deftest relational?-test
-  (testing "relational?"
+  (testing "relational? true"
     (are [x y] (= x (fns/truthy? (relational? y)))
       true {:from :abc :to :bcd}
-      true {:from :a/abc :to :a/bcd}
-      false {}
-      false {:type :person})))
+      true {:from :a/abc :to :a/bcd}))
 
-(deftest external?-test
-  (testing "external?"
-    (are [x y] (= x (fns/truthy? (external? y)))
-      true {:external true}
-      false {:external false}
+  (testing "relational? false"
+    (are [x y] (= x (fns/truthy? (relational? y)))
       false {}
       false {:type :person})))
 
 (deftest model-element?-test
-  (testing ""
+  (testing "model-element? true"
     (are [x y] (= x (fns/truthy? (model-element? y)))
       true {:el :person}
       true {:el :system}
@@ -91,11 +98,14 @@
       true {:el :aggregation}
       true {:el :association}
       true {:el :dependency}
-      true {:el :transition}
+      true {:el :transition}))
+
+  (testing "model-element? false"
+    (are [x y] (= x (fns/truthy? (model-element? y)))
       false {:el :ref})))
 
 (deftest model-node?-test
-  (testing ""
+  (testing "model-node? true"
     (are [x y] (= x (fns/truthy? (model-node? y)))
       true {:el :person}
       true {:el :system}
@@ -125,8 +135,10 @@
       true {:el :join}
       true {:el :choice}
       true {:el :history-state}
-      true {:el :deep-history-state}
+      true {:el :deep-history-state}))
 
+  (testing "model-node? false"
+    (are [x y] (= x (fns/truthy? (model-node? y)))
       false {:el :rel}
       false {:el :uses}
       false {:el :include}
@@ -142,36 +154,50 @@
       false {:el :ref})))
 
 (deftest reference?-test
-  (testing "reference?"
+  (testing "reference? true"
     (are [x y] (= x (fns/truthy? (reference? y)))
       true {:ref :abc}
-      true {:ref :a/abc}
+      true {:ref :a/abc}))
+
+  (testing "reference? false"
+    (are [x y] (= x (fns/truthy? (reference? y)))
       false {}
       false {:type :person})))
 
 (deftest boundary?-test
-  (testing "boundary?"
+  (testing "boundary? true"
     (are [x y] (= x (fns/truthy? (boundary? y)))
       true {:el :context-boundary}
       true {:el :enterprise-boundary}
       true {:el :system-boundary}
-      true {:el :container-boundary}
+      true {:el :container-boundary}))
+
+  (testing "boundary? false"
+    (are [x y] (= x (fns/truthy? (boundary? y)))
       false {}
       false {:el :person})))
 
 (deftest external?-test
-  (testing "external?"
+  (testing "external? true"
     (are [x y] (= x (fns/truthy? (external? y)))
-      false {:el :person}
+      true {:external true}
+      true {:el :person :external true}))
+
+  (testing "external? false"
+    (are [x y] (= x (fns/truthy? (external? y)))
+      false {:external false}
       false {:el :person :external false}
-      true {:el :person :external true})))
+      false {}
+      false {:type :person})))
 
 (deftest internal?-test
-  (testing "internal?"
+  (testing "internal? true"
+    (are [x y] (= x (fns/truthy? (internal? y)))
+      true {:el :person}
+      true {:el :person :external false}))
+  
+  (testing "internal? false"
     (are [x y] (= x (fns/truthy? (internal? y)))
       true {:el :person}
       true {:el :person :external false}
       false {:el :person :external true})))
-
-
-
