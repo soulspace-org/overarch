@@ -108,8 +108,16 @@
                     (key-set (:referrer model))
                     (key-set (:referred model)))))
 
-;; TODO return missing elements
-; TODO include view id
+(defn unresolved-related
+  "Checks references in a relation."
+  [model rel]
+  (let [from-el (model/resolve-ref model (:from rel))
+        to-el (model/resolve-ref model (:to rel))]
+    (remove nil? [(when (el/unresolved-ref? from-el)
+       (assoc from-el :parent (:id rel)))
+     (when (el/unresolved-ref? to-el)
+       (assoc to-el :parent (:id rel)))])))
+
 (defn unresolved-refs
   "Checks references in an element."
   [model element]
