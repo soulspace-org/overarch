@@ -67,7 +67,7 @@
 
 (defmulti render-element
   "Renders a structurizr model element."
-  (fn [_ e] (:el e)) :hierarchy #'element-hierarchy)
+  (fn [_ _ e] (:el e)) :hierarchy #'element-hierarchy)
 
 (defmethod render-element :rel
   [m indent e]

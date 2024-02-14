@@ -13,6 +13,7 @@ Version 0.9.0
 * (WIP) added support for new semantical relation types in architecture and deployment models
 * (WIP) separated domain model from external data representation
   * provide an internal relational working model in addition to the hierarchical input model
+* fixed arity exeption in structurizr export
 
 
 Version 0.8.0
