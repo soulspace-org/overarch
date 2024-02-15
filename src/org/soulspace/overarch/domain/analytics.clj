@@ -129,7 +129,7 @@
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
 
-(defn validate-relations
+(defn check-relations
   "Validates the relations in the model."
   [model]
   (->> (model/all-elements model)
@@ -137,12 +137,12 @@
        (map (partial unresolved-related model))
        (flatten)))
 
-(defn validate-refs
+(defn check-nodes
   "Validates the references in the model."
   []
   )
 
-(defn validate-views
+(defn check-views
   "Validates the references in the views."
   [model]
   (->> (view/get-views model)

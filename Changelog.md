@@ -5,6 +5,7 @@ Version 0.10.0
 --------------
 * added reporting for unresolvable references in relations
 * removed rendering of ids as transition names in statemachines
+* refactored model checks
 * refactored and enhanced tests
 
 
