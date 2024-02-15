@@ -361,7 +361,9 @@
         (when (:direction e)
           (uml-directions (:direction e)))
         "-> "
-        (puml/alias-name (:to e)) " : " (view/element-name e))])
+        (puml/alias-name (:to e))
+        (when (:name e)
+          (str " : " (view/element-name e))))])
 
 
 ;;;
