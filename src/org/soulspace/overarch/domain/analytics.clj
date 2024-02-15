@@ -111,12 +111,14 @@
 (defn unresolved-related
   "Checks references in a relation."
   [model rel]
-  (let [from-el (model/resolve-ref model (:from rel))
-        to-el (model/resolve-ref model (:to rel))]
-    (remove nil? [(when (el/unresolved-ref? from-el)
-       (assoc from-el :parent (:id rel)))
-     (when (el/unresolved-ref? to-el)
-       (assoc to-el :parent (:id rel)))])))
+  (let [from-el (model/resolve-id model (:from rel))
+        to-el (model/resolve-id model (:to rel))]
+    ; (println (:id rel) (:from rel) (:to rel))
+    (remove nil?
+            [(when (el/unresolved-ref? from-el)
+               (assoc from-el :parent (:id rel)))
+             (when (el/unresolved-ref? to-el)
+               (assoc to-el :parent (:id rel)))])))
 
 (defn unresolved-refs
   "Checks references in an element."
@@ -126,6 +128,14 @@
        (map (partial model/resolve-ref model))
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
+
+(defn validate-relations
+  "Validates the relations in the model."
+  [model]
+  (->> (model/all-elements model)
+       (filter el/relational-element?)
+       (map (partial unresolved-related model))
+       (flatten)))
 
 (defn validate-refs
   "Validates the references in the model."

@@ -125,7 +125,8 @@
 (defn model-warnings
   "Reports warnings about the model and views."
   [model options]
-  {:unresolved (al/validate-views model)
+  {:unresolved-refs-in-views (al/validate-views model)
+   :unresolved-refs-in-relations (al/validate-relations model)
    ;:unnamespaced (al/unnamespaced-elements (repo/elements))
    ;:unidentifiable (al/unidentifiable-elements (repo/elements))
    ;:unnamed (al/unnamed-elements (repo/elements))
@@ -226,6 +227,8 @@
   (al/unidentifiable-elements (repo/elements))
   (al/unnamespaced-elements (repo/elements))
   (al/unrelated-nodes @repo/state)
+  
+  (al/validate-relations @repo/state)
 
   (al/validate-views @repo/state)
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))

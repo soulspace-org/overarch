@@ -1,10 +1,16 @@
 Changelog
 =========
 
+Version 0.10.0
+--------------
+* added reporting for unresolvable references in relations
+* refactored and enhanced tests
+
+
 Version 0.9.0
 -------------
 * added model warnings for inconsistencies
-* added reporting for unresolvable references
+* added reporting for unresolvable references in views
 * added support for skinparams nodesep and ranksep for plantuml
 * enhanced model analytics functions
 * enhanced model information

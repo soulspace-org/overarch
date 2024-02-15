@@ -62,11 +62,18 @@
     (merge e (dissoc r :ref))
     {:unresolved-ref (:ref r)}))
 
+(defn resolve-id
+  "Resolves the model element for the `id`"
+  [m id]
+  (if-let [e (get-model-element m id)]
+    e
+    {:unresolved-ref id}))
+
 (defn resolve-element
   "Resolves the model element for the ref `e`."
   ([m e]
    (cond
-     (keyword? e) (get-model-element m e)
+     (keyword? e) (resolve-id m e)
      (el/reference? e) (resolve-ref m e)
      :else e)))
 
