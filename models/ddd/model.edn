@@ -410,7 +410,7 @@ identified by their state. Value objects should be modelled as immutable."}
    :to :ddd/application-logic
    :name "triggers"}
   {:el :rel
-   :id :ddd/application-logic-uses-consumed-interface-component
+   :id :ddd/application-logic-calls-consumed-interface-component
    :from :ddd/application-logic
    :to :ddd/consumed-interface-component
    :name "uses"}

@@ -541,6 +541,10 @@
    :to :overarch/architecture-model-element
    :from :overarch/person}
   {:el :inheritance
+   :id :overarch/technical-architecture-element-is-a-technical-element
+   :to :overarch/technical-element
+   :from :overarch/technical-architecture-element}
+  {:el :inheritance
    :id :overarch/technical-architecture-element-is-a-architecture-model-element
    :to :overarch/architecture-model-element
    :from :overarch/technical-architecture-element}
