@@ -14,6 +14,13 @@
    :context-boundary    "Boundary"
    :component           "Component"
    :node                "Node"
+   :send                "Rel"
+   :request             "Rel"
+   :response            "Rel"
+   :publish             "Rel"
+   :subscribe           "Rel"
+   :dataflow            "Rel"
+   :link                "Rel"
    :rel                 "Rel"})
 
 (def c4-view-type->import
@@ -91,49 +98,16 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :system
+(defmethod puml/render-c4-element :technical-architecture-node
   [_ _ indent e]
   [(str (view/render-indent indent)
         (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $type=\"" (:tech e) "\""))
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
-        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
-        ")")])
-
-(defmethod puml/render-c4-element :container
-  [_ _ indent e]
-  [(str (view/render-indent indent)
-        (c4-element->method (:el e))
-        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
-        (when (:external e) "_Ext") "("
-        (puml/alias-name (:id e)) ", \""
-        (view/element-name e) "\""
-        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
-        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
-        ")")])
-
-(defmethod puml/render-c4-element :component
-  [_ _ indent e]
-  [(str (view/render-indent indent)
-        (c4-element->method (:el e))
-        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
-        (when (:external e) "_Ext") "("
-        (puml/alias-name (:id e)) ", \""
-        (view/element-name e) "\""
-        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (if (:sprite e)
           (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
           (when (puml/sprite? (:tech e))
@@ -173,7 +147,7 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
-(defmethod puml/render-c4-element :rel
+(defmethod puml/render-c4-element :relation
   [_ _ indent e]
   (if (:constraint e)
     [(str (view/render-indent indent) "Lay"

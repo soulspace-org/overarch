@@ -3,10 +3,12 @@ Changelog
 
 Version 0.10.0
 --------------
+* added support for new semantical relation types in architecture and deployment models
 * added reporting for unresolvable references in relations
 * removed rendering of ids as transition names in statemachines
 * refactored model checks
 * refactored and enhanced tests
+* refactored and enhanced example models
 
 
 Version 0.9.0
