@@ -159,7 +159,7 @@
 ;;
 ;; State preparation
 ;;
-
+(comment
 (defn id->parent
   "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
   ([] [{} '()])
@@ -213,9 +213,9 @@
         parents (traverse id->parent elements)
         referrer-id->relations (traverse el/relation? referrer-id->rel elements)
         referred-id->relations (traverse el/relation? referred-id->rel elements)]
-    {:type :hierarchical
-     :elements elements
+    {:elements elements
      :id->element id->element
      :id->parent parents
      :referrer-id->relations referrer-id->relations
      :referred-id->relations referred-id->relations}))
+)

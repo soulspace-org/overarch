@@ -221,9 +221,9 @@
 
   (al/count-namespaces (repo/elements))
   (al/count-elements (repo/elements))
-  (al/count-nodes (repo/elements))
-  (al/count-relations (repo/elements))
-  (al/count-views (repo/elements))
+  (al/count-nodes (repo/nodes))
+  (al/count-relations (repo/relations))
+  (al/count-views (repo/views))
   (al/unidentifiable-elements (repo/elements))
   (al/unnamespaced-elements (repo/elements))
   (al/unrelated-nodes @repo/state)
