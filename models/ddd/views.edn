@@ -128,7 +128,7 @@
 
        {:ref :ddd/application-logic-uses-domain-core}
        {:ref :ddd/application-logic-uses-repository-component}
-       {:ref :ddd/provided-interface-component-uses-application-logic}
-       {:ref :ddd/application-logic-uses-cosumed-interface-component}
+       {:ref :ddd/provided-interface-component-calls-application-logic}
+       {:ref :ddd/application-logic-calls-consumed-interface-component}
        {:ref :ddd/incoming-domain-events-triggers-application-logic}
        {:ref :ddd/application-logic-sends-outgoing-domain-events}]}}

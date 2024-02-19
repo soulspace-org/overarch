@@ -186,7 +186,6 @@
         {:ref :overarch/named-relational-element-is-a-relational-element}
 
         {:ref :overarch/architecture-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/architecture-model-element-is-a-named-element}
         {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
         {:ref :overarch/technical-architecture-element-is-a-technical-element}
         {:ref :overarch/context-boundary-is-a-architecture-model-element}
@@ -201,7 +200,6 @@
         {:ref :overarch/rel-is-a-technical-architecture-element}
 
         {:ref :overarch/deployment-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/deployment-model-element-is-a-named-element}
 
         {:ref :overarch/deployment-model-element-is-a-technical-element}
         {:ref :overarch/node-is-a-deployment-model-element}
@@ -322,7 +320,6 @@
         {:ref :overarch/named-relational-element-is-a-relational-element}
 
         {:ref :overarch/architecture-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/architecture-model-element-is-a-named-element}
         {:ref :overarch/technical-architecture-element-is-a-architecture-model-element}
         {:ref :overarch/technical-architecture-element-is-a-technical-element}
         {:ref :overarch/context-boundary-is-a-architecture-model-element}
@@ -337,7 +334,6 @@
         {:ref :overarch/rel-is-a-technical-architecture-element}
 
         {:ref :overarch/deployment-model-element-is-a-identifiable-named-element}
-        {:ref :overarch/deployment-model-element-is-a-named-element}
 
         {:ref :overarch/deployment-model-element-is-a-technical-element}
         {:ref :overarch/node-is-a-deployment-model-element}

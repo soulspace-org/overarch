@@ -247,22 +247,22 @@
   ;;
   ;; Context level relations 
   ;;
-  {:el :rel
+  {:el :request
    :id :banking/personal-customer-uses-internet-banking-system
    :from :banking/personal-customer
    :to :banking/internet-banking-system
    :name "Views account balances and makes payments using"}
-  {:el :rel
+  {:el :request
    :id :banking/internet-banking-system-uses-email-system
    :from :banking/internet-banking-system
    :to :banking/email-system
    :name "Sends e-mail using"}
-  {:el :rel
+  {:el :request
    :id :banking/internet-banking-system-using-mainframe-banking-system
    :from :banking/internet-banking-system
    :to :banking/mainframe-banking-system
    :name "Gets account information from, and makes payments using"}
-  {:el :rel
+  {:el :send
    :id :banking/email-system-sends-mail-to-personal-customer
    :from :banking/email-system
    :to :banking/personal-customer
@@ -271,51 +271,51 @@
   ;;
   ;; Container level relations 
   ;;
-  {:el :rel
+  {:el :request
    :id :banking/personal-customer-uses-web-app
    :from :banking/personal-customer
    :to :banking/web-app
    :name "Visits bigbank.com/ib using"
    :tech "HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/personal-customer-uses-single-page-app
    :from :banking/personal-customer
    :to :banking/single-page-app
    :name "Views account balances and makes payments using"}
-  {:el :rel
+  {:el :request
    :id :banking/personal-customer-uses-mobile-app
    :from :banking/personal-customer
    :to :banking/mobile-app
    :name "Views account balances and makes payments using"}
-  {:el :rel
+  {:el :response
    :id :banking/web-app-deliveres-single-page-app
    :from :banking/web-app
    :to :banking/single-page-app
    :name "Delivers to the customer's web browser"}
-  {:el :rel
+  {:el :request
    :id :banking/single-page-app-calls-api-application
    :from :banking/single-page-app
    :to :banking/api-application
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/mobile-app-calls-api-application
    :from :banking/mobile-app
    :to :banking/api-application
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/api-application-uses-database
    :from :banking/api-application
    :to :banking/database
    :name "Reads from and writes to"
    :tech "Datalog"}
-  {:el :rel
+  {:el :request
    :id :banking/api-application-uses-email-system
    :from :banking/api-application
    :to :banking/email-system
    :name "Sends e-mail using"}
-  {:el :rel
+  {:el :reqest
    :id :banking/api-application-uses-mainframe-banking-system
    :from :banking/api-application
    :to :banking/mainframe-banking-system
@@ -325,69 +325,69 @@
   ;;
   ;; Component level relations
   ;;
-  {:el :rel
+  {:el :request
    :id :banking/single-page-app-calls-sign-in-controller
    :from :banking/single-page-app
    :to :banking/sign-in-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/single-page-app-calls-reset-password-controller
    :from :banking/single-page-app
    :to :banking/reset-password-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/single-page-app-calls-accounts-summary-controller
    :from :banking/single-page-app
    :to :banking/accounts-summary-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/mobile-app-calls-sign-in-controller
    :from :banking/mobile-app
    :to :banking/sign-in-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/mobile-app-calls-reset-password-controller
    :from :banking/mobile-app
    :to :banking/reset-password-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/mobile-app-calls-accounts-summary-controller
    :from :banking/mobile-app
    :to :banking/accounts-summary-controller
    :name "Makes API calls to"
    :tech "Transit/HTTPS"}
-  {:el :rel
+  {:el :request
    :id :banking/sign-in-controller-uses-security-component
    :from :banking/sign-in-controller
    :to :banking/security-component
    :name "Uses"}
-  {:el :rel
+  {:el :request
    :id :banking/reset-password-controller-uses-email-component
    :from :banking/reset-password-controller
    :to :banking/email-component
    :name "Uses"}
-  {:el :rel
+  {:el :request
    :id :banking/accounts-summary-controller-uses-mainframe-banking-system-facade
    :from :banking/accounts-summary-controller
    :to :banking/mainframe-banking-system-facade
    :name "Uses"}
-  {:el :rel
+  {:el :request
    :id :banking/security-component-uses-database
    :from :banking/security-component
    :to :banking/database
    :name "Reads from and writes to"
    :tech "Datalog"}
-  {:el :rel
+  {:el :request
    :id :banking/email-component-uses-email-system
    :from :banking/email-component
    :to :banking/email-system
    :name "Sends e-mail using"}
-  {:el :rel
+  {:el :request
    :id :banking/mainframe-banking-system-facade-calls-mainframe-banking-system
    :from :banking/mainframe-banking-system-facade
    :to :banking/mainframe-banking-system

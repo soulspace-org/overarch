@@ -41,7 +41,6 @@
   "Update the accumulator `acc` of the hierarchical model with the element `e`."
   [acc p e]
   (cond
-    ; TODO handle refs
     (el/model-node? e)
     (if (el/child? e p)
       (let [r {:el :parent-of
@@ -80,7 +79,7 @@
     ; unhandled element
     :else (do (println "Unhandled:" e) acc)))
 
-(defn relational-model-fn
+(defn ->relational-model
   "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
   ([] [{:type :relational
         :nodes #{}
@@ -97,7 +96,7 @@
 (defn build-relational-model
   "Builds a relational working model from the hierarchical inpur model."
   [coll]
-  (let [relational (model/traverse relational-model-fn coll)]
+  (let [relational (model/traverse ->relational-model coll)]
     ; TODO add registries
     ; :id->element
     ; :id->referred-relations
