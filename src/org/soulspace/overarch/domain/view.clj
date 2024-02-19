@@ -258,10 +258,10 @@
    Checks both sides of a relation."
   [model view e]
   (or (and (= :rel (:el e))
-           (render-model-node? view (model/get-model-element model (:from e)))
-           (render-model-node? view (model/get-model-element model (:to e))))
+           (render-model-node? view (model/model-element model (:from e)))
+           (render-model-node? view (model/model-element model (:to e))))
       (and (render-model-node? view e)
-           (el/internal? (model/get-parent-element model e)))))
+           (el/internal? (model/parent-element model e)))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.

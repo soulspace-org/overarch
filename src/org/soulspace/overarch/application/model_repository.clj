@@ -114,7 +114,19 @@
      [(update-acc res p e) (conj ctx e)])))
 
 (defn build-model
-  "Builds the working model from the input `coll` of elements."
+  "Builds the working model from the input `coll` of elements.
+   
+   The map contains the following keys:
+
+   :elements               -> the given data
+   :nodes                  -> the set of nodes (incl. child nodes)
+   :relations              -> the set of relations (incl. parent-of relations)
+   :views                  -> the set of views
+   :id->element            -> a map from id to element
+   :id->parent             -> a map from id to parent element
+   :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
+   :referred-id->relations -> a map from id to set of relations where the id is referred (:to)
+   "
   [coll]
   (let [relational (model/traverse ->relational-model coll)]
     (assoc relational :elements coll)))

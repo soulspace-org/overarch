@@ -27,15 +27,15 @@
   )
 
 (defmethod exp/export-file :edn
-  [m format options ]
+  [model format options ]
   (let [dir-name (str (:export-dir options) "/edn/")
-        file (namespace (:id (first (model/get-model-elements m))))]
+        file (namespace (:id (first (model/model-elements model))))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/" file ".edn"))))
 
 (defmethod exp/export :edn
-  [m format options]
+  [model format options]
   ; FIXME files per namespace
-  (with-open [wrt (io/writer (exp/export-file m format options))]
+  (with-open [wrt (io/writer (exp/export-file model format options))]
     (binding [*out* wrt]
-      (println (str/join "\n" (doall (export-model m)))))))
+      (println (str/join "\n" (doall (export-model model)))))))

@@ -28,21 +28,21 @@
 ; TODO add model parameter to resolve referrers and referred
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
-  (fn [e _ _] (:el e))
+  (fn [model e _ _] (:el e))
   :hierarchy #'element-hierarchy)
 
 (defmethod render-element :concept
-  [e options view]
+  [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
 
 (defmethod render-element :person
-  [e options view]
+  [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
 
 (defmethod render-element :architecture-model-element
-  [e options view]
+  [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))
    ; TODO model
@@ -51,15 +51,15 @@
    ])
 
 (defmethod render-element :rel
-  [e options view]
+  [model e options view]
   "")
 
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
-  [m options view]
-  (let [children (sort-by :name (view/elements-in-view m view))]
+  [model options view]
+  (let [children (sort-by :name (view/elements-in-view model view))]
     (flatten [(md/h1 (:title view))
-              (map #(render-element % options view) children)])))
+              (map #(render-element model % options view) children)])))
 
 ;;;
 ;;; Markdown Rendering dispatch
@@ -75,7 +75,7 @@
   (contains? markdown-views (:el view)))
 
 (defmethod rndr/render-file :markdown
-  [m format options view]
+  [model format options view]
   (let [dir-name (str (:render-dir options) "/markdown/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
@@ -83,13 +83,13 @@
                      (name (:id view)) ".md"))))
 
 (defmethod rndr/render-view :markdown
-  [m format options view]
-  (with-open [wrt (io/writer (rndr/render-file m format options view))]
+  [model format options view]
+  (with-open [wrt (io/writer (rndr/render-file model format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-markdown-view m options view))))))
+      (println (str/join "\n" (render-markdown-view model options view))))))
 
 (defmethod rndr/render :markdown
-  [m format options]
-  (doseq [view (view/get-views m)]
+  [model format options]
+  (doseq [view (view/get-views model)]
     (when (markdown-view? view)
-      (rndr/render-view m format options view))))
+      (rndr/render-view model format options view))))

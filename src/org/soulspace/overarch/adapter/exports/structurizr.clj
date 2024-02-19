@@ -77,13 +77,13 @@
         (when (:tech e) (str " \"" (:tech e) "\"")))])
 
 (defmethod render-element :model-element
-  [m indent e]
+  [model indent e]
   (if (:ct e)
-    (let [children (map (partial model/resolve-element m) (:ct e))]
+    (let [children (map (partial model/resolve-element model) (:ct e))]
       [(str (view/render-indent indent) (alias-name (:id e)) " = "
             (element-type->structurizr (:el e))
             " \"" (view/element-name e) "\" {")
-       (map (partial render-element m (+ indent 2)) children)
+       (map (partial render-element model (+ indent 2)) children)
        (str (view/render-indent indent) "}")])
     [(str (view/render-indent indent) (alias-name (:id e)) " = "
           (element-type->structurizr (:el e))
@@ -91,16 +91,16 @@
 
 (defn render-model
   "Renders the structurizr model."
-  [m elements]
+  [model elements]
   (flatten [(str (view/render-indent 2) "model {")
-            (map (partial render-element m 4) 
+            (map (partial render-element model 4) 
                  (filter structurizr-element? elements))
             (str (view/render-indent 2) "}")])
   )
 
 (defn render-view
   "Renders a structurizr view."
-  [m view]
+  [model view]
   (flatten [(str (view/render-indent 4)
                  (view-type->structurizr (:el view))
                  " \"" (sstr/first-upper-case
@@ -108,8 +108,8 @@
                          (view-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
               (let [children (filter e/relation?
-                                     (view/elements-to-render m view))]
-                (map (partial render-element m 6) children))
+                                     (view/elements-to-render model view))]
+                (map (partial render-element model 6) children))
               (str (view/render-indent 6) "include *\n"))
             (when (:title view)
               (str (view/render-indent 6) "description \"" (:title view) "\"\n"))
@@ -117,32 +117,32 @@
 
 (defn render-views
   "Renders the structurizr views."
-  [m views]
+  [model views]
   (flatten [(str (view/render-indent 2) "views {")
-            (map (partial render-view m) (filter structurizr-view? views))
+            (map (partial render-view model) (filter structurizr-view? views))
             (str (view/render-indent 4) "theme default")
             (str (view/render-indent 2) "}")]))
 
 (defn render-workspace
   "Renders a structurizr workspace."
-  [m]
+  [model]
   (flatten [(str "workspace {")
-            (render-model m (model/get-model-elements m))
-            (render-views m (view/get-views m))
+            (render-model model (model/model-elements model))
+            (render-views model (view/get-views model))
             "}"]))
 
 (defmethod exp/export-file :structurizr
-  [m format options]
+  [model format options]
   (let [dir-name (str (:export-dir options) "/structurizr/")
-        workspace (namespace (:id (first (model/get-model-elements m))))]
+        workspace (namespace (:id (first (model/model-elements model))))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/" workspace ".dsl"))))
 
 (defmethod exp/export :structurizr
-  [m format options]
-  (with-open [wrt (io/writer (exp/export-file m format options))]
+  [model format options]
+  (with-open [wrt (io/writer (exp/export-file model format options))]
     (binding [*out* wrt]
-      (println (str/join "\n" (doall (render-workspace m)))))))
+      (println (str/join "\n" (doall (render-workspace model)))))))
 
 (comment
   (render-workspace @model/state)

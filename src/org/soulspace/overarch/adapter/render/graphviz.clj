@@ -65,8 +65,8 @@
 
 (defn render-graphviz-view
   "Renders the `view` with graphviz according to the given `options`."
-  [m options view]
-  (let [children (sort-by :name (view/elements-in-view m view))]
+  [model options view]
+  (let [children (sort-by :name (view/elements-in-view model view))]
     (flatten [(str "digraph \"" (:title view) "\" {")
               "labelloc= \"t\""
               (str "label=\"" (:title view) "\"")
@@ -87,7 +87,7 @@
   (contains? graphviz-views (:el view)))
 
 (defmethod rndr/render-file :graphviz
-  [m format options view]
+  [model format options view]
   (let [dir-name (str (:render-dir options) "/graphviz/"
                       (namespace (:id view)))]
     (file/create-dir (io/as-file dir-name))
@@ -95,10 +95,10 @@
                      (name (:id view)) ".dot"))))
 
 (defmethod rndr/render-view :graphviz
-  [m format options view]
-  (with-open [wrt (io/writer (rndr/render-file m format options view))]
+  [model format options view]
+  (with-open [wrt (io/writer (rndr/render-file model format options view))]
     (binding [*out* wrt]
-      (println (str/join "\n" (render-graphviz-view m options view))))))
+      (println (str/join "\n" (render-graphviz-view model options view))))))
 
 (defmethod rndr/render :graphviz
   [m format options]
