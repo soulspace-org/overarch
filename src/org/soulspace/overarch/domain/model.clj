@@ -213,7 +213,8 @@
         parents (traverse id->parent elements)
         referrer (traverse el/relation? referrer-id->rel elements)
         referred (traverse el/relation? referred-id->rel elements)]
-    {:elements elements
+    {:type :hierarchical
+     :elements elements
      :registry registry
      :parents parents
      :referrer referrer

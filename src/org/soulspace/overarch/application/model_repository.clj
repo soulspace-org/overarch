@@ -44,14 +44,19 @@
     ; TODO handle refs
     (el/model-node? e)
     (if (el/child? e p)
-      (assoc acc
-             :nodes (conj (:nodes acc) (dissoc e :ct))
-             :relations (conj (:relations acc)
-                              {:el :parent-of
-                               :id (el/relation-id :parent-of (:id p) (:id e))
-                               :from (:id p)
-                               :to (:id e)}))
-      (assoc acc :nodes (conj (:nodes acc) (dissoc e :ct))))
+      (let [r {:el :parent-of
+               :id (el/relation-id :parent-of (:id p) (:id e))
+               :from (:id p)
+               :to (:id e)}]
+        (assoc acc
+               :nodes (conj (:nodes acc)
+                            ;(dissoc e :ct)
+                            e)
+               :relations (conj (:relations acc)
+                                r)))
+      (assoc acc :nodes (conj (:nodes acc)
+                              ;(dissoc e :ct)
+                              e)))
 
     (el/relation? e)
     (assoc acc :relations (conj (:relations acc) e))
@@ -62,12 +67,13 @@
     (el/reference? e)
     (if (el/model-node? p)
       ; reference is a child of a node, create relation
-      (assoc acc
-             :relations (conj (:relations acc)
-                              {:el :parent-of
-                               :id (el/relation-id :parent-of (:id p) (:ref e))
-                               :from (:id p)
-                               :to (:ref e)}))
+      (let [r {:el :parent-of
+               :id (el/relation-id :parent-of (:id p) (:ref e))
+               :from (:id p)
+               :to (:ref e)}]
+        (assoc acc
+               :relations (conj (:relations acc)
+                                r)))
       ; reference is a child of a view, leave as is
       acc)
     
@@ -76,9 +82,10 @@
 
 (defn relational-model-fn
   "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
-  ([] [{:nodes #{}
-       :relations #{}
-       :views #{}} '()])
+  ([] [{:type :relational
+        :nodes #{}
+        :relations #{}
+        :views #{}} '()])
   ([[res ctx]]
    (if-not (empty? ctx)
      [res (pop ctx)]
@@ -95,7 +102,7 @@
     ; :id->element
     ; :id->referred-relations
     ; :id->referrer-relations
-    relational))
+    (assoc relational :elements coll)))
 
 (comment
   (update-state! "models")
