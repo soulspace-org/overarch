@@ -107,7 +107,7 @@
         (puml/alias-name (:id e)) ", \""
         (view/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-        (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (if (:sprite e)
           (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
           (when (puml/sprite? (:tech e))
