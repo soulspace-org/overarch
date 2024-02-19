@@ -13,23 +13,10 @@
 ;;;
 ;;; Rendering
 ;;;
-(def element-hierarchy
-  "Hierarchy for elements to render."
-  (-> (make-hierarchy)
-      (derive :enterprise-boundary :architecture-model-element)
-      (derive :context-boundary    :architecture-model-element)
-      (derive :system-boundary     :architecture-model-element)
-      (derive :container-boundary  :architecture-model-element)
-      (derive :system              :architecture-model-element)
-      (derive :container           :architecture-model-element)
-      (derive :component           :architecture-model-element)
-      ))
-
-; TODO add model parameter to resolve referrers and referred
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
   (fn [model e _ _] (:el e))
-  :hierarchy #'element-hierarchy)
+  :hierarchy #'view/element-hierarchy)
 
 (defmethod render-element :concept
   [model e options view]
@@ -41,7 +28,7 @@
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))])
 
-(defmethod render-element :architecture-model-element
+(defmethod render-element :technical-architecture-node
   [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))
@@ -50,7 +37,14 @@
    ;  (md/h3 "Referres to "))
    ])
 
-(defmethod render-element :rel
+(defmethod render-element :boundary
+  [model e options view]
+  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+   (md/p (:desc e))
+   ])
+
+
+(defmethod render-element :relation
   [model e options view]
   "")
 

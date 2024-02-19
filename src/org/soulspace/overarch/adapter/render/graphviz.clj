@@ -23,33 +23,25 @@
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
-(def element-hierarchy
-  "Hierarchy for elements to render."
-  (-> (make-hierarchy)
-      (derive :enterprise-boundary :architecture-model-element)
-      (derive :context-boundary    :architecture-model-element)
-      (derive :system              :architecture-model-element)
-      (derive :container           :architecture-model-element)))
-
 (defmulti render-element
   "Renders an element `e` in the `view` with markdown according to the given `options`."
-  (fn [e _ _] (:el e))
-  :hierarchy #'element-hierarchy)
+  (fn [model e _ _] (:el e))
+  :hierarchy #'view/element-hierarchy)
 
 (defmethod render-element :concept
-  [e indent view]
+  [model e indent view]
   [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
-(defmethod render-element :architecture-model-element
-  [e indent view]
+(defmethod render-element :technical-architecture-node
+  [model e indent view]
   [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
 (defmethod render-element :person
-  [e indent view]
+  [model e indent view]
   [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
-(defmethod render-element :rel
-  [e indent view]
+(defmethod render-element :relation
+  [model e indent view]
   [(str (alias-name (:from e)) " -> " (alias-name (:to e))
         " [label=\"" (:name e) "\"];")])
 
@@ -71,7 +63,7 @@
               "labelloc= \"t\""
               (str "label=\"" (:title view) "\"")
               (render-layout view)
-              (map #(render-element % 0 view) children)
+              (map #(render-element model % 0 view) children)
               "}"])))
 
 ;;;
