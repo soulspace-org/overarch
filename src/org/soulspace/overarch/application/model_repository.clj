@@ -61,7 +61,10 @@
                                 r)
                :id->element (assoc (:id->element acc)
                                    (:id e) e
-                                   (:id r) r)))
+                                   (:id r) r)
+               ; currently only one parent is supported here
+               :id->parent (assoc (:id->parent acc)
+                                  (:id e) p)))
       ; not a child node, just add the node
       (assoc acc
              :nodes (conj (:nodes acc)
@@ -74,7 +77,10 @@
     (assoc acc
            :relations (conj (:relations acc) e)
            :id->element (assoc (:id->element acc)
-                               (:id e) e))
+                               (:id e) e)
+           ;:referrer-id->relations (assoc ((:from e) acc) )
+           ;:referred-id->relations (assoc (:to e))
+           )
 
     (view/view? e)
     (assoc acc
@@ -93,7 +99,10 @@
                :relations (conj (:relations acc)
                                 r)
                :id->element (assoc (:id->element acc)
-                                   (:id r) r)))
+                                   (:id r) r)
+               ; currently only one parent is supported here
+               :id->parent (assoc (:id->parent acc)
+                                  (:id e) p)))
       ; reference is a child of a view, leave as is
       acc)
     
