@@ -41,8 +41,6 @@
   "Update the accumulator `acc` of the hierarchical model with the element `e`."
   [acc p e]
     ; TODO fill lookup maps
-    ; :id->element
-    ; :id->parent
     ; :referred-id->relations
     ; :referrer-id->relations
   (cond
@@ -63,8 +61,12 @@
                                    (:id e) e
                                    (:id r) r)
                ; currently only one parent is supported here
+               ; all parents are reachable via :parent-of relations
                :id->parent (assoc (:id->parent acc)
-                                  (:id e) p)))
+                                  (:id e) p)
+               ;:referrer-id->relations (assoc ((:from e) acc) )
+               ;:referred-id->relations (assoc (:to e))
+               ))
       ; not a child node, just add the node
       (assoc acc
              :nodes (conj (:nodes acc)
@@ -102,7 +104,10 @@
                                    (:id r) r)
                ; currently only one parent is supported here
                :id->parent (assoc (:id->parent acc)
-                                  (:id e) p)))
+                                  (:id e) p)
+               ;:referrer-id->relations (assoc ((:from e) acc) )
+               ;:referred-id->relations (assoc (:to e))
+               ))
       ; reference is a child of a view, leave as is
       acc)
     
