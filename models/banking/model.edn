@@ -315,7 +315,7 @@
    :from :banking/api-application
    :to :banking/email-system
    :name "Sends e-mail using"}
-  {:el :reqest
+  {:el :request
    :id :banking/api-application-uses-mainframe-banking-system
    :from :banking/api-application
    :to :banking/mainframe-banking-system
