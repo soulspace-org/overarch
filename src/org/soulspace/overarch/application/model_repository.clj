@@ -40,6 +40,11 @@
 (defn update-acc
   "Update the accumulator `acc` of the hierarchical model with the element `e`."
   [acc p e]
+    ; TODO fill lookup maps
+    ; :id->element
+    ; :id->parent
+    ; :referred-id->relations
+    ; :referrer-id->relations
   (cond
     (el/model-node? e)
     (if (el/child? e p)
@@ -84,7 +89,12 @@
   ([] [{:type :relational
         :nodes #{}
         :relations #{}
-        :views #{}} '()])
+        :views #{} 
+        :id->element {}
+        :id->parent {}
+        :referred-id->relations {}
+        :referrer-id->relations {}
+        } '()])
   ([[res ctx]]
    (if-not (empty? ctx)
      [res (pop ctx)]
@@ -97,10 +107,6 @@
   "Builds a relational working model from the hierarchical inpur model."
   [coll]
   (let [relational (model/traverse ->relational-model coll)]
-    ; TODO add registries
-    ; :id->element
-    ; :id->referred-relations
-    ; :id->referrer-relations
     (assoc relational :elements coll)))
 
 (comment
