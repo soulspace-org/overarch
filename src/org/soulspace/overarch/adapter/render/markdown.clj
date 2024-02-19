@@ -46,7 +46,7 @@
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))
    ; TODO model
-   ;(when ((:id e) (:referred model))
+   ;(when ((:id e) (:referred-id->relations model))
    ;  (md/h3 "Referres to "))
    ])
 

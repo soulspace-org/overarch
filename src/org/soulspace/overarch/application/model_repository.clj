@@ -48,6 +48,7 @@
   (cond
     (el/model-node? e)
     (if (el/child? e p)
+      ; a child node, add a parent-of relationship, too
       (let [r {:el :parent-of
                :id (el/relation-id :parent-of (:id p) (:id e))
                :from (:id p)
@@ -57,27 +58,42 @@
                             ;(dissoc e :ct)
                             e)
                :relations (conj (:relations acc)
-                                r)))
-      (assoc acc :nodes (conj (:nodes acc)
-                              ;(dissoc e :ct)
-                              e)))
+                                r)
+               :id->element (assoc (:id->element acc)
+                                   (:id e) e
+                                   (:id r) r)))
+      ; not a child node, just add the node
+      (assoc acc
+             :nodes (conj (:nodes acc)
+                          ;(dissoc e :ct)
+                          e)
+             :id->element (assoc (:id->element acc)
+                                 (:id e) e)))
 
     (el/relation? e)
-    (assoc acc :relations (conj (:relations acc) e))
+    (assoc acc
+           :relations (conj (:relations acc) e)
+           :id->element (assoc (:id->element acc)
+                               (:id e) e))
 
     (view/view? e)
-    (assoc acc :views (conj (:views acc) e))
+    (assoc acc
+           :views (conj (:views acc) e)
+           :id->element (assoc (:id->element acc)
+                               (:id e) e))
 
     (el/reference? e)
     (if (el/model-node? p)
-      ; reference is a child of a node, create relation
+      ; reference is a child of a node, add a parent-of relationship
       (let [r {:el :parent-of
                :id (el/relation-id :parent-of (:id p) (:ref e))
                :from (:id p)
                :to (:ref e)}]
         (assoc acc
                :relations (conj (:relations acc)
-                                r)))
+                                r)
+               :id->element (assoc (:id->element acc)
+                                   (:id r) r)))
       ; reference is a child of a view, leave as is
       acc)
     
@@ -112,11 +128,11 @@
 (comment
   (update-state! "models")
   
-  (= (:parents @state) (model/traverse model/id->parent (:elements @state)))
-  (= (:registry @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
-  (= (:parents @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
-  (= (:referred @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
-  (= (:referrer @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
+  (= (:id->parent @state) (model/traverse model/id->parent (:elements @state)))
+  (= (:id->element @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
+  (= (:id->parent @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
+  (= (:referred-id->relations @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
+  (= (:referrer-id->relations @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
   (build-relational-model (elements))
 
   ;

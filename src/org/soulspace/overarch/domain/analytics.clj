@@ -105,8 +105,8 @@
   ; TODO registry contains relations and views
   (let [id-set (into #{} node-ids-xf (model/all-elements model))]
     (set/difference id-set
-                    (key-set (:referrer model))
-                    (key-set (:referred model)))))
+                    (key-set (:referrer-id->relations model))
+                    (key-set (:referred-id->relations model)))))
 
 (defn unresolved-related
   "Checks references in a relation."

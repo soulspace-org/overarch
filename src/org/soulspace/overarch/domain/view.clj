@@ -106,7 +106,7 @@
 (defn get-view
   "Returns the view with the given `id` from the `model`."
   ([model id]
-   ((:registry model) id)))
+   ((:id->element model) id)))
 
 (defn include-spec
   "Returns the include specification for the `view`."

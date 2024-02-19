@@ -36,18 +36,18 @@
 (defn get-model-element
   "Returns the model element with the given `id`."
   ([m id]
-   ((:registry m) id)))
+   ((:id->element m) id)))
 
 (defn get-parent-element
   "Returns the parent of the element `e`."
   ([m e]
-   ((:parents m) (:id e))))
+   ((:id->parent m) (:id e))))
 
 (defn parent
   "Returns the parent of the element `e`."
   [m e]
   ; TODO  implement based on relations
-  ((:parents m) (:id e)))
+  ((:id->parent m) (:id e)))
 
 (defn children
   "Returns the children of the element `e`."
@@ -80,7 +80,7 @@
 (defn all-elements
   "Returns a set of all elements."
   ([m]
-   (->> (:registry m)
+   (->> (:id->element m)
         (vals)
         (map (partial resolve-element m))
         (into #{}))))
@@ -200,22 +200,22 @@
    The map has the following shape:
 
    :elements -> the given data
-   :registry -> a map from id to element
-   :parents  -> a map from id to parent element
-   :referrer -> a map from id to set of relations where the id is the referrer (:from)
-   :referred -> a map from id to set of relations where the id is referred (:to)"
+   :id->element -> a map from id to element
+   :id->parent  -> a map from id to parent element
+   :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
+   :referred-id->relations -> a map from id to set of relations where the id is referred (:to)"
   [elements]
   ; TODO add additional keys :nodes, :relations, :views
   ; :nodes -> flat model nodes, no content
   ; :relations -> uniform relations (incl. parent/child)
   ; :views -> views with content
-  (let [registry (traverse el/identifiable? id->element elements)
+  (let [id->element (traverse el/identifiable? id->element elements)
         parents (traverse id->parent elements)
-        referrer (traverse el/relation? referrer-id->rel elements)
-        referred (traverse el/relation? referred-id->rel elements)]
+        referrer-id->relations (traverse el/relation? referrer-id->rel elements)
+        referred-id->relations (traverse el/relation? referred-id->rel elements)]
     {:type :hierarchical
      :elements elements
-     :registry registry
-     :parents parents
-     :referrer referrer
-     :referred referred}))
+     :id->element id->element
+     :id->parent parents
+     :referrer-id->relations referrer-id->relations
+     :referred-id->relations referred-id->relations}))
