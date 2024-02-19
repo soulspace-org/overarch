@@ -6,6 +6,9 @@ Version 0.10.0
 * added support for new semantical relation types in architecture and deployment models
 * added reporting for unresolvable references in relations
 * removed rendering of ids as transition names in statemachines
+* separated domain model from external data representation
+  * domain model can be navigated relationally and hierarchically
+* added/refactored model accessor functions
 * refactored model checks
 * refactored and enhanced tests
 * refactored and enhanced example models
@@ -20,9 +23,6 @@ Version 0.9.0
 * enhanced model information
 * refactored reference resolution
 * refactored and enhanced hierarchical model traversal
-* (WIP) added support for new semantical relation types in architecture and deployment models
-* (WIP) separated domain model from external data representation
-  * provide an internal relational working model in addition to the hierarchical input model
 * fixed arity exeption in structurizr export
 
 
