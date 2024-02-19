@@ -97,7 +97,10 @@
 
 (def relation-types
   "Element types of relations"
-  (set/union #{:rel} uml-relation-types))
+  (set/union #{:rel}
+             architecture-relation-types
+             deployment-relation-types
+             uml-relation-types))
 
 (def reference-types
   "Element types of references"
