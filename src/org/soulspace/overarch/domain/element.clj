@@ -248,6 +248,11 @@
   [e]
   (:unresolved-ref e))
 
+(defn relation-of?
+  "Returns true if the given element `e` is a relation of kind `kind`."
+  [e kind]
+  (and (relational-element? e) (= (:el e) kind)))
+
 ;;
 ;; Functions 
 ;;
