@@ -12,6 +12,7 @@ Version 0.10.0
 * refactored model checks
 * refactored and enhanced tests
 * refactored and enhanced example models
+* updated design documentation
 
 
 Version 0.9.0

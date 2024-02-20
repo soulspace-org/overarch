@@ -146,13 +146,16 @@ A: An extension of the model could make sense if there is value in the
 
 Q: **How can reusability of the models and views be achieved?**
 
-A: With :ref the reusablility of model elements in different views is archieved,
-   which is a benefit over the diagram focused specification in the PlantUML
-   C4 DSL, where you often have to duplicate information in the different diagrams.
-   Also the same view may be rendered in different formats, e.g. a diagram and a
-   textual description of the elements shown in the diagram.
+A: With :ref the reusablility of model elements in different views is
+   archieved, which is a benefit over the diagram focused specification in the
+   PlantUML C4 DSL, where you often have to duplicate information in the
+   different diagrams. Also the same view may be rendered in different formats,
+   e.g. a diagram and a textual description of the elements shown in the
+   diagram.
 
-   Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory, namespaced IDs to avoid conflicts and :ref's to refer to other model elements.
+   Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory,
+   namespaced IDs to avoid conflicts and :ref's to refer to other model
+   elements.
 
    Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
@@ -175,6 +178,13 @@ A: Implicit boundaries make the model more succinct.
    Implemented.
 
 
+Q: **Which kinds of relations are neccessary in the architectural model to express the different semantics of the connections of the architectural nodes?**
+
+
+
+A: 
+
+
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
    
    The relation between a user and a user interface component would be rendered directly in a component diagram. In a container diagram, the relation would be rendered between the user and the container of the user interface component. In a system diagram, the relation would be rendered between the user and the system of the user interface component.
@@ -184,17 +194,9 @@ Q: **Shall relations between low level elements (e.g. components) and the outsid
    in the diagram should be rendered. If a user or an external system is
    not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted elements.
 
-   Relations of different elements in a lower level could be merged into a relation
-   on a higher level, but some merge rules would have to be established first.
-
-A: 
-
-
-Q: **Shall relations be automatically included in a view, when the participating components are included?**
-
-   That would make the specification of the views much shorter but relations
-   may be included, that should not be shown in the view. If there has to be an
-   exclude mechanism, the usability of automatic inclusion would shrink much.
+   Relations of different elements in a lower level could be merged into a
+   relation on a higher level, but some merge rules would have to be
+   established first.
 
 A: 
 
@@ -247,7 +249,30 @@ Q: **Should a flat model be used (internally)?**
    alternatively modelled as a relation, which would make some model queries
    simpler.
 
-A:  
+A: By decoupling the external representation of the model, the input model,
+   from the internal model, the domain model, we gain a degree of freedom in
+   the implementation of the domain model. The input model should be
+   transformed to the domain model after reading. In the transformation,
+   synthetic parent-of relations should be generated for the parent-child
+   relations in the model expressed be the content of the ```:ct``` key
+   of an element. By doing so, but leaving the content of the ```:ct```
+   intact, the domain model could be traversed in a hierarchical and a
+   relational manner.
+
+   With the insertion of the parent-of relations, the whole model is
+   represented as a graph consisting of model nodes and relations.
+   As such it can be navigated and queried with graph algorithms in addition to
+   the tree traversal via the ```:ct``` key of the the elements.
+   
+
+Q: **Shall relations be automatically included in a view, when the participating components are included?**
+
+   That would make the specification of the views much shorter but relations
+   may be included, that should not be shown in the view. If there has to be an
+   exclude mechanism, the usability of automatic inclusion would shrink much.
+
+A: The automatic inclusion of elements should be controlled on a per view
+   basis, without a default automatism.
 
 
 Q: **Can views be specified in a generic manner, so that the elements contained in a view are selected with criteria based selectors/filters?**
