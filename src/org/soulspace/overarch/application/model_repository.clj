@@ -4,6 +4,15 @@
             [org.soulspace.overarch.domain.spec :as spec]
             [org.soulspace.overarch.domain.view :as view]))
 
+(defn parent-of-relation
+  "Returns a parent-of relation for parent `p` and element `e`."
+  [p-id e-id]
+  {:el :parent-of
+   :id (el/relation-id :parent-of p-id e-id)
+   :from p-id
+   :to e-id
+   :name "contains"})
+
 (defn update-acc
   "Update the accumulator `acc` of the model with the element `e`
    in the context of the parent `p` (if given)."
@@ -13,10 +22,7 @@
     (el/model-node? e)
     (if (el/child? e p)
       ; a child node, add a parent-of relationship, too
-      (let [r {:el :parent-of
-               :id (el/relation-id :parent-of (:id p) (:id e))
-               :from (:id p)
-               :to (:id e)}]
+      (let [r (parent-of-relation (:id p) (:id e))]
         (assoc acc
                :nodes (conj (:nodes acc)
                             ;(dissoc e :ct)
@@ -64,10 +70,7 @@
     (el/reference? e)
     (if (el/model-node? p)
       ; reference is a child of a node, add a parent-of relationship
-      (let [r {:el :parent-of
-               :id (el/relation-id :parent-of (:id p) (:ref e))
-               :from (:id p)
-               :to (:ref e)}]
+      (let [r (parent-of-relation (:id p) (:ref e))]
         (assoc acc
                :relations (conj (:relations acc)
                                 r)
@@ -122,7 +125,7 @@
    :nodes                  -> the set of nodes (incl. child nodes)
    :relations              -> the set of relations (incl. parent-of relations)
    :views                  -> the set of views
-   :id->element            -> a map from id to element
+   :id->element            -> a map from id to element (nodes, relations and views)
    :id->parent             -> a map from id to parent element
    :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
    :referred-id->relations -> a map from id to set of relations where the id is referred (:to)
