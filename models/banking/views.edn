@@ -122,6 +122,7 @@
 
   {:el :glossary-view
    :id :banking/glossary-view
+   :spec {:markdown {:references true}}
    :title "Glossary of the Banking System"
    :ct [{:ref :banking/personal-customer}
         {:ref :banking/email-system}
@@ -131,6 +132,7 @@
   
   {:el :concept-view
    :id :banking/concept-view
+   :spec {:markdown {:references true}}
    :title "Concept Map for the Banking System"
    :ct [;; concepts
         {:ref :banking/account-concept}

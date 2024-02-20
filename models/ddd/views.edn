@@ -9,7 +9,7 @@
    :id :ddd/concept-view
    :spec {:layout :left-right
           ;:engine :neato
-          }
+          :markdown {:references true}}
    :title "Concept Map of the Domain Driven Design Patterns"
    :ct [;;
         ;; Concepts
@@ -76,6 +76,7 @@
 
     {:el :glossary-view
      :id :ddd/glossary-view
+     :spec {:markdown {:references true}}
      :title "Concept Map of the Domain Driven Design Patterns"
      :ct [;;
         ;; Concepts

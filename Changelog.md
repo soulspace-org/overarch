@@ -5,6 +5,8 @@ Version 0.10.0
 --------------
 * added support for new semantical relation types in architecture and deployment models
 * added reporting for unresolvable references in relations
+* added support for references in markdown rendering
+  * configurable per view via spec
 * removed rendering of ids as transition names in statemachines
 * separated domain model from external data representation
   * domain model can be navigated relationally and hierarchically

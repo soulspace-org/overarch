@@ -183,7 +183,7 @@ A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
-#### Relation (:rel)
+#### Relations (:rel)
 Relations describe the connections and interactions of the parts of a view.
 
 #### Reference (:ref)
@@ -632,6 +632,15 @@ directory of the GraphViz installation.
 ### Markdown
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
+
+You can specify Markdown directives with the **:markdown** key of a
+view spec.
+
+#### Keys
+
+key              | type    | values                   | description 
+-----------------|---------|--------------------------|------------
+:references      | boolean | true, false              | render references for nodes
 
 
 Exports

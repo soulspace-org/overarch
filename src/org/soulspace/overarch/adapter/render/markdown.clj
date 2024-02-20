@@ -7,8 +7,18 @@
             [clojure.java.io :as io]
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.util.functions :as fn]
             [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.application.render :as rndr]))
+            [org.soulspace.overarch.application.render :as rndr]
+            [org.soulspace.overarch.domain.model :as model]))
+
+;;;
+;;; Predicates
+;;;
+(defn references?
+  "Returns true, if relations should be rendered."
+  [view]
+  (fn/truthy? (get-in view [:spec :markdown :references] false)))
 
 ;;;
 ;;; Rendering
@@ -18,24 +28,51 @@
   (fn [model e _ _] (:el e))
   :hierarchy #'view/element-hierarchy)
 
+(defn render-reference
+  "Renders the relation as reference."
+  [model rel]
+  (str (model/from-name model rel) " " 
+       (:name rel) " " 
+       (model/to-name model rel)))
+
 (defmethod render-element :concept
   [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))])
+   (md/p (:desc e))
+   (when (references? view)
+     (when-let [referrer ((:id e) (:referrer-id->relations model))]
+       [(md/h3 "Refers: ")
+        (map (partial render-reference model) referrer)])
+     (when-let [referred ((:id e) (:referred-id->relations model))]
+       [(md/h3 "Referred from: ")
+        (map (partial render-reference model) referred)]))
+   "\n"])
 
 (defmethod render-element :person
   [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))])
+   (md/p (:desc e))
+   (when (references? view)
+     (when-let [referrer ((:id e) (:referrer-id->relations model))]
+       [(md/h3 "Refers: ")
+        (map (partial render-reference model) referrer)])
+     (when-let [referred ((:id e) (:referred-id->relations model))]
+       [(md/h3 "Referred from: ")
+        (map (partial render-reference model) referred)]))
+   "\n"])
 
 (defmethod render-element :technical-architecture-node
   [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
    (md/p (:desc e))
-   ; TODO model
-   ;(when ((:id e) (:referred-id->relations model))
-   ;  (md/h3 "Referres to "))
-   ])
+   (when (references? view)
+     (when-let [referrer ((:id e) (:referrer-id->relations model))]
+       [(md/h3 "Refers: ")
+        (map (partial render-reference model) referrer)])
+     (when-let [referred ((:id e) (:referred-id->relations model))]
+       [(md/h3 "Referred from: ")
+        (map (partial render-reference model) referred)]))
+   "\n"])
 
 (defmethod render-element :boundary
   [model e options view]
