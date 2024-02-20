@@ -238,11 +238,13 @@
   {:el :uses
    :id :banking/personal-customer-uses-view-account
    :from :banking/personal-customer
-   :to :banking/view-account}
+   :to :banking/view-account
+   :name "uses"}
   {:el :uses
    :id :banking/personal-customer-uses-make-transaction
    :from :banking/personal-customer
-   :to :banking/make-transaction}
+   :to :banking/make-transaction
+   :name "uses"}
 
   ;;
   ;; Context level relations 
@@ -251,22 +253,22 @@
    :id :banking/personal-customer-uses-internet-banking-system
    :from :banking/personal-customer
    :to :banking/internet-banking-system
-   :name "Views account balances and makes payments using"}
+   :name "views account balances and makes payments using"}
   {:el :request
    :id :banking/internet-banking-system-uses-email-system
    :from :banking/internet-banking-system
    :to :banking/email-system
-   :name "Sends e-mail using"}
+   :name "sends e-mail using"}
   {:el :request
    :id :banking/internet-banking-system-using-mainframe-banking-system
    :from :banking/internet-banking-system
    :to :banking/mainframe-banking-system
-   :name "Gets account information from, and makes payments using"}
+   :name "gets account information from, and makes payments using"}
   {:el :send
    :id :banking/email-system-sends-mail-to-personal-customer
    :from :banking/email-system
    :to :banking/personal-customer
-   :name "Sends e-mail to"}
+   :name "sends e-mail to"}
 
   ;;
   ;; Container level relations 
@@ -275,51 +277,51 @@
    :id :banking/personal-customer-uses-web-app
    :from :banking/personal-customer
    :to :banking/web-app
-   :name "Visits bigbank.com/ib using"
+   :name "visits bigbank.com/ib using"
    :tech "HTTPS"}
   {:el :request
    :id :banking/personal-customer-uses-single-page-app
    :from :banking/personal-customer
    :to :banking/single-page-app
-   :name "Views account balances and makes payments using"}
+   :name "views account balances and makes payments using"}
   {:el :request
    :id :banking/personal-customer-uses-mobile-app
    :from :banking/personal-customer
    :to :banking/mobile-app
-   :name "Views account balances and makes payments using"}
+   :name "views account balances and makes payments using"}
   {:el :response
    :id :banking/web-app-deliveres-single-page-app
    :from :banking/web-app
    :to :banking/single-page-app
-   :name "Delivers to the customer's web browser"}
+   :name "delivers to the customer's web browser"}
   {:el :request
    :id :banking/single-page-app-calls-api-application
    :from :banking/single-page-app
    :to :banking/api-application
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/mobile-app-calls-api-application
    :from :banking/mobile-app
    :to :banking/api-application
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/api-application-uses-database
    :from :banking/api-application
    :to :banking/database
-   :name "Reads from and writes to"
+   :name "reads from and writes to"
    :tech "Datalog"}
   {:el :request
    :id :banking/api-application-uses-email-system
    :from :banking/api-application
    :to :banking/email-system
-   :name "Sends e-mail using"}
+   :name "sends e-mail using"}
   {:el :request
    :id :banking/api-application-uses-mainframe-banking-system
    :from :banking/api-application
    :to :banking/mainframe-banking-system
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "XML/HTTPS"}
 
   ;;
@@ -329,69 +331,69 @@
    :id :banking/single-page-app-calls-sign-in-controller
    :from :banking/single-page-app
    :to :banking/sign-in-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/single-page-app-calls-reset-password-controller
    :from :banking/single-page-app
    :to :banking/reset-password-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/single-page-app-calls-accounts-summary-controller
    :from :banking/single-page-app
    :to :banking/accounts-summary-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/mobile-app-calls-sign-in-controller
    :from :banking/mobile-app
    :to :banking/sign-in-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/mobile-app-calls-reset-password-controller
    :from :banking/mobile-app
    :to :banking/reset-password-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/mobile-app-calls-accounts-summary-controller
    :from :banking/mobile-app
    :to :banking/accounts-summary-controller
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "Transit/HTTPS"}
   {:el :request
    :id :banking/sign-in-controller-uses-security-component
    :from :banking/sign-in-controller
    :to :banking/security-component
-   :name "Uses"}
+   :name "uses"}
   {:el :request
    :id :banking/reset-password-controller-uses-email-component
    :from :banking/reset-password-controller
    :to :banking/email-component
-   :name "Uses"}
+   :name "uses"}
   {:el :request
    :id :banking/accounts-summary-controller-uses-mainframe-banking-system-facade
    :from :banking/accounts-summary-controller
    :to :banking/mainframe-banking-system-facade
-   :name "Uses"}
+   :name "uses"}
   {:el :request
    :id :banking/security-component-uses-database
    :from :banking/security-component
    :to :banking/database
-   :name "Reads from and writes to"
+   :name "reads from and writes to"
    :tech "Datalog"}
   {:el :request
    :id :banking/email-component-uses-email-system
    :from :banking/email-component
    :to :banking/email-system
-   :name "Sends e-mail using"}
+   :name "sends e-mail using"}
   {:el :request
    :id :banking/mainframe-banking-system-facade-calls-mainframe-banking-system
    :from :banking/mainframe-banking-system-facade
    :to :banking/mainframe-banking-system
-   :name "Makes API calls to"
+   :name "makes API calls to"
    :tech "XML/HTTPS"}
 
   ;;
@@ -401,26 +403,26 @@
    :id :banking/personal-customer-uses-atm
    :from :banking/personal-customer
    :to :banking/atm
-   :name "Withdraws cash using"}
+   :name "withdraws cash using"}
   {:el :rel
    :id :banking/personal-customer-asks-customer-service-stuff
    :from :banking/personal-customer
    :to :banking/customer-service-stuff
-   :name "Asks questions to"}
+   :name "asks questions to"}
   {:el :rel
    :id :banking/atm-uses-mainframe-banking-system
    :from :banking/atm
    :to :banking/mainframe-banking-system
-   :name "Uses"}
+   :name "uses"}
   {:el :rel
    :id :banking/customer-service-stuff-uses-mainframe-banking-system
    :from :banking/customer-service-stuff
    :to :banking/mainframe-banking-system
-   :name "Uses"}
+   :name "uses"}
   {:el :rel
    :id :banking/backoffice-stuff-uses-mainframe-banking-system
    :from :banking/backoffice-stuff
    :to :banking/mainframe-banking-system
-   :name "Uses"}
+   :name "uses"}
   ;
   }
