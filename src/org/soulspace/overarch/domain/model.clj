@@ -112,6 +112,22 @@
         (map (partial resolve-element model))
         (into #{}))))
 
+(defn from-name
+  "Returns the name of the from reference of the relation."
+  [model rel]
+  (->> rel
+       (:from)
+       (resolve-id model)
+       (:name)))
+
+(defn to-name
+  "Returns the name of the from reference of the relation."
+  [model rel]
+  (->> rel
+       (:from)
+       (resolve-id model)
+       (:name)))
+
 (defn related
   "Returns the related elements for the given collection of relations"
   ([model coll]
