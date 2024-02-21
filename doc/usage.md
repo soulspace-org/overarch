@@ -186,6 +186,16 @@ contain a set of other nodes or containers.
 #### Relations (:rel)
 Relations describe the connections and interactions of the parts of a view.
 
+kind        | sync/async  | dependency  | description
+------------|-------------|-------------|------------
+:request    | sync        | true        | synchrounous request
+:response   | sync        | false       | response to a synchronous request
+:send       | async       | true        | asynchronous point-to-point message
+:publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue)
+:subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue)
+:dataflow   | unspecified | unspecified | flow of data independent of the call semantic
+
+
 #### Reference (:ref)
 References refer to a model element with the given id. They are primarily used
 to refer to the model elements to include in views. They can also be used to
