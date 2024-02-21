@@ -7,35 +7,34 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.application.export :as exp]))
+            [org.soulspace.overarch.application.export :as exp]
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;
 ;; export model into edn files structured according to the types and namespaces of the elements
 ;;
 
 (defn elements-by-namespace
-  "Returns the elements of the `model` grouped by namespace."
-  [model]
-  
-  )
+  "Returns the elements of the `coll` grouped by namespace."
+  [coll]
+  (group-by el/element-namespace coll))
 
+(defn edn-filename
+  "Returns the filename for the `namespace` and the `kind` of data."
+  ([options namespace kind]
+   (let [dir-name (str (:export-dir options) "/edn/"
+                       (str/replace namespace "." "/") "/")]
+     (file/create-dir (io/as-file dir-name))
+     (io/as-file (str dir-name "/" kind ".edn")))))
 
-(defn export-model
-  "Exports the `model` as EDN files."
-  [model]
-   
-  )
-
-(defmethod exp/export-file :edn
-  [model format options ]
-  (let [dir-name (str (:export-dir options) "/edn/")
-        file (namespace (:id (first (model/model-elements model))))]
-    (file/create-dir (io/as-file dir-name))
-    (io/as-file (str dir-name "/" file ".edn"))))
+(defn write-edn
+  ""
+  [options namespace kind coll]
+  (with-open [wrt (io/writer (edn-filename options namespace kind))]
+   (binding [*out* wrt]
+     (println (str/join "\n" (doall coll))))))
 
 (defmethod exp/export :edn
   [model format options]
-  ; FIXME files per namespace
-  (with-open [wrt (io/writer (exp/export-file model format options))]
-    (binding [*out* wrt]
-      (println (str/join "\n" (doall (export-model model)))))))
+  ; TODO implement
+  )
