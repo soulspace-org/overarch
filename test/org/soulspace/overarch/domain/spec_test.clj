@@ -9,5 +9,5 @@
 
 (deftest check-test
   (testing "check valid"
-    (is (= mt/c4-model1 (check mt/c4-model1)))
-    (is (= mt/concept-model1 (check mt/concept-model1)))))
+    (is (= mt/c4-input1 (check mt/c4-input1)))
+    (is (= mt/concept-input1 (check mt/concept-input1)))))

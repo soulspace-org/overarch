@@ -174,7 +174,7 @@
         {:ref :test/ext-system1}]})
 
 (deftest referenced-model-nodes-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     (testing "referenced-model-nodes for container view"
       (are [x y] (= x y)
         3 (count (referenced-model-nodes c4-1 container-view1))
@@ -184,7 +184,7 @@
         5 (count (referenced-model-nodes c4-1 container-view2-relations))))))
 
 (deftest referenced-relations-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     (testing "referenced-relations for container view"
       (are [x y] (= x y)
         2 (count (referenced-relations c4-1 container-view1))
@@ -194,7 +194,7 @@
         0 (count (referenced-relations c4-1 container-view2-relations))))))
 
 (deftest referenced-elements-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     (testing "referenced-elements for container view"
       (are [x y] (= x y)
         5 (count (referenced-elements c4-1 container-view1))
@@ -204,7 +204,7 @@
         5 (count (referenced-elements c4-1 container-view2-relations))))))
 
 (deftest specified-model-nodes-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     ; TODO check
     (testing "specified-model-nodes for container view"
       (are [x y] (= x y)
@@ -215,7 +215,7 @@
         5 (count (specified-model-nodes c4-1 container-view2-relations))))))
 
 (deftest specified-relations-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     ; TODO check
     (testing "specified-relations for container view"
       (are [x y] (= x y)
@@ -226,7 +226,7 @@
         0 (count (specified-relations c4-1 container-view2-relations))))))
 
 (deftest specified-elements-test
-  (let [c4-1 (model/build-registry model-test/c4-model1)]
+  (let [c4-1 model-test/c4-model1]
     ; TODO check
     (testing "specified-elements for container view"
       (are [x y] (= x y)
@@ -237,7 +237,7 @@
         9 (count (specified-elements c4-1 container-view2-relations))))))
 
 (comment
-  (def c4-1 (model/build-registry model-test/c4-model1))
+  (def c4-1 model-test/c4-model1)
   (referenced-model-nodes c4-1 container-view1-related)
 
   (referenced-model-nodes c4-1 container-view1)
