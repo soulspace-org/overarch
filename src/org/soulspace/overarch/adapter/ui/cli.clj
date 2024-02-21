@@ -15,6 +15,7 @@
             ; require adapters here to register multimethods
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
+            [org.soulspace.overarch.adapter.exports.edn :as eex]
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
             [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
             [org.soulspace.overarch.adapter.render.markdown :as markdown]
@@ -232,6 +233,10 @@
 
   (al/check-views @repo/state)
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
+
+  (eex/elements-by-namespace (:nodes @repo/state))
+  (eex/elements-by-namespace (:relations @repo/state))
+  (eex/elements-by-namespace (:views @repo/state))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")

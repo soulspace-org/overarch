@@ -32,6 +32,7 @@
                (step-fn acc)))]
      (trav (step-fn) coll)))
   ([select-fn step-fn coll]
+   ; selection handled by th select function
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (first coll)]

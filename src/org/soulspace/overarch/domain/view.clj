@@ -343,6 +343,7 @@
       (derive :system                      :technical-architecture-node)
       (derive :container                   :technical-architecture-node)
       (derive :component                   :technical-architecture-node)
+      (derive :person                      :architecture-node)
       (derive :technical-architecture-node :architecture-node)
       (derive :architecture-node           :model-node)
       (derive :request                     :architecture-relation)
@@ -354,8 +355,7 @@
       (derive :link                        :deployment-relation)
       (derive :architecture-relation       :relation)
       (derive :deployment-relation         :relation)
-      (derive :rel                         :relation)
-      ))
+      (derive :rel                         :relation)))
 
 
 (comment

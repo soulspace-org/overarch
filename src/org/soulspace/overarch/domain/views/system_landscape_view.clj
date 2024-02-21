@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :system-landscape-view
   [view e]
-  (contains? e/context-types (:el e)))
+  (contains? e/context-view-types (:el e)))
 
 (defmethod view/include-content? :system-landscape-view
   [view e]
-  (contains? e/context-types (:el e)))
+  (contains? e/context-view-types (:el e)))
 
 (defmethod view/render-relation-node? :system-landscape-view
   [view e]

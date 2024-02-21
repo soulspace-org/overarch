@@ -16,52 +16,64 @@
   "Relation types in the architecture model."
   #{:rel :request :response :publish :subscribe :send :dataflow})
 
-(def context-types
+(def technical-architecture-node-types
+  "Technical node types in the architecture model."
+  #{:system :container :component})
+
+(def architecture-node-types
+  "Node types in the architecture model."
+  (set/union technical-architecture-node-types #{:person :enterprise-boundary :context-boundary}))
+
+(def context-view-types
   "Element types of a C4 context view."
   (set/union architecture-relation-types #{:person :system :enterprise-boundary :context-boundary}))
 
-(def container-types
+(def container-view-types
   "Element types of a C4 container view."
-  (set/union context-types #{:system-boundary :container}))
+  (set/union context-view-types #{:system-boundary :container}))
 
-(def component-types
+(def component-view-types
   "Element types of a C4 component view."
-  (set/union container-types #{:container-boundary :component}))
+  (set/union container-view-types #{:container-boundary :component}))
 
-(def code-types
+(def code-view-types
   "Element types of a C4 code view."
   #{})
 
-(def system-landscape-types
+(def system-landscape-view-types
   "Element types of a C4 system-landscape view."
-  context-types)
+  context-view-types)
 
 (def deployment-relation-types
   "Relation types for deployment models."
   #{:link})
 
-(def deployment-types
+(def deployment-node-types
+  "Node types for deployment models."
+  (set/union technical-architecture-node-types #{:node}))
+
+(def deployment-view-types
   "Element types of a C4 deployment view."
-  (set/union container-types deployment-relation-types #{:node}))
+  (set/union container-view-types deployment-relation-types #{:node}))
 
 (def dynamic-types
   "Element types of a C4 dynamic view."
-  component-types)
+  component-view-types)
 
 ;;
 ;; UML category definitions
 ;;
-(def use-case-types
+(def use-case-view-types
   "Element types of a use case view."
   #{:use-case :actor :person :system :context-boundary
     :uses :include :extends :generalizes})
 
-(def state-machine-types
+(def state-machine-view-types
   "Element types of a state machine view."
   #{:state-machine :start-state :end-state :state :transition
     :fork :join :choice :history-state :deep-history-state})
 
-(def class-types
+(def class-view-types
   "Element types of a class view."
   #{:class :enum :interface
     :field :method :function
@@ -73,20 +85,20 @@
   #{:uses :include :extends :generalizes :transition :composition
     :aggregation :dependency :association :inheritance :implementation})
 
-(def uml-types
+(def uml-view-types
   "Element types of UML views."
-  (set/union use-case-types state-machine-types class-types))
+  (set/union use-case-view-types state-machine-view-types class-view-types))
 
 ;;
 ;; Concept category definitions
 ;;
-(def concept-types
+(def concept-view-types
   "Element types of a concept view."
-  (set/union container-types #{:concept}))
+  (set/union container-view-types #{:concept}))
 
-(def glossary-types
+(def glossary-view-types
   "Element types of a glossary view."
-  (set/union container-types #{:concept}))
+  (set/union container-view-types #{:concept}))
 
 ;; 
 ;; General category definitions
@@ -108,7 +120,7 @@
 
 (def model-types
   "Element types for the architectural model."
-  (set/union component-types deployment-types uml-types concept-types relation-types))
+  (set/union component-view-types deployment-view-types uml-view-types concept-view-types relation-types))
 
 ;;
 ;; Predicates
@@ -179,21 +191,48 @@
   (not (external? e)))
 
 
-(defn relation?
-  "Returns true if the given element `e` is a relation."
-  [e]
-  (contains? relation-types (:el e)))
-
 (defn model-element?
   "Returns true if the given element `e` is a model element."
   [e]
   (contains? model-types (:el e)))
+
+(defn relation?
+  "Returns true if the given element `e` is a relation."
+  [e]
+  (contains? relation-types (:el e)))
 
 (defn model-node?
   "Returns true if the given element is a node in the model element graph.
    A model node is a model element which is not a relation."
   [e]
   (and (model-element? e) (not (relation? e))))
+
+(defn technical-architecture-node?
+  "Returns true if the given element `e` is a technical architecture node."
+  [e]
+  (contains? technical-architecture-node-types (:el e)))
+
+(defn architecture-node?
+  "Returns true if the given element `e` is a architecture node."
+  [e]
+  (contains? architecture-node-types (:el e)))
+
+(defn architecture-relation?
+  "Returns true if the given element `e` is a architecture relation."
+  [e]
+  (contains? architecture-relation-types (:el e)))
+
+(defn deployment-node?
+  "Returns true if the given element `e` is a deployment node."
+  [e]
+  (contains? deployment-node-types (:el e)))
+
+(defn deployment-relation?
+  "Returns true if the given element `e` is a deployment relation."
+  [e]
+  (contains? deployment-relation-types (:el e)))
+
+
 
 (defn child?
   "Returns true, if element `e` is a child of model element `p`."
@@ -259,7 +298,8 @@
 (defn element-namespace
   "Returns the namespace of the element `e`."
   [e]
-  (namespace (:id e)))
+  (when-let [id (:id e)]
+    (namespace id)))
 
 (defn relation-id
   "Generates an identifier for a relation `r`."

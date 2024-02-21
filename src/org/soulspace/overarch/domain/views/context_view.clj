@@ -5,11 +5,11 @@
 
 (defmethod view/render-model-node? :context-view
   [view e]
-  (contains? e/context-types (:el e)))
+  (contains? e/context-view-types (:el e)))
 
 (defmethod view/include-content? :context-view
   [view e]
-  (and (contains? e/context-types (:el e))
+  (and (contains? e/context-view-types (:el e))
        (e/boundary? e)))
 
 (defmethod view/render-relation-node? :context-view

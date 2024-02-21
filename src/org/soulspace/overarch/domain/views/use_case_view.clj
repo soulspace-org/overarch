@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :use-case-view
   [view e]
-  (contains? e/use-case-types (:el e)))
+  (contains? e/use-case-view-types (:el e)))
 
 (defmethod view/include-content? :use-case-view
   [view e]
-  (contains? e/use-case-types (:el e)))
+  (contains? e/use-case-view-types (:el e)))
 
 (defmethod view/render-relation-node? :use-case-view
   [view e]

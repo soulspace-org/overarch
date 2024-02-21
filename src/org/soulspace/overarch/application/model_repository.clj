@@ -19,6 +19,7 @@
   [acc p e]
   (cond
     ;; nodes
+    ;; TODO add syntetic ids for nodes without ids (fields)
     (el/model-node? e)
     (if (el/child? e p)
       ; a child node, add a parent-of relationship, too

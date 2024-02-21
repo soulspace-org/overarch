@@ -11,6 +11,7 @@ Version 0.10.0
 * separated domain model from external data representation
   * domain model can be navigated relationally and hierarchically
 * added/refactored model accessor functions
+* added/refactored element predicates and type sets
 * refactored model checks
 * refactored and enhanced tests
 * refactored and enhanced example models
