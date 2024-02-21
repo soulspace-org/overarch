@@ -287,8 +287,13 @@
   [e]
   (:unresolved-ref e))
 
+(defn node-of?
+  "Returns true if the given element `e` is a node of `kind`."
+  [e kind]
+  (and (model-node? e) (= (:el e) kind)))
+
 (defn relation-of?
-  "Returns true if the given element `e` is a relation of kind `kind`."
+  "Returns true if the given element `e` is a relation of `kind`."
   [e kind]
   (and (relational-element? e) (= (:el e) kind)))
 
@@ -301,10 +306,19 @@
   (when-let [id (:id e)]
     (namespace id)))
 
-(defn relation-id
+(defn generate-node-id
+  "Generates an identifier for element `e` based on the id of the parent `p`."
+  ([e p]
+   (when (and e p (:id p))
+     (let [p-namespace (namespace (:id p))
+           p-name (name (:id p))]
+       (keyword (str p-namespace "/"
+                     p-name "-" (:name e) "-" (name (:el e))))))))
+
+(defn generate-relation-id
   "Generates an identifier for a relation `r`."
   ([{:keys [el from to]}]
-   (relation-id el from to))
+   (generate-relation-id el from to))
   ([el from to]
    (keyword (str (namespace from) "/"
                  (name from) "-" (name el) "-" (name to)))))

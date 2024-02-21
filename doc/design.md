@@ -253,13 +253,13 @@ A: By decoupling the external representation of the model, the input model,
    from the internal model, the domain model, we gain a degree of freedom in
    the implementation of the domain model. The input model should be
    transformed to the domain model after reading. In the transformation,
-   synthetic parent-of relations should be generated for the parent-child
+   synthetic contains relations should be generated for the parent-child
    relations in the model expressed be the content of the ```:ct``` key
    of an element. By doing so, but leaving the content of the ```:ct```
    intact, the domain model could be traversed in a hierarchical and a
    relational manner.
 
-   With the insertion of the parent-of relations, the whole model is
+   With the insertion of the contains relations, the whole model is
    represented as a graph consisting of model nodes and relations.
    As such it can be navigated and queried with graph algorithms in addition to
    the tree traversal via the ```:ct``` key of the the elements.

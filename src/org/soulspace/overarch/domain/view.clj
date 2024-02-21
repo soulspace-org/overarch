@@ -66,6 +66,12 @@
   [e]
   (contains? hierarchical-view-types (:el e)))
 
+
+(defn view-of?
+  "Returns true if the given element `e` is a view of `kind`."
+  [e kind]
+  (and (view? e) (= (:el e) kind)))
+
 (defn view-type
   "Returns the type of the `view`."
   ([view]

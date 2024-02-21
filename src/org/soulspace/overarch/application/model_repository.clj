@@ -7,8 +7,8 @@
 (defn parent-of-relation
   "Returns a parent-of relation for parent `p` and element `e`."
   [p-id e-id]
-  {:el :parent-of
-   :id (el/relation-id :parent-of p-id e-id)
+  {:el :contains
+   :id (el/generate-relation-id :contains p-id e-id)
    :from p-id
    :to e-id
    :name "contains"})
@@ -124,7 +124,7 @@
 
    :elements               -> the given data
    :nodes                  -> the set of nodes (incl. child nodes)
-   :relations              -> the set of relations (incl. parent-of relations)
+   :relations              -> the set of relations (incl. contains relations)
    :views                  -> the set of views
    :id->element            -> a map from id to element (nodes, relations and views)
    :id->parent             -> a map from id to parent element
