@@ -28,7 +28,7 @@
      (io/as-file (str dir-name "/" kind ".edn")))))
 
 (defn write-edn
-  ""
+  "Write the elements of the `coll` to an EDN file."
   [options namespace kind coll]
   (with-open [wrt (io/writer (edn-filename options namespace kind))]
    (binding [*out* wrt]
