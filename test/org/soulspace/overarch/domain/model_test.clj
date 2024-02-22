@@ -92,7 +92,7 @@
 (deftest id->element-test
   (testing "id->elements"
     (are [x y] (= x y)
-      19 (count (:id->element c4-model1)) ; incl. 5 syntetic relations
+      19 (count (:id->element c4-model1)) ; incl. 5 synthetic relations
       5 (count (:id->element  concept-model1)))))
 
 (deftest id->parent-test
@@ -101,35 +101,35 @@
       5 (count (:id->parent c4-model1))
       0 (count (:id->parent concept-model1)))))
 
-(comment
-(deftest referrer-id->rel-test
+(deftest referrer-id->relations-test
   (testing "referrer-id->rels"
     (are [x y] (= x y)
-      3 (count (traverse e/relation? referrer-id->rel c4-input1))
-      1 (count (traverse e/relation? referrer-id->rel concept-input1))
-      2 (count (:test/user1 (traverse e/relation? referrer-id->rel c4-input1)))
-      1 (count (:test/system1 (traverse e/relation? referrer-id->rel c4-input1)))
-      0 (count (:test/ext-system1 (traverse e/relation? referrer-id->rel c4-input1)))
-      2 (count (:test/concept1 (traverse e/relation? referrer-id->rel concept-input1)))
-      0 (count (:test/concept2 (traverse e/relation? referrer-id->rel concept-input1)))
-      0 (count (:test/concept3 (traverse e/relation? referrer-id->rel concept-input1))))))
+      3 (count (:referrer-id->relations c4-model1))
+      1 (count (:referrer-id->relations concept-model1))
+      2 (count (:test/user1 (:referrer-id->relations c4-model1)))
+      1 (count (:test/system1 (:referrer-id->relations c4-model1)))
+      0 (count (:test/ext-system1 (:referrer-id->relations c4-model1)))
+      2 (count (:test/concept1 (:referrer-id->relations concept-model1)))
+      0 (count (:test/concept2 (:referrer-id->relations concept-model1)))
+      0 (count (:test/concept3 (:referrer-id->relations concept-model1))))))
 
-(deftest referred-id->rel-test
+(deftest referred-id->relations-test
   (testing "referred-id->rels"
     (are [x y] (= x y)
-      5 (count (traverse e/relation? referred-id->rel c4-input1))
-      2 (count (traverse e/relation? referred-id->rel concept-input1))
-      0 (count (:test/user1 (traverse e/relation? referred-id->rel c4-input1)))
-      1 (count (:test/system1 (traverse e/relation? referred-id->rel c4-input1)))
-      2 (count (:test/ext-system1 (traverse e/relation? referred-id->rel c4-input1)))
-      0 (count (:test/concept1 (traverse e/relation? referred-id->rel concept-input1)))
-      1 (count (:test/concept2 (traverse e/relation? referred-id->rel concept-input1)))
-      1 (count (:test/concept3 (traverse e/relation? referred-id->rel concept-input1))))))
+      7 (count (:referred-id->relations c4-model1))
+      2 (count (:referred-id->relations concept-model1))
+      0 (count (:test/user1 (:referred-id->relations c4-model1)))
+      1 (count (:test/system1 (:referred-id->relations c4-model1)))
+      2 (count (:test/ext-system1 (:referred-id->relations c4-model1)))
+      0 (count (:test/concept1 (:referred-id->relations concept-model1)))
+      1 (count (:test/concept2 (:referred-id->relations concept-model1)))
+      1 (count (:test/concept3 (:referred-id->relations concept-model1))))))
+
+(comment
 )
 
 (comment
   :test/user1
-  (type (traverse e/relation? referrer-id->rel c4-input1))
-  (traverse e/relation? referrer-id->rel concept-input1)
+  c4-model1
   (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
   )

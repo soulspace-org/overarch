@@ -19,53 +19,73 @@
   [acc p e]
   (cond
     ;; nodes
-    ;; TODO add syntetic ids for nodes without ids (fields)
+    ;; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
     (el/model-node? e)
     (if (el/child? e p)
       ; a child node, add a parent-of relationship, too
       (let [r (parent-of-relation (:id p) (:id e))]
         (assoc acc
-               :nodes (conj (:nodes acc)
-                            ;(dissoc e :ct)
-                            e)
-               :relations (conj (:relations acc)
-                                r)
-               :id->element (assoc (:id->element acc)
-                                   (:id e) e
-                                   (:id r) r)
+               :nodes
+               (conj (:nodes acc) e)
+
+               :relations
+               (conj (:relations acc) r)
+
+               :id->element
+               (assoc (:id->element acc)
+                      (:id e) e
+                      (:id r) r)
+
                ; currently only one parent is supported here
-               ; all parents are reachable via :parent-of relations
-               :id->parent (assoc (:id->parent acc)
-                                  (:id e) p)
-               :referrer-id->relations (assoc (:referrer-id->relations acc)
-                                              (:from r) (conj (get acc (:from r) #{}) r))
-               :referred-id->relations (assoc (:referred-id->relations acc)
-                                              (:to r) (conj (get acc (:to r) #{}) r))))
+               ; all parents are reachable via :contains relations
+               :id->parent
+               (assoc (:id->parent acc) (:id e) p)
+
+               :referrer-id->relations
+               (assoc (:referrer-id->relations acc)
+                      (:from r)
+                      (conj (get-in acc [:referred-id->relations (:from r)] #{}) r))
+
+               :referred-id->relations
+               (assoc (:referred-id->relations acc)
+                      (:to r)
+                      (conj (get-in acc [:referred-id->relations (:to r)] #{}) r))))
+
       ; not a child node, just add the node
       (assoc acc
-             :nodes (conj (:nodes acc)
-                          ;(dissoc e :ct)
-                          e)
-             :id->element (assoc (:id->element acc)
-                                 (:id e) e)))
+             :nodes
+             (conj (:nodes acc) e)
+
+             :id->element
+             (assoc (:id->element acc) (:id e) e)))
+
     ;; relations
     (el/relation? e)
     (assoc acc
-           :relations (conj (:relations acc) e)
-           :id->element (assoc (:id->element acc)
-                               (:id e) e)
-           :referrer-id->relations (assoc (:referrer-id->relations acc)
-                                          (:from e) (conj (get acc (:from e) #{}) e))
-           :referred-id->relations (assoc (:referred-id->relations acc)
-                                          (:to e) (conj (get acc (:to e) #{}) e))           ;:referrer-id->relations (assoc ((:from e) acc) )
-           )
+           :relations
+           (conj (:relations acc) e)
+
+           :id->element
+           (assoc (:id->element acc) (:id e) e)
+
+           :referrer-id->relations
+           (assoc (:referrer-id->relations acc)
+                  (:from e)
+                  (conj (get-in acc [:referrer-id->relations (:from e)] #{}) e))
+
+           :referred-id->relations
+           (assoc (:referred-id->relations acc)
+                  (:to e)
+                  (conj (get-in acc [:referred-id->relations (:to e)] #{}) e)))
 
     ;; views
     (view/view? e)
     (assoc acc
-           :views (conj (:views acc) e)
-           :id->element (assoc (:id->element acc)
-                               (:id e) e))
+           :views
+           (conj (:views acc) e)
+           
+           :id->element
+           (assoc (:id->element acc) (:id e) e))
 
     ;; references
     (el/reference? e)
@@ -73,17 +93,25 @@
       ; reference is a child of a node, add a parent-of relationship
       (let [r (parent-of-relation (:id p) (:ref e))]
         (assoc acc
-               :relations (conj (:relations acc)
-                                r)
-               :id->element (assoc (:id->element acc)
-                                   (:id r) r)
+               :relations
+               (conj (:relations acc) r)
+
+               :id->element
+               (assoc (:id->element acc) (:id r) r)
+
                ; currently only one parent is supported here
-               :id->parent (assoc (:id->parent acc)
-                                  (:id e) p)
-               :referrer-id->relations (assoc (:referrer-id->relations acc)
-                                              (:from r) (conj (get acc (:from r) #{}) r))
-               :referred-id->relations (assoc (:referred-id->relations acc)
-                                              (:to r) (conj (get acc (:to r) #{}) r))))
+               :id->parent
+               (assoc (:id->parent acc) (:id e) p)
+
+               :referrer-id->relations
+               (assoc (:referrer-id->relations acc)
+                      (:from r)
+                      (conj (get-in acc [:referrer-id->relations (:from r)] #{}) r))
+
+               :referred-id->relations
+               (assoc (:referred-id->relations acc)
+                      (:to r)
+                      (conj (get-in acc [:referred-id->relations (:to r)] #{}) r))))
       ; reference is a child of a view, leave as is
       acc)
 
