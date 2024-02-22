@@ -21,11 +21,11 @@
 
 (defmethod view/render-model-node? :container-view
   [view e]
-  (contains? e/container-view-types (:el e)))
+  (contains? view/container-view-element-types (:el e)))
 
 (defmethod view/include-content? :container-view
   [view e]
-  (and (contains? e/container-view-types (:el e))
+  (and (contains? view/container-view-element-types (:el e))
        (e/boundary? e)))
 
 (defmethod view/render-relation-node? :container-view

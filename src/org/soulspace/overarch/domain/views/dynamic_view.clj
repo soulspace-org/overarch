@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :dynamic-view
   [view e]
-  (contains? e/dynamic-types (:el e)))
+  (contains? view/dynamic-view-element-types (:el e)))
 
 (defmethod view/include-content? :dynamic-view
   [view e]
-  (contains? e/dynamic-types (:el e)))
+  (contains? view/dynamic-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :dynamic-view
   [view e]

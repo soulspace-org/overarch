@@ -23,6 +23,39 @@
     :deployment-view :system-landscape-view
     :dynamic-view})
 
+(def context-view-element-types
+  "Element types of a C4 context view."
+  (set/union el/architecture-relation-types
+             #{:person :system :enterprise-boundary :context-boundary}))
+
+(def container-view-element-types
+  "Element types of a C4 container view."
+  (set/union context-view-element-types
+             #{:system-boundary :container}))
+
+(def component-view-element-types
+  "Element types of a C4 component view."
+  (set/union container-view-element-types
+             #{:container-boundary :component}))
+
+(def code-view-element-types
+  "Element types of a C4 code view."
+  #{})
+
+(def system-landscape-view-element-types
+  "Element types of a C4 system-landscape view."
+  context-view-element-types)
+
+(def deployment-view-element-types
+  "Element types of a C4 deployment view."
+  (set/union container-view-element-types
+             el/deployment-relation-types
+             #{:node}))
+
+(def dynamic-view-element-types
+  "Element types of a C4 dynamic view."
+  component-view-element-types)
+
 ;;
 ;; UML category definitions
 ;;
@@ -30,12 +63,43 @@
   "The set of UML view types."
   #{:use-case-view :state-machine-view :class-view})
 
+(def use-case-view-element-types
+  "Element types of a use case view."
+  (set/union el/usecase-node-types
+             el/usecase-relation-types))
+
+(def state-machine-view-element-types
+  "Element types of a state machine view."
+  (set/union el/statemachine-node-types
+             el/statemachine-relation-types))
+
+(def class-view-element-types
+  "Element types of a class view."
+  (set/union el/class-node-types
+             el/class-relation-types))
+
+(def uml-view-element-types
+  "Element types of UML views."
+  (set/union use-case-view-element-types
+             state-machine-view-element-types
+             class-view-element-types))
+
 ;;
 ;; Concept category definitions
 ;;
 (def concept-view-types
   "The set of concept views types."
   #{:concept-view :glossary-view})
+
+(def concept-view-element-types
+  "Element types of a concept view."
+  (set/union el/concept-node-types
+             el/concept-relation-types))
+
+(def glossary-view-element-types
+  "Element types of a glossary view."
+  (set/union el/concept-node-types
+             el/concept-relation-types))
 
 ;; 
 ;; General category definitions
@@ -158,7 +222,7 @@
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
-       (filter el/relation?)))
+       (filter el/model-relation?)))
 
 (defn referenced-elements
   "Returns the relations explicitly referenced in the given view."

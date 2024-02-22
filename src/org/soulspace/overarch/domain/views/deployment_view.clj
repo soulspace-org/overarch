@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :deployment-view
   [view e]
-  (contains? e/deployment-view-types (:el e)))
+  (contains? view/deployment-view-element-types (:el e)))
 
 (defmethod view/include-content? :deployment-view
   [view e]
-  (contains? e/deployment-view-types (:el e)))
+  (contains? view/deployment-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :deployment-view
   [view e]

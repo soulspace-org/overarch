@@ -43,7 +43,7 @@
 
 (def structurizr-elements
   "Contains the model element types exported to structurizr."
-  (set/union e/component-view-types e/deployment-view-types))
+  (set/union view/component-view-element-types view/deployment-view-element-types))
 
 (defn structurizr-element?
   "Returns true, if the element `e` is to be exported to structurizr."
@@ -107,7 +107,7 @@
                         (sstr/hyphen-to-camel-case
                          (view-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
-              (let [children (filter e/relation?
+              (let [children (filter e/model-relation?
                                      (view/elements-to-render model view))]
                 (map (partial render-element model 6) children))
               (str (view/render-indent 6) "include *\n"))

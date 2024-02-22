@@ -60,7 +60,7 @@
              (assoc (:id->element acc) (:id e) e)))
 
     ;; relations
-    (el/relation? e)
+    (el/model-relation? e)
     (assoc acc
            :relations
            (conj (:relations acc) e)
@@ -229,8 +229,8 @@
   (= (:id->parent @state) (model/traverse model/id->parent (:elements @state)))
   (= (:id->element @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
   (= (:id->parent @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
-  (= (:referred-id->relations @state) (model/traverse el/relation? model/referred-id->rel (:elements @state)))
-  (= (:referrer-id->relations @state) (model/traverse el/relation? model/referrer-id->rel (:elements @state)))
+  (= (:referred-id->relations @state) (model/traverse el/model-relation? model/referred-id->rel (:elements @state)))
+  (= (:referrer-id->relations @state) (model/traverse el/model-relation? model/referrer-id->rel (:elements @state)))
   (build-model (elements))
 
   ;

@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :glossary-view
   [view e]
-  (contains? e/glossary-view-types (:el e)))
+  (contains? view/glossary-view-element-types (:el e)))
 
 (defmethod view/include-content? :glossary-view
   [view e]
-  (contains? e/glossary-view-types (:el e)))
+  (contains? view/glossary-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :glossary-view
   [view e]

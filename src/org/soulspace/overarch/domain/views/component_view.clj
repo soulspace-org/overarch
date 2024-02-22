@@ -20,11 +20,11 @@
 
 (defmethod view/render-model-node? :component-view
   [view e]
-  (contains? e/component-view-types (:el e)))
+  (contains? view/component-view-element-types (:el e)))
 
 (defmethod view/include-content? :component-view
   [view e]
-  (and (contains? e/component-view-types (:el e))
+  (and (contains? view/component-view-element-types (:el e))
        (e/boundary? e)))
 
 (defmethod view/render-relation-node? :component-view

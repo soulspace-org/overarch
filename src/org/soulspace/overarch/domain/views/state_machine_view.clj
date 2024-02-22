@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :state-machine-view
   [view e]
-  (contains? e/state-machine-view-types (:el e)))
+  (contains? view/state-machine-view-element-types (:el e)))
 
 (defmethod view/include-content? :state-machine-view
   [view e]
-  (contains? e/state-machine-view-types (:el e)))
+  (contains? view/state-machine-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :state-machine-view
   [view e]

@@ -4,11 +4,11 @@
 
 (defmethod view/render-model-node? :class-view
   [view e]
-  (contains? e/class-view-types (:el e)))
+  (contains? view/class-view-element-types (:el e)))
 
 (defmethod view/include-content? :class-view
   [view e]
-  (contains? e/class-view-types (:el e)))
+  (contains? view/class-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :class-view
   [view e]

@@ -10,12 +10,8 @@
 ;;;
 
 ;;
-;; C4 category definitions
+;; Category definitions for C4 architecture and deployment models
 ;; 
-(def architecture-relation-types
-  "Relation types in the architecture model."
-  #{:rel :request :response :publish :subscribe :send :dataflow})
-
 (def technical-architecture-node-types
   "Technical node types in the architecture model."
   #{:system :container :component})
@@ -24,103 +20,92 @@
   "Node types in the architecture model."
   (set/union technical-architecture-node-types #{:person :enterprise-boundary :context-boundary}))
 
-(def context-view-types
-  "Element types of a C4 context view."
-  (set/union architecture-relation-types #{:person :system :enterprise-boundary :context-boundary}))
-
-(def container-view-types
-  "Element types of a C4 container view."
-  (set/union context-view-types #{:system-boundary :container}))
-
-(def component-view-types
-  "Element types of a C4 component view."
-  (set/union container-view-types #{:container-boundary :component}))
-
-(def code-view-types
-  "Element types of a C4 code view."
-  #{})
-
-(def system-landscape-view-types
-  "Element types of a C4 system-landscape view."
-  context-view-types)
-
-(def deployment-relation-types
-  "Relation types for deployment models."
-  #{:link})
+(def architecture-relation-types
+  "Relation types in the architecture model."
+  #{:rel :request :response :publish :subscribe :send :dataflow})
 
 (def deployment-node-types
   "Node types for deployment models."
   (set/union technical-architecture-node-types #{:node}))
 
-(def deployment-view-types
-  "Element types of a C4 deployment view."
-  (set/union container-view-types deployment-relation-types #{:node}))
-
-(def dynamic-types
-  "Element types of a C4 dynamic view."
-  component-view-types)
+(def deployment-relation-types
+  "Relation types for deployment models."
+  #{:link})
 
 ;;
-;; UML category definitions
+;; Category definitions for UML models
 ;;
-(def use-case-view-types
-  "Element types of a use case view."
-  #{:use-case :actor :person :system :context-boundary
-    :uses :include :extends :generalizes})
+(def usecase-node-types
+  "Node types for usecase models."
+  #{:use-case :actor :person :system :context-boundary})
+(def usecase-relation-types
+  "Relation types for usecase models."
+  #{:uses :include :extends :generalizes})
 
-(def state-machine-view-types
-  "Element types of a state machine view."
-  #{:state-machine :start-state :end-state :state :transition
+(def statemachine-node-types
+  "Node types for statemachine models."
+  #{:state-machine :start-state :end-state :state
     :fork :join :choice :history-state :deep-history-state})
+(def statemachine-relation-types
+  "Relation types for statemachine models."
+  #{:transition})
 
-(def class-view-types
-  "Element types of a class view."
-  #{:class :enum :interface
-    :field :method :function
-    :inheritance :implementation :composition :aggregation :association :dependency
+(def class-node-types
+  "Node types for class models."
+  #{:class :enum :interface :field :method :function
     :package :namespace :stereotype :annotation :protocol})
+(def class-relation-types
+  "Relation types for class models."
+  #{:inheritance :implementation :composition :aggregation :association :dependency})
+
+(def uml-node-types
+  "Node types for UML models."
+  (set/union usecase-node-types statemachine-node-types class-node-types))
 
 (def uml-relation-types
-  "Relation types of UML views."
-  #{:uses :include :extends :generalizes :transition :composition
-    :aggregation :dependency :association :inheritance :implementation})
+  "Relation types of UML models."
+  (set/union usecase-relation-types statemachine-relation-types class-relation-types))
 
-(def uml-view-types
-  "Element types of UML views."
-  (set/union use-case-view-types state-machine-view-types class-view-types))
 
 ;;
 ;; Concept category definitions
 ;;
-(def concept-view-types
-  "Element types of a concept view."
-  (set/union container-view-types #{:concept}))
-
-(def glossary-view-types
-  "Element types of a glossary view."
-  (set/union container-view-types #{:concept}))
+(def concept-node-types
+  "Node types for concept models."
+  (set/union architecture-node-types #{:concept}))
+(def concept-relation-types
+  "Relation types of concept models."
+  #{:rel})
 
 ;; 
 ;; General category definitions
 ;;
 (def boundary-types
-  "Element types of boundaries"
+  "Element types of boundaries."
   #{:enterprise-boundary :context-boundary :system-boundary :container-boundary})
 
-(def relation-types
-  "Element types of relations"
+(def reference-types
+  "Element types of references."
+  #{:ref})
+
+(def model-node-types
+  "Node types of the model."
+  (set/union architecture-node-types
+             deployment-node-types
+             uml-node-types
+             concept-node-types))
+
+(def model-relation-types
+  "Relation types of the model."
   (set/union #{:rel}
              architecture-relation-types
              deployment-relation-types
-             uml-relation-types))
+             uml-relation-types
+             concept-relation-types))
 
-(def reference-types
-  "Element types of references"
-  #{:ref})
-
-(def model-types
-  "Element types for the architectural model."
-  (set/union component-view-types deployment-view-types uml-view-types concept-view-types relation-types))
+(def model-element-types
+  "Element types for the model."
+  (set/union model-node-types model-relation-types))
 
 ;;
 ;; Predicates
@@ -194,18 +179,18 @@
 (defn model-element?
   "Returns true if the given element `e` is a model element."
   [e]
-  (contains? model-types (:el e)))
+  (contains? model-element-types (:el e)))
 
-(defn relation?
+(defn model-relation?
   "Returns true if the given element `e` is a relation."
   [e]
-  (contains? relation-types (:el e)))
+  (contains? model-relation-types (:el e)))
 
 (defn model-node?
   "Returns true if the given element is a node in the model element graph.
    A model node is a model element which is not a relation."
   [e]
-  (and (model-element? e) (not (relation? e))))
+  (and (model-element? e) (not (model-relation? e))))
 
 (defn technical-architecture-node?
   "Returns true if the given element `e` is a technical architecture node."
@@ -231,7 +216,6 @@
   "Returns true if the given element `e` is a deployment relation."
   [e]
   (contains? deployment-relation-types (:el e)))
-
 
 
 (defn child?

@@ -74,7 +74,6 @@
 (defn parent
   "Returns the parent of the element `e`."
   [model e]
-  ; TODO  implement based on relations
   ((:id->parent model) (:id e)))
 
 (defn children
@@ -141,7 +140,7 @@
   "Returns the relations of the model `m` connecting nodes from the given collection of model nodes."
   ([model coll]
    (let [els (into #{} (map :id coll))
-         rels (filter el/relation? (model-elements model))
+         rels (filter el/model-relation? (model-elements model))
          filtered (->> rels
                        (filter (fn [r] (and (contains? els (:from r))
                                             (contains? els (:to r))))))
@@ -152,7 +151,7 @@
   "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
   [model coll]
   (->> coll
-       (filter el/relation?)
+       (filter el/model-relation?)
        (map (fn [rel] #{(resolve-element model (:from rel))
                         (resolve-element model (:to rel))}))
        (reduce set/union #{})))
@@ -170,64 +169,3 @@
             (= (parent-element model (:to r1))
                (parent-element model (:to r2)))))))
 
-(comment
-;;
-;; State preparation
-;;
-
-  (defn id->parent
-    "Adds the association from the id of element `e` to the parent `p` to the map `acc`."
-    ([] [{} '()])
-    ([[res ctx]]
-     (if-not (empty? ctx)
-       [res (pop ctx)]
-       res))
-    ([[res ctx] e]
-     (let [p (peek ctx)]
-       (if (el/child? e p)
-         [(assoc res (:id e) p) (conj ctx e)]
-         [res (conj ctx e)]))))
-
-  (defn id->element
-    "Adds the association of the id of the element `e` to the map `acc`."
-    ([] {})
-    ([acc] acc)
-    ([acc e]
-     (assoc acc (:id e) e)))
-
-  (defn referrer-id->rel
-    "Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
-    ([] {})
-    ([acc] acc)
-    ([acc e]
-     (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
-
-  (defn referred-id->rel
-    "Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
-    ([] {})
-    ([acc] acc)
-    ([acc r]
-     (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
-
-  (defn build-registry
-    "Returns a map with the original `elements` and registries by id for lookups.
-   
-   The map has the following shape:
-
-   :elements -> the given data
-   :id->element -> a map from id to element
-   :id->parent  -> a map from id to parent element
-   :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
-   :referred-id->relations -> a map from id to set of relations where the id is referred (:to)"
-    [elements]
-    (let [id->element (traverse el/identifiable? id->element elements)
-          parents (traverse id->parent elements)
-          referrer-id->relations (traverse el/relation? referrer-id->rel elements)
-          referred-id->relations (traverse el/relation? referred-id->rel elements)]
-      {:elements elements
-       :id->element id->element
-       :id->parent parents
-       :referrer-id->relations referrer-id->relations
-       :referred-id->relations referred-id->relations}))
-  ;
-  )
