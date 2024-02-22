@@ -66,13 +66,13 @@
   "Relation types of UML models."
   (set/union usecase-relation-types statemachine-relation-types class-relation-types))
 
-
 ;;
 ;; Concept category definitions
 ;;
 (def concept-node-types
   "Node types for concept models."
-  (set/union architecture-node-types #{:concept}))
+  (set/difference (set/union architecture-node-types #{:concept}) #{:component}))
+
 (def concept-relation-types
   "Relation types of concept models."
   #{:rel})

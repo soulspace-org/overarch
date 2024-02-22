@@ -13,8 +13,11 @@
       true {:el :context-boundary}
       true {:el :person}
       true {:el :system}
-      true {:el :system-boundary}
-      true {:el :container}
+      true {:el :container}))
+
+  (testing "render-element?"
+    (are [x y] (= x (fns/truthy? (render-model-node? {:el :glossary-view} y)))
+      false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :component}
       false {:el :node}
@@ -51,4 +54,3 @@
       false {:el :namespace}
       false {:el :function}
       false {:el :protocol})))
-
