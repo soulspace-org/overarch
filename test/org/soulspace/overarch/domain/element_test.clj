@@ -88,6 +88,11 @@
       true {:el :history-state}
       true {:el :deep-history-state}
       true {:el :rel}
+      true {:el :request}
+      true {:el :response}
+      true {:el :publish}
+      true {:el :subscribe}
+      true {:el :dataflow}
       true {:el :uses}
       true {:el :include}
       true {:el :extends}
@@ -102,6 +107,11 @@
 
   (testing "model-element? false"
     (are [x y] (= x (fns/truthy? (model-element? y)))
+      false {:el :fluffy}
+      false {:el :concept-view}
+      false {:el :context-view}
+      false {:el :container-view}
+      false {:el :component-view}
       false {:el :ref})))
 
 (deftest model-node?-test
@@ -140,6 +150,11 @@
   (testing "model-node? false"
     (are [x y] (= x (fns/truthy? (model-node? y)))
       false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :dataflow}
       false {:el :uses}
       false {:el :include}
       false {:el :extends}
@@ -151,6 +166,60 @@
       false {:el :association}
       false {:el :dependency}
       false {:el :transition}
+      false {:el :ref})))
+
+(deftest model-relation?-test
+  (testing "model-relation? true"
+    (are [x y] (= x (fns/truthy? (model-relation? y)))
+      true {:el :rel}
+      true {:el :request}
+      true {:el :response}
+      true {:el :publish}
+      true {:el :subscribe}
+      true {:el :dataflow}
+      true {:el :uses}
+      true {:el :include}
+      true {:el :extends}
+      true {:el :generalizes}
+      true {:el :inheritance}
+      true {:el :implementation}
+      true {:el :composition}
+      true {:el :aggregation}
+      true {:el :association}
+      true {:el :dependency}
+      true {:el :transition}))
+
+  (testing "model-relation? false"
+    (are [x y] (= x (fns/truthy? (model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
       false {:el :ref})))
 
 (deftest reference?-test
