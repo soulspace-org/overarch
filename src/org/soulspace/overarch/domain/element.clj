@@ -2,8 +2,7 @@
 ;;;; contains element specific logic
 ;;;;
 (ns org.soulspace.overarch.domain.element
-  (:require [clojure.set :as set]
-            [clojure.spec.alpha :as s]))
+  (:require [clojure.set :as set]))
 
 ;;;
 ;;; Category definitions
@@ -176,6 +175,16 @@
   (not (external? e)))
 
 
+(defn tech?
+  "Returns true if the given element `e` has a tech (:tech key)."
+  [e]
+  (not= nil (:tech e)))
+
+(defn boundary?
+  "Returns true if `e` is a boundary."
+  [e]
+  (contains? boundary-types (:el e)))
+
 (defn model-element?
   "Returns true if the given element `e` is a model element."
   [e]
@@ -191,6 +200,15 @@
    A model node is a model element which is not a relation."
   [e]
   (and (model-element? e) (not (model-relation? e))))
+
+(defn child?
+  "Returns true, if element `e` is a child of model element `p`."
+  [e p]
+  ; TODO check (:ct p) for e
+  (and (identifiable-element? e)
+       (identifiable-element? p)
+       (model-element? p)))
+
 
 (defn technical-architecture-node?
   "Returns true if the given element `e` is a technical architecture node."
@@ -217,24 +235,35 @@
   [e]
   (contains? deployment-relation-types (:el e)))
 
-
-(defn child?
-  "Returns true, if element `e` is a child of model element `p`."
-  [e p]
-  ; TODO check (:ct p) for e
-  (and (identifiable-element? e)
-       (identifiable-element? p)
-       (model-element? p)))
-
-(defn tech?
-  "Returns true if the given element `e` has a tech (:tech key)."
+(defn usecase-node?
+  "Returns true if the given element `e` is a usecase node."
   [e]
-  (not= nil (:tech e)))
+  (contains? usecase-node-types (:el e)))
 
-(defn boundary?
-  "Returns true if `e` is a boundary."
+(defn usecase-relation?
+  "Returns true if the given element `e` is a usecase relation."
   [e]
-  (contains? boundary-types (:el e)))
+  (contains? usecase-relation-types (:el e)))
+
+(defn statemachine-node?
+  "Returns true if the given element `e` is a statemachine node."
+  [e]
+  (contains? statemachine-node-types (:el e)))
+
+(defn statemachine-relation?
+  "Returns true if the given element `e` is a statemachine relation."
+  [e]
+  (contains? statemachine-relation-types (:el e)))
+
+(defn class-node?
+  "Returns true if the given element `e` is a class node."
+  [e]
+  (contains? class-node-types (:el e)))
+
+(defn class-relation?
+  "Returns true if the given element `e` is a class relation."
+  [e]
+  (contains? class-relation-types (:el e)))
 
 (defn person?
   "Returns true if the given element `e` is a person element."

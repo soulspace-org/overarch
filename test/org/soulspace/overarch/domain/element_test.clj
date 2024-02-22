@@ -7,7 +7,7 @@
   (testing "element? true"
     (are [x y] (= x (fns/truthy? (element? y)))
       true {:el :person}))
-  
+
   (testing "element? false"
     (are [x y] (= x (fns/truthy? (element? y)))
       false {}
@@ -55,6 +55,518 @@
       false {}
       false {:type :person})))
 
+(deftest external?-test
+  (testing "external? true"
+    (are [x y] (= x (fns/truthy? (external? y)))
+      true {:external true}
+      true {:el :person :external true}))
+
+  (testing "external? false"
+    (are [x y] (= x (fns/truthy? (external? y)))
+      false {:external false}
+      false {:el :person :external false}
+      false {}
+      false {:type :person})))
+
+(deftest internal?-test
+  (testing "internal? true"
+    (are [x y] (= x (fns/truthy? (internal? y)))
+      true {:el :person}
+      true {:el :person :external false}))
+
+  (testing "internal? false"
+    (are [x y] (= x (fns/truthy? (internal? y)))
+      true {:el :person}
+      true {:el :person :external false}
+      false {:el :person :external true})))
+
+(deftest technical-architecture-node?-test
+  (testing "technical-architecture-node? true"
+    (are [x y] (= x (fns/truthy? (technical-architecture-node? y)))
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}))
+  
+  (testing "technical-architecture-node? false"
+    (are [x y] (= x (fns/truthy? (technical-architecture-node? y)))
+      false {:el :person}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest architecture-node?-test
+  (testing "architecture-node? true"
+    (are [x y] (= x (fns/truthy? (architecture-node? y)))
+      true {:el :person}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}))
+
+  (testing "architecture-node? false"
+    (are [x y] (= x (fns/truthy? (architecture-node? y)))
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest architecture-relation?-test
+  (testing "architecture-relation? true"
+    (are [x y] (= x (fns/truthy? (architecture-relation? y)))
+      true {:el :rel}
+      true {:el :request}
+      true {:el :response}
+      true {:el :publish}
+      true {:el :subscribe}
+      true {:el :send}
+      true {:el :dataflow}))
+
+  (testing "architecture-relation? false"
+    (are [x y] (= x (fns/truthy? (architecture-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :ref})))
+
+(deftest deployment-node?-test
+  (testing "deployment-node? true"
+    (are [x y] (= x (fns/truthy? (deployment-node? y)))
+      true {:el :node}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}))
+
+  (testing "deployment-node? false"
+    (are [x y] (= x (fns/truthy? (deployment-node? y)))
+      false {:el :person}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest deployment-relation?-test
+  (testing "deployment-relation? true"
+    (are [x y] (= x (fns/truthy? (deployment-relation? y)))
+      true {:el :link}))
+
+  (testing "deployment-relation? false"
+    (are [x y] (= x (fns/truthy? (deployment-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest usecase-node?-test
+  (testing "usecase-node? true"
+    (are [x y] (= x (fns/truthy? (usecase-node? y)))
+      true {:el :context-boundary}
+      true {:el :use-case}
+      true {:el :actor}
+      true {:el :person}
+      true {:el :system}))
+
+  (testing "usecase-node? false"
+    (are [x y] (= x (fns/truthy? (usecase-node? y)))
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest usecase-relation?-test
+  (testing "usecase-relation? true"
+    (are [x y] (= x (fns/truthy? (usecase-relation? y)))
+      true {:el :uses}
+      true {:el :include}
+      true {:el :extends}
+      true {:el :generalizes}))
+
+  (testing "usecase-relation? false"
+    (are [x y] (= x (fns/truthy? (usecase-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :link}
+      false {:el :transition}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :ref})))
+
+(deftest statemachine-node?-test
+  (testing "statemachine-node? true"
+    (are [x y] (= x (fns/truthy? (statemachine-node? y)))
+      true {:el :state-machine}
+      true {:el :start-state}
+      true {:el :state}
+      true {:el :end-state}
+      true {:el :fork}
+      true {:el :join}
+      true {:el :choice}
+      true {:el :history-state}
+      true {:el :deep-history-state}))
+
+  (testing "statemachine-node? false"
+    (are [x y] (= x (fns/truthy? (statemachine-node? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :context-boundary}
+      false {:el :enterprise-boundary}
+      false {:el :node}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :concept}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest statemachine-relation?-test
+  (testing "statemachine-relation? true"
+    (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
+      true {:el :transition}))
+
+  (testing "statemachine-relation? false"
+    (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :link}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :ref})))
+
 (deftest model-element?-test
   (testing "model-element? true"
     (are [x y] (= x (fns/truthy? (model-element? y)))
@@ -92,7 +604,9 @@
       true {:el :response}
       true {:el :publish}
       true {:el :subscribe}
+      true {:el :send}
       true {:el :dataflow}
+      true {:el :link}
       true {:el :uses}
       true {:el :include}
       true {:el :extends}
@@ -154,7 +668,9 @@
       false {:el :response}
       false {:el :publish}
       false {:el :subscribe}
+      false {:el :send}
       false {:el :dataflow}
+      false {:el :link}
       false {:el :uses}
       false {:el :include}
       false {:el :extends}
@@ -176,7 +692,9 @@
       true {:el :response}
       true {:el :publish}
       true {:el :subscribe}
+      true {:el :send}
       true {:el :dataflow}
+      true {:el :link}
       true {:el :uses}
       true {:el :include}
       true {:el :extends}
@@ -245,28 +763,3 @@
     (are [x y] (= x (fns/truthy? (boundary? y)))
       false {}
       false {:el :person})))
-
-(deftest external?-test
-  (testing "external? true"
-    (are [x y] (= x (fns/truthy? (external? y)))
-      true {:external true}
-      true {:el :person :external true}))
-
-  (testing "external? false"
-    (are [x y] (= x (fns/truthy? (external? y)))
-      false {:external false}
-      false {:el :person :external false}
-      false {}
-      false {:type :person})))
-
-(deftest internal?-test
-  (testing "internal? true"
-    (are [x y] (= x (fns/truthy? (internal? y)))
-      true {:el :person}
-      true {:el :person :external false}))
-  
-  (testing "internal? false"
-    (are [x y] (= x (fns/truthy? (internal? y)))
-      true {:el :person}
-      true {:el :person :external false}
-      false {:el :person :external true})))
