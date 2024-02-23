@@ -211,59 +211,69 @@
 
 
 (defn technical-architecture-node?
-  "Returns true if the given element `e` is a technical architecture node."
+  "Returns true if the given element `e` is a technical architecture model node."
   [e]
   (contains? technical-architecture-node-types (:el e)))
 
 (defn architecture-node?
-  "Returns true if the given element `e` is a architecture node."
+  "Returns true if the given element `e` is a architecture model node."
   [e]
   (contains? architecture-node-types (:el e)))
 
 (defn architecture-relation?
-  "Returns true if the given element `e` is a architecture relation."
+  "Returns true if the given element `e` is a architecture model relation."
   [e]
   (contains? architecture-relation-types (:el e)))
 
 (defn deployment-node?
-  "Returns true if the given element `e` is a deployment node."
+  "Returns true if the given element `e` is a deployment model node."
   [e]
   (contains? deployment-node-types (:el e)))
 
 (defn deployment-relation?
-  "Returns true if the given element `e` is a deployment relation."
+  "Returns true if the given element `e` is a deployment model relation."
   [e]
   (contains? deployment-relation-types (:el e)))
 
 (defn usecase-node?
-  "Returns true if the given element `e` is a usecase node."
+  "Returns true if the given element `e` is a usecase model node."
   [e]
   (contains? usecase-node-types (:el e)))
 
 (defn usecase-relation?
-  "Returns true if the given element `e` is a usecase relation."
+  "Returns true if the given element `e` is a usecase model relation."
   [e]
   (contains? usecase-relation-types (:el e)))
 
 (defn statemachine-node?
-  "Returns true if the given element `e` is a statemachine node."
+  "Returns true if the given element `e` is a statemachine model node."
   [e]
   (contains? statemachine-node-types (:el e)))
 
 (defn statemachine-relation?
-  "Returns true if the given element `e` is a statemachine relation."
+  "Returns true if the given element `e` is a statemachine model relation."
   [e]
   (contains? statemachine-relation-types (:el e)))
 
 (defn class-node?
-  "Returns true if the given element `e` is a class node."
+  "Returns true if the given element `e` is a class model node."
   [e]
   (contains? class-node-types (:el e)))
 
 (defn class-relation?
-  "Returns true if the given element `e` is a class relation."
+  "Returns true if the given element `e` is a class model relation."
   [e]
   (contains? class-relation-types (:el e)))
+
+(defn concept-node?
+  "Returns true if the given element `e` is a concept model node."
+  [e]
+  (contains? concept-node-types (:el e)))
+
+(defn concept-relation?
+  "Returns true if the given element `e` is a concept model relation."
+  [e]
+  (contains? concept-relation-types (:el e)))
 
 (defn person?
   "Returns true if the given element `e` is a person element."
@@ -302,13 +312,13 @@
 
 (defn node-of?
   "Returns true if the given element `e` is a node of `kind`."
-  [e kind]
+  [kind e]
   (and (model-node? e) (= (:el e) kind)))
 
 (defn relation-of?
   "Returns true if the given element `e` is a relation of `kind`."
-  [e kind]
-  (and (relational-element? e) (= (:el e) kind)))
+  [kind e]
+  (and (model-relation? e) (= (:el e) kind)))
 
 ;;
 ;; Functions 

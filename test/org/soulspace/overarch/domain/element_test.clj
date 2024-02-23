@@ -567,66 +567,7 @@
       false {:el :dependency}
       false {:el :ref})))
 
-(deftest model-element?-test
-  (testing "model-element? true"
-    (are [x y] (= x (fns/truthy? (model-element? y)))
-      true {:el :person}
-      true {:el :system}
-      true {:el :container}
-      true {:el :component}
-      true {:el :enterprise-boundary}
-      true {:el :context-boundary}
-      true {:el :node}
-      true {:el :concept}
-      true {:el :use-case}
-      true {:el :actor}
-      true {:el :package}
-      true {:el :namespace}
-      true {:el :class}
-      true {:el :interface}
-      true {:el :enum}
-      true {:el :field}
-      true {:el :method}
-      true {:el :stereotype}
-      true {:el :annotation}
-      true {:el :protocol}
-      true {:el :state-machine}
-      true {:el :start-state}
-      true {:el :state}
-      true {:el :end-state}
-      true {:el :fork}
-      true {:el :join}
-      true {:el :choice}
-      true {:el :history-state}
-      true {:el :deep-history-state}
-      true {:el :rel}
-      true {:el :request}
-      true {:el :response}
-      true {:el :publish}
-      true {:el :subscribe}
-      true {:el :send}
-      true {:el :dataflow}
-      true {:el :link}
-      true {:el :uses}
-      true {:el :include}
-      true {:el :extends}
-      true {:el :generalizes}
-      true {:el :inheritance}
-      true {:el :implementation}
-      true {:el :composition}
-      true {:el :aggregation}
-      true {:el :association}
-      true {:el :dependency}
-      true {:el :transition}))
-
-  (testing "model-element? false"
-    (are [x y] (= x (fns/truthy? (model-element? y)))
-      false {:el :fluffy}
-      false {:el :concept-view}
-      false {:el :context-view}
-      false {:el :container-view}
-      false {:el :component-view}
-      false {:el :ref})))
+;; TODO add class model and concept model tests
 
 (deftest model-node?-test
   (testing "model-node? true"
@@ -740,6 +681,67 @@
       false {:el :deep-history-state}
       false {:el :ref})))
 
+(deftest model-element?-test
+  (testing "model-element? true"
+    (are [x y] (= x (fns/truthy? (model-element? y)))
+      true {:el :person}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}
+      true {:el :enterprise-boundary}
+      true {:el :context-boundary}
+      true {:el :node}
+      true {:el :concept}
+      true {:el :use-case}
+      true {:el :actor}
+      true {:el :package}
+      true {:el :namespace}
+      true {:el :class}
+      true {:el :interface}
+      true {:el :enum}
+      true {:el :field}
+      true {:el :method}
+      true {:el :stereotype}
+      true {:el :annotation}
+      true {:el :protocol}
+      true {:el :state-machine}
+      true {:el :start-state}
+      true {:el :state}
+      true {:el :end-state}
+      true {:el :fork}
+      true {:el :join}
+      true {:el :choice}
+      true {:el :history-state}
+      true {:el :deep-history-state}
+      true {:el :rel}
+      true {:el :request}
+      true {:el :response}
+      true {:el :publish}
+      true {:el :subscribe}
+      true {:el :send}
+      true {:el :dataflow}
+      true {:el :link}
+      true {:el :uses}
+      true {:el :include}
+      true {:el :extends}
+      true {:el :generalizes}
+      true {:el :inheritance}
+      true {:el :implementation}
+      true {:el :composition}
+      true {:el :aggregation}
+      true {:el :association}
+      true {:el :dependency}
+      true {:el :transition}))
+
+  (testing "model-element? false"
+    (are [x y] (= x (fns/truthy? (model-element? y)))
+      false {:el :fluffy}
+      false {:el :concept-view}
+      false {:el :context-view}
+      false {:el :container-view}
+      false {:el :component-view}
+      false {:el :ref})))
+
 (deftest reference?-test
   (testing "reference? true"
     (are [x y] (= x (fns/truthy? (reference? y)))
@@ -763,3 +765,39 @@
     (are [x y] (= x (fns/truthy? (boundary? y)))
       false {}
       false {:el :person})))
+
+(deftest node-of?-test
+  (testing "node-of? true"
+    (are [x y] (= x (fns/truthy? (apply node-of? y)))
+       true [:person {:el :person}]
+       true [:system {:el :system}]
+       true [:container {:el :container}]
+       true [:context-boundary{:el :context-boundary}]
+       true [:enterprise-boundary {:el :enterprise-boundary}]
+      ))
+  (testing "node-of? false"
+    (are [x y] (= x (fns/truthy? (apply node-of? y)))
+      false [:bla {:el :bla}]
+      false [:rel {:el :rel}]
+      false [:system-boundary {:el :system-boundary}]
+      false [:container-boundary {:el :container-boundary}]
+      false [:person {:el :system}])))
+
+(deftest relation-of?-test
+  (testing "relation-of? true"
+    (are [x y] (= x (fns/truthy? (apply relation-of? y)))
+      true [:rel {:el :rel}]
+      true [:request {:el :request}]
+      true [:response {:el :response}]
+      true [:transition {:el :transition}]))
+  (testing "relation-of? false"
+    (are [x y] (= x (fns/truthy? (apply relation-of? y)))
+      false [:bla {:el :bla}]
+      false [:person {:el :person}]
+      false [:system {:el :system}]
+      false [:container {:el :container}]
+      false [:context-boundary {:el :context-boundary}]
+      false [:enterprise-boundary {:el :enterprise-boundary}]
+      false [:system-boundary {:el :system-boundary}]
+      false [:container-boundary {:el :container-boundary}]
+      false [:person {:el :system}])))
