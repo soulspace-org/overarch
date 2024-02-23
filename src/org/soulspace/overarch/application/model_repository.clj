@@ -209,29 +209,67 @@
   ([model]
    (:nodes model)))
 
+(defn node-by-id
+  "Returns the node with the given `id`."
+  ([id]
+   (node-by-id @state id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/model-node? el)
+       el))))
+
 (defn relations
-  "Returns the set of nodes."
+  "Returns the set of relations."
   ([]
-   (:relations @state))
+   (relations @state))
   ([model]
    (:relations model)))
 
+(defn relation-by-id
+  "Returns the relation with the given `id`."
+  ([id]
+   (relation-by-id @state id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/model-relation? el)
+       el))))
+
 (defn views
-  "Returns the set of nodes."
+  "Returns the set of views."
   ([]
    (:views @state))
   ([model]
    (:views model)))
 
+(defn view-by-id
+  "Returns the view with the given `id`."
+  ([id]
+   (view-by-id @state id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (view/view? el)
+       el))))
+
 (comment
   (update-state! "models")
-  
+
   (= (:id->parent @state) (model/traverse model/id->parent (:elements @state)))
   (= (:id->element @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
   (= (:id->parent @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
   (= (:referred-id->relations @state) (model/traverse el/model-relation? model/referred-id->rel (:elements @state)))
   (= (:referrer-id->relations @state) (model/traverse el/model-relation? model/referrer-id->rel (:elements @state)))
   (build-model (elements))
+
+  (view/specified-model-nodes @state (view-by-id :banking/system-context-view))
+  (view/specified-relations @state (view-by-id :banking/system-context-view))
+  (view/specified-elements @state (view-by-id :test/banking-container-view-related))
+  (view/specified-elements @state (view-by-id :test/banking-container-view-relations))
+
+  (model/related-nodes @state (view/referenced-relations @state (view-by-id :test/banking-container-view-related)))
+  (model/relations-of-nodes @state (view/referenced-model-nodes @state (view-by-id :test/banking-container-view-relations)))
+
+  (view/elements-in-view @state (view-by-id :banking/container-view))
+  (view/technologies-in-view @state (view-by-id :banking/container-view))
 
   ;
   :rcf)

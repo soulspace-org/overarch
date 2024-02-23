@@ -430,15 +430,5 @@
 
 (comment
   ;(collect-technologies (:elements @model/state))
-  (specified-model-nodes @model/state (get-view @model/state :banking/system-context-view))
-  (specified-relations @model/state (get-view @model/state :banking/system-context-view))
-  (specified-elements @model/state (get-view @model/state :test/banking-container-view-related))
-  (specified-elements @model/state (get-view @model/state :test/banking-container-view-relations))
-  
-  (model/related-nodes @model/state (referenced-relations @model/state (get-view @model/state :test/banking-container-view-related)))
-  (model/relations-of-nodes @model/state (referenced-model-nodes @model/state (get-view @model/state :test/banking-container-view-relations)))
-
-  (elements-in-view @model/state (get-view @model/state :banking/container-view))
-  (technologies-in-view @model/state (get-view @model/state :banking/container-view))
   ;
   )
