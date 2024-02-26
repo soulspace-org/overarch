@@ -5,9 +5,9 @@
             [org.soulspace.overarch.domain.views.class-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest render-element?-test
-  (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-model-node? {:el :class-view} y)))
+(deftest render-model-element?-test
+  (testing "render-model-element?"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :class-view} y)))
       true {:el :package}
       true {:el :class}
       true {:el :field}

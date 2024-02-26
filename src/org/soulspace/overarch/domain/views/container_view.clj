@@ -19,7 +19,7 @@
    (element->boundary (:el e))
    (e/internal? e)))
 
-(defmethod view/render-model-node? :container-view
+(defmethod view/render-model-element? :container-view
   [view e]
   (contains? view/container-view-element-types (:el e)))
 
@@ -30,7 +30,7 @@
 
 (defmethod view/render-relation-node? :container-view
   [view e]
-  (and (view/render-model-node? view e)
+  (and (view/render-model-element? view e)
        ; exclude system boundaries
        (not (as-boundary? e))))
 

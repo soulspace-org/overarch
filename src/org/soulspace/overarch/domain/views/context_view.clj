@@ -3,7 +3,7 @@
             [org.soulspace.overarch.domain.view :as view]))
 
 
-(defmethod view/render-model-node? :context-view
+(defmethod view/render-model-element? :context-view
   [view e]
   (contains? view/context-view-element-types (:el e)))
 
@@ -14,7 +14,7 @@
 
 (defmethod view/render-relation-node? :context-view
   [view e]
-  (view/render-model-node? view e))
+  (view/render-model-element? view e))
 
 (defmethod view/element-to-render :context-view
   [view e]

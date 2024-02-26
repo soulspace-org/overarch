@@ -136,6 +136,12 @@
   [e kind]
   (and (view? e) (= (:el e) kind)))
 
+
+
+;;;
+;;;
+;;;
+
 (defn view-type
   "Returns the type of the `view`."
   ([view]
@@ -145,7 +151,7 @@
 
 ;; TODO find good names for model elements, nodes relations,
 ;; relation participants, etc.
-(defmulti render-model-node?
+(defmulti render-model-element?
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
 
@@ -328,9 +334,9 @@
    Checks both sides of a relation."
   [model view e]
   (or (and (= :rel (:el e))
-           (render-model-node? view (model/model-element model (:from e)))
-           (render-model-node? view (model/model-element model (:to e))))
-      (and (render-model-node? view e)
+           (render-model-element? view (model/model-element model (:from e)))
+           (render-model-element? view (model/model-element model (:to e))))
+      (and (render-model-element? view e)
            (el/internal? (model/parent-element model e)))))
 
 (defmulti element-to-render

@@ -5,9 +5,9 @@
             [org.soulspace.overarch.domain.views.system-landscape-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest render-element?-test
-  (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-model-node? {:el :system-landscape-view} y)))
+(deftest render-model-element?-test
+  (testing "render-model-element?"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :system-landscape-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}

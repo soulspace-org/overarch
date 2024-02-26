@@ -5,9 +5,9 @@
             [org.soulspace.overarch.domain.views.glossary-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-(deftest render-element?-test
-  (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-model-node? {:el :glossary-view} y)))
+(deftest render-model-element?-test
+  (testing "render-model-element?"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :glossary-view} y)))
       true {:el :concept}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
@@ -15,8 +15,8 @@
       true {:el :system}
       true {:el :container}))
 
-  (testing "render-element?"
-    (are [x y] (= x (fns/truthy? (render-model-node? {:el :glossary-view} y)))
+  (testing "render-model-element?"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :glossary-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :component}
