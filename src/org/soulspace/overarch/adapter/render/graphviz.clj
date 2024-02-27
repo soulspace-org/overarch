@@ -13,6 +13,7 @@
 ;;;
 ;;; Rendering
 ;;;
+
 (defn alias-name
   "Returns a valid PlantUML alias for the namespaced keyword `kw`."
   [kw]
