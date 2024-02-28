@@ -5,7 +5,6 @@
   "Functions for the definition and handling of views."
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            [clojure.spec.alpha :as s]
             [org.soulspace.overarch.domain.model :as model] 
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
