@@ -37,7 +37,7 @@
 (defmethod view/element-to-render :container-view
   [view e]
   (if (as-boundary? e)
-      ; e has a boundary type and has children, render as boundary
+    ; e has a boundary type and has children, render as boundary
     (assoc e :el (keyword (str (name (:el e)) "-boundary")))
-      ; render e as normal model element
+    ; render e as normal model element
     e))

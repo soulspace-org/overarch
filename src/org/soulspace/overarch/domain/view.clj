@@ -114,8 +114,7 @@
     :deployment-view :system-landscape-view
     ;:dynamic-view
     :state-machine-view :class-view
-    :glossary-view
-    })
+    :glossary-view})
 
 ;;
 ;; Predicates
@@ -146,31 +145,6 @@
   ([view & _]
    (view-type view)))
 
-;; TODO find good names for model elements, nodes relations,
-;; relation participants, etc.
-(defmulti render-model-element?
-  "Returns true if the element `e` is rendered in the `view`"
-  view-type)
-
-(defmulti include-content?
-  "Returns true if the content of element `e` is rendered in the `view`"
-  view-type)
-
-(defmulti render-relation-node?
-  "Returns true if the node will"
-  view-type)
-
-;;;
-;;; Schema definitions
-;;;
-
-(s/def :overarch/spec map?)
-(s/def :overarch/title string?)
-
-(s/def :overarch/view
-  (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/spec :overarch/title]))
-
 (defn get-views
   "Returns the collection of views from the `model`."
   ([model]
@@ -198,6 +172,8 @@
 ;;
 ;; Context based content filtering
 ;;
+;; TODO find good names for model elements, nodes relations,
+;; relation participants, etc.
 (defn render-element?
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
@@ -207,6 +183,18 @@
            (render-model-element? view (model/model-element model (:to e))))
       (and (render-model-element? view e)
            (el/internal? (model/parent model e)))))
+
+(defmulti render-model-element?
+  "Returns true if the element `e` is rendered in the `view`"
+  view-type)
+
+(defmulti include-content?
+  "Returns true if the content of element `e` is rendered in the `view`"
+  view-type)
+
+(defmulti render-relation-node?
+  "Returns true if the node will"
+  view-type)
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
@@ -254,6 +242,9 @@
   (->> (:ct view)
        (map (partial model/resolve-element model))))
 
+
+;; TODO: take the rendered children of referenced nodes into account and exclude
+;;       nodes rendered as boundaries
 (defn specified-model-nodes
   "Returns the model nodes specified in the given view.
    Takes the view spec into account for resolving model nodes not explicitly referenced."
