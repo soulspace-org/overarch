@@ -195,6 +195,24 @@
 ;;; View functions
 ;;;
 
+;;
+;; Context based content filtering
+;;
+(defn render-element?
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [model view e]
+  (or (and (= :rel (:el e))
+           (render-model-element? view (model/model-element model (:from e)))
+           (render-model-element? view (model/model-element model (:to e))))
+      (and (render-model-element? view e)
+           (el/internal? (model/parent-element model e)))))
+
+(defmulti element-to-render
+  "Returns the model element to be rendered for element `e` for the `view`.
+   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
+  view-type)
+
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
   [model rel pred]
@@ -212,6 +230,9 @@
         to   (model/resolve-element model (:to rel))]))
   ; TODO promote relations to higher levels?
   
+;;
+;; View based element aggregation
+;;
 
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
@@ -311,17 +332,33 @@
 
 (defn rendered-model-nodes
   "Returns the model nodes to be rendered by the given view."
-  [model view])
+  [model view]
+  (let [specified-nodes (specified-model-nodes model view)]
+    specified-nodes
+    ; TODO
+    )
+  ;
+  )
 
 (defn rendered-relations
   "Returns the relations to be rendered by the given view.
    Takes the view spec into account for resolving relations not explicitly specified."
-  [model view])
+  [model view]
+  (let [specified-rels (specified-relations model view)]
+    specified-rels
+    ; TODO
+    )
+  ;
+  )
 
 (defn rendered-elements
   "Returns the model elements to be rendered by the given view.
    Takes the view spec into account for resolving model elements not explicitly specified."
-  [model view])
+  [model view]
+  (concat (rendered-model-nodes model view)
+          (rendered-relations model view))
+  ;
+  )
 
 ;;
 ;; Context based content filtering
@@ -385,7 +422,6 @@
   ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
-; TODO reimplement with elements-in-view 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   [coll]
