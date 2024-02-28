@@ -567,7 +567,227 @@
       false {:el :dependency}
       false {:el :ref})))
 
-;; TODO add class model and concept model tests
+(deftest class-model-node?-test
+  (testing "class-model-node? true"
+    (are [x y] (= x (fns/truthy? (class-model-node? y)))
+      true {:el :package}
+      true {:el :namespace}
+      true {:el :class}
+      true {:el :interface}
+      true {:el :enum}
+      true {:el :field}
+      true {:el :method}
+      true {:el :stereotype}
+      true {:el :annotation}
+      true {:el :protocol}))
+
+  (testing "class-model-node? false"
+    (are [x y] (= x (fns/truthy? (class-model-node? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :context-boundary}
+      false {:el :enterprise-boundary}
+      false {:el :node}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :concept}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest class-model-relation?-test
+  (testing "class-model-relation? true"
+    (are [x y] (= x (fns/truthy? (class-model-relation? y)))
+      true {:el :inheritance}
+      true {:el :implementation}
+      true {:el :composition}
+      true {:el :aggregation}
+      true {:el :association}
+      true {:el :dependency}))
+
+  (testing "class-model-relation? false"
+    (are [x y] (= x (fns/truthy? (class-model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :link}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest concept-model-node?-test
+  (testing "concept-model-node? true"
+    (are [x y] (= x (fns/truthy? (concept-model-node? y)))
+      true {:el :concept}
+      true {:el :person}
+      true {:el :system}
+      true {:el :container}
+      true {:el :context-boundary}
+      true {:el :enterprise-boundary}))
+
+  (testing "concept-model-node? false"
+    (are [x y] (= x (fns/truthy? (concept-model-node? y)))
+      false {:el :component}
+      false {:el :node}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :transition}
+      false {:el :ref})))
+
+(deftest concept-model-relation?-test
+  (testing "concept-model-relation? true"
+    (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
+      true {:el :rel}))
+
+  (testing "concept-model-relation? false"
+    (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :field}
+      false {:el :method}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :request}
+      false {:el :response}
+      false {:el :publish}
+      false {:el :subscribe}
+      false {:el :send}
+      false {:el :dataflow}
+      false {:el :link}
+      false {:el :uses}
+      false {:el :include}
+      false {:el :extends}
+      false {:el :generalizes}
+      false {:el :transition}
+      false {:el :inheritance}
+      false {:el :implementation}
+      false {:el :composition}
+      false {:el :aggregation}
+      false {:el :association}
+      false {:el :dependency}
+      false {:el :ref})))
 
 (deftest model-node?-test
   (testing "model-node? true"

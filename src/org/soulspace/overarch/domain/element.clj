@@ -255,50 +255,25 @@
   [e]
   (contains? statemachine-relation-types (:el e)))
 
-(defn class-node?
+(defn class-model-node?
   "Returns true if the given element `e` is a class model node."
   [e]
   (contains? class-node-types (:el e)))
 
-(defn class-relation?
+(defn class-model-relation?
   "Returns true if the given element `e` is a class model relation."
   [e]
   (contains? class-relation-types (:el e)))
 
-(defn concept-node?
+(defn concept-model-node?
   "Returns true if the given element `e` is a concept model node."
   [e]
   (contains? concept-node-types (:el e)))
 
-(defn concept-relation?
+(defn concept-model-relation?
   "Returns true if the given element `e` is a concept model relation."
   [e]
   (contains? concept-relation-types (:el e)))
-
-(defn person?
-  "Returns true if the given element `e` is a person element."
-  [e]
-  (= :person (:el e)))
-
-(defn system?
-  "Returns true if the given element `e` is a system element."
-  [e]
-  (= :system (:el e)))
-
-(defn container?
-  "Returns true if the given element `e` is a container element."
-  [e]
-  (= :container (:el e)))
-
-(defn component?
-  "Returns true if the given element `e` is a container element."
-  [e]
-  (= :component (:el e)))
-
-(defn node?
-  "Returns true if the given element `e` is a node element."
-  [e]
-  (= :node (:el e)))
 
 (defn reference?
   "Returns true if the given element `e` is a reference."
@@ -357,22 +332,23 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+(defn tree->set
+  "Step function to convert a hierarchical tree of elements to a flat set of elements."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (conj acc e)))
+
 (defn element-namespace
   "Returns the namespace of the element `e`."
   [e]
   (when-let [id (:id e)]
     (namespace id)))
 
-(defn tree->set
-  "Converts a hierarchical tree of elements to a flat set of elements."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (conj acc e)))
-
 (defn descendant-nodes
-  "Returns the descendants of the `node`."
-  [el]
-  (traverse model-node? tree->set (:ct el)))
+  "Returns the descendants of the node `e`."
+  [e]
+  (when (model-node? e)
+    (traverse model-node? tree->set (:ct e))))
 
 (defn generate-node-id
   "Generates an identifier for element `e` based on the id of the parent `p`."

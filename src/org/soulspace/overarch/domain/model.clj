@@ -33,11 +33,6 @@
   ([model id]
    ((:id->element model) id)))
 
-(defn parent-element
-  "Returns the parent of the element `e`."
-  ([model e]
-   ((:id->parent model) (:id e))))
-
 (defn parent
   "Returns the parent of the element `e`."
   [model e]
@@ -45,9 +40,16 @@
 
 (defn children
   "Returns the children of the element `e`."
-  [model e])
-  ; TODO implement based on relations
-  
+  [model e]
+  (:ct e))
+
+(defn ancestor-nodes
+  [model e]
+  "Returns the ancestor nodes of the `node`."
+  ; TODO loop over parents and add them to a vector.
+  )
+
+
 (defn resolve-ref
   "Resolves the model element for the ref `r`."
   [model r]
@@ -129,9 +131,9 @@
         ; (= (:name r1) (:name r2))
         ; (= (:desc r1) (:desc r2))
         (or (= (:from r1) (:from r2))
-            (= (parent-element model (:from r1))
-               (parent-element model (:from r2))))
+            (= (parent model (:from r1))
+               (parent model (:from r2))))
         (or (= (:to r1) (:to r2))
-            (= (parent-element model (:to r1))
-               (parent-element model (:to r2)))))))
+            (= (parent model (:to r1))
+               (parent model (:to r2)))))))
 
