@@ -174,16 +174,6 @@
 ;;
 ;; TODO find good names for model elements, nodes relations,
 ;; relation participants, etc.
-(defn render-element?
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [model view e]
-  (or (and (= :rel (:el e))
-           (render-model-element? view (model/model-element model (:from e)))
-           (render-model-element? view (model/model-element model (:to e))))
-      (and (render-model-element? view e)
-           (el/internal? (model/parent model e)))))
-
 (defmulti render-model-element?
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
@@ -200,6 +190,16 @@
   "Returns the model element to be rendered for element `e` for the `view`.
    Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   view-type)
+
+(defn render-element?
+  "Returns true if the element is should be rendered for this view type.
+   Checks both sides of a relation."
+  [model view e]
+  (or (and (= :rel (:el e))
+           (render-model-element? view (model/model-element model (:from e)))
+           (render-model-element? view (model/model-element model (:to e))))
+      (and (render-model-element? view e)
+           (el/internal? (model/parent model e)))))
 
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
