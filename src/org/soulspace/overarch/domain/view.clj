@@ -130,13 +130,10 @@
   [e]
   (contains? hierarchical-view-types (:el e)))
 
-
 (defn view-of?
   "Returns true if the given element `e` is a view of `kind`."
   [e kind]
   (and (view? e) (= (:el e) kind)))
-
-
 
 ;;;
 ;;;
@@ -410,7 +407,7 @@
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   [coll]
-  (model/traverse :tech tech-collector coll))
+  (el/traverse :tech tech-collector coll))
 
 (defn render-indent
   "Renders an indent of n space chars."

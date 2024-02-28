@@ -160,7 +160,7 @@
    :referred-id->relations -> a map from id to set of relations where the id is referred (:to)
    "
   [coll]
-  (let [relational (model/traverse ->relational-model coll)]
+  (let [relational (el/traverse ->relational-model coll)]
     (assoc relational :elements coll)))
 
 ;;;
@@ -253,12 +253,14 @@
 (comment
   (update-state! "models")
 
-  (= (:id->parent @state) (model/traverse model/id->parent (:elements @state)))
-  (= (:id->element @state) (model/traverse el/identifiable? model/id->element (:elements @state)))
-  (= (:id->parent @state) (model/traverse el/model-node? model/id->parent (:elements @state)))
-  (= (:referred-id->relations @state) (model/traverse el/model-relation? model/referred-id->rel (:elements @state)))
-  (= (:referrer-id->relations @state) (model/traverse el/model-relation? model/referrer-id->rel (:elements @state)))
+  (= (:id->parent @state) (el/traverse model/id->parent (:elements @state)))
+  (= (:id->element @state) (el/traverse el/identifiable? model/id->element (:elements @state)))
+  (= (:id->parent @state) (el/traverse el/model-node? model/id->parent (:elements @state)))
+  (= (:referred-id->relations @state) (el/traverse el/model-relation? model/referred-id->rel (:elements @state)))
+  (= (:referrer-id->relations @state) (el/traverse el/model-relation? model/referrer-id->rel (:elements @state)))
   (build-model (elements))
+
+  (count (nodes))
 
   (view/specified-model-nodes @state (view-by-id :banking/system-context-view))
   (view/specified-relations @state (view-by-id :banking/system-context-view))

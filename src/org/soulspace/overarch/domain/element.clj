@@ -323,11 +323,56 @@
 ;;
 ;; Functions 
 ;;
+
+(defn traverse
+  "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
+   and transformed by the `step-fn`.
+
+   select-fn - a predicate on the current element
+   step-fn - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the step-fn should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([step-fn coll]
+   ; selection might be handled in the step function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (recur (trav (step-fn acc e) (:ct e))
+                        (rest coll)))
+               (step-fn acc)))]
+     (trav (step-fn) coll)))
+  ([select-fn step-fn coll]
+   ; selection handled by th select function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (if (select-fn e)
+                   (recur (trav (step-fn acc e) (:ct e))
+                          (rest coll))
+                   (recur (trav acc (:ct e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
 (defn element-namespace
   "Returns the namespace of the element `e`."
   [e]
   (when-let [id (:id e)]
     (namespace id)))
+
+(defn tree->set
+  "Converts a hierarchical tree of elements to a flat set of elements."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (conj acc e)))
+
+(defn descendant-nodes
+  "Returns the descendants of the `node`."
+  [el]
+  (traverse model-node? tree->set (:ct el)))
 
 (defn generate-node-id
   "Generates an identifier for element `e` based on the id of the parent `p`."
