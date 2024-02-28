@@ -206,7 +206,7 @@
            (render-model-element? view (model/model-element model (:from e)))
            (render-model-element? view (model/model-element model (:to e))))
       (and (render-model-element? view e)
-           (el/internal? (model/parent-element model e)))))
+           (el/internal? (model/parent model e)))))
 
 (defmulti element-to-render
   "Returns the model element to be rendered for element `e` for the `view`.
