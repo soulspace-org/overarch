@@ -80,7 +80,7 @@
 
 (s/def :overarch/view
   (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/spec :overarch/title :overarch:ct]))
+          :opt-un [:overarch/spec :overarch/title :overarch/ct]))
 
 ;;
 ;; Input model
