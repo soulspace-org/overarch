@@ -6,7 +6,7 @@
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
-  (testing "render-model-element?"
+  (testing "render-model-element? true"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :glossary-view} y)))
       true {:el :concept}
       true {:el :enterprise-boundary}
@@ -14,8 +14,7 @@
       true {:el :person}
       true {:el :system}
       true {:el :container}))
-
-  (testing "render-model-element?"
+  (testing "render-model-element? false"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :glossary-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}

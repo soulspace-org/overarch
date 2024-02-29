@@ -6,12 +6,14 @@
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
-  (testing "render-model-element?"
+  (testing "render-model-element? true"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :system-landscape-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}
-      true {:el :context-boundary}
+      true {:el :context-boundary}))
+  (testing "render-model-element? false"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :system-landscape-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :container}
@@ -51,4 +53,3 @@
       false {:el :function}
       false {:el :protocol}
       false {:el :concept})))
-

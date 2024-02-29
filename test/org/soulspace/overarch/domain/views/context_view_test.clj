@@ -3,16 +3,17 @@
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.context-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
-  (testing "render-model-element?"
+  (testing "render-model-element? true"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :context-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}
-      true {:el :context-boundary}
+      true {:el :context-boundary}))
+  (testing "render-model-element? false"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :context-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :container}
@@ -54,10 +55,12 @@
       false {:el :concept})))
 
 (deftest include-content?-test
-  (testing "include-content?"
+  (testing "include-content? true"
     (are [x y] (= x (fns/truthy? (include-content? {:el :context-view} y)))
       true {:el :enterprise-boundary}
-      true {:el :context-boundary}
+      true {:el :context-boundary}))
+  (testing "include-content? false"
+    (are [x y] (= x (fns/truthy? (include-content? {:el :context-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :person}

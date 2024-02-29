@@ -5,9 +5,8 @@
             [org.soulspace.overarch.domain.views.dynamic-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
-
 (deftest render-model-element?-test
-  (testing "render-model-element?"
+  (testing "render-model-element? true"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :dynamic-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
@@ -16,7 +15,9 @@
       true {:el :system-boundary}
       true {:el :container}
       true {:el :container-boundary}
-      true {:el :component}
+      true {:el :component}))
+  (testing "render-model-element? false"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :dynamic-view} y)))
       false {:el :node}
       false {:el :actor}
       false {:el :use-case}

@@ -6,7 +6,7 @@
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
-  (testing "render-model-element?"
+  (testing "render-model-element? true"
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :state-machine-view} y)))
       true {:el :state-machine}
       true {:el :start-state}
@@ -17,7 +17,9 @@
       true {:el :join}
       true {:el :choice}
       true {:el :history-state}
-      true {:el :deep-history-state}
+      true {:el :deep-history-state}))
+  (testing "render-model-element? false"
+    (are [x y] (= x (fns/truthy? (render-model-element? {:el :state-machine-view} y)))
       false {:el :context-boundary}
       false {:el :person}
       false {:el :system}
