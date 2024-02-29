@@ -1,7 +1,8 @@
 (ns org.soulspace.overarch.application.render
   "Contains dispatch functions for the rendering of the views."
   ; require views here to register multimethods
-  (:require [org.soulspace.overarch.domain.views.class-view :as class-view]
+  (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.views.class-view :as class-view]
             [org.soulspace.overarch.domain.views.component-view :as component-view]
             [org.soulspace.overarch.domain.views.concept-view :as concept-view]
             [org.soulspace.overarch.domain.views.container-view :as container-view]
@@ -11,11 +12,19 @@
             [org.soulspace.overarch.domain.views.glossary-view :as glossary-view]
             [org.soulspace.overarch.domain.views.state-machine-view :as state-machine-view]
             [org.soulspace.overarch.domain.views.system-landscape-view :as system-landscape-view]
-            [org.soulspace.overarch.domain.views.use-case-view :as use-case-view]
-            ))
+            [org.soulspace.overarch.domain.views.use-case-view :as use-case-view]))
 
 ;;;
-;;; Export multimethods 
+;;; General rendering functions
+;;;
+
+(defn render-indent
+  "Renders an indent of n space chars."
+  [n]
+  (str/join (repeat n " ")))
+
+;;;
+;;; Render multimethods 
 ;;;  
 
 (defn render-format

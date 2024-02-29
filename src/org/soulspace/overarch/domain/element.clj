@@ -2,7 +2,8 @@
 ;;;; contains element specific logic
 ;;;;
 (ns org.soulspace.overarch.domain.element
-  (:require [clojure.set :as set]))
+  (:require [clojure.string :as str]
+            [clojure.set :as set]))
 
 ;;;
 ;;; Category definitions
@@ -173,7 +174,6 @@
   "Returns true if the given element `e` is internal."
   [e]
   (not (external? e)))
-
 
 (defn tech?
   "Returns true if the given element `e` has a tech (:tech key)."
@@ -350,6 +350,17 @@
   (when (model-node? e)
     (traverse model-node? tree->set (:ct e))))
 
+(defn tech-collector
+  "Adds the tech of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:tech e)})))
+
+(defn collect-technologies
+  "Returns the set of technologies for the elements of the coll."
+  [coll]
+  (traverse :tech tech-collector coll))
+
 (defn generate-node-id
   "Generates an identifier for element `e` based on the id of the parent `p`."
   ([e p]
@@ -366,3 +377,15 @@
   ([el from to]
    (keyword (str (namespace from) "/"
                  (name from) "-" (name el) "-" (name to)))))
+
+(defn element-name
+  "Returns the name of the element."
+  [e]
+  (if (:name e)
+    (:name e)
+    (->> (name (:id e))
+         (#(str/split % #"-"))
+         (map str/capitalize)
+         (str/join " "))))
+
+

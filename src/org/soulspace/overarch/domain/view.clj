@@ -3,8 +3,7 @@
 ;;;;
 (ns org.soulspace.overarch.domain.view
   "Functions for the definition and handling of views."
-  (:require [clojure.string :as str]
-            [clojure.set :as set]
+  (:require [clojure.set :as set]
             [org.soulspace.overarch.domain.model :as model] 
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
@@ -134,7 +133,7 @@
   (and (view? e) (= (:el e) kind)))
 
 ;;;
-;;;
+;;; Accessors
 ;;;
 
 (defn view-type
@@ -171,8 +170,6 @@
 ;;
 ;; Context based content filtering
 ;;
-;; TODO find good names for model elements, nodes relations,
-;; relation participants, etc.
 (defmulti render-model-element?
   "Returns true if the element `e` is rendered in the `view`"
   view-type)
@@ -350,24 +347,6 @@
   ;
   )
 
-;;
-;; Context based content filtering
-;;
-(defn render-element?
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [model view e]
-  (or (and (= :rel (:el e))
-           (render-model-element? view (model/model-element model (:from e)))
-           (render-model-element? view (model/model-element model (:to e))))
-      (and (render-model-element? view e)
-           (el/internal? (model/parent model e)))))
-
-(defmulti element-to-render
-  "Returns the model element to be rendered for element `e` for the `view`.
-   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
-  view-type)
-
 ;;;
 ;;; Rendering functions
 ;;;
@@ -406,32 +385,6 @@
        (remove nil?)
        (into #{})))
        
-(defn tech-collector
-  "Adds the tech of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (set/union acc #{(:tech e)})))
-
-(defn collect-technologies
-  "Returns the set of technologies for the elements of the coll."
-  [coll]
-  (el/traverse :tech tech-collector coll))
-
-(defn render-indent
-  "Renders an indent of n space chars."
-  [n]
-  (str/join (repeat n " ")))
-
-(defn element-name
-  "Returns the name of the element."
-  [e]
-  (if (:name e)
-    (:name e)
-    (->> (name (:id e))
-         (#(str/split % #"-"))
-         (map str/capitalize)
-         (str/join " "))))
-
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
@@ -456,8 +409,3 @@
       (derive :deployment-relation         :relation)
       (derive :rel                         :relation)))
 
-
-(comment
-  ;(collect-technologies (:elements @model/state))
-  ;
-  )
