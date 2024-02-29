@@ -1,5 +1,7 @@
 (ns org.soulspace.overarch.adapter.render.plantuml.c4
-  (:require [org.soulspace.overarch.domain.view :as view]
+  (:require [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.render :as render]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]))
 
 (def c4-element->method
@@ -70,29 +72,29 @@
   [model view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
-      (flatten [(str (view/render-indent indent)
+      (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
-                     (view/element-name e) "\""
+                     (el/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
                      ") {")
                 (map #(puml/render-c4-element model view (+ indent 2) %)
                      children)
-                (str (view/render-indent indent) "}")]))
-    [(str (view/render-indent indent)
+                (str (render/indent indent) "}")]))
+    [(str (render/indent indent)
           (c4-element->method (:el e)) "("
           (puml/alias-name (:id e)) ", \""
-          (view/element-name e) "\""
+          (el/element-name e) "\""
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
 (defmethod puml/render-c4-element :person
   [_ _ indent e]
-  [(str (view/render-indent indent)
+  [(str (render/indent indent)
         (c4-element->method (:el e))
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
-        (view/element-name e) "\""
+        (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
@@ -100,12 +102,12 @@
 
 (defmethod puml/render-c4-element :technical-architecture-node
   [_ _ indent e]
-  [(str (view/render-indent indent)
+  [(str (render/indent indent)
         (c4-element->method (:el e))
         (when (:subtype e) (c4-subtype->suffix (:subtype e)))
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
-        (view/element-name e) "\""
+        (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (if (:sprite e)
@@ -119,10 +121,10 @@
   [model view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
-      (flatten [(str (view/render-indent indent)
+      (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
-                     (view/element-name e) "\""
+                     (el/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
                      (if (:sprite e)
@@ -133,11 +135,11 @@
                      ") {")
                 (map #(puml/render-c4-element model view (+ indent 2) %)
                      children)
-                (str (view/render-indent indent) "}")]))
-    [(str (view/render-indent indent)
+                (str (render/indent indent) "}")]))
+    [(str (render/indent indent)
           (c4-element->method (:el e)) "("
           (puml/alias-name (:id e)) ", \""
-          (view/element-name e) "\""
+          (el/element-name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
           (when (:tech e) (str ", $type=\"" (:tech e) "\""))
           (if (:sprite e)
@@ -150,12 +152,12 @@
 (defmethod puml/render-c4-element :relation
   [_ _ indent e]
   (if (:constraint e)
-    [(str (view/render-indent indent) "Lay"
+    [(str (render/indent indent) "Lay"
           (when (:direction e) (c4-directions (:direction e))) "("
           (puml/alias-name (:from e)) ", "
           (puml/alias-name (:to e))
           ")")]
-    [(str (view/render-indent indent)
+    [(str (render/indent indent)
           (c4-element->method (:el e))
           (when (:direction e) (c4-directions (:direction e))) "("
           (if (:reverse e)

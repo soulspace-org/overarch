@@ -6,12 +6,12 @@
   (:require [clojure.string :as str]
             [clojure.set :as set]
             [clojure.java.io :as io]
+            [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.application.export :as exp]
-            [org.soulspace.clj.string :as sstr]))
+            [org.soulspace.overarch.application.export :as export]))
 
 (def element-type->structurizr
   "Maps the element to a structurizr type."
@@ -71,7 +71,7 @@
 
 (defmethod render-element :rel
   [m indent e]
-  [(str (view/render-indent indent)
+  [(str (export/indent indent)
         (alias-name (:from e)) " -> " (alias-name (:to e))
         " \"" (:name e) "\""
         (when (:tech e) (str " \"" (:tech e) "\"")))])
@@ -80,48 +80,48 @@
   [model indent e]
   (if (:ct e)
     (let [children (map (partial model/resolve-element model) (:ct e))]
-      [(str (view/render-indent indent) (alias-name (:id e)) " = "
+      [(str (export/indent indent) (alias-name (:id e)) " = "
             (element-type->structurizr (:el e))
-            " \"" (view/element-name e) "\" {")
+            " \"" (el/element-name e) "\" {")
        (map (partial render-element model (+ indent 2)) children)
-       (str (view/render-indent indent) "}")])
-    [(str (view/render-indent indent) (alias-name (:id e)) " = "
+       (str (export/indent indent) "}")])
+    [(str (export/indent indent) (alias-name (:id e)) " = "
           (element-type->structurizr (:el e))
-          " \"" (view/element-name e) "\"")]))
+          " \"" (el/element-name e) "\"")]))
 
 (defn render-model
   "Renders the structurizr model."
   [model elements]
-  (flatten [(str (view/render-indent 2) "model {")
+  (flatten [(str (export/indent 2) "model {")
             (map (partial render-element model 4) 
                  (filter structurizr-element? elements))
-            (str (view/render-indent 2) "}")])
+            (str (export/indent 2) "}")])
   )
 
 (defn render-view
   "Renders a structurizr view."
   [model view]
-  (flatten [(str (view/render-indent 4)
+  (flatten [(str (export/indent 4)
                  (view-type->structurizr (:el view))
                  " \"" (sstr/first-upper-case
                         (sstr/hyphen-to-camel-case
                          (view-type->structurizr (:el view)))) "\" {\n")
             (if (:ct view)
-              (let [children (filter e/model-relation?
+              (let [children (filter el/model-relation?
                                      (view/elements-to-render model view))]
                 (map (partial render-element model 6) children))
-              (str (view/render-indent 6) "include *\n"))
+              (str (export/indent 6) "include *\n"))
             (when (:title view)
-              (str (view/render-indent 6) "description \"" (:title view) "\"\n"))
-            (str (view/render-indent 4) "}")]))
+              (str (export/indent 6) "description \"" (:title view) "\"\n"))
+            (str (export/indent 4) "}")]))
 
 (defn render-views
   "Renders the structurizr views."
   [model views]
-  (flatten [(str (view/render-indent 2) "views {")
+  (flatten [(str (export/indent 2) "views {")
             (map (partial render-view model) (filter structurizr-view? views))
-            (str (view/render-indent 4) "theme default")
-            (str (view/render-indent 2) "}")]))
+            (str (export/indent 4) "theme default")
+            (str (export/indent 2) "}")]))
 
 (defn render-workspace
   "Renders a structurizr workspace."
@@ -131,20 +131,15 @@
             (render-views model (view/get-views model))
             "}"]))
 
-(defmethod exp/export-file :structurizr
+(defmethod export/export-file :structurizr
   [model format options]
   (let [dir-name (str (:export-dir options) "/structurizr/")
         workspace (namespace (:id (first (model/model-elements model))))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/" workspace ".dsl"))))
 
-(defmethod exp/export :structurizr
+(defmethod export/export :structurizr
   [model format options]
-  (with-open [wrt (io/writer (exp/export-file model format options))]
+  (with-open [wrt (io/writer (export/export-file model format options))]
     (binding [*out* wrt]
       (println (str/join "\n" (doall (render-workspace model)))))))
-
-(comment
-  (render-workspace @model/state)
-  (exp/export @model/state :structurizr {})
-  )

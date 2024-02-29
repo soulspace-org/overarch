@@ -1,5 +1,16 @@
 (ns org.soulspace.overarch.application.export
-  "Contains general functions for the export of the model data.")
+  "Contains general functions for the export of the model data." 
+  (:require [clojure.string :as str]))
+
+;;;
+;;; Export functions
+;;;
+
+(defn indent
+  "Renders an indent of n space chars."
+  [n]
+  (str/join (repeat n " ")))
+
 
 ;;;
 ;;; Export multimethods 

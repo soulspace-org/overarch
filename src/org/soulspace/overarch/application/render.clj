@@ -18,7 +18,7 @@
 ;;; General rendering functions
 ;;;
 
-(defn render-indent
+(defn indent
   "Renders an indent of n space chars."
   [n]
   (str/join (repeat n " ")))
