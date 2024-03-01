@@ -108,6 +108,108 @@
   (set/union model-node-types model-relation-types))
 
 ;;
+;; C4 view category definitions
+;; 
+(def c4-view-types
+  "The set of C4 view types."
+  #{:context-view :container-view :component-view
+    :deployment-view :system-landscape-view
+    :dynamic-view})
+
+(def context-view-element-types
+  "Element types of a C4 context view."
+  (set/union architecture-relation-types
+             #{:person :system :enterprise-boundary :context-boundary}))
+
+(def container-view-element-types
+  "Element types of a C4 container view."
+  (set/union context-view-element-types
+             #{:system-boundary :container}))
+
+(def component-view-element-types
+  "Element types of a C4 component view."
+  (set/union container-view-element-types
+             #{:container-boundary :component}))
+
+(def code-view-element-types
+  "Element types of a C4 code view."
+  #{})
+
+(def system-landscape-view-element-types
+  "Element types of a C4 system-landscape view."
+  context-view-element-types)
+
+(def deployment-view-element-types
+  "Element types of a C4 deployment view."
+  (set/union container-view-element-types
+             deployment-relation-types
+             #{:node}))
+
+(def dynamic-view-element-types
+  "Element types of a C4 dynamic view."
+  component-view-element-types)
+
+;;
+;; UML view category definitions
+;;
+(def uml-view-types
+  "The set of UML view types."
+  #{:use-case-view :state-machine-view :class-view})
+
+(def use-case-view-element-types
+  "Element types of a use case view."
+  (set/union usecase-node-types
+             usecase-relation-types))
+
+(def state-machine-view-element-types
+  "Element types of a state machine view."
+  (set/union statemachine-node-types
+             statemachine-relation-types))
+
+(def class-view-element-types
+  "Element types of a class view."
+  (set/union class-node-types
+             class-relation-types))
+
+(def uml-view-element-types
+  "Element types of UML views."
+  (set/union use-case-view-element-types
+             state-machine-view-element-types
+             class-view-element-types))
+
+;;
+;; Concept view category definitions
+;;
+(def concept-view-types
+  "The set of concept views types."
+  #{:concept-view :glossary-view})
+
+(def concept-view-element-types
+  "Element types of a concept view."
+  (set/union concept-node-types
+             concept-relation-types))
+
+(def glossary-view-element-types
+  "Element types of a glossary view."
+  (set/union concept-node-types
+             concept-relation-types))
+
+;; 
+;; General view category definitions
+;;
+(def view-types
+  "The set of view types."
+  (set/union c4-view-types uml-view-types concept-view-types))
+
+(def hierarchical-view-types
+  "The set of hierarchical view types."
+  #{:context-view :container-view :component-view
+    :deployment-view :system-landscape-view
+    ;:dynamic-view
+    :state-machine-view :class-view
+    :glossary-view})
+
+;;
 ;; Predicates
 ;;
 (defn element?
@@ -294,6 +396,21 @@
   "Returns true if the given element `e` is a relation of `kind`."
   [kind e]
   (and (model-relation? e) (= (:el e) kind)))
+
+(defn view?
+  "Returns true if the given element `e` is a view."
+  [e]
+  (contains? view-types (:el e)))
+
+(defn hierarchical-view?
+  "Returns true if the given element `e` is a hierarchical view."
+  [e]
+  (contains? hierarchical-view-types (:el e)))
+
+(defn view-of?
+  "Returns true if the given element `e` is a view of `kind`."
+  [e kind]
+  (and (view? e) (= (:el e) kind)))
 
 ;;
 ;; Functions 

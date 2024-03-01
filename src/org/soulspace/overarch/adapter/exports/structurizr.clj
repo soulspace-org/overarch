@@ -43,7 +43,8 @@
 
 (def structurizr-elements
   "Contains the model element types exported to structurizr."
-  (set/union view/component-view-element-types view/deployment-view-element-types))
+  (set/union el/component-view-element-types
+             el/deployment-view-element-types))
 
 (defn structurizr-element?
   "Returns true, if the element `e` is to be exported to structurizr."

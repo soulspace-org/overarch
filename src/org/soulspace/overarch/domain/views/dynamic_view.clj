@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.dynamic-view
-  (:require [org.soulspace.overarch.domain.element :as e]
+  (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-element? :dynamic-view
   [view e]
-  (contains? view/dynamic-view-element-types (:el e)))
+  (contains? el/dynamic-view-element-types (:el e)))
 
 (defmethod view/include-content? :dynamic-view
   [view e]
-  (contains? view/dynamic-view-element-types (:el e)))
+  (contains? el/dynamic-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :dynamic-view
   [view e]

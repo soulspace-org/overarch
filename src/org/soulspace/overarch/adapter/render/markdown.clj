@@ -98,7 +98,8 @@
 (def markdown-views
   "Contains the views rendered with markdown."
   #{:concept-view :glossary-view
-    :context-view :container-view :component-view :system-landscape-view})
+    :context-view :container-view :component-view
+    :system-landscape-view})
 
 (defn markdown-view?
   "Returns true, if the view is to be rendered with markdown."

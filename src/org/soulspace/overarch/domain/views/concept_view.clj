@@ -1,14 +1,14 @@
 (ns org.soulspace.overarch.domain.views.concept-view
-  (:require [org.soulspace.overarch.domain.element :as e]
+  (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]))
 
 (defmethod view/render-model-element? :concept-view
   [view e]
-  (contains? view/concept-view-element-types (:el e)))
+  (contains? el/concept-view-element-types (:el e)))
 
 (defmethod view/include-content? :concept-view
   [view e]
-  (contains? view/concept-view-element-types (:el e)))
+  (contains? el/concept-view-element-types (:el e)))
 
 (defmethod view/render-relation-node? :concept-view
   [view e]
