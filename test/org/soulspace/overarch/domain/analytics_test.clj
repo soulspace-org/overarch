@@ -1,8 +1,7 @@
 (ns org.soulspace.overarch.domain.analytics-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.analytics :refer :all]
-            [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.application.model-repository :as repo]))
+            [org.soulspace.overarch.domain.model :as model]))
 
 (deftest compile-test
   (testing "Compilation"
@@ -24,7 +23,7 @@
      :to :test/missing-system-d
      :name "sends data to"}})
 
-(def rel-unresolved-model (repo/build-model rel-unresolved-input))
+(def rel-unresolved-model (model/build-model rel-unresolved-input))
 
 (def view-ref-unresolved-input
   #{{:el :context-view
@@ -32,7 +31,7 @@
      :title "View referencing missing elements"
      :ct [{:ref :foo/bar}
           {:ref :foo/baz}]}})
-(def view-ref-unresolved-model (repo/build-model view-ref-unresolved-input))
+(def view-ref-unresolved-model (model/build-model view-ref-unresolved-input))
 
 (deftest check-relations-test
   (testing "check-relations"

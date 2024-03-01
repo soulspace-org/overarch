@@ -1,8 +1,7 @@
 (ns org.soulspace.overarch.domain.model-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.element :as e]
-            [org.soulspace.overarch.domain.model :refer :all]
-            [org.soulspace.overarch.application.model-repository :as repo]))
+            [org.soulspace.overarch.domain.model :refer :all]))
 
 (def c4-input1
   "Simple test model for C4 Architecture"
@@ -86,8 +85,8 @@
      :to :test/concept3
      :name "is a"}})
 
-(def c4-model1 (repo/build-model c4-input1))
-(def concept-model1 (repo/build-model concept-input1))
+(def c4-model1 (build-model c4-input1))
+(def concept-model1 (build-model concept-input1))
 
 (deftest id->element-test
   (testing "id->elements"

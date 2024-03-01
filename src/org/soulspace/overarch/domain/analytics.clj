@@ -21,7 +21,7 @@
   "Returns a transducer to extract the id of each node."
   (comp (filter el/identifiable?)
         (remove el/relational?)
-        (remove view/view?)
+        (remove el/view?)
         (map :id)))
 
 (defn unresolved-refs-xf
@@ -61,7 +61,7 @@
   "Returns a map with the count of views per type in the given `coll`."
   [coll]
   (->> coll
-       (filter view/view?)
+       (filter el/view?)
        (map :el)
        (frequencies)
        (into (sorted-map))))
