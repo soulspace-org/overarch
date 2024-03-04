@@ -41,24 +41,24 @@
   {:el :theme
    :id :test/test-theme1
    :styles #{{:id :test/dashed-rel
-              :for :rel
+              :el :rel
               :text-color "#000000"
               :line-color "#000000"
               :line-style :dashed
               :tech "async"
               :legend-text "asynchronous"}
              {:id :test/dotted-rel
-              :for :rel
+              :el :rel
               :line-style :dotted
               :legend-text "dependency"}
              {:id :test/bold-rel
-              :for :rel
+              :el :rel
               :line-style :bold
               :line-color "#007700"
               :text-color "#000077"
               :legend-text "synchronous"}
              {:id :test/critical
-              :for :element
+              :el :element
               :bg-color "#CC0000"
               :border-color "#330000"
               :text-color "#000000"

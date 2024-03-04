@@ -240,11 +240,12 @@
 
 (defn render-c4-layout
   "Renders the layout for the C4 diagram."
-  [view]
+  [model view]
   (let [spec (:spec view)
-        plantuml-spec (:plantuml spec)]
-    (flatten [(when (:styles spec)
-                (into [] (map #(render-c4-style view %)) (:styles spec)))
+        styles (view/styles-spec model view)
+        plantuml-spec (:plantuml spec)] 
+    (flatten [(when (seq styles)
+                (into [] (map #(render-c4-style view %)) styles))
               (when (:sketch spec)
                 "LAYOUT_AS_SKETCH()")
               (when (:layout spec)
@@ -270,7 +271,7 @@
     (flatten [(str "@startuml " (puml/alias-name (:id view)))
               (render-c4-imports view)
               (puml/render-sprite-imports model view)
-              (render-c4-layout view)
+              (render-c4-layout model view)
               (puml/render-title view)
               (map #(puml/render-c4-element model view 0 %) children)
               (render-c4-legend view)

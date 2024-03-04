@@ -256,7 +256,7 @@
     (el/theme? e)
     (assoc acc
        :themes
-       (conj (:views acc) e)
+       (conj (:themes acc) e)
 
        :id->element
        (assoc (:id->element acc) (:id e) e))

@@ -52,9 +52,10 @@
 (defn styles-spec
   "Returns the styles specification for the `model` and the `view`."
   [model view]
+  (println (:id view))
   (apply set/union (conj
                     (themes->styles model view)
-                    (get-in view [:spec :themes] #{}))))
+                    (get-in view [:spec :styles] #{}))))
 
 ;;;
 ;;; View functions
