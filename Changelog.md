@@ -13,10 +13,10 @@ Version 0.10.0
   * domain model can be navigated relationally and hierarchically
 * added/refactored model accessor functions
 * added/refactored element predicates and type sets
-* refactored model checks
+* refactored and enhanced model spec and checks
 * refactored and enhanced tests
 * refactored and enhanced example models
-* updated design documentation
+* updated documentation
 
 
 Version 0.9.0
