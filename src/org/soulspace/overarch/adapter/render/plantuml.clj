@@ -292,9 +292,10 @@
 
 (defmethod rndr/render-view :plantuml
   [model format options view]
-  (with-open [wrt (io/writer (rndr/render-file model format options view))]
-    (binding [*out* wrt]
-      (println (str/join "\n" (render-plantuml-view model options view))))))
+  (let [result (render-plantuml-view model options view)]
+    (with-open [wrt (io/writer (rndr/render-file model format options view))]
+      (binding [*out* wrt]
+        (println (str/join "\n" result))))))
 
 (defmethod rndr/render :plantuml
   [model format options]

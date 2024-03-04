@@ -116,9 +116,10 @@
 
 (defmethod rndr/render-view :markdown
   [model format options view]
-  (with-open [wrt (io/writer (rndr/render-file model format options view))]
-    (binding [*out* wrt]
-      (println (str/join "\n" (render-markdown-view model options view))))))
+  (let [result (render-markdown-view model options view)]
+    (with-open [wrt (io/writer (rndr/render-file model format options view))]
+      (binding [*out* wrt]
+        (println (str/join "\n" result))))))
 
 (defmethod rndr/render :markdown
   [model format options]
