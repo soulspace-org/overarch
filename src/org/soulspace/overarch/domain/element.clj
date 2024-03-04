@@ -397,6 +397,11 @@
   [kind e]
   (and (model-relation? e) (= (:el e) kind)))
 
+(defn theme?
+  "Returns true if the given element `e` is a theme."
+  [e]
+  (= :theme (:el e)))
+
 (defn view?
   "Returns true if the given element `e` is a view."
   [e]

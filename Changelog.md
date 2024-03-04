@@ -7,6 +7,7 @@ Version 0.10.0
 * added reporting for unresolvable references in relations
 * added support for references in markdown rendering
   * configurable per view via spec
+* added support for themes to make consistent styling easier
 * removed rendering of ids as transition names in statemachines
 * separated domain model from external data representation
   * domain model can be navigated relationally and hierarchically

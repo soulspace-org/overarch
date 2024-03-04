@@ -34,10 +34,27 @@
   ([view]
    (get-in view [:spec :include] :referenced-only)))
 
+;;
+;; View spec elements
+;;
+
 (defn layout-spec
   "Returns the layout specification for the `view`."
   ([view]
    (get-in view [:spec :layout] :top-down)))
+
+(defn themes->styles
+  [model view]
+  (->> (get-in view [:spec :themes] [])
+       (map (partial model/resolve-element model))
+       (map :styles)))
+
+(defn styles-spec
+  "Returns the styles specification for the `model` and the `view`."
+  [model view]
+  (apply set/union (conj
+                    (themes->styles model view)
+                    (get-in view [:spec :themes] #{}))))
 
 ;;;
 ;;; View functions

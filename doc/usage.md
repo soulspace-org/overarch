@@ -552,6 +552,7 @@ key           | type    | values                    | description
 :linetype     | keyword | :orthogonal, :polygonal   | different line types for relations
 :sketch       | boolean | true, false               | visual clue for sketches
 :styles       | set     | see Styling               | visual customization of elements
+:theme        | keyword | id of the theme           | theme containing styles
 
 #### Includes
 With the `:include` key elements can be automatically included in a view. 
@@ -571,7 +572,7 @@ Overarch supports custom styles for elements. For an example see
 key           | type    | values                   | description 
 --------------|---------|--------------------------|------------
 :id           | keyword | namespaced id            | used to reference styles
-:el           | keyword | :rel, :element           | element type to be styled
+:for          | keyword | :rel, :element           | element type to be styled
 :line-style   | keyword | :dashed, :dotted, :bold  | line style for relations
 :line-color   | hex rgb | #0000FF for bright blue  | line color for relations
 :border-color | hex rgb | #FF0000 for bright red   | border color for nodes
@@ -594,13 +595,14 @@ view spec.
    :spec {:plantuml {:sprite-libs [:azure]}}
 ```
 
+
 #### Keys
 
 key              | type    | values                   | description 
 -----------------|---------|--------------------------|------------
 :node-separation | integer | 50 (for 50 pixels)       | separation between nodes
 :rank-separation | integer | 250 (for 250 pixels)     | separation between ranks
-:sprite-libs     | vector  | sprite-lib keywords      | used to render sprites for techs
+:sprite-libs     | vector  | sprite-lib keywords      | used to render sprites for techs, order defines precedence of the libs
 
 #### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
@@ -613,6 +615,16 @@ precedence over the **:tech** value.
 The list of sprites contains sprites of the PlantUML standard library, e.g.
 sprites for AWS and Azure. The mapping files from tech name to sprite
 reside in [resources/plantuml](/resources/plantuml). 
+
+Currently the following keys for sprite libs are supported:
+ * :awslib14
+ * :azure
+ * :cloudinsight
+ * :cloudogu
+ * :devicons
+ * :devicons2
+ * :font-awesome-5
+ * :logos
 
 The command line interface supports the option `--plantuml-list-sprites`
 which prints the (long) list of sprite mappings. 

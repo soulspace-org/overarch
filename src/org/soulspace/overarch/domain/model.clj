@@ -252,6 +252,15 @@
       ; reference is a child of a view, leave as is
       acc)
 
+    ;; themes
+    (el/theme? e)
+    (assoc acc
+       :themes
+       (conj (:views acc) e)
+
+       :id->element
+       (assoc (:id->element acc) (:id e) e))
+
     ; unhandled element
     :else (do (println "Unhandled:" e) acc)))
 
@@ -262,6 +271,7 @@
    [{:nodes #{}
      :relations #{}
      :views #{}
+     :themes #{}
      :id->element {}
      :id->parent {}
      :referred-id->relations {}

@@ -1,0 +1,18 @@
+#{
+  {:el :context-view
+   :id :test/without-legend
+   :spec {:no-legend true}
+   :title "View without legend"
+   :ct [{:el :system
+         :id :test/sys1
+         :name "Sys1"}
+        {:el :system
+         :id :test/sys2
+         :name "Sys2"
+         :external true}
+        {:el :rel
+         :from :test/sys1
+         :to :test/sys2
+         :name "calls"}]}
+    ;
+  }
