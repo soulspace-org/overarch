@@ -3,6 +3,7 @@
 ;;;;
 (ns org.soulspace.overarch.domain.spec
   (:require [clojure.spec.alpha :as s]
+            [expound.alpha :as expound]
             [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.domain.view :as view]))
 
@@ -71,14 +72,19 @@
 (s/def :overarch/border-color string?)
 (s/def :overarch/text-color string?)
 (s/def :overarch/legend-text string?)
+
 (s/def :overarch/style
   (s/keys :req-un [:overarch/id]
-          :opt-un [:overarch/for :overarch/line-style :overarch/legend-text
-                   :overarch/border-color :overarch/line-color :overarch/text-color]))
+          :opt-un [:overarch/for :overarch/el :overarch/line-style
+                   :overarch/legend-text :overarch/border-color
+                   :overarch/line-color :overarch/text-color]))
+
 (s/def :overarch/styles
   (s/coll-of :overarch/style))
+
 (s/def :overarch/theme
   (s/keys :req-un [:overarch/el :overarch/id :overarch/styles]))
+
 (s/def :overarch/themes
   (s/coll-of :overarch/theme))
 
@@ -93,9 +99,11 @@
 (s/def :overarch/sprite-lib keyword?)
 (s/def :overarch/node-separation integer?)
 (s/def :overarch/rank-separation integer?)
+
 (s/def :overarch/sprite-libs
   (s/and vector?
          (s/coll-of :overarch/sprite-lib)))
+
 (s/def :overarch/plantuml
   (s/keys :req-un []
           :opt-un [:overarch/node-separation :overarch/rank-separation
@@ -115,7 +123,7 @@
 (s/def :overarch/spec
   (s/keys :opt-un [:overarch/include :overarch/layout :overarch/linetype
                    :overarch/sketch :overarch/styles :overarch/themes
-                   :overarch/plantuml]))
+                   :overarch/plantuml :overarch/markdown]))
 
 (s/def :overarch/title string?)
 (s/def :overarch/view
@@ -141,5 +149,5 @@
   [elements]
   (if (s/valid? :overarch/model elements)
     elements
-    (s/explain :overarch/model elements)))
-
+    ;(s/explain :overarch/model elements)
+    (expound/expound :overarch/model elements {:print-specs? false})))

@@ -4,6 +4,10 @@ Changelog
 Version 0.10.0
 --------------
 * added support for new semantical relation types in architecture and deployment models
+  * additional architecture relations
+    * :request, :response, :publish, :subscribe, :send, :dataflow
+  * additional deployment relation
+    * :link
 * added reporting for unresolvable references in relations
 * added support for references in markdown rendering
   * configurable per view via spec
@@ -11,9 +15,11 @@ Version 0.10.0
 * removed rendering of ids as transition names in statemachines
 * separated domain model from external data representation
   * domain model can be navigated relationally and hierarchically
+* separated rendering from file output
 * added/refactored model accessor functions
 * added/refactored element predicates and type sets
 * refactored and enhanced model spec and checks
+  * use expound for spec error reporting (not ideal)
 * refactored and enhanced tests
 * refactored and enhanced example models
 * updated documentation
