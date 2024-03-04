@@ -67,7 +67,7 @@
   {:el :context-view
    :id :test/theme-context-view
    :spec {:themes [:test/test-theme1]}
-   :title "Style Test"
+   :title "Theme Test"
    :ct [{:el :system
          :id :test/sys1
          :name "Sys1"

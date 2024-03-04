@@ -48,7 +48,9 @@
            :from :test/sys1
            :to :test/sys2
            :name "calls"
-           :style :test/dashed-rel}]}{:el :theme
+           :style :test/dashed-rel}]}
+    
+    {:el :theme
      :id :test/test-theme1
      :styles #{{:id :test/dashed-rel
                 :el :rel
@@ -77,7 +79,7 @@
     {:el :context-view
      :id :test/theme-context-view
      :spec {:themes [:test/test-theme1]}
-     :title "Style Test"
+     :title "Theme Test"
      :ct [{:el :system
            :id :test/sys1
            :name "Sys1"
