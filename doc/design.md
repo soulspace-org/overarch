@@ -344,6 +344,8 @@ Q: **How can we avoid duplication for style specifications used in multiple view
 A: Themes could encapsulate the specification of the styles and the can be
    referenced in the various diagrams to provide a consistent style.
 
+   Implemented.
+
 
 Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
     
@@ -411,8 +413,8 @@ Q: **How shall multiple export formats be specified and implemented?**
    dispatches on the value of this option. Thus it is currently not possible to
    export more than one format per execution.
 
-   It shoud be possible to specify multiple formats on the command line and all
-   of the specified formats should be exported.
+   It should be possible to specify multiple formats on the command line and 
+   all of the specified formats should be exported.
 
 A: Distinguish between data exports and view rendering.
 
@@ -461,7 +463,7 @@ A: Because it is an open and extensible data format
      * keywords, sets, tagged values
    * no parsers needed, read directly into data structures (at least for
      clojure and its host languages)
-   * good tooling support with type completion
+   * good tooling support with type completion, e.g.
      * VS Code + Calva
      * IntelliJ + Cursive
      * Emacs + Cider
@@ -477,9 +479,8 @@ A: JSON is a format that is widely used and supported by many programming
      namespaced and conflict free attributes and ID spaces
 
    JSON is supported as an export format to make the model and view data
-   available to as
-   many languages and environments as possible, but the conversion might be
-   lossy for the reasons above.
+   available to as many languages and environments as possible, but the
+   conversion might be lossy for the reasons above.
 
 
 Q: **Why Clojure?**
@@ -503,13 +504,13 @@ PlantUML Export
 
 Q: **Is a global configuration (e.g. via config file) needed?**
 
-   A potential use case would be the generation of internal links for imports on
-   systems without an internet connection or with proxy restrictions on
+   A potential use case would be the generation of internal links for imports
+   on systems without an internet connection or with proxy restrictions on
    raw.githubusercontent.com.
 
    Another use case would be the configurable inclusion of sprite/icon libraries.
 
-A: 
+A: It does not seem to be needed so far.
 
 
 Component Design
@@ -551,7 +552,7 @@ Ideas
 -----
 This section collects ideas that may make sense to implement in the future.
 
-* Consistency checks and reports
+* Consistency checks and reports (implemented partially)
 * Inference on model information e.g. with
   * core.logic
-  * Hyperdimensional Vectors
+  * Hyperdimensional vectors

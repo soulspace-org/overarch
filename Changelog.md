@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.11.0
+--------------
+* updated documentation
+
 Version 0.10.0
 --------------
 * added support for new semantical relation types in architecture and deployment models
