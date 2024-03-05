@@ -33,7 +33,6 @@
        (mapcat read-model)))
 
 (comment
-  (java.io.File/separator)
   (file/split-path "/p1/models:/p2/models")
   (file/split-path "/p1/models:/p2/models")
   (file/normalize-path "/p1/models:/p2/models")
