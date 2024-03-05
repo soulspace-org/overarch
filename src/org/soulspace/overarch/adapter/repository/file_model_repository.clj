@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.adapter.repository.file-model-repository
   (:require [clojure.edn :as edn]
-            [clojure.spec.alpha :as s]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.application.model-repository :as mr]
             [clojure.string :as str]))
@@ -23,9 +22,6 @@
        (map slurp)
        (mapcat edn/read-string)))
 
-(s/fdef read-models
-  :args [string?]
-  :ret :overarch/ct)
 (defmethod mr/read-models :file
   [rtype path]
   (->> path
