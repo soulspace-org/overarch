@@ -455,6 +455,16 @@ A: The model should contain information like names and descriptions for most
    Implemented. 
 
 
+Q: **Whould overarch benefit from a generic generation mechanism with templates?**
+
+A: 
+
+
+Q: **What properties should a generic generation mechanism have?**
+
+A:
+
+
 Q: **Why EDN as the specification notation?**
 
 A: Because it is an open and extensible data format
