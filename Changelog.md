@@ -3,6 +3,7 @@ Changelog
 
 Version 0.11.0
 --------------
+* updated overarch models
 * updated documentation
 
 Version 0.10.0
