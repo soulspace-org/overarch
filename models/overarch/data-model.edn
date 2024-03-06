@@ -175,7 +175,8 @@
   {:el :class
    :id :overarch/response
    :name "response"
-   :desc "A response to a synchronous request between two elements of the architecture."}
+   :desc "A response to a synchronous request between two elements of the
+          architecture."}
 
   {:el :class
    :id :overarch/dataflow
@@ -185,17 +186,20 @@
   {:el :class
    :id :overarch/send
    :name "send"
-   :desc "An asynchronous message or command between two elements of the architecture (point-to-point)."}
+   :desc "An asynchronous message or command between two elements of the
+          architecture (point-to-point)."}
 
   {:el :class
    :id :overarch/publish
    :name "publish"
-   :desc "Publishing of asynchronous event between two elements of the architecture (receiver should be a broker or topic)."}
+   :desc "Publishing of asynchronous event between two elements of the
+          architecture (receiver should be a broker or topic)."}
 
   {:el :class
    :id :overarch/subscribe
    :name "subscribe"
-   :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."}
+   :desc "Subscription of asynchronous events between two elements of the
+          architecture (sender should be a broker or topic)."}
 
   {:el :class
    :id :overarch/deployment-model-element
@@ -615,6 +619,8 @@
    :id :overarch/rel-is-a-technical-architecture-element
    :to :overarch/technical-architecture-element
    :from :overarch/rel}
+; TODO include semantic relations
+  
 
   ;; Deployment Model Relations
   {:el :inheritance
@@ -639,6 +645,7 @@
    :id :overarch/container-is-a-deployment-model-element
    :to :overarch/deployment-model-element
    :from :overarch/container}
+; TODO include semantic relations
 
   ;; Use Case Model Relations
   {:el :inheritance
