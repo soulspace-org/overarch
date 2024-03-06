@@ -165,7 +165,37 @@
   {:el :class
    :id :overarch/rel
    :name "rel"
-   :desc "A relation between two elements of the architecture."}
+   :desc "A generic relation between two elements of the architecture."}
+
+  {:el :class
+   :id :overarch/request
+   :name "request"
+   :desc "A synchronous request between two elements of the architecture."}
+
+  {:el :class
+   :id :overarch/response
+   :name "response"
+   :desc "A response to a synchronous request between two elements of the architecture."}
+
+  {:el :class
+   :id :overarch/dataflow
+   :name "dataflow"
+   :desc "A flow of data between two elements of the architecture."}
+
+  {:el :class
+   :id :overarch/send
+   :name "send"
+   :desc "An asynchronous message or command between two elements of the architecture (point-to-point)."}
+
+  {:el :class
+   :id :overarch/publish
+   :name "publish"
+   :desc "Publishing of asynchronous event between two elements of the architecture (receiver should be a broker or topic)."}
+
+  {:el :class
+   :id :overarch/subscribe
+   :name "subscribe"
+   :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."}
 
   {:el :class
    :id :overarch/deployment-model-element
@@ -179,6 +209,11 @@
    :desc "An element of the deployment model of the system under description.
           A node is a compound element which contains other nodes or containers
           referenced from the architecture model."}
+
+  {:el :class
+   :id :overarch/link
+   :name "link"
+   :desc "A link between two nodes of the deployment model."}
 
   {:el :class
    :id :overarch/state-machine-element
