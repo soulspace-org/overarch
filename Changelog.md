@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.11.1
+--------------
+* enhanched dispatch hierarchy for views
+  * fixes missing dispatch values
+
+
 Version 0.11.0
 --------------
 * added include specifications to graphviz and markdown renderers

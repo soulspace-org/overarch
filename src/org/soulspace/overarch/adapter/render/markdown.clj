@@ -35,55 +35,34 @@
        (:name rel) " " 
        (model/to-name model rel)))
 
-(defmethod render-element :concept
-  [model e options view]
-  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))
-   (when (references? view)
-     (when-let [referrer ((:id e) (:referrer-id->relations model))]
-       [(md/h3 "Refers: ")
-        (map (partial render-reference model) referrer)])
-     (when-let [referred ((:id e) (:referred-id->relations model))]
-       [(md/h3 "Referred from: ")
-        (map (partial render-reference model) referred)]))
-   "\n"])
-
-(defmethod render-element :person
-  [model e options view]
-  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))
-   (when (references? view)
-     (when-let [referrer ((:id e) (:referrer-id->relations model))]
-       [(md/h3 "Refers: ")
-        (map (partial render-reference model) referrer)])
-     (when-let [referred ((:id e) (:referred-id->relations model))]
-       [(md/h3 "Referred from: ")
-        (map (partial render-reference model) referred)]))
-   "\n"])
-
-(defmethod render-element :technical-architecture-node
-  [model e options view]
-  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))
-   (when (references? view)
-     (when-let [referrer ((:id e) (:referrer-id->relations model))]
-       [(md/h3 "Refers: ")
-        (map (partial render-reference model) referrer)])
-     (when-let [referred ((:id e) (:referred-id->relations model))]
-       [(md/h3 "Referred from: ")
-        (map (partial render-reference model) referred)]))
-   "\n"])
-
 (defmethod render-element :boundary
   [model e options view]
   [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
-   (md/p (:desc e))
-   ])
+   (md/p (:desc e))])
 
-
-(defmethod render-element :relation
+(defmethod render-element :model-node
   [model e options view]
+  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+   (md/p (:desc e))
+   (when (references? view)
+     (when-let [referrer ((:id e) (:referrer-id->relations model))]
+       [(md/h3 "Refers to: ")
+        (map (partial render-reference model) referrer)])
+     (when-let [referred ((:id e) (:referred-id->relations model))]
+       [(md/h3 "Referred from: ")
+        (map (partial render-reference model) referred)]))
+   "\n"])
+
+(defmethod render-element :model-relation
+  [model e options view]
+  ; relations are not rendered directly in markdown
   "")
+
+(defmethod render-element :model-element
+  [model e options view]
+  (println "unhandled element of type "
+           (:el e) "with id" (:id e)
+           "in markdown rendering of view " (:id view)))
 
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."

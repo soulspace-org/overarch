@@ -149,7 +149,7 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
-(defmethod puml/render-c4-element :relation
+(defmethod puml/render-c4-element :model-relation
   [_ _ indent e]
   (if (:constraint e)
     [(str (render/indent indent) "Lay"
@@ -175,6 +175,11 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
+(defmethod puml/render-c4-element :model-element
+  [_ view indent e]
+  (println "unhandled element of type "
+          (:el e) "with id" (:id e)
+          "in PlantUML C4 rendering of view " (:id view)))
 
 ;;
 ;; C4 Imports

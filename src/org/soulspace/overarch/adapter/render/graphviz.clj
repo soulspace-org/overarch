@@ -29,22 +29,20 @@
   (fn [model e _ _] (:el e))
   :hierarchy #'view/element-hierarchy)
 
-(defmethod render-element :concept
+(defmethod render-element :model-node
   [model e indent view]
   [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
 
-(defmethod render-element :technical-architecture-node
-  [model e indent view]
-  [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
-
-(defmethod render-element :person
-  [model e indent view]
-  [(str (alias-name (:id e)) "[label=\"" (:name e) "\"];")])
-
-(defmethod render-element :relation
+(defmethod render-element :model-relation
   [model e indent view]
   [(str (alias-name (:from e)) " -> " (alias-name (:to e))
         " [label=\"" (:name e) "\"];")])
+
+(defmethod render-element :model-element
+  [model e indent view]
+  (println "unhandled element of type "
+           (:el e) "with id" (:id e)
+           "in graphviz rendering of view " (:id view)))
 
 (defn render-layout
   "Renders the layout options for the `view`."

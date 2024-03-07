@@ -281,24 +281,108 @@
 (def element-hierarchy
   "Hierarchy for rendering methods."
   (-> (make-hierarchy)
-      (derive :enterprise-boundary         :boundary)
-      (derive :system-boundary             :boundary)
-      (derive :container-boundary          :boundary)
-      (derive :context-boundary            :boundary)
-      (derive :system                      :technical-architecture-node)
-      (derive :container                   :technical-architecture-node)
-      (derive :component                   :technical-architecture-node)
-      (derive :person                      :architecture-node)
-      (derive :technical-architecture-node :architecture-node)
-      (derive :architecture-node           :model-node)
-      (derive :request                     :architecture-relation)
-      (derive :response                    :architecture-relation)
-      (derive :publish                     :architecture-relation)
-      (derive :subscribe                   :architecture-relation)
-      (derive :send                        :architecture-relation)
-      (derive :dataflow                    :architecture-relation)
-      (derive :link                        :deployment-relation)
-      (derive :architecture-relation       :relation)
-      (derive :deployment-relation         :relation)
-      (derive :rel                         :relation)))
+      ;;; nodes
+      ;; boundaries
+      (derive :enterprise-boundary               :boundary)
+      (derive :system-boundary                   :boundary)
+      (derive :container-boundary                :boundary)
+      (derive :context-boundary                  :boundary)
+      ;; roles
+      (derive :actor                             :role)
+      (derive :person                            :role)
+
+      ;; architecture model nodes
+      (derive :system                            :technical-architecture-model-node)
+      (derive :container                         :technical-architecture-model-node)
+      (derive :component                         :technical-architecture-model-node)
+      (derive :technical-architecture-model-node :architecture-model-node)
+      (derive :person                            :architecture-model-node)
+
+      ;; deployment model nodes
+      (derive :node                              :deployment-model-node)
+
+      ;; use case model nodes 
+      (derive :use-case                          :use-case-model-node)
+      (derive :actor                             :use-case-model-node)
+      (derive :person                            :use-case-model-node)
+      (derive :system                            :use-case-model-node)
+
+      ;; state machine model nodes
+      (derive :state-machine                     :state-machine-model-node)
+      (derive :start-state                       :state-machine-model-node)
+      (derive :end-state                         :state-machine-model-node)
+      (derive :state                             :state-machine-model-node)
+      (derive :fork                              :state-machine-model-node)
+      (derive :join                              :state-machine-model-node)
+      (derive :choice                            :state-machine-model-node)
+      (derive :history-state                     :state-machine-model-node)
+      (derive :deep-history-state                :state-machine-model-node)
+
+      ;; class model nodes
+      (derive :class                             :class-model-node)
+      (derive :enum                              :class-model-node)
+      (derive :interface                         :class-model-node)
+      (derive :protocol                          :class-model-node)
+      (derive :field                             :class-model-node)
+      (derive :method                            :class-model-node)
+      (derive :function                          :class-model-node)
+      (derive :package                           :class-model-node)
+      (derive :namespace                         :class-model-node)
+      (derive :stereotype                        :class-model-node)
+      (derive :annotation                        :class-model-node)
+
+      ;; concept model nodes
+      (derive :concept                           :concept-model-node)
+
+      ;; model nodes
+      (derive :architecture-model-node           :model-node)
+      (derive :deplyoment-model-node             :model-node)
+      (derive :use-case-model-node               :model-node)
+      (derive :state-machine-model-node          :model-node)
+      (derive :class-model-node                  :model-node)
+      (derive :concept-model-node                :model-node)
+      (derive :boundary                          :model-node)
+
+      ;;; model relations
+      ;; architecture model relations
+      (derive :request                           :architecture-model-relation)
+      (derive :response                          :architecture-model-relation)
+      (derive :publish                           :architecture-model-relation)
+      (derive :subscribe                         :architecture-model-relation)
+      (derive :send                              :architecture-model-relation)
+      (derive :dataflow                          :architecture-model-relation)
+
+      ;; deployment model relations
+      (derive :link                              :deployment-model-relation)
+
+      ;; use case model relations
+      (derive :uses                              :use-case-model-relation)
+      (derive :include                           :use-case-model-relation)
+      (derive :extends                           :use-case-model-relation)
+      (derive :generalizes                       :use-case-model-relation)
+
+      ;; state machine model relations
+      (derive :transition                        :state-machine-model-relation)
+
+      ;; class model relations
+      (derive :inheritance                       :class-model-relation)
+      (derive :implementation                    :class-model-relation)
+      (derive :composition                       :class-model-relation)
+      (derive :aggregation                       :class-model-relation)
+      (derive :association                       :class-model-relation)
+      (derive :dependency                        :class-model-relation)
+
+      ;; model relations
+      (derive :architecture-model-relation       :model-relation)
+      (derive :deployment-model-relation         :model-relation)
+      (derive :use-case-model-relation           :model-relation)
+      (derive :state-machine-model-relation      :model-relation)
+      (derive :class-model-relation              :model-relation)
+
+      (derive :rel                               :model-relation)
+
+      ;;; model elements
+      (derive :model-node                        :model-element)
+      (derive :model-relation                    :model-element)
+      ))
 

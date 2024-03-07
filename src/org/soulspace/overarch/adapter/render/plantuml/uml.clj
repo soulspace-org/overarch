@@ -367,6 +367,11 @@
         (when (:name e)
           (str " : " (el/element-name e))))])
 
+(defmethod puml/render-uml-element :model-element
+  [_ view indent e]
+  (println "unhandled element of type "
+           (:el e) "with id" (:id e)
+           "in PlantUML UML rendering of view " (:id view)))
 
 ;;;
 ;;; Diagram Layout
