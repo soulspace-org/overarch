@@ -31,7 +31,7 @@
 (defn render-reference
   "Renders the relation as reference."
   [model rel]
-  (str (model/from-name model rel) " " 
+  (str " * " (model/from-name model rel) " " 
        (:name rel) " " 
        (model/to-name model rel)))
 
@@ -88,9 +88,9 @@
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
   [model options view]
-  (let [children (sort-by :name (view/elements-in-view model view))]
+  (let [elements (sort-by :id (view/rendered-model-nodes model view))]
     (flatten [(md/h1 (:title view))
-              (map #(render-element model % options view) children)])))
+              (map #(render-element model % options view) elements)])))
 
 ;;;
 ;;; Markdown Rendering dispatch
