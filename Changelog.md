@@ -1,10 +1,10 @@
 Changelog
 =========
 
-Version 0.11.1
+Version 0.12.0
 --------------
 * enhanched dispatch hierarchy for views
-  * fixes missing dispatch values
+  * fixes missing dispatch values in renderers
 
 
 Version 0.11.0
