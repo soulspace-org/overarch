@@ -547,7 +547,7 @@ directives for a view or directives for specific renderers (e.g. PlantUML).
 
 key           | type    | values                    | description 
 --------------|---------|---------------------------|------------
-:include      | keyword | :referenced-only :related | 
+:include      | keyword | :referenced-only :related | specify automatic includes (work in progress)
 :layout       | keyword | :top-down, :left-right    | rendering direction
 :linetype     | keyword | :orthogonal, :polygonal   | different line types for relations
 :sketch       | boolean | true, false               | visual clue for sketches

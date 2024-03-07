@@ -3,8 +3,12 @@ Changelog
 
 Version 0.11.0
 --------------
-* updated overarch models
+* added include specifications to graphviz and markdown renderers
+* updated overarch and test models
 * updated documentation
+* fixed rendering of references in markdown
+* fixed referrer-id->relations lookup creation for nodes
+
 
 Version 0.10.0
 --------------
