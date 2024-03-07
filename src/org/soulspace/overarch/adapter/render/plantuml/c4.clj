@@ -100,7 +100,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :technical-architecture-node
+(defmethod puml/render-c4-element :technical-architecture-model-node
   [_ _ indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
