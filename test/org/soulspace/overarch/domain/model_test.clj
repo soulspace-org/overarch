@@ -106,7 +106,7 @@
       3 (count (:referrer-id->relations c4-model1))
       1 (count (:referrer-id->relations concept-model1))
       2 (count (:test/user1 (:referrer-id->relations c4-model1)))
-      1 (count (:test/system1 (:referrer-id->relations c4-model1)))
+      4 (count (:test/system1 (:referrer-id->relations c4-model1)))
       0 (count (:test/ext-system1 (:referrer-id->relations c4-model1)))
       2 (count (:test/concept1 (:referrer-id->relations concept-model1)))
       0 (count (:test/concept2 (:referrer-id->relations concept-model1)))

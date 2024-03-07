@@ -92,7 +92,7 @@
   "Returns the name of the from reference of the relation."
   [model rel]
   (->> rel
-       (:from)
+       (:to)
        (resolve-id model)
        (:name)))
 
@@ -181,7 +181,7 @@
                :referrer-id->relations
                (assoc (:referrer-id->relations acc)
                       (:from r)
-                      (conj (get-in acc [:referred-id->relations (:from r)] #{}) r))
+                      (conj (get-in acc [:referrer-id->relations (:from r)] #{}) r))
 
                :referred-id->relations
                (assoc (:referred-id->relations acc)
