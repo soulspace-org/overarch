@@ -1,0 +1,67 @@
+;;;;
+;;;; Architecture Views for Overarch
+;;;;
+#{
+  ;;;
+  ;;; Architecture Views
+  ;;;
+  {:el :context-view
+   :id :overarch.architecture/overarch-context-view
+   :title "Context View of Overarch"
+   :ct [;; actors
+        {:ref :overarch.roles/modeller}
+        ;; external systems
+        {:ref :overarch.architecture/editor}
+        ;; internal systems
+        {:ref :overarch.architecture/overarch}
+        ;; relations
+        {:ref :overarch.roles/modeller-models-in-editor}
+        {:ref :overarch.roles/modeller-uses-overarch}]}
+
+  {:el :container-view
+   :id :overarch.architecture/overarch-container-view
+   :title "Container View of Overarch"
+   :ct [;; actors
+        {:ref :overarch.roles/modeller}
+        ;; external systems
+        {:ref :overarch.architecture/editor}
+        ;; internal systems
+        {:ref :overarch.architecture/overarch}
+        ;; relations
+        {:ref :overarch.roles/modeller-models-in-editor}
+        {:ref :overarch.roles/modeller-uses-overarch-cli}]}
+
+  {:el :component-view
+   :id :overarch.architecture/overarch-component-view
+   :title "Component View of Overarch"
+   :ct [;; actors
+        {:ref :overarch.roles/modeller}
+        ;; external systems
+        {:ref :overarch.architecture/editor}
+        ;; internal systems
+        {:ref :overarch.architecture/overarch}
+        ;; relations
+        {:ref :overarch.roles/modeller-models-in-editor}
+        {:ref :overarch.roles/modeller-starts-cli}
+        {:ref :overarch.architecture/cli-loads-data}
+        {:ref :overarch.architecture/cli-calls-export}
+        {:ref :overarch.architecture/cli-calls-render}
+        {:ref :overarch.architecture/json-implements-export}
+        {:ref :overarch.architecture/json-calls-io}
+        {:ref :overarch.architecture/structurizr-implements-export}
+        {:ref :overarch.architecture/structurizr-accesses-model}
+        {:ref :overarch.architecture/graphviz-implements-render}
+        {:ref :overarch.architecture/graphviz-accesses-model}
+        {:ref :overarch.architecture/graphviz-calls-view}
+;        {:ref :overarch.architecture/graphviz-calls-io}
+        {:ref :overarch.architecture/markdown-implements-render}
+        {:ref :overarch.architecture/markdown-accesses-model}
+        {:ref :overarch.architecture/markdown-calls-view}
+;        {:ref :overarch.architecture/render-markdown-calls-io}
+        {:ref :overarch.architecture/plantuml-implements-render}
+        {:ref :overarch.architecture/plantuml-accesses-model}
+        {:ref :overarch.architecture/plantuml-calls-view}
+        {:ref :overarch.architecture/plantuml-calls-io}
+        {:ref :overarch.architecture/view-queries-model}]}
+;
+}

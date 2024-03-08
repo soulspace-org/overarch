@@ -6,18 +6,10 @@
   ;;;
 
   ;;
-  ;; Actors
-  ;;
-  {:el :person
-   :id :overarch/modeller
-   :name "Modeller"
-   :desc "Models the architecture of a system and specifies views of the model."}
-
-  ;;
   ;; External Systems
   ;;
   {:el :system
-   :id :overarch/editor
+   :id :overarch.architecture/editor
    :external true
    :name "Editor/IDE"
    :desc "Tool for describing the architecture model and the views."}
@@ -26,11 +18,11 @@
   ;; Internal System
   ;;
   {:el :system
-   :id :overarch/overarch
+   :id :overarch.architecture/overarch
    :name "Overarch"
    :desc "Provides the schema for architecture models and views. Generates representations like diagrams."
    :ct #{{:el :container
-          :id :overarch/overarch-cli
+          :id :overarch.architecture/overarch-cli
           :name "Overarch CLI"
           :desc "CLI tool for the export of the architecture models into different formats."
           :tech "Clojure"
@@ -90,142 +82,110 @@
   ;;;
   ;;; Architecture Model Relations
   ;;;
-  ;;
-  ;; Use Case Relations
-  ;;
   {:el :rel
-   :id :overarch/modeller-models-in-editor
-   :from :overarch/modeller
-   :to :overarch/editor
-   :name "models in"
-   :desc "creates models and views"}
-  {:el :rel
-   :id :overarch/modeller-uses-overarch
-   :from :overarch/modeller
-   :to :overarch/overarch
-   :name "uses"
-   :desc "for Diagram generation and model transformation."}
-  {:el :rel
-   :id :overarch/modeller-uses-overarch-cli
-   :from :overarch/modeller
-   :to :overarch/overarch-cli
-   :name "uses"
-   :desc "for diagram generation and model transformation."}
-
-  ;;
-  ;; Component Relations
-  ;;
-  {:el :rel
-   :id :overarch/modeller-starts-cli
-   :from :overarch/modeller
-   :to :overarch.adapter.ui/cli
-   :name "starts"
-   :desc "with the provided options."}
-
-  {:el :rel
-   :id :overarch/cli-loads-data
+   :id :overarch.architecture/cli-loads-data
    :from :overarch.adapter.ui/cli
    :to :overarch.application/model-repository
    :name "loads"
    :desc "model"}
   {:el :rel
-   :id :overarch/cli-calls-render
+   :id :overarch.architecture/cli-calls-render
    :from :overarch.adapter.ui/cli
    :to :overarch.application/render
    :name "calls"
    :desc "render functions"}
   {:el :rel
-   :id :overarch/cli-calls-export
+   :id :overarch.architecture/cli-calls-export
    :from :overarch.adapter.ui/cli
    :to :overarch.application/export
    :name "calls"
    :desc "export functions"}
   {:el :rel
-   :id :overarch/plantuml-implements-render
+   :id :overarch.architecture/plantuml-implements-render
    :from :overarch.adapter.render/plantuml
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for PlantUML diagrams"}
   {:el :rel
-   :id :overarch/plantuml-accesses-model
+   :id :overarch.architecture/plantuml-accesses-model
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
   {:el :rel
-   :id :overarch/plantuml-calls-io
+   :id :overarch.architecture/plantuml-calls-io
    :from :overarch.adapter.render/plantuml
    :to :overarch.util/io
    :name "calls"
    :desc "loads sprite mappings"}
   {:el :rel
-   :id :overarch/plantuml-calls-view
+   :id :overarch.architecture/plantuml-calls-view
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/view
    :name "queries"
    :desc "view"}
   {:el :rel
-   :id :overarch/markdown-implements-render
+   :id :overarch.architecture/markdown-implements-render
    :from :overarch.adapter.render/markdown
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for Markdown representations"}
   {:el :rel
-   :id :overarch/markdown-accesses-model
+   :id :overarch.architecture/markdown-accesses-model
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
   {:el :rel
-   :id :overarch/markdown-calls-view
+   :id :overarch.architecture/markdown-calls-view
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/view
    :name " queries"
    :desc "view"}
   {:el :rel
-   :id :overarch/graphviz-implements-render
+   :id :overarch.architecture/graphviz-implements-render
    :from :overarch.adapter.render/graphviz
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for GraphViz diagrams"}
   {:el :rel
-   :id :overarch/graphviz-accesses-model
+   :id :overarch.architecture/graphviz-accesses-model
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
   {:el :rel
-   :id :overarch/graphviz-calls-view
+   :id :overarch.architecture/graphviz-calls-view
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/view
    :name "calls"
    :desc "view queries and rendering functions"}
   {:el :rel
-   :id :overarch/json-implements-export
+   :id :overarch.architecture/json-implements-export
    :from :overarch.adapter.exports/json
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for JSON"}
   {:el :rel
-   :id :overarch/json-calls-io
+   :id :overarch.architecture/json-calls-io
    :from :overarch.adapter.exports/json
    :to :overarch.util/io
    :name "calls"
    :desc "writes JSON"}
   {:el :rel
-   :id :overarch/structurizr-implements-export
+   :id :overarch.architecture/structurizr-implements-export
    :from :overarch.adapter.exports/structurizr
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for Structurizr"}
   {:el :rel
-   :id :overarch/structurizr-accesses-model
+   :id :overarch.architecture/structurizr-accesses-model
    :from :overarch.adapter.exports/structurizr
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
   {:el :rel
-   :id :overarch/view-queries-model
+   :id :overarch.architecture/view-queries-model
    :from :overarch.domain/view
    :to :overarch.domain/model
    :name "queries"

@@ -1,0 +1,73 @@
+;;;;
+;;;; Roles for overarch
+;;;;
+#{
+  ;;;
+  ;;; Roles nodes
+  ;;;
+  {:el :person
+   :id :overarch.roles/modeller
+   :name "Modeller"
+   :desc "Models the architecture of a system and specifies views of the model."}
+
+  ;;;
+  ;;; Roles use case model relations
+  ;;;
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-model-system
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/model-system}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-define-views
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/define-views}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-export-model
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/export-model}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-render-views
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/render-views}
+
+  ;;;
+  ;;; Roles architecture model relations
+  ;;;
+  ;;
+  ;; System Relations
+  ;;
+  {:el :rel
+   :id :overarch.roles/modeller-models-in-editor
+   :from :overarch.roles/modeller
+   :to :overarch.architecture/editor
+   :name "models in"
+   :desc "creates models and views"}
+  
+  {:el :rel
+   :id :overarch.roles/modeller-uses-overarch
+   :from :overarch.roles/modeller
+   :to :overarch.architecture/overarch
+   :name "uses"
+   :desc "for diagram generation and model transformation."}
+
+  ;;
+  ;; System Relations
+  ;;
+  {:el :rel
+   :id :overarch.roles/modeller-uses-overarch-cli
+   :from :overarch.roles/modeller
+   :to :overarch.architecture/overarch-cli
+   :name "uses"
+   :desc "for diagram generation and model transformation."}
+
+  ;;
+  ;; Component Relations
+  ;;
+  {:el :rel
+   :id :overarch.roles/modeller-starts-cli
+   :from :overarch.roles/modeller
+   :to :overarch.adapter.ui/cli
+   :name "starts"
+   :desc "with the provided options."}
+  
+}

@@ -1,0 +1,101 @@
+;;;;
+;;;; Use Case Model for Overarch
+;;;;
+#{;;;
+  ;;; Use Case Model Elements
+  ;;;
+  {:el :use-case
+   :id :overarch.use-case/model-system
+   :level :user-goal
+   :name "model system"
+   :desc "Textually model the system in the Overarch data model."}
+  {:el :use-case
+   :id :overarch.use-case/define-views
+   :level :user-goal
+   :name "define views"
+   :desc "Textually define views of the system in the Overarch view model."}
+  {:el :use-case
+   :id :overarch.use-case/export-model
+   :level :user-goal
+   :name "export model"
+   :desc "Export the model of the system."}
+  {:el :use-case
+   :id :overarch.use-case/export-json
+   :level :subfunction
+   :name "export JSON"
+   :desc "Export the model and views to JSON."}
+  {:el :use-case
+   :id :overarch.use-case/export-structurizr
+   :level :subfunction
+   :name "export Structurizr"
+   :desc "Export the architecture model and views as a Structurizr workspace."}
+  {:el :use-case
+   :id :overarch.use-case/render-views
+   :level :user-goal
+   :name "render views"
+   :desc "Render the views of the system."}
+  {:el :use-case
+   :id :overarch.use-case/render-plantuml
+   :level :subfunction
+   :name "render PlantUML"
+   :desc "Render the relevant views to PlantUML."}
+  {:el :use-case
+   :id :overarch.use-case/render-markdown
+   :level :subfunction
+   :name "export Markdown"
+   :desc "Export the relevant views to Markdown."}
+  {:el :use-case
+   :id :overarch.use-case/render-graphviz
+   :level :subfunction
+   :name "export GraphViz"
+   :desc "Export the relevant views to GraphViz."}
+
+  ;;;
+  ;;; Use Case Model Relations
+  ;;;
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-model-system
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/model-system}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-define-views
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/define-views}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-export-model
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/export-model}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-render-views
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/render-views}
+  {:el :uses
+   :id :overarch.use-case/model-system-uses-editor
+   :from :overarch.use-case/model-system
+   :to :overarch.architecture/editor}
+  {:el :uses
+   :id :overarch.use-case/define-views-uses-editor
+   :from :overarch.use-case/define-views
+   :to :overarch.architecture/editor}
+  {:el :extends
+   :id :overarch.use-case/export-json-extends-uc-export-model
+   :from :overarch.use-case/export-json
+   :to :overarch.use-case/export-model}
+  {:el :extends
+   :id :overarch.use-case/export-structurizr-extends-uc-export-model
+   :from :overarch.use-case/export-structurizr
+   :to :overarch.use-case/export-model}
+  {:el :extends
+   :id :overarch.use-case/render-plantuml-extends-uc-render-views
+   :from :overarch.use-case/render-plantuml
+   :to :overarch.use-case/render-views}
+  {:el :extends
+   :id :overarch.use-case/render-markdown-extends-uc-render-views
+   :from :overarch.use-case/render-markdown
+   :to :overarch.use-case/render-views}
+  {:el :extends
+   :id :overarch.use-case/render-graphviz-extends-uc-render-views
+   :from :overarch.use-case/render-graphviz
+   :to :overarch.use-case/render-views}
+  ;
+  }
