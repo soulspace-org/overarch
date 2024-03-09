@@ -1,0 +1,21 @@
+;;;;
+;;;; Views for the concept model
+;;;;
+#{
+  ;;;
+  ;;; Concept view
+  ;;;
+  {:el :concept-view
+   :id :concept/concept-view
+   :spec {:include :relations
+          :markdown {:references true}}
+   :title "Concept view on Concepts"
+   :ct [; concepts
+        {:ref :concept/concept}
+        {:ref :concept/name}
+        {:ref :concept/meaning}
+        {:ref :concept/relation}
+        ]}
+
+  ;
+}

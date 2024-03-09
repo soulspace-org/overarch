@@ -1,0 +1,48 @@
+;;;;
+;;;; Concept model for Concepts
+;;;;
+#{;;;
+  ;;; Concept nodes
+  ;;;
+  {:el :concept
+   :id :concept/concept
+   :name "Concept"
+   :desc "A concept represents an abstract idea as a semantic unit"}
+  {:el :concept
+   :id :concept/name
+   :name "Name"
+   :desc "The name of the concept"}
+  {:el :concept
+   :id :concept/meaning
+   :name "Meaning"
+   :desc "The meaning of the concept"}
+  {:el :concept
+   :id :concept/relation
+   :name "Relation"
+   :desc "The relation between two concepts"}
+
+  ;;;
+  ;;; Concept relations
+  ;;;
+  {:el :rel
+   :id :concept/concept-has-a-name
+   :from :concept/concept
+   :to :concept/name
+   :name "has a"}
+  {:el :rel
+   :id :concept/concept-has-a-meaning
+   :from :concept/concept
+   :to :concept/meaning
+   :name "has a"}
+  {:el :rel
+   :id :concept/relation-connects-concepts
+   :from :concept/relation
+   :to :concept/concept
+   :name "connects two"}
+  {:el :rel
+   :id :concept/relation-has-a-meaning ; is it a meaning or a description?
+   :from :concept/relation
+   :to :concept/meaning
+   :name "has a"}
+  ;
+  }

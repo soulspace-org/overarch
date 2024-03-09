@@ -4,6 +4,7 @@ Changelog
 Version 0.13.0
 --------------
 * restructured overarch models
+* added an explicit example of a concept model and view
 
 
 Version 0.12.0
