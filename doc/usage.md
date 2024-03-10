@@ -650,12 +650,13 @@ previews of the generated Graphviz files.
 The images can be created with the *dot* executable, which resides in the bin
 directory of the GraphViz installation.
 
+You can specify Graphviz directives with the **:graphviz** key in a view spec.
 
 ### Markdown
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
 
-You can specify Markdown directives with the **:markdown** key of a
+You can specify Markdown directives with the **:markdown** key in a
 view spec.
 
 #### Keys
