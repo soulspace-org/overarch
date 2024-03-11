@@ -651,6 +651,14 @@ The images can be created with the *dot* executable, which resides in the bin
 directory of the GraphViz installation.
 
 You can specify Graphviz directives with the **:graphviz** key in a view spec.
+Currently only the configuration of the
+[layout engine](https://graphviz.org/docs/layouts/) is supported.
+
+#### Keys
+
+key              | type    | values                   | description 
+-----------------|---------|--------------------------|------------
+:engine          | keyword | e.g. :dot, :neato, :sfdp | the graphviz layout engine to use
 
 ### Markdown
 Markdown is used to render textual representations of the views.
