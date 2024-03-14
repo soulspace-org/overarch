@@ -7,6 +7,7 @@
             [clojure.java.io :as io]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.clj.java.file :as file]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]))
 
@@ -27,7 +28,7 @@
 (defmulti render-element
   "Renders an element `e` in the `view` with markdown according to the given `options`."
   (fn [model e _ _] (:el e))
-  :hierarchy #'view/element-hierarchy)
+  :hierarchy #'el/element-hierarchy)
 
 (defmethod render-element :model-node
   [model e indent view]

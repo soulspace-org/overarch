@@ -8,9 +8,10 @@
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.util.functions :as fn]
-            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :as view]))
 
 ;;;
 ;;; Predicates
@@ -35,7 +36,7 @@
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
   (fn [model e _ _] (:el e))
-  :hierarchy #'view/element-hierarchy)
+  :hierarchy #'el/element-hierarchy)
 
 (defn render-reference
   "Renders the relation as reference."
