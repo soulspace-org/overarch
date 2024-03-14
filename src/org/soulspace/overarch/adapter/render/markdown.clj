@@ -23,6 +23,15 @@
 ;;;
 ;;; Rendering
 ;;;
+
+(defn render-type
+  "Renders the type of the element `e` including the subtype, if defined."
+  [e]
+  (if (:subtype e)
+    (str " (" (str/capitalize (name (:subtype e)))
+         " " (str/capitalize (name (:el e))) ")")
+    (str " (" (str/capitalize (name (:el e))) ")")))
+
 (defmulti render-element
   "Renders an `element` in the `view` with markdown according to the given `options`."
   (fn [model e _ _] (:el e))
@@ -37,12 +46,12 @@
 
 (defmethod render-element :boundary
   [model e options view]
-  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+  [(md/h2 (str (:name e) (render-type e)))
    (md/p (:desc e))])
 
 (defmethod render-element :model-node
   [model e options view]
-  [(md/h2 (str (:name e) " (" (str/capitalize (name (:el e))) ")"))
+  [(md/h2 (str (:name e) (render-type e)))
    (md/p (:desc e))
    (when (references? view)
      (when-let [referrer ((:id e) (:referrer-id->relations model))]
