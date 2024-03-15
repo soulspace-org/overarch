@@ -7,7 +7,6 @@
   "Maps model types to boundary type."
   {:system :system-boundary})
 
-
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
