@@ -57,7 +57,6 @@ Observations
   * generalization
   * reusability
   * tooling
-  * ease of use
 
 * Advantages of data files
   * no special syntax needed
@@ -180,9 +179,14 @@ A: Implicit boundaries make the model more succinct.
 
 Q: **Which kinds of relations are neccessary in the architectural model to express the different semantics of the connections of the architectural nodes?**
 
+A: In architecture views there a two interesting directions to show,
+   dependencies and data flow. Dependencies are established by communication
+   between architecture elements and are modelled from the sender to the
+   receiver. Communication can be synchronous or asynchronous. It can also be
+   one-way or two-way.
 
-
-A: 
+   The direction of dataflow is independent of the call direction,
+   e.g. data can be send with a request and returned with the response.
 
 
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
@@ -247,7 +251,7 @@ Q: **Should a flat model be used (internally)?**
    contain components. The elements have the ```:ct``` key, which has to be
    traversed recursively in the code. The parent-child relation could
    alternatively modelled as a relation, which would make some model queries
-   simpler.
+   simpler and more uniform.
 
 A: By decoupling the external representation of the model, the input model,
    from the internal model, the domain model, we gain a degree of freedom in
@@ -264,6 +268,7 @@ A: By decoupling the external representation of the model, the input model,
    As such it can be navigated and queried with graph algorithms in addition to
    the tree traversal via the ```:ct``` key of the the elements.
    
+   Implemented
 
 Q: **Shall relations be automatically included in a view, when the participating components are included?**
 
