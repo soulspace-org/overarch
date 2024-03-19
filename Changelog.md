@@ -3,9 +3,13 @@ Changelog
 
 Version 0.13.0
 --------------
-* render element subtype in markdown (e.g Database Container)
-* restructured overarch models
+* added semantical relation types in concept model (:is-a, :has)
+* added containers from architecture model to allowed actors in use case model
+* added rendering of element subtype in markdown (e.g Database Container)
 * added an explicit example of a concept model and view
+* fixed rendering of :tech attribute for systems in C4 diagrams
+* restructured overarch models
+* updated documentation
 
 
 Version 0.12.0

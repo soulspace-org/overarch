@@ -100,6 +100,23 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
+(defmethod puml/render-c4-element :system
+  [_ _ indent e]
+  [(str (render/indent indent)
+        (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
+        (when (:external e) "_Ext") "("
+        (puml/alias-name (:id e)) ", \""
+        (el/element-name e) "\""
+        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
+          (when (puml/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+        ")")])
+
 (defmethod puml/render-c4-element :technical-architecture-model-node
   [_ _ indent e]
   [(str (render/indent indent)
