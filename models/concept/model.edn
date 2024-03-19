@@ -24,12 +24,12 @@
   ;;;
   ;;; Concept relations
   ;;;
-  {:el :rel
+  {:el :has
    :id :concept/concept-has-a-name
    :from :concept/concept
    :to :concept/name
    :name "has a"}
-  {:el :rel
+  {:el :has
    :id :concept/concept-has-a-meaning
    :from :concept/concept
    :to :concept/meaning
@@ -39,7 +39,7 @@
    :from :concept/relation
    :to :concept/concept
    :name "connects two"}
-  {:el :rel
+  {:el :has
    :id :concept/relation-has-a-meaning ; is it a meaning or a description?
    :from :concept/relation
    :to :concept/meaning

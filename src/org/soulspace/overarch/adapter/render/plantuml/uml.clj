@@ -62,17 +62,7 @@
         (when (:level e)
           (str " " (use-case-level->color (:level e)))))])
 
-(defmethod puml/render-uml-element :actor
-  [_ _ indent e]
-  [(str (render/indent indent)
-        "actor \"" (el/element-name e) "\" as " (puml/alias-name (:id e)))])
-
-(defmethod puml/render-uml-element :person
-  [_ _ indent e]
-  [(str (render/indent indent)
-        "actor \"" (el/element-name e) "\" as " (puml/alias-name (:id e)))])
-
-(defmethod puml/render-uml-element :system
+(defmethod puml/render-uml-element :actor-node
   [_ _ indent e]
   [(str (render/indent indent)
         "actor \"" (el/element-name e) "\" as " (puml/alias-name (:id e)))])

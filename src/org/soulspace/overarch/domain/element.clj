@@ -37,7 +37,7 @@
 ;;
 (def usecase-node-types
   "Node types for usecase models."
-  #{:use-case :actor :person :system :context-boundary})
+  #{:use-case :actor :person :system :container :context-boundary})
 (def usecase-relation-types
   "Relation types for usecase models."
   #{:uses :include :extends :generalizes})
@@ -75,7 +75,7 @@
 
 (def concept-relation-types
   "Relation types of concept models."
-  #{:rel})
+  #{:rel :is-a :has})
 
 ;; 
 ;; General category definitions
@@ -534,10 +534,13 @@
       (derive :node                              :deployment-model-node)
 
       ;; use case model nodes 
+      (derive :actor                             :actor-node)
+      (derive :person                            :actor-node)
+      (derive :system                            :actor-node)
+      (derive :container                         :actor-node)
+
       (derive :use-case                          :use-case-model-node)
-      (derive :actor                             :use-case-model-node)
-      (derive :person                            :use-case-model-node)
-      (derive :system                            :use-case-model-node)
+      (derive :actor-node                        :use-case-model-node)
 
       ;; state machine model nodes
       (derive :state-machine                     :state-machine-model-node)
@@ -604,12 +607,17 @@
       (derive :association                       :class-model-relation)
       (derive :dependency                        :class-model-relation)
 
+      ;; concept model relations
+      (derive :is-a                              :concept-model-relation)
+      (derive :has                               :concept-model-relation)
+
       ;; model relations
       (derive :architecture-model-relation       :model-relation)
       (derive :deployment-model-relation         :model-relation)
       (derive :use-case-model-relation           :model-relation)
       (derive :state-machine-model-relation      :model-relation)
       (derive :class-model-relation              :model-relation)
+      (derive :concept-model-relation            :model-relation)
 
       (derive :rel                               :model-relation)
 

@@ -147,6 +147,7 @@ bounded context to connect all the activities of the team with the software."}
    :desc
 "An object in the domain model, which has no conceptional identity but are
 identified by their state. Value objects should be modelled as immutable."}
+  
   ;;
   ;; Relations
   ;;
@@ -342,7 +343,7 @@ identified by their state. Value objects should be modelled as immutable."}
   ;;;
   {:el :system
    :id :ddd/system
-   :name "Hexagonal Architecture"
+   :name "Clean Architecture"
    :desc "describing structure and dependencies of a system of bounded domain context."
    :ct #{{:el :container
           :id :ddd/container
