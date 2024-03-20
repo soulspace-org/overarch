@@ -231,6 +231,7 @@
   (al/check-relations @repo/state)
   (al/check-views @repo/state)
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
+  (al/unmatched-relation-namespaces (repo/relations))
 
   (eex/elements-by-namespace (:nodes @repo/state))
   (eex/elements-by-namespace (:relations @repo/state))

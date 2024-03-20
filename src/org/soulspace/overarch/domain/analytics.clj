@@ -94,6 +94,19 @@
        (remove el/named?)
        (map :id)))
 
+(defn namespace-match?
+  "Returns true, if the relation namespace matches the referrer namespace."
+  [r]
+  (= (namespace (:id r)) (namespace (:from r))))
+
+(defn unmatched-relation-namespaces
+  "Checks if the relation namespace matches the referrer namespace."
+  [coll]
+  (->> coll
+       (filter el/identifiable-relational-element?)
+       (remove namespace-match?)))
+
+
 (defn key-set
   "Returns a set of the keys of the map `m`."
   [m]
@@ -128,6 +141,7 @@
        (map (partial model/resolve-ref model))
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
+
 
 (defn check-relations
   "Validates the relations in the model."
