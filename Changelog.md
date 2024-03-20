@@ -4,7 +4,9 @@ Changelog
 Version 0.14.0
 --------------
 * added filtering elements by criteria
+* added check for unmatched relation namespaces
 * updated tests
+* updated documentation
 
 
 Version 0.13.0
