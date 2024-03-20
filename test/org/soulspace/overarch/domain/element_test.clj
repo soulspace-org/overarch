@@ -352,11 +352,11 @@
       true {:el :use-case}
       true {:el :actor}
       true {:el :person}
-      true {:el :system}))
+      true {:el :system}
+      true {:el :container}))
 
   (testing "usecase-node? false"
     (are [x y] (= x (fns/truthy? (usecase-node? y)))
-      false {:el :container}
       false {:el :component}
       false {:el :enterprise-boundary}
       false {:el :node}

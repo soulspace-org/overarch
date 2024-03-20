@@ -11,6 +11,7 @@
       true {:el :context-boundary}
       true {:el :person}
       true {:el :system}
+      true {:el :container}
       true {:el :actor}
       true {:el :use-case}
       true {:el :uses}
@@ -21,7 +22,6 @@
     (are [x y] (= x (fns/truthy? (render-model-element? {:el :use-case-view} y)))
       false {:el :enterprise-boundary}
       false {:el :system-boundary}
-      false {:el :container}
       false {:el :node}
       false {:el :container-boundary}
       false {:el :component}
