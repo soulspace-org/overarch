@@ -581,6 +581,9 @@
    (keyword (str (namespace from) "/"
                  (name from) "-" (name el) "-" (name to)))))
 
+;;
+;; filtering element colletions by criteria
+;;
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [[k v]]
@@ -629,7 +632,9 @@
       ; compose the filtering functions and create a filter transducer
       (filter (apply every-pred (remove nil? filter-predicates))))))
 
-
+;;
+;; recursive traversal of the hierarchical model
+;;
 (defn traverse
   "Recursively traverses the `coll` of elements and returns the elements (selected
    by the optional `select-fn`) and transformed by the `step-fn`.
@@ -663,7 +668,9 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
-
+;;
+;; step functions for traverse
+;;
 (defn tree->set
   "Step function to convert a hierarchical tree of elements to a flat set of elements."
   ([] #{})
@@ -671,13 +678,52 @@
   ([acc e] (conj acc e)))
 
 (defn tech-collector
-  "Adds the tech of `e` to the accumulator `acc`."
+  "Step function to collect the technologies.
+   Adds the tech of `e` to the accumulator `acc`."
   ([] #{})
   ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
+(defn id->element 
+  "Step function to create an id to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:id e) e)))
+
+(defn id->parent
+  "Step function to create an id to parent element map.
+   Adds the association from the id of element `e` to the parent `p` to the map `acc`."
+  ([] [{} '()])
+  ([[res ctx]]
+   (if-not (empty? ctx)
+     [res (pop ctx)]
+     res))
+  ([[res ctx] e]
+   (let [p (peek ctx)]
+     (if (child? e p)
+       [(assoc res (:id e) p) (conj ctx e)]
+       [res (conj ctx e)]))))
+
+(defn referrer-id->rel
+  "Step function to create an map of referrer ids to relations.
+   Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
+
+(defn referred-id->rel
+  "Step function to create an map of referred ids to relations.
+   Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc r]
+   (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
+
 (defn descendant-nodes
-  "Returns the descendants of the node `e`."
+  "Returns the set of descendants of the node `e`."
   [e]
   (when (model-node? e)
     (traverse model-node? tree->set (:ct e))))
