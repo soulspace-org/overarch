@@ -414,7 +414,8 @@
 (defn model-relation?
   "Returns true if the given element `e` is a relation."
   [e]
-  (contains? model-relation-types (:el e)))
+  (and (relational? e)
+       (contains? model-relation-types (:el e))))
 
 (defn model-node?
   "Returns true if the given element is a node in the model element graph.
@@ -593,7 +594,7 @@
 
     (= :type k)
     #(= v (:el %))
-    (= :type k)
+    (= :types k)
     #(contains? v (:el %))
 
     (= :subtype k)

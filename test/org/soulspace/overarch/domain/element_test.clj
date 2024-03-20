@@ -136,6 +136,8 @@
       false {:el :association}
       false {:el :dependency}
       false {:el :transition}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-node?-test
@@ -191,18 +193,20 @@
       false {:el :association}
       false {:el :dependency}
       false {:el :transition}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-relation?-test
   (testing "architecture-relation? true"
     (are [x y] (= x (fns/truthy? (architecture-relation? y)))
-      true {:el :rel}
-      true {:el :request}
-      true {:el :response}
-      true {:el :publish}
-      true {:el :subscribe}
-      true {:el :send}
-      true {:el :dataflow}))
+      true {:el :rel :from :a :to :b}
+      true {:el :request :from :a :to :b}
+      true {:el :response :from :a :to :b}
+      true {:el :publish :from :a :to :b}
+      true {:el :subscribe :from :a :to :b}
+      true {:el :send :from :a :to :b}
+      true {:el :dataflow :from :a :to :b}))
 
   (testing "architecture-relation? false"
     (are [x y] (= x (fns/truthy? (architecture-relation? y)))
@@ -235,6 +239,19 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-node?-test
@@ -272,30 +289,32 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-relation?-test
   (testing "deployment-relation? true"
     (are [x y] (= x (fns/truthy? (deployment-relation? y)))
-      true {:el :link}))
+      true {:el :link :from :a :to :b}))
 
   (testing "deployment-relation? false"
     (are [x y] (= x (fns/truthy? (deployment-relation? y)))
@@ -328,24 +347,26 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-node?-test
@@ -383,33 +404,35 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-relation?-test
   (testing "usecase-relation? true"
     (are [x y] (= x (fns/truthy? (usecase-relation? y)))
-      true {:el :uses}
-      true {:el :include}
-      true {:el :extends}
-      true {:el :generalizes}))
+      true {:el :uses :from :a :to :b}
+      true {:el :include :from :a :to :b}
+      true {:el :extends :from :a :to :b}
+      true {:el :generalizes :from :a :to :b}))
 
   (testing "usecase-relation? false"
     (are [x y] (= x (fns/truthy? (usecase-relation? y)))
@@ -442,21 +465,23 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :link}
-      false {:el :transition}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest statemachine-node?-test
@@ -494,30 +519,32 @@
       false {:el :stereotype}
       false {:el :annotation}
       false {:el :protocol}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest statemachine-relation?-test
   (testing "statemachine-relation? true"
     (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
-      true {:el :transition}))
+      true {:el :transition :from :a :to :b}))
 
   (testing "statemachine-relation? false"
     (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
@@ -550,24 +577,26 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :link}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest class-model-node?-test
@@ -605,35 +634,37 @@
       false {:el :history-state}
       false {:el :deep-history-state}
       false {:el :concept}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest class-model-relation?-test
   (testing "class-model-relation? true"
     (are [x y] (= x (fns/truthy? (class-model-relation? y)))
-      true {:el :inheritance}
-      true {:el :implementation}
-      true {:el :composition}
-      true {:el :aggregation}
-      true {:el :association}
-      true {:el :dependency}))
+      true {:el :inheritance :from :a :to :b}
+      true {:el :implementation :from :a :to :b}
+      true {:el :composition :from :a :to :b}
+      true {:el :aggregation :from :a :to :b}
+      true {:el :association :from :a :to :b}
+      true {:el :dependency :from :a :to :b}))
 
   (testing "class-model-relation? false"
     (are [x y] (= x (fns/truthy? (class-model-relation? y)))
@@ -666,19 +697,21 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :link}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-node?-test
@@ -716,30 +749,34 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-relation?-test
   (testing "concept-model-relation? true"
     (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
-      true {:el :rel}))
+      true {:el :has :from :a :to :b}
+      true {:el :is-a :from :a :to :b}
+      true {:el :rel :from :a :to :b}))
 
   (testing "concept-model-relation? false"
     (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
@@ -772,24 +809,24 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :link}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :transition}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
       false {:el :ref})))
 
 (deftest model-node?-test
@@ -827,49 +864,53 @@
 
   (testing "model-node? false"
     (are [x y] (= x (fns/truthy? (model-node? y)))
-      false {:el :rel}
-      false {:el :request}
-      false {:el :response}
-      false {:el :publish}
-      false {:el :subscribe}
-      false {:el :send}
-      false {:el :dataflow}
-      false {:el :link}
-      false {:el :uses}
-      false {:el :include}
-      false {:el :extends}
-      false {:el :generalizes}
-      false {:el :inheritance}
-      false {:el :implementation}
-      false {:el :composition}
-      false {:el :aggregation}
-      false {:el :association}
-      false {:el :dependency}
-      false {:el :transition}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
 (deftest model-relation?-test
   (testing "model-relation? true"
     (are [x y] (= x (fns/truthy? (model-relation? y)))
-      true {:el :rel}
-      true {:el :request}
-      true {:el :response}
-      true {:el :publish}
-      true {:el :subscribe}
-      true {:el :send}
-      true {:el :dataflow}
-      true {:el :link}
-      true {:el :uses}
-      true {:el :include}
-      true {:el :extends}
-      true {:el :generalizes}
-      true {:el :inheritance}
-      true {:el :implementation}
-      true {:el :composition}
-      true {:el :aggregation}
-      true {:el :association}
-      true {:el :dependency}
-      true {:el :transition}))
+      true {:el :rel :from :a :to :b}
+      true {:el :request :from :a :to :b}
+      true {:el :response :from :a :to :b}
+      true {:el :publish :from :a :to :b}
+      true {:el :subscribe :from :a :to :b}
+      true {:el :send :from :a :to :b}
+      true {:el :dataflow :from :a :to :b}
+      true {:el :link :from :a :to :b}
+      true {:el :uses :from :a :to :b}
+      true {:el :include :from :a :to :b}
+      true {:el :extends :from :a :to :b}
+      true {:el :generalizes :from :a :to :b}
+      true {:el :inheritance :from :a :to :b}
+      true {:el :implementation :from :a :to :b}
+      true {:el :composition :from :a :to :b}
+      true {:el :aggregation :from :a :to :b}
+      true {:el :association :from :a :to :b}
+      true {:el :dependency :from :a :to :b}
+      true {:el :transition :from :a :to :b}
+      true {:el :has :from :a :to :b}
+      true {:el :is-a :from :a :to :b}))
 
   (testing "model-relation? false"
     (are [x y] (= x (fns/truthy? (model-relation? y)))
@@ -936,25 +977,27 @@
       true {:el :choice}
       true {:el :history-state}
       true {:el :deep-history-state}
-      true {:el :rel}
-      true {:el :request}
-      true {:el :response}
-      true {:el :publish}
-      true {:el :subscribe}
-      true {:el :send}
-      true {:el :dataflow}
-      true {:el :link}
-      true {:el :uses}
-      true {:el :include}
-      true {:el :extends}
-      true {:el :generalizes}
-      true {:el :inheritance}
-      true {:el :implementation}
-      true {:el :composition}
-      true {:el :aggregation}
-      true {:el :association}
-      true {:el :dependency}
-      true {:el :transition}))
+      true {:el :rel :from :a :to :b}
+      true {:el :request :from :a :to :b}
+      true {:el :response :from :a :to :b}
+      true {:el :publish :from :a :to :b}
+      true {:el :subscribe :from :a :to :b}
+      true {:el :send :from :a :to :b}
+      true {:el :dataflow :from :a :to :b}
+      true {:el :link :from :a :to :b}
+      true {:el :uses :from :a :to :b}
+      true {:el :include :from :a :to :b}
+      true {:el :extends :from :a :to :b}
+      true {:el :generalizes :from :a :to :b}
+      true {:el :inheritance :from :a :to :b}
+      true {:el :implementation :from :a :to :b}
+      true {:el :composition :from :a :to :b}
+      true {:el :aggregation :from :a :to :b}
+      true {:el :association :from :a :to :b}
+      true {:el :dependency :from :a :to :b}
+      true {:el :transition :from :a :to :b}
+      true {:el :has :from :a :to :b}
+      true {:el :is-a :from :a :to :b}))
 
   (testing "model-element? false"
     (are [x y] (= x (fns/truthy? (model-element? y)))
@@ -1000,7 +1043,7 @@
   (testing "node-of? false"
     (are [x y] (= x (fns/truthy? (apply node-of? y)))
       false [:bla {:el :bla}]
-      false [:rel {:el :rel}]
+      false [:rel {:el :rel :from :a :to :b}]
       false [:system-boundary {:el :system-boundary}]
       false [:container-boundary {:el :container-boundary}]
       false [:person {:el :system}])))
@@ -1008,10 +1051,10 @@
 (deftest relation-of?-test
   (testing "relation-of? true"
     (are [x y] (= x (fns/truthy? (apply relation-of? y)))
-      true [:rel {:el :rel}]
-      true [:request {:el :request}]
-      true [:response {:el :response}]
-      true [:transition {:el :transition}]))
+      true [:rel {:el :rel :from :a :to :b}]
+      true [:request {:el :request :from :a :to :b}]
+      true [:response {:el :response :from :a :to :b}]
+      true [:transition {:el :transition :from :a :to :b}]))
   (testing "relation-of? false"
     (are [x y] (= x (fns/truthy? (apply relation-of? y)))
       false [:bla {:el :bla}]
@@ -1084,7 +1127,7 @@
      :name "External Person"}
     {:el :person
      :id :org.soulspace.internal/person
-     :name "Internal Person"} 
+     :name "Internal Person"}
     {:el :system
      :id :org.soulspace.external/system1
      :external true
@@ -1120,7 +1163,7 @@
      :subtype :queue
      :name "Container2 Events"
      :tech "Kafka"}
-    
+
     {:el :rel
      :id :org.soulspace.external/person-uses-system1
      :from :org.soulspace.external/person
@@ -1136,7 +1179,16 @@
      :from :org.soulspace.internal/person
      :to :org.soulspace.internal.system/container1-ui
      :name "uses"}
-
+    {:el :publish
+     :id :org.soulspace.internal.system/container2-publishes-to-container2-topic
+     :from :org.soulspace.internal.system/container2
+     :to :org.soulspace.internal.system/container2-topic
+     :name "publishes to"}
+    {:el :subscribe
+     :id :org.soulspace.internal.system/container1-consumes-container2-topic
+     :from :org.soulspace.internal.system/container1
+     :to :org.soulspace.internal.system/container2-topic
+     :name "consumes"}
     })
 
 (deftest filter-xf-test
@@ -1168,6 +1220,18 @@
       {:tag "critical"}
 
       #{{:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1
+         :name "Container1"
+         :tech "Clojure"
+         :tags #{"autoscaled"}}}
+      {:tag "autoscaled"}
+
+      #{{:el :container
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
@@ -1193,6 +1257,9 @@
       elements-to-filter)
   (into []
       (filter-xf {:type :container})
+      elements-to-filter)
+  (into []
+      (filter-xf {:types #{:system :container}})
       elements-to-filter)
   (into []
       (filter-xf {:type :container :subtype :database})
