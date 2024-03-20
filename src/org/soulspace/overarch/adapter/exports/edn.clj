@@ -14,11 +14,6 @@
 ;; export model into edn files structured according to the types and namespaces of the elements
 ;;
 
-(defn elements-by-namespace
-  "Returns the elements of the `coll` grouped by namespace."
-  [coll]
-  (group-by el/element-namespace coll))
-
 (defn edn-filename
   "Returns the filename for the `namespace` and the `kind` of data."
   ([options namespace kind]

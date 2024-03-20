@@ -540,12 +540,6 @@
 ;;
 ;; Functions 
 ;;
-(defn element-namespace
-  "Returns the namespace of the element `e`."
-  [e]
-  (when-let [id (:id e)]
-    (namespace id)))
-
 (defn element-name
   "Returns the name of the element `e`."
   [e]
@@ -555,6 +549,17 @@
          (#(str/split % #"-"))
          (map str/capitalize)
          (str/join " "))))
+
+(defn element-namespace
+  "Returns the namespace of the element `e`."
+  [e]
+  (when-let [id (:id e)]
+    (namespace id)))
+
+(defn elements-by-namespace
+  "Returns the elements of the `coll` grouped by namespace."
+  [coll]
+  (group-by element-namespace coll))
 
 (defn generate-node-id
   "Generates an identifier for element `e` based on the id of the parent `p`.

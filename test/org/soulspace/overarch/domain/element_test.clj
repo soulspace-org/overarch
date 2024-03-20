@@ -1119,6 +1119,35 @@
       :test/class1-name-field {:el :field :name "name"}
       :test/class1-getname-method {:el :method :name "getName"}))) 
 
+(def elements
+  #{{:el :person
+     :id :org.soulspace.external/person
+     :external true
+     :name "External Person"}
+    {:el :person
+     :id :org.soulspace.internal/person
+     :name "Internal Person"}
+    {:el :system
+     :id :org.soulspace.external/system1
+     :external true
+     :name "External System 1"}})
+
+(deftest elements-by-namespace-test
+  (testing "elements-by-namespace"
+    (is (= {"org.soulspace.external"
+            [{:el :system
+              :id :org.soulspace.external/system1
+              :external true
+              :name "External System 1"}
+             {:el :person
+              :id :org.soulspace.external/person
+              :external true
+              :name "External Person"}]
+            "org.soulspace.internal"
+            [{:el :person
+              :id :org.soulspace.internal/person
+              :name "Internal Person"}]}
+           (elements-by-namespace elements)))))
 
 (def elements-to-filter
   #{{:el :person
