@@ -209,6 +209,125 @@
     :state-machine-view :class-view
     :glossary-view})
 
+
+;;;
+;;; Hierarchy of element types
+;;;
+(def element-hierarchy
+  "Hierarchy for rendering methods."
+  (-> (make-hierarchy)
+      ;;; nodes
+      ;; boundaries
+      (derive :enterprise-boundary               :boundary)
+      (derive :system-boundary                   :boundary)
+      (derive :container-boundary                :boundary)
+      (derive :context-boundary                  :boundary)
+      ;; roles
+      (derive :actor                             :role)
+      (derive :person                            :role)
+
+      ;; architecture model nodes
+      (derive :system                            :technical-architecture-model-node)
+      (derive :container                         :technical-architecture-model-node)
+      (derive :component                         :technical-architecture-model-node)
+      (derive :technical-architecture-model-node :architecture-model-node)
+      (derive :person                            :architecture-model-node)
+
+      ;; deployment model nodes
+      (derive :node                              :deployment-model-node)
+
+      ;; use case model nodes 
+      (derive :actor                             :actor-node)
+      (derive :person                            :actor-node)
+      (derive :system                            :actor-node)
+      (derive :container                         :actor-node)
+
+      (derive :use-case                          :use-case-model-node)
+      (derive :actor-node                        :use-case-model-node)
+
+      ;; state machine model nodes
+      (derive :state-machine                     :state-machine-model-node)
+      (derive :start-state                       :state-machine-model-node)
+      (derive :end-state                         :state-machine-model-node)
+      (derive :state                             :state-machine-model-node)
+      (derive :fork                              :state-machine-model-node)
+      (derive :join                              :state-machine-model-node)
+      (derive :choice                            :state-machine-model-node)
+      (derive :history-state                     :state-machine-model-node)
+      (derive :deep-history-state                :state-machine-model-node)
+
+      ;; class model nodes
+      (derive :class                             :class-model-node)
+      (derive :enum                              :class-model-node)
+      (derive :interface                         :class-model-node)
+      (derive :protocol                          :class-model-node)
+      (derive :field                             :class-model-node)
+      (derive :method                            :class-model-node)
+      (derive :function                          :class-model-node)
+      (derive :package                           :class-model-node)
+      (derive :namespace                         :class-model-node)
+      (derive :stereotype                        :class-model-node)
+      (derive :annotation                        :class-model-node)
+
+      ;; concept model nodes
+      (derive :concept                           :concept-model-node)
+
+      ;; model nodes
+      (derive :architecture-model-node           :model-node)
+      (derive :deplyoment-model-node             :model-node)
+      (derive :use-case-model-node               :model-node)
+      (derive :state-machine-model-node          :model-node)
+      (derive :class-model-node                  :model-node)
+      (derive :concept-model-node                :model-node)
+      (derive :boundary                          :model-node)
+
+      ;;; model relations
+      ;; architecture model relations
+      (derive :request                           :architecture-model-relation)
+      (derive :response                          :architecture-model-relation)
+      (derive :publish                           :architecture-model-relation)
+      (derive :subscribe                         :architecture-model-relation)
+      (derive :send                              :architecture-model-relation)
+      (derive :dataflow                          :architecture-model-relation)
+
+      ;; deployment model relations
+      (derive :link                              :deployment-model-relation)
+
+      ;; use case model relations
+      (derive :uses                              :use-case-model-relation)
+      (derive :include                           :use-case-model-relation)
+      (derive :extends                           :use-case-model-relation)
+      (derive :generalizes                       :use-case-model-relation)
+
+      ;; state machine model relations
+      (derive :transition                        :state-machine-model-relation)
+
+      ;; class model relations
+      (derive :inheritance                       :class-model-relation)
+      (derive :implementation                    :class-model-relation)
+      (derive :composition                       :class-model-relation)
+      (derive :aggregation                       :class-model-relation)
+      (derive :association                       :class-model-relation)
+      (derive :dependency                        :class-model-relation)
+
+      ;; concept model relations
+      (derive :is-a                              :concept-model-relation)
+      (derive :has                               :concept-model-relation)
+
+      ;; model relations
+      (derive :architecture-model-relation       :model-relation)
+      (derive :deployment-model-relation         :model-relation)
+      (derive :use-case-model-relation           :model-relation)
+      (derive :state-machine-model-relation      :model-relation)
+      (derive :class-model-relation              :model-relation)
+      (derive :concept-model-relation            :model-relation)
+
+      (derive :rel                               :model-relation)
+
+      ;;; model elements
+      (derive :model-node                        :model-element)
+      (derive :model-relation                    :model-element)))
+
 ;;
 ;; Predicates
 ;;
@@ -270,7 +389,7 @@
 (defn external?
   "Returns true if the given element `e` is external."
   [e]
-  (:external e))
+  (get e :external false))
 
 (defn internal?
   "Returns true if the given element `e` is internal."
@@ -420,15 +539,104 @@
 ;;
 ;; Functions 
 ;;
+(defn element-namespace
+  "Returns the namespace of the element `e`."
+  [e]
+  (when-let [id (:id e)]
+    (namespace id)))
+
+(defn element-name
+  "Returns the name of the element `e`."
+  [e]
+  (if (:name e)
+    (:name e)
+    (->> (name (:id e))
+         (#(str/split % #"-"))
+         (map str/capitalize)
+         (str/join " "))))
+
+(defn generate-node-id
+  "Generates an identifier for element `e` based on the id of the parent `p`.
+   
+   The generated id takes the id of `p` as prefix and appends the lowercase
+   name of `e` and the element type of `e` separated by a hyphen."
+  ([e p]
+   (when (and e p (:id p))
+     (let [p-namespace (namespace (:id p))
+           p-name (name (:id p))]
+       (keyword (str p-namespace "/"
+                     p-name "-"
+                     (str/lower-case (:name e)) "-"
+                     (name (:el e))))))))
+
+(defn generate-relation-id
+  "Generates an identifier for a relation `r`.
+   
+   The generated id takes the id of the referrer as prefix and appends the relation type
+   of the relation and the name part of the referred id separated by a hyphen."
+  ([{:keys [el from to]}]
+   (generate-relation-id el from to))
+  ([el from to]
+   (keyword (str (namespace from) "/"
+                 (name from) "-" (name el) "-" (name to)))))
+
+(defn criterium-predicate
+  "Returns a predicate for the given `criterium`."
+  [[k v]]
+  (cond
+    (= :namespace k)
+    #(= v (element-namespace %))
+    (= :namespaces k)
+    #(contains? v (element-namespace %))
+    (= :namespace-prefix k)
+    #(str/starts-with? (element-namespace %) v)
+
+    (= :type k)
+    #(= v (:el %))
+    (= :type k)
+    #(contains? v (:el %))
+
+    (= :subtype k)
+    #(= v (:subtype %))
+    (= :subtypes k)
+    #(contains? v (:subtype %))
+
+    (= :external k)
+    #(= v (external? %))
+
+    (= :tech k)
+    #(= v (:tech %))
+    (= :techs k)
+    #(contains? v (:tech %))
+
+    (= :tag k)
+    #(contains? (:tags %) v)
+    (= :tags k)
+    #(set/intersection v (:tags %))
+
+    :else
+    (println "unknown criterium" (name k))))
+
+(defn filter-xf
+  "Returns a filter transducer for the given `criteria`."
+  [criteria]
+  (loop [remaining criteria
+         filter-predicates []]
+    (if (seq remaining)
+      (recur (rest remaining)
+             (conj filter-predicates (criterium-predicate (first remaining))))
+      ; compose the filtering functions and create a filter transducer
+      (filter (apply every-pred (remove nil? filter-predicates))))))
+
 
 (defn traverse
-  "Traverses the `coll` of elements and returns the elements selected by the `select-fn`
-   and transformed by the `step-fn`.
+  "Recursively traverses the `coll` of elements and returns the elements (selected
+   by the optional `select-fn`) and transformed by the `step-fn`.
 
-   select-fn - a predicate on the current element
-   step-fn - a function with three signatures [], [acc] and [acc e]
+   `select-fn` - a predicate on the current element
+   `step-fn` - a function with three signatures [], [acc] and [acc e]
    
-   The no args signature of the step-fn should return an empty accumulator,
+   The no args signature of the `step-fn` should return an empty accumulator,
    the one args signature extracts the result from the accumulator on return
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
@@ -454,23 +662,12 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+
 (defn tree->set
   "Step function to convert a hierarchical tree of elements to a flat set of elements."
   ([] #{})
   ([acc] acc)
   ([acc e] (conj acc e)))
-
-(defn element-namespace
-  "Returns the namespace of the element `e`."
-  [e]
-  (when-let [id (:id e)]
-    (namespace id)))
-
-(defn descendant-nodes
-  "Returns the descendants of the node `e`."
-  [e]
-  (when (model-node? e)
-    (traverse model-node? tree->set (:ct e))))
 
 (defn tech-collector
   "Adds the tech of `e` to the accumulator `acc`."
@@ -478,151 +675,15 @@
   ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
+(defn descendant-nodes
+  "Returns the descendants of the node `e`."
+  [e]
+  (when (model-node? e)
+    (traverse model-node? tree->set (:ct e))))
+
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   [coll]
   (traverse :tech tech-collector coll))
-
-(defn generate-node-id
-  "Generates an identifier for element `e` based on the id of the parent `p`."
-  ([e p]
-   (when (and e p (:id p))
-     (let [p-namespace (namespace (:id p))
-           p-name (name (:id p))]
-       (keyword (str p-namespace "/"
-                     p-name "-" (:name e) "-" (name (:el e))))))))
-
-(defn generate-relation-id
-  "Generates an identifier for a relation `r`."
-  ([{:keys [el from to]}]
-   (generate-relation-id el from to))
-  ([el from to]
-   (keyword (str (namespace from) "/"
-                 (name from) "-" (name el) "-" (name to)))))
-
-(defn element-name
-  "Returns the name of the element."
-  [e]
-  (if (:name e)
-    (:name e)
-    (->> (name (:id e))
-         (#(str/split % #"-"))
-         (map str/capitalize)
-         (str/join " "))))
-
-(def element-hierarchy
-  "Hierarchy for rendering methods."
-  (-> (make-hierarchy)
-      ;;; nodes
-      ;; boundaries
-      (derive :enterprise-boundary               :boundary)
-      (derive :system-boundary                   :boundary)
-      (derive :container-boundary                :boundary)
-      (derive :context-boundary                  :boundary)
-      ;; roles
-      (derive :actor                             :role)
-      (derive :person                            :role)
-
-      ;; architecture model nodes
-      (derive :system                            :technical-architecture-model-node)
-      (derive :container                         :technical-architecture-model-node)
-      (derive :component                         :technical-architecture-model-node)
-      (derive :technical-architecture-model-node :architecture-model-node)
-      (derive :person                            :architecture-model-node)
-
-      ;; deployment model nodes
-      (derive :node                              :deployment-model-node)
-
-      ;; use case model nodes 
-      (derive :actor                             :actor-node)
-      (derive :person                            :actor-node)
-      (derive :system                            :actor-node)
-      (derive :container                         :actor-node)
-
-      (derive :use-case                          :use-case-model-node)
-      (derive :actor-node                        :use-case-model-node)
-
-      ;; state machine model nodes
-      (derive :state-machine                     :state-machine-model-node)
-      (derive :start-state                       :state-machine-model-node)
-      (derive :end-state                         :state-machine-model-node)
-      (derive :state                             :state-machine-model-node)
-      (derive :fork                              :state-machine-model-node)
-      (derive :join                              :state-machine-model-node)
-      (derive :choice                            :state-machine-model-node)
-      (derive :history-state                     :state-machine-model-node)
-      (derive :deep-history-state                :state-machine-model-node)
-
-      ;; class model nodes
-      (derive :class                             :class-model-node)
-      (derive :enum                              :class-model-node)
-      (derive :interface                         :class-model-node)
-      (derive :protocol                          :class-model-node)
-      (derive :field                             :class-model-node)
-      (derive :method                            :class-model-node)
-      (derive :function                          :class-model-node)
-      (derive :package                           :class-model-node)
-      (derive :namespace                         :class-model-node)
-      (derive :stereotype                        :class-model-node)
-      (derive :annotation                        :class-model-node)
-
-      ;; concept model nodes
-      (derive :concept                           :concept-model-node)
-
-      ;; model nodes
-      (derive :architecture-model-node           :model-node)
-      (derive :deplyoment-model-node             :model-node)
-      (derive :use-case-model-node               :model-node)
-      (derive :state-machine-model-node          :model-node)
-      (derive :class-model-node                  :model-node)
-      (derive :concept-model-node                :model-node)
-      (derive :boundary                          :model-node)
-
-      ;;; model relations
-      ;; architecture model relations
-      (derive :request                           :architecture-model-relation)
-      (derive :response                          :architecture-model-relation)
-      (derive :publish                           :architecture-model-relation)
-      (derive :subscribe                         :architecture-model-relation)
-      (derive :send                              :architecture-model-relation)
-      (derive :dataflow                          :architecture-model-relation)
-
-      ;; deployment model relations
-      (derive :link                              :deployment-model-relation)
-
-      ;; use case model relations
-      (derive :uses                              :use-case-model-relation)
-      (derive :include                           :use-case-model-relation)
-      (derive :extends                           :use-case-model-relation)
-      (derive :generalizes                       :use-case-model-relation)
-
-      ;; state machine model relations
-      (derive :transition                        :state-machine-model-relation)
-
-      ;; class model relations
-      (derive :inheritance                       :class-model-relation)
-      (derive :implementation                    :class-model-relation)
-      (derive :composition                       :class-model-relation)
-      (derive :aggregation                       :class-model-relation)
-      (derive :association                       :class-model-relation)
-      (derive :dependency                        :class-model-relation)
-
-      ;; concept model relations
-      (derive :is-a                              :concept-model-relation)
-      (derive :has                               :concept-model-relation)
-
-      ;; model relations
-      (derive :architecture-model-relation       :model-relation)
-      (derive :deployment-model-relation         :model-relation)
-      (derive :use-case-model-relation           :model-relation)
-      (derive :state-machine-model-relation      :model-relation)
-      (derive :class-model-relation              :model-relation)
-      (derive :concept-model-relation            :model-relation)
-
-      (derive :rel                               :model-relation)
-
-      ;;; model elements
-      (derive :model-node                        :model-element)
-      (derive :model-relation                    :model-element)))
 
 

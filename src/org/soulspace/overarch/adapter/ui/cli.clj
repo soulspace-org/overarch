@@ -5,7 +5,7 @@
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.domain.element :as e]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.analytics :as al]
@@ -228,9 +228,7 @@
   (al/unidentifiable-elements (repo/elements))
   (al/unnamespaced-elements (repo/elements))
   (al/unrelated-nodes @repo/state)
-  
   (al/check-relations @repo/state)
-
   (al/check-views @repo/state)
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
 

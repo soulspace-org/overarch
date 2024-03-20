@@ -1,9 +1,15 @@
 Changelog
 =========
 
+Version 0.14.0
+--------------
+* added filtering elements by criteria
+* updated tests
+
+
 Version 0.13.0
 --------------
-* added semantical relation types in concept model (:is-a, :has)
+* added semantic relation types in concept model (:is-a, :has)
 * added containers from architecture model to allowed actors in use case model
 * added rendering of element subtype in markdown (e.g Database Container)
 * added an explicit example of a concept model and view
@@ -29,7 +35,7 @@ Version 0.11.0
 
 Version 0.10.0
 --------------
-* added support for new semantical relation types in architecture and deployment models
+* added support for new semantic relation types in architecture and deployment models
   * additional architecture relations
     * :request, :response, :publish, :subscribe, :send, :dataflow
   * additional deployment relation

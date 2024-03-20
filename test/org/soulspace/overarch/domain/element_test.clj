@@ -3,6 +3,9 @@
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :refer :all]))
 
+;;;
+;;; Tests for element predicates
+;;;
 (deftest element?-test
   (testing "element? true"
     (are [x y] (= x (fns/truthy? (element? y)))
@@ -86,7 +89,7 @@
       true {:el :system}
       true {:el :container}
       true {:el :component}))
-  
+
   (testing "technical-architecture-node? false"
     (are [x y] (= x (fns/truthy? (technical-architecture-node? y)))
       false {:el :person}
@@ -989,12 +992,11 @@
 (deftest node-of?-test
   (testing "node-of? true"
     (are [x y] (= x (fns/truthy? (apply node-of? y)))
-       true [:person {:el :person}]
-       true [:system {:el :system}]
-       true [:container {:el :container}]
-       true [:context-boundary{:el :context-boundary}]
-       true [:enterprise-boundary {:el :enterprise-boundary}]
-      ))
+      true [:person {:el :person}]
+      true [:system {:el :system}]
+      true [:container {:el :container}]
+      true [:context-boundary {:el :context-boundary}]
+      true [:enterprise-boundary {:el :enterprise-boundary}]))
   (testing "node-of? false"
     (are [x y] (= x (fns/truthy? (apply node-of? y)))
       false [:bla {:el :bla}]
@@ -1023,7 +1025,7 @@
       false [:person {:el :system}])))
 
 (deftest view?-test
-  (testing "view?"
+  (testing "view? true"
     (are [x y] (= x (fns/truthy? (view? y)))
       true {:el :system-landscape-view :id :system-landscape-view}
       true {:el :context-view :id :context-view}
@@ -1035,11 +1037,13 @@
       true {:el :class-view :id :class-view}
       true {:el :state-machine-view :id :state-machine-view}
       true {:el :context-view :id :context-view}
-      true {:el :glossary-view :id :glossary-view}
+      true {:el :glossary-view :id :glossary-view}))
+  (testing "view? false"
+    (are [x y] (= x (fns/truthy? (view? y)))
       false {:el :abcd-view :id :abcd-view})))
 
 (deftest hierarchical-view?-test
-  (testing "hierarchical-view?"
+  (testing "hierarchical-view? true"
     (are [x y] (= x (fns/truthy? (hierarchical-view? y)))
       true {:el :system-landscape-view :id :system-landscape-view}
       true {:el :context-view :id :context-view}
@@ -1048,9 +1052,171 @@
       true {:el :deployment-view :id :deployment-view}
       true {:el :class-view :id :class-view}
       true {:el :state-machine-view :id :state-machine-view}
-      true {:el :glossary-view :id :glossary-view}
+      true {:el :glossary-view :id :glossary-view}))
+  (testing "hierarchical-view? false"
+    (are [x y] (= x (fns/truthy? (hierarchical-view? y)))
       false {:el :dynamic-view :id :dynamic-view}
       false {:el :use-case-view :id :use-case-view}
       false {:el :concept-view :id :concept-view}
       false {:el :abcd-view :id :abcd-view})))
 
+;;;
+;;; Tests for element functions
+;;;
+(deftest element-namespace-test
+  (testing "element-namespace"
+    (are [x y] (= x (element-namespace y))
+      "org.soulspace" {:id :org.soulspace/foo}
+      nil {:id :foo}
+      nil {:el :foo/bar})))
+
+(deftest generate-node-id-test
+  (testing "generate-node-id"
+    (are [x y] (= x (generate-node-id y {:el :class :id :test/class1 :name "TestClass1"}))
+      :test/class1-name-field {:el :field :name "name"}
+      :test/class1-getname-method {:el :method :name "getName"}))) 
+
+
+(def elements-to-filter
+  #{{:el :person
+     :id :org.soulspace.external/person
+     :external true
+     :name "External Person"}
+    {:el :person
+     :id :org.soulspace.internal/person
+     :name "Internal Person"} 
+    {:el :system
+     :id :org.soulspace.external/system1
+     :external true
+     :name "External System 1"}
+    {:el :system
+     :id :org.soulspace.external/system2
+     :external true
+     :name "External System 2"}
+    {:el :system
+     :id :org.soulspace.internal/system
+     :name "Internal System"}
+    {:el :container
+     :id :org.soulspace.internal.system/container1
+     :name "Container1"
+     :tech "Clojure"
+     :tags #{"autoscaled"}}
+    {:el :container
+     :id :org.soulspace.internal.system/container1-ui
+     :name "Container1 UI"
+     :tech "ClojureScript"}
+    {:el :container
+     :id :org.soulspace.internal.system/container1-db
+     :subtype :database
+     :name "Container1 DB"
+     :tech "Datomic"}
+    {:el :container
+     :id :org.soulspace.internal.system/container2
+     :name "Container2"
+     :tech "Java"
+     :tags #{"critical" "autoscaled"}}
+    {:el :container
+     :id :org.soulspace.internal.system/container2-topic
+     :subtype :queue
+     :name "Container2 Events"
+     :tech "Kafka"}
+    
+    {:el :rel
+     :id :org.soulspace.external/person-uses-system1
+     :from :org.soulspace.external/person
+     :to :org.soulspace.external/system1
+     :name "uses"}
+    {:el :rel
+     :id :org.soulspace.internal/person-uses-system
+     :from :org.soulspace.internal/person
+     :to :org.soulspace.internal/system
+     :name "uses"}
+    {:el :rel
+     :id :org.soulspace.internal/person
+     :from :org.soulspace.internal/person
+     :to :org.soulspace.internal.system/container1-ui
+     :name "uses"}
+
+    })
+
+(deftest filter-xf-test
+  (testing "filter-xf"
+    (are [x y] (= x (into #{} (filter-xf y) elements-to-filter))
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}}
+      {:type :person :external true}
+
+      #{{:el :person
+         :id :org.soulspace.internal/person
+         :name "Internal Person"}}
+      {:type :person :external false}
+
+      #{{:el :rel
+         :id :org.soulspace.external/person-uses-system1
+         :from :org.soulspace.external/person
+         :to :org.soulspace.external/system1
+         :name "uses"}}
+      {:type :rel :namespace "org.soulspace.external"}
+
+      #{{:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}}}
+      {:tag "critical"}
+
+      #{{:el :container
+         :id :org.soulspace.internal.system/container1-db
+         :subtype :database
+         :name "Container1 DB"
+         :tech "Datomic"}}
+      {:tech "Datomic"}
+
+      ;
+      )))
+
+
+(comment
+  (into []
+      (filter-xf {:namespace "org.soulspace.external"})
+      elements-to-filter)
+  (into []
+        (filter-xf {:namespaces #{"org.soulspace.external" "org.soulspace.internal"}})
+        elements-to-filter)
+  (into []
+      (filter-xf {:namespace-prefix "org.soulspace"})
+      elements-to-filter)
+  (into []
+      (filter-xf {:type :person})
+      elements-to-filter)
+  (into []
+      (filter-xf {:type :container})
+      elements-to-filter)
+  (into []
+      (filter-xf {:type :container :subtype :database})
+      elements-to-filter)
+  (into []
+      (filter-xf {:type :container :subtypes #{:database :queue}})
+      elements-to-filter)
+  (into []
+      (filter-xf {:external true})
+      elements-to-filter)
+  (into []
+      (filter-xf {:tech "Clojure"})
+      elements-to-filter)
+  (into []
+      (filter-xf {:tag "autoscaled"})
+      elements-to-filter)
+  (into []
+      (filter-xf {:tag "critical"})
+      elements-to-filter)
+  (into []
+      (filter-xf {:tags #{"critical" "autoscaled"}})
+      elements-to-filter)
+  (into []
+      (filter-xf {:type :rel})
+      elements-to-filter)
+
+  )
