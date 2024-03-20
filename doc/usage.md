@@ -120,8 +120,13 @@ syntax check and syntax highlighting.
 Models
 ------
 
-The top level element in a model EDN file is a set which contains the top level
-model elements. Model elements are denoted as maps in the EDN file.
+You can split your model into separate EDN files, which might be reasonable for
+big systems. Overarch can recursively read all models from a directory or
+search path so you are quite free in structuring your model files.
+
+The top level element in each model EDN file is a **set** which contains the top
+level model elements. Model elements are denoted as maps in the EDN file.
+
 All model elements have at least two keys, **:el** for the type of the
 element and **:id** for the identifier. The identifiers should be namespaced
 keywords, so that different models can be composed without collisions of the
