@@ -224,10 +224,12 @@ kind        | sync/async  | dependency  | description
 :dataflow   | unspecified | unspecified | flow of data independent of the call semantic
 :rel        | unspecified | unspecified | unclassified relation
 
+
 #### Additional Keys for Architecture Model Relations
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :tech     | string  | e.g. REST          | technology of the relation
+
 
 #### Boundaries
 Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
