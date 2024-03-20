@@ -127,16 +127,40 @@ element and **:id** for the identifier. The identifiers should be namespaced
 keywords, so that different models can be composed without collisions of the
 identifiers.
 
-### Common Keys
+### Model Nodes
+Model Nodes describe the elements of the different kind of models for the system.
 
+#### Common Keys of Model Nodes
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
-:el       | keyword | see model elements | type of the model element
-:id       | keyword | namespaced id      | id of the element
-:name     | string  |                    | name of the element
-:desc     | string  |                    | description of the element
-:ct       | set     | model elements     | the children of the model element
+:el       | keyword | see model elements | type of the model node
+:id       | keyword | namespaced id      | id of the model node
+:name     | string  |                    | name of the model node
+:desc     | string  |                    | description of the model node
+:ct       | set     | model nodes        | the children of the model node
 
+### Relations
+Relations describe the connections and interactions of the nodes.
+
+#### Common Keys of Relations
+key       | type    | values              | description 
+----------|---------|---------------------|------------
+:el       | keyword | e.g. :rel, :request | type of the relation
+:id       | keyword | namespaced id       | id of the relation
+:from     | keyword | namespaced id       | id of the referrer node
+:to       | keyword | namespaced id       | id of the referred node
+:name     | string  |                     | name of the relation
+:desc     | string  |                     | description of the relation
+
+### References (:ref)
+References refer to a model element with the given id. They are primarily used
+to refer to the model elements to include in views. They can also be used to
+refer to model elements in other model elements, e.g. to split a huge hierarchical
+systems into multiple EDN files.
+
+References can have other keys, which are merged with the referred element in
+context of the reference. For example you can mark an internal system as external
+in the context of a specific view by adding `:external true` to the reference.
 
 
 ### Architecture and Deployment Model Elements
@@ -146,13 +170,12 @@ Overarch supports elements for C4 architecture and deployment models.
 ![Architecture and Deployment Model Elements](/doc/images/overarch_architectureModelElementsOverview.svg)
 
 
-#### Additional Keys for Architecture Model Elements
-
+#### Additional Keys for Architecture Model Nodes
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
-:subtype  | keyword | :database, :queue  | specific role of the element
+:subtype  | keyword | :database, :queue  | specific role of the model node
 :external | boolean | true, false        | default is false
-:tech     | string  |                    | technology of the element
+:tech     | string  |                    | technology of the model node
 
 
 #### Person (:person)
@@ -183,7 +206,7 @@ A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
-#### Relations (:rel)
+#### Relations
 Relations describe the connections and interactions of the parts of a view.
 
 kind        | sync/async  | dependency  | description
@@ -194,17 +217,12 @@ kind        | sync/async  | dependency  | description
 :publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue)
 :subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue)
 :dataflow   | unspecified | unspecified | flow of data independent of the call semantic
+:rel        | unspecified | unspecified | unclassified relation
 
-
-#### Reference (:ref)
-References refer to a model element with the given id. They are primarily used
-to refer to the model elements to include in views. They can also be used to
-refer to model elements in other model elements, e.g. to split a huge hierarchical
-systems into multiple EDN files.
-
-References can have other keys, which are merged with the referred element in
-context of the reference. For example you can mark an internal system as external
-in the context of a specific view by adding `:external true` to the reference.
+#### Additional Keys for Architecture Model Relations
+key       | type    | values             | description 
+----------|---------|--------------------|------------
+:tech     | string  | e.g. REST          | technology of the relation
 
 #### Boundaries
 Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
@@ -303,6 +321,15 @@ of the architecture model, e.g. the persons (actors), external systems and the
 system itself with it's containers.
 
 ![Concept Model Elements](/doc/images/overarch_conceptModelElementsOverview.svg)
+
+#### Concept Model Relations
+
+kind        | description
+------------|------------
+:is-a       | specialization of
+:has        | part or attribute of
+:rel        | unclassified relation
+
 
 ### Use Case Model Elements
 
