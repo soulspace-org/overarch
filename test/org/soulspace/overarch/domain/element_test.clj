@@ -1220,7 +1220,7 @@
     })
 
 (deftest filter-xf-test
-  (testing "filter-xf"
+  (testing "filter-xf with single criteria map"
     (are [x y] (= x (into #{} (filter-xf y) elements-to-filter))
       #{{:el :person
          :id :org.soulspace.external/person
@@ -1264,8 +1264,10 @@
          :subtype :database
          :name "Container1 DB"
          :tech "Datomic"}}
-      {:tech "Datomic"}
-
+      {:tech "Datomic"}))
+  (testing "filter-xf with vector of criteria"
+    (are [x y] (= x (into #{} (filter-xf y) elements-to-filter))
+      
       #{{:el :system :id :org.soulspace.external/system2 :external true :name "External System 2"}
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
         {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
