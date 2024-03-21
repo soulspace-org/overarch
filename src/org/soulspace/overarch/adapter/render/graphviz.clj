@@ -32,7 +32,7 @@
 
 (defmethod render-element :model-node
   [model e indent view]
-  [(str (alias-name (:id e)) "[label=\"" (:name e) "\", fillcolor=\"#dddddd\"];")])
+  [(str (alias-name (:id e)) "[label=\"" (:name e) "\", style=\"filled\", fillcolor=\"#dddddd\"];")])
 
 (defmethod render-element :model-relation
   [model e indent view]
