@@ -764,25 +764,28 @@ only these elements will be included in the Structurizr workspace.
 # Command Line Interface
 
 ```
-Overarch CLI Exporter
+Overarch CLI
    
-  Reads your model and view specifications and renders or exports
-  into the specified formats.
+   Reads your model and view specifications and renders or exports
+   into the specified formats.
 
-Usage:
-  java -jar overarch.jar [options].
+   For more information see https://github.com/soulspace-org/overarch
+
+Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH         models  Model directory or path
-  -r, --render-format FORMAT           Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME     export  Export directory
-  -x, --export-format FORMAT           Export format (json, structurizr)
-  -X, --export-dir DIRNAME     export  Export directory
-  -w, --watch                          Watch model dir for changes and trigger action
-      --model-warnings                 Returns warnings for the loaded model (default true)
-      --model-info                     Returns infos for the loaded model (default false)
-      --plantuml-list-sprites          Lists the loaded PlantUML sprites
-  -h, --help                           Print help
-      --debug                          Print debug messages
+  -m, --model-dir PATH              models  Models directory or path
+  -r, --render-format FORMAT                Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME          export  Export directory
+  -x, --export-format FORMAT                Export format (json, structurizr)
+  -X, --export-dir DIRNAME          export  Export directory
+  -w, --watch                               Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA            Select and print model elements by criteria
+  -S, --select-references CRITERIA          Select model elements by criteria and print as references
+      --model-warnings                      Returns warnings for the loaded model
+      --model-info                          Returns infos for the loaded model
+      --plantuml-list-sprites               Lists the loaded PlantUML sprites
+  -h, --help                                Print help
+      --debug                               Print debug messages
  ```
