@@ -1,8 +1,4 @@
-Overarch Usage
-==============
-
-Overview
---------
+# Overarch Usage Overview
 
 The usage of Overarch is twofold. On the one hand, it is an open data format
 to describe the functional requirements, architecture, and design
@@ -15,8 +11,7 @@ conversion of the data to JSON.
 
 ![Use Cases of Overarch](/doc/images/overarch_overarchUseCaseView.svg)
 
-Modelling
----------
+# Modelling
 
 Overarch supports modelling the functional requirements, the architecture and
 the design of the system under description.
@@ -29,7 +24,7 @@ The model contains all the elements relevant in the architecture of the system.
 Models are specified in the
 [Extensible Data Notation (EDN)](https://github.com/edn-format/edn).
 
-### EDN Basics
+## EDN Basics
 The Extensible Data Notation EDN is a data notation with a rich set of
 literals for scalar and composite data types. It is also a subset of the
 Clojure language textual format. Therefore Clojure plugins/extensions for
@@ -43,7 +38,7 @@ and maps.
 
 The following literals are used in Overarch models and views.
 
-#### Strings
+### Strings
 Strings are used e.g. as names and descriptions of model elements and for the
 title of views.
 
@@ -55,7 +50,7 @@ a multiline
 string"
 ```
 
-#### Keywords
+### Keywords
 Keywords are used as keys in the maps for model elements and views. They are also
 used as identifiers for model elements and views.
 
@@ -71,7 +66,7 @@ in the model elements and views.
 :namespaced/keyword
 ```
 
-#### Sets
+### Sets
 Sets are unordered collections of elements without duplicates. They are used as
 top level collections for the model elements and views. They are also used
 as a container for the children of model elements.
@@ -80,7 +75,7 @@ as a container for the children of model elements.
 #{"a" "b" "c"}
 ```
 
-#### Maps
+### Maps
 Maps are associative collections of key/value pairs. They are used to describe
 the attributes of model elements and views.
 
@@ -88,7 +83,7 @@ the attributes of model elements and views.
 {:firstname "John" :lastname "Doe" :age 42}
 ```
 
-#### Vectors
+### Vectors
 Vectors are ordered collections of elements which may contain an element
 multiple times. They are used for the elements as content of a view because
 the ordering of the elements may be relevant for the rendering of the view
@@ -103,7 +98,7 @@ As you can see in the example models, all collection literals can be nested.
 
 For more information see the [EDN specification](https://github.com/edn-format/edn).
 
-### Examples
+## Examples
 The model and diagram descriptions of the C4 model banking example can be
 found in models/banking folder:
  * [model.edn](/models/banking/model.edn)
@@ -117,8 +112,7 @@ syntax check and syntax highlighting.
 ![Model editing](/doc/images/overarch_vscode_model.png)
 
 
-Models
-------
+# Models
 
 You can split your model into separate EDN files, which might be reasonable for
 big systems. Overarch can recursively read all models from a directory or
@@ -132,10 +126,10 @@ element and **:id** for the identifier. The identifiers should be namespaced
 keywords, so that different models can be composed without collisions of the
 identifiers.
 
-### Model Nodes
+## Model Nodes
 Model Nodes describe the elements of the different kind of models for the system.
 
-#### Common Keys of Model Nodes
+### Common Keys of Model Nodes
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :el       | keyword | see model elements | type of the model node
@@ -144,10 +138,10 @@ key       | type    | values             | description
 :desc     | string  |                    | description of the model node
 :ct       | set     | model nodes        | the children of the model node
 
-### Relations
+## Model Relations
 Relations describe the connections and interactions of the nodes.
 
-#### Common Keys of Relations
+### Common Keys of Relations
 key       | type    | values              | description 
 ----------|---------|---------------------|------------
 :el       | keyword | e.g. :rel, :request | type of the relation
@@ -157,7 +151,7 @@ key       | type    | values              | description
 :name     | string  |                     | name of the relation
 :desc     | string  |                     | description of the relation
 
-### References (:ref)
+## References (:ref)
 References refer to a model element with the given id. They are primarily used
 to refer to the model elements to include in views. They can also be used to
 refer to model elements in other model elements, e.g. to split a huge hierarchical
@@ -168,14 +162,14 @@ context of the reference. For example you can mark an internal system as externa
 in the context of a specific view by adding `:external true` to the reference.
 
 
-### Architecture and Deployment Model Elements
+## Architecture and Deployment Model
 Overarch supports elements for C4 architecture and deployment models.
 
-#### Logical Data Model for the Architecture and Deployment Model Elements
+### Logical Data Model for the Architecture and Deployment Model Elements
 ![Architecture and Deployment Model Elements](/doc/images/overarch_architectureModelElementsOverview.svg)
 
 
-#### Additional Keys for Architecture Model Nodes
+### Additional Keys for Architecture Model Nodes
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :subtype  | keyword | :database, :queue  | specific role of the model node
@@ -183,7 +177,7 @@ key       | type    | values             | description
 :tech     | string  |                    | technology of the model node
 
 
-#### Person (:person)
+### Person (:person)
 Persons are internal or external actors of the system.
 
 ```
@@ -193,25 +187,25 @@ Persons are internal or external actors of the system.
  :desc "A customer of the bank, with personal banking accounts."}
 ```
 
-#### System (:system)
+### System (:system)
 A System is the top level element of the C4 model an can contain a set of
 containers. Systems can be internal or external to the project context.
 The structure of internal systems is modelled with containers.
 
-#### Container (:container)
+### Container (:container)
 A container is a part of a system. It represents a process of the system
 (e.g. an executable or a service). Containers are composed of a set of
 components.
 
-#### Component (:component)
+### Component (:component)
 A component is unit of software, which lives in a container of the system.
 
-#### Node (:node)
+### Node (:node)
 A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
-#### Relations
+### Relations
 Relations describe the connections and interactions of the parts of a view.
 
 kind        | sync/async  | dependency  | description
@@ -225,13 +219,12 @@ kind        | sync/async  | dependency  | description
 :rel        | unspecified | unspecified | unclassified relation
 
 
-#### Additional Keys for Architecture Model Relations
+### Additional Keys for Architecture Model Relations
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
-:tech     | string  | e.g. REST          | technology of the relation
+:tech     | string  | e.g. "REST"        | technology of the relation
 
-
-#### Boundaries
+### Boundaries
 Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
 
 The implicit boundaries are the system boundary and the container boundary.
@@ -245,7 +238,7 @@ A context boundary `{:el :context-boundary}` can be used to group containers
 or components by some common context, especially by domain contexts in the
 sense of domain driven design.
 
-#### Example
+### Example
 Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
 level elements):
 
@@ -318,7 +311,7 @@ level elements):
   :name "Sends e-mail to"}} 
  ```
 
-### Concept Model Elements
+## Concept Model
 
 A concept model captures relevant concepts of the domain(s) of the system.
 The concepts could be part of the ubiquous language of the systems domain.
@@ -329,7 +322,10 @@ system itself with it's containers.
 
 ![Concept Model Elements](/doc/images/overarch_conceptModelElementsOverview.svg)
 
-#### Concept Model Relations
+### Concept Model Nodes
+
+
+### Concept Model Relations
 
 kind        | description
 ------------|------------
@@ -337,8 +333,10 @@ kind        | description
 :has        | part or attribute of
 :rel        | unclassified relation
 
+### Example
+See [example concept model](/models/concept/model.edn).
 
-### Use Case Model Elements
+## Use Case Model
 
 A use case model captures the functionality a system is suposed to deliver.
 High level use cases provide an overview of this functionality and may link
@@ -347,13 +345,16 @@ to business processes, domain stories and arcitectural elements.
 As such they provide a pivot for the traceability from business processes into
 the design of the system.
 
-#### Logical Data Model for the Use Case Elements
+The elements of the use case model are mainly borrowed from the UML use case
+model so prior knowledge of UML modelling applies here.
+
+### Logical Data Model for the Use Case Elements
 ![Use Case Model Elements](/doc/images/overarch_useCaseModelElementsOverview.svg)
 
-#### Example
+### Example
 Example [Use Case Model](/models/usecase/model.edn)
 
-#### Use Cases (:use-case)
+### Use Cases (:use-case)
 
 A use case describes the goal of an actor in the context of the system described. The goal can be a concrete user goal, a high level summary of user goals or a subfunction of a user goal. This is captured by the :level key.
 
@@ -363,101 +364,115 @@ key         | type    | values                           | description
 :level      | keyword | :summary :user-goal :subfunction | specific role of the element
 :ext-points | string  |                                  | extension points of a use case
 
-#### Actors (:person, :system, :actor)
+### Actors (:person, :system, :container, :actor)
 
-Persons and systems from the architecture model should be used as actors in the
-use case model to provide a connection between the architecture model and the use case model.
+Persons, systems and containers from the architecture model should be used as
+actors in the use case model to provide a connection between the architecture
+model and the use case model.
 
-You can use the :actor element to model actors not present as persons or systems in the architectural model, but this should be avoided if possible.
+You can use the :actor element to model actors not present as persons or
+systems in the architectural model, but this should be avoided if possible.
 A reason for an :actor element might be the introduction of a time actor to
 model the scheduling of use cases.
 
-#### Relations (:uses :include :extends :generalizes)
+### Relations (:uses :include :extends :generalizes)
 
 Relations connect actors to the use cases or use cases with other use cases.
 Use case models support different kinds of relations.
 
-### State Machine Model Elements
+kind         | description
+-------------|------------
+:uses        | a use case element uses another use case element (e.g. an actor uses a use case or a use case uses an external system)
+:include     | a use case includes the functionality of another use cases
+:extends     | a use case extends the functionality of another use case
+:generalizes | 
+
+## State Machine Model
 
 A state model describes a state machine which can be used to model the states
 a system component can be in and the transition from one state to the next state based on the events the system receives as input.
 
-#### Logical Data Model for the State Machine Elements
+The elements of the class model are mainly borrowed from the UML class model
+so prior knowledge of UML modelling applies here.
+
+### Logical Data Model for the State Machine Elements
 ![State Machine Elements](/doc/images/overarch_stateMachineElementsOverview.svg)
 
-#### Example
+### Example
 Example [State Model](/models/state/model.edn)
 
-#### State Machine (:state-machine)
+### State Machine (:state-machine)
 A state machine is the root element for a state machine view. It contains the set of states and transistions as value of the *:ct* key.
 
-#### States (:state, :start-state, :end-state)
+### States (:state, :start-state, :end-state)
 A simple state machine has at least one start state, some normal states to model the different states a system can be in, and at least one end state.
 
 A start state starts the state machine and an end state terminates the state machine.
 
 States can be compound, they can have an internal state machine. This is modelled as a set of states and transitions in the *:ct* key, analog to the state machine itself.
 
-#### Transitions (:transition)
+### Transitions (:transition)
 A transition connects two states and models the input that leads to the transition from the current state (:from) to the next state (:to).
 
-
-#### Forks and Joins (:fork-state, :join-state)
+### Forks and Joins (:fork-state, :join-state)
 You can split a transition to trigger multiple new states with a fork state.
 A fork has a single input transition and multiple output transitions.
 
 To join multiple transitions after a fork a join state is used. A join has multiple input transitions and a single output transition. 
 
 
-### Class Model Elements
+## Class Model
 
 A class model captures the static structure of the code.
 
 The abstraction level of a class model is not very high compared to the actual
 implementation. Therfore modelling and updating a complete class model is not
-of much value. But class models of the domain can be very valuable as a means of communication between domain experts and developers to shape and document
+of much value. But class models of the domain can be very valuable as a means
+of communication between domain experts and developers to shape and document
 the domain model for a bounded context.
 
-#### Logical Data Model for the Class Model Elements
+The elements of the class model are mainly borrowed from the UML class model
+so prior knowledge of UML modelling applies here.
+
+### Logical Data Model for the Class Model Elements
 ![Class Model Elements](/doc/images/overarch_classModelElementsOverview.svg)
 
-#### Packages/Namespace (:package, :namespace)
+### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
 of the elements of the class model.
 
-Use what suits your system best.
+Packages and namespaces are treated the same, so use what suits your system best.
 
-#### Interfaces/Protocols (:interface, :protocol)
+### Interfaces/Protocols (:interface, :protocol)
 Interfaces and protocols specify related methods. Interfaces also provide a
 type for the static type system.
 
-Use what suits your system best.
+Interfaces and protocolls are treated the same, so use what suits your system best.
 
-#### Class (:class)
+### Class (:class)
 A class in object orientation is a typed element that encapsulates state and
 behaviour. The state is modelled with fields, the behaviour with methods.
 
 In functional programming, you can use classes to model the values of your
 system.
 
-#### Enumeration (:enum)
+### Enumeration (:enum)
 An enumeration is a typed enumeration of values.
 
-#### Field (:field)
+### Field (:field)
 A field is part of the state of a class.
 
-#### Method (:method)
+### Method (:method)
 A method is part of the behaviour of a class or an interface.
 
-#### Function (:function)
+### Function (:function)
 A function is a first class element in functional programming.
 It has input parameters and calculates results.
 
-#### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
+### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
 
-Views
------
+# Views
 To show model elements in diagrams or in textual representations you can define
 different kind of views. The kind of view defines the visual rendering of the
 elements and the kind of elements and relations that are shown.
@@ -469,10 +484,10 @@ For example, a system landscape view renders person and system elements but no
 use cases or state machines, even if they are referenced in the view. Please consult
 the models for the model and view elements.
 
-#### Logical Data Model for the View Elements
+## Logical Data Model for the View Elements
 ![View Elements](/doc/images/overarch_viewElementsOverview.svg)
 
-### Architecture and Deployment Views (C4 Model)
+## Architecture and Deployment Views (C4 Model)
 
 Overarch supports the description of all C4 core and supplementary views
 except from code views, which ideally should be generated from the code
@@ -485,7 +500,7 @@ The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
 of elements may be relevant in the rendering of a view. 
 
-#### Keys
+### Keys
 
 key       | type    | values                   | description 
 ----------|---------|--------------------------|------------
@@ -495,14 +510,14 @@ key       | type    | values                   | description
 :spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
 
-#### System Context Views (:context-view)
+### System Context Views (:context-view)
 Shows the system in the context of the actors and other systems it is
 interacting with. Contains users, external systems and the system to be
 described.
 
 ![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
 
-#### Container Views (:container-view)
+### Container Views (:container-view)
 Shows the containers (e.g. processes, deployment units of the system) and
 the interactions between them and the outside world. Contains the elements
 of the system context diagram and the containers of the system to be described.
@@ -511,13 +526,13 @@ diagram.
 
 ![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
 
-#### Component Views (:component-view)
+### Component Views (:component-view)
 Shows the components and their interactions inside of a container and with
 outside systems and actors.
 
 ![Component View rendered with PlantUML](/doc/images/banking_apiComponentView.svg)
 
-#### C4 Code Views
+### C4 Code Views
 A C4 code view is not supported, the level of abstraction for implementation details
 is usually not high enough to justify modelling implemeted code. Also the speed of
 change in the code is most likely to high and renders a code model obsolete fast.
@@ -527,38 +542,38 @@ a diagram of it.
 On the other hand it can be useful to create a view of code not yet implemented.
 UML class view can be used to model a domain and communicate a design. See UML views for that. 
 
-#### System Landscape Views (:system-landscape-view)
+### System Landscape Views (:system-landscape-view)
 The system landscape view shows a high level picture, a broader view of the system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking_systemLandscapeView.svg)
 
-#### Deployment Views (:deployment-view)
+### Deployment Views (:deployment-view)
 The deployment view shows the infrastucture and deployment of the containers of the system.
 
 ![Deployment View rendered with PlantUML](/doc/images/banking_deploymentView.svg)
 
-#### Dynamic Views (:dynamic-view)
+### Dynamic Views (:dynamic-view)
 Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
 
-### UML Views
+## UML Views
 Overarch supports selected UML views to show aspects of a system that are not covered by the C4
 Model.
 
-#### Use Case View
+### Use Case View
 A use case view is used to show the actors of the system under design and their
 goals using this system.
 
 ![Use Case View rendered with PlantUML](/doc/images/banking_useCaseView.svg)
 
-#### State Machine Views
+### State Machine Views
 A state machine view is used to show the different states a component can be in. It also shows the
 transitions between these states based on the input events, the component receives. 
 
-#### Class Views
+### Class Views
 A class view is used to show the design of parts of the software. You can use it e.g. to model a
 domain and to communicate the model with domain experts.
 
-### Conceptual Views
+## Conceptual Views
 Overarch also supports conceptual views as part of the documentation of the
 system. Conceptual views can be used in early stages of the development project,
 when the requirements and the architecture are not yet fixed, to get an overview
@@ -567,15 +582,15 @@ concept ofthe domain of the system for discussion, onboarding and learning.
 Concepts should also be part of the glossary, as well as actors, systems and
 the applications and containers developed for the system.
 
-#### Concept View
+### Concept View
 The concept view is a graphical view. It shows the concepts as a concept map
 with the relations between the concepts.
 
-#### Glossary View
+### Glossary View
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
 
-### View Specs
+## View Specs
 Views can be customized with the `:spec` key. View specs may include general
 directives for a view or directives for specific renderers (e.g. PlantUML).
 
@@ -588,7 +603,7 @@ key           | type    | values                    | description
 :styles       | set     | see Styling               | visual customization of elements
 :theme        | keyword | id of the theme           | theme containing styles
 
-#### Includes
+### Includes
 With the `:include` key elements can be automatically included in a view. 
 The default behaviour is `:referenced-only` which only includes the referenced
 elements.
@@ -597,7 +612,7 @@ With the value `:related` all elements participating in the referenced
 relations will be automatically included in addidtion to the referenced
 elements.
 
-#### Styling
+### Styling
 Overarch supports custom styles for elements. For an example see
 [views.edn](/models/test/views.edn).
 
@@ -614,10 +629,9 @@ key           | type    | values                   | description
 :legend-text  | string  |                          | meaningful text to show in legend
 
 
-Renderings
-----------
+# Rendering
 
-### PlantUML
+## PlantUML
 The specified views C4 architecture and UML viewscan be exported to PlantUML
 diagrams. These can be rendered into different formats (e.g. SVG, PNG, PDF)
 with PlantUML.
@@ -629,16 +643,14 @@ view spec.
    :spec {:plantuml {:sprite-libs [:azure]}}
 ```
 
-
-#### Keys
-
+### Keys
 key              | type    | values                   | description 
 -----------------|---------|--------------------------|------------
 :node-separation | integer | 50 (for 50 pixels)       | separation between nodes
 :rank-separation | integer | 250 (for 250 pixels)     | separation between ranks
 :sprite-libs     | vector  | sprite-lib keywords      | used to render sprites for techs, order defines precedence of the libs
 
-#### Sprite Support
+### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
 the elements of a diagram.
 It does so by matching the value of the **:tech** key of a model element to
@@ -663,7 +675,7 @@ Currently the following keys for sprite libs are supported:
 The command line interface supports the option `--plantuml-list-sprites`
 which prints the (long) list of sprite mappings. 
 
-#### Rendering PlantUML diagrams
+### Rendering PlantUML diagrams in VS Code
 The Visual Studio Code PlantUML Extension allows previewing and exporting these
 diagrams right from the IDE.
 
@@ -674,10 +686,10 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
 
-### GraphViz
+## GraphViz
 The concept view can be exported as a concept map to a GraphViz *.dot file.
 
-#### Rendering GraphViz diagrams
+### Rendering GraphViz diagrams
 For GraphViz there are a few Visual Studio Code  extensions available that allow
 previews of the generated Graphviz files. 
 
@@ -688,45 +700,41 @@ You can specify Graphviz directives with the **:graphviz** key in a view spec.
 Currently only the configuration of the
 [layout engine](https://graphviz.org/docs/layouts/) is supported.
 
-#### Keys
+### Keys
 
 key              | type    | values                   | description 
 -----------------|---------|--------------------------|------------
 :engine          | keyword | e.g. :dot, :neato, :sfdp | the graphviz layout engine to use
 
-### Markdown
+## Markdown
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
 
 You can specify Markdown directives with the **:markdown** key in a
 view spec.
 
-#### Keys
+### Keys
 
 key              | type    | values                   | description 
 -----------------|---------|--------------------------|------------
 :references      | boolean | true, false              | render references for nodes
 
 
-Exports
--------
+# Exports
 
-### JSON
+## JSON
 The model and view descriptions can be exported to JSON to make their content
 available to languages for which no EDN implementation exists.
 The export converts each EDN file in the model directory to JSON.
 
-
-### Structurizr (*experimental*)
+## Structurizr (*experimental*)
 Structurizr is a tool set created by Simon Brown.
 The Structurizr export creates a workspace with the loaded model and views.
 
 As Structurizr currently only supports the C4 architecture model and views,
 only these elements will be included in the Structurizr workspace.
 
-
-Command Line Interface
-----------------------
+# Command Line Interface
 
 ```
 Overarch CLI Exporter
@@ -751,4 +759,3 @@ Options:
   -h, --help                           Print help
       --debug                          Print debug messages
  ```
-
