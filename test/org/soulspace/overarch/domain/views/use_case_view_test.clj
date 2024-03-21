@@ -1,13 +1,12 @@
 (ns org.soulspace.overarch.domain.views.use-case-view-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.use-case-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :use-case-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :use-case-view} y)))
       true {:el :context-boundary}
       true {:el :person}
       true {:el :system}
@@ -19,7 +18,7 @@
       true {:el :extends}
       true {:el :generalizes}))
   (testing "render-model-element? false"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :use-case-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :use-case-view} y)))
       false {:el :enterprise-boundary}
       false {:el :system-boundary}
       false {:el :node}

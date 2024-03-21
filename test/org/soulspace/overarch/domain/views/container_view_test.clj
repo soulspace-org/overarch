@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.domain.views.container-view-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.container-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
@@ -8,7 +7,7 @@
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :container-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :container-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :person}
@@ -16,7 +15,7 @@
       true {:el :system-boundary}
       true {:el :container}))
   (testing "render-model-element? false"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :container-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :container-view} y)))
       false {:el :container-boundary}
       false {:el :component}
       false {:el :node}
@@ -57,12 +56,12 @@
 
 (deftest include-content?-test
   (testing "include-content? true"
-    (are [x y] (= x (fns/truthy? (include-content? {:el :container-view} y)))
+    (are [x y] (= x (boolean (include-content? {:el :container-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :system-boundary}))
   (testing "include-content? false"
-    (are [x y] (= x (fns/truthy? (include-content? {:el :container-view} y)))
+    (are [x y] (= x (boolean (include-content? {:el :container-view} y)))
       false {:el :container-boundary}
       false {:el :person}
       false {:el :system}
@@ -106,10 +105,10 @@
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"
-    (are [x y] (= x (fns/truthy? (as-boundary? y)))
+    (are [x y] (= x (boolean (as-boundary? y)))
       true {:el :system :ct #{{:el :container}}}))
   (testing "as-boundary? false"
-    (are [x y] (= x (fns/truthy? (as-boundary? y)))
+    (are [x y] (= x (boolean (as-boundary? y)))
       false {:el :container :ct #{{:el :component}}}
       false {:el :system}
       false {:el :container}
@@ -117,13 +116,13 @@
 
 (deftest render-relation-node?-test
   (testing "render-relation-node? true"
-    (are [x y] (= x (fns/truthy? (render-relation-node? {:el :container-view} y)))
+    (are [x y] (= x (boolean (render-relation-node? {:el :container-view} y)))
       true {:el :person}
       true {:el :system :external true}
       true {:el :container}
       true {:el :system :external false}))
   (testing "render-relation-node? false"
-    (are [x y] (= x (fns/truthy? (render-relation-node? {:el :container-view} y)))
+    (are [x y] (= x (boolean (render-relation-node? {:el :container-view} y)))
       false {:el :system :external false :ct #{{:el :container}}}
       false {:el :component})))
 

@@ -7,7 +7,6 @@
             [clojure.java.io :as io]
             [org.soulspace.cmp.md.markdown-dsl :as md]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.util.functions :as fn]
             [org.soulspace.overarch.application.render :as rndr]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
@@ -19,7 +18,7 @@
 (defn references?
   "Returns true, if relations should be rendered."
   [view]
-  (fn/truthy? (get-in view [:spec :markdown :references] false)))
+  (boolean (get-in view [:spec :markdown :references] false)))
 
 ;;;
 ;;; Rendering

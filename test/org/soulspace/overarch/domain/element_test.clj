@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.domain.element-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :refer :all]))
 
 ;;;
@@ -8,64 +7,64 @@
 ;;;
 (deftest element?-test
   (testing "element? true"
-    (are [x y] (= x (fns/truthy? (element? y)))
+    (are [x y] (= x (boolean (element? y)))
       true {:el :person}))
 
   (testing "element? false"
-    (are [x y] (= x (fns/truthy? (element? y)))
+    (are [x y] (= x (boolean (element? y)))
       false {}
       false {:type :person})))
 
 (deftest identifiable?-test
   (testing "identifiable? true"
-    (are [x y] (= x (fns/truthy? (identifiable? y)))
+    (are [x y] (= x (boolean (identifiable? y)))
       true {:id :abc}
       true {:id :a/abc}))
 
   (testing "identifiable? false"
-    (are [x y] (= x (fns/truthy? (identifiable? y)))
+    (are [x y] (= x (boolean (identifiable? y)))
       false {}
       false {:type :person})))
 
 (deftest named?-test
   (testing "named? true"
-    (are [x y] (= x (fns/truthy? (named? y)))
+    (are [x y] (= x (boolean (named? y)))
       true {:name "abc"}))
 
   (testing "named? false"
-    (are [x y] (= x (fns/truthy? (named? y)))
+    (are [x y] (= x (boolean (named? y)))
       false {}
       false {:type :person})))
 
 (deftest namespaced?-test
   (testing "namespaced? true"
-    (are [x y] (= x (fns/truthy? (namespaced? y)))
+    (are [x y] (= x (boolean (namespaced? y)))
       true {:id :a/bc}))
 
   (testing "namespaced? false"
-    (are [x y] (= x (fns/truthy? (namespaced? y)))
+    (are [x y] (= x (boolean (namespaced? y)))
       false {}
       false {:id :abc})))
 
 (deftest relational?-test
   (testing "relational? true"
-    (are [x y] (= x (fns/truthy? (relational? y)))
+    (are [x y] (= x (boolean (relational? y)))
       true {:from :abc :to :bcd}
       true {:from :a/abc :to :a/bcd}))
 
   (testing "relational? false"
-    (are [x y] (= x (fns/truthy? (relational? y)))
+    (are [x y] (= x (boolean (relational? y)))
       false {}
       false {:type :person})))
 
 (deftest external?-test
   (testing "external? true"
-    (are [x y] (= x (fns/truthy? (external? y)))
+    (are [x y] (= x (boolean (external? y)))
       true {:external true}
       true {:el :person :external true}))
 
   (testing "external? false"
-    (are [x y] (= x (fns/truthy? (external? y)))
+    (are [x y] (= x (boolean (external? y)))
       false {:external false}
       false {:el :person :external false}
       false {}
@@ -73,25 +72,25 @@
 
 (deftest internal?-test
   (testing "internal? true"
-    (are [x y] (= x (fns/truthy? (internal? y)))
+    (are [x y] (= x (boolean (internal? y)))
       true {:el :person}
       true {:el :person :external false}))
 
   (testing "internal? false"
-    (are [x y] (= x (fns/truthy? (internal? y)))
+    (are [x y] (= x (boolean (internal? y)))
       true {:el :person}
       true {:el :person :external false}
       false {:el :person :external true})))
 
 (deftest technical-architecture-node?-test
   (testing "technical-architecture-node? true"
-    (are [x y] (= x (fns/truthy? (technical-architecture-node? y)))
+    (are [x y] (= x (boolean (technical-architecture-node? y)))
       true {:el :system}
       true {:el :container}
       true {:el :component}))
 
   (testing "technical-architecture-node? false"
-    (are [x y] (= x (fns/truthy? (technical-architecture-node? y)))
+    (are [x y] (= x (boolean (technical-architecture-node? y)))
       false {:el :person}
       false {:el :enterprise-boundary}
       false {:el :context-boundary}
@@ -142,7 +141,7 @@
 
 (deftest architecture-node?-test
   (testing "architecture-node? true"
-    (are [x y] (= x (fns/truthy? (architecture-node? y)))
+    (are [x y] (= x (boolean (architecture-node? y)))
       true {:el :person}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
@@ -151,7 +150,7 @@
       true {:el :component}))
 
   (testing "architecture-node? false"
-    (are [x y] (= x (fns/truthy? (architecture-node? y)))
+    (are [x y] (= x (boolean (architecture-node? y)))
       false {:el :node}
       false {:el :concept}
       false {:el :use-case}
@@ -199,7 +198,7 @@
 
 (deftest architecture-relation?-test
   (testing "architecture-relation? true"
-    (are [x y] (= x (fns/truthy? (architecture-relation? y)))
+    (are [x y] (= x (boolean (architecture-relation? y)))
       true {:el :rel :from :a :to :b}
       true {:el :request :from :a :to :b}
       true {:el :response :from :a :to :b}
@@ -209,7 +208,7 @@
       true {:el :dataflow :from :a :to :b}))
 
   (testing "architecture-relation? false"
-    (are [x y] (= x (fns/truthy? (architecture-relation? y)))
+    (are [x y] (= x (boolean (architecture-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -256,14 +255,14 @@
 
 (deftest deployment-node?-test
   (testing "deployment-node? true"
-    (are [x y] (= x (fns/truthy? (deployment-node? y)))
+    (are [x y] (= x (boolean (deployment-node? y)))
       true {:el :node}
       true {:el :system}
       true {:el :container}
       true {:el :component}))
 
   (testing "deployment-node? false"
-    (are [x y] (= x (fns/truthy? (deployment-node? y)))
+    (are [x y] (= x (boolean (deployment-node? y)))
       false {:el :person}
       false {:el :enterprise-boundary}
       false {:el :context-boundary}
@@ -313,11 +312,11 @@
 
 (deftest deployment-relation?-test
   (testing "deployment-relation? true"
-    (are [x y] (= x (fns/truthy? (deployment-relation? y)))
+    (are [x y] (= x (boolean (deployment-relation? y)))
       true {:el :link :from :a :to :b}))
 
   (testing "deployment-relation? false"
-    (are [x y] (= x (fns/truthy? (deployment-relation? y)))
+    (are [x y] (= x (boolean (deployment-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -371,7 +370,7 @@
 
 (deftest usecase-node?-test
   (testing "usecase-node? true"
-    (are [x y] (= x (fns/truthy? (usecase-node? y)))
+    (are [x y] (= x (boolean (usecase-node? y)))
       true {:el :context-boundary}
       true {:el :use-case}
       true {:el :actor}
@@ -380,7 +379,7 @@
       true {:el :container}))
 
   (testing "usecase-node? false"
-    (are [x y] (= x (fns/truthy? (usecase-node? y)))
+    (are [x y] (= x (boolean (usecase-node? y)))
       false {:el :component}
       false {:el :enterprise-boundary}
       false {:el :node}
@@ -428,14 +427,14 @@
 
 (deftest usecase-relation?-test
   (testing "usecase-relation? true"
-    (are [x y] (= x (fns/truthy? (usecase-relation? y)))
+    (are [x y] (= x (boolean (usecase-relation? y)))
       true {:el :uses :from :a :to :b}
       true {:el :include :from :a :to :b}
       true {:el :extends :from :a :to :b}
       true {:el :generalizes :from :a :to :b}))
 
   (testing "usecase-relation? false"
-    (are [x y] (= x (fns/truthy? (usecase-relation? y)))
+    (are [x y] (= x (boolean (usecase-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -486,7 +485,7 @@
 
 (deftest statemachine-node?-test
   (testing "statemachine-node? true"
-    (are [x y] (= x (fns/truthy? (statemachine-node? y)))
+    (are [x y] (= x (boolean (statemachine-node? y)))
       true {:el :state-machine}
       true {:el :start-state}
       true {:el :state}
@@ -498,7 +497,7 @@
       true {:el :deep-history-state}))
 
   (testing "statemachine-node? false"
-    (are [x y] (= x (fns/truthy? (statemachine-node? y)))
+    (are [x y] (= x (boolean (statemachine-node? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -543,11 +542,11 @@
 
 (deftest statemachine-relation?-test
   (testing "statemachine-relation? true"
-    (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
+    (are [x y] (= x (boolean (statemachine-relation? y)))
       true {:el :transition :from :a :to :b}))
 
   (testing "statemachine-relation? false"
-    (are [x y] (= x (fns/truthy? (statemachine-relation? y)))
+    (are [x y] (= x (boolean (statemachine-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -601,7 +600,7 @@
 
 (deftest class-model-node?-test
   (testing "class-model-node? true"
-    (are [x y] (= x (fns/truthy? (class-model-node? y)))
+    (are [x y] (= x (boolean (class-model-node? y)))
       true {:el :package}
       true {:el :namespace}
       true {:el :class}
@@ -614,7 +613,7 @@
       true {:el :protocol}))
 
   (testing "class-model-node? false"
-    (are [x y] (= x (fns/truthy? (class-model-node? y)))
+    (are [x y] (= x (boolean (class-model-node? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -658,7 +657,7 @@
 
 (deftest class-model-relation?-test
   (testing "class-model-relation? true"
-    (are [x y] (= x (fns/truthy? (class-model-relation? y)))
+    (are [x y] (= x (boolean (class-model-relation? y)))
       true {:el :inheritance :from :a :to :b}
       true {:el :implementation :from :a :to :b}
       true {:el :composition :from :a :to :b}
@@ -667,7 +666,7 @@
       true {:el :dependency :from :a :to :b}))
 
   (testing "class-model-relation? false"
-    (are [x y] (= x (fns/truthy? (class-model-relation? y)))
+    (are [x y] (= x (boolean (class-model-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -716,7 +715,7 @@
 
 (deftest concept-model-node?-test
   (testing "concept-model-node? true"
-    (are [x y] (= x (fns/truthy? (concept-model-node? y)))
+    (are [x y] (= x (boolean (concept-model-node? y)))
       true {:el :concept}
       true {:el :person}
       true {:el :system}
@@ -725,7 +724,7 @@
       true {:el :enterprise-boundary}))
 
   (testing "concept-model-node? false"
-    (are [x y] (= x (fns/truthy? (concept-model-node? y)))
+    (are [x y] (= x (boolean (concept-model-node? y)))
       false {:el :component}
       false {:el :node}
       false {:el :use-case}
@@ -773,13 +772,13 @@
 
 (deftest concept-model-relation?-test
   (testing "concept-model-relation? true"
-    (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
+    (are [x y] (= x (boolean (concept-model-relation? y)))
       true {:el :has :from :a :to :b}
       true {:el :is-a :from :a :to :b}
       true {:el :rel :from :a :to :b}))
 
   (testing "concept-model-relation? false"
-    (are [x y] (= x (fns/truthy? (concept-model-relation? y)))
+    (are [x y] (= x (boolean (concept-model-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -831,7 +830,7 @@
 
 (deftest model-node?-test
   (testing "model-node? true"
-    (are [x y] (= x (fns/truthy? (model-node? y)))
+    (are [x y] (= x (boolean (model-node? y)))
       true {:el :person}
       true {:el :system}
       true {:el :container}
@@ -863,7 +862,7 @@
       true {:el :deep-history-state}))
 
   (testing "model-node? false"
-    (are [x y] (= x (fns/truthy? (model-node? y)))
+    (are [x y] (= x (boolean (model-node? y)))
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -889,7 +888,7 @@
 
 (deftest model-relation?-test
   (testing "model-relation? true"
-    (are [x y] (= x (fns/truthy? (model-relation? y)))
+    (are [x y] (= x (boolean (model-relation? y)))
       true {:el :rel :from :a :to :b}
       true {:el :request :from :a :to :b}
       true {:el :response :from :a :to :b}
@@ -913,7 +912,7 @@
       true {:el :is-a :from :a :to :b}))
 
   (testing "model-relation? false"
-    (are [x y] (= x (fns/truthy? (model-relation? y)))
+    (are [x y] (= x (boolean (model-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -947,7 +946,7 @@
 
 (deftest model-element?-test
   (testing "model-element? true"
-    (are [x y] (= x (fns/truthy? (model-element? y)))
+    (are [x y] (= x (boolean (model-element? y)))
       true {:el :person}
       true {:el :system}
       true {:el :container}
@@ -1000,7 +999,7 @@
       true {:el :is-a :from :a :to :b}))
 
   (testing "model-element? false"
-    (are [x y] (= x (fns/truthy? (model-element? y)))
+    (are [x y] (= x (boolean (model-element? y)))
       false {:el :fluffy}
       false {:el :concept-view}
       false {:el :context-view}
@@ -1010,38 +1009,38 @@
 
 (deftest reference?-test
   (testing "reference? true"
-    (are [x y] (= x (fns/truthy? (reference? y)))
+    (are [x y] (= x (boolean (reference? y)))
       true {:ref :abc}
       true {:ref :a/abc}))
 
   (testing "reference? false"
-    (are [x y] (= x (fns/truthy? (reference? y)))
+    (are [x y] (= x (boolean (reference? y)))
       false {}
       false {:type :person})))
 
 (deftest boundary?-test
   (testing "boundary? true"
-    (are [x y] (= x (fns/truthy? (boundary? y)))
+    (are [x y] (= x (boolean (boundary? y)))
       true {:el :context-boundary}
       true {:el :enterprise-boundary}
       true {:el :system-boundary}
       true {:el :container-boundary}))
 
   (testing "boundary? false"
-    (are [x y] (= x (fns/truthy? (boundary? y)))
+    (are [x y] (= x (boolean (boundary? y)))
       false {}
       false {:el :person})))
 
 (deftest node-of?-test
   (testing "node-of? true"
-    (are [x y] (= x (fns/truthy? (apply node-of? y)))
+    (are [x y] (= x (boolean (apply node-of? y)))
       true [:person {:el :person}]
       true [:system {:el :system}]
       true [:container {:el :container}]
       true [:context-boundary {:el :context-boundary}]
       true [:enterprise-boundary {:el :enterprise-boundary}]))
   (testing "node-of? false"
-    (are [x y] (= x (fns/truthy? (apply node-of? y)))
+    (are [x y] (= x (boolean (apply node-of? y)))
       false [:bla {:el :bla}]
       false [:rel {:el :rel :from :a :to :b}]
       false [:system-boundary {:el :system-boundary}]
@@ -1050,13 +1049,13 @@
 
 (deftest relation-of?-test
   (testing "relation-of? true"
-    (are [x y] (= x (fns/truthy? (apply relation-of? y)))
+    (are [x y] (= x (boolean (apply relation-of? y)))
       true [:rel {:el :rel :from :a :to :b}]
       true [:request {:el :request :from :a :to :b}]
       true [:response {:el :response :from :a :to :b}]
       true [:transition {:el :transition :from :a :to :b}]))
   (testing "relation-of? false"
-    (are [x y] (= x (fns/truthy? (apply relation-of? y)))
+    (are [x y] (= x (boolean (apply relation-of? y)))
       false [:bla {:el :bla}]
       false [:person {:el :person}]
       false [:system {:el :system}]
@@ -1069,7 +1068,7 @@
 
 (deftest view?-test
   (testing "view? true"
-    (are [x y] (= x (fns/truthy? (view? y)))
+    (are [x y] (= x (boolean (view? y)))
       true {:el :system-landscape-view :id :system-landscape-view}
       true {:el :context-view :id :context-view}
       true {:el :container-view :id :container-view}
@@ -1082,12 +1081,12 @@
       true {:el :context-view :id :context-view}
       true {:el :glossary-view :id :glossary-view}))
   (testing "view? false"
-    (are [x y] (= x (fns/truthy? (view? y)))
+    (are [x y] (= x (boolean (view? y)))
       false {:el :abcd-view :id :abcd-view})))
 
 (deftest hierarchical-view?-test
   (testing "hierarchical-view? true"
-    (are [x y] (= x (fns/truthy? (hierarchical-view? y)))
+    (are [x y] (= x (boolean (hierarchical-view? y)))
       true {:el :system-landscape-view :id :system-landscape-view}
       true {:el :context-view :id :context-view}
       true {:el :container-view :id :container-view}
@@ -1097,7 +1096,7 @@
       true {:el :state-machine-view :id :state-machine-view}
       true {:el :glossary-view :id :glossary-view}))
   (testing "hierarchical-view? false"
-    (are [x y] (= x (fns/truthy? (hierarchical-view? y)))
+    (are [x y] (= x (boolean (hierarchical-view? y)))
       false {:el :dynamic-view :id :dynamic-view}
       false {:el :use-case-view :id :use-case-view}
       false {:el :concept-view :id :concept-view}

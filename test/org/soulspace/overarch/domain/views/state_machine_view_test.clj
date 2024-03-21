@@ -1,13 +1,12 @@
 (ns org.soulspace.overarch.domain.views.state-machine-view-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.state-machine-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :state-machine-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :state-machine-view} y)))
       true {:el :state-machine}
       true {:el :start-state}
       true {:el :state}
@@ -19,7 +18,7 @@
       true {:el :history-state}
       true {:el :deep-history-state}))
   (testing "render-model-element? false"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :state-machine-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :state-machine-view} y)))
       false {:el :context-boundary}
       false {:el :person}
       false {:el :system}

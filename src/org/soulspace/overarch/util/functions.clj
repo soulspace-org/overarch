@@ -15,12 +15,3 @@
    data))
 
 
-;;
-;; Test helper
-;;
-
-(defn truthy?
-  "Returns true, if the argument `e` is truthy."
-  [e]
-  (if e true false))
-

@@ -1,13 +1,12 @@
 (ns org.soulspace.overarch.domain.views.deployment-view-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.deployment-view :as deployment-view] 
+            [org.soulspace.overarch.domain.views.deployment-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :deployment-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :deployment-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :person}
@@ -16,7 +15,7 @@
       true {:el :container}
       true {:el :node}))
   (testing "render-model-element? false"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :deployment-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :deployment-view} y)))
       false {:el :container-boundary}
       false {:el :component}
       false {:el :actor}

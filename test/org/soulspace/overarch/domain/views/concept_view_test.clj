@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.domain.views.concept-view-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.concept-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]
@@ -8,7 +7,7 @@
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :concept-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :concept-view} y)))
       true {:el :concept}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
@@ -17,7 +16,7 @@
       true {:el :container}))
   
   (testing "render-model-element? false" 
-    (are [x y] (= x (fns/truthy? (render-model-element? {:el :concept-view} y)))
+    (are [x y] (= x (boolean (render-model-element? {:el :concept-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :component}

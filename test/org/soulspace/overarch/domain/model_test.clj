@@ -1,6 +1,5 @@
 (ns org.soulspace.overarch.domain.model-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.domain.element :as e]
             [org.soulspace.overarch.domain.model :refer :all]))
 
 (def c4-input1
