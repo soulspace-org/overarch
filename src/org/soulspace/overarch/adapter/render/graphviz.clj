@@ -16,12 +16,12 @@
 ;;;
 
 (defn alias-name
-  "Returns a valid PlantUML alias for the namespaced keyword `kw`."
+  "Returns a valid alias for the namespaced keyword `kw`."
   [kw]
   (symbol (str (str/replace (sstr/hyphen-to-camel-case (namespace kw)) \. \_) "_"
                (sstr/hyphen-to-camel-case (name kw)))))
 (defn short-name
-  "Returns a valid PlantUML alias for the name part of the keyword `kw`."
+  "Returns a valid alias for the name part of the keyword `kw`."
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
