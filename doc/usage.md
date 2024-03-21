@@ -130,26 +130,28 @@ identifiers.
 Model Nodes describe the elements of the different kind of models for the system.
 
 ### Common Keys of Model Nodes
-key       | type    | values             | description 
-----------|---------|--------------------|------------
-:el       | keyword | see model elements | type of the model node
-:id       | keyword | namespaced id      | id of the model node
-:name     | string  |                    | name of the model node
-:desc     | string  |                    | description of the model node
-:ct       | set     | model nodes        | the children of the model node
+key       | type               | values             | description 
+----------|--------------------|--------------------|------------
+:el       | keyword            | see model elements | type of the model node
+:id       | keyword            | namespaced id      | id of the model node
+:name     | string             | short name         | name of the model node
+:desc     | string             |                    | description of the model node
+:tags     | set of strings     | e.g. #{"critical"} | some tags which can be used in element selection
+:ct       | set of maps        | model nodes        | the children of the model node
 
 ## Model Relations
 Relations describe the connections and interactions of the nodes.
 
 ### Common Keys of Relations
-key       | type    | values              | description 
+key       | type               | values              | description 
 ----------|---------|---------------------|------------
-:el       | keyword | e.g. :rel, :request | type of the relation
-:id       | keyword | namespaced id       | id of the relation
-:from     | keyword | namespaced id       | id of the referrer node
-:to       | keyword | namespaced id       | id of the referred node
-:name     | string  |                     | name of the relation
-:desc     | string  |                     | description of the relation
+:el       | keyword            | e.g. :rel, :request | type of the relation
+:id       | keyword            | namespaced id       | id of the relation
+:from     | keyword            | namespaced id       | id of the referrer node
+:to       | keyword            | namespaced id       | id of the referred node
+:name     | string             |                     | name of the relation
+:desc     | string             |                     | description of the relation
+:tags     | set of strings     | e.g.                | some tags which can be used in element selection
 
 ## References (:ref)
 References refer to a model element with the given id. They are primarily used
@@ -322,16 +324,17 @@ system itself with it's containers.
 
 ![Concept Model Elements](/doc/images/overarch_conceptModelElementsOverview.svg)
 
-### Concept Model Nodes
+### Concepts (:concept)
+A concept which is relevant for the domain of the system. The description should document the meaning of the concept.
 
+### Concept Model Relations (:is-a, :has, :rel)
+Concepts can be related with other concepts.
 
-### Concept Model Relations
-
-kind        | description
-------------|------------
-:is-a       | specialization of
-:has        | part or attribute of
-:rel        | unclassified relation
+relation type | description
+--------------|------------
+:is-a         | the :from node is a specialization of the :to node
+:has          | the :from node is a part or attribute of the :to node
+:rel          | unclassified relation between the nodes
 
 ### Example
 See [example concept model](/models/concept/model.edn).
