@@ -318,7 +318,7 @@
 ;;
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
-  [[k v]]
+  [model [k v]]
 ; Todo add criteria
 ; e.g. :parent :parent? :referred-by :referring :relation-of
   (cond
@@ -377,12 +377,12 @@
   "Returns a filter predicate for the given `criteria`.
    The resulting predicate is a logical conjunction (and) of the predicates for
    each criterium."
-  [criteria]
+  [model criteria]
   (loop [remaining criteria
          predicates []]
     (if (seq remaining)
       (recur (rest remaining)
-             (conj predicates (criterium-predicate (first remaining))))
+             (conj predicates (criterium-predicate model (first remaining))))
       ; add a predicate which returns true to return at least one predicate
       (apply every-pred (conj (remove nil? predicates) (fn [_] true))))))
 
@@ -390,22 +390,22 @@
   "Returns a filter predicate for the given `criteria`.
    If a vector of criteria maps is given, the resulting predicate is a logical
    disjunction (or) of the predicates."
-  [criteria]
+  [model criteria]
   (if (vector? criteria)
     ; vector of criteria
     (loop [remaining criteria
            predicates []]
       (if (seq remaining)
         (recur (rest remaining)
-               (conj predicates (criteria-predicate (first remaining))))
+               (conj predicates (criteria-predicate model (first remaining))))
         (apply some-fn predicates)))
     ; simple criteria map
-    (criteria-predicate criteria)))
+    (criteria-predicate model criteria)))
 
 (defn filter-xf
   "Returns a filter transducer for the given `criteria`."
-  [criteria]
-  (let [filter-predicates (criteria-predicates criteria)]
+  [model criteria]
+  (let [filter-predicates (criteria-predicates model criteria)]
     ; compose the filtering functions and create a filter transducer
     (filter filter-predicates)))
 

@@ -129,7 +129,7 @@
   (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
   )
 
-(def elements-to-filter
+(def filter-input
   #{{:el :person
      :id :org.soulspace.external/person
      :external true
@@ -199,9 +199,11 @@
      :to :org.soulspace.internal.system/container2-topic
      :name "consumes"}})
 
+(def filter-model1 (build-model filter-input))
+
 (deftest filter-xf-test
   (testing "filter-xf with single criteria map"
-    (are [x y] (= x (into #{} (filter-xf y) elements-to-filter))
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
       #{{:el :person
          :id :org.soulspace.external/person
          :external true
@@ -247,60 +249,59 @@
       {:tech "Datomic"}))
   
   (testing "filter-xf with vector of criteria"
-    (are [x y] (= x (into #{} (filter-xf y) elements-to-filter))
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
 
       #{{:el :system :id :org.soulspace.external/system2 :external true :name "External System 2"}
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
         {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
         {:el :person :id :org.soulspace.internal/person :name "Internal Person"}}
       [{:external? true} {:el :person}]
-
       ;
       )))
 
 (comment
   (into []
-        (filter-xf {:namespace "org.soulspace.external"})
-        elements-to-filter)
+        (filter-xf filter-model1 {:namespace "org.soulspace.external"})
+        filter-input)
   (into []
-        (filter-xf {:namespaces #{"org.soulspace.external" "org.soulspace.internal"}})
-        elements-to-filter)
+        (filter-xf filter-model1 {:namespaces #{"org.soulspace.external" "org.soulspace.internal"}})
+        filter-input)
   (into []
-        (filter-xf {:namespace-prefix "org.soulspace"})
-        elements-to-filter)
+        (filter-xf filter-model1 {:namespace-prefix "org.soulspace"})
+        filter-input)
   (into []
-        (filter-xf {:el :person})
-        elements-to-filter)
+        (filter-xf filter-model1 {:el :person})
+        filter-input)
   (into []
-        (filter-xf [{:external true} {:el :person}])
-        elements-to-filter)
+        (filter-xf filter-model1 [{:external true} {:el :person}])
+        filter-input)
   (into []
-        (filter-xf {:el :container})
-        elements-to-filter)
+        (filter-xf filter-model1 {:el :container})
+        filter-input)
   (into []
-        (filter-xf {:els #{:system :container}})
-        elements-to-filter)
+        (filter-xf filter-model1 {:els #{:system :container}})
+        filter-input)
   (into []
-        (filter-xf {:el :container :subtype :database})
-        elements-to-filter)
+        (filter-xf filter-model1 {:el :container :subtype :database})
+        filter-input)
   (into []
-        (filter-xf {:el :container :subtypes #{:database :queue}})
-        elements-to-filter)
+        (filter-xf filter-model1 {:el :container :subtypes #{:database :queue}})
+        filter-input)
   (into []
-        (filter-xf {:external true})
-        elements-to-filter)
+        (filter-xf filter-model1 {:external true})
+        filter-input)
   (into []
-        (filter-xf {:tech "Clojure"})
-        elements-to-filter)
+        (filter-xf filter-model1 {:tech "Clojure"})
+        filter-input)
   (into []
-        (filter-xf {:tag "autoscaled"})
-        elements-to-filter)
+        (filter-xf filter-model1 {:tag "autoscaled"})
+        filter-input)
   (into []
-        (filter-xf {:tag "critical"})
-        elements-to-filter)
+        (filter-xf filter-model1 {:tag "critical"})
+        filter-input)
   (into []
-        (filter-xf {:tags #{"critical" "autoscaled"}})
-        elements-to-filter)
+        (filter-xf filter-model1 {:tags #{"critical" "autoscaled"}})
+        filter-input)
   (into []
-        (filter-xf {:el :rel})
-        elements-to-filter))
+        (filter-xf filter-model1 {:el :rel})
+         filter-input))
