@@ -148,7 +148,8 @@
    :id (el/generate-relation-id :contains p-id e-id)
    :from p-id
    :to e-id
-   :name "contains"})
+   :name "contains"
+   :synthetic true})
 
 (defn update-acc
   "Update the accumulator `acc` of the model with the element `e`
