@@ -233,9 +233,9 @@
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
   (al/unmatched-relation-namespaces (repo/relations))
 
-  (eex/elements-by-namespace (:nodes @repo/state))
-  (eex/elements-by-namespace (:relations @repo/state))
-  (eex/elements-by-namespace (:views @repo/state))
+  (el/elements-by-namespace (:nodes @repo/state))
+  (el/elements-by-namespace (:relations @repo/state))
+  (el/elements-by-namespace (:views @repo/state))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
