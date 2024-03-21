@@ -3,10 +3,12 @@ Changelog
 
 Version 0.14.0
 --------------
-* added filtering elements by criteria
+* added selection of model elements by criteria
 * added tags key to model nodes and relations
-  * can be used in filtering
+  * can be used in selection
+* added options for element selection in CLI
 * added check for unmatched relation namespaces
+* updated graphviz rendering to use style="filled" on nodes
 * updated tests
 * updated documentation
 
@@ -70,7 +72,7 @@ Version 0.9.0
 * enhanced model information
 * refactored reference resolution
 * refactored and enhanced hierarchical model traversal
-* fixed arity exeption in structurizr export
+* fixed arity exception in structurizr export
 
 
 Version 0.8.0

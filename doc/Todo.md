@@ -1,5 +1,4 @@
-Todo
-====
+# ToDos
 
 * add vscode graphviz extensions to readme/usage
 * add generic skinparam map to plantuml spec

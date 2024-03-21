@@ -2,6 +2,7 @@
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
             [clojure.pprint :as pp]
+            [clojure.edn :as edn]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
             [org.soulspace.clj.java.file :as file]
@@ -22,7 +23,8 @@
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
-            [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo])
+            [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo]
+            [clojure.set :as set])
   (:gen-class))
 
 ;;;
@@ -31,10 +33,12 @@
 
 (def appname "overarch")
 (def description
-  "Overarch CLI Exporter
+  "Overarch CLI
    
    Reads your model and view specifications and renders or exports
-   into the specified formats.")
+   into the specified formats.
+
+   For more information see https://github.com/soulspace-org/overarch")
 
 (def cli-opts
   [["-m" "--model-dir PATH" "Models directory or path" :default "models"]
@@ -43,6 +47,8 @@
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
    ["-X" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
+   [nil  "--select-elements CRITERIA" "Select and print model elements by criteria" :parse-fn edn/read-string]
+   [nil  "--select-references CRITERIA" "Select model elements and print them as references" :parse-fn edn/read-string]
    [nil  "--model-warnings" "Returns warnings for the loaded model" :default true] 
    [nil  "--model-info" "Returns infos for the loaded model" :default false] 
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
@@ -85,18 +91,21 @@
    (with an error message and optional success status), or a map
    indicating the options provided."
   [args cli-opts]
-  (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
-    (cond
-      errors ; errors => exit with description of errors
-      {:exit-message (error-msg errors)}
-      (:help options) ; help => exit OK with usage summary
-      {:exit-message (usage-msg appname description summary) :success true}
-      (= 0 (count arguments)) ; no args
-      {:options options}
-      (seq options)
-      {:options options}
-      :else ; failed custom validation => exit with usage summary
-      {:exit-message (usage-msg appname description summary)})))
+  (try
+    (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-opts)]
+      (cond
+        errors ; errors => exit with description of errors
+        {:exit-message (error-msg errors)}
+        (:help options) ; help => exit OK with usage summary
+        {:exit-message (usage-msg appname description summary) :success true}
+        (= 0 (count arguments)) ; no args
+        {:options options}
+        (seq options)
+        {:options options}
+        :else ; failed custom validation => exit with usage summary
+        {:exit-message (usage-msg appname description summary)}))
+    (catch Exception e
+           (.printStacktrace e))))
 
 ;;;
 ;;; Handler logic
@@ -137,9 +146,9 @@
 (defn model-info
   "Reports information about the model and views."
   [model options]
-  {:nodes     (into (sorted-map) (al/count-nodes (repo/elements)))
-   :relations (into (sorted-map) (al/count-relations (repo/elements)))
-   :views     (into (sorted-map) (al/count-views (repo/elements)))
+  {:nodes     (into (sorted-map) (al/count-nodes (repo/nodes)))
+   :relations (into (sorted-map) (al/count-relations (repo/relations)))
+   :views     (into (sorted-map) (al/count-views (repo/views)))
    ;:namespaces (into (sorted-map) (al/count-namespaces (repo/elements)))
    })
 
@@ -151,6 +160,19 @@
    (doseq [sprite sprite-mappings]
      (println (str (:key sprite) ": " (puml/sprite-path sprite))))))
 
+(defn select-elements
+  "Returns the model elements selected by criteria specified in the `options`."
+  [options]
+  (into #{} (el/filter-xf (:select-elements options))
+        (set/union (repo/nodes) (repo/relations))))
+
+(defn select-references
+  "Returns references to the model elements selected by criteria specified in the `options`."
+  [options]
+  (into [] (comp (el/filter-xf (:select-references options))
+                 (map el/element->ref))
+        (concat (repo/nodes) (repo/relations))))
+
 (defn dispatch
   "Dispatch on `options` to the requested actions."
   [model options]
@@ -160,6 +182,12 @@
   (when (:model-info options)
     (println "Model Information:")
     (pp/pprint (model-info model options)))
+  (when (:select-elements options)
+    (println "Selected Elements:")
+    (pp/pprint (select-elements options)))
+  (when (:select-references options)
+    (println "Selected References:")
+    (pp/pprint (select-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
@@ -236,6 +264,11 @@
   (el/elements-by-namespace (:nodes @repo/state))
   (el/elements-by-namespace (:relations @repo/state))
   (el/elements-by-namespace (:views @repo/state))
+
+  (into #{} (el/filter-xf {:namespace "ddd"}) (repo/nodes))
+  (into #{} (el/filter-xf {:namespace "ddd"}) (repo/relations))
+
+  (into #{} (el/filter-xf {:subtype :queue}) (repo/nodes))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")

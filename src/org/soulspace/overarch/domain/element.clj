@@ -540,6 +540,12 @@
 ;;
 ;; Functions 
 ;;
+(defn element->ref
+  "Returns a ref for the element `e`, if it is identifiable."
+  [e]
+  (when-let [id (:id e)]
+    {:ref id}))
+
 (defn element-name
   "Returns the name of the element `e`."
   [e]
@@ -589,24 +595,32 @@
 ;;
 ;; filtering element colletions by criteria
 ;;
+
+(defn keyword-set
+  "Converts the `coll` into a set of keywords."
+  [coll]
+  (->> coll
+       (map keyword)
+       (into #{})))
+
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [[k v]]
   (cond
     (= :namespace k)
-    #(= v (element-namespace %))
+    #(= (name v) (element-namespace %))
     (= :namespaces k)
-    #(contains? v (element-namespace %))
+    #(contains? (name v) (element-namespace %))
     (= :namespace-prefix k)
     #(str/starts-with? (element-namespace %) v)
 
-    (= :type k)
-    #(= v (:el %))
-    (= :types k)
+    (= :el k)
+    #(isa? element-hierarchy (:el %) v)
+    (= :els k)
     #(contains? v (:el %))
 
     (= :subtype k)
-    #(= v (:subtype %))
+    #(= (keyword v) (:subtype %))
     (= :subtypes k)
     #(contains? v (:subtype %))
 
@@ -626,16 +640,37 @@
     :else
     (println "unknown criterium" (name k))))
 
+(defn criteria-predicate
+  "Returns a filter predicate for the given `criteria`."
+  [criteria]
+  (loop [remaining criteria
+         predicates []]
+    (if (seq remaining)
+      (recur (rest remaining)
+             (conj predicates (criterium-predicate (first remaining))))
+      ; add a predicate which returns true to return at least one predicate
+      (apply every-pred (conj (remove nil? predicates) (fn [_] true))))))
+
+(defn criteria-predicates
+  "Returns a filter predicate for the given `criteria`."
+  [criteria]
+  (if (vector? criteria)
+    ; vector of criteria
+    (loop [remaining criteria
+           predicates []]
+      (if (seq remaining)
+        (recur (rest remaining)
+               (conj predicates (criteria-predicate (first remaining))))
+        (apply some-fn predicates)))
+    ; simple criteria map
+    (criteria-predicate criteria)))
+
 (defn filter-xf
   "Returns a filter transducer for the given `criteria`."
   [criteria]
-  (loop [remaining criteria
-         filter-predicates []]
-    (if (seq remaining)
-      (recur (rest remaining)
-             (conj filter-predicates (criterium-predicate (first remaining))))
-      ; compose the filtering functions and create a filter transducer
-      (filter (apply every-pred (remove nil? filter-predicates))))))
+  (let [filter-predicates (criteria-predicates criteria)]
+    ; compose the filtering functions and create a filter transducer
+    (filter filter-predicates)))
 
 ;;
 ;; recursive traversal of the hierarchical model

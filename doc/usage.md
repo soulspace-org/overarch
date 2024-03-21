@@ -471,6 +471,30 @@ It has input parameters and calculates results.
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
+# Model Element Selection By Criteria
+Model elements can be selected based on criteria.
+Criterias are given as a map where each key/value pair specifies a criterium
+for the selection. An element is selected, if it matches all criteria in the
+map (logical conjunction).
+
+Criterias can also be given as a vector of criteria maps. An element is
+selected, if it is selected by any of the critria maps (logial disjunction). 
+
+## Keys
+key               | type            | example values          | description
+------------------|-----------------|-------------------------|------------
+:el               | keyword         | :system                 | selects elements of the given type
+:els              | set of keywords | #{:system :person}      | selects elements of the given types
+:namespace        | string          | "org.soulspace"         | selects elements with the given id namespace
+:namespaces       | set of strings  | #{"org.soulspace"}      | selects elements with the given id namespaces
+:namespace-prefix | string          | "org"                   | selects elements with the given id namespace prefix
+:subtype          | keyword         | :queue                  | selects elements of the given subtype
+:subtypes         | set of keywords | #{:queue :database}     | selects elements of the given subtype
+:external         | boolean         | true                    | selects elements of the given external state
+:tech             | string          | "Clojure"               | selects elements of the given technology
+:techs            | set of strings  | #{"Clojure" "Java"}     | selects elements of the given technologies
+:tag              | string          | "critical"              | selects elements with the given tag
+:tags             | set of strings  | #{"Clojure" "Java"}     | selects elements with the given tags
 
 # Views
 To show model elements in diagrams or in textual representations you can define

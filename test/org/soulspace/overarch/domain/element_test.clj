@@ -1227,19 +1227,19 @@
          :id :org.soulspace.external/person
          :external true
          :name "External Person"}}
-      {:type :person :external true}
+      {:el :person :external true}
 
       #{{:el :person
          :id :org.soulspace.internal/person
          :name "Internal Person"}}
-      {:type :person :external false}
+      {:el :person :external false}
 
       #{{:el :rel
          :id :org.soulspace.external/person-uses-system1
          :from :org.soulspace.external/person
          :to :org.soulspace.external/system1
          :name "uses"}}
-      {:type :rel :namespace "org.soulspace.external"}
+      {:el :rel :namespace "org.soulspace.external"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container2
@@ -1267,52 +1267,59 @@
          :tech "Datomic"}}
       {:tech "Datomic"}
 
+      #{{:el :system :id :org.soulspace.external/system2 :external true :name "External System 2"}
+        {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
+        {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
+        {:el :person :id :org.soulspace.internal/person :name "Internal Person"}}
+      [[{:external true} {:el :person}]]
+
       ;
       )))
 
-
 (comment
   (into []
-      (filter-xf {:namespace "org.soulspace.external"})
-      elements-to-filter)
+        (filter-xf {:namespace "org.soulspace.external"})
+        elements-to-filter)
   (into []
         (filter-xf {:namespaces #{"org.soulspace.external" "org.soulspace.internal"}})
         elements-to-filter)
   (into []
-      (filter-xf {:namespace-prefix "org.soulspace"})
-      elements-to-filter)
+        (filter-xf {:namespace-prefix "org.soulspace"})
+        elements-to-filter)
   (into []
-      (filter-xf {:type :person})
-      elements-to-filter)
+        (filter-xf {:el :person})
+        elements-to-filter)
   (into []
-      (filter-xf {:type :container})
-      elements-to-filter)
+        (filter-xf [{:external true} {:el :person}])
+        elements-to-filter)
   (into []
-      (filter-xf {:types #{:system :container}})
-      elements-to-filter)
+        (filter-xf {:el :container})
+        elements-to-filter)
   (into []
-      (filter-xf {:type :container :subtype :database})
-      elements-to-filter)
+        (filter-xf {:els #{:system :container}})
+        elements-to-filter)
   (into []
-      (filter-xf {:type :container :subtypes #{:database :queue}})
-      elements-to-filter)
+        (filter-xf {:el :container :subtype :database})
+        elements-to-filter)
   (into []
-      (filter-xf {:external true})
-      elements-to-filter)
+        (filter-xf {:el :container :subtypes #{:database :queue}})
+        elements-to-filter)
   (into []
-      (filter-xf {:tech "Clojure"})
-      elements-to-filter)
+        (filter-xf {:external true})
+        elements-to-filter)
   (into []
-      (filter-xf {:tag "autoscaled"})
-      elements-to-filter)
+        (filter-xf {:tech "Clojure"})
+        elements-to-filter)
   (into []
-      (filter-xf {:tag "critical"})
-      elements-to-filter)
+        (filter-xf {:tag "autoscaled"})
+        elements-to-filter)
   (into []
-      (filter-xf {:tags #{"critical" "autoscaled"}})
-      elements-to-filter)
+        (filter-xf {:tag "critical"})
+        elements-to-filter)
   (into []
-      (filter-xf {:type :rel})
-      elements-to-filter)
-
+        (filter-xf {:tags #{"critical" "autoscaled"}})
+        elements-to-filter)
+  (into []
+        (filter-xf {:el :rel})
+        elements-to-filter)
   )
