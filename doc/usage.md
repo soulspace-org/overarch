@@ -486,18 +486,26 @@ selected, if it is selected by any of the critria maps (logial disjunction).
 ## Keys
 key               | type            | example values          | description
 ------------------|-----------------|-------------------------|------------
-:el               | keyword         | :system                 | selects elements of the given type
-:els              | set of keywords | #{:system :person}      | selects elements of the given types
-:namespace        | string          | "org.soulspace"         | selects elements with the given id namespace
-:namespaces       | set of strings  | #{"org.soulspace"}      | selects elements with the given id namespaces
-:namespace-prefix | string          | "org"                   | selects elements with the given id namespace prefix
-:subtype          | keyword         | :queue                  | selects elements of the given subtype
-:subtypes         | set of keywords | #{:queue :database}     | selects elements of the given subtype
-:external         | boolean         | true                    | selects elements of the given external state
-:tech             | string          | "Clojure"               | selects elements of the given technology
-:techs            | set of strings  | #{"Clojure" "Java"}     | selects elements of the given technologies
-:tag              | string          | "critical"              | selects elements with the given tag
-:tags             | set of strings  | #{"Clojure" "Java"}     | selects elements with the given tags
+:el               | keyword         | :system                 | elements of the given type
+:els              | set of keywords | #{:system :person}      | elements of the given types
+:namespace        | string          | "org.soulspace"         | elements with the given id namespace
+:namespaces       | set of strings  | #{"org.soulspace"}      | elements with the given id namespaces
+:namespace-prefix | string          | "org"                   | elements with the given id namespace prefix
+:id?              | boolean         | false                   | elements for which the id check returns the given value
+:id               | keyword         | :org.soulspace/overarch | the element with the given id
+:subtype?         | boolean         | false                   | elements for which the subtype check returns the given value
+:subtype          | keyword         | :queue                  | elements of the given subtype
+:subtypes         | set of keywords | #{:queue :database}     | elements of the given subtype
+:external?        | boolean         | true                    | elements of the given external state
+:name?            | boolean         | false                   | elements for which the name check returns the given value
+:desc?            | boolean         | false                   | elements for which the description check returns the given value
+:tech?            | boolean         | false                   | elements for which the technology check returns the given value
+:tech             | string          | "Clojure"               | elements of the given technology
+:techs            | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given technologies
+:tags?            | boolean         | false                   | elements for which the tags check returns the given value
+:tag              | string          | "critical"              | elements with the given tag
+:tags             | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given tags
+:children?        | boolean         | false                   | elements for which the check for children returns the given value
 
 # Views
 To show model elements in diagrams or in textual representations you can define

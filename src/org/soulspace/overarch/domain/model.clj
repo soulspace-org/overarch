@@ -4,6 +4,7 @@
 (ns org.soulspace.overarch.domain.model
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.set :as set]
+            [clojure.string :as str]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
 
@@ -48,7 +49,6 @@
   "Returns the ancestor nodes of the `node`."
   ; TODO loop over parents and add them to a vector.
   )
-
 
 (defn resolve-ref
   "Resolves the model element for the ref `r`."
@@ -137,10 +137,11 @@
             (= (parent model (:to r1))
                (parent model (:to r2)))))))
 
+
+
 ;;;
 ;;; Build model
 ;;;
-
 (defn parent-of-relation
   "Returns a parent-of relation for parent `p` and element `e`."
   [p-id e-id]
@@ -310,4 +311,101 @@
   [coll]
   (let [relational (el/traverse ->relational-model coll)]
     (assoc relational :elements coll)))
+
+
+;;
+;; filtering element colletions by criteria
+;;
+(defn criterium-predicate
+  "Returns a predicate for the given `criterium`."
+  [[k v]]
+; Todo add criteria
+; e.g. :parent :parent? :referred-by :referring :relation-of
+  (cond
+    (= :namespace k)
+    #(= (name v) (el/element-namespace %))
+    (= :namespaces k)
+    #(contains? (name v) (el/element-namespace %))
+    (= :namespace-prefix k)
+    #(str/starts-with? (el/element-namespace %) v)
+
+    (= :id? k)
+    #(= v (get % :id false))
+    (= :id k)
+    #(= (keyword v) (:id %))
+
+    (= :el k)
+    #(isa? el/element-hierarchy (:el %) v)
+    (= :els k)
+    #(contains? v (:el %)) ; TODO use isa? too
+
+    (= :subtype? k)
+    #(= v (get % :subtype false))
+    (= :subtype k)
+    #(= (keyword v) (:subtype %))
+    (= :subtypes k)
+    #(contains? v (:subtype %))
+
+    (= :external? k)
+    #(= v (boolean (el/external? %)))
+
+    (= :name? k)
+    #(= v (get % :name false))
+
+    (= :desc? k)
+    #(= v (get % :desc false))
+
+    (= :tech? k)
+    #(= v (get % :tech false))
+    (= :tech k)
+    #(= v (:tech %))
+    (= :techs k)
+    #(contains? v (:tech %))
+
+    (= :tag k)
+    #(contains? (:tags %) v)
+    (= :tags k)
+    #(set/intersection v (:tags %))
+
+    (= :children? k)
+    #(= v (empty? (:ct %)))
+
+    :else
+    (println "unknown criterium" (name k))))
+
+(defn criteria-predicate
+  "Returns a filter predicate for the given `criteria`.
+   The resulting predicate is a logical conjunction (and) of the predicates for
+   each criterium."
+  [criteria]
+  (loop [remaining criteria
+         predicates []]
+    (if (seq remaining)
+      (recur (rest remaining)
+             (conj predicates (criterium-predicate (first remaining))))
+      ; add a predicate which returns true to return at least one predicate
+      (apply every-pred (conj (remove nil? predicates) (fn [_] true))))))
+
+(defn criteria-predicates
+  "Returns a filter predicate for the given `criteria`.
+   If a vector of criteria maps is given, the resulting predicate is a logical
+   disjunction (or) of the predicates."
+  [criteria]
+  (if (vector? criteria)
+    ; vector of criteria
+    (loop [remaining criteria
+           predicates []]
+      (if (seq remaining)
+        (recur (rest remaining)
+               (conj predicates (criteria-predicate (first remaining))))
+        (apply some-fn predicates)))
+    ; simple criteria map
+    (criteria-predicate criteria)))
+
+(defn filter-xf
+  "Returns a filter transducer for the given `criteria`."
+  [criteria]
+  (let [filter-predicates (criteria-predicates criteria)]
+    ; compose the filtering functions and create a filter transducer
+    (filter filter-predicates)))
 

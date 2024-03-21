@@ -163,13 +163,13 @@
 (defn select-elements
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
-  (into #{} (el/filter-xf (:select-elements options))
+  (into #{} (model/filter-xf (:select-elements options))
         (set/union (repo/nodes) (repo/relations))))
 
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
-  (into [] (comp (el/filter-xf (:select-references options))
+  (into [] (comp (model/filter-xf (:select-references options))
                  (map el/element->ref))
         (concat (repo/nodes) (repo/relations))))
 

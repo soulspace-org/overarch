@@ -1,5 +1,13 @@
 (ns org.soulspace.overarch.util.functions)
 
+
+(defn keyword-set
+  "Converts the `coll` into a set of keywords."
+  [coll]
+  (->> coll
+       (map keyword)
+       (into #{})))
+
 ;;
 ;; Tapping data
 ;;
