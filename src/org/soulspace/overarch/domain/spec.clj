@@ -23,8 +23,7 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/direction keyword?)
 (s/def :overarch/constraint boolean?)
-
-; (s/def :overarch/tags map?)    ; check
+(s/def :overarch/tags set?)    ; check
 ; (s/def :overarch/type string?) ; check
 ; (s/def :overarch/index int?)   ; check
 ; (s/def :overarch/href string?) ; TODO url?
@@ -42,12 +41,13 @@
           :opt-un [:overarch/id
                    :overarch/name :overarch/desc :overarch/ct
                    :overarch/subtype :overarch/external
-                   :overarch/tech]))
+                   :overarch/tech :overarch/tags]))
 
 (s/def :overarch/relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
           :opt-un [:overarch/name :overarch/desc :overarch/tech
-                   :overarch/direction :overarch/constraint]))
+                   :overarch/direction :overarch/constraint
+                   :overarch/tags]))
 
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
