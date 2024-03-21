@@ -1270,7 +1270,7 @@
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
         {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
         {:el :person :id :org.soulspace.internal/person :name "Internal Person"}}
-      [[{:external true} {:el :person}]]
+      [{:external true} {:el :person}]
 
       ;
       )))
