@@ -462,12 +462,20 @@ A: The model should contain information like names and descriptions for most
 
 Q: **Whould overarch benefit from a generic generation mechanism with templates?**
 
-A: 
+A: Overarch would benefit from a template based generation mechanism because
+   it would enable users to create textual renderings of model elements without
+   creating render adapters in the overarch codebase itself. Therefor,
+   depending on the programming language used in the template engine, no
+   clojure knowledge would neccessary to create useful textual renderings for
+   the model content.
 
+   Also the useful textual renderings from the model content will be highly
+   specific to the context (e.g. the project). The render adapters provided by
+   overarch should be generic and useful for all usage contexts.
 
 Q: **What properties should a generic generation mechanism have?**
 
-A:
+A: 
 
 
 Q: **Why EDN as the specification notation?**

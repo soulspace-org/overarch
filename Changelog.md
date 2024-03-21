@@ -4,6 +4,8 @@ Changelog
 Version 0.14.0
 --------------
 * added filtering elements by criteria
+* added tags key to model nodes and relations
+  * can be used in filtering
 * added check for unmatched relation namespaces
 * updated tests
 * updated documentation

@@ -1106,18 +1106,18 @@
 ;;;
 ;;; Tests for element functions
 ;;;
+(deftest generate-node-id-test
+  (testing "generate-node-id"
+    (are [x y] (= x (generate-node-id y {:el :class :id :test/class1 :name "TestClass1"}))
+      :test/class1-name-field {:el :field :name "name"}
+      :test/class1-getname-method {:el :method :name "getName"}))) 
+
 (deftest element-namespace-test
   (testing "element-namespace"
     (are [x y] (= x (element-namespace y))
       "org.soulspace" {:id :org.soulspace/foo}
       nil {:id :foo}
       nil {:el :foo/bar})))
-
-(deftest generate-node-id-test
-  (testing "generate-node-id"
-    (are [x y] (= x (generate-node-id y {:el :class :id :test/class1 :name "TestClass1"}))
-      :test/class1-name-field {:el :field :name "name"}
-      :test/class1-getname-method {:el :method :name "getName"}))) 
 
 (def elements
   #{{:el :person
