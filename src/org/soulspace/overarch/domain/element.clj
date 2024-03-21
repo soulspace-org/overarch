@@ -596,6 +596,8 @@
 ;; filtering element colletions by criteria
 ;;
 
+; TODO move filtering to model to enable more elaborate criteria
+; e.g. :parent :parent? :referred-by :referring :relation-of
 (defn keyword-set
   "Converts the `coll` into a set of keywords."
   [coll]
@@ -617,14 +619,14 @@
     (= :el k)
     #(isa? element-hierarchy (:el %) v)
     (= :els k)
-    #(contains? v (:el %))
+    #(contains? v (:el %)) ; TODO use isa? too
 
     (= :subtype k)
     #(= (keyword v) (:subtype %))
     (= :subtypes k)
     #(contains? v (:subtype %))
 
-    (= :external k)
+    (= :external? k)
     #(= v (external? %))
 
     (= :tech k)
@@ -637,11 +639,16 @@
     (= :tags k)
     #(set/intersection v (:tags %))
 
+    (= :children? k)
+    #(= v (empty? (:ct %)))
+
     :else
     (println "unknown criterium" (name k))))
 
 (defn criteria-predicate
-  "Returns a filter predicate for the given `criteria`."
+  "Returns a filter predicate for the given `criteria`.
+   The resulting predicate is a logical conjunction (and) of the predicates for
+   each criterium."
   [criteria]
   (loop [remaining criteria
          predicates []]
@@ -652,7 +659,9 @@
       (apply every-pred (conj (remove nil? predicates) (fn [_] true))))))
 
 (defn criteria-predicates
-  "Returns a filter predicate for the given `criteria`."
+  "Returns a filter predicate for the given `criteria`.
+   If a vector of criteria maps is given, the resulting predicate is a logical
+   disjunction (or) of the predicates."
   [criteria]
   (if (vector? criteria)
     ; vector of criteria
