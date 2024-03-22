@@ -4,9 +4,9 @@ Changelog
 Version 0.14.0
 --------------
 * added selection of model elements by criteria
-* added tags key to model nodes and relations
-  * can be used in selection
-* added options for element selection in CLI
+* added options for element/reference selection in CLI
+* added :tags key to model nodes and relations
+  * can be used in element selection
 * added check for unmatched relation namespaces
 * updated graphviz rendering to use style="filled" on nodes
 * updated tests
