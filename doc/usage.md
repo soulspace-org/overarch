@@ -487,15 +487,15 @@ selected, if it is selected by any of the critria maps (logial disjunction).
 key               | type            | example values          | description
 ------------------|-----------------|-------------------------|------------
 :el               | keyword         | :system                 | elements of the given type
-:els              | set of keywords | #{:system :person}      | elements of the given types
+:els              | set of keywords | #{:system :person}      | elements with one of the given types
 :namespace        | string          | "org.soulspace"         | elements with the given id namespace
-:namespaces       | set of strings  | #{"org.soulspace"}      | elements with the given id namespaces
+:namespaces       | set of strings  | #{"org.soulspace"}      | elements with one of the given id namespaces
 :namespace-prefix | string          | "org"                   | elements with the given id namespace prefix
 :id?              | boolean         | false                   | elements for which the id check returns the given value
 :id               | keyword         | :org.soulspace/overarch | the element with the given id
 :subtype?         | boolean         | false                   | elements for which the subtype check returns the given value
 :subtype          | keyword         | :queue                  | elements of the given subtype
-:subtypes         | set of keywords | #{:queue :database}     | elements of the given subtype
+:subtypes         | set of keywords | #{:queue :database}     | elements of one of the given subtypes
 :external?        | boolean         | true                    | elements of the given external state
 :name?            | boolean         | false                   | elements for which the name check returns the given value
 :desc?            | boolean         | false                   | elements for which the description check returns the given value
