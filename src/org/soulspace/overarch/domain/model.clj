@@ -12,43 +12,10 @@
 ;;; Data handling
 ;;;
 
-;;
-;; Accessors
-;;
-
-(defn id-set
-  "Returns a set of id's for the elements in `coll`."
-  [coll]
-  (->> coll
-       (map :id)
-       (remove nil?)
-       (into #{})))
-
-(defn model-elements
-  "Returns the collection of model elements."
-  ([model]
-   (filter el/model-element? (:elements model))))
-
 (defn model-element
   "Returns the model element with the given `id`."
   ([model id]
    ((:id->element model) id)))
-
-(defn parent
-  "Returns the parent of the element `e`."
-  [model e]
-  ((:id->parent model) (:id e)))
-
-(defn children
-  "Returns the children of the element `e`."
-  [model e]
-  (:ct e))
-
-(defn ancestor-nodes
-  [model e]
-  "Returns the ancestor nodes of the `node`."
-  ; TODO loop over parents and add them to a vector.
-  )
 
 (defn resolve-ref
   "Resolves the model element for the ref `r`."
@@ -71,6 +38,42 @@
      (keyword? e) (resolve-id model e)
      (el/reference? e) (resolve-ref model e)
      :else e)))
+
+
+;;
+;; Model transducer functions
+;;
+(defn unresolved-refs-xf 
+  "Returns a transducer to extract unresolved refs"
+  [model]
+  (comp (filter el/reference?)
+        (map (partial resolve-ref model))
+        (filter el/unresolved-ref?)))
+
+;;
+;; Accessors
+;;
+(defn model-elements
+  "Returns the collection of model elements."
+  ([model]
+   ; TODO hierarchical or relational? this is hierarchical but won't return children
+   (filter el/model-element? (:elements model))))
+
+(defn parent
+  "Returns the parent of the element `e`."
+  [model e]
+  ((:id->parent model) (:id e)))
+
+(defn children
+  "Returns the children of the element `e`."
+  [model e]
+  (:ct e))
+
+(defn ancestor-nodes
+  [model e]
+  "Returns the ancestor nodes of the `node`."
+  ; TODO loop over parents and add them to a vector.
+  )
 
 (defn all-elements
   "Returns a set of all elements."
@@ -369,6 +372,12 @@
 
     (= :children? k)
     #(= v (empty? (:ct %)))
+
+    (= :child? k)
+    #(= v (boolean ((:id->parent model) (:id %))))
+
+    (= :referrer-relations k)
+    #(= v (boolean ((:id->parent model) (:id %))))
 
     :else
     (println "unknown criterium" (name k))))

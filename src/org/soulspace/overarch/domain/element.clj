@@ -537,6 +537,32 @@
   [e kind]
   (and (view? e) (= (:el e) kind)))
 
+
+;;
+;; Element transducer fuctions
+;;
+(defn value-xf
+  "Returns a transducer to extract the value of the key `k` of each element."
+  [k]
+  (map k))
+
+(def ids-xf
+  "Returns a transducer to extract the id of each element."
+   (comp (filter identifiable?)
+         (map :id)))
+
+(def namespaces-xf
+  "Returns a transducer to extract the namespaces of some elements."
+  (comp ids-xf
+        (map namespace)))
+
+(def node-ids-xf
+  "Returns a transducer to extract the id of each node."
+  (comp (remove relational?)
+        (remove view?)
+        ids-xf))
+
+
 ;;
 ;; Functions 
 ;;
