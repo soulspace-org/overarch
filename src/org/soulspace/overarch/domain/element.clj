@@ -708,6 +708,9 @@
   ([acc r]
    (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
 
+;;
+;; Transformations
+;;
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [e]
