@@ -131,6 +131,23 @@
   (->> (:ct view)
        (map (partial model/resolve-element model))))
 
+(defn selected-model-nodes
+  "Returns the model elements selected by criteria"
+  [model view]
+  (when-let [criteria (get-in view [:spec :selection])]
+    (filter (model/filter-xf model criteria) (:nodes model))))
+
+(defn selected-model-relations
+  "Returns the model elements selected by criteria"
+  [model view]
+  (when-let [criteria (get-in view [:spec :selection])]
+    (filter (model/filter-xf model criteria) (:relations model))))
+
+(defn selected-model-elements
+  "Returns the model elements selected by criteria"
+  [model view]
+  (concat (selected-model-nodes model view)
+          (selected-model-relations model view)))
 
 ;; TODO: take the rendered children of referenced nodes into account and exclude
 ;;       nodes rendered as boundaries
