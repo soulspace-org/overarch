@@ -9,7 +9,7 @@
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
-;;; Data handling
+;;; Accessor functions
 ;;;
 
 (defn model-element
@@ -39,7 +39,6 @@
      (el/reference? e) (resolve-ref model e)
      :else e)))
 
-
 ;;
 ;; Model transducer functions
 ;;
@@ -58,6 +57,17 @@
   ([model]
    ; TODO hierarchical or relational? this is hierarchical but won't return children
    (filter el/model-element? (:elements model))))
+
+(defn nodes
+  ""
+  [model]
+  (:nodes model))
+
+(defn relations
+  ""
+  [model]
+  (:relations model))
+
 
 (defn parent
   "Returns the parent of the element `e`."
@@ -316,15 +326,18 @@
     (assoc relational :elements coll)))
 
 
-;;
-;; filtering element colletions by criteria
-;;
+;;;
+;;; filtering element colletions by criteria
+;;;
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
 ; Todo add criteria
 ; e.g. :parent :parent? :referred-by :referring :relation-of
   (cond
+    ;;
+    ;; element related
+    ;;
     (= :namespace k)
     #(= (name v) (el/element-namespace %))
     (= :namespaces k)
@@ -373,11 +386,21 @@
     (= :children? k)
     #(= v (empty? (:ct %)))
 
+    ;; model related
     (= :child? k)
     #(= v (boolean ((:id->parent model) (:id %))))
 
-    (= :referrer-relations k)
-    #(= v (boolean ((:id->parent model) (:id %))))
+    (= :refers? k)
+    #(= v (boolean ((:referrer-id->relations model) (:id %))))
+
+    (= :referred? k)
+    #(= v (boolean ((:referred-id->relations model) (:id %))))
+
+    (= :refers-to? k)
+    #(= v (boolean ((:referrer-id->relations model) (:id %))))
+
+    (= :referred-by? k)
+    #(= v (boolean ((:referred-id->relations model) (:id %))))
 
     :else
     (println "unknown criterium" (name k))))

@@ -96,6 +96,6 @@
 
 (defmethod rndr/render :graphviz
   [m format options]
-  (doseq [view (view/get-views m)]
+  (doseq [view (view/views m)]
     (when (graphviz-view? view)
       (rndr/render-view m format options view))))

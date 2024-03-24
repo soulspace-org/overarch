@@ -111,6 +111,6 @@
 
 (defmethod rndr/render :markdown
   [model format options]
-  (doseq [view (view/get-views model)]
+  (doseq [view (view/views model)]
     (when (markdown-view? view)
       (rndr/render-view model format options view))))

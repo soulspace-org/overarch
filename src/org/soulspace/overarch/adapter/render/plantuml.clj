@@ -299,7 +299,7 @@
 
 (defmethod rndr/render :plantuml
   [model format options]
-  (doseq [view (view/get-views model)]
+  (doseq [view (view/views model)]
     (when (plantuml-view? view)
       (rndr/render-view model format options
                         (assoc view :ct (view/specified-elements model view)) ; TODO do preprocessing once in build phase?

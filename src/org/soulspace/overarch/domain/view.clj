@@ -19,20 +19,20 @@
   ([view & _]
    (view-type view)))
 
-(defn get-views
-  "Returns the collection of views from the `model`."
-  ([model]
-   (filter el/view? (:elements model))))
+(defn views
+  "Returns the set of views from the `model`."
+  [model]
+  (:views model))
 
-(defn get-view
+(defn themes
+  "Returns the set of themes from the `model`."
+  [model]
+  (:themes model))
+
+(defn view
   "Returns the view with the given `id` from the `model`."
   ([model id]
    ((:id->element model) id)))
-
-(defn include-spec
-  "Returns the include specification for the `view`."
-  ([view]
-   (get-in view [:spec :include] :referenced-only)))
 
 ;;
 ;; View spec elements
@@ -44,6 +44,7 @@
    (get-in view [:spec :layout] :top-down)))
 
 (defn themes->styles
+  "Returns the vector of styles from the themes of the given `view`."
   [model view]
   (->> (get-in view [:spec :themes] [])
        (map (partial model/resolve-element model))
@@ -55,6 +56,26 @@
   (apply set/union (conj
                     (themes->styles model view)
                     (get-in view [:spec :styles] #{}))))
+
+(defn include-spec
+  "Returns the include specification for the `view`."
+  [view]
+  (get-in view [:spec :include] :referenced-only))
+
+(defn selection-spec
+  "Returns the selection specification for the `view`."
+  [view]
+  (get-in view [:spec :selection]))
+
+(defn sketch-spec
+  "Returns the sketch specification for the `view`."
+  [view]
+  (get-in view [:spec :sketch]))
+
+(defn linetype-spec
+  "Returns the linetype specification for the `view`."
+  [view]
+  (get-in view [:spec :linetype]))
 
 ;;;
 ;;; View functions
@@ -134,14 +155,16 @@
 (defn selected-model-nodes
   "Returns the model elements selected by criteria"
   [model view]
-  (when-let [criteria (get-in view [:spec :selection])]
-    (filter (model/filter-xf model criteria) (:nodes model))))
+  (if-let [criteria (get-in view [:spec :selection])]
+    (filter (model/filter-xf model criteria) (:nodes model))
+    #{}))
 
 (defn selected-model-relations
   "Returns the model elements selected by criteria"
   [model view]
-  (when-let [criteria (get-in view [:spec :selection])]
-    (filter (model/filter-xf model criteria) (:relations model))))
+  (if-let [criteria (get-in view [:spec :selection])]
+    (filter (model/filter-xf model criteria) (:relations model))
+    #{}))
 
 (defn selected-model-elements
   "Returns the model elements selected by criteria"
@@ -155,18 +178,18 @@
   "Returns the model nodes specified in the given view.
    Takes the view spec into account for resolving model nodes not explicitly referenced."
   [model view]
-  (let [selector (get-in view [:spec :include] :referenced-only)]
-    (case selector
+  (let [include (include-spec view)]
+    (case include
       :referenced-only (let [referenced-nodes (referenced-model-nodes model view)
                              _ (fns/data-tapper {:fn "specified-relations"
                                                  :view (:id view)
-                                                 :selector selector
+                                                 :selector include
                                                  :referenced-rels referenced-nodes})]
                          referenced-nodes)
       :relations (let [referenced-nodes (referenced-model-nodes model view)
                        _ (fns/data-tapper {:fn "specified-relations"
                                            :view (:id view)
-                                           :selector selector
+                                           :selector include
                                            :referenced-rels referenced-nodes})]
                    referenced-nodes)
       :related (let [referenced-nodes (referenced-model-nodes model view)
@@ -177,7 +200,7 @@
                      specified-nodes (set/union referenced-nodes related-nodes)
                      _ (fns/data-tapper {:fn "specified-model-nodes"
                                          :view (:id view)
-                                         :selector selector
+                                         :selector include
                                          :referenced-nodes referenced-nodes
                                          :referenced-rels referenced-rels
                                          :related-nodes related-nodes
@@ -189,12 +212,12 @@
   "Returns the relations specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [model view]
-  (let [selector (get-in view [:spec :include] :referenced-only)] 
-    (case selector
+  (let [include (include-spec view)] 
+    (case include
       :referenced-only (let [referenced-rels (referenced-relations model view)
                              _ (fns/data-tapper {:fn "specified-relations"
                                                  :view (:id view)
-                                                 :selector selector
+                                                 :selector include
                                                  :referenced-rels referenced-rels})]
                          referenced-rels)
       :relations (let [referenced-nodes (referenced-model-nodes model view)
@@ -203,7 +226,7 @@
                        specified-rels (set/union referenced-rels related-rels)
                        _ (fns/data-tapper {:fn "specified-relations"
                                            :view (:id view)
-                                           :selector selector
+                                           :selector include
                                            :referenced-nodes referenced-nodes
                                            :referenced-rels referenced-rels
                                            :related-rels related-rels
@@ -212,7 +235,7 @@
       :related (let [referenced-rels (referenced-relations model view)
                      _ (fns/data-tapper {:fn "specified-relations"
                                          :view (:id view)
-                                         :selector selector
+                                         :selector include
                                          :referenced-rels referenced-rels})]
                  referenced-rels))))
 
@@ -220,8 +243,8 @@
   "Returns the model elements and relations explicitly specified in the given view.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [model view]
-  (let [selector (get-in view [:spec :include] :referenced-only)]
-    (case selector
+  (let [include (include-spec view)]
+    (case include
       :referenced-only (referenced-elements model view)
       :relations (concat (specified-model-nodes model view)
                          (specified-relations model view))
