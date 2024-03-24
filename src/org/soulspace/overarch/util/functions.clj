@@ -1,8 +1,7 @@
 (ns org.soulspace.overarch.util.functions)
 
-
 (defn keyword-set
-  "Converts the `coll` into a set of keywords."
+  "Converts the `coll` of strings or symbols into a set of keywords."
   [coll]
   (->> coll
        (map keyword)
