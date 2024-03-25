@@ -8,7 +8,7 @@
 
 (defmethod view/include-content? :concept-view
   [model view e]
-  (contains? el/concept-view-element-types (:el e)))
+  false)
 
 (defmethod view/element-to-render :concept-view
   [model view e]
