@@ -9,7 +9,8 @@
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.application.render :as rndr]))
+            [org.soulspace.overarch.application.render :as rndr]
+            [org.soulspace.overarch.domain.model :as model]))
 
 ;;;
 ;;; Rendering
@@ -96,6 +97,6 @@
 
 (defmethod rndr/render :graphviz
   [m format options]
-  (doseq [view (view/views m)]
+  (doseq [view (model/views m)]
     (when (graphviz-view? view)
       (rndr/render-view m format options view))))

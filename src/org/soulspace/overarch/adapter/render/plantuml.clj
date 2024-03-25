@@ -11,7 +11,8 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
-            [org.soulspace.overarch.util.io :as oio]))
+            [org.soulspace.overarch.util.io :as oio]
+            [org.soulspace.overarch.domain.model :as model]))
 
 ;;;
 ;;; PlantUML mappings
@@ -299,7 +300,7 @@
 
 (defmethod rndr/render :plantuml
   [model format options]
-  (doseq [view (view/views model)]
+  (doseq [view (model/views model)]
     (when (plantuml-view? view)
       (rndr/render-view model format options
                         (assoc view :ct (view/specified-elements model view)) ; TODO do preprocessing once in build phase?
