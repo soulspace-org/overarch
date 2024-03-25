@@ -263,17 +263,21 @@
 (defn render-c4-layout
   "Renders the layout for the C4 diagram."
   [model view]
+  ; TODO use destructuring
   (let [spec (:spec view)
+        layout (view/layout-spec view)
+        linetype (view/linetype-spec view)
+        sketch (view/sketch-spec view)
         styles (view/styles-spec model view)
         plantuml-spec (:plantuml spec)] 
     (flatten [(when (seq styles)
                 (into [] (map #(render-c4-style view %)) styles))
-              (when (:sketch spec)
+              (when sketch
                 "LAYOUT_AS_SKETCH()")
-              (when (:layout spec)
-                (c4-layouts (:layout spec)))
-              (when (:linetype spec)
-                (puml/linetypes (:linetype spec)))
+              (when layout
+                (c4-layouts layout))
+              (when linetype
+                (puml/linetypes linetype))
               (when (:node-separation plantuml-spec)
                 (str "skinparam nodesep " (:node-separation plantuml-spec)))
               (when (:rank-separation plantuml-spec)

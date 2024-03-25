@@ -10,10 +10,6 @@
   [model view e]
   (contains? el/deployment-view-element-types (:el e)))
 
-(defmethod view/render-relation-node? :deployment-view
-  [model view e]
-  (view/render-model-element? view e))
-
 (defmethod view/element-to-render :deployment-view
   [model view e]
   e)
