@@ -21,21 +21,6 @@
   ([model view & _]
    (view-type view)))
 
-(defn views
-  "Returns the set of views from the `model`."
-  [model]
-  (:views model))
-
-(defn view
-  "Returns the view with the given `id` from the `model`."
-  ([model id]
-   ((:id->element model) id)))
-
-(defn themes
-  "Returns the set of themes from the `model`."
-  [model]
-  (:themes model))
-
 ;;
 ;; View spec elements
 ;;
