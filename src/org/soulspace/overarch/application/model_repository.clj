@@ -31,7 +31,7 @@
   (->> path
        ; TODO don't hardcode repo type
        (read-models :file)
-       (spec/check)
+       (spec/check-input-model)
        (model/build-model)
        (reset! state)))
 

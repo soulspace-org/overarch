@@ -52,22 +52,25 @@
 ;;
 ;; Accessors
 ;;
-(defn model-elements
-  "Returns the collection of model elements."
-  ([model]
-   ; TODO hierarchical or relational? this is hierarchical but won't return children
-   (filter el/model-element? (:elements model))))
+(defn elements
+  "Returns the collection of elements."
+  [model]
+  (:elements model))
 
 (defn nodes
-  ""
+  "Returns the collection of model nodes."
   [model]
   (:nodes model))
 
 (defn relations
-  ""
+  "Returns the collection of model relations."
   [model]
   (:relations model))
 
+(defn model-elements
+  "Returns the collection of model elements."
+  ([model]
+   (concat (nodes model) (relations model))))
 
 (defn parent
   "Returns the parent of the element `e`."
@@ -329,6 +332,7 @@
 ;;;
 ;;; filtering element colletions by criteria
 ;;;
+
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
@@ -354,7 +358,7 @@
     #(isa? el/element-hierarchy (:el %) v)
     (= :els k)
     #(contains? v (:el %)) ; TODO use isa? too
-
+    
     (= :subtype? k)
     #(= v (get % :subtype false))
     (= :subtype k)
@@ -374,15 +378,19 @@
     (= :tech? k)
     #(= v (get % :tech false))
     (= :tech k)
-    #(= v (:tech %))
+    #(contains? (fns/tokenize-string (:tech %)) v)
     (= :techs k)
+    #(contains? v (:tech %))
+    (= :all-techs k)
     #(contains? v (:tech %))
 
     (= :tag k)
     #(contains? (:tags %) v)
     (= :tags k)
     #(set/intersection v (:tags %))
-
+    (= :all-tags k)
+    #(set/subset? (set v) (:tags %))
+    
     (= :children? k)
     #(= v (empty? (:ct %)))
 
@@ -396,11 +404,11 @@
     (= :referred? k)
     #(= v (boolean ((:referred-id->relations model) (:id %))))
 
-    (= :refers-to? k)
-    #(= v (boolean ((:referrer-id->relations model) (:id %))))
+    (= :refers-to k)
+    #(= v (map :to ((:referrer-id->relations model) (:id %))))
 
-    (= :referred-by? k)
-    #(= v (boolean ((:referred-id->relations model) (:id %))))
+    (= :referred-by k)
+    #(= v ((:referred-id->relations model) (:id %)))
 
     :else
     (println "unknown criterium" (name k))))

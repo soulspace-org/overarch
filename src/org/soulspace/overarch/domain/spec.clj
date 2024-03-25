@@ -133,7 +133,7 @@
 ;;
 ;; Input model
 ;;
-(s/def :overarch/model
+(s/def :overarch/input-model
   (s/coll-of
    (s/or :element     :overarch/element
          :element-ref :overarch/element-ref
@@ -141,13 +141,65 @@
          :view        :overarch/view
          :theme       :overarch/theme)))
 
+
+;;
+;; Criteria for element selection 
+;;
+
+(s/def :overarch/els (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/namespace string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/id? boolean?)
+(s/def :overarch/subtype? boolean?)
+(s/def :overarch/subtypes (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/external? boolean?)
+(s/def :overarch/name? boolean?)
+(s/def :overarch/desc? boolean?)
+(s/def :overarch/tech? boolean?)
+(s/def :overarch/techs (s/and set? (s/coll-of string?)))
+(s/def :overarch/tags? boolean?)
+(s/def :overarch/tag string?)
+(s/def :overarch/children? boolean?)
+(s/def :overarch/child? boolean?)
+
+(s/def :overarch/criteria
+  (s/keys :opt-un [:overarch/el :overarch/els
+                   :overarch/namespace :overarch/namespaces :overarch/namespace-prefix
+                   :overarch/id? :overarch/id
+                   :overarch/subtype? :overarch/subtype :overarch/subtypes
+                   :overarch/external?
+                   :overarch/name?
+                   :overarch/desc?
+                   :overarch/tech? :overarch/tech  :overarch/techs ;  :overarch/all-techs
+                   :overarch/tags? :overarch/tag :overarch/tags ; :overarch/all-tags
+                   :overarch/children?
+                   :overarch/child?]))
+
+(s/def :overarch/criteria-vector
+  (s/and vector? (s/coll-of :overarch/criteria)))
+
+(s/def :overarch/selection-criteria
+  (s/or :criteria :overarch/criteria
+        :criteria-vector :overarch/criteria-vector))
+
 ;;;
 ;;; Schema functions
 ;;;
-(defn check
-  "Check model specification."
-  [elements]
-  (if (s/valid? :overarch/model elements)
-    elements
+(defn check-input-model
+  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
+  [input-model]
+  (if (s/valid? :overarch/input-model input-model)
+    input-model
     ;(s/explain :overarch/model elements)
-    (expound/expound :overarch/model elements {:print-specs? false})))
+    (expound/expound :overarch/input-model input-model {:print-specs? false})))
+
+(defn check-selection-criteria
+  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
+  [selection-criteria]
+  (if (s/valid? :overarch/selection-criteria selection-criteria)
+   selection-criteria
+    ;(s/explain :overarch/model elements)
+   (expound/expound :overarch/selection-criteria selection-criteria {:print-specs? false})))
+
+
