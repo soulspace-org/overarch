@@ -12,10 +12,6 @@
   (and (contains? el/context-view-element-types (:el e))
        (el/boundary? e)))
 
-(defmethod view/render-relation-node? :context-view
-  [model view e]
-  (view/render-model-element? view e))
-
 (defmethod view/element-to-render :context-view
   [model view e]
   e)

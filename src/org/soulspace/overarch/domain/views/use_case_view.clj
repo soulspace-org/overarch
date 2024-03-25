@@ -10,10 +10,6 @@
   [model view e]
   (contains? el/use-case-view-element-types (:el e)))
 
-(defmethod view/render-relation-node? :use-case-view
-  [model view e]
-  (view/render-model-element? view e))
-
 (defmethod view/element-to-render :use-case-view
   [model view e]
   e)

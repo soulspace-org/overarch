@@ -119,18 +119,6 @@
       false {:el :protocol}
       false {:el :concept})))
 
-(deftest render-relation-node?-test
-  (testing "render-relation-node? true"
-    (are [x y] (= x (boolean (render-relation-node? test-model {:el :container-view} y)))
-      true {:el :person}
-      true {:el :system :external true}
-      true {:el :container}
-      true {:el :system :external false}))
-  (testing "render-relation-node? false"
-    (are [x y] (= x (boolean (render-relation-node? test-model {:el :container-view} y)))
-      false {:el :system :external false :ct #{{:el :container}}}
-      false {:el :component})))
-
 (def container-view1
   {:el :container-view
    :id :test/container-view1
