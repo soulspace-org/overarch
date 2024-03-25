@@ -24,7 +24,8 @@
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
             [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo]
-            [clojure.set :as set])
+            [clojure.set :as set]
+            [org.soulspace.overarch.domain.spec :as spec])
   (:gen-class))
 
 ;;;
@@ -164,16 +165,18 @@
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   ; TODO implement model accessor in repo
-  (into #{} (model/filter-xf @repo/state (:select-elements options))
-        (set/union (repo/nodes) (repo/relations))))
+  (when-let [criteria (spec/check-selection-criteria (get :select-elements options))]
+    (into #{} (model/filter-xf @repo/state criteria)
+          (set/union (repo/nodes) (repo/relations)))))
 
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
   ; TODO implement model accessor in repo
-  (into [] (comp (model/filter-xf @repo/state (:select-references options))
-                 (map el/element->ref))
-        (concat (repo/nodes) (repo/relations))))
+  (when-let [criteria (spec/check-selection-criteria (:select-references options))]
+    (into [] (comp (model/filter-xf @repo/state criteria)
+                   (map el/element->ref))
+          (concat (repo/nodes) (repo/relations)))))
 
 (defn dispatch
   "Dispatch on `options` to the requested actions."
@@ -185,10 +188,10 @@
     (println "Model Information:")
     (pp/pprint (model-info model options)))
   (when (:select-elements options)
-    (println "Selected Elements:")
+    (println "Selected Elements for" (:select-elements options))
     (pp/pprint (select-elements options)))
   (when (:select-references options)
-    (println "Selected References:")
+    (println "Selected References for" (:select-references options))
     (pp/pprint (select-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))

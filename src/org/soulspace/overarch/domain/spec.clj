@@ -5,7 +5,7 @@
   (:require [clojure.spec.alpha :as s]
             [expound.alpha :as expound]
             [org.soulspace.overarch.domain.element :as e]
-            [org.soulspace.overarch.domain.view :as view]))
+            ))
 
 
 ;;;
@@ -45,14 +45,14 @@
 
 (s/def :overarch/relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
-          :opt-un [:overarch/name :overarch/desc :overarch/tech
+          :opt-un [:overarch/id :overarch/name :overarch/desc :overarch/tech
                    :overarch/direction :overarch/constraint
                    :overarch/tags]))
 
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
-          :opt-un [:overarch/icon :overarch/link]))
+          :opt-un [:overarch/external :overarch/direction :overarch/constraint]))
 
 (s/def :overarch/identifiable
   (s/keys :req-un [:overarch/id]))
@@ -191,7 +191,6 @@
   [input-model]
   (if (s/valid? :overarch/input-model input-model)
     input-model
-    ;(s/explain :overarch/model elements)
     (expound/expound :overarch/input-model input-model {:print-specs? false})))
 
 (defn check-selection-criteria
@@ -199,7 +198,5 @@
   [selection-criteria]
   (if (s/valid? :overarch/selection-criteria selection-criteria)
    selection-criteria
-    ;(s/explain :overarch/model elements)
-   (expound/expound :overarch/selection-criteria selection-criteria {:print-specs? false})))
-
-
+   (do (expound/expound :overarch/selection-criteria selection-criteria {:print-specs? false})
+       nil)))
