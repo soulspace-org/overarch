@@ -2,11 +2,16 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.use-case-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]))
+            [org.soulspace.overarch.domain.model-test :as model-test]
+            [org.soulspace.overarch.domain.model :as model]))
+
+(def test-input
+  #{})
+(def test-model (model/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (boolean (render-model-element? {:el :use-case-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :use-case-view} y)))
       true {:el :context-boundary}
       true {:el :person}
       true {:el :system}
@@ -18,7 +23,7 @@
       true {:el :extends}
       true {:el :generalizes}))
   (testing "render-model-element? false"
-    (are [x y] (= x (boolean (render-model-element? {:el :use-case-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :use-case-view} y)))
       false {:el :enterprise-boundary}
       false {:el :system-boundary}
       false {:el :node}

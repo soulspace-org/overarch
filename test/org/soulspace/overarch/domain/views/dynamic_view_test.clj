@@ -2,11 +2,16 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.dynamic-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]))
+            [org.soulspace.overarch.domain.model-test :as model-test]
+            [org.soulspace.overarch.domain.model :as model]))
+
+(def test-input
+  #{})
+(def test-model (model/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (boolean (render-model-element? {:el :dynamic-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :dynamic-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}
       true {:el :person}
@@ -16,7 +21,7 @@
       true {:el :container-boundary}
       true {:el :component}))
   (testing "render-model-element? false"
-    (are [x y] (= x (boolean (render-model-element? {:el :dynamic-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :dynamic-view} y)))
       false {:el :node}
       false {:el :actor}
       false {:el :use-case}
