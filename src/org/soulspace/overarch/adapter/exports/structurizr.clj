@@ -129,7 +129,7 @@
   [model]
   (flatten [(str "workspace {")
             (render-model model (model/model-elements model))
-            (render-views model (view/views model))
+            (render-views model (model/views model))
             "}"]))
 
 (defmethod export/export-file :structurizr
