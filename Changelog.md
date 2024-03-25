@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+Version 0.15.0
+--------------
+* enhanced view rendering rules
+
+
 Version 0.14.0
 --------------
 * added selection of model elements by criteria
