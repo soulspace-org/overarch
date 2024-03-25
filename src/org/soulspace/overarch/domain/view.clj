@@ -16,7 +16,9 @@
   "Returns the type of the `view`."
   ([view]
    (:el view))
-  ([view & _]
+  ([model view]
+   (view-type view))
+  ([model view & _]
    (view-type view)))
 
 (defn views
@@ -85,19 +87,19 @@
 ;; Context based content filtering
 ;;
 (defmulti render-model-element?
-  "Returns true if the element `e` is rendered in the `view`"
+  "Returns true if the element `e` is rendered in the `view` in the context of the `model`."
   view-type)
 
 (defmulti include-content?
-  "Returns true if the content of element `e` is rendered in the `view`"
+  "Returns true if the content of element `e` is rendered in the `view` in the context of the `model`."
   view-type)
 
 (defmulti render-relation-node?
-  "Returns true if the node will"
+  "Returns true if the node `e` will be rendered for the `view` in the context of the `model`."
   view-type)
 
 (defmulti element-to-render
-  "Returns the model element to be rendered for element `e` for the `view`.
+  "Returns the model element to be rendered for element `e` for the `view` in the context of the `model`.
    Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   view-type)
 
@@ -105,12 +107,13 @@
   "Returns true if the element is should be rendered for this view type.
    Checks both sides of a relation."
   [model view e]
-  (or (and (= :rel (:el e))
-           (render-model-element? view (model/model-element model (:from e)))
+  (or (and (el/model-relation? e)
+           (render-model-element? model view (model/model-element model (:from e)))
            (render-model-element? view (model/model-element model (:to e))))
       (and (render-model-element? view e)
            (el/internal? (model/parent model e)))))
 
+; TODO Remove
 (defn render-relation?
   "Returns true if the relation should be rendered in the context of the view."
   [model rel pred]
@@ -120,6 +123,7 @@
     (when (and (rendered? rel) (rendered? from) (rendered? to))
       rel)))
 
+; TODO Remove
 (defn relation-to-render
   "Returns the relation to be rendered in the context of the view."
   [model view rel]

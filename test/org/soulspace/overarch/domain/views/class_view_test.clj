@@ -1,11 +1,16 @@
 (ns org.soulspace.overarch.domain.views.class-view-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.class-view :refer :all]))
+            [org.soulspace.overarch.domain.views.class-view :refer :all]
+            [org.soulspace.overarch.domain.model :as model]))
+
+(def test-input
+  #{})
+(def test-model (model/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (boolean (render-model-element? {:el :class-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :class-view} y)))
       true {:el :package}
       true {:el :class}
       true {:el :field}
@@ -24,7 +29,7 @@
       true {:el :function}
       true {:el :protocol}))
   (testing "render-model-element? false"
-    (are [x y] (= x (boolean (render-model-element? {:el :class-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :class-view} y)))
       false {:el :state-machine}
       false {:el :start-state}
       false {:el :state}

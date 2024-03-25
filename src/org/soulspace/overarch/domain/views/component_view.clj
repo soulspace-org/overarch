@@ -19,22 +19,22 @@
    (el/internal? e)))
 
 (defmethod view/render-model-element? :component-view
-  [view e]
+  [model view e]
   (contains? el/component-view-element-types (:el e)))
 
 (defmethod view/include-content? :component-view
-  [view e]
+  [model view e]
   (and (contains? el/component-view-element-types (:el e))
        (el/boundary? e)))
 
 (defmethod view/render-relation-node? :component-view
-  [view e]
-  (and (view/render-model-element? view e)
+  [model view e]
+  (and (view/render-model-element? model view e)
        ; exclude system and container boundaries
        (not (as-boundary? e))))
 
 (defmethod view/element-to-render :component-view
-  [view e]
+  [model view e]
   (if (as-boundary? e)
       ; e has a boundary type and has children, render as boundary
     (assoc e :el (keyword (str (name (:el e)) "-boundary")))
