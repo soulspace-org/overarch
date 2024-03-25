@@ -290,11 +290,6 @@ A: An :include option in the view spec could contain different strategies for
    the automatic selection of content, e.g.
    * :relations to select all relations for the referenced model elements
    * :related to select all elements for the referenced relations
-   * :transitive or :convex-hull to select all elements reachable from the
-     referenced elements
-   * a map of selection criteria on the element attributes
-
-   It might make sense to combine (some of) these include options.
 
    Some views are rendered in a hierachical way, where only some top level
    elements have to be specified, and the content of these top level elements
@@ -308,6 +303,11 @@ A: An :include option in the view spec could contain different strategies for
    The include option should work for both kind of views by only make it more
    convenient to specify the elements as you would normally without the
    includes. It should have no influence on the rendering rules of the views.
+
+   A criteria based selection 
+   * :transitive or :convex-hull to select all elements reachable from the
+     referenced elements
+   * a map of selection criteria on the element attributes
 
 
 Q: **How should the rendering be implemented so that there is a clear separation between the selection of and iteration over the relevant content and the format specific rendering of the content?**
@@ -330,18 +330,14 @@ A: As said above, the rendering can be flat or hierarchical, depending on the
    elements and in the rendering functions.
 
 
-Q: **How can duplication reduced in views of specific instanciations of the model?**
-   
-   Use case:
-   Deployment view to different stages with replacement of the stage
-   variable with the name of the stage or stage specific values (e.g.
-   CIDR ranges, ...).
-   Merging of additional elements in the instantiation with elements in
-   the template, e.g. local queues for testing in the dev stage, which
-   are external in the prod stage.
+Q: **How should the content of the view be selected?**
 
-A: Parameterized views, view templates with variable replacement and element
-   merging (not implemented yet).
+A: The process could be
+   1. select elements by criteria, if provided
+   2. merge directly referenced elements
+   3. add additional elements from :include spec, if provided
+
+   Only relevant elements for the views shall be added/rendered.
 
 
 Q: **How can we avoid duplication for style specifications used in multiple views?**
@@ -458,6 +454,20 @@ A: The model should contain information like names and descriptions for most
    by elements of the architecture.
 
    Implemented. 
+
+
+Q: **How can duplication reduced in views of specific instanciations of the model?**
+   
+   Use case:
+   Deployment view to different stages with replacement of the stage
+   variable with the name of the stage or stage specific values (e.g.
+   CIDR ranges, ...).
+   Merging of additional elements in the instantiation with elements in
+   the template, e.g. local queues for testing in the dev stage, which
+   are external in the prod stage.
+
+A: Parameterized views, view templates with variable replacement and element
+   merging (not implemented yet).
 
 
 Q: **Whould overarch benefit from a generic generation mechanism with templates?**
