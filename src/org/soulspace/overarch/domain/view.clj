@@ -95,8 +95,8 @@
   [model view e]
   (or (and (el/model-relation? e)
            (render-model-element? model view (model/model-element model (:from e)))
-           (render-model-element? view (model/model-element model (:to e))))
-      (and (render-model-element? view e)
+           (render-model-element? model view (model/model-element model (:to e))))
+      (and (render-model-element? model view e)
            (el/internal? (model/parent model e)))))
 
 ;;
@@ -264,7 +264,7 @@
    (->> coll
         (map (partial model/resolve-element model))
         (filter (partial render-element? model view))
-        (map #(element-to-render view %)))))
+        (map #(element-to-render model view %)))))
 
 (defn elements-in-view
   "Returns the elements rendered in the view."
