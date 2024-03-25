@@ -72,6 +72,16 @@
   ([model]
    (concat (nodes model) (relations model))))
 
+(defn views
+  "Returns the set of views from the `model`."
+  [model]
+  (:views model))
+
+(defn themes
+  "Returns the set of themes from the `model`."
+  [model]
+  (:themes model))
+
 (defn parent
   "Returns the parent of the element `e`."
   [model e]
