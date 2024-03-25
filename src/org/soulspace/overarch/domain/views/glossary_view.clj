@@ -8,7 +8,7 @@
 
 (defmethod view/include-content? :glossary-view
   [model view e]
-  (contains? el/glossary-view-element-types (:el e)))
+  false)
 
 (defmethod view/element-to-render :glossary-view
   [model view e]
