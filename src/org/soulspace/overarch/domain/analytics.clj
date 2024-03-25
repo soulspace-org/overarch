@@ -139,6 +139,6 @@
 (defn check-views
   "Validates the references in the views."
   [model]
-  (->> (view/views model)
+  (->> (model/views model)
        (map (partial unresolved-refs model))
        (flatten)))

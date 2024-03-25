@@ -388,7 +388,7 @@
     (= :tech? k)
     #(= v (get % :tech false))
     (= :tech k)
-    #(contains? (fns/tokenize-string (:tech %)) v)
+    #(contains? (set (fns/tokenize-string (get % :tech ""))) v)
     (= :techs k)
     #(contains? v (:tech %))
     (= :all-techs k)
