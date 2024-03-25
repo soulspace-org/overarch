@@ -270,10 +270,10 @@
   (el/elements-by-namespace (:relations @repo/state))
   (el/elements-by-namespace (:views @repo/state))
 
-  (into #{} (el/filter-xf {:namespace "ddd"}) (repo/nodes))
-  (into #{} (el/filter-xf {:namespace "ddd"}) (repo/relations))
+  (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
+  (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
 
-  (into #{} (el/filter-xf {:subtype :queue}) (repo/nodes))
+  (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
 
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
