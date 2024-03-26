@@ -2,17 +2,22 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.context-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]))
+            [org.soulspace.overarch.domain.model-test :as model-test]
+            [org.soulspace.overarch.domain.model :as model]))
+
+(def test-input
+  #{})
+(def test-model (model/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (boolean (render-model-element? {:el :context-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :context-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}))
   (testing "render-model-element? false"
-    (are [x y] (= x (boolean (render-model-element? {:el :context-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :context-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :container}
@@ -55,11 +60,11 @@
 
 (deftest include-content?-test
   (testing "include-content? true"
-    (are [x y] (= x (boolean (include-content? {:el :context-view} y)))
+    (are [x y] (= x (boolean (include-content? test-model {:el :context-view} y)))
       true {:el :enterprise-boundary}
       true {:el :context-boundary}))
   (testing "include-content? false"
-    (are [x y] (= x (boolean (include-content? {:el :context-view} y)))
+    (are [x y] (= x (boolean (include-content? test-model {:el :context-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :person}

@@ -2,17 +2,22 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.system-landscape-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]))
+            [org.soulspace.overarch.domain.model-test :as model-test]
+            [org.soulspace.overarch.domain.model :as model]))
+
+(def test-input
+  #{})
+(def test-model (model/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
-    (are [x y] (= x (boolean (render-model-element? {:el :system-landscape-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :system-landscape-view} y)))
       true {:el :person}
       true {:el :system}
       true {:el :enterprise-boundary}
       true {:el :context-boundary}))
   (testing "render-model-element? false"
-    (are [x y] (= x (boolean (render-model-element? {:el :system-landscape-view} y)))
+    (are [x y] (= x (boolean (render-model-element? test-model {:el :system-landscape-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :container}

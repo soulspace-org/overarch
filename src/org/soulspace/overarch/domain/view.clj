@@ -16,32 +16,14 @@
   "Returns the type of the `view`."
   ([view]
    (:el view))
-  ([view & _]
+  ([model view]
+   (view-type view))
+  ([model view & _]
    (view-type view)))
-
-(defn views
-  "Returns the set of views from the `model`."
-  [model]
-  (:views model))
-
-(defn themes
-  "Returns the set of themes from the `model`."
-  [model]
-  (:themes model))
-
-(defn view
-  "Returns the view with the given `id` from the `model`."
-  ([model id]
-   ((:id->element model) id)))
 
 ;;
 ;; View spec elements
 ;;
-
-(defn layout-spec
-  "Returns the layout specification for the `view`."
-  ([view]
-   (get-in view [:spec :layout] :top-down)))
 
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
@@ -50,17 +32,25 @@
        (map (partial model/resolve-element model))
        (map :styles)))
 
-(defn styles-spec
-  "Returns the styles specification for the `model` and the `view`."
-  [model view]
-  (apply set/union (conj
-                    (themes->styles model view)
-                    (get-in view [:spec :styles] #{}))))
-
 (defn include-spec
   "Returns the include specification for the `view`."
   [view]
   (get-in view [:spec :include] :referenced-only))
+
+(defn layout-spec
+  "Returns the layout specification for the `view`."
+  ([view]
+   (get-in view [:spec :layout] :top-down)))
+
+(defn legend-spec
+  "Returns the legend specification for the `view`."
+  ([view]
+   (get-in view [:spec :legend] true)))
+
+(defn linetype-spec
+  "Returns the linetype specification for the `view`."
+  [view]
+  (get-in view [:spec :linetype]))
 
 (defn selection-spec
   "Returns the selection specification for the `view`."
@@ -72,10 +62,12 @@
   [view]
   (get-in view [:spec :sketch]))
 
-(defn linetype-spec
-  "Returns the linetype specification for the `view`."
-  [view]
-  (get-in view [:spec :linetype]))
+(defn styles-spec
+  "Returns the styles specification for the `model` and the `view`."
+  [model view]
+  (apply set/union (conj
+                    (themes->styles model view)
+                    (get-in view [:spec :styles] #{}))))
 
 ;;;
 ;;; View functions
@@ -85,53 +77,21 @@
 ;; Context based content filtering
 ;;
 (defmulti render-model-element?
-  "Returns true if the element `e` is rendered in the `view`"
+  "Returns true if the element `e` is rendered in the `view` in the context of the `model`."
   view-type)
 
 (defmulti include-content?
-  "Returns true if the content of element `e` is rendered in the `view`"
-  view-type)
-
-(defmulti render-relation-node?
-  "Returns true if the node will"
+  "Returns true if the content of element `e` is rendered in the `view` in the context of the `model`."
   view-type)
 
 (defmulti element-to-render
-  "Returns the model element to be rendered for element `e` for the `view`.
+  "Returns the model element to be rendered for element `e` for the `view` in the context of the `model`.
    Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   view-type)
 
-(defn render-element?
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [model view e]
-  (or (and (= :rel (:el e))
-           (render-model-element? view (model/model-element model (:from e)))
-           (render-model-element? view (model/model-element model (:to e))))
-      (and (render-model-element? view e)
-           (el/internal? (model/parent model e)))))
-
-(defn render-relation?
-  "Returns true if the relation should be rendered in the context of the view."
-  [model rel pred]
-  (let [rendered? pred
-        from (model/resolve-element model (:from rel))
-        to   (model/resolve-element model (:to rel))]
-    (when (and (rendered? rel) (rendered? from) (rendered? to))
-      rel)))
-
-(defn relation-to-render
-  "Returns the relation to be rendered in the context of the view."
-  [model view rel]
-  (let [; rendered? (render-predicate m view-type)
-        from (model/resolve-element model (:from rel))
-        to   (model/resolve-element model (:to rel))]))
-  ; TODO promote relations to higher levels?
-  
 ;;
 ;; View based element aggregation
 ;;
-
 (defn referenced-model-nodes
   "Returns the model nodes explicitly referenced in the given view."
   [model view]
@@ -293,8 +253,8 @@
   ([model view coll]
    (->> coll
         (map (partial model/resolve-element model))
-        (filter (partial render-element? model view))
-        (map #(element-to-render view %)))))
+        (filter (partial render-model-element? model view))
+        (map #(element-to-render model view %)))))
 
 (defn elements-in-view
   "Returns the elements rendered in the view."

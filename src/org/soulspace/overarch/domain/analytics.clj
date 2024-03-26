@@ -54,6 +54,20 @@
        (frequencies)
        (into (sorted-map))))
 
+(defn count-external
+  "Returns a map with the count of external and internal elements in the given `coll`."
+  [coll]
+  (->> coll
+       (map #(if (:external %) :external :internal))
+       (frequencies)))
+
+(defn count-synthetic
+  "Returns a map with the count of synthetic and normal elements in the given `coll`."
+  [coll]
+  (->> coll
+       (map #(if (:synthetic %) :synthetic :normal))
+       (frequencies)))
+
 (defn unidentifiable-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
@@ -139,6 +153,6 @@
 (defn check-views
   "Validates the references in the views."
   [model]
-  (->> (view/views model)
+  (->> (model/views model)
        (map (partial unresolved-refs model))
        (flatten)))

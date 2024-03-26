@@ -4,18 +4,14 @@
 
 
 (defmethod view/render-model-element? :context-view
-  [view e]
+  [model view e]
   (contains? el/context-view-element-types (:el e)))
 
 (defmethod view/include-content? :context-view
-  [view e]
+  [model view e]
   (and (contains? el/context-view-element-types (:el e))
        (el/boundary? e)))
 
-(defmethod view/render-relation-node? :context-view
-  [view e]
-  (view/render-model-element? view e))
-
 (defmethod view/element-to-render :context-view
-  [view e]
+  [model view e]
   e)

@@ -1,6 +1,7 @@
 (ns org.soulspace.overarch.domain.views.component-view
   (:require [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.view :as view]))
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.domain.model :as model]))
 
 (def element->boundary
   "Maps model types to boundary types depending on the view type."
@@ -11,36 +12,49 @@
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
   [e]
-  (and
-   ; has children
-   (seq (:ct e))
-   ; has a boundary mapping for this diagram-type
-   (element->boundary (:el e))
-   (el/internal? e)))
+  (when (seq e)
+    (or (el/boundary? e) ; regular boundary
+        (and
+         (seq (:ct e)) ; has children 
+         (element->boundary (:el e)) ; has a boundary mapping for this diagram-type
+         (el/internal? e)))))
+
+(defn render-model-node?
+  "Returns true if the node `e` is rendered in the component view."
+  [model view e]
+  (let [p (model/parent model e)]
+    (and (contains? el/component-view-element-types (:el e))
+         (or (not p) ; has no parent
+             (as-boundary? p) ; parent is rendered as boundary
+             ))))
+
+(defn render-model-relation?
+  "Returns true if the relation `e` is rendered in the container view."
+  [model view e]
+  (let [from (model/model-element model (:from e))
+        to (model/model-element model (:to e))]
+    (and (contains? el/component-view-element-types (:el e))
+         (render-model-node? model view from)
+         (render-model-node? model view to)
+         ; exclude system boundaries
+         (or (not (as-boundary? from))
+             (not (as-boundary? to))))))
 
 (defmethod view/render-model-element? :component-view
-  [view e]
-  (contains? el/component-view-element-types (:el e)))
+  [model view e]
+  (if (el/model-relation? e)
+   (render-model-relation? model view e)
+   (render-model-node? model view e)))
 
 (defmethod view/include-content? :component-view
-  [view e]
+  [model view e]
   (and (contains? el/component-view-element-types (:el e))
        (el/boundary? e)))
 
-(defmethod view/render-relation-node? :component-view
-  [view e]
-  (and (view/render-model-element? view e)
-       ; exclude system and container boundaries
-       (not (as-boundary? e))))
-
 (defmethod view/element-to-render :component-view
-  [view e]
+  [model view e]
   (if (as-boundary? e)
-      ; e has a boundary type and has children, render as boundary
-    (assoc e :el (keyword (str (name (:el e)) "-boundary")))
-      ; render e as normal model element
+    ; e should be rendered as a boundary
+    (assoc e :el (element->boundary (:el e)))
+    ; render e as normal model element
     e))
-
-(comment
-;
-  )
