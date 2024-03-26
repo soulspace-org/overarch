@@ -15,11 +15,11 @@
         {:ref :overarch.use-case/model-system}
         {:ref :overarch.use-case/define-views}
         {:ref :overarch.use-case/export-model}
-        {:ref :overarch.use-case/export-json}
-        {:ref :overarch.use-case/export-structurizr}
+        {:ref :overarch.use-case/export-json :direction :up}
+        {:ref :overarch.use-case/export-structurizr :direction :up}
         {:ref :overarch.use-case/render-views}
-        {:ref :overarch.use-case/render-plantuml}
-        {:ref :overarch.use-case/render-markdown}
-        {:ref :overarch.use-case/render-graphviz}]}
+        {:ref :overarch.use-case/render-plantuml :direction :up}
+        {:ref :overarch.use-case/render-markdown :direction :up}
+        {:ref :overarch.use-case/render-graphviz :direction :up}]}
 
 }  
