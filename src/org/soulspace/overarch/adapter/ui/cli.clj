@@ -147,10 +147,15 @@
 (defn model-info
   "Reports information about the model and views."
   [model options]
-  {:nodes     (into (sorted-map) (al/count-nodes (repo/nodes)))
-   :relations (into (sorted-map) (al/count-relations (repo/relations)))
-   :views     (into (sorted-map) (al/count-views (repo/views)))
-   ;:namespaces (into (sorted-map) (al/count-namespaces (repo/elements)))
+  {:nodes           (count (repo/nodes))
+   :nodes-types     (al/count-nodes (repo/nodes))
+   :relations       (count (repo/relations))
+   :relations-types (al/count-relations (repo/relations))
+   :views           (count (repo/views))
+   :views-types     (al/count-views (repo/views))
+   :namespaces      (al/count-namespaces (repo/model-elements))
+   :external        (al/count-external (repo/model-elements))
+   :synthetic       (al/count-external (repo/model-elements))
    })
 
 (defn print-sprite-mappings
@@ -253,26 +258,29 @@
 
   (repo/update-state! "models")
 
-  (al/count-namespaces (repo/elements))
-  (al/count-elements (repo/elements))
+  (al/count-namespaces (concat (repo/nodes) (repo/relations)))
+  (al/count-elements (concat (repo/nodes) (repo/relations)))
   (al/count-nodes (repo/nodes))
   (al/count-relations (repo/relations))
   (al/count-views (repo/views))
-  (al/unidentifiable-elements (repo/elements))
-  (al/unnamespaced-elements (repo/elements))
+
+  (al/count-external (concat (repo/nodes) (repo/relations)))
+  (al/count-synthetic (concat (repo/nodes) (repo/relations)))
+
+  (al/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
+  (al/unnamespaced-elements (concat (repo/nodes) (repo/relations)))
   (al/unrelated-nodes @repo/state)
   (al/check-relations @repo/state)
   (al/check-views @repo/state)
   (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
   (al/unmatched-relation-namespaces (repo/relations))
 
-  (el/elements-by-namespace (:nodes @repo/state))
-  (el/elements-by-namespace (:relations @repo/state))
-  (el/elements-by-namespace (:views @repo/state))
+  (el/elements-by-namespace (repo/nodes))
+  (el/elements-by-namespace (repo/relations))
+  (el/elements-by-namespace (repo/views))
 
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
-
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
 
   (-main "--debug")
