@@ -53,7 +53,7 @@
 
 (defmethod view/element-to-render :component-view
   [model view e]
-  (if (as-boundary? e)
+  (if (and (as-boundary? e) (element->boundary (:el e)))
     ; e should be rendered as a boundary
     (assoc e :el (element->boundary (:el e)))
     ; render e as normal model element
