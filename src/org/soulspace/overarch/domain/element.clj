@@ -1,7 +1,12 @@
 ;;;;
-;;;; contains element specific logic
+;;;; Contains element specific logic
 ;;;;
 (ns org.soulspace.overarch.domain.element
+  "This namespace contains element specific logic.
+   It defines the different element categories of model elements and views
+   and the hierarchical relationships. The namespace also defines predicates
+   to query the elements and functionality requiring only elements or collections
+   of elements without references to the model as a whole."
   (:require [clojure.string :as str]
             [clojure.set :as set]))
 
@@ -561,7 +566,6 @@
   (comp (remove relational?)
         (remove view?)
         ids-xf))
-
 
 ;;
 ;; Functions 
