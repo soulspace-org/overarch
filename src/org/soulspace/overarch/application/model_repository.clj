@@ -35,25 +35,29 @@
        (model/build-model)
        (reset! state)))
 
+(defn model
+  "Returns the model."
+  []
+  @state)
 
 (defn elements
-  "Returns the set of elements."
+  "Returns the set of input elements."
   ([]
-   (:elements @state))
+   (elements (model)))
   ([model]
    (:elements model)))
 
 (defn nodes
   "Returns the set of nodes."
   ([]
-   (:nodes @state))
+   (nodes (model)))
   ([model]
    (:nodes model)))
 
 (defn node-by-id
   "Returns the node with the given `id`."
   ([id]
-   (node-by-id @state id))
+   (node-by-id (model) id))
   ([model id]
    (when-let [el (get (:id->element model) id)]
      (when (el/model-node? el)
@@ -62,30 +66,37 @@
 (defn relations
   "Returns the set of relations."
   ([]
-   (relations @state))
+   (relations (model)))
   ([model]
    (:relations model)))
 
 (defn relation-by-id
   "Returns the relation with the given `id`."
   ([id]
-   (relation-by-id @state id))
+   (relation-by-id (model) id))
   ([model id]
    (when-let [el (get (:id->element model) id)]
      (when (el/model-relation? el)
        el))))
 
+(defn model-elements
+  "Returns the set of model elements (nodes and relations)."
+  ([]
+   (model-elements (nodes)))
+  ([model]
+   (concat (nodes model) (relations model))))
+
 (defn views
   "Returns the set of views."
   ([]
-   (:views @state))
+   (views (model)))
   ([model]
    (:views model)))
 
 (defn view-by-id
   "Returns the view with the given `id`."
   ([id]
-   (view-by-id @state id))
+   (view-by-id (model) id))
   ([model id]
    (when-let [el (get (:id->element model) id)]
      (when (el/view? el)
@@ -94,25 +105,27 @@
 (comment
   (update-state! "models")
 
-  (= (:id->parent @state) (el/traverse model/id->parent (:elements @state)))
-  (= (:id->element @state) (el/traverse el/identifiable? model/id->element (:elements @state)))
-  (= (:id->parent @state) (el/traverse el/model-node? model/id->parent (:elements @state)))
-  (= (:referred-id->relations @state) (el/traverse el/model-relation? model/referred-id->rel (:elements @state)))
-  (= (:referrer-id->relations @state) (el/traverse el/model-relation? model/referrer-id->rel (:elements @state)))
+  (= (:id->parent (model)) (el/traverse el/id->parent (elements)))
+  (= (:id->element (model)) (el/traverse el/identifiable? el/id->element (elements)))
+  (= (:id->parent (model)) (el/traverse el/model-node? el/id->parent (elements)))
+  (= (:referred-id->relations @state) (el/traverse el/model-relation? el/referred-id->rel (elements)))
+  (= (:referrer-id->relations @state) (el/traverse el/model-relation? el/referrer-id->rel (elements)))
   (model/build-model (elements))
 
   (count (nodes))
+  (count (relations))
+  (count (views))
 
-  (view/specified-model-nodes @state (view-by-id :banking/system-context-view))
-  (view/specified-relations @state (view-by-id :banking/system-context-view))
-  (view/specified-elements @state (view-by-id :test/banking-container-view-related))
-  (view/specified-elements @state (view-by-id :test/banking-container-view-relations))
+  (view/specified-model-nodes (model) (view-by-id :banking/system-context-view))
+  (view/specified-relations (model) (view-by-id :banking/system-context-view))
+  (view/specified-elements (model) (view-by-id :test/banking-container-view-related))
+  (view/specified-elements (model) (view-by-id :test/banking-container-view-relations))
 
-  (model/related-nodes @state (view/referenced-relations @state (view-by-id :test/banking-container-view-related)))
-  (model/relations-of-nodes @state (view/referenced-model-nodes @state (view-by-id :test/banking-container-view-relations)))
+  (model/related-nodes (model) (view/referenced-relations (model) (view-by-id :test/banking-container-view-related)))
+  (model/relations-of-nodes (model) (view/referenced-model-nodes (model) (view-by-id :test/banking-container-view-relations)))
 
-  (view/elements-in-view @state (view-by-id :banking/container-view))
-  (view/technologies-in-view @state (view-by-id :banking/container-view))
+  (view/elements-in-view (model) (view-by-id :banking/container-view))
+  (view/technologies-in-view (model) (view-by-id :banking/container-view))
 
   ;
   :rcf)
