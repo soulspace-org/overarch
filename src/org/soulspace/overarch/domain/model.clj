@@ -329,6 +329,7 @@
    :nodes                  -> the set of nodes (incl. child nodes)
    :relations              -> the set of relations (incl. contains relations)
    :views                  -> the set of views
+   :themes                 -> the set of themes
    :id->element            -> a map from id to element (nodes, relations and views)
    :id->parent             -> a map from id to parent element
    :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
