@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.component-view :refer :all]
-            [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 
 (def test-input
@@ -12,13 +11,17 @@
 (deftest as-boundary?-test
   (testing "as-boundary? true"
     (are [x y] (= x (boolean (as-boundary? y)))
+      true {:el :enterprise-boundary :ct #{{:el :system}}}
+      true {:el :context-boundary :ct #{{:el :container}}}
       true {:el :system :ct #{{:el :container}}}
       true {:el :container :ct #{{:el :component}}}))
   (testing "as-boundary? false"
     (are [x y] (= x (boolean (as-boundary? y)))
       false {:el :system}
       false {:el :container}
-      false {:el :component})))
+      false {:el :component}
+      false {:el :system :external true :ct #{{:el :container}}}
+      false {:el :container :external true :ct #{{:el :component}}})))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"

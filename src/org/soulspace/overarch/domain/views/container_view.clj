@@ -12,18 +12,21 @@
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
   [e]
-  (and
-   ; has children
-   (seq (:ct e))
-   ; has a boundary mapping for this diagram-type
-   (element->boundary (:el e))
-   (el/internal? e)))
+  (when (seq e)
+   (or (el/boundary? e) ; regular boundary
+       (and
+        (seq (:ct e)) ; has children 
+        (element->boundary (:el e)) ; has a boundary mapping for this diagram-type
+        (el/internal? e)))))
 
 (defn render-model-node?
   "Returns true if the node `e` is rendered in the container view."
   [model view e]
-  (and (contains? el/container-view-element-types (:el e))
-       (el/internal? (model/parent model e))))
+  (let [p (model/parent model e)]
+   (and (contains? el/container-view-element-types (:el e))
+        (or (not p) ; has no parent
+            (as-boundary? p) ; parent is rendered as boundary
+            ))))
 
 (defn render-model-relation?
   "Returns true if the relation `e` is rendered in the container view."
@@ -51,7 +54,7 @@
 (defmethod view/element-to-render :container-view
   [model view e]
   (if (as-boundary? e)
-    ; e has a boundary type and has children, render as boundary
-    (assoc e :el (keyword (str (name (:el e)) "-boundary")))
+    ; e should be rendered as a boundary
+    (assoc e :el (element->boundary (:el e)))
     ; render e as normal model element
     e))

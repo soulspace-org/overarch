@@ -89,16 +89,6 @@
    Maps some elements to other elements (e.g. boundaries), depending on the type of view."
   view-type)
 
-(defn render-element?
-  "Returns true if the element is should be rendered for this view type.
-   Checks both sides of a relation."
-  [model view e]
-  (or (and (el/model-relation? e)
-           (render-model-element? model view (model/model-element model (:from e)))
-           (render-model-element? model view (model/model-element model (:to e))))
-      (and (render-model-element? model view e)
-           (el/internal? (model/parent model e)))))
-
 ;;
 ;; View based element aggregation
 ;;
@@ -263,7 +253,7 @@
   ([model view coll]
    (->> coll
         (map (partial model/resolve-element model))
-        (filter (partial render-element? model view))
+        (filter (partial render-model-element? model view))
         (map #(element-to-render model view %)))))
 
 (defn elements-in-view
