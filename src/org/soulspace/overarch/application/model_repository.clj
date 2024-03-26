@@ -54,30 +54,12 @@
   ([model]
    (:nodes model)))
 
-(defn node-by-id
-  "Returns the node with the given `id`."
-  ([id]
-   (node-by-id (model) id))
-  ([model id]
-   (when-let [el (get (:id->element model) id)]
-     (when (el/model-node? el)
-       el))))
-
 (defn relations
   "Returns the set of relations."
   ([]
    (relations (model)))
   ([model]
    (:relations model)))
-
-(defn relation-by-id
-  "Returns the relation with the given `id`."
-  ([id]
-   (relation-by-id (model) id))
-  ([model id]
-   (when-let [el (get (:id->element model) id)]
-     (when (el/model-relation? el)
-       el))))
 
 (defn model-elements
   "Returns the set of model elements (nodes and relations)."
@@ -93,6 +75,31 @@
   ([model]
    (:views model)))
 
+(defn themes
+  "Returns the set of themes."
+  ([]
+   (themes (model)))
+  ([model]
+   (:themes model)))
+
+(defn node-by-id
+  "Returns the node with the given `id`."
+  ([id]
+   (node-by-id (model) id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/model-node? el)
+       el))))
+
+(defn relation-by-id
+  "Returns the relation with the given `id`."
+  ([id]
+   (relation-by-id (model) id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/model-relation? el)
+       el))))
+
 (defn view-by-id
   "Returns the view with the given `id`."
   ([id]
@@ -104,17 +111,13 @@
 
 (comment
   (update-state! "models")
-
-  (= (:id->parent (model)) (el/traverse el/id->parent (elements)))
-  (= (:id->element (model)) (el/traverse el/identifiable? el/id->element (elements)))
-  (= (:id->parent (model)) (el/traverse el/model-node? el/id->parent (elements)))
-  (= (:referred-id->relations @state) (el/traverse el/model-relation? el/referred-id->rel (elements)))
-  (= (:referrer-id->relations @state) (el/traverse el/model-relation? el/referrer-id->rel (elements)))
+  
   (model/build-model (elements))
 
   (count (nodes))
   (count (relations))
   (count (views))
+  (count (themes))
 
   (view/specified-model-nodes (model) (view-by-id :banking/system-context-view))
   (view/specified-relations (model) (view-by-id :banking/system-context-view))
