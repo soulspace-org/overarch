@@ -1,11 +1,16 @@
 Changelog
 =========
 
-
 Version 0.15.0
 --------------
-* enhanced view rendering rules
-
+* added selection criteria
+* added specs for criteria
+* added analytics functions
+* added accessors in model-repository
+* enhanced model-info output
+* refactored view rendering rules
+* updated tests
+* updated documentation
 
 Version 0.14.0
 --------------
