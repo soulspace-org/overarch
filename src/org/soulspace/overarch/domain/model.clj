@@ -396,7 +396,7 @@
     (= :tech? k)
     #(= v (get % :tech false))
     (= :tech k)
-    #(contains? (set (fns/tokenize-string (get % :tech ""))) v) ; TODO create set on load
+    #(contains? (set (el/technologies %)) v) ; TODO create vector on load
     (= :techs k)
     #(contains? v (:tech %))
     (= :all-techs k)

@@ -8,7 +8,8 @@
    to query the elements and functionality requiring only elements or collections
    of elements without references to the model as a whole."
   (:require [clojure.string :as str]
-            [clojure.set :as set]))
+            [clojure.set :as set]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Category definitions
@@ -732,7 +733,14 @@
   [e c]
   (contains? (descendant-nodes e) c))
 
+(defn technologies
+  "Returns a vector of the technologies used by the element `e`."
+  [e]
+  (fns/tokenize-string (get e :tech ""))
+  )
+
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   [coll]
   (traverse :tech tech-collector coll))
+
