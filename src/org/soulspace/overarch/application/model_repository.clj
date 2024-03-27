@@ -40,12 +40,12 @@
   []
   @state)
 
-(defn elements
+(defn input-elements
   "Returns the set of input elements."
   ([]
-   (elements (model)))
+   (input-elements (model)))
   ([model]
-   (:elements model)))
+   (:input-elements model)))
 
 (defn nodes
   "Returns the set of nodes."
@@ -112,7 +112,7 @@
 (comment
   (update-state! "models")
   
-  (model/build-model (elements))
+  (model/build-model (input-elements))
 
   (count (nodes))
   (count (relations))
