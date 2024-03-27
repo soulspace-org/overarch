@@ -76,7 +76,7 @@
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
   [model options view]
-  (let [elements (sort-by :id (view/rendered-model-nodes model view))]
+  (let [elements (sort-by :id (view/rendered-nodes model view))]
     (flatten [(md/h1 (:title view))
               (map #(render-element model % options view) elements)])))
 

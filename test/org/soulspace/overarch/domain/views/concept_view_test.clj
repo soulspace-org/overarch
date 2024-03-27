@@ -90,9 +90,9 @@
   (let [concept1 model-test/concept-model1]
     (testing "referenced-model-nodes for concept view"
       (are [x y] (= x y)
-        3 (count (referenced-model-nodes concept1 concept-view1))
-        0 (count (referenced-model-nodes concept1 concept-view1-related))
-        3 (count (referenced-model-nodes concept1 concept-view1-relations))))))
+        3 (count (referenced-nodes concept1 concept-view1))
+        0 (count (referenced-nodes concept1 concept-view1-related))
+        3 (count (referenced-nodes concept1 concept-view1-relations))))))
 
 (deftest referenced-relations-test
   (let [concept1 model-test/concept-model1]
@@ -114,9 +114,9 @@
   (let [concept1 model-test/concept-model1]
     (testing "specified-model-nodes for concept view"
       (are [x y] (= x y)
-        3 (count (specified-model-nodes concept1 concept-view1))
-        3 (count (specified-model-nodes concept1 concept-view1-related))
-        3 (count (specified-model-nodes concept1 concept-view1-relations))))))
+        3 (count (specified-nodes concept1 concept-view1))
+        3 (count (specified-nodes concept1 concept-view1-related))
+        3 (count (specified-nodes concept1 concept-view1-relations))))))
 
 (deftest specified-relations-test
   (let [concept1 model-test/concept-model1]
@@ -136,18 +136,18 @@
 
 (comment
   (def concept1 model-test/concept-model1)
-  (referenced-model-nodes concept1 concept-view1)
-  (referenced-model-nodes concept1 concept-view1-related)
-  (referenced-model-nodes concept1 concept-view1-relations)
+  (referenced-nodes concept1 concept-view1)
+  (referenced-nodes concept1 concept-view1-related)
+  (referenced-nodes concept1 concept-view1-relations)
   (referenced-relations concept1 concept-view1)
   (referenced-relations concept1 concept-view1-related)
   (referenced-relations concept1 concept-view1-relations)
   (referenced-elements concept1 concept-view1)
   (referenced-elements concept1 concept-view1-related)
   (referenced-elements concept1 concept-view1-relations)
-  (specified-model-nodes concept1 concept-view1)
-  (specified-model-nodes concept1 concept-view1-related)
-  (specified-model-nodes concept1 concept-view1-relations)
+  (specified-nodes concept1 concept-view1)
+  (specified-nodes concept1 concept-view1-related)
+  (specified-nodes concept1 concept-view1-relations)
   (specified-relations concept1 concept-view1)
   (specified-relations concept1 concept-view1-related)
   (specified-relations concept1 concept-view1-relations)

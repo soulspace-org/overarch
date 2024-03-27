@@ -119,13 +119,13 @@
   (count (views))
   (count (themes))
 
-  (view/specified-model-nodes (model) (view-by-id :banking/system-context-view))
+  (view/specified-nodes (model) (view-by-id :banking/system-context-view))
   (view/specified-relations (model) (view-by-id :banking/system-context-view))
   (view/specified-elements (model) (view-by-id :test/banking-container-view-related))
   (view/specified-elements (model) (view-by-id :test/banking-container-view-relations))
 
   (model/related-nodes (model) (view/referenced-relations (model) (view-by-id :test/banking-container-view-related)))
-  (model/relations-of-nodes (model) (view/referenced-model-nodes (model) (view-by-id :test/banking-container-view-relations)))
+  (model/relations-of-nodes (model) (view/referenced-nodes (model) (view-by-id :test/banking-container-view-relations)))
 
   (view/elements-in-view (model) (view-by-id :banking/container-view))
   (view/technologies-in-view (model) (view-by-id :banking/container-view))

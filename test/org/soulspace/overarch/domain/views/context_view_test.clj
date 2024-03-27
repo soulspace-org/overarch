@@ -138,9 +138,9 @@
   (let [c4-1 model-test/c4-model1]
     (testing "referenced-model-nodes for context view"
       (are [x y] (= x y)
-        3 (count (referenced-model-nodes c4-1 context-view1))
-        0 (count (referenced-model-nodes c4-1 context-view1-related))
-        3 (count (referenced-model-nodes c4-1 context-view1-relations))))))
+        3 (count (referenced-nodes c4-1 context-view1))
+        0 (count (referenced-nodes c4-1 context-view1-related))
+        3 (count (referenced-nodes c4-1 context-view1-relations))))))
 
 (deftest referenced-relations-test
   (let [c4-1 model-test/c4-model1]
@@ -163,9 +163,9 @@
     ; TODO check
     (testing "specified-model-nodes for context view"
       (are [x y] (= x y)
-        3 (count (specified-model-nodes c4-1 context-view1))
-        3 (count (specified-model-nodes c4-1 context-view1-related))
-        3 (count (specified-model-nodes c4-1 context-view1-relations))))))
+        3 (count (specified-nodes c4-1 context-view1))
+        3 (count (specified-nodes c4-1 context-view1-related))
+        3 (count (specified-nodes c4-1 context-view1-relations))))))
 
 (deftest specified-relations-test
   (let [c4-1 model-test/c4-model1]
@@ -187,13 +187,13 @@
 
 (comment
   (def c4-1 model-test/c4-model1)
-  (referenced-model-nodes c4-1 context-view1)
-  (referenced-model-nodes c4-1 context-view1-related)
-  (referenced-model-nodes c4-1 context-view1-relations)
+  (referenced-nodes c4-1 context-view1)
+  (referenced-nodes c4-1 context-view1-related)
+  (referenced-nodes c4-1 context-view1-relations)
 
   (referenced-relations c4-1 context-view1)
   (referenced-elements c4-1 context-view1)
-  (specified-model-nodes c4-1 context-view1)
+  (specified-nodes c4-1 context-view1)
   (specified-relations c4-1 context-view1)
   (specified-elements c4-1 context-view1)
 

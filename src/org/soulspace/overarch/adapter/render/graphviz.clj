@@ -59,7 +59,7 @@
 (defn render-graphviz-view
   "Renders the `view` with graphviz according to the given `options`."
   [model options view]
-  (let [elements (concat (sort-by :id (view/rendered-model-nodes model view))
+  (let [elements (concat (sort-by :id (view/rendered-nodes model view))
                          (sort-by :id (view/rendered-relations model view)))]
     (flatten [(str "digraph \"" (:title view) "\" {")
               "labelloc= \"t\""
