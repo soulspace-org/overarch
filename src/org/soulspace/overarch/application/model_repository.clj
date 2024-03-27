@@ -64,7 +64,7 @@
 (defn model-elements
   "Returns the set of model elements (nodes and relations)."
   ([]
-   (model-elements (nodes)))
+   (model-elements (model)))
   ([model]
    (concat (nodes model) (relations model))))
 

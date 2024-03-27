@@ -155,7 +155,7 @@
    :views-types     (al/count-views (repo/views))
    :namespaces      (al/count-namespaces (repo/model-elements))
    :external        (al/count-external (repo/model-elements))
-   :synthetic       (al/count-external (repo/model-elements))
+   :synthetic       (al/count-synthetic (repo/model-elements))
    })
 
 (defn print-sprite-mappings

@@ -13,6 +13,7 @@ Version 0.15.0
 * updated tests
 * updated documentation
 
+
 Version 0.14.0
 --------------
 * added selection of model elements by criteria
