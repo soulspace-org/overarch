@@ -214,7 +214,6 @@
     :state-machine-view :class-view
     :glossary-view})
 
-
 ;;;
 ;;; Hierarchy of element types
 ;;;
@@ -720,6 +719,11 @@
   [e]
   (when (model-node? e)
     (traverse model-node? tree->set (:ct e))))
+
+(defn descendant?
+  "Returns true, if `c` is a descendant of `e`."
+  [e c]
+  (contains? (descendant-nodes e) c))
 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."

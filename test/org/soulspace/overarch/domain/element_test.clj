@@ -1148,3 +1148,19 @@
               :name "Internal Person"}]}
            (elements-by-namespace elements)))))
 
+(def desc-data
+  {:el :system
+   :id :a/system
+   :ct #{{:el :container
+          :id :a/container
+          :ct #{{:el :component
+                 :id :a/component}}}}})
+
+(deftest descendant?-test
+  (testing "descendant? true"
+    (are [x y] (= x (descendant? desc-data y))
+      true {:el :container :id :a/container
+            :ct #{{:el :component
+                   :id :a/component}}}
+      true {:el :component :id :a/component})))
+
