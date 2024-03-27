@@ -93,10 +93,20 @@
   (:ct e))
 
 (defn ancestor-nodes
-  [model e]
   "Returns the ancestor nodes of the `node`."
+  [model e]
   ; TODO loop over parents and add them to a vector.
   )
+
+(defn ancestor?
+  "Returns true, if `c` is an ancestor of `e` in the `model`."
+  [model e c]
+  (loop [p (parent model e)]
+    (if (seq p)
+      (if (= (:id p) (:id e))
+        true
+        (recur (parent model p)))
+      false)))
 
 (defn all-elements
   "Returns a set of all elements."
