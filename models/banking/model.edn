@@ -216,7 +216,7 @@
    :to :banking/transaction-concept
    :name "reflects"}
   {:el :rel
-   :id :banking/internet-banking-system-implements-internet-banking
+   :id :banking/internet-banking-system-implements-internet-banking-concept
    :from :banking/internet-banking-system
    :to :banking/internet-banking-concept
    :name "implements"}
