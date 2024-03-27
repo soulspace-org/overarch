@@ -7,7 +7,7 @@ Version 0.15.0
 * added specs for criteria
 * added analytics functions
 * added accessors in model-repository
-* added hierarchy related functions like ancestors/descenants
+* added hierarchy related functions for ancestor/descendant nodes
 * enhanced model-info output
 * refactored view rendering rules
 * updated tests
