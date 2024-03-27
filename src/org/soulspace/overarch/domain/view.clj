@@ -93,41 +93,41 @@
 ;; View based element aggregation
 ;;
 (defn referenced-model-nodes
-  "Returns the model nodes explicitly referenced in the given view."
+  "Returns the model nodes explicitly referenced in the given `view`."
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
        (filter el/model-node?)))
 
 (defn referenced-relations
-  "Returns the relations explicitly referenced in the given view."
+  "Returns the relations explicitly referenced in the given `view`."
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))
        (filter el/model-relation?)))
 
 (defn referenced-elements
-  "Returns the relations explicitly referenced in the given view."
+  "Returns the relations explicitly referenced in the given `view`."
   [model view]
   (->> (:ct view)
        (map (partial model/resolve-element model))))
 
 (defn selected-model-nodes
-  "Returns the model elements selected by criteria"
+  "Returns the model nodes selected by criteria for the `view`."
   [model view]
   (if-let [criteria (get-in view [:spec :selection])]
     (filter (model/filter-xf model criteria) (:nodes model))
     #{}))
 
 (defn selected-model-relations
-  "Returns the model elements selected by criteria"
+  "Returns the model relations selected by criteria for the `view`."
   [model view]
   (if-let [criteria (get-in view [:spec :selection])]
     (filter (model/filter-xf model criteria) (:relations model))
     #{}))
 
 (defn selected-model-elements
-  "Returns the model elements selected by criteria"
+  "Returns the model elements selected by criteria for the `view`."
   [model view]
   (concat (selected-model-nodes model view)
           (selected-model-relations model view)))
@@ -135,7 +135,7 @@
 ;; TODO: take the rendered children of referenced nodes into account and exclude
 ;;       nodes rendered as boundaries
 (defn specified-model-nodes
-  "Returns the model nodes specified in the given view.
+  "Returns the model nodes specified in the given `view`.
    Takes the view spec into account for resolving model nodes not explicitly referenced."
   [model view]
   (let [include (include-spec view)]
@@ -169,7 +169,7 @@
       )))
 
 (defn specified-relations
-  "Returns the relations specified in the given view.
+  "Returns the relations specified in the given `view`.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [model view]
   (let [include (include-spec view)] 
@@ -200,7 +200,7 @@
                  referenced-rels))))
 
 (defn specified-elements
-  "Returns the model elements and relations explicitly specified in the given view.
+  "Returns the model elements and relations explicitly specified in the `view`.
    Takes the view spec into account for resolving relations not explicitly referenced."
   [model view]
   (let [include (include-spec view)]
@@ -212,7 +212,7 @@
                        (specified-relations model view)))))
 
 (defn rendered-model-nodes
-  "Returns the model nodes to be rendered by the given view."
+  "Returns the model nodes to be rendered by the given `view`."
   [model view]
   (let [specified-nodes (specified-model-nodes model view)]
     specified-nodes
@@ -222,7 +222,7 @@
   )
 
 (defn rendered-relations
-  "Returns the relations to be rendered by the given view.
+  "Returns the relations to be rendered by the given `view`.
    Takes the view spec into account for resolving relations not explicitly specified."
   [model view]
   (let [specified-rels (specified-relations model view)]
@@ -233,7 +233,7 @@
   )
 
 (defn rendered-elements
-  "Returns the model elements to be rendered by the given view.
+  "Returns the model elements to be rendered by the given `view`.
    Takes the view spec into account for resolving model elements not explicitly specified."
   [model view]
   (concat (rendered-model-nodes model view)
@@ -245,8 +245,8 @@
 ;;; Rendering functions
 ;;;
 (defn elements-to-render
-  "Returns the list of elements to render from the view
-   or the given collection of elements, depending on the type
+  "Returns the list of elements to render from the `view`
+   or the given `coll` of elements, depending on the type
    of the view."
   ([model view]
    (elements-to-render model view (:ct view)))
@@ -257,7 +257,7 @@
         (map #(element-to-render model view %)))))
 
 (defn elements-in-view
-  "Returns the elements rendered in the view."
+  "Returns the elements rendered in the `view`."
   ([model view]
    (elements-in-view model #{} view (elements-to-render model view (:ct view))))
   ([model elements view coll]
@@ -271,7 +271,7 @@
      elements)))
 
 (defn technologies-in-view
-  "Returns the technologies in the view."
+  "Returns the technologies in the `view`."
   [model view]
   (->> view
        (elements-in-view model)
