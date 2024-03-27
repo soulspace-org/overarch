@@ -360,6 +360,8 @@
     ;;
     ;; element related
     ;;
+    ; TODO add id related criteria to relation :from/:to
+    ; id-namespace, from-namespace, to-namespace
     (= :namespace k)
     #(= (name v) (el/element-namespace %))
     (= :namespaces k)
@@ -367,16 +369,33 @@
     (= :namespace-prefix k)
     #(str/starts-with? (el/element-namespace %) v)
 
+    (= :from-namespace k)
+    #(= (name v) (namespace (get % :from :no-namespace/no-name)))
+    (= :from-namespaces k)
+    #(contains? (name v) (namespace (get % :from :no-namespace/no-name)))
+    (= :from-namespace-prefix k)
+    #(str/starts-with? (namespace (get % :from :no-namespace/no-name)) v)
+    (= :to-namespace k)
+    #(= (name v) (namespace (get % :to :no-namespace/no-name)))
+    (= :to-namespaces k)
+    #(contains? (name v) (namespace (get % :to :no-namespace/no-name)))
+    (= :to-namespace-prefix k)
+    #(str/starts-with? (namespace (get % :from :no-namespace/no-name)) v)
+
     (= :id? k)
     #(= v (get % :id false))
     (= :id k)
     #(= (keyword v) (:id %))
+    (= :from k)
+    #(= (keyword v) (:from %))
+    (= :to k)
+    #(= (keyword v) (:to %))
 
     (= :el k)
     #(isa? el/element-hierarchy (:el %) v)
     (= :els k)
     #(contains? v (:el %)) ; TODO use isa? too
-    
+
     (= :subtype? k)
     #(= v (get % :subtype false))
     (= :subtype k)
@@ -408,7 +427,7 @@
     #(set/intersection v (:tags %))
     (= :all-tags k)
     #(set/subset? (set v) (:tags %))
-    
+
     (= :children? k)
     #(= v (empty? (:ct %)))
 
