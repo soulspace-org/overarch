@@ -86,22 +86,6 @@
         {:ref :test/concept2}
         {:ref :test/concept3}]})
 
-(deftest referenced-model-nodes-test
-  (let [concept1 model-test/concept-model1]
-    (testing "referenced-model-nodes for concept view"
-      (are [x y] (= x y)
-        3 (count (referenced-nodes concept1 concept-view1))
-        0 (count (referenced-nodes concept1 concept-view1-related))
-        3 (count (referenced-nodes concept1 concept-view1-relations))))))
-
-(deftest referenced-relations-test
-  (let [concept1 model-test/concept-model1]
-    (testing "referenced-relations for concept view"
-      (are [x y] (= x y)
-        2 (count (referenced-relations concept1 concept-view1))
-        2 (count (referenced-relations concept1 concept-view1-related))
-        0 (count (referenced-relations concept1 concept-view1-relations))))))
-
 (deftest referenced-elements-test
   (let [concept1 model-test/concept-model1]
     (testing "referenced-elements for concept view"
@@ -110,47 +94,17 @@
         2 (count (referenced-elements concept1 concept-view1-related))
         3 (count (referenced-elements concept1 concept-view1-relations))))))
 
-(deftest specified-model-nodes-test
+(deftest rendered-elements-test
   (let [concept1 model-test/concept-model1]
-    (testing "specified-model-nodes for concept view"
+    (testing "rendered-elements for concept view"
       (are [x y] (= x y)
-        3 (count (specified-nodes concept1 concept-view1))
-        3 (count (specified-nodes concept1 concept-view1-related))
-        3 (count (specified-nodes concept1 concept-view1-relations))))))
-
-(deftest specified-relations-test
-  (let [concept1 model-test/concept-model1]
-    (testing "specified-relations for concept view"
-      (are [x y] (= x y)
-        2 (count (specified-relations concept1 concept-view1))
-        2 (count (specified-relations concept1 concept-view1-related))
-        2 (count (specified-relations concept1 concept-view1-relations))))))
-
-(deftest specified-elements-test
-  (let [concept1 model-test/concept-model1]
-    (testing "specified-elements for concept view"
-      (are [x y] (= x y)
-        5 (count (specified-elements concept1 concept-view1))
-        5 (count (specified-elements concept1 concept-view1-related))
-        5 (count (specified-elements concept1 concept-view1-relations))))))
+        5 (count (rendered-elements concept1 concept-view1))
+        5 (count (rendered-elements concept1 concept-view1-related))
+        5 (count (rendered-elements concept1 concept-view1-relations))))))
 
 (comment
   (def concept1 model-test/concept-model1)
-  (referenced-nodes concept1 concept-view1)
-  (referenced-nodes concept1 concept-view1-related)
-  (referenced-nodes concept1 concept-view1-relations)
-  (referenced-relations concept1 concept-view1)
-  (referenced-relations concept1 concept-view1-related)
-  (referenced-relations concept1 concept-view1-relations)
   (referenced-elements concept1 concept-view1)
   (referenced-elements concept1 concept-view1-related)
   (referenced-elements concept1 concept-view1-relations)
-  (specified-nodes concept1 concept-view1)
-  (specified-nodes concept1 concept-view1-related)
-  (specified-nodes concept1 concept-view1-relations)
-  (specified-relations concept1 concept-view1)
-  (specified-relations concept1 concept-view1-related)
-  (specified-relations concept1 concept-view1-relations)
-  (specified-elements concept1 concept-view1)
-  (specified-elements concept1 concept-view1-related)
-  (specified-elements concept1 concept-view1-relations))
+)

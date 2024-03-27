@@ -134,22 +134,6 @@
         {:ref :test/system1}
         {:ref :test/ext-system1}]})
 
-(deftest referenced-model-nodes-test
-  (let [c4-1 model-test/c4-model1]
-    (testing "referenced-model-nodes for context view"
-      (are [x y] (= x y)
-        3 (count (referenced-nodes c4-1 context-view1))
-        0 (count (referenced-nodes c4-1 context-view1-related))
-        3 (count (referenced-nodes c4-1 context-view1-relations))))))
-
-(deftest referenced-relations-test
-  (let [c4-1 model-test/c4-model1]
-    (testing "referenced-relations for context view"
-      (are [x y] (= x y)
-        2 (count (referenced-relations c4-1 context-view1))
-        2 (count (referenced-relations c4-1 context-view1-related))
-        0 (count (referenced-relations c4-1 context-view1-relations))))))
-
 (deftest referenced-elements-test
   (let [c4-1 model-test/c4-model1]
     (testing "referenced-elements for context view"
@@ -158,44 +142,19 @@
         2 (count (referenced-elements c4-1 context-view1-related))
         3 (count (referenced-elements c4-1 context-view1-relations))))))
 
-(deftest specified-model-nodes-test
+(deftest rendered-elements-test
   (let [c4-1 model-test/c4-model1]
     ; TODO check
-    (testing "specified-model-nodes for context view"
+    (testing "rendered-elements for context view"
       (are [x y] (= x y)
-        3 (count (specified-nodes c4-1 context-view1))
-        3 (count (specified-nodes c4-1 context-view1-related))
-        3 (count (specified-nodes c4-1 context-view1-relations))))))
-
-(deftest specified-relations-test
-  (let [c4-1 model-test/c4-model1]
-    ; TODO check
-    (testing "specified-relations for context view"
-      (are [x y] (= x y)
-        2 (count (specified-relations c4-1 context-view1))
-        2 (count (specified-relations c4-1 context-view1-related))
-        2 (count (specified-relations c4-1 context-view1-relations))))))
-
-(deftest specified-elements-test
-  (let [c4-1 model-test/c4-model1]
-    ; TODO check
-    (testing "specified-elements for context view"
-      (are [x y] (= x y)
-        5 (count (specified-elements c4-1 context-view1))
-        5 (count (specified-elements c4-1 context-view1-related))
-        5 (count (specified-elements c4-1 context-view1-relations))))))
+        5 (count (rendered-elements c4-1 context-view1))
+        5 (count (rendered-elements c4-1 context-view1-related))
+        5 (count (rendered-elements c4-1 context-view1-relations))))))
 
 (comment
   (def c4-1 model-test/c4-model1)
-  (referenced-nodes c4-1 context-view1)
-  (referenced-nodes c4-1 context-view1-related)
-  (referenced-nodes c4-1 context-view1-relations)
-
-  (referenced-relations c4-1 context-view1)
   (referenced-elements c4-1 context-view1)
-  (specified-nodes c4-1 context-view1)
-  (specified-relations c4-1 context-view1)
-  (specified-elements c4-1 context-view1)
+  (rendered-elements c4-1 context-view1)
 
   (elements-to-render c4-1 context-view1)
   (elements-to-render c4-1 context-view1 (:ct context-view1))

@@ -173,26 +173,6 @@
         {:ref :test/container-queue1}
         {:ref :test/ext-system1}]})
 
-(deftest referenced-model-nodes-test
-  (let [c4-1 model-test/c4-model1]
-    (testing "referenced-model-nodes for container view"
-      (are [x y] (= x y)
-        3 (count (referenced-nodes c4-1 container-view1))
-        5 (count (referenced-nodes c4-1 container-view2))
-        0 (count (referenced-nodes c4-1 container-view1-related))
-        3 (count (referenced-nodes c4-1 container-view1-relations))
-        5 (count (referenced-nodes c4-1 container-view2-relations))))))
-
-(deftest referenced-relations-test
-  (let [c4-1 model-test/c4-model1]
-    (testing "referenced-relations for container view"
-      (are [x y] (= x y)
-        2 (count (referenced-relations c4-1 container-view1))
-        4 (count (referenced-relations c4-1 container-view2))
-        4 (count (referenced-relations c4-1 container-view1-related))
-        0 (count (referenced-relations c4-1 container-view1-relations))
-        0 (count (referenced-relations c4-1 container-view2-relations))))))
-
 (deftest referenced-elements-test
   (let [c4-1 model-test/c4-model1]
     (testing "referenced-elements for container view"
@@ -203,78 +183,30 @@
         3 (count (referenced-elements c4-1 container-view1-relations))
         5 (count (referenced-elements c4-1 container-view2-relations))))))
 
-(deftest specified-model-nodes-test
+(deftest rendered-elements-test
   (let [c4-1 model-test/c4-model1]
     ; TODO check
-    (testing "specified-model-nodes for container view"
+    (testing "rendered-elements for container view"
       (are [x y] (= x y)
-        3 (count (specified-nodes c4-1 container-view1))
-        5 (count (specified-nodes c4-1 container-view2))
-        5 (count (specified-nodes c4-1 container-view1-related))
-        3 (count (specified-nodes c4-1 container-view1-relations))
-        5 (count (specified-nodes c4-1 container-view2-relations))))))
-
-(deftest specified-relations-test
-  (let [c4-1 model-test/c4-model1]
-    ; TODO check
-    (testing "specified-relations for container view"
-      (are [x y] (= x y)
-        2 (count (specified-relations c4-1 container-view1))
-        4 (count (specified-relations c4-1 container-view2))
-        4 (count (specified-relations c4-1 container-view1-related))
-        0 (count (specified-relations c4-1 container-view1-relations))
-        0 (count (specified-relations c4-1 container-view2-relations))))))
-
-(deftest specified-elements-test
-  (let [c4-1 model-test/c4-model1]
-    ; TODO check
-    (testing "specified-elements for container view"
-      (are [x y] (= x y)
-        5 (count (specified-elements c4-1 container-view1))
-        9 (count (specified-elements c4-1 container-view2))
-        9 (count (specified-elements c4-1 container-view1-related))
-        5 (count (specified-elements c4-1 container-view1-relations))
-        9 (count (specified-elements c4-1 container-view2-relations))))))
+        5 (count (rendered-elements c4-1 container-view1))
+        9 (count (rendered-elements c4-1 container-view2))
+        9 (count (rendered-elements c4-1 container-view1-related))
+        5 (count (rendered-elements c4-1 container-view1-relations))
+        9 (count (rendered-elements c4-1 container-view2-relations))))))
 
 (comment
   (def c4-1 model-test/c4-model1)
-  (referenced-nodes c4-1 container-view1-related)
-
-  (referenced-nodes c4-1 container-view1)
-  (referenced-nodes c4-1 container-view2)
-  (referenced-nodes c4-1 container-view1-related)
-  (referenced-nodes c4-1 container-view1-relations)
-  (referenced-nodes c4-1 container-view2-relations)
-
-  (referenced-relations c4-1 container-view1)
-  (referenced-relations c4-1 container-view2)
-  (referenced-relations c4-1 container-view1-related)
-  (referenced-relations c4-1 container-view1-relations)
-  (referenced-relations c4-1 container-view2-relations)
-
   (referenced-elements c4-1 container-view1)
   (referenced-elements c4-1 container-view2)
   (referenced-elements c4-1 container-view1-related)
   (referenced-elements c4-1 container-view1-relations)
   (referenced-elements c4-1 container-view2-relations)
 
-  (specified-nodes c4-1 container-view1)
-  (specified-nodes c4-1 container-view2)
-  (specified-nodes c4-1 container-view1-related)
-  (specified-nodes c4-1 container-view1-relations)
-  (specified-nodes c4-1 container-view2-relations)
-
-  (specified-relations c4-1 container-view1)
-  (specified-relations c4-1 container-view2)
-  (specified-relations c4-1 container-view1-related)
-  (specified-relations c4-1 container-view1-relations)
-  (specified-relations c4-1 container-view2-relations) 
-
-  (specified-elements c4-1 container-view1)
-  (specified-elements c4-1 container-view2)
-  (specified-elements c4-1 container-view1-related)
-  (specified-elements c4-1 container-view1-relations)
-  (specified-elements c4-1 container-view2-relations)
+  (rendered-elements c4-1 container-view1)
+  (rendered-elements c4-1 container-view2)
+  (rendered-elements c4-1 container-view1-related)
+  (rendered-elements c4-1 container-view1-relations)
+  (rendered-elements c4-1 container-view2-relations)
 
   (elements-to-render c4-1 container-view1)
   (elements-to-render c4-1 container-view1 (:ct container-view1))
