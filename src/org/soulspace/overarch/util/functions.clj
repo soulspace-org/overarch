@@ -12,7 +12,7 @@
        (into #{})))
 
 (defn tokenize-string
-  "Returns a set of strings by tokenizing the string `s` with the optional regex `re`
+  "Returns a vector of strings by tokenizing the string `s` with the optional regex `re`
    (comma per default)."
   ([s]
    (tokenize-string s #","))
