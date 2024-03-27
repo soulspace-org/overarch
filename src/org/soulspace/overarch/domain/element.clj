@@ -674,6 +674,16 @@
   ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
+(defn key->element
+  "Returns a step function to create an key `k` to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  [k]
+  (fn
+    ([] {})
+    ([acc] acc)
+    ([acc e]
+     (assoc acc (k e) e))))
+
 (defn id->element 
   "Step function to create an id to element map.
    Adds the association of the id of the element `e` to the map `acc`."
@@ -681,6 +691,11 @@
   ([acc] acc)
   ([acc e]
    (assoc acc (:id e) e)))
+
+;(def id->element
+;  "Step function to create an id to element map.
+;   Adds the association of the id of the element `e` to the map `acc`."
+; (key->element :id))
 
 (defn id->parent
   "Step function to create an id to parent element map.
@@ -711,8 +726,8 @@
    Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
   ([] {})
   ([acc] acc)
-  ([acc r]
-   (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
+  ([acc e]
+   (assoc acc (:to e) (conj (get acc (:to e) #{}) e))))
 
 ;;
 ;; Accessors and transformations
@@ -732,6 +747,26 @@
   "Returns true, if `c` is a descendant of `e`."
   [e c]
   (contains? (descendant-nodes e) c))
+
+; TODO for flat/hierarchical
+(defn id->map
+  ""
+  ([coll]
+   (->> coll
+        (filter identifiable-element?)
+        (map (fn [e] [(:id e) e]))
+        (into {}))))
+
+(defn union-by-id
+  "Returns a set that is the union of the input `sets`.
+   Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
+   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
+  [& sets]
+  (->> sets
+       (map (partial traverse id->element))
+       (apply merge)
+       (vals)
+       (set)))
 
 (defn technologies
   "Returns a vector of the technologies used by the element `e`."

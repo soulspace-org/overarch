@@ -1184,3 +1184,11 @@
   (testing "descendant-node? false"
     (are [x y] (= x (descendant-node? descendant-data y))
       false descendant-data)))
+
+(deftest union-by-id-test
+      (testing "union-by-id"
+        (is (= #{{:id :x/b, :el :a}
+                {:id :x/a, :el :a, :dir :up}}
+               (union-by-id #{{:id :x/a :el :a :dir :down}
+                              {:id :x/b :el :a}}
+                            #{{:id :x/a :el :a :dir :up}}))))) 
