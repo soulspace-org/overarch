@@ -87,11 +87,6 @@
   [model e]
   ((:id->parent model) (:id e)))
 
-(defn children
-  "Returns the children of the element `e`."
-  [model e]
-  (:ct e))
-
 (defn ancestor-nodes
   "Returns the ancestor nodes of the `node`."
   [model e]

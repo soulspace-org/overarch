@@ -683,7 +683,9 @@
 
 (defn id->parent
   "Step function to create an id to parent element map.
-   Adds the association from the id of element `e` to the parent `p` to the map `acc`."
+   Adds the association from the id of element `e` to the parent `p` to the map `acc`.
+   Uses a list as stack in the accumulator to manage the context of the current element `e`
+   in the traversal of the tree."
   ([] [{} '()])
   ([[res ctx]]
    (if-not (empty? ctx)
@@ -695,7 +697,7 @@
        [(assoc res (:id e) p) (conj ctx e)]
        [res (conj ctx e)]))))
 
-(defn referrer-id->rel
+(defn referrer-id->relation
   "Step function to create an map of referrer ids to relations.
    Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
   ([] {})
@@ -703,7 +705,7 @@
   ([acc e]
    (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
 
-(defn referred-id->rel
+(defn referred-id->relation
   "Step function to create an map of referred ids to relations.
    Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
   ([] {})
@@ -712,8 +714,13 @@
    (assoc acc (:to r) (conj (get acc (:to r) #{}) r))))
 
 ;;
-;; Transformations
+;; Accessors and transformations
 ;;
+(defn children
+  "Returns the children of the element `e`."
+  [model e]
+  (:ct e))
+
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [e]
@@ -729,5 +736,3 @@
   "Returns the set of technologies for the elements of the coll."
   [coll]
   (traverse :tech tech-collector coll))
-
-
