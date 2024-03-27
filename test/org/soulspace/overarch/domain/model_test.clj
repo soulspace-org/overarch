@@ -126,8 +126,68 @@
 (comment
   :test/user1
   c4-model1
-  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
-  )
+  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}}))
+
+(def ancestor-input
+  #{{:el :system
+     :id :a/system
+     :ct #{{:el :container
+            :id :a/container
+            :ct #{{:el :component
+                   :id :a/component}}}}}})
+(def ancestor-model (build-model ancestor-input))
+
+(deftest ancestor-nodes-test
+  (testing "ancestor-nodes true"
+    (are [x y] (= x (ancestor-nodes ancestor-model y))
+      #{{:el :system
+         :id :a/system
+         :ct #{{:el :container
+                :id :a/container
+                :ct #{{:el :component
+                       :id :a/component}}}}}
+        {:el :container
+         :id :a/container
+         :ct #{{:el :component
+                :id :a/component}}}}
+      {:el :component
+       :id :a/component}
+
+      #{{:el :system
+         :id :a/system
+         :ct #{{:el :container
+                :id :a/container
+                :ct #{{:el :component
+                       :id :a/component}}}}}}
+      {:el :container
+       :id :a/container
+       :ct #{{:el :component
+              :id :a/component}}})))
+
+(deftest ancestor-node?-test
+  (testing "ancestor-node? true"
+    (are [x y] (= x (ancestor-node? ancestor-model
+                                    {:el :component
+                                     :id :a/component}
+                                    y))
+      true {:el :system
+            :id :a/system
+            :ct #{{:el :container
+                   :id :a/container
+                   :ct #{{:el :component
+                          :id :a/component}}}}}
+
+      true {:el :container
+            :id :a/container
+            :ct #{{:el :component
+                   :id :a/component}}}))
+  (testing "ancestor-node? true"
+    (are [x y] (= x (ancestor-node? ancestor-model
+                                    {:el :component
+                                     :id :a/component}
+                                    y))
+                  false {:el :component
+                         :id :a/component})))
 
 (def filter-input
   #{{:el :person
@@ -247,7 +307,7 @@
          :name "Container1 DB"
          :tech "Datomic"}}
       {:tech "Datomic"}))
-  
+
   (testing "filter-xf with vector of criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
 
@@ -304,4 +364,4 @@
         filter-input)
   (into []
         (filter-xf filter-model1 {:el :rel})
-         filter-input))
+        filter-input))

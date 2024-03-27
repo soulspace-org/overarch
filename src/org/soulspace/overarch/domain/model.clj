@@ -95,15 +95,17 @@
 (defn ancestor-nodes
   "Returns the ancestor nodes of the `node`."
   [model e]
-  ; TODO loop over parents and add them to a vector.
-  )
+  (loop [acc #{} p (parent model e)]
+    (if (seq p)
+      (recur (conj acc p) (parent model p))
+      acc)))
 
-(defn ancestor?
+(defn ancestor-node?
   "Returns true, if `c` is an ancestor of `e` in the `model`."
   [model e c]
   (loop [p (parent model e)]
     (if (seq p)
-      (if (= (:id p) (:id e))
+      (if (= (:id p) (:id c))
         true
         (recur (parent model p)))
       false)))

@@ -1148,7 +1148,7 @@
               :name "Internal Person"}]}
            (elements-by-namespace elements)))))
 
-(def desc-data
+(def descendant-data
   {:el :system
    :id :a/system
    :ct #{{:el :container
@@ -1156,11 +1156,31 @@
           :ct #{{:el :component
                  :id :a/component}}}}})
 
-(deftest descendant?-test
-  (testing "descendant? true"
-    (are [x y] (= x (descendant? desc-data y))
+(deftest descendant-nodes-test
+  (testing "descendant-nodes true"
+    (are [x y] (= x (descendant-nodes y))
+      #{{:el :container
+         :id :a/container
+         :ct #{{:el :component
+                :id :a/component}}}
+        {:el :component
+         :id :a/component}}
+      descendant-data
+
+      #{{:el :component
+         :id :a/component}}
+      {:el :container
+       :id :a/container
+       :ct #{{:el :component
+              :id :a/component}}})))
+
+(deftest descendant-node?-test
+  (testing "descendant-node? true"
+    (are [x y] (= x (descendant-node? descendant-data y))
       true {:el :container :id :a/container
             :ct #{{:el :component
                    :id :a/component}}}
-      true {:el :component :id :a/component})))
-
+      true {:el :component :id :a/component}))
+  (testing "descendant-node? false"
+    (are [x y] (= x (descendant-node? descendant-data y))
+      false descendant-data)))

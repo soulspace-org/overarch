@@ -720,7 +720,7 @@
   (when (model-node? e)
     (traverse model-node? tree->set (:ct e))))
 
-(defn descendant?
+(defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
   [e c]
   (contains? (descendant-nodes e) c))
