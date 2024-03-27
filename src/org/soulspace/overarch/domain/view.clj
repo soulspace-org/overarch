@@ -200,15 +200,37 @@
                        (specified-relations model view)))))
 
 (defn merged-elements
-  "Returns the model elements for the given `view`.
-   Preserves overrides of keys in references included in the view"
+  "Returns the model elements for the given `view` which are selected by critera merged
+   with the content references.  Preserves overrides of keys in the content references
+   included in the view."
   [model view]
   (let [selected-set (selected-elements model view)
         selected-map (el/traverse el/id->element selected-set)
-        referenced-set (referenced-nodes model view)
+        referenced-set (referenced-elements model view)
         referenced-map (el/traverse el/id->element referenced-set)
         merged-set (vals (merge selected-map referenced-map))]
     merged-set))
+
+(defn included-elements
+  "Takes the specified elements and includes the neccessary elements for the input spec."
+  [model view coll]
+  (let [include (include-spec view)]
+    (case include
+      :referenced-only coll
+      :relations
+      (let [include-set (into #{} (map (partial model/resolve-element model)
+                                       (model/related-nodes model (filter el/model-relation? coll))))
+            include-map (el/traverse el/id->element include-set)
+            coll-map (el/traverse el/id->element coll)]
+        (vals (merge include-map coll-map)))
+      
+      :related
+      (let [include-set (into #{} (model/relations-of-nodes model (filter el/model-node? coll)))
+            include-map (el/traverse el/id->element include-set)
+            coll-map (el/traverse el/id->element coll)]
+        (vals (merge include-map coll-map)))
+      )))
+
 
 (defn rendered-nodes
   "Returns the model nodes to be rendered by the given `view`."
@@ -235,6 +257,8 @@
   "Returns the model elements to be rendered by the given `view`.
    Takes the view spec into account for resolving model elements not explicitly specified."
   [model view]
+  ; TODO merge selected with referenced and the result with included
+
   (concat (rendered-nodes model view)
           (rendered-relations model view))
   ;
