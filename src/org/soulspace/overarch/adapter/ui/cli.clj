@@ -170,7 +170,7 @@
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   ; TODO implement model accessor in repo
-  (when-let [criteria (spec/check-selection-criteria (get :select-elements options))]
+  (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
     (into #{} (model/filter-xf @repo/state criteria)
           (set/union (repo/nodes) (repo/relations)))))
 
