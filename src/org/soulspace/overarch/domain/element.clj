@@ -212,7 +212,6 @@
   "The set of hierarchical view types."
   #{:context-view :container-view :component-view
     :deployment-view :system-landscape-view
-    ;:dynamic-view
     :state-machine-view :class-view
     :glossary-view})
 
