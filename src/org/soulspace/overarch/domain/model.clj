@@ -367,7 +367,8 @@
     (= :namespaces k)
     #(contains? (name v) (el/element-namespace %))
     (= :namespace-prefix k)
-    #(str/starts-with? (el/element-namespace %) v)
+    #(and (el/identifiable-element? %)
+          (str/starts-with? (el/element-namespace %) v))
 
     (= :from-namespace k)
     #(= (name v) (namespace (get % :from :no-namespace/no-name)))
