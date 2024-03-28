@@ -4,9 +4,7 @@
 (ns org.soulspace.overarch.domain.spec
   (:require [clojure.spec.alpha :as s]
             [expound.alpha :as expound]
-            [org.soulspace.overarch.domain.element :as e]
-            ))
-
+            [org.soulspace.overarch.domain.element :as e]))
 
 ;;;
 ;;; Elements
