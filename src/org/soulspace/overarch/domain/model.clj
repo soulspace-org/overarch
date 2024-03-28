@@ -100,6 +100,7 @@
   [model e]
   ((:id->parent model) (:id e)))
 
+
 (defn ancestor-nodes
   "Returns the ancestor nodes of the `node`."
   [model e]

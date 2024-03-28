@@ -68,7 +68,7 @@
                     :local-prefix "material"
                     :local-imports ["common"]}})
 
-(def view-hierarchy
+(def plantuml-view-hierarchy
   "Hierarchy for views"
   (-> (make-hierarchy)
       (derive :system-landscape-view :c4-view)
@@ -157,7 +157,7 @@
 (defmulti render-plantuml-view
   "Renders the diagram with PlantUML."
   renderer
-  :hierarchy #'view-hierarchy)
+  :hierarchy #'plantuml-view-hierarchy)
 
 ;;
 ;; Elements
@@ -302,6 +302,4 @@
   [model format options]
   (doseq [view (model/views model)]
     (when (plantuml-view? view)
-      (rndr/render-view model format options
-                        (assoc view :ct (view/specified-elements model view)) ; TODO do preprocessing once in build phase?
-                        ))))
+      (rndr/render-view model format options view))))

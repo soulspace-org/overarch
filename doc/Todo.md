@@ -10,3 +10,4 @@
   * eventually move to separate repository
 
 
+* no child elements in flat views (from traversal for id maps)

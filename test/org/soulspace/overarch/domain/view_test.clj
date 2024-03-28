@@ -100,6 +100,15 @@
   (testing "styles-spec-test"
     (is (= 1 1)))) 
 
+(deftest union-by-id-test
+  (testing "union-by-id"
+    (is (= #{{:id :x/b, :el :a}
+             {:id :x/a, :el :a, :dir :up}}
+           (union-by-id id->element-map #{{:id :x/a :el :a :dir :down}
+                          {:id :x/b :el :a}}
+                        #{{:id :x/a :el :a :dir :up}}))))) 
+
+
 (comment
   (:views styles-model)
   (:themes styles-model)

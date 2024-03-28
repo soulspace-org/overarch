@@ -35,17 +35,17 @@
 (defn include-spec
   "Returns the include specification for the `view`."
   [view]
-  (get-in view [:spec :include] :referenced-only))
+  (get-in view [:spec :include]))
 
 (defn layout-spec
   "Returns the layout specification for the `view`."
   ([view]
-   (get-in view [:spec :layout] :top-down)))
+   (get-in view [:spec :layout])))
 
 (defn legend-spec
   "Returns the legend specification for the `view`."
   ([view]
-   (get-in view [:spec :legend] true)))
+   (get-in view [:spec :legend])))
 
 (defn linetype-spec
   "Returns the linetype specification for the `view`."
@@ -92,25 +92,24 @@
 ;;
 ;; View based element aggregation
 ;;
-(defn referenced-nodes
-  "Returns the model nodes explicitly referenced in the given `view`."
-  [model view]
-  (->> (:ct view)
-       (map (partial model/resolve-element model))
-       (filter el/model-node?)))
+(defn id->element-map
+  ""
+  ([coll]
+   (->> coll
+        (filter el/identifiable-element?)
+        (map (fn [e] [(:id e) e]))
+        (into {}))))
 
-(defn referenced-relations
-  "Returns the relations explicitly referenced in the given `view`."
-  [model view]
-  (->> (:ct view)
-       (map (partial model/resolve-element model))
-       (filter el/model-relation?)))
-
-(defn referenced-elements
-  "Returns the relations explicitly referenced in the given `view`."
-  [model view]
-  (->> (:ct view)
-       (map (partial model/resolve-element model))))
+(defn union-by-id
+  "Returns a set that is the union of the input `sets`.
+   Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
+   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
+  ([f & sets]
+   (->> sets
+        (map f)
+        (apply merge)
+        (vals)
+        (set))))
 
 (defn selected-elements
   "Returns the model elements selected by criteria for the `view`."
@@ -120,152 +119,84 @@
            (model/model-elements model))
    #{}))
 
+(defn referenced-elements
+  "Returns the relations explicitly referenced in the given `view`."
+  [model view]
+  (->> (:ct view)
+       (map (partial model/resolve-element model))))
+
 ;; TODO: take the rendered children of referenced nodes into account and exclude
 ;;       nodes rendered as boundaries
-(defn specified-nodes
-  "Returns the model nodes specified in the given `view`.
-   Takes the view spec into account for resolving model nodes not explicitly referenced."
-  [model view]
-  (let [include (include-spec view)]
-    (case include
-      :referenced-only (let [referenced-nodes (referenced-nodes model view)
-                             _ (fns/data-tapper {:fn "specified-relations"
-                                                 :view (:id view)
-                                                 :selector include
-                                                 :referenced-rels referenced-nodes})]
-                         referenced-nodes)
-      :relations (let [referenced-nodes (referenced-nodes model view)
-                       _ (fns/data-tapper {:fn "specified-relations"
-                                           :view (:id view)
-                                           :selector include
-                                           :referenced-rels referenced-nodes})]
-                   referenced-nodes)
-      :related (let [referenced-nodes (referenced-nodes model view)
-                     referenced-rels (referenced-relations model view)
-                     related-nodes (into #{}
-                                         (map (partial model/resolve-element model)
-                                              (model/related-nodes model referenced-rels)))
-                     specified-nodes (set/union referenced-nodes related-nodes)
-                     _ (fns/data-tapper {:fn "specified-model-nodes"
-                                         :view (:id view)
-                                         :selector include
-                                         :referenced-nodes referenced-nodes
-                                         :referenced-rels referenced-rels
-                                         :related-nodes related-nodes
-                                         :specified-nodes specified-nodes})]
-                 specified-nodes) ; TODO check
-      )))
+(defn relation-includes
+  "Returns the set of relations connecting the model nodes in `coll`."
+  [model view coll]
+  (into #{}
+        (model/relations-of-nodes model
+                                  (filter el/model-node?
+                                          coll))))
 
-(defn specified-relations
-  "Returns the relations specified in the given `view`.
-   Takes the view spec into account for resolving relations not explicitly referenced."
-  [model view]
-  (let [include (include-spec view)] 
-    (case include
-      :referenced-only (let [referenced-rels (referenced-relations model view)
-                             _ (fns/data-tapper {:fn "specified-relations"
-                                                 :view (:id view)
-                                                 :selector include
-                                                 :referenced-rels referenced-rels})]
-                         referenced-rels)
-      :relations (let [referenced-nodes (referenced-nodes model view)
-                       referenced-rels (referenced-relations model view)
-                       related-rels (into #{} (model/relations-of-nodes model referenced-nodes))
-                       specified-rels (set/union referenced-rels related-rels)
-                       _ (fns/data-tapper {:fn "specified-relations"
-                                           :view (:id view)
-                                           :selector include
-                                           :referenced-nodes referenced-nodes
-                                           :referenced-rels referenced-rels
-                                           :related-rels related-rels
-                                           :specified-rels specified-rels})]
-                   specified-rels)
-      :related (let [referenced-rels (referenced-relations model view)
-                     _ (fns/data-tapper {:fn "specified-relations"
-                                         :view (:id view)
-                                         :selector include
-                                         :referenced-rels referenced-rels})]
-                 referenced-rels))))
+(defn related-includes
+  "Returns the set of model nodes connected by the relations in `coll`."
+  [model view coll]
+  (into #{}
+        (map (partial model/resolve-element model)
+             (model/related-nodes model
+                                  (filter el/model-relation?
+                                          coll)))))
 
-(defn specified-elements
-  "Returns the model elements and relations explicitly specified in the `view`.
-   Takes the view spec into account for resolving relations not explicitly referenced."
-  [model view]
-  (let [include (include-spec view)]
-    (case include
-      :referenced-only (referenced-elements model view)
-      :relations (concat (specified-nodes model view)
-                         (specified-relations model view))
-      :related (concat (specified-nodes model view)
-                       (specified-relations model view)))))
-
-(defn merged-elements
+(defn collected-elements
   "Returns the model elements for the given `view` which are selected by critera merged
    with the content references.  Preserves overrides of keys in the content references
    included in the view."
   [model view]
-  (let [selected-set (selected-elements model view)
-        selected-map (el/traverse el/id->element selected-set)
-        referenced-set (referenced-elements model view)
-        referenced-map (el/traverse el/id->element referenced-set)
-        merged-set (vals (merge selected-map referenced-map))]
-    merged-set))
-
-(defn included-elements
-  "Takes the specified elements and includes the neccessary elements for the input spec."
-  [model view coll]
-  (let [include (include-spec view)]
-    (case include
-      :referenced-only coll
-      :relations
-      (let [include-set (into #{} (map (partial model/resolve-element model)
-                                       (model/related-nodes model (filter el/model-relation? coll))))
-            include-map (el/traverse el/id->element include-set)
-            coll-map (el/traverse el/id->element coll)]
-        (vals (merge include-map coll-map)))
-      
-      :related
-      (let [include-set (into #{} (model/relations-of-nodes model (filter el/model-node? coll)))
-            include-map (el/traverse el/id->element include-set)
-            coll-map (el/traverse el/id->element coll)]
-        (vals (merge include-map coll-map)))
-      )))
-
-
-(defn rendered-nodes
-  "Returns the model nodes to be rendered by the given `view`."
-  [model view]
-  (let [specified-nodes (specified-nodes model view)]
-    specified-nodes
-    ; TODO
-    )
-  ;
-  )
-
-(defn rendered-relations
-  "Returns the relations to be rendered by the given `view`.
-   Takes the view spec into account for resolving relations not explicitly specified."
-  [model view]
-  (let [specified-rels (specified-relations model view)]
-    specified-rels
-    ; TODO
-    )
-  ;
-  )
+  (let [id-map-fn (if (el/hierarchical-view? view)
+                    (partial el/traverse el/id->element)
+                    id->element-map)
+        selected (selected-elements model view)
+        referenced (referenced-elements model view)
+        merged (union-by-id id-map-fn selected referenced)]
+    (if-let [include (include-spec view)]
+      (case include
+        :relations
+        (union-by-id id-map-fn (relation-includes model view merged) merged)
+        :related
+        (union-by-id id-map-fn (related-includes model view merged) merged)
+        :else
+        (do (println "Unknown include option:" include) ; TODO logging/tapping?
+            merged))
+      merged)))
 
 (defn rendered-elements
-  "Returns the model elements to be rendered by the given `view`.
-   Takes the view spec into account for resolving model elements not explicitly specified."
+  ""
   [model view]
-  ; TODO merge selected with referenced and the result with included
-
-  (concat (rendered-nodes model view)
-          (rendered-relations model view))
-  ;
-  )
+  (let [collected (collected-elements model view)
+        rendered (filter (partial render-model-element? model view)
+                         collected)]
+    rendered))
 
 ; Q: Which of the rendered elements are the relevant top level elements for the hierarchical views?
 ;    All relations and the nodes which are not rendered by an included ancestor?
+
+(defn contains-parent?
+  "Returns true, if `coll` contains the parent of `e`."
+  [model coll e]
+  (let [parent (model/parent model e)]
+    (and (seq parent)
+         (contains? coll parent))))
+
+(defn contains-related?
+  "Returns true, if `coll` contains the nodes related by `r`."
+  [model coll r]
+  (and (contains? coll (model/resolve-element model (:from r)))
+       (contains? coll (model/resolve-element model (:to r)))))
+
+(defn render-element?
+  ""
+  [model coll e]
+  (and (or (not (el/model-node? e))
+           (not (contains-parent? model coll e)))
+       (or (not (el/model-relation? e))
+           (contains-related? model coll e))))
 
 ;;;
 ;;; Rendering functions
@@ -305,3 +236,18 @@
        (remove nil?)
        (into #{})))
 
+(comment
+  (id->element-map
+   #{{:el :sytem
+      :id :x/a-s
+      :ct #{{:el :container
+             :id :x/a-c}}}})
+  (el/traverse el/id->element
+               #{{:el :sytem
+                  :id :x/a-s
+                  :ct #{{:el :container
+                         :id :x/a-c}}}})
+  (union-by-id id->element-map #{{:id :x/a :el :a :dir :down} {:id :x/b :el :a}}
+               #{{:id :x/a :el :a :dir :up}})
+  ;
+  )

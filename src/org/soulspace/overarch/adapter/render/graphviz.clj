@@ -41,10 +41,10 @@
         " [label=\"" (:name e) "\"];")])
 
 (defmethod render-element :model-element
-  [model e indent view]
+  [_ e _ view]
   (println "unhandled element of type "
            (:el e) "with id" (:id e)
-           "in graphviz rendering of view " (:id view)))
+           "in graphviz rendering of view " (:id view))) ; TODO logging/tapping
 
 (defn render-layout
   "Renders the layout options for the `view`."
@@ -59,13 +59,15 @@
 (defn render-graphviz-view
   "Renders the `view` with graphviz according to the given `options`."
   [model options view]
-  (let [elements (concat (sort-by :id (view/rendered-nodes model view))
-                         (sort-by :id (view/rendered-relations model view)))]
+  (let [elements (view/rendered-elements model view)
+        nodes (sort-by :id (filter el/model-node? elements))
+        relations (sort-by :id (filter el/model-relation? elements))]
+  
     (flatten [(str "digraph \"" (:title view) "\" {")
               "labelloc= \"t\""
               (str "label=\"" (:title view) "\"")
               (render-layout view)
-              (map #(render-element model % 0 view) elements)
+              (map #(render-element model % 0 view) (concat nodes relations))
               "}"])))
 
 ;;;

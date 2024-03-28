@@ -292,15 +292,17 @@
 
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
-  (let [children (view/elements-to-render model view)]
-    ;(user/data-tapper "resolved" children)
+  ; TODO use rendered-elements
+  (let [elements (view/rendered-elements model view)
+        nodes (filter el/model-node? elements)
+        relations (filter el/model-relation? elements)]
+    ;(user/data-tapper "resolved" elements)
     (flatten [(str "@startuml " (puml/alias-name (:id view)))
               (render-c4-imports view)
               (puml/render-sprite-imports model view)
               (render-c4-layout model view)
               (puml/render-title view)
-              (map #(puml/render-c4-element model view 0 %) children)
+              (map #(puml/render-c4-element model view 0 %)
+                   (concat nodes relations))
               (render-c4-legend view)
               "@enduml"])))
-
-

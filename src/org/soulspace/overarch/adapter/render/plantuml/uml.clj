@@ -389,10 +389,12 @@
 
 (defmethod puml/render-plantuml-view :uml-view
   [model options view]
-  (let [children (view/elements-to-render model view)]
+  (let [elements (view/rendered-elements model view)
+        nodes (filter el/model-node? elements)
+        relations (filter el/model-relation? elements)]
     (flatten [(str "@startuml " (puml/alias-name (:id view)))
               (render-uml-layout view)
               (puml/render-title view)
-              (map #(puml/render-uml-element model view 0 %) children)
+              (map #(puml/render-uml-element model view 0 %)
+                   (concat nodes relations))
               "@enduml"])))
-
