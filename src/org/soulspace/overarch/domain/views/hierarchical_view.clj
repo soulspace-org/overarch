@@ -47,9 +47,6 @@
 
  ; TODO add descendants for hierarchical views
 (defmethod view/collected-elements :hierarchical-view
-  "Returns the model elements for the given `view` which are selected by critera merged
-   with the content references.  Preserves overrides of keys in the content references
-   included in the view."
   [model view]
   (let [selected (view/selected-elements model view)
         referenced (view/referenced-elements model view)
