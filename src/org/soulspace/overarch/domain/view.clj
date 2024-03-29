@@ -4,7 +4,7 @@
 (ns org.soulspace.overarch.domain.view
   "Functions for the definition and handling of views."
   (:require [clojure.set :as set]
-            [org.soulspace.overarch.domain.model :as model] 
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
 
@@ -20,6 +20,23 @@
    (view-type view))
   ([model view & _]
    (view-type view)))
+
+(def view-hierarchy
+  "Hierarchy for rendering methods."
+  (-> (make-hierarchy)
+      (derive :class-view            :hierarchical-view)
+      (derive :component-view        :hierarchical-view)
+      (derive :container-view        :hierarchical-view)
+      (derive :context-view          :hierarchical-view)
+      (derive :deployment-view       :hierarchical-view)
+      (derive :state-machine-view    :hierarchical-view)
+      (derive :system-landscape-view :hierarchical-view)
+      (derive :concept-view          :flat-view)
+      (derive :dynamic-view          :flat-view)
+      (derive :glossary-view         :flat-view)
+      (derive :use-case-view         :flat-view)
+;
+      ))
 
 ;;
 ;; View spec elements
@@ -92,38 +109,52 @@
 ;;
 ;; View based element aggregation
 ;;
-(defn id->element-map
-  ""
-  ([coll]
-   (->> coll
-        (filter el/identifiable-element?)
-        (map (fn [e] [(:id e) e]))
-        (into {}))))
 
-(defn union-by-id
+;; TODO which multis are needed as an interface and which can be implemented as fns because the are implementation details?
+
+(defmulti union-by-id
   "Returns a set that is the union of the input `sets`.
    Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
    Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
-  ([f & sets]
-   (->> sets
-        (map f)
-        (apply merge)
-        (vals)
-        (set))))
+  view-type
+  :hierarchy #'view-hierarchy)
 
-(defn selected-elements
+(defmulti selected-elements
   "Returns the model elements selected by criteria for the `view`."
-  [model view]
-  (if-let [criteria (selection-spec view)]
-   (filter (model/filter-xf model criteria)
-           (model/model-elements model))
-   #{}))
+  view-type
+  :hierarchy #'view-hierarchy)
 
-(defn referenced-elements
+(defmulti referenced-elements
   "Returns the relations explicitly referenced in the given `view`."
-  [model view]
-  (->> (:ct view)
-       (map (partial model/resolve-element model))))
+  view-type
+  :hierarchy #'view-hierarchy)
+
+(defmulti collected-elements
+  "Returns the model elements for the given `view` which are selected by critera merged
+   with the content references.  Preserves overrides of keys in the content references
+   included in the view."
+  view-type
+  :hierarchy #'view-hierarchy)
+
+(defmulti rendered-elements
+  "Returns all elements to be rendered in the view."
+  view-type
+ :hierarchy #'view-hierarchy)
+
+(defn contains-related?
+  "Returns true, if `coll` contains the nodes related by `r`."
+  [model coll r]
+  (and (contains? coll (model/resolve-element model (:from r)))
+       (contains? coll (model/resolve-element model (:to r)))))
+
+(defn related-includes 
+  "Returns the set of model nodes connected by the relations in `coll`."
+  [model view coll]
+  (into #{}
+        (map (partial model/resolve-element model)
+             (model/related-nodes model
+                                  (filter el/model-relation?
+                                          coll)))))
 
 ;; TODO: take the rendered children of referenced nodes into account and exclude
 ;;       nodes rendered as boundaries
@@ -134,69 +165,6 @@
         (model/relations-of-nodes model
                                   (filter el/model-node?
                                           coll))))
-
-(defn related-includes
-  "Returns the set of model nodes connected by the relations in `coll`."
-  [model view coll]
-  (into #{}
-        (map (partial model/resolve-element model)
-             (model/related-nodes model
-                                  (filter el/model-relation?
-                                          coll)))))
-
-(defn collected-elements
-  "Returns the model elements for the given `view` which are selected by critera merged
-   with the content references.  Preserves overrides of keys in the content references
-   included in the view."
-  [model view]
-  (let [id-map-fn (if (el/hierarchical-view? view)
-                    (partial el/traverse el/id->element)
-                    id->element-map)
-        selected (selected-elements model view)
-        referenced (referenced-elements model view)
-        merged (union-by-id id-map-fn selected referenced)]
-    (if-let [include (include-spec view)]
-      (case include
-        :relations
-        (union-by-id id-map-fn (relation-includes model view merged) merged)
-        :related
-        (union-by-id id-map-fn (related-includes model view merged) merged)
-        :else
-        (do (println "Unknown include option:" include) ; TODO logging/tapping?
-            merged))
-      merged)))
-
-(defn rendered-elements
-  ""
-  [model view]
-  (let [collected (collected-elements model view)
-        rendered (filter (partial render-model-element? model view)
-                         collected)]
-    rendered))
-
-; Q: Which of the rendered elements are the relevant top level elements for the hierarchical views?
-;    All relations and the nodes which are not rendered by an included ancestor?
-
-(defn contains-parent?
-  "Returns true, if `coll` contains the parent of `e`."
-  [model coll e]
-  (let [parent (model/parent model e)]
-    (and (seq parent)
-         (contains? coll parent))))
-
-(defn contains-related?
-  "Returns true, if `coll` contains the nodes related by `r`."
-  [model coll r]
-  (and (contains? coll (model/resolve-element model (:from r)))
-       (contains? coll (model/resolve-element model (:to r)))))
-
-(defn render-element?
-  ""
-  [model coll e]
-  (and (or (not (el/model-node? e))
-           (not (contains-parent? model coll e)))
-       (or (not (el/model-relation? e))
-           (contains-related? model coll e))))
 
 ;;;
 ;;; Rendering functions
@@ -237,17 +205,4 @@
        (into #{})))
 
 (comment
-  (id->element-map
-   #{{:el :sytem
-      :id :x/a-s
-      :ct #{{:el :container
-             :id :x/a-c}}}})
-  (el/traverse el/id->element
-               #{{:el :sytem
-                  :id :x/a-s
-                  :ct #{{:el :container
-                         :id :x/a-c}}}})
-  (union-by-id id->element-map #{{:id :x/a :el :a :dir :down} {:id :x/b :el :a}}
-               #{{:id :x/a :el :a :dir :up}})
-  ;
   )
