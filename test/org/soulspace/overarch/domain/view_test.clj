@@ -48,7 +48,7 @@
            :to :test/sys2
            :name "calls"
            :style :test/dashed-rel}]}
-    
+
     {:el :theme
      :id :test/test-theme1
      :styles #{{:id :test/dashed-rel
@@ -98,20 +98,34 @@
 (deftest styles-spec-test
   ; TODO 
   (testing "styles-spec-test"
-    (is (= 1 1)))) 
+    (is (= 1 1))))
 
 (deftest union-by-id-test
-  (testing "union-by-id"
-    (is (= #{{:id :x/b, :el :a}
-             {:id :x/a, :el :a, :dir :up}}
-           (union-by-id id->element-map #{{:id :x/a :el :a :dir :down}
-                          {:id :x/b :el :a}}
-                        #{{:id :x/a :el :a :dir :up}}))))) 
+  (testing "union-by-id for flat view"
+    (is (= #{{:id :x/a :el :a, :dir :up}
+             {:id :x/b :el :b
+              :ct #{{:id :x/c :el :c}}}}
+           (union-by-id {}
+                        {:el :flat-view}
+                        #{{:id :x/a :el :a :dir :down}
+                          {:id :x/b :el :b
+                           :ct #{{:id :x/c :el :c}}}}
+                        #{{:id :x/a :el :a :dir :up}}))))
+    (testing "union-by-id for hierarchical view"
+    (is (= #{{:id :x/b :el :b
+              :ct #{{:id :x/c :el :c}}}
+             {:id :x/a :el :a, :dir :up}
+             {:id :x/c :el :c}}
+           (union-by-id {}
+                        {:el :hierarchical-view}
+                        #{{:id :x/a :el :a :dir :down}
+                          {:id :x/b :el :b
+                           :ct #{{:id :x/c :el :c}}}}
+                        #{{:id :x/a :el :a :dir :up}})))))
 
 
 (comment
   (:views styles-model)
   (:themes styles-model)
   (styles-spec styles-model ((:id->element styles-model) :test/styles-context-view))
-  (styles-spec styles-model ((:id->element styles-model) :test/theme-context-view))
-  )
+  (styles-spec styles-model ((:id->element styles-model) :test/theme-context-view)))
