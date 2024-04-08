@@ -354,8 +354,8 @@
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
-; Todo add criteria
-; e.g. :parent :parent? :referred-by :referring :relation-of
+; TODO add criteria e.g. :parent :parent? :relation-of
+; TODO extract predicates to named functions to make them available in templates
   (cond
     ;;
     ;; element related
