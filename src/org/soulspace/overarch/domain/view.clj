@@ -265,7 +265,7 @@
   )
 
 ; Q: Which of the rendered elements are the relevant top level elements for the hierarchical views?
-;    All relations and the nodes which are not rendered by an included ancestor?
+; A: All relations and the nodes which are not rendered by an included ancestor?
 
 ;;;
 ;;; Rendering functions
