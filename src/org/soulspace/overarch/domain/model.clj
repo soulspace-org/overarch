@@ -441,14 +441,14 @@
     #(= v (boolean ((:referred-id->relations model) (:id %))))
 
     (= :refers-to k)
-    #(contains? v
-                (into #{}
-                      (map :to ((:referrer-id->relations model) (:id %)))))
+    #(contains? (into #{}
+                      (map :to ((:referrer-id->relations model) (:id %))))
+                v)
 
     (= :referred-by k)
-    #(contains? v
-                (into #{}
-                      (map :from ((:referred-id->relations model) (:id %)))))
+    #(contains? (into #{}
+                      (map :from ((:referred-id->relations model) (:id %))))
+                v)
 
     :else
     (println "unknown criterium" (name k))))

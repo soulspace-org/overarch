@@ -262,7 +262,7 @@
 (def filter-model1 (build-model filter-input))
 
 (deftest filter-xf-test
-  (testing "filter-xf with single criteria map"
+  (testing "filter-xf with single criteria map and element based criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
       #{{:el :person
          :id :org.soulspace.external/person
@@ -307,6 +307,38 @@
          :name "Container1 DB"
          :tech "Datomic"}}
       {:tech "Datomic"}))
+
+  (testing "filter-xf with single criteria map and model based criteria"
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
+      #{{:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}
+        {:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"}}
+      {:el :system :referred? true}
+
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :person
+         :id :org.soulspace.internal/person
+         :name "Internal Person"}}
+      {:el :person :refers? true}
+
+      #{{:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}}
+      {:el :system :referred-by :org.soulspace.external/person}
+
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}}
+      {:el :person :refers-to :org.soulspace.external/system1}))
 
   (testing "filter-xf with vector of criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
