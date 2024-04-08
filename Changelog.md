@@ -3,6 +3,7 @@ Changelog
 
 Version 0.15.0
 --------------
+* added generation of artifacts via templates
 * added selection criteria
 * added specs for criteria
 * added analytics functions
