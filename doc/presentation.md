@@ -1,7 +1,7 @@
 ---
 marp: true
-#theme: gaia
-theme: uncover
+theme: gaia
+#theme: uncover
 class: invert
 author: "Ludger Solbach"
 ---
@@ -15,63 +15,97 @@ author: "Ludger Solbach"
 <!-- header: "overarch - data driven modelling" -->
 <!-- footer: "Ludger Solbach" -->
 
-# Rationale
+# The problem
 
-* system models for
-  * communication
-  * documentation
-  * thinking
+understanding complex systems
 
 ---
 
 # Rationale
 
-* commercial modelling tools
-  * e.g. Enterprise Architect, Magic Draw
-  * comprehensive but complex
-  * license needed
+system models for
+* documentation
+* querying
+* communication
+* thinking
 
 ---
 
 # Rationale
 
-* drawing tools
-  * e.g. Visio, Gliffy, ExcaliDraw
-  * pretty pictures only
-  * no reuse between diagrams
+drawing tools
+e.g. Visio, Gliffy, ExcaliDraw
+ * no model, only pretty pictures
+ * no reuse between diagrams
 
 ---
 
 # Rationale
 
-lightweight open source modelling
+commercial modelling tools
+* e.g. Enterprise Architect, Magic Draw
+* comprehensive but complex
+* license needed
 
-data driven and text based
+---
 
-with visualization
+# Overarch
 
-### => **overarch**
+  * lightweight open source modelling
+  * data driven and text based
+  * with visualization
+
 
 ---
 
 # Models
 
-* models as data
-  * concept models, concept maps and glossaries
-  * system landscape and architecture, deployment
-  * use cases, state machines and class models
+## elements of the system
+ * concept models, concept maps and glossaries
+ * system landscape and architecture, deployment
+ * use cases, state machines and class models
+
+---
+
+# Models
+
+## models as data
  * hierarchical models and element references
  * composable / reusable
- * extensible format
+ * extensible
 
 ---
 
 # Views
 
-* views as data
-  * separation of models and views
-  * view specific customization of model elements
- 
+## representations of the system
+ * selection of model elements for a specific 
+   * context
+   * audience
+   * level of detail
+
+---
+
+# Views
+
+ * c4 views
+  * system context
+
+---
+
+# Views
+
+## views as data
+separation of models and views
+view specific customization of model elements
+
+---
+
+# Queries
+
+* queries as data
+  * 
+
 ---
 
 # Rendering
@@ -81,9 +115,10 @@ with visualization
      * use case, state machine and class diagrams
    * styling and sprite support
  * GraphViz
-   * Concept maps
+   * concept maps
  * Markdown
-   * Glossary, textual representations of graphical views
+   * glossaries
+   * textual representations of graphical views
 
 ---
 
