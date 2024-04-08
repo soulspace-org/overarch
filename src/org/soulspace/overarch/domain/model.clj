@@ -360,8 +360,6 @@
     ;;
     ;; element related
     ;;
-    ; TODO add id related criteria to relation :from/:to
-    ; id-namespace, from-namespace, to-namespace
     (= :namespace k)
     #(= (name v) (el/element-namespace %))
     (= :namespaces k)
@@ -443,10 +441,14 @@
     #(= v (boolean ((:referred-id->relations model) (:id %))))
 
     (= :refers-to k)
-    #(= v (map :to ((:referrer-id->relations model) (:id %))))
+    #(contains? v
+                (into #{}
+                      (map :to ((:referrer-id->relations model) (:id %)))))
 
     (= :referred-by k)
-    #(= v ((:referred-id->relations model) (:id %)))
+    #(contains? v
+                (into #{}
+                      (map :from ((:referred-id->relations model) (:id %)))))
 
     :else
     (println "unknown criterium" (name k))))

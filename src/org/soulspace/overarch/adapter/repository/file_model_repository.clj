@@ -16,7 +16,17 @@
     (str/split path #";")
     (str/split path #":")))
 
+; TODO validate against spec to report problems on a file level
+(defn read-model-file
+  "Reads a model `file`."
+  [file]
+  (-> file
+      (slurp)
+      (edn/read-string)))
+
+; TODO use read-model-file 
 (defn read-model
+  "Reads a model by reading all files in `dir`."
   [dir]
   (->> (file/all-files-by-extension "edn" dir)
        (map slurp)
