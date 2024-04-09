@@ -125,7 +125,7 @@
       (str (ns/ns-to-path (:namespace-prefix ctx)) "/"))
     (if (:base-namespace ctx)
       (str (ns/ns-to-path (:base-namespace ctx)) "/")
-      (str (ns/ns-to-path (el/element-namespace el))))
+      (str (ns/ns-to-path (el/element-namespace el)) "/"))
     
     (when (:namespace-suffix ctx)
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
@@ -168,7 +168,7 @@
   "Generates artifacts for the generation specification `spec`."
   [model options]
   (doseq [ctx (:generation-spec options)]
-    (let [selection ((into #{} (model/filter-xf model (:selection ctx)) (repo/elements)))]
+    (let [selection ((into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements)))]
       (if (:per-element ctx)
         (doseq [e selection]
           ; apply template on e
