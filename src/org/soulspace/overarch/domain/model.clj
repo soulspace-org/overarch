@@ -183,8 +183,6 @@
             (= (parent model (:to r1))
                (parent model (:to r2)))))))
 
-
-
 ;;;
 ;;; Build model
 ;;;

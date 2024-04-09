@@ -10,7 +10,6 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]))
 
-
 (defn- read-source [source]
   (if (string? source)
     source
@@ -69,14 +68,16 @@
          func (compile-fn [{:keys (vec keys)}] source)]
      (func bindings))))
 
-(defmethod t/read-template :file
+(defmethod t/read-template :comb
   [rtype template]
   (read-source template)
   )
 
 (defmethod t/apply-template :comb
-  [engine-key template data]
-  (eval template data))
+  ([engine-key template]
+   (eval template))
+  ([engine-key template data]
+   (eval template data)))
 
 (comment
   (defn greet-code [x] (print "Hello" x "!"))

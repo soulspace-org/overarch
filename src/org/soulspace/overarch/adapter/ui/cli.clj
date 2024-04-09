@@ -13,6 +13,7 @@
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
             [org.soulspace.overarch.application.render :as rndr]
+            [org.soulspace.overarch.application.template :as tmpl]
             ; require adapters here to register multimethods
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
@@ -24,6 +25,7 @@
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
             [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo]
+            [org.soulspace.overarch.adapter.template.comb :as comb]
             [clojure.set :as set]
             [org.soulspace.overarch.domain.spec :as spec])
   (:gen-class))
@@ -50,7 +52,7 @@
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
    ["-s" "--select-elements CRITERIA" "Select and print model elements by criteria" :parse-fn edn/read-string]
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
-   ["-t" "--template-path PATH" "Template directory or path" :default "templates"]
+   ["-t" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generator-config FILE" "Generator configuration"]
    ["-G" "--generator-dir DIRNAME" "Generator artifact directory" :default "generated"]
    ["-B" "--generator-backup-dir DIRNAME" "Generator backup directory" :default "backup"]
@@ -207,7 +209,9 @@
   (when (:render-format options)
     (rndr/render model (:render-format options) options))
   (when (:export-format options)
-    (exp/export model (:export-format options) options)))
+    (exp/export model (:export-format options) options))
+  (when (:generator-config options)
+    (tmpl/generate model options)))
 
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."

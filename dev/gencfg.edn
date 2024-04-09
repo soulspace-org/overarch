@@ -1,0 +1,14 @@
+;;;;
+;;;; Generator Config
+;;;;
+[
+ {:selection {:el :container
+              :tech "Clojure"}
+  :engine :comb
+  :template "clojure/gitignore.cmb"
+  :per-element true
+  :base-namespace "tmp"
+  :base-name ""
+  :extension "gitignore"
+  }
+]

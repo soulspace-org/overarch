@@ -3,6 +3,7 @@
 ;;;;
 (ns org.soulspace.overarch.application.template
   (:require [clojure.java.io :as io]
+            [clojure.edn :as edn]
             [org.soulspace.clj.namespace :as ns]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.application.model-repository :as repo]
@@ -140,6 +141,7 @@
 (defn write-artifact
   "Write the generated artifact to file."
   [pathname result]
+  (println "Writing" pathname)
   (let [file (io/as-file pathname)
         parent (file/parent-dir file)]
     ; TODO check suppress-write
@@ -160,26 +162,26 @@
 
 (defn generate-artifact
   "Generates an artifact"
-  [ctx e]
-  ; (apply-template (:template ctx) e)
-  )
+  [template ctx e]
+  (let [result (apply-template (:engine ctx) template)
+        path (str (artifact-path ctx e) (artifact-filename ctx e))]
+    (print result)
+    ; write artifact for result
+    (write-artifact path result)))
 
 (defn generate
   "Generates artifacts for the generation specification `spec`."
   [model options]
-  (doseq [ctx (:generation-spec options)]
-    (let [selection ((into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements)))]
-      (if (:per-element ctx)
-        (doseq [e selection]
-          ; apply template on e
-          ; write artifact for result
-          )
-        (do
-          ; apply template on selection
-          ; write artifact for result
-          )))))
-
+  (when-let [generator-config (:generator-config options)] 
+    (doseq [ctx (edn/read-string (slurp generator-config))] 
+      (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
+            selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
+        (if (:per-element ctx)
+          (doseq [e selection]
+            (generate-artifact template ctx {:ctx ctx :model model :element e}))
+          (generate-artifact template ctx {:ctx ctx :model model :selection selection}))))))
 
 (comment
   (repo/read-models :file "../../overarch/models")
+  (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
   )

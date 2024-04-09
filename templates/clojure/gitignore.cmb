@@ -1,0 +1,28 @@
+*.*~
+
+## Clojure
+.nrepl-port
+
+## Leiningen
+target/
+.lein-failures
+.lein-repl-history
+# only if not build with maven
+**/pom.xml
+
+## VS Code
+.vscode/
+.calva/
+.lsp/
+.cpcache/
+.clj-kondo/
+.portal/
+
+## Eclipse
+bin/
+.classpath
+.project
+.settings/
+hs_err_pid*.log
+
+## Project
