@@ -10,13 +10,53 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             ; register multimethods
-            [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]))
+            [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]
+            [clojure.spec.alpha :as s]))
 
 ; TODOs
-; template context
-; * which template with which model elements
-; * output path (directory, filename, suffix)
-; * protected region content
+
+;;;
+;;; Generation config spec
+;;;
+(s/def :overarch.template/selection :overarch/selection-criteria)
+(s/def :overarch.template/template string?)
+(s/def :overarch.template/engine keyword?)
+(s/def :overarch.template/encoding string?)
+(s/def :overarch.template/per-element boolean?)
+(s/def :overarch.template/path string?)
+(s/def :overarch.template/subdir string?)
+(s/def :overarch.template/namespace-prefix string?)
+(s/def :overarch.template/base-namespace string?)
+(s/def :overarch.template/namespace-suffix string?)
+(s/def :overarch.template/prefix string?)
+(s/def :overarch.template/base-name string?)
+(s/def :overarch.template/file-name string?)
+(s/def :overarch.template/suffix string?)
+(s/def :overarch.template/extension string?)
+(s/def :overarch.template/name-as-namespace boolean?)
+(s/def :overarch.template/protected-area boolean?)
+
+(s/def :overarch.template/generation-context
+  (s/keys :req-un [:overarch.template/template]
+          :opt-un [:overarch.template/selection
+                   :overarch.template/engine
+                   :overarch.template/encoding
+                   :overarch.template/per-element
+                   :overarch.template/path
+                   :overarch.template/subdir
+                   :overarch.template/namespace-prefix
+                   :overarch.template/base-namespace
+                   :overarch.template/namespace-suffix
+                   :overarch.template/file-name
+                   :overarch.template/prefix
+                   :overarch.template/base-name
+                   :overarch.template/suffix
+                   :overarch.template/extension
+                   :overarch.template/name-as-namespace
+                   :overarch.template/protected-area]))
+
+(s/def :overarch.template/generation-config
+  (s/coll-of :overarch.template/generation-context))
 
 ;;;
 ;;; Template engine functions
@@ -80,9 +120,10 @@
 
 (defn read-protected-areas
   "Reads the given path and returns the proected areas as a map."
-  [gen path]
-  (when-let [area-marker (:protected-area gen)]
-    (parse-protected-areas area-marker (read-lines path))))
+  [ctx path]
+  (when (file/exists? (io/as-file path))
+    (let [area-marker (:protected-area ctx)]
+      (parse-protected-areas area-marker (read-lines path)))))
 
 ;;;
 ;;; Artifact handling
@@ -152,19 +193,24 @@
     (spit pathname result)))
 
 ;;;
-;;; Generation spec
-;;;
-
-
-;;;
 ;;; Generation process
 ;;; 
 
+(def ctx-defaults
+  {:engine :comb
+   :per-element true
+   :protected-area "PA"
+   :encoding "UTF-8"})
+
+; TODO generation-dir missing from path, comes from options
 (defn generate-artifact
   "Generates an artifact"
-  [template ctx e]
-  (let [result (apply-template (:engine ctx) template)
-        path (str (artifact-path ctx e) (artifact-filename ctx e))]
+  [template ctx model e]
+  (println "Context" ctx)
+  (println "Element" e)
+  (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
+        protected-areas (read-protected-areas ctx path)
+        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})]
     (print result)
     ; write artifact for result
     (write-artifact path result)))
@@ -172,16 +218,18 @@
 (defn generate
   "Generates artifacts for the generation specification `spec`."
   [model options]
-  (when-let [generator-config (:generator-config options)] 
-    (doseq [ctx (edn/read-string (slurp generator-config))] 
-      (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
-            selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
-        (if (:per-element ctx)
-          (doseq [e selection]
-            (generate-artifact template ctx {:ctx ctx :model model :element e}))
-          (generate-artifact template ctx {:ctx ctx :model model :selection selection}))))))
+  (when-let [generator-config (:generator-config options)]
+    (doseq [ctx (edn/read-string (slurp generator-config))]
+      (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
+        (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
+          (println "Selection" selection)
+          (if (:per-element ctx)
+            (doseq [e selection]
+              (generate-artifact template ctx model e))
+            (generate-artifact template ctx model selection)))))))
 
 (comment
   (repo/read-models :file "../../overarch/models")
   (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
+  (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
   )
