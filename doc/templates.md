@@ -8,10 +8,6 @@ protected areas for handwritten code
 
 ## Generation Context
 
-:generation-dir "gen"
-:backup-dir "gen-bak"
-:template-path "templates"
-
 ```clojure
 { :generators [
     {:selection {}            ; selection criteria for the model elements
@@ -33,10 +29,22 @@ protected areas for handwritten code
 ]}
 ```
 
+## Overarch CLI
+
+Relevant options:
+  -t, --template-dir DIRNAME          templates  Template directory
+  -g, --generator-config FILE                    Generator configuration
+  -G, --generator-dir DIRNAME         generated  Generator artifact directory
+  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+
+
 ## Comb Template Engine
 Overarch incorporates the [Comb](https://github.com/weavejester/comb) template engine by James Reeves.
 
 Comb is a simple templating system for Clojure. You can use Comb to embed fragments of Clojure code into a text file.
+
+### Syntax
+
 
 ### Security Considerations
 

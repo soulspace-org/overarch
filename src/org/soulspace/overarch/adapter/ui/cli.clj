@@ -55,7 +55,7 @@
    ["-t" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generator-config FILE" "Generator configuration"]
    ["-G" "--generator-dir DIRNAME" "Generator artifact directory" :default "generated"]
-;   ["-B" "--generator-backup-dir DIRNAME" "Generator backup directory" :default "backup"]
+   ["-B" "--generator-backup-dir DIRNAME" "Generator backup directory" :default "backup"]
    [nil  "--model-warnings" "Returns warnings for the loaded model" :default true]
    [nil  "--model-info" "Returns infos for the loaded model" :default false] 
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
