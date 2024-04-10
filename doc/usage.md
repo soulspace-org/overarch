@@ -783,17 +783,21 @@ Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH              models  Models directory or path
-  -r, --render-format FORMAT                Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export  Export directory
-  -x, --export-format FORMAT                Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export  Export directory
-  -w, --watch                               Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA            Select and print model elements by criteria
-  -S, --select-references CRITERIA          Select model elements by criteria and print as references
-      --model-warnings                      Returns warnings for the loaded model
-      --model-info                          Returns infos for the loaded model
-      --plantuml-list-sprites               Lists the loaded PlantUML sprites
-  -h, --help                                Print help
-      --debug                               Print debug messages
+  -m, --model-dir PATH                models     Models directory or path
+  -r, --render-format FORMAT                     Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME            export     Render directory
+  -x, --export-format FORMAT                     Export format (json, structurizr)
+  -X, --export-dir DIRNAME            export     Export directory
+  -w, --watch                                    Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA                 Select and print model elements by criteria
+  -S, --select-references CRITERIA               Select model elements by criteria and print as references
+  -t, --template-dir DIRNAME          templates  Template directory
+  -g, --generator-config FILE                    Generator configuration
+  -G, --generator-dir DIRNAME         generated  Generator artifact directory
+  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+      --model-warnings                           Returns warnings for the loaded model
+      --model-info                               Returns infos for the loaded model
+      --plantuml-list-sprites                    Lists the loaded PlantUML sprites
+  -h, --help                                     Print help
+      --debug                                    Print debug messages
  ```
