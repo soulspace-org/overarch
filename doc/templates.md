@@ -3,13 +3,13 @@
 Overarch can generate artifacts for model elements with templates.
 
 It supports
-forward engineering
-protected areas for handwritten code
+* forward engineering
+* protected areas for handwritten code
 
 ## Generator Context
 
 ```clojure
-{:selection {}            ; selection criteria for the model elements
+{:selection {:el :system} ; selection criteria for the model elements
  :template ""             ; relative path of the template to apply
  :engine :comb            ; the template engine to use (currently only :comb)
  :encoding "UTF-8"        ; artifact encoding
@@ -25,7 +25,6 @@ protected areas for handwritten code
  :name-as-namespace false ; use the name as the namespace of the artifact
  :protected-area "PA"     ; protected area prefix
 }
-
 ```
 
 ## Overarch CLI
@@ -36,7 +35,6 @@ Relevant options:
   -G, --generator-dir DIRNAME         generated  Generator artifact directory
   -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
 
-
 ## Comb Template Engine
 Overarch incorporates the [Comb](https://github.com/weavejester/comb) template engine by James Reeves.
 
@@ -44,6 +42,15 @@ Comb is a simple templating system for Clojure. You can use Comb to embed fragme
 
 ### Syntax
 
+Expressions:
+```clojure
+1 + 2 = <%= (+ 1 2) %>
+```
+
+Control structures:
+```clojure
+foo <% (dotimes [x 3] %>bar<%) %>
+```
 
 ### Security Considerations
 
