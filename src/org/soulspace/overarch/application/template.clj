@@ -106,6 +106,7 @@
 (defn parse-protected-areas
   "Parse the lines into a protected area map."
   [area-marker lines]
+  (println "Read PAs from" lines)
   (let [begin-re (begin-pattern area-marker)]
     (loop [remaining-lines lines area-id nil area-content "" area-map {}]
       (if (seq remaining-lines)
@@ -210,8 +211,10 @@
   (println "Element" e)
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
-        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})]
-    (print result)
+        _ (println "Protected Areas" protected-areas)
+        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})
+        _ (print "Result" result)
+        ]
     ; write artifact for result
     (write-artifact path result)))
 
@@ -222,7 +225,7 @@
     (doseq [ctx (edn/read-string (slurp generator-config))]
       (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
         (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
-          (println "Selection" selection)
+          ; (println "Selection" selection)
           (if (:per-element ctx)
             (doseq [e selection]
               (generate-artifact template ctx model e))
