@@ -20,20 +20,18 @@ composable and reusable.
 ![GitHub](https://img.shields.io/github/license/soulspace-org/overarch)
 
 
-
 Features
 --------
 
 * models and views as data
-  * C4 models and views
+  * C4 architecture and deployment models and views
   * UML use case, state machine and class models and views
   * Concept models, concept maps and glossaries
   * separation of models and views
   * hierarchical models and element references
   * view specific customization of model elements
   * extensible format
-* exports
-  * JSON if you need to process models with languages without EDN support
+* view rendering
   * PlantUML
     * all C4 views (except code view)
     * use case, state machine and class diagrams
@@ -42,8 +40,11 @@ Features
     * Concept maps
   * Markdown
     * Glossary, textual representations of graphical views
+* template based artifact generation 
+* model exports
+  * JSON if you need to process models with languages without EDN support
   * Structurizr *experimental*
-* watch model directory for changes
+* watch model directories for changes
 
 
 Rationale
@@ -323,20 +324,24 @@ Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH              models  Models directory or path
-  -r, --render-format FORMAT                Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export  Export directory
-  -x, --export-format FORMAT                Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export  Export directory
-  -w, --watch                               Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA            Select and print model elements by criteria
-  -S, --select-references CRITERIA          Select model elements by criteria and print as references
-      --model-warnings                      Returns warnings for the loaded model
-      --model-info                          Returns infos for the loaded model
-      --plantuml-list-sprites               Lists the loaded PlantUML sprites
-  -h, --help                                Print help
-      --debug                               Print debug messages
- ```
+  -m, --model-dir PATH                models     Models directory or path
+  -r, --render-format FORMAT                     Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME            export     Render directory
+  -x, --export-format FORMAT                     Export format (json, structurizr)
+  -X, --export-dir DIRNAME            export     Export directory
+  -w, --watch                                    Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA                 Select and print model elements by criteria
+  -S, --select-references CRITERIA               Select model elements by criteria and print as references
+  -t, --template-dir DIRNAME          templates  Template directory
+  -g, --generator-config FILE                    Generator configuration
+  -G, --generator-dir DIRNAME         generated  Generator artifact directory
+  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+      --model-warnings                           Returns warnings for the loaded model
+      --model-info                               Returns infos for the loaded model
+      --plantuml-list-sprites                    Lists the loaded PlantUML sprites
+  -h, --help                                     Print help
+      --debug                                    Print debug messages
+```
 
 If you use Visual Studio Code as described above, you can start *Overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
 

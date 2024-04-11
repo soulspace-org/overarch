@@ -6,7 +6,7 @@
               :tech "Clojure"}
   :engine :comb
   :template "clojure/gitignore.cmb"
-  :per-element false
+  :per-element true
   :base-namespace "tmp"
   :base-name ""
   :extension "gitignore"}

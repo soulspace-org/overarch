@@ -2,3 +2,8 @@
 
 <%= (:desc e) %>
 
+[PA-BEGINcontent]::
+
+Add your readme content here
+
+[PA-ENDcontent]::
