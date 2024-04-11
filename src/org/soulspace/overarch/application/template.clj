@@ -115,7 +115,7 @@
             (recur (rest remaining-lines) (nth (first begin-matches) 1) "" area-map) ; line starting a protected area
             (recur (rest remaining-lines) nil "" area-map)) ; line outside any protected areas
           (if-let [end-match (re-matches (end-pattern area-marker area-id) (first remaining-lines))]
-            (recur (rest remaining-lines) nil "" (assoc area-map area-id area-content)) ; line ending a protected area
+            (recur (rest remaining-lines) nil "" (assoc area-map (keyword area-id) area-content)) ; line ending a protected area
             (recur (rest remaining-lines) area-id (str area-content (first remaining-lines) "\n") area-map))) ; line inside a protected area
         area-map)))) ; no more lines, return area map
 

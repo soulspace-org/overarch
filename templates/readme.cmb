@@ -3,7 +3,5 @@
 <%= (:desc e) %>
 
 [PA-BEGIN(content)]::
-
-Add your readme content here
-
+<%= (:content protected-areas)%>
 [PA-END(content)]::
