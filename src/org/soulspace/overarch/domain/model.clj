@@ -414,14 +414,14 @@
     (= :tech k)
     #(contains? (set (el/technologies %)) v) ; TODO create vector on load
     (= :techs k)
-    #(contains? v (:tech %))
+    #(seq (set/intersection v (set (el/technologies %))))
     (= :all-techs k)
-    #(contains? v (:tech %))
+    #(set/subset? (set v) (set (el/technologies %)))
 
     (= :tag k)
     #(contains? (:tags %) v)
     (= :tags k)
-    #(set/intersection v (:tags %))
+    #(seq (set/intersection v (:tags %)))
     (= :all-tags k)
     #(set/subset? (set v) (:tags %))
 
