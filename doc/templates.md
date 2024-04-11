@@ -6,27 +6,26 @@ It supports
 forward engineering
 protected areas for handwritten code
 
-## Generation Context
+## Generator Context
 
 ```clojure
-{ :generators [
-    {:selection {}            ; selection criteria for the model elements
-     :template ""             ; relative path of the template to apply
-     :engine :comb            ; the template engine to use (currently only :comb)
-     :encoding "UTF-8"        ; artifact encoding
-     :per-element true        ; apply the template for each element of the selection
-     :subdir ""               ; subdirectory for generated artifact
-     :namespace-prefix ""     ; prefix for the namespace of the generated artifact
-     :base-namespace ""       ; base namespace of the generated artifact
-     :namespace-suffix ""     ; suffix for the namespace of the generated artifact
-     :prefix ""               ; prefix for the name of the generated artifact
-     :base-name ""            ; base name of the generated artifact
-     :suffix ""               ; suffix for the name of the generated artifact
-     :extension ""            ; extension of the generated artifact
-     :name-as-namespace false ; use the name as the namespace of the artifact
-     :protected-area "PA"     ; protected area prefix
-     }
-]}
+{:selection {}            ; selection criteria for the model elements
+ :template ""             ; relative path of the template to apply
+ :engine :comb            ; the template engine to use (currently only :comb)
+ :encoding "UTF-8"        ; artifact encoding
+ :per-element true        ; apply the template for each element of the selection
+ :subdir ""               ; subdirectory for generated artifact
+ :namespace-prefix ""     ; prefix for the namespace of the generated artifact
+ :base-namespace ""       ; base namespace of the generated artifact
+ :namespace-suffix ""     ; suffix for the namespace of the generated artifact
+ :prefix ""               ; prefix for the name of the generated artifact
+ :base-name ""            ; base name of the generated artifact
+ :suffix ""               ; suffix for the name of the generated artifact
+ :extension ""            ; extension of the generated artifact
+ :name-as-namespace false ; use the name as the namespace of the artifact
+ :protected-area "PA"     ; protected area prefix
+}
+
 ```
 
 ## Overarch CLI
