@@ -31,6 +31,8 @@ Features
   * hierarchical models and element references
   * view specific customization of model elements
   * extensible format
+* model queries
+  * criteria based selection of model elements
 * view rendering
   * PlantUML
     * all C4 views (except code view)
@@ -40,7 +42,12 @@ Features
     * Concept maps
   * Markdown
     * Glossary, textual representations of graphical views
-* template based artifact generation 
+* template based artifact generation for e.g.
+  * project templates
+  * code scaffolding
+  * CI/CD pipelines
+  * reports
+  * custom vizualizations
 * model exports
   * JSON if you need to process models with languages without EDN support
   * Structurizr *experimental*
