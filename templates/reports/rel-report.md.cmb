@@ -1,0 +1,7 @@
+# Relation Report
+
+## Relations
+ Id |Name | Type | From | To | Description 
+----|-----|------|------|----|------------
+<% (doseq [c rels]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (:desc c) %>
+<%)%>
