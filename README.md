@@ -42,7 +42,7 @@ Features
     * Concept maps
   * Markdown
     * Glossary, textual representations of graphical views
-* template based artifact generation for e.g.
+* template based artifact generation *experimental* for e.g.
   * project templates
   * code scaffolding
   * CI/CD pipelines
