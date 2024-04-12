@@ -30,7 +30,7 @@
 
 (defn emit-expr [expr]
   (if (.startsWith expr "=")
-    (print "(print " (subs expr 1) ")")
+    (print "(print (str " (subs expr 1) "))")
     (print expr)))
 
 (defn- parse-string [src]
