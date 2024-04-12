@@ -484,28 +484,43 @@ Criterias can also be given as a vector of criteria maps. An element is
 selected, if it is selected by any of the critria maps (logial disjunction). 
 
 ## Keys
-key               | type            | example values          | description
-------------------|-----------------|-------------------------|------------
-:el               | keyword         | :system                 | elements of the given type
-:els              | set of keywords | #{:system :person}      | elements with one of the given types
-:namespace        | string          | "org.soulspace"         | elements with the given id namespace
-:namespaces       | set of strings  | #{"org.soulspace"}      | elements with one of the given id namespaces
-:namespace-prefix | string          | "org"                   | elements with the given id namespace prefix
-:id?              | boolean         | false                   | elements for which the id check returns the given value
-:id               | keyword         | :org.soulspace/overarch | the element with the given id
-:subtype?         | boolean         | false                   | elements for which the subtype check returns the given value
-:subtype          | keyword         | :queue                  | elements of the given subtype
-:subtypes         | set of keywords | #{:queue :database}     | elements of one of the given subtypes
-:external?        | boolean         | true                    | elements of the given external state
-:name?            | boolean         | false                   | elements for which the name check returns the given value
-:desc?            | boolean         | false                   | elements for which the description check returns the given value
-:tech?            | boolean         | false                   | elements for which the technology check returns the given value
-:tech             | string          | "Clojure"               | elements of the given technology
-:techs            | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given technologies
-:tags?            | boolean         | false                   | elements for which the tags check returns the given value
-:tag              | string          | "critical"              | elements with the given tag
-:tags             | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given tags
-:children?        | boolean         | false                   | elements for which the check for children returns the given value
+key                    | type            | example values          | description
+-----------------------|-----------------|-------------------------|------------
+:el                    | keyword         | :system                 | elements of the given type
+:els                   | set of keywords | #{:system :person}      | elements with one of the given types
+:namespace             | string          | "org.soulspace"         | elements with the given id namespace
+:namespaces            | set of strings  | #{"org.soulspace"}      | elements with one of the given id namespaces
+:namespace-prefix      | string          | "org"                   | elements with the given id namespace prefix
+:from-namespace        | string          | "org.soulspace"         | relations with the given id namespace of the from reference
+:from-namespaces       | set of strings  | #{"org.soulspace"}      | relations with one of the given id namespaces of the from reference
+:from-namespace-prefix | string          | "org"                   | relations with the given id namespace prefix of the from reference
+:to-namespace          | string          | "org.soulspace"         | relations with the given id namespace of the from reference
+:to-namespaces         | set of strings  | #{"org.soulspace"}      | relations with one of the given id namespaces of the from reference
+:to-namespace-prefix   | string          | "org"                   | relations with the given id namespace prefix of the from reference
+:id?                   | boolean         | true, false             | elements for which the id check returns the given value
+:id                    | keyword         | :org.soulspace/overarch | the element with the given id
+:from                  | keyword         | :org.soulspace/overarch | relations with the given from id
+:to                    | keyword         | :org.soulspace/overarch | relations with the given to id
+:subtype?              | boolean         | true, false             | nodes for which the subtype check returns the given value
+:subtype               | keyword         | :queue                  | nodes of the given subtype
+:subtypes              | set of keywords | #{:queue :database}     | nodes of one of the given subtypes
+:external?             | boolean         | true, false             | elements of the given external state
+:name?                 | boolean         | true, false             | elements for which the name check returns the given value
+:desc?                 | boolean         | true, false             | elements for which the description check returns the given value
+:tech?                 | boolean         | true, false             | elements for which the technology check returns the given value
+:tech                  | string          | "Clojure"               | elements of the given technology
+:techs                 | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given technologies
+:all-techs             | set of strings  | #{"Clojure" "Java"}     | elements with all of the given technologies
+:tags?                 | boolean         | true, false             | elements for which the tags check returns the given value
+:tag                   | string          | "critical"              | elements with the given tag
+:tags                  | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given tags
+:all-tags              | set of strings  | #{"Clojure" "Java"}     | elements with all of the given tags
+:children?             | boolean         | true, false             | nodes for which the check for children returns the given value
+:child?                | boolean         | true, false             | nodes for which the check for child returns the given value
+:refers?               | boolean         | true, false             | nodes for which the check for refers returns the given value
+:referred?             | boolean         | true, false             | nodes for which the check for referred returns the given value
+:refers-to             | keyword         | :org.soulspace/overarch | nodes which refer to the element with the given id
+:referred-by           | keyword         | :org.soulspace/overarch | nodes which are refered by the element with the given id
 
 # Views
 To show model elements in diagrams or in textual representations you can define
@@ -783,17 +798,21 @@ Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH              models  Models directory or path
-  -r, --render-format FORMAT                Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export  Export directory
-  -x, --export-format FORMAT                Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export  Export directory
-  -w, --watch                               Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA            Select and print model elements by criteria
-  -S, --select-references CRITERIA          Select model elements by criteria and print as references
-      --model-warnings                      Returns warnings for the loaded model
-      --model-info                          Returns infos for the loaded model
-      --plantuml-list-sprites               Lists the loaded PlantUML sprites
-  -h, --help                                Print help
-      --debug                               Print debug messages
+  -m, --model-dir PATH                models     Models directory or path
+  -r, --render-format FORMAT                     Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME            export     Render directory
+  -x, --export-format FORMAT                     Export format (json, structurizr)
+  -X, --export-dir DIRNAME            export     Export directory
+  -w, --watch                                    Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA                 Select and print model elements by criteria
+  -S, --select-references CRITERIA               Select model elements by criteria and print as references
+  -t, --template-dir DIRNAME          templates  Template directory
+  -g, --generator-config FILE                    Generator configuration
+  -G, --generator-dir DIRNAME         generated  Generator artifact directory
+  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+      --model-warnings                           Returns warnings for the loaded model
+      --model-info                               Returns infos for the loaded model
+      --plantuml-list-sprites                    Lists the loaded PlantUML sprites
+  -h, --help                                     Print help
+      --debug                                    Print debug messages
  ```

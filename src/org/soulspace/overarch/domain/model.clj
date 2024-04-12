@@ -183,8 +183,6 @@
             (= (parent model (:to r1))
                (parent model (:to r2)))))))
 
-
-
 ;;;
 ;;; Build model
 ;;;
@@ -354,8 +352,8 @@
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
-; Todo add criteria
-; e.g. :parent :parent? :referred-by :referring :relation-of
+; TODO add criteria e.g. :parent :parent? :relation-of
+; TODO extract predicates to named functions to make them available in templates
   (cond
     ;;
     ;; element related
@@ -416,14 +414,14 @@
     (= :tech k)
     #(contains? (set (el/technologies %)) v) ; TODO create vector on load
     (= :techs k)
-    #(contains? v (:tech %))
+    #(seq (set/intersection v (set (el/technologies %))))
     (= :all-techs k)
-    #(contains? v (:tech %))
+    #(set/subset? (set v) (set (el/technologies %)))
 
     (= :tag k)
     #(contains? (:tags %) v)
     (= :tags k)
-    #(set/intersection v (:tags %))
+    #(seq (set/intersection v (:tags %)))
     (= :all-tags k)
     #(set/subset? (set v) (:tags %))
 

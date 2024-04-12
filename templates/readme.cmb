@@ -1,0 +1,7 @@
+# <%= (:name e) %>
+
+<%= (:desc e) %>
+
+[PA-BEGIN(content)]::
+<%= (:content protected-areas)%>
+[PA-END(content)]::

@@ -1,0 +1,20 @@
+;;;;
+;;;; Generator Config
+;;;;
+[{:selection {:el :container
+              :tech "Clojure"}
+  :engine :comb
+  :template "clojure/gitignore.cmb"
+  :per-element true
+  :base-namespace "tmp"
+  :base-name ""
+  :extension "gitignore"}
+ {:selection {:el :container
+              :tech "Clojure"}
+  :engine :comb
+  :template "readme.cmb"
+  :per-element true
+  :base-namespace "tmp"
+  :base-name "README"
+  :extension "md"
+  :protected-area "PA"}]
