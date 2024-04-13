@@ -204,7 +204,7 @@
 
 (def ctx-defaults
   {:engine :comb
-   :per-element true
+   :per-element false
 ;   :protected-area "PA"
    :encoding "UTF-8"
    :id-as-namespace false})

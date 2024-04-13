@@ -2,7 +2,6 @@
 ;;;; Generator Config
 ;;;;
 [{:selection {:el :system :external? true}
-  :engine :comb
   :template "reports/node-report.md.cmb"
   :subdir "tmp"
   :base-namespace "reports"
@@ -10,7 +9,6 @@
   :extension "md"}
  {:selection {:el :container
               :tech "Clojure"}
-  :engine :comb
   :template "clojure/gitignore.cmb"
   :per-element true
   :subdir "tmp"
@@ -24,7 +22,7 @@
   :template "readme.cmb"
   :per-element true
   :subdir "tmp"
-  :use-name-as-namespace true
+  :id-as-namespace true
 ;  :base-namespace "tmp"
   :base-name "README"
   :extension "md"

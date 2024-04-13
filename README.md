@@ -33,6 +33,12 @@ Features
   * extensible format
 * model queries
   * criteria based selection of model elements
+* template based artifact generation (*experimental*) for e.g.
+  * project templates
+  * code scaffolding
+  * CI/CD pipelines
+  * reports
+  * custom vizualizations
 * view rendering
   * PlantUML
     * all C4 views (except code view)
@@ -42,12 +48,6 @@ Features
     * Concept maps
   * Markdown
     * Glossary, textual representations of graphical views
-* template based artifact generation *experimental* for e.g.
-  * project templates
-  * code scaffolding
-  * CI/CD pipelines
-  * reports
-  * custom vizualizations
 * model exports
   * JSON if you need to process models with languages without EDN support
   * Structurizr *experimental*
