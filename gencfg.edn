@@ -1,12 +1,21 @@
 ;;;;
 ;;;; Generator Config
 ;;;;
-[{:selection {:el :container
+[{:selection {:el :system :external? true}
+  :engine :comb
+  :template "reports/node-report.md.cmb"
+  :subdir "tmp"
+  :base-namespace "reports"
+  :base-name "ext-systems-report"
+  :extension "md"}
+ {:selection {:el :container
               :tech "Clojure"}
   :engine :comb
   :template "clojure/gitignore.cmb"
   :per-element true
-  :base-namespace "tmp"
+  :subdir "tmp"
+  :id-as-namespace true
+;  :base-namespace "tmp"
   :base-name ""
   :extension "gitignore"}
  {:selection {:el :container
@@ -14,7 +23,9 @@
   :engine :comb
   :template "readme.cmb"
   :per-element true
-  :base-namespace "tmp"
+  :subdir "tmp"
+  :use-name-as-namespace true
+;  :base-namespace "tmp"
   :base-name "README"
   :extension "md"
   :protected-area "PA"}]

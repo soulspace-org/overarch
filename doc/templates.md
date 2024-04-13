@@ -22,7 +22,7 @@ It supports
  :base-name ""            ; base name of the generated artifact
  :suffix ""               ; suffix for the name of the generated artifact
  :extension ""            ; extension of the generated artifact
- :name-as-namespace false ; use the name as the namespace of the artifact
+ :id-as-namespace false ; use the name as the namespace of the artifact
  :protected-area "PA"     ; protected area prefix
 }
 ```
@@ -46,10 +46,18 @@ Expressions:
 ```clojure
 1 + 2 = <%= (+ 1 2) %>
 ```
+Result:
+```
+1 + 2 = 3
+```
 
 Control structures:
 ```clojure
-foo <% (dotimes [x 3] %>bar<%) %>
+foo<% (dotimes [x 3] %> bar<%) %>
+```
+Result:
+```
+foo bar bar bar
 ```
 
 ### Security Considerations

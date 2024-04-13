@@ -122,9 +122,11 @@
 (defn read-protected-areas
   "Reads the given path and returns the proected areas as a map."
   [ctx path]
-  (when (file/exists? (io/as-file path))
+  (if (and (:protected-area ctx)
+           (file/exists? (io/as-file path)))
     (let [area-marker (:protected-area ctx)]
-      (parse-protected-areas area-marker (read-lines path)))))
+      (parse-protected-areas area-marker (read-lines path)))
+    {}))
 
 ;;;
 ;;; Artifact handling
@@ -166,9 +168,12 @@
       (str (:subdir ctx) "/"))
     (when (:namespace-prefix ctx)
       (str (ns/ns-to-path (:namespace-prefix ctx)) "/"))
-    (if (:base-namespace ctx)
-      (str (ns/ns-to-path (:base-namespace ctx)) "/")
-      (str (ns/ns-to-path (el/element-namespace el)) "/"))
+    
+    (if (:id-as-namespace ctx)
+      (str (ns/ns-to-path (name (:id el))) "/")
+      (if (:base-namespace ctx)
+        (str (ns/ns-to-path (:base-namespace ctx)) "/")
+        (str (ns/ns-to-path (el/element-namespace el)) "/")))
     
     (when (:namespace-suffix ctx)
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
@@ -200,18 +205,27 @@
 (def ctx-defaults
   {:engine :comb
    :per-element true
-   :protected-area "PA"
-   :encoding "UTF-8"})
+;   :protected-area "PA"
+   :encoding "UTF-8"
+   :id-as-namespace false})
+
+(defn read-config
+  "Reads the generator configuration."
+  [options]
+  (if-let [generator-config (:generator-config options)]
+    (map (partial merge ctx-defaults)
+         (edn/read-string (slurp generator-config)))
+    []))
 
 ; TODO generation-dir missing from path, comes from options
 (defn generate-artifact
   "Generates an artifact"
   [template ctx model e]
-  (println "Context" ctx)
-  (println "Element" e)
+;  (println "Context" ctx)
+;  (println "Element" e)
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
-        _ (println "Protected Areas" protected-areas)
+;        _ (println "Protected Areas" protected-areas)
         result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})
         _ (print "Result" result)
         ]
@@ -221,15 +235,14 @@
 (defn generate
   "Generates artifacts for the generation specification `spec`."
   [model options]
-  (when-let [generator-config (:generator-config options)]
-    (doseq [ctx (edn/read-string (slurp generator-config))]
+    (doseq [ctx (read-config options)]
       (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
-        (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
-          ; (println "Selection" selection)
+        (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))] 
+;          (println "Selection" selection)
           (if (:per-element ctx)
             (doseq [e selection]
               (generate-artifact template ctx model e))
-            (generate-artifact template ctx model selection)))))))
+            (generate-artifact template ctx model selection))))))
 
 (comment
   (repo/read-models :file "../../overarch/models")
