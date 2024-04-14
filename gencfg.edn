@@ -1,29 +1,45 @@
 ;;;;
 ;;;; Generator Config
 ;;;;
-[{:selection {:el :system :external? true}
+[
+ ;; Reports
+ {:selection {:el :system :external? true}
   :template "reports/node-report.md.cmb"
   :subdir "tmp"
   :base-namespace "reports"
   :base-name "ext-systems-report"
   :extension "md"}
+
+ ;; Projects
  {:selection {:el :container
               :tech "Clojure"}
-  :template "clojure/gitignore.cmb"
+  :template "projects/clojure/gitignore.cmb"
   :per-element true
   :subdir "tmp"
   :id-as-namespace true
 ;  :base-namespace "tmp"
   :base-name ""
   :extension "gitignore"}
+ 
  {:selection {:el :container
               :tech "Clojure"}
   :engine :comb
-  :template "readme.cmb"
+  :template "projects/readme.cmb"
   :per-element true
   :subdir "tmp"
   :id-as-namespace true
 ;  :base-namespace "tmp"
   :base-name "README"
   :extension "md"
-  :protected-area "PA"}]
+  :protected-area "PA"}
+ 
+ ;; Tests
+ {:selection {:el :system :external? true}
+ :template "ns-test.cmb"
+ :subdir "tmp"
+ :base-namespace "test"
+ :base-name "ns-test"
+ :extension "md"}
+
+ ;
+ ]

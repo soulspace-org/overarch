@@ -241,10 +241,9 @@
 ;;;
 ;;; CLI entry 
 ;;;
-
 (defn -main
   "Main function as CLI entry point."
-  [& args]
+  [& args] 
   (let [{:keys [options exit-message success]} (validate-args args cli-opts)]
     (when (:debug options)
       (println options))

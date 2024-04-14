@@ -1,0 +1,9 @@
+# Namespace Tests
+
+## Current namespace *ns*
+<%= *ns* %>
+
+## all-ns
+<% (doseq [n (all-ns)]%>
+<%= n %>
+<% ) %>

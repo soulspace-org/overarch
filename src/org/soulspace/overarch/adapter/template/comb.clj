@@ -5,6 +5,7 @@
   "Clojure templating library."
   (:refer-clojure :exclude [fn eval])
   (:require [clojure.core :as core]
+            [clojure.java.io :as io]
             [org.soulspace.overarch.application.template :as t]
             ; require overarch domain to make functions available for templates
             [org.soulspace.overarch.domain.element :as el]
@@ -45,7 +46,8 @@
           (do (emit-string after)
               (print ")")))))))
 
-(defn compile-fn [args src]
+(defn compile-fn
+  [args src]
   (core/eval
    `(core/fn ~args
       (with-out-str
@@ -64,9 +66,13 @@
   ([source]
    (eval source {}))
   ([source bindings]
-   (let [keys (map (comp symbol name) (keys bindings))
-         func (compile-fn [{:keys (vec keys)}] source)]
-     (func bindings))))
+   (println "Current Namespace:" *ns*)
+   (let [current-ns *ns*] 
+     (println "Current Namespace:" *ns*)
+     (binding [*ns* current-ns]
+       (let [keys (map (comp symbol name) (keys bindings))
+             func (compile-fn [{:keys (vec keys)}] source)]
+         (func bindings))))))
 
 (defmethod t/read-template :comb
   [rtype template]
@@ -93,4 +99,6 @@
                                                            :id :foo/foo-bar}})
   (t/apply-template :comb "<%= (:id e) %>" {:e {:el :system
                                                 :id :foo/foo-bar}})
+
+  (t/apply-template :comb (io/as-file "templates/ns-test.cmb"))
   )

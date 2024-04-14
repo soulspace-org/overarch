@@ -221,7 +221,6 @@
 (defn generate-artifact
   "Generates an artifact"
   [template ctx model e]
-;  (println "Context" ctx)
 ;  (println "Element" e)
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
@@ -236,6 +235,7 @@
   "Generates artifacts for the generation specification `spec`."
   [model options]
     (doseq [ctx (read-config options)]
+      (println "Context" ctx)
       (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
         (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))] 
 ;          (println "Selection" selection)
@@ -245,7 +245,7 @@
             (generate-artifact template ctx model selection))))))
 
 (comment
-  (repo/read-models :file "../../overarch/models")
+  (repo/read-models :file "models")
   (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
   )
