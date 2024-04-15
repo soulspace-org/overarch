@@ -55,7 +55,6 @@ key               | type     | values             | default | description
 ```
 
 
-
 ## Overarch CLI
 
 Relevant CLI options for template based artifact generation:
@@ -66,14 +65,25 @@ Relevant CLI options for template based artifact generation:
   -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
 ```
 
+```
+java -jar overarch.jar -g gencfg.edn
+```
+
 ## Comb Template Engine
 Overarch incorporates the [Comb](https://github.com/weavejester/comb) template engine by James Reeves.
 
 Comb is a simple templating system for Clojure. You can use Comb to embed fragments of Clojure code into a text file.
 
 ### Syntax
+Clojure fragments in a template are demarkated with `<%` and `%>`.
+You can embed clojure code as an expression, where the result of the
+execution is included in the resulting artifact. You can also embed
+the clojure code as a control structure, where the result of the
+execution of the control structure is not included in the resulting
+artifact, only the template text or other expressions inside of the
+control structure.
 
-Expressions:
+#### Expressions
 ```clojure
 1 + 2 = <%= (+ 1 2) %>
 ```
@@ -82,7 +92,7 @@ Result:
 1 + 2 = 3
 ```
 
-Control structures:
+#### Control structures
 ```clojure
 foo<% (dotimes [x 3] %> bar<%) %>
 ```
@@ -91,7 +101,80 @@ Result:
 foo bar bar bar
 ```
 
-### Security Considerations
+## Protected Areas
+Protected areas are used to protect manually inserted text in generated
+artifacts. For example, when generating source code from a code model element,
+maybe only the signature of the function may be generated. The body of the
+function may have to be inserted by a programmer.
 
-Comb templates can contain arbitrary clojure code, which gets evaluated in the context of the overarch process. Be aware of this fact and review templates accordingly.
+When regenerating the source code artifact, you don't want the manually
+inserted code to be deleted or overridden, but preserved.
 
+Given this class node from a model
+```clojure
+{:el :class
+ :id :model/calc
+ :name "Calc"
+ :ct [{:el method
+       :name "square"
+       :type "double"
+       :visibility :public
+       :ct [{:el :field
+             :name "x"
+             :type "double"}
+           ]}
+     ]}
+```
+and a template like
+```clojure
+public class <%= (:name e) %> {
+
+  <% (doseq [m (:ct e)] %>
+  public <%= (:type m) %> <%= (:name m) %>(<%
+  (doseq [p (:ct m)] %> (:type m) %> <%= (:name m) %>, <%)%>) {
+    // PA-BEGIN(square-impl)
+    <%= (:square-impl protected-areas)%>
+    // PA-END(square-impl)
+  }
+  <%)%>
+}
+```
+
+On the first generation pass, the generated file will look like
+```java
+public class Calc {
+
+  public double square(double x) {
+    // PA-BEGIN(square-impl)
+    // PA-END(square-impl)
+  }
+}
+```
+After manually inserting the implementation, the artifact looks like
+```java
+public class Calc {
+
+  public double square(double x) {
+    // PA-BEGIN(square-impl)
+    return x * x;
+    // PA-END(square-impl)
+  }
+}
+```
+On regeneration, the content of the protected area is parsed by the generator before applying the template and reinserted by the template.
+
+So after regeneration the artifact still looks like
+```java
+public class Calc {
+
+  public double square(double x) {
+    // PA-BEGIN(square-impl)
+    return x * x;
+    // PA-END(square-impl)
+  }
+}
+```
+
+## Security Considerations
+
+Comb templates can contain arbitrary clojure code, which gets evaluated in the context of the overarch process. Be aware of this fact and review templates accordingly, especially when using templates from external sources.

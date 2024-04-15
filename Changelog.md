@@ -5,7 +5,6 @@ Version 0.15.0
 --------------
 * added generation of artifacts via templates
   * integrated comb template engine
-  * element and model functions are available in templates
 * added selection criteria
 * added specs for criteria
 * added analytics functions

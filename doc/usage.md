@@ -817,7 +817,7 @@ Options:
       --debug                                    Print debug messages
  ```
 
-## Examples
+## CLI Examples
 To render all views for all models, use
 ```
 > java -jar ./target/overarch.jar -r all
