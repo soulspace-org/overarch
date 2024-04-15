@@ -34,12 +34,12 @@
   :protected-area "PA"}
  
  ;; Tests
- {:selection {:el :system :external? true}
- :template "ns-test.cmb"
- :subdir "tmp"
- :base-namespace "test"
- :base-name "ns-test"
- :extension "md"}
+ ;{:selection {:el :system :external? true}
+ ;:template "ns-test.cmb"
+ ;:subdir "tmp"
+ ;:base-namespace "test"
+ ;:base-name "ns-test"
+ ;:extension "md"}
 
  ;
  ]
