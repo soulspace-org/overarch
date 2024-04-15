@@ -816,3 +816,32 @@ Options:
   -h, --help                                     Print help
       --debug                                    Print debug messages
  ```
+
+## Examples
+To render all views for all models, use
+```
+> java -jar ./target/overarch.jar -r all
+```
+or
+```
+> java -jar ./target/overarch.jar -r all --debug
+```
+
+To render all views for all models with a directory watch to trigger rerendering on changes, use
+```
+> java -jar ./target/overarch.jar -r all -w --debug
+```
+
+To export the models to JSON, use
+```
+> java -jar ./target/overarch.jar -x json
+```
+
+To query the model for all containers, use
+```
+> java -jar ./target/overarch.jar -s '{:el :container}'
+```
+or
+```
+> java -jar ./target/overarch.jar -S '{:el :container}'
+```
