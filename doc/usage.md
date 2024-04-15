@@ -784,6 +784,9 @@ The Structurizr export creates a workspace with the loaded model and views.
 As Structurizr currently only supports the C4 architecture model and views,
 only these elements will be included in the Structurizr workspace.
 
+# Template Based Artifact Generation
+
+
 # Command Line Interface
 
 ```

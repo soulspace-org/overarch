@@ -1,6 +1,6 @@
 # Artifact Generation with Templates
 
-Overarch can generate artifacts for model elements with templates.
+Overarch can generate artifacts for model elements via templates.
 
 It supports
 * forward engineering
