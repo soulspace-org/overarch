@@ -317,6 +317,12 @@ Start the the *Overarch* CLI tool with java.
 java -jar overarch.jar [options]
 ```
 
+For example to generate all views for the models with some debug output, use
+```
+java -jar ./target/overarch.jar -r all --debug
+```
+
+
 *Overarch* currently supports these options
 
 ```
