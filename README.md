@@ -346,9 +346,9 @@ Options:
   -s, --select-elements CRITERIA                 Select and print model elements by criteria
   -S, --select-references CRITERIA               Select model elements by criteria and print as references
   -t, --template-dir DIRNAME          templates  Template directory
-  -g, --generator-config FILE                    Generator configuration
-  -G, --generator-dir DIRNAME         generated  Generator artifact directory
-  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+  -g, --generation-config FILE                   Generation configuration
+  -G, --generation-dir DIRNAME        generated  Generation artifact directory
+  -B, --backup-dir DIRNAME            backup     Generation backup directory
       --model-warnings                           Returns warnings for the loaded model
       --model-info                               Returns infos for the loaded model
       --plantuml-list-sprites                    Lists the loaded PlantUML sprites

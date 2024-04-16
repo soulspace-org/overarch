@@ -740,8 +740,8 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 The concept view can be exported as a concept map to a GraphViz *.dot file.
 
 ### Rendering GraphViz diagrams
-For GraphViz there are a few Visual Studio Code  extensions available that allow
-previews of the generated Graphviz files. 
+For GraphViz there are a few Visual Studio Code  extensions available that
+allow previews of the generated Graphviz files. 
 
 The images can be created with the *dot* executable, which resides in the bin
 directory of the GraphViz installation.
@@ -785,16 +785,21 @@ As Structurizr currently only supports the C4 architecture model and views,
 only these elements will be included in the Structurizr workspace.
 
 # Template Based Artifact Generation
+*Experimental*
 
 Overarch can generate artifacts for model elements via templates.
+The model elements, to which a template is applied, are selected via criteria.
+A template can be applied to the collection of selected elements or to each
+element of the collection. 
 
-It supports
+Overarch supports
 * forward engineering
-* protected areas for handwritten code
+* protected areas for handwritten content in generated artifacts
 
-## Generator Config
 
-You can configure the generation of artifacts with a EDN file.
+## Generation Configuration
+
+You can configure the generation of artifacts with an EDN file.
 The configuration contains a vector of generation context maps.
 A generation context map specifies a selection of model elements, a template
 to use, how the template should be applied, and where the resulting artifact
@@ -842,13 +847,13 @@ key               | type     | values             | default | description
 
 ## Overarch CLI
 
-Relevant CLI options for template based artifact generation:
+The relevant CLI options for template based artifact generation are
 ```
-  -m, --model-dir PATH                models     Models directory or path
-  -t, --template-dir DIRNAME          templates  Template directory
-  -g, --generator-config FILE                    Generator configuration
-  -G, --generator-dir DIRNAME         generated  Generator artifact directory
-  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+  -m, --model-dir PATH           models     Models directory or path
+  -t, --template-dir DIRNAME     templates  Template directory
+  -g, --generation-config FILE              Generation configuration
+  -G, --generation-dir DIRNAME   generated  Generation artifact directory
+  -B, --backup-dir DIRNAME       backup     Generation backup directory
 ```
 
 Example using a config file in the current directory and default directories
@@ -989,9 +994,9 @@ Options:
   -s, --select-elements CRITERIA                 Select and print model elements by criteria
   -S, --select-references CRITERIA               Select model elements by criteria and print as references
   -t, --template-dir DIRNAME          templates  Template directory
-  -g, --generator-config FILE                    Generator configuration
-  -G, --generator-dir DIRNAME         generated  Generator artifact directory
-  -B, --generator-backup-dir DIRNAME  backup     Generator backup directory
+  -g, --generation-config FILE                   Generation configuration
+  -G, --generation-dir DIRNAME        generated  Generation artifact directory
+  -B, --backup-dir DIRNAME            backup     Generation backup directory
       --model-warnings                           Returns warnings for the loaded model
       --model-info                               Returns infos for the loaded model
       --plantuml-list-sprites                    Lists the loaded PlantUML sprites
