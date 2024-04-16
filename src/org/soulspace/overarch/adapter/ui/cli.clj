@@ -210,7 +210,7 @@
     (rndr/render model (:render-format options) options))
   (when (:export-format options)
     (exp/export model (:export-format options) options))
-  (when (:generator-config options)
+  (when (:generation-config options)
     (tmpl/generate model options)))
 
 (defn update-and-dispatch!

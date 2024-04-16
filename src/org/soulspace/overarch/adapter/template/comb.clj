@@ -66,9 +66,9 @@
   ([source]
    (eval source {}))
   ([source bindings]
-   (println "Current Namespace:" *ns*)
+;   (println "Current Namespace:" *ns*)
    (let [current-ns *ns*] 
-     (println "Current Namespace:" *ns*)
+;     (println "Current Namespace:" *ns*)
      (binding [*ns* current-ns]
        (let [keys (map (comp symbol name) (keys bindings))
              func (compile-fn [{:keys (vec keys)}] source)]

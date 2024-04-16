@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.15.1
+--------------
+* fixed handling of generation-config option
+* removed debug output
+
+
 Version 0.15.0
 --------------
 * added generation of artifacts via templates

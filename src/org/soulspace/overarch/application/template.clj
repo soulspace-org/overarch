@@ -13,7 +13,6 @@
             [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]
             [clojure.spec.alpha :as s]))
 
-; TODOs
 
 ;;;
 ;;; Generation config spec
@@ -106,7 +105,7 @@
 (defn parse-protected-areas
   "Parse the lines into a protected area map."
   [area-marker lines]
-  (println "Read PAs from" lines)
+;  (println "Read PAs from" lines)
   (let [begin-re (begin-pattern area-marker)]
     (loop [remaining-lines lines area-id nil area-content "" area-map {}]
       (if (seq remaining-lines)
@@ -154,6 +153,8 @@
    and optionally a model element `el`."
   ([ctx]
    (str
+    (when (:generation-dir ctx)
+      (str (:generation-dir ctx) "/"))
     (when (:subdir ctx)
       (str (:subdir ctx) "/"))
     (when (:namespace-prefix ctx)
@@ -164,6 +165,8 @@
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/"))))
   ([ctx el]
    (str
+    (when (:generation-dir ctx)
+      (str (:generation-dir ctx) "/"))
     (when (:subdir ctx)
       (str (:subdir ctx) "/"))
     (when (:namespace-prefix ctx)
@@ -188,7 +191,7 @@
 (defn write-artifact
   "Write the generated artifact to file."
   [pathname result]
-  (println "Writing" pathname)
+  (println "Writing artifact" pathname)
   (let [file (io/as-file pathname)
         parent (file/parent-dir file)]
     ; TODO check suppress-write
@@ -205,16 +208,16 @@
 (def ctx-defaults
   {:engine :comb
    :per-element false
-;   :protected-area "PA"
    :encoding "UTF-8"
    :id-as-namespace false})
 
 (defn read-config
   "Reads the generator configuration."
   [options]
-  (if-let [generator-config (:generator-config options)]
-    (map (partial merge ctx-defaults)
-         (edn/read-string (slurp generator-config)))
+  (if-let [generation-config (:generation-config options)]
+    (map (partial merge ctx-defaults {:generation-dir (:generation-dir options)
+                                      :backup-dir (:backup-dir options)})
+         (edn/read-string (slurp generation-config)))
     []))
 
 ; TODO generation-dir missing from path, comes from options
@@ -226,7 +229,7 @@
         protected-areas (read-protected-areas ctx path)
 ;        _ (println "Protected Areas" protected-areas)
         result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})
-        _ (print "Result" result)
+;        _ (print "Result" result)
         ]
     ; write artifact for result
     (write-artifact path result)))
@@ -235,7 +238,7 @@
   "Generates artifacts for the generation specification `spec`."
   [model options]
     (doseq [ctx (read-config options)]
-      (println "Context" ctx)
+;      (println "Context" ctx)
       (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
         (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))] 
 ;          (println "Selection" selection)
