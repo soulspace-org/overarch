@@ -303,6 +303,17 @@ To get support for icons (PlantUML sprites) from the PlantUML standard library, 
 
 ![PlantUML Extension Settings](/doc/images/vscode_plantuml_ext_settings.png)
 
+### Homebrew on macOS
+
+This project has been packaged in Homebrew for macOS users. Install it using
+```
+brew install overarch
+```
+
+This package includes an `overarch` convenience wrapper which handles tracking
+the location of the `overarch.jar` uberjar for you. This `overarch` command can
+be substituted for the `java -jar overarch.jar` references throughout this
+documentation.
 
 Usage
 -----
