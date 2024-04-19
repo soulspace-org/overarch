@@ -1,0 +1,10 @@
+;;;;
+;;;; <%= (:desc e) %>
+;;;;
+(ns <%= (:name e) %>)
+
+(defn foo
+  "docstring"
+  [param]
+  "Function body")
+  
