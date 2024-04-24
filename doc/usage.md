@@ -66,6 +66,8 @@ in the model elements and views.
 :namespaced/keyword
 ```
 
+*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch. Please use your own prefix if you want to add custom information to the maps in the model.*
+
 ### Sets
 Sets are unordered collections of elements without duplicates. They are used as
 top level collections for the model elements and views. They are also used
