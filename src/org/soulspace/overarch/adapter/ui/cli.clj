@@ -65,7 +65,6 @@
 ;;;
 ;;; Output messages
 ;;;
-
 (defn usage-msg
   "Returns a message containing the program usage."
   ([summary]

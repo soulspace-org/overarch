@@ -186,6 +186,14 @@
             (str " <<" (:stereotype e) ">>"))
           " {}")]))
 
+(defmethod puml/render-uml-element :enum-value
+  [model view indent e]
+  [(str (render/indent indent)
+        (el/element-name e)
+        (when (:value e)
+          (str " = " (:value e)))
+        )])
+
 (defmethod puml/render-uml-element :class
   [model view indent e]
   (if (seq (:ct e))
