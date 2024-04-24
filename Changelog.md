@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.16.0
+--------------
+* added rendering of cardinalities for fields in UML class diagrams
+
 Version 0.15.1
 --------------
 * fixed handling of generation-config option

@@ -33,7 +33,6 @@
 ;;;
 ;;; CLI definition
 ;;;
-
 (def appname "overarch")
 (def description
   "Overarch CLI

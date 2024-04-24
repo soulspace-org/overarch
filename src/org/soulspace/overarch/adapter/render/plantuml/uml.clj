@@ -218,7 +218,12 @@
           (uml-visibility (:visibility e)))
         (el/element-name e)
         (when (:type e)
-          (str " : " (:type e))))])
+          (str " : " (:type e)))
+        (when (:optional e)
+          (str " [" (uml-cardinality :zero-to-one) "]"))
+        (when (:collection e)
+          (str " [" (uml-cardinality :zero-to-many) "]"))
+        )])
 
 (defmethod puml/render-uml-element :method
   [model view indent e]
