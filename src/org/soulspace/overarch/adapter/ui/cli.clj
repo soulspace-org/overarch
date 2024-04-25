@@ -33,7 +33,6 @@
 ;;;
 ;;; CLI definition
 ;;;
-
 (def appname "overarch")
 (def description
   "Overarch CLI
@@ -66,7 +65,6 @@
 ;;;
 ;;; Output messages
 ;;;
-
 (defn usage-msg
   "Returns a message containing the program usage."
   ([summary]

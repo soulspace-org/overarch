@@ -186,6 +186,14 @@
             (str " <<" (:stereotype e) ">>"))
           " {}")]))
 
+(defmethod puml/render-uml-element :enum-value
+  [model view indent e]
+  [(str (render/indent indent)
+        (el/element-name e)
+        (when (:value e)
+          (str " = " (:value e)))
+        )])
+
 (defmethod puml/render-uml-element :class
   [model view indent e]
   (if (seq (:ct e))
@@ -218,7 +226,12 @@
           (uml-visibility (:visibility e)))
         (el/element-name e)
         (when (:type e)
-          (str " : " (:type e))))])
+          (str " : " (:type e)))
+        (when (:optional e)
+          (str " [" (uml-cardinality :zero-to-one) "]"))
+        (when (:collection e)
+          (str " [" (uml-cardinality :zero-to-many) "]"))
+        )])
 
 (defmethod puml/render-uml-element :method
   [model view indent e]

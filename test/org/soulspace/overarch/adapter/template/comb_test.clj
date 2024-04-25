@@ -10,6 +10,7 @@
   (is (= (t/eval "<% (doseq [x xs] %>foo<%= x %> <% ) %>" {:xs [1 2 3]})
          "foo1 foo2 foo3 ")))
 
+(declare x)
 (deftest fn-test
   (is (= ((t/fn [x] "foo<%= x %>") "bar")
          "foobar")))

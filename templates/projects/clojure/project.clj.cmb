@@ -1,1 +1,7 @@
-(defproject )
+(defproject <%= (namespace (:id e)) %>/<%= (name (:id e)) %> "0.1.0"
+  ;:description ""
+  ;:dependencies []
+  ;PA-BEGIN(content)
+<%= (:content protected-areas)
+%>  ;PA-END(content)  
+  )

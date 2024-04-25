@@ -1,0 +1,6 @@
+;;;;
+;;;; Tests for <%= (:name e) %>
+;;;;
+(ns <%= (namespace (:id e)) %>/<%= (name (:id e)) %>-test
+  (:require [clojure.test :refer :all]
+            [(namespace (:id e)) %>/<%= (name (:id e)) %> :refer :all]))
