@@ -58,11 +58,11 @@
 
 (def class-node-types
   "Node types for class models."
-  #{:class :enum :interface :field :method :function
-    :package :namespace :stereotype :annotation :protocol})
+  #{:annotation :class :enum :enum-value :field :function :interface
+    :method :namespace :package :protocol :stereotype})
 (def class-relation-types
   "Relation types for class models."
-  #{:inheritance :implementation :composition :aggregation :association :dependency})
+  #{:aggregation :association :composition :dependency :implementation :inheritance})
 
 (def uml-node-types
   "Node types for UML models."
@@ -77,7 +77,8 @@
 ;;
 (def concept-node-types
   "Node types for concept models."
-  (set/difference (set/union architecture-node-types #{:concept}) #{:component}))
+  (set/difference (set/union architecture-node-types #{:concept})
+                  #{:component}))
 
 (def concept-relation-types
   "Relation types of concept models."
@@ -262,17 +263,18 @@
       (derive :deep-history-state                :state-machine-model-node)
 
       ;; class model nodes
+      (derive :annotation                        :class-model-node)
       (derive :class                             :class-model-node)
       (derive :enum                              :class-model-node)
-      (derive :interface                         :class-model-node)
-      (derive :protocol                          :class-model-node)
+      (derive :enum-value                        :class-model-node)
       (derive :field                             :class-model-node)
-      (derive :method                            :class-model-node)
       (derive :function                          :class-model-node)
-      (derive :package                           :class-model-node)
+      (derive :interface                         :class-model-node)
+      (derive :method                            :class-model-node)
       (derive :namespace                         :class-model-node)
+      (derive :package                           :class-model-node)
+      (derive :protocol                          :class-model-node)
       (derive :stereotype                        :class-model-node)
-      (derive :annotation                        :class-model-node)
 
       ;; concept model nodes
       (derive :concept                           :concept-model-node)
