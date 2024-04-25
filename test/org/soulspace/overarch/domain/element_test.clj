@@ -103,6 +103,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -160,6 +161,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -224,6 +226,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -274,6 +277,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -332,6 +336,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -389,6 +394,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -450,6 +456,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -513,6 +520,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -562,6 +570,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -606,6 +615,7 @@
       true {:el :class}
       true {:el :interface}
       true {:el :enum}
+      true {:el :enum-value}
       true {:el :field}
       true {:el :method}
       true {:el :stereotype}
@@ -682,6 +692,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -734,6 +745,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -794,6 +806,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -846,6 +859,7 @@
       true {:el :class}
       true {:el :interface}
       true {:el :enum}
+      true {:el :enum-value}
       true {:el :field}
       true {:el :method}
       true {:el :stereotype}
@@ -928,6 +942,7 @@
       false {:el :class}
       false {:el :interface}
       false {:el :enum}
+      false {:el :enum-value}
       false {:el :field}
       false {:el :method}
       false {:el :stereotype}
@@ -962,6 +977,7 @@
       true {:el :class}
       true {:el :interface}
       true {:el :enum}
+      true {:el :enum-value}
       true {:el :field}
       true {:el :method}
       true {:el :stereotype}
