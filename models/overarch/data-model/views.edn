@@ -1,9 +1,9 @@
 ;;;;
-;;;; Views of the Overarch Model
+;;;; Data Model Views of Overarch
 ;;;;
 #{
   ;;;
-  ;;; Data Model Views
+  ;;; Logical Data Model Views
   ;;;
   {:el :class-view
    :id :overarch.data-model/data-model-overview

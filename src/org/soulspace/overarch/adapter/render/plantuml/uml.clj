@@ -2,7 +2,8 @@
   (:require [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.application.render :as render]))
+            [org.soulspace.overarch.application.render :as render]
+            [org.soulspace.overarch.domain.model :as model]))
 
 (def uml-directions
   "Maps direction keys to PlantUML UML directions."
@@ -233,12 +234,21 @@
           (str " [" (uml-cardinality :zero-to-many) "]"))
         )])
 
+(defmethod puml/render-uml-element :parameter
+  [model view indent e]
+  [(str (el/element-name e)
+        (when (:type e)
+          (str " : " (:type e))))])
+
 (defmethod puml/render-uml-element :method
   [model view indent e]
   [(str (render/indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
-        (el/element-name e) "()"
+        (el/element-name e) "("
+        (when (:ct e)
+          (str/join ", " (map (partial puml/render-uml-element model view 0) (:ct e))))
+        ")"
         (when (:type e)
           (str " : " (:type e))))])
 
