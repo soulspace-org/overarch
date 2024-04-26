@@ -50,6 +50,7 @@
         {:ref :overarch.data-model/enum-value}
         {:ref :overarch.data-model/field}
         {:ref :overarch.data-model/method}
+        {:ref :overarch.data-model/parameter}
         {:ref :overarch.data-model/implementation}
         {:ref :overarch.data-model/inheritance}
         {:ref :overarch.data-model/composition}
@@ -134,8 +135,12 @@
         {:ref :overarch.data-model/protocol-is-a-class-model-element}
         {:ref :overarch.data-model/protocol-contains-method}
         {:ref :overarch.data-model/class-is-a-class-model-element}
+        {:ref :overarch.data-model/field-is-a-named-element}
         {:ref :overarch.data-model/class-contains-field}
+        {:ref :overarch.data-model/method-is-a-named-element}
         {:ref :overarch.data-model/class-contains-method}
+        {:ref :overarch.data-model/parameter-is-a-named-element}
+        {:ref :overarch.data-model/method-contains-parameter}
         {:ref :overarch.data-model/enum-is-a-class-model-element}
         {:ref :overarch.data-model/enum-contains-enum-value}
         {:ref :overarch.data-model/enum-value-is-a-class-model-element}
@@ -151,8 +156,6 @@
         {:ref :overarch.data-model/association-is-a-class-model-element}
         {:ref :overarch.data-model/dependency-is-a-relational-element}
         {:ref :overarch.data-model/dependency-is-a-class-model-element}
-        {:ref :overarch.data-model/field-is-a-named-element}
-        {:ref :overarch.data-model/method-is-a-named-element}
 
         {:ref :overarch.data-model/use-case-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/actor-is-a-use-case-model-element}
@@ -274,6 +277,7 @@
         {:ref :overarch.data-model/enum-value}
         {:ref :overarch.data-model/field}
         {:ref :overarch.data-model/method}
+        {:ref :overarch.data-model/parameter}
         {:ref :overarch.data-model/implementation}
         {:ref :overarch.data-model/inheritance}
         {:ref :overarch.data-model/composition}
@@ -300,8 +304,12 @@
         {:ref :overarch.data-model/protocol-is-a-class-model-element}
         {:ref :overarch.data-model/protocol-contains-method}
         {:ref :overarch.data-model/class-is-a-class-model-element}
+        {:ref :overarch.data-model/field-is-a-named-element}
         {:ref :overarch.data-model/class-contains-field}
+        {:ref :overarch.data-model/method-is-a-named-element}
         {:ref :overarch.data-model/class-contains-method}
+        {:ref :overarch.data-model/parameter-is-a-named-element}
+        {:ref :overarch.data-model/method-contains-parameter}
         {:ref :overarch.data-model/enum-is-a-class-model-element}
         {:ref :overarch.data-model/enum-contains-enum-value}
         {:ref :overarch.data-model/enum-value-is-a-class-model-element}
@@ -317,8 +325,6 @@
         {:ref :overarch.data-model/association-is-a-class-model-element}
         {:ref :overarch.data-model/dependency-is-a-relational-element}
         {:ref :overarch.data-model/dependency-is-a-class-model-element}
-        {:ref :overarch.data-model/field-is-a-named-element}
-        {:ref :overarch.data-model/method-is-a-named-element}
         ;
         ]}
 

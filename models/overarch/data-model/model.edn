@@ -308,7 +308,7 @@
          {:el :field
           :name "optional"
           :type "boolean"
-          :desc "When true the field can be null/nil."}
+          :desc "When true the field can be null/nil. Default is false."}
          {:el :field
           :name "visibility"
           :type "keyword"
@@ -328,7 +328,23 @@
           :name "type"
           :type "string"
           :optional true
-          :desc "The return type of the method."}}}
+          :desc "The return type of the method."}
+         {:el :field
+          :name "optional"
+          :type "boolean"
+          :desc "When true the return value can be null/nil. Default is false."}}}
+  {:el :class
+   :id :overarch.data-model/parameter
+   :name "parameter"
+   :desc "A parameter in a class model method or function."
+   :ct [{:el :field
+         :name "type"
+         :optional true
+         :desc "The type of the parameter."}
+        {:el :field
+         :name "optional"
+         :type "boolean"
+         :desc "When true the parameter can be null/nil or omitted. Default is false."}]}
 
   {:el :class
    :id :overarch.data-model/implementation
@@ -673,7 +689,7 @@
    :to :overarch.data-model/technical-architecture-model-node
    :from :overarch.data-model/rel}
 ; TODO include semantic relations
-  
+
 
   ;; Deployment Model Relations
   {:el :inheritance
@@ -815,15 +831,32 @@
    :id :overarch.data-model/class-is-a-class-model-element
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/class}
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-named-element
+   :to :overarch.data-model/named-element
+   :from :overarch.data-model/field}
   {:el :composition
    :id :overarch.data-model/class-contains-field
    :from :overarch.data-model/class
    :to :overarch.data-model/field
    :to-card :zero-to-many}
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-named-element
+   :to :overarch.data-model/named-element
+   :from :overarch.data-model/method}
   {:el :composition
    :id :overarch.data-model/class-contains-method
    :from :overarch.data-model/class
    :to :overarch.data-model/method
+   :to-card :zero-to-many}
+  {:el :inheritance
+   :id :overarch.data-model/parameter-is-a-named-element
+   :to :overarch.data-model/named-element
+   :from :overarch.data-model/parameter}
+  {:el :composition
+   :id :overarch.data-model/method-contains-parameter
+   :from :overarch.data-model/method
+   :to :overarch.data-model/parameter
    :to-card :zero-to-many}
   {:el :inheritance
    :id :overarch.data-model/enum-is-a-class-model-element
@@ -885,14 +918,6 @@
    :id :overarch.data-model/dependency-is-a-class-model-element
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/dependency}
-  {:el :inheritance
-   :id :overarch.data-model/field-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/field}
-  {:el :inheritance
-   :id :overarch.data-model/method-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/method}
 
   ;; Concept Model Relations
   {:el :inheritance
