@@ -312,6 +312,7 @@
          {:el :field
           :name "visibility"
           :type "keyword"
+          :optional true
           :desc "The visibility of the field."}}}
 
   {:el :class
@@ -321,6 +322,7 @@
    :ct #{{:el :field
           :name "visibility"
           :type "keyword"
+          :optional true
           :desc "The visibility of the method."}
          {:el :field
           :name "type"
@@ -344,19 +346,65 @@
    :id :overarch.data-model/composition
    :name "composition"
    :desc "A composition relationship between two classes in the
-          class model."}
+          class model."
+   :ct [{:el :field
+         :name "from-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referring element."}
+        {:el :field
+         :name "to-card"
+         :type "string"
+         :desc "The cardinality of the referred element."}
+        {:el :field
+         :name "to-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referred element."}]}
 
   {:el :class
    :id :overarch.data-model/aggregation
    :name "aggregation"
    :desc "A aggregation relationship between two classes in the
-          class model."}
+          class model."
+   :ct [{:el :field
+         :name "from-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referring element."}
+        {:el :field
+         :name "to-card"
+         :type "string"
+         :desc "The cardinality of the referred element."}
+        {:el :field
+         :name "to-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referred element."}]}
 
   {:el :class
    :id :overarch.data-model/association
    :name "association"
    :desc "A association relationship between two classes in the
-          class model."}
+          class model."
+   :ct [{:el :field
+         :name "from-card"
+         :type "string"
+         :desc "The cardinality of the referring element."}
+        {:el :field
+         :name "from-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referring element."}
+        {:el :field
+         :name "to-card"
+         :type "string"
+         :desc "The cardinality of the referred element."}
+        {:el :field
+         :name "to-role"
+         :type "string"
+         :optional true
+         :desc "The role of the referred element."}]}
 
   {:el :class
    :id :overarch.data-model/dependency
@@ -784,7 +832,7 @@
   {:el :inheritance
    :id :overarch.data-model/enum-value-is-a-class-model-element
    :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/enum}
+   :from :overarch.data-model/enum-value}
   {:el :composition
    :id :overarch.data-model/enum-contains-enum-value
    :from :overarch.data-model/enum
@@ -806,24 +854,24 @@
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/implementation}
   {:el :inheritance
-   :id :overarch.data-model/composition-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/composition-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
    :from :overarch.data-model/composition}
   {:el :inheritance
    :id :overarch.data-model/composition-is-a-class-model-element
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/composition}
   {:el :inheritance
-   :id :overarch.data-model/aggregation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/aggregation-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
    :from :overarch.data-model/aggregation}
   {:el :inheritance
    :id :overarch.data-model/aggregation-is-a-class-model-element
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/aggregation}
   {:el :inheritance
-   :id :overarch.data-model/association-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/association-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
    :from :overarch.data-model/association}
   {:el :inheritance
    :id :overarch.data-model/association-is-a-class-model-element

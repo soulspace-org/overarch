@@ -143,11 +143,11 @@
         {:ref :overarch.data-model/implementation-is-a-class-model-element}
         {:ref :overarch.data-model/inheritance-is-a-relational-element}
         {:ref :overarch.data-model/inheritance-is-a-class-model-element}
-        {:ref :overarch.data-model/composition-is-a-relational-element}
+        {:ref :overarch.data-model/composition-is-a-named-relational-element}
         {:ref :overarch.data-model/composition-is-a-class-model-element}
-        {:ref :overarch.data-model/aggregation-is-a-relational-element}
+        {:ref :overarch.data-model/aggregation-is-a-named-relational-element}
         {:ref :overarch.data-model/aggregation-is-a-class-model-element}
-        {:ref :overarch.data-model/association-is-a-relational-element}
+        {:ref :overarch.data-model/association-is-a-named-relational-element}
         {:ref :overarch.data-model/association-is-a-class-model-element}
         {:ref :overarch.data-model/dependency-is-a-relational-element}
         {:ref :overarch.data-model/dependency-is-a-class-model-element}
@@ -309,11 +309,11 @@
         {:ref :overarch.data-model/implementation-is-a-class-model-element}
         {:ref :overarch.data-model/inheritance-is-a-relational-element}
         {:ref :overarch.data-model/inheritance-is-a-class-model-element}
-        {:ref :overarch.data-model/composition-is-a-relational-element}
+        {:ref :overarch.data-model/composition-is-a-named-relational-element}
         {:ref :overarch.data-model/composition-is-a-class-model-element}
-        {:ref :overarch.data-model/aggregation-is-a-relational-element}
+        {:ref :overarch.data-model/aggregation-is-a-named-relational-element}
         {:ref :overarch.data-model/aggregation-is-a-class-model-element}
-        {:ref :overarch.data-model/association-is-a-relational-element}
+        {:ref :overarch.data-model/association-is-a-named-relational-element}
         {:ref :overarch.data-model/association-is-a-class-model-element}
         {:ref :overarch.data-model/dependency-is-a-relational-element}
         {:ref :overarch.data-model/dependency-is-a-class-model-element}
