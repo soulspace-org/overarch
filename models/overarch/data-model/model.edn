@@ -118,6 +118,102 @@
           :desc "The identifier the reference is referring to."}}}
 
   {:el :class
+   :id :overarch.data-model/model-element
+   :abstract true
+   :name "model-element"
+   :desc "An element of the overarch model."}
+
+  {:el :class
+   :id :overarch.data-model/model-node
+   :abstract true
+   :name "model-node"
+   :desc "A node of the overarch model."}
+
+  {:el :class
+   :id :overarch.data-model/model-relation
+   :abstract true
+   :name "model-relation"
+   :desc "A relation of the overarch model."}
+
+  {:el :class
+   :id :overarch.data-model/architecture-model-node
+   :abstract true
+   :name "architecture-model-node"
+   :desc "A node in the architecture model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/technical-architecture-model-node
+   :abstract true
+   :name "technical-architecture-model-node"
+   :desc "A technical node in the architecture model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/architecture-model-relation
+   :abstract true
+   :name "architecture-model-relation"
+   :desc "A relation in the architecture model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/deployment-model-node
+   :abstract true
+   :name "deployment-model-node"
+   :desc "A node in the deployment model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/deployment-model-relation
+   :abstract true
+   :name "deployment-model-relation"
+   :desc "A relation in the deployment model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/class-model-node
+   :abstract true
+   :name "class-model-node"
+   :desc "A node in the class model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/class-model-relation
+   :abstract true
+   :name "class-model-relation"
+   :desc "A relation in the class model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/state-machine-model-node
+   :abstract true
+   :name "state-machine-model-node"
+   :desc "A node in the state machine model of overarch."}
+  
+  {:el :class
+   :id :overarch.data-model/state-machine-model-relation
+   :abstract true
+   :name "state-machine-model-relation"
+   :desc "A relation in the state machine model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/use-case-model-node
+   :abstract true
+   :name "use-case-model-node"
+   :desc "A node in the use case model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/use-case-model-relation
+   :abstract true
+   :name "use-case-model-relation"
+   :desc "A relation in the use case model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/concept-model-node
+   :abstract true
+   :name "concept-model-node"
+   :desc "A node in the concept model of overarch."}
+
+  {:el :class
+   :id :overarch.data-model/concept-model-relation
+   :abstract true
+   :name "concept-model-relation"
+   :desc "A relation in the concept model of overarch."}
+
+  {:el :class
    :id :overarch.data-model/context-boundary
    :name "context-boundary"
    :desc "A boundary of a bounded context."}
