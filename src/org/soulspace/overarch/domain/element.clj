@@ -59,7 +59,7 @@
 (def class-node-types
   "Node types for class models."
   #{:annotation :class :enum :enum-value :field :function :interface
-    :method :namespace :package :protocol :stereotype})
+    :method :namespace :package :parameter :protocol :stereotype})
 (def class-relation-types
   "Relation types for class models."
   #{:aggregation :association :composition :dependency :implementation :inheritance})
@@ -273,6 +273,7 @@
       (derive :method                            :class-model-node)
       (derive :namespace                         :class-model-node)
       (derive :package                           :class-model-node)
+      (derive :parameter                         :class-model-node)
       (derive :protocol                          :class-model-node)
       (derive :stereotype                        :class-model-node)
 
