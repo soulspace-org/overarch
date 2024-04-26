@@ -47,6 +47,7 @@
         {:ref :overarch.data-model/protocol}
         {:ref :overarch.data-model/class}
         {:ref :overarch.data-model/enum}
+        {:ref :overarch.data-model/enum-value}
         {:ref :overarch.data-model/field}
         {:ref :overarch.data-model/method}
         {:ref :overarch.data-model/implementation}
@@ -136,6 +137,8 @@
         {:ref :overarch.data-model/class-contains-field}
         {:ref :overarch.data-model/class-contains-method}
         {:ref :overarch.data-model/enum-is-a-class-model-element}
+        {:ref :overarch.data-model/enum-contains-enum-value}
+        {:ref :overarch.data-model/enum-value-is-a-class-model-element}
         {:ref :overarch.data-model/implementation-is-a-relational-element}
         {:ref :overarch.data-model/implementation-is-a-class-model-element}
         {:ref :overarch.data-model/inheritance-is-a-relational-element}
@@ -268,6 +271,7 @@
         {:ref :overarch.data-model/protocol}
         {:ref :overarch.data-model/class}
         {:ref :overarch.data-model/enum}
+        {:ref :overarch.data-model/enum-value}
         {:ref :overarch.data-model/field}
         {:ref :overarch.data-model/method}
         {:ref :overarch.data-model/implementation}
@@ -299,6 +303,8 @@
         {:ref :overarch.data-model/class-contains-field}
         {:ref :overarch.data-model/class-contains-method}
         {:ref :overarch.data-model/enum-is-a-class-model-element}
+        {:ref :overarch.data-model/enum-contains-enum-value}
+        {:ref :overarch.data-model/enum-value-is-a-class-model-element}
         {:ref :overarch.data-model/implementation-is-a-relational-element}
         {:ref :overarch.data-model/implementation-is-a-class-model-element}
         {:ref :overarch.data-model/inheritance-is-a-relational-element}
