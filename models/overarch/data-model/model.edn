@@ -292,6 +292,11 @@
    :desc "An enumeration of typed related values in the class model."}
 
   {:el :class
+   :id :overarch.data-model/enum-value
+   :name "enum-value"
+   :desc "A value of an enumeration in the class model."}
+
+  {:el :class
    :id :overarch.data-model/field
    :name "field"
    :desc "A field in a class model element."
@@ -776,6 +781,14 @@
    :id :overarch.data-model/enum-is-a-class-model-element
    :to :overarch.data-model/class-model-element
    :from :overarch.data-model/enum}
+  {:el :inheritance
+   :id :overarch.data-model/enum-value-is-a-class-model-element
+   :to :overarch.data-model/class-model-element
+   :from :overarch.data-model/enum}
+  {:el :composition
+   :id :overarch.data-model/enum-contains-enum-value
+   :from :overarch.data-model/enum
+   :to :overarch.data-model/enum-value}
   {:el :inheritance
    :id :overarch.data-model/inheritance-is-a-relational-element
    :to :overarch.data-model/relational-element
