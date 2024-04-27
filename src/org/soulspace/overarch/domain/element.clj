@@ -404,11 +404,6 @@
   [e]
   (not (external? e)))
 
-(defn tech?
-  "Returns true if the given element `e` has a tech (:tech key)."
-  [e]
-  (not= nil (:tech e)))
-
 (defn boundary?
   "Returns true if `e` is a boundary."
   [e]
@@ -544,7 +539,6 @@
   "Returns true if the given element `e` is a view of `kind`."
   [e kind]
   (and (view? e) (= (:el e) kind)))
-
 
 ;;
 ;; Element transducer fuctions
@@ -781,4 +775,137 @@
   "Returns the set of technologies for the elements of the coll."
   [coll]
   (traverse :tech tech-collector coll))
+
+
+;;
+;; Criteria Predicates
+;; 
+(defn namespace?
+  "Returns true, if `v`is the namespace of element `e`."
+  [v e]
+  (= (name v) (element-namespace e)))
+
+(defn namespaces?
+  "Returns true, if the set of namespaces `v` contains the namespace of element `e`."
+  [v e]
+  (contains? (name v) (element-namespace e)))
+
+(defn namespace-prefix?
+  "Returns true, if `v`is a prefix of the namespace of element `e`."
+  [v e]
+  (and (identifiable-element? e)
+       (str/starts-with? (element-namespace e) v)))
+
+(defn from-namespace?
+  [v e]
+  (= (name v) (namespace (get e :from :no-namespace/no-name))))
+
+(defn from-namespaces?
+  [v e]
+  (contains? (name v) (namespace (get e :from :no-namespace/no-name))))
+
+(defn from-namespace-prefix?
+  [v e]
+  (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
+
+(defn to-namespace?
+  [v e]
+  (= (name v) (namespace (get e :to :no-namespace/no-name))))
+
+(defn to-namespaces?
+  [v e]
+  (contains? (name v) (namespace (get e :to :no-namespace/no-name))))
+
+(defn to-namespace-prefix?
+  [v e]
+  (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
+
+(defn id-check?
+  [v e]
+  (= v (get e :id false)))
+
+(defn id?
+  [v e]
+  (= (keyword v) (:id e)))
+
+(defn from?
+  [v e]
+  (= (keyword v) (:from e)))
+
+(defn to?
+  [v e]
+  (= (keyword v) (:to e)))
+
+(defn el?
+  [v e]
+  (isa? element-hierarchy (:el e) v))
+
+(defn els?
+  [v e]
+  (contains? v (:el e)) ; TODO use isa? too
+  )
+
+(defn subtype-check?
+  [v e]
+  (= v (get e :subtype false)))
+
+(defn subtype?
+  [v e]
+  (= (keyword v) (:subtype e)))
+
+(defn subtypes?
+  [v e]
+  (contains? v (:subtype e)))
+
+(defn external-check?
+  [v e]
+  (= v (boolean (external? e))))
+
+(defn name-check?
+  [v e]
+  (= v (get e :name false)))
+
+(defn name?
+  [v e]
+  (= v (:name e)))
+
+(defn desc-check?
+  [v e]
+  (= v (get e :desc false)))
+
+(defn tech-check?
+  [v e]
+  (= v (get e :tech false)))
+
+(defn tech?
+  [v e]
+  (contains? (set (technologies e)) v))
+
+(defn techs?
+  [v e]
+  (seq (set/intersection v (set (technologies e)))))
+
+(defn all-techs?
+  [v e]
+  (set/subset? (set v) (set (technologies e))))
+
+(defn tags-check?
+  [v e]
+  (= v (get e :tags false)))
+
+(defn tag?
+  [v e]
+  (contains? (:tags e) v))
+
+(defn tags?
+  [v e]
+  (seq (set/intersection v (:tags e))))
+
+(defn all-tags?
+  [v e]
+  (set/subset? (set v) (:tags e)))
+
+(defn children-check?
+  [v e]
+  (= v (empty? (:ct e))))
 

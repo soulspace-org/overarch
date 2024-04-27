@@ -348,6 +348,29 @@
 ;;;
 ;;; filtering element colletions by criteria
 ;;;
+(defn child?
+  [model v e]
+  (= v (boolean ((:id->parent model) (:id e)))))
+
+(defn refers-check?
+  [model v e]
+  (= v (boolean ((:referrer-id->relations model) (:id e)))))
+
+(defn referred-check?
+  [model v e]
+  (= v (boolean ((:referred-id->relations model) (:id e)))))
+
+(defn refers-to?
+  [model v e]
+  (contains? (into #{}
+                   (map :to ((:referrer-id->relations model) (:id e))))
+             v))
+
+(defn referred-by?
+  [model v e]
+  (contains? (into #{}
+                   (map :from ((:referred-id->relations model) (:id e))))
+             v))
 
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
@@ -380,7 +403,7 @@
     #(str/starts-with? (namespace (get % :from :no-namespace/no-name)) v)
 
     (= :id? k)
-    #(= v (get % :id false))
+    #(= v (boolean (get % :id false)))
     (= :id k)
     #(= (keyword v) (:id %))
     (= :from k)
@@ -418,6 +441,8 @@
     (= :all-techs k)
     #(set/subset? (set v) (set (el/technologies %)))
 
+    (= :tags? k)
+    #(= v (get % :tags false))
     (= :tag k)
     #(contains? (:tags %) v)
     (= :tags k)
