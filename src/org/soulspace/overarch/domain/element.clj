@@ -776,7 +776,6 @@
   [coll]
   (traverse :tech tech-collector coll))
 
-
 ;;
 ;; Criteria Predicates
 ;; 
@@ -910,3 +909,14 @@
   [v e]
   (= v (empty? (:ct e))))
 
+(defn key-check?
+  "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.
+  Useful to check for custom keys."
+  [[k v] e]
+  (= v (get e (keyword k) false)))
+
+(defn entry-check?
+  "Returns true if the check for `entry` on element `e` equals the boolean value `v."
+  [[entry v] e]
+  ; TODO implement
+  )
