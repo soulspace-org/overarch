@@ -212,9 +212,9 @@
   ;; Boundaries
   ;;
   {:el :class
-   :id :overarch.data-model/boundary-element
+   :id :overarch.data-model/boundary-node
    :abstract true
-   :name "boundary-element"
+   :name "boundary-node"
    :desc "A grouping of elements belonging together in a context."}
 
   {:el :class
@@ -230,14 +230,14 @@
    :tags #{"architecture-model" "concept-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/context-boundary-is-a-boundary-element
-   :to :overarch.data-model/boundary-element
+   :id :overarch.data-model/context-boundary-is-a-boundary-node
+   :to :overarch.data-model/boundary-node
    :from :overarch.data-model/context-boundary
    :tags #{"architecture-model" "concept-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/enterprise-boundary-is-a-boundary-element
-   :to :overarch.data-model/boundary-element
+   :id :overarch.data-model/enterprise-boundary-is-a-boundary-node
+   :to :overarch.data-model/boundary-node
    :from :overarch.data-model/enterprise-boundary
    :tags #{"architecture-model" "concept-model" "element-hierarchy"}}
 
@@ -432,13 +432,13 @@
    :tags #{"architecture-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-element
+   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node
    :to :overarch.data-model/architecture-model-element
    :from :overarch.data-model/technical-architecture-model-node
    :tags #{"architecture-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/system-is-a-technical-architecture-node
+   :id :overarch.data-model/system-is-a-technical-architecture-model-node
    :to :overarch.data-model/technical-architecture-model-node
    :from :overarch.data-model/system
    :tags #{"architecture-model" "node-hierarchy"}}
@@ -452,7 +452,7 @@
    :tags #{"architecture-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/container-is-a-technical-architecture-node
+   :id :overarch.data-model/container-is-a-technical-architecture-model-node
    :to :overarch.data-model/technical-architecture-model-node
    :from :overarch.data-model/container
    :tags #{"architecture-model" "node-hierarchy"}}
@@ -466,7 +466,7 @@
    :tags #{"architecture-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/component-is-a-technical-architecture-node
+   :id :overarch.data-model/component-is-a-technical-architecture-model-node
    :to :overarch.data-model/technical-architecture-model-node
    :from :overarch.data-model/component
    :tags #{"architecture-model" "node-hierarchy"}}
@@ -596,9 +596,9 @@
    :tags #{"deployment-model" "node-hierarchy"}}
 
   {:el :composition
-   :id :overarch.data-model/node-contains-deployment-model-element
+   :id :overarch.data-model/node-contains-deployment-model-node
    :from :overarch.data-model/node
-   :to :overarch.data-model/deployment-model-element
+   :to :overarch.data-model/deployment-model-node
    :to-name "ct"
    :to-card :zero-to-many
    :tags #{"deployment-model"}}
@@ -1097,9 +1097,9 @@
    :tags #{"state-machine-model" "type-hierarchy"}}
 
   {:el :composition
-   :id :overarch.data-model/state-machine-contains-state-machine-model-element
+   :id :overarch.data-model/state-machine-contains-state-machine-model-node
    :from :overarch.data-model/state-machine
-   :to :overarch.data-model/state-machine-model-element
+   :to :overarch.data-model/state-machine-model-node
    :to-card :one-to-many
    :tags #{"state-machine-model"}}
 
@@ -1112,13 +1112,13 @@
   {:el :inheritance
    :id :overarch.data-model/state-machine-node-is-a-state-machine-model-element
    :to :overarch.data-model/state-machine-model-element
-   :from :overarch.data-model/state-machine-node
+   :from :overarch.data-model/state-machine-model-node
    :tags #{"state-machine-model" "element-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/state-machine-relation-is-a-state-machine-element
    :to :overarch.data-model/state-machine-model-element
-   :from :overarch.data-model/state-machine-relation
+   :from :overarch.data-model/state-machine-model-relation
    :tags #{"state-machine-model" "element-hierarchy"}}
 
   {:el :inheritance
@@ -1147,7 +1147,7 @@
    :tags #{"state-machine-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/start-state-is-a-state-machine-node
+   :id :overarch.data-model/start-state-is-a-state-machine-model-node
    :to :overarch.data-model/state-machine-model-node
    :from :overarch.data-model/start-state
    :tags #{"state-machine-model" "node-hierarchy"}}
