@@ -796,6 +796,7 @@
   (and (identifiable-element? e)
        (str/starts-with? (element-namespace e) v)))
 
+;; TODO add docstrings
 (defn from-namespace?
   [v e]
   (= (name v) (namespace (get e :from :no-namespace/no-name))))

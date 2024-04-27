@@ -348,6 +348,7 @@
 ;;;
 ;;; filtering element colletions by criteria
 ;;;
+;; TODO add docstrings
 (defn child?
   [model v e]
   (= v (boolean ((:id->parent model) (:id e)))))
