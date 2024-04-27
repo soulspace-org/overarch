@@ -376,102 +376,48 @@
   "Returns a predicate for the given `criterium`."
   [model [k v]]
 ; TODO add criteria e.g. :parent :parent? :relation-of
-; TODO extract predicates to named functions to make them available in templates
   (cond
     ;;
     ;; element related
     ;;
-    (= :namespace k)
-    #(= (name v) (el/element-namespace %))
-    (= :namespaces k)
-    #(contains? (name v) (el/element-namespace %))
-    (= :namespace-prefix k)
-    #(and (el/identifiable-element? %)
-          (str/starts-with? (el/element-namespace %) v))
-
-    (= :from-namespace k)
-    #(= (name v) (namespace (get % :from :no-namespace/no-name)))
-    (= :from-namespaces k)
-    #(contains? (name v) (namespace (get % :from :no-namespace/no-name)))
-    (= :from-namespace-prefix k)
-    #(str/starts-with? (namespace (get % :from :no-namespace/no-name)) v)
-    (= :to-namespace k)
-    #(= (name v) (namespace (get % :to :no-namespace/no-name)))
-    (= :to-namespaces k)
-    #(contains? (name v) (namespace (get % :to :no-namespace/no-name)))
-    (= :to-namespace-prefix k)
-    #(str/starts-with? (namespace (get % :from :no-namespace/no-name)) v)
-
-    (= :id? k)
-    #(= v (boolean (get % :id false)))
-    (= :id k)
-    #(= (keyword v) (:id %))
-    (= :from k)
-    #(= (keyword v) (:from %))
-    (= :to k)
-    #(= (keyword v) (:to %))
-
-    (= :el k)
-    #(isa? el/element-hierarchy (:el %) v)
-    (= :els k)
-    #(contains? v (:el %)) ; TODO use isa? too
-
-    (= :subtype? k)
-    #(= v (get % :subtype false))
-    (= :subtype k)
-    #(= (keyword v) (:subtype %))
-    (= :subtypes k)
-    #(contains? v (:subtype %))
-
-    (= :external? k)
-    #(= v (boolean (el/external? %)))
-
-    (= :name? k)
-    #(= v (get % :name false))
-
-    (= :desc? k)
-    #(= v (get % :desc false))
-
-    (= :tech? k)
-    #(= v (get % :tech false))
-    (= :tech k)
-    #(contains? (set (el/technologies %)) v) ; TODO create vector on load
-    (= :techs k)
-    #(seq (set/intersection v (set (el/technologies %))))
-    (= :all-techs k)
-    #(set/subset? (set v) (set (el/technologies %)))
-
-    (= :tags? k)
-    #(= v (get % :tags false))
-    (= :tag k)
-    #(contains? (:tags %) v)
-    (= :tags k)
-    #(seq (set/intersection v (:tags %)))
-    (= :all-tags k)
-    #(set/subset? (set v) (:tags %))
-
-    (= :children? k)
-    #(= v (empty? (:ct %)))
+    (= :namespace k)             (partial el/namespace? v)
+    (= :namespaces k)            (partial el/namespaces? v)
+    (= :namespace-prefix k)      (partial el/namespace-prefix? v)
+    (= :from-namespace k)        (partial el/from-namespace? v)
+    (= :from-namespaces k)       (partial el/from-namespaces? v)
+    (= :from-namespace-prefix k) (partial el/from-namespace-prefix? v)
+    (= :to-namespace k)          (partial el/to-namespace? v)
+    (= :to-namespaces k)         (partial el/to-namespaces? v)
+    (= :to-namespace-prefix k)   (partial el/to-namespace-prefix? v)
+    (= :id? k)                   (partial el/id-check? v)
+    (= :id k)                    (partial el/id? v)
+    (= :from k)                  (partial el/from? v)
+    (= :to k)                    (partial el/to? v)
+    (= :el k)                    (partial el/el? v)
+    (= :els k)                   (partial el/els? v)
+    (= :subtype? k)              (partial el/subtype-check? v)
+    (= :subtype k)               (partial el/subtype? v)
+    (= :subtypes k)              (partial el/subtypes? v)
+    (= :external? k)             (partial el/external-check? v)
+    (= :name? k)                 (partial el/name-check? v)
+    (= :name k)                  (partial el/name?) 
+    (= :desc? k)                 (partial el/desc-check? v)
+    (= :tech? k)                 (partial el/tech-check? v)
+    (= :tech k)                  (partial el/tech? v)
+    (= :techs k)                 (partial el/techs? v)
+    (= :all-techs k)             (partial el/all-techs? v)
+    (= :tags? k)                 (partial el/tags-check? v)
+    (= :tag k)                   (partial el/tag? v)
+    (= :tags k)                  (partial el/tags? v)
+    (= :all-tags k)              (partial el/all-tags? v)
+    (= :children? k)             (partial el/children-check? v)
 
     ;; model related
-    (= :child? k)
-    #(= v (boolean ((:id->parent model) (:id %))))
-
-    (= :refers? k)
-    #(= v (boolean ((:referrer-id->relations model) (:id %))))
-
-    (= :referred? k)
-    #(= v (boolean ((:referred-id->relations model) (:id %))))
-
-    (= :refers-to k)
-    #(contains? (into #{}
-                      (map :to ((:referrer-id->relations model) (:id %))))
-                v)
-
-    (= :referred-by k)
-    #(contains? (into #{}
-                      (map :from ((:referred-id->relations model) (:id %))))
-                v)
+    (= :child? k)                (partial child? model v)
+    (= :refers? k)               (partial refers-check? model v)
+    (= :referred? k)             (partial referred-check? model v)
+    (= :refers-to k)             (partial refers-to? model v)
+    (= :referred-by k)           (partial referred-by? model v)
 
     :else
     (println "unknown criterium" (name k))))
