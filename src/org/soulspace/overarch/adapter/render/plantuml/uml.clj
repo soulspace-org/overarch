@@ -1,5 +1,7 @@
 (ns org.soulspace.overarch.adapter.render.plantuml.uml
-  (:require [org.soulspace.overarch.domain.view :as view]
+  "Functions to render PlantUML diagrams for UML views."
+  (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.application.render :as render]

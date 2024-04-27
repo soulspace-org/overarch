@@ -1,4 +1,5 @@
 (ns org.soulspace.overarch.adapter.render.plantuml.c4
+  "Functions to render PlantUML C4 diagrams for architecture and deployment views."
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as render]
