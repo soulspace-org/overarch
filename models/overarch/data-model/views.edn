@@ -6,10 +6,13 @@
   ;;; Logical Data Model Views
   ;;;
   {:el :class-view
-   :id :overarch.data-model/data-model-overview
-   :spec {:layout :left-right}
-   :title "Overview of the Overarch Data Model"
+   :id :overarch.data-model/data-model-complete
+   :spec {:layout :left-right
+          ;:selection {:namespace "overarch.data-model"}
+          }
+   :title "Complete Overarch Data Model"
    :ct [;; elements
+        {:ref :overarch.data-model/ref}
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
         {:ref :overarch.data-model/named-element}
@@ -17,30 +20,46 @@
         {:ref :overarch.data-model/relational-element}
         {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/technical-element}
+
+        {:ref :overarch.data-model/rel}
+
         {:ref :overarch.data-model/architecture-model-element}
+        {:ref :overarch.data-model/architecture-model-node}
+        {:ref :overarch.data-model/architecture-model-relation}
+        {:ref :overarch.data-model/technical-architecture-model-element}
         {:ref :overarch.data-model/technical-architecture-model-node}
-        {:ref :overarch.data-model/deployment-model-element}
-        {:ref :overarch.data-model/state-machine-element}
-        {:ref :overarch.data-model/class-model-element}
-        {:ref :overarch.data-model/use-case-model-element}
-        {:ref :overarch.data-model/concept-model-element}
+        {:ref :overarch.data-model/technical-architecture-model-relation}
 
-        {:ref :overarch.data-model/ref}
-
-        {:ref :overarch.data-model/concept}
+        {:ref :overarch.data-model/boundary}
         {:ref :overarch.data-model/context-boundary}
         {:ref :overarch.data-model/enterprise-boundary}
+
         {:ref :overarch.data-model/person}
         {:ref :overarch.data-model/system}
         {:ref :overarch.data-model/container}
         {:ref :overarch.data-model/component}
-        {:ref :overarch.data-model/rel}
+        {:ref :overarch.data-model/request}
+        {:ref :overarch.data-model/response}
+        {:ref :overarch.data-model/publish}
+        {:ref :overarch.data-model/subscribe}
+        {:ref :overarch.data-model/send}
+        {:ref :overarch.data-model/dataflow}
 
+        {:ref :overarch.data-model/deployment-model-element}
+        {:ref :overarch.data-model/deployment-model-node}
+        {:ref :overarch.data-model/deployment-model-relation}
         {:ref :overarch.data-model/node}
+        {:ref :overarch.data-model/link}
 
+        {:ref :overarch.data-model/use-case-model-element}
+        {:ref :overarch.data-model/use-case-model-node}
+        {:ref :overarch.data-model/use-case-model-relation}
         {:ref :overarch.data-model/actor}
         {:ref :overarch.data-model/use-case}
 
+        {:ref :overarch.data-model/class-model-element}
+        {:ref :overarch.data-model/class-model-node}
+        {:ref :overarch.data-model/class-model-relation}
         {:ref :overarch.data-model/package}
         {:ref :overarch.data-model/namespace}
         {:ref :overarch.data-model/interface}
@@ -58,6 +77,9 @@
         {:ref :overarch.data-model/association}
         {:ref :overarch.data-model/dependency}
 
+        {:ref :overarch.data-model/state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-node}
+        {:ref :overarch.data-model/state-machine-model-relation}
         {:ref :overarch.data-model/state-machine}
         {:ref :overarch.data-model/start-state}
         {:ref :overarch.data-model/state}
@@ -66,6 +88,11 @@
         {:ref :overarch.data-model/join}
         {:ref :overarch.data-model/choice}
         {:ref :overarch.data-model/transition}
+
+        {:ref :overarch.data-model/concept-model-element}
+        {:ref :overarch.data-model/concept-model-node}
+        {:ref :overarch.data-model/concept-model-relation}
+        {:ref :overarch.data-model/concept}
 
         {:ref :overarch.data-model/view}
         {:ref :overarch.data-model/rendering-spec}

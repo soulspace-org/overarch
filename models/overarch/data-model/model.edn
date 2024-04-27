@@ -3,17 +3,14 @@
 ;;;;
 
 #{;;;
-  ;;; Data Model Elements
+  ;;; Abstract types
   ;;;
-
-  ;;
-  ;; Abstract types
-  ;;
   {:el :class
    :id :overarch.data-model/element
    :abstract true
    :name "element"
    :desc "An element of data."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "el"
           :type "keyword"
@@ -23,8 +20,8 @@
    :id :overarch.data-model/identifiable-element
    :abstract true
    :name "identifiable-element"
-   :desc "An element with an identifier.
-          Can be referenced from views and other parts of the model."
+   :desc "An element with an identifier. Can be referenced from views and other parts of the model."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "id"
           :type "keyword"
@@ -35,6 +32,7 @@
    :abstract :true
    :name "compound-element"
    :desc "An element which is composed of other elements."
+   :tags #{"type-hierarchy"}
    :ct [{:el :field
          :name "ct"
          :type "collection"
@@ -45,6 +43,7 @@
    :abstract true
    :name "named-element"
    :desc "An element with a name and a description."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "name"
           :type "string"
@@ -58,26 +57,15 @@
    :id :overarch.data-model/identifiable-named-element
    :abstract true
    :name "identifiable-named-element"
-   :desc "An element that is identifiable and named."}
-
-  {:el :class
-   :id :overarch.data-model/architecture-model-element
-   :abstract true
-   :name "architecture-model-element"
-   :desc "An element of the architecture model."
-   :ct #{{:el :field
-          :name "external"
-          :type "boolean"
-          :optional true
-          :desc "When true, the element plays a role in the model
-               but it is not in the scope of the project.
-               Defaults to false."}}}
+   :desc "An element that is identifiable and named."
+   :tags #{"type-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/relational-element
    :abstract true
    :name "relational-element"
    :desc "An element which describes the relation of elements."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "from"
           :type "keyword"
@@ -91,22 +79,68 @@
    :id :overarch.data-model/named-relational-element
    :abstract true
    :name "named-relational-element"
-   :desc "A relational element that is named."}
+   :desc "A relational element that is named."
+   :tags #{"type-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/technical-element
    :abstract true
    :name "technical-element"
    :desc "An element which is implemented in the given technologies."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "tech"
           :type "string"
-          :desc "Technology the element is implemented in."}
-         {:el :field
-          :name "subtype"
-          :type "string"
-          :optional true
-          :desc "Subtype of the element, one of :database or :queue."}}}
+          :desc "Technology the element is implemented in."}}}
+
+  ;; Abstract Type Relations
+  {:el :inheritance
+   :id :overarch.data-model/identifiable-element-is-a-element
+   :to :overarch.data-model/element
+   :from :overarch.data-model/identifiable-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/compound-element-is-a-identifiable-element
+   :to :overarch.data-model/identifiable-element
+   :from :overarch.data-model/compound-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/named-element-is-a-element
+   :to :overarch.data-model/element
+   :from :overarch.data-model/named-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/identifiable-named-element-is-a-identifiable-element
+   :to :overarch.data-model/identifiable-element
+   :from :overarch.data-model/identifiable-named-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/identifiable-named-element-is-a-named-element
+   :to :overarch.data-model/named-element
+   :from :overarch.data-model/identifiable-named-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/relational-element-is-a-identifiable-element
+   :to :overarch.data-model/identifiable-element
+   :from :overarch.data-model/relational-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/named-relational-element-is-a-named-element
+   :to :overarch.data-model/named-element
+   :from :overarch.data-model/named-relational-element
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/named-relational-element-is-a-relational-element
+   :to :overarch.data-model/relational-element
+   :from :overarch.data-model/named-relational-element
+   :tags #{"type-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/ref
@@ -117,42 +151,371 @@
           :type "keyword"
           :desc "The identifier the reference is referring to."}}}
 
+  ;;
+  ;; Model hierarchies
+  ;;
   {:el :class
    :id :overarch.data-model/model-element
    :abstract true
    :name "model-element"
-   :desc "An element of the overarch model."}
+   :desc "An element of the overarch model." 
+   :tags #{"element-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/model-node
    :abstract true
    :name "model-node"
-   :desc "A node of the overarch model."}
+   :desc "A node of the overarch model." 
+   :tags #{"node-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/model-relation
    :abstract true
    :name "model-relation"
-   :desc "A relation of the overarch model."}
+   :desc "A relation of the overarch model." 
+   :tags #{"relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/model-node-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/model-node
+   :tags #{"node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/model-relation-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/model-relation
+   :tags #{"relation-hierarchy"}}
+
+  ;;
+  ;; Generic Relation 
+  ;;
+  {:el :class
+   :id :overarch.data-model/rel
+   :name "rel"
+   :desc "A generic relation between two elements of the model. A rel can be used in the architecture model and the concept model."
+   :tags #{"architecture-model" "concept-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/rel-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
+   :from :overarch.data-model/rel
+   :tags #{"type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/rel-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/rel
+   :tags #{"type-hierarchy"}}
+
+  ;;
+  ;; Boundaries
+  ;;
+  {:el :class
+   :id :overarch.data-model/boundary-element
+   :abstract true
+   :name "boundary-element"
+   :desc "A grouping of elements belonging together in a context."}
+
+  {:el :class
+   :id :overarch.data-model/context-boundary
+   :name "context-boundary"
+   :desc "A boundary of a bounded context."
+   :tags #{"architecture-model" "concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/enterprise-boundary
+   :name "enterprise-boundary"
+   :desc "A boundary of an enterprise or a company."
+   :tags #{"architecture-model" "concept-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/context-boundary-is-a-boundary-element
+   :to :overarch.data-model/boundary-element
+   :from :overarch.data-model/context-boundary
+   :tags #{"architecture-model" "concept-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/enterprise-boundary-is-a-boundary-element
+   :to :overarch.data-model/boundary-element
+   :from :overarch.data-model/enterprise-boundary
+   :tags #{"architecture-model" "concept-model" "element-hierarchy"}}
+
+  ;;
+  ;; Architecture Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/architecture-model-element
+   :abstract true
+   :name "architecture-model-element"
+   :desc "An element of the architecture model."
+   :tags #{"architecture-model"}
+   :ct [{:el :field
+         :name "external"
+         :type "boolean"
+         :optional true
+         :desc "When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false."}]}
 
   {:el :class
    :id :overarch.data-model/architecture-model-node
    :abstract true
    :name "architecture-model-node"
-   :desc "A node in the architecture model of overarch."}
+   :desc "A node in the architecture model."
+   :tags #{"architecture-model"}}
 
+  {:el :class
+   :id :overarch.data-model/technical-architecture-model-element
+   :abstract true
+   :name "technical-architecture-element"
+   :desc "A technical element of the architecture, e.g. a system or container."
+   :tags #{"architecture-model"}}
   {:el :class
    :id :overarch.data-model/technical-architecture-model-node
    :abstract true
    :name "technical-architecture-model-node"
-   :desc "A technical node in the architecture model of overarch."}
+   :desc "A technical node in the architecture model."
+   :tags #{"architecture-model"}
+   :ct [{:el :field
+         :name "subtype"
+         :type "string"
+         :optional true
+         :desc "Subtype of the element, one of :database or :queue."}]}
 
   {:el :class
    :id :overarch.data-model/architecture-model-relation
    :abstract true
    :name "architecture-model-relation"
-   :desc "A relation in the architecture model of overarch."}
+   :desc "A relation in the architecture model."
+   :tags #{"architecture-model"}}
 
+  {:el :class
+   :id :overarch.data-model/technical-architecture-model-relation
+   :abstract true
+   :name "technical-architecture-model-relation"
+   :desc "A technical relation in the architecture model."
+   :tags #{"architecture-model"}}
+
+  ;; Person
+  {:el :class
+   :id :overarch.data-model/person
+   :name "person"
+   :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
+   :tags #{"architecture-model" "use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/system
+   :name "system"
+   :desc "A system relevant in the architecture. A system can be an external system, which is modelled as a black box
+          or an internal system, a system under description, which is modelled as a compound element with all the containers of the system.
+          A system can be used in the architecture model, the deployment model (external systems) and the use case model (external systems)."
+   :tags #{"architecture-model" "deployment-model" "use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/container
+   :name "container"
+   :desc "A container is a part of a system and describes a deployed process in the architecture (e.g. a service or an application).
+          A container is a compound element which contains the components of the implementation.
+          A container can be used in the architecture model, the deployment model and the use case model."
+   :tags #{"architecture-model" "deployment-model" "use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/component
+   :name "component"
+   :desc "A compontent is a part of a container and describes a (logical) building
+          block of a container (e.g. a module or a layer)."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/request
+   :name "request"
+   :desc "A synchronous request between two elements of the architecture."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/response
+   :name "response"
+   :desc "A response to a synchronous request between two elements of the
+          architecture."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/dataflow
+   :name "dataflow"
+   :desc "A flow of data between two elements of the architecture."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/send
+   :name "send"
+   :desc "An asynchronous message or command between two elements of the
+          architecture (point-to-point)."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/publish
+   :name "publish"
+   :desc "Publishing of asynchronous event between two elements of the
+          architecture (receiver should be a broker or topic)."
+   :tags #{"architecture-model"}}
+
+  {:el :class
+   :id :overarch.data-model/subscribe
+   :name "subscribe"
+   :desc "Subscription of asynchronous events between two elements of the
+          architecture (sender should be a broker or topic)."
+   :tags #{"architecture-model"}}
+
+  ;; Architecture Model Relations
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/architecture-model-node
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/architecture-model-relation
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/architecture-model-element
+   :tags #{"architecture-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-node-is-a-architecture-model-element
+   :to :overarch.data-model/architecture-model-element
+   :from :overarch.data-model/architecture-model-node
+   :tags #{"architecture-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-relation-is-a-architecture-model-element
+   :to :overarch.data-model/architecture-model-element
+   :from :overarch.data-model/architecture-model-relation
+   :tags #{"architecture-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :to :overarch.data-model/architecture-model-node
+   :from :overarch.data-model/technical-architecture-model-node
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/architecture-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/architecture-model-element
+   :tags #{"architecture-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/context-boundary-is-a-architecture-model-node
+   :to :overarch.data-model/architecture-model-node
+   :from :overarch.data-model/context-boundary
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/enterprise-boundary-is-a-architecture-model-node
+   :to :overarch.data-model/architecture-model-node
+   :from :overarch.data-model/enterprise-boundary
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/person-is-a-architecture-model-node
+   :to :overarch.data-model/architecture-model-node
+   :from :overarch.data-model/person
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-node-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/technical-architecture-model-node
+   :tags #{"architecture-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-element
+   :to :overarch.data-model/architecture-model-element
+   :from :overarch.data-model/technical-architecture-model-node
+   :tags #{"architecture-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/system-is-a-technical-architecture-node
+   :to :overarch.data-model/technical-architecture-model-node
+   :from :overarch.data-model/system
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/system-contains-containers
+   :from :overarch.data-model/system
+   :to :overarch.data-model/container
+   :to-name "ct"
+   :to-card :zero-to-many
+   :tags #{"architecture-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/container-is-a-technical-architecture-node
+   :to :overarch.data-model/technical-architecture-model-node
+   :from :overarch.data-model/container
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/container-contains-components
+   :from :overarch.data-model/container
+   :to :overarch.data-model/component
+   :to-name "ct"
+   :to-card :zero-to-many
+   :tags #{"architecture-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/component-is-a-technical-architecture-node
+   :to :overarch.data-model/technical-architecture-model-node
+   :from :overarch.data-model/component
+   :tags #{"architecture-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/rel-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/rel
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/request-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/request
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/response-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/response
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/publish-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/publish
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/subscribe-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/subscribe
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/send-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/send
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/dataflow-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/dataflow
+   :tags #{"architecture-model" "relation-hierarchy"}}
+
+  ;;
+  ;; Deployment Model
+  ;;
   {:el :class
    :id :overarch.data-model/deployment-model-node
    :abstract true
@@ -164,138 +527,6 @@
    :abstract true
    :name "deployment-model-relation"
    :desc "A relation in the deployment model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/class-model-node
-   :abstract true
-   :name "class-model-node"
-   :desc "A node in the class model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/class-model-relation
-   :abstract true
-   :name "class-model-relation"
-   :desc "A relation in the class model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/state-machine-model-node
-   :abstract true
-   :name "state-machine-model-node"
-   :desc "A node in the state machine model of overarch."}
-  
-  {:el :class
-   :id :overarch.data-model/state-machine-model-relation
-   :abstract true
-   :name "state-machine-model-relation"
-   :desc "A relation in the state machine model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/use-case-model-node
-   :abstract true
-   :name "use-case-model-node"
-   :desc "A node in the use case model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/use-case-model-relation
-   :abstract true
-   :name "use-case-model-relation"
-   :desc "A relation in the use case model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/concept-model-node
-   :abstract true
-   :name "concept-model-node"
-   :desc "A node in the concept model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/concept-model-relation
-   :abstract true
-   :name "concept-model-relation"
-   :desc "A relation in the concept model of overarch."}
-
-  {:el :class
-   :id :overarch.data-model/context-boundary
-   :name "context-boundary"
-   :desc "A boundary of a bounded context."}
-
-  {:el :class
-   :id :overarch.data-model/enterprise-boundary
-   :name "enterprise-boundary"
-   :desc "A boundary of an enterprise or a company."}
-
-  {:el :class
-   :id :overarch.data-model/person
-   :name "person"
-   :desc "A human actor or role working with the system under description.
-          The person can be used in the use case model and the architecture model."}
-
-  {:el :class
-   :id :overarch.data-model/technical-architecture-model-node
-   :abstract true
-   :name "technical-architecture-element"
-   :desc "A technical element of the architecture, e.g. a system or container."}
-
-  {:el :class
-   :id :overarch.data-model/system
-   :name "system"
-   :desc "A system relevant in the architecture.
-          The system can be an external system, which is modelled as a black box
-          or an internal system, a system under description, which is modelled as
-          a compound element with all the containers of the system.
-          The system can be used in the use case model and the architecture model."}
-
-  {:el :class
-   :id :overarch.data-model/container
-   :name "container"
-   :desc "A container is a part of a system and describes a deployed process in the
-          architecture (e.g. a service or an application).
-          The container is a compound element which contains the components of the
-          implementation."}
-
-  {:el :class
-   :id :overarch.data-model/component
-   :name "component"
-   :desc "A compontent is a part of a container and describes a (logical) building
-          block of a container (e.g. a module or a layer)."}
-
-  {:el :class
-   :id :overarch.data-model/rel
-   :name "rel"
-   :desc "A generic relation between two elements of the architecture."}
-
-  {:el :class
-   :id :overarch.data-model/request
-   :name "request"
-   :desc "A synchronous request between two elements of the architecture."}
-
-  {:el :class
-   :id :overarch.data-model/response
-   :name "response"
-   :desc "A response to a synchronous request between two elements of the
-          architecture."}
-
-  {:el :class
-   :id :overarch.data-model/dataflow
-   :name "dataflow"
-   :desc "A flow of data between two elements of the architecture."}
-
-  {:el :class
-   :id :overarch.data-model/send
-   :name "send"
-   :desc "An asynchronous message or command between two elements of the
-          architecture (point-to-point)."}
-
-  {:el :class
-   :id :overarch.data-model/publish
-   :name "publish"
-   :desc "Publishing of asynchronous event between two elements of the
-          architecture (receiver should be a broker or topic)."}
-
-  {:el :class
-   :id :overarch.data-model/subscribe
-   :name "subscribe"
-   :desc "Subscription of asynchronous events between two elements of the
-          architecture (sender should be a broker or topic)."}
 
   {:el :class
    :id :overarch.data-model/deployment-model-element
@@ -315,87 +546,146 @@
    :name "link"
    :desc "A link between two nodes of the deployment model."}
 
-  {:el :class
-   :id :overarch.data-model/state-machine-element
-   :abstract true
-   :name "state-machine-element"
-   :desc "An element in a state machine model."}
+  ;; Deployment Model Relations
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/deployment-model-element
+   :tags #{"deployment-model" "type-hierarchy"}}
 
-  {:el :class
-   :id :overarch.data-model/use-case-model-element
-   :abstract true
-   :name "use-case-model-element"
-   :desc "An element in a use case model."}
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-element-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/deployment-model-element
+   :tags #{"deployment-model" "type-hierarchy"}}
 
-  {:el :class
-   :id :overarch.data-model/actor
-   :name "actor"
-   :desc "An actor (role) in a use case model.
-          The actor can be human or technical, e.g. a system or time.
-          If the architecture model contains persons or systems acting with
-          the use cases, you can replace the actors with these elements."}
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/deployment-model-element
+   :tags #{"deployment-model" "element-hierarchy"}}
 
-  {:el :class
-   :id :overarch.data-model/use-case
-   :name "use-case"
-   :desc "A use case in the use case model."
-   :ct #{{:el :field
-          :name "level"
-          :type "keyword"
-          :desc "The level of the use case (:summary, :user-goal, :subfunction)."}}}
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-node-is-a-deployment-model-element
+   :to :overarch.data-model/deployment-model-element
+   :from :overarch.data-model/deployment-model-node
+   :tags #{"deployment-model" "element-hierarchy"}}
 
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-relation-is-a-deployment-model-element
+   :to :overarch.data-model/deployment-model-element
+   :from :overarch.data-model/deployment-model-relation
+   :tags #{"deployment-model" "element-hierarchy"}}
 
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/deployment-model-node
+   :tags #{"deployment-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/deployment-model-relation
+   :tags #{"deployment-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/node-is-a-deployment-model-node
+   :to :overarch.data-model/deployment-model-node
+   :from :overarch.data-model/node
+   :tags #{"deployment-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/node-contains-deployment-model-element
+   :from :overarch.data-model/node
+   :to :overarch.data-model/deployment-model-element
+   :to-name "ct"
+   :to-card :zero-to-many
+   :tags #{"deployment-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/container-is-a-deployment-model-node
+   :to :overarch.data-model/deployment-model-node
+   :from :overarch.data-model/container
+   :tags #{"deployment-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/link-is-a-deployment-model-relation
+   :to :overarch.data-model/deployment-model-relation
+   :from :overarch.data-model/link
+   :tags #{"deployment-model" "relation-hierarchy"}}
+
+  ;;
+  ;; Class Model
+  ;;
   {:el :class
    :id :overarch.data-model/class-model-element
    :abstract true
    :name "class-model-element"
-   :desc "An element in a class model."}
+   :desc "An element in a class model."
+   :tags #{"class-model"}}
+
+  {:el :class
+   :id :overarch.data-model/class-model-node
+   :abstract true
+   :name "class-model-node"
+   :desc "A node in the class model."
+   :tags #{"class-model"}}
+
+  {:el :class
+   :id :overarch.data-model/class-model-relation
+   :abstract true
+   :name "class-model-relation"
+   :desc "A relation in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/package
    :name "package"
-   :desc "A package in the class model.
-          Packages provide a hierarchical structure for the organisation of the
-          elements of the class model."}
+   :desc "A package in the class model. Packages provide a hierarchical structure for the organisation of the elements of the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/namespace
    :name "namespace"
-   :desc "A namespace in the class model.
-          Namespaces provide a hierarchical structure for the organisation of the
-          elements of the class model."}
+   :desc "A namespace in the class model. Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/interface
    :name "interface"
-   :desc "An interface in the class model.
-          An interface defines related methods."}
+   :desc "An interface in the class model. An interface defines related methods."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/protocol
    :name "protocol"
-   :desc "A protocol in the class model.
-          A protocol defines related functions."}
+   :desc "A protocol in the class model. A protocol defines related functions."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/class
    :name "class"
-   :desc "A class in the class model."}
+   :desc "A class in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/enum
    :name "enum"
-   :desc "An enumeration of typed related values in the class model."}
+   :desc "An enumeration of typed related values in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/enum-value
    :name "enum-value"
-   :desc "A value of an enumeration in the class model."}
+   :desc "A value of an enumeration in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/field
    :name "field"
    :desc "A field in a class model element."
+   :tags #{"class-model"}
    :ct #{{:el :field
           :name "type"
           :type "string"
@@ -415,6 +705,7 @@
    :id :overarch.data-model/method
    :name "method"
    :desc "A method in a class model element."
+   :tags #{"class-model"}
    :ct #{{:el :field
           :name "visibility"
           :type "keyword"
@@ -429,10 +720,12 @@
           :name "optional"
           :type "boolean"
           :desc "When true the return value can be null/nil. Default is false."}}}
+
   {:el :class
    :id :overarch.data-model/parameter
    :name "parameter"
    :desc "A parameter in a class model method or function."
+   :tags #{"class-model"}
    :ct [{:el :field
          :name "type"
          :optional true
@@ -445,20 +738,20 @@
   {:el :class
    :id :overarch.data-model/implementation
    :name "implementation"
-   :desc "An implementation relationship between a class and an
-          interface/protocol in the class model."}
+   :desc "An implementation relationship between a class and an interface/protocol in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/inheritance
    :name "inheritance"
-   :desc "An inheritance relationship between two classes in the
-          class model."}
+   :desc "An inheritance relationship between two classes in the class model."
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/composition
    :name "composition"
-   :desc "A composition relationship between two classes in the
-          class model."
+   :desc "A composition relationship between two classes in the class model."
+   :tags #{"class-model"}
    :ct [{:el :field
          :name "from-role"
          :type "string"
@@ -477,8 +770,8 @@
   {:el :class
    :id :overarch.data-model/aggregation
    :name "aggregation"
-   :desc "A aggregation relationship between two classes in the
-          class model."
+   :desc "A aggregation relationship between two classes in the class model."
+   :tags #{"class-model"}
    :ct [{:el :field
          :name "from-role"
          :type "string"
@@ -497,8 +790,8 @@
   {:el :class
    :id :overarch.data-model/association
    :name "association"
-   :desc "A association relationship between two classes in the
-          class model."
+   :desc "A association relationship between two classes in the class model."
+   :tags #{"class-model"}
    :ct [{:el :field
          :name "from-card"
          :type "string"
@@ -521,44 +814,256 @@
   {:el :class
    :id :overarch.data-model/dependency
    :name "dependency"
-   :desc "A dependency relationship between two elements in the
-          class model."}
+   :desc "A dependency relationship between two elements in the class model."
+   :tags #{"class-model"}}
+
+  ;; Class Model Relations
+  {:el :inheritance
+   :id :overarch.data-model/class-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/class-model-element
+   :tags #{"class-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/class-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
+   :from :overarch.data-model/class-model-relation
+   :tags #{"class-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/class-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/class-model-element
+   :tags #{"class-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/class-model-node-is-a-class-model-element
+   :to :overarch.data-model/class-model-element
+   :from :overarch.data-model/class-model-node
+   :tags #{"class-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/class-model-relation-is-a-class-model-element
+   :to :overarch.data-model/class-model-element
+   :from :overarch.data-model/class-model-relation
+   :tags #{"class-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/package-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/package
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/package-contains-class-model-node
+   :from :overarch.data-model/package
+   :to :overarch.data-model/class-model-node
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/namespace-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/namespace
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/namespace-contains-class-model-node
+   :from :overarch.data-model/namespace
+   :to :overarch.data-model/class-model-node
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/interface-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/interface
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/interface-contains-method
+   :from :overarch.data-model/interface
+   :to :overarch.data-model/method
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/protocol-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/protocol
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/protocol-contains-method
+   :from :overarch.data-model/protocol
+   :to :overarch.data-model/method
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/class-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/class
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/field
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/class-contains-field
+   :from :overarch.data-model/class
+   :to :overarch.data-model/field
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/method
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/class-contains-method
+   :from :overarch.data-model/class
+   :to :overarch.data-model/method
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/parameter-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/parameter
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/method-contains-parameter
+   :from :overarch.data-model/method
+   :to :overarch.data-model/parameter
+   :to-card :zero-to-many
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/enum-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/enum
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/enum-value-is-a-class-model-node
+   :to :overarch.data-model/class-model-node
+   :from :overarch.data-model/enum-value
+   :tags #{"class-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/enum-contains-enum-value
+   :from :overarch.data-model/enum
+   :to :overarch.data-model/enum-value
+   :tags #{"class-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/inheritance-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/inheritance
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/implementation-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/implementation
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/composition-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/composition
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/aggregation-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/aggregation
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/association-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/association
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/dependency-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/dependency
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  ;;
+  ;; State Machine Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/state-machine-model-element
+   :abstract true
+   :name "state-machine-model-element"
+   :desc "An element in a state machine model."
+   :tags #{"state-machine-model"}}
+
+  {:el :class
+   :id :overarch.data-model/state-machine-model-node
+   :abstract true
+   :name "state-machine-model-node"
+   :desc "A node in the state machine model of overarch."
+   :tags #{"state-machine-model"}}
+
+  {:el :class
+   :id :overarch.data-model/state-machine-model-relation
+   :abstract true
+   :name "state-machine-model-relation"
+   :desc "A relation in the state machine model of overarch."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/state-machine
    :name "state-machine"
    :desc "A state machine as root element of the state machine model.
           A state machine encapsulates a set of states of a system and
-          the transitions between these states."}
+          the transitions between these states."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/state
    :name "state"
-   :desc "A state in a state machine."}
+   :desc "A state in a state machine."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/start-state
    :name "start-state"
-   :desc "A start state in a state machine."}
+   :desc "A start state in a state machine."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/end-state
    :name "end-state"
-   :desc "A end state in a state machine."}
+   :desc "A end state in a state machine."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/fork
    :name "fork"
    :desc "A fork of transitions in a state machine.
           A fork has a single incoming transition and multiple outgoing
-          transitions."}
+          transitions."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/join
    :name "join"
    :desc "A join of transitions in a state machine.
           A join has multiple incoming transitions and a single outgoing
-          transition."}
+          transition."
+   :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/choice
@@ -566,6 +1071,7 @@
    :desc "A choice of transitions in a state machine.
           A choice has a single incoming transition and multiple outgoing
           transitions with the result of the condition of the choice."
+   :tags #{"state-machine-model"}
    :ct #{{:el :field
           :name "condition"
           :type "string"}}}
@@ -574,21 +1080,389 @@
    :id :overarch.data-model/transition
    :name "transition"
    :desc "A transition from on state to another in effect of an event in
-          the state machine."}
+          the state machine."
+   :tags #{"state-machine-model"}}
 
+  ;; State Machine Relations
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/state-machine-model-element
+   :tags #{"state-machine-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-model-relation-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
+   :from :overarch.data-model/state-machine-model-relation
+   :tags #{"state-machine-model" "type-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/state-machine-contains-state-machine-model-element
+   :from :overarch.data-model/state-machine
+   :to :overarch.data-model/state-machine-model-element
+   :to-card :one-to-many
+   :tags #{"state-machine-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/state-machine-model-element
+   :tags #{"state-machine-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-node-is-a-state-machine-model-element
+   :to :overarch.data-model/state-machine-model-element
+   :from :overarch.data-model/state-machine-node
+   :tags #{"state-machine-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-relation-is-a-state-machine-element
+   :to :overarch.data-model/state-machine-model-element
+   :from :overarch.data-model/state-machine-relation
+   :tags #{"state-machine-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/state-machine-model-node
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/state-machine-model-relation
+   :tags #{"state-machine-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/state
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :composition
+   :id :overarch.data-model/state-contains-state-machine-model-node
+   :from :overarch.data-model/state
+   :to :overarch.data-model/state-machine-model-node
+   :to-card :one-to-many
+   :tags #{"state-machine-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/start-state-is-a-state-machine-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/start-state
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/end-state-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/end-state
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/fork-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/fork
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/join-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/join
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/choice-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/choice
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/transition-is-a-state-machine-model-relation
+   :to :overarch.data-model/state-machine-model-relation
+   :from :overarch.data-model/transition
+   :tags #{"state-machine-model" "relation-hierarchy"}}
+
+  ;;
+  ;; Use Case Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/use-case-model-element
+   :abstract true
+   :name "use-case-model-element"
+   :desc "An element in a use case model."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/use-case-model-node
+   :abstract true
+   :name "use-case-model-node"
+   :desc "A node in the use case model of overarch."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/use-case-model-relation
+   :abstract true
+   :name "use-case-model-relation"
+   :desc "A relation in the use case model of overarch."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/actor
+   :name "actor"
+   :desc "An actor (role) in a use case model.
+          The actor can be human or technical, e.g. a system or time.
+          If the architecture model contains persons or systems acting with
+          the use cases, you can replace the actors with these elements."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/use-case
+   :name "use-case"
+   :desc "A use case in the use case model."
+   :tags #{"use-case-model"}
+   :ct #{{:el :field
+          :name "level"
+          :type "keyword"
+          :desc "The level of the use case (:summary, :user-goal, :subfunction)."}}}
+
+  {:el :class
+   :id :overarch.data-model/uses
+   :name "uses"
+   :desc "A use relationship between an actor and a use case (or vice versa)."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/include
+   :name "include"
+   :desc "A include relationship between two use cases."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/extends
+   :name "extends"
+   :desc "An extends relationship between two use cases."
+   :tags #{"use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/generalizes
+   :name "generalizes"
+   :desc "A generalizes relationship between two use case elements."
+   :tags #{"use-case-model"}}
+
+  ;; Use Case Model Relations
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/use-case-model-element
+   :tags #{"use-case-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/use-case-model-element
+   :tags #{"use-case-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-node-is-a-use-case-model-element
+   :to :overarch.data-model/use-case-model-element
+   :from :overarch.data-model/use-case-model-node
+   :tags #{"use-case-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-relation-is-a-use-case-model-element
+   :to :overarch.data-model/use-case-model-element
+   :from :overarch.data-model/use-case-model-relation
+   :tags #{"use-case-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/use-case-model-node
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/use-case-model-relation
+   :tags #{"use-case-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/actor-is-a-use-case-model-node
+   :to :overarch.data-model/use-case-model-node
+   :from :overarch.data-model/actor
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/person-is-a-use-case-model-node
+   :to :overarch.data-model/use-case-model-node
+   :from :overarch.data-model/person
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/system-is-a-use-case-model-node
+   :to :overarch.data-model/use-case-model-node
+   :from :overarch.data-model/system
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/container-is-a-use-case-model-node
+   :to :overarch.data-model/use-case-model-node
+   :from :overarch.data-model/container
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/use-case-is-a-use-case-model-node
+   :to :overarch.data-model/use-case-model-node
+   :from :overarch.data-model/use-case
+   :tags #{"use-case-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/uses-is-a-use-case-model-relation
+   :to :overarch.data-model/use-case-model-relation
+   :from :overarch.data-model/uses
+   :tags #{"use-case-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/include-is-a-use-case-model-relation
+   :to :overarch.data-model/use-case-model-relation
+   :from :overarch.data-model/include
+   :tags #{"use-case-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/extends-is-a-use-case-model-relation
+   :to :overarch.data-model/use-case-model-relation
+   :from :overarch.data-model/extends
+   :tags #{"use-case-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/generalizes-is-a-use-case-model-relation
+   :to :overarch.data-model/use-case-model-relation
+   :from :overarch.data-model/generalizes
+   :tags #{"use-case-model" "relation-hierarchy"}}
+
+  ;;
+  ;; Concept Model
+  ;;
   {:el :class
    :id :overarch.data-model/concept-model-element
    :abstract true
    :name "concept-model-element"
-   :desc "An element in the concept model."}
+   :desc "An element in the concept model."
+   :tags #{"concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/concept-model-node
+   :abstract true
+   :name "concept-model-node"
+   :desc "A node in the concept model."
+   :tags #{"concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/concept-model-relation
+   :abstract true
+   :name "concept-model-relation"
+   :desc "A relation in the concept model."
+   :tags #{"concept-model"}}
 
   {:el :class
    :id :overarch.data-model/concept
    :name "concept"
-   :desc "A concept in the (ubiquous) language of the system."}
+   :desc "A concept in the (ubiquous) language of the system."
+   :tags #{"concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/is-a
+   :name "is-a"
+   :desc "A specialization relationship between the concepts."
+   :tags #{"concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/has
+   :name "has"
+   :desc "A composition or association relationship between the concepts."
+   :tags #{"concept-model"}}
+
+  ;; Concept Model Relations
+  {:el :inheritance
+   :id :overarch.data-model/concept-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/concept-model-element
+   :tags #{"concept-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/concept-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/concept-model-element
+   :tags #{"concept-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/concept-model-node-is-a-concept-model-element
+   :to :overarch.data-model/concept-model-element
+   :from :overarch.data-model/concept-model-node
+   :tags #{"concept-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/concept-model-relation-is-a-concept-model-element
+   :to :overarch.data-model/concept-model-element
+   :from :overarch.data-model/concept-model-relation
+   :tags #{"concept-model" "element-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/concept-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/concept
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/context-boundary-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/context-boundary
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/enterprise-boundary-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/enterprise-boundary
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/person-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/person
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/system-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/system
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/container-is-a-concept-model-node
+   :to :overarch.data-model/concept-model-node
+   :from :overarch.data-model/container
+   :tags #{"concept-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/is-a-is-a-concept-model-relation
+   :to :overarch.data-model/concept-model-relation
+   :from :overarch.data-model/is-a
+   :tags #{"concept-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/has-is-a-concept-model-relation
+   :to :overarch.data-model/concept-model-relation
+   :from :overarch.data-model/has
+   :tags #{"concept-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/rel-is-a-concept-model-relation
+   :to :overarch.data-model/concept-model-relation
+   :from :overarch.data-model/rel
+   :tags #{"concept-model" "relation-hierarchy"}}
 
   ;;
-  ;; Views
+  ;; View Model
   ;;
   {:el :class
    :id :overarch.data-model/view
@@ -602,7 +1476,8 @@
   {:el :class
    :id :overarch.data-model/rendering-spec
    :name "spec"
-   :desc "A specification of the rendering options for a view."}
+   :desc "A specification of the rendering options for a view."
+   :ct []}
 
   {:el :class
    :id :overarch.data-model/architecture-view
@@ -689,362 +1564,6 @@
    :desc "The glossary view is a textual view.
           It shows the main elements and concepts of the system under description
           alphabetically sorted."}
-
-
-  ;;;
-  ;;; Data Model Relations
-  ;;;
-  {:el :inheritance
-   :id :overarch.data-model/identifiable-element-is-a-element
-   :to :overarch.data-model/element
-   :from :overarch.data-model/identifiable-element}
-  {:el :inheritance
-   :id :overarch.data-model/compound-element-is-a-identifiable-element
-   :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/compound-element}
-  {:el :inheritance
-   :id :overarch.data-model/named-element-is-a-element
-   :to :overarch.data-model/element
-   :from :overarch.data-model/named-element}
-  {:el :inheritance
-   :id :overarch.data-model/identifiable-named-element-is-a-identifiable-element
-   :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/identifiable-named-element}
-  {:el :inheritance
-   :id :overarch.data-model/identifiable-named-element-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/identifiable-named-element}
-  {:el :inheritance
-   :id :overarch.data-model/relational-element-is-a-identifiable-element
-   :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/relational-element}
-  {:el :inheritance
-   :id :overarch.data-model/named-relational-element-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/named-relational-element}
-  {:el :inheritance
-   :id :overarch.data-model/named-relational-element-is-a-relational-element
-   :to :overarch.data-model/relational-element
-   :from :overarch.data-model/named-relational-element}
-
-  ;; Architecture Model Relations
-  {:el :inheritance
-   :id :overarch.data-model/architecture-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/architecture-model-element}
-  {:el :inheritance
-   :id :overarch.data-model/context-boundary-is-a-architecture-model-element
-   :to :overarch.data-model/architecture-model-element
-   :from :overarch.data-model/context-boundary}
-  {:el :inheritance
-   :id :overarch.data-model/enterprise-boundary-is-a-architecture-model-element
-   :to :overarch.data-model/architecture-model-element
-   :from :overarch.data-model/enterprise-boundary}
-  {:el :inheritance
-   :id :overarch.data-model/person-is-a-architecture-model-element
-   :to :overarch.data-model/architecture-model-element
-   :from :overarch.data-model/person}
-  {:el :inheritance
-   :id :overarch.data-model/technical-architecture-model-node-is-a-technical-element
-   :to :overarch.data-model/technical-element
-   :from :overarch.data-model/technical-architecture-model-node}
-  {:el :inheritance
-   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-element
-   :to :overarch.data-model/architecture-model-element
-   :from :overarch.data-model/technical-architecture-model-node}
-  {:el :inheritance
-   :id :overarch.data-model/system-is-a-technical-architecture-element
-   :to :overarch.data-model/technical-architecture-model-node
-   :from :overarch.data-model/system}
-  {:el :composition
-   :id :overarch.data-model/system-contains-containers
-   :from :overarch.data-model/system
-   :to :overarch.data-model/container
-   :to-name "ct"
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/container-is-a-technical-architecture-element
-   :to :overarch.data-model/technical-architecture-model-node
-   :from :overarch.data-model/container}
-  {:el :composition
-   :id :overarch.data-model/container-contains-components
-   :from :overarch.data-model/container
-   :to :overarch.data-model/component
-   :to-name "ct"
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/component-is-a-technical-architecture-element
-   :to :overarch.data-model/technical-architecture-model-node
-   :from :overarch.data-model/component}
-  {:el :inheritance
-   :id :overarch.data-model/rel-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/rel}
-  {:el :inheritance
-   :id :overarch.data-model/rel-is-a-technical-architecture-element
-   :to :overarch.data-model/technical-architecture-model-node
-   :from :overarch.data-model/rel}
-; TODO include semantic relations
-
-
-  ;; Deployment Model Relations
-  {:el :inheritance
-   :id :overarch.data-model/deployment-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/deployment-model-element}
-  {:el :inheritance
-   :id :overarch.data-model/deployment-model-element-is-a-technical-element
-   :to :overarch.data-model/technical-element
-   :from :overarch.data-model/deployment-model-element}
-  {:el :inheritance
-   :id :overarch.data-model/node-is-a-deployment-model-element
-   :to :overarch.data-model/deployment-model-element
-   :from :overarch.data-model/node}
-  {:el :composition
-   :id :overarch.data-model/node-contains-deployment-model-element
-   :from :overarch.data-model/node
-   :to :overarch.data-model/deployment-model-element
-   :to-name "ct"
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/container-is-a-deployment-model-element
-   :to :overarch.data-model/deployment-model-element
-   :from :overarch.data-model/container}
-; TODO include semantic relations
-
-  ;; Use Case Model Relations
-  {:el :inheritance
-   :id :overarch.data-model/use-case-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/use-case-model-element}
-  {:el :inheritance
-   :id :overarch.data-model/actor-is-a-use-case-model-element
-   :to :overarch.data-model/use-case-model-element
-   :from :overarch.data-model/actor}
-  {:el :inheritance
-   :id :overarch.data-model/person-is-a-use-case-model-element
-   :to :overarch.data-model/use-case-model-element
-   :from :overarch.data-model/person}
-  {:el :inheritance
-   :id :overarch.data-model/system-is-a-use-case-model-element
-   :to :overarch.data-model/use-case-model-element
-   :from :overarch.data-model/system}
-  {:el :inheritance
-   :id :overarch.data-model/use-case-is-a-use-case-model-element
-   :to :overarch.data-model/use-case-model-element
-   :from :overarch.data-model/use-case}
-
-  ;; State Machine Relations
-  {:el :inheritance
-   :id :overarch.data-model/state-machine-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/state-machine-element}
-  {:el :composition
-   :id :overarch.data-model/state-machine-contains-state-machine-element
-   :from :overarch.data-model/state-machine
-   :to :overarch.data-model/state-machine-element
-   :to-card :one-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/state-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/state}
-  {:el :composition
-   :id :overarch.data-model/state-contains-state-machine-element
-   :from :overarch.data-model/state
-   :to :overarch.data-model/state-machine-element
-   :to-card :one-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/start-state-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/start-state}
-  {:el :inheritance
-   :id :overarch.data-model/end-state-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/end-state}
-  {:el :inheritance
-   :id :overarch.data-model/fork-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/fork}
-  {:el :inheritance
-   :id :overarch.data-model/join-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/join}
-  {:el :inheritance
-   :id :overarch.data-model/choice-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/choice}
-  {:el :inheritance
-   :id :overarch.data-model/transition-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/transition}
-  {:el :inheritance
-   :id :overarch.data-model/transition-is-a-state-machine-element
-   :to :overarch.data-model/state-machine-element
-   :from :overarch.data-model/transition}
-
-  ;; Class Model Relations
-  {:el :inheritance
-   :id :overarch.data-model/class-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/class-model-element}
-  {:el :inheritance
-   :id :overarch.data-model/package-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/package}
-  {:el :composition
-   :id :overarch.data-model/package-contains-class-model-element
-   :from :overarch.data-model/package
-   :to :overarch.data-model/class-model-element
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/namespace-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/namespace}
-  {:el :composition
-   :id :overarch.data-model/namespace-contains-class-model-element
-   :from :overarch.data-model/namespace
-   :to :overarch.data-model/class-model-element
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/interface-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/interface}
-  {:el :composition
-   :id :overarch.data-model/interface-contains-method
-   :from :overarch.data-model/interface
-   :to :overarch.data-model/method
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/protocol-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/protocol}
-  {:el :composition
-   :id :overarch.data-model/protocol-contains-method
-   :from :overarch.data-model/protocol
-   :to :overarch.data-model/method
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/class-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/class}
-  {:el :inheritance
-   :id :overarch.data-model/field-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/field}
-  {:el :composition
-   :id :overarch.data-model/class-contains-field
-   :from :overarch.data-model/class
-   :to :overarch.data-model/field
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/method-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/method}
-  {:el :composition
-   :id :overarch.data-model/class-contains-method
-   :from :overarch.data-model/class
-   :to :overarch.data-model/method
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/parameter-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/parameter}
-  {:el :composition
-   :id :overarch.data-model/method-contains-parameter
-   :from :overarch.data-model/method
-   :to :overarch.data-model/parameter
-   :to-card :zero-to-many}
-  {:el :inheritance
-   :id :overarch.data-model/enum-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/enum}
-  {:el :inheritance
-   :id :overarch.data-model/enum-value-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/enum-value}
-  {:el :composition
-   :id :overarch.data-model/enum-contains-enum-value
-   :from :overarch.data-model/enum
-   :to :overarch.data-model/enum-value}
-  {:el :inheritance
-   :id :overarch.data-model/inheritance-is-a-relational-element
-   :to :overarch.data-model/relational-element
-   :from :overarch.data-model/inheritance}
-  {:el :inheritance
-   :id :overarch.data-model/inheritance-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/inheritance}
-  {:el :inheritance
-   :id :overarch.data-model/implementation-is-a-relational-element
-   :to :overarch.data-model/relational-element
-   :from :overarch.data-model/implementation}
-  {:el :inheritance
-   :id :overarch.data-model/implementation-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/implementation}
-  {:el :inheritance
-   :id :overarch.data-model/composition-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/composition}
-  {:el :inheritance
-   :id :overarch.data-model/composition-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/composition}
-  {:el :inheritance
-   :id :overarch.data-model/aggregation-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/aggregation}
-  {:el :inheritance
-   :id :overarch.data-model/aggregation-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/aggregation}
-  {:el :inheritance
-   :id :overarch.data-model/association-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/association}
-  {:el :inheritance
-   :id :overarch.data-model/association-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/association}
-  {:el :inheritance
-   :id :overarch.data-model/dependency-is-a-relational-element
-   :to :overarch.data-model/relational-element
-   :from :overarch.data-model/dependency}
-  {:el :inheritance
-   :id :overarch.data-model/dependency-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/dependency}
-
-  ;; Concept Model Relations
-  {:el :inheritance
-   :id :overarch.data-model/concept-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/concept-model-element}
-
-  {:el :inheritance
-   :id :overarch.data-model/concept-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/concept}
-  {:el :inheritance
-   :id :overarch.data-model/context-boundary-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/context-boundary}
-  {:el :inheritance
-   :id :overarch.data-model/enterprise-boundary-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/enterprise-boundary}
-  {:el :inheritance
-   :id :overarch.data-model/person-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/person}
-  {:el :inheritance
-   :id :overarch.data-model/system-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/system}
-  {:el :inheritance
-   :id :overarch.data-model/container-is-a-concept-model-element
-   :to :overarch.data-model/concept-model-element
-   :from :overarch.data-model/container}
 
   ;; View Relations
   {:el :inheritance
@@ -1159,5 +1678,6 @@
    :to :overarch.data-model/concept-model-element
    :to-name "ct"
    :to-card :one-to-many}
+
   ;
   }
