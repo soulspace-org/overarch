@@ -284,6 +284,12 @@
          :to :org.soulspace.external/system1
          :name "uses"}}
       {:el :rel :namespace "org.soulspace.external"}
+      
+      #{{:el :container
+       :id :org.soulspace.internal.system/container1-ui
+       :name "Container1 UI"
+       :tech "ClojureScript"}}
+      {:name "Container1 UI"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container2

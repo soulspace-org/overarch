@@ -411,7 +411,7 @@
     (= :subtypes k)              (partial el/subtypes? v)
     (= :external? k)             (partial el/external-check? v)
     (= :name? k)                 (partial el/name-check? v)
-    (= :name k)                  (partial el/name?)
+    (= :name k)                  (partial el/name? v)
     (= :desc? k)                 (partial el/desc-check? v)
     (= :tech? k)                 (partial el/tech-check? v)
     (= :tech k)                  (partial el/tech? v)
