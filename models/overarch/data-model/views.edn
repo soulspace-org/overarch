@@ -18,7 +18,6 @@
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/technical-element}
 
         {:ref :overarch.data-model/rel}
@@ -56,6 +55,10 @@
         {:ref :overarch.data-model/use-case-model-relation}
         {:ref :overarch.data-model/actor}
         {:ref :overarch.data-model/use-case}
+        {:ref :overarch.data-model/uses}
+        {:ref :overarch.data-model/include}
+        {:ref :overarch.data-model/extends}
+        {:ref :overarch.data-model/generalizes}
 
         {:ref :overarch.data-model/class-model-element}
         {:ref :overarch.data-model/class-model-node}
@@ -116,21 +119,22 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
 
         {:ref :overarch.data-model/architecture-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
+        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation}
         {:ref :overarch.data-model/technical-architecture-model-node-is-a-technical-element}
+        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-technical-element}
         {:ref :overarch.data-model/context-boundary-is-a-architecture-model-node}
+        {:ref :overarch.data-model/context-boundary-contains-architecture-model-node}
         {:ref :overarch.data-model/enterprise-boundary-is-a-architecture-model-node}
+        {:ref :overarch.data-model/enterprise-boundary-contains-architecture-model-node}
         {:ref :overarch.data-model/person-is-a-architecture-model-node}
         {:ref :overarch.data-model/system-is-a-technical-architecture-model-node}
         {:ref :overarch.data-model/system-contains-containers}
         {:ref :overarch.data-model/container-is-a-technical-architecture-model-node}
         {:ref :overarch.data-model/container-contains-components}
         {:ref :overarch.data-model/component-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/rel-is-a-named-relational-element}
         {:ref :overarch.data-model/rel-is-a-technical-architecture-model-relation}
         {:ref :overarch.data-model/request-is-a-technical-architecture-model-relation}
         {:ref :overarch.data-model/response-is-a-technical-architecture-model-relation}
@@ -140,14 +144,18 @@
         {:ref :overarch.data-model/dataflow-is-a-technical-architecture-model-relation}
 
         {:ref :overarch.data-model/deployment-model-element-is-a-identifiable-named-element}
-
         {:ref :overarch.data-model/deployment-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/deployment-model-node-is-a-deployment-model-element}
+        {:ref :overarch.data-model/deployment-model-relation-is-a-deployment-model-element}
         {:ref :overarch.data-model/node-is-a-deployment-model-node}
         {:ref :overarch.data-model/node-contains-deployment-model-node}
         {:ref :overarch.data-model/container-is-a-deployment-model-node}
+        {:ref :overarch.data-model/link-is-a-deployment-model-relation}
 
         {:ref :overarch.data-model/state-machine-model-element-is-a-identifiable-named-element}
-        {:ref :overarch.data-model/state-machine-model-relation-is-a-named-relational-element}
+        {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
         {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/state-is-a-state-machine-model-node}
@@ -159,6 +167,10 @@
         {:ref :overarch.data-model/transition-is-a-state-machine-model-relation}
 
         {:ref :overarch.data-model/class-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/class-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/class-model-node-is-a-class-model-element}
+        {:ref :overarch.data-model/class-model-relation-is-a-class-model-element}
+        {:ref :overarch.data-model/class-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/package-is-a-class-model-node}
         {:ref :overarch.data-model/package-contains-class-model-node}
         {:ref :overarch.data-model/namespace-is-a-class-model-node}
@@ -185,6 +197,9 @@
         {:ref :overarch.data-model/dependency-is-a-class-model-relation}
 
         {:ref :overarch.data-model/use-case-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/use-case-model-relation-is-a-relational-element}
+        {:ref :overarch.data-model/use-case-model-relation-is-a-use-case-model-element}
+        {:ref :overarch.data-model/use-case-model-node-is-a-use-case-model-element}
         {:ref :overarch.data-model/actor-is-a-use-case-model-node}
         {:ref :overarch.data-model/person-is-a-use-case-model-node}
         {:ref :overarch.data-model/system-is-a-use-case-model-node}
@@ -195,6 +210,9 @@
         {:ref :overarch.data-model/generalizes-is-a-use-case-model-relation}
 
         {:ref :overarch.data-model/concept-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/concept-model-node-is-a-concept-model-element}
+        {:ref :overarch.data-model/concept-model-relation-is-a-concept-model-element}
+        {:ref :overarch.data-model/concept-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/concept-is-a-concept-model-node}
         {:ref :overarch.data-model/enterprise-boundary-is-a-concept-model-node}
         {:ref :overarch.data-model/context-boundary-is-a-concept-model-node}
@@ -229,18 +247,21 @@
   {:el :class-view
    :id :overarch.data-model/architecture-model-elements-overview
 ;   :spec {:layout :left-right}
-   :title "Overview of the Architecture and Deployment Model Elements"
+   :title "Overview of the Architecture Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/technical-element}
+
         {:ref :overarch.data-model/architecture-model-element}
+        {:ref :overarch.data-model/architecture-model-node}
+        {:ref :overarch.data-model/architecture-model-relation}
+;        {:ref :overarch.data-model/technical-architecture-model-element}
         {:ref :overarch.data-model/technical-architecture-model-node}
-        {:ref :overarch.data-model/deployment-model-element}
+        {:ref :overarch.data-model/technical-architecture-model-relation}
 
         {:ref :overarch.data-model/context-boundary}
         {:ref :overarch.data-model/enterprise-boundary}
@@ -256,6 +277,61 @@
         {:ref :overarch.data-model/send}
         {:ref :overarch.data-model/dataflow}
 
+        ;relations
+        {:ref :overarch.data-model/identifiable-element-is-a-element}
+        {:ref :overarch.data-model/named-element-is-a-element}
+        {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
+        {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
+
+        {:ref :overarch.data-model/architecture-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/architecture-model-node-is-a-architecture-model-element}
+        {:ref :overarch.data-model/architecture-model-relation-is-a-named-relational-element}
+        {:ref :overarch.data-model/architecture-model-relation-is-a-architecture-model-element}
+        {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
+        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation}
+        {:ref :overarch.data-model/technical-architecture-model-node-is-a-technical-element}
+        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-technical-element}
+
+        {:ref :overarch.data-model/context-boundary-is-a-architecture-model-node}
+        {:ref :overarch.data-model/context-boundary-contains-architecture-model-node}
+        {:ref :overarch.data-model/enterprise-boundary-is-a-architecture-model-node}
+        {:ref :overarch.data-model/enterprise-boundary-contains-architecture-model-node}
+        {:ref :overarch.data-model/person-is-a-architecture-model-node}
+        {:ref :overarch.data-model/system-is-a-technical-architecture-model-node}
+        {:ref :overarch.data-model/system-contains-containers}
+        {:ref :overarch.data-model/container-is-a-technical-architecture-model-node}
+        {:ref :overarch.data-model/container-contains-components}
+        {:ref :overarch.data-model/component-is-a-technical-architecture-model-node}
+        {:ref :overarch.data-model/rel-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/request-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/response-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/publish-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/subscribe-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/send-is-a-technical-architecture-model-relation}
+        {:ref :overarch.data-model/dataflow-is-a-technical-architecture-model-relation}
+
+        ;
+        ]}
+
+  {:el :class-view
+   :id :overarch.data-model/deployment-model-elements-overview
+;   :spec {:layout :left-right}
+   :title "Overview of the Deployment Model Elements"
+   :ct [;elements
+        {:ref :overarch.data-model/element}
+        {:ref :overarch.data-model/identifiable-element}
+        {:ref :overarch.data-model/named-element}
+        {:ref :overarch.data-model/identifiable-named-element}
+        {:ref :overarch.data-model/relational-element}
+        {:ref :overarch.data-model/technical-element}
+
+        {:ref :overarch.data-model/deployment-model-element}
+        {:ref :overarch.data-model/deployment-model-node}
+        {:ref :overarch.data-model/deployment-model-relation}
+
+        ;{:ref :overarch.data-model/system}
+        {:ref :overarch.data-model/container}
         {:ref :overarch.data-model/node}
         {:ref :overarch.data-model/link}
 
@@ -265,32 +341,12 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
-
-        {:ref :overarch.data-model/architecture-model-element-is-a-identifiable-named-element}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-technical-element}
-        {:ref :overarch.data-model/context-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/person-is-a-architecture-model-node}
-        {:ref :overarch.data-model/system-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/system-contains-containers}
-        {:ref :overarch.data-model/container-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/container-contains-components}
-        {:ref :overarch.data-model/component-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/rel-is-a-named-relational-element}
-        {:ref :overarch.data-model/rel-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/request-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/response-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/publish-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/subscribe-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/send-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/dataflow-is-a-technical-architecture-model-relation}
 
         {:ref :overarch.data-model/deployment-model-element-is-a-identifiable-named-element}
-
         {:ref :overarch.data-model/deployment-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/deployment-model-node-is-a-deployment-model-element}
+        {:ref :overarch.data-model/deployment-model-relation-is-a-deployment-model-element}
+        {:ref :overarch.data-model/deployment-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/node-is-a-deployment-model-node}
         {:ref :overarch.data-model/node-contains-deployment-model-node}
         {:ref :overarch.data-model/container-is-a-deployment-model-node}
@@ -309,9 +365,10 @@
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/technical-element}
         {:ref :overarch.data-model/class-model-element}
+        {:ref :overarch.data-model/class-model-node}
+        {:ref :overarch.data-model/class-model-relation}
 
         {:ref :overarch.data-model/package}
         {:ref :overarch.data-model/namespace}
@@ -336,10 +393,12 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
 
         {:ref :overarch.data-model/class-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/class-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/class-model-node-is-a-class-model-element}
+        {:ref :overarch.data-model/class-model-relation-is-a-class-model-element}
+        {:ref :overarch.data-model/class-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/package-is-a-class-model-node}
         {:ref :overarch.data-model/package-contains-class-model-node}
         {:ref :overarch.data-model/namespace-is-a-class-model-node}
@@ -377,8 +436,9 @@
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/use-case-model-element}
+        {:ref :overarch.data-model/use-case-model-node}
+        {:ref :overarch.data-model/use-case-model-relation}
 
         {:ref :overarch.data-model/person}
         {:ref :overarch.data-model/system}
@@ -395,10 +455,11 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
 
         {:ref :overarch.data-model/use-case-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/use-case-model-node-is-a-use-case-model-element}
+        {:ref :overarch.data-model/use-case-model-relation-is-a-use-case-model-element}
+        {:ref :overarch.data-model/use-case-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/actor-is-a-use-case-model-node}
         {:ref :overarch.data-model/person-is-a-use-case-model-node}
         {:ref :overarch.data-model/system-is-a-use-case-model-node}
@@ -420,8 +481,9 @@
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
         {:ref :overarch.data-model/state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-node}
+        {:ref :overarch.data-model/state-machine-model-relation}
 
         {:ref :overarch.data-model/state-machine}
         {:ref :overarch.data-model/start-state}
@@ -438,10 +500,11 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
-
+        
         {:ref :overarch.data-model/state-machine-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
+        {:ref :overarch.data-model/state-machine-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
         {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/state-is-a-state-machine-model-node}
@@ -464,16 +527,19 @@
         {:ref :overarch.data-model/named-element}
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relational-element}
-        {:ref :overarch.data-model/named-relational-element}
-        {:ref :overarch.data-model/use-case-model-element}
+
         {:ref :overarch.data-model/concept-model-element}
-        
+        {:ref :overarch.data-model/concept-model-node}
+        {:ref :overarch.data-model/concept-model-relation}
         {:ref :overarch.data-model/concept}
         {:ref :overarch.data-model/person}
         {:ref :overarch.data-model/context-boundary}
         {:ref :overarch.data-model/enterprise-boundary}
         {:ref :overarch.data-model/system}
         {:ref :overarch.data-model/container}
+        {:ref :overarch.data-model/is-a}
+        {:ref :overarch.data-model/has}
+        {:ref :overarch.data-model/rel}
 
         ;relations
         {:ref :overarch.data-model/identifiable-element-is-a-element}
@@ -481,10 +547,11 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-named-element}
-        {:ref :overarch.data-model/named-relational-element-is-a-relational-element}
 
         {:ref :overarch.data-model/concept-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/concept-model-node-is-a-concept-model-element}
+        {:ref :overarch.data-model/concept-model-relation-is-a-concept-model-element}
+        {:ref :overarch.data-model/concept-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/concept-is-a-concept-model-node}
         {:ref :overarch.data-model/enterprise-boundary-is-a-concept-model-node}
         {:ref :overarch.data-model/context-boundary-is-a-concept-model-node}

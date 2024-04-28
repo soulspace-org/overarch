@@ -51,6 +51,7 @@
          {:el :field
           :name "desc"
           :type "string"
+          :optional true
           :desc "Description of the element."}}}
 
   {:el :class
@@ -91,6 +92,7 @@
    :ct #{{:el :field
           :name "tech"
           :type "string"
+          :optional true
           :desc "Technology the element is implemented in."}}}
 
   ;; Abstract Type Relations
@@ -158,21 +160,21 @@
    :id :overarch.data-model/model-element
    :abstract true
    :name "model-element"
-   :desc "An element of the overarch model." 
+   :desc "An element of the overarch model."
    :tags #{"element-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/model-node
    :abstract true
    :name "model-node"
-   :desc "A node of the overarch model." 
+   :desc "A node of the overarch model."
    :tags #{"node-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/model-relation
    :abstract true
    :name "model-relation"
-   :desc "A relation of the overarch model." 
+   :desc "A relation of the overarch model."
    :tags #{"relation-hierarchy"}}
 
   {:el :inheritance
@@ -195,18 +197,6 @@
    :name "rel"
    :desc "A generic relation between two elements of the model. A rel can be used in the architecture model and the concept model."
    :tags #{"architecture-model" "concept-model"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/rel-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
-   :from :overarch.data-model/rel
-   :tags #{"type-hierarchy"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/rel-is-a-technical-element
-   :to :overarch.data-model/technical-element
-   :from :overarch.data-model/rel
-   :tags #{"type-hierarchy"}}
 
   ;;
   ;; Boundaries
@@ -266,9 +256,10 @@
   {:el :class
    :id :overarch.data-model/technical-architecture-model-element
    :abstract true
-   :name "technical-architecture-element"
+   :name "technical-architecture-model-element"
    :desc "A technical element of the architecture, e.g. a system or container."
    :tags #{"architecture-model"}}
+
   {:el :class
    :id :overarch.data-model/technical-architecture-model-node
    :abstract true
@@ -367,16 +358,28 @@
 
   ;; Architecture Model Relations
   {:el :inheritance
-   :id :overarch.data-model/architecture-model-node-is-a-model-node
-   :to :overarch.data-model/model-node
-   :from :overarch.data-model/architecture-model-node
-   :tags #{"architecture-model" "node-hierarchy"}}
+   :id :overarch.data-model/architecture-model-element-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
+   :from :overarch.data-model/architecture-model-element
+   :tags #{"architecture-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/architecture-model-relation-is-a-model-relation
-   :to :overarch.data-model/model-relation
+   :id :overarch.data-model/architecture-model-relation-is-a-named-relational-element
+   :to :overarch.data-model/named-relational-element
    :from :overarch.data-model/architecture-model-relation
-   :tags #{"architecture-model" "relation-hierarchy"}}
+   :tags #{"architecture-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-node-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/technical-architecture-model-node
+   :tags #{"architecture-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-relation-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/technical-architecture-model-relation
+   :tags #{"architecture-model" "type-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/architecture-model-element-is-a-model-element
@@ -391,21 +394,34 @@
    :tags #{"architecture-model" "element-hierarchy"}}
 
   {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node
+   :to :overarch.data-model/architecture-model-node
+   :from :overarch.data-model/technical-architecture-model-node
+   :tags #{"architecture-model" "element-hierarchy" "node-hierarchy"}}
+
+  {:el :inheritance
    :id :overarch.data-model/architecture-model-relation-is-a-architecture-model-element
    :to :overarch.data-model/architecture-model-element
    :from :overarch.data-model/architecture-model-relation
+   :tags #{"architecture-model" "element-hierarchy" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation
+   :to :overarch.data-model/architecture-model-relation
+   :from :overarch.data-model/technical-architecture-model-relation
    :tags #{"architecture-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :to :overarch.data-model/architecture-model-node
-   :from :overarch.data-model/technical-architecture-model-node
+   :id :overarch.data-model/architecture-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/architecture-model-node
    :tags #{"architecture-model" "node-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/architecture-model-element-is-a-identifiable-named-element
-   :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/architecture-model-element
-   :tags #{"architecture-model" "type-hierarchy"}}
+   :id :overarch.data-model/architecture-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/architecture-model-relation
+   :tags #{"architecture-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/context-boundary-is-a-architecture-model-node
@@ -413,29 +429,33 @@
    :from :overarch.data-model/context-boundary
    :tags #{"architecture-model" "node-hierarchy"}}
 
+  {:el :composition
+   :id :overarch.data-model/context-boundary-contains-architecture-model-node
+   :from :overarch.data-model/context-boundary
+   :to :overarch.data-model/architecture-model-node
+   :to-name "ct"
+   :to-card :zero-to-many
+   :tags #{"architecture-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/enterprise-boundary-is-a-architecture-model-node
    :to :overarch.data-model/architecture-model-node
    :from :overarch.data-model/enterprise-boundary
    :tags #{"architecture-model" "node-hierarchy"}}
 
+  {:el :composition
+   :id :overarch.data-model/enterprise-boundary-contains-architecture-model-node
+   :from :overarch.data-model/enterprise-boundary
+   :to :overarch.data-model/architecture-model-node
+   :to-name "ct"
+   :to-card :zero-to-many
+   :tags #{"architecture-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/person-is-a-architecture-model-node
    :to :overarch.data-model/architecture-model-node
    :from :overarch.data-model/person
    :tags #{"architecture-model" "node-hierarchy"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/technical-architecture-model-node-is-a-technical-element
-   :to :overarch.data-model/technical-element
-   :from :overarch.data-model/technical-architecture-model-node
-   :tags #{"architecture-model" "element-hierarchy"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node
-   :to :overarch.data-model/architecture-model-element
-   :from :overarch.data-model/technical-architecture-model-node
-   :tags #{"architecture-model" "element-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/system-is-a-technical-architecture-model-node
@@ -557,6 +577,12 @@
    :id :overarch.data-model/deployment-model-element-is-a-technical-element
    :to :overarch.data-model/technical-element
    :from :overarch.data-model/deployment-model-element
+   :tags #{"deployment-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/deployment-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
+   :from :overarch.data-model/deployment-model-relation
    :tags #{"deployment-model" "type-hierarchy"}}
 
   {:el :inheritance
@@ -825,6 +851,12 @@
    :tags #{"class-model" "type-hierarchy"}}
 
   {:el :inheritance
+   :id :overarch.data-model/class-model-element-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/class-model-element
+   :tags #{"class-model" "type-hierarchy"}}
+
+  {:el :inheritance
    :id :overarch.data-model/class-model-relation-is-a-relational-element
    :to :overarch.data-model/relational-element
    :from :overarch.data-model/class-model-relation
@@ -961,6 +993,7 @@
    :id :overarch.data-model/enum-contains-enum-value
    :from :overarch.data-model/enum
    :to :overarch.data-model/enum-value
+   :to-card :one-to-many
    :tags #{"class-model"}}
 
   {:el :inheritance
@@ -1091,8 +1124,8 @@
    :tags #{"state-machine-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/state-machine-model-relation-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
+   :id :overarch.data-model/state-machine-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
    :from :overarch.data-model/state-machine-model-relation
    :tags #{"state-machine-model" "type-hierarchy"}}
 
@@ -1110,13 +1143,13 @@
    :tags #{"state-machine-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/state-machine-node-is-a-state-machine-model-element
+   :id :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element
    :to :overarch.data-model/state-machine-model-element
    :from :overarch.data-model/state-machine-model-node
    :tags #{"state-machine-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/state-machine-relation-is-a-state-machine-element
+   :id :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element
    :to :overarch.data-model/state-machine-model-element
    :from :overarch.data-model/state-machine-model-relation
    :tags #{"state-machine-model" "element-hierarchy"}}
@@ -1257,6 +1290,12 @@
    :tags #{"use-case-model" "type-hierarchy"}}
 
   {:el :inheritance
+   :id :overarch.data-model/use-case-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
+   :from :overarch.data-model/use-case-model-relation
+   :tags #{"use-case-model" "type-hierarchy"}}
+
+  {:el :inheritance
    :id :overarch.data-model/use-case-model-element-is-a-model-element
    :to :overarch.data-model/model-element
    :from :overarch.data-model/use-case-model-element
@@ -1390,6 +1429,12 @@
    :tags #{"concept-model" "type-hierarchy"}}
 
   {:el :inheritance
+   :id :overarch.data-model/concept-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
+   :from :overarch.data-model/concept-model-relation
+   :tags #{"concept-model" "type-hierarchy"}}
+
+  {:el :inheritance
    :id :overarch.data-model/concept-model-element-is-a-model-element
    :to :overarch.data-model/model-element
    :from :overarch.data-model/concept-model-element
@@ -1469,6 +1514,7 @@
    :abstract true
    :name "view"
    :desc "An element for describing a view."
+   :tags #{"view-model"}
    :ct [{:el :field
          :name "title"
          :desc "The title of the view."}]}
@@ -1477,13 +1523,15 @@
    :id :overarch.data-model/rendering-spec
    :name "spec"
    :desc "A specification of the rendering options for a view."
+   :tags #{"view-model"}
    :ct []}
 
   {:el :class
    :id :overarch.data-model/architecture-view
    :abstract true
    :name "architecture-view"
-   :desc "An architectural view."}
+   :desc "An architectural view."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/system-landscape-view
@@ -1493,14 +1541,16 @@
           It contains the system under descriptions, it's direct users and
           interacting external systems and maybe additional systems and users
           which play a role in the broader context of the system under
-          description."}
+          description."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/context-view
    :name "context-view"
    :desc "The (system) context view is a static architectural view.
           It shows the system under description and the interactions with it's
-          environment consisting of users and external systems."}
+          environment consisting of users and external systems."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/container-view
@@ -1508,7 +1558,8 @@
    :desc "The container view is a static architectural view.
           It shows the process structure of the system under description and
           the interactions between these containers and with it's environment
-          consisting of users and external systems."}
+          consisting of users and external systems."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/component-view
@@ -1516,21 +1567,24 @@
    :desc "The component view is a static architectural view.
           It shows the component structure of a container and the
           interactions between these components and with it's environment
-          consisting of users and external systems."}
+          consisting of users and external systems."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/deployment-view
    :name "deployment-view"
    :desc "The deployment view is a static architectural view.
           It shows the deployment of a system with the infrastructure modelled
-          as nodes and the containers of the system deployed in these nodes."}
+          as nodes and the containers of the system deployed in these nodes."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/dynamic-view
    :name "dynamic-view"
    :desc "The dynamic view is an architectural and behavioural view.
           It shows the order of some interactions between elements of the
-          architecture."}
+          architecture."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/use-case-view
@@ -1538,146 +1592,180 @@
    :desc "The use case view is a behavioural view of the (functional)
           requirements. 
           It shows the actors of the system and the use cases to provide
-          an overview of the functionality of the system under description."}
+          an overview of the functionality of the system under description."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/class-view
    :name "class-view"
    :desc "The class view is a static design view.
-          It shows class structure of some components of the system."}
+          It shows class structure of some components of the system."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/state-machine-view
    :name "state-machine-view"
    :desc "The state machine view is a behavioural design view.
-          It shows states and transitions of a state machine."}
+          It shows states and transitions of a state machine."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/concept-view
    :name "concept-view"
    :desc "The concept view is a graphical view.
-          It shows the concepts as a concept map with the relations between the concepts."}
+          It shows the concepts as a concept map with the relations between the concepts."
+   :tags #{"view-model"}}
 
   {:el :class
    :id :overarch.data-model/glossary-view
    :name "glossary-view"
    :desc "The glossary view is a textual view.
           It shows the main elements and concepts of the system under description
-          alphabetically sorted."}
+          alphabetically sorted."
+   :tags #{"view-model"}}
 
   ;; View Relations
   {:el :inheritance
    :id :overarch.data-model/view-is-a-identifiable-element
    :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/view}
+   :from :overarch.data-model/view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/view-contains-rendering-spec
    :from :overarch.data-model/view
    :to :overarch.data-model/rendering-spec
    :to-name "spec"
-   :to-card :zero-to-one}
-
+   :to-card :zero-to-one
+   :tags #{"view-model"}}
+  
   {:el :inheritance
    :id :overarch.data-model/architecture-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/architecture-view}
+   :from :overarch.data-model/architecture-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/architecture-view-contains-architecture-model-element
    :from :overarch.data-model/architecture-view
    :to :overarch.data-model/architecture-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/system-landscape-view-is-a-architecture-view
    :to :overarch.data-model/architecture-view
-   :from :overarch.data-model/system-landscape-view}
+   :from :overarch.data-model/system-landscape-view
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/context-view-is-a-architecture-view
    :to :overarch.data-model/architecture-view
-   :from :overarch.data-model/context-view}
+   :from :overarch.data-model/context-view
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/container-view-is-a-architecture-view
    :to :overarch.data-model/architecture-view
-   :from :overarch.data-model/container-view}
+   :from :overarch.data-model/container-view
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/component-view-is-a-architecture-view
    :to :overarch.data-model/architecture-view
-   :from :overarch.data-model/component-view}
+   :from :overarch.data-model/component-view
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/dynamic-view-is-a-architecture-view
    :to :overarch.data-model/architecture-view
-   :from :overarch.data-model/dynamic-view}
+   :from :overarch.data-model/dynamic-view
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/deployment-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/deployment-view}
+   :from :overarch.data-model/deployment-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/deployment-view-contains-deployment-model-element
    :from :overarch.data-model/deployment-view
    :to :overarch.data-model/deployment-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/class-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/class-view}
+   :from :overarch.data-model/class-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/class-view-contains-class-model-element
    :from :overarch.data-model/class-view
    :to :overarch.data-model/class-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/state-machine-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/state-machine-view}
+   :from :overarch.data-model/state-machine-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/state-machine-view-contains-state-machine
    :from :overarch.data-model/state-machine-view
    :to :overarch.data-model/state-machine
    :to-name "ct"
-   :to-card :one}
+   :to-card :one
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/use-case-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/use-case-view}
+   :from :overarch.data-model/use-case-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/use-case-view-contains-use-case-model-element
    :from :overarch.data-model/use-case-view
    :to :overarch.data-model/use-case-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/concept-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/concept-view}
+   :from :overarch.data-model/concept-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/concept-view-contains-concept-model-element
    :from :overarch.data-model/concept-view
    :to :overarch.data-model/concept-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/glossary-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/glossary-view}
+   :from :overarch.data-model/glossary-view
+   :tags #{"view-model"}}
+  
   {:el :aggregation
    :id :overarch.data-model/glossary-view-contains-concept-model-element
    :from :overarch.data-model/glossary-view
    :to :overarch.data-model/concept-model-element
    :to-name "ct"
-   :to-card :one-to-many}
+   :to-card :one-to-many
+   :tags #{"view-model"}}
 
   ;
   }
