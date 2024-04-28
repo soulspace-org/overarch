@@ -488,6 +488,8 @@ selected, if it is selected by any of the critria maps (logial disjunction).
 ## Keys
 key                    | type            | example values          | description
 -----------------------|-----------------|-------------------------|------------
+:key?                  | vector          | [:tech true]            | elements for which the check for the key returns the value (useful for custom keys)
+:key                   | vector          | [:tech "Clojure"]       | elements for which the lookup of the key returns the value (useful for custom keys)
 :el                    | keyword         | :system                 | elements of the given type
 :els                   | set of keywords | #{:system :person}      | elements with one of the given types
 :namespace             | string          | "org.soulspace"         | elements with the given id namespace
@@ -521,8 +523,10 @@ key                    | type            | example values          | description
 :child?                | boolean         | true, false             | nodes for which the check for child returns the given value
 :refers?               | boolean         | true, false             | nodes for which the check for refers returns the given value
 :referred?             | boolean         | true, false             | nodes for which the check for referred returns the given value
-:refers-to             | keyword         | :org.soulspace/overarch | nodes which refer to the element with the given id
-:referred-by           | keyword         | :org.soulspace/overarch | nodes which are refered by the element with the given id
+:refers-to             | keyword         | :org.soulspace/overarch | nodes which refer to the node with the given id
+:referred-by           | keyword         | :org.soulspace/overarch | nodes which are referred by the node with the given id
+:descendant-of         | keyword         | :org.soulspace/overarch | nodes which are descendants of the node with the given id
+:ancestor-of           | keyword         | :org.soulspace/overarch | nodes which are ancestors of the node with the given id
 
 # Views
 To show model elements in diagrams or in textual representations you can define

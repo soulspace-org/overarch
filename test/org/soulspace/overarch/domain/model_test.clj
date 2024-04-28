@@ -207,31 +207,34 @@
      :name "External System 2"}
     {:el :system
      :id :org.soulspace.internal/system
-     :name "Internal System"}
-    {:el :container
-     :id :org.soulspace.internal.system/container1
-     :name "Container1"
-     :tech "Clojure"
-     :tags #{"autoscaled"}}
-    {:el :container
-     :id :org.soulspace.internal.system/container1-ui
-     :name "Container1 UI"
-     :tech "ClojureScript"}
-    {:el :container
-     :id :org.soulspace.internal.system/container1-db
-     :subtype :database
-     :name "Container1 DB"
-     :tech "Datomic"}
-    {:el :container
-     :id :org.soulspace.internal.system/container2
-     :name "Container2"
-     :tech "Java"
-     :tags #{"critical" "autoscaled"}}
-    {:el :container
-     :id :org.soulspace.internal.system/container2-topic
-     :subtype :queue
-     :name "Container2 Events"
-     :tech "Kafka"}
+     :name "Internal System"
+     :ct [{:el :container
+           :id :org.soulspace.internal.system/container1
+           :name "Container1"
+           :tech "Clojure"
+           :tags #{"autoscaled"}
+           :ct #{{:el :component
+                  :id :org.soulspace.internal.system.container1/component1
+                  :name "Component1"}}}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-ui
+           :name "Container1 UI"
+           :tech "ClojureScript"}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-db
+           :subtype :database
+           :name "Container1 DB"
+           :tech "Datomic"}
+          {:el :container
+           :id :org.soulspace.internal.system/container2
+           :name "Container2"
+           :tech "Java"
+           :tags #{"critical" "autoscaled"}}
+          {:el :container
+           :id :org.soulspace.internal.system/container2-topic
+           :subtype :queue
+           :name "Container2 Events"
+           :tech "Kafka"}]}
 
     {:el :rel
      :id :org.soulspace.external/person-uses-system1
@@ -263,7 +266,7 @@
 
 (deftest filter-xf-test
   (testing "filter-xf with single criteria map and element based criteria"
-    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
       #{{:el :person
          :id :org.soulspace.external/person
          :external true
@@ -298,7 +301,10 @@
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}}}
+         :tags #{"autoscaled"}
+         :ct #{{:el :component
+                :id :org.soulspace.internal.system.container1/component1
+                :name "Component1"}}}}
       {:tag "autoscaled"}
 
       #{{:el :container
@@ -306,17 +312,51 @@
          :subtype :database
          :name "Container1 DB"
          :tech "Datomic"}}
-      {:tech "Datomic"}))
+      {:tech "Datomic"}
 
+      #{{:el :container
+         :id :org.soulspace.internal.system/container1-db
+         :subtype :database
+         :name "Container1 DB"
+         :tech "Datomic"}}
+      {:key [:tech "Datomic"]}))
+  
   (testing "filter-xf with single criteria map and model based criteria"
-    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
       #{{:el :system
          :id :org.soulspace.external/system1
          :external true
          :name "External System 1"}
         {:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"}}
+         :name "Internal System"
+         :ct [{:el :container
+               :id :org.soulspace.internal.system/container1
+               :name "Container1"
+               :tech "Clojure"
+               :tags #{"autoscaled"}
+               :ct #{{:el :component
+                      :id :org.soulspace.internal.system.container1/component1
+                      :name "Component1"}}}
+              {:el :container
+               :id :org.soulspace.internal.system/container1-ui
+               :name "Container1 UI"
+               :tech "ClojureScript"}
+              {:el :container
+               :id :org.soulspace.internal.system/container1-db
+               :subtype :database
+               :name "Container1 DB"
+               :tech "Datomic"}
+              {:el :container
+               :id :org.soulspace.internal.system/container2
+               :name "Container2"
+               :tech "Java"
+               :tags #{"critical" "autoscaled"}}
+              {:el :container
+               :id :org.soulspace.internal.system/container2-topic
+               :subtype :queue
+               :name "Container2 Events"
+               :tech "Kafka"}]}}
       {:el :system :referred? true}
 
       #{{:el :person
@@ -338,10 +378,47 @@
          :id :org.soulspace.external/person
          :external true
          :name "External Person"}}
-      {:el :person :refers-to :org.soulspace.external/system1}))
+      {:el :person :refers-to :org.soulspace.external/system1}
+
+      #{{:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct [{:el :container
+               :id :org.soulspace.internal.system/container1
+               :name "Container1"
+               :tech "Clojure"
+               :tags #{"autoscaled"}
+               :ct #{{:el :component
+                      :id :org.soulspace.internal.system.container1/component1
+                      :name "Component1"}}}
+              {:el :container
+               :id :org.soulspace.internal.system/container1-ui
+               :name "Container1 UI"
+               :tech "ClojureScript"}
+              {:el :container
+               :id :org.soulspace.internal.system/container1-db
+               :subtype :database
+               :name "Container1 DB"
+               :tech "Datomic"}
+              {:el :container
+               :id :org.soulspace.internal.system/container2
+               :name "Container2"
+               :tech "Java"
+               :tags #{"critical" "autoscaled"}}
+              {:el :container
+               :id :org.soulspace.internal.system/container2-topic
+               :subtype :queue
+               :name "Container2 Events"
+               :tech "Kafka"}]}}
+      {:ancestor-of :org.soulspace.internal.system/container1}
+
+      #{{:el :component
+         :id :org.soulspace.internal.system.container1/component1
+         :name "Component1"}}
+      {:descendant-of :org.soulspace.internal.system/container1}))
 
   (testing "filter-xf with vector of criteria"
-    (are [x y] (= x (into #{} (filter-xf filter-model1 y) filter-input))
+    (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
 
       #{{:el :system :id :org.soulspace.external/system2 :external true :name "External System 2"}
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
@@ -396,4 +473,6 @@
         filter-input)
   (into []
         (filter-xf filter-model1 {:el :rel})
-        filter-input))
+        filter-input)
+  ;
+  )

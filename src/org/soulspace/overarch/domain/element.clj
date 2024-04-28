@@ -731,7 +731,7 @@
 ;;
 (defn children
   "Returns the children of the element `e`."
-  [model e]
+  [e]
   (:ct e))
 
 (defn descendant-nodes
@@ -913,10 +913,21 @@
   "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.
   Useful to check for custom keys."
   [[k v] e]
-  (= v (get e (keyword k) false)))
+  (println "k:" k "v:" v "e:" e)
+  (println "lookup:" (get e (keyword k) false))
+  (= v (boolean (get e (keyword k) false))))
 
-(defn entry-check?
+(defn key?
   "Returns true if the check for `entry` on element `e` equals the boolean value `v."
-  [[entry v] e]
-  ; TODO implement
+  [[k v] e]
+  (= v (get e (keyword k))))
+
+(comment
+  (tech? "Datomic" {:tech "Datomic"})
+  (tag? "Datomic" {:tags #{"Datomic"}})
+  (key-check? [:tech true] {:tech "Datomic"})
+  (key-check? [:tech true] {:name "Datomic"})
+  (key? [:tech "Datomic"] {:tech "Datomic"})
+  (key? [:tech "Datomic"] {:tech "Blubb"})
+  ;
   )

@@ -96,12 +96,12 @@
   (:themes model))
 
 (defn parent
-  "Returns the parent of the element `e`."
+  "Returns the parent of the model node `e`."
   [model e]
   ((:id->parent model) (:id e)))
 
 (defn ancestor-nodes
-  "Returns the ancestor nodes of the `node`."
+  "Returns the ancestor nodes of the model node `e` in the `model`."
   [model e]
   (loop [acc #{} p (parent model e)]
     (if (seq p)
@@ -109,7 +109,7 @@
       acc)))
 
 (defn ancestor-node?
-  "Returns true, if `c` is an ancestor of `e` in the `model`."
+  "Returns true, if `c` is an ancestor of node `e` in the `model`."
   [model e c]
   (loop [p (parent model e)]
     (if (seq p)
@@ -373,6 +373,14 @@
                    (map :from ((:referred-id->relations model) (:id e))))
              v))
 
+(defn descendant-of?
+  [model v e]
+  (contains? (el/descendant-nodes (resolve-id model v)) e))
+
+(defn ancestor-of?
+  [model v e]
+  (contains? (ancestor-nodes model (resolve-id model v)) e))
+
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
@@ -381,6 +389,10 @@
     ;;
     ;; element related
     ;;
+    (= :key? k)                  (partial el/key-check? v)
+    (= :key k)                   (partial el/key? v)
+    (= :el k)                    (partial el/el? v)
+    (= :els k)                   (partial el/els? v)
     (= :namespace k)             (partial el/namespace? v)
     (= :namespaces k)            (partial el/namespaces? v)
     (= :namespace-prefix k)      (partial el/namespace-prefix? v)
@@ -394,14 +406,12 @@
     (= :id k)                    (partial el/id? v)
     (= :from k)                  (partial el/from? v)
     (= :to k)                    (partial el/to? v)
-    (= :el k)                    (partial el/el? v)
-    (= :els k)                   (partial el/els? v)
     (= :subtype? k)              (partial el/subtype-check? v)
     (= :subtype k)               (partial el/subtype? v)
     (= :subtypes k)              (partial el/subtypes? v)
     (= :external? k)             (partial el/external-check? v)
     (= :name? k)                 (partial el/name-check? v)
-    (= :name k)                  (partial el/name?) 
+    (= :name k)                  (partial el/name?)
     (= :desc? k)                 (partial el/desc-check? v)
     (= :tech? k)                 (partial el/tech-check? v)
     (= :tech k)                  (partial el/tech? v)
@@ -419,6 +429,8 @@
     (= :referred? k)             (partial referred-check? model v)
     (= :refers-to k)             (partial refers-to? model v)
     (= :referred-by k)           (partial referred-by? model v)
+    (= :ancestor-of k)           (partial ancestor-of? model v) ; TODO docs
+    (= :descendant-of k)         (partial descendant-of? model v) ; TODO docs
 
     :else
     (println "unknown criterium" (name k))))
