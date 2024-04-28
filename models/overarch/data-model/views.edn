@@ -6,11 +6,11 @@
   ;;; Logical Data Model Views
   ;;;
   {:el :class-view
-   :id :overarch.data-model/data-model-complete
+   :id :overarch.data-model/data-model
    :spec {:layout :left-right
           ;:selection {:namespace "overarch.data-model"}
           }
-   :title "Complete Overarch Data Model"
+   :title "Overarch Data Model"
    :ct [;; elements
         {:ref :overarch.data-model/ref}
         {:ref :overarch.data-model/element}
@@ -245,9 +245,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/architecture-model-elements-overview
+   :id :overarch.data-model/architecture-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the Architecture Model Elements"
+   :title "Architecture Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -315,9 +315,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/deployment-model-elements-overview
+   :id :overarch.data-model/deployment-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the Deployment Model Elements"
+   :title "Deployment Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -356,9 +356,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/class-model-elements-overview
+   :id :overarch.data-model/class-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the Class Model Elements"
+   :title "Class Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -427,9 +427,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/use-case-model-elements-overview
+   :id :overarch.data-model/use-case-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the Use Case Model Elements"
+   :title "Use Case Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -472,9 +472,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/state-machine-elements-overview
+   :id :overarch.data-model/state-machine-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the State Machine Elements"
+   :title "State Machine Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -518,9 +518,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/concept-model-elements-overview
+   :id :overarch.data-model/concept-model-elements
 ;   :spec {:layout :left-right}
-   :title "Overview of the Concept Model Elements"
+   :title "Concept Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
@@ -566,9 +566,9 @@
         ]}
 
   {:el :class-view
-   :id :overarch.data-model/view-elements-overview
+   :id :overarch.data-model/view-model-elements
    :spec {:layout :left-right}
-   :title "Overview of the View Elements"
+   :title "View Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
