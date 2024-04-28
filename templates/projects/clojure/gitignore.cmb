@@ -17,6 +17,7 @@ target/
 .cpcache/
 .clj-kondo/
 .portal/
+**/.calva/repl.calva-repl
 
 ## Eclipse
 bin/
