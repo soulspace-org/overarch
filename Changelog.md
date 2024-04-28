@@ -6,6 +6,10 @@ Version 0.16.0
 * added rendering of cardinalities for fields in UML class diagrams
 * enhanced enum modelling and rendering in UML class diagrams
 * enhanced method modelling, added parameters
+* extracted criteria predicates to named functions
+* changed id generation of plantuml views to make the plantuml output
+  location more reasonable
+* changed export folder structure for views
 * updated overarch data-model and documentation
 
 Version 0.15.1

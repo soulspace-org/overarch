@@ -415,7 +415,7 @@
 (defmethod puml/render-plantuml-view :uml-view
   [model options view]
   (let [children (view/elements-to-render model view)]
-    (flatten [(str "@startuml " (puml/alias-name (:id view)))
+    (flatten [(str "@startuml " (name (:id view)))
               (render-uml-layout view)
               (puml/render-title view)
               (map #(puml/render-uml-element model view 0 %) children)
