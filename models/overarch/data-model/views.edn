@@ -286,7 +286,7 @@
 
         {:ref :overarch.data-model/architecture-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/architecture-model-node-is-a-architecture-model-element}
-        {:ref :overarch.data-model/architecture-model-relation-is-a-named-relational-element}
+        {:ref :overarch.data-model/architecture-model-relation-is-a-relational-element}
         {:ref :overarch.data-model/architecture-model-relation-is-a-architecture-model-element}
         {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
         {:ref :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation}

@@ -77,13 +77,6 @@
           :desc "The identifier of the element being referred by another element."}}}
 
   {:el :class
-   :id :overarch.data-model/named-relational-element
-   :abstract true
-   :name "named-relational-element"
-   :desc "A relational element that is named."
-   :tags #{"type-hierarchy"}}
-
-  {:el :class
    :id :overarch.data-model/technical-element
    :abstract true
    :name "technical-element"
@@ -130,18 +123,6 @@
    :id :overarch.data-model/relational-element-is-a-identifiable-element
    :to :overarch.data-model/identifiable-element
    :from :overarch.data-model/relational-element
-   :tags #{"type-hierarchy"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/named-relational-element-is-a-named-element
-   :to :overarch.data-model/named-element
-   :from :overarch.data-model/named-relational-element
-   :tags #{"type-hierarchy"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/named-relational-element-is-a-relational-element
-   :to :overarch.data-model/relational-element
-   :from :overarch.data-model/named-relational-element
    :tags #{"type-hierarchy"}}
 
   {:el :class
@@ -364,8 +345,8 @@
    :tags #{"architecture-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/architecture-model-relation-is-a-named-relational-element
-   :to :overarch.data-model/named-relational-element
+   :id :overarch.data-model/architecture-model-relation-is-a-relational-element
+   :to :overarch.data-model/relational-element
    :from :overarch.data-model/architecture-model-relation
    :tags #{"architecture-model" "type-hierarchy"}}
 
