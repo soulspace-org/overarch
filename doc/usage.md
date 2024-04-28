@@ -510,6 +510,7 @@ key                    | type            | example values          | description
 :subtypes              | set of keywords | #{:queue :database}     | nodes of one of the given subtypes
 :external?             | boolean         | true, false             | elements of the given external state
 :name?                 | boolean         | true, false             | elements for which the name check returns the given value
+:name                  | boolean         | "Overarch CLI"          | elements for which the name equals the given value
 :desc?                 | boolean         | true, false             | elements for which the description check returns the given value
 :tech?                 | boolean         | true, false             | elements for which the technology check returns the given value
 :tech                  | string          | "Clojure"               | elements of the given technology
