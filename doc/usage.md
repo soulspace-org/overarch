@@ -9,7 +9,7 @@ Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
 conversion of the data to JSON.
 
-![Use Cases of Overarch](/doc/images/overarch_overarchUseCaseView.svg)
+![Use Cases of Overarch](/doc/images/overarch/use-cases/overarch-use-case-view.svg)
 
 # Modelling
 
@@ -165,12 +165,26 @@ References can have other keys, which are merged with the referred element in
 context of the reference. For example you can mark an internal system as external
 in the context of a specific view by adding `:external true` to the reference.
 
+## Boundaries
+Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
 
-## Architecture and Deployment Model
-Overarch supports elements for C4 architecture and deployment models.
+The implicit boundaries are the system boundary and the container boundary.
+They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
 
-### Logical Data Model for the Architecture and Deployment Model Elements
-![Architecture and Deployment Model Elements](/doc/images/overarch_architectureModelElementsOverview.svg)
+The explicit boundaries are enterprise boundary and context boundary.
+These are explicitly modelled.
+An enterprise boundary `{:el :enterprise-boundary}` can be used to group
+systems by enterprise or company.
+A context boundary `{:el :context-boundary}` can be used to group concepts,
+containers or components by some common context, especially by domain contexts
+in the sense of domain driven design.
+
+
+## Architecture Model
+Overarch supports elements for C4 architecture models.
+
+### Logical Data Model for the Architecture Model Elements
+![Architecture and Deployment Model Elements](/doc/images/overarch/data-model/architecture-model-elements.svg)
 
 
 ### Additional Keys for Architecture Model Nodes
@@ -204,11 +218,6 @@ components.
 ### Component (:component)
 A component is unit of software, which lives in a container of the system.
 
-### Node (:node)
-A node is a unit in a deployment view. Nodes represent parts of the
-infrastructure in which the containers of the system are deployed. They can
-contain a set of other nodes or containers.
-
 ### Relations
 Relations describe the connections and interactions of the parts of a view.
 
@@ -227,20 +236,6 @@ kind        | sync/async  | dependency  | description
 key       | type    | values             | description 
 ----------|---------|--------------------|------------
 :tech     | string  | e.g. "REST"        | technology of the relation
-
-### Boundaries
-Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
-
-The implicit boundaries are the system boundary and the container boundary.
-They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
-
-The explicit boundaries are enterprise boundary and context boundary.
-These are explicitly modelled.
-An enterprise boundary `{:el :enterprise-boundary}` can be used to group
-systems by enterprise or company.
-A context boundary `{:el :context-boundary}` can be used to group containers
-or components by some common context, especially by domain contexts in the
-sense of domain driven design.
 
 ### Example
 Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
@@ -315,6 +310,19 @@ level elements):
   :name "Sends e-mail to"}} 
  ```
 
+## Deployment Model
+Overarch also supports elements for C4 deployment models.
+
+### Logical Data Model for the Deployment Model Elements
+![Deployment Model Elements](/doc/images/overarch/data-model/deployment-model-elements.svg)
+
+
+### Node (:node)
+A node is a unit in a deployment view. Nodes represent parts of the
+infrastructure in which the containers of the system are deployed. They can
+contain a set of other nodes or containers.
+
+
 ## Concept Model
 
 A concept model captures relevant concepts of the domain(s) of the system.
@@ -324,7 +332,8 @@ A concept model can contain the concepts of the domain and the high level elemen
 of the architecture model, e.g. the persons (actors), external systems and the
 system itself with it's containers.
 
-![Concept Model Elements](/doc/images/overarch_conceptModelElementsOverview.svg)
+### Logical Data Model for the Concept Model Elements
+![Concept Model Elements](/doc/images/overarch/data-model/concept-model-elements.svg)
 
 ### Concepts (:concept)
 A concept which is relevant for the domain of the system. The description should document the meaning of the concept.
@@ -353,8 +362,8 @@ the design of the system.
 The elements of the use case model are mainly borrowed from the UML use case
 model so prior knowledge of UML modelling applies here.
 
-### Logical Data Model for the Use Case Elements
-![Use Case Model Elements](/doc/images/overarch_useCaseModelElementsOverview.svg)
+### Logical Data Model for the Use Case Model Elements
+![Use Case Model Elements](/doc/images/overarch/data-model/use-case-model-elements.svg)
 
 ### Example
 Example [Use Case Model](/models/usecase/model.edn)
@@ -400,8 +409,8 @@ a system component can be in and the transition from one state to the next state
 The elements of the class model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
-### Logical Data Model for the State Machine Elements
-![State Machine Elements](/doc/images/overarch_stateMachineElementsOverview.svg)
+### Logical Data Model for the State Machine Model Elements
+![State Machine Elements](/doc/images/overarch/data-model/state-machine-model-elements.svg)
 
 ### Example
 Example [State Model](/models/state/model.edn)
@@ -440,7 +449,7 @@ The elements of the class model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
 ### Logical Data Model for the Class Model Elements
-![Class Model Elements](/doc/images/overarch_classModelElementsOverview.svg)
+![Class Model Elements](/doc/images/overarch/data-model/class-model-elements.svg)
 
 ### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
@@ -541,8 +550,8 @@ For example, a system landscape view renders person and system elements but no
 use cases or state machines, even if they are referenced in the view. Please consult
 the models for the model and view elements.
 
-## Logical Data Model for the View Elements
-![View Elements](/doc/images/overarch_viewElementsOverview.svg)
+## Logical Data Model for the View Model Elements
+![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
 
 ## Architecture and Deployment Views (C4 Model)
 
@@ -572,7 +581,7 @@ Shows the system in the context of the actors and other systems it is
 interacting with. Contains users, external systems and the system to be
 described.
 
-![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
+![System Context View rendered with PlantUML](/doc/images/banking/system-context-view.svg)
 
 ### Container Views (:container-view)
 Shows the containers (e.g. processes, deployment units of the system) and
@@ -581,13 +590,13 @@ of the system context diagram and the containers of the system to be described.
 The system to be described is rendered as a system boundary in the container
 diagram.
 
-![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
+![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
 ### Component Views (:component-view)
 Shows the components and their interactions inside of a container and with
 outside systems and actors.
 
-![Component View rendered with PlantUML](/doc/images/banking_apiComponentView.svg)
+![Component View rendered with PlantUML](/doc/images/banking/api-component-view.svg)
 
 ### C4 Code Views
 A C4 code view is not supported, the level of abstraction for implementation details
@@ -597,17 +606,18 @@ If you want to visualize existing code, you can use the features of your IDE to 
 a diagram of it.
 
 On the other hand it can be useful to create a view of code not yet implemented.
-UML class view can be used to model a domain and communicate a design. See UML views for that. 
+An UML class view can be used to model a domain and communicate a design. See UML views for that.
+
 
 ### System Landscape Views (:system-landscape-view)
 The system landscape view shows a high level picture, a broader view of the system landscape and the interactions of the systems.
 
-![System Landscape View rendered with PlantUML](/doc/images/banking_systemLandscapeView.svg)
+![System Landscape View rendered with PlantUML](/doc/images/banking/system-landscape-view.svg)
 
 ### Deployment Views (:deployment-view)
 The deployment view shows the infrastucture and deployment of the containers of the system.
 
-![Deployment View rendered with PlantUML](/doc/images/banking_deploymentView.svg)
+![Deployment View rendered with PlantUML](/doc/images/banking/deployment-view.svg)
 
 ### Dynamic Views (:dynamic-view)
 Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
@@ -620,7 +630,7 @@ Model.
 A use case view is used to show the actors of the system under design and their
 goals using this system.
 
-![Use Case View rendered with PlantUML](/doc/images/banking_useCaseView.svg)
+![Use Case View rendered with PlantUML](/doc/images/banking/use-case-view.svg)
 
 ### State Machine Views
 A state machine view is used to show the different states a component can be in. It also shows the

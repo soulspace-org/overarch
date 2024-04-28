@@ -560,7 +560,7 @@ The diagram below shows the current structure of the code. The components
 map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
 
-![Component View of Overarch](/doc/images/overarch_overarchComponentView.svg)
+![Component View of Overarch](/doc/images/overarch/architecture/overarch-component-view.svg)
 
 
 Data Model
@@ -574,7 +574,7 @@ records in Overarch. Overarch treats the model as plain data and doesn't care
 about additional fields or elements. But this logical model shows the
 structure of the data model Overarch cares about and acts on.
 
-![Overview of the Data Model of Overarch](/doc/images/overarch_dataModelOverview.svg)
+![Data Model of Overarch](/doc/images/overarch/data-model/data-model.svg)
 
 
 ### Remarks

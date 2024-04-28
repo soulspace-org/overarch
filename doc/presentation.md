@@ -1,7 +1,7 @@
 ---
 marp: true
-theme: gaia
-#theme: uncover
+#theme: gaia
+theme: uncover
 class: invert
 author: "Ludger Solbach"
 ---
@@ -144,13 +144,13 @@ view specific customization of model elements
 
 # Example Diagram
 
-![bg right 70%](./images/banking_systemContextView.svg)
+![bg right 70%](./images/banking/system-context-view.svg)
 
 ---
 
 # Example Diagram
 
-![bg right 90%](./images/banking_containerView.svg)
+![bg right 90%](./images/banking/container-view.svg)
 
 
 ---
@@ -193,6 +193,7 @@ Data structures can be nested
           :name "Example Container"
           :tech "Java"
           :desc "Deployable application in the example system"}}}
+...
 }
 ```
 
@@ -213,15 +214,18 @@ Data structures can be nested
 :enterprise-boundary :context-boundary
 
 #### Relations
+:request :response :publish :subscribe
+:send :dataflow :rel
 
 ---
 
 # Deployment Model
 
 #### Elements
-:node :system :container :component
+:node :system :container
 
 #### Relations
+:link :rel
 
 ---
 
@@ -273,6 +277,18 @@ Data structures can be nested
 :enterprise-boundary :context-boundary
 
 #### Relations
+:is-a :has :rel
+
+---
+
+# Model Queries
+
+#### Selection by Criteria
+
+Criteria map:
+  {:namespace "banking" :el container}
+Vector of maps:
+  [{:namespace "banking" :el :container} {:namespace "banking" :el :request}]
 
 ---
 
@@ -286,14 +302,31 @@ Views define
 
 # Rendering
 
+PlantUML: C4 Views, UML Views
+Graphviz: Concept Maps
+Markdown: Glossary
 
 ---
 
 # Export
 
-JSON
-EDN
-Structurizr (architecture/deployment model and views only)
+JSON: complete model
+
+Structurizr: architecture/deployment model and views only
+
+EDN: (work in progress)
+
+---
+
+### Template Based Artifact Generation
+
+
+---
+
+# Command Line Interface
+
+Overarch CLI
+
 
 ---
 
