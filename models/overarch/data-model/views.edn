@@ -90,6 +90,8 @@
         {:ref :overarch.data-model/fork}
         {:ref :overarch.data-model/join}
         {:ref :overarch.data-model/choice}
+        {:ref :overarch.data-model/history-state}
+        {:ref :overarch.data-model/deep-history-state}
         {:ref :overarch.data-model/transition}
 
         {:ref :overarch.data-model/concept-model-element}
@@ -496,6 +498,8 @@
         {:ref :overarch.data-model/fork}
         {:ref :overarch.data-model/join}
         {:ref :overarch.data-model/choice}
+        {:ref :overarch.data-model/history-state}
+        {:ref :overarch.data-model/deep-history-state}
         {:ref :overarch.data-model/transition}
 
         ;relations
@@ -504,7 +508,7 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relational-element-is-a-identifiable-element}
-        
+
         {:ref :overarch.data-model/state-machine-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
@@ -517,6 +521,8 @@
         {:ref :overarch.data-model/fork-is-a-state-machine-model-node}
         {:ref :overarch.data-model/join-is-a-state-machine-model-node}
         {:ref :overarch.data-model/choice-is-a-state-machine-model-node}
+        {:ref :overarch.data-model/history-state-is-a-state-machine-model-node}
+        {:ref :overarch.data-model/deep-history-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/transition-is-a-state-machine-model-relation}
         ;
         ]}
