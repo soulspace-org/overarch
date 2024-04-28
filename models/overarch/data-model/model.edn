@@ -1091,6 +1091,18 @@
           :type "string"}}}
 
   {:el :class
+   :id :overarch.data-model/history-state
+   :name "history-state"
+   :desc "A state with history."
+   :tags #{"state-machine-model"}}
+
+  {:el :class
+   :id :overarch.data-model/deep-history-state
+   :name "deep-history-state"
+   :desc "A state with a deep history."
+   :tags #{"state-machine-model"}}
+
+  {:el :class
    :id :overarch.data-model/transition
    :name "transition"
    :desc "A transition from on state to another in effect of an event in
@@ -1188,6 +1200,18 @@
    :id :overarch.data-model/choice-is-a-state-machine-model-node
    :to :overarch.data-model/state-machine-model-node
    :from :overarch.data-model/choice
+   :tags #{"state-machine-model" "node-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/history-state-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/history-state
+   :tags #{"state-machine-model" "node-hierarchy"}}
+  
+  {:el :inheritance
+   :id :overarch.data-model/deep-history-state-is-a-state-machine-model-node
+   :to :overarch.data-model/state-machine-model-node
+   :from :overarch.data-model/deep-history-state
    :tags #{"state-machine-model" "node-hierarchy"}}
 
   {:el :inheritance
@@ -1611,7 +1635,7 @@
    :to :overarch.data-model/identifiable-element
    :from :overarch.data-model/view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/view-contains-rendering-spec
    :from :overarch.data-model/view
@@ -1619,13 +1643,13 @@
    :to-name "spec"
    :to-card :zero-to-one
    :tags #{"view-model"}}
-  
+
   {:el :inheritance
    :id :overarch.data-model/architecture-view-is-a-view
    :to :overarch.data-model/view
    :from :overarch.data-model/architecture-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/architecture-view-contains-architecture-model-element
    :from :overarch.data-model/architecture-view
@@ -1669,7 +1693,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/deployment-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/deployment-view-contains-deployment-model-element
    :from :overarch.data-model/deployment-view
@@ -1683,7 +1707,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/class-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/class-view-contains-class-model-element
    :from :overarch.data-model/class-view
@@ -1697,7 +1721,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/state-machine-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/state-machine-view-contains-state-machine
    :from :overarch.data-model/state-machine-view
@@ -1711,7 +1735,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/use-case-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/use-case-view-contains-use-case-model-element
    :from :overarch.data-model/use-case-view
@@ -1725,7 +1749,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/concept-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/concept-view-contains-concept-model-element
    :from :overarch.data-model/concept-view
@@ -1739,7 +1763,7 @@
    :to :overarch.data-model/view
    :from :overarch.data-model/glossary-view
    :tags #{"view-model"}}
-  
+
   {:el :aggregation
    :id :overarch.data-model/glossary-view-contains-concept-model-element
    :from :overarch.data-model/glossary-view
