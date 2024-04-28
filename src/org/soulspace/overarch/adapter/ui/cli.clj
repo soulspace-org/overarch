@@ -288,6 +288,11 @@
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
 
+  (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/nodes))
+  (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/relations))
+
+  (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
+
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
   (-main "--debug" "--render-format" "markdown")

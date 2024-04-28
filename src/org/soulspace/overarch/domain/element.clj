@@ -745,6 +745,22 @@
   [e c]
   (contains? (descendant-nodes e) c))
 
+(defn root-nodes
+  "Returns the set of root nodes of the `coll`."
+  [coll]
+  (let [descendants (->> coll
+                         (map descendant-nodes)
+                         (apply set/union))]
+    (set/difference (set coll) descendants)))
+
+(defn all-nodes
+  "Returns the set of all nodes, including descendants, of the `coll`."
+  [coll]
+  (let [descendants (->> coll
+                         (map descendant-nodes)
+                         (apply set/union))]
+    (set/union (set coll) descendants)))
+
 ; TODO for flat/hierarchical
 (defn id->map
   ""
