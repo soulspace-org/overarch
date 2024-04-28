@@ -329,10 +329,14 @@ A: As said above, the rendering can be flat or hierarchical, depending on the
    Thus the traversal logic has to be replicated in the upfront collection of
    elements and in the rendering functions.
 
- Q: **Which of the rendered elements are the relevant top level elements for the hierarchical views?**
+Q: **Which of the rendered elements are the relevant top level elements for the hierarchical views?**
 
- A: All relations and the nodes which are not rendered by an included ancestor.
+A: All relations and the nodes which are not rendered by an included ancestor.
+   Remove all children of elements of the selected set of elements.
 
+   A la
+   (let [children-set (set/union (map children selected-set))]
+     (set/difference selected-set children-set))
 
 Q: **How should the content of the view be selected?**
 
