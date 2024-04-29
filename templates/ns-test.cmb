@@ -7,3 +7,7 @@
 <% (doseq [n (all-ns)]%>
 <%= n %>
 <% ) %>
+
+## overarch namespaces
+<%= el/technical-architecture-node-types %>
+

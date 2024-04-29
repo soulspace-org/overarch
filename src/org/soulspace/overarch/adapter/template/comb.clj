@@ -88,6 +88,12 @@
 (comment
   (defn greet-code [x] (print "Hello" x "!"))
 
+  (core/eval (read-string "el/technical-architecture-node-types"))
+
+  (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!")
+  (core/eval (read-string (parse-string (slurp "templates/ns-test.cmb"))))
+  (core/eval (read-string (parse-string "<%= el/technical-architecture-node-types %>")))
+
   (t/apply-template :comb "Hello" {})
   (t/apply-template :comb "Hello<% (dotimes [x 3] %> World<% ) %>!" {})
   (t/apply-template :comb "Hello <%= name %>!" {:name "World"})
@@ -96,9 +102,10 @@
                            (greet-template \"World\")%>" {})
   (t/apply-template :comb "<% (greet-code \"World\")%>" {})
   (t/apply-template :comb "<%= (el/element-name e) %>" {:e {:el :system
-                                                           :id :foo/foo-bar}})
+                                                            :id :foo/foo-bar}})
   (t/apply-template :comb "<%= (:id e) %>" {:e {:el :system
                                                 :id :foo/foo-bar}})
 
-  (t/apply-template :comb (io/as-file "templates/ns-test.cmb"))
+  (t/apply-template :comb (io/as-file "templates/ns-test.cmb") {:e {:el :system
+                                                                    :id :foo/foo-bar}})
   )
