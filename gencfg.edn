@@ -39,12 +39,5 @@
   :extension "md"
   :protected-area "PA"}
  
- ;; Tests
- {:selection {:el :system :external? true} 
-  :template "ns-test.cmb" 
-  :base-namespace "test"
-  :base-name "ns-test"
-  :extension "md"}
-
  ;
  ]
