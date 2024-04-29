@@ -21,8 +21,17 @@
  
  {:selection {:el :container
               :tech "Clojure"}
+  :template "projects/clojure/project.clj.cmb"
+  :per-element true
+  :id-as-namespace true
+;  :base-namespace "tmp"
+  :base-name "project"
+  :extension "clj"}
+ 
+ {:selection {:el :container
+              :tech "Clojure"}
   :engine :comb
-  :template "projects/readme.cmb"
+  :template "projects/README.md.cmb"
   :per-element true
   :id-as-namespace true
 ;  :base-namespace "tmp"

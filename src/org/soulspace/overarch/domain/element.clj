@@ -541,7 +541,7 @@
   (and (view? e) (= (:el e) kind)))
 
 ;;
-;; Element transducer fuctions
+;; Element transducer functions
 ;;
 (defn value-xf
   "Returns a transducer to extract the value of the key `k` of each element."
