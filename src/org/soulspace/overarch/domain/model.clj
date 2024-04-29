@@ -412,6 +412,7 @@
     (= :external? k)             (partial el/external-check? v)
     (= :name? k)                 (partial el/name-check? v)
     (= :name k)                  (partial el/name? v)
+    (= :name-prefix k)           (partial el/name-prefix? v)
     (= :desc? k)                 (partial el/desc-check? v)
     (= :tech? k)                 (partial el/tech-check? v)
     (= :tech k)                  (partial el/tech? v)

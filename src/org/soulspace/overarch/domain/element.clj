@@ -885,6 +885,10 @@
   [v e]
   (= v (:name e)))
 
+(defn name-prefix?
+  [v e]
+  (str/starts-with? (:name e) v))
+
 (defn desc-check?
   [v e]
   (= v (get e :desc false)))
