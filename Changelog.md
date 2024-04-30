@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.16.0
+Version 0.17.0
 --------------
 * added deployed-to relation to deployment model to decouple architecture and deployment models
   * no need to reference containers inside of deployment nodes
