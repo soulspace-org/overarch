@@ -5,6 +5,7 @@
  ;; Reports
  {:selection {:el :system :external? true}
   :template "reports/node-report.md.cmb"
+  :title "External Systems Report"
   :base-namespace "reports"
   :base-name "ext-systems-report"
   :extension "md"}
@@ -19,6 +20,17 @@
   :base-name ""
   :extension "gitignore"}
  
+ {:selection {:el :container
+              :tech "Clojure"}
+  :engine :comb
+  :template "projects/README.md.cmb"
+  :per-element true
+  :id-as-namespace true
+;  :base-namespace "tmp"
+  :base-name "README"
+  :extension "md"
+  :protected-area "PA"}
+
  {:selection {:el :container
               :tech "Clojure"}
   :template "projects/clojure/project.clj.cmb"

@@ -1,4 +1,7 @@
-# Relation Report
+# <%= (:title ctx) %>
+
+## Selection
+<%= (:selection ctx) %>
 
 ## Relations
  Id |Name | Type | From | To | Description 

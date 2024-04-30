@@ -1,7 +1,10 @@
-# Node Report
+# <%= (:title ctx) %>
+
+## Selection
+<%= (:selection ctx) %>
 
 ## Nodes
- Id |Name | Type | Subtype | Description | Techs
-----|-----|------|---------|-------------|------
-<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (:desc c) %> | <%= (:tech c) %>
+ Id |Name | Type | Subtype | Description | Techs | Tags
+----|-----|------|---------|-------------|-------|------
+<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (:desc c) %> | <%= (:tech c) %> | <%= (:tags c) %>
 <%)%>
