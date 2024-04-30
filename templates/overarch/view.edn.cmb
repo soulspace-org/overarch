@@ -1,0 +1,24 @@
+;
+; generated view for selection
+; <%= (:selection ctx)%>
+;
+#{
+    {:el <%= (:view-type ctx) %>
+     :id <%= (:view-id ctx)%>
+     :title <%= (:view-title ctx)%>
+     :ct [
+          ; nodes
+<%
+ (when-let [nodes (filter el/model-node? e)]
+   (doseq [c nodes]
+%>          {:ref <%= (:id c) %>}
+<%))%>
+
+          ; relations
+ (when-let [rels (filter el/model-relation? e)]
+   (doseq [c rels]
+%>          {:ref <%= (:id c) %>}
+<%))%>
+         ] 
+    }
+}
