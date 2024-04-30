@@ -251,10 +251,10 @@ SHOW_LEGEND()
 ```
 
 ### System Context View rendered with PlantUML
-![System Context View rendered with PlantUML](/doc/images/banking_systemContextView.svg)
+![System Context View rendered with PlantUML](/doc/images/banking/system-context-view.svg)
 
 ### Container View rendered with PlantUML
-![Container View rendered with PlantUML](/doc/images/banking_containerView.svg)
+![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
 
 Build
