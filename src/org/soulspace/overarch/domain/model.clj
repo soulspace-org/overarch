@@ -349,6 +349,10 @@
 ;;; filtering element colletions by criteria
 ;;;
 ;; TODO add docstrings
+;; TODO add criteria for model type (architecture, etc.)
+;;      select nodes of model category
+;;      select relations of category if both nodes are of category
+;;      (rel is in multiple categories)
 (defn child?
   [model v e]
   (= v (boolean ((:id->parent model) (:id e)))))
