@@ -4,7 +4,8 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as render]
-            [org.soulspace.overarch.adapter.render.plantuml :as puml]))
+            [org.soulspace.overarch.adapter.render.plantuml :as puml]
+            [org.soulspace.overarch.domain.model :as model]))
 
 (def c4-element->method
   "Map from element type to PlantUML C4 method."
@@ -138,8 +139,13 @@
 
 (defmethod puml/render-c4-element :node
   [model view indent e]
-  (if (seq (:ct e))
-    (let [children (view/elements-to-render model view (:ct e))]
+  (let [deployed (->> model
+                      ((:id e) (:referred-id->relations model))
+                      (filter (partial el/el? :deployed-to))
+                      (map :from))
+        children (concat (view/elements-to-render model view (:ct e))
+                         (view/elements-to-render model view deployed))]
+    (if (seq children)
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
@@ -154,20 +160,52 @@
                      ") {")
                 (map #(puml/render-c4-element model view (+ indent 2) %)
                      children)
-                (str (render/indent indent) "}")]))
+                (str (render/indent indent) "}")])
+      [(str (render/indent indent)
+            (c4-element->method (:el e)) "("
+            (puml/alias-name (:id e)) ", \""
+            (el/element-name e) "\""
+            (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+            (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+            (if (:sprite e)
+              (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
+              (when (puml/sprite? (:tech e))
+                (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+            (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+            ")")])))
+
+(defmethod puml/render-c4-element :link
+  [_ _ indent e]
+  (if (:constraint e)
+    [(str (render/indent indent) "Lay"
+          (when (:direction e) (c4-directions (:direction e))) "("
+          (puml/alias-name (:from e)) ", "
+          (puml/alias-name (:to e))
+          ")")]
     [(str (render/indent indent)
-          (c4-element->method (:el e)) "("
-          (puml/alias-name (:id e)) ", \""
-          (el/element-name e) "\""
+          (c4-element->method (:el e))
+          (when (:direction e) (c4-directions (:direction e))) "("
+          (if (:reverse e)
+            (str (puml/alias-name (:to e)) ", "
+                 (puml/alias-name (:from e)) ", \"")
+            (str (puml/alias-name (:from e)) ", "
+                 (puml/alias-name (:to e)) ", \""))
+          (:name e) "\""
           (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-          (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
           (if (:sprite e)
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
+            (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
             (when (puml/sprite? (:tech e))
-              (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+              (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
+(defmethod puml/render-c4-element :deployed-to
+  [_ _ indent e]
+  ; don't render deployed on as relation as it is already rendered by :node
+  )
+
+ ; TODO is this neccessary (for :rel)?
 (defmethod puml/render-c4-element :model-relation
   [_ _ indent e]
   (if (:constraint e)

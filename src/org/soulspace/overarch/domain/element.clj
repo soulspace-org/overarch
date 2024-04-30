@@ -36,7 +36,7 @@
 
 (def deployment-relation-types
   "Relation types for deployment models."
-  #{:link})
+  #{:link :deployed-to})
 
 ;;
 ;; Category definitions for UML models
@@ -148,9 +148,9 @@
 
 (def deployment-view-element-types
   "Element types of a C4 deployment view."
-  (set/union container-view-element-types
+  (set/union #{:node}
              deployment-relation-types
-             #{:node}))
+             container-view-element-types))
 
 (def dynamic-view-element-types
   "Element types of a C4 dynamic view."
@@ -300,6 +300,7 @@
 
       ;; deployment model relations
       (derive :link                              :deployment-model-relation)
+      (derive :deployed-to                       :deployment-model-relation)
 
       ;; use case model relations
       (derive :uses                              :use-case-model-relation)

@@ -4,6 +4,9 @@
 #{;;;
   ;;; Concept Model
   ;;;
+  ;; 
+  ;; Concept Model Nodes
+  ;;
   {:el :concept
    :id :banking/account-concept
    :name "Account"
@@ -20,6 +23,31 @@
    :id :banking/transaction-concept
    :name "Transaction"
    :desc "An action done on the account, e.g. a withdrawal or a money transfer."}
+
+  ;; 
+  ;; Concept Model Relations
+  ;; 
+  {:el :rel
+   :id :banking/account-reflects-transaction
+   :from :banking/account-concept
+   :to :banking/transaction-concept
+   :name "reflects"}
+  {:el :rel
+   :id :banking/internet-banking-system-implements-internet-banking-concept
+   :from :banking/internet-banking-system
+   :to :banking/internet-banking-concept
+   :name "implements"}
+  {:el :rel
+   :id :banking/personal-customer-has-account
+   :from :banking/personal-customer
+   :to :banking/account-concept
+   :name "has"}
+  {:el :rel
+   :id :banking/personal-customer-performs-transaction
+   :from :banking/personal-customer
+   :to :banking/transaction-concept
+   :name "performs"}
+
 
   ;;;
   ;;; Use Case Model
@@ -45,9 +73,26 @@
    :desc "make a monetary transaction"
    :level :user-goal}
 
+  ;;
+  ;; Use case Relations
+  ;;
+  {:el :uses
+   :id :banking/personal-customer-uses-view-account
+   :from :banking/personal-customer
+   :to :banking/view-account
+   :name "uses"}
+  {:el :uses
+   :id :banking/personal-customer-uses-make-transaction
+   :from :banking/personal-customer
+   :to :banking/make-transaction
+   :name "uses"}
+
   ;;;
   ;;; Architecture Model
   ;;;
+  ;;
+  ;; Architecture Model Nodes
+  ;;
   {:el :enterprise-boundary
    :id :banking/big-bank-plc
    :name "Big Bank plc"
@@ -60,22 +105,26 @@
                  :id :banking/web-app
                  :name "Web Application"
                  :desc "Deliveres the static content and the internet banking single page application."
-                 :tech "Clojure and Luminus"}
+                 :tech "Clojure and Luminus"
+                 :sprite "Clojure"}
                 {:el :container
                  :id :banking/single-page-app
                  :name "Single-Page Application"
                  :desc "Provides all of the internet banking functionality to customers via their web browser."
-                 :tech "ClojureScript and Re-Frame"}
+                 :tech "ClojureScript and Re-Frame"
+                 :sprite "ClojureScript"}
                 {:el :container
                  :id :banking/mobile-app
                  :name "Mobile App"
                  :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
-                 :tech "ClojureScript and Reagent"}
+                 :tech "ClojureScript and Reagent"
+                 :sprite "ClojureScript"}
                 {:el :container
                  :id :banking/api-application
                  :name "API Application"
                  :desc "Provides internet banking functionality via a JSON/HTTPS API."
                  :tech "Clojure and Liberator"
+                 :sprite "Clojure"
                  :ct #{{:el :component
                         :id :banking/sign-in-controller
                         :name "Sign In Controller"
@@ -138,116 +187,8 @@
           :external true
           :name "Backoffice Stuff"
           :desc "Administration and support stuff within the bank."}}}
-
-  ;;;
-  ;;; Deployment Model
-  ;;;
-  {:el :node
-   :id :banking/personal-customers-computer
-   :name "Customer's Computer"
-   :tech "Windows, macOS, Linux"
-   :ct #{{:el :node
-          :id :banking/personal-customers-browser
-          :name "Web Browser"
-          :tech "Chrome, Firefox, Safari or Edge"
-          :ct #{{:ref :banking/single-page-app}}}}}
-  {:el :node
-   :id :banking/personal-customers-mobile-device
-   :name "Customer's Mobile Device"
-   :tech "Android or iOS"
-   :ct #{{:ref :banking/mobile-app}}}
-  {:el :node
-   :id :banking/big-bank-plc-datacenter
-   :name "Big Bank plc"
-   :tech "Datacenter"
-   :ct #{{:el :node
-          :id :banking/big-bank-kubernetes-cluster
-          :name "Kubernetes Cluster"
-          :tech "VM, Ubuntu 22.04 LTS, K8s"
-          :ct #{{:el :node
-                 :id :banking/big-bank-web-server-node-pool
-                 :name "Web Server Node Pool"
-                 :tech "VM, Ubuntu 22.04 LTS"
-                 :ct #{{:el :node
-                        :id :banking/big-bank-web-server-pod
-                        :name "Web Server Pod"
-                        :desc "autoscaled, 2-8 instances"
-                        :ct #{{:ref :banking/web-app}}}}}
-                {:el :node
-                 :id :banking/big-bank-api-server-node-pool
-                 :name "API Server Node Pool"
-                 :tech "VM, Ubuntu 22.04 LTS"
-                 :ct #{{:el :node
-                        :id :banking/big-bank-api-server-pod
-                        :name "API Server Pod"
-                        :desc "autoscaled, 2-16 instances"
-                        :ct #{{:ref :banking/api-application}}}}}}}
-         {:el :node
-          :id :banking/big-bank-prod001
-          :name "BigBank-prod001"
-          :ct #{{:ref :banking/mainframe-banking-system}}}
-         {:el :node
-          :id :banking/big-bank-db01
-          :name "Primary DB Server"
-          :tech "Datomic"
-          :desc "for writes"
-          :ct #{{:ref :banking/database}}}
-         {:el :node
-          :id :banking/big-bank-db02
-          :name "Secondary DB Server"
-          :tech "Datomic"
-          :desc "for reads"
-          :ct #{{:el :container
-                 :subtype :database
-                 :id :banking/database-read
-                 :name "Database for Reads"
-                 :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-                 :tech "Datomic"}}}}}
-
-  ;;;
-  ;;; Relations
-  ;;;
   ;;
-  ;; Concept relations
-  ;;
-  {:el :rel
-   :id :banking/account-reflects-transaction
-   :from :banking/account-concept
-   :to :banking/transaction-concept
-   :name "reflects"}
-  {:el :rel
-   :id :banking/internet-banking-system-implements-internet-banking-concept
-   :from :banking/internet-banking-system
-   :to :banking/internet-banking-concept
-   :name "implements"}
-  {:el :rel
-   :id :banking/personal-customer-has-account
-   :from :banking/personal-customer
-   :to :banking/account-concept
-   :name "has"}
-  {:el :rel
-   :id :banking/personal-customer-performs-transaction
-   :from :banking/personal-customer
-   :to :banking/transaction-concept
-   :name "performs"}
-  
-  
-  ;;
-  ;; Use case relations
-  ;;
-  {:el :uses
-   :id :banking/personal-customer-uses-view-account
-   :from :banking/personal-customer
-   :to :banking/view-account
-   :name "uses"}
-  {:el :uses
-   :id :banking/personal-customer-uses-make-transaction
-   :from :banking/personal-customer
-   :to :banking/make-transaction
-   :name "uses"}
-
-  ;;
-  ;; Context level relations 
+  ;; Context Level Relations 
   ;;
   {:el :request
    :id :banking/personal-customer-uses-internet-banking-system
@@ -271,7 +212,7 @@
    :name "sends e-mail to"}
 
   ;;
-  ;; Container level relations 
+  ;; Container Level Relations 
   ;;
   {:el :request
    :id :banking/personal-customer-uses-web-app
@@ -325,7 +266,7 @@
    :tech "XML/HTTPS"}
 
   ;;
-  ;; Component level relations
+  ;; Component Level Relations
   ;;
   {:el :request
    :id :banking/single-page-app-calls-sign-in-controller
@@ -424,5 +365,107 @@
    :from :banking/backoffice-stuff
    :to :banking/mainframe-banking-system
    :name "uses"}
+
+  ;;;
+  ;;; Deployment Model
+  ;;;
+  ;;
+  ;; Deployment Model Nodes
+  ;;
+  {:el :node
+   :id :banking/personal-customers-computer
+   :name "Customer's Computer"
+   :tech "Windows, macOS, Linux"
+   :ct #{{:el :node
+          :id :banking/personal-customers-browser
+          :name "Web Browser"
+          :tech "Chrome, Firefox, Safari or Edge"}}}
+  {:el :node
+   :id :banking/personal-customers-mobile-device
+   :name "Customer's Mobile Device"
+   :tech "Android or iOS"}
+  {:el :node
+   :id :banking/big-bank-plc-datacenter
+   :name "Big Bank plc"
+   :tech "Datacenter"
+   :ct #{{:el :node
+          :id :banking/big-bank-kubernetes-cluster
+          :name "Kubernetes Cluster"
+          :tech "VM, Ubuntu 22.04 LTS, K8s"
+          :sprite "Kubernetes"
+          :ct #{{:el :node
+                 :id :banking/big-bank-web-server-node-pool
+                 :name "Web Server Node Pool"
+                 :tech "VM, Ubuntu 22.04 LTS"
+                 :ct #{{:el :node
+                        :id :banking/big-bank-web-server-pod
+                        :name "Web Server Pod"
+                        :desc "autoscaled, 2-8 instances"}}}
+                {:el :node
+                 :id :banking/big-bank-api-server-node-pool
+                 :name "API Server Node Pool"
+                 :tech "VM, Ubuntu 22.04 LTS"
+                 :ct #{{:el :node
+                        :id :banking/big-bank-api-server-pod
+                        :name "API Server Pod"
+                        :desc "autoscaled, 2-16 instances"}}}}}
+         {:el :node
+          :id :banking/big-bank-prod001
+          :name "BigBank-prod001"}
+         {:el :node
+          :id :banking/big-bank-db01
+          :name "Primary DB Server"
+          :tech "Datomic"
+          :desc "for writes"}
+         {:el :node
+          :id :banking/big-bank-db02
+          :name "Secondary DB Server"
+          :tech "Datomic"
+          :desc "for reads"}}}
+  {:el :container
+   :subtype :database
+   :id :banking/database-read
+   :name "Database for Reads"
+   :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+   :tech "Datomic"}
+
+  ;;
+  ;; Deployment Model Relations
+  ;;
+  {:el :deployed-to
+   :id :banking/single-page-app-deployed-to-personal-customers-browser
+   :from :banking/single-page-app
+   :to :banking/personal-customers-browser}
+
+  {:el :deployed-to
+   :id :banking/mobile-app-deployed-to-personal-customers-mobile-device
+   :from :banking/mobile-app
+   :to :banking/personal-customers-mobile-device}
+
+  {:el :deployed-to
+   :id :banking/web-app-deployed-to-big-bank-web-server-pod
+   :from :banking/web-app
+   :to :banking/big-bank-web-server-pod}
+
+  {:el :deployed-to
+   :id :banking/api-application-deployed-to-big-bank-api-server-pod
+   :from :banking/api-application
+   :to :banking/big-bank-api-server-pod}
+
+  {:el :deployed-to
+   :id :banking/mainframe-banking-system-deployed-to-big-bank-prod001
+   :from :banking/mainframe-banking-system
+   :to :banking/big-bank-prod001}
+
+  {:el :deployed-to
+   :id :banking/database-deployed-to-big-bank-db01
+   :from :banking/database
+   :to :banking/big-bank-db01}
+
+  {:el :deployed-to
+   :id :banking/database-deployed-to-big-bank-db02
+   :from :banking/database-read
+   :to :banking/big-bank-db02}
+
   ;
   }

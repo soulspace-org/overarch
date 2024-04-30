@@ -3,6 +3,12 @@ Changelog
 
 Version 0.16.0
 --------------
+* added deployed-to relation to deployment model to decouple architecture and deployment models
+  * no need to reference containers inside of deployment nodes
+  * see [Banking Deployment Model](/models/banking/model.edn)
+
+Version 0.16.0
+--------------
 * *attention* changed export folder structure for views 
 * changed id generation of plantuml views to make the plantuml output
   location more reasonable

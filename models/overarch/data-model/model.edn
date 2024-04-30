@@ -521,13 +521,13 @@
    :id :overarch.data-model/deployment-model-node
    :abstract true
    :name "deployment-model-node"
-   :desc "A node in the deployment model of overarch."}
+   :desc "A node in the deployment model."}
 
   {:el :class
    :id :overarch.data-model/deployment-model-relation
    :abstract true
    :name "deployment-model-relation"
-   :desc "A relation in the deployment model of overarch."}
+   :desc "A relation in the deployment model."}
 
   {:el :class
    :id :overarch.data-model/deployment-model-element
@@ -546,6 +546,11 @@
    :id :overarch.data-model/link
    :name "link"
    :desc "A link between two nodes of the deployment model."}
+
+  {:el :class
+   :id :overarch.data-model/deployed-to
+   :name "deployed-to"
+   :desc "A deployment relation between a container and a node in the deployment model. The container is deployed to the node."}
 
   ;; Deployment Model Relations
   {:el :inheritance
@@ -620,6 +625,12 @@
    :id :overarch.data-model/link-is-a-deployment-model-relation
    :to :overarch.data-model/deployment-model-relation
    :from :overarch.data-model/link
+   :tags #{"deployment-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/deployed-to-is-a-deployment-model-relation
+   :to :overarch.data-model/deployment-model-relation
+   :from :overarch.data-model/deployed-to
    :tags #{"deployment-model" "relation-hierarchy"}}
 
   ;;
@@ -1121,6 +1132,12 @@
    :to :overarch.data-model/relational-element
    :from :overarch.data-model/state-machine-model-relation
    :tags #{"state-machine-model" "type-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/state-machine-is-a-state-machine-model-element
+   :to :overarch.data-model/state-machine-model-element
+   :from :overarch.data-model/state-machine
+   :tags #{"state-machine-model" "element-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/state-machine-contains-state-machine-model-node

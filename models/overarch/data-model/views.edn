@@ -49,6 +49,7 @@
         {:ref :overarch.data-model/deployment-model-relation}
         {:ref :overarch.data-model/node}
         {:ref :overarch.data-model/link}
+        {:ref :overarch.data-model/deployed-to}
 
         {:ref :overarch.data-model/use-case-model-element}
         {:ref :overarch.data-model/use-case-model-node}
@@ -155,11 +156,13 @@
         {:ref :overarch.data-model/node-contains-deployment-model-node}
         {:ref :overarch.data-model/container-is-a-deployment-model-node}
         {:ref :overarch.data-model/link-is-a-deployment-model-relation}
+        {:ref :overarch.data-model/deployed-to-is-a-deployment-model-relation}
 
         {:ref :overarch.data-model/state-machine-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-model-relation-is-a-relational-element}
+        {:ref :overarch.data-model/state-machine-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
         {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/state-is-a-state-machine-model-node}
@@ -340,6 +343,7 @@
         {:ref :overarch.data-model/container}
         {:ref :overarch.data-model/node}
         {:ref :overarch.data-model/link}
+        {:ref :overarch.data-model/deployed-to}
 
         ;relations
         {:ref :overarch.data-model/identifiable-element-is-a-element}
@@ -357,7 +361,7 @@
         {:ref :overarch.data-model/node-contains-deployment-model-node}
         {:ref :overarch.data-model/container-is-a-deployment-model-node}
         {:ref :overarch.data-model/link-is-a-deployment-model-relation}
-
+        {:ref :overarch.data-model/deployed-to-is-a-deployment-model-relation}
         ;
         ]}
 
@@ -513,6 +517,7 @@
         {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-model-relation-is-a-relational-element}
+        {:ref :overarch.data-model/state-machine-is-a-state-machine-model-element}
         {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
         {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/state-is-a-state-machine-model-node}
