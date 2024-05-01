@@ -337,7 +337,7 @@
         nodes (filter el/model-node? elements)
         relations (filter el/model-relation? elements)]
     ;(user/data-tapper "resolved" elements)
-    (flatten [(str "@startuml " (puml/alias-name (:id view)))
+    (flatten [(str "@startuml " (name (:id view)))
               (render-c4-imports view)
               (puml/render-sprite-imports model view)
               (render-c4-layout model view)

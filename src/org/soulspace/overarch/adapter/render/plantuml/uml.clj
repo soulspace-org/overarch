@@ -417,7 +417,7 @@
   (let [elements (view/rendered-elements model view)
         nodes (filter el/model-node? elements)
         relations (filter el/model-relation? elements)]
-    (flatten [(str "@startuml " (puml/alias-name (:id view)))
+    (flatten [(str "@startuml " (name (:id view)))
               (render-uml-layout view)
               (puml/render-title view)
               (map #(puml/render-uml-element model view 0 %)
