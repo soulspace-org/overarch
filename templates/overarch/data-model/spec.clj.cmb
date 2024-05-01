@@ -1,0 +1,14 @@
+;;;
+;;; Element Spec 
+;;;
+; spec for keys
+<%(doseq [c (filter #(= :field (:el %)) e)]%>
+(s/def :overarch/<%=(:name c)%> <%=(:type c)%>?)
+<%)%>
+
+; spec for model elements
+<%(doseq [c (filter #(= :class (:el %)) e)]%>
+(s/def :overarch/<%=(:name c)%>
+  (s/keys :req-un []
+          :opt-un))
+<%)%>

@@ -302,6 +302,9 @@
   (-main "--model-dir" "models/banking" "--export-format" "structurizr")
   (-main "--model-info")
   (-main "--plantuml-list-sprites")
-  (-main "--debug" "--generation-config" "dev/gencfg.edn")
+
+  (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
+  (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
+  (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
   (-main "--help") ; ends REPL session
   )

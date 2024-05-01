@@ -224,6 +224,7 @@
 (defn generate-artifact
   "Generates an artifact"
   [template ctx model e]
+;  (println "Template" template)
 ;  (println "Element" e)
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
