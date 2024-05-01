@@ -1,11 +1,16 @@
 Changelog
 =========
 
-Version 0.16.0
+Version 0.17.0
 --------------
 * added deployed-to relation to deployment model to decouple architecture and deployment models
   * no need to reference containers inside of deployment nodes
   * see [Banking Deployment Model](/models/banking/model.edn)
+* added domain model functions
+* added selection criteria
+* added and enhanced clojure project templates
+* added overarch specific templates
+
 
 Version 0.16.0
 --------------
