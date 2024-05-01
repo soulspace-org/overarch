@@ -30,6 +30,9 @@
   "Relation types in the architecture model."
   #{:rel :request :response :publish :subscribe :send :dataflow})
 
+(def architecture-dependency-relation-types
+  #{:request :publish :subscribe :send})
+
 (def deployment-node-types
   "Node types for deployment models."
   (set/union technical-architecture-node-types #{:node}))
