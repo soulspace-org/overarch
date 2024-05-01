@@ -105,6 +105,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -126,6 +127,8 @@
       false {:el :subscribe}
       false {:el :send}
       false {:el :dataflow}
+      false {:el :link}
+      false {:el :deployed-to}
       false {:el :uses}
       false {:el :include}
       false {:el :extends}
@@ -164,6 +167,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -185,6 +189,8 @@
       false {:el :subscribe}
       false {:el :send}
       false {:el :dataflow}
+      false {:el :link}
+      false {:el :deployed-to}
       false {:el :uses}
       false {:el :include}
       false {:el :extends}
@@ -230,6 +236,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -244,6 +251,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -282,6 +291,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -303,6 +313,8 @@
       false {:el :subscribe :from :a :to :b}
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -321,7 +333,8 @@
 (deftest deployment-relation?-test
   (testing "deployment-relation? true"
     (are [x y] (= x (boolean (deployment-relation? y)))
-      true {:el :link :from :a :to :b}))
+      true {:el :link :from :a :to :b}
+      true {:el :deployed-to :from :a :to :b}))
 
   (testing "deployment-relation? false"
     (are [x y] (= x (boolean (deployment-relation? y)))
@@ -342,6 +355,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -401,6 +415,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -422,6 +437,8 @@
       false {:el :subscribe :from :a :to :b}
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -464,6 +481,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -486,6 +504,7 @@
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
       false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :transition :from :a :to :b}
       false {:el :inheritance :from :a :to :b}
       false {:el :implementation :from :a :to :b}
@@ -529,6 +548,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -541,6 +561,8 @@
       false {:el :subscribe :from :a :to :b}
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -579,6 +601,7 @@
       false {:el :interface}
       false {:el :enum}
       false {:el :enum-value}
+      false {:el :function}
       false {:el :field}
       false {:el :method}
       false {:el :parameter}
@@ -602,6 +625,7 @@
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
       false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -625,6 +649,7 @@
       true {:el :interface}
       true {:el :enum}
       true {:el :enum-value}
+      true {:el :function}
       true {:el :field}
       true {:el :method}
       true {:el :parameter}
@@ -660,6 +685,8 @@
       false {:el :subscribe :from :a :to :b}
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -704,6 +731,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -726,6 +754,7 @@
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
       false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -758,6 +787,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -779,6 +809,8 @@
       false {:el :subscribe :from :a :to :b}
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -820,6 +852,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -841,6 +874,7 @@
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
       false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -874,6 +908,7 @@
       true {:el :enum}
       true {:el :enum-value}
       true {:el :field}
+      true {:el :function}
       true {:el :method}
       true {:el :parameter}
       true {:el :stereotype}
@@ -899,6 +934,7 @@
       false {:el :send :from :a :to :b}
       false {:el :dataflow :from :a :to :b}
       false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
       false {:el :include :from :a :to :b}
       false {:el :extends :from :a :to :b}
@@ -925,6 +961,7 @@
       true {:el :send :from :a :to :b}
       true {:el :dataflow :from :a :to :b}
       true {:el :link :from :a :to :b}
+      true {:el :deployed-to :from :a :to :b}
       true {:el :uses :from :a :to :b}
       true {:el :include :from :a :to :b}
       true {:el :extends :from :a :to :b}
@@ -958,6 +995,7 @@
       false {:el :enum}
       false {:el :enum-value}
       false {:el :field}
+      false {:el :function}
       false {:el :method}
       false {:el :parameter}
       false {:el :stereotype}
@@ -994,6 +1032,7 @@
       true {:el :enum}
       true {:el :enum-value}
       true {:el :field}
+      true {:el :function}
       true {:el :method}
       true {:el :parameter}
       true {:el :stereotype}
@@ -1016,6 +1055,7 @@
       true {:el :send :from :a :to :b}
       true {:el :dataflow :from :a :to :b}
       true {:el :link :from :a :to :b}
+      true {:el :deployed-to :from :a :to :b}
       true {:el :uses :from :a :to :b}
       true {:el :include :from :a :to :b}
       true {:el :extends :from :a :to :b}
