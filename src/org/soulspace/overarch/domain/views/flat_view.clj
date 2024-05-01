@@ -2,7 +2,8 @@
 ;;;; Functions for flat views
 ;;;;
 (ns org.soulspace.overarch.domain.views.flat-view
-  (:require [org.soulspace.overarch.domain.view :as view]
+  (:require [clojure.set :as set]
+            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]))
 
@@ -24,6 +25,17 @@
        (apply merge)
        (vals)
        (set)))
+
+; TODO check if needed? Implement correctly
+(defmethod view/difference-by-id :flat-view
+  [_ _ & sets]
+  (->> sets
+       (set/difference)
+       (map id->element-map)
+       (apply merge)
+       (vals)
+       (set)
+       ))
 
 (defmethod view/selected-elements :flat-view
   [model view]
@@ -60,5 +72,7 @@
                          collected)]
     rendered))
 
-
+(defmethod view/toplevel-elements :flat-view
+  [model view coll]
+  coll)
 

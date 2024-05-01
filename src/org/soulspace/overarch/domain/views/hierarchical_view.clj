@@ -2,32 +2,27 @@
 ;;;; Functions for hierarchical views
 ;;;;
 (ns org.soulspace.overarch.domain.views.hierarchical-view
-  (:require [org.soulspace.overarch.domain.view :as view]
+  (:require [clojure.set :as set]
+            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]))
-
-(defn contains-parent?
-  "Returns true, if `coll` contains the parent of `e`."
-  [model coll e]
-  (let [parent (model/parent model e)]
-    (and (seq parent)
-         (contains? coll parent))))
-
-(defn render-element?
-  ""
-  [model coll e]
-  (and (or (not (el/model-node? e))
-           (not (contains-parent? model coll e)))
-       (or (not (el/model-relation? e))
-           (view/contains-related? model coll e))))
 
 ;;
 ;; View based element aggregation
 ;;
-
 (defmethod view/union-by-id :hierarchical-view
   [_ _ & sets]
   (->> sets
+       (map (partial el/traverse el/id->element))
+       (apply merge)
+       (vals)
+       (set)))
+
+; TODO check if needed? Implement correctly
+(defmethod view/difference-by-id :hierarchical-view
+  [_ _ & sets]
+  (->> sets
+       (set/difference)
        (map (partial el/traverse el/id->element))
        (apply merge)
        (vals)
@@ -45,7 +40,7 @@
   (->> (:ct view)
        (map (partial model/resolve-element model))))
 
- ; TODO add descendants for hierarchical views
+; TODO add descendants for hierarchical views
 (defmethod view/collected-elements :hierarchical-view
   [model view]
   (let [selected (view/selected-elements model view)
@@ -63,12 +58,14 @@
       merged)))
 
 (defmethod view/rendered-elements :hierarchical-view
-  [model view]
-  (let [collected (view/collected-elements model view)
-        rendered (filter (partial view/render-model-element? model view)
-                         collected)]
-    rendered))
+  [model view coll]
+  (filter (partial view/render-model-element? model view)
+          coll))
 
-; Q: Which of the rendered elements are the relevant top level elements for the hierarchical views?
-;    All relations and the nodes which are not rendered by an included ancestor?
-
+(defmethod view/toplevel-elements :hierarchical-view
+  [model view coll]
+  (->> coll
+       (filter (partial view/render-model-element? model view))
+       (mapcat el/descendant-nodes)
+       (into #{})
+       (partial set/difference coll)))

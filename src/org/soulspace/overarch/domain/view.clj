@@ -115,7 +115,13 @@
 (defmulti union-by-id
   "Returns a set that is the union of the input `sets`.
    Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
-   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
+   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result."
+  view-type
+  :hierarchy #'view-hierarchy)
+
+(defmulti difference-by-id
+  "Returns a set that is the difference of the input `sets`.
+   Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality)."
   view-type
   :hierarchy #'view-hierarchy)
 
@@ -139,7 +145,12 @@
 (defmulti rendered-elements
   "Returns all elements to be rendered in the view."
   view-type
- :hierarchy #'view-hierarchy)
+  :hierarchy #'view-hierarchy)
+
+(defmulti toplevel-elements
+  "Returns the top level elements to be rendered in the view."
+  view-type
+  :hierarchy #'view-hierarchy)
 
 (defn contains-related?
   "Returns true, if `coll` contains the nodes related by `r`."
@@ -165,6 +176,16 @@
         (model/relations-of-nodes model
                                   (filter el/model-node?
                                           coll))))
+
+(defn all-rendered-nodes
+  ""
+  []
+  )
+
+(defn rendered-root-nodes
+  ""
+  []
+  )
 
 ;;;
 ;;; Rendering functions
