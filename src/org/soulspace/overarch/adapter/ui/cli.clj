@@ -259,10 +259,10 @@
                          :debug true})
 
   (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
-  (print-sprite-mappings)
 
   (repo/update-state! "models")
-
+)
+(comment "Model analytics"
   (al/count-namespaces (concat (repo/nodes) (repo/relations)))
   (al/count-elements (concat (repo/nodes) (repo/relations)))
   (al/count-nodes (repo/nodes))
@@ -283,7 +283,10 @@
   (el/elements-by-namespace (repo/nodes))
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
+  (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
+)
 
+(comment "Selection"  
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
@@ -299,8 +302,8 @@
              (repo/model-elements))
        (el/collect-fields))
 
-  (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
-
+)
+(comment "CLI calls"
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
   (-main "--debug" "--render-format" "markdown")
@@ -310,9 +313,10 @@
   (-main "--model-dir" "models/banking" "--export-format" "structurizr")
   (-main "--model-info")
   (-main "--plantuml-list-sprites")
+  (-main "--help") ; ends REPL session
 
+  ; overarch development
   (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
   (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
   (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
-  (-main "--help") ; ends REPL session
   )

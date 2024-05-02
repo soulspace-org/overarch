@@ -1,7 +1,6 @@
 ;;;;
 ;;;; Logical Data Model of Overarch
 ;;;;
-
 #{;;;
   ;;; Abstract types
   ;;;
@@ -28,17 +27,6 @@
           :desc "The identifier of the element."}}}
 
   {:el :class
-   :id :overarch.data-model/compound-element
-   :abstract :true
-   :name "compound-element"
-   :desc "An element which is composed of other elements."
-   :tags #{"type-hierarchy"}
-   :ct [{:el :field
-         :name "ct"
-         :type "collection"
-         :desc "Collection of elements, e.g. a set or a vector, if the elements need to be in order."}]}
-
-  {:el :class
    :id :overarch.data-model/named-element
    :abstract true
    :name "named-element"
@@ -62,19 +50,15 @@
    :tags #{"type-hierarchy"}}
 
   {:el :class
-   :id :overarch.data-model/relational-element
-   :abstract true
-   :name "relational-element"
-   :desc "An element which describes the relation of elements."
+   :id :overarch.data-model/compound-node
+   :abstract :true
+   :name "compound-node"
+   :desc "An element which is composed of other elements."
    :tags #{"type-hierarchy"}
-   :ct #{{:el :field
-          :name "from"
-          :type "keyword"
-          :desc "The identifier of the element referring to another element."}
-         {:el :field
-          :name "to"
-          :type "keyword"
-          :desc "The identifier of the element being referred by another element."}}}
+   :ct [{:el :field
+         :name "ct"
+         :type "collection"
+         :desc "Collection of elements, e.g. a set or a vector, if the elements need to be in order."}]}
 
   {:el :class
    :id :overarch.data-model/technical-element
@@ -89,38 +73,20 @@
           :desc "Technology the element is implemented in."}}}
 
   {:el :class
-   :id :overarch.data-model/typed-element
-   :abscract true
-   :name "typed-element"
-   :desc "An element which has a type field."
+   :id :overarch.data-model/relation
+   :abstract true
+   :name "relation"
+   :desc "An element which describes the relation of elements."
+   :tags #{"type-hierarchy"}
    :ct #{{:el :field
-          :name "type"
-          :type "string"
-          :optional true
-          :desc "The type of the element."}}}
+          :name "from"
+          :type "keyword"
+          :desc "The identifier of the element referring to another element."}
+         {:el :field
+          :name "to"
+          :type "keyword"
+          :desc "The identifier of the element being referred by another element."}}}
 
-  {:el :class
-   :id :overarch.data-model/optional-element
-   :abscract true
-   :name "optional-element"
-   :desc "An element which has an optional field."
-   :ct #{{:el :field
-          :name "optional"
-          :type "boolean"
-          :optional true
-          :desc "When true the element can be null/nil. Default is false."}}}
-
-  {:el :class
-   :id :overarch.data-model/visibility-element
-   :abscract true
-   :name "visibility-element"
-   :desc "An element which has an optional field."
-   :ct #{{:el :field
-          :name "visibility"
-          :type "string"
-          :optional true
-          :desc "The visibility of the element."}}}
-  
    ;; Abstract Type Relations
   {:el :inheritance
    :id :overarch.data-model/identifiable-element-is-a-element
@@ -129,9 +95,9 @@
    :tags #{"type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/compound-element-is-a-identifiable-element
+   :id :overarch.data-model/compound-node-is-a-identifiable-element
    :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/compound-element
+   :from :overarch.data-model/compound-node
    :tags #{"type-hierarchy"}}
 
   {:el :inheritance
@@ -153,9 +119,9 @@
    :tags #{"type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/relational-element-is-a-identifiable-element
+   :id :overarch.data-model/relation-is-a-identifiable-element
    :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/relational-element
+   :from :overarch.data-model/relation
    :tags #{"type-hierarchy"}}
 
   {:el :class
@@ -378,8 +344,8 @@
    :tags #{"architecture-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/architecture-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/architecture-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/architecture-model-relation
    :tags #{"architecture-model" "type-hierarchy"}}
 
@@ -599,8 +565,8 @@
    :tags #{"deployment-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/deployment-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/deployment-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/deployment-model-relation
    :tags #{"deployment-model" "type-hierarchy"}}
 
@@ -670,6 +636,80 @@
   ;; Class Model
   ;;
   {:el :class
+   :id :overarch.data-model/typed-node
+   :abscract true
+   :name "typed-node"
+   :desc "A node which may have a type field."
+   :tags #{"class-model" "type-hierarchy"}
+   :ct #{{:el :field
+          :name "type"
+          :type "string"
+          :optional true
+          :desc "The type of the element."}}}
+
+  {:el :class
+   :id :overarch.data-model/optional-node
+   :abscract true
+   :name "optional-node"
+   :desc "A node which may have an optional field."
+   :tags #{"class-model" "type-hierarchy"}
+   :ct #{{:el :field
+          :name "optional"
+          :type "boolean"
+          :optional true
+          :desc "When true the element can be null/nil. Default is false."}}}
+
+  {:el :class
+   :id :overarch.data-model/visibility-node
+   :abscract true
+   :name "visibility-node"
+   :desc "A node which may have a visibility field."
+   :tags #{"class-model" "type-hierarchy"}
+   :ct #{{:el :field
+          :name "visibility"
+          :type "string"
+          :optional true
+          :desc "The visibility of the element."}}}
+
+  {:el :class
+   :id :overarch.data-model/hierarchy-relation
+   :abstract :true
+   :name "hierarchy-relation"
+   :desc "A relation that establishes a type hierarchy."
+   :tags #{"class-model" "type-hierarchy"}}
+  
+  {:el :class
+   :id :overarch.data-model/associative-relation
+   :abstract true
+   :name "associative-relation"
+   :desc "A relation that may provide associative access to the referred element."
+   :tags #{"class-model" "type-hierarchy"}
+   :ct #{{:el :field
+          :name "from-card"
+          :type "string"
+          :optional true
+          :desc "The cardinality of the referring element."}
+         {:el :field
+          :name "from-role"
+          :type "string"
+          :optional true
+          :desc "The role of the referring element."}
+         {:el :field
+          :name "to-card"
+          :type "string"
+          :desc "The cardinality of the referred element."}
+         {:el :field
+          :name "to-role"
+          :type "string"
+          :optional true
+          :desc "The role of the referred element."}
+         {:el :field
+          :name "qualifier"
+          :type "string"
+          :optional true
+          :desc "The name of a field for associative access."}}}
+
+  {:el :class
    :id :overarch.data-model/class-model-element
    :abstract true
    :name "class-model-element"
@@ -732,6 +772,7 @@
    :desc "A value of an enumeration in the class model."
    :tags #{"class-model"}}
 
+  ;; TODO replace content fields with references to type/optional/visibility nodes
   {:el :class
    :id :overarch.data-model/field
    :name "field"
@@ -803,65 +844,19 @@
    :id :overarch.data-model/composition
    :name "composition"
    :desc "A composition relationship between two classes in the class model."
-   :tags #{"class-model"}
-   :ct [{:el :field
-         :name "from-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referring element."}
-        {:el :field
-         :name "to-card"
-         :type "string"
-         :desc "The cardinality of the referred element."}
-        {:el :field
-         :name "to-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referred element."}]}
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/aggregation
    :name "aggregation"
    :desc "A aggregation relationship between two classes in the class model."
-   :tags #{"class-model"}
-   :ct [{:el :field
-         :name "from-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referring element."}
-        {:el :field
-         :name "to-card"
-         :type "string"
-         :desc "The cardinality of the referred element."}
-        {:el :field
-         :name "to-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referred element."}]}
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/association
    :name "association"
    :desc "A association relationship between two classes in the class model."
-   :tags #{"class-model"}
-   :ct [{:el :field
-         :name "from-card"
-         :type "string"
-         :desc "The cardinality of the referring element."}
-        {:el :field
-         :name "from-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referring element."}
-        {:el :field
-         :name "to-card"
-         :type "string"
-         :desc "The cardinality of the referred element."}
-        {:el :field
-         :name "to-role"
-         :type "string"
-         :optional true
-         :desc "The role of the referred element."}]}
+   :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/dependency
@@ -883,8 +878,8 @@
    :tags #{"class-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/class-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/class-model-relation
    :tags #{"class-model" "type-hierarchy"}}
 
@@ -1023,32 +1018,44 @@
    :tags #{"class-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/inheritance-is-a-class-model-relation
+   :id :overarch.data-model/hierarchy-relation-is-a-class-model-relation
    :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/hierarchy-relation
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/associative-relation-is-a-class-model-relation
+   :to :overarch.data-model/class-model-relation
+   :from :overarch.data-model/associative-relation
+   :tags #{"class-model" "relation-hierarchy"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/inheritance-is-a-hierarchy-relation
+   :to :overarch.data-model/hierarchy-relation
    :from :overarch.data-model/inheritance
    :tags #{"class-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/implementation-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/implementation-is-a-hierarchy-relation
+   :to :overarch.data-model/hierarchy-relation
    :from :overarch.data-model/implementation
    :tags #{"class-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/composition-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/composition-is-a-associative-relation
+   :to :overarch.data-model/associative-relation
    :from :overarch.data-model/composition
    :tags #{"class-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/aggregation-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/aggregation-is-a-associative-relation
+   :to :overarch.data-model/associative-relation
    :from :overarch.data-model/aggregation
    :tags #{"class-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/association-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/association-is-a-associative-relation
+   :to :overarch.data-model/associative-relation
    :from :overarch.data-model/association
    :tags #{"class-model" "relation-hierarchy"}}
 
@@ -1162,8 +1169,8 @@
    :tags #{"state-machine-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/state-machine-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/state-machine-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/state-machine-model-relation
    :tags #{"state-machine-model" "type-hierarchy"}}
 
@@ -1346,8 +1353,8 @@
    :tags #{"use-case-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/use-case-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/use-case-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/use-case-model-relation
    :tags #{"use-case-model" "type-hierarchy"}}
 
@@ -1485,8 +1492,8 @@
    :tags #{"concept-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/concept-model-relation-is-a-relational-element
-   :to :overarch.data-model/relational-element
+   :id :overarch.data-model/concept-model-relation-is-a-relation
+   :to :overarch.data-model/relation
    :from :overarch.data-model/concept-model-relation
    :tags #{"concept-model" "type-hierarchy"}}
 
