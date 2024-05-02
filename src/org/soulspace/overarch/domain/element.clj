@@ -30,6 +30,9 @@
   "Relation types in the architecture model."
   #{:rel :request :response :publish :subscribe :send :dataflow})
 
+(def architecture-dependency-relation-types
+  #{:request :publish :subscribe :send})
+
 (def deployment-node-types
   "Node types for deployment models."
   (set/union technical-architecture-node-types #{:node}))
@@ -792,6 +795,18 @@
   "Returns the set of technologies for the elements of the coll."
   [coll]
   (traverse :tech tech-collector coll))
+
+(defn collect-fields
+  [coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map :ct)
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :field (:el %)))
+       (sort-by :name)
+       ))
 
 ;;
 ;; Criteria Predicates

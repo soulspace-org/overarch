@@ -1,0 +1,18 @@
+;;;
+;;; Element Spec 
+;;;
+(ns overarch.domain
+  (:require [clojure.spec.alpha :as s]
+            [expound.alpha :as expound]))
+
+; spec for keys
+<%(doseq [c (el/collect-fields e)]%>
+(s/def :overarch/<%=(:name c)%> <%=(:type c)%>?)
+<%)%>
+
+; spec for model elements
+<%(doseq [c (filter #(= :class (:el %)) e)]%>
+(s/def :overarch/<%=(:name c)%>
+  (s/keys :req-un []
+          :opt-un []))
+<%)%>

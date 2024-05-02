@@ -1,11 +1,4 @@
-[;; Tests
- {:selection {:el :system :external? true} 
-  :template "ns-test.cmb" 
-  :base-namespace "test"
-  :base-name "ns-test"
-  :extension "md"}
-
- ;;
+[;; Reports
  {:selection {:namespace-prefix "banking"}
   :template "reports/element-report.md.cmb"
   :title "Banking Model Report"
@@ -17,5 +10,4 @@
   :title "Overarch Model Report"
   :base-namespace "reports"
   :base-name "overarch-report"
-  :extension "md"}
- ]
+  :extension "md"}]

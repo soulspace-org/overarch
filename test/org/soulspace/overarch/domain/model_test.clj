@@ -128,6 +128,8 @@
   c4-model1
   (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}}))
 
+
+
 (def ancestor-input
   #{{:el :system
      :id :a/system
@@ -188,7 +190,6 @@
                                     y))
                   false {:el :component
                          :id :a/component})))
-
 (def filter-input
   #{{:el :person
      :id :org.soulspace.external/person
@@ -209,32 +210,32 @@
      :id :org.soulspace.internal/system
      :name "Internal System"
      :ct #{{:el :container
-           :id :org.soulspace.internal.system/container1
-           :name "Container1"
-           :tech "Clojure"
-           :tags #{"autoscaled"}
-           :ct #{{:el :component
-                  :id :org.soulspace.internal.system.container1/component1
-                  :name "Component1"}}}
-          {:el :container
-           :id :org.soulspace.internal.system/container1-ui
-           :name "Container1 UI"
-           :tech "ClojureScript"}
-          {:el :container
-           :id :org.soulspace.internal.system/container1-db
-           :subtype :database
-           :name "Container1 DB"
-           :tech "Datomic"}
-          {:el :container
-           :id :org.soulspace.internal.system/container2
-           :name "Container2"
-           :tech "Java"
-           :tags #{"critical" "autoscaled"}}
-          {:el :container
-           :id :org.soulspace.internal.system/container2-topic
-           :subtype :queue
-           :name "Container2 Events"
-           :tech "Kafka"}}}
+            :id :org.soulspace.internal.system/container1
+            :name "Container1"
+            :tech "Clojure"
+            :tags #{"autoscaled"}
+            :ct #{{:el :component
+                   :id :org.soulspace.internal.system.container1/component1
+                   :name "Component1"}}}
+           {:el :container
+            :id :org.soulspace.internal.system/container1-ui
+            :name "Container1 UI"
+            :tech "ClojureScript"}
+           {:el :container
+            :id :org.soulspace.internal.system/container1-db
+            :subtype :database
+            :name "Container1 DB"
+            :tech "Datomic"}
+           {:el :container
+            :id :org.soulspace.internal.system/container2
+            :name "Container2"
+            :tech "Java"
+            :tags #{"critical" "autoscaled"}}
+           {:el :container
+            :id :org.soulspace.internal.system/container2-topic
+            :subtype :queue
+            :name "Container2 Events"
+            :tech "Kafka"}}}
 
     {:el :rel
      :id :org.soulspace.external/person-uses-system1
@@ -263,6 +264,42 @@
      :name "consumes"}})
 
 (def filter-model1 (build-model filter-input))
+
+(deftest dependency-nodes-test
+  (testing "dependency-nodes"
+    (are [x y] (= x (dependency-nodes filter-model1 y))
+      #{{:el :container
+         :id :org.soulspace.internal.system/container2-topic
+         :subtype :queue
+         :name "Container2 Events"
+         :tech "Kafka"}}
+      {:el :container
+       :id :org.soulspace.internal.system/container2
+       :name "Container2"
+       :tech "Java"
+       :tags #{"critical" "autoscaled"}})))
+
+(deftest dependant-nodes-test
+  (testing "dependant-nodes"
+    (are [x y] (= x (dependent-nodes filter-model1 y))
+      #{{:el :container
+         :id :org.soulspace.internal.system/container1
+         :name "Container1"
+         :tech "Clojure"
+         :tags #{"autoscaled"}
+         :ct #{{:el :component
+                :id :org.soulspace.internal.system.container1/component1
+                :name "Component1"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}}}
+      {:el :container
+       :id :org.soulspace.internal.system/container2-topic
+       :subtype :queue
+       :name "Container2 Events"
+       :tech "Kafka"})))
 
 (deftest filter-xf-test
   (testing "filter-xf with single criteria map and element based criteria"
@@ -433,6 +470,7 @@
       [{:external? true} {:el :person}]
       ;
       )))
+
 
 (comment
   (into []

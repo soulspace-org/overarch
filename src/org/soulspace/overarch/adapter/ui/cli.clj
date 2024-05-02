@@ -291,6 +291,14 @@
   (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/relations))
 
+  (into #{}
+        (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+        (repo/model-elements))
+  (->> (into #{}
+             (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+             (repo/model-elements))
+       (el/collect-fields))
+
   (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
 
   (-main "--debug")
@@ -302,6 +310,9 @@
   (-main "--model-dir" "models/banking" "--export-format" "structurizr")
   (-main "--model-info")
   (-main "--plantuml-list-sprites")
-  (-main "--debug" "--generation-config" "dev/gencfg.edn")
+
+  (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
+  (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
+  (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
   (-main "--help") ; ends REPL session
   )

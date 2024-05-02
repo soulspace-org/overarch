@@ -4,3 +4,7 @@
 (ns <%= (namespace (:id e)) %>/<%= (name (:id e)) %>-test
   (:require [clojure.test :refer :all]
             [(namespace (:id e)) %>/<%= (name (:id e)) %> :refer :all]))
+
+(deftest compile-test
+  (testing "Just compilation"
+    (is = 1 1)))

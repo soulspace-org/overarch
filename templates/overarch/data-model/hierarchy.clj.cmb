@@ -1,0 +1,9 @@
+;;;
+;;; Element Hierarchy 
+;;;
+(def element-hierarchy
+  (-> (make-hierarchy)
+<%(doseq [c (filter #(= :inheritance (:el %)) e)]%>
+      (derive :<%= (:name (model/resolve-id model (:from c))) %> :<%= (:name (model/resolve-id model (:to c))) %>)
+<%)%>
+  ))

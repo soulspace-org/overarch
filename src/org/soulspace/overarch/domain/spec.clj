@@ -4,7 +4,7 @@
 (ns org.soulspace.overarch.domain.spec
   (:require [clojure.spec.alpha :as s]
             [expound.alpha :as expound]
-            [org.soulspace.overarch.domain.element :as e]))
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
 ;;; Elements
@@ -143,7 +143,7 @@
 ;;
 ;; Criteria for element selection 
 ;;
-
+; TODO add missing criteria
 (s/def :overarch/els (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/namespace string?) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
@@ -153,11 +153,16 @@
 (s/def :overarch/subtypes (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/external? boolean?)
 (s/def :overarch/name? boolean?)
+(s/def :overarch/name string?)
 (s/def :overarch/desc? boolean?)
 (s/def :overarch/tech? boolean?)
+(s/def :overarch/tech string?)
 (s/def :overarch/techs (s/and set? (s/coll-of string?)))
+(s/def :overarch/all-techs (s/and set? (s/coll-of string?)))
 (s/def :overarch/tags? boolean?)
 (s/def :overarch/tag string?)
+(s/def :overarch/tags (s/and set? (s/coll-of string?)))
+(s/def :overarch/all-tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/children? boolean?)
 (s/def :overarch/child? boolean?)
 
@@ -167,10 +172,10 @@
                    :overarch/id? :overarch/id
                    :overarch/subtype? :overarch/subtype :overarch/subtypes
                    :overarch/external?
-                   :overarch/name?
+                   :overarch/name? :overarch/name
                    :overarch/desc?
-                   :overarch/tech? :overarch/tech  :overarch/techs ;  :overarch/all-techs
-                   :overarch/tags? :overarch/tag :overarch/tags ; :overarch/all-tags
+                   :overarch/tech? :overarch/tech  :overarch/techs :overarch/all-techs
+                   :overarch/tags? :overarch/tag :overarch/tags :overarch/all-tags
                    :overarch/children?
                    :overarch/child?]))
 

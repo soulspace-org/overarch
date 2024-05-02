@@ -118,6 +118,26 @@
         (recur (parent model p)))
       false)))
 
+(defn dependency-nodes
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(contains? el/architecture-dependency-relation-types (:el %)))
+       (map :to)
+       (map (partial resolve-id model))
+       (into #{})))
+
+(defn dependent-nodes
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(contains? el/architecture-dependency-relation-types (:el %)))
+       (map :from)
+       (map (partial resolve-id model))
+       (into #{})))
+
 (defn all-elements
   "Returns a set of all elements."
   ([model]
@@ -343,7 +363,6 @@
   [coll]
   (let [relational (el/traverse ->relational-model coll)]
     (assoc relational :input-elements coll)))
-
 
 ;;;
 ;;; filtering element colletions by criteria

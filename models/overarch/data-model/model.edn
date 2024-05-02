@@ -88,7 +88,40 @@
           :optional true
           :desc "Technology the element is implemented in."}}}
 
-  ;; Abstract Type Relations
+  {:el :class
+   :id :overarch.data-model/typed-element
+   :abscract true
+   :name "typed-element"
+   :desc "An element which has a type field."
+   :ct #{{:el :field
+          :name "type"
+          :type "string"
+          :optional true
+          :desc "The type of the element."}}}
+
+  {:el :class
+   :id :overarch.data-model/optional-element
+   :abscract true
+   :name "optional-element"
+   :desc "An element which has an optional field."
+   :ct #{{:el :field
+          :name "optional"
+          :type "boolean"
+          :optional true
+          :desc "When true the element can be null/nil. Default is false."}}}
+
+  {:el :class
+   :id :overarch.data-model/visibility-element
+   :abscract true
+   :name "visibility-element"
+   :desc "An element which has an optional field."
+   :ct #{{:el :field
+          :name "visibility"
+          :type "string"
+          :optional true
+          :desc "The visibility of the element."}}}
+  
+   ;; Abstract Type Relations
   {:el :inheritance
    :id :overarch.data-model/identifiable-element-is-a-element
    :to :overarch.data-model/element
@@ -746,6 +779,7 @@
    :tags #{"class-model"}
    :ct [{:el :field
          :name "type"
+         :type "string"
          :optional true
          :desc "The type of the parameter."}
         {:el :field
@@ -1224,7 +1258,7 @@
    :to :overarch.data-model/state-machine-model-node
    :from :overarch.data-model/history-state
    :tags #{"state-machine-model" "node-hierarchy"}}
-  
+
   {:el :inheritance
    :id :overarch.data-model/deep-history-state-is-a-state-machine-model-node
    :to :overarch.data-model/state-machine-model-node
@@ -1539,6 +1573,7 @@
    :tags #{"view-model"}
    :ct [{:el :field
          :name "title"
+         :type "string"
          :desc "The title of the view."}]}
 
   {:el :class

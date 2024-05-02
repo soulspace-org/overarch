@@ -1,0 +1,20 @@
+[; Overarch model generators 
+ {:selection {:namespace "overarch.data-model"}
+  :template "overarch/data-model/spec.clj.cmb"
+  :subdir "src"
+  :base-namespace "overarch.domain"
+  :base-name "spec"
+  :extension "clj"}
+ {:selection {:namespace "overarch.data-model" :tags #{element-hierarchy}}
+  :template "overarch/data-model/hierarchy.clj.cmb"
+  :subdir "src"
+  :base-namespace "overarch.domain"
+  :base-name "hierarchy"
+  :extension "clj"}
+ {:selection {:namespace "overarch.data-model"}
+  :template "overarch/data-model/categories.clj.cmb"
+  :subdir "src"
+  :base-namespace "overarch.domain"
+  :base-name "categories"
+  :extension "clj"}
+ ]
