@@ -291,6 +291,14 @@
   (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/relations))
 
+  (into #{}
+        (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+        (repo/model-elements))
+  (->> (into #{}
+             (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+             (repo/model-elements))
+       (el/collect-fields))
+
   (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
 
   (-main "--debug")

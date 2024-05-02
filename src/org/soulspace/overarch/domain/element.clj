@@ -796,6 +796,18 @@
   [coll]
   (traverse :tech tech-collector coll))
 
+(defn collect-fields
+  [coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map :ct)
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :field (:el %)))
+       (sort-by :name)
+       ))
+
 ;;
 ;; Criteria Predicates
 ;; 
