@@ -198,11 +198,13 @@
         {:ref :overarch.data-model/enum-is-a-class-model-node}
         {:ref :overarch.data-model/enum-contains-enum-value}
         {:ref :overarch.data-model/enum-value-is-a-class-model-node}
-        {:ref :overarch.data-model/implementation-is-a-class-model-relation}
-        {:ref :overarch.data-model/inheritance-is-a-class-model-relation}
-        {:ref :overarch.data-model/composition-is-a-class-model-relation}
-        {:ref :overarch.data-model/aggregation-is-a-class-model-relation}
-        {:ref :overarch.data-model/association-is-a-class-model-relation}
+        {:ref :overarch.data-model/hierarchy-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/associative-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
+        {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
+        {:ref :overarch.data-model/composition-is-a-associative-relation}
+        {:ref :overarch.data-model/aggregation-is-a-associative-relation}
+        {:ref :overarch.data-model/association-is-a-associative-relation}
         {:ref :overarch.data-model/dependency-is-a-class-model-relation}
 
         {:ref :overarch.data-model/use-case-model-element-is-a-identifiable-named-element}
@@ -427,11 +429,13 @@
         {:ref :overarch.data-model/enum-is-a-class-model-node}
         {:ref :overarch.data-model/enum-contains-enum-value}
         {:ref :overarch.data-model/enum-value-is-a-class-model-node}
-        {:ref :overarch.data-model/implementation-is-a-class-model-relation}
-        {:ref :overarch.data-model/inheritance-is-a-class-model-relation}
-        {:ref :overarch.data-model/composition-is-a-class-model-relation}
-        {:ref :overarch.data-model/aggregation-is-a-class-model-relation}
-        {:ref :overarch.data-model/association-is-a-class-model-relation}
+        {:ref :overarch.data-model/hierarchy-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/associative-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
+        {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
+        {:ref :overarch.data-model/composition-is-a-associative-relation}
+        {:ref :overarch.data-model/aggregation-is-a-associative-relation}
+        {:ref :overarch.data-model/association-is-a-associative-relation}
         {:ref :overarch.data-model/dependency-is-a-class-model-relation}
         ;
         ]}

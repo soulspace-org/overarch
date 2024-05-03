@@ -19,7 +19,8 @@
    :id :overarch.data-model/identifiable-element
    :abstract true
    :name "identifiable-element"
-   :desc "An element with an identifier. Can be referenced from views and other parts of the model."
+   :desc "An element with an identifier.
+          Can be referenced from views and other parts of the model."
    :tags #{"type-hierarchy"}
    :ct #{{:el :field
           :name "id"
@@ -175,7 +176,8 @@
   {:el :class
    :id :overarch.data-model/rel
    :name "rel"
-   :desc "A generic relation between two elements of the model. A rel can be used in the architecture model and the concept model."
+   :desc "A generic relation between two elements of the model.
+          A rel can be used in the architecture model and the concept model."
    :tags #{"architecture-model" "concept-model"}}
 
   ;;
@@ -276,7 +278,8 @@
   {:el :class
    :id :overarch.data-model/system
    :name "system"
-   :desc "A system relevant in the architecture. A system can be an external system, which is modelled as a black box
+   :desc "A system relevant in the architecture.
+          A system can be an external system, which is modelled as a black box
           or an internal system, a system under description, which is modelled as a compound element with all the containers of the system.
           A system can be used in the architecture model, the deployment model (external systems) and the use case model (external systems)."
    :tags #{"architecture-model" "deployment-model" "use-case-model"}}
@@ -292,8 +295,7 @@
   {:el :class
    :id :overarch.data-model/component
    :name "component"
-   :desc "A compontent is a part of a container and describes a (logical) building
-          block of a container (e.g. a module or a layer)."
+   :desc "A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer)."
    :tags #{"architecture-model"}}
 
   {:el :class
@@ -305,8 +307,7 @@
   {:el :class
    :id :overarch.data-model/response
    :name "response"
-   :desc "A response to a synchronous request between two elements of the
-          architecture."
+   :desc "A response to a synchronous request between two elements of the architecture."
    :tags #{"architecture-model"}}
 
   {:el :class
@@ -318,22 +319,19 @@
   {:el :class
    :id :overarch.data-model/send
    :name "send"
-   :desc "An asynchronous message or command between two elements of the
-          architecture (point-to-point)."
+   :desc "An asynchronous message or command between two elements of the architecture (point-to-point)."
    :tags #{"architecture-model"}}
 
   {:el :class
    :id :overarch.data-model/publish
    :name "publish"
-   :desc "Publishing of asynchronous event between two elements of the
-          architecture (receiver should be a broker or topic)."
+   :desc "Publishing of asynchronous events between two elements of the architecture (receiver should be a broker or topic)."
    :tags #{"architecture-model"}}
 
   {:el :class
    :id :overarch.data-model/subscribe
    :name "subscribe"
-   :desc "Subscription of asynchronous events between two elements of the
-          architecture (sender should be a broker or topic)."
+   :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."
    :tags #{"architecture-model"}}
 
   ;; Architecture Model Relations
@@ -733,25 +731,29 @@
   {:el :class
    :id :overarch.data-model/package
    :name "package"
-   :desc "A package in the class model. Packages provide a hierarchical structure for the organisation of the elements of the class model."
+   :desc "A package in the class model.
+          Packages provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/namespace
    :name "namespace"
-   :desc "A namespace in the class model. Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
+   :desc "A namespace in the class model.
+          Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/interface
    :name "interface"
-   :desc "An interface in the class model. An interface defines related methods."
+   :desc "An interface in the class model.
+          An interface defines related methods."
    :tags #{"class-model"}}
 
   {:el :class
    :id :overarch.data-model/protocol
    :name "protocol"
-   :desc "A protocol in the class model. A protocol defines related functions."
+   :desc "A protocol in the class model.
+          A protocol defines related functions."
    :tags #{"class-model"}}
 
   {:el :class
@@ -1079,14 +1081,14 @@
    :id :overarch.data-model/state-machine-model-node
    :abstract true
    :name "state-machine-model-node"
-   :desc "A node in the state machine model of overarch."
+   :desc "A node in the state machine model."
    :tags #{"state-machine-model"}}
 
   {:el :class
    :id :overarch.data-model/state-machine-model-relation
    :abstract true
    :name "state-machine-model-relation"
-   :desc "A relation in the state machine model of overarch."
+   :desc "A relation in the state machine model."
    :tags #{"state-machine-model"}}
 
   {:el :class
@@ -1140,6 +1142,7 @@
    :tags #{"state-machine-model"}
    :ct #{{:el :field
           :name "condition"
+          :desc "The condition of the choice state."
           :type "string"}}}
 
   {:el :class
@@ -1157,8 +1160,7 @@
   {:el :class
    :id :overarch.data-model/transition
    :name "transition"
-   :desc "A transition from on state to another in effect of an event in
-          the state machine."
+   :desc "A transition from on state to another in effect of an event in the state machine."
    :tags #{"state-machine-model"}}
 
   ;; State Machine Relations
@@ -1653,8 +1655,7 @@
   {:el :class
    :id :overarch.data-model/use-case-view
    :name "use-case-view"
-   :desc "The use case view is a behavioural view of the (functional)
-          requirements. 
+   :desc "The use case view is a behavioural view of the (functional) requirements. 
           It shows the actors of the system and the use cases to provide
           an overview of the functionality of the system under description."
    :tags #{"view-model"}}
