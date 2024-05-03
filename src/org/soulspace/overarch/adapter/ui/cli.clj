@@ -304,19 +304,19 @@
 
 )
 (comment "CLI calls"
-  (-main "--debug")
-  (-main "--debug" "--render-format" "plantuml")
-  (-main "--debug" "--render-format" "markdown")
-  (-main "--debug" "--render-format" "graphviz")
-  (-main "--debug" "--render-format" "all")
-  (-main "--debug" "--export-format" "json")
-  (-main "--model-dir" "models/banking" "--export-format" "structurizr")
-  (-main "--model-info")
-  (-main "--plantuml-list-sprites")
-  (-main "--help") ; ends REPL session
+         (-main "--debug")
+         (-main "--debug" "--render-format" "plantuml")
+         (-main "--debug" "--render-format" "markdown")
+         (-main "--debug" "--render-format" "graphviz")
+         (-main "--debug" "--render-format" "all")
+         (-main "--debug" "--export-format" "json")
+         (-main "--model-dir" "models/banking" "--export-format" "structurizr")
+         (-main "--model-info")
+         (-main "--plantuml-list-sprites")
+         (-main "--help") ; ends REPL session
 
-  ; overarch development
-  (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
-  (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
-  (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
-  )
+         ; overarch development
+         (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
+         (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
+         (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
+         )

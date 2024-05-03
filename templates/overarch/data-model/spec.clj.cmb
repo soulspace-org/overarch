@@ -5,13 +5,15 @@
   (:require [clojure.spec.alpha :as s]
             [expound.alpha :as expound]))
 
-; spec for keys
+;; Spec for keys
 <%(doseq [c (el/collect-fields e)]%>
+; <%= (:desc c) %>
 (s/def :overarch/<%=(:name c)%> <%=(:type c)%>?)
 <%)%>
 
-; spec for model elements
+;; Spec for model elements
 <%(doseq [c (filter #(= :class (:el %)) e)]%>
+; <%= (first (str/split-lines (:desc c))) %>
 (s/def :overarch/<%=(:name c)%>
   (s/keys :req-un []
           :opt-un []))

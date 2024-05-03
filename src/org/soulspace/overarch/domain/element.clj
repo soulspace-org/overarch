@@ -788,8 +788,7 @@
 (defn technologies
   "Returns a vector of the technologies used by the element `e`."
   [e]
-  (fns/tokenize-string (get e :tech ""))
-  )
+  (fns/tokenize-string (get e :tech "")))
 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
@@ -805,8 +804,7 @@
        (map set)
        (apply set/union)
        (filter #(= :field (:el %)))
-       (sort-by :name)
-       ))
+       (sort-by :name)))
 
 ;;
 ;; Criteria Predicates
