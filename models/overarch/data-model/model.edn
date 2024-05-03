@@ -675,7 +675,7 @@
    :name "hierarchy-relation"
    :desc "A relation that establishes a type hierarchy."
    :tags #{"class-model" "type-hierarchy"}}
-  
+
   {:el :class
    :id :overarch.data-model/associative-relation
    :abstract true
@@ -795,6 +795,28 @@
           :optional true
           :desc "The visibility of the field."}}}
 
+  {:el :class
+   :id :overarch.data-model/function
+   :name "function"
+   :desc "A function in the class model."
+   :tags #{"class-model"}
+   :ct #{{:el :field
+          :name "visibility"
+          :type "keyword"
+          :optional true
+          :desc "The visibility of the method."}
+         {:el :field
+          :name "type"
+          :type "string"
+          :optional true
+          :desc "The return type of the method."}
+         {:el :field
+          :name "optional"
+          :type "boolean"
+          :optional true
+          :desc "When true the return value can be null/nil. Default is false."}}}
+  
+  ; TODO add function relations
   {:el :class
    :id :overarch.data-model/method
    :name "method"
