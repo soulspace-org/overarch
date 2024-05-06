@@ -141,12 +141,12 @@
   "Reports warnings about the model and views."
   [model options]
   {:unresolved-refs-in-views (al/check-views model)
-   :unresolved-refs-in-relations (al/check-relations model)
+   :unresolved-refs-in-relations (al/check-relations model)})
    ;:unnamespaced (al/unnamespaced-elements (repo/elements))
    ;:unidentifiable (al/unidentifiable-elements (repo/elements))
    ;:unnamed (al/unnamed-elements (repo/elements))
    ;:unrelated (al/unrelated-nodes (repo/elements))
-   })
+   
 
 (defn model-info
   "Reports information about the model and views."
@@ -159,8 +159,8 @@
    :views-types     (al/count-views (repo/views))
    :namespaces      (al/count-namespaces (repo/model-elements))
    :external        (al/count-external (repo/model-elements))
-   :synthetic       (al/count-synthetic (repo/model-elements))
-   })
+   :synthetic       (al/count-synthetic (repo/model-elements))})
+   
 
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -251,18 +251,20 @@
       ; handle options and generate the requested outputs
       (handle options))))
 
-(comment
+(comment ; State
   (update-and-dispatch! {:model-dir "models"
                          :export-dir "export"
                          :render-dir "export"
                          :render-format :plantuml
                          :debug true})
-
+  
   (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
-
   (repo/update-state! "models")
-)
-(comment "Model analytics"
+  ;
+  )
+
+
+(comment ; Model analytics 
   (al/count-namespaces (concat (repo/nodes) (repo/relations)))
   (al/count-elements (concat (repo/nodes) (repo/relations)))
   (al/count-nodes (repo/nodes))
@@ -284,9 +286,11 @@
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
   (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
-)
+  ;
+  )
 
-(comment "Selection"  
+
+(comment ; Selection  
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
@@ -301,9 +305,10 @@
              (model/filter-xf @repo/state {:namespace "overarch.data-model"})
              (repo/model-elements))
        (el/collect-fields))
+  ;
+  )
 
-)
-(comment "CLI calls"
+(comment ; CLI calls
          (-main "--debug")
          (-main "--debug" "--render-format" "plantuml")
          (-main "--debug" "--render-format" "markdown")
@@ -319,4 +324,6 @@
          (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
          (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
          (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
-         )
+  ;
+  )
+         
