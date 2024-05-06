@@ -851,6 +851,7 @@
   (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
 
 (defn id-check?
+  "Returns true if the check for id on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :id false)))
 
@@ -876,6 +877,7 @@
   )
 
 (defn subtype-check?
+  "Returns true if the check for subtype on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :subtype false)))
 
@@ -888,10 +890,12 @@
   (contains? v (:subtype e)))
 
 (defn external-check?
+  "Returns true if the check for external on `e` equals the boolean value `v`"
   [v e]
   (= v (boolean (external? e))))
 
 (defn name-check?
+  "Returns true if the check for name on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :name false)))
 
@@ -904,10 +908,12 @@
   (str/starts-with? (:name e) v))
 
 (defn desc-check?
+  "Returns true if the check for desc on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :desc false)))
 
 (defn tech-check?
+  "Returns true if the check for tech on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :tech false)))
 
@@ -924,6 +930,7 @@
   (set/subset? (set v) (set (technologies e))))
 
 (defn tags-check?
+  "Returns true if the check for tags on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :tags false)))
 
@@ -940,6 +947,7 @@
   (set/subset? (set v) (:tags e)))
 
 (defn children-check?
+  "Returns true if the check for children of `e` equals the boolean value `v`"
   [v e]
   (= v (empty? (:ct e))))
 

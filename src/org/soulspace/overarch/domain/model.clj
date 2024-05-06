@@ -367,40 +367,48 @@
 ;;;
 ;;; filtering element colletions by criteria
 ;;;
+
 ;; TODO add docstrings
 ;; TODO add criteria for model type (architecture, etc.)
 ;;      select nodes of model category
 ;;      select relations of category if both nodes are of category
 ;;      (rel is in multiple categories)
 (defn child?
+  "Returns true, if `e` is a child of the node with id `v` in the `model`."
   [model v e]
   (= v (boolean ((:id->parent model) (:id e)))))
 
 (defn refers-check?
+  "Returns true if the check for `e` as a referrer equals the boolean value `v`"
   [model v e]
   (= v (boolean ((:referrer-id->relations model) (:id e)))))
 
 (defn referred-check?
+  "Returns true if the check for `e` as referred to equals the boolean value `v`"
   [model v e]
   (= v (boolean ((:referred-id->relations model) (:id e)))))
 
 (defn refers-to?
+  "Returns true, if the node with id `v` refers to `e` in the `model`."
   [model v e]
   (contains? (into #{}
                    (map :to ((:referrer-id->relations model) (:id e))))
              v))
 
 (defn referred-by?
+  "Returns true, if `e` is referred by the node with id `v` in the `model`."
   [model v e]
   (contains? (into #{}
                    (map :from ((:referred-id->relations model) (:id e))))
              v))
 
 (defn descendant-of?
+  "Returns true, if `e` is a descendant of the node with id `v` in the `model`."
   [model v e]
   (contains? (el/descendant-nodes (resolve-id model v)) e))
 
 (defn ancestor-of?
+  "Returns true, if `e` is an ancestor of the node with id `v` in the `model`."
   [model v e]
   (contains? (ancestor-nodes model (resolve-id model v)) e))
 

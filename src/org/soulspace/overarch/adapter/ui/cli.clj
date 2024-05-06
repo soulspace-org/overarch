@@ -289,7 +289,6 @@
   ;
   )
 
-
 (comment ; Selection  
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
