@@ -1,6 +1,10 @@
 ;;;
 ;;; Element Categories 
 ;;;
-<%%>
+(ns overarch.categories
+    (:require [clojure.set :as set]))
 
-<%%>
+<%(doseq [m (:overarch-models ctx)]%>
+;; Categories for <%= m %>
+
+<%)%>

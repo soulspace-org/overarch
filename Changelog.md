@@ -11,6 +11,7 @@ Version 0.17.0
 * added and enhanced clojure project templates
 * added overarch specific templates
 * updated overarch data-model and documentation
+* updated dependencies
 
 
 Version 0.16.0

@@ -3,8 +3,8 @@
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.11.1"]
-                 [org.clojure/data.json "2.4.0"]
+  :dependencies [[org.clojure/clojure "1.11.3"]
+                 [org.clojure/data.json "2.5.0"]
                  [org.clojure/tools.cli "1.0.206"]
                  [com.cnuernber/charred "1.028"]
                  [com.nextjournal/beholder "1.0.2"]
