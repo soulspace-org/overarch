@@ -827,6 +827,7 @@
 
 ;; TODO add docstrings
 (defn from-namespace?
+  "Returns true, if `v`is the namespace of the element referenced by the from id of relation `e`."
   [v e]
   (= (name v) (namespace (get e :from :no-namespace/no-name))))
 
@@ -839,6 +840,7 @@
   (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
 
 (defn to-namespace?
+  "Returns true, if `v`is the namespace of the element referenced by the to id of relation `e`."
   [v e]
   (= (name v) (namespace (get e :to :no-namespace/no-name))))
 
@@ -900,10 +902,12 @@
   (= v (get e :name false)))
 
 (defn name?
+  "Returns true if the name of `e` equals `v`."
   [v e]
   (= v (:name e)))
 
 (defn name-prefix?
+  "Returns true if the name of `e` starts with `v`."
   [v e]
   (str/starts-with? (:name e) v))
 
@@ -918,14 +922,17 @@
   (= v (get e :tech false)))
 
 (defn tech?
+  "Returns true if `v` is a technology of `e`."
   [v e]
   (contains? (set (technologies e)) v))
 
 (defn techs?
+  "Returns true if any of the technologies in `v` are technologies of `e`."
   [v e]
   (seq (set/intersection v (set (technologies e)))))
 
 (defn all-techs?
+  "Returns true if all of the technologies in `v` are technologies of `e`."
   [v e]
   (set/subset? (set v) (set (technologies e))))
 
@@ -935,14 +942,17 @@
   (= v (get e :tags false)))
 
 (defn tag?
+  "Returns true if `v` is a tag of `e`."
   [v e]
   (contains? (:tags e) v))
 
 (defn tags?
+  "Returns true if any of the tags in `v` are tags of `e`."
   [v e]
   (seq (set/intersection v (:tags e))))
 
 (defn all-tags?
+  "Returns true if all of the tags in `v` are tags of `e`."
   [v e]
   (set/subset? (set v) (:tags e)))
 
@@ -955,8 +965,6 @@
   "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.
   Useful to check for custom keys."
   [[k v] e]
-  (println "k:" k "v:" v "e:" e)
-  (println "lookup:" (get e (keyword k) false))
   (= v (boolean (get e (keyword k) false))))
 
 (defn key?
