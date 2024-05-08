@@ -322,6 +322,12 @@ A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
+### Deployment model relations
+relation type | description
+--------------|------------
+:link         | A link between two nodes of the deployment model, e.g. two virtual networks
+:deployed-to  | A deployment relation between a container and a node in the deployment model
+:rel
 
 ## Concept Model
 
