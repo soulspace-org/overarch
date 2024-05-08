@@ -1,55 +1,19 @@
 ;;;;
-;;;; Generator Config
+;;;; Generation Config
 ;;;;
-[
- ;; Reports
- {:selection {:el :system :external? true}
-  :template "reports/node-report.md.cmb"
-  :title "External Systems Report"
+[;; Reports
+ {:selection {:namespace-prefix "banking"}
+  :template "reports/element-report.md.cmb"
+  :title "Banking Model Report"
   :base-namespace "reports"
-  :base-name "ext-systems-report"
+  :base-name "banking-report"
   :extension "md"}
 
- ;; Projects
- {:selection {:el :container
-              :tech "Clojure"}
-  :template "projects/clojure/gitignore.cmb"
-  :per-element true
-  :id-as-namespace true
-;  :base-namespace "tmp"
-  :base-name ""
-  :extension "gitignore"}
- 
- {:selection {:el :container
-              :tech "Clojure"}
-  :engine :comb
-  :template "projects/README.md.cmb"
-  :per-element true
-  :id-as-namespace true
-;  :base-namespace "tmp"
-  :base-name "README"
-  :extension "md"
-  :protected-area "PA"}
-
- {:selection {:el :container
-              :tech "Clojure"}
-  :template "projects/clojure/project.clj.cmb"
-  :per-element true
-  :id-as-namespace true
-;  :base-namespace "tmp"
-  :base-name "project"
-  :extension "clj"}
- 
- {:selection {:el :container
-              :tech "Clojure"}
-  :engine :comb
-  :template "projects/README.md.cmb"
-  :per-element true
-  :id-as-namespace true
-;  :base-namespace "tmp"
-  :base-name "README"
-  :extension "md"
-  :protected-area "PA"}
- 
+ {:selection {:namespace-prefix "overarch"}
+  :template "reports/element-report.md.cmb"
+  :title "Overarch Model Report"
+  :base-namespace "reports"
+  :base-name "overarch-report"
+  :extension "md"}
  ;
  ]

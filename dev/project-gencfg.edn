@@ -1,0 +1,29 @@
+[
+  ;; Projects
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/clojure/gitignore.cmb"
+  :per-element true
+  :id-as-namespace true
+  :base-name ""
+  :extension "gitignore"}
+
+ {:selection {:el :container
+              :tech "Clojure"}
+  :engine :comb
+  :template "projects/README.md.cmb"
+  :per-element true
+  :id-as-namespace true
+  :base-name "README"
+  :extension "md"
+  :protected-area "PA"}
+
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/clojure/project.clj.cmb"
+  :per-element true
+  :id-as-namespace true
+  :base-name "project"
+  :extension "clj"}
+
+]
