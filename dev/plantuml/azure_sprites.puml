@@ -26,7 +26,6 @@
 '!include <azure/Storage/all>
 '!include <azure/Web/all>
 
-
 listsprites
 
 @enduml
