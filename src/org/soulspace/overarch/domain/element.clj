@@ -797,15 +797,10 @@
 
 (defn difference-by-id
   [base-set & sets]
-  (println "base-set" base-set)
-  (println "sets" sets)
   (let [base-map (id->element-map base-set)
         base-ids (into #{} (keys base-map))
-        _ (println "base-ids" base-ids)
         diff-ids (into #{} (mapcat #(map :id %) sets))
-        _ (println "diff-ids" diff-ids)
-        remaining-ids (set/difference base-ids diff-ids)
-        _ (println "remaining-ids" remaining-ids)]
+        remaining-ids (set/difference base-ids diff-ids)]
     (into #{} (map base-map remaining-ids))))
 
 (defn technologies
