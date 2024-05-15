@@ -2,7 +2,8 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.model-test :as model-test]))
+            [org.soulspace.overarch.domain.model-test :as model-test]
+            [org.soulspace.overarch.domain.view :as view]))
 
 (deftest compile-test
   (testing "Compilation"
@@ -48,7 +49,7 @@
            :to :test/sys2
            :name "calls"
            :style :test/dashed-rel}]}
-    
+
     {:el :theme
      :id :test/test-theme1
      :styles #{{:id :test/dashed-rel
@@ -98,11 +99,220 @@
 (deftest styles-spec-test
   ; TODO 
   (testing "styles-spec-test"
-    (is (= 1 1)))) 
+    (is (= 1 1))))
+
+
+(def c4-model1 (model/build-model
+                #{{:el :person
+                   :id :test/user1
+                   :name "User 1"}
+                  {:el :system
+                   :id :test/ext-system1
+                   :external true
+                   :name "External System 1"}
+                  {:el :system
+                   :id :test/system1
+                   :name "Test System"
+                   :ct #{{:el :container
+                          :id :test/container1
+                          :name "Test Container 1"
+                          :ct #{{:el :component
+                                 :id :test/component11
+                                 :name "Test Component 11"}
+                                {:el :component
+                                 :id :test/component12
+                                 :name "Test Component 12"}}}
+                         {:el :container
+                          :id :test/container-db1
+                          :subtype :database
+                          :name "Test DB Container 1"}
+                         {:el :container
+                          :id :test/container-queue1
+                          :subtype :queue
+                          :name "Test Queue Container 1"}}}
+                  {:el :rel
+                   :id :test/user1-uses-system1
+                   :from :test/user1
+                   :to :test/system1
+                   :name "uses"}
+                  {:el :rel
+                   :id :test/system1-calls-ext-system1
+                   :from :test/system1
+                   :to :test/ext-system1
+                   :name "calls"}
+                  {:el :rel
+                   :id :test/user1-uses-container1
+                   :from :test/user1
+                   :to :test/container1
+                   :name "uses"}
+                  {:el :rel
+                   :id :test/container1-calls-ext-system1
+                   :from :test/container1
+                   :to :test/ext-system1
+                   :name "calls"}
+                  {:el :rel
+                   :id :test/container1-stores-in-container-db1
+                   :from :test/container1
+                   :to :test/container-db1
+                   :name "stores in"}
+                  {:el :rel
+                   :id :test/container1-sends-to-container-queue1
+                   :from :test/container1
+                   :to :test/container-queue1
+                   :name "sends to"}}))
+
+
+(deftest referenced-elements-test
+  (testing "referenced-elements Refs Only"
+    (is (= 5 (count (referenced-elements c4-model1
+                                         {:el :context-view
+                                          :id :test/c4-context-view-refs-only
+                                          :title "Context View Refs Only"
+                                          :ct [{:ref :test/system1-calls-ext-system1}
+                                               {:ref :test/user1}
+                                               {:ref :test/user1-uses-system1}
+                                               {:ref :test/ext-system1}
+                                               {:ref :test/system1}]})))))
+  (testing "referenced-elements Selection Only"
+    (is (= 0 (count (referenced-elements c4-model1
+                                         {:el :context-view
+                                          :id :test/c4-context-view-selection-only
+                                          :title "Context View Selection Only"
+                                          :spec {:selection {:namespace "test"}}
+                                          :ct []}))))
+    ;
+    ))
+
+(deftest selected-elements-test
+  (testing "selected-elements Refs Only"
+    (is (= 0 (count (selected-elements c4-model1
+                                       {:el :context-view
+                                        :id :test/c4-context-view-refs-only
+                                        :title "Context View Refs Only"
+                                        :ct [{:ref :test/system1-calls-ext-system1}
+                                             {:ref :test/user1}
+                                             {:ref :test/user1-uses-system1}
+                                             {:ref :test/ext-system1}
+                                             {:ref :test/system1}]})))))
+  (testing "Selection Only"
+    (is (= 14 (count (selected-elements c4-model1
+                                        {:el :context-view
+                                         :id :test/c4-context-view-selection-only
+                                         :title "Context View Selection Only"
+                                         :spec {:selection {:namespace "test"}}
+                                         :ct []}))))
+    (is (= 2 (count (selected-elements c4-model1
+                                       {:el :context-view
+                                        :id :test/c4-context-view-selection-only
+                                        :title "Context View Selection Only"
+                                        :spec {:selection {:el :system}}
+                                        :ct []}))))
+    ;
+    ))
+
+(deftest view-elements-test
+  (testing "Refs Only"
+    (is (= 5 (count (view-elements c4-model1
+                                   {:el :context-view
+                                    :id :test/c4-context-view-refs-only
+                                    :title "Context View Refs Only"
+                                    :ct [{:ref :test/system1-calls-ext-system1}
+                                         {:ref :test/user1}
+                                         {:ref :test/user1-uses-system1}
+                                         {:ref :test/ext-system1}
+                                         {:ref :test/system1}]})))))
+  (testing "Selection Only"
+    (is (= 5 (count (view-elements c4-model1
+                                    {:el :context-view
+                                     :id :test/c4-context-view-selection-only
+                                     :title "Context View Selection Only"
+                                     :spec {:selection {:namespace "test"}}
+                                     :ct []}))))
+    (is (= 2 (count (view-elements c4-model1
+                                   {:el :context-view
+                                    :id :test/c4-context-view-selection-only
+                                    :title "Context View Selection Only"
+                                    :spec {:selection {:el :system}}
+                                    :ct []})))))
+  (testing "Refs and Selection"
+    ;
+    )
+  (testing "Refs and Related"
+    (is (= 5 (count (view-elements c4-model1
+                                   {:el :context-view
+                                    :id :test/c4-context-view-refs-only
+                                    :spec {:include :related}
+                                    :title "Context View Refs Only"
+                                    :ct [{:ref :test/user1-uses-system1}
+                                         {:ref :test/system1-calls-ext-system1}]}))))
+    ;
+    )
+  (testing "Refs and Relations"
+    (is (= 5 (count (view-elements c4-model1
+                                   {:el :context-view
+                                    :id :test/c4-context-view-refs-only
+                                    :spec {:include :relations}
+                                    :title "Context View Refs Only"
+                                    :ct [{:ref :test/user1}
+                                         {:ref :test/ext-system1}
+                                         {:ref :test/system1}]}))))
+    ;
+    )
+  (testing "Selection and Related"
+    ;
+    )
+  (testing "Selection and Relations"
+    ;
+    )
+  ;
+  )
+
+(deftest root-elements-test
+  (testing "root-elements"
+    (is (= #{{:el :rel :id :test/system1-calls-ext-system1 :from :test/system1 :to :test/ext-system1 :name "calls"}
+             {:el :person :id :test/user1 :name "User 1"}
+             {:el :rel :id :test/user1-uses-system1, :from :test/user1, :to :test/system1, :name "uses"}
+             {:el :system :id :test/ext-system1 :external true :name "External System 1"}
+             {:el :system :id :test/system1 :name "Test System"
+              :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                     :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                           {:el :component :id :test/component11 :name "Test Component 11"}}}
+                    {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                    {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}}
+           (root-elements #{{:el :rel :id :test/system1-calls-ext-system1 :from :test/system1 :to :test/ext-system1 :name "calls"}
+                            {:el :person :id :test/user1 :name "User 1"}
+                            {:el :rel :id :test/user1-uses-system1, :from :test/user1, :to :test/system1, :name "uses"}
+                            {:el :system :id :test/ext-system1 :external true :name "External System 1"}
+                            {:el :system :id :test/system1 :name "Test System"
+                             :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                                    :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                          {:el :component :id :test/component11 :name "Test Component 11"}}}
+                                   {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                                   {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}})))
+    (is (= #{{:el :system :id :test/system1 :name "Test System"
+            :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                   :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                         {:el :component :id :test/component11 :name "Test Component 11"}}}
+                  {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                  {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}}
+           (root-elements #{{:el :system :id :test/system1 :name "Test System"
+                             :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                                    :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                          {:el :component :id :test/component11 :name "Test Component 11"}}}
+                                   {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                                   {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}
+                            {:el :container :id :test/container1 :name "Test Container 1"
+                             :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                   {:el :component :id :test/component11 :name "Test Component 11"}}}
+                            {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                            {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}
+                            {:el :component :id :test/component12 :name "Test Component 12"}
+                            {:el :component :id :test/component11 :name "Test Component 11"}})))))
+
 
 (comment
   (:views styles-model)
   (:themes styles-model)
   (styles-spec styles-model ((:id->element styles-model) :test/styles-context-view))
   (styles-spec styles-model ((:id->element styles-model) :test/theme-context-view))
-  )
+  (into #{} (model/filter-xf c4-model1 {:el :system}) (concat (model/nodes c4-model1) (model/relations c4-model1))))

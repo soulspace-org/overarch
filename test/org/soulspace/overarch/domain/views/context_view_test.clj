@@ -142,7 +142,7 @@
         2 (count (referenced-elements c4-1 context-view1-related))
         3 (count (referenced-elements c4-1 context-view1-relations))))))
 
-(deftest rendered-elements-test
+#_(deftest rendered-elements-test
   (let [c4-1 model-test/c4-model1]
     ; TODO check
     (testing "rendered-elements for context view"
@@ -154,7 +154,7 @@
 (comment
   (def c4-1 model-test/c4-model1)
   (referenced-elements c4-1 context-view1)
-  (rendered-elements c4-1 context-view1)
+  ;(rendered-elements c4-1 context-view1)
 
   (elements-to-render c4-1 context-view1)
   (elements-to-render c4-1 context-view1 (:ct context-view1))

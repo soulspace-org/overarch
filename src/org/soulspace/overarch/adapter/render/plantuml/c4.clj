@@ -2,10 +2,11 @@
   "Functions to render PlantUML C4 diagrams for architecture and deployment views."
   (:require [clojure.string :as str]
             [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as render]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.util.functions :as fns]))
 
 (def c4-element->method
   "Map from element type to PlantUML C4 method."
@@ -140,11 +141,17 @@
 (defmethod puml/render-c4-element :node
   [model view indent e]
   (let [deployed (->> model
-                      ((:id e) (:referred-id->relations model))
+                      (:referred-id->relations)
+                      ((:id e))
+                      (fns/data-tapper "referred")
                       (filter (partial el/el? :deployed-to))
-                      (map :from))
+                      (fns/data-tapper "deployed to")
+                      (map :from)
+                      (map (partial model/resolve-id model))
+                      (fns/data-tapper "from"))
         children (concat (view/elements-to-render model view (:ct e))
-                         (view/elements-to-render model view deployed))]
+                         (view/elements-to-render model view deployed))
+        _ (fns/data-tapper "children" children)]
     (if (seq children)
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
@@ -332,14 +339,17 @@
 
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
-  (let [children (view/elements-to-render model view)]
-    ;(user/data-tapper "resolved" children)
+  ; TODO top level elements
+  (let [elements (view/view-elements model view)
+        nodes (view/root-elements (filter el/model-node? elements))
+        relations (filter el/model-relation? elements)
+        rendered (view/elements-to-render model view (concat nodes relations))]
     (flatten [(str "@startuml " (name (:id view)))
               (render-c4-imports view)
               (puml/render-sprite-imports model view)
               (render-c4-layout model view)
               (puml/render-title view)
-              (map #(puml/render-c4-element model view 0 %) children)
+              (map #(puml/render-c4-element model view 0 %) rendered)
               (render-c4-legend view)
               "@enduml"])))
 

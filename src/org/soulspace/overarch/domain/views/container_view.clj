@@ -9,7 +9,7 @@
   {:system :system-boundary})
 
 (defn as-boundary?
-  "Returns the boundary element, if the element should be rendered
+  "Returns the boundary element, if the element `e` should be rendered
    as a boundary for this view type, false otherwise."
   [e]
   (when (seq e)
@@ -20,7 +20,7 @@
         (el/internal? e)))))
 
 (defn render-model-node?
-  "Returns true if the node `e` is rendered in the container view."
+  "Returns true if the `model` node `e` is rendered in the container `view`."
   [model view e]
   (let [p (model/parent model e)]
    (and (contains? el/container-view-element-types (:el e))
@@ -29,7 +29,7 @@
             ))))
 
 (defn render-model-relation?
-  "Returns true if the relation `e` is rendered in the container view."
+  "Returns true if the `model` relation `e` is rendered in the container `view`."
   [model view e]
   (let [from (model/model-element model (:from e))
         to (model/model-element model (:to e))]
@@ -37,8 +37,8 @@
          (render-model-node? model view from)
          (render-model-node? model view to)
          ; exclude system boundaries
-         (or (not (as-boundary? from))
-             (not (as-boundary? to))))))
+         (and (not (as-boundary? from))
+              (not (as-boundary? to))))))
 
 (defmethod view/render-model-element? :container-view
   [model view e]

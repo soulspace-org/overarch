@@ -1,7 +1,7 @@
 (ns org.soulspace.overarch.domain.views.concept-view-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.views.concept-view :refer :all] 
+            [org.soulspace.overarch.domain.views.concept-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 
@@ -18,8 +18,8 @@
       true {:el :person}
       true {:el :system}
       true {:el :container}))
-  
-  (testing "render-model-element? false" 
+
+  (testing "render-model-element? false"
     (are [x y] (= x (boolean (render-model-element? test-model {:el :concept-view} y)))
       false {:el :system-boundary}
       false {:el :container-boundary}
@@ -94,7 +94,7 @@
         2 (count (referenced-elements concept1 concept-view1-related))
         3 (count (referenced-elements concept1 concept-view1-relations))))))
 
-(deftest rendered-elements-test
+#_(deftest rendered-elements-test
   (let [concept1 model-test/concept-model1]
     (testing "rendered-elements for concept view"
       (are [x y] (= x y)
@@ -106,5 +106,4 @@
   (def concept1 model-test/concept-model1)
   (referenced-elements concept1 concept-view1)
   (referenced-elements concept1 concept-view1-related)
-  (referenced-elements concept1 concept-view1-relations)
-)
+  (referenced-elements concept1 concept-view1-relations))

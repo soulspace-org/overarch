@@ -303,6 +303,4 @@
   [model format options]
   (doseq [view (model/views model)]
     (when (plantuml-view? view)
-      (rndr/render-view model format options
-                        (assoc view :ct (view/specified-elements model view)) ; TODO do preprocessing once in build phase?
-                        ))))
+      (rndr/render-view model format options view))))
