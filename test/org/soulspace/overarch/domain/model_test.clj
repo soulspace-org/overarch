@@ -126,9 +126,8 @@
 (comment
   :test/user1
   c4-model1
-  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}}))
-
-
+  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
+  )
 
 (def ancestor-input
   #{{:el :system

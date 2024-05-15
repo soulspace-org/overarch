@@ -1181,7 +1181,7 @@
   (testing "generate-node-id"
     (are [x y] (= x (generate-node-id y {:el :class :id :test/class1 :name "TestClass1"}))
       :test/class1-name-field {:el :field :name "name"}
-      :test/class1-getname-method {:el :method :name "getName"}))) 
+      :test/class1-getname-method {:el :method :name "getName"})))
 
 (deftest element-namespace-test
   (testing "element-namespace"
@@ -1258,149 +1258,160 @@
       false descendant-input)))
 
 (deftest union-by-id-test
-      (testing "union-by-id"
-        (is (= #{{:id :x/b, :el :a}
-                {:id :x/a, :el :a, :dir :up}}
-               (union-by-id #{{:id :x/a :el :a :dir :down}
-                              {:id :x/b :el :a}}
-                            #{{:id :x/a :el :a :dir :up}}))))) 
+  (testing "union-by-id"
+    (is (= #{{:id :x/b, :el :a}
+             {:id :x/c :el :m}
+             {:id :x/a, :el :a, :dir :up}}
+           (union-by-id #{{:id :x/a :el :a :dir :down}
+                          {:id :x/b :el :a}}
+                        #{{:id :x/a :el :a :dir :up}
+                          {:id :x/c :el :m}})))))
 
-(deftest root-nodes-test
-      (testing "root-nodes"
-        (are [x y] (= x (root-nodes y))
-          #{{:el :person
-             :id :org.soulspace.external/person
-             :external true
-             :name "External Person"}
-            {:el :system
-             :id :org.soulspace.external/system1
-             :external true
-             :name "External System 1"}}
-          #{{:el :person
-             :id :org.soulspace.external/person
-             :external true
-             :name "External Person"}
-            {:el :system
-             :id :org.soulspace.external/system1
-             :external true
-             :name "External System 1"}}
+(deftest difference-by-id-test
+  (testing "difference-by-id"
+    (is (= #{{:id :x/b :el :a} {:id :x/d :el :a :dir :left}}
+           (difference-by-id #{{:id :x/a :el :a :dir :down}
+                               {:id :x/b :el :a}
+                               {:id :x/c :el :m}
+                               {:id :x/d :el :a :dir :left}}
+                             #{{:id :x/a :el :a :dir :up}} #{{:id :x/c :el :m}})))))
 
-          #{{:el :system
-             :id :org.soulspace.internal/system
-             :name "Internal System"
-             :ct #{{:el :container
-                    :id :org.soulspace.internal.system/container1
-                    :name "Container1"
-                    :ct #{{:el :component
-                           :id :org.soulspace.internal.system.container1/component1
-                           :name "Component1"}}}
-                   {:el :container
-                    :id :org.soulspace.internal.system/container1-ui
-                    :name "Container1 UI"}
-                   {:el :container
-                    :id :org.soulspace.internal.system/container1-db
-                    :subtype :database
-                    :name "Container1 DB"}}}}
-          #{{:el :system
-             :id :org.soulspace.internal/system
-             :name "Internal System"
-             :ct #{{:el :container
-                    :id :org.soulspace.internal.system/container1
-                    :name "Container1"
-                    :ct #{{:el :component
-                           :id :org.soulspace.internal.system.container1/component1
-                           :name "Component1"}}}
-                   {:el :container
-                    :id :org.soulspace.internal.system/container1-ui
-                    :name "Container1 UI"}
-                   {:el :container
-                    :id :org.soulspace.internal.system/container1-db
-                    :subtype :database
-                    :name "Container1 DB"}}}
-            {:el :container
-             :id :org.soulspace.internal.system/container1
-             :name "Container1"
-             :ct #{{:el :component
-                    :id :org.soulspace.internal.system.container1/component1
-                    :name "Component1"}}}
-            {:el :container
-             :id :org.soulspace.internal.system/container1-ui
-             :name "Container1 UI"}
-            {:el :container
-             :id :org.soulspace.internal.system/container1-db
-             :subtype :database
-             :name "Container1 DB"}}
-          
+  (deftest root-nodes-test
+    (testing "root-nodes"
+      (are [x y] (= x (root-nodes y))
+        #{{:el :person
+           :id :org.soulspace.external/person
+           :external true
+           :name "External Person"}
+          {:el :system
+           :id :org.soulspace.external/system1
+           :external true
+           :name "External System 1"}}
+        #{{:el :person
+           :id :org.soulspace.external/person
+           :external true
+           :name "External Person"}
+          {:el :system
+           :id :org.soulspace.external/system1
+           :external true
+           :name "External System 1"}}
+
+        #{{:el :system
+           :id :org.soulspace.internal/system
+           :name "Internal System"
+           :ct #{{:el :container
+                  :id :org.soulspace.internal.system/container1
+                  :name "Container1"
+                  :ct #{{:el :component
+                         :id :org.soulspace.internal.system.container1/component1
+                         :name "Component1"}}}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-ui
+                  :name "Container1 UI"}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-db
+                  :subtype :database
+                  :name "Container1 DB"}}}}
+        #{{:el :system
+           :id :org.soulspace.internal/system
+           :name "Internal System"
+           :ct #{{:el :container
+                  :id :org.soulspace.internal.system/container1
+                  :name "Container1"
+                  :ct #{{:el :component
+                         :id :org.soulspace.internal.system.container1/component1
+                         :name "Component1"}}}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-ui
+                  :name "Container1 UI"}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-db
+                  :subtype :database
+                  :name "Container1 DB"}}}
+          {:el :container
+           :id :org.soulspace.internal.system/container1
+           :name "Container1"
+           :ct #{{:el :component
+                  :id :org.soulspace.internal.system.container1/component1
+                  :name "Component1"}}}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-ui
+           :name "Container1 UI"}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-db
+           :subtype :database
+           :name "Container1 DB"}}
+
           ;
-          )))
+        )))
 
-(deftest all-nodes-test
-  (testing "root-nodes"
-    (are [x y] (= x (all-nodes y))
-      #{{:el :person
-         :id :org.soulspace.external/person
-         :external true
-         :name "External Person"}
-        {:el :system
-         :id :org.soulspace.external/system1
-         :external true
-         :name "External System 1"}}
-      #{{:el :person
-         :id :org.soulspace.external/person
-         :external true
-         :name "External Person"}
-        {:el :system
-         :id :org.soulspace.external/system1
-         :external true
-         :name "External System 1"}}
+  (deftest all-nodes-test
+    (testing "root-nodes"
+      (are [x y] (= x (all-nodes y))
+        #{{:el :person
+           :id :org.soulspace.external/person
+           :external true
+           :name "External Person"}
+          {:el :system
+           :id :org.soulspace.external/system1
+           :external true
+           :name "External System 1"}}
+        #{{:el :person
+           :id :org.soulspace.external/person
+           :external true
+           :name "External Person"}
+          {:el :system
+           :id :org.soulspace.external/system1
+           :external true
+           :name "External System 1"}}
 
-      #{{:el :system
-         :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"}}}
-        {:el :container
-         :id :org.soulspace.internal.system/container1
-         :name "Container1"
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}
-        {:el :container
-         :id :org.soulspace.internal.system/container1-ui
-         :name "Container1 UI"}
-        {:el :container
-         :id :org.soulspace.internal.system/container1-db
-         :subtype :database
-         :name "Container1 DB"}
-        {:el :component,
-         :id :org.soulspace.internal.system.container1/component1,
-         :name "Component1"}}
-      #{{:el :system
-         :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"}}}}
+        #{{:el :system
+           :id :org.soulspace.internal/system
+           :name "Internal System"
+           :ct #{{:el :container
+                  :id :org.soulspace.internal.system/container1
+                  :name "Container1"
+                  :ct #{{:el :component
+                         :id :org.soulspace.internal.system.container1/component1
+                         :name "Component1"}}}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-ui
+                  :name "Container1 UI"}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-db
+                  :subtype :database
+                  :name "Container1 DB"}}}
+          {:el :container
+           :id :org.soulspace.internal.system/container1
+           :name "Container1"
+           :ct #{{:el :component
+                  :id :org.soulspace.internal.system.container1/component1
+                  :name "Component1"}}}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-ui
+           :name "Container1 UI"}
+          {:el :container
+           :id :org.soulspace.internal.system/container1-db
+           :subtype :database
+           :name "Container1 DB"}
+          {:el :component,
+           :id :org.soulspace.internal.system.container1/component1,
+           :name "Component1"}}
+        #{{:el :system
+           :id :org.soulspace.internal/system
+           :name "Internal System"
+           :ct #{{:el :container
+                  :id :org.soulspace.internal.system/container1
+                  :name "Container1"
+                  :ct #{{:el :component
+                         :id :org.soulspace.internal.system.container1/component1
+                         :name "Component1"}}}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-ui
+                  :name "Container1 UI"}
+                 {:el :container
+                  :id :org.soulspace.internal.system/container1-db
+                  :subtype :database
+                  :name "Container1 DB"}}}}
       ;
-      )))
+        )))
