@@ -5,8 +5,8 @@ theme: uncover
 class: invert
 author: "Ludger Solbach"
 ---
-## overarch
-### data driven system modelling
+## Overarch
+### Data Driven System Modelling
 ### Ludger Solbach
 ![bg cover 100%](./images/overarch.jpg)
 
@@ -17,23 +17,23 @@ author: "Ludger Solbach"
 
 # The problem
 
-understanding complex systems
+Understanding complex systems
 
 ---
 
 # Rationale
 
-system models for
+System models for
+* thinking
+* communication
 * documentation
 * querying
-* communication
-* thinking
 
 ---
 
 # Rationale
 
-drawing tools
+Drawing tools
 e.g. Visio, Gliffy, ExcaliDraw
  * no model, only pretty pictures
  * no reuse between diagrams
@@ -42,7 +42,7 @@ e.g. Visio, Gliffy, ExcaliDraw
 
 # Rationale
 
-commercial modelling tools
+Commercial modelling tools
 * e.g. Enterprise Architect, Magic Draw
 * comprehensive but complex
 * license needed
@@ -55,12 +55,11 @@ commercial modelling tools
   * data driven and text based
   * with visualization
 
-
 ---
 
 # Models
 
-## elements of the system
+## Elements of the system
  * concept models, concept maps and glossaries
  * system landscape and architecture, deployment
  * use cases, state machines and class models
@@ -69,7 +68,7 @@ commercial modelling tools
 
 # Models
 
-## models as data
+## Models as data
  * hierarchical models and element references
  * composable / reusable
  * extensible
@@ -78,7 +77,7 @@ commercial modelling tools
 
 # Views
 
-## representations of the system
+## Representations of the system
  * selection of model elements for a specific 
    * context
    * audience
@@ -88,8 +87,9 @@ commercial modelling tools
 
 # Views
 
- * c4 views
-  * system context
+ * C4 views for system architecture
+   * system context, container, component
+   * deployment, system landscape, dynamic
 
 ---
 
@@ -225,16 +225,18 @@ Data structures can be nested
 :node :system :container
 
 #### Relations
-:link :rel
+:deployed-to :link :rel
 
 ---
 
-# Dynamic Model
+# Class Model
 
 #### Elements
-:person :system :container :component
-
+:package :interface :class :field :method
+  :enum :enum-value :stereotype :annotation :namespace :function :protocol 
+    
 #### Relations
+:inheritance :implementation :composition :aggregation :association :dependency
 
 ---
 
@@ -259,17 +261,6 @@ Data structures can be nested
 
 ---
 
-# Class Model
-
-#### Elements
-:class :enum :interface :field :method :function
-:package :namespace :stereotype :annotation :protocol
-    
-#### Relations
-:inheritance :implementation :composition :aggregation :association :dependency
-
----
-
 # Concept Model
 
 #### Elements
@@ -278,6 +269,20 @@ Data structures can be nested
 
 #### Relations
 :is-a :has :rel
+
+---
+# Artifact Generation
+* template based
+* reports
+* project scaffolding
+* code
+
+---
+
+# Model Queries
+#### Element Selection by Criteria
+* dynamic views 
+* 
 
 ---
 
@@ -315,11 +320,6 @@ JSON: complete model
 Structurizr: architecture/deployment model and views only
 
 EDN: (work in progress)
-
----
-
-### Template Based Artifact Generation
-
 
 ---
 
