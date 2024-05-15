@@ -9,7 +9,8 @@
    of elements without references to the model as a whole."
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            [org.soulspace.overarch.util.functions :as fns]))
+            [org.soulspace.overarch.util.functions :as fns]
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
 ;;; Category definitions
@@ -285,7 +286,7 @@
 
       ;; model nodes
       (derive :architecture-model-node           :model-node)
-      (derive :deplyoment-model-node             :model-node)
+      (derive :deployment-model-node             :model-node)
       (derive :use-case-model-node               :model-node)
       (derive :state-machine-model-node          :model-node)
       (derive :class-model-node                  :model-node)
@@ -544,6 +545,11 @@
   [e kind]
   (and (view? e) (= (:el e) kind)))
 
+(defn synthetic?
+  "Returns true, if the element `e` is a synthetic element."
+  [e]
+  (get e :synthetic false))
+
 ;;
 ;; Element transducer functions
 ;;
@@ -750,26 +756,29 @@
   (contains? (descendant-nodes e) c))
 
 (defn root-nodes
-  "Returns the set of root nodes of the `coll`."
-  [coll]
-  (let [descendants (->> coll
+  "Returns the set of root nodes of the `elements`.
+   The root nodes are not contained as descendants in any of the element nodes."
+  [elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
                          (map descendant-nodes)
                          (apply set/union))]
-    (set/difference (set coll) descendants)))
+    (set/difference (set elements) descendants)))
 
 (defn all-nodes
-  "Returns the set of all nodes, including descendants, of the `coll`."
-  [coll]
-  (let [descendants (->> coll
-                         (map descendant-nodes)
-                         (apply set/union))]
-    (set/union (set coll) descendants)))
+  "Returns the set of all nodes, including descendants, of the `elements`."
+  [elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
+                         (mapcat descendant-nodes)
+                         (into #{}))]
+    (set/union (set elements) descendants)))
 
 ; TODO for flat/hierarchical
-(defn id->map
-  ""
-  ([coll]
-   (->> coll
+(defn id->element-map
+  "Returns am map of id -> element for the given `elements`."
+  ([elements]
+   (->> elements
         (filter identifiable-element?)
         (map (fn [e] [(:id e) e]))
         (into {}))))
@@ -780,10 +789,24 @@
    Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
   [& sets]
   (->> sets
-       (map (partial traverse id->element))
+       ; (map (partial traverse id->element))
+       (map id->element-map)
        (apply merge)
        (vals)
        (set)))
+
+(defn difference-by-id
+  [base-set & sets]
+  (println "base-set" base-set)
+  (println "sets" sets)
+  (let [base-map (id->element-map base-set)
+        base-ids (into #{} (keys base-map))
+        _ (println "base-ids" base-ids)
+        diff-ids (into #{} (mapcat #(map :id %) sets))
+        _ (println "diff-ids" diff-ids)
+        remaining-ids (set/difference base-ids diff-ids)
+        _ (println "remaining-ids" remaining-ids)]
+    (into #{} (map base-map remaining-ids))))
 
 (defn technologies
   "Returns a vector of the technologies used by the element `e`."
@@ -806,9 +829,9 @@
        (filter #(= :field (:el %)))
        (sort-by :name)))
 
-;;
-;; Criteria Predicates
-;; 
+;;;
+;;; Criteria Predicates
+;;; 
 (defn namespace?
   "Returns true, if `v`is the namespace of element `e`."
   [v e]
