@@ -3,15 +3,20 @@ Changelog
 
 Version 0.17.0
 --------------
+* enhanced content handling for views
+  * criteria based content selection via :selection key in view spec 
+  * :include spec should work for all views, include relations or related nodes automatically
+  * directly referenced elements have precedence over selection/inclusion for adding/overriding of keys in references
 * added deployed-to relation to deployment model to decouple architecture and deployment models
-  * no need to reference containers as content of deployment nodes
+  * no need to reference containers as content of deployment nodes (that is deprecated now)
   * see [Banking Deployment Model](/models/banking/model.edn)
-* added domain model functions
 * added selection criteria
+* added and enhanced domain model functions
 * added and enhanced clojure project templates
 * added overarch specific templates
 * updated overarch data-model and documentation
 * updated dependencies
+* fixed typo in element hierarchy affecting deployment models
 
 
 Version 0.16.0
