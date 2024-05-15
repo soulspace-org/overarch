@@ -177,7 +177,8 @@
          rels (filter el/model-relation? (model-elements model))
          filtered (->> rels
                        (filter (fn [r] (and (contains? els (:from r))
-                                            (contains? els (:to r))))))
+                                            (contains? els (:to r)))))
+                       (into #{}))
          _ (fns/data-tapper {:els els :rels rels :filtered filtered})]
      filtered)))
 
