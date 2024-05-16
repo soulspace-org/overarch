@@ -109,6 +109,15 @@
      (when (el/view? el)
        el))))
 
+(defn theme-by-id
+  "Returns the theme with the given `id`."
+  ([id]
+   (theme-by-id (model) id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/theme? el)
+       el))))
+
 (comment
   (update-state! "models")
   
@@ -119,9 +128,7 @@
   (count (views))
   (count (themes))
 
-
   (view/elements-in-view (model) (view-by-id :banking/container-view))
   (view/technologies-in-view (model) (view-by-id :banking/container-view))
-
   ;
-  :rcf)
+  )
