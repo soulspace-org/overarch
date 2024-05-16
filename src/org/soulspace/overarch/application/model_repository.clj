@@ -118,7 +118,7 @@
      (when (el/theme? el)
        el))))
 
-(comment
+(comment ; repo
   (update-state! "models")
   
   (model/build-model (input-elements))
@@ -128,7 +128,6 @@
   (count (views))
   (count (themes))
 
-  (view/elements-in-view (model) (view-by-id :banking/container-view))
-  (view/technologies-in-view (model) (view-by-id :banking/container-view))
+  (view/elements-to-render (model) (view-by-id :banking/container-view))
   ;
   )
