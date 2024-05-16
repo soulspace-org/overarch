@@ -15,7 +15,7 @@ Version 0.17.0
 * added and enhanced clojure project templates
 * added overarch specific templates
 * updated overarch data-model and documentation
-* updated dependencies
+* updated dependencies and added antq for dependency checks
 * fixed typo in element hierarchy affecting deployment models
 
 
