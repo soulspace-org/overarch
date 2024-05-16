@@ -414,13 +414,10 @@
 
 (defmethod puml/render-plantuml-view :uml-view
   [model options view]
-  ; TODO top level elements
   (let [elements (view/view-elements model view)
         nodes (view/root-elements (filter el/model-node? elements))
         relations (filter el/model-relation? elements)
-        rendered (view/elements-to-render model view (concat nodes relations))
-        _ (if (= :state-machine-view (:el view))
-            (println "State Machine rendered" rendered))]
+        rendered (view/elements-to-render model view (concat nodes relations))]
     (flatten [(str "@startuml " (name (:id view)))
               (render-uml-layout view)
               (puml/render-title view)

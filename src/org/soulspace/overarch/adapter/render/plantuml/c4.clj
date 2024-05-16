@@ -143,15 +143,11 @@
   (let [deployed (->> model
                       (:referred-id->relations)
                       ((:id e))
-                      (fns/data-tapper "referred")
                       (filter (partial el/el? :deployed-to))
-                      (fns/data-tapper "deployed to")
                       (map :from)
-                      (map (partial model/resolve-id model))
-                      (fns/data-tapper "from"))
+                      (map (partial model/resolve-id model)))
         children (concat (view/elements-to-render model view (:ct e))
-                         (view/elements-to-render model view deployed))
-        _ (fns/data-tapper "children" children)]
+                         (view/elements-to-render model view deployed))]
     (if (seq children)
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
@@ -339,7 +335,6 @@
 
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
-  ; TODO top level elements
   (let [elements (view/view-elements model view)
         nodes (view/root-elements (filter el/model-node? elements))
         relations (filter el/model-relation? elements)

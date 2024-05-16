@@ -774,7 +774,6 @@
                          (into #{}))]
     (set/union (set elements) descendants)))
 
-; TODO for flat/hierarchical
 (defn id->element-map
   "Returns am map of id -> element for the given `elements`."
   ([elements]

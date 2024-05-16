@@ -220,18 +220,12 @@
          (edn/read-string (slurp generation-config)))
     []))
 
-; TODO generation-dir missing from path, comes from options
 (defn generate-artifact
   "Generates an artifact"
   [template ctx model e]
-;  (println "Template" template)
-;  (println "Element" e)
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
-;        _ (println "Protected Areas" protected-areas)
-        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})
-;        _ (print "Result" result)
-        ]
+        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})]
     ; write artifact for result
     (write-artifact path result)))
 

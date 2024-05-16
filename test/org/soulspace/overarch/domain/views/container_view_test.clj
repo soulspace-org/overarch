@@ -183,17 +183,6 @@
         3 (count (referenced-elements c4-1 container-view1-relations))
         5 (count (referenced-elements c4-1 container-view2-relations))))))
 
-#_(deftest rendered-elements-test
-  (let [c4-1 model-test/c4-model1]
-    ; TODO check
-    (testing "rendered-elements for container view"
-      (are [x y] (= x y)
-        5 (count (rendered-elements c4-1 container-view1))
-        9 (count (rendered-elements c4-1 container-view2))
-        9 (count (rendered-elements c4-1 container-view1-related))
-        5 (count (rendered-elements c4-1 container-view1-relations))
-        9 (count (rendered-elements c4-1 container-view2-relations))))))
-
 (comment
   (def c4-1 model-test/c4-model1)
   (referenced-elements c4-1 container-view1)
@@ -201,12 +190,6 @@
   (referenced-elements c4-1 container-view1-related)
   (referenced-elements c4-1 container-view1-relations)
   (referenced-elements c4-1 container-view2-relations)
-
-;  (rendered-elements c4-1 container-view1)
-;  (rendered-elements c4-1 container-view2)
-;  (rendered-elements c4-1 container-view1-related)
-;  (rendered-elements c4-1 container-view1-relations)
-;  (rendered-elements c4-1 container-view2-relations)
 
   (elements-to-render c4-1 container-view1)
   (elements-to-render c4-1 container-view1 (:ct container-view1))

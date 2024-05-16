@@ -22,11 +22,7 @@
   "Returns true if the `model` node `e` is rendered in the state-machine `view`."
   [model view e]
   (let [p (model/parent model e)]
-    (and (contains? el/state-machine-view-element-types (:el e))
-         ; TODO fix or remove
-         #_(or (not p) ; has no parent
-             (as-boundary? p) ; parent is rendered as boundary
-             ))))
+    (contains? el/state-machine-view-element-types (:el e))))
 
 (defn render-model-relation?
   "Returns true if the `model` relation `e` is rendered in the state-machine `view`."

@@ -49,7 +49,7 @@
 (defmethod view/include-content? :container-view
   [model view e]
   (and (contains? el/container-view-element-types (:el e))
-       (el/boundary? e)))
+       (as-boundary? e)))
 
 (defmethod view/element-to-render :container-view
   [model view e]

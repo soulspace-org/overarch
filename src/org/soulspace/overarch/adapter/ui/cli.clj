@@ -214,7 +214,6 @@
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
-  ; TODO check for model path and read all dirs if set
   (let [model (repo/update-state! (:model-dir options))]
     (dispatch model options)))
 
@@ -223,7 +222,6 @@
   [options]
   (update-and-dispatch! options)
   (when (:watch options)
-    ; TODO loop recur this update-and-export! as handler
     (beholder/watch
      (fn [m]
        (when (:debug options)
