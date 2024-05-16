@@ -1,9 +1,9 @@
 # Overarch Usage Overview
 
 The usage of Overarch is twofold. On the one hand, it is an open data format
-to describe the functional requirements, architecture, and design
+to describe the concepts, functional requirements, architecture, and design
 of software systems. On the other hand it is a tool to transform the
-description into diagrams or other representations.
+description into diagrams, reports or other representations.
 
 Overarch can be used as a CLI tool to convert specified models and diagrams
 into different formats, e.g. the rendering of diagrams in PlantUML or the
@@ -830,16 +830,15 @@ As Structurizr currently only supports the C4 architecture model and views,
 only these elements will be included in the Structurizr workspace.
 
 # Template Based Artifact Generation
-*Experimental*
-
 Overarch can generate artifacts for model elements via templates.
 The model elements, to which a template is applied, are selected via criteria.
 A template can be applied to the collection of selected elements or to each
-element of the collection. 
+element of the collection.
 
-Overarch supports
-* forward engineering
-* protected areas for handwritten content in generated artifacts
+The use cases of the tempates range from reports up to automatic code generation.
+
+Overarch supports forward engineering protected areas for manually written
+content in generated artifacts
 
 
 ## Generation Configuration
@@ -854,7 +853,7 @@ key               | type     | values             | default | description
 ------------------|----------|--------------------|---------|-------------
 :selection        | CRITERIA | {:el :system}      |         | Criteria to select model elements
 :template         | PATH     | "report/node.cmb"  |         | Path to the template relative to the template dir
-:engine           | :keyword | :comb              | :comb   | The template engine to use (currently only Comb)
+:engine           | :keyword | :comb              | :comb   | The template engine to use (currently just :comb)
 :encoding         | string   | "UTF-8"            | "UTF-8" | The encoding of the result artifact
 :per-element      | boolean  | true/false         | false   | Apply  the template for each element of the selection or on the selection as a whole
 :subdir           | string   | "report"           |         | Subdirectory for generated artifact under the generator directory
@@ -872,21 +871,42 @@ key               | type     | values             | default | description
 
 ### Example config file
 ```clojure
-[{:selection {:el :system}      ; selection criteria for the model elements
- :template "node-report.md.cmb" ; relative path of the template to apply
- :engine :comb                  ; the template engine to use (currently only :comb)
- :encoding "UTF-8"              ; artifact encoding
- :per-element false             ; apply the template for each element of the selection or on the selection as a whole
- :subdir "reports"              ; subdirectory for generated artifact
-; :namespace-prefix ""          ; prefix for the namespace of the generated artifact
- :base-namespace "systems"      ; base namespace of the generated artifact
-; :namespace-suffix ""          ; suffix for the namespace of the generated artifact
-; :prefix ""                    ; prefix for the name of the generated artifact
- :base-name "systems-report"    ; base name of the generated artifact
-; :suffix ""                    ; suffix for the name of the generated artifact
- :extension "md"                ; extension of the generated artifact
- :id-as-namespace false         ; use the name as the namespace of the artifact
-; :protected-area "PA"          ; protected area prefix
+[;; Report for all systems in the banking namespace
+ {:selection {:namespace "banking" :el :system} ; selection criteria for the model elements
+ :template "node-report.md.cmb"  ; relative path of the template to apply
+ :title "Banking Systems Report" ; title of the report
+ :engine :comb                   ; the template engine to use (currently only :comb)
+ :encoding "UTF-8"               ; artifact encoding
+ :per-element false              ; apply the template for each element of the selection or on the selection as a whole
+ :subdir "reports"               ; subdirectory for generated artifact
+ ; :namespace-prefix ""          ; prefix for the namespace of the generated artifact
+ :base-namespace "systems"       ; base namespace of the generated artifact
+ ; :namespace-suffix ""          ; suffix for the namespace of the generated artifact
+ ; :prefix ""                    ; prefix for the name of the generated artifact
+ :base-name "systems-report"     ; base name of the generated artifact
+ ; :suffix ""                    ; suffix for the name of the generated artifact
+ :extension "md"                 ; extension of the generated artifact
+ :id-as-namespace false          ; use the name as the namespace of the artifact
+ ; :protected-area "PA"          ; protected area prefix
+ }
+
+;; Report for the REST interfaces in the model
+{:selection {:el :model-relation :techs #{"REST"}} ; selection criteria for the model elements
+ :template "rel-report.md.cmb"   ; relative path of the template to apply
+ :title "REST Interface Report"  ; title of the report
+ :engine :comb                   ; the template engine to use (currently only :comb)
+ :encoding "UTF-8"               ; artifact encoding
+ :per-element false              ; apply the template for each element of the selection or on the selection as a whole
+ :subdir "reports"               ; subdirectory for generated artifact
+; :namespace-prefix ""           ; prefix for the namespace of the generated artifact
+ :base-namespace "interfaces"    ; base namespace of the generated artifact
+; :namespace-suffix ""           ; suffix for the namespace of the generated artifact
+; :prefix ""                     ; prefix for the name of the generated artifact
+ :base-name "systems-report"     ; base name of the generated artifact
+; :suffix ""                     ; suffix for the name of the generated artifact
+ :extension "md"                 ; extension of the generated artifact
+ :id-as-namespace false          ; use the name as the namespace of the artifact
+; :protected-area "PA"           ; protected area prefix
 }]
 ```
 
@@ -907,18 +927,22 @@ java -jar overarch.jar -g gencfg.edn
 ```
 
 ## Comb Template Engine
-Overarch incorporates the [Comb](https://github.com/weavejester/comb) template engine by James Reeves.
+Overarch incorporates the [Comb](https://github.com/weavejester/comb)
+template engine by James Reeves.
 
-Comb is a simple templating system for Clojure. You can use Comb to embed fragments of Clojure code into a text file.
+Comb is a simple templating system for Clojure. You can use Comb to embed
+fragments of Clojure code into a text file.
+
+### Example Templates
+Some example templates can be found in the [templates](/templates) folder.
 
 ### Syntax
 Clojure fragments in a template are demarkated with `<%` and `%>`.
 You can embed clojure code as an expression, where the result of the
-execution is included in the resulting artifact. You can also embed
-the clojure code as a control structure, where the result of the
-execution of the control structure is not included in the resulting
-artifact, only the template text or other expressions inside of the
-control structure.
+execution is included in the resulting artifact. You can also embed the clojure
+code as a control structure, where the result of the execution of the control
+structure is not included in the resulting artifact, only the template text or
+other expressions inside of the control structure.
 
 #### Expressions
 ```clojure
