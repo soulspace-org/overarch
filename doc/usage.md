@@ -667,23 +667,45 @@ their type and their descriptions.
 Views can be customized with the `:spec` key. View specs may include general
 directives for a view or directives for specific renderers (e.g. PlantUML).
 
-key           | type    | values                    | description 
---------------|---------|---------------------------|------------
-:include      | keyword | :referenced-only :related | specify automatic includes (work in progress)
-:layout       | keyword | :top-down, :left-right    | rendering direction
-:linetype     | keyword | :orthogonal, :polygonal   | different line types for relations
-:sketch       | boolean | true, false               | visual clue for sketches
-:styles       | set     | see Styling               | visual customization of elements
-:theme        | keyword | id of the theme           | theme containing styles
+key           | type          | example values            | description 
+--------------|---------------|---------------------------|------------
+:include      | keyword       | :relations :related       | specify automatic includes (work in progress)
+:selection    | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
+:layout       | keyword       | :top-down, :left-right    | rendering direction
+:linetype     | keyword       | :orthogonal, :polygonal   | different line types for relations
+:sketch       | boolean       | true, false               | visual clue for sketches
+:styles       | set           | see Styling               | visual customization of elements
+:theme        | keyword       | id of the theme           | theme containing styles
+
+### Selection
+With the `:selection` key a criteria map or a vector of criterias can be specified.
+The matching elements will be included in the view. This feature can be used to
+create 'dynamic' views that always contain the latest model content matching
+the criteria. See [Model Element Selection by Criteria](#model-element-selection-by-criteria)
+for details.
 
 ### Includes
 With the `:include` key elements can be automatically included in a view. 
 The default behaviour is `:referenced-only` which only includes the referenced
 elements.
 
+With the value `:relations` all relations to the referenced elements will be
+ automatically included.
+
 With the value `:related` all elements participating in the referenced
 relations will be automatically included in addidtion to the referenced
 elements.
+
+### Preference Rules for View Content
+Criteria based selection, direct element references and includes can be
+combined in a view. First the selection is merged with the references in such
+a way, that key overrides and additions on references are preserved. Then the
+included elements are calculated and merged. This merge also preserves the key
+overrides and additions made on the references.
+
+Therefore you can select the content with the `:selection` and `:include` keys
+and customize the rendering with direct references in the `:ct` vector of the
+view.
 
 ### Styling
 Overarch supports custom styles for elements. For an example see
