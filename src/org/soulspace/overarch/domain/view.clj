@@ -177,29 +177,7 @@
    (root-elements (view-elements model view)))
   ([model view coll]
    (->> coll
+        (map (partial model/resolve-element model))
         (filter (partial render-model-element? model view))
         (map #(element-to-render model view %)))))
-
-(defn elements-in-view
-  "Returns the elements rendered in the `view`."
-  ([model view]
-   (elements-in-view model #{} view (elements-to-render model view (:ct view))))
-  ([model elements view coll]
-   (if (seq coll)
-     (let [e (first coll)]
-       (recur model (elements-in-view model (conj elements e)
-                                view
-                                (elements-to-render model view (:ct e)))
-              view
-              (rest coll)))
-     elements)))
-
-(defn technologies-in-view
-  "Returns the technologies in the `view`."
-  [model view]
-  (->> view
-       (elements-in-view model)
-       (map :tech)
-       (remove nil?)
-       (into #{})))
 
