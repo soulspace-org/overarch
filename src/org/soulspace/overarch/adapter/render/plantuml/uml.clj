@@ -4,8 +4,7 @@
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.application.render :as render]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.application.render :as render]))
 
 (def uml-directions
   "Maps direction keys to PlantUML UML directions."
