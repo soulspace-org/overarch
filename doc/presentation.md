@@ -21,6 +21,17 @@ Understanding complex systems
 
 ---
 
+# Overarch
+
+  * lightweight open source modelling
+  * data driven and text based
+    -> developer friendly
+  * visualization
+  * queries
+  * reports
+
+---
+
 # Rationale
 
 System models for
@@ -46,14 +57,6 @@ Commercial modelling tools
 * e.g. Enterprise Architect, Magic Draw
 * comprehensive but complex
 * license needed
-
----
-
-# Overarch
-
-  * lightweight open source modelling
-  * data driven and text based
-  * with visualization
 
 ---
 
