@@ -22,10 +22,7 @@
   "Returns true if the `model` node `e` is rendered in the glossary `view`."
   [model view e]
   (let [p (model/parent model e)]
-    (and (contains? el/glossary-view-element-types (:el e))
-         (or (not p) ; has no parent
-             (as-boundary? p) ; parent is rendered as boundary
-             ))))
+    (contains? el/glossary-view-element-types (:el e))))
 
 (defn render-model-relation?
   "Returns true if the `model` relation `e` is rendered in the glossary `view`."

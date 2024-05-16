@@ -22,14 +22,7 @@
   "Returns true if the `model` node `e` is rendered in the deployment `view`."
   [model view e]
   (let [p (model/parent model e)]
-    (and (contains? el/deployment-view-element-types (:el e))
-         ; TODO fix or remove
-         #_(or
-          ; has no parent
-          (not p)
-          ; parent is rendered as boundary 
-          (= :node (:el p)))
-         )))
+    (contains? el/deployment-view-element-types (:el e))))
 
 (defn render-model-relation?
   "Returns true if the `model` relation `e` is rendered in the deployment `view`."
