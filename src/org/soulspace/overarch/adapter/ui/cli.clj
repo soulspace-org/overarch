@@ -173,7 +173,6 @@
 (defn select-elements
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
-  ; TODO implement model accessor in repo
   (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
     (into #{} (model/filter-xf @repo/state criteria)
           (set/union (repo/nodes) (repo/relations)))))
@@ -181,11 +180,11 @@
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
-  ; TODO implement model accessor in repo
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
-    (into [] (comp (model/filter-xf @repo/state criteria)
+    (into []
+          (comp (model/filter-xf @repo/state criteria)
                    (map el/element->ref))
-          (concat (repo/nodes) (repo/relations)))))
+          (repo/model-elements))))
 
 (defn dispatch
   "Dispatch on `options` to the requested actions."

@@ -105,7 +105,6 @@
 (defn parse-protected-areas
   "Parse the lines into a protected area map."
   [area-marker lines]
-;  (println "Read PAs from" lines)
   (let [begin-re (begin-pattern area-marker)]
     (loop [remaining-lines lines area-id nil area-content "" area-map {}]
       (if (seq remaining-lines)
@@ -233,10 +232,8 @@
   "Generates artifacts for the generation specification `spec`."
   [model options]
   (doseq [ctx (read-config options)]
-;      (println "Context" ctx)
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
       (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
-;          (println "Selection" selection)
         (if (:per-element ctx)
           (doseq [e selection]
             (generate-artifact template ctx model e))

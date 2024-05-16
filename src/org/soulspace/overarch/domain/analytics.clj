@@ -120,7 +120,6 @@
   [model rel]
   (let [from-el (model/resolve-id model (:from rel))
         to-el (model/resolve-id model (:to rel))]
-    ; (println (:id rel) (:from rel) (:to rel))
     (remove nil?
             [(when (el/unresolved-ref? from-el)
                (assoc from-el :parent (:id rel)))
