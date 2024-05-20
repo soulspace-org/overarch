@@ -973,7 +973,7 @@
   [v e]
   (set/subset? (set v) (:tags e)))
 
-(defn children-check?
+(defn parent-check?
   "Returns true if the check for children of `e` equals the boolean value `v`"
   [v e]
   (= v (empty? (:ct e))))
