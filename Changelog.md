@@ -7,6 +7,7 @@ Version 0.18.0
 * added selection criteria
 * enhanced dependent-node functions to handle references
 * fixed id->parent reference for refs
+* removed leiningen dev profile
 
 Version 0.17.0
 --------------
