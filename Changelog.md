@@ -3,10 +3,10 @@ Changelog
 
 Version 0.18.0
 --------------
+* enhanced dependent-node functions to handle model references
 * added default directions for some architecture relations in plantuml c4 diagrams
 * added selection criteria
-* enhanced dependent-node functions to handle references
-* fixed id->parent reference for refs
+* fixed id->parent mapping for refs
 * removed leiningen dev profile
 
 Version 0.17.0
