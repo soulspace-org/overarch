@@ -1,8 +1,6 @@
-Design
-======
+# Design
 
-Situation
----------
+## Situation
 When you architecture diagrams with the C4 models and PlantUML, the various diagrams contain duplicate model information and there isn't a single model description. Changes are made in specific diagrams and are missing from others.
 
 The DSL of C4/PlantUML is not very consistent and errors are rendered
@@ -16,7 +14,6 @@ model information reusable.
 
 
 ### Existing Tools
-
 * [C4 PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
   * C4 standard library for PlantUML
   * diagram oriented
@@ -47,8 +44,7 @@ model information reusable.
   * needs a parser implementation
 
 
-Observations
-------------
+## Observations
 * Textual DSLs may provide a compact and succinct language
 * current Textual DSLs fall short at least in
   * separation between layout and model
@@ -70,8 +66,7 @@ Observations
   * likely not as compact and succint as DSLs
 
 
-Design Goals
-------------
+## Design Goals
 
 * Reusable models
 * Holistic model of the system under description
@@ -80,8 +75,7 @@ Design Goals
 * Extensibility of the renderings and exports
 
 
-Design Questions and Answers
-----------------------------
+## Design Questions and Answers
 This section documents design decisions in the form of questions and answers.
 It represents some of the inner dialogue in finding good solutions.
 Not all questions that arose have a definitve answer/decision yet.
@@ -540,8 +534,7 @@ A: Clojure is a perfect match
    * multiple value dispatch for export plugins
 
 
-PlantUML Export
----------------
+## PlantUML Export
 
 Q: **Is a global configuration (e.g. via config file) needed?**
 
@@ -554,8 +547,7 @@ Q: **Is a global configuration (e.g. via config file) needed?**
 A: It does not seem to be needed so far.
 
 
-Component Design
-----------------
+## Component Design
 The diagram below shows the current structure of the code. The components
 map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
@@ -563,8 +555,7 @@ dependencies of the namespaces.
 ![Component View of Overarch](/doc/images/overarch/architecture/overarch-component-view.svg)
 
 
-Data Model
-----------
+## Data Model
 The diagram below is a reference of the current logical data model of Overarch.
 It contains all elements currently implemented by Overarch.
 The [usage doc](/doc/usage.md) contains views of relevant parts of the model.
@@ -589,8 +580,7 @@ pull model elements into a view, but they could also be used in the model
 itself, e.g. to split the model of a huge system into different files.
 
 
-Ideas
------
+## Ideas
 This section collects ideas that may make sense to implement in the future.
 
 * Consistency checks and reports (implemented partially)
