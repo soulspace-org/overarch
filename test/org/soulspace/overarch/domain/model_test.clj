@@ -1,6 +1,7 @@
 (ns org.soulspace.overarch.domain.model-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.domain.model :refer :all]))
+            [org.soulspace.overarch.domain.model :refer :all]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 (def c4-input1
   "Simple test model for C4 Architecture"
@@ -148,6 +149,14 @@
             :id :a/component}}}})
 (def hierarchy-model2 (build-model hierarchy-input2))
 
+; (fns/data-tapper "Hierarchy2" hierarchy-model2)
+
+(comment
+  (descendant-nodes hierarchy-model2 {:el :system
+                                      :id :a/system
+                                      :ct #{{:ref :a/container}}}))
+
+
 
 (deftest ancestor-nodes-test
   (testing "ancestor-nodes true"
@@ -229,8 +238,31 @@
                 :id :a/component}}}
         {:el :component
          :id :a/component}}
-      hierarchy-input1
-      
+      {:el :system
+       :id :a/system
+       :ct #{{:el :container
+              :id :a/container
+              :ct #{{:el :component
+                     :id :a/component}}}}}
+
+      #{{:el :component
+         :id :a/component}}
+      {:el :container
+       :id :a/container
+       :ct #{{:el :component
+              :id :a/component}}}))
+  (testing "descendant-nodes with refs true"
+    (are [x y] (= x (descendant-nodes hierarchy-model2 y))
+      #{{:el :container
+         :id :a/container
+         :ct #{{:el :component
+                :id :a/component}}}
+        {:el :component
+         :id :a/component}}
+      {:el :system
+       :id :a/system
+       :ct #{{:ref :a/container}}}
+
       #{{:el :component
          :id :a/component}}
       {:el :container
@@ -240,15 +272,26 @@
 
 (deftest descendant-node?-test
   (testing "descendant-node? true"
-    (are [x y] (= x (descendant-node? hierarchy-model1 hierarchy-input1 y))
+    (are [x y] (= x (descendant-node? hierarchy-model1
+                                      {:el :system
+                                       :id :a/system
+                                       :ct #{{:el :container
+                                              :id :a/container
+                                              :ct #{{:el :component
+                                                     :id :a/component}}}}}
+                                      y))
       true {:el :container :id :a/container
             :ct #{{:el :component
                    :id :a/component}}}
       true {:el :component :id :a/component}))
   (testing "descendant-node? false"
     (are [x y] (= x (descendant-node? hierarchy-model1 hierarchy-input1 y))
-      false hierarchy-input1)))
-
+      false {:el :system
+             :id :a/system
+             :ct #{{:el :container
+                    :id :a/container
+                    :ct #{{:el :component
+                           :id :a/component}}}}})))
 
 (def filter-input
   #{{:el :person

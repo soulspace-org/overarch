@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 0.18.0
+--------------
+* added default directions for some architecture relations in plantuml c4 diagrams
+* added selection criteria
+* enhanced dependent-node functions to handle references
+* fixed id->parent reference for refs
+
 Version 0.17.0
 --------------
 * enhanced content handling for views

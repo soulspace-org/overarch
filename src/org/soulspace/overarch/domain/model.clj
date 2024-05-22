@@ -53,6 +53,42 @@
      :else e)))
 
 ;;
+;; recursive traversal of the hierarchical model
+;;
+(defn traverse-with-model
+  "Recursively traverses the `coll` of elements and returns the elements (selected
+   by the optional `select-fn`) and transformed by the `step-fn`.
+
+   `select-fn` - a predicate on the current element
+   `step-fn` - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([model step-fn coll]
+   ; selection might be handled in the step function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (resolve-element model (first coll))]
+                 (recur (trav (step-fn acc e) (:ct e))
+                        (rest coll)))
+               (step-fn acc)))]
+     (trav (step-fn) coll)))
+  ([model select-fn step-fn coll]
+   ; selection handled by th select function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (resolve-element model (first coll))]
+                 (if (select-fn e)
+                   (recur (trav (step-fn acc e) (:ct e))
+                          (rest coll))
+                   (recur (trav acc (:ct e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
+;;
 ;; Model transducer functions
 ;;
 (defn unresolved-refs-xf 
@@ -121,14 +157,13 @@
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
-  (when (el/model-node? e)
-    ; TODO should resolve refs as children
-    (el/traverse el/model-node? el/tree->set (:ct e))))
+  (when (el/model-node? (resolve-element model e))
+    (traverse-with-model model el/model-node? el/tree->set (:ct e))))
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
   [model e c]
-  (contains? (descendant-nodes model e) c))
+  (contains? (descendant-nodes model e) (resolve-element model c)))
 
 (defn root-nodes
   "Returns the set of root nodes of the `elements`.
@@ -257,9 +292,9 @@
   [acc p e]
   (cond
     ;; nodes
-    ;; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
     (el/model-node? e)
-    (if (el/child? e p)
+    (if (and p (el/child? e p))
+      ; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
       ; a child node, add a parent-of relationship, too
       (let [r (parent-of-relation (:id p) (:id e))]
         (assoc acc
@@ -275,9 +310,10 @@
                       (:id r) r)
 
                ; currently only one parent is supported here
-               ; all parents are reachable via :contains relations
                :id->parent
-               (assoc (:id->parent acc) (:id e) p)
+               (if-let [po ((:id->parent acc) (:id e))]
+                 (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:id e))
+                 (assoc (:id->parent acc) (:id e) p))
 
                :referrer-id->relations
                (assoc (:referrer-id->relations acc)
@@ -339,7 +375,9 @@
 
                ; currently only one parent is supported here
                :id->parent
-               (assoc (:id->parent acc) (:id e) p)
+               (if-let [po ((:id->parent acc) (:id e))]
+                 (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element ref" (:ref e))
+                 (assoc (:id->parent acc) (:ref e) p))
 
                :referrer-id->relations
                (assoc (:referrer-id->relations acc)
