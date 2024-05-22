@@ -812,17 +812,18 @@
   (and (identifiable-element? e)
        (str/starts-with? (element-namespace e) v)))
 
-;; TODO add docstrings
 (defn from-namespace?
   "Returns true, if `v`is the namespace of the element referenced by the from id of relation `e`."
   [v e]
   (= (name v) (namespace (get e :from :no-namespace/no-name))))
 
 (defn from-namespaces?
+  "Returns true, if the set of namespaces `v` contains the namespace of the from id of relation `e`."
   [v e]
   (contains? (name v) (namespace (get e :from :no-namespace/no-name))))
 
 (defn from-namespace-prefix?
+  "Returns true, if `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
   [v e]
   (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
 
@@ -832,10 +833,12 @@
   (= (name v) (namespace (get e :to :no-namespace/no-name))))
 
 (defn to-namespaces?
+  "Returns true, if the set of namespaces `v` contains the namespace of the to id of relation `e`."
   [v e]
   (contains? (name v) (namespace (get e :to :no-namespace/no-name))))
 
 (defn to-namespace-prefix?
+  "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
   [v e]
   (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
 
@@ -845,22 +848,27 @@
   (= v (get e :id false)))
 
 (defn id?
+  "Returns true if the id of `e` is equal to `v`."
   [v e]
   (= (keyword v) (:id e)))
 
 (defn from?
+  "Returns true if the from id of the relation `e` is equal to `v`."
   [v e]
   (= (keyword v) (:from e)))
 
 (defn to?
+  "Returns true if the to id of the relation `e` is equal to `v`."
   [v e]
   (= (keyword v) (:to e)))
 
 (defn el?
+  "Returns true if the element type of `e` is equal to `v`."
   [v e]
   (isa? element-hierarchy (:el e) v))
 
 (defn els?
+  "Returns true if the element type of `e` is contained in `v`."
   [v e]
   (contains? v (:el e)) ; TODO use isa? too
   )
@@ -871,10 +879,12 @@
   (= v (get e :subtype false)))
 
 (defn subtype?
+  "Returns true if the subtype of `e` is equal to `v`."
   [v e]
   (= (keyword v) (:subtype e)))
 
 (defn subtypes?
+  "Returns true if the subtype of `e` is contained in `v`."
   [v e]
   (contains? v (:subtype e)))
 
@@ -943,14 +953,14 @@
   [v e]
   (set/subset? (set v) (:tags e)))
 
-(defn children-check?
+(defn parent-check?
   "Returns true if the check for children of `e` equals the boolean value `v`"
   [v e]
   (= v (empty? (:ct e))))
 
 (defn key-check?
   "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.
-  Useful to check for custom keys."
+   Useful to check for custom keys."
   [[k v] e]
   (= v (boolean (get e (keyword k) false))))
 

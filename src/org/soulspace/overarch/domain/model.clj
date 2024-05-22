@@ -169,6 +169,8 @@
        (map (partial resolve-id model))
        (into #{})))
 
+;; TODO transitive dependencies with cycle detection/prevention
+
 (defn all-elements
   "Returns a set of all elements."
   ([model]
@@ -401,15 +403,25 @@
 ;;; filtering element colletions by criteria
 ;;;
 
-;; TODO add docstrings
 ;; TODO add criteria for model type (architecture, etc.)
 ;;      select nodes of model category
 ;;      select relations of category if both nodes are of category
 ;;      (rel is in multiple categories)
+(defn child-check?
+  "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
+  [model v e]
+  (= v (boolean ((:id->parent model) (:id e)))))
+
+; TODO test
 (defn child?
   "Returns true, if `e` is a child of the node with id `v` in the `model`."
   [model v e]
-  (= v (boolean ((:id->parent model) (:id e)))))
+  (contains? (:ct (resolve-id model v)) e))
+
+(defn parent?
+  "Returns true if `v` is the parent of `e`"
+  [model v e]
+  (= (resolve-id model v) ((:id->parent model) (:id e))))
 
 (defn refers-check?
   "Returns true if the check for `e` as a referrer equals the boolean value `v`"
@@ -486,16 +498,20 @@
     (= :tag k)                   (partial el/tag? v)
     (= :tags k)                  (partial el/tags? v)
     (= :all-tags k)              (partial el/all-tags? v)
-    (= :children? k)             (partial el/children-check? v)
 
     ;; model related
-    (= :child? k)                (partial child? model v)
     (= :refers? k)               (partial refers-check? model v)
     (= :referred? k)             (partial referred-check? model v)
     (= :refers-to k)             (partial refers-to? model v)
     (= :referred-by k)           (partial referred-by? model v)
-    (= :ancestor-of k)           (partial ancestor-of? model v) ; TODO docs
+    (= :child? k)                (partial child-check? model v)
+    (= :child-of k)              (partial child? model v)
     (= :descendant-of k)         (partial descendant-of? model v) ; TODO docs
+    (= :children? k)             (partial el/parent-check? v) ; deprecated
+    (= :parent? k)               (partial el/parent-check? v)
+    (= :parent-of k)             (partial parent model v)
+    (= :ancestor-of k)           (partial ancestor-of? model v) ; TODO docs 
+
 
     :else
     (println "unknown criterium" (name k))))
