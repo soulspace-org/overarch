@@ -1174,6 +1174,31 @@
       false {:el :concept-view :id :concept-view}
       false {:el :abcd-view :id :abcd-view})))
 
+(deftest child?-test
+  (testing "child? true"
+    (is (= true (child? {:el :component :id :a/component}
+                        {:el :container
+                         :id :a/container
+                         :ct #{{:el :component
+                                :id :a/component}}}))))
+    (testing "child? false"
+      (are [x y] (= x (child? y
+                              {:el :container
+                               :id :a/container
+                               :ct #{{:el :component
+                                      :id :a/component}}}))
+        false {:el :container
+               :id :a/container
+               :ct #{{:el :component
+                      :id :a/component}}}
+        false nil)))
+
+(comment
+  (child? nil nil)
+  (child? {:el :component :id :a/component} nil)
+  (child? nil {:el :component :id :a/component})
+  )
+
 ;;;
 ;;; Tests for element functions
 ;;;

@@ -17,7 +17,7 @@
 ;;;
 
 ;;
-;; Category definitions for C4 architecture and deployment models
+;; Architecture model
 ;; 
 (def technical-architecture-node-types
   "Technical node types in the architecture model."
@@ -34,32 +34,9 @@
 (def architecture-dependency-relation-types
   #{:request :publish :subscribe :send})
 
-(def deployment-node-types
-  "Node types for deployment models."
-  (set/union technical-architecture-node-types #{:node}))
-
-(def deployment-relation-types
-  "Relation types for deployment models."
-  #{:link :deployed-to})
-
 ;;
-;; Category definitions for UML models
+;; Class Model
 ;;
-(def usecase-node-types
-  "Node types for usecase models."
-  #{:use-case :actor :person :system :container :context-boundary})
-(def usecase-relation-types
-  "Relation types for usecase models."
-  #{:uses :include :extends :generalizes})
-
-(def statemachine-node-types
-  "Node types for statemachine models."
-  #{:state-machine :start-state :end-state :state
-    :fork :join :choice :history-state :deep-history-state})
-(def statemachine-relation-types
-  "Relation types for statemachine models."
-  #{:transition})
-
 (def class-node-types
   "Node types for class models."
   #{:annotation :class :enum :enum-value :field :function :interface
@@ -68,16 +45,8 @@
   "Relation types for class models."
   #{:aggregation :association :composition :dependency :implementation :inheritance})
 
-(def uml-node-types
-  "Node types for UML models."
-  (set/union usecase-node-types statemachine-node-types class-node-types))
-
-(def uml-relation-types
-  "Relation types of UML models."
-  (set/union usecase-relation-types statemachine-relation-types class-relation-types))
-
 ;;
-;; Concept category definitions
+;; Concept Model
 ;;
 (def concept-node-types
   "Node types for concept models."
@@ -87,6 +56,38 @@
 (def concept-relation-types
   "Relation types of concept models."
   #{:rel :is-a :has})
+
+;;
+;; Deployment model
+;;
+(def deployment-node-types
+  "Node types for deployment models."
+  (set/union technical-architecture-node-types #{:node}))
+
+(def deployment-relation-types
+  "Relation types for deployment models."
+  #{:link :deployed-to})
+
+;;
+;; State Machine model
+;;
+(def statemachine-node-types
+  "Node types for statemachine models."
+  #{:state-machine :start-state :end-state :state
+    :fork :join :choice :history-state :deep-history-state})
+(def statemachine-relation-types
+  "Relation types for statemachine models."
+  #{:transition})
+
+;;
+;; Use Case model
+;;
+(def usecase-node-types
+  "Node types for usecase models."
+  #{:use-case :actor :person :system :container :context-boundary})
+(def usecase-relation-types
+  "Relation types for usecase models."
+  #{:uses :include :extends :generalizes})
 
 ;; 
 ;; General category definitions
@@ -98,6 +99,14 @@
 (def reference-types
   "Element types of references."
   #{:ref})
+
+(def uml-node-types
+  "Node types for UML models."
+  (set/union usecase-node-types statemachine-node-types class-node-types))
+
+(def uml-relation-types
+  "Relation types of UML models."
+  (set/union usecase-relation-types statemachine-relation-types class-relation-types))
 
 (def model-node-types
   "Node types of the model."
@@ -431,15 +440,6 @@
   [e]
   (and (model-element? e) (not (model-relation? e))))
 
-(defn child?
-  "Returns true, if element `e` is a child of model element `p`."
-  [e p]
-  ; TODO check (:ct p) for e
-  (and (identifiable-element? e)
-       (identifiable-element? p)
-       (model-element? p)))
-
-
 (defn technical-architecture-node?
   "Returns true if the given element `e` is a technical architecture model node."
   [e]
@@ -508,22 +508,32 @@
 (defn reference?
   "Returns true if the given element `e` is a reference."
   [e]
-  (:ref e))
+  (boolean (:ref e)))
 
 (defn unresolved-ref?
   "Returns true if the given element `e` is a reference."
   [e]
-  (:unresolved-ref e))
+  (boolean (:unresolved-ref e)))
+
+(defn child?
+  "Returns true, if element `e` is a child of model element `p`."
+  [e p]
+  (boolean (and (seq e)
+                (seq p)
+                (identifiable-element? e)
+                (identifiable-element? p)
+                (model-element? p)
+                (contains? (set (:ct p)) e))))
 
 (defn node-of?
   "Returns true if the given element `e` is a node of `kind`."
   [kind e]
-  (and (model-node? e) (= (:el e) kind)))
+  (boolean (and (model-node? e) (= (:el e) kind))))
 
 (defn relation-of?
   "Returns true if the given element `e` is a relation of `kind`."
   [kind e]
-  (and (model-relation? e) (= (:el e) kind)))
+  (boolean (and (model-relation? e) (= (:el e) kind))))
 
 (defn theme?
   "Returns true if the given element `e` is a theme."
@@ -630,7 +640,7 @@
                  (name from) "-" (name el) "-" (name to)))))
 
 ;;
-;; recursive traversal of the hierarchical model
+;; recursive traversal of the hierarchical data
 ;;
 (defn traverse
   "Recursively traverses the `coll` of elements and returns the elements (selected
