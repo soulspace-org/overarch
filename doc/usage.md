@@ -535,13 +535,15 @@ key                    | type            | example values          | description
 :tag                   | string          | "critical"              | elements with the given tag
 :tags                  | set of strings  | #{"Clojure" "Java"}     | elements with one or more of the given tags
 :all-tags              | set of strings  | #{"Clojure" "Java"}     | elements with all of the given tags
-:children?             | boolean         | true, false             | nodes for which the check for children returns the given value
-:child?                | boolean         | true, false             | nodes for which the check for child returns the given value
 :refers?               | boolean         | true, false             | nodes for which the check for refers returns the given value
 :referred?             | boolean         | true, false             | nodes for which the check for referred returns the given value
 :refers-to             | keyword         | :org.soulspace/overarch | nodes which refer to the node with the given id
 :referred-by           | keyword         | :org.soulspace/overarch | nodes which are referred by the node with the given id
+:child?                | boolean         | true, false             | nodes for which the check for child returns the given value
+:child-of         | keyword         | :org.soulspace/overarch | nodes which are children of the node with the given id
 :descendant-of         | keyword         | :org.soulspace/overarch | nodes which are descendants of the node with the given id
+:parent?             | boolean         | true, false             | nodes for which the check for children returns the given value
+:parent-of           | keyword         | :org.soulspace/overarch | node which is the parent of the node with the given id
 :ancestor-of           | keyword         | :org.soulspace/overarch | nodes which are ancestors of the node with the given id
 
 # Views

@@ -208,7 +208,35 @@
   ; don't render deployed on as relation as it is already rendered by :node
   )
 
- ; TODO is this neccessary (for :rel)?
+(defmethod puml/render-c4-element :architecture-model-relation
+  [_ _ indent e]
+  [(str (render/indent indent)
+        (c4-element->method (:el e))
+        (if (:direction e)
+          ; direction is specified on relation
+          (c4-directions (:direction e))
+          ; no direction is specified on relation, use reasonable defaults 
+          (case (:el e)
+            :publish (c4-directions :down)
+            :subscribe (c4-directions :up)
+            ""))
+        "("
+        (if (:reverse e)
+          (str (puml/alias-name (:to e)) ", "
+               (puml/alias-name (:from e)) ", \"")
+          (str (puml/alias-name (:from e)) ", "
+               (puml/alias-name (:to e)) ", \""))
+        (:name e) "\""
+        (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
+          (when (puml/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+        ")")])
+
+; TODO is this neccessary (for :rel)?
 (defmethod puml/render-c4-element :model-relation
   [_ _ indent e]
   (if (:constraint e)
