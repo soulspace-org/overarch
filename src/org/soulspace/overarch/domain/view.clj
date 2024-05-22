@@ -121,7 +121,8 @@
   (case (include-spec view)
     :relations (let [nodes (->> specified
                                 (filter el/model-node?)
-                                (mapcat el/descendant-nodes)
+                                (mapcat (partial model/descendant-nodes model))
+                                (map (partial model/resolve-element model))
                                 (into #{})
                                 (set/union specified)
                                 (filter (partial render-model-element? model view)))
@@ -155,14 +156,15 @@
 
 (defn root-elements
   "Returns the root elements for a collection of `model` `elements` to start the rendering of the `view` with."
-  [elements]
+  [model elements]
   ; Difference of the sets of elements have to be done with difference-by-id which treats the elements as entities
   ; to preserve overrides of keys in the content references included in the view.
   ; When keys have been added or overridden in the reference in a view, the elements in the different sets
   ; are not the same values anymore and so have to be treated as entities, even when they are still immutable.
   (let [descendants (->> elements
                          (filter el/model-node?)
-                         (mapcat el/descendant-nodes)
+                         (mapcat (partial model/descendant-nodes model))
+                         (map (partial model/resolve-element model))
                          (into #{}))]
     (el/difference-by-id elements descendants)))
 
@@ -174,7 +176,7 @@
    or the given `coll` of elements, depending on the type
    of the view."
   ([model view]
-   (root-elements (view-elements model view)))
+   (root-elements model (view-elements model view)))
   ([model view coll]
    (->> coll
         (map (partial model/resolve-element model))

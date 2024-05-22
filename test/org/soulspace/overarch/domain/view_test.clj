@@ -279,35 +279,35 @@
                            {:el :component :id :test/component11 :name "Test Component 11"}}}
                     {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
                     {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}}
-           (root-elements #{{:el :rel :id :test/system1-calls-ext-system1 :from :test/system1 :to :test/ext-system1 :name "calls"}
-                            {:el :person :id :test/user1 :name "User 1"}
-                            {:el :rel :id :test/user1-uses-system1, :from :test/user1, :to :test/system1, :name "uses"}
-                            {:el :system :id :test/ext-system1 :external true :name "External System 1"}
-                            {:el :system :id :test/system1 :name "Test System"
-                             :ct #{{:el :container :id :test/container1 :name "Test Container 1"
-                                    :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
-                                          {:el :component :id :test/component11 :name "Test Component 11"}}}
-                                   {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
-                                   {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}})))
+           (root-elements c4-model1 #{{:el :rel :id :test/system1-calls-ext-system1 :from :test/system1 :to :test/ext-system1 :name "calls"}
+                                      {:el :person :id :test/user1 :name "User 1"}
+                                      {:el :rel :id :test/user1-uses-system1, :from :test/user1, :to :test/system1, :name "uses"}
+                                      {:el :system :id :test/ext-system1 :external true :name "External System 1"}
+                                      {:el :system :id :test/system1 :name "Test System"
+                                       :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                                              :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                                    {:el :component :id :test/component11 :name "Test Component 11"}}}
+                                             {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                                             {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}})))
     (is (= #{{:el :system :id :test/system1 :name "Test System"
             :ct #{{:el :container :id :test/container1 :name "Test Container 1"
                    :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
                          {:el :component :id :test/component11 :name "Test Component 11"}}}
                   {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
                   {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}}
-           (root-elements #{{:el :system :id :test/system1 :name "Test System"
-                             :ct #{{:el :container :id :test/container1 :name "Test Container 1"
-                                    :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
-                                          {:el :component :id :test/component11 :name "Test Component 11"}}}
-                                   {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
-                                   {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}
-                            {:el :container :id :test/container1 :name "Test Container 1"
-                             :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
-                                   {:el :component :id :test/component11 :name "Test Component 11"}}}
-                            {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
-                            {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}
-                            {:el :component :id :test/component12 :name "Test Component 12"}
-                            {:el :component :id :test/component11 :name "Test Component 11"}})))))
+           (root-elements c4-model1 #{{:el :system :id :test/system1 :name "Test System"
+                                       :ct #{{:el :container :id :test/container1 :name "Test Container 1"
+                                              :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                                    {:el :component :id :test/component11 :name "Test Component 11"}}}
+                                             {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                                             {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}}}
+                                      {:el :container :id :test/container1 :name "Test Container 1"
+                                       :ct #{{:el :component :id :test/component12 :name "Test Component 12"}
+                                             {:el :component :id :test/component11 :name "Test Component 11"}}}
+                                      {:el :container :id :test/container-db1 :subtype :database :name "Test DB Container 1"}
+                                      {:el :container :id :test/container-queue1 :subtype :queue :name "Test Queue Container 1"}
+                                      {:el :component :id :test/component12 :name "Test Component 12"}
+                                      {:el :component :id :test/component11 :name "Test Component 11"}})))))
 
 
 (comment

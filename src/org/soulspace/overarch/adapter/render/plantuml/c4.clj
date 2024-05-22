@@ -364,7 +364,7 @@
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
   (let [elements (view/view-elements model view)
-        nodes (view/root-elements (filter el/model-node? elements))
+        nodes (view/root-elements model (filter el/model-node? elements))
         relations (filter el/model-relation? elements)
         rendered (view/elements-to-render model view (concat nodes relations))]
     (flatten [(str "@startuml " (name (:id view)))

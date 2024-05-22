@@ -118,6 +118,37 @@
         (recur (parent model p)))
       false)))
 
+(defn descendant-nodes
+  "Returns the set of descendants of the node `e`."
+  [model e]
+  (when (el/model-node? e)
+    ; TODO should resolve refs as children
+    (el/traverse el/model-node? el/tree->set (:ct e))))
+
+(defn descendant-node?
+  "Returns true, if `c` is a descendant of `e`."
+  [model e c]
+  (contains? (descendant-nodes model e) c))
+
+(defn root-nodes
+  "Returns the set of root nodes of the `elements`.
+   The root nodes are not contained as descendants in any of the element nodes."
+  [model elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
+                         (map (partial descendant-nodes model))
+                         (apply set/union))]
+    (set/difference (set elements) descendants)))
+
+(defn all-nodes
+  "Returns the set of all nodes, including descendants, of the `elements`."
+  [model elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
+                         (mapcat (partial descendant-nodes model))
+                         (into #{}))]
+    (set/union (set elements) descendants)))
+
 (defn dependency-nodes
   [model e]
   (->> e
@@ -145,6 +176,8 @@
         (vals)
         (map (partial resolve-element model))
         (into #{}))))
+
+
 
 (defn from-name
   "Returns the name of the from reference of the relation."
@@ -405,7 +438,7 @@
 (defn descendant-of?
   "Returns true, if `e` is a descendant of the node with id `v` in the `model`."
   [model v e]
-  (contains? (el/descendant-nodes (resolve-id model v)) e))
+  (contains? (descendant-nodes model (resolve-id model v)) e))
 
 (defn ancestor-of?
   "Returns true, if `e` is an ancestor of the node with id `v` in the `model`."

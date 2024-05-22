@@ -744,36 +744,6 @@
   [e]
   (:ct e))
 
-(defn descendant-nodes
-  "Returns the set of descendants of the node `e`."
-  [e]
-  (when (model-node? e)
-    (traverse model-node? tree->set (:ct e))))
-
-(defn descendant-node?
-  "Returns true, if `c` is a descendant of `e`."
-  [e c]
-  (contains? (descendant-nodes e) c))
-
-(defn root-nodes
-  "Returns the set of root nodes of the `elements`.
-   The root nodes are not contained as descendants in any of the element nodes."
-  [elements]
-  (let [descendants (->> elements
-                         (filter el/model-node?)
-                         (map descendant-nodes)
-                         (apply set/union))]
-    (set/difference (set elements) descendants)))
-
-(defn all-nodes
-  "Returns the set of all nodes, including descendants, of the `elements`."
-  [elements]
-  (let [descendants (->> elements
-                         (filter el/model-node?)
-                         (mapcat descendant-nodes)
-                         (into #{}))]
-    (set/union (set elements) descendants)))
-
 (defn id->element-map
   "Returns am map of id -> element for the given `elements`."
   ([elements]

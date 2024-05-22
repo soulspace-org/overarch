@@ -129,18 +129,29 @@
   (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
   )
 
-(def ancestor-input
+(def hierarchy-input1
   #{{:el :system
      :id :a/system
      :ct #{{:el :container
             :id :a/container
             :ct #{{:el :component
                    :id :a/component}}}}}})
-(def ancestor-model (build-model ancestor-input))
+(def hierarchy-model1 (build-model hierarchy-input1))
+
+(def hierarchy-input2
+  #{{:el :system
+     :id :a/system
+     :ct #{{:ref :a/container}}}
+    {:el :container
+     :id :a/container
+     :ct #{{:el :component
+            :id :a/component}}}})
+(def hierarchy-model2 (build-model hierarchy-input2))
+
 
 (deftest ancestor-nodes-test
   (testing "ancestor-nodes true"
-    (are [x y] (= x (ancestor-nodes ancestor-model y))
+    (are [x y] (= x (ancestor-nodes hierarchy-model1 y))
       #{{:el :system
          :id :a/system
          :ct #{{:el :container
@@ -163,11 +174,30 @@
       {:el :container
        :id :a/container
        :ct #{{:el :component
+              :id :a/component}}}))
+  (testing "ancestor-nodes with refs true"
+    (are [x y] (= x (ancestor-nodes hierarchy-model2 y))
+      #{{:el :system
+         :id :a/system
+         :ct #{{:ref :a/container}}}
+        {:el :container
+         :id :a/container
+         :ct #{{:el :component
+                :id :a/component}}}}
+      {:el :component
+       :id :a/component}
+
+      #{{:el :system
+         :id :a/system
+         :ct #{{:ref :a/container}}}}
+      {:el :container
+       :id :a/container
+       :ct #{{:el :component
               :id :a/component}}})))
 
 (deftest ancestor-node?-test
   (testing "ancestor-node? true"
-    (are [x y] (= x (ancestor-node? ancestor-model
+    (are [x y] (= x (ancestor-node? hierarchy-model1
                                     {:el :component
                                      :id :a/component}
                                     y))
@@ -182,13 +212,44 @@
             :id :a/container
             :ct #{{:el :component
                    :id :a/component}}}))
-  (testing "ancestor-node? true"
-    (are [x y] (= x (ancestor-node? ancestor-model
+  (testing "ancestor-node? false"
+    (are [x y] (= x (ancestor-node? hierarchy-model1
                                     {:el :component
                                      :id :a/component}
                                     y))
                   false {:el :component
                          :id :a/component})))
+
+(deftest descendant-nodes-test
+  (testing "descendant-nodes true"
+    (are [x y] (= x (descendant-nodes hierarchy-model1 y))
+      #{{:el :container
+         :id :a/container
+         :ct #{{:el :component
+                :id :a/component}}}
+        {:el :component
+         :id :a/component}}
+      hierarchy-input1
+      
+      #{{:el :component
+         :id :a/component}}
+      {:el :container
+       :id :a/container
+       :ct #{{:el :component
+              :id :a/component}}})))
+
+(deftest descendant-node?-test
+  (testing "descendant-node? true"
+    (are [x y] (= x (descendant-node? hierarchy-model1 hierarchy-input1 y))
+      true {:el :container :id :a/container
+            :ct #{{:el :component
+                   :id :a/component}}}
+      true {:el :component :id :a/component}))
+  (testing "descendant-node? false"
+    (are [x y] (= x (descendant-node? hierarchy-model1 hierarchy-input1 y))
+      false hierarchy-input1)))
+
+
 (def filter-input
   #{{:el :person
      :id :org.soulspace.external/person
@@ -263,6 +324,147 @@
      :name "consumes"}})
 
 (def filter-model1 (build-model filter-input))
+
+  (deftest root-nodes-test
+  (testing "root-nodes"
+    (are [x y] (= x (root-nodes filter-model1 y))
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}}
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}}
+
+      #{{:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct #{{:el :container
+                :id :org.soulspace.internal.system/container1
+                :name "Container1"
+                :ct #{{:el :component
+                       :id :org.soulspace.internal.system.container1/component1
+                       :name "Component1"}}}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-ui
+                :name "Container1 UI"}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-db
+                :subtype :database
+                :name "Container1 DB"}}}}
+      #{{:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct #{{:el :container
+                :id :org.soulspace.internal.system/container1
+                :name "Container1"
+                :ct #{{:el :component
+                       :id :org.soulspace.internal.system.container1/component1
+                       :name "Component1"}}}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-ui
+                :name "Container1 UI"}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-db
+                :subtype :database
+                :name "Container1 DB"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1
+         :name "Container1"
+         :ct #{{:el :component
+                :id :org.soulspace.internal.system.container1/component1
+                :name "Component1"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-ui
+         :name "Container1 UI"}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-db
+         :subtype :database
+         :name "Container1 DB"}}
+
+          ;
+      )))
+
+(deftest all-nodes-test
+  (testing "root-nodes"
+    (are [x y] (= x (all-nodes filter-model1 y))
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}}
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}}
+
+      #{{:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct #{{:el :container
+                :id :org.soulspace.internal.system/container1
+                :name "Container1"
+                :ct #{{:el :component
+                       :id :org.soulspace.internal.system.container1/component1
+                       :name "Component1"}}}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-ui
+                :name "Container1 UI"}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-db
+                :subtype :database
+                :name "Container1 DB"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1
+         :name "Container1"
+         :ct #{{:el :component
+                :id :org.soulspace.internal.system.container1/component1
+                :name "Component1"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-ui
+         :name "Container1 UI"}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-db
+         :subtype :database
+         :name "Container1 DB"}
+        {:el :component,
+         :id :org.soulspace.internal.system.container1/component1,
+         :name "Component1"}}
+      #{{:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct #{{:el :container
+                :id :org.soulspace.internal.system/container1
+                :name "Container1"
+                :ct #{{:el :component
+                       :id :org.soulspace.internal.system.container1/component1
+                       :name "Component1"}}}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-ui
+                :name "Container1 UI"}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-db
+                :subtype :database
+                :name "Container1 DB"}}}}
+      ;
+      )))
+
 
 (deftest dependency-nodes-test
   (testing "dependency-nodes"
