@@ -155,7 +155,8 @@
    :id :banking/concept-view
    :spec {:markdown {:references true}}
    :title "Concept Map for the Banking System"
-   :ct [{:ref :banking/account-concept}
+   :ct [{:ref :banking/bank-concept}
+        {:ref :banking/account-concept}
         {:ref :banking/transaction-concept}
         {:ref :banking/internet-banking-concept}
 
@@ -166,4 +167,21 @@
         {:ref :banking/personal-customer-has-account}
         {:ref :banking/personal-customer-performs-transaction}
         {:ref :banking/internet-banking-system-implements-internet-banking-concept}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}}
+        {:ref :banking/personal-customer-uses-internet-banking-system}]}
+  
+  {:el :concept-view
+   :id :banking/concept-view-with-selection-and-include
+   :spec {:selection {:namespace "banking" :el :concept}
+          :include :relations
+          :markdown {:references true}}
+   :title "Concept Map for the Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+        
+        {:ref :banking/personal-customer}
+        {:ref :banking/internet-banking-system}
+        ]}
+  
+  
+  }
