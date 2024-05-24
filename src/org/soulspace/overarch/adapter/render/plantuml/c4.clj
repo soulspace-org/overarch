@@ -371,6 +371,7 @@
               (render-c4-imports view)
               (puml/render-sprite-imports model view)
               (render-c4-layout model view)
+              (puml/render-skinparams view)
               (puml/render-title view)
               (map #(puml/render-c4-element model view 0 %) rendered)
               (render-c4-legend view)

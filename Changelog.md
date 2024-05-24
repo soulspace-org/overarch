@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.19.0
+--------------
+* added generic support for plantuml skinparams
+
 Version 0.18.0
 --------------
 * enhanced dependent-node functions to handle model references

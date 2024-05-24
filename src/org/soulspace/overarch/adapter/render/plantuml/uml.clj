@@ -420,6 +420,7 @@
     (flatten [(str "@startuml " (name (:id view)))
               (render-uml-layout view)
               (puml/render-title view)
+              (puml/render-skinparams view)
               (map #(puml/render-uml-element model view 0 %) rendered)
               "@enduml"])))
 

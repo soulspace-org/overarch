@@ -1,0 +1,36 @@
+;;;;
+;;;; Test model
+;;;;
+#{;; Architecture Model
+  {:el :system
+   :id :test/sys1
+   :name "Sys1"}
+  {:el :system
+   :id :test/sys2
+   :name "Sys2"
+   :external true}
+  {:el :request
+   :id :test/sys1-calls-sys2
+   :from :test/sys1
+   :to :test/sys2
+   :name "calls"}
+
+  ;; Deployment Model
+  {:el :node
+   :id :test/azure
+   :name "Azure"
+   :tech "Azure"
+   :ct #{{:el :node
+          :id :test/azure-subscription
+          :name "Test Subscription"
+          :tech "Azure Subscription"}}}
+  {:el :node
+   :id :test/aws
+   :name "AWS"
+   :tech "AWS Cloud"
+   :ct #{{:el :node
+          :id :test/aws-account
+          :name "Test Account"
+          :tech "AWS Account"}}}
+  ;
+  }

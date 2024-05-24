@@ -270,6 +270,19 @@
   [view]
   (when (:title view) (str "title " (:title view))))
 
+(defn render-skinparam
+  "Renders a skinparam for the plantuml diagram."
+  [[k v]]
+  (str "skinparam " k " " v))
+
+(defn render-skinparams
+  "Renders skinparams for the plantuml diagram."
+  [view]
+  (when-let [skinparams (get-in view [:spec :plantuml :skinparams])]
+    (->> skinparams
+         (map render-skinparam)
+         (str/join "\n"))))
+
 ;;;
 ;;; PlantUML Rendering dispatch
 ;;;
