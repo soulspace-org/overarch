@@ -14,6 +14,7 @@
 ;; export model into edn files structured according to the types and namespaces of the elements
 ;;
 
+
 (defn edn-filename
   "Returns the filename for the `namespace` and the `kind` of data."
   ([options namespace kind]
@@ -31,5 +32,9 @@
 
 (defmethod exp/export :edn
   [model format options]
-  ; TODO implement
+  (let [elements-by-namespace (el/elements-by-namespace (model/input-elements model))]
+    (doseq [[k v] elements-by-namespace]
+      ; TODO implement
+      )
+    )
   )

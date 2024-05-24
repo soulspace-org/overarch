@@ -4,6 +4,8 @@ Changelog
 Version 0.19.0
 --------------
 * added generic support for plantuml skinparams
+* updated and enhanced example views
+* updated usage docs
 
 Version 0.18.0
 --------------

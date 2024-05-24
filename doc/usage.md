@@ -683,8 +683,8 @@ key           | type          | example values            | description
 With the `:selection` key a criteria map or a vector of criterias can be specified.
 The matching elements will be included in the view. This feature can be used to
 create 'dynamic' views that always contain the latest model content matching
-the criteria. See [Model Element Selection by Criteria](#model-element-selection-by-criteria)
-for details.
+the criteria. See section [Model Element Selection by Criteria](#model-element-selection-by-criteria)
+for details and [banking views](/models/banking/views.edn) for examples.
 
 ### Includes
 With the `:include` key elements can be automatically included in a view. 
@@ -741,11 +741,12 @@ view spec.
 ```
 
 ### Keys
-key              | type    | values                   | description 
+key              | type    | example values           | description 
 -----------------|---------|--------------------------|------------
 :node-separation | integer | 50 (for 50 pixels)       | separation between nodes
 :rank-separation | integer | 250 (for 250 pixels)     | separation between ranks
 :sprite-libs     | vector  | sprite-lib keywords      | used to render sprites for techs, order defines precedence of the libs
+:skinparams      | map     | {"monochrome" "true"}    | render generic skinparams (as `skinparam <key> <value>`)
 
 ### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
