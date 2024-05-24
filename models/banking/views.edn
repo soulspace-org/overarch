@@ -36,6 +36,16 @@
         {:ref :banking/api-application-uses-email-system :direction :right}
         {:ref :banking/api-application-uses-mainframe-banking-system}]}
 
+  ; selection based container view
+  {:el :container-view
+   :id :banking/banking-container-view-with-selection
+   :spec {:selection {:namespace :banking}}
+   :title "Container View of the Internet Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+        ]}
+
   {:el :component-view
    :id :banking/api-component-view
    :title "Component View of the API Application"
@@ -140,7 +150,7 @@
         {:ref :banking/personal-customer-has-account}
         {:ref :banking/personal-customer-performs-transaction}
         {:ref :banking/personal-customer-uses-internet-banking-system}]}
-  
+
   {:el :concept-view
    :id :banking/concept-view
    :spec {:markdown {:references true}}
@@ -156,5 +166,4 @@
         {:ref :banking/personal-customer-has-account}
         {:ref :banking/personal-customer-performs-transaction}
         {:ref :banking/internet-banking-system-implements-internet-banking-concept}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}
-  }
+        {:ref :banking/personal-customer-uses-internet-banking-system}]}}
