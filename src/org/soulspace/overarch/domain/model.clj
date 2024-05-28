@@ -217,7 +217,7 @@
 
 
 (defn from-name
-  "Returns the name of the from reference of the relation."
+  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
   (->> rel
        (:from)
@@ -225,7 +225,7 @@
        (:name)))
 
 (defn to-name
-  "Returns the name of the from reference of the relation."
+  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
   (->> rel
        (:to)
@@ -233,7 +233,7 @@
        (:name)))
 
 (defn related
-  "Returns the related elements for the given collection of relations"
+  "Returns the related elements for the given `coll` of relations in the context of the `model`."
   ([model coll]
    (->> coll
         (mapcat (fn [e] [(:from e) (:to e)]))
@@ -241,7 +241,7 @@
         (into #{}))))
 
 (defn relations-of-nodes
-  "Returns the relations of the model `m` connecting nodes from the given collection of model nodes."
+  "Returns the relations of the `model` connecting nodes from the given `coll` of model nodes."
   ([model coll]
    (let [els (into #{} (map :id coll))
          rels (filter el/model-relation? (model-elements model))
@@ -252,7 +252,7 @@
      filtered)))
 
 (defn related-nodes
-  "Returns the set of nodes of the model `m` that are part of at least one relation in the `coll`."
+  "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
   [model coll]
   (->> coll
        (filter el/model-relation?)

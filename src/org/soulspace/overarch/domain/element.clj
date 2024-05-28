@@ -429,7 +429,7 @@
   (contains? model-element-types (:el e)))
 
 (defn model-relation?
-  "Returns true if the given element `e` is a relation."
+  "Returns true if the given element `e` is a model relation."
   [e]
   (and (relational? e)
        (contains? model-relation-types (:el e))))
