@@ -51,7 +51,7 @@
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
    ["-s" "--select-elements CRITERIA" "Select and print model elements by criteria" :parse-fn edn/read-string]
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
-   ["-t" "--template-dir DIRNAME" "Template directory" :default "templates"]
+   ["-T" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
@@ -317,7 +317,7 @@
          (-main "--help") ; ends REPL session
 
          ; overarch development
-         (-main "--debug" "--generation-config" "dev/model-gencfg.edn")
+         (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")
          (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
          (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
   ;
