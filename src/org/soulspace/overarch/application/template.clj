@@ -13,7 +13,6 @@
             [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]
             [clojure.spec.alpha :as s]))
 
-
 ;;;
 ;;; Generation config spec
 ;;;
@@ -73,6 +72,11 @@
    ttype)
   ([ttype & r]
    ttype))
+
+(defn read-source [source]
+  (if (string? source)
+    source
+    (slurp source)))
 
 ; TODO really needed?
 (defmulti read-template
