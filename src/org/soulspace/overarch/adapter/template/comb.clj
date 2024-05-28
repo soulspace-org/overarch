@@ -13,12 +13,7 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]))
 
-; (def *read-eval* false)
-
-(defn- read-source [source]
-  (if (string? source)
-    source
-    (slurp source)))
+(binding [*read-eval* false])
 
 (def delimiters ["<%" "%>"])
 
@@ -55,7 +50,7 @@
   (core/eval
    `(core/fn ~args
       (with-out-str
-        ~(-> src read-source parse-string read-string)))))
+        ~(-> src t/read-source parse-string read-string)))))
 
 (defmacro fn
   "Compile a template into a function that takes the supplied arguments. The
@@ -75,10 +70,6 @@
        (let [keys (map (comp symbol name) (keys bindings))
              func (compile-fn [{:keys (vec keys)}] source)]
          (func bindings))))))
-
-(defmethod t/read-template :comb
-  [rtype template]
-  (read-source template))
 
 (defmethod t/apply-template :comb
   ([engine-key template]
@@ -111,15 +102,20 @@
   ;
   )
 
-(defn- wrap-str
-  [s]
-  (str "\"" s "\""))
-
-(def sci-opts {:namespaces {'clojure.core {'print print}
-                            'clojure.string {'join str/join}
-                            'org.soulspace.overarch.domain.element {'element-name el/element-name}}
-               :ns-aliases '{el org.soulspace.overarch.domain.element
-                             str clojure.string}})
+(defn sci-opts
+  []
+  (let [element-ns (sci/create-ns 'org.soulspace.overarch.domain.element)
+        element-sci-ns (sci/copy-ns org.soulspace.overarch.domain.element element-ns)
+        model-ns (sci/create-ns 'org.soulspace.overarch.domain.element)
+        model-sci-ns (sci/copy-ns org.soulspace.overarch.domain.model model-ns)]
+    {:namespaces {;'clojure.core {'print print}
+                  'clojure.string {'join str/join}
+                  'org.soulspace.overarch.domain.element element-sci-ns
+                  'org.soulspace.overarch.domain.model model-sci-ns}
+     :ns-aliases '{str clojure.string
+                   el org.soulspace.overarch.domain.element
+                   model org.soulspace.overarch.domain.model}})
+)
 (def ctx (sci/init sci-opts))
 
 (defn eval-sci
@@ -127,23 +123,16 @@
   be a string, or an I/O source such as a File, Reader or InputStream."
   ([source]
    (eval-sci source {}))
-  ([source bindings]
+  ([source data]
    (let [parsed (-> source
-                    (read-source)
-                    (parse-string)
-                    ;(wrap-str)
-                    )
+                    (t/read-source)
+                    (parse-string))
          _ (println parsed)
-         keys (map (comp symbol name) (keys bindings))
-         _ (println keys)
-         ;opts {:bindings data}
-         ]
-     (sci/eval-string parsed
-                      sci-opts))))
-
-(defmethod t/read-template :combsci
-  [rtype template]
-  (read-source template))
+         e (:e data)
+         ctx (:ctx data)
+         model (:model data)
+         opts (update-in (sci-opts) [:namespaces] merge {'user {'e e 'ctx ctx 'model model}})]
+     (sci/with-out-str (sci/eval-string parsed opts)))))
 
 (defmethod t/apply-template :combsci
   ([engine-key template]
@@ -157,7 +146,7 @@
   (clojure.core/eval "Hello")
   (sci/eval-string* ctx "\"Hello\"")
   (sci/eval-string* ctx "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"")
-  (sci/eval-string (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!") sci-opts)
+  (sci/eval-string (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!") (sci-opts))
   (sci/eval-string* ctx "(do (print  \"Hello\" ) (dotimes [x 3] (print  \" World\" ) ) (print  \"!\" ))")
   (t/apply-template :combsci "Hello")
   (t/apply-template :combsci "*ns*")

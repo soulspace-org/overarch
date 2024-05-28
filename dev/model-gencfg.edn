@@ -1,6 +1,7 @@
 [; Overarch model generators 
  {:selection {:namespace "overarch.data-model"}
   :template "overarch/data-model/spec.clj.cmb"
+  :engine :combsci
   :subdir "src"
   :base-namespace "overarch.domain"
   :base-name "spec"
@@ -9,6 +10,7 @@
   :overarch-models ["architecture-model" "class-model" "concept-model"
                   "deployment-model" "state-machine-model" "use-case-model"] 
   :template "overarch/data-model/hierarchy.clj.cmb"
+  :engine :combsci
   :subdir "src"
   :base-namespace "overarch.domain"
   :base-name "hierarchy"
@@ -17,6 +19,7 @@
   :overarch-models ["architecture-model" "class-model" "concept-model"
                     "deployment-model" "state-machine-model" "use-case-model"] 
   :template "overarch/data-model/categories.clj.cmb"
+  :engine :combsci
   :subdir "src"
   :base-namespace "overarch.domain"
   :base-name "categories"

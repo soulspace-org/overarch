@@ -78,11 +78,6 @@
     source
     (slurp source)))
 
-; TODO really needed?
-(defmulti read-template
-  "Reads and parses the `template`."
-  repo-type)
-
 (defmulti apply-template
   "Applies the `template` to the `data` and returns the output."
   engine-type)
