@@ -10,8 +10,7 @@
             [sci.core :as sci]
             [org.soulspace.overarch.application.template :as t]
             ; require overarch domain to make functions available for templates
-            [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.adapter.template.model-api :as m]))
 
 (binding [*read-eval* false])
 
@@ -104,18 +103,18 @@
 
 (defn sci-opts
   []
-  (let [element-ns (sci/create-ns 'org.soulspace.overarch.domain.element)
-        element-sci-ns (sci/copy-ns org.soulspace.overarch.domain.element element-ns)
-        model-ns (sci/create-ns 'org.soulspace.overarch.domain.element)
-        model-sci-ns (sci/copy-ns org.soulspace.overarch.domain.model model-ns)]
-    {:namespaces {;'clojure.core {'print print}
-                  'clojure.string {'join str/join}
-                  'org.soulspace.overarch.domain.element element-sci-ns
-                  'org.soulspace.overarch.domain.model model-sci-ns}
+  (let [model-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.model-api)
+        model-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.model-api model-ns)]
+    {:namespaces {'clojure.string {'join str/join 'split-lines str/split-lines
+                                   'escape str/escape 'ends-with? str/ends-with?
+                                   'starts-with? str/starts-with?
+                                   'includes? str/includes?
+                                   'capitalize str/capitalize
+                                   'lower-case str/lower-case
+                                   'upper-case str/upper-case}
+                  'org.soulspace.overarch.adapter.template.model-api model-sci-ns}
      :ns-aliases '{str clojure.string
-                   el org.soulspace.overarch.domain.element
-                   model org.soulspace.overarch.domain.model}})
-)
+                   m org.soulspace.overarch.adapter.template.model-api}}))
 (def ctx (sci/init sci-opts))
 
 (defn eval-sci
@@ -154,7 +153,7 @@
   (t/apply-template :combsci "<% (defn greet-template [x] (print \"Hello\" x))
                            (greet-template \"World\")%>" {})
   (t/apply-template :combsci "<%= (str/join \";\" [1 2 3])%>")
-  (t/apply-template :combsci "<%= (el/element-name e) %>"
+  (t/apply-template :combsci "<%= (m/element-name e) %>"
                     {:e {:el :system
                          :id :foo/foo-bar}})
   (t/apply-template :combsci (io/as-file "dev/templates/ns-test.cmb") {:e {:el :system
