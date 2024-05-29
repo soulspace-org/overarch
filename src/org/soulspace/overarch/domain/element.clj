@@ -245,16 +245,35 @@
       (derive :actor                             :role)
       (derive :person                            :role)
 
+      ;;; architecture model
       ;; architecture model nodes
       (derive :system                            :technical-architecture-model-node)
       (derive :container                         :technical-architecture-model-node)
       (derive :component                         :technical-architecture-model-node)
       (derive :technical-architecture-model-node :architecture-model-node)
       (derive :person                            :architecture-model-node)
+      (derive :architecture-model-node           :architecture-model-element)
 
+      ;; architecture model relations
+      (derive :request                           :architecture-model-relation)
+      (derive :response                          :architecture-model-relation)
+      (derive :publish                           :architecture-model-relation)
+      (derive :subscribe                         :architecture-model-relation)
+      (derive :send                              :architecture-model-relation)
+      (derive :dataflow                          :architecture-model-relation)
+      (derive :architecture-model-relation       :architecture-model-element)
+
+      ;;; deployment model
       ;; deployment model nodes
       (derive :node                              :deployment-model-node)
+      (derive :deployment-model-node             :deployment-model-element)
 
+      ;; deployment model relations
+      (derive :link                              :deployment-model-relation)
+      (derive :deployed-to                       :deployment-model-relation)
+      (derive :deployment-model-relation         :deployment-model-element)
+
+      ;;; use case model
       ;; use case model nodes 
       (derive :actor                             :actor-node)
       (derive :person                            :actor-node)
@@ -263,7 +282,16 @@
 
       (derive :use-case                          :use-case-model-node)
       (derive :actor-node                        :use-case-model-node)
+      (derive :use-case-model-node               :use-case-model-element)
 
+      ;; use case model relations
+      (derive :uses                              :use-case-model-relation)
+      (derive :include                           :use-case-model-relation)
+      (derive :extends                           :use-case-model-relation)
+      (derive :generalizes                       :use-case-model-relation)
+      (derive :use-case-model-relation           :use-case-model-element)
+
+      ;;; state machine model
       ;; state machine model nodes
       (derive :state-machine                     :state-machine-model-node)
       (derive :start-state                       :state-machine-model-node)
@@ -274,7 +302,13 @@
       (derive :choice                            :state-machine-model-node)
       (derive :history-state                     :state-machine-model-node)
       (derive :deep-history-state                :state-machine-model-node)
+      (derive :state-machine-model-node          :state-machine-model-element)
 
+      ;; state machine model relations
+      (derive :transition                        :state-machine-model-relation)
+      (derive :state-machine-model-relation      :state-machine-model-element)
+
+      ;;; class model
       ;; class model nodes
       (derive :annotation                        :class-model-node)
       (derive :class                             :class-model-node)
@@ -289,9 +323,26 @@
       (derive :parameter                         :class-model-node)
       (derive :protocol                          :class-model-node)
       (derive :stereotype                        :class-model-node)
+      (derive :class-model-node                  :class-model-element)
 
+      ;; class model relations
+      (derive :inheritance                       :class-model-relation)
+      (derive :implementation                    :class-model-relation)
+      (derive :composition                       :class-model-relation)
+      (derive :aggregation                       :class-model-relation)
+      (derive :association                       :class-model-relation)
+      (derive :dependency                        :class-model-relation)
+      (derive :class-model-relation              :class-model-element)
+
+      ;;; concept model
       ;; concept model nodes
       (derive :concept                           :concept-model-node)
+      (derive :concept-model-node                :concept-model-element)
+
+      ;; concept model relations
+      (derive :is-a                              :concept-model-relation)
+      (derive :has                               :concept-model-relation)
+      (derive :concept-model-relation            :concept-model-element)
 
       ;; model nodes
       (derive :architecture-model-node           :model-node)
@@ -301,40 +352,6 @@
       (derive :class-model-node                  :model-node)
       (derive :concept-model-node                :model-node)
       (derive :boundary                          :model-node)
-
-      ;;; model relations
-      ;; architecture model relations
-      (derive :request                           :architecture-model-relation)
-      (derive :response                          :architecture-model-relation)
-      (derive :publish                           :architecture-model-relation)
-      (derive :subscribe                         :architecture-model-relation)
-      (derive :send                              :architecture-model-relation)
-      (derive :dataflow                          :architecture-model-relation)
-
-      ;; deployment model relations
-      (derive :link                              :deployment-model-relation)
-      (derive :deployed-to                       :deployment-model-relation)
-
-      ;; use case model relations
-      (derive :uses                              :use-case-model-relation)
-      (derive :include                           :use-case-model-relation)
-      (derive :extends                           :use-case-model-relation)
-      (derive :generalizes                       :use-case-model-relation)
-
-      ;; state machine model relations
-      (derive :transition                        :state-machine-model-relation)
-
-      ;; class model relations
-      (derive :inheritance                       :class-model-relation)
-      (derive :implementation                    :class-model-relation)
-      (derive :composition                       :class-model-relation)
-      (derive :aggregation                       :class-model-relation)
-      (derive :association                       :class-model-relation)
-      (derive :dependency                        :class-model-relation)
-
-      ;; concept model relations
-      (derive :is-a                              :concept-model-relation)
-      (derive :has                               :concept-model-relation)
 
       ;; model relations
       (derive :architecture-model-relation       :model-relation)
