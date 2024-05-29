@@ -9,5 +9,5 @@
 <% ) %>
 
 ## overarch namespaces
-<%= el/technical-architecture-node-types %>
+<%= (m/element-name e) %>
 
