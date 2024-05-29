@@ -3,6 +3,8 @@ Changelog
 
 Version 0.19.0
 --------------
+* *attention* changed short argument for template dir from `-t` to `-T` for consistency with other arguments
+* added SCI as a template generation environment
 * added generic support for plantuml skinparams
 * updated and enhanced example views
 * updated usage docs
