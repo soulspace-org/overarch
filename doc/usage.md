@@ -540,10 +540,10 @@ key                    | type            | example values          | description
 :refers-to             | keyword         | :org.soulspace/overarch | nodes which refer to the node with the given id
 :referred-by           | keyword         | :org.soulspace/overarch | nodes which are referred by the node with the given id
 :child?                | boolean         | true, false             | nodes for which the check for child returns the given value
-:child-of         | keyword         | :org.soulspace/overarch | nodes which are children of the node with the given id
+:child-of              | keyword         | :org.soulspace/overarch | nodes which are children of the node with the given id
 :descendant-of         | keyword         | :org.soulspace/overarch | nodes which are descendants of the node with the given id
-:parent?             | boolean         | true, false             | nodes for which the check for children returns the given value
-:parent-of           | keyword         | :org.soulspace/overarch | node which is the parent of the node with the given id
+:parent?               | boolean         | true, false             | nodes for which the check for children returns the given value
+:parent-of             | keyword         | :org.soulspace/overarch | node which is the parent of the node with the given id
 :ancestor-of           | keyword         | :org.soulspace/overarch | nodes which are ancestors of the node with the given id
 
 # Views

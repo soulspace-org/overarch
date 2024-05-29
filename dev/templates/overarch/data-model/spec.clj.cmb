@@ -6,7 +6,7 @@
             [expound.alpha :as expound]))
 
 ;; Spec for keys
-<%(doseq [c (el/collect-fields e)]%>
+<%(doseq [c (m/collect-fields e)]%>
 ; <%= (:desc c) %>
 (s/def :overarch/<%=(:name c)%> <%=(:type c)%>?)
 <%)%>
