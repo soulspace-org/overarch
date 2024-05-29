@@ -793,6 +793,7 @@
   (traverse :tech tech-collector coll))
 
 (defn collect-fields
+  "Returns the fields of all classes in the `coll`."
   [coll]
   (->> coll
        (filter #(= :class (:el %)))
