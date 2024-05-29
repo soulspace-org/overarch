@@ -132,8 +132,7 @@
                      elements (el/union-by-id included specified)]
                  elements)
     :related (let [included (model/related-nodes model (filter el/model-relation? specified))
-                   elements (el/union-by-id included specified)
-]
+                   elements (el/union-by-id included specified)]
                elements)
     :referenced-only specified
     (do

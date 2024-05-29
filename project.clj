@@ -4,7 +4,6 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.clojure/clojure "1.11.3"]
-                 [org.clojure/data.json "2.5.0"]
                  [org.clojure/tools.cli "1.1.230"]
                  [com.cnuernber/charred "1.034"]
                  [com.nextjournal/beholder "1.0.2"]
