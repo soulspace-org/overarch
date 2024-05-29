@@ -390,7 +390,6 @@
 ;;;
 ;;; Diagram Layout
 ;;;
-
 (defn render-uml-layout
   "Renders the layout for the UML diagram."
   [view]
@@ -423,4 +422,3 @@
               (puml/render-skinparams view)
               (map #(puml/render-uml-element model view 0 %) rendered)
               "@enduml"])))
-
