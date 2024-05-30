@@ -26,6 +26,15 @@
   (portal/docs))
 
 ;;;
+;;; Criterium
+;;; 
+(comment
+  (require '[criterium.core :as criterium])
+  (criterium/bench (Thread/sleep 1000))
+  (criterium/quick-bench (Thread/sleep 1000))
+  )
+
+;;;
 ;;; Expound spec tool
 ;;;
 (comment
@@ -40,4 +49,3 @@
   (decompile (fn [] (println "Hello, World!")))
   (disassemble (fn [] (println "Hello, World!")))
   )
-
