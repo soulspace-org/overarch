@@ -1,8 +1,11 @@
 (ns org.soulspace.overarch.adapter.template.model-api
-  "Public API with useful functions on top of the model for use in templates."
+  "Public API with useful functions on top of the model for use in templates. (Not yet stable!)"
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]))
 
+;;;;
+;;;; Not yet stable!
+;;;;
 
 (defn model-element?
   "Returns true if the given element `e` is a model element."
