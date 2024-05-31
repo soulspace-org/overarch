@@ -59,8 +59,6 @@
   ""
   [nspace coll])
 
-
-
 (defn edn-filename
   "Returns the filename for the `namespace` and the `kind` of data."
   ([options nspace kind]
