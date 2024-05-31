@@ -104,14 +104,10 @@
    Optionally takes a `filter-fn` to filter the relations to take into account."
   ([model]
    (comp
-    :id
-    (partial get (:referrer-id->relations model))
     (map :to)
     (map (partial resolve-id model))))
   ([model filter-fn]
    (comp
-    :id
-    (partial get (:referrer-id->relations model))
     (filter filter-fn)
     (map :to)
     (map (partial resolve-id model)))))
@@ -121,14 +117,10 @@
    Optionally takes a `filter-fn` to filter the relations to take into account."
   ([model]
    (comp
-    :id
-    (partial get (:referred-id->relations model))
     (map :from)
     (map (partial resolve-id model))))
   ([model filter-fn]
    (comp
-    :id
-    (partial get (:referred-id->relations model))
     (filter filter-fn)
     (map :from)
     (map (partial resolve-id model)))))
@@ -280,12 +272,22 @@
 ;; architecture model
 ;;
 (defn dependency-nodes
+  "Returns the direct dependencies of the architecture node `e` in the `model`."
   [model e]
-  (into #{} (referrer-xf model #(contains? el/architecture-dependency-relation-types (:el %))) e))
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{}
+             (referrer-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
 (defn dependent-nodes
+  "Returns the direct dependents of the architecture node `e` in the `model`."
   [model e]
-  (into #{} (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))) e))
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{}
+             (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
 ;; TODO transitive dependencies with cycle detection/prevention
 
@@ -305,17 +307,33 @@
 ;;
 ;; class model
 ;;
-(defn superclass
-  "Returns a set o"
+(defn superclasses
+  "Returns the set of direct superclasses of the class element `e` in the `model`."
   [model e]
-  (into #{} (referrer-xf model #(= :inheritance (:el %))) e))
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referrer-xf model #(= :inheritance (:el %))))))
 
 (defn interfaces
+  "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
-  (into #{} (referrer-xf model #(= :implementation (:el %))) e))
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referrer-xf model #(= :implementation (:el %))))))
 
-(defn class-hierarchy
-  ""
+(defn supertypes
+  "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
+  [model e]
+  (->> e
+      (:id)
+      (get (:referred-id->relations model))
+      (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
+
+;; TODO type hierarcy with cycle detection/prevention
+(defn type-hierarchy
+  "Returns the type hierarchy of the class or interface element `e` in the model."
   [model e]
   (let []))
 

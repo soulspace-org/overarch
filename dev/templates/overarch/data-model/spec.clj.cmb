@@ -21,9 +21,17 @@
 ;; Spec for model elements
 <%(doseq [element (filterv (and (fn [el] (= :class (:el el)))
                                  (fn [el] (true? (:abstract el))))
-                           e)]%>
+                           e)]
+    ; TODO use type-hierarchy, not just the direct supertypes
+    (let [super (m/supertypes model element)
+          fields (m/all-fields (conj super element))]%>
+; Supertypes <%=(str/join "," (map :id super)) %>          
 ; <%= (first (str/split-lines (:desc element))) %>
 (s/def :overarch/<%=(:name element)%>
-  (s/keys :req-un []
-          :opt-un []))
-<%)%>
+  (s/keys :req-un [<%(doseq [field (filter #(not (true? (:optional %))) fields)]
+  %>:overarch/<%=(:name field)%>
+                  <%)%>]
+          :opt-un [<%(doseq [field (filter #(true? (:optional %)) fields)]
+%>:overarch/<%=(:name field)%>
+                  <%)%>]))
+<%))%>
