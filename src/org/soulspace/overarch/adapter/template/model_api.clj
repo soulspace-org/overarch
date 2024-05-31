@@ -54,6 +54,16 @@
   [model rel]
   (model/to-name model rel))
 
+(defn all-fields
+  "Returns a sequence of all fields of the given collection of `classes`."
+  [classes]
+  (el/collect-fields classes))
+
+#_(defn all-methods
+  "Returns a sequence of all methods of the given collection of `classes`."
+  [classes]
+  (el/collect-methods classes))
+
 #_(defn ancestor-nodes
   "Returns the set of ancestor nodes of the model node `e` in the `model`."
   [model e]
