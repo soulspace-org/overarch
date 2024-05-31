@@ -3,6 +3,8 @@
 ;;;;
 
 (ns org.soulspace.overarch.adapter.exports.edn 
+  "Export themodel into edn files structured according to the types and namespaces
+   of the elements."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [org.soulspace.clj.java.file :as file]
@@ -13,28 +15,71 @@
 ;;
 ;; export model into edn files structured according to the types and namespaces of the elements
 ;;
+(def model-order
+  "The order of the model elements in a namespace."
+  [:concept-model-element :use-case-model-element
+   :architecture-model-element :deployment-model-element
+   :class-model-element :state-machine-model-element])
+
+(defn file-comment
+  "File comment."
+  ([s]
+   (file-comment s 0))
+  ([s indent]
+   (str ";;;;\n"
+        ";;;; " s "\n"
+        ";;;;")))
+
+(defn model-comment
+  "Model comment."
+  ([s]
+   (model-comment s 0))
+  ([s indent]
+   (str ";;;\n"
+        ";;; " s "\n"
+        ";;;")))
+
+(defn elements-comment
+  "Elements comment."
+  ([s]
+   (elements-comment s 0))
+  ([s indent]
+   (str ";;\n"
+        ";; " s "\n"
+        ";;")))
+
+(defn element-comment
+  "Element comment."
+  ([s]
+   (element-comment s 0))
+  ([s indent]
+   (str "; " s)))
+
+(defn export-namespace
+  ""
+  [nspace coll])
+
 
 
 (defn edn-filename
   "Returns the filename for the `namespace` and the `kind` of data."
-  ([options namespace kind]
+  ([options nspace kind]
    (let [dir-name (str (:export-dir options) "/edn/"
-                       (str/replace namespace "." "/") "/")]
+                       (str/replace nspace "." "/") "/")]
      (file/create-dir (io/as-file dir-name))
      (io/as-file (str dir-name "/" kind ".edn")))))
 
 (defn write-edn
   "Write the elements of the `coll` to an EDN file."
-  [options namespace kind coll]
-  (with-open [wrt (io/writer (edn-filename options namespace kind))]
-   (binding [*out* wrt]
-     (println (str/join "\n" (doall coll))))))
+  [options nspace kind coll]
+  (let [result (export-namespace nspace coll)]
+    (with-open [wrt (io/writer (edn-filename options nspace kind))]
+      (binding [*out* wrt]
+        (println (str/join "\n" (doall result)))))))
 
 (defmethod exp/export :edn
   [model format options]
   (let [elements-by-namespace (el/elements-by-namespace (model/input-elements model))]
     (doseq [[k v] elements-by-namespace]
       ; TODO implement
-      )
-    )
-  )
+      )))
