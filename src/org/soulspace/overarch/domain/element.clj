@@ -821,6 +821,18 @@
        (filter #(= :field (:el %)))
        (sort-by :name)))
 
+(defn collect-methods
+  "Returns the methods of all classes in the `coll`."
+  [coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map :ct)
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :method (:el %)))
+       (sort-by :name)))
+
 ;;;
 ;;; Criteria Predicates
 ;;; 
