@@ -85,8 +85,51 @@
      :to :test/concept3
      :name "is a"}})
 
+(def class-input1
+  #{{:el :interface
+     :id :test/indentifiable-interface
+     :name "Identifiable"
+     :ct [{:el :method
+           :name "id"
+           :type "keyword"}]}
+    {:el :class
+     :id :test/identified-class
+     :abstract true
+     :name "Identified"
+     :ct [{:el :field
+           :name "id"
+           :type "keyword"}]}
+    {:el :class
+     :id :test/named-class
+     :abstract true
+     :name "Named"
+     :ct [{:el :field
+           :name "name"
+           :type "string"}
+          {:el :field
+           :name "desc"
+           :type "string"
+           :optional true}]}
+    {:el :class
+     :id :test/system-class
+     :name "System"
+     :ct []}
+    {:el :implementation
+     :to :test/indentifiable-interface
+     :from :test/identified-class
+     :name "extends"}
+    {:el :inheritance
+     :to :test/identified-class
+     :from :test/named-class
+     :name "extends"}
+    {:el :inheritance
+     :to :test/named-class
+     :from :test/system-class
+     :name "extends"}})
+
 (def c4-model1 (build-model c4-input1))
 (def concept-model1 (build-model concept-input1))
+(def class-model1 (build-model class-input1))
 
 (deftest id->element-test
   (testing "id->elements"
@@ -155,8 +198,6 @@
   (descendant-nodes hierarchy-model2 {:el :system
                                       :id :a/system
                                       :ct #{{:ref :a/container}}}))
-
-
 
 (deftest ancestor-nodes-test
   (testing "ancestor-nodes true"
@@ -764,3 +805,20 @@
         filter-input)
   ;
   )
+
+;;
+;; Class Model
+;;
+(deftest superclasses-test
+  (testing "superclasses"
+    (are [x y] (= x (superclasses class-model1
+                                  (resolve-id class-model1 y)))
+      #{(resolve-id class-model1 :test/named-class)} :test/system-class
+      #{(resolve-id class-model1 :test/identified-class)} :test/named-class)))
+
+(deftest interfaces-test
+  (testing "interfaces"
+    (are [x y] (= x (interfaces class-model1
+                                  (resolve-id class-model1 y)))
+      #{(resolve-id class-model1 :test/indentifiable-interface)} :test/identified-class)))
+

@@ -8,7 +8,7 @@
 ;;;;
 
 ;;
-;; Model
+;; General model functions
 ;;
 (defn model-element?
   "Returns true if the given element `e` is a model element."
@@ -45,17 +45,17 @@
   [model e]
   (model/parent model e))
 
-#_(defn ancestor-nodes
+(defn ancestor-nodes
     "Returns the set of ancestor nodes of the model node `e` in the `model`."
     [model e]
     (model/ancestor-nodes model e))
 
-#_(defn descendant-nodes
+(defn descendant-nodes
     "Returns the set of descendants of the model node `e` in the `model`."
     [model e]
     (model/descendant-nodes model e))
 
-#_(defn root-nodes
+(defn root-nodes
     "Returns the set of root nodes of the `coll` of elements.
    The root nodes are not contained as descendants in any of the element nodes."
     [model coll]

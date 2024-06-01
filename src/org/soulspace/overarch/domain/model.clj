@@ -312,15 +312,23 @@
   [model e]
   (->> e
        (:id)
-       (get (:referred-id->relations model))
+       (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :inheritance (:el %))))))
+
+#_(defn superclasses
+  [model e]
+  (let [id (:id e)
+        _ (println "Id:" id)
+        rels (get (:referrer-id->relations model) id)
+        _ (println "Rels:" rels)]
+    (into #{} (referrer-xf model #(= :inheritance (:el %))) rels)))
 
 (defn interfaces
   "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
   (->> e
        (:id)
-       (get (:referred-id->relations model))
+       (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :implementation (:el %))))))
 
 (defn supertypes
@@ -328,7 +336,7 @@
   [model e]
   (->> e
       (:id)
-      (get (:referred-id->relations model))
+      (get (:referrer-id->relations model))
       (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
 ;; TODO type hierarcy with cycle detection/prevention
