@@ -9,8 +9,7 @@
    of elements without references to the model as a whole."
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            [org.soulspace.overarch.util.functions :as fns]
-            [org.soulspace.overarch.domain.element :as el]))
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Category definitions
