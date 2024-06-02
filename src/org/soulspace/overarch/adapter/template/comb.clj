@@ -83,7 +83,6 @@
 
   (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!")
   (core/eval (read-string (parse-string (slurp "templates/ns-test.cmb"))))
-  (core/eval (read-string (parse-string "<%= el/technical-architecture-node-types %>")))
 
   (t/apply-template :comb "Hello" {})
   (t/apply-template :comb "Hello<% (dotimes [x 3] %> World<% ) %>!" {})
@@ -141,8 +140,6 @@
 
 (comment
   ;
-  (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!")
-  (clojure.core/eval "Hello")
   (sci/eval-string* ctx "\"Hello\"")
   (sci/eval-string* ctx "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"")
   (sci/eval-string (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!") (sci-opts))

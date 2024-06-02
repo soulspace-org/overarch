@@ -19,6 +19,36 @@
   [e]
   (el/model-relation? e))
 
+(defn architecture-model-element?
+  "Returns true if the given element `e` is an architecture model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :architecture-model-element)))
+
+(defn class-model-element?
+  "Returns true if the given element `e` is a class model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :class-model-element)))
+
+(defn concept-model-element?
+  "Returns true if the given element `e` is a concept model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :concept-model-element)))
+
+(defn deployment-model-element?
+  "Returns true if the given element `e` is a deployment model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :deployment-model-element)))
+
+(defn state-machine-model-element?
+  "Returns true if the given element `e` is a state-machine model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :state-machine-model-element)))
+
+(defn use-case-model-element?
+  "Returns true if the given element `e` is a use-case model element."
+  [e]
+  ((isa? el/element-hierarchy (:el e) :use-case-model-element)))
+
 (defn element-name
   "Returns the name of the element `e`."
   [e]
