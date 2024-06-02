@@ -91,6 +91,40 @@
 ;;
 ;; Model transducer functions
 ;;
+(defn related-xf
+  "Transducer to resolve the elements in the `model` referenced by relations."
+  [model]
+  (comp
+   (filter el/model-relation?)
+   (mapcat (fn [e] [(:from e) (:to e)]))
+   (map (partial resolve-id model))))
+
+(defn referrer-xf
+  "Transducer to resolve referrer elements of in the `model`.
+   Optionally takes a `filter-fn` to filter the relations to take into account."
+  ([model]
+   (comp
+    (map :to)
+    (map (partial resolve-id model))))
+  ([model filter-fn]
+   (comp
+    (filter filter-fn)
+    (map :to)
+    (map (partial resolve-id model)))))
+
+(defn referred-xf
+  "Transducer to resolve referred elements in the `model`.
+   Optionally takes a `filter-fn` to filter the relations to take into account."
+  ([model]
+   (comp
+    (map :from)
+    (map (partial resolve-id model))))
+  ([model filter-fn]
+   (comp
+    (filter filter-fn)
+    (map :from)
+    (map (partial resolve-id model)))))
+
 (defn unresolved-refs-xf 
   "Returns a transducer to extract unresolved refs"
   [model]
@@ -135,6 +169,48 @@
   "Returns the parent of the model node `e`."
   [model e]
   ((:id->parent model) (:id e)))
+
+(defn from-name
+  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
+  [model rel]
+  (->> rel
+       (:from)
+       (resolve-id model)
+       (:name)))
+
+(defn to-name
+  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
+  [model rel]
+  (->> rel
+       (:to)
+       (resolve-id model)
+       (:name)))
+
+
+(defn related-nodes
+  "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
+  ([model coll]
+   (into #{} (related-xf model) coll)))
+
+(defn related
+  "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
+  [model coll]
+  (->> coll
+       (filter el/model-relation?)
+       (map (fn [rel] #{(resolve-element model (:from rel))
+                        (resolve-element model (:to rel))}))
+       (reduce set/union #{})))
+
+(defn relations-of-nodes
+  "Returns the relations of the `model` connecting nodes from the given `coll` of model nodes."
+  ([model coll]
+   (let [els (into #{} (map :id coll))
+         rels (filter el/model-relation? (model-elements model))
+         filtered (->> rels
+                       (filter (fn [r] (and (contains? els (:from r))
+                                            (contains? els (:to r)))))
+                       (into #{}))]
+     filtered)))
 
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
@@ -184,28 +260,6 @@
                          (into #{}))]
     (set/union (set elements) descendants)))
 
-(defn dependency-nodes
-  [model e]
-  (->> e
-       (:id)
-       (get (:referrer-id->relations model))
-       (filter #(contains? el/architecture-dependency-relation-types (:el %)))
-       (map :to)
-       (map (partial resolve-id model))
-       (into #{})))
-
-(defn dependent-nodes
-  [model e]
-  (->> e
-       (:id)
-       (get (:referred-id->relations model))
-       (filter #(contains? el/architecture-dependency-relation-types (:el %)))
-       (map :from)
-       (map (partial resolve-id model))
-       (into #{})))
-
-;; TODO transitive dependencies with cycle detection/prevention
-
 (defn all-elements
   "Returns a set of all elements."
   ([model]
@@ -214,51 +268,28 @@
         (map (partial resolve-element model))
         (into #{}))))
 
+;;
+;; architecture model
+;;
+(defn dependency-nodes
+  "Returns the direct dependencies of the architecture node `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{}
+             (referrer-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
+(defn dependent-nodes
+  "Returns the direct dependents of the architecture node `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{}
+             (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
-(defn from-name
-  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
-  [model rel]
-  (->> rel
-       (:from)
-       (resolve-id model)
-       (:name)))
-
-(defn to-name
-  "Returns the name of the from reference of the relation `rel` in the context of the `model`."
-  [model rel]
-  (->> rel
-       (:to)
-       (resolve-id model)
-       (:name)))
-
-(defn related
-  "Returns the related elements for the given `coll` of relations in the context of the `model`."
-  ([model coll]
-   (->> coll
-        (mapcat (fn [e] [(:from e) (:to e)]))
-        (map (partial resolve-element model))
-        (into #{}))))
-
-(defn relations-of-nodes
-  "Returns the relations of the `model` connecting nodes from the given `coll` of model nodes."
-  ([model coll]
-   (let [els (into #{} (map :id coll))
-         rels (filter el/model-relation? (model-elements model))
-         filtered (->> rels
-                       (filter (fn [r] (and (contains? els (:from r))
-                                            (contains? els (:to r)))))
-                       (into #{}))]
-     filtered)))
-
-(defn related-nodes
-  "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
-  [model coll]
-  (->> coll
-       (filter el/model-relation?)
-       (map (fn [rel] #{(resolve-element model (:from rel))
-                        (resolve-element model (:to rel))}))
-       (reduce set/union #{})))
+;; TODO transitive dependencies with cycle detection/prevention
 
 (defn aggregable-relation?
   "Returns true, if the relations `r1` and `r2` are aggregable."
@@ -272,6 +303,47 @@
         (or (= (:to r1) (:to r2))
             (= (parent model (:to r1))
                (parent model (:to r2)))))))
+
+;;
+;; class model
+;;
+(defn superclasses
+  "Returns the set of direct superclasses of the class element `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :inheritance (:el %))))))
+
+#_(defn superclasses
+  [model e]
+  (let [id (:id e)
+        _ (println "Id:" id)
+        rels (get (:referrer-id->relations model) id)
+        _ (println "Rels:" rels)]
+    (into #{} (referrer-xf model #(= :inheritance (:el %))) rels)))
+
+(defn interfaces
+  "Returns the set of direct interfaces of the class element `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :implementation (:el %))))))
+
+(defn supertypes
+  "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
+  [model e]
+  (->> e
+      (:id)
+      (get (:referrer-id->relations model))
+      (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
+
+;; TODO type hierarcy with cycle detection/prevention
+(defn type-hierarchy
+  "Returns the type hierarchy of the class or interface element `e` in the model."
+  [model e]
+  (let []))
 
 ;;;
 ;;; Build model

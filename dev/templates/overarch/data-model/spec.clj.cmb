@@ -4,17 +4,34 @@
 (ns overarch.domain
   (:require [clojure.spec.alpha :as s]
             [expound.alpha :as expound]))
+<%
+;; Template functions
+(def type-preds {"collection" "coll"})
+(defn type-pred
+  [field]
+  (str (get type-preds (:type field) (:type field)) "?"))
+ %>
 
 ;; Spec for keys
-<%(doseq [c (m/collect-fields e)]%>
-; <%= (:desc c) %>
-(s/def :overarch/<%=(:name c)%> <%=(:type c)%>?)
+<%(doseq [field (m/all-fields e)]%>
+; <%= (:desc field) %>
+(s/def :overarch/<%=(:name field)%> <%=(type-pred field)%>)
 <%)%>
 
 ;; Spec for model elements
-<%(doseq [c (filter #(= :class (:el %)) e)]%>
-; <%= (first (str/split-lines (:desc c))) %>
-(s/def :overarch/<%=(:name c)%>
-  (s/keys :req-un []
-          :opt-un []))
-<%)%>
+<%(doseq [element (filterv (and (fn [el] (= :class (:el el)))
+                                 (fn [el] (true? (:abstract el))))
+                           e)]
+    ; TODO use type-hierarchy, not just the direct supertypes
+    (let [super (m/supertypes model element)
+          fields (m/all-fields (conj super element))]%>
+; Supertypes <%=(str/join "," (map :id super)) %>          
+; <%= (first (str/split-lines (:desc element))) %>
+(s/def :overarch/<%=(:name element)%>
+  (s/keys :req-un [<%(doseq [field (filter #(not (true? (:optional %))) fields)]
+  %>:overarch/<%=(:name field)%>
+                  <%)%>]
+          :opt-un [<%(doseq [field (filter #(true? (:optional %)) fields)]
+%>:overarch/<%=(:name field)%>
+                  <%)%>]))
+<%))%>

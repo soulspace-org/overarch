@@ -9,8 +9,7 @@
    of elements without references to the model as a whole."
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            [org.soulspace.overarch.util.functions :as fns]
-            [org.soulspace.overarch.domain.element :as el]))
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Category definitions
@@ -819,6 +818,18 @@
        (map set)
        (apply set/union)
        (filter #(= :field (:el %)))
+       (sort-by :name)))
+
+(defn collect-methods
+  "Returns the methods of all classes in the `coll`."
+  [coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map :ct)
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :method (:el %)))
        (sort-by :name)))
 
 ;;;
