@@ -659,10 +659,10 @@
 ;; recursive traversal of the hierarchical data
 ;;
 (defn traverse
-  "Recursively traverses the `coll` of elements and returns the elements (selected
-   by the optional `select-fn`) and transformed by the `step-fn`.
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `select-fn` - a predicate on the current element
+   `pred-fn` - a predicate on the current element
    `step-fn` - a function with three signatures [], [acc] and [acc e]
    
    The no args signature of the `step-fn` should return an empty accumulator,
@@ -678,18 +678,20 @@
                         (rest coll)))
                (step-fn acc)))]
      (trav (step-fn) coll)))
-  ([select-fn step-fn coll]
-   ; selection handled by th select function
+  ([pred-fn step-fn coll]
+   ; selection handled by the pred function
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (first coll)]
-                 (if (select-fn e)
+                 (if (pred-fn e)
                    (recur (trav (step-fn acc e) (:ct e))
                           (rest coll))
                    (recur (trav acc (:ct e))
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
+
+; TODO try with tree-seq
 
 ;;
 ;; step functions for traverse

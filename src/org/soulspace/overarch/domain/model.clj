@@ -56,10 +56,10 @@
 ;; recursive traversal of the hierarchical model
 ;;
 (defn traverse-with-model
-  "Recursively traverses the `coll` of elements and returns the elements (selected
-   by the optional `select-fn`) and transformed by the `step-fn`.
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `select-fn` - a predicate on the current element
+   `pred-fn` - a predicate on the current element
    `step-fn` - a function with three signatures [], [acc] and [acc e]
    
    The no args signature of the `step-fn` should return an empty accumulator,
@@ -75,12 +75,12 @@
                         (rest coll)))
                (step-fn acc)))]
      (trav (step-fn) coll)))
-  ([model select-fn step-fn coll]
-   ; selection handled by th select function
+  ([model pred-fn step-fn coll]
+   ; selection handled by the select function
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (resolve-element model (first coll))]
-                 (if (select-fn e)
+                 (if (pred-fn e)
                    (recur (trav (step-fn acc e) (:ct e))
                           (rest coll))
                    (recur (trav acc (:ct e))
@@ -314,14 +314,6 @@
        (:id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :inheritance (:el %))))))
-
-#_(defn superclasses
-  [model e]
-  (let [id (:id e)
-        _ (println "Id:" id)
-        rels (get (:referrer-id->relations model) id)
-        _ (println "Rels:" rels)]
-    (into #{} (referrer-xf model #(= :inheritance (:el %))) rels)))
 
 (defn interfaces
   "Returns the set of direct interfaces of the class element `e` in the `model`."
