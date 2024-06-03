@@ -88,6 +88,37 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+#_(defn traverse-with-model
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+
+   `pred-fn`     - a predicate on the current element
+   `children-fn` - a function to resolve the children of the current element
+   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator.
+   
+   The children-fn takes 2 args [model e], the model and the current element."
+  ([model step-fn coll]
+   (traverse-with-model model el/model-node? #(:ct %2) step-fn coll))
+  ([model pred-fn step-fn coll]
+   (traverse-with-model model pred-fn #(:ct %2) step-fn coll))
+  ([model pred-fn children-fn step-fn coll]
+   ; selection handled by the select function
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (resolve-element model (first coll))]
+                 (if (pred-fn e)
+                   (recur (trav (step-fn acc e) (children-fn e))
+                          (rest coll))
+                   (recur (trav acc (children-fn e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
 ;;
 ;; Model transducer functions
 ;;

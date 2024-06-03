@@ -691,6 +691,38 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+#_(defn traverse
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+
+   `pred-fn`     - a predicate on the current element
+   `children-fn` - a function to resolve the children of the current element
+   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([step-fn coll]
+   (traverse model-node? :ct step-fn coll))
+  ([pred-fn step-fn coll]
+   (traverse pred-fn :ct step-fn coll))
+  ([pred-fn children-fn step-fn coll]
+   (println "pred" pred-fn)
+   (println "children" children-fn)
+   (println "step" step-fn)
+   (println "first e" (first coll))
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (first coll)]
+                 (if (pred-fn e)
+                   (recur (trav (step-fn acc e) (children-fn e))
+                          (rest coll))
+                   (recur (trav acc (children-fn e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
 ; TODO try with tree-seq
 
 ;;
