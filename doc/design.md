@@ -104,17 +104,17 @@ A: System architeture specifies the high level design of the runtime
 Q: **What shall be captured in an architectural model?**
 
 A: The hierarchical structure of a system and its context
-   * The system context and system landscape (if relevant)
-   * The composition of the system
-     * The containers (deployment units or processes) of the system
-     * The components of the containers
-   * The relations (e.g. dependencies, interactions) of the components
-   * The relations (e.g. interactions) of the components and the outside
-     world (with users or other systems)
-   * The dynamics of the interactions between the elements of the model
-     (if relevant)
-   * The deployment of the containers in the infrastructure for the system
-     (if relevant)
+* The system context and system landscape (if relevant)
+* The composition of the system
+  * The containers (deployment units or processes) of the system
+  * The components of the containers
+* The relations (e.g. dependencies, interactions) of the components
+* The relations (e.g. interactions) of the components and the outside
+  world (with users or other systems)
+* The dynamics of the interactions between the elements of the model
+  (if relevant)
+* The deployment of the containers in the infrastructure for the system
+  (if relevant)
 
 
 Q: **What could also be captured in extensions of the model?**
@@ -123,13 +123,13 @@ A: An extension of the model could make sense if there is value in the
    connection of the additional elements to the existing elements, e.g. to provide traceability or insights
 
    Additional elements could be
-   * Concepts that have not a direct representation in the system (yet)
-   * Enterprise architecture elements like capabilities
-   * Business arcitecture elements like business processes
-   * Functional or nonfunctional requirements and crosscutting concerns
-   * Inner workings of some components
-     * e.g. state machines, activty or sequence diagrams
-   * ...
+* Concepts that have not a direct representation in the system (yet)
+* Enterprise architecture elements like capabilities
+* Business arcitecture elements like business processes
+* Functional or nonfunctional requirements and crosscutting concerns
+* Inner workings of some components
+  * e.g. state machines, activty or sequence diagrams
+* ...
 
    Some or all of these extensions might be added to Overarch in the future.
 
