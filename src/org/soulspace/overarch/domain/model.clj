@@ -55,7 +55,7 @@
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
-(defn traverse-with-model
+#_(defn traverse-with-model
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -88,7 +88,7 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
-#_(defn traverse-with-model
+(defn traverse-with-model
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -103,7 +103,7 @@
    
    The children-fn takes 2 args [model e], the model and the current element."
   ([model step-fn coll]
-   (traverse-with-model model el/model-node? #(:ct %2) step-fn coll))
+   (traverse-with-model model identity #(:ct %2) step-fn coll))
   ([model pred-fn step-fn coll]
    (traverse-with-model model pred-fn #(:ct %2) step-fn coll))
   ([model pred-fn children-fn step-fn coll]
