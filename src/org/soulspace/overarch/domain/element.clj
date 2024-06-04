@@ -968,9 +968,11 @@
   (= v (get e :name false)))
 
 (defn name?
-  "Returns true if the name of `e` equals `v`."
+  "Returns true if the name of `e` matches `v`."
   [v e]
-  (= v (:name e)))
+  (if-let [s (:name e)]
+    (re-matches (re-pattern v) s)
+    false))
 
 (defn name-prefix?
   "Returns true if the name of `e` starts with `v`."
@@ -981,6 +983,13 @@
   "Returns true if the check for desc on `e` equals the boolean value `v`"
   [v e]
   (= v (get e :desc false)))
+
+(defn desc?
+  "Returns true if the description of `e` matches the regular expression`v`."
+  [v e]
+  (if-let [s (:desc e)]
+    (re-matches (re-pattern v) s)
+    false))
 
 (defn tech-check?
   "Returns true if the check for tech on `e` equals the boolean value `v`"
@@ -1045,5 +1054,7 @@
   (key-check? [:tech true] {:name "Datomic"})
   (key? [:tech "Datomic"] {:tech "Datomic"})
   (key? [:tech "Datomic"] {:tech "Blubb"})
+  (desc? "(?i).*account.*" {:desc "Application to manage accounts."})
+  (desc? "(?i).*account.*" {})
   ;
   )

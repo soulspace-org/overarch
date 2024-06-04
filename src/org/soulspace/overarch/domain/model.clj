@@ -55,7 +55,7 @@
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
-#_(defn traverse-with-model
+(defn traverse-with-model
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -88,7 +88,7 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
-(defn traverse-with-model
+#_(defn traverse-with-model
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -623,6 +623,7 @@
     (= :name k)                  (partial el/name? v)
     (= :name-prefix k)           (partial el/name-prefix? v)
     (= :desc? k)                 (partial el/desc-check? v)
+    (= :desc k)                  (partial el/desc? v)
     (= :tech? k)                 (partial el/tech-check? v)
     (= :tech k)                  (partial el/tech? v)
     (= :techs k)                 (partial el/techs? v)
@@ -647,7 +648,8 @@
 
 
     :else
-    (println "unknown criterium" (name k))))
+    (do (println "unknown criterium" (name k))
+        false)))
 
 (defn criteria-predicate
   "Returns a filter predicate for the given `criteria`.
@@ -685,3 +687,8 @@
     ; compose the filtering functions and create a filter transducer
     (filter filter-predicates)))
 
+(comment
+  (re-pattern "\\d+")
+  (re-matches #"(?i)hello.*" "Hello World!")
+  (type #"(?i)hello.*")
+  )
