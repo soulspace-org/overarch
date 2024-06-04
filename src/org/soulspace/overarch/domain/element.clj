@@ -658,7 +658,7 @@
 ;;
 ;; recursive traversal of the hierarchical data
 ;;
-(defn traverse
+#_(defn traverse
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -691,7 +691,7 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
-#_(defn traverse
+(defn traverse
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -704,14 +704,10 @@
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
   ([step-fn coll]
-   (traverse model-node? :ct step-fn coll))
+   (traverse identity :ct step-fn coll))
   ([pred-fn step-fn coll]
    (traverse pred-fn :ct step-fn coll))
   ([pred-fn children-fn step-fn coll]
-   (println "pred" pred-fn)
-   (println "children" children-fn)
-   (println "step" step-fn)
-   (println "first e" (first coll))
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (first coll)]
