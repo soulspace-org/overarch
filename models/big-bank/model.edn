@@ -134,7 +134,7 @@
   ;; Architecture Model Nodes
   ;;
   {:el :enterprise-boundary
-   :id :big-bank/:big-bank-plc
+   :id :big-bank/big-bank-plc
    :name "Big Bank plc"
    :ct #{;; External systems
          {:el :system
@@ -422,7 +422,7 @@
    :name "Customer's Mobile Device"
    :tech "Android or iOS"}
   {:el :node
-   :id :big-bank/:big-bank-plc-datacenter
+   :id :big-bank/big-bank-plc-datacenter
    :name "Big Bank plc"
    :tech "Datacenter"
    :ct #{{:el :node
