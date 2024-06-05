@@ -266,6 +266,12 @@
         (map (partial resolve-element model))
         (into #{}))))
 
+(defn ->transitive-related
+  "Step function to build a set of transitively related nodes (with cycle detection)."
+  ([])
+  ([acc])
+  ([acc e]))
+
 ;;
 ;; architecture model
 ;;
@@ -289,19 +295,6 @@
 
 ;; TODO transitive dependencies with cycle detection/prevention
 
-(defn aggregable-relation?
-  "Returns true, if the relations `r1` and `r2` are aggregable."
-  ([model r1 r2]
-   (and (= (:tech r1) (:tech r2))
-        ; (= (:name r1) (:name r2))
-        ; (= (:desc r1) (:desc r2))
-        (or (= (:from r1) (:from r2))
-            (= (parent model (:from r1))
-               (parent model (:from r2))))
-        (or (= (:to r1) (:to r2))
-            (= (parent model (:to r1))
-               (parent model (:to r2)))))))
-
 ;;
 ;; class model
 ;;
@@ -313,6 +306,14 @@
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :inheritance (:el %))))))
 
+(defn subclasses
+  "Returns the set of direct subclasses of the class element `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :inheritance (:el %))))))
+
 (defn interfaces
   "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
@@ -320,6 +321,14 @@
        (:id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :implementation (:el %))))))
+
+(defn implementations
+  "Returns the set of direct interfaces of the class element `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :implementation (:el %))))))
 
 (defn supertypes
   "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
@@ -334,6 +343,25 @@
   "Returns the type hierarchy of the class or interface element `e` in the model."
   [model e]
   (let []))
+
+;;
+;; concept model
+;;
+(defn superordinates
+  "Returns the superordinates of the concept `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :is-a (:el %))))))
+
+(defn subordinates
+  "Returns the subordinates of the concept `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :is-a (:el %))))))
 
 ;;;
 ;;; Build model
@@ -613,10 +641,9 @@
     (= :parent-of k)             (partial parent model v)
     (= :ancestor-of k)           (partial ancestor-of? model v) 
 
-
     :else
     (do (println "unknown criterium" (name k))
-        false)))
+        (fn [_] false))))
 
 (defn criteria-predicate
   "Returns a filter predicate for the given `criteria`.
@@ -658,4 +685,20 @@
   (re-pattern "\\d+")
   (re-matches #"(?i)hello.*" "Hello World!")
   (type #"(?i)hello.*")
+
+  (defn aggregable-relation?
+    "Returns true, if the relations `r1` and `r2` are aggregable."
+    ([model r1 r2]
+     (and (= (:el r1) (:el r2))
+          (= (:tech r1) (:tech r2))
+        ; (= (:name r1) (:name r2))
+        ; (= (:desc r1) (:desc r2))
+          (or (= (:from r1) (:from r2))
+              (= (parent model (:from r1))
+                 (parent model (:from r2))))
+          (or (= (:to r1) (:to r2))
+              (= (parent model (:to r1))
+                 (parent model (:to r2)))))))
+
+
   )

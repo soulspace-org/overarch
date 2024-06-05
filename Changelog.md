@@ -7,7 +7,8 @@ Version 0.19.0
 * updated templating, added SCI as a template generation environment
 * added model API for use in templates
 * added generic support for plantuml skinparams
-* added :desc criterium, support regular expressions for :desc and :name 
+* added :desc criterium, support regular expressions for :desc and :name
+* added to and enhanced model navigation 
 * updated and enhanced example views
 * added a new, more complex example model named big-bank
 * updated usage docs

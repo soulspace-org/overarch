@@ -778,7 +778,7 @@
 (defn union-by-id
   "Returns a set that is the union of the input `sets`.
    Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
-   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result"
+   Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result."
   [& sets]
   (->> sets
        ; (map (partial traverse id->element))
@@ -788,6 +788,8 @@
        (set)))
 
 (defn difference-by-id
+  "Returns a set of elements that is the difference of the `base-set` and the rest of the `sets`.
+   Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality)."
   [base-set & sets]
   (let [base-map (id->element-map base-set)
         base-ids (into #{} (keys base-map))
