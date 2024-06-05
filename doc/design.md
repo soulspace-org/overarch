@@ -123,12 +123,12 @@ A: An extension of the model could make sense if there is value in the
    connection of the additional elements to the existing elements, e.g. to provide traceability or insights
 
    Additional elements could be
-* Concepts that have not a direct representation in the system (yet)
 * Enterprise architecture elements like capabilities
 * Business arcitecture elements like business processes
 * Functional or nonfunctional requirements and crosscutting concerns
 * Inner workings of some components
   * e.g. state machines, activty or sequence diagrams
+* processes/transformations with inputs and outputs
 * ...
 
    Some or all of these extensions might be added to Overarch in the future.
