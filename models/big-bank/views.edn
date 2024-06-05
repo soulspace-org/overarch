@@ -71,23 +71,12 @@
         {:ref :big-bank/email-component-uses-email-system}
         {:ref :big-bank/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
 
+  ; The system landscape view shows the big picture of the IT landscape
   {:el :system-landscape-view
    :id :big-bank/system-landscape-view
+   :spec {:selection {:namespace-prefix "big-bank"}}
    :title "System Landscape View of Big Bank plc"
-   :ct [; model elements
-        {:ref :big-bank/big-bank-plc}
-        {:ref :big-bank/personal-customer}
-
-       ; relations
-        {:ref :big-bank/personal-customer-uses-atm}
-        {:ref :big-bank/atm-uses-mainframe-banking-system}
-        {:ref :big-bank/personal-customer-asks-customer-service-stuff}
-        {:ref :big-bank/personal-customer-uses-internet-banking-system}
-        {:ref :big-bank/email-system-sends-mail-to-personal-customer}
-        {:ref :big-bank/backoffice-stuff-uses-mainframe-banking-system :direction :right}
-        {:ref :big-bank/customer-service-stuff-uses-mainframe-banking-system}
-        {:ref :big-bank/internet-banking-system-uses-email-system}
-        {:ref :big-bank/internet-banking-system-using-mainframe-banking-system}]}
+   :ct []}
 
   {:el :deployment-view
    :id :big-bank/deployment-view
@@ -130,55 +119,25 @@
         {:ref :big-bank/personal-customer-uses-view-account}
         {:ref :big-bank/personal-customer-uses-make-transaction}]}
 
+  ; Textual view
   {:el :glossary-view
    :id :big-bank/glossary-view
-   :spec {:markdown {:references true}}
+   :spec {:selection {:namespace-prefix "big-bank"}
+          :markdown {:references true}}
    :title "Glossary of the Banking System"
-   :ct [;; concepts
-        {:ref :big-bank.concepts/account}
-        {:ref :big-bank.concepts/transaction}
-        {:ref :big-bank.concepts/internet-banking}
-        ;; actors
-        {:ref :big-bank/personal-customer}
-        ;; systems
-        {:ref :big-bank/email-system}
-        {:ref :big-bank/mainframe-banking-system}
-        {:ref :big-bank/internet-banking-system}
-        ;; relations
-        {:ref :big-bank.concepts/account-reflects-transaction}
-        {:ref :big-bank.concepts/internet-banking-system-implements-internet-banking}
-        {:ref :big-bank.concepts/personal-customer-has-account}
-        {:ref :big-bank.concepts/personal-customer-performs-transaction}
-        {:ref :big-bank/personal-customer-uses-internet-banking-system}]}
+   :ct []}
 
+  ; Concept map showing concepts and their relations
   {:el :concept-view
-   :id :big-bank/concept-view
-   :spec {:markdown {:references true}}
-   :title "Concept Map for the Banking System"
-   :ct [{:ref :big-bank.concepts/bank}
-        {:ref :big-bank.concepts/account}
-        {:ref :big-bank.concepts/transaction}
-        {:ref :big-bank.concepts/internet-banking}
-
-        {:ref :big-bank/personal-customer}
-        {:ref :big-bank/internet-banking-system}
-
-        {:ref :big-bank.concepts/account-reflects-transaction}
-        {:ref :big-bank.concepts/personal-customer-has-account}
-        {:ref :big-bank.concepts/personal-customer-performs-transaction}
-        {:ref :big-bank.concepts/internet-banking-system-implements-internet-banking}
-        {:ref :big-bank/personal-customer-uses-internet-banking-system}]}
-  
-  {:el :concept-view
-   :id :big-bank/concept-view-with-selection-and-include
-   :spec {:selection {:namespace "banking.concepts" :el :concept}
+   :id :big-bank/banking-concept-map
+   :spec {:selection {:namespace "big-bank.concepts"}
           :include :related
           :markdown {:references true}}
    :title "Concept Map for the Banking System"
    :ct [; selected elements will be included automatically
         ; you can include references for additional elements here
         ; relation references can also be specified here for layout purposes
-         ]}
+        {:ref :big-bank/personal-customer-uses-internet-banking-system}]}
   
   
   }
