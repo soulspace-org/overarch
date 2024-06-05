@@ -20,10 +20,13 @@
   [view]
   (boolean (get-in view [:spec :markdown :references] false)))
 
+(defn diagram-spec
+  [view]
+  (get-in view [:spec :markdown :diagram]))
+
 ;;;
 ;;; Rendering
 ;;;
-
 (defn render-type
   "Renders the type of the element `e` including the subtype, if defined."
   [e]
@@ -73,6 +76,12 @@
            (:el e) "with id" (:id e)
            "in markdown rendering of view " (:id view)))
 
+(defn render-diagram
+  "Renders the reference to the diagram, if specified for the `view`."
+  [view]
+  (when-let [diagram (diagram-spec view)]
+    (md/image "Diagram" (str (get diagram :dir ".") "/" (name (:id view)) (:format diagram)))))
+
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
   [model options view]
@@ -114,3 +123,9 @@
   (doseq [view (model/views model)]
     (when (markdown-view? view)
       (rndr/render-view model format options view))))
+
+(comment
+  (md/image "Bla" "./bla.png")
+  (md/image-ref "Bla" "./bla.png")
+  ;
+  )
