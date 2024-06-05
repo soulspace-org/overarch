@@ -59,39 +59,6 @@
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `pred-fn` - a predicate on the current element
-   `step-fn` - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator."
-  ([model step-fn coll]
-   ; selection might be handled in the step function
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (resolve-element model (first coll))]
-                 (recur (trav (step-fn acc e) (:ct e))
-                        (rest coll)))
-               (step-fn acc)))]
-     (trav (step-fn) coll)))
-  ([model pred-fn step-fn coll]
-   ; selection handled by the select function
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (resolve-element model (first coll))]
-                 (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (:ct e))
-                          (rest coll))
-                   (recur (trav acc (:ct e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
-
-#_(defn traverse-with-model
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
-
    `pred-fn`     - a predicate on the current element
    `children-fn` - a function to resolve the children of the current element
    `step-fn`     - a function with three signatures [], [acc] and [acc e]
@@ -103,18 +70,18 @@
    
    The children-fn takes 2 args [model e], the model and the current element."
   ([model step-fn coll]
-   (traverse-with-model model identity #(:ct %2) step-fn coll))
+   (traverse-with-model model identity (fn [model e] (:ct e)) step-fn coll))
   ([model pred-fn step-fn coll]
-   (traverse-with-model model pred-fn #(:ct %2) step-fn coll))
+   (traverse-with-model model pred-fn (fn [model e] (:ct e)) step-fn coll))
   ([model pred-fn children-fn step-fn coll]
    ; selection handled by the select function
    (letfn [(trav [acc coll]
              (if (seq coll)
                (let [e (resolve-element model (first coll))]
                  (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (children-fn e))
+                   (recur (trav (step-fn acc e) (children-fn model e))
                           (rest coll))
-                   (recur (trav acc (children-fn e))
+                   (recur (trav acc (children-fn model e))
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
@@ -640,11 +607,11 @@
     (= :referred-by k)           (partial referred-by? model v)
     (= :child? k)                (partial child-check? model v)
     (= :child-of k)              (partial child? model v)
-    (= :descendant-of k)         (partial descendant-of? model v) ; TODO docs
+    (= :descendant-of k)         (partial descendant-of? model v)
     (= :children? k)             (partial el/parent-check? v) ; deprecated
     (= :parent? k)               (partial el/parent-check? v)
     (= :parent-of k)             (partial parent model v)
-    (= :ancestor-of k)           (partial ancestor-of? model v) ; TODO docs 
+    (= :ancestor-of k)           (partial ancestor-of? model v) 
 
 
     :else

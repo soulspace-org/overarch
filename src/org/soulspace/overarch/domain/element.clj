@@ -658,39 +658,6 @@
 ;;
 ;; recursive traversal of the hierarchical data
 ;;
-#_(defn traverse
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
-
-   `pred-fn` - a predicate on the current element
-   `step-fn` - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator."
-  ([step-fn coll]
-   ; selection might be handled in the step function
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (first coll)]
-                 (recur (trav (step-fn acc e) (:ct e))
-                        (rest coll)))
-               (step-fn acc)))]
-     (trav (step-fn) coll)))
-  ([pred-fn step-fn coll]
-   ; selection handled by the pred function
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (first coll)]
-                 (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (:ct e))
-                          (rest coll))
-                   (recur (trav acc (:ct e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
-
 (defn traverse
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
