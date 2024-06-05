@@ -1,0 +1,508 @@
+;;;;
+;;;; Model for the Internet Banking System
+;;;;
+#{;;;
+  ;;; Concept Model
+  ;;;
+  ;; 
+  ;; Concept Model Nodes
+  ;;
+  {:el :concept
+   :id :big-bank.concepts/account
+   :name "Account"
+   :desc "Records the transactions of a customer."}
+  {:el :concept
+   :id :big-bank.concepts/bank
+   :name "Bank"
+   :desc "A company providing monetary services for customers."}
+  {:el :concept
+   :id :big-bank.concepts/internet-banking
+   :name "Internet Banking"
+   :desc "Describes banking services provided over the internet. Customers can interact with the bank with their computers or mobile devices."}
+  {:el :concept
+   :id :big-bank.concepts/transaction
+   :name "Transaction"
+   :desc "An action done on the account, e.g. a withdrawal or a money transfer."}
+  {:el :concept
+   :id :big-bank.concepts/credit
+   :name "Credit"
+   :desc "A loan of an amount of money which has to be payed back with some interest."}
+  {:el :concept
+   :id :big-bank.concepts/consumer-credit
+   :name "Consumer Credit"
+   :desc "A credit of a personal customer for buying some goods."}
+  
+  ;; 
+  ;; Concept Model Relations
+  ;; 
+  {:el :has
+   :id :big-bank.concepts/account-reflects-transaction
+   :from :big-bank.concepts/account
+   :to :big-bank.concepts/transaction
+   :name "reflects"}
+  {:el :rel
+   :id :big-bank.concepts/internet-banking-system-implements-internet-banking
+   :from :big-bank/internet-banking-system
+   :to :big-bank.concepts/internet-banking
+   :name "implements"}
+  {:el :has
+   :id :big-bank.concepts/personal-customer-has-account
+   :from :big-bank/personal-customer
+   :to :big-bank.concepts/account
+   :name "has"}
+  {:el :rel
+   :id :big-bank.concepts/personal-customer-performs-transaction
+   :from :big-bank/personal-customer
+   :to :big-bank.concepts/transaction
+   :name "performs"}
+  {:el :is-a
+   :id :big-bank.concepts/consumer-credit-is-a-credit
+   :from :big-bank.concepts/consumer-credit
+   :to :big-bank.concepts/credit
+   :name "is a"}
+
+  ;;;
+  ;;; Persons
+  ;;;
+  {:el :person
+   :id :big-bank/personal-customer
+   :name "Personal Banking Customer"
+   :desc "A customer of the bank, with personal banking accounts."}
+  {:el :person
+   :id :big-bank/business-customer
+   :name "Business Customer"
+   :desc "A business customer of the bank, with business banking accounts."}
+  {:el :person
+   :id :big-bank/customer-service-stuff
+   :external true
+   :name "Customer Service Stuff"
+   :desc "Customer service stuff within the bank."}
+  {:el :person
+   :id :big-bank/backoffice-stuff
+   :external true
+   :name "Backoffice Stuff"
+   :desc "Administration and support stuff within the bank."}
+  {:el :person
+   :id :big-bank/marketing-stuff
+   :external true
+   :name "Marketing Stuff"
+   :desc "Responsible for marketing and customer satisfaction."}
+  {:el :person
+   :id :big-bank/credit-stuff
+   :external true
+   :name "Credit Department Stuff"
+   :desc "Responsible for customer credits."}
+
+  ;;;
+  ;;; Use Case Model
+  ;;;
+  ;;
+  ;; Actors
+  ;;
+  ;;
+  ;; Use Cases
+  ;;
+  {:el :use-case
+   :id :big-bank/view-account
+   :name "view account"
+   :desc "view the account details"
+   :level :user-goal}
+  {:el :use-case
+   :id :big-bank/make-transaction
+   :name "transfer money"
+   :desc "make a monetary transaction"
+   :level :user-goal}
+
+  ;;
+  ;; Use case Relations
+  ;;
+  {:el :uses
+   :id :big-bank/personal-customer-uses-view-account
+   :from :big-bank/personal-customer
+   :to :big-bank/view-account
+   :name "uses"}
+  {:el :uses
+   :id :big-bank/personal-customer-uses-make-transaction
+   :from :big-bank/personal-customer
+   :to :big-bank/make-transaction
+   :name "uses"}
+
+  ;;;
+  ;;; Architecture Model
+  ;;;
+  ;;
+  ;; Architecture Model Nodes
+  ;;
+  {:el :enterprise-boundary
+   :id :big-bank/:big-bank-plc
+   :name "Big Bank plc"
+   :ct #{;; External systems
+         {:el :system
+          :id :big-bank/mainframe-banking-system
+          :external true
+          :name "Mainframe Banking System"
+          :desc "Stores all the core banking information about customers, accounts, transactions, etc."}
+         {:el :system
+          :id :big-bank/crm-system
+          :external true
+          :name "CRM System"
+          :desc "Customer relationship management."}
+         {:el :system
+          :id :big-bank/email-system
+          :external true
+          :name "E-mail System"
+          :desc "The internal Microsoft Exchange email system."}
+         {:el :system
+          :id :big-bank/atm
+          :external true
+          :name "ATM"
+          :desc "Allows customers to withdraw cash."}
+         
+         ;; Systems under design
+         {:el :system
+          :id :big-bank/internet-banking-system
+          :name "Internet Banking System"
+          :desc "Allows customers to view information about their bank accounts and make payments."
+          :ct #{{:el :container
+                 :id :big-bank/web-app
+                 :name "Web Application"
+                 :desc "Deliveres the static content and the internet banking single page application."
+                 :tech "Clojure and Luminus"
+                 :sprite "Clojure"}
+                {:el :container
+                 :id :big-bank/single-page-app
+                 :name "Single-Page Application"
+                 :desc "Provides all of the internet banking functionality to customers via their web browser."
+                 :tech "ClojureScript and Re-Frame"
+                 :sprite "ClojureScript"}
+                {:el :container
+                 :id :big-bank/mobile-app
+                 :name "Mobile App"
+                 :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
+                 :tech "ClojureScript and Reagent"
+                 :sprite "ClojureScript"}
+                {:el :container
+                 :id :big-bank/api-application
+                 :name "API Application"
+                 :desc "Provides internet banking functionality via a JSON/HTTPS API."
+                 :tech "Clojure and Liberator"
+                 :sprite "Clojure"
+                 :ct #{{:el :component
+                        :id :big-bank/sign-in-controller
+                        :name "Sign In Controller"
+                        :desc "Allows users to sign in to the banking system."
+                        :tech "Clojure namespace"}
+                       {:el :component
+                        :id :big-bank/security-component
+                        :name "Security Component"
+                        :desc "Provides functionality related to signing in, changing passwords, etc."
+                        :tech "Clojure namespace"}
+                       {:el :component
+                        :id :big-bank/reset-password-controller
+                        :name "Reset Password Controller"
+                        :desc "Allows users to reset their passwords with a single use URL."
+                        :tech "Clojure namespace"}
+                       {:el :component
+                        :id :big-bank/email-component
+                        :name "E-mail Component"
+                        :desc "Sends e-mail to users."
+                        :tech "Clojure namespace"}
+                       {:el :component
+                        :id :big-bank/accounts-summary-controller
+                        :name "Accounts Summary Controller"
+                        :desc "Provides customers with a summary of their bank accounts."
+                        :tech "Clojure Namespace"}
+                       {:el :component
+                        :id :big-bank/mainframe-banking-system-facade
+                        :name "Mainframe Banking System Facade"
+                        :desc "A facade onto the mainframe banking system."
+                        :tech "Clojure Namespace, http-client"}}}
+                {:el :container
+                 :subtype :database
+                 :id :big-bank/database
+                 :name "Database"
+                 :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+                 :tech "Datomic"}}}}}
+
+  ;;
+  ;; Context Level Relations 
+  ;;
+  {:el :request
+   :id :big-bank/personal-customer-uses-internet-banking-system
+   :from :big-bank/personal-customer
+   :to :big-bank/internet-banking-system
+   :name "views account balances and makes payments using"}
+  {:el :request
+   :id :big-bank/internet-banking-system-uses-email-system
+   :from :big-bank/internet-banking-system
+   :to :big-bank/email-system
+   :name "sends e-mail using"}
+  {:el :request
+   :id :big-bank/internet-banking-system-using-mainframe-banking-system
+   :from :big-bank/internet-banking-system
+   :to :big-bank/mainframe-banking-system
+   :name "gets account information from, and makes payments using"}
+  {:el :send
+   :id :big-bank/email-system-sends-mail-to-personal-customer
+   :from :big-bank/email-system
+   :to :big-bank/personal-customer
+   :name "sends e-mail to"}
+
+  ;;
+  ;; Container Level Relations 
+  ;;
+  {:el :request
+   :id :big-bank/personal-customer-uses-web-app
+   :from :big-bank/personal-customer
+   :to :big-bank/web-app
+   :name "visits bigbank.com/ib using"
+   :tech "HTTPS"}
+  {:el :request
+   :id :big-bank/personal-customer-uses-single-page-app
+   :from :big-bank/personal-customer
+   :to :big-bank/single-page-app
+   :name "views account balances and makes payments using"}
+  {:el :request
+   :id :big-bank/personal-customer-uses-mobile-app
+   :from :big-bank/personal-customer
+   :to :big-bank/mobile-app
+   :name "views account balances and makes payments using"}
+  {:el :response
+   :id :big-bank/web-app-deliveres-single-page-app
+   :from :big-bank/web-app
+   :to :big-bank/single-page-app
+   :name "delivers to the customer's web browser"}
+  {:el :request
+   :id :big-bank/single-page-app-calls-api-application
+   :from :big-bank/single-page-app
+   :to :big-bank/api-application
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/mobile-app-calls-api-application
+   :from :big-bank/mobile-app
+   :to :big-bank/api-application
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/api-application-uses-database
+   :from :big-bank/api-application
+   :to :big-bank/database
+   :name "reads from and writes to"
+   :tech "Datalog"}
+  {:el :request
+   :id :big-bank/api-application-uses-email-system
+   :from :big-bank/api-application
+   :to :big-bank/email-system
+   :name "sends e-mail using"}
+  {:el :request
+   :id :big-bank/api-application-uses-mainframe-banking-system
+   :from :big-bank/api-application
+   :to :big-bank/mainframe-banking-system
+   :name "makes API calls to"
+   :tech "XML/HTTPS"}
+
+  ;;
+  ;; Component Level Relations
+  ;;
+  {:el :request
+   :id :big-bank/single-page-app-calls-sign-in-controller
+   :from :big-bank/single-page-app
+   :to :big-bank/sign-in-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/single-page-app-calls-reset-password-controller
+   :from :big-bank/single-page-app
+   :to :big-bank/reset-password-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/single-page-app-calls-accounts-summary-controller
+   :from :big-bank/single-page-app
+   :to :big-bank/accounts-summary-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/mobile-app-calls-sign-in-controller
+   :from :big-bank/mobile-app
+   :to :big-bank/sign-in-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/mobile-app-calls-reset-password-controller
+   :from :big-bank/mobile-app
+   :to :big-bank/reset-password-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/mobile-app-calls-accounts-summary-controller
+   :from :big-bank/mobile-app
+   :to :big-bank/accounts-summary-controller
+   :name "makes API calls to"
+   :tech "Transit/HTTPS"}
+  {:el :request
+   :id :big-bank/sign-in-controller-uses-security-component
+   :from :big-bank/sign-in-controller
+   :to :big-bank/security-component
+   :name "uses"}
+  {:el :request
+   :id :big-bank/reset-password-controller-uses-email-component
+   :from :big-bank/reset-password-controller
+   :to :big-bank/email-component
+   :name "uses"}
+  {:el :request
+   :id :big-bank/accounts-summary-controller-uses-mainframe-banking-system-facade
+   :from :big-bank/accounts-summary-controller
+   :to :big-bank/mainframe-banking-system-facade
+   :name "uses"}
+  {:el :request
+   :id :big-bank/security-component-uses-database
+   :from :big-bank/security-component
+   :to :big-bank/database
+   :name "reads from and writes to"
+   :tech "Datalog"}
+  {:el :request
+   :id :big-bank/email-component-uses-email-system
+   :from :big-bank/email-component
+   :to :big-bank/email-system
+   :name "sends e-mail using"}
+  {:el :request
+   :id :big-bank/mainframe-banking-system-facade-calls-mainframe-banking-system
+   :from :big-bank/mainframe-banking-system-facade
+   :to :big-bank/mainframe-banking-system
+   :name "makes API calls to"
+   :tech "XML/HTTPS"}
+
+  ;;
+  ;; System landscape relations
+  ;;
+  {:el :rel
+   :id :big-bank/personal-customer-uses-atm
+   :from :big-bank/personal-customer
+   :to :big-bank/atm
+   :name "withdraws cash using"}
+  {:el :rel
+   :id :big-bank/personal-customer-asks-customer-service-stuff
+   :from :big-bank/personal-customer
+   :to :big-bank/customer-service-stuff
+   :name "asks questions to"}
+  {:el :rel
+   :id :big-bank/atm-uses-mainframe-banking-system
+   :from :big-bank/atm
+   :to :big-bank/mainframe-banking-system
+   :name "uses"}
+  {:el :rel
+   :id :big-bank/customer-service-stuff-uses-mainframe-banking-system
+   :from :big-bank/customer-service-stuff
+   :to :big-bank/mainframe-banking-system
+   :name "uses"}
+  {:el :rel
+   :id :big-bank/backoffice-stuff-uses-mainframe-banking-system
+   :from :big-bank/backoffice-stuff
+   :to :big-bank/mainframe-banking-system
+   :name "uses"}
+
+  ;;;
+  ;;; Deployment Model
+  ;;;
+  ;;
+  ;; Deployment Model Nodes
+  ;;
+  {:el :node
+   :id :big-bank/personal-customers-computer
+   :name "Customer's Computer"
+   :tech "Windows, macOS, Linux"
+   :ct #{{:el :node
+          :id :big-bank/personal-customers-browser
+          :name "Web Browser"
+          :tech "Chrome, Firefox, Safari or Edge"}}}
+  {:el :node
+   :id :big-bank/personal-customers-mobile-device
+   :name "Customer's Mobile Device"
+   :tech "Android or iOS"}
+  {:el :node
+   :id :big-bank/:big-bank-plc-datacenter
+   :name "Big Bank plc"
+   :tech "Datacenter"
+   :ct #{{:el :node
+          :id :big-bank/:big-bank-kubernetes-cluster
+          :name "Kubernetes Cluster"
+          :tech "VM, Ubuntu 22.04 LTS, K8s"
+          :sprite "Kubernetes"
+          :ct #{{:el :node
+                 :id :big-bank/:big-bank-web-server-node-pool
+                 :name "Web Server Node Pool"
+                 :tech "VM, Ubuntu 22.04 LTS"
+                 :ct #{{:el :node
+                        :id :big-bank/:big-bank-web-server-pod
+                        :name "Web Server Pod"
+                        :desc "autoscaled, 2-8 instances"}}}
+                {:el :node
+                 :id :big-bank/:big-bank-api-server-node-pool
+                 :name "API Server Node Pool"
+                 :tech "VM, Ubuntu 22.04 LTS"
+                 :ct #{{:el :node
+                        :id :big-bank/:big-bank-api-server-pod
+                        :name "API Server Pod"
+                        :desc "autoscaled, 2-16 instances"}}}}}
+         {:el :node
+          :id :big-bank/:big-bank-prod001
+          :name "BigBank-prod001"}
+         {:el :node
+          :id :big-bank/:big-bank-db01
+          :name "Primary DB Server"
+          :tech "Datomic"
+          :desc "for writes"}
+         {:el :node
+          :id :big-bank/:big-bank-db02
+          :name "Secondary DB Server"
+          :tech "Datomic"
+          :desc "for reads"}}}
+  {:el :container
+   :subtype :database
+   :id :big-bank/database-read
+   :name "Database for Reads"
+   :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+   :tech "Datomic"}
+
+  ;;
+  ;; Deployment Model Relations
+  ;;
+  {:el :deployed-to
+   :id :big-bank/single-page-app-deployed-to-personal-customers-browser
+   :from :big-bank/single-page-app
+   :to :big-bank/personal-customers-browser}
+
+  {:el :deployed-to
+   :id :big-bank/mobile-app-deployed-to-personal-customers-mobile-device
+   :from :big-bank/mobile-app
+   :to :big-bank/personal-customers-mobile-device}
+
+  {:el :deployed-to
+   :id :big-bank/web-app-deployed-to-:big-bank-web-server-pod
+   :from :big-bank/web-app
+   :to :big-bank/:big-bank-web-server-pod}
+
+  {:el :deployed-to
+   :id :big-bank/api-application-deployed-to-:big-bank-api-server-pod
+   :from :big-bank/api-application
+   :to :big-bank/:big-bank-api-server-pod}
+
+  {:el :deployed-to
+   :id :big-bank/mainframe-banking-system-deployed-to-:big-bank-prod001
+   :from :big-bank/mainframe-banking-system
+   :to :big-bank/:big-bank-prod001}
+
+  {:el :deployed-to
+   :id :big-bank/database-deployed-to-:big-bank-db01
+   :from :big-bank/database
+   :to :big-bank/:big-bank-db01}
+
+  {:el :deployed-to
+   :id :big-bank/database-deployed-to-:big-bank-db02
+   :from :big-bank/database-read
+   :to :big-bank/:big-bank-db02}
+
+  ;
+  }

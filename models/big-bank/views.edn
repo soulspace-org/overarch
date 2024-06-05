@@ -1,0 +1,184 @@
+#{{:el :context-view
+   :id :big-bank/system-context-view
+   :title "System Context View of the Internet Banking System"
+   :ct [; model elements
+        {:ref :big-bank/personal-customer}
+        {:ref :big-bank/email-system}
+        {:ref :big-bank/mainframe-banking-system}
+        {:ref :big-bank/internet-banking-system}
+
+       ; relations
+        {:ref :big-bank/personal-customer-uses-internet-banking-system :direction :down}
+        {:ref :big-bank/internet-banking-system-uses-email-system :direction :right}
+        {:ref :big-bank/internet-banking-system-using-mainframe-banking-system}
+        {:ref :big-bank/email-system-sends-mail-to-personal-customer :direction :up}]}
+
+  {:el :container-view
+   :id :big-bank/container-view
+   :spec {:plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
+   :title "Container View of the Internet Banking System"
+   :ct [; model elements
+        {:ref :big-bank/personal-customer}
+        {:ref :big-bank/internet-banking-system}
+        {:ref :big-bank/email-system}
+        {:ref :big-bank/mainframe-banking-system}
+
+       ; relations
+        {:ref :big-bank/email-system-sends-mail-to-personal-customer :direction :up}
+        {:ref :big-bank/personal-customer-uses-web-app}
+        {:ref :big-bank/personal-customer-uses-single-page-app}
+        {:ref :big-bank/personal-customer-uses-mobile-app}
+
+        {:ref :big-bank/web-app-deliveres-single-page-app :direction :right}
+        {:ref :big-bank/single-page-app-calls-api-application}
+        {:ref :big-bank/mobile-app-calls-api-application}
+        {:ref :big-bank/api-application-uses-database :direction :left}
+        {:ref :big-bank/api-application-uses-email-system :direction :right}
+        {:ref :big-bank/api-application-uses-mainframe-banking-system}]}
+
+  ; selection based container view
+  {:el :container-view
+   :id :big-bank/banking-container-view-with-selection
+   :spec {:selection {:namespace :big-bank}}
+   :title "Container View of the Internet Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+        ]}
+
+  {:el :component-view
+   :id :big-bank/api-component-view
+   :title "Component View of the API Application"
+   :ct [; model elements
+        {:ref :big-bank/single-page-app}
+        {:ref :big-bank/mobile-app}
+        {:ref :big-bank/api-application}
+        {:ref :big-bank/database}
+        {:ref :big-bank/email-system}
+        {:ref :big-bank/mainframe-banking-system}
+
+       ; relations
+        {:ref :big-bank/single-page-app-calls-sign-in-controller}
+        {:ref :big-bank/single-page-app-calls-reset-password-controller}
+        {:ref :big-bank/single-page-app-calls-accounts-summary-controller}
+        {:ref :big-bank/mobile-app-calls-sign-in-controller}
+        {:ref :big-bank/mobile-app-calls-reset-password-controller}
+        {:ref :big-bank/mobile-app-calls-accounts-summary-controller}
+        {:ref :big-bank/sign-in-controller-uses-security-component}
+        {:ref :big-bank/reset-password-controller-uses-email-component}
+        {:ref :big-bank/accounts-summary-controller-uses-mainframe-banking-system-facade}
+        {:ref :big-bank/security-component-uses-database}
+        {:ref :big-bank/email-component-uses-email-system}
+        {:ref :big-bank/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+
+  {:el :system-landscape-view
+   :id :big-bank/system-landscape-view
+   :title "System Landscape View of Big Bank plc"
+   :ct [; model elements
+        {:ref :big-bank/big-bank-plc}
+        {:ref :big-bank/personal-customer}
+
+       ; relations
+        {:ref :big-bank/personal-customer-uses-atm}
+        {:ref :big-bank/atm-uses-mainframe-banking-system}
+        {:ref :big-bank/personal-customer-asks-customer-service-stuff}
+        {:ref :big-bank/personal-customer-uses-internet-banking-system}
+        {:ref :big-bank/email-system-sends-mail-to-personal-customer}
+        {:ref :big-bank/backoffice-stuff-uses-mainframe-banking-system :direction :right}
+        {:ref :big-bank/customer-service-stuff-uses-mainframe-banking-system}
+        {:ref :big-bank/internet-banking-system-uses-email-system}
+        {:ref :big-bank/internet-banking-system-using-mainframe-banking-system}]}
+
+  {:el :deployment-view
+   :id :big-bank/deployment-view
+   :title "Deployment View of Big Bank plc"
+   :ct [; model elements
+        {:ref :big-bank/personal-customers-mobile-device}
+        {:ref :big-bank/personal-customers-computer}
+        {:ref :big-bank/big-bank-plc-datacenter}
+
+       ; relations
+        {:ref :big-bank/single-page-app-calls-api-application}
+        {:ref :big-bank/mobile-app-calls-api-application}
+        {:ref :big-bank/web-app-deliveres-single-page-app}
+        {:ref :big-bank/api-application-uses-mainframe-banking-system}
+        {:ref :big-bank/api-application-uses-database}
+       ; add relations for the read database
+        {:el :rel
+         :id :big-bank/api-application-uses-database-read
+         :from :big-bank/api-application
+         :to :big-bank/database-read
+         :name "Reads from"
+         :tech "Datalog"}
+        {:el :rel
+         :id :big-bank/database-sync
+         :from :big-bank/database
+         :to :big-bank/database-read
+         :name "synchronises"
+         :direction :right}]}
+
+  {:el :use-case-view
+   :id :big-bank/use-case-view
+   :spec {:layout :left-right}
+   :title "Use Cases of the Internet Banking System"
+   :ct [; actors
+        {:ref :big-bank/personal-customer :name "Customer"}
+        ; use cases
+        {:ref :big-bank/view-account}
+        {:ref :big-bank/make-transaction}
+        ; relations
+        {:ref :big-bank/personal-customer-uses-view-account}
+        {:ref :big-bank/personal-customer-uses-make-transaction}]}
+
+  {:el :glossary-view
+   :id :big-bank/glossary-view
+   :spec {:markdown {:references true}}
+   :title "Glossary of the Banking System"
+   :ct [;; concepts
+        {:ref :big-bank.concepts/account}
+        {:ref :big-bank.concepts/transaction}
+        {:ref :big-bank.concepts/internet-banking}
+        ;; actors
+        {:ref :big-bank/personal-customer}
+        ;; systems
+        {:ref :big-bank/email-system}
+        {:ref :big-bank/mainframe-banking-system}
+        {:ref :big-bank/internet-banking-system}
+        ;; relations
+        {:ref :big-bank.concepts/account-reflects-transaction}
+        {:ref :big-bank.concepts/internet-banking-system-implements-internet-banking}
+        {:ref :big-bank.concepts/personal-customer-has-account}
+        {:ref :big-bank.concepts/personal-customer-performs-transaction}
+        {:ref :big-bank/personal-customer-uses-internet-banking-system}]}
+
+  {:el :concept-view
+   :id :big-bank/concept-view
+   :spec {:markdown {:references true}}
+   :title "Concept Map for the Banking System"
+   :ct [{:ref :big-bank.concepts/bank}
+        {:ref :big-bank.concepts/account}
+        {:ref :big-bank.concepts/transaction}
+        {:ref :big-bank.concepts/internet-banking}
+
+        {:ref :big-bank/personal-customer}
+        {:ref :big-bank/internet-banking-system}
+
+        {:ref :big-bank.concepts/account-reflects-transaction}
+        {:ref :big-bank.concepts/personal-customer-has-account}
+        {:ref :big-bank.concepts/personal-customer-performs-transaction}
+        {:ref :big-bank.concepts/internet-banking-system-implements-internet-banking}
+        {:ref :big-bank/personal-customer-uses-internet-banking-system}]}
+  
+  {:el :concept-view
+   :id :big-bank/concept-view-with-selection-and-include
+   :spec {:selection {:namespace "banking.concepts" :el :concept}
+          :include :related
+          :markdown {:references true}}
+   :title "Concept Map for the Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+         ]}
+  
+  
+  }
