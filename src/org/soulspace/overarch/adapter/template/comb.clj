@@ -129,7 +129,8 @@
          e (:e data)
          ctx (:ctx data)
          model (:model data)
-         opts (update-in (sci-opts) [:namespaces] merge {'user {'e e 'ctx ctx 'model model}})]
+         protected-areas (:protected-areas data)
+         opts (update-in (sci-opts) [:namespaces] merge {'user {'e e 'ctx ctx 'model model 'protected-areas protected-areas}})]
      (sci/with-out-str (sci/eval-string parsed opts)))))
 
 (defmethod t/apply-template :combsci
