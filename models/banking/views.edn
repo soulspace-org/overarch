@@ -1,4 +1,23 @@
-#{{:el :context-view
+;;;;
+;;;; Example architecture views for the Internet Banking System
+;;;;
+#{;;;
+  ;;; System Context Views
+  ;;;
+
+  ;; System context view with criteria based selection of elements
+  {:el :context-view
+   :id :banking/system-context-view-with-selection
+   :spec {:selection {:namespace-prefix "banking"}
+          :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
+   :title "System Context View of the Internet Banking System"
+   :ct [; selected elements will be included automatically        
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+        ]}
+
+  ;; System context view with referenced elements (only the referenced elements will be rendered)
+  {:el :context-view
    :id :banking/system-context-view
    :title "System Context View of the Internet Banking System"
    :ct [; model elements
@@ -13,6 +32,22 @@
         {:ref :banking/internet-banking-system-using-mainframe-banking-system}
         {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
+  ;;;
+  ;;; Container Views
+  ;;;
+
+  ;; Container view with criteria based selection of elements
+  {:el :container-view
+   :id :banking/banking-container-view-with-selection
+   :spec {:selection {:namespace :banking}
+          :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
+   :title "Container View of the Internet Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+        ]}
+
+  ;; System context view with referenced elements
   {:el :container-view
    :id :banking/container-view
    :spec {:plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
@@ -36,15 +71,9 @@
         {:ref :banking/api-application-uses-email-system :direction :right}
         {:ref :banking/api-application-uses-mainframe-banking-system}]}
 
-  ; selection based container view
-  {:el :container-view
-   :id :banking/banking-container-view-with-selection
-   :spec {:selection {:namespace :banking}}
-   :title "Container View of the Internet Banking System"
-   :ct [; selected elements will be included automatically
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
-        ]}
+  ;;;
+  ;;; Container Views
+  ;;;
 
   {:el :component-view
    :id :banking/api-component-view
@@ -70,6 +99,10 @@
         {:ref :banking/security-component-uses-database}
         {:ref :banking/email-component-uses-email-system}
         {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+
+  ;;;
+  ;;; System Landscape Views
+  ;;;
 
   {:el :system-landscape-view
    :id :banking/system-landscape-view
@@ -130,6 +163,37 @@
         {:ref :banking/personal-customer-uses-view-account}
         {:ref :banking/personal-customer-uses-make-transaction}]}
 
+  {:el :concept-view
+   :id :banking/concept-view
+   :spec {:markdown {:references true}}
+   :title "Concept Map for the Banking System"
+   :ct [{:ref :banking/bank-concept}
+        {:ref :banking/account-concept}
+        {:ref :banking/transaction-concept}
+        {:ref :banking/internet-banking-concept}
+
+        {:ref :banking/personal-customer}
+        {:ref :banking/internet-banking-system}
+
+        {:ref :banking/account-reflects-transaction}
+        {:ref :banking/personal-customer-has-account}
+        {:ref :banking/personal-customer-performs-transaction}
+        {:ref :banking/internet-banking-system-implements-internet-banking-concept}
+        {:ref :banking/personal-customer-uses-internet-banking-system}]}
+
+  {:el :concept-view
+   :id :banking/concept-view-with-selection-and-include
+   :spec {:selection {:namespace "banking" :el :concept}
+          :include :relations
+          :markdown {:references true}}
+   :title "Concept Map for the Banking System"
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+
+        {:ref :banking/personal-customer}
+        {:ref :banking/internet-banking-system}]}
+  
   {:el :glossary-view
    :id :banking/glossary-view
    :spec {:markdown {:references true}}
@@ -149,39 +213,4 @@
         {:ref :banking/internet-banking-system-implements-internet-banking-concept}
         {:ref :banking/personal-customer-has-account}
         {:ref :banking/personal-customer-performs-transaction}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}
-
-  {:el :concept-view
-   :id :banking/concept-view
-   :spec {:markdown {:references true}}
-   :title "Concept Map for the Banking System"
-   :ct [{:ref :banking/bank-concept}
-        {:ref :banking/account-concept}
-        {:ref :banking/transaction-concept}
-        {:ref :banking/internet-banking-concept}
-
-        {:ref :banking/personal-customer}
-        {:ref :banking/internet-banking-system}
-
-        {:ref :banking/account-reflects-transaction}
-        {:ref :banking/personal-customer-has-account}
-        {:ref :banking/personal-customer-performs-transaction}
-        {:ref :banking/internet-banking-system-implements-internet-banking-concept}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}
-  
-  {:el :concept-view
-   :id :banking/concept-view-with-selection-and-include
-   :spec {:selection {:namespace "banking" :el :concept}
-          :include :relations
-          :markdown {:references true}}
-   :title "Concept Map for the Banking System"
-   :ct [; selected elements will be included automatically
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
-        
-        {:ref :banking/personal-customer}
-        {:ref :banking/internet-banking-system}
-        ]}
-  
-  
-  }
+        {:ref :banking/personal-customer-uses-internet-banking-system}]}}
