@@ -32,6 +32,7 @@
 (s/def :overarch.template/suffix string?)
 (s/def :overarch.template/extension string?)
 (s/def :overarch.template/name-as-namespace boolean?)
+(s/def :overarch.template/id-as-namespace boolean?)
 (s/def :overarch.template/protected-area boolean?)
 
 (s/def :overarch.template/generation-context
@@ -51,6 +52,7 @@
                    :overarch.template/suffix
                    :overarch.template/extension
                    :overarch.template/name-as-namespace
+                   :overarch.template/id-as-namespace
                    :overarch.template/protected-area]))
 
 (s/def :overarch.template/generation-config
@@ -227,6 +229,7 @@
     ; write artifact for result
     (write-artifact path result)))
 
+; TODO move iteration into the template engine adapter to reuse parsed templates
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
