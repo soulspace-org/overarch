@@ -9,7 +9,7 @@ Version 0.19.0
   * added an option to disable render format specific subdirs
 * updated templating, added SCI as a template generation environment
   * added model API for use in templates
-  * use :combsci as the default :engine
+  * using :combsci as the default :engine
 * added generic support for plantuml skinparams
 * added selection criterium :desc, support regular expressions for :desc and :name
 * enhanced model navigation functions 
@@ -42,7 +42,6 @@ Version 0.17.0
 * updated dependencies and added antq for dependency checks
 * fixed typo in element hierarchy affecting deployment models
 
-
 Version 0.16.0
 --------------
 * *attention* changed export folder structure for views 
@@ -55,12 +54,10 @@ Version 0.16.0
 * added selection criteria
 * updated overarch data-model and documentation
 
-
 Version 0.15.1
 --------------
 * fixed handling of generation-config option
 * removed debug output
-
 
 Version 0.15.0
 --------------
@@ -76,7 +73,6 @@ Version 0.15.0
 * updated tests
 * updated documentation
 
-
 Version 0.14.0
 --------------
 * added selection of model elements by criteria
@@ -88,7 +84,6 @@ Version 0.14.0
 * updated tests
 * updated documentation
 
-
 Version 0.13.0
 --------------
 * added semantic relation types in concept model (:is-a, :has)
@@ -99,12 +94,10 @@ Version 0.13.0
 * restructured overarch models
 * updated documentation
 
-
 Version 0.12.0
 --------------
 * enhanched dispatch hierarchy for views
   * fixes missing dispatch values in renderers
-
 
 Version 0.11.0
 --------------
@@ -113,7 +106,6 @@ Version 0.11.0
 * updated documentation
 * fixed rendering of references in markdown
 * fixed referrer-id->relations lookup creation for nodes
-
 
 Version 0.10.0
 --------------
@@ -138,7 +130,6 @@ Version 0.10.0
 * refactored and enhanced example models
 * updated documentation
 
-
 Version 0.9.0
 -------------
 * added model warnings for inconsistencies
@@ -149,7 +140,6 @@ Version 0.9.0
 * refactored reference resolution
 * refactored and enhanced hierarchical model traversal
 * fixed arity exception in structurizr export
-
 
 Version 0.8.0
 -------------
@@ -163,13 +153,11 @@ Version 0.8.0
 * extracted spec namespace
 * added compilation tests for each namespace
 
-
 Version 0.7.0
 -------------
 * make file watches work on Macs by using beholder instead of hawk 
 * added direction rendering to relations in class and state machine views
 * enhanced example models
-
 
 Version 0.6.0
 -------------
@@ -180,12 +168,10 @@ Version 0.6.0
 * added render-format 'all' to generate all formats in one go
 * updated usage and design documentation and diagrams
 
-
 Version 0.5.0
 -------------
 * fixed and enhanced class view rendering
 * enhanced example models
-
 
 Version 0.4.0
 -------------
@@ -196,7 +182,6 @@ Version 0.4.0
 * updated and enhanced usage documentation
 * updated design document
 
-
 Version 0.3.0
 -------------
 * added first markdown export
@@ -205,13 +190,11 @@ Version 0.3.0
 * added logical data model for overarch
 * enhanced documentation and examples
 
-
 Version 0.2.0
 -------------
 * added sprite includes for :sprite entries
 * added support for UML use case, state and class views/diagrams
 * enhanced documentation
-
 
 Version 0.1.0
 -------------
@@ -237,4 +220,3 @@ Version 0.1.0
   * sprite support
 * structurizr export *experimental*
   * export structurizr workspace with model and views
-

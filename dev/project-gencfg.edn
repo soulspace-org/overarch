@@ -1,5 +1,13 @@
-[
-  ;; Projects
+[;; Projects
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/README.md.cmb"
+  :per-element true
+  :id-as-namespace true
+  :base-name "README"
+  :extension "md"
+  :protected-area "PA"}
+
  {:selection {:el :container
               :tech "Clojure"}
   :template "projects/clojure/gitignore.cmb"
@@ -10,20 +18,37 @@
 
  {:selection {:el :container
               :tech "Clojure"}
-  :engine :comb
-  :template "projects/README.md.cmb"
-  :per-element true
-  :id-as-namespace true
-  :base-name "README"
-  :extension "md"
-  :protected-area "PA"}
-
- {:selection {:el :container
-              :tech "Clojure"}
   :template "projects/clojure/project.clj.cmb"
   :per-element true
   :id-as-namespace true
   :base-name "project"
   :extension "clj"}
-
-]
+ 
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/clojure/deps.edn.cmb"
+  :per-element true
+  :id-as-namespace true
+  :base-name "deps"
+  :extension "edn"}
+ 
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/clojure/core.clj.cmb"
+  :per-element true
+  :subdir "src"
+  :id-as-namespace true
+  :base-name "clojure"
+  :extension "clj"}
+ 
+ {:selection {:el :container
+              :tech "Clojure"}
+  :template "projects/clojure/core_test.clj.cmb"
+  :per-element true
+  :subdir "test"
+  :id-as-namespace true
+  :base-name "core_test"
+  :extension "clj"}
+ 
+ ;
+ ]

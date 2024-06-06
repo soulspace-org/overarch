@@ -180,14 +180,14 @@
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
 
 (defn create-path
-  "Creates the path by creating all neccessary directories."
+  "Creates the path for `pathname` by creating all neccessary directories."
   [pathname]
   (let [file (io/as-file pathname)]
     (when-not (file/exists? file)
       (.mkdirs file))))
 
 (defn write-artifact
-  "Write the generated artifact to file."
+  "Write the generated `result` to the artifact `pathname`."
   [pathname result]
   (println "Writing artifact" pathname)
   (let [file (io/as-file pathname)
@@ -202,15 +202,15 @@
 ;;;
 ;;; Generation process
 ;;; 
-
 (def ctx-defaults
-  {:engine :comb
+  "Default values for the generator context."
+  {:engine :combsci
    :per-element false
    :encoding "UTF-8"
    :id-as-namespace false})
 
 (defn read-config
-  "Reads the generator configuration."
+  "Reads the generator configuration specified in `options`."
   [options]
   (if-let [generation-config (:generation-config options)]
     (map (partial merge ctx-defaults {:generation-dir (:generation-dir options)
@@ -219,7 +219,7 @@
     []))
 
 (defn generate-artifact
-  "Generates an artifact"
+  "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
   [template ctx model e]
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
@@ -228,7 +228,7 @@
     (write-artifact path result)))
 
 (defn generate
-  "Generates artifacts for the generation specification `spec`."
+  "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
   (doseq [ctx (read-config options)]
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
