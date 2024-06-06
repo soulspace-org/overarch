@@ -1,8 +1,6 @@
 ![overarch - Image © 2019 Ludger Solbach](/doc/images/overarch.jpg)
 
-Overarch
-========
-
+# Overarch
 A data driven description of software architecture based on UML and the C4
 model.
 
@@ -20,9 +18,7 @@ composable and reusable.
 ![GitHub](https://img.shields.io/github/license/soulspace-org/overarch)
 
 
-Features
---------
-
+## Features
 * models and views as data
   * C4 architecture and deployment models and views
   * UML use case, state machine and class models and views
@@ -53,16 +49,14 @@ Features
   * Structurizr *experimental*
 * watch model directories for changes
 
+## Rationale
+UML and C4 models are great to model and vizualize an architecture on different
+levels of detail with the various diagrams types. The value lies in an
+expressive description and visualization of an architecture with different
+views.
 
-Rationale
----------
-
-UML and C4 models are great to vizualize an architecture on different levels
-of detail with the various diagrams types. The value lies in an expressive
-description and visualization of an architecture with different views.
-
-But the models used for diagram generation with the existing tools are not
-models in the sense of generality. Especially if you describe your model in
+But the models used for diagram generation with the existing diagram tools are
+not models in the sense of generality. Especially if you describe your model in
 PlantUML files, these descriptions are mere textfiles.
 
 The textfiles don't compose and you can't do anything else with these
@@ -77,7 +71,9 @@ If the model is described as plain *data* in an open format, it can be
 transformed into a graphical representation, e.g. into PlantUML textfiles, via
 the specification of views on the model.
 
-In Overarch the model data is separated from information about these representations. Models can be composed with these views and with other models. By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
+In Overarch the model data is separated from information about these
+representations. Models can be composed with these views and with other models.
+By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
 
 Even if the model is specified as data, the format should be a text file (EDN,
 JSON) to be easily edited with text editors by the whole team and to be
@@ -89,21 +85,21 @@ in other formats like JSON. EDN is a textual format for data, which is human
 readable. It is also directly readable into data structures in clojure or java
 code.
 
-The data format is open for extension. E.g. it copes with additional attributes or element types in the data structures.
+The data format is open for extension. E.g. it copes with additional attributes
+or element types in the data structures.
 
 The model should describe the architecture (the structure) of your system(s).
-The elements are based on UML and the C4 model and are a hierarchical composition of the elements of the architecture.
+The elements are based on UML and the C4 model and are a hierarchical
+composition of the elements of the architecture.
 
 Model references are used to refer to model elements from other models and
-representations (e.g. diagrams). To allow references to elements and  relations, they must be given an id.
+representations (e.g. diagrams). To allow references to elements and relations,
+they must be given an id.
 
 Model references may be enhanced with additional attributes that are specific
 to the usage context (e.g. a style attribute in the context of a diagram)
 
-
-Examples
---------
-
+## Examples
 This is an example of the specification of a model and some diagrams based on
 the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
@@ -257,8 +253,7 @@ SHOW_LEGEND()
 ![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
 
-Build
------
+## Build
 Overarch is written in [Clojure](https://clojure.org) and gets built with
 [leiningen](https://leiningen.org/). To build it, you need to have Java 11 or higher
 and leiningen installed.
@@ -272,9 +267,7 @@ lein uberjar
 to build a JAR file with all dependencies. This JAR file is created in the *target* folder and is named *overarch.jar*
 
 
-Installation
-------------
-
+## Installation
 ### Visual Studio Code
 
 If you have a clojure environment in some editor or IDE, just use it. Maybe a PlantUML plugin exists for this environment too.
@@ -315,9 +308,7 @@ the location of the `overarch.jar` uberjar for you. This `overarch` command can
 be substituted for the `java -jar overarch.jar` references throughout this
 documentation.
 
-Usage
------
-
+## Usage
 Use a folder for all the data (e.g. models, view specifications) of a project.
 Add EDN files for the model and the view specifications. All the EDN files in the folder will be loaded.
 
@@ -332,7 +323,6 @@ For example to generate all views for the models with some debug output, use
 ```
 java -jar ./target/overarch.jar -r all --debug
 ```
-
 
 *Overarch* currently supports these options
 
@@ -369,36 +359,20 @@ Options:
 
 If you use Visual Studio Code as described above, you can start *Overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
 
-Documentation
--------------
-
+## Documentation
 See [Usage](doc/usage.md) for additional information on modelling and usage of the *Overarch* CLI tool.
 
 See [Design](doc/design.md) for information about the design of *Overarch*.
 
-
-Plans
------
-
+## Plans
 Here are my current plans to enhance overarch in the next releases.
 
-* enhanced conveniance in view specifications
-  * automatic includes of elements e.g.
-    * include relations for referenced elements
-    * includes based on selection criteria
 * provide relations between elements of the different models to model
   traceability information (e.g. from use cases to the containers implementing
   them or from domain concepts to domain model elements)
 
-
-Copyright
----------
-
+## Copyright
 © 2023 Ludger Solbach
 
-
-License
--------
-
+## License
 Eclipse Public License 1.0 (EPL1.0)
-
