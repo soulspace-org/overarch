@@ -229,6 +229,7 @@
     ; write artifact for result
     (write-artifact path result)))
 
+; TODO move iteration into the template engine adapter to reuse parsed templates
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
