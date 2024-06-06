@@ -46,7 +46,7 @@
   [["-m" "--model-dir PATH" "Models directory or path" :default "models"]
    ["-r" "--render-format FORMAT" "Render format (all, graphviz, markdown, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
    ["-R" "--render-dir DIRNAME" "Render directory" :default "export"]
-;   [nil  "--render-subdirs" "Use subdir per render format" :default true]
+   [nil  "--[no-]render-format-subdirs" "Use subdir per render format" :default true]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
    ["-X" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
@@ -56,8 +56,8 @@
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
-   [nil  "--model-warnings" "Returns warnings for the loaded model" :default true]
-   [nil  "--model-info" "Returns infos for the loaded model" :default false]
+   [nil  "--[no-]model-warnings" "Returns warnings for the loaded model" :default true]
+   [nil  "--[no-]model-info" "Returns infos for the loaded model" :default false]
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
 ;  [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
    ["-h" "--help" "Print help"]
@@ -283,7 +283,7 @@
   (el/elements-by-namespace (repo/nodes))
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
-  (el/descendant-nodes (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
   ;
   )
 
@@ -311,9 +311,11 @@
          (-main "--debug" "--render-format" "markdown")
          (-main "--debug" "--render-format" "graphviz")
          (-main "--debug" "--render-format" "all")
+         (-main "--debug" "--render-format" "all"  "--no-format-subdirs")
          (-main "--debug" "--export-format" "json")
          (-main "--model-dir" "models/banking" "--export-format" "structurizr")
          (-main "--model-info")
+         (-main "--no-model-warnings")
          (-main "--plantuml-list-sprites")
          (-main "--help") ; ends REPL session
 

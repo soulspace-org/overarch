@@ -84,7 +84,9 @@
 
 (defmethod rndr/render-file :graphviz
   [model format options view]
-  (let [dir-name (str (:render-dir options) "/graphviz/"
+  (let [dir-name (str (:render-dir options) "/"
+                      (when (:render-format-subdirs options)
+                        "graphviz/")
                       (str/replace (namespace (:id view)) "." "/"))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"

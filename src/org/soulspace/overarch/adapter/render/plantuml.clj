@@ -299,7 +299,9 @@
 
 (defmethod rndr/render-file :plantuml
   [model format options view]
-  (let [dir-name (str (:render-dir options) "/plantuml/"
+  (let [dir-name (str (:render-dir options) "/"
+                      (when (:render-format-subdirs options)
+                        "plantuml/")
                       (str/replace (namespace (:id view)) "." "/"))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"

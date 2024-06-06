@@ -105,7 +105,9 @@
 
 (defmethod rndr/render-file :markdown
   [model format options view]
-  (let [dir-name (str (:render-dir options) "/markdown/"
+  (let [dir-name (str (:render-dir options) "/"
+                      (when (:render-format-subdirs options)
+                        "markdown/")
                       (str/replace (namespace (:id view)) "." "/"))]
     (file/create-dir (io/as-file dir-name))
     (io/as-file (str dir-name "/"

@@ -3,12 +3,16 @@ Changelog
 
 Version 0.19.0
 --------------
-* *attention* changed short argument for template dir from `-t` to `-T` for consistency with other arguments
+* commandline updates
+  * *attention* changed short option for template dir from `-t` to `-T` for consistency with other arguments
+  * added the possibility to explicitly set boolean options to false, which default to true
+  * added an option to disable render format specific subdirs
 * updated templating, added SCI as a template generation environment
-* added model API for use in templates
+  * added model API for use in templates
+  * use :combsci as the default :engine
 * added generic support for plantuml skinparams
-* added :desc criterium, support regular expressions for :desc and :name
-* added to and enhanced model navigation 
+* added selection criterium :desc, support regular expressions for :desc and :name
+* enhanced model navigation functions 
 * updated and enhanced example views
 * added a new, more complex example model named big-bank
 * updated usage docs
