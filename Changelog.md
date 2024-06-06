@@ -7,9 +7,9 @@ Version 0.19.0
   * *attention* changed short option for template dir from `-t` to `-T` for consistency with other arguments
   * added the possibility to explicitly set boolean options to false, which default to true
   * added an option to disable render format specific subdirs
-* updated templating, added SCI as a template generation environment
-  * added model API for use in templates
+* updated templating, added SCI as a generation environment for comb templates
   * using :combsci as the default :engine
+* added model API for use in templates (work in progress, not stable yet)
 * added generic support for plantuml skinparams
 * added selection criterium :desc, support regular expressions for :desc and :name
 * enhanced model navigation functions 
