@@ -137,6 +137,50 @@ A: An extension of the model could make sense if there is value in the
    of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overach.
 
 
+Q: **Why EDN as the specification notation?**
+
+A: Because it is an open and extensible data format
+   * simple syntax
+   * richer semantics than JSON
+     * keywords, sets, tagged values
+   * no parsers needed, read directly into data structures (at least for
+     clojure and its host languages)
+   * good tooling support with type completion, e.g.
+     * VS Code + Calva
+     * IntelliJ + Cursive
+     * Emacs + Cider
+
+
+Q: **Why not JSON?**
+
+A: JSON is a format that is widely used and supported by many programming
+   languages. But compared to EDN it has a few shortcomings
+   * JSON does not support sets and some literal types like uuids or instants
+     of time
+   * JSON does not support keywords, which are really helpful in creating
+     namespaced and conflict free attributes and ID spaces
+
+   JSON is supported as an export format to make the model and view data
+   available to as many languages and environments as possible, but the
+   conversion might be lossy for the reasons above.
+
+
+Q: **Why Clojure?**
+
+A: Clojure is a perfect match
+   * it is data oriented, data driven
+     * has rich data types with literal representations
+     * has a rich library of functions make processing simple and easy
+     * usage of the existing reader instead of hand written DSLs and parsers
+   * functional implementation
+     * easy to reason about
+     * explicit state when needed
+   * clojure.spec
+     * flexible validation where and when it's needed
+     * open for custom extensions of the data
+   * multi value dispatch for an extensible adapter architecture
+
+
 Q: **How can reusability of the models and views be achieved?**
 
 A: With :ref the reusablility of model elements in different views is
@@ -331,6 +375,8 @@ A: All relations and the nodes which are not rendered by an included ancestor.
    A la
    (let [children-set (set/union (map children selected-set))]
      (set/difference selected-set children-set))
+     
+   Implemented
 
 Q: **How should the content of the view be selected?**
 
@@ -340,6 +386,8 @@ A: The process could be
    3. add additional elements from :include spec, if provided
 
    Only relevant elements for the views shall be added/rendered.
+
+   Implemented.
 
 
 Q: **How can we avoid duplication for style specifications used in multiple views?**
@@ -455,7 +503,7 @@ A: The model should contain information like names and descriptions for most
    the parts of the language of the system, which are not directly represented
    by elements of the architecture.
 
-   Implemented. 
+   Implemented.
 
 
 Q: **How can duplication reduced in views of specific instanciations of the model?**
@@ -476,9 +524,9 @@ Q: **Whould overarch benefit from a generic generation mechanism with templates?
 
 A: Overarch would benefit from a template based generation mechanism because
    it would enable users to create textual renderings of model elements without
-   creating render adapters in the overarch codebase itself. Therefor,
+   creating render adapters in the overarch codebase itself. Therefore,
    depending on the programming language used in the template engine, no
-   clojure knowledge would neccessary to create useful textual renderings for
+   clojure knowledge would be neccessary to create useful textual renderings for
    the model content.
 
    Also the useful textual renderings from the model content will be highly
@@ -489,50 +537,7 @@ Q: **What properties should a generic generation mechanism have?**
 
 A: 
 
-
-Q: **Why EDN as the specification notation?**
-
-A: Because it is an open and extensible data format
-   * simple syntax
-   * richer semantics than JSON
-     * keywords, sets, tagged values
-   * no parsers needed, read directly into data structures (at least for
-     clojure and its host languages)
-   * good tooling support with type completion, e.g.
-     * VS Code + Calva
-     * IntelliJ + Cursive
-     * Emacs + Cider
-
-
-Q: **Why not JSON?**
-
-A: JSON is a format that is widely used and supported by many programming
-   languages. But compared to EDN it has a few shortcomings
-   * JSON does not support sets and some literal types like uuids or instants
-     of time
-   * JSON does not support keywords, which are really helpfull in creating
-     namespaced and conflict free attributes and ID spaces
-
-   JSON is supported as an export format to make the model and view data
-   available to as many languages and environments as possible, but the
-   conversion might be lossy for the reasons above.
-
-
-Q: **Why Clojure?**
-
-A: Clojure is a perfect match
-   * data oriented, data driven
-     * rich data types with literal representations
-     * rich library of functions make processing simple and easy
-     * existing reader instead of hand written DSLs and parsers
-   * functional implementation
-     * easy to reason about
-     * explicit state when needed
-   * clojure.spec
-     * flexible validation where and when it's needed
-     * open for custom extensions of the data
-   * multiple value dispatch for export plugins
-
+Q: ****
 
 ## PlantUML Export
 
