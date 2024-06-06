@@ -32,6 +32,7 @@
 (s/def :overarch.template/suffix string?)
 (s/def :overarch.template/extension string?)
 (s/def :overarch.template/name-as-namespace boolean?)
+(s/def :overarch.template/id-as-namespace boolean?)
 (s/def :overarch.template/protected-area boolean?)
 
 (s/def :overarch.template/generation-context
@@ -51,6 +52,7 @@
                    :overarch.template/suffix
                    :overarch.template/extension
                    :overarch.template/name-as-namespace
+                   :overarch.template/id-as-namespace
                    :overarch.template/protected-area]))
 
 (s/def :overarch.template/generation-config
