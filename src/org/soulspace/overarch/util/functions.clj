@@ -21,8 +21,16 @@
         (map str/trim)
         (into []))))
 
+(defn to-singleline
+  "Converts the string to a single line string."
+  [s]
+  (->> s
+       (str/split-lines)
+       (map str/trim)
+       (str/join " ")))
+
 (defn wrap-str
-  "Wraps the argument `s` in double quotes."
+  "Wraps the argument `s` in double quotes.line-seq"
   [s]
   (str "\"" s "\""))
 

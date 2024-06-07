@@ -1,0 +1,30 @@
+#{{:el :system
+   :id :test/multiline-system
+   :name "Multiline String
+          Test System"
+   :desc "A system that is created for test purposes,
+          with a multiline name and a multiline description.
+          With it I want to test the correct generation of
+          some render formats, especially PlantUML."
+   :ct #{}}
+
+  {:el :class
+   :id :test/multiline-class
+   :name "MultilineClass"
+   :desc "A class that is created for test purposes,
+          with a multiline name and a multiline description.
+          With it I want to test the correct generation of
+          some render formats, especially PlantUML."}
+
+  {:el :context-view
+   :id :test/multiline-test-context-view
+   :title "Multiline Test Context View"
+   :ct [{:ref :test/multiline-system}]}
+  
+  {:el :class-view
+   :id :test/multiline-test-class-view
+   :title "Multiline Test Class View"
+   :ct [{:ref :test/multiline-class}]}
+  
+  ;
+  }
