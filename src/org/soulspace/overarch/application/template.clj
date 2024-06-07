@@ -33,6 +33,7 @@
 (s/def :overarch.template/extension string?)
 (s/def :overarch.template/name-as-namespace boolean?)
 (s/def :overarch.template/id-as-namespace boolean?)
+(s/def :overarch.template/id-as-name boolean?)
 (s/def :overarch.template/protected-area boolean?)
 
 (s/def :overarch.template/generation-context
@@ -53,6 +54,7 @@
                    :overarch.template/extension
                    :overarch.template/name-as-namespace
                    :overarch.template/id-as-namespace
+                   :overarch.template/id-as-name
                    :overarch.template/protected-area]))
 
 (s/def :overarch.template/generation-config
@@ -144,7 +146,9 @@
     (:prefix ctx)
     (if-let [base-name (:base-name ctx)]
       base-name
-      (:name el))
+      (if (:id-as-name ctx)
+        (name (:id el))
+        (:name el)))
     (:suffix ctx)
     "." (:extension ctx))))
 
@@ -206,10 +210,11 @@
 ;;; 
 (def ctx-defaults
   "Default values for the generator context."
-  {:engine :combsci
-   :per-element false
-   :encoding "UTF-8"
-   :id-as-namespace false})
+  {:engine          :combsci
+   :per-element     false
+   :encoding        "UTF-8"
+   :id-as-namespace false
+   :id-as-name      false})
 
 (defn read-config
   "Reads the generator configuration specified in `options`."

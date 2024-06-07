@@ -18,12 +18,12 @@
   (el/model-element? e))
 
 (defn model-node?
-  "Returns true if the given element is a model node."
+  "Returns true if the given element `e` is a model node."
   [e]
   (el/model-node? e))
 
 (defn model-relation?
-  "Returns true if the given element `e` is a relation."
+  "Returns true if the given element `e` is a model relation."
   [e]
   (el/model-relation? e))
 
@@ -57,7 +57,6 @@
   [e]
   ((isa? el/element-hierarchy (:el e) :use-case-model-element)))
 
-
 ;;;
 ;;; Element functions
 ;;;
@@ -80,6 +79,21 @@
   "Returns a path for the namespace of element `e`."
   [e]
   (str (element-namespace-path e) "/" (name (:id e))))
+
+(defn root-path
+  "Returns a relative upwards path from the element `e` to the root of the model."
+  [e]
+  (let [e-ns (element-namespace e)]
+    (->> (str/split e-ns #"\.")
+         (map (constantly ".."))
+         (str/join "/"))))
+
+(comment
+  (str/split "a.b.c" #"\.")
+  (element-namespace {:id :a.b.c/x})
+  (root-path {:id :a.b.c/x})
+  ;
+  )
 
 ;;;
 ;;; Model navigation
@@ -139,12 +153,12 @@
 ;;
 (defn all-fields
   "Returns a sequence of all fields of the given collection of `classes`."
-  [classes]
+  [model classes]
   (el/collect-fields classes))
 
 (defn all-methods
   "Returns a sequence of all methods of the given collection of `classes`."
-  [classes]
+  [model classes]
   (el/collect-methods classes))
 
 (defn superclasses

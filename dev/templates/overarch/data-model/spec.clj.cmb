@@ -13,7 +13,7 @@
  %>
 
 ;; Spec for keys
-<%(doseq [field (m/all-fields e)]%>
+<%(doseq [field (m/all-fields model e)]%>
 ; <%= (:desc field) %>
 (s/def :overarch/<%=(:name field)%> <%=(type-pred field)%>)
 <%)%>

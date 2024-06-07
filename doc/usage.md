@@ -527,7 +527,7 @@ key                    | type            | example values            | descripti
 :name?                 | boolean         | true, false               | elements for which the name check returns the given value
 :name                  | string/regex    | "Overarch CLI"            | elements for which the name matches the given value
 :desc?                 | boolean         | true, false               | elements for which the description check returns the given value
-:desc                  | string/regex    | "None" "(?i).*overarch.*" | elements for which the description matches the given value
+:desc                  | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the description matches the given value
 :tech?                 | boolean         | true, false               | elements for which the technology check returns the given value
 :tech                  | string          | "Clojure"                 | elements of the given technology
 :techs                 | set of strings  | #{"Clojure" "Java"}       | elements with one or more of the given technologies
@@ -844,34 +844,35 @@ The use cases of the tempates range from reports up to automatic code generation
 Overarch supports forward engineering protected areas for manually written
 content in generated artifacts
 
-
 ## Generation Configuration
-
 You can configure the generation of artifacts with an EDN file.
 The configuration contains a vector of generation context maps.
 A generation context map specifies a selection of model elements, a template
 to use, how the template should be applied, and where the resulting artifact
 should be created.
 
-key               | type     | values             | default | description
-------------------|----------|--------------------|---------|-------------
-:selection        | CRITERIA | {:el :system}      |         | Criteria to select model elements
-:template         | PATH     | "report/node.cmb"  |         | Path to the template relative to the template dir
-:engine           | :keyword | :comb              | :comb   | The template engine to use (currently just :comb)
-:encoding         | string   | "UTF-8"            | "UTF-8" | The encoding of the result artifact
-:per-element      | boolean  | true/false         | false   | Apply  the template for each element of the selection or on the selection as a whole
-:subdir           | string   | "report"           |         | Subdirectory for generated artifact under the generator directory
-:namespace-prefix | string   | "src"              |         | Prefix to the namespace to use as path element
-:base-namespace   | string   |                    |         | Base namespace to use as path element
-:namespace-suffix | string   | "impl"             |         | Suffix to the namespace to use as path element
-:prefix           | string   | "Abstract"         |         | Prefix for the filename
-:base-name        | string   |                    |         | Base of the filename
-:suffix           | string   | "Impl"             |         | Suffix for the filename
-:extension        | string   | "md" "clj" "java"  |         | Extension for the filename
-:filename         | string   | "README.md"        |         | Specific filename to use
-:id-as-namespace  | boolean  | true/false         | false   | Use the element id as the namespace for path generation
-:protected-areas  | string   | "PA"               |         | Marker for protected areas in the template/artifact
+key               | type     | values             | default  | description
+------------------|----------|--------------------|----------|-------------
+:selection        | CRITERIA | {:el :system}      |          | Criteria to select model elements
+:template         | PATH     | "report/node.cmb"  |          | Path to the template relative to the template dir
+:engine           | :keyword | :comb              | :combsci | The template engine to use (currently just :comb and :combsci)
+:encoding         | string   | "UTF-8"            | "UTF-8"  | The encoding of the result artifact
+:per-element      | boolean  | true/false         | false    | Apply  the template for each element of the selection or on the selection as a whole
+:subdir           | string   | "report"           |          | Subdirectory for generated artifact under the generator directory
+:namespace-prefix | string   | "src"              |          | Prefix to the namespace to use as path element
+:base-namespace   | string   |                    |          | Base namespace to use as path element
+:namespace-suffix | string   | "impl"             |          | Suffix to the namespace to use as path element
+:prefix           | string   | "Abstract"         |          | Prefix for the filename
+:base-name        | string   |                    |          | Base of the filename
+:suffix           | string   | "Impl"             |          | Suffix for the filename
+:extension        | string   | "md" "clj" "java"  |          | Extension for the filename
+:filename         | string   | "README.md"        |          | Specific filename to use
+:id-as-namespace  | boolean  | true/false         | false    | Use the element id as the namespace for path generation
+:id-as-name       | boolean  | true/false         | false    | Use the name part of the element id as the name for path generation
+:protected-areas  | string   | "PA"               |          | Marker for protected areas in the template/artifact
 
+You can add additional (namespaced) keys to the generation context map, which
+are available in via the `ctx` symbol in the template.
 
 ### Example config file
 ```clojure
@@ -915,11 +916,10 @@ key               | type     | values             | default | description
 ```
 
 ## Overarch CLI
-
 The relevant CLI options for template based artifact generation are
 ```
   -m, --model-dir PATH           models     Models directory or path
-  -t, --template-dir DIRNAME     templates  Template directory
+  -T, --template-dir DIRNAME     templates  Template directory
   -g, --generation-config FILE              Generation configuration
   -G, --generation-dir DIRNAME   generated  Generation artifact directory
   -B, --backup-dir DIRNAME       backup     Generation backup directory
@@ -968,7 +968,20 @@ foo bar bar bar
 ```
 
 ### Security Considerations
-Comb templates can contain arbitrary clojure code, which gets evaluated in the context of the overarch process. Be aware of this fact and review templates accordingly, especially when using templates from external sources.
+Comb templates can contain arbitrary clojure code, which gets evaluated in the
+context of the overarch process. Be aware of this fact and review templates
+accordingly, especially when using templates from external sources.
+
+When the comp templates are evaluated by the `:combsci` engine, they are
+interpreted with Babashka SCI, the small clojure interpreter. This has many
+advantages:
+* sandboxed evaluation
+* control over the the available clojure namespaces and symbols
+* independent from the method of providing and starting overarch
+
+As the template code is interpreted with SCI and not compiled, the generation
+might be a bit slower then with using compiled templates. But the advantages
+outweight the performance penalty by far. 
 
 ## Protected Areas
 Protected areas are used to protect manually inserted text in generated
