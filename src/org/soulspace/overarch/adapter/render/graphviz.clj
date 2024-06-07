@@ -10,7 +10,8 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Rendering
@@ -27,13 +28,13 @@
   (sstr/hyphen-to-camel-case (name kw)))
 
 (defmulti render-element
-  "Renders an element `e` in the `view` with markdown according to the given `options`."
+  "Renders an element `e` in the `view` with graphviz according to the given `options`."
   (fn [model e _ _] (:el e))
   :hierarchy #'el/element-hierarchy)
 
 (defmethod render-element :model-node
   [model e indent view]
-  [(str (alias-name (:id e)) "[label=\"" (:name e) "\", style=\"filled\", fillcolor=\"#dddddd\"];")])
+  [(str (alias-name (:id e)) "[label=\"" (fns/to-singleline (:name e)) "\", style=\"filled\", fillcolor=\"#dddddd\"];")])
 
 (defmethod render-element :model-relation
   [model e indent view]

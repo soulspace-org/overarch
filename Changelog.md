@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.20.0
+--------------
+* render multiline names and descriptions as single line for plantuml and graphviz
+
 Version 0.19.0
 --------------
 * commandline updates
