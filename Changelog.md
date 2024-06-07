@@ -3,9 +3,10 @@ Changelog
 
 Version 0.20.0
 --------------
-* render multiline names and descriptions as single line for plantuml and graphviz
+* render multi line names and descriptions as single line for plantuml and graphviz
 * added added :id-as-name option in template generation context
-* added model api functions
+* added option to include diagrams in generated markdown view (the diagram should reside in the same directory)
+* added model API functions
 
 Version 0.19.0
 --------------

@@ -79,14 +79,15 @@
 (defn render-diagram
   "Renders the reference to the diagram, if specified for the `view`."
   [view]
-  (when-let [diagram (diagram-spec view)]
-    (md/image "Diagram" (str (get diagram :dir ".") "/" (name (:id view)) (:format diagram)))))
+  (when-let [spec (diagram-spec view)]
+    (md/image "Diagram" (str (get spec :dir ".") "/" (name (:id view)) "." (:format spec)))))
 
 (defn render-markdown-view
   "Renders the `view` with markdown according to the given `options`."
   [model options view]
   (let [elements (sort-by :id (filter el/model-node? (view/view-elements model view)))]
     (flatten [(md/h1 (:title view))
+              (render-diagram view)
               (map #(render-element model % options view) elements)])))
 
 ;;;
