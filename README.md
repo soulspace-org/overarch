@@ -29,7 +29,7 @@ composable and reusable.
   * extensible format
 * model queries
   * criteria based selection of model elements
-* template based artifact generation (*experimental*) for e.g.
+* template based artifact generation for e.g.
   * project templates
   * code scaffolding
   * CI/CD pipelines
@@ -61,11 +61,10 @@ PlantUML files, these descriptions are mere textfiles.
 
 The textfiles don't compose and you can't do anything else with these
 descriptions other than render them with PlantUML. The parsing process is
-opaque and you don't have access to the data of the model.
-
-Also the model is complected with the diagrams, as layout and rendering
-information is part of the model description and vice versa. The model should
-capture the essence of the architecture and not its representation.
+opaque and you don't have access to the data of the model. Also the model is
+complected with the diagrams, as layout and rendering information is part of
+the model description and vice versa. The model should capture the essence of
+the architecture and not its representation.
 
 If the model is described as plain *data* in an open format, it can be
 transformed into a graphical representation, e.g. into PlantUML textfiles, via
@@ -75,29 +74,23 @@ In Overarch the model data is separated from information about these
 representations. Models can be composed with these views and with other models.
 By doing so, the model may also be used in other ways, e.g. the generation of documentation, code or infrastructure.
 
-Even if the model is specified as data, the format should be a text file (EDN,
-JSON) to be easily edited with text editors by the whole team and to be
-committed to version control, instead of being in some propriatory binary
-format.
+Even if the model is specified as data, the format is a text file (EDN, JSON)
+to be easily edited with text editors by the whole team and to be committed to version control, instead of being in some propriatory binary format.
 
 The native format is the Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
 readable. It is also directly readable into data structures in clojure or java
-code.
+code. The data format is also open for extension. E.g. it copes with additional attributes or element types in the data structures.
 
-The data format is open for extension. E.g. it copes with additional attributes
-or element types in the data structures.
-
-The model should describe the architecture (the structure) of your system(s).
-The elements are based on UML and the C4 model and are a hierarchical
-composition of the elements of the architecture.
+The model describes the architecture (the structure) of your system(s). The
+elements are based on UML and the C4 model and are a hierarchical composition
+of the elements of the architecture.
 
 Model references are used to refer to model elements from other models and
 representations (e.g. diagrams). To allow references to elements and relations,
-they must be given an id.
-
-Model references may be enhanced with additional attributes that are specific
-to the usage context (e.g. a style attribute in the context of a diagram)
+they must be given an id. Model references may be enhanced with additional
+attributes that are specific to the usage context (e.g. a style attribute in
+the context of a diagram)
 
 ## Examples
 This is an example of the specification of a model and some diagrams based on
