@@ -20,6 +20,20 @@ Modelling a system with overarch should provide a value for the project and
 this guides the selection of model elements and supported abstractions and
 views.
 
+Overarch currently supports the following kinds of models
+* [Concept Models](#concept-model)
+  to model the concepts used for the system and their relations
+* [Use-Case Models](#use-case-model)
+  to model the scope of the system with the supported use cases
+* [Architecture Models](#architecture-model)
+  to model the logical architecture of the system with different levels of detail
+* [Class Models](#class-model)
+  to model the design of the system, e.g. the domain model, and the structure of the implementation
+* [State-Machine Models](#state-machine-model)
+  to model relevant states and transitions of the system
+* [Deployment Models](#deployment-model)
+  to model the physical architecture of the system
+
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the
 [Extensible Data Notation (EDN)](https://github.com/edn-format/edn).
