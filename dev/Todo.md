@@ -7,6 +7,9 @@
   * use packages, classes and interfaces for clean architecture
   * eventually move to separate repository
 
+* add contributing and code of conduct
+
+
 ## Documentation
 * readme
   * move rationale to docs

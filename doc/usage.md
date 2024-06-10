@@ -13,7 +13,6 @@ criteria and generate artifacts based on the result with templates.
 ![Use Cases of Overarch](/doc/images/overarch/use-cases/overarch-use-case-view.svg)
 
 # Modelling
-
 Overarch supports modelling the functional requirements, the architecture and
 the design of the system under description.
 
@@ -130,7 +129,6 @@ syntax check and syntax highlighting.
 
 
 # Models
-
 You can split your model into separate EDN files, which might be reasonable for
 big systems. Overarch can recursively read all models from a directory or
 search path so you are quite free in structuring your model files.
@@ -591,7 +589,6 @@ content of a view should be a list instead of a set because the order
 of elements may be relevant in the rendering of a view. 
 
 ### Keys
-
 key       | type    | values                   | description 
 ----------|---------|--------------------------|------------
 :el       | keyword | see views                | type of the view
@@ -1135,6 +1132,7 @@ or
 ```
 > java -jar ./target/overarch.jar -S '{:el :container}'
 ```
+
 # Editor/IDE Integration
 ## Visual Studio Code
 
