@@ -3,8 +3,9 @@ Changelog
 
 Version 0.21.0
 --------------
+* added default directions for relations in plantuml use case rendering
+* updated overarch use case model
 * restructured and enhanced usage docs
-
 
 Version 0.20.0
 --------------

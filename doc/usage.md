@@ -1,8 +1,8 @@
 # Overarch Usage Overview
 
-The usage of Overarch is twofold. On the one hand, it is an open data format
-to describe the concepts, functional requirements, architecture, and design
-of software systems. On the other hand it is a tool to transform the
+The usage of Overarch is twofold. On the one hand, Overarch provides an open
+data format to describe the concepts, functional requirements, architecture,
+and design of software systems. On the other hand it is a tool to transform the
 description into diagrams, reports or other representations.
 
 Overarch can be used as a CLI tool to convert specified models and diagrams
