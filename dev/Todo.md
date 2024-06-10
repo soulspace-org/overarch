@@ -16,6 +16,8 @@
 
 * restructure docs
   * rationale
+  * prerequisites
+  * installation  
   * modelling
   * model queries
   * views
