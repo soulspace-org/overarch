@@ -82,8 +82,9 @@
   [_ _ indent e]
   [(str (render/indent indent)
         (puml/alias-name (:from e)) " ."
-        (when (:direction e)
-          (uml-directions (:direction e)))
+        (if (:direction e)
+          (uml-directions (:direction e))
+          (uml-directions :left))
         ".> "
         (puml/alias-name (:to e)) " : include")])
 
@@ -91,8 +92,9 @@
   [_ _ indent e]
   [(str (render/indent indent)
         (puml/alias-name (:from e)) " ."
-        (when (:direction e)
-          (uml-directions (:direction e)))
+        (if (:direction e)
+          (uml-directions (:direction e))
+          (uml-directions :up))
         ".> "
         (puml/alias-name (:to e)) " : extends")])
 
@@ -100,8 +102,9 @@
   [_ _ indent e]
   [(str (render/indent indent)
         (puml/alias-name (:from e)) " -"
-        (when (:direction e)
-          (uml-directions (:direction e)))
+        (if (:direction e)
+          (uml-directions (:direction e))
+          (uml-directions :right))
         "-|> "
         (puml/alias-name (:to e)))])
 
