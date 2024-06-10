@@ -15,6 +15,21 @@
    :name "define views"
    :desc "Textually define views of the system in the Overarch view model."}
   {:el :use-case
+   :id :overarch.use-case/create-templates
+   :level :user-goal
+   :name "create templates"
+   :desc "Create templates to generate artifacts from model selections."}
+  {:el :use-case
+   :id :overarch.use-case/generate-artifacts
+   :level :user-goal
+   :name "generate artifacts "
+   :desc "Generate artifacts with templates from model selections."}
+  {:el :use-case
+   :id :overarch.use-case/query-model
+   :level :user-goal
+   :name "query model"
+   :desc "Query the model with selection criteria."}
+  {:el :use-case
    :id :overarch.use-case/export-model
    :level :user-goal
    :name "export model"
@@ -62,6 +77,18 @@
    :from :overarch.roles/modeller
    :to :overarch.use-case/define-views}
   {:el :uses
+   :id :overarch.roles/modeller-wants-to-create-templates
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/create-templates}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-generate-artifacts
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/generate-artifacts}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-query-model
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/query-model}
+  {:el :uses
    :id :overarch.roles/modeller-wants-to-export-model
    :from :overarch.roles/modeller
    :to :overarch.use-case/export-model}
@@ -77,6 +104,14 @@
    :id :overarch.use-case/define-views-uses-editor
    :from :overarch.use-case/define-views
    :to :overarch.architecture/editor}
+  {:el :include
+   :id :overarch.use-case/render-views-includes-query-model
+   :from :overarch.use-case/render-views
+   :to :overarch.use-case/query-model}
+  {:el :include
+   :id :overarch.use-case/generate-artifacts-includes-query-model
+   :from :overarch.use-case/generate-artifacts
+   :to :overarch.use-case/query-model}
   {:el :extends
    :id :overarch.use-case/export-json-extends-uc-export-model
    :from :overarch.use-case/export-json
