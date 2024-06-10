@@ -1,6 +1,5 @@
 # ToDos
 
-* add vscode graphviz extensions to readme/usage
 * generate correct markdown for hierarchical views
 * add styling to graphviz and plantuml uml rendering
 * separate clean architecture model from domain driven design model
@@ -20,7 +19,8 @@
   * templates
   * IDE integration
   * commandline interface
-* tutorial
+  * tutorial
+  * best practices
 
 * modelling tool
   * free, extensible, composable, reusable
