@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.21.0
+--------------
+* restructured and enhanced usage docs
+
+
 Version 0.20.0
 --------------
 * render multi line names and descriptions as single line for plantuml and graphviz
