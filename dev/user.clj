@@ -52,8 +52,8 @@
   )
 
 (def topic-docs
-  ["overview" "rationale" "modelling" "selection-criteria"
-   "views" "exports" "templates"])
+  ["overview" "rationale" "commandline" "editor" "modelling"
+   "selection-criteria" "views" "exports" "templates"])
 
 (defn compile-usage-doc
   "Compiles the topic docs into a single usage.md"
