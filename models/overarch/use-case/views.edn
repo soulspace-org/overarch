@@ -4,28 +4,13 @@
 #{
   {:el :use-case-view
    :id :overarch.use-case/overarch-use-case-view
-   :spec {:layout :left-right
+   :spec {:selection {:namespace-prefix "overarch.use-case"}
           :include :relations
-          }
+          :layout :left-right}
    :title "Use Case View of Overarch"
    :ct [;; actors
         {:ref :overarch.roles/modeller}
         {:ref :overarch.architecture/editor}
-
-        ;; use cases
-        {:ref :overarch.use-case/model-system}
-        {:ref :overarch.use-case/define-views}
-        {:ref :overarch.use-case/create-templates}
-        {:ref :overarch.use-case/generate-artifacts}
-        {:ref :overarch.use-case/query-model}
-        {:ref :overarch.use-case/export-model}
-        {:ref :overarch.use-case/export-json}
-        {:ref :overarch.use-case/export-structurizr}
-        {:ref :overarch.use-case/render-views}
-        {:ref :overarch.use-case/render-plantuml}
-        {:ref :overarch.use-case/render-markdown}
-        {:ref :overarch.use-case/render-graphviz}
-        
         ;
         ]}
 
