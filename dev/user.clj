@@ -1,7 +1,8 @@
-
 ;;;;
 ;;;; Development functions
 ;;;;
+(require '[clojure.string :as str])
+
 
 ;;;
 ;;; Portal data viewer
@@ -48,4 +49,21 @@
   (require '[clj-java-decompiler.core :refer [decompile disassemble]])
   (decompile (fn [] (println "Hello, World!")))
   (disassemble (fn [] (println "Hello, World!")))
+  )
+
+(def topic-docs
+  ["overview" "rationale" "modelling" "selection-criteria"
+   "views" "exports" "templates"])
+
+(defn compile-usage-doc
+  "Compiles the topic docs into a single usage.md"
+  []
+  (->> topic-docs
+       (mapv #(slurp (str "doc/topics/" % ".md")))
+       (str/join "\n")
+       (spit "generated/usage.md")))
+
+(comment
+  (compile-usage-doc)
+  ;
   )
