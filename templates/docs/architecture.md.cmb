@@ -1,0 +1,36 @@
+# <%= (:name e) Architecture %>
+## Description
+<%= (:desc e) %>
+<%
+(def context-types {:core "Core"
+                    :supporting "Supporting"
+                    })
+(let [c (m/children model e)
+        bounded-contexts (filter #(= :context-boundary (:el %)) c)
+        containers (filter #(= :container (:el %)) c)]
+  (when (seq bounded-contexts)
+%>## Subdomains/Bounded Contexts
+The system consists of different subdomains which have been structured into bounded contexts
+
+| Bounded Context | Level | Description |
+|---|---|---|
+<%
+    (doseq [bc bounded-contexts]
+%>| <%= (:name bc) %> | <%= (:level bc) %> | <%= (:desc bc) %> |
+<%
+    )
+  )
+  (when (seq containers)
+%>## Containers
+Containers are the main processes of the system.
+
+| Container | Description |
+|---|---|
+<%
+    (doseq [container containers]
+%>| <%= (:name container) %> | <%= (:desc container) %> |
+<%
+    )
+  )
+)
+%>
