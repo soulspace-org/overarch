@@ -363,6 +363,68 @@
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :is-a (:el %))))))
 
+(defn features
+  ""
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :has (:el %))))))
+
+;;
+;; deployment model
+;;
+(defn deployed-on
+  "Returns the architecture nodes deployed on the node `e` in the ``model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :deployed-to (:el %))))))
+
+(defn deployed-to
+  "Returns the deployment nodes the architecture node `e` is deployed to in the ``model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :deployed-to (:el %))))))
+
+;;
+;; use case model
+;;
+(defn actors
+  "Returns the actors of a use case `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :uses (:el %))))))
+
+(defn supporting-actors
+  "Returns the supporting actors of a use case `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :uses (:el %))))))
+
+(defn extensions
+  "Returns the extension use cases of a use case `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :extends (:el %))))))
+
+(defn included
+  "Returns the extension use cases of a use case `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :include (:el %))))))
+
 ;;;
 ;;; Build model
 ;;;

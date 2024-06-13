@@ -4,6 +4,8 @@ Changelog
 Version 0.21.0
 --------------
 * added default directions for relations in plantuml use case rendering
+* added model navigation functions
+* enhanced model api
 * added architecture documentation example template
 * updated overarch use case model
 * restructured and enhanced usage docs

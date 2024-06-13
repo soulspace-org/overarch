@@ -202,6 +202,16 @@
 ;;
 ;; Deployment model navigation
 ;;
+(defn deployed-on
+  "Returns the architecture nodes deployed on the node `e` in the ``model`."
+  [model e]
+  (model/deployed-on model e))
+
+(defn deployed-to
+  "Returns the deployment nodes the architecture node `e` is deployed to in the ``model`."
+  [model e]
+  (model/deployed-to model e))
+
 
 ;;
 ;; Statemachine model navigation
@@ -210,3 +220,23 @@
 ;;
 ;; Use Case model navigation
 ;;
+(defn actors
+  "Returns the actors of a use case `e` in the `model`."
+  [model e]
+  (model/actors model e))
+
+(defn supporting-actors
+  "Returns the supporting actors of a use case `e` in the `model`."
+  [model e]
+  (model/supporting-actors model e))
+
+(defn extensions
+  "Returns the extension use cases of a use case `e` in the `model`."
+  [model e]
+  (model/extensions model e))
+
+(defn included
+  "Returns the included use cases of a use case `e` in the `model`."
+  [model e]
+  (model/included model e))
+
