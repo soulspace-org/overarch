@@ -1,7 +1,15 @@
 ;;;;
 ;;;; Generation Config
 ;;;;
-[;; Reports
+[;; Documentation
+ {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
+  :template "docs/architecture.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"
+  }
+ ;; Reports
  {:selection {:namespace-prefix "banking"}
   :template "reports/node-report.md.cmb"
   :title "Banking Model Report"

@@ -1,13 +1,15 @@
-# <%= (:name e) Architecture %>
+# <%= (:name e) %> Architecture
 ## Description
 <%= (:desc e) %>
 <%
 (def context-types {:core "Core"
                     :supporting "Supporting"
-                    })
+                    :generic "Generic"})
 (let [c (m/children model e)
         bounded-contexts (filter #(= :context-boundary (:el %)) c)
-        containers (filter #(= :container (:el %)) c)]
+        containers (filter #(= :container (:el %)) c)
+        components (filter #(= :component (:el %)) c)
+        ]
   (when (seq bounded-contexts)
 %>## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
@@ -22,13 +24,25 @@ The system consists of different subdomains which have been structured into boun
   )
   (when (seq containers)
 %>## Containers
-Containers are the main processes of the system.
+These containers are the main processes of the <%= (:name e) %> system.
 
 | Container | Description |
 |---|---|
 <%
     (doseq [container containers]
 %>| <%= (:name container) %> | <%= (:desc container) %> |
+<%
+    )
+  )
+  (when (seq components)
+%>## Components
+These components show the internal structure of the <%= (:name e) %> container.
+
+| Component | Description |
+|---|---|
+<%
+    (doseq [component components]
+%>| <%= (:name component) %> | <%= (:desc component) %> |
 <%
     )
   )
