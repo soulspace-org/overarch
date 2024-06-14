@@ -11,7 +11,6 @@
 ;;;
 ;;; Accessors
 ;;;
-
 (defn view-type
   "Returns the type of the `view`."
   ([view]
@@ -24,7 +23,6 @@
 ;;
 ;; View spec elements
 ;;
-
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
   [model view]
@@ -181,4 +179,3 @@
         (map (partial model/resolve-element model))
         (filter (partial render-model-element? model view))
         (map #(element-to-render model view %)))))
-
