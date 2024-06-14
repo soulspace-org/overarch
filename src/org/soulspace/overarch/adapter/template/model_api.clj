@@ -103,6 +103,11 @@
   [model e]
   (model/resolve-element model e))
 
+(defn resolve-view
+  "Resolves a view of the given `view-name` for the element `e` in the `model`."
+  [model e view-name]
+  (resolve-element model (keyword (str (namespace (:id e)) "/" (name view-name)))))
+
 (defn parent
   "Returns the parent of the node `e` in the `model`."
   [model e]
