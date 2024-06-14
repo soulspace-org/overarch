@@ -228,12 +228,22 @@
 (defn actors
   "Returns the actors of a use case `e` in the `model`."
   [model e]
-  (model/actors model e))
+  (model/used-by model e))
 
 (defn supporting-actors
   "Returns the supporting actors of a use case `e` in the `model`."
   [model e]
-  (model/supporting-actors model e))
+  (model/using model e))
+
+(defn using
+  "Returns the to side of the relation of type :uses of node `e` in the `model`."
+  [model e]
+  (model/using model e))
+
+(defn used-by
+  "Returns the from side of the relation of type :uses of node `e` in the `model`."
+  [model e]
+  (model/used-by model e))
 
 (defn extensions
   "Returns the extension use cases of a use case `e` in the `model`."

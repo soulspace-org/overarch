@@ -409,6 +409,22 @@
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :uses (:el %))))))
 
+(defn using
+  "Returns the to side of the relation of type :uses of node `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :uses (:el %))))))
+
+(defn used-by
+  "Returns the from side of the relation of type :uses of node `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :uses (:el %))))))
+
 (defn extensions
   "Returns the extension use cases of a use case `e` in the `model`."
   [model e]
