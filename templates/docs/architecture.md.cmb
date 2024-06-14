@@ -5,11 +5,18 @@
 (def context-types {:core "Core"
                     :supporting "Supporting"
                     :generic "Generic"})
+
+(defn link
+  [current target]
+  (str (m/root-path current) "/"
+       (m/element-namespace-path target) "/"
+       (name (:id target)) ".md"))
+
 (let [c (m/children model e)
         bounded-contexts (filter #(= :context-boundary (:el %)) c)
         containers (filter #(= :container (:el %)) c)
-        components (filter #(= :component (:el %)) c)
-        ]
+        components (filter #(= :component (:el %)) c)]
+
   (when (seq bounded-contexts)
 %>## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
@@ -18,10 +25,11 @@ The system consists of different subdomains which have been structured into boun
 |---|---|---|
 <%
     (doseq [bc bounded-contexts]
-%>| <%= (:name bc) %> | <%= (:classification bc) %> | <%= (:desc bc) %> |
+%>| [<%= (:name bc) %>](<%= (link e bc) %>) | <%= (:classification bc) %> | <%= (:desc bc) %> |
 <%
     )
   )
+
   (when (seq containers)
 %>## Containers
 These containers are the main processes of the <%= (:name e) %> system.
@@ -30,10 +38,11 @@ These containers are the main processes of the <%= (:name e) %> system.
 |---|---|
 <%
     (doseq [container containers]
-%>| <%= (:name container) %> | <%= (:desc container) %> |
+%>| [<%= (:name container)%>](<%= (link e container) %>) | <%= (:desc container) %> |
 <%
     )
   )
+
   (when (seq components)
 %>## Components
 These components show the internal structure of the <%= (:name e) %> container.
@@ -42,7 +51,7 @@ These components show the internal structure of the <%= (:name e) %> container.
 |---|---|
 <%
     (doseq [component components]
-%>| <%= (:name component) %> | <%= (:desc component) %> |
+%>| [<%= (:name component) %>](<%= (link e component) %>) | <%= (:desc component) %> |
 <%
     )
   )
