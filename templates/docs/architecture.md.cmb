@@ -2,10 +2,6 @@
 ## Description
 <%= (:desc e) %>
 <%
-(def context-types {:core "Core"
-                    :supporting "Supporting"
-                    :generic "Generic"})
-
 (defn link
   [current target]
   (str (m/root-path current) "/"
@@ -21,11 +17,11 @@
 %>## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
 
-| Bounded Context | Strategic Classification | Description |
+| Bounded Context | Description |
 |---|---|---|
 <%
     (doseq [bc bounded-contexts]
-%>| [<%= (:name bc) %>](<%= (link e bc) %>) | <%= (:classification bc) %> | <%= (:desc bc) %> |
+%>| [<%= (:name bc) %>](<%= (link e bc) %>) | <%= (:desc bc) %> |
 <%
     )
   )
