@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 0.22.0
+--------------
+* added model navigation functions
+* enhanced model api, added resolve-view and use-case navigation
+* enhanced architecture documentation template
+* updated :combsci engine exception handling, print errors but don't fail
+
 Version 0.21.0
 --------------
 * added default directions for relations in plantuml use case rendering

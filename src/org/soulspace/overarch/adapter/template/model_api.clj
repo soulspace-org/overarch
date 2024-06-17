@@ -254,4 +254,3 @@
   "Returns the included use cases of a use case `e` in the `model`."
   [model e]
   (model/included model e))
-
