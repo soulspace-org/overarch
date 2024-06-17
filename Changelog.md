@@ -3,7 +3,7 @@ Changelog
 
 Version 0.22.0
 --------------
-* added model navigation functions
+* added model navigation functions for use cases
 * enhanced model api, added resolve-view and use-case navigation
 * enhanced architecture documentation template
 * updated :combsci engine exception handling, print errors but don't fail

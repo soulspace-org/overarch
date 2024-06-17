@@ -132,10 +132,19 @@ Result:
 foo bar bar bar
 ```
 
+### API for Templates
+In the comb templates you can use most of the functions of the clojure.core
+namespace. Additionally most functions of clojure.string are provided under
+the alias `str`, e.g. `str/join`.
+
+Overarch also provides functions to query and navigate the model under the
+`m` alias.
+
 ### Security Considerations
-Comb templates can contain arbitrary clojure code, which gets evaluated in the
-context of the overarch process. Be aware of this fact and review templates
-accordingly, especially when using templates from external sources.
+Comb templates evaluated with `:comb` are compiled and can contain arbitrary
+clojure code, which gets evaluated in the context of the overarch process.
+Be aware of this fact and review templates accordingly, especially when using
+templates from external sources.
 
 When the comp templates are evaluated by the `:combsci` engine, they are
 interpreted with Babashka SCI, the small clojure interpreter. This has many
