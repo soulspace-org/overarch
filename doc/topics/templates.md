@@ -134,11 +134,11 @@ foo bar bar bar
 
 ### API for Templates
 In the comb templates you can use most of the functions of the clojure.core
-namespace. Additionally most functions of clojure.string are provided under
-the alias `str`, e.g. `str/join`.
+namespace. Additionally the functions of clojure.set and clojure.string are provided under
+the aliases `set` and `str`, e.g. `set/union` or `str/join`.
 
 Overarch also provides functions to query and navigate the model under the
-`m` alias.
+`m` alias, e.g. `m/resolve-element`.
 
 ### Security Considerations
 Comb templates evaluated with `:comb` are compiled and can contain arbitrary

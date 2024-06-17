@@ -5,6 +5,7 @@
   "Clojure templating library."
   (:refer-clojure :exclude [fn eval])
   (:require [clojure.core :as core]
+            [clojure.set :as set]
             [clojure.string :as str]
             [clojure.java.io :as io]
             [sci.core :as sci]
@@ -103,16 +104,16 @@
 (defn sci-opts
   []
   (let [model-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.model-api)
-        model-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.model-api model-ns)]
-    {:namespaces {'clojure.string {'join str/join 'split-lines str/split-lines
-                                   'escape str/escape 'ends-with? str/ends-with?
-                                   'starts-with? str/starts-with?
-                                   'includes? str/includes?
-                                   'capitalize str/capitalize
-                                   'lower-case str/lower-case
-                                   'upper-case str/upper-case}
+        model-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.model-api model-ns)
+        set-ns (sci/create-ns 'clojure.set)
+        set-sci-ns (sci/copy-ns clojure.set set-ns)
+        string-ns (sci/create-ns 'clojure.string)
+        string-sci-ns (sci/copy-ns clojure.string string-ns)]
+    {:namespaces {'clojure.set set-sci-ns
+                  'clojure.string string-sci-ns
                   'org.soulspace.overarch.adapter.template.model-api model-sci-ns}
-     :ns-aliases '{str clojure.string
+     :ns-aliases '{set clojure.set
+                   str clojure.string
                    m org.soulspace.overarch.adapter.template.model-api}}))
 (def ctx (sci/init sci-opts))
 

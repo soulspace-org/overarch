@@ -6,7 +6,9 @@ Version 0.22.0
 * added model navigation functions for use cases
 * enhanced model api, added resolve-view and use-case navigation
 * enhanced architecture documentation template
-* updated :combsci engine exception handling, print errors but don't fail
+* expose `clojure.set` with alias `set` for `:combsci` templates
+* expose `clojure.string` with alias `str` for `:combsci` templates
+* updated `:combsci` engine exception handling, print errors but don't fail
 
 Version 0.21.0
 --------------
