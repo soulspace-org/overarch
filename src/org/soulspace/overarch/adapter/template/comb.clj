@@ -131,7 +131,13 @@
          model (:model data)
          protected-areas (:protected-areas data)
          opts (update-in (sci-opts) [:namespaces] merge {'user {'e e 'ctx ctx 'model model 'protected-areas protected-areas}})]
-     (sci/with-out-str (sci/eval-string parsed opts)))))
+     (try
+       (sci/with-out-str (sci/eval-string parsed opts))
+       (catch Exception e
+         (println "Exception while generating for template" source)
+         (println (ex-message e))
+         (println (ex-data e))
+         (println (ex-cause e)))))))
 
 (defmethod t/apply-template :combsci
   ([engine-key template]
