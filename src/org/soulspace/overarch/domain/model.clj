@@ -24,7 +24,6 @@
 ;;;
 ;;; Accessor functions
 ;;;
-
 (defn model-element
   "Returns the model element with the given `id`."
   ([model id]
@@ -210,6 +209,14 @@
                        (into #{}))]
      filtered)))
 
+;; TODO transitive dependencies with cycle detection/prevention
+(defn related-transitive
+  "Returns the nodes that are transitively related to node `e` in the `model`."
+  ([model e]
+   )
+  ([model f e]
+   ))
+
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
   [model e]
@@ -293,7 +300,6 @@
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
-;; TODO transitive dependencies with cycle detection/prevention
 
 ;;
 ;; class model
