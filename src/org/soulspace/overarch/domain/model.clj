@@ -344,6 +344,20 @@
       (get (:referrer-id->relations model))
       (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
+(defn referencing
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
+
+(defn referenced-by
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
+
 ;; TODO type hierarcy with cycle detection/prevention
 (defn type-hierarchy
   "Returns the type hierarchy of the class or interface element `e` in the model."
