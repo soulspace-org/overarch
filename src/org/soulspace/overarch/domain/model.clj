@@ -212,6 +212,18 @@
      filtered)))
 
 ;; TODO transitive dependencies with cycle detection/prevention
+(defn ->transitive-related
+  "Step function to build a set of transitively related nodes (with cycle detection)."
+  ([]
+   [#{} ; transitive nodes
+    #{} ; visited nodes
+    ])
+  ([acc]
+   (first acc))
+  ([acc e]
+   ))
+
+;; TODO transitive dependencies with cycle detection/prevention
 (defn related-transitive
   "Returns the nodes that are transitively related to node `e` in the `model`."
   ([model e]
@@ -274,18 +286,6 @@
         (vals)
         (map (partial resolve-element model))
         (into #{}))))
-
-;; TODO transitive dependencies with cycle detection/prevention
-(defn ->transitive-related
-  "Step function to build a set of transitively related nodes (with cycle detection)."
-  ([]
-   [#{} ; transitive nodes
-    #{} ; visited nodes
-    ])
-  ([acc]
-   (first acc))
-  ([acc e]
-   ))
 
 ;;
 ;; architecture model
