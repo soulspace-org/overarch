@@ -671,13 +671,15 @@
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
   ([step-fn coll]
-   (traverse identity :ct step-fn coll))
+   (traverse identity identity :ct step-fn coll))
   ([pred-fn step-fn coll]
-   (traverse pred-fn :ct step-fn coll))
+   (traverse identity pred-fn :ct step-fn coll))
   ([pred-fn children-fn step-fn coll]
+   (traverse identity pred-fn children-fn step-fn coll))
+  ([element-fn pred-fn children-fn step-fn coll]
    (letfn [(trav [acc coll]
              (if (seq coll)
-               (let [e (first coll)]
+               (let [e (element-fn (first coll))]
                  (if (pred-fn e)
                    (recur (trav (step-fn acc e) (children-fn e))
                           (rest coll))

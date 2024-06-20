@@ -55,6 +55,8 @@
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
+; TODO use traverse from element with model closure
+;      and resolve-element as element fn?
 (defn traverse-with-model
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
@@ -266,11 +268,17 @@
         (map (partial resolve-element model))
         (into #{}))))
 
+;; TODO transitive dependencies with cycle detection/prevention
 (defn ->transitive-related
   "Step function to build a set of transitively related nodes (with cycle detection)."
-  ([])
-  ([acc])
-  ([acc e]))
+  ([]
+   [#{} ; transitive nodes
+    #{} ; visited nodes
+    ])
+  ([acc]
+   (first acc))
+  ([acc e]
+   ))
 
 ;;
 ;; architecture model
@@ -292,8 +300,6 @@
        (get (:referred-id->relations model))
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
-
-;; TODO transitive dependencies with cycle detection/prevention
 
 ;;
 ;; class model
@@ -680,7 +686,6 @@
 (defn criterium-predicate
   "Returns a predicate for the given `criterium`."
   [model [k v]]
-; TODO add criteria e.g. :parent :parent? :relation-of
   (cond
     ;;
     ;; element related
