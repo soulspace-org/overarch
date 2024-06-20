@@ -395,7 +395,7 @@
 ;; deployment model
 ;;
 (defn deployed-on
-  "Returns the architecture nodes deployed on the node `e` in the ``model`."
+  "Returns the architecture nodes deployed on the node `e` in the `model`."
   [model e]
   (->> e
        (:id)
