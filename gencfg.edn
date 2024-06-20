@@ -7,8 +7,8 @@
   :subdir "docs"
   :per-element true
   :id-as-name true
-  :extension "md"
-  }
+  :extension "md"}
+ 
  ;; Reports
  {:selection {:namespace-prefix "banking"}
   :template "reports/node-report.md.cmb"

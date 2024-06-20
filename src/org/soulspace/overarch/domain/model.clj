@@ -24,7 +24,6 @@
 ;;;
 ;;; Accessor functions
 ;;;
-
 (defn model-element
   "Returns the model element with the given `id`."
   ([model id]
@@ -212,6 +211,14 @@
                        (into #{}))]
      filtered)))
 
+;; TODO transitive dependencies with cycle detection/prevention
+(defn related-transitive
+  "Returns the nodes that are transitively related to node `e` in the `model`."
+  ([model e]
+   )
+  ([model f e]
+   ))
+
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
   [model e]
@@ -395,7 +402,7 @@
 ;; deployment model
 ;;
 (defn deployed-on
-  "Returns the architecture nodes deployed on the node `e` in the ``model`."
+  "Returns the architecture nodes deployed on the node `e` in the `model`."
   [model e]
   (->> e
        (:id)
