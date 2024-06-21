@@ -235,7 +235,7 @@
   ([model e]
    )
   ([model f e]
-   (el/traverse (partial resolve-element model) identity f ->transitive-related #{e})))
+   (el/traverse (element-resolver model) identity f ->transitive-related #{e})))
 
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
@@ -296,7 +296,7 @@
   ([model]
    (->> (:id->element model)
         (vals)
-        (map (partial resolve-element model))
+        (map (element-resolver model))
         (into #{}))))
 
 ;;
