@@ -265,7 +265,7 @@
   "Returns the set of descendants of the node `e`."
   [model e]
   (when (el/model-node? (resolve-element model e))
-    (el/traverse (partial resolve-element model) el/model-node? :ct el/tree->set (:ct e))))
+    (el/traverse (element-resolver model) el/model-node? :ct el/tree->set (:ct e))))
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
