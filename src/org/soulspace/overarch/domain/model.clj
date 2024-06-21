@@ -51,6 +51,12 @@
      (el/reference? e) (resolve-ref model e)
      :else e)))
 
+(defn element-resolver
+  "Returns a element resolver function for the given `model`."
+  [model]
+  (fn [e]
+    (resolve-element model e)))
+
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
@@ -229,7 +235,7 @@
   ([model e]
    )
   ([model f e]
-   ))
+   (el/traverse (partial resolve-element model) identity f ->transitive-related #{e})))
 
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
@@ -249,11 +255,17 @@
         (recur (parent model p)))
       false)))
 
-(defn descendant-nodes
+#_(defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
   (when (el/model-node? (resolve-element model e))
     (traverse-with-model model el/model-node? el/tree->set (:ct e))))
+
+(defn descendant-nodes
+  "Returns the set of descendants of the node `e`."
+  [model e]
+  (when (el/model-node? (resolve-element model e))
+    (el/traverse (partial resolve-element model) el/model-node? :ct el/tree->set (:ct e))))
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
