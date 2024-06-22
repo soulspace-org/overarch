@@ -364,6 +364,7 @@
       (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
 (defn referencing
+  "Returns the referenced elements of `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -371,6 +372,7 @@
        (into #{} (referrer-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
 (defn referenced-by
+  "Returns the elements referencing element `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -403,12 +405,20 @@
        (into #{} (referred-xf model #(= :is-a (:el %))))))
 
 (defn features
-  ""
+  "Returns the features of the concept `e` in the `model`."
   [model e]
   (->> e
        (:id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :has (:el %))))))
+
+(defn feature-of
+  "Returns the concepts the concept `e` is a feature of in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :has (:el %))))))
 
 ;;
 ;; deployment model

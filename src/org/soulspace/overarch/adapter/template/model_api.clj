@@ -191,6 +191,16 @@
   [model e]
   (model/supertypes model e))
 
+(defn referencing
+  "Returns the referenced elements of `e` in the `model`."
+  [model e]
+  (model/referencing model e))
+
+(defn referenced-by
+  "Returns the elements referencing element `e` in the `model`."
+  [model e]
+  (model/referenced-by model e))
+
 ;;
 ;; Concept model navigation
 ;;
@@ -203,6 +213,16 @@
   "Returns the set of direct subordinates of the concept element `e` in the `model`."
   [model e]
   (model/subordinates model e))
+
+(defn features
+  "Returns the features of the concept `e` in the `model`."
+  [model e]
+  (model/features model e))
+
+(defn feature-of
+  "Returns the concepts the concept `e` is a feature of in the `model`."
+  [model e]
+  (model/feature-of model e))
 
 ;;
 ;; Deployment model navigation
