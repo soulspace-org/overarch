@@ -3,7 +3,7 @@ Changelog
 
 Version 0.22.0
 --------------
-* added more model navigation functions for use case and class models
+* added more model navigation functions for architecture, use case and class models
 * enhanced model api, added resolve-view and use-case navigation
 * enhanced architecture documentation template
 * expose `clojure.set` with alias `set` for `:combsci` templates

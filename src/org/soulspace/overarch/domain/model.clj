@@ -334,6 +334,20 @@
          (get (:referrer-id->relations model))
          (into #{} (referrer-xf model #(= :subscribe (:el %)))))))
 
+(defn publishers-of
+  "Returns the publishers of the queue or subscribe relation `e` in the `model`."
+  [model e]
+  (cond
+    (= :subscribe (:el e))
+    (->> (:to e)
+         (get (:referred-id->relations model))
+         (into #{} (referred-xf model #(= :publish (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referred-id->relations model))
+         (into #{} (referred-xf model #(= :publish (:el %)))))))
+
 ;;
 ;; class model
 ;;
