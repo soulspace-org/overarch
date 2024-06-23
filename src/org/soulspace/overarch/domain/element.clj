@@ -603,6 +603,14 @@
 ;;
 ;; Functions 
 ;;
+(defn id
+  "Returns the id of the element or ref `e`."
+  [e]
+  (cond
+    (keyword? e) e
+    (reference? e) (:ref e)
+    (identifiable? e) (:id e)))
+
 (defn element->ref
   "Returns a ref for the element `e`, if it is identifiable."
   [e]

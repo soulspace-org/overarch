@@ -320,6 +320,20 @@
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
+(defn subscribers-of
+  "Returns the subscribers of the queue or publish relation `e` in the `model`."
+  [model e]
+  (cond
+    (= :publish (:el e))
+    (->> (:to e)
+         (get (:referrer-id->relations model))
+         (into #{} (referrer-xf model #(= :subscribe (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referrer-id->relations model))
+         (into #{} (referrer-xf model #(= :subscribe (:el %)))))))
+
 ;;
 ;; class model
 ;;
