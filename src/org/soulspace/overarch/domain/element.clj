@@ -888,7 +888,7 @@
 (defn to-namespace-prefix?
   "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
   [v e]
-  (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
+  (str/starts-with? (namespace (get e :to :no-namespace/no-name)) v))
 
 (defn id-check?
   "Returns true if the check for id on `e` equals the boolean value `v`"
