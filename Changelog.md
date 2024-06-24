@@ -4,6 +4,7 @@ Changelog
 Version 0.23.0
 --------------
 * enhanced model api
+* fixed :to-namespace-prefix selection criterium
 
 Version 0.22.0
 --------------
