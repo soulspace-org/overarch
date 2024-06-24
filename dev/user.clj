@@ -3,7 +3,6 @@
 ;;;;
 (require '[clojure.string :as str])
 
-
 ;;;
 ;;; Portal data viewer
 ;;;

@@ -320,6 +320,34 @@
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
+(defn subscribers-of
+  "Returns the subscribers of the queue or publish relation `e` in the `model`."
+  [model e]
+  (cond
+    (= :publish (:el e))
+    (->> (:to e)
+         (get (:referrer-id->relations model))
+         (into #{} (referrer-xf model #(= :subscribe (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referrer-id->relations model))
+         (into #{} (referrer-xf model #(= :subscribe (:el %)))))))
+
+(defn publishers-of
+  "Returns the publishers of the queue or subscribe relation `e` in the `model`."
+  [model e]
+  (cond
+    (= :subscribe (:el e))
+    (->> (:to e)
+         (get (:referred-id->relations model))
+         (into #{} (referred-xf model #(= :publish (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referred-id->relations model))
+         (into #{} (referred-xf model #(= :publish (:el %)))))))
+
 ;;
 ;; class model
 ;;
@@ -364,6 +392,7 @@
       (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
 (defn referencing
+  "Returns the referenced elements of `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -371,6 +400,7 @@
        (into #{} (referrer-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
 (defn referenced-by
+  "Returns the elements referencing element `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -403,12 +433,20 @@
        (into #{} (referred-xf model #(= :is-a (:el %))))))
 
 (defn features
-  ""
+  "Returns the features of the concept `e` in the `model`."
   [model e]
   (->> e
        (:id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :has (:el %))))))
+
+(defn feature-of
+  "Returns the concepts the concept `e` is a feature of in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :has (:el %))))))
 
 ;;
 ;; deployment model
