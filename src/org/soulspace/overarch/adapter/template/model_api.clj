@@ -152,6 +152,15 @@
 ;;
 ;; Architecture Model navigation
 ;;
+(defn subscribers-of
+  "Returns the subscribers of the queue or publish relation `e` in the `model`."
+  [model e]
+  (model/subscribers-of model e))
+
+(defn publishers-of
+  "Returns the publishers of the queue or subscribe relation `e` in the `model`."
+  [model e]
+  (model/publishers-of model e))
 
 ;;
 ;; Class model navigation
