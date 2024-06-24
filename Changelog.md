@@ -3,7 +3,7 @@ Changelog
 
 Version 0.23.0
 --------------
-
+* enhanced model api
 
 Version 0.22.0
 --------------
