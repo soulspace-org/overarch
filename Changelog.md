@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.23.0
+--------------
+
+
 Version 0.22.0
 --------------
 * added more model navigation functions for architecture, use case and class models
