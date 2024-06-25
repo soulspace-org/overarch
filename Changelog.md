@@ -3,7 +3,7 @@ Changelog
 
 Version 0.23.0
 --------------
-* enhanced model api
+* enhanced model api for architecture models
 * fixed :to-namespace-prefix selection criterium
 
 Version 0.22.0
