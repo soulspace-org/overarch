@@ -1,7 +1,8 @@
-# <%= (:name e) %> Architecture
-## Description
-<%= (:desc e) %>
 <%
+;;;;
+;;;; Template for the documentation of an architecture element
+;;;;
+
 (defn link
   [current target]
   (str (m/root-path current) "/"
@@ -13,12 +14,17 @@
         containers (filter #(= :container (:el %)) c)
         components (filter #(= :component (:el %)) c)]
 
+%># <%= (:name e) %> Architecture
+## Description
+<%= (:desc e) %>
+
+<%
   (when (seq bounded-contexts)
 %>## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
 
 | Bounded Context | Description |
-|---|---|---|
+|---|---|
 <%
     (doseq [bc bounded-contexts]
 %>| [<%= (:name bc) %>](<%= (link e bc) %>) | <%= (:desc bc) %> |

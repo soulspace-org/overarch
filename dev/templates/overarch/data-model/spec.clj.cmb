@@ -24,7 +24,7 @@
                            e)]
     ; TODO use type-hierarchy, not just the direct supertypes
     (let [super (m/supertypes model element)
-          fields (m/all-fields (conj super element))]%>
+          fields (m/all-fields model (conj super element))]%>
 ; Supertypes <%=(str/join "," (map :id super)) %>          
 ; <%= (first (str/split-lines (:desc element))) %>
 (s/def :overarch/<%=(:name element)%>
