@@ -151,6 +151,7 @@
                      (referenced-elements model view)))]
     (remove el/synthetic? (filter (partial render-model-element? model view) elements))))
 
+; TODO refactor, move to model
 (defn root-elements
   "Returns the root elements for a collection of `model` `elements` to start the rendering of the `view` with."
   [model elements]
