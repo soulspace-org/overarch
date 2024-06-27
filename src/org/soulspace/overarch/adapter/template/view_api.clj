@@ -38,7 +38,7 @@
   (view/root-elements model elements))
 
 (defn elements-to-render
-  ""
+  "Returns the list of elements to render from the `view` or the given `coll` of elements, depending on the type of the view."
   ([model view]
    (view/elements-to-render model view))
   ([model view coll]

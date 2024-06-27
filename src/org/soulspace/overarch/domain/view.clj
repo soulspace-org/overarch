@@ -170,9 +170,7 @@
 ;;; Rendering functions
 ;;;
 (defn elements-to-render
-  "Returns the list of elements to render from the `view`
-   or the given `coll` of elements, depending on the type
-   of the view."
+  "Returns the list of elements to render from the `view` or the given `coll` of elements, depending on the type of the view."
   ([model view]
    (root-elements model (view-elements model view)))
   ([model view coll]
