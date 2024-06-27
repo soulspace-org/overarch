@@ -41,7 +41,16 @@
           :name "desc"
           :type "string"
           :optional true
-          :desc "Description of the element."}}}
+          :desc "(Short) description of the element."}
+         {:el :field
+          :name "doc"
+          :type "string"
+          :desc "Documentation of the element."}
+         {:el :field
+          :name "maturity"
+          :type "keyword"
+          :desc "Maturity of the element. Values are :proposed, :implemented and :deprecated. Default is :implemented."}
+         }}
 
   {:el :class
    :id :overarch.data-model/identifiable-named-element
