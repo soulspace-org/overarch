@@ -18,6 +18,12 @@
   [model view e]
   (view/render-model-element? model view e))
 
+(defn element-to-render
+  "Returns the model element to be rendered for element `e` for the `view` in the context of the `model`.
+   Maps some elements to other elements (e.g. boundaries), depending on the type of view."
+  [model view e]
+  (view/element-to-render model view e))
+
 ;;;
 ;;; View Functions
 ;;;
@@ -26,8 +32,7 @@
   [model view]
   (view/view-elements model view))
 
-
-; TODO refactor, move to model
+; TODO refactor, move to model?
 (defn root-elements
   "Returns the root elements for a collection of `model` `elements` to start the rendering of the `view` with."
   [model elements]

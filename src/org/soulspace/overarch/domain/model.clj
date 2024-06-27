@@ -255,6 +255,7 @@
         (recur (parent model p)))
       false)))
 
+; TODO remove, if other implementation works
 #_(defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]

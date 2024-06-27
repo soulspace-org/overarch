@@ -151,9 +151,9 @@
                      (referenced-elements model view)))]
     (remove el/synthetic? (filter (partial render-model-element? model view) elements))))
 
-; TODO refactor, move to model
+; TODO refactor, move to model?
 (defn root-elements
-  "Returns the root elements for a collection of `model` `elements` to start the rendering of the `view` with."
+  "Returns the root elements for a collection of `model` `elements`, e.g. to start the rendering of a hierarchical view with."
   [model elements]
   ; Difference of the sets of elements have to be done with difference-by-id which treats the elements as entities
   ; to preserve overrides of keys in the content references included in the view.
@@ -162,7 +162,7 @@
   (let [descendants (->> elements
                          (filter el/model-node?)
                          (mapcat (partial model/descendant-nodes model))
-                         (map (partial model/resolve-element model))
+                         (map (model/element-resolver model))
                          (into #{}))]
     (el/difference-by-id elements descendants)))
 
