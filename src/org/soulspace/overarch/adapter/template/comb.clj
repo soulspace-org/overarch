@@ -45,6 +45,8 @@
           (do (emit-string after)
               (print ")")))))))
 
+
+; TODO use parsed source
 (defn compile-fn
   [args src]
   (core/eval
@@ -71,11 +73,18 @@
              func (compile-fn [{:keys (vec keys)}] source)]
          (func bindings))))))
 
+(defmethod t/parse-template :combsci
+  ([engine-key template]
+   (-> template
+       (t/read-source)
+       (parse-string))))
+
 (defmethod t/apply-template :comb
   ([engine-key template]
    (eval template))
   ([engine-key template data]
    (eval template data)))
+
 
 (comment
   (defn greet-code [x] (print "Hello" x "!"))
@@ -139,6 +148,13 @@
          (println (ex-message e))
          (println (ex-data e))
          (println (ex-cause e)))))))
+
+(defmethod t/parse-template :combsci
+  ([engine-key template]
+   (-> template
+       (t/read-source)
+       (parse-string))))
+
 
 (defmethod t/apply-template :combsci
   ([engine-key template]

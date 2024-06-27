@@ -11,12 +11,14 @@
             [org.soulspace.overarch.domain.model :as model]
             ; register multimethods
             [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]
-            [clojure.spec.alpha :as s]))
+            [clojure.spec.alpha :as s]
+            [org.soulspace.overarch.domain.view :as view]))
 
 ;;;
 ;;; Generation config spec
 ;;;
 (s/def :overarch.template/selection :overarch/selection-criteria)
+(s/def :overarch.template/view :overarch/id)
 (s/def :overarch.template/template string?)
 (s/def :overarch.template/engine keyword?)
 (s/def :overarch.template/encoding string?)
@@ -39,6 +41,7 @@
 (s/def :overarch.template/generation-context
   (s/keys :req-un [:overarch.template/template]
           :opt-un [:overarch.template/selection
+                   :overarch.template/view
                    :overarch.template/engine
                    :overarch.template/encoding
                    :overarch.template/per-element
@@ -84,6 +87,10 @@
 
 (defmulti apply-template
   "Applies the `template` to the `data` and returns the output."
+  engine-type)
+
+(defmulti parse-template
+  "Returns the parsed `template`."
   engine-type)
 
 ;;;
@@ -225,12 +232,22 @@
          (edn/read-string (slurp generation-config)))
     []))
 
-(defn generate-artifact
+(defn generate-artifact-for-selection
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
   [template ctx model e]
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
         result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})]
+    ; write artifact for result
+    (write-artifact path result)))
+
+(defn generate-artifact-for-view
+  "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
+  [template ctx model view]
+  (let [path (str (artifact-path ctx view) (artifact-filename ctx view))
+        protected-areas (read-protected-areas ctx path)
+        e (view/elements-to-render model view)
+        result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
     ; write artifact for result
     (write-artifact path result)))
 
@@ -243,8 +260,11 @@
       (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
         (if (:per-element ctx)
           (doseq [e selection]
-            (generate-artifact template ctx model e))
-          (generate-artifact template ctx model selection))))))
+            (generate-artifact-for-selection template ctx model e))
+          (generate-artifact-for-selection template ctx model selection)))
+      ; TODO add support for (:view ctx) in addition to (:selection ctx)
+      (when-let [view (repo/view-by-id (:view ctx))] 
+        ))))
 
 (comment
   (repo/read-models :file "models")
