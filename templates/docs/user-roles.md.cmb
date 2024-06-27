@@ -1,4 +1,17 @@
 <%
+;;;;
+;;;; Documentation Template for a Collection of Persons
+;;;;
+
+(let [roles (filter #(= el :person (:el %)) e)]
 %># User Roles
 
-
+| User Role | Description |
+|---|---|
+<%
+  (doseq [role roles]
+%>| <%= (:name role) %> | <%= (:desc role) %> |  
+<%
+  )
+)
+%>

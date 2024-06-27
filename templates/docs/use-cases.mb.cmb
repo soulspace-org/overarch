@@ -1,16 +1,25 @@
 <%
 ;;;;
-;;;; 
+;;;; Documentation Template for a Collection of Use Cases
 ;;;;
 
+(defn use-case-level
+  "Renders the level of the use case `uc`."
+  [uc]
+  (if-let [level (:level uc)]
+    (str/capitalize (name level))
+    "---"))
+
 (let [use-cases (filter #(= :use-case (:el %)) e)]
+
 %># Use Cases
 
 | Use Case | Level | Description |
 |---|---|---|
 <%
   (doseq [use-case use-cases]
-%>| <%= (:name use-case) %> | <%= (:level use-case) %> | <%= (:desc use-case) %> |
+%>| <%= (:name use-case) %> | <%= (use-case-level use-case) %> | <%= (:desc use-case) %> |
 <%
-  ))
+  )
+)
 %>

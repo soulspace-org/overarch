@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Template for the documentation of an architecture element
+;;;; Documentation Template for an architecture element
 ;;;;
 
 (defn link
