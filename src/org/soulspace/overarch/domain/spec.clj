@@ -15,7 +15,9 @@
 (s/def :overarch/external boolean?)
 (s/def :overarch/name string?)
 (s/def :overarch/desc string?)
+(s/def :overarch/doc string?)
 (s/def :overarch/tech string?)
+(s/def :overarch/maturity keyword?)
 ;(s/def :overarch/sprite string?)
 (s/def :overarch/from keyword?)
 (s/def :overarch/to keyword?)
@@ -37,13 +39,17 @@
 (s/def :overarch/element
   (s/keys :req-un [:overarch/el]
           :opt-un [:overarch/id
-                   :overarch/name :overarch/desc :overarch/ct
+                   :overarch/name :overarch/desc :overarch/doc
+                   :overarch/maturity
                    :overarch/subtype :overarch/external
-                   :overarch/tech :overarch/tags]))
+                   :overarch/tech :overarch/tags
+                   :overarch/ct]))
 
 (s/def :overarch/relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
-          :opt-un [:overarch/id :overarch/name :overarch/desc :overarch/tech
+          :opt-un [:overarch/id
+                   :overarch/name :overarch/desc :overarch/doc
+                   :overarch/maturity :overarch/tech
                    :overarch/direction :overarch/constraint
                    :overarch/tags]))
 

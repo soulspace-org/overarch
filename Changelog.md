@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.24.0
+--------------
+* added and enhanced documentation templates
+* added `:doc` and `:maturity` attributes for nodes and relations 
+
 Version 0.23.0
 --------------
 * enhanced model api for architecture models
