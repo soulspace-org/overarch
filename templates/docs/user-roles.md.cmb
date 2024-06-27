@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Documentation Template for a Collection of Persons
+;;;; Documentation Template for a Collection of Persons (User Roles)
 ;;;;
 
 (let [roles (filter #(= el :person (:el %)) e)]

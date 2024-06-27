@@ -1,6 +1,18 @@
 <%
+;;;;
+;;;; Documentation Template for a Use Case
+;;;;
+
+(defn use-case-level
+  "Renders the level of the use case `uc`."
+  [uc]
+  (if-let [level (:level uc)]
+    (str/capitalize (name level))
+    "---"))
+
 %># Use Case <%= (:name e) %>
+## Level
+<%= (use-case-level e) %>
 
 ## Description
 <%= (:desc e) %>
-

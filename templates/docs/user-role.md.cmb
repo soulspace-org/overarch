@@ -1,4 +1,8 @@
 <%
+;;;;
+;;;; Documentation Template for a Person (User Role)
+;;;;
+
 %># User Role <%= (:name e) %>
 
 ## Description
