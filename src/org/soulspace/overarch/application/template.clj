@@ -153,7 +153,7 @@
     (:prefix ctx)
     (if-let [base-name (:base-name ctx)]
       base-name
-      (if (:id-as-name ctx)
+      (if (or (:id-as-name ctx) (el/view? el))
         (name (:id el))
         (:name el)))
     (:suffix ctx)
@@ -241,15 +241,22 @@
     ; write artifact for result
     (write-artifact path result)))
 
+; TODO check
 (defn generate-artifact-for-view
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  [template ctx model view]
-  (let [path (str (artifact-path ctx view) (artifact-filename ctx view))
-        protected-areas (read-protected-areas ctx path)
-        e (view/elements-to-render model view)
-        result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
-    ; write artifact for result
-    (write-artifact path result)))
+  ([template ctx model view]
+   (let [path (str (artifact-path ctx view) (artifact-filename ctx view))
+         protected-areas (read-protected-areas ctx path)
+         e (view/elements-to-render model view)
+         result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
+     ; write artifact for result
+     (write-artifact path result)))
+  ([template ctx model view e]
+   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
+         protected-areas (read-protected-areas ctx path)
+         result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
+       ; write artifact for result
+     (write-artifact path result))))
 
 ; TODO move iteration into the template engine adapter to reuse parsed templates
 (defn generate
@@ -263,8 +270,12 @@
             (generate-artifact-for-selection template ctx model e))
           (generate-artifact-for-selection template ctx model selection)))
       ; TODO add support for (:view ctx) in addition to (:selection ctx)
-      (when-let [view (repo/view-by-id (:view ctx))] 
-        ))))
+      (when-let [view (repo/view-by-id (:view ctx))]
+        (if (:per-element ctx)
+          (let [selection (view/view-elements model view)]
+            (doseq [e selection]
+              (generate-artifact-for-view template ctx model view e)))
+          (generate-artifact-for-view template ctx model view))))))
 
 (comment
   (repo/read-models :file "models")
