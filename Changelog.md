@@ -3,6 +3,8 @@ Changelog
 
 Version 0.24.0
 --------------
+* added template based artifact generation for views
+* added a view API functions
 * added and enhanced documentation templates
 * added `:doc` and `:maturity` attributes for nodes and relations 
 
@@ -14,7 +16,7 @@ Version 0.23.0
 Version 0.22.0
 --------------
 * added more model navigation functions for architecture, use case and class models
-* enhanced model api, added resolve-view and use-case navigation
+* enhanced model API, added resolve-view and use-case navigation
 * enhanced architecture documentation template
 * expose `clojure.set` with alias `set` for `:combsci` templates
 * expose `clojure.string` with alias `str` for `:combsci` templates
@@ -24,7 +26,7 @@ Version 0.21.0
 --------------
 * added default directions for relations in plantuml use case rendering
 * added model navigation functions
-* enhanced model api
+* enhanced model API
 * added an architecture documentation example template
 * updated overarch use case model
 * restructured and enhanced usage docs
