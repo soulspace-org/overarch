@@ -5,6 +5,7 @@ Version 0.24.0
 --------------
 * added template based artifact generation for views
 * added a view API functions
+* optimized template parsing
 * added and enhanced documentation templates
 * added `:doc` and `:maturity` attributes for nodes and relations 
 
