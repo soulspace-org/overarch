@@ -11,7 +11,8 @@
             [sci.core :as sci]
             [org.soulspace.overarch.application.template :as t]
             ; require overarch domain to make functions available for templates
-            [org.soulspace.overarch.adapter.template.model-api :as m]))
+            [org.soulspace.overarch.adapter.template.model-api :as m]
+            [org.soulspace.overarch.adapter.template.view-api :as v]))
 
 (binding [*read-eval* false])
 
@@ -115,16 +116,20 @@
   []
   (let [model-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.model-api)
         model-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.model-api model-ns)
+        view-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.view-api)
+        view-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.view-api view-ns)
         set-ns (sci/create-ns 'clojure.set)
         set-sci-ns (sci/copy-ns clojure.set set-ns)
         string-ns (sci/create-ns 'clojure.string)
         string-sci-ns (sci/copy-ns clojure.string string-ns)]
     {:namespaces {'clojure.set set-sci-ns
                   'clojure.string string-sci-ns
-                  'org.soulspace.overarch.adapter.template.model-api model-sci-ns}
+                  'org.soulspace.overarch.adapter.template.model-api model-sci-ns
+                  'org.soulspace.overarch.adapter.template.view-api view-sci-ns}
      :ns-aliases '{set clojure.set
                    str clojure.string
-                   m org.soulspace.overarch.adapter.template.model-api}}))
+                   m org.soulspace.overarch.adapter.template.model-api
+                   v org.soulspace.overarch.adapter.template.view-api}}))
 (def ctx (sci/init sci-opts))
 
 (defn eval-sci
