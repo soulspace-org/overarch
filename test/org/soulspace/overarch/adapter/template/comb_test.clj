@@ -1,16 +1,22 @@
 (ns org.soulspace.overarch.adapter.template.comb-test
   (:require [clojure.test :refer :all]
-            [org.soulspace.overarch.adapter.template.comb :as t]))
+            [org.soulspace.overarch.application.template :as t]
+            [org.soulspace.overarch.adapter.template.comb :as cmb]))
 
 (deftest eval-test
-  (is (= (t/eval "foo") "foo"))
-  (is (= (t/eval "<%= 10 %>") "10"))
-  (is (= (t/eval "<%= x %>" {:x "foo"}) "foo"))
-  (is (= (t/eval "<%=x%>" {:x "foo"}) "foo"))
-  (is (= (t/eval "<% (doseq [x xs] %>foo<%= x %> <% ) %>" {:xs [1 2 3]})
-         "foo1 foo2 foo3 ")))
+  (testing "Comb templates evaluted with clojure.eval"
+    (is (= (cmb/eval (t/parse-template :comb "foo") {}) "foo"))
+    (is (= (cmb/eval (t/parse-template :comb "<%= 10 %>") {}) "10"))
+    (is (= (cmb/eval (t/parse-template :comb "<%= x %>") {:x "foo"}) "foo"))
+    (is (= (cmb/eval (t/parse-template :comb "<%=x%>") {:x "foo"}) "foo"))
+    (is (= (cmb/eval (t/parse-template :comb "<% (doseq [x xs] %>foo<%= x %> <% ) %>") {:xs [1 2 3]})
+           "foo1 foo2 foo3 "))))
 
 (declare x)
 (deftest fn-test
-  (is (= ((t/fn [x] "foo<%= x %>") "bar")
+  (is (= ((cmb/fn [x] (t/parse-template :comb "foo<%= x %>")) "bar")
          "foobar")))
+
+(deftest evalsci-test
+  (testing "Comb templates evaluted with SCI"
+    (is (= (cmb/eval-sci (t/parse-template :combsci "foo") {}) "foo"))))

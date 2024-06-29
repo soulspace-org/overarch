@@ -85,12 +85,12 @@
     source
     (slurp source)))
 
-(defmulti apply-template
-  "Applies the `template` to the `data` and returns the output."
-  engine-type)
-
 (defmulti parse-template
   "Returns the parsed `template`."
+  engine-type)
+
+(defmulti apply-template
+  "Applies the `template` to the `data` and returns the output."
   engine-type)
 
 ;;;
@@ -234,48 +234,70 @@
 
 (defn generate-artifact-for-selection
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  [template ctx model e]
+  [parsed-template ctx model e]
   (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
         protected-areas (read-protected-areas ctx path)
-        result (apply-template (:engine ctx) template {:ctx ctx :e e :model model :protected-areas protected-areas})]
+        result (apply-template (:engine ctx)
+                               parsed-template
+                               {:ctx ctx
+                                :e e
+                                :model model
+                                :protected-areas protected-areas})]
     ; write artifact for result
     (write-artifact path result)))
 
 ; TODO check
 (defn generate-artifact-for-view
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  ([template ctx model view]
+  ([parsed-template ctx model view]
    (let [path (str (artifact-path ctx view) (artifact-filename ctx view))
          protected-areas (read-protected-areas ctx path)
          e (view/elements-to-render model view)
-         result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
-     ; write artifact for result
+         result (apply-template (:engine ctx) 
+                                parsed-template
+                                {:ctx ctx
+                                 :view view
+                                 :e e
+                                 :model model
+                                 :protected-areas protected-areas})]
      (write-artifact path result)))
-  ([template ctx model view e]
+  ([parsed-template ctx model view e]
    (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
          protected-areas (read-protected-areas ctx path)
-         result (apply-template (:engine ctx) template {:ctx ctx :view view :e e :model model :protected-areas protected-areas})]
-       ; write artifact for result
+         result (apply-template (:engine ctx) 
+                                parsed-template 
+                                {:ctx ctx 
+                                 :view view 
+                                 :e e
+                                 :model model
+                                 :protected-areas protected-areas})]
      (write-artifact path result))))
 
-; TODO move iteration into the template engine adapter to reuse parsed templates
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
   (doseq [ctx (read-config options)]
-    (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))]
-      (when-let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
-        (if (:per-element ctx)
-          (doseq [e selection]
-            (generate-artifact-for-selection template ctx model e))
-          (generate-artifact-for-selection template ctx model selection)))
-      ; TODO add support for (:view ctx) in addition to (:selection ctx)
-      (when-let [view (repo/view-by-id (:view ctx))]
-        (if (:per-element ctx)
-          (let [selection (view/view-elements model view)]
+    (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
+          parsed-template (parse-template (:engine ctx) template)]
+      (cond
+        ;; model elements
+        (:selection ctx)
+        (let [selection (into #{} (model/filter-xf model (:selection ctx)) (repo/model-elements))]
+          (if (:per-element ctx)
             (doseq [e selection]
-              (generate-artifact-for-view template ctx model view e)))
-          (generate-artifact-for-view template ctx model view))))))
+              (generate-artifact-for-selection parsed-template ctx model e))
+            (generate-artifact-for-selection parsed-template ctx model selection)))
+
+        ;; views
+        (:view-selection ctx)
+        (let [selection (into #{} (model/filter-xf model (:view-selection ctx)) (repo/views))]
+          ; TODO check arguments for generate (selection, e, view)?
+          (if (:per-element ctx)
+            (doseq [e selection]
+              (generate-artifact-for-view parsed-template ctx model e))
+            (generate-artifact-for-view parsed-template ctx model selection)))
+        :else
+        (println "No selection for template" (:template ctx))))))
 
 (comment
   (repo/read-models :file "models")

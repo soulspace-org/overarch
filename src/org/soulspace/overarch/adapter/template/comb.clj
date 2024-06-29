@@ -45,46 +45,44 @@
           (do (emit-string after)
               (print ")")))))))
 
+;;;
+;;; Comb templates evaluated with core.eval
+;;;
 
 ; TODO use parsed source
 (defn compile-fn
-  [args src]
+  [args parsed]
   (core/eval
    `(core/fn ~args
       (with-out-str
-        ~(-> src t/read-source parse-string read-string)))))
+        ~(read-string parsed)))))
 
 (defmacro fn
   "Compile a template into a function that takes the supplied arguments. The
   template source may be a string, or an I/O source such as a File, Reader or
   InputStream."
-  [args source]
-  `(compile-fn '~args ~source))
+  [args parsed]
+  `(compile-fn '~args ~parsed))
 
 (defn eval
   "Evaluate a template using the supplied bindings. The template source may
   be a string, or an I/O source such as a File, Reader or InputStream."
-  ([source]
-   (eval source {}))
-  ([source bindings]
-   (let [current-ns *ns*] 
+  ([parsed bindings]
+   (let [current-ns *ns*]
      (binding [*ns* current-ns]
        (let [keys (map (comp symbol name) (keys bindings))
-             func (compile-fn [{:keys (vec keys)}] source)]
+             func (compile-fn [{:keys (vec keys)}] parsed)]
          (func bindings))))))
 
-(defmethod t/parse-template :combsci
+(defmethod t/parse-template :comb
   ([engine-key template]
    (-> template
        (t/read-source)
        (parse-string))))
 
 (defmethod t/apply-template :comb
-  ([engine-key template]
-   (eval template))
-  ([engine-key template data]
-   (eval template data)))
-
+  ([engine-key parsed-template data]
+   (eval parsed-template data)))
 
 (comment
   (defn greet-code [x] (print "Hello" x "!"))
@@ -110,6 +108,9 @@
   ;
   )
 
+;;;
+;;; Comb templates evaluated with the Small Clojure Interpreter
+;;;
 (defn sci-opts
   []
   (let [model-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.model-api)
@@ -129,22 +130,21 @@
 (defn eval-sci
   "Evaluate a template using the supplied bindings. The template source may
   be a string, or an I/O source such as a File, Reader or InputStream."
-  ([source]
-   (eval-sci source {}))
-  ([source data]
-   (let [parsed (-> source
-                    (t/read-source)
-                    (parse-string))
-         ; _ (println parsed)
-         e (:e data)
+  ([parsed data]
+   (let [e (:e data)
          ctx (:ctx data)
          model (:model data)
+         view (:view data)
          protected-areas (:protected-areas data)
-         opts (update-in (sci-opts) [:namespaces] merge {'user {'e e 'ctx ctx 'model model 'protected-areas protected-areas}})]
+         opts (update-in (sci-opts) [:namespaces] merge {'user {'ctx ctx
+                                                                'model model
+                                                                'protected-areas protected-areas
+                                                                'e e
+                                                                'view view}})]
      (try
        (sci/with-out-str (sci/eval-string parsed opts))
        (catch Exception e
-         (println "Exception while generating for template" source)
+         (println "Exception while generating for template" (:template ctx))
          (println (ex-message e))
          (println (ex-data e))
          (println (ex-cause e)))))))
@@ -155,12 +155,9 @@
        (t/read-source)
        (parse-string))))
 
-
 (defmethod t/apply-template :combsci
-  ([engine-key template]
-   (eval-sci template))
-  ([engine-key template data]
-   (eval-sci template data)))
+  ([engine-key parsed-template data]
+   (eval-sci parsed-template data)))
 
 (comment
   ;
@@ -179,4 +176,5 @@
                          :id :foo/foo-bar}})
   (t/apply-template :combsci (io/as-file "dev/templates/ns-test.cmb") {:e {:el :system
                                                                            :id :foo/foo-bar}})
+  ;
   )
