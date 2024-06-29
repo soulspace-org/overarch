@@ -1,11 +1,6 @@
 # Template Based Artifact Generation
-Overarch can generate artifacts for model elements via templates.
-The model elements, to which a template is applied, are selected via criteria.
-A template can be applied to the collection of selected elements or to each
-element of the collection.
-
+Overarch can generate artifacts for model elements and views via templates.
 The use cases of the tempates range from reports up to automatic code generation.
-
 Overarch supports forward engineering protected areas for manually written
 content in generated artifacts
 
@@ -16,28 +11,39 @@ A generation context map specifies a selection of model elements, a template
 to use, how the template should be applied, and where the resulting artifact
 should be created.
 
-key               | type     | values             | default  | description
-------------------|----------|--------------------|----------|-------------
-:selection        | CRITERIA | {:el :system}      |          | Criteria to select model elements
-:template         | PATH     | "report/node.cmb"  |          | Path to the template relative to the template dir
-:engine           | :keyword | :comb              | :combsci | The template engine to use (currently just :comb and :combsci)
-:encoding         | string   | "UTF-8"            | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false         | false    | Apply  the template for each element of the selection or on the selection as a whole
-:subdir           | string   | "report"           |          | Subdirectory for generated artifact under the generator directory
-:namespace-prefix | string   | "src"              |          | Prefix to the namespace to use as path element
-:base-namespace   | string   |                    |          | Base namespace to use as path element
-:namespace-suffix | string   | "impl"             |          | Suffix to the namespace to use as path element
-:prefix           | string   | "Abstract"         |          | Prefix for the filename
-:base-name        | string   |                    |          | Base of the filename
-:suffix           | string   | "Impl"             |          | Suffix for the filename
-:extension        | string   | "md" "clj" "java"  |          | Extension for the filename
-:filename         | string   | "README.md"        |          | Specific filename to use
-:id-as-namespace  | boolean  | true/false         | false    | Use the element id as the namespace for path generation
-:id-as-name       | boolean  | true/false         | false    | Use the name part of the element id as the name for path generation
-:protected-areas  | string   | "PA"               |          | Marker for protected areas in the template/artifact
+key               | type     | values              | default  | description
+------------------|----------|---------------------|----------|-------------
+:selection        | CRITERIA | {:el :system}       |          | Criteria to select model elements
+:view-selection   | CRITERIA | {:el :context-view} |          | Criteria to select views
+:template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
+:engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
+:encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
+:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection or on the selection as a whole
+:subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
+:namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
+:base-namespace   | string   |                     |          | Base namespace to use as path element
+:namespace-suffix | string   | "impl"              |          | Suffix to the namespace to use as path element
+:prefix           | string   | "Abstract"          |          | Prefix for the filename
+:base-name        | string   |                     |          | Base of the filename
+:suffix           | string   | "Impl"              |          | Suffix for the filename
+:extension        | string   | "md" "clj" "java"   |          | Extension for the filename
+:filename         | string   | "README.md"         |          | Specific filename to use
+:id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
+:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
+:protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
+
+The model elements, to which a template is applied, are selected via criteria
+with the selection key.
+A template can be applied to the collection of selected elements or to each
+element of the collection.
+
+Templates can also be applied on views selected by criteria with the
+:view-selection key. The view selection also returns a collection of views,
+even if there is only one view selected. So use the :per-element key to enable
+the generation on a view level.
 
 ### Example config file
 ```clojure
