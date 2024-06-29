@@ -8,7 +8,19 @@
   :per-element true
   :id-as-name true
   :extension "md"}
- 
+ {:selection {:namespace-prefix "banking" :el :use-case}
+  :template "docs/use-cases.md.cmb"
+  :subdir "docs"
+  :base-namespace "banking"
+  :base-name "use-cases"
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :concept-view}
+  :template "docs/concept-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
  ;; Reports
  {:selection {:namespace-prefix "banking"}
   :template "reports/node-report.md.cmb"

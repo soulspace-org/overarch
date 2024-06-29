@@ -1,0 +1,5 @@
+<%
+;;;;
+;;;; Documentation Template for a Concept View
+;;;;
+%># <%= (:title view)%>
