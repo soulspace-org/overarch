@@ -5,12 +5,12 @@
   "Clojure templating library."
   (:refer-clojure :exclude [fn eval])
   (:require [clojure.core :as core]
-            [clojure.set :as set]
-            [clojure.string :as str]
             [clojure.java.io :as io]
             [sci.core :as sci]
             [org.soulspace.overarch.application.template :as t]
-            ; require overarch domain to make functions available for templates
+            ; require to expose namespaces in templates
+            [clojure.set :as set]
+            [clojure.string :as str]
             [org.soulspace.overarch.adapter.template.model-api :as m]
             [org.soulspace.overarch.adapter.template.view-api :as v]))
 
