@@ -131,28 +131,32 @@ identifiers.
 Model Nodes describe the elements of the different kind of models for the system.
 
 ### Common Keys of Model Nodes
-key       | type               | values             | description 
-----------|--------------------|--------------------|------------
-:el       | keyword            | see model elements | type of the model node
-:id       | keyword            | namespaced id      | id of the model node
-:name     | string             | short name         | name of the model node
-:desc     | string             |                    | description of the model node
-:tags     | set of strings     | e.g. #{"critical"} | some tags which can be used in element selection
-:ct       | set of maps        | model nodes        | the children of the model node
+key       | type               | values                 | description 
+----------|--------------------|----------------------  |------------
+:el       | keyword            | see model elements     | type of the model node
+:id       | keyword            | namespaced id          | id of the model node
+:name     | string             | short name             | name of the model node
+:desc     | string             | short description      | description of the model element, to be rendered in diagrams
+:doc      | multiline string   | longer documentation   | documentation of the model element, not to be rendered in diagrams but textual output
+:maturity | keyword            | :proposed, :deprecated | the maturity of the model element
+:tags     | set of strings     | e.g. #{"critical"}     | some tags which can be used in element selection
+:ct       | set of maps        | model nodes            | the children of the model node
 
 ## Model Relations
 Relations describe the connections and interactions of the nodes.
 
 ### Common Keys of Relations
-key       | type               | values              | description 
-----------|---------|---------------------|------------
-:el       | keyword            | e.g. :rel, :request | type of the relation
-:id       | keyword            | namespaced id       | id of the relation
-:from     | keyword            | namespaced id       | id of the referrer node
-:to       | keyword            | namespaced id       | id of the referred node
-:name     | string             |                     | name of the relation
-:desc     | string             |                     | description of the relation
-:tags     | set of strings     | e.g.                | some tags which can be used in element selection
+key       | type               | values                 | description 
+----------|--------------------|------------------------|-------------
+:el       | keyword            | e.g. :rel, :request    | type of the relation
+:id       | keyword            | namespaced id          | id of the relation
+:from     | keyword            | namespaced id          | id of the referrer node
+:to       | keyword            | namespaced id          | id of the referred node
+:name     | string             |                        | name of the relation
+:desc     | string             |                        | description of the relation
+:doc      | multiline string   | longer documentation   | documentation of the model element, not to be rendered in diagrams but textual output
+:maturity | keyword            | :proposed, :deprecated | the maturity of the model element
+:tags     | set of strings     | e.g. #{"critical"}     | some tags which can be used in element selection
 
 ## References (:ref)
 References refer to a model element with the given id. They are primarily used
