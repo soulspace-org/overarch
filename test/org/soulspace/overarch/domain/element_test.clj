@@ -1212,8 +1212,8 @@
   (testing "element-namespace"
     (are [x y] (= x (element-namespace y))
       "org.soulspace" {:id :org.soulspace/foo}
-      nil {:id :foo}
-      nil {:el :foo/bar})))
+      "" {:id :foo}
+      "" {:el :foo/bar})))
 
 (def element-input
   #{{:el :person

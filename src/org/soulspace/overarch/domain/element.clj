@@ -630,8 +630,11 @@
 (defn element-namespace
   "Returns the namespace of the element `e`."
   [e]
-  (when-let [id (:id e)]
-    (namespace id)))
+  (if-let [id (:id e)]
+    (if-let [el-ns (namespace id)]
+      el-ns
+      "")
+    ""))
 
 (defn elements-by-namespace
   "Returns the elements of the `coll` grouped by namespace."
