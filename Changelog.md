@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.25.0
+--------------
+* added a `--select-views CRITERIA` command line argument 
+
 Version 0.24.0
 --------------
 * added template based artifact generation for views

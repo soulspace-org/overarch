@@ -52,6 +52,7 @@
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
    ["-s" "--select-elements CRITERIA" "Select and print model elements by criteria" :parse-fn edn/read-string]
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
+   [nil  "--select-views CRITERIA" "Select and print views by criteria" :parse-fn edn/read-string]
    ["-T" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
@@ -187,6 +188,13 @@
                    (map el/element->ref))
           (repo/model-elements))))
 
+(defn select-views
+  "Returns the views selected by criteria specified in the `options`."
+  [options]
+  (when-let [criteria (spec/check-selection-criteria (:select-views options))]
+    (into #{} (model/filter-xf @repo/state criteria)
+          (repo/views))))
+
 (defn dispatch
   "Dispatch on `options` to the requested actions."
   [model options]
@@ -202,6 +210,9 @@
   (when (:select-references options)
     (println "Selected References for" (:select-references options))
     (pp/pprint (select-references options)))
+  (when (:select-views options)
+    (println "Selected Views for" (:select-views options))
+    (pp/pprint (select-views options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
