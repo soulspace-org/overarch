@@ -197,7 +197,6 @@ key       | type    | values             | description
 :external | boolean | true, false        | default is false
 :tech     | string  |                    | technology of the model node
 
-
 ### Person (:person)
 Persons are internal or external actors of the system.
 

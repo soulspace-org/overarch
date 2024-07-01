@@ -2,4 +2,16 @@
 ;;;;
 ;;;; Documentation Template for a Concept View
 ;;;;
+
+(let [elements (v/view-elements model view)]
 %># <%= (:title view)%>
+
+## Concepts
+<%
+  (doseq [concept (sort-by :name (filter m/model-node? elements))]
+%>### <%= (:name concept) %>
+<%= (:desc concept) %>
+
+<%
+  ))
+%>
