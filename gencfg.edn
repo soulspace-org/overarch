@@ -20,6 +20,12 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking"}
+  :template "docs/views.md.cmb"
+  :subdir "docs"
+  :base-namespace "banking"
+  :base-name "views"
+  :extension "md"}
 
  ;; Reports
  {:selection {:namespace-prefix "banking"}

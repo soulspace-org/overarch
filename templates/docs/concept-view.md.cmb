@@ -3,8 +3,8 @@
 ;;;; Documentation Template for a Concept View
 ;;;;
 
-(let [elements (v/view-elements model view)]
-%># <%= (:title view)%>
+(let [elements (v/view-elements model e)]
+%># <%= (:title e)%>
 
 ## Concepts
 <%

@@ -1,0 +1,12 @@
+<%
+
+%># Views
+
+| Id | Type | Title |
+|---|---|---| 
+<%
+(doseq [view e]
+%>| <%= (:id view) %> | <%= (:el view) %> | <%= (:title view) %> |
+<%
+)
+%>
