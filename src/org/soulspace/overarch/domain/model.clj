@@ -774,6 +774,8 @@
     (= :name-prefix k)           (partial el/name-prefix? v)
     (= :desc? k)                 (partial el/desc-check? v)
     (= :desc k)                  (partial el/desc? v)
+    (= :doc? k)                  (partial el/doc-check? v)
+    (= :doc k)                   (partial el/doc? v)
     (= :tech? k)                 (partial el/tech-check? v)
     (= :tech k)                  (partial el/tech? v)
     (= :techs k)                 (partial el/techs? v)

@@ -973,6 +973,18 @@
     (re-matches (re-pattern v) s)
     false))
 
+(defn doc-check?
+  "Returns true if the check for documentation on `e` equals the boolean value `v`"
+  [v e]
+  (= v (get e :doc false)))
+
+(defn doc?
+  "Returns true if the documentation of `e` matches the regular expression`v`."
+  [v e]
+  (if-let [s (:doc e)]
+    (re-matches (re-pattern v) s)
+    false))
+
 (defn tech-check?
   "Returns true if the check for tech on `e` equals the boolean value `v`"
   [v e]
