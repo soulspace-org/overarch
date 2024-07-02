@@ -939,6 +939,16 @@
   [v e]
   (contains? v (:subtype e)))
 
+(defn maturity-check?
+  "Returns true if the check for maturity on `e` equals the boolean value `v`"
+  [v e]
+  (= v (get e :maturity false)))
+
+(defn maturity?
+  "Returns true if the maturity of `e` is equal to `v`."
+  [v e]
+  (= (keyword v) (:maturity e)))
+
 (defn external-check?
   "Returns true if the check for external on `e` equals the boolean value `v`"
   [v e]

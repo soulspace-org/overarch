@@ -3,7 +3,8 @@ Changelog
 
 Version 0.25.0
 --------------
-* added a `--select-views CRITERIA` command line argument 
+* added selection criteria for `:doc` and `:maturity`
+* added a `--select-views CRITERIA` command line argument
 
 Version 0.24.0
 --------------

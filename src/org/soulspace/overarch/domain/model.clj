@@ -768,6 +768,8 @@
     (= :subtype? k)              (partial el/subtype-check? v)
     (= :subtype k)               (partial el/subtype? v)
     (= :subtypes k)              (partial el/subtypes? v)
+    (= :maturity? k)             (partial el/maturity-check? v)
+    (= :maturity k)              (partial el/maturity? v)
     (= :external? k)             (partial el/external-check? v)
     (= :name? k)                 (partial el/name-check? v)
     (= :name k)                  (partial el/name? v)
