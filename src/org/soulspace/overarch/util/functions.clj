@@ -1,9 +1,14 @@
 (ns org.soulspace.overarch.util.functions 
   (:require [clojure.string :as str]))
 
-;;
-;; Helper functions
-;;
+;;;
+;;; Helper functions
+;;;
+(defn key-set
+  "Returns a set of the keys of the map `m`."
+  [m]
+  (into #{} (keys m)))
+
 (defn keyword-set
   "Converts the `coll` of strings or symbols into a set of keywords."
   [coll]
@@ -32,7 +37,7 @@
          (str/join " "))))
 
 (defn wrap-str
-  "Wraps the argument `s` in double quotes.line-seq"
+  "Wraps the argument `s` in double quotes."
   [s]
   (str "\"" s "\""))
 
@@ -50,13 +55,11 @@
                        :id :foo/foo-bar}})
   )
 
-
 ;;
 ;; Tapping data
 ;;
 (defn data-tapper
-  "Sends the `data` and and optional context `ctx` to the tap.
-   Useful for viewing data and debugging."
+  "Sends the `data` and and optional context `ctx` to the tap. Useful for viewing data and debugging."
   ([data]
    (tap> data)
    data)

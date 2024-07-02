@@ -1,7 +1,8 @@
+(ns user
+  (:require [clojure.string :as str]))
 ;;;;
 ;;;; Development functions
 ;;;;
-(require '[clojure.string :as str])
 
 ;;;
 ;;; Portal data viewer

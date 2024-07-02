@@ -1,17 +1,19 @@
+;;;;
+;;;; Model Analytics
+;;;;
 (ns org.soulspace.overarch.domain.analytics
+  "This namespace contains functions for model statistics and analytics."
   (:require [clojure.set :as set]
+            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]))
 
-;;;
-;;; Analytics
-;;;
 
-;;
-;; Functions
-;;
-(defn count-namespaces
+;;;
+;;; Model Statistics
+;;;
+(defn count-elements-per-namespace
   "Returns a map with the count of identifiable elements per namespace in the given `coll`."
   [coll]
   (->> coll
@@ -19,8 +21,8 @@
        (frequencies)
        (into (sorted-map))))
 
-(defn count-nodes
-  "Returns a map with the count of relations per type in the given `coll`."
+(defn count-nodes-per-type
+  "Returns a map with the count of nodes per type in the given `coll`."
   [coll]
   (->> coll
        (filter el/model-node?)
@@ -28,7 +30,7 @@
        (frequencies)
        (into (sorted-map))))
 
-(defn count-relations
+(defn count-relations-per-type
   "Returns a map with the count of relations per type in the given `coll`."
   [coll]
   (->> coll
@@ -37,7 +39,7 @@
        (frequencies)
        (into (sorted-map))))
 
-(defn count-views
+(defn count-views-per-type
   "Returns a map with the count of views per type in the given `coll`."
   [coll]
   (->> coll
@@ -46,7 +48,7 @@
        (frequencies)
        (into (sorted-map))))
 
-(defn count-elements
+(defn count-elements-per-type
   "Returns a map with the count of views per type in the given `coll`."
   [coll]
   (->> coll
@@ -68,6 +70,9 @@
        (map #(if (:synthetic %) :synthetic :normal))
        (frequencies)))
 
+;;;
+;;; Missing information checks
+;;;
 (defn unidentifiable-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
@@ -100,21 +105,17 @@
        (filter el/identifiable-relational-element?)
        (remove namespace-match?)))
 
-
-(defn key-set
-  "Returns a set of the keys of the map `m`."
-  [m]
-  (into #{} (keys m)))
-
 (defn unrelated-nodes
   "Returns the set of ids of identifiable model nodes not taking part in any relation."
   [model]
-  ; TODO registry contains relations and views
-  (let [id-set (into #{} el/node-ids-xf (model/all-elements model))]
+  (let [id-set (into #{} el/node-ids-xf (model/nodes model))]
     (set/difference id-set
-                    (key-set (:referrer-id->relations model))
-                    (key-set (:referred-id->relations model)))))
+                    (fns/key-set (:referrer-id->relations model))
+                    (fns/key-set (:referred-id->relations model)))))
 
+;;;
+;;; Reference checks
+;;;
 (defn unresolved-related
   "Checks references in a relation."
   [model rel]
@@ -135,23 +136,17 @@
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
 
-
 (defn check-relations
   "Validates the relations in the model."
   [model]
-  (->> (model/all-elements model)
-       (filter el/relational-element?)
-       (map (partial unresolved-related model))
-       (flatten)))
+  (mapcat (partial unresolved-related model) (model/relations model)))
 
 (defn check-nodes
-  "Validates the references in the model."
-  []
-  )
+  "Validates the content references in the model."
+  [model]
+  (mapcat (partial unresolved-refs model) (model/nodes model)))
 
 (defn check-views
   "Validates the references in the views."
   [model]
-  (->> (model/views model)
-       (map (partial unresolved-refs model))
-       (flatten)))
+  (mapcat (partial unresolved-refs model) (model/views model)))

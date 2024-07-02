@@ -858,6 +858,4 @@
           (or (= (:to r1) (:to r2))
               (= (parent model (:to r1))
                  (parent model (:to r2)))))))
-
-
   )

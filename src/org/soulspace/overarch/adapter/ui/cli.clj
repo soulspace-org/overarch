@@ -154,12 +154,12 @@
   "Reports information about the model and views."
   [model options]
   {:nodes           (count (repo/nodes))
-   :nodes-types     (al/count-nodes (repo/nodes))
+   :nodes-types     (al/count-nodes-per-type (repo/nodes))
    :relations       (count (repo/relations))
-   :relations-types (al/count-relations (repo/relations))
+   :relations-types (al/count-relations-per-type (repo/relations))
    :views           (count (repo/views))
-   :views-types     (al/count-views (repo/views))
-   :namespaces      (al/count-namespaces (repo/model-elements))
+   :views-types     (al/count-views-per-type (repo/views))
+   :namespaces      (al/count-elements-per-namespace (repo/model-elements))
    :external        (al/count-external (repo/model-elements))
    :synthetic       (al/count-synthetic (repo/model-elements))})
    
@@ -274,11 +274,11 @@
 
 
 (comment ; Model analytics 
-  (al/count-namespaces (concat (repo/nodes) (repo/relations)))
-  (al/count-elements (concat (repo/nodes) (repo/relations)))
-  (al/count-nodes (repo/nodes))
-  (al/count-relations (repo/relations))
-  (al/count-views (repo/views))
+  (al/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
+  (al/count-elements-per-type (concat (repo/nodes) (repo/relations)))
+  (al/count-nodes-per-type (repo/nodes))
+  (al/count-relations-per-type (repo/relations))
+  (al/count-views-per-type (repo/views))
 
   (al/count-external (concat (repo/nodes) (repo/relations)))
   (al/count-synthetic (concat (repo/nodes) (repo/relations)))

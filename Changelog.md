@@ -5,6 +5,8 @@ Version 0.25.0
 --------------
 * added selection criteria for `:doc` and `:maturity`
 * added a `--select-views CRITERIA` command line argument
+* refactored and enhanced analytics functions
+* updated usage docs
 
 Version 0.24.0
 --------------
