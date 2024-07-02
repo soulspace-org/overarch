@@ -5,7 +5,7 @@ for the selection. An element is selected, if it matches all criteria in the
 map (logical conjunction).
 
 Criterias can also be given as a vector of criteria maps. An element is
-selected, if it is selected by any of the critria maps (logial disjunction). 
+selected, if it is selected by any of the critria maps (logical disjunction). 
 
 ## Keys
 key                    | type            | example values            | description
@@ -27,14 +27,18 @@ key                    | type            | example values            | descripti
 :id                    | keyword         | :org.soulspace/overarch   | the element with the given id
 :from                  | keyword         | :org.soulspace/overarch   | relations with the given from id
 :to                    | keyword         | :org.soulspace/overarch   | relations with the given to id
-:subtype?              | boolean         | true, false               | nodes for which the subtype check returns the given value
+:subtype?              | boolean         | true, false               | nodes for which the subtype check returns the given boolean value
 :subtype               | keyword         | :queue                    | nodes of the given subtype
 :subtypes              | set of keywords | #{:queue :database}       | nodes of one of the given subtypes
+:maturity?             | boolean         | true, false               | nodes for which the maturity check returns the given boolean value
+:maturity               | keyword        | :proposed, :deprecated    | nodes of the given maturity
 :external?             | boolean         | true, false               | elements of the given external state
 :name?                 | boolean         | true, false               | elements for which the name check returns the given value
 :name                  | string/regex    | "Overarch CLI"            | elements for which the name matches the given value
 :desc?                 | boolean         | true, false               | elements for which the description check returns the given value
 :desc                  | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the description matches the given value
+:doc?                  | boolean         | true, false               | elements for which the documentation check returns the given value
+:doc                   | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the documentation matches the given value
 :tech?                 | boolean         | true, false               | elements for which the technology check returns the given value
 :tech                  | string          | "Clojure"                 | elements of the given technology
 :techs                 | set of strings  | #{"Clojure" "Java"}       | elements with one or more of the given technologies
@@ -53,4 +57,3 @@ key                    | type            | example values            | descripti
 :parent?               | boolean         | true, false               | nodes for which the check for children returns the given value
 :parent-of             | keyword         | :org.soulspace/overarch   | node which is the parent of the node with the given id
 :ancestor-of           | keyword         | :org.soulspace/overarch   | nodes which are ancestors of the node with the given id
-

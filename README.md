@@ -340,6 +340,7 @@ Options:
   -w, --watch                       false      Watch model dir for changes and trigger action
   -s, --select-elements CRITERIA               Select and print model elements by criteria
   -S, --select-references CRITERIA             Select model elements by criteria and print as references
+      --select-views CRITERIA                  Select and print views by criteria
   -T, --template-dir DIRNAME        templates  Template directory
   -g, --generation-config FILE                 Generation configuration
   -G, --generation-dir DIRNAME      generated  Generation artifact directory

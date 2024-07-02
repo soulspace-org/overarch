@@ -12,6 +12,132 @@ criteria and generate artifacts based on the result with templates.
 
 ![Use Cases of Overarch](/doc/images/overarch/use-cases/overarch-use-case-view.svg)
 
+
+# Rationale for Overarch
+Modelling and vizualizing a software system or a system landscape is useful for
+thinking, communication, documentation and onboarding collegues. The systems
+can be modelled with different level of details and vizualized with different
+views. 
+
+To model a system you can either use a modelling tool or a diagramming tool.
+Most modelling tools are commercial and lock in your models or not comprehensive.
+Modelling is also often decoupled from development.
+
+Most diagramming tools don't use a model or don't separate the model information
+from the layout. The scope of most diagramming tools is limited to diagrams only.
+With diagramming tools like Excalidraw or Gliffy it's quite easy to draw some
+diagrams for a system. But changing existing diagrams can be cumbersome when
+diagram elements have to be placed and moved manually. This also limits the
+scope and size of the diagrams that can be created and maintained.
+
+Some problems most of these tools often face is versioning and collaboration.
+By using a text based representation of the model and the views, a development
+workflow with version control, e.g. git can be applied to modelling. 
+
+Some tools like PlantUML or Structurizr provide a DSL to model a system or to
+describe diagrams. While PlantUML operates at the diagram level and is
+basically a text based diagramming tool with auto layout, structurizr is a
+modelling tool which also features a graphical editor. But to use the model in
+a different context, the DSL has to be parsed.
+
+Overarch addresses these issues by providing a text based data format for the
+specification of the model and the views of the model. By using plain data
+literals like sets and maps, no DSL parser is needed to instanciate the model.
+
+
+Overarch is free, open and extensible
+* provides model information as plain data
+* models are readable, discoverable, composable, reusable and extensible
+* model queries, vizualization, artifact generation
+
+# Command Line Interface
+
+```
+Overarch CLI
+   
+   Reads your model and view specifications and renders or exports
+   into the specified formats.
+
+   For more information see https://github.com/soulspace-org/overarch
+
+Usage: java -jar overarch.jar [options].
+
+Options:
+
+  -m, --model-dir PATH              models     Models directory or path
+  -r, --render-format FORMAT                   Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME          export     Render directory
+      --[no-]render-format-subdirs  true       Use subdir per render format
+  -x, --export-format FORMAT                   Export format (json, structurizr)
+  -X, --export-dir DIRNAME          export     Export directory
+  -w, --watch                       false      Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA               Select and print model elements by criteria
+  -S, --select-references CRITERIA             Select model elements by criteria and print as references
+      --select-views CRITERIA                  Select and print views by criteria
+  -T, --template-dir DIRNAME        templates  Template directory
+  -g, --generation-config FILE                 Generation configuration
+  -G, --generation-dir DIRNAME      generated  Generation artifact directory
+  -B, --backup-dir DIRNAME          backup     Generation backup directory
+      --[no-]model-warnings         true       Returns warnings for the loaded model
+      --[no-]model-info             false      Returns infos for the loaded model
+      --plantuml-list-sprites       false      Lists the loaded PlantUML sprites
+  -h, --help                                   Print help
+      --debug                       false      Print debug messages
+ ```
+
+## CLI Examples
+To render all views for all models, use
+```
+> java -jar ./target/overarch.jar -r all
+```
+or
+```
+> java -jar ./target/overarch.jar -r all --debug
+```
+
+To render all views for all models with a directory watch to trigger rerendering on changes, use
+```
+> java -jar ./target/overarch.jar -r all -w --debug
+```
+
+To export the models to JSON, use
+```
+> java -jar ./target/overarch.jar -x json
+```
+
+To query the model for all containers, use
+```
+> java -jar ./target/overarch.jar -s '{:el :container}'
+```
+or
+```
+> java -jar ./target/overarch.jar -S '{:el :container}'
+```
+
+
+# Editor/IDE Integration
+## Visual Studio Code
+
+With the addition of a few extensions, Visual Studio Code is a lightweight
+modelling environment.
+Install the following extensions in VS Code:
+![Calva Extension](/doc/images/vscode_calva_ext.png)
+![PlantUML Extension](/doc/images/vscode_plantuml_ext.png)
+![Graphviz Preview Extension](/doc/images/vscode_graphviz_preview_ext.png)
+![Graphviz Language Extension](/doc/images/vscode_graphviz_language_ext.png)
+
+With this setup you get an editor for the EDN files with code completion,
+syntax check and syntax highlighting.
+
+![Model editing](/doc/images/overarch_vscode_model.png)
+
+You also get integrated previews of the rendered PlantUML diagrams and the
+ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
+directly from within Visual Studio Code.
+
+## IntelliJ
+
+
 # Modelling
 Overarch supports modelling the functional requirements, the architecture and
 the design of the system under description.
@@ -145,28 +271,32 @@ identifiers.
 Model Nodes describe the elements of the different kind of models for the system.
 
 ### Common Keys of Model Nodes
-key       | type               | values             | description 
-----------|--------------------|--------------------|------------
-:el       | keyword            | see model elements | type of the model node
-:id       | keyword            | namespaced id      | id of the model node
-:name     | string             | short name         | name of the model node
-:desc     | string             |                    | description of the model node
-:tags     | set of strings     | e.g. #{"critical"} | some tags which can be used in element selection
-:ct       | set of maps        | model nodes        | the children of the model node
+key       | type               | values                 | description 
+----------|--------------------|----------------------  |------------
+:el       | keyword            | see model elements     | type of the model node
+:id       | keyword            | namespaced id          | id of the model node
+:name     | string             | short name             | name of the model node
+:desc     | string             | short description      | description of the model element, to be rendered in diagrams
+:doc      | multiline string   | longer documentation   | documentation of the model element, not to be rendered in diagrams but textual output
+:maturity | keyword            | :proposed, :deprecated | the maturity of the model element
+:tags     | set of strings     | e.g. #{"critical"}     | some tags which can be used in element selection
+:ct       | set of maps        | model nodes            | the children of the model node
 
 ## Model Relations
 Relations describe the connections and interactions of the nodes.
 
 ### Common Keys of Relations
-key       | type               | values              | description 
-----------|---------|---------------------|------------
-:el       | keyword            | e.g. :rel, :request | type of the relation
-:id       | keyword            | namespaced id       | id of the relation
-:from     | keyword            | namespaced id       | id of the referrer node
-:to       | keyword            | namespaced id       | id of the referred node
-:name     | string             |                     | name of the relation
-:desc     | string             |                     | description of the relation
-:tags     | set of strings     | e.g.                | some tags which can be used in element selection
+key       | type               | values                 | description 
+----------|--------------------|------------------------|-------------
+:el       | keyword            | e.g. :rel, :request    | type of the relation
+:id       | keyword            | namespaced id          | id of the relation
+:from     | keyword            | namespaced id          | id of the referrer node
+:to       | keyword            | namespaced id          | id of the referred node
+:name     | string             |                        | name of the relation
+:desc     | string             |                        | description of the relation
+:doc      | multiline string   | longer documentation   | documentation of the model element, not to be rendered in diagrams but textual output
+:maturity | keyword            | :proposed, :deprecated | the maturity of the model element
+:tags     | set of strings     | e.g. #{"critical"}     | some tags which can be used in element selection
 
 ## References (:ref)
 References refer to a model element with the given id. They are primarily used
@@ -206,7 +336,6 @@ key       | type    | values             | description
 :subtype  | keyword | :database, :queue  | specific role of the model node
 :external | boolean | true, false        | default is false
 :tech     | string  |                    | technology of the model node
-
 
 ### Person (:person)
 Persons are internal or external actors of the system.
@@ -504,6 +633,7 @@ It has input parameters and calculates results.
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
+
 # Model Element Selection By Criteria
 Model elements can be selected based on criteria.
 Criterias are given as a map where each key/value pair specifies a criterium
@@ -511,7 +641,7 @@ for the selection. An element is selected, if it matches all criteria in the
 map (logical conjunction).
 
 Criterias can also be given as a vector of criteria maps. An element is
-selected, if it is selected by any of the critria maps (logial disjunction). 
+selected, if it is selected by any of the critria maps (logical disjunction). 
 
 ## Keys
 key                    | type            | example values            | description
@@ -533,14 +663,18 @@ key                    | type            | example values            | descripti
 :id                    | keyword         | :org.soulspace/overarch   | the element with the given id
 :from                  | keyword         | :org.soulspace/overarch   | relations with the given from id
 :to                    | keyword         | :org.soulspace/overarch   | relations with the given to id
-:subtype?              | boolean         | true, false               | nodes for which the subtype check returns the given value
+:subtype?              | boolean         | true, false               | nodes for which the subtype check returns the given boolean value
 :subtype               | keyword         | :queue                    | nodes of the given subtype
 :subtypes              | set of keywords | #{:queue :database}       | nodes of one of the given subtypes
+:maturity?             | boolean         | true, false               | nodes for which the maturity check returns the given boolean value
+:maturity               | keyword        | :proposed, :deprecated    | nodes of the given maturity
 :external?             | boolean         | true, false               | elements of the given external state
 :name?                 | boolean         | true, false               | elements for which the name check returns the given value
 :name                  | string/regex    | "Overarch CLI"            | elements for which the name matches the given value
 :desc?                 | boolean         | true, false               | elements for which the description check returns the given value
 :desc                  | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the description matches the given value
+:doc?                  | boolean         | true, false               | elements for which the documentation check returns the given value
+:doc                   | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the documentation matches the given value
 :tech?                 | boolean         | true, false               | elements for which the technology check returns the given value
 :tech                  | string          | "Clojure"                 | elements of the given technology
 :techs                 | set of strings  | #{"Clojure" "Java"}       | elements with one or more of the given technologies
@@ -796,7 +930,6 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Ecli
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
-
 ## GraphViz
 The concept view can be exported as a concept map to a GraphViz *.dot file.
 
@@ -846,14 +979,10 @@ The Structurizr export creates a workspace with the loaded model and views.
 As Structurizr currently only supports the C4 architecture model and views,
 only these elements will be included in the Structurizr workspace.
 
+
 # Template Based Artifact Generation
-Overarch can generate artifacts for model elements via templates.
-The model elements, to which a template is applied, are selected via criteria.
-A template can be applied to the collection of selected elements or to each
-element of the collection.
-
+Overarch can generate artifacts for model elements and views via templates.
 The use cases of the tempates range from reports up to automatic code generation.
-
 Overarch supports forward engineering protected areas for manually written
 content in generated artifacts
 
@@ -864,28 +993,39 @@ A generation context map specifies a selection of model elements, a template
 to use, how the template should be applied, and where the resulting artifact
 should be created.
 
-key               | type     | values             | default  | description
-------------------|----------|--------------------|----------|-------------
-:selection        | CRITERIA | {:el :system}      |          | Criteria to select model elements
-:template         | PATH     | "report/node.cmb"  |          | Path to the template relative to the template dir
-:engine           | :keyword | :comb              | :combsci | The template engine to use (currently just :comb and :combsci)
-:encoding         | string   | "UTF-8"            | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false         | false    | Apply  the template for each element of the selection or on the selection as a whole
-:subdir           | string   | "report"           |          | Subdirectory for generated artifact under the generator directory
-:namespace-prefix | string   | "src"              |          | Prefix to the namespace to use as path element
-:base-namespace   | string   |                    |          | Base namespace to use as path element
-:namespace-suffix | string   | "impl"             |          | Suffix to the namespace to use as path element
-:prefix           | string   | "Abstract"         |          | Prefix for the filename
-:base-name        | string   |                    |          | Base of the filename
-:suffix           | string   | "Impl"             |          | Suffix for the filename
-:extension        | string   | "md" "clj" "java"  |          | Extension for the filename
-:filename         | string   | "README.md"        |          | Specific filename to use
-:id-as-namespace  | boolean  | true/false         | false    | Use the element id as the namespace for path generation
-:id-as-name       | boolean  | true/false         | false    | Use the name part of the element id as the name for path generation
-:protected-areas  | string   | "PA"               |          | Marker for protected areas in the template/artifact
+key               | type     | values              | default  | description
+------------------|----------|---------------------|----------|-------------
+:selection        | CRITERIA | {:el :system}       |          | Criteria to select model elements
+:view-selection   | CRITERIA | {:el :context-view} |          | Criteria to select views
+:template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
+:engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
+:encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
+:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection or on the selection as a whole
+:subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
+:namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
+:base-namespace   | string   |                     |          | Base namespace to use as path element
+:namespace-suffix | string   | "impl"              |          | Suffix to the namespace to use as path element
+:prefix           | string   | "Abstract"          |          | Prefix for the filename
+:base-name        | string   |                     |          | Base of the filename
+:suffix           | string   | "Impl"              |          | Suffix for the filename
+:extension        | string   | "md" "clj" "java"   |          | Extension for the filename
+:filename         | string   | "README.md"         |          | Specific filename to use
+:id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
+:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
+:protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
+
+The model elements, to which a template is applied, are selected via criteria
+with the selection key.
+A template can be applied to the collection of selected elements or to each
+element of the collection.
+
+Templates can also be applied on views selected by criteria with the
+:view-selection key. The view selection also returns a collection of views,
+even if there is only one view selected. So use the :per-element key to enable
+the generation on a view level.
 
 ### Example config file
 ```clojure
@@ -980,10 +1120,19 @@ Result:
 foo bar bar bar
 ```
 
+### API for Templates
+In the comb templates you can use most of the functions of the clojure.core
+namespace. Additionally the functions of clojure.set and clojure.string are provided under
+the aliases `set` and `str`, e.g. `set/union` or `str/join`.
+
+Overarch also provides functions to query and navigate the model under the
+`m` alias, e.g. `m/resolve-element`.
+
 ### Security Considerations
-Comb templates can contain arbitrary clojure code, which gets evaluated in the
-context of the overarch process. Be aware of this fact and review templates
-accordingly, especially when using templates from external sources.
+Comb templates evaluated with `:comb` are compiled and can contain arbitrary
+clojure code, which gets evaluated in the context of the overarch process.
+Be aware of this fact and review templates accordingly, especially when using
+templates from external sources.
 
 When the comp templates are evaluated by the `:combsci` engine, they are
 interpreted with Babashka SCI, the small clojure interpreter. This has many
@@ -1069,86 +1218,3 @@ public class Calc {
   }
 }
 ```
-
-# Command Line Interface
-
-```
-Overarch CLI
-   
-   Reads your model and view specifications and renders or exports
-   into the specified formats.
-
-   For more information see https://github.com/soulspace-org/overarch
-
-Usage: java -jar overarch.jar [options].
-
-Options:
-
-  -m, --model-dir PATH              models     Models directory or path
-  -r, --render-format FORMAT                   Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export     Render directory
-      --[no-]render-format-subdirs  true       Use subdir per render format
-  -x, --export-format FORMAT                   Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export     Export directory
-  -w, --watch                       false      Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA               Select and print model elements by criteria
-  -S, --select-references CRITERIA             Select model elements by criteria and print as references
-  -T, --template-dir DIRNAME        templates  Template directory
-  -g, --generation-config FILE                 Generation configuration
-  -G, --generation-dir DIRNAME      generated  Generation artifact directory
-  -B, --backup-dir DIRNAME          backup     Generation backup directory
-      --[no-]model-warnings         true       Returns warnings for the loaded model
-      --[no-]model-info             false      Returns infos for the loaded model
-      --plantuml-list-sprites       false      Lists the loaded PlantUML sprites
-  -h, --help                                   Print help
-      --debug                       false      Print debug messages
- ```
-
-## CLI Examples
-To render all views for all models, use
-```
-> java -jar ./target/overarch.jar -r all
-```
-or
-```
-> java -jar ./target/overarch.jar -r all --debug
-```
-
-To render all views for all models with a directory watch to trigger rerendering on changes, use
-```
-> java -jar ./target/overarch.jar -r all -w --debug
-```
-
-To export the models to JSON, use
-```
-> java -jar ./target/overarch.jar -x json
-```
-
-To query the model for all containers, use
-```
-> java -jar ./target/overarch.jar -s '{:el :container}'
-```
-or
-```
-> java -jar ./target/overarch.jar -S '{:el :container}'
-```
-
-# Editor/IDE Integration
-## Visual Studio Code
-
-With the addition of a few extensions, Visual Studio Code is a lightweight
-modelling environment.
-Install the following extensions in VS Code:
-![Calva Extension](/doc/images/vscode_calva_ext.png)
-![PlantUML Extension](/doc/images/vscode_plantuml_ext.png)
-![Graphviz Preview Extension](/doc/images/vscode_graphviz_preview_ext.png)
-![Graphviz Language Extension](/doc/images/vscode_graphviz_language_ext.png)
-
-With this setup you get an editor for the EDN files with code completion,
-syntax check and syntax highlighting.
-
-![Model editing](/doc/images/overarch_vscode_model.png)
-
-You also get integrated previews of the rendered PlantUML diagrams and the
-ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
-directly from within Visual Studio Code.
