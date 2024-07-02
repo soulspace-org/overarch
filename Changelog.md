@@ -3,9 +3,11 @@ Changelog
 
 Version 0.25.0
 --------------
+* refactored and enhanced analytics functions
 * added selection criteria for `:doc` and `:maturity`
 * added a `--select-views CRITERIA` command line argument
-* refactored and enhanced analytics functions
+* added `:name`, `:desc` and `:doc` as optional view attributes
+* updated overarch data model and spec
 * updated usage docs
 
 Version 0.24.0

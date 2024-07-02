@@ -39,9 +39,9 @@
 (s/def :overarch/element
   (s/keys :req-un [:overarch/el]
           :opt-un [:overarch/id
+                   :overarch/subtype
                    :overarch/name :overarch/desc :overarch/doc
-                   :overarch/maturity
-                   :overarch/subtype :overarch/external
+                   :overarch/maturity :overarch/external
                    :overarch/tech :overarch/tags
                    :overarch/ct]))
 
@@ -132,7 +132,7 @@
 (s/def :overarch/title string?)
 (s/def :overarch/view
   (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/spec :overarch/title :overarch/ct]))
+          :opt-un [:overarch/name :overarch/desc :overarch/doc :overarch/spec :overarch/title :overarch/ct]))
 
 ;;
 ;; Input model

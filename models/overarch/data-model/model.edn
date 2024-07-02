@@ -1621,7 +1621,35 @@
    :name "spec"
    :desc "A specification of the rendering options for a view."
    :tags #{"view-model"}
-   :ct []}
+   :ct [{:el :field
+         :name "include"
+         :type "keyword"
+         :desc "A directive to include additional elements in the view."}
+        {:el :field
+         :name "layout"
+         :type "keyword"
+         :desc "A directive for the renderer to change the rendering (if supported by the renderer)."}
+        {:el :field
+         :name "linetype"
+         :type "keyword"
+         :desc "A directive for the renderer to change the linetype for relations (if supported by the renderer)."}
+        {:el :field
+         :name "selection"
+         :type "criteria"
+         :desc "A directive to select the elements for the view by the critera."}
+        {:el :field
+         :name "sketch"
+         :type "boolean"
+         :desc "If true, the view is rendered as a sketch (if supported by the renderer)."}
+        {:el :field
+         :name "styles"
+         :type "map"
+         :desc "A directive for the renderer to style elements (if supported by the renderer)."}
+        {:el :field
+         :name "theme"
+         :type "map"
+         :desc "A directive for the renderer use a them to style elements (if supported by the renderer)."}
+        ]}
 
   {:el :class
    :id :overarch.data-model/architecture-view
@@ -1724,6 +1752,12 @@
   {:el :inheritance
    :id :overarch.data-model/view-is-a-identifiable-element
    :to :overarch.data-model/identifiable-element
+   :from :overarch.data-model/view
+   :tags #{"view-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/view-is-a-identifiable-named-element
+   :to :overarch.data-model/identifiable-named-element
    :from :overarch.data-model/view
    :tags #{"view-model"}}
 
