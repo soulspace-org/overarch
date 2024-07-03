@@ -231,7 +231,7 @@
         {:ref :overarch.data-model/system-is-a-concept-model-node}
         {:ref :overarch.data-model/container-is-a-concept-model-node}
 
-        {:ref :overarch.data-model/view-is-a-identifiable-element}
+        {:ref :overarch.data-model/view-is-a-identifiable-named-element}
         {:ref :overarch.data-model/view-contains-rendering-spec}
         {:ref :overarch.data-model/architecture-view-is-a-view}
         {:ref :overarch.data-model/architecture-view-contains-architecture-model-element}
@@ -591,6 +591,8 @@
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}
+        {:ref :overarch.data-model/named-element}
+        {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/architecture-model-element}
         {:ref :overarch.data-model/deployment-model-element}
         {:ref :overarch.data-model/class-model-element}
@@ -618,11 +620,11 @@
 
         ;relations
         {:ref :overarch.data-model/identifiable-element-is-a-element}
-;        {:ref :overarch.data-model/named-element-is-a-element}
-;        {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
-;        {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
+        {:ref :overarch.data-model/named-element-is-a-element}
+        {:ref :overarch.data-model/identifiable-named-element-is-a-identifiable-element}
+        {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
 
-        {:ref :overarch.data-model/view-is-a-identifiable-element}
+        {:ref :overarch.data-model/view-is-a-identifiable-named-element}
         {:ref :overarch.data-model/view-contains-rendering-spec}
         {:ref :overarch.data-model/architecture-view-is-a-view}
         {:ref :overarch.data-model/architecture-view-contains-architecture-model-element}

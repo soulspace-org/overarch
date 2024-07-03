@@ -33,7 +33,7 @@
    :name "named-element"
    :desc "An element with a name and a description."
    :tags #{"type-hierarchy"}
-   :ct #{{:el :field
+   :ct [{:el :field
           :name "name"
           :type "string"
           :desc "Name of the element."}
@@ -41,16 +41,12 @@
           :name "desc"
           :type "string"
           :optional true
-          :desc "(Short) description of the element."}
+          :desc "(Short) description of the element. Could be rendered in diagrams."}
          {:el :field
           :name "doc"
           :type "string"
-          :desc "Documentation of the element."}
-         {:el :field
-          :name "maturity"
-          :type "keyword"
-          :desc "Maturity of the element. Values are :proposed, :implemented and :deprecated. Default is :implemented."}
-         }}
+          :optional true
+          :desc "Documentation of the element."}]}
 
   {:el :class
    :id :overarch.data-model/identifiable-named-element
@@ -80,7 +76,12 @@
           :name "tech"
           :type "string"
           :optional true
-          :desc "Technology the element is implemented in."}}}
+          :desc "Technology the element is implemented in."}
+         {:el :field
+          :name "maturity"
+          :type "keyword"
+          :optional true
+          :desc "Maturity of the element. Values are :proposed, :implemented and :deprecated. Default is :implemented."}}}
 
   {:el :class
    :id :overarch.data-model/relation
@@ -97,7 +98,7 @@
           :type "keyword"
           :desc "The identifier of the element being referred by another element."}}}
 
-   ;; Abstract Type Relations
+  ;; Abstract Type Relations
   {:el :inheritance
    :id :overarch.data-model/identifiable-element-is-a-element
    :to :overarch.data-model/element
@@ -824,7 +825,7 @@
           :type "boolean"
           :optional true
           :desc "When true the return value can be null/nil. Default is false."}}}
-  
+
   ; TODO add function relations
   {:el :class
    :id :overarch.data-model/method
@@ -1648,8 +1649,7 @@
         {:el :field
          :name "theme"
          :type "map"
-         :desc "A directive for the renderer use a them to style elements (if supported by the renderer)."}
-        ]}
+         :desc "A directive for the renderer use a them to style elements (if supported by the renderer)."}]}
 
   {:el :class
    :id :overarch.data-model/architecture-view
@@ -1749,12 +1749,6 @@
    :tags #{"view-model"}}
 
   ;; View Relations
-  {:el :inheritance
-   :id :overarch.data-model/view-is-a-identifiable-element
-   :to :overarch.data-model/identifiable-element
-   :from :overarch.data-model/view
-   :tags #{"view-model"}}
-
   {:el :inheritance
    :id :overarch.data-model/view-is-a-identifiable-named-element
    :to :overarch.data-model/identifiable-named-element

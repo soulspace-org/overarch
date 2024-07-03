@@ -8,7 +8,7 @@ Version 0.25.0
 * added a `--select-views CRITERIA` command line argument
 * added `:name`, `:desc` and `:doc` as optional view attributes
 * updated overarch data model and spec
-* updated usage docs
+* updated usage docs and data model diagrams
 
 Version 0.24.0
 --------------
