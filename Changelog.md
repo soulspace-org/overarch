@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.26.0
+--------------
+* updated overarch architecture model and diagrams
+
 Version 0.25.0
 --------------
 * refactored and enhanced analytics functions

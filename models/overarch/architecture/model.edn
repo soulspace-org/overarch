@@ -47,6 +47,10 @@
                  :name "application.render"
                  :desc "Contains the render multimethods to be implemented by the concrete render adapter implementations."}
                 {:el :component
+                 :id :overarch.application/template
+                 :name "application.template"
+                 :desc "Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations."}
+                {:el :component
                  :id :overarch.adapter.render/plantuml
                  :name "adapter.render.plantuml"
                  :desc "Contains the implementation of the PlantUML rendering."}
@@ -58,6 +62,10 @@
                  :id :overarch.adapter.render/graphviz
                  :name "adapter.render.graphviz"
                  :desc "Contains the implementation of the Graphviz rendering."}
+                {:el :component
+                 :id :overarch.adapter.template/comb
+                 :name "adapter.template.comb"
+                 :desc "Contains the implementation of a template engine for Comb templates."}
                 {:el :component
                  :id :overarch.adapter.exports/json
                  :name "adapter.exports.json"
@@ -89,17 +97,41 @@
    :name "loads"
    :desc "model"}
   {:el :rel
+   :id :overarch.architecture/cli-calls-export
+   :from :overarch.adapter.ui/cli
+   :to :overarch.application/export
+   :name "calls"
+   :desc "export functions"}
+  {:el :rel
    :id :overarch.architecture/cli-calls-render
    :from :overarch.adapter.ui/cli
    :to :overarch.application/render
    :name "calls"
    :desc "render functions"}
   {:el :rel
-   :id :overarch.architecture/cli-calls-export
+   :id :overarch.architecture/cli-calls-template
    :from :overarch.adapter.ui/cli
-   :to :overarch.application/export
+   :to :overarch.application/template
    :name "calls"
-   :desc "export functions"}
+   :desc "template functions"}
+  {:el :rel
+   :id :overarch.architecture/comb-implements-template
+   :from :overarch.adapter.template/comb
+   :to :overarch.application/template
+   :name "implements"
+   :desc "template functions for Comb templates"}
+  {:el :rel
+   :id :overarch.architecture/template-accesses-model
+   :from :overarch.application/template
+   :to :overarch.domain/model
+   :name "queries"
+   :desc "model"}
+  {:el :rel
+   :id :overarch.architecture/template-accesses-view
+   :from :overarch.application/template
+   :to :overarch.domain/view
+   :name "accesses"
+   :desc "view"}
   {:el :rel
    :id :overarch.architecture/plantuml-implements-render
    :from :overarch.adapter.render/plantuml

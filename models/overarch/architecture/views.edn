@@ -46,6 +46,7 @@
         {:ref :overarch.architecture/cli-loads-data}
         {:ref :overarch.architecture/cli-calls-export}
         {:ref :overarch.architecture/cli-calls-render}
+        {:ref :overarch.architecture/cli-calls-template}
         {:ref :overarch.architecture/json-implements-export}
         {:ref :overarch.architecture/json-calls-io}
         {:ref :overarch.architecture/structurizr-implements-export}
@@ -62,6 +63,9 @@
         {:ref :overarch.architecture/plantuml-accesses-model}
         {:ref :overarch.architecture/plantuml-calls-view}
         {:ref :overarch.architecture/plantuml-calls-io}
+        {:ref :overarch.architecture/comb-implements-template}
+        {:ref :overarch.architecture/template-accesses-model}
+        {:ref :overarch.architecture/template-accesses-view}
         {:ref :overarch.architecture/view-queries-model}]}
 ;
 }
