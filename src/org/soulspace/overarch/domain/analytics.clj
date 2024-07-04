@@ -9,7 +9,6 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]))
 
-
 ;;;
 ;;; Model Statistics
 ;;;
