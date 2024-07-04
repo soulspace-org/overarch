@@ -3,6 +3,8 @@ Changelog
 
 Version 0.26.0
 --------------
+* changed default direction for `:include` relations in plantuml rendering of use case views
+* changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams
 
 Version 0.25.0

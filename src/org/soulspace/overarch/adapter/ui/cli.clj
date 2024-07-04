@@ -149,21 +149,19 @@
    ;:unnamed (al/unnamed-elements (repo/elements))
    ;:unrelated (al/unrelated-nodes (repo/elements))
    
-
 (defn model-info
   "Reports information about the model and views."
   [model options]
-  {:nodes           (count (repo/nodes))
-   :nodes-types     (al/count-nodes-per-type (repo/nodes))
-   :relations       (count (repo/relations))
-   :relations-types (al/count-relations-per-type (repo/relations))
-   :views           (count (repo/views))
-   :views-types     (al/count-views-per-type (repo/views))
-   :namespaces      (al/count-elements-per-namespace (repo/model-elements))
-   :external        (al/count-external (repo/model-elements))
-   :synthetic       (al/count-synthetic (repo/model-elements))})
+  {:nodes-count                 (count (repo/nodes))
+   :nodes-by-type-count         (al/count-nodes-per-type (repo/nodes))
+   :relations-count             (count (repo/relations))
+   :relations-by-type-count     (al/count-relations-per-type (repo/relations))
+   :views-count                 (count (repo/views))
+   :views-by-type-count         (al/count-views-per-type (repo/views))
+   :elements-by-namespace-count (al/count-elements-per-namespace (repo/model-elements))
+   :external-count              (al/count-external (repo/model-elements))
+   :synthetic-count             (al/count-synthetic (repo/model-elements))})
    
-
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
   ([]
