@@ -3,9 +3,9 @@
 ;;;;
 
 #{
-  {:el :class-view
-   :id :class/class-view
-   :title "Class View"
+  {:el :code-view
+   :id :class/code-view
+   :title "Code View"
    :ct [; classes
         {:ref :class/ishape}
         {:ref :class/shape}

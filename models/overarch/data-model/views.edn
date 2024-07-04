@@ -5,7 +5,7 @@
   ;;;
   ;;; Logical Data Model Views
   ;;;
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/data-model
    :spec {:layout :left-right
           ;:selection {:namespace "overarch.data-model"}
@@ -61,9 +61,9 @@
         {:ref :overarch.data-model/extends}
         {:ref :overarch.data-model/generalizes}
 
-        {:ref :overarch.data-model/class-model-element}
-        {:ref :overarch.data-model/class-model-node}
-        {:ref :overarch.data-model/class-model-relation}
+        {:ref :overarch.data-model/code-model-element}
+        {:ref :overarch.data-model/code-model-node}
+        {:ref :overarch.data-model/code-model-relation}
         {:ref :overarch.data-model/package}
         {:ref :overarch.data-model/namespace}
         {:ref :overarch.data-model/interface}
@@ -110,7 +110,7 @@
         {:ref :overarch.data-model/component-view}
         {:ref :overarch.data-model/deployment-view}
         {:ref :overarch.data-model/dynamic-view}
-        {:ref :overarch.data-model/class-view}
+        {:ref :overarch.data-model/code-view}
         {:ref :overarch.data-model/state-machine-view}
         {:ref :overarch.data-model/use-case-view}
         {:ref :overarch.data-model/concept-view}
@@ -175,37 +175,37 @@
         {:ref :overarch.data-model/deep-history-state-is-a-state-machine-model-node}
         {:ref :overarch.data-model/transition-is-a-state-machine-model-relation}
 
-        {:ref :overarch.data-model/class-model-element-is-a-identifiable-named-element}
-        {:ref :overarch.data-model/class-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/class-model-node-is-a-class-model-element}
-        {:ref :overarch.data-model/class-model-relation-is-a-class-model-element}
-        {:ref :overarch.data-model/class-model-relation-is-a-relation}
-        {:ref :overarch.data-model/package-is-a-class-model-node}
-        {:ref :overarch.data-model/package-contains-class-model-node}
-        {:ref :overarch.data-model/namespace-is-a-class-model-node}
-        {:ref :overarch.data-model/namespace-contains-class-model-node}
-        {:ref :overarch.data-model/interface-is-a-class-model-node}
+        {:ref :overarch.data-model/code-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/code-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/code-model-node-is-a-code-model-element}
+        {:ref :overarch.data-model/code-model-relation-is-a-code-model-element}
+        {:ref :overarch.data-model/code-model-relation-is-a-relation}
+        {:ref :overarch.data-model/package-is-a-code-model-node}
+        {:ref :overarch.data-model/package-contains-code-model-node}
+        {:ref :overarch.data-model/namespace-is-a-code-model-node}
+        {:ref :overarch.data-model/namespace-contains-code-model-node}
+        {:ref :overarch.data-model/interface-is-a-code-model-node}
         {:ref :overarch.data-model/interface-contains-method}
-        {:ref :overarch.data-model/protocol-is-a-class-model-node}
+        {:ref :overarch.data-model/protocol-is-a-code-model-node}
         {:ref :overarch.data-model/protocol-contains-method}
-        {:ref :overarch.data-model/class-is-a-class-model-node}
-        {:ref :overarch.data-model/field-is-a-class-model-node}
+        {:ref :overarch.data-model/class-is-a-code-model-node}
+        {:ref :overarch.data-model/field-is-a-code-model-node}
         {:ref :overarch.data-model/class-contains-field}
-        {:ref :overarch.data-model/method-is-a-class-model-node}
+        {:ref :overarch.data-model/method-is-a-code-model-node}
         {:ref :overarch.data-model/class-contains-method}
-        {:ref :overarch.data-model/parameter-is-a-class-model-node}
+        {:ref :overarch.data-model/parameter-is-a-code-model-node}
         {:ref :overarch.data-model/method-contains-parameter}
-        {:ref :overarch.data-model/enum-is-a-class-model-node}
+        {:ref :overarch.data-model/enum-is-a-code-model-node}
         {:ref :overarch.data-model/enum-contains-enum-value}
-        {:ref :overarch.data-model/enum-value-is-a-class-model-node}
-        {:ref :overarch.data-model/hierarchy-relation-is-a-class-model-relation}
-        {:ref :overarch.data-model/associative-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/enum-value-is-a-code-model-node}
+        {:ref :overarch.data-model/hierarchy-relation-is-a-code-model-relation}
+        {:ref :overarch.data-model/associative-relation-is-a-code-model-relation}
         {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
         {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
         {:ref :overarch.data-model/composition-is-a-associative-relation}
         {:ref :overarch.data-model/aggregation-is-a-associative-relation}
         {:ref :overarch.data-model/association-is-a-associative-relation}
-        {:ref :overarch.data-model/dependency-is-a-class-model-relation}
+        {:ref :overarch.data-model/dependency-is-a-code-model-relation}
 
         {:ref :overarch.data-model/use-case-model-element-is-a-identifiable-named-element}
         {:ref :overarch.data-model/use-case-model-relation-is-a-relation}
@@ -242,8 +242,8 @@
         {:ref :overarch.data-model/dynamic-view-is-a-architecture-view}
         {:ref :overarch.data-model/deployment-view-is-a-view}
         {:ref :overarch.data-model/deployment-view-contains-deployment-model-element}
-        {:ref :overarch.data-model/class-view-is-a-view}
-        {:ref :overarch.data-model/class-view-contains-class-model-element}
+        {:ref :overarch.data-model/code-view-is-a-view}
+        {:ref :overarch.data-model/code-view-contains-code-model-element}
         {:ref :overarch.data-model/state-machine-view-is-a-view}
         {:ref :overarch.data-model/state-machine-view-contains-state-machine}
         {:ref :overarch.data-model/use-case-view-is-a-view}
@@ -255,7 +255,7 @@
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/architecture-model-elements
 ;   :spec {:layout :left-right}
    :title "Architecture Model Elements"
@@ -325,7 +325,7 @@
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/deployment-model-elements
 ;   :spec {:layout :left-right}
    :title "Deployment Model Elements"
@@ -367,8 +367,8 @@
         ;
         ]}
 
-  {:el :class-view
-   :id :overarch.data-model/class-model-elements
+  {:el :code-view
+   :id :overarch.data-model/code-model-elements
 ;   :spec {:layout :left-right}
    :title "Class Model Elements"
    :ct [;elements
@@ -378,9 +378,9 @@
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/relation}
         {:ref :overarch.data-model/technical-element}
-        {:ref :overarch.data-model/class-model-element}
-        {:ref :overarch.data-model/class-model-node}
-        {:ref :overarch.data-model/class-model-relation}
+        {:ref :overarch.data-model/code-model-element}
+        {:ref :overarch.data-model/code-model-node}
+        {:ref :overarch.data-model/code-model-relation}
 
         {:ref :overarch.data-model/package}
         {:ref :overarch.data-model/namespace}
@@ -406,41 +406,41 @@
         {:ref :overarch.data-model/identifiable-named-element-is-a-named-element}
         {:ref :overarch.data-model/relation-is-a-identifiable-element}
 
-        {:ref :overarch.data-model/class-model-element-is-a-identifiable-named-element}
-        {:ref :overarch.data-model/class-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/class-model-node-is-a-class-model-element}
-        {:ref :overarch.data-model/class-model-relation-is-a-class-model-element}
-        {:ref :overarch.data-model/class-model-relation-is-a-relation}
-        {:ref :overarch.data-model/package-is-a-class-model-node}
-        {:ref :overarch.data-model/package-contains-class-model-node}
-        {:ref :overarch.data-model/namespace-is-a-class-model-node}
-        {:ref :overarch.data-model/namespace-contains-class-model-node}
-        {:ref :overarch.data-model/interface-is-a-class-model-node}
+        {:ref :overarch.data-model/code-model-element-is-a-identifiable-named-element}
+        {:ref :overarch.data-model/code-model-element-is-a-technical-element}
+        {:ref :overarch.data-model/code-model-node-is-a-code-model-element}
+        {:ref :overarch.data-model/code-model-relation-is-a-code-model-element}
+        {:ref :overarch.data-model/code-model-relation-is-a-relation}
+        {:ref :overarch.data-model/package-is-a-code-model-node}
+        {:ref :overarch.data-model/package-contains-code-model-node}
+        {:ref :overarch.data-model/namespace-is-a-code-model-node}
+        {:ref :overarch.data-model/namespace-contains-code-model-node}
+        {:ref :overarch.data-model/interface-is-a-code-model-node}
         {:ref :overarch.data-model/interface-contains-method}
-        {:ref :overarch.data-model/protocol-is-a-class-model-node}
+        {:ref :overarch.data-model/protocol-is-a-code-model-node}
         {:ref :overarch.data-model/protocol-contains-method}
-        {:ref :overarch.data-model/class-is-a-class-model-node}
-        {:ref :overarch.data-model/field-is-a-class-model-node}
+        {:ref :overarch.data-model/class-is-a-code-model-node}
+        {:ref :overarch.data-model/field-is-a-code-model-node}
         {:ref :overarch.data-model/class-contains-field}
-        {:ref :overarch.data-model/method-is-a-class-model-node}
+        {:ref :overarch.data-model/method-is-a-code-model-node}
         {:ref :overarch.data-model/class-contains-method}
-        {:ref :overarch.data-model/parameter-is-a-class-model-node}
+        {:ref :overarch.data-model/parameter-is-a-code-model-node}
         {:ref :overarch.data-model/method-contains-parameter}
-        {:ref :overarch.data-model/enum-is-a-class-model-node}
+        {:ref :overarch.data-model/enum-is-a-code-model-node}
         {:ref :overarch.data-model/enum-contains-enum-value}
-        {:ref :overarch.data-model/enum-value-is-a-class-model-node}
-        {:ref :overarch.data-model/hierarchy-relation-is-a-class-model-relation}
-        {:ref :overarch.data-model/associative-relation-is-a-class-model-relation}
+        {:ref :overarch.data-model/enum-value-is-a-code-model-node}
+        {:ref :overarch.data-model/hierarchy-relation-is-a-code-model-relation}
+        {:ref :overarch.data-model/associative-relation-is-a-code-model-relation}
         {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
         {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
         {:ref :overarch.data-model/composition-is-a-associative-relation}
         {:ref :overarch.data-model/aggregation-is-a-associative-relation}
         {:ref :overarch.data-model/association-is-a-associative-relation}
-        {:ref :overarch.data-model/dependency-is-a-class-model-relation}
+        {:ref :overarch.data-model/dependency-is-a-code-model-relation}
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/use-case-model-elements
 ;   :spec {:layout :left-right}
    :title "Use Case Model Elements"
@@ -485,7 +485,7 @@
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/state-machine-model-elements
 ;   :spec {:layout :left-right}
    :title "State Machine Model Elements"
@@ -536,7 +536,7 @@
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/concept-model-elements
 ;   :spec {:layout :left-right}
    :title "Concept Model Elements"
@@ -584,7 +584,7 @@
         ;
         ]}
 
-  {:el :class-view
+  {:el :code-view
    :id :overarch.data-model/view-model-elements
    :spec {:layout :left-right}
    :title "View Model Elements"
@@ -595,7 +595,7 @@
         {:ref :overarch.data-model/identifiable-named-element}
         {:ref :overarch.data-model/architecture-model-element}
         {:ref :overarch.data-model/deployment-model-element}
-        {:ref :overarch.data-model/class-model-element}
+        {:ref :overarch.data-model/code-model-element}
         {:ref :overarch.data-model/use-case-model-element}
         {:ref :overarch.data-model/state-machine}
         {:ref :overarch.data-model/concept-model-element}
@@ -612,7 +612,7 @@
         {:ref :overarch.data-model/component-view}
         {:ref :overarch.data-model/deployment-view}
         {:ref :overarch.data-model/dynamic-view}
-        {:ref :overarch.data-model/class-view}
+        {:ref :overarch.data-model/code-view}
         {:ref :overarch.data-model/state-machine-view}
         {:ref :overarch.data-model/use-case-view}
         {:ref :overarch.data-model/concept-view}
@@ -635,8 +635,8 @@
         {:ref :overarch.data-model/dynamic-view-is-a-architecture-view}
         {:ref :overarch.data-model/deployment-view-is-a-view}
         {:ref :overarch.data-model/deployment-view-contains-deployment-model-element}
-        {:ref :overarch.data-model/class-view-is-a-view}
-        {:ref :overarch.data-model/class-view-contains-class-model-element}
+        {:ref :overarch.data-model/code-view-is-a-view}
+        {:ref :overarch.data-model/code-view-contains-code-model-element}
         {:ref :overarch.data-model/state-machine-view-is-a-view}
         {:ref :overarch.data-model/state-machine-view-contains-state-machine}
         {:ref :overarch.data-model/use-case-view-is-a-view}

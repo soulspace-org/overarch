@@ -85,7 +85,7 @@
      :to :test/concept3
      :name "is a"}})
 
-(def class-input1
+(def code-input1
   #{{:el :interface
      :id :test/indentifiable-interface
      :name "Identifiable"
@@ -129,7 +129,7 @@
 
 (def c4-model1 (build-model c4-input1))
 (def concept-model1 (build-model concept-input1))
-(def class-model1 (build-model class-input1))
+(def code-model1 (build-model code-input1))
 
 (deftest id->element-test
   (testing "id->elements"
@@ -811,14 +811,14 @@
 ;;
 (deftest superclasses-test
   (testing "superclasses"
-    (are [x y] (= x (superclasses class-model1
-                                  (resolve-id class-model1 y)))
-      #{(resolve-id class-model1 :test/named-class)} :test/system-class
-      #{(resolve-id class-model1 :test/identified-class)} :test/named-class)))
+    (are [x y] (= x (superclasses code-model1
+                                  (resolve-id code-model1 y)))
+      #{(resolve-id code-model1 :test/named-class)} :test/system-class
+      #{(resolve-id code-model1 :test/identified-class)} :test/named-class)))
 
 (deftest interfaces-test
   (testing "interfaces"
-    (are [x y] (= x (interfaces class-model1
-                                  (resolve-id class-model1 y)))
-      #{(resolve-id class-model1 :test/indentifiable-interface)} :test/identified-class)))
+    (are [x y] (= x (interfaces code-model1
+                                  (resolve-id code-model1 y)))
+      #{(resolve-id code-model1 :test/indentifiable-interface)} :test/identified-class)))
 

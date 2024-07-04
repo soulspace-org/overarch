@@ -79,7 +79,7 @@
       (derive :dynamic-view          :c4-view)
       (derive :use-case-view         :uml-view)
       (derive :state-machine-view    :uml-view)
-      (derive :class-view            :uml-view)))
+      (derive :code-view             :uml-view)))
 
 (def linetypes
   "Maps linetype keys to PlantUML C4."
@@ -289,7 +289,7 @@
 (def plantuml-views
   "Contains the views to be rendered with plantuml."
   #{:system-landscape-view :context-view :container-view :component-view
-    :deployment-view :dynamic-view :class-view :use-case-view
+    :deployment-view :dynamic-view :code-view :use-case-view
     :state-machine-view})
 
 (defn plantuml-view?

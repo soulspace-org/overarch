@@ -350,7 +350,7 @@
          (into #{} (referred-xf model #(= :publish (:el %)))))))
 
 ;;
-;; class model
+;; code model
 ;;
 (defn superclasses
   "Returns the set of direct superclasses of the class element `e` in the `model`."

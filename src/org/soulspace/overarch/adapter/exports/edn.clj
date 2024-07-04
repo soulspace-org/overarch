@@ -19,7 +19,7 @@
   "The order of the model elements in a namespace."
   [:concept-model-element :use-case-model-element
    :architecture-model-element :deployment-model-element
-   :class-model-element :state-machine-model-element])
+   :code-model-element :state-machine-model-element])
 
 (defn file-comment
   "File comment."

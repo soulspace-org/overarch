@@ -21,9 +21,9 @@
    :title "Multiline Test Context View"
    :ct [{:ref :test/multiline-system}]}
   
-  {:el :class-view
-   :id :test/multiline-test-class-view
-   :title "Multiline Test Class View"
+  {:el :code-view
+   :id :test/multiline-test-code-view
+   :title "Multiline Test Code View"
    :ct [{:ref :test/multiline-class}]}
   
   ;

@@ -32,10 +32,10 @@
   [e]
   ((isa? el/element-hierarchy (:el e) :architecture-model-element)))
 
-(defn class-model-element?
-  "Returns true if the given element `e` is a class model element."
+(defn code-model-element?
+  "Returns true if the given element `e` is a code model element."
   [e]
-  ((isa? el/element-hierarchy (:el e) :class-model-element)))
+  ((isa? el/element-hierarchy (:el e) :code-model-element)))
 
 (defn concept-model-element?
   "Returns true if the given element `e` is a concept model element."
@@ -163,7 +163,7 @@
   (model/publishers-of model e))
 
 ;;
-;; Class model navigation
+;; Code model navigation
 ;;
 (defn all-fields
   "Returns a sequence of all fields of the given collection of `classes`."
