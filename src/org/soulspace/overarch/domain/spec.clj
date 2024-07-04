@@ -150,19 +150,28 @@
 ;; Criteria for element selection 
 ;;
 ; TODO add missing criteria
+(s/def :overarch/keys? vector?)
+(s/def :overarch/keys vector?)
 (s/def :overarch/els (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/namespace string?) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/from-namespace string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/from-namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/from-namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/to-namespace string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/to-namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/to-namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
 (s/def :overarch/id? boolean?)
 (s/def :overarch/subtype? boolean?)
 (s/def :overarch/subtypes (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch/maturity? boolean?)
 (s/def :overarch/external? boolean?)
 (s/def :overarch/name? boolean?)
 (s/def :overarch/name string?)
 (s/def :overarch/desc? boolean?)
+(s/def :overarch/doc? boolean?)
 (s/def :overarch/tech? boolean?)
-(s/def :overarch/tech string?)
 (s/def :overarch/techs (s/and set? (s/coll-of string?)))
 (s/def :overarch/all-techs (s/and set? (s/coll-of string?)))
 (s/def :overarch/tags? boolean?)
@@ -171,6 +180,10 @@
 (s/def :overarch/all-tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/children? boolean?)
 (s/def :overarch/child? boolean?)
+(s/def :overarch/refers? boolean?)
+(s/def :overarch/referred? boolean?)
+(s/def :overarch/refers-to keyword?)
+(s/def :overarch/referred-by keyword?)
 
 (s/def :overarch/criteria
   (s/keys :opt-un [:overarch/el :overarch/els
