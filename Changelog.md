@@ -3,6 +3,7 @@ Changelog
 
 Version 0.26.0
 --------------
+* changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams
 
 Version 0.25.0
