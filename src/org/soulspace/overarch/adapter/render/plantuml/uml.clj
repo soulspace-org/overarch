@@ -84,7 +84,7 @@
         (puml/alias-name (:from e)) " ."
         (if (:direction e)
           (uml-directions (:direction e))
-          (uml-directions :left))
+          (uml-directions :down))
         ".> "
         (puml/alias-name (:to e)) " : include")])
 
