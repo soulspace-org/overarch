@@ -26,15 +26,18 @@
         ")?"
         "(.*)\\z")))
 
-(defn emit-string [s]
+(defn emit-string
+  [s]
   (print "(print " (pr-str s) ")"))
 
-(defn emit-expr [^String expr]
+(defn emit-expr
+  [^String expr]
   (if (.startsWith expr "=")
     (print "(print (str " (subs expr 1) "))")
     (print expr)))
 
-(defn- parse-string [src]
+(defn- parse-string
+  [src]
   (with-out-str
     (print "(do ")
     (loop [src src]
