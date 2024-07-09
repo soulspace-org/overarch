@@ -88,7 +88,7 @@
   ([engine-key parsed-template data]
    (eval parsed-template data)))
 
-(comment
+(comment ; Comb
   (defn greet-code [x] (print "Hello" x "!"))
 
   (core/eval (read-string "el/technical-architecture-node-types"))
@@ -167,8 +167,7 @@
   ([engine-key parsed-template data]
    (eval-sci parsed-template data)))
 
-(comment
-  ;
+(comment ; Comb SCI
   (sci/eval-string* ctx "\"Hello\"")
   (sci/eval-string* ctx "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"")
   (sci/eval-string (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!") (sci-opts))

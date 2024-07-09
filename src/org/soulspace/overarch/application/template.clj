@@ -267,9 +267,16 @@
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
           parsed-template (parse-template (:engine ctx) template)
           selection (select-elements model ctx)]
-      (if (:per-element ctx)
+      (cond
+        (:per-element ctx)
         (doseq [e selection]
           (generate-artifact-for-selection parsed-template ctx model e))
+        (:per-namespace ctx)
+        (println ":per-namespace is not yet implemented")
+        #_(let [by-ns (group-by el/element-namespace selection)]
+          (doseq [e selection]
+            (generate-artifact-for-selection parsed-template ctx model e)))
+        :else
         (generate-artifact-for-selection parsed-template ctx model selection)))))
 
 (comment
