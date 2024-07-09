@@ -23,6 +23,7 @@
 (s/def :overarch.template/engine keyword?)
 (s/def :overarch.template/encoding string?)
 (s/def :overarch.template/per-element boolean?)
+(s/def :overarch.template/per-namespace boolean?)
 (s/def :overarch.template/path string?)
 (s/def :overarch.template/subdir string?)
 (s/def :overarch.template/namespace-prefix string?)
@@ -45,6 +46,7 @@
                    :overarch.template/engine
                    :overarch.template/encoding
                    :overarch.template/per-element
+                   :overarch.template/per-namespace
                    :overarch.template/path
                    :overarch.template/subdir
                    :overarch.template/namespace-prefix
@@ -257,6 +259,7 @@
     ; write artifact for result
     (write-artifact path result)))
 
+; TODO add :per-namespace
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
