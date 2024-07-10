@@ -170,7 +170,9 @@
 (s/def :overarch/name? boolean?)
 (s/def :overarch/name string?)
 (s/def :overarch/desc? boolean?)
+(s/def :overarch/desc string?)
 (s/def :overarch/doc? boolean?)
+(s/def :overarch/doc string?)
 (s/def :overarch/tech? boolean?)
 (s/def :overarch/techs (s/and set? (s/coll-of string?)))
 (s/def :overarch/all-techs (s/and set? (s/coll-of string?)))
@@ -187,16 +189,23 @@
 
 (s/def :overarch/criteria
   (s/keys :opt-un [:overarch/el :overarch/els
+                   :overarch/keys? :overarch/keys
                    :overarch/namespace :overarch/namespaces :overarch/namespace-prefix
+                   :overarch/from-namespace :overarch/from-namespaces :overarch/from-namespace-prefix
+                   :overarch/to-namespace :overarch/to-namespaces :overarch/to-namespace-prefix
                    :overarch/id? :overarch/id
                    :overarch/subtype? :overarch/subtype :overarch/subtypes
                    :overarch/external?
+                   :overarch/maturity? :overarch/maturity
                    :overarch/name? :overarch/name
-                   :overarch/desc?
+                   :overarch/desc? :overarch/desc
+                   :overarch/doc? :overarch/doc
                    :overarch/tech? :overarch/tech  :overarch/techs :overarch/all-techs
                    :overarch/tags? :overarch/tag :overarch/tags :overarch/all-tags
                    :overarch/children?
-                   :overarch/child?]))
+                   :overarch/child?
+                   :overarch/refers? :overarch/refers-to
+                   :overarch/referred? :overarch/referred-by]))
 
 (s/def :overarch/criteria-vector
   (s/and vector? (s/coll-of :overarch/criteria)))

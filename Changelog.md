@@ -3,7 +3,7 @@ Changelog
 
 Version 0.26.0
 --------------
-* *breaking* renamed `:class-view` to `:code-view`
+* *breaking* renamed `:class-view` to `:code-view` to make it more general
 * renamed class model to code model
 * added `:per-namespace` artifact generation
 * changed default direction for `:include` relations in plantuml rendering of use case views
