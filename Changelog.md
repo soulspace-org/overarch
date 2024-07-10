@@ -5,6 +5,7 @@ Version 0.26.0
 --------------
 * *breaking* renamed `:class-view` to `:code-view`
 * renamed class model to code model
+* added `:per-namespace` artifact generation
 * changed default direction for `:include` relations in plantuml rendering of use case views
 * changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams

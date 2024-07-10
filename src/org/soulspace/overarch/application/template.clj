@@ -247,9 +247,8 @@
 
 (defn generate-artifact-for-selection
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  [parsed-template ctx model e]
-  (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
-        protected-areas (read-protected-areas ctx path)
+  [parsed-template path ctx model e]
+  (let [protected-areas (read-protected-areas ctx path)
         result (apply-template (:engine ctx)
                                parsed-template
                                {:ctx ctx
@@ -259,7 +258,6 @@
     ; write artifact for result
     (write-artifact path result)))
 
-; TODO add :per-namespace
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
@@ -270,17 +268,20 @@
       (cond
         (:per-element ctx)
         (doseq [e selection]
-          (generate-artifact-for-selection parsed-template ctx model e))
+          (let [path (str (artifact-path ctx e) (artifact-filename ctx e))]
+            (generate-artifact-for-selection parsed-template path ctx model e)))
         (:per-namespace ctx)
-        (println ":per-namespace is not yet implemented")
-        #_(let [by-ns (group-by el/element-namespace selection)]
-          (doseq [e selection]
-            (generate-artifact-for-selection parsed-template ctx model e)))
+        (doseq [e (vals (group-by el/element-namespace selection))]
+          ;; build path from first element
+          (let [path (str (artifact-path ctx (first e)) (artifact-filename ctx))]
+            (generate-artifact-for-selection parsed-template path ctx model e)))
         :else
-        (generate-artifact-for-selection parsed-template ctx model selection)))))
+        (let [path (str (artifact-path ctx) (artifact-filename ctx))]
+          (generate-artifact-for-selection parsed-template path ctx model selection))))))
 
 (comment
   (repo/read-models :file "models")
   (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
+  ;
   )

@@ -52,8 +52,6 @@
 ;;;
 ;;; Comb templates evaluated with core.eval
 ;;;
-
-; TODO use parsed source
 (defn compile-fn
   [args parsed]
   (core/eval
