@@ -14,7 +14,10 @@
 (defn view-type
   "Returns the type of the `view`."
   ([view]
-   (:el view))
+   ; TODO deprecate :class-view and remove 
+   (if (= :class-view (:el view))
+     :code-view
+     (:el view)))
   ([model view]
    (view-type view))
   ([model view & _]

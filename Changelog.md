@@ -3,11 +3,13 @@ Changelog
 
 Version 0.26.0
 --------------
-* *breaking* renamed `:class-view` to `:code-view` to make it more general
-* renamed class model to code model
+* *breaking* renamed `:class-view` to `:code-view` for generalization
+  * `:class-view` is still supported to make the transition easier but will be removed in a future version
+* renamed class model to code model for generalization
 * added a `--select-view-references CRITERIA` command line argument
 * added `:per-namespace` artifact generation
 * added `:synthetic?` selection criterium
+* added `:maturities?` selection criterium
 * changed default direction for `:include` relations in plantuml rendering of use case views
 * changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams

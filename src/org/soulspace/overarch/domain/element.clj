@@ -173,7 +173,8 @@
 ;;
 (def uml-view-types
   "The set of UML view types."
-  #{:use-case-view :state-machine-view :code-view})
+  ; TODO deprecate :class-view and remove 
+  #{:use-case-view :state-machine-view :code-view :class-view})
 
 (def use-case-view-element-types
   "Element types of a use case view."
@@ -222,10 +223,11 @@
 
 (def hierarchical-view-types
   "The set of hierarchical view types."
+  ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
     :deployment-view :system-landscape-view
     ;:dynamic-view
-    :state-machine-view :code-view
+    :state-machine-view :code-view :class-view
     :glossary-view})
 
 ;;;
@@ -948,6 +950,11 @@
   "Returns true if the maturity of `e` is equal to `v`."
   [v e]
   (= (keyword v) (:maturity e)))
+
+(defn maturities?
+  "Returns true if the maturity of `e` is contained in `v`."
+  [v e]
+  (contains? v (:maturity e)))
 
 (defn external-check?
   "Returns true if the check for external on `e` equals the boolean value `v`"

@@ -3,7 +3,7 @@
 ;;;;
 
 #{
-  {:el :code-view
+  {:el :class-view
    :id :code/code-view
    :title "Code View"
    :ct [; classes

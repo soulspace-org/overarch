@@ -770,6 +770,7 @@
     (= :subtypes k)              (partial el/subtypes? v)
     (= :maturity? k)             (partial el/maturity-check? v)
     (= :maturity k)              (partial el/maturity? v)
+    (= :maturities k)            (partial el/maturities? v)
     (= :external? k)             (partial el/external-check? v)
     (= :synthetic? k)            (partial el/synthetic-check? v)
     (= :name? k)                 (partial el/name-check? v)
