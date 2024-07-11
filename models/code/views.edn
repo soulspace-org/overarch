@@ -4,17 +4,17 @@
 
 #{
   {:el :code-view
-   :id :class/code-view
+   :id :code/code-view
    :title "Code View"
    :ct [; classes
-        {:ref :class/ishape}
-        {:ref :class/shape}
-        {:ref :class/circle}
-        {:ref :class/square}
+        {:ref :code/ishape}
+        {:ref :code/shape}
+        {:ref :code/circle}
+        {:ref :code/square}
         ; relations
-        {:ref :class/shape-extends-ishape}
-        {:ref :class/circle-extends-shape}
-        {:ref :class/square-extends-shape}
+        {:ref :code/shape-extends-ishape}
+        {:ref :code/circle-extends-shape}
+        {:ref :code/square-extends-shape}
         ]
    }
 }
