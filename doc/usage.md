@@ -153,7 +153,7 @@ Overarch currently supports the following kinds of models
   to model the scope of the system with the supported use cases
 * [Architecture Models](#architecture-model)
   to model the logical architecture of the system with different levels of detail
-* [Class Models](#class-model)
+* [Code Models](#code-model)
   to model the design of the system, e.g. the domain model, and the structure of the implementation
 * [State-Machine Models](#state-machine-model)
   to model relevant states and transitions of the system
@@ -583,25 +583,25 @@ A fork has a single input transition and multiple output transitions.
 To join multiple transitions after a fork a join state is used. A join has multiple input transitions and a single output transition. 
 
 
-## Class Model
+## Code Model
 
-A class model captures the static structure of the code.
+A code model captures the static structure of the code.
 
-The abstraction level of a class model is not very high compared to the actual
-implementation. Therfore modelling and updating a complete class model is not
-of much value. But class models of the domain can be very valuable as a means
+The abstraction level of a code model is not very high compared to the actual
+implementation. Therfore modelling and updating a complete code model is not
+of much value. But code models of the domain can be very valuable as a means
 of communication between domain experts and developers to shape and document
 the domain model for a bounded context.
 
-The elements of the class model are mainly borrowed from the UML class model
+The elements of the code model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
-### Logical Data Model for the Class Model Elements
-![Class Model Elements](/doc/images/overarch/data-model/class-model-elements.svg)
+### Logical Data Model for the Code Model Elements
+![Class Model Elements](/doc/images/overarch/data-model/code-model-elements.svg)
 
 ### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
-of the elements of the class model.
+of the elements of the code model.
 
 Packages and namespaces are treated the same, so use what suits your system best.
 
@@ -791,9 +791,9 @@ goals using this system.
 A state machine view is used to show the different states a component can be in. It also shows the
 transitions between these states based on the input events, the component receives. 
 
-### Class Views
-A class view is used to show the design of parts of the software. You can use it e.g. to model a
-domain and to communicate the model with domain experts.
+### Code Views
+A code view is used to show the design of parts of the software. You can use it
+e.g. to model a domain and to communicate the model with domain experts.
 
 ## Conceptual Views
 Overarch also supports conceptual views as part of the documentation of the
@@ -1000,7 +1000,8 @@ key               | type     | values              | default  | description
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection or on the selection as a whole
+:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection
+:per-namespace    | boolean  | true/false          | false    | Apply  the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
 :namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
 :base-namespace   | string   |                     |          | Base namespace to use as path element
