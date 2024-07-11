@@ -641,7 +641,7 @@
    :tags #{"deployment-model" "relation-hierarchy"}}
 
   ;;
-  ;; Class Model
+  ;; Code Model
   ;;
   {:el :class
    :id :overarch.data-model/typed-node
@@ -721,74 +721,74 @@
    :id :overarch.data-model/code-model-element
    :abstract true
    :name "code-model-element"
-   :desc "An element in a class model."
+   :desc "An element in a code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/code-model-node
    :abstract true
    :name "code-model-node"
-   :desc "A node in the class model."
+   :desc "A node in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/code-model-relation
    :abstract true
    :name "code-model-relation"
-   :desc "A relation in the class model."
+   :desc "A relation in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/package
    :name "package"
-   :desc "A package in the class model.
+   :desc "A package in the code model.
           Packages provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/namespace
    :name "namespace"
-   :desc "A namespace in the class model.
+   :desc "A namespace in the code model.
           Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/interface
    :name "interface"
-   :desc "An interface in the class model.
+   :desc "An interface in the code model.
           An interface defines related methods."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/protocol
    :name "protocol"
-   :desc "A protocol in the class model.
+   :desc "A protocol in the code model.
           A protocol defines related functions."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/class
    :name "class"
-   :desc "A class in the class model."
+   :desc "A class in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/enum
    :name "enum"
-   :desc "An enumeration of typed related values in the class model."
+   :desc "An enumeration of typed related values in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/enum-value
    :name "enum-value"
-   :desc "A value of an enumeration in the class model."
+   :desc "A value of an enumeration in the code model."
    :tags #{"code-model"}}
 
   ;; TODO replace content fields with references to type/optional/visibility nodes
   {:el :class
    :id :overarch.data-model/field
    :name "field"
-   :desc "A field in a class model element."
+   :desc "A field in a code model element."
    :tags #{"code-model"}
    :ct #{{:el :field
           :name "type"
@@ -808,7 +808,7 @@
   {:el :class
    :id :overarch.data-model/function
    :name "function"
-   :desc "A function in the class model."
+   :desc "A function in the code model."
    :tags #{"code-model"}
    :ct #{{:el :field
           :name "visibility"
@@ -830,7 +830,7 @@
   {:el :class
    :id :overarch.data-model/method
    :name "method"
-   :desc "A method in a class model element."
+   :desc "A method in a code model element."
    :tags #{"code-model"}
    :ct #{{:el :field
           :name "visibility"
@@ -850,7 +850,7 @@
   {:el :class
    :id :overarch.data-model/parameter
    :name "parameter"
-   :desc "A parameter in a class model method or function."
+   :desc "A parameter in a code model method or function."
    :tags #{"code-model"}
    :ct [{:el :field
          :name "type"
@@ -865,40 +865,40 @@
   {:el :class
    :id :overarch.data-model/implementation
    :name "implementation"
-   :desc "An implementation relationship between a class and an interface/protocol in the class model."
+   :desc "An implementation relationship between a code and an interface/protocol in the class model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/inheritance
    :name "inheritance"
-   :desc "An inheritance relationship between two classes in the class model."
+   :desc "An inheritance relationship between two classes in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/composition
    :name "composition"
-   :desc "A composition relationship between two classes in the class model."
+   :desc "A composition relationship between two classes in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/aggregation
    :name "aggregation"
-   :desc "A aggregation relationship between two classes in the class model."
+   :desc "A aggregation relationship between two classes in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/association
    :name "association"
-   :desc "A association relationship between two classes in the class model."
+   :desc "A association relationship between two classes in the code model."
    :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/dependency
    :name "dependency"
-   :desc "A dependency relationship between two elements in the class model."
+   :desc "A dependency relationship between two elements in the code model."
    :tags #{"code-model"}}
 
-  ;; Class Model Relations
+  ;; Code Model Relations
   {:el :inheritance
    :id :overarch.data-model/code-model-element-is-a-identifiable-named-element
    :to :overarch.data-model/identifiable-named-element

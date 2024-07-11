@@ -370,7 +370,7 @@
   {:el :code-view
    :id :overarch.data-model/code-model-elements
 ;   :spec {:layout :left-right}
-   :title "Class Model Elements"
+   :title "Code Model Elements"
    :ct [;elements
         {:ref :overarch.data-model/element}
         {:ref :overarch.data-model/identifiable-element}

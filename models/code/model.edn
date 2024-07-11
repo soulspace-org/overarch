@@ -34,7 +34,7 @@
    :id :code/square
    :name "Square"
    :ct [{:el :field
-         :id :class/square-width
+         :id :code/square-width
          :name "width"}]}
 
   ;;
