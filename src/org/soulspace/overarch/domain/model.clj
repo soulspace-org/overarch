@@ -771,6 +771,7 @@
     (= :maturity? k)             (partial el/maturity-check? v)
     (= :maturity k)              (partial el/maturity? v)
     (= :external? k)             (partial el/external-check? v)
+    (= :synthetic? k)            (partial el/synthetic-check? v)
     (= :name? k)                 (partial el/name-check? v)
     (= :name k)                  (partial el/name? v)
     (= :name-prefix k)           (partial el/name-prefix? v)

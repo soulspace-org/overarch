@@ -954,6 +954,11 @@
   [v e]
   (= v (boolean (external? e))))
 
+(defn synthetic-check?
+  "Returns true if the check for synthetic on `e` equals the boolean value `v`"
+  [v e]
+  (= v (boolean (synthetic? e))))
+
 (defn name-check?
   "Returns true if the check for name on `e` equals the boolean value `v`"
   [v e]
