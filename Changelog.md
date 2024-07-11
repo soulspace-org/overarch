@@ -3,8 +3,8 @@ Changelog
 
 Version 0.26.0
 --------------
-* *breaking* renamed `:class-view` to `:code-view` for generalization
-  * `:class-view` is still supported to make the transition easier but will be removed in a future version
+* *attention* renamed `:class-view` to `:code-view` for generalization
+  * `:class-view` is still supported but will be removed in the future
 * renamed class model to code model for generalization
 * added a `--select-view-references CRITERIA` command line argument
 * added `:per-namespace` artifact generation
