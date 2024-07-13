@@ -1,0 +1,44 @@
+<%
+;;;;
+;;;; Documentation Template for a Use Case View
+;;;;
+
+(defn element-link
+  ""
+  ([e]
+  (str "[" "]" "(" ")"))
+  ([ctx e]
+  (str "[" "]" "(" ")")))
+
+(defn use-case-level
+  "Renders the level of the use case `uc`."
+  [uc]
+  (if-let [level (:level uc)]
+    (str/capitalize (name level))
+    "---"))
+
+(let [elements (v/view-elements model e)
+      actors (filter #(and (m/model-node? %) (not= :use-case (:el %))) elements)
+      use-cases (filter #(and (m/model-node? %) (= :use-case (:el %))) elements)]
+%># <%= (:title e)%>
+
+## <%= (:desc e) %>
+
+## Actors
+| Name | Type | Description |
+|---|---|---|
+<%
+  (doseq [actor actors]
+%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> | 
+<%
+  )
+%>
+## Use Cases
+| Name | Level | Description |
+|---|---|---|
+<%
+  (doseq [uc use-cases]
+%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+<%
+  ))
+%>

@@ -1,12 +1,22 @@
 <%
+;;;;
+;;;; Template to list all views
+;;;;
 
+(defn element-link
+  ""
+  ([e]
+  )
+  ([ctx e]
+  )
+  )
 %># Views
 
-| Id | Type | Title |
-|---|---|---| 
+| Id | Type | Title | Description |
+|---|---|---|---|
 <%
 (doseq [view e]
-%>| <%= (:id view) %> | <%= (:el view) %> | <%= (:title view) %> |
+%>| <%= (:id view) %> | <%= (:el view) %> | <%= (:title view) %> | <%= (:desc view) %> |
 <%
 )
 %>
