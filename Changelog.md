@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.27.0
+--------------
+* enhanced documentation templates
+* updated documentation
+
 Version 0.26.0
 --------------
 * *attention* renamed `:class-view` to `:code-view` for generalization
@@ -12,7 +17,6 @@ Version 0.26.0
 * added `:maturities` selection criterium
 * changed default direction for `:include` relations in plantuml rendering of use case views
 * changed keys in model-info result map to more meaningful names
-* enhanced documentation templates
 * updated overarch architecture model and diagrams
 
 Version 0.25.0

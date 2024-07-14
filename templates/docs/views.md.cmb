@@ -6,17 +6,30 @@
 (defn element-link
   ""
   ([e]
+   (str "[" (:name e) "]" "(" ")"))
+  ([e ctx]
+   (str "[" (:name e) "]" "(" ")"))
   )
-  ([ctx e]
-  )
-  )
+
+(let [concept-views (filter #(= :concept-view (:el e)) e)
+      use-case-views (filter #(= :use-case-view (:el e)) e)
+      context-views (filter #(= :context-view (:el e)) e)
+      container-views (filter #(= :container-view (:el e)) e)
+      component-views (filter #(= :component-view (:el e)) e)
+      system-landscape-views (filter #(= :system-landscape-view (:el e)) e)
+      dynamic-views (filter #(= :dynamic-view (:el e)) e)
+      state-machine-views (filter #(= :state-machine-view (:el e)) e)
+      code-views (filter #(= :code-view (:el e)) e)
+      deployment-views (filter #(= :deployment-view (:el e)) e)
+      glossary-views (filter #(= :glossary-view (:el e)) e)]
 %># Views
 
 | Id | Type | Title | Description |
 |---|---|---|---|
 <%
-(doseq [view e]
+  (doseq [view e]
 %>| <%= (:id view) %> | <%= (:el view) %> | <%= (:title view) %> | <%= (:desc view) %> |
 <%
+  )
 )
 %>
