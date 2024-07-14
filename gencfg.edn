@@ -1,7 +1,12 @@
 ;;;;
 ;;;; Generation Config
 ;;;;
-[;; Documentation
+[;;;
+ ;;; Documentation
+ ;;;
+ ;;
+ ;; Model Elements
+ ;;
  {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
   :subdir "docs"
@@ -14,20 +19,32 @@
   :base-namespace "banking"
   :base-name "use-cases"
   :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :concept-view}
-  :template "docs/concept-view.md.cmb"
+ {:selection {:namespace-prefix "banking" :el :person}
+  :template "docs/user-rolls.md.cmb"
   :subdir "docs"
-  :per-element true
-  :id-as-name true
+  :base-namespace "banking"
+  :base-name "user-rolls"
   :extension "md"}
+
+ ;;
+ ;; Views
+ ;; 
  {:view-selection {:namespace-prefix "banking"}
   :template "docs/views.md.cmb"
   :subdir "docs"
   :base-namespace "banking"
   :base-name "views"
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :concept-view}
+  :template "docs/concept-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
 
- ;; Reports
+ ;;;
+ ;;; Reports
+ ;;;
  {:selection {:namespace-prefix "banking"}
   :template "reports/node-report.md.cmb"
   :title "Banking Model Report"
