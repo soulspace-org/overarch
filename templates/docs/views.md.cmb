@@ -4,11 +4,12 @@
 ;;;;
 
 (defn element-link
-  ""
+  "Renders a link for the element."
   ([e]
-   (str "[" (:name e) "]" "(" ")"))
+   (element-link e ctx))
   ([e ctx]
-   (str "[" (:name e) "]" "(" ")"))
+   (str "[" (:name e) "]"
+        "(" ")"))
   )
 
 (let [concept-views (filter #(= :concept-view (:el e)) e)
@@ -22,14 +23,108 @@
       code-views (filter #(= :code-view (:el e)) e)
       deployment-views (filter #(= :deployment-view (:el e)) e)
       glossary-views (filter #(= :glossary-view (:el e)) e)]
-%># Views
+%># List of Views
 
-| Id | Type | Title | Description |
-|---|---|---|---|
 <%
-  (doseq [view e]
-%>| <%= (:id view) %> | <%= (:el view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+  (when (seq concept-views)
+%>## Concept Views
+| Id | Title | Description |
+|---|---|---|
 <%
-  )
+    (doseq [view concept-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq use-case-views)
+%>## Use Case Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view use-case-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq context-views)
+%>## System Context Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view context-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq container-views)
+%>## Container Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view container-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq component-views)
+%>## Component Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view component-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq system-landscape-views)
+%>## System Landscape Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view system-landscape-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq dynamic-views)
+%>## Dynamic Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view dynamic-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq state-machine-views)
+%>## State Machine Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view state-machine-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq code-views)
+%>## Code Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view code-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
+  (when (seq glossary-views)
+%>## Glossary Views
+| Id | Title | Description |
+|---|---|---|
+<%
+    (doseq [view glossary-views]
+%>| <%= (:id view) %> | <%= (:title view) %> | <%= (:desc view) %> |
+<%
+    ))
+
 )
 %>
