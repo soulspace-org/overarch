@@ -5,7 +5,9 @@
 
 (let [elements (v/view-elements model e)
       nodes (filter #(= :node (:el %)) elements)
-      links (filter #(= :link (:el %)) elements)]
+      containers (filter #(= :container (:el %)) elements)
+      links (filter #(= :link (:el %)) elements)
+      ]
 %># <%= (:title e)%>
 
 ## Description
@@ -19,6 +21,17 @@
 %>| <%= (:name node) %> | <%= (:tech node) %> | <%= (:desc node) %> |
 <%
   )
+
+  (when (seq containers) 
+%>
+## Containers
+| Name | Technology | Description |
+|---|---|---|
+<%
+    (doseq [container (sort-by #(str/capitalize (:name %)) containers)]
+%>| <%= (:name container) %> | <%= (:tech container) %> | <%= (:desc container) %> |
+<%
+    ))
 
   (when (seq links) 
 %>
