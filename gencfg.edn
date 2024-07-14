@@ -41,6 +41,30 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :use-case-view}
+  :template "docs/use-case-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :context-view}
+  :template "docs/context-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :container-view}
+  :template "docs/container-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :component-view}
+  :template "docs/component-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
 
  ;;;
  ;;; Reports
