@@ -76,6 +76,13 @@
   :base-name "banking-report"
   :extension "md"}
 
+ {:selection {:namespace-prefix "banking" :el :system}
+  :template "reports/node-report.md.cmb"
+  :title "Banking Systems Report"
+  :base-namespace "reports"
+  :base-name "banking-systems-report"
+  :extension "md"}
+
  {:selection {:namespace-prefix "overarch"}
   :template "reports/node-report.md.cmb"
   :title "Overarch Model Report"
