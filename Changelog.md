@@ -3,7 +3,7 @@ Changelog
 
 Version 0.27.0
 --------------
-* enhanced documentation templates
+* enhanced documentation templates and generation config
 * updated documentation
 
 Version 0.26.0
