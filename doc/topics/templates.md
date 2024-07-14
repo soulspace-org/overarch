@@ -46,7 +46,10 @@ Templates can also be applied on views selected by criteria with the
 even if there is only one view selected. So use the :per-element key to enable
 the generation on a view level.
 
-### Example config file
+### Example Templates
+Some example templates can be found in the [templates](/templates) folder.
+
+### Example Generation Config File
 ```clojure
 [;; Report for all systems in the banking namespace
  {:selection {:namespace "banking" :el :system} ; selection criteria for the model elements
@@ -103,14 +106,11 @@ java -jar overarch.jar -g gencfg.edn
 ```
 
 ## Comb Template Engine
-Overarch incorporates the [Comb](https://github.com/weavejester/comb)
-template engine by James Reeves.
+Overarch uses the [Comb](https://github.com/weavejester/comb)
+template syntax by James Reeves.
 
 Comb is a simple templating system for Clojure. You can use Comb to embed
 fragments of Clojure code into a text file.
-
-### Example Templates
-Some example templates can be found in the [templates](/templates) folder.
 
 ### Syntax
 Clojure fragments in a template are demarkated with `<%` and `%>`.
@@ -132,7 +132,11 @@ Result:
 
 #### Control structures
 ```clojure
-foo<% (dotimes [x 3] %> bar<%) %>
+foo<%
+(dotimes [x 3]
+%> bar<%
+)
+%>
 ```
 Result:
 ```
@@ -141,8 +145,8 @@ foo bar bar bar
 
 ### API for Templates
 In the comb templates you can use most of the functions of the clojure.core
-namespace. Additionally the functions of clojure.set and clojure.string are provided under
-the aliases `set` and `str`, e.g. `set/union` or `str/join`.
+namespace. Additionally the functions of clojure.set and clojure.string are
+provided under the aliases `set` and `str`, e.g. `set/union` or `str/join`.
 
 Overarch also provides functions to query and navigate the model under the
 `m` alias, e.g. `m/resolve-element`.
