@@ -65,6 +65,42 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :system-landscape-view}
+  :template "docs/system-landscape-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :dynamic-view}
+  :template "docs/dynamic-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :state-machine-view}
+  :template "docs/state-machine-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :code-view}
+  :template "docs/code-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :deployment-view}
+  :template "docs/deployment-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :glossary-view}
+  :template "docs/glossary-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
 
  ;;;
  ;;; Reports

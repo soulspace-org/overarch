@@ -3,9 +3,13 @@
 ;;;; Documentation Template for a Deployment View
 ;;;;
 
-(let [elements (v/view-elements model e)]
+(let [elements (v/view-elements model e)
+      nodes (filter #(= :node (:el %)) elements)
+      links (filter #(= :link (:el %)) elements)]
 %># <%= (:title e)%>
 
+## Description
+<%= (:desc e) %>
 <%
 )
 %>

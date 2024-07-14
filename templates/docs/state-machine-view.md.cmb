@@ -8,7 +8,8 @@
       transitions (filter #(and (m/model-relation? %) (= :transition (:el %))))]
 %># <%= (:title e) %>
 
-## <%= (:desc e) %>
+## Description
+<%= (:desc e) %>
 
 ## States
 | Name | Type | Description |

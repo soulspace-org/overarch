@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Documentation Template for a Dynamic View
+;;;; Documentation Template for a Glossary View
 ;;;;
 
 (let [elements (v/view-elements model e)]
@@ -9,9 +9,6 @@
 ## Description
 <%= (:desc e) %>
 
-## Node Elements
-
-## Steps
 <%
 )
 %>

@@ -22,7 +22,8 @@
       use-cases (filter #(and (m/model-node? %) (= :use-case (:el %))) elements)]
 %># <%= (:title e)%>
 
-## <%= (:desc e) %>
+## Description
+<%= (:desc e) %>
 
 ## Actors
 | Name | Type | Description |

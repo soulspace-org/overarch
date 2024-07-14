@@ -6,6 +6,8 @@
 (let [elements (v/view-elements model e)]
 %># <%= (:title e)%>
 
+## Description
+<%= (:desc e) %>
 <%
 )
 %>
