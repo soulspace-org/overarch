@@ -20,10 +20,10 @@
   :base-name "use-cases"
   :extension "md"}
  {:selection {:namespace-prefix "banking" :el :person}
-  :template "docs/user-rolls.md.cmb"
+  :template "docs/user-roles.md.cmb"
   :subdir "docs"
   :base-namespace "banking"
-  :base-name "user-rolls"
+  :base-name "user-roles"
   :extension "md"}
 
  ;;

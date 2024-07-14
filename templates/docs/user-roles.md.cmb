@@ -3,7 +3,7 @@
 ;;;; Documentation Template for a Collection of Persons (User Roles)
 ;;;;
 
-(let [roles (filter #(= el :person (:el %)) e)]
+(let [roles (filter #(= :person (:el %)) e)]
 %># User Roles
 
 | User Role | Description |
