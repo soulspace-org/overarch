@@ -9,9 +9,10 @@ Version 0.26.0
 * added a `--select-view-references CRITERIA` command line argument
 * added `:per-namespace` artifact generation
 * added `:synthetic?` selection criterium
-* added `:maturities?` selection criterium
+* added `:maturities` selection criterium
 * changed default direction for `:include` relations in plantuml rendering of use case views
 * changed keys in model-info result map to more meaningful names
+* enhanced documentation templates
 * updated overarch architecture model and diagrams
 
 Version 0.25.0

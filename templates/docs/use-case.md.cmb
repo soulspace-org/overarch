@@ -10,9 +10,63 @@
     (str/capitalize (name level))
     "---"))
 
+(let [actors nil
+      supporting-actors nil
+      included nil
+      extensions nil]
 %># Use Case <%= (:name e) %>
 ## Level
 <%= (use-case-level e) %>
 
 ## Description
 <%= (:desc e) %>
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq actors)
+%>## Actors
+| Name | Type | Description |
+|---|---|---|
+<%
+  (doseq [actor actors]
+%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+<%
+  ))
+
+  (when (seq supporting-actors)
+%>## Supporting Actors
+| Name | Type | Description |
+|---|---|---|
+<%
+  (doseq [actor supporting-actors]
+%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+<%
+  ))
+
+  (when (seq included)
+%>## Included Use Cases
+| Name | Level | Description |
+|---|---|---|
+<%
+  (doseq [uc included]
+%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+<%
+  ))
+
+  (when (seq extensions)
+%>## Extension Use Cases
+| Name | Level | Description |
+|---|---|---|
+<%
+  (doseq [uc extensions]
+%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+<%
+  ))
+%>
+<%
+)
+%>
