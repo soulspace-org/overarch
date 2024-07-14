@@ -10,6 +10,28 @@
 
 ## Description
 <%= (:desc e) %>
+
+## Nodes
+| Name | Technology | Description |
+|---|---|---|
+<%
+  (doseq [node (sort-by #(str/capitalize (:name %)) nodes)]
+%>| <%= (:name node) %> | <%= (:tech node) %> | <%= (:desc node) %> |
+<%
+  )
+
+  (when (seq links) 
+%>
+## Links
+| Name | From | To | Technology | Description |
+|---|---|---|---|---|
+<%
+    (doseq [link (sort-by #(str/capitalize (:name %)) links)]
+%>| <%= (:name link) %> | <%= (m/from-name (:from link)) %> | <%= (m/to-name (:to link)) %> | <%= (:tech link) %> | <%= (:desc link) %> |
+<%
+    ))
+%>
+## Deployments
 <%
 )
 %>
