@@ -1,0 +1,11 @@
+<%
+;;;;
+;;;; Documentation Template for a System Landscape View
+;;;;
+
+(let [elements (v/view-elements model e)]
+%># <%= (:title e)%>
+
+<%
+)
+%>
