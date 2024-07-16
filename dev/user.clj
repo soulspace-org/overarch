@@ -61,7 +61,7 @@
   (->> topic-docs
        (mapv #(slurp (str "doc/topics/" % ".md")))
        (str/join "\n")
-       (spit "generated/usage.md")))
+       (spit "doc/usage.md")))
 
 (comment
   (compile-usage-doc)
