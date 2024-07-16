@@ -82,7 +82,9 @@
   ([ttype & r]
    ttype))
 
-(defn read-source [source]
+(defn read-source
+  "Reads the `source` as string or file."
+  [source]
   (if (string? source)
     source
     (slurp source)))
@@ -255,6 +257,7 @@
                                 :e e
                                 :model model
                                 :protected-areas protected-areas})]
+    ; TODO handle backups
     ; write artifact for result
     (write-artifact path result)))
 
