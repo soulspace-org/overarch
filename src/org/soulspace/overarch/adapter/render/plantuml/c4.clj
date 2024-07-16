@@ -71,7 +71,6 @@
 ;;;
 ;;; Rendering
 ;;;
-
 (defmethod puml/render-c4-element :boundary
   [model view indent e]
   (if (seq (:ct e))
@@ -272,7 +271,6 @@
 ;;
 ;; C4 Imports
 ;;
-
 (defn render-c4-imports
   "Renders the imports for the diagram."
   [view]
@@ -285,7 +283,6 @@
 ;;;
 ;;; Diagram Styles
 ;;;
-
 (def c4-styles-hierarchy
   "Hierarchy for style methods."
   (-> (make-hierarchy)
@@ -330,7 +327,6 @@
 ;;;
 ;;; Diagram Layout
 ;;;
-
 (defn render-c4-layout
   "Renders the layout for the C4 diagram."
   [model view]
@@ -376,5 +372,3 @@
               (map #(puml/render-c4-element model view 0 %) rendered)
               (render-c4-legend view)
               "@enduml"])))
-
-

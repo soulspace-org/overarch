@@ -255,13 +255,6 @@
         (recur (parent model p)))
       false)))
 
-; TODO remove, if other implementation works
-#_(defn descendant-nodes
-  "Returns the set of descendants of the node `e`."
-  [model e]
-  (when (el/model-node? (resolve-element model e))
-    (traverse-with-model model el/model-node? el/tree->set (:ct e))))
-
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
@@ -321,7 +314,7 @@
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
-(defn requests-in
+(defn requests-incoming
   "Returns the requests relations issued by client `e` in the `model`."
   [model e]
   (->> e
@@ -329,7 +322,7 @@
        (get (:referrer-id->relations model))
        (filter #(= :request (:el %)))))
 
-(defn requests-out
+(defn requests-outgoing
   "Returns the requests relations served by service `e` in the `model`."
   [model e]
   (->> e
@@ -337,7 +330,15 @@
        (get (:referred-id->relations model))
        (filter #(= :request (:el %)))))
 
-(defn responses-out
+(defn responses-incoming
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :response (:el %)))))
+
+(defn responses-outgoing
   "Returns the requests relations served by service `e` in the `model`."
   [model e]
   (->> e
@@ -345,7 +346,23 @@
        (get (:referrer-id->relations model))
        (filter #(= :response (:el %)))))
 
-(defn published
+(defn sends-incoming
+  "Returns the send relations of receiver `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :publish (:el %)))))
+
+(defn sends-outgoing
+  "Returns the send relations of sender `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :publish (:el %)))))
+
+(defn publishes-incoming
   "Returns the publish relations of `e` in the `model`."
   [model e]
   (->> e
@@ -353,7 +370,15 @@
        (get (:referrer-id->relations model))
        (filter #(= :publish (:el %)))))
 
-(defn subscribed
+(defn publishes-outgoing
+  "Returns the publish relations of `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :publish (:el %)))))
+
+(defn subscribes-incoming
   "Returns the subscribe relations of `e` in the `model`."
   [model e]
   (->> e
@@ -361,7 +386,15 @@
        (get (:referrer-id->relations model))
        (filter #(= :subscribe (:el %)))))
 
-(defn dataflow-in
+(defn subscribes-outgoing
+  "Returns the subscribe relations of `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :subscribe (:el %)))))
+
+(defn dataflows-incoming
   "Returns the incoming dataflow relations served by service `e` in the `model`."
   [model e]
   (->> e
@@ -369,7 +402,7 @@
        (get (:referred-id->relations model))
        (filter #(= :dataflow (:el %)))))
 
-(defn dataflow-out
+(defn dataflows-outgoing
   "Returns the outgoing dataflow relations of `e` in the `model`."
   [model e]
   (->> e
