@@ -30,73 +30,73 @@
  ;; Views
  ;; 
  {:view-selection {:namespace-prefix "banking"}
-  :template "docs/views.md.cmb"
+  :template "docs/views/views.md.cmb"
   :subdir "docs"
   :base-namespace "banking"
   :base-name "views"
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :concept-view}
-  :template "docs/concept-view.md.cmb"
+  :template "docs/views/concept-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :use-case-view}
-  :template "docs/use-case-view.md.cmb"
+  :template "docs/views/use-case-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :context-view}
-  :template "docs/context-view.md.cmb"
+  :template "docs/views/context-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :container-view}
-  :template "docs/container-view.md.cmb"
+  :template "docs/views/container-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :component-view}
-  :template "docs/component-view.md.cmb"
+  :template "docs/views/component-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :system-landscape-view}
-  :template "docs/system-landscape-view.md.cmb"
+  :template "docs/views/system-landscape-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :dynamic-view}
-  :template "docs/dynamic-view.md.cmb"
+  :template "docs/views/dynamic-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :state-machine-view}
-  :template "docs/state-machine-view.md.cmb"
+  :template "docs/views/state-machine-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :code-view}
-  :template "docs/code-view.md.cmb"
+  :template "docs/views/code-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :deployment-view}
-  :template "docs/deployment-view.md.cmb"
+  :template "docs/views/deployment-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :glossary-view}
-  :template "docs/glossary-view.md.cmb"
+  :template "docs/views/glossary-view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
