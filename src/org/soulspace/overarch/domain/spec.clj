@@ -21,7 +21,7 @@
 ;(s/def :overarch/sprite string?)
 (s/def :overarch/from keyword?)
 (s/def :overarch/to keyword?)
-(s/def :overarch/direction keyword?)
+(s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags set?)    ; check
 ; (s/def :overarch/type string?) ; check
