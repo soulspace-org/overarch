@@ -4,6 +4,7 @@ Changelog
 Version 0.27.0
 --------------
 * enhanced documentation templates and generation config
+* updated use case model
 * updated documentation
 
 Version 0.26.0
