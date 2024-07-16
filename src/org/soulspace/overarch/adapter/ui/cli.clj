@@ -270,7 +270,7 @@
       ; handle options and generate the requested outputs
       (handle options))))
 
-(comment ; State
+(comment ; state
   (update-and-dispatch! {:model-dir "models"
                          :export-dir "export"
                          :render-dir "export"
@@ -283,7 +283,7 @@
   )
 
 
-(comment ; Model analytics 
+(comment ; model analytics 
   (al/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
   (al/count-elements-per-type (concat (repo/nodes) (repo/relations)))
   (al/count-nodes-per-type (repo/nodes))
@@ -304,11 +304,18 @@
   (el/elements-by-namespace (repo/nodes))
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
-  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+
   ;
   )
 
-(comment ; Selection  
+(comment ; model navigation 
+  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/requests (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/requested (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  ;
+  )
+
+(comment ; selections
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))

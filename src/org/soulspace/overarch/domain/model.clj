@@ -321,6 +321,62 @@
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
+(defn requests-in
+  "Returns the requests relations issued by client `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :request (:el %)))))
+
+(defn requests-out
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :request (:el %)))))
+
+(defn responses-out
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :response (:el %)))))
+
+(defn published
+  "Returns the publish relations of `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :publish (:el %)))))
+
+(defn subscribed
+  "Returns the subscribe relations of `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :subscribe (:el %)))))
+
+(defn dataflow-in
+  "Returns the incoming dataflow relations served by service `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referred-id->relations model))
+       (filter #(= :dataflow (:el %)))))
+
+(defn dataflow-out
+  "Returns the outgoing dataflow relations of `e` in the `model`."
+  [model e]
+  (->> e
+       (:id)
+       (get (:referrer-id->relations model))
+       (filter #(= :dataflow (:el %)))))
+
 (defn subscribers-of
   "Returns the subscribers of the queue or publish relation `e` in the `model`."
   [model e]

@@ -152,6 +152,16 @@
 ;;
 ;; Architecture Model navigation
 ;;
+(defn published
+  "Returns the publish relations of `e` in the `model`."
+  [model e]
+  (model/published model e))
+
+(defn subscribed
+  "Returns the subscribe relations of `e` in the `model`."
+  [model e]
+  (model/subscribed model e))
+
 (defn subscribers-of
   "Returns the subscribers of the queue or publish relation `e` in the `model`."
   [model e]

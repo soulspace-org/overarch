@@ -3,6 +3,7 @@ Changelog
 
 Version 0.27.0
 --------------
+* added architecture model navigation functions
 * enhanced documentation templates and generation config
 * updated use case model
 * updated documentation
