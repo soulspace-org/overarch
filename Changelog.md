@@ -1,6 +1,9 @@
 Changelog
 =========
 
+Version 0.28.0
+--------------
+
 Version 0.27.0
 --------------
 * added architecture model navigation functions
