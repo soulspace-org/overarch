@@ -24,11 +24,10 @@
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags set?)    ; check
+(s/def :overarch/link (s/or keyword? string?))
 ; (s/def :overarch/type string?) ; check
 ; (s/def :overarch/index int?)   ; check
 ; (s/def :overarch/href string?) ; TODO url?
-; (s/def :overarch/link
-;  (s/keys :req-un [:overarch/name :overarch/href]))
 
 (s/def :overarch/ct
   (s/coll-of
@@ -56,7 +55,7 @@
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
-          :opt-un [:overarch/external :overarch/direction :overarch/constraint]))
+          :opt-un [:overarch/external :overarch/direction :overarch/constraint :overarch/link]))
 
 (s/def :overarch/identifiable
   (s/keys :req-un [:overarch/id]))
