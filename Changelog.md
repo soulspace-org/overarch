@@ -3,6 +3,7 @@ Changelog
 
 Version 0.28.0
 --------------
+* fixed direction of requests navigation functions
 
 Version 0.27.0
 --------------
