@@ -319,7 +319,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referrer-id->relations model))
+       (get (:referred-id->relations model))
        (filter #(= :request (:el %)))))
 
 (defn requests-outgoing
@@ -327,7 +327,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referred-id->relations model))
+       (get (:referrer-id->relations model))
        (filter #(= :request (:el %)))))
 
 (defn responses-incoming
