@@ -218,14 +218,14 @@
 ;;; Schema functions
 ;;;
 (defn check-input-model
-  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
-  [input-model]
-  (if (s/valid? :overarch/input-model input-model)
-    input-model
-    (expound/expound :overarch/input-model input-model {:print-specs? false})))
+  "Checks the `input model` against its specification. If valid returns the input-model, otherwise returns the validation errors."
+  ([input-model]
+   (if (s/valid? :overarch/input-model input-model)
+     input-model
+     (expound/expound :overarch/input-model input-model {:print-specs? false}))))
 
 (defn check-selection-criteria
-  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
+  "Checks the `selection criteria` against its specification. If valid returns the selection-criteria, otherwise returns the validation errors."
   [selection-criteria]
   (if (s/valid? :overarch/selection-criteria selection-criteria)
    selection-criteria
