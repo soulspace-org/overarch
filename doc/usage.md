@@ -154,7 +154,8 @@ Overarch currently supports the following kinds of models
 * [Architecture Models](#architecture-model)
   to model the logical architecture of the system with different levels of detail
 * [Code Models](#code-model)
-  to model the design of the system, e.g. the domain model, and the structure of the implementation
+  to model the design of the system, e.g. the domain model, and the structure of
+  the implementation
 * [State-Machine Models](#state-machine-model)
   to model relevant states and transitions of the system
 * [Deployment Models](#deployment-model)
@@ -194,19 +195,22 @@ string"
 Keywords are used as keys in the maps for model elements and views. They are also
 used as identifiers for model elements and views.
 
-Keywords start with a colon (':'), have an optional namespace followed by a
-slash ('/') and a mandatory name, e.g. :namespace/name.
+Keywords start with a colon (`:`), have an optional namespace followed by a
+slash (`/`) and a mandatory name, e.g. `:namespace/name`.
 
 Keywords should be prefixed with a namespace to avoid collisions with keywords for
 other models, which is especially relevant for identifiers or for custom keys
-in the model elements and views.
+in the model elements and views. Namespaces may have different parts, separated
+by a period (`.`), e.g. `:org.soulspace/overarch`.
 
 ```clojure
 :keyword
 :namespaced/keyword
+:my.namespaced/keyword
 ```
 
-*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch. Please use your own prefix if you want to add custom information to the maps in the model.*
+*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch.
+ Please use your own prefix if you want to add custom information to the maps in the model.*
 
 ### Sets
 Sets are unordered collections of elements without duplicates. They are used as
@@ -1015,6 +1019,7 @@ key               | type     | values              | default  | description
 :id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
 :id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
 :protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
+:debug            | boolean  | true/false          | false    | Print parsed template on error
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
