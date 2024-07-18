@@ -134,9 +134,8 @@
 (def ctx (sci/init sci-opts))
 
 (defn eval-sci
-  "Evaluate a template using the supplied bindings. The template source may
-  be a string, or an I/O source such as a File, Reader or InputStream."
-  ([parsed data]
+  "Evaluate a `parsed-template` using the supplied `data` bindings."
+  ([parsed-template data]
    (let [e (:e data)
          ctx (:ctx data)
          model (:model data)
@@ -148,12 +147,16 @@
                                                                 'e e
                                                                 'view view}})]
      (try
-       (sci/with-out-str (sci/eval-string parsed opts))
+       (sci/with-out-str (sci/eval-string parsed-template opts))
        (catch Exception e
          (println "Exception while generating for template" (:template ctx))
          (println (ex-message e))
          (println (ex-data e))
-         (println (ex-cause e)))))))
+         (when (:debug ctx)
+           (println "Parsed Template: ")
+           (println parsed-template))
+         ;(println (ex-cause e))
+         )))))
 
 (defmethod t/parse-template :combsci
   ([engine-key template]
