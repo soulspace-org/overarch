@@ -3,6 +3,10 @@ Changelog
 
 Version 0.28.0
 --------------
+* added `:link` attribute to be used on refs in views
+  * value can be a URL or a keyword as key to a property containing a URL 
+  * see [discussion](https://github.com/soulspace-org/overarch/discussions/27)
+* added link generation for PlantUML C4 diagrams
 * fixed direction of requests navigation functions
 
 Version 0.27.0
