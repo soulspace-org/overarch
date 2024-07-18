@@ -367,7 +367,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referrer-id->relations model))
+       (get (:referred-id->relations model))
        (filter #(= :publish (:el %)))))
 
 (defn publishes-outgoing
@@ -375,7 +375,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referred-id->relations model))
+       (get (:referrer-id->relations model))
        (filter #(= :publish (:el %)))))
 
 (defn subscribes-incoming
@@ -383,7 +383,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referrer-id->relations model))
+       (get (:referred-id->relations model))
        (filter #(= :subscribe (:el %)))))
 
 (defn subscribes-outgoing
@@ -391,7 +391,7 @@
   [model e]
   (->> e
        (:id)
-       (get (:referred-id->relations model))
+       (get (:referrer-id->relations model))
        (filter #(= :subscribe (:el %)))))
 
 (defn dataflows-incoming
