@@ -352,7 +352,7 @@
   (->> e
        (:id)
        (get (:referred-id->relations model))
-       (filter #(= :publish (:el %)))))
+       (filter #(= :sends (:el %)))))
 
 (defn sends-outgoing
   "Returns the send relations of sender `e` in the `model`."
@@ -360,7 +360,7 @@
   (->> e
        (:id)
        (get (:referrer-id->relations model))
-       (filter #(= :publish (:el %)))))
+       (filter #(= :sends (:el %)))))
 
 (defn publishes-incoming
   "Returns the publish relations of `e` in the `model`."

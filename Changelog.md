@@ -8,6 +8,7 @@ Version 0.28.0
   * see [discussion](https://github.com/soulspace-org/overarch/discussions/27)
 * added link generation for PlantUML C4 diagrams
 * fixed direction of requests navigation functions
+* fixed relation type for sends navigation functions
 
 Version 0.27.0
 --------------
