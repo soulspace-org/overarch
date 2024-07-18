@@ -53,6 +53,7 @@
    ["-s" "--select-elements CRITERIA" "Select and print model elements by criteria" :parse-fn edn/read-string]
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
    [nil  "--select-views CRITERIA" "Select and print views by criteria" :parse-fn edn/read-string]
+   [nil  "--select-view-references CRITERIA" "Select views by criteria and print as references" :parse-fn edn/read-string]
    ["-T" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
@@ -149,21 +150,19 @@
    ;:unnamed (al/unnamed-elements (repo/elements))
    ;:unrelated (al/unrelated-nodes (repo/elements))
    
-
 (defn model-info
   "Reports information about the model and views."
   [model options]
-  {:nodes           (count (repo/nodes))
-   :nodes-types     (al/count-nodes-per-type (repo/nodes))
-   :relations       (count (repo/relations))
-   :relations-types (al/count-relations-per-type (repo/relations))
-   :views           (count (repo/views))
-   :views-types     (al/count-views-per-type (repo/views))
-   :namespaces      (al/count-elements-per-namespace (repo/model-elements))
-   :external        (al/count-external (repo/model-elements))
-   :synthetic       (al/count-synthetic (repo/model-elements))})
+  {:nodes-count                 (count (repo/nodes))
+   :nodes-by-type-count         (al/count-nodes-per-type (repo/nodes))
+   :relations-count             (count (repo/relations))
+   :relations-by-type-count     (al/count-relations-per-type (repo/relations))
+   :views-count                 (count (repo/views))
+   :views-by-type-count         (al/count-views-per-type (repo/views))
+   :elements-by-namespace-count (al/count-elements-per-namespace (repo/model-elements))
+   :external-count              (al/count-external (repo/model-elements))
+   :synthetic-count             (al/count-synthetic (repo/model-elements))})
    
-
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
   ([]
@@ -185,7 +184,7 @@
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
     (into []
           (comp (model/filter-xf @repo/state criteria)
-                   (map el/element->ref))
+                (map el/element->ref))
           (repo/model-elements))))
 
 (defn select-views
@@ -193,6 +192,14 @@
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-views options))]
     (into #{} (model/filter-xf @repo/state criteria)
+          (repo/views))))
+
+(defn select-view-references
+  "Returns references to the views selected by criteria specified in the `options`."
+  [options]
+  (when-let [criteria (spec/check-selection-criteria (:select-view-references options))]
+    (into [] (comp (model/filter-xf @repo/state criteria)
+                   (map el/element->ref))
           (repo/views))))
 
 (defn dispatch
@@ -213,6 +220,9 @@
   (when (:select-views options)
     (println "Selected Views for" (:select-views options))
     (pp/pprint (select-views options)))
+  (when (:select-view-references options)
+    (println "Selected Views for" (:select-view-references options))
+    (pp/pprint (select-view-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
@@ -260,7 +270,7 @@
       ; handle options and generate the requested outputs
       (handle options))))
 
-(comment ; State
+(comment ; state
   (update-and-dispatch! {:model-dir "models"
                          :export-dir "export"
                          :render-dir "export"
@@ -273,7 +283,7 @@
   )
 
 
-(comment ; Model analytics 
+(comment ; model analytics 
   (al/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
   (al/count-elements-per-type (concat (repo/nodes) (repo/relations)))
   (al/count-nodes-per-type (repo/nodes))
@@ -294,11 +304,18 @@
   (el/elements-by-namespace (repo/nodes))
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
-  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+
   ;
   )
 
-(comment ; Selection  
+(comment ; model navigation 
+  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/requests (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/requested (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  ;
+  )
+
+(comment ; selections
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
   (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))

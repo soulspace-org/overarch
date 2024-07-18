@@ -641,14 +641,14 @@
    :tags #{"deployment-model" "relation-hierarchy"}}
 
   ;;
-  ;; Class Model
+  ;; Code Model
   ;;
   {:el :class
    :id :overarch.data-model/typed-node
    :abscract true
    :name "typed-node"
    :desc "A node which may have a type field."
-   :tags #{"class-model" "type-hierarchy"}
+   :tags #{"code-model" "type-hierarchy"}
    :ct #{{:el :field
           :name "type"
           :type "string"
@@ -660,7 +660,7 @@
    :abscract true
    :name "optional-node"
    :desc "A node which may have an optional field."
-   :tags #{"class-model" "type-hierarchy"}
+   :tags #{"code-model" "type-hierarchy"}
    :ct #{{:el :field
           :name "optional"
           :type "boolean"
@@ -672,7 +672,7 @@
    :abscract true
    :name "visibility-node"
    :desc "A node which may have a visibility field."
-   :tags #{"class-model" "type-hierarchy"}
+   :tags #{"code-model" "type-hierarchy"}
    :ct #{{:el :field
           :name "visibility"
           :type "string"
@@ -684,14 +684,14 @@
    :abstract :true
    :name "hierarchy-relation"
    :desc "A relation that establishes a type hierarchy."
-   :tags #{"class-model" "type-hierarchy"}}
+   :tags #{"code-model" "type-hierarchy"}}
 
   {:el :class
    :id :overarch.data-model/associative-relation
    :abstract true
    :name "associative-relation"
    :desc "A relation that may provide associative access to the referred element."
-   :tags #{"class-model" "type-hierarchy"}
+   :tags #{"code-model" "type-hierarchy"}
    :ct #{{:el :field
           :name "from-card"
           :type "string"
@@ -718,78 +718,78 @@
           :desc "The name of a field for associative access."}}}
 
   {:el :class
-   :id :overarch.data-model/class-model-element
+   :id :overarch.data-model/code-model-element
    :abstract true
-   :name "class-model-element"
-   :desc "An element in a class model."
-   :tags #{"class-model"}}
+   :name "code-model-element"
+   :desc "An element in a code model."
+   :tags #{"code-model"}}
 
   {:el :class
-   :id :overarch.data-model/class-model-node
+   :id :overarch.data-model/code-model-node
    :abstract true
-   :name "class-model-node"
-   :desc "A node in the class model."
-   :tags #{"class-model"}}
+   :name "code-model-node"
+   :desc "A node in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
-   :id :overarch.data-model/class-model-relation
+   :id :overarch.data-model/code-model-relation
    :abstract true
-   :name "class-model-relation"
-   :desc "A relation in the class model."
-   :tags #{"class-model"}}
+   :name "code-model-relation"
+   :desc "A relation in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/package
    :name "package"
-   :desc "A package in the class model.
+   :desc "A package in the code model.
           Packages provide a hierarchical structure for the organisation of the elements of the class model."
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/namespace
    :name "namespace"
-   :desc "A namespace in the class model.
+   :desc "A namespace in the code model.
           Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/interface
    :name "interface"
-   :desc "An interface in the class model.
+   :desc "An interface in the code model.
           An interface defines related methods."
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/protocol
    :name "protocol"
-   :desc "A protocol in the class model.
+   :desc "A protocol in the code model.
           A protocol defines related functions."
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/class
    :name "class"
-   :desc "A class in the class model."
-   :tags #{"class-model"}}
+   :desc "A class in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/enum
    :name "enum"
-   :desc "An enumeration of typed related values in the class model."
-   :tags #{"class-model"}}
+   :desc "An enumeration of typed related values in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/enum-value
    :name "enum-value"
-   :desc "A value of an enumeration in the class model."
-   :tags #{"class-model"}}
+   :desc "A value of an enumeration in the code model."
+   :tags #{"code-model"}}
 
   ;; TODO replace content fields with references to type/optional/visibility nodes
   {:el :class
    :id :overarch.data-model/field
    :name "field"
-   :desc "A field in a class model element."
-   :tags #{"class-model"}
+   :desc "A field in a code model element."
+   :tags #{"code-model"}
    :ct #{{:el :field
           :name "type"
           :type "string"
@@ -808,8 +808,8 @@
   {:el :class
    :id :overarch.data-model/function
    :name "function"
-   :desc "A function in the class model."
-   :tags #{"class-model"}
+   :desc "A function in the code model."
+   :tags #{"code-model"}
    :ct #{{:el :field
           :name "visibility"
           :type "keyword"
@@ -830,8 +830,8 @@
   {:el :class
    :id :overarch.data-model/method
    :name "method"
-   :desc "A method in a class model element."
-   :tags #{"class-model"}
+   :desc "A method in a code model element."
+   :tags #{"code-model"}
    :ct #{{:el :field
           :name "visibility"
           :type "keyword"
@@ -850,8 +850,8 @@
   {:el :class
    :id :overarch.data-model/parameter
    :name "parameter"
-   :desc "A parameter in a class model method or function."
-   :tags #{"class-model"}
+   :desc "A parameter in a code model method or function."
+   :tags #{"code-model"}
    :ct [{:el :field
          :name "type"
          :type "string"
@@ -865,239 +865,239 @@
   {:el :class
    :id :overarch.data-model/implementation
    :name "implementation"
-   :desc "An implementation relationship between a class and an interface/protocol in the class model."
-   :tags #{"class-model"}}
+   :desc "An implementation relationship between a code and an interface/protocol in the class model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/inheritance
    :name "inheritance"
-   :desc "An inheritance relationship between two classes in the class model."
-   :tags #{"class-model"}}
+   :desc "An inheritance relationship between two classes in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/composition
    :name "composition"
-   :desc "A composition relationship between two classes in the class model."
-   :tags #{"class-model"}}
+   :desc "A composition relationship between two classes in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/aggregation
    :name "aggregation"
-   :desc "A aggregation relationship between two classes in the class model."
-   :tags #{"class-model"}}
+   :desc "A aggregation relationship between two classes in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/association
    :name "association"
-   :desc "A association relationship between two classes in the class model."
-   :tags #{"class-model"}}
+   :desc "A association relationship between two classes in the code model."
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/dependency
    :name "dependency"
-   :desc "A dependency relationship between two elements in the class model."
-   :tags #{"class-model"}}
+   :desc "A dependency relationship between two elements in the code model."
+   :tags #{"code-model"}}
 
-  ;; Class Model Relations
+  ;; Code Model Relations
   {:el :inheritance
-   :id :overarch.data-model/class-model-element-is-a-identifiable-named-element
+   :id :overarch.data-model/code-model-element-is-a-identifiable-named-element
    :to :overarch.data-model/identifiable-named-element
-   :from :overarch.data-model/class-model-element
-   :tags #{"class-model" "type-hierarchy"}}
+   :from :overarch.data-model/code-model-element
+   :tags #{"code-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-element-is-a-technical-element
+   :id :overarch.data-model/code-model-element-is-a-technical-element
    :to :overarch.data-model/technical-element
-   :from :overarch.data-model/class-model-element
-   :tags #{"class-model" "type-hierarchy"}}
+   :from :overarch.data-model/code-model-element
+   :tags #{"code-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-relation-is-a-relation
+   :id :overarch.data-model/code-model-relation-is-a-relation
    :to :overarch.data-model/relation
-   :from :overarch.data-model/class-model-relation
-   :tags #{"class-model" "type-hierarchy"}}
+   :from :overarch.data-model/code-model-relation
+   :tags #{"code-model" "type-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-element-is-a-model-element
+   :id :overarch.data-model/code-model-element-is-a-model-element
    :to :overarch.data-model/model-element
-   :from :overarch.data-model/class-model-element
-   :tags #{"class-model" "element-hierarchy"}}
+   :from :overarch.data-model/code-model-element
+   :tags #{"code-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-node-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/class-model-node
-   :tags #{"class-model" "element-hierarchy"}}
+   :id :overarch.data-model/code-model-node-is-a-code-model-element
+   :to :overarch.data-model/code-model-element
+   :from :overarch.data-model/code-model-node
+   :tags #{"code-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-model-relation-is-a-class-model-element
-   :to :overarch.data-model/class-model-element
-   :from :overarch.data-model/class-model-relation
-   :tags #{"class-model" "element-hierarchy"}}
+   :id :overarch.data-model/code-model-relation-is-a-code-model-element
+   :to :overarch.data-model/code-model-element
+   :from :overarch.data-model/code-model-relation
+   :tags #{"code-model" "element-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/package-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/package-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/package
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
-   :id :overarch.data-model/package-contains-class-model-node
+   :id :overarch.data-model/package-contains-code-model-node
    :from :overarch.data-model/package
-   :to :overarch.data-model/class-model-node
+   :to :overarch.data-model/code-model-node
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/namespace-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/namespace-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/namespace
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
-   :id :overarch.data-model/namespace-contains-class-model-node
+   :id :overarch.data-model/namespace-contains-code-model-node
    :from :overarch.data-model/namespace
-   :to :overarch.data-model/class-model-node
+   :to :overarch.data-model/code-model-node
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/interface-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/interface-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/interface
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/interface-contains-method
    :from :overarch.data-model/interface
    :to :overarch.data-model/method
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/protocol-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/protocol-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/protocol
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/protocol-contains-method
    :from :overarch.data-model/protocol
    :to :overarch.data-model/method
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/class-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/class
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/field-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/field-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/field
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/class-contains-field
    :from :overarch.data-model/class
    :to :overarch.data-model/field
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/method-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/method-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/method
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/class-contains-method
    :from :overarch.data-model/class
    :to :overarch.data-model/method
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/parameter-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/parameter-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/parameter
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/method-contains-parameter
    :from :overarch.data-model/method
    :to :overarch.data-model/parameter
    :to-card :zero-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/enum-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/enum-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/enum
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/enum-value-is-a-class-model-node
-   :to :overarch.data-model/class-model-node
+   :id :overarch.data-model/enum-value-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
    :from :overarch.data-model/enum-value
-   :tags #{"class-model" "node-hierarchy"}}
+   :tags #{"code-model" "node-hierarchy"}}
 
   {:el :composition
    :id :overarch.data-model/enum-contains-enum-value
    :from :overarch.data-model/enum
    :to :overarch.data-model/enum-value
    :to-card :one-to-many
-   :tags #{"class-model"}}
+   :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/hierarchy-relation-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/hierarchy-relation-is-a-code-model-relation
+   :to :overarch.data-model/code-model-relation
    :from :overarch.data-model/hierarchy-relation
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/associative-relation-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/associative-relation-is-a-code-model-relation
+   :to :overarch.data-model/code-model-relation
    :from :overarch.data-model/associative-relation
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/inheritance-is-a-hierarchy-relation
    :to :overarch.data-model/hierarchy-relation
    :from :overarch.data-model/inheritance
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/implementation-is-a-hierarchy-relation
    :to :overarch.data-model/hierarchy-relation
    :from :overarch.data-model/implementation
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/composition-is-a-associative-relation
    :to :overarch.data-model/associative-relation
    :from :overarch.data-model/composition
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/aggregation-is-a-associative-relation
    :to :overarch.data-model/associative-relation
    :from :overarch.data-model/aggregation
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
    :id :overarch.data-model/association-is-a-associative-relation
    :to :overarch.data-model/associative-relation
    :from :overarch.data-model/association
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   {:el :inheritance
-   :id :overarch.data-model/dependency-is-a-class-model-relation
-   :to :overarch.data-model/class-model-relation
+   :id :overarch.data-model/dependency-is-a-code-model-relation
+   :to :overarch.data-model/code-model-relation
    :from :overarch.data-model/dependency
-   :tags #{"class-model" "relation-hierarchy"}}
+   :tags #{"code-model" "relation-hierarchy"}}
 
   ;;
   ;; State Machine Model
@@ -1720,10 +1720,10 @@
    :tags #{"view-model"}}
 
   {:el :class
-   :id :overarch.data-model/class-view
-   :name "class-view"
-   :desc "The class view is a static design view.
-          It shows class structure of some components of the system."
+   :id :overarch.data-model/code-view
+   :name "code-view"
+   :desc "The code view is a static design view.
+          It shows the code structure of some components of the system."
    :tags #{"view-model"}}
 
   {:el :class
@@ -1822,15 +1822,15 @@
    :tags #{"view-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/class-view-is-a-view
+   :id :overarch.data-model/code-view-is-a-view
    :to :overarch.data-model/view
-   :from :overarch.data-model/class-view
+   :from :overarch.data-model/code-view
    :tags #{"view-model"}}
 
   {:el :aggregation
-   :id :overarch.data-model/class-view-contains-class-model-element
-   :from :overarch.data-model/class-view
-   :to :overarch.data-model/class-model-element
+   :id :overarch.data-model/code-view-contains-code-model-element
+   :from :overarch.data-model/code-view
+   :to :overarch.data-model/code-model-element
    :to-name "ct"
    :to-card :one-to-many
    :tags #{"view-model"}}

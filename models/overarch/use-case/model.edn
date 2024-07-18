@@ -57,45 +57,17 @@
   {:el :use-case
    :id :overarch.use-case/render-markdown
    :level :subfunction
-   :name "export Markdown"
-   :desc "Export the relevant views to Markdown."}
+   :name "render Markdown"
+   :desc "Render the relevant views to Markdown."}
   {:el :use-case
    :id :overarch.use-case/render-graphviz
    :level :subfunction
-   :name "export GraphViz"
-   :desc "Export the relevant views to GraphViz."}
+   :name "render GraphViz"
+   :desc "Render the relevant views to GraphViz."}
 
   ;;;
   ;;; Use Case Model Relations
   ;;;
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-model-system
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/model-system}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-define-views
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/define-views}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-create-templates
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/create-templates}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-generate-artifacts
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/generate-artifacts}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-query-model
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/query-model}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-export-model
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/export-model}
-  {:el :uses
-   :id :overarch.roles/modeller-wants-to-render-views
-   :from :overarch.roles/modeller
-   :to :overarch.use-case/render-views}
   {:el :uses
    :id :overarch.use-case/model-system-uses-editor
    :from :overarch.use-case/model-system
@@ -103,6 +75,10 @@
   {:el :uses
    :id :overarch.use-case/define-views-uses-editor
    :from :overarch.use-case/define-views
+   :to :overarch.architecture/editor}
+  {:el :uses
+   :id :overarch.use-case/create-templates-uses-editor
+   :from :overarch.use-case/create-templates
    :to :overarch.architecture/editor}
   {:el :include
    :id :overarch.use-case/render-views-includes-query-model

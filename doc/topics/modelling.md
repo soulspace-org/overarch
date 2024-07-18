@@ -13,8 +13,9 @@ Overarch currently supports the following kinds of models
   to model the scope of the system with the supported use cases
 * [Architecture Models](#architecture-model)
   to model the logical architecture of the system with different levels of detail
-* [Class Models](#class-model)
-  to model the design of the system, e.g. the domain model, and the structure of the implementation
+* [Code Models](#code-model)
+  to model the design of the system, e.g. the domain model, and the structure of
+  the implementation
 * [State-Machine Models](#state-machine-model)
   to model relevant states and transitions of the system
 * [Deployment Models](#deployment-model)
@@ -54,19 +55,22 @@ string"
 Keywords are used as keys in the maps for model elements and views. They are also
 used as identifiers for model elements and views.
 
-Keywords start with a colon (':'), have an optional namespace followed by a
-slash ('/') and a mandatory name, e.g. :namespace/name.
+Keywords start with a colon (`:`), have an optional namespace followed by a
+slash (`/`) and a mandatory name, e.g. `:namespace/name`.
 
 Keywords should be prefixed with a namespace to avoid collisions with keywords for
 other models, which is especially relevant for identifiers or for custom keys
-in the model elements and views.
+in the model elements and views. Namespaces may have different parts, separated
+by a period (`.`), e.g. `:org.soulspace/overarch`.
 
 ```clojure
 :keyword
 :namespaced/keyword
+:my.namespaced/keyword
 ```
 
-*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch. Please use your own prefix if you want to add custom information to the maps in the model.*
+*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch.
+ Please use your own prefix if you want to add custom information to the maps in the model.*
 
 ### Sets
 Sets are unordered collections of elements without duplicates. They are used as
@@ -443,25 +447,25 @@ A fork has a single input transition and multiple output transitions.
 To join multiple transitions after a fork a join state is used. A join has multiple input transitions and a single output transition. 
 
 
-## Class Model
+## Code Model
 
-A class model captures the static structure of the code.
+A code model captures the static structure of the code.
 
-The abstraction level of a class model is not very high compared to the actual
-implementation. Therfore modelling and updating a complete class model is not
-of much value. But class models of the domain can be very valuable as a means
+The abstraction level of a code model is not very high compared to the actual
+implementation. Therfore modelling and updating a complete code model is not
+of much value. But code models of the domain can be very valuable as a means
 of communication between domain experts and developers to shape and document
 the domain model for a bounded context.
 
-The elements of the class model are mainly borrowed from the UML class model
+The elements of the code model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
-### Logical Data Model for the Class Model Elements
-![Class Model Elements](/doc/images/overarch/data-model/class-model-elements.svg)
+### Logical Data Model for the Code Model Elements
+![Class Model Elements](/doc/images/overarch/data-model/code-model-elements.svg)
 
 ### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
-of the elements of the class model.
+of the elements of the code model.
 
 Packages and namespaces are treated the same, so use what suits your system best.
 

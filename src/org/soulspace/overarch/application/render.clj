@@ -2,7 +2,7 @@
   "Contains dispatch functions for the rendering of the views."
   ; require views here to register multimethods
   (:require [clojure.string :as str]
-            [org.soulspace.overarch.domain.views.class-view :as class-view]
+            [org.soulspace.overarch.domain.views.code-view :as code-view]
             [org.soulspace.overarch.domain.views.component-view :as component-view]
             [org.soulspace.overarch.domain.views.concept-view :as concept-view]
             [org.soulspace.overarch.domain.views.container-view :as container-view]

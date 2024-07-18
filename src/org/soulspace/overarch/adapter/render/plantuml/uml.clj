@@ -35,7 +35,7 @@
 (def uml-hides
   "Maps view-types to PlantUML UML hide directives for more compact layouts."
   {:state-view "hide empty description"
-   :class-view "hide empty members"})
+   :code-view "hide empty members"})
 
 (def use-case-level->color
   "Maps the use case level to a color."
@@ -84,7 +84,7 @@
         (puml/alias-name (:from e)) " ."
         (if (:direction e)
           (uml-directions (:direction e))
-          (uml-directions :left))
+          (uml-directions :down))
         ".> "
         (puml/alias-name (:to e)) " : include")])
 

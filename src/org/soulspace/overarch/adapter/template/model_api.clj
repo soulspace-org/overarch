@@ -32,10 +32,10 @@
   [e]
   ((isa? el/element-hierarchy (:el e) :architecture-model-element)))
 
-(defn class-model-element?
-  "Returns true if the given element `e` is a class model element."
+(defn code-model-element?
+  "Returns true if the given element `e` is a code model element."
   [e]
-  ((isa? el/element-hierarchy (:el e) :class-model-element)))
+  ((isa? el/element-hierarchy (:el e) :code-model-element)))
 
 (defn concept-model-element?
   "Returns true if the given element `e` is a concept model element."
@@ -152,6 +152,66 @@
 ;;
 ;; Architecture Model navigation
 ;;
+(defn requests-incoming
+  "Returns the requests relations issued by client `e` in the `model`."
+  [model e]
+  (model/requests-incoming model e))
+
+(defn requests-outgoing
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (model/requests-outgoing model e))
+
+(defn responses-incoming
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (model/responses-incoming model e))
+
+(defn responses-outgoing
+  "Returns the requests relations served by service `e` in the `model`."
+  [model e]
+  (model/responses-outgoing model e))
+
+(defn sends-incoming
+  "Returns the send relations of receiver `e` in the `model`."
+  [model e]
+  (model/sends-incoming model e))
+
+(defn sends-outgoing
+  "Returns the send relations of sender `e` in the `model`."
+  [model e]
+  (model/sends-outgoing model e))
+
+(defn publishes-incoming
+  "Returns the publish relations of `e` in the `model`."
+  [model e]
+  (model/publishes-incoming model e))
+
+(defn publishes-outgoing
+  "Returns the publish relations of `e` in the `model`."
+  [model e]
+  (model/publishes-outgoing model e))
+
+(defn subscribes-incoming
+  "Returns the subscribe relations of `e` in the `model`."
+  [model e]
+  (model/subscribes-incoming model e))
+
+(defn subscribes-outgoing
+  "Returns the subscribe relations of `e` in the `model`."
+  [model e]
+  (model/subscribes-outgoing model e))
+
+(defn dataflows-incoming
+  "Returns the incoming dataflow relations served by service `e` in the `model`."
+  [model e]
+  (model/dataflows-incoming model e))
+
+(defn dataflows-outgoing
+  "Returns the outgoing dataflow relations of `e` in the `model`."
+  [model e]
+  (model/dataflows-outgoing model e))
+
 (defn subscribers-of
   "Returns the subscribers of the queue or publish relation `e` in the `model`."
   [model e]
@@ -163,7 +223,7 @@
   (model/publishers-of model e))
 
 ;;
-;; Class model navigation
+;; Code model navigation
 ;;
 (defn all-fields
   "Returns a sequence of all fields of the given collection of `classes`."

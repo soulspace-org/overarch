@@ -1,0 +1,30 @@
+<%
+;;;;
+;;;; Documentation Template for a State Machine View
+;;;;
+
+(let [elements (v/view-elements model e)
+      states (filter #(and (m/model-node? %) (not= :transition (:el %))))
+      transitions (filter #(and (m/model-relation? %) (= :transition (:el %))))]
+%># <%= (:title e) %>
+
+## Description
+<%= (:desc e) %>
+
+## States
+| Name | Type | Description |
+|---|---|---|
+<%
+  (doseq [state states]
+%>| <%=(:name state)%> | <%= (:el state) %> | <%= (:desc state) %> |
+<%
+  )
+%>
+
+## Transitions
+| From | To | Name | Description |
+|---|---|---|---|
+
+<%
+)
+%>

@@ -640,9 +640,9 @@
       false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
-(deftest class-model-node?-test
-  (testing "class-model-node? true"
-    (are [x y] (= x (boolean (class-model-node? y)))
+(deftest code-model-node?-test
+  (testing "code-model-node? true"
+    (are [x y] (= x (boolean (code-model-node? y)))
       true {:el :package}
       true {:el :namespace}
       true {:el :class}
@@ -657,8 +657,8 @@
       true {:el :annotation}
       true {:el :protocol}))
 
-  (testing "class-model-node? false"
-    (are [x y] (= x (boolean (class-model-node? y)))
+  (testing "code-model-node? false"
+    (are [x y] (= x (boolean (code-model-node? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -702,9 +702,9 @@
       false {:el :is-a :from :a :to :b}
       false {:el :ref})))
 
-(deftest class-model-relation?-test
-  (testing "class-model-relation? true"
-    (are [x y] (= x (boolean (class-model-relation? y)))
+(deftest code-model-relation?-test
+  (testing "code-model-relation? true"
+    (are [x y] (= x (boolean (code-model-relation? y)))
       true {:el :inheritance :from :a :to :b}
       true {:el :implementation :from :a :to :b}
       true {:el :composition :from :a :to :b}
@@ -712,8 +712,8 @@
       true {:el :association :from :a :to :b}
       true {:el :dependency :from :a :to :b}))
 
-  (testing "class-model-relation? false"
-    (are [x y] (= x (boolean (class-model-relation? y)))
+  (testing "code-model-relation? false"
+    (are [x y] (= x (boolean (code-model-relation? y)))
       false {:el :person}
       false {:el :system}
       false {:el :container}
@@ -1148,7 +1148,7 @@
       true {:el :deployment-view :id :deployment-view}
       true {:el :dynamic-view :id :dynamic-view}
       true {:el :use-case-view :id :use-case-view}
-      true {:el :class-view :id :class-view}
+      true {:el :code-view :id :code-view}
       true {:el :state-machine-view :id :state-machine-view}
       true {:el :context-view :id :context-view}
       true {:el :glossary-view :id :glossary-view}))
@@ -1164,7 +1164,7 @@
       true {:el :container-view :id :container-view}
       true {:el :component-view :id :component-view}
       true {:el :deployment-view :id :deployment-view}
-      true {:el :class-view :id :class-view}
+      true {:el :code-view :id :code-view}
       true {:el :state-machine-view :id :state-machine-view}
       true {:el :glossary-view :id :glossary-view}))
   (testing "hierarchical-view? false"

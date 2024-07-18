@@ -10,8 +10,8 @@
    :title "Use Case View of Overarch"
    :ct [;; actors
         {:ref :overarch.roles/modeller}
+        {:ref :overarch.roles/template-programmer}
         {:ref :overarch.architecture/editor}
         ;
         ]}
-
 }

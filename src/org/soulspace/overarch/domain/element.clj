@@ -34,14 +34,14 @@
   #{:request :publish :subscribe :send})
 
 ;;
-;; Class Model
+;; Code Model
 ;;
-(def class-node-types
-  "Node types for class models."
+(def code-node-types
+  "Node types for code models."
   #{:annotation :class :enum :enum-value :field :function :interface
     :method :namespace :package :parameter :protocol :stereotype})
-(def class-relation-types
-  "Relation types for class models."
+(def code-relation-types
+  "Relation types for code models."
   #{:aggregation :association :composition :dependency :implementation :inheritance})
 
 ;;
@@ -101,11 +101,11 @@
 
 (def uml-node-types
   "Node types for UML models."
-  (set/union usecase-node-types statemachine-node-types class-node-types))
+  (set/union usecase-node-types statemachine-node-types code-node-types))
 
 (def uml-relation-types
   "Relation types of UML models."
-  (set/union usecase-relation-types statemachine-relation-types class-relation-types))
+  (set/union usecase-relation-types statemachine-relation-types code-relation-types))
 
 (def model-node-types
   "Node types of the model."
@@ -173,7 +173,8 @@
 ;;
 (def uml-view-types
   "The set of UML view types."
-  #{:use-case-view :state-machine-view :class-view})
+  ; TODO deprecate :class-view and remove 
+  #{:use-case-view :state-machine-view :code-view :class-view})
 
 (def use-case-view-element-types
   "Element types of a use case view."
@@ -185,16 +186,16 @@
   (set/union statemachine-node-types
              statemachine-relation-types))
 
-(def class-view-element-types
-  "Element types of a class view."
-  (set/union class-node-types
-             class-relation-types))
+(def code-view-element-types
+  "Element types of a code view."
+  (set/union code-node-types
+             code-relation-types))
 
 (def uml-view-element-types
   "Element types of UML views."
   (set/union use-case-view-element-types
              state-machine-view-element-types
-             class-view-element-types))
+             code-view-element-types))
 
 ;;
 ;; Concept view category definitions
@@ -222,10 +223,11 @@
 
 (def hierarchical-view-types
   "The set of hierarchical view types."
+  ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
     :deployment-view :system-landscape-view
     ;:dynamic-view
-    :state-machine-view :class-view
+    :state-machine-view :code-view :class-view
     :glossary-view})
 
 ;;;
@@ -307,31 +309,31 @@
       (derive :transition                        :state-machine-model-relation)
       (derive :state-machine-model-relation      :state-machine-model-element)
 
-      ;;; class model
-      ;; class model nodes
-      (derive :annotation                        :class-model-node)
-      (derive :class                             :class-model-node)
-      (derive :enum                              :class-model-node)
-      (derive :enum-value                        :class-model-node)
-      (derive :field                             :class-model-node)
-      (derive :function                          :class-model-node)
-      (derive :interface                         :class-model-node)
-      (derive :method                            :class-model-node)
-      (derive :namespace                         :class-model-node)
-      (derive :package                           :class-model-node)
-      (derive :parameter                         :class-model-node)
-      (derive :protocol                          :class-model-node)
-      (derive :stereotype                        :class-model-node)
-      (derive :class-model-node                  :class-model-element)
+      ;;; code model
+      ;; code model nodes
+      (derive :annotation                        :code-model-node)
+      (derive :class                             :code-model-node)
+      (derive :enum                              :code-model-node)
+      (derive :enum-value                        :code-model-node)
+      (derive :field                             :code-model-node)
+      (derive :function                          :code-model-node)
+      (derive :interface                         :code-model-node)
+      (derive :method                            :code-model-node)
+      (derive :namespace                         :code-model-node)
+      (derive :package                           :code-model-node)
+      (derive :parameter                         :code-model-node)
+      (derive :protocol                          :code-model-node)
+      (derive :stereotype                        :code-model-node)
+      (derive :code-model-node                  :code-model-element)
 
-      ;; class model relations
-      (derive :inheritance                       :class-model-relation)
-      (derive :implementation                    :class-model-relation)
-      (derive :composition                       :class-model-relation)
-      (derive :aggregation                       :class-model-relation)
-      (derive :association                       :class-model-relation)
-      (derive :dependency                        :class-model-relation)
-      (derive :class-model-relation              :class-model-element)
+      ;; code model relations
+      (derive :inheritance                       :code-model-relation)
+      (derive :implementation                    :code-model-relation)
+      (derive :composition                       :code-model-relation)
+      (derive :aggregation                       :code-model-relation)
+      (derive :association                       :code-model-relation)
+      (derive :dependency                        :code-model-relation)
+      (derive :code-model-relation              :code-model-element)
 
       ;;; concept model
       ;; concept model nodes
@@ -348,7 +350,7 @@
       (derive :deployment-model-node             :model-node)
       (derive :use-case-model-node               :model-node)
       (derive :state-machine-model-node          :model-node)
-      (derive :class-model-node                  :model-node)
+      (derive :code-model-node                   :model-node)
       (derive :concept-model-node                :model-node)
       (derive :boundary                          :model-node)
 
@@ -357,7 +359,7 @@
       (derive :deployment-model-relation         :model-relation)
       (derive :use-case-model-relation           :model-relation)
       (derive :state-machine-model-relation      :model-relation)
-      (derive :class-model-relation              :model-relation)
+      (derive :code-model-relation               :model-relation)
       (derive :concept-model-relation            :model-relation)
 
       (derive :rel                               :model-relation)
@@ -501,15 +503,15 @@
   [e]
   (contains? statemachine-relation-types (:el e)))
 
-(defn class-model-node?
-  "Returns true if the given element `e` is a class model node."
+(defn code-model-node?
+  "Returns true if the given element `e` is a code model node."
   [e]
-  (contains? class-node-types (:el e)))
+  (contains? code-node-types (:el e)))
 
-(defn class-model-relation?
-  "Returns true if the given element `e` is a class model relation."
+(defn code-model-relation?
+  "Returns true if the given element `e` is a code model relation."
   [e]
-  (contains? class-relation-types (:el e)))
+  (contains? code-relation-types (:el e)))
 
 (defn concept-model-node?
   "Returns true if the given element `e` is a concept model node."
@@ -949,10 +951,20 @@
   [v e]
   (= (keyword v) (:maturity e)))
 
+(defn maturities?
+  "Returns true if the maturity of `e` is contained in `v`."
+  [v e]
+  (contains? v (:maturity e)))
+
 (defn external-check?
   "Returns true if the check for external on `e` equals the boolean value `v`"
   [v e]
   (= v (boolean (external? e))))
+
+(defn synthetic-check?
+  "Returns true if the check for synthetic on `e` equals the boolean value `v`"
+  [v e]
+  (= v (boolean (synthetic? e))))
 
 (defn name-check?
   "Returns true if the check for name on `e` equals the boolean value `v`"

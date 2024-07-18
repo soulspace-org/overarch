@@ -1,0 +1,20 @@
+;;;;
+;;;; Example Views for Code Model
+;;;;
+
+#{
+  {:el :code-view
+   :id :code/code-view
+   :title "Code View"
+   :ct [; classes
+        {:ref :code/ishape}
+        {:ref :code/shape}
+        {:ref :code/circle}
+        {:ref :code/square}
+        ; relations
+        {:ref :code/shape-extends-ishape}
+        {:ref :code/circle-extends-shape}
+        {:ref :code/square-extends-shape}
+        ]
+   }
+}

@@ -1,4 +1,4 @@
-(ns org.soulspace.overarch.domain.views.class-view
+(ns org.soulspace.overarch.domain.views.code-view
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.model :as model]))
@@ -19,30 +19,30 @@
          (el/internal? e)))))
 
 (defn render-model-node?
-  "Returns true if the `model` node `e` is rendered in the class `view`."
+  "Returns true if the `model` node `e` is rendered in the code `view`."
   [model view e]
   (let [p (model/parent model e)]
-    (contains? el/class-view-element-types (:el e))))
+    (contains? el/code-view-element-types (:el e))))
 
 (defn render-model-relation?
-  "Returns true if the `model` relation `e` is rendered in the class `view`."
+  "Returns true if the `model` relation `e` is rendered in the code `view`."
   [model view e]
   (let [from (model/model-element model (:from e))
         to (model/model-element model (:to e))]
-    (and (contains? el/class-view-element-types (:el e))
+    (and (contains? el/code-view-element-types (:el e))
          (render-model-node? model view from)
          (render-model-node? model view to))))
 
-(defmethod view/render-model-element? :class-view
+(defmethod view/render-model-element? :code-view
   [model view e]
   (if (el/model-relation? e)
     (render-model-relation? model view e)
     (render-model-node? model view e)))
 
-(defmethod view/include-content? :class-view
+(defmethod view/include-content? :code-view
   [model view e]
-  (contains? el/class-view-element-types (:el e)))
+  (contains? el/code-view-element-types (:el e)))
 
-(defmethod view/element-to-render :class-view
+(defmethod view/element-to-render :code-view
   [model view e]
   e)

@@ -21,14 +21,13 @@
 ;(s/def :overarch/sprite string?)
 (s/def :overarch/from keyword?)
 (s/def :overarch/to keyword?)
-(s/def :overarch/direction keyword?)
+(s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags set?)    ; check
+(s/def :overarch/link (s/or :key keyword? :url string?))
 ; (s/def :overarch/type string?) ; check
 ; (s/def :overarch/index int?)   ; check
 ; (s/def :overarch/href string?) ; TODO url?
-; (s/def :overarch/link
-;  (s/keys :req-un [:overarch/name :overarch/href]))
 
 (s/def :overarch/ct
   (s/coll-of
@@ -56,7 +55,7 @@
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
-          :opt-un [:overarch/external :overarch/direction :overarch/constraint]))
+          :opt-un [:overarch/external :overarch/direction :overarch/constraint :overarch/link]))
 
 (s/def :overarch/identifiable
   (s/keys :req-un [:overarch/id]))
@@ -170,7 +169,9 @@
 (s/def :overarch/name? boolean?)
 (s/def :overarch/name string?)
 (s/def :overarch/desc? boolean?)
+(s/def :overarch/desc string?)
 (s/def :overarch/doc? boolean?)
+(s/def :overarch/doc string?)
 (s/def :overarch/tech? boolean?)
 (s/def :overarch/techs (s/and set? (s/coll-of string?)))
 (s/def :overarch/all-techs (s/and set? (s/coll-of string?)))
@@ -187,16 +188,23 @@
 
 (s/def :overarch/criteria
   (s/keys :opt-un [:overarch/el :overarch/els
+                   :overarch/keys? :overarch/keys
                    :overarch/namespace :overarch/namespaces :overarch/namespace-prefix
+                   :overarch/from-namespace :overarch/from-namespaces :overarch/from-namespace-prefix
+                   :overarch/to-namespace :overarch/to-namespaces :overarch/to-namespace-prefix
                    :overarch/id? :overarch/id
                    :overarch/subtype? :overarch/subtype :overarch/subtypes
                    :overarch/external?
+                   :overarch/maturity? :overarch/maturity
                    :overarch/name? :overarch/name
-                   :overarch/desc?
+                   :overarch/desc? :overarch/desc
+                   :overarch/doc? :overarch/doc
                    :overarch/tech? :overarch/tech  :overarch/techs :overarch/all-techs
                    :overarch/tags? :overarch/tag :overarch/tags :overarch/all-tags
                    :overarch/children?
-                   :overarch/child?]))
+                   :overarch/child?
+                   :overarch/refers? :overarch/refers-to
+                   :overarch/referred? :overarch/referred-by]))
 
 (s/def :overarch/criteria-vector
   (s/and vector? (s/coll-of :overarch/criteria)))
@@ -209,14 +217,14 @@
 ;;; Schema functions
 ;;;
 (defn check-input-model
-  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
-  [input-model]
-  (if (s/valid? :overarch/input-model input-model)
-    input-model
-    (expound/expound :overarch/input-model input-model {:print-specs? false})))
+  "Checks the `input model` against its specification. If valid returns the input-model, otherwise returns the validation errors."
+  ([input-model]
+   (if (s/valid? :overarch/input-model input-model)
+     input-model
+     (expound/expound :overarch/input-model input-model {:print-specs? false}))))
 
 (defn check-selection-criteria
-  "Checks the input model against its specification. If valid returns the `input-model`, otherwise returns the validation errors."
+  "Checks the `selection criteria` against its specification. If valid returns the selection-criteria, otherwise returns the validation errors."
   [selection-criteria]
   (if (s/valid? :overarch/selection-criteria selection-criteria)
    selection-criteria

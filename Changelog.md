@@ -1,8 +1,37 @@
 Changelog
 =========
 
+Version 0.28.0
+--------------
+* added `:link` attribute to be used on refs in views
+  * value can be a URL or a keyword as key to a property containing a URL 
+  * see [discussion](https://github.com/soulspace-org/overarch/discussions/27)
+* added link generation for PlantUML C4 diagrams
+* fixed direction of requests navigation functions
+* fixed direction of pub/sub navigation functions
+* fixed relation type for sends navigation functions
+* print parsed template on error when `:debug true` is set in gen config for template
+* updated documentation
+
+Version 0.27.0
+--------------
+* added architecture model navigation functions
+* added set of supported directions to spec
+* enhanced documentation templates and generation config
+* updated use case model
+* updated documentation
+
 Version 0.26.0
 --------------
+* *attention* renamed `:class-view` to `:code-view` for generalization
+  * `:class-view` is still supported but will be removed in the future
+* renamed class model to code model for generalization
+* added a `--select-view-references CRITERIA` command line argument
+* added `:per-namespace` artifact generation
+* added `:synthetic?` selection criterium
+* added `:maturities` selection criterium
+* changed default direction for `:include` relations in plantuml rendering of use case views
+* changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams
 
 Version 0.25.0

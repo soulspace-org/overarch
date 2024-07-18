@@ -19,35 +19,35 @@ composable and reusable.
 
 
 ## Features
-* models and views as data
+* Models and views as data
   * C4 architecture and deployment models and views
-  * UML use case, state machine and class models and views
+  * Use case, state machine and code (class) models and views
   * Concept models, concept maps and glossaries
-  * separation of models and views
-  * hierarchical models and element references
-  * view specific customization of model elements
-  * extensible format
-* model queries
-  * criteria based selection of model elements
-* template based artifact generation for e.g.
-  * project templates
-  * code scaffolding
+  * Separation of models and views
+  * Hierarchical models and element references
+  * View specific customization of model elements
+  * Extensible format
+* Model queries
+  * Criteria based selection of model elements
+* Template based artifact generation for e.g.
+  * Project templates
+  * Code scaffolding
   * CI/CD pipelines
-  * reports
-  * custom vizualizations
-* view rendering
+  * Reports
+  * Custom vizualizations
+* View rendering
   * PlantUML
-    * all C4 views (except code view)
-    * use case, state machine and class diagrams
-    * styling and sprite support
+    * All C4 views (except code view)
+    * Use case, state machine and class diagrams
+    * Styling and sprite support
   * GraphViz
     * Concept maps
   * Markdown
     * Glossary, textual representations of graphical views
-* model exports
+* Model exports
   * JSON if you need to process models with languages without EDN support
   * Structurizr *experimental*
-* watch model directories for changes
+* Watch model directories for changes
 
 ## Rationale
 UML and C4 models are great to model and vizualize an architecture on different

@@ -1,14 +1,17 @@
 ;;;;
 ;;;; Roles for overarch
 ;;;;
-#{
-  ;;;
+#{;;;
   ;;; Roles nodes
   ;;;
   {:el :person
    :id :overarch.roles/modeller
    :name "Modeller"
    :desc "Models the architecture of a system and specifies views of the model."}
+  {:el :person
+   :id :overarch.roles/template-programmer
+   :name "Template Programmer"
+   :desc "Creates templates for artifact generation."}
 
   ;;;
   ;;; Roles use case model relations
@@ -22,6 +25,18 @@
    :from :overarch.roles/modeller
    :to :overarch.use-case/define-views}
   {:el :uses
+   :id :overarch.roles/template-programmer-wants-to-create-templates
+   :from :overarch.roles/template-programmer
+   :to :overarch.use-case/create-templates}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-generate-artifacts
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/generate-artifacts}
+  {:el :uses
+   :id :overarch.roles/modeller-wants-to-query-model
+   :from :overarch.roles/modeller
+   :to :overarch.use-case/query-model}
+  {:el :uses
    :id :overarch.roles/modeller-wants-to-export-model
    :from :overarch.roles/modeller
    :to :overarch.use-case/export-model}
@@ -29,6 +44,7 @@
    :id :overarch.roles/modeller-wants-to-render-views
    :from :overarch.roles/modeller
    :to :overarch.use-case/render-views}
+
 
   ;;;
   ;;; Roles architecture model relations
@@ -42,7 +58,7 @@
    :to :overarch.architecture/editor
    :name "models in"
    :desc "creates models and views"}
-  
+
   {:el :rel
    :id :overarch.roles/modeller-uses-overarch
    :from :overarch.roles/modeller
@@ -68,6 +84,4 @@
    :from :overarch.roles/modeller
    :to :overarch.adapter.ui/cli
    :name "starts"
-   :desc "with the provided options."}
-  
-}
+   :desc "with the provided options."}}

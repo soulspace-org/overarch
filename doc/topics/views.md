@@ -95,9 +95,9 @@ goals using this system.
 A state machine view is used to show the different states a component can be in. It also shows the
 transitions between these states based on the input events, the component receives. 
 
-### Class Views
-A class view is used to show the design of parts of the software. You can use it e.g. to model a
-domain and to communicate the model with domain experts.
+### Code Views
+A code view is used to show the design of parts of the software. You can use it
+e.g. to model a domain and to communicate the model with domain experts.
 
 ## Conceptual Views
 Overarch also supports conceptual views as part of the documentation of the

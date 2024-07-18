@@ -1,0 +1,34 @@
+<%
+;;;;
+;;;; Documentation Template for a System Landscape View
+;;;;
+
+(let [elements (v/view-elements model e)
+      roles (filter #(= :person (:el %)) elements)
+      systems (filter #(= :system (:el %)) elements)]
+%># <%= (:title e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+  (when (seq roles)
+%>## User Roles
+| Name | Description |
+|---|---|
+<%
+    (doseq [role roles]
+%>| <%= (:name role) %> | <%= (:desc role) %> |
+<%
+    ))
+
+  (when (seq systems)
+%>## Systems
+| Name | Description |
+|---|---|
+<%
+    (doseq [system systems]
+%>| <%= (:name system) %> | <%= (:desc system) %> |
+<%
+    ))
+)
+%>

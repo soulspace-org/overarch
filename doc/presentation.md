@@ -60,6 +60,12 @@ Commercial modelling tools
 
 ---
 
+# Use Cases
+
+![bg right 100%](./images/overarch/use-cases/overarch-use-case-view.svg)
+
+---
+
 # Models
 
 ## Elements of the system

@@ -3,8 +3,45 @@
 ;;;; Documentation Template for a Person (User Role)
 ;;;;
 
+(defn use-case-level
+  "Renders the level of the use case `uc`."
+  [uc]
+  (if-let [level (:level uc)]
+    (str/capitalize (name level))
+    "---"))
+
+(let [use-cases nil
+      containers nil]
 %># User Role <%= (:name e) %>
 
 ## Description
 <%= (:desc e) %>
 
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq use-cases)
+%>## Use Cases
+| Name | Level | Desc |
+|---|---|---|
+<%
+    (doseq [uc use-cases]
+%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+<%
+    ))
+
+  (when (seq containers)
+%>## Containers
+| Name | Desc |
+|---|---|
+<%
+    (doseq [container containers]
+%>| <%= (:name container) %> | <%= (:desc container) %> |
+<%
+    ))
+)
+%>

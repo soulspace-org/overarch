@@ -1,0 +1,13 @@
+<%
+;;;;
+;;;; Documentation Template for a Code View
+;;;;
+
+(let [elements (v/view-elements model e)]
+%># <%= (:title e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+)
+%>

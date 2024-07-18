@@ -1,0 +1,20 @@
+<%
+;;;;
+;;;; Documentation Template for a Glossary View
+;;;;
+
+(let [elements (v/view-elements model e)
+      nodes (filter m/model-node? elements)]     
+%># <%= (:title e)%>
+
+## Description
+<%= (:desc e) %>
+
+## Concepts
+<%
+  (doseq [concept (sort-by #(str/capitalize (:name %)) nodes)]
+%>### <%= (str/capitalize (:name concept)) %>
+<%= (:desc concept) %>
+<%
+  ))
+%>

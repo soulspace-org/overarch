@@ -153,7 +153,7 @@ Overarch currently supports the following kinds of models
   to model the scope of the system with the supported use cases
 * [Architecture Models](#architecture-model)
   to model the logical architecture of the system with different levels of detail
-* [Class Models](#class-model)
+* [Code Models](#code-model)
   to model the design of the system, e.g. the domain model, and the structure of the implementation
 * [State-Machine Models](#state-machine-model)
   to model relevant states and transitions of the system
@@ -583,25 +583,25 @@ A fork has a single input transition and multiple output transitions.
 To join multiple transitions after a fork a join state is used. A join has multiple input transitions and a single output transition. 
 
 
-## Class Model
+## Code Model
 
-A class model captures the static structure of the code.
+A code model captures the static structure of the code.
 
-The abstraction level of a class model is not very high compared to the actual
-implementation. Therfore modelling and updating a complete class model is not
-of much value. But class models of the domain can be very valuable as a means
+The abstraction level of a code model is not very high compared to the actual
+implementation. Therfore modelling and updating a complete code model is not
+of much value. But code models of the domain can be very valuable as a means
 of communication between domain experts and developers to shape and document
 the domain model for a bounded context.
 
-The elements of the class model are mainly borrowed from the UML class model
+The elements of the code model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
-### Logical Data Model for the Class Model Elements
-![Class Model Elements](/doc/images/overarch/data-model/class-model-elements.svg)
+### Logical Data Model for the Code Model Elements
+![Class Model Elements](/doc/images/overarch/data-model/code-model-elements.svg)
 
 ### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
-of the elements of the class model.
+of the elements of the code model.
 
 Packages and namespaces are treated the same, so use what suits your system best.
 
@@ -646,53 +646,54 @@ selected, if it is selected by any of the critria maps (logical disjunction).
 ## Keys
 key                    | type            | example values            | description
 -----------------------|-----------------|---------------------------|------------
-:key?                  | vector          | [:tech true]              | elements for which the check for the key returns the value (useful for custom keys)
-:key                   | vector          | [:tech "Clojure"]         | elements for which the lookup of the key returns the value (useful for custom keys)
-:el                    | keyword         | :system                   | elements of the given type
-:els                   | set of keywords | #{:system :person}        | elements with one of the given types
-:namespace             | string          | "org.soulspace"           | elements with the given id namespace
-:namespaces            | set of strings  | #{"org.soulspace"}        | elements with one of the given id namespaces
-:namespace-prefix      | string          | "org"                     | elements with the given id namespace prefix
-:from-namespace        | string          | "org.soulspace"           | relations with the given id namespace of the from reference
-:from-namespaces       | set of strings  | #{"org.soulspace"}        | relations with one of the given id namespaces of the from reference
-:from-namespace-prefix | string          | "org"                     | relations with the given id namespace prefix of the from reference
-:to-namespace          | string          | "org.soulspace"           | relations with the given id namespace of the from reference
-:to-namespaces         | set of strings  | #{"org.soulspace"}        | relations with one of the given id namespaces of the from reference
-:to-namespace-prefix   | string          | "org"                     | relations with the given id namespace prefix of the from reference
-:id?                   | boolean         | true, false               | elements for which the id check returns the given value
-:id                    | keyword         | :org.soulspace/overarch   | the element with the given id
-:from                  | keyword         | :org.soulspace/overarch   | relations with the given from id
-:to                    | keyword         | :org.soulspace/overarch   | relations with the given to id
-:subtype?              | boolean         | true, false               | nodes for which the subtype check returns the given boolean value
-:subtype               | keyword         | :queue                    | nodes of the given subtype
-:subtypes              | set of keywords | #{:queue :database}       | nodes of one of the given subtypes
-:maturity?             | boolean         | true, false               | nodes for which the maturity check returns the given boolean value
-:maturity               | keyword        | :proposed, :deprecated    | nodes of the given maturity
-:external?             | boolean         | true, false               | elements of the given external state
-:name?                 | boolean         | true, false               | elements for which the name check returns the given value
-:name                  | string/regex    | "Overarch CLI"            | elements for which the name matches the given value
-:desc?                 | boolean         | true, false               | elements for which the description check returns the given value
-:desc                  | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the description matches the given value
-:doc?                  | boolean         | true, false               | elements for which the documentation check returns the given value
-:doc                   | string/regex    | "CLI" "(?i).*CLI.*"       | elements for which the documentation matches the given value
-:tech?                 | boolean         | true, false               | elements for which the technology check returns the given value
-:tech                  | string          | "Clojure"                 | elements of the given technology
-:techs                 | set of strings  | #{"Clojure" "Java"}       | elements with one or more of the given technologies
-:all-techs             | set of strings  | #{"Clojure" "Java"}       | elements with all of the given technologies
-:tags?                 | boolean         | true, false               | elements for which the tags check returns the given value
-:tag                   | string          | "critical"                | elements with the given tag
-:tags                  | set of strings  | #{"Clojure" "Java"}       | elements with one or more of the given tags
-:all-tags              | set of strings  | #{"Clojure" "Java"}       | elements with all of the given tags
-:refers?               | boolean         | true, false               | nodes for which the check for refers returns the given value
-:referred?             | boolean         | true, false               | nodes for which the check for referred returns the given value
-:refers-to             | keyword         | :org.soulspace/overarch   | nodes which refer to the node with the given id
-:referred-by           | keyword         | :org.soulspace/overarch   | nodes which are referred by the node with the given id
-:child?                | boolean         | true, false               | nodes for which the check for child returns the given value
-:child-of              | keyword         | :org.soulspace/overarch   | nodes which are children of the node with the given id
-:descendant-of         | keyword         | :org.soulspace/overarch   | nodes which are descendants of the node with the given id
-:parent?               | boolean         | true, false               | nodes for which the check for children returns the given value
-:parent-of             | keyword         | :org.soulspace/overarch   | node which is the parent of the node with the given id
-:ancestor-of           | keyword         | :org.soulspace/overarch   | nodes which are ancestors of the node with the given id
+:key?                  | vector          | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
+:key                   | vector          | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
+:el                    | keyword         | :system                      | elements of the given type
+:els                   | set of keywords | #{:system :person}           | elements with one of the given types
+:namespace             | string          | "org.soulspace"              | elements with the given id namespace
+:namespaces            | set of strings  | #{"org.soulspace"}           | elements with one of the given id namespaces
+:namespace-prefix      | string          | "org"                        | elements with the given id namespace prefix
+:from-namespace        | string          | "org.soulspace"              | relations with the given id namespace of the from reference
+:from-namespaces       | set of strings  | #{"org.soulspace"}           | relations with one of the given id namespaces of the from reference
+:from-namespace-prefix | string          | "org"                        | relations with the given id namespace prefix of the from reference
+:to-namespace          | string          | "org.soulspace"              | relations with the given id namespace of the from reference
+:to-namespaces         | set of strings  | #{"org.soulspace"}           | relations with one of the given id namespaces of the from reference
+:to-namespace-prefix   | string          | "org"                        | relations with the given id namespace prefix of the from reference
+:id?                   | boolean         | true, false                  | elements for which the id check returns the given value
+:id                    | keyword         | :org.soulspace/overarch      | the element with the given id
+:from                  | keyword         | :org.soulspace/overarch      | relations with the given from id
+:to                    | keyword         | :org.soulspace/overarch      | relations with the given to id
+:subtype?              | boolean         | true, false                  | nodes for which the subtype check returns the given boolean value
+:subtype               | keyword         | :queue                       | nodes of the given subtype
+:subtypes              | set of keywords | #{:queue :database}          | nodes of one of the given subtypes
+:maturity?             | boolean         | true, false                  | elements for which the maturity check returns the given boolean value
+:maturity              | keyword         | :proposed, :deprecated       | elements of the given maturity
+:maturities            | set of keywords | #{:implemented  :deprecated} | elements of the given maturities
+:external?             | boolean         | true, false                  | elements of the given external state
+:name?                 | boolean         | true, false                  | elements for which the name check returns the given value
+:name                  | string/regex    | "Overarch CLI"               | elements for which the name matches the given value
+:desc?                 | boolean         | true, false                  | elements for which the description check returns the given value
+:desc                  | string/regex    | "CLI" "(?i).*CLI.*"          | elements for which the description matches the given value
+:doc?                  | boolean         | true, false                  | elements for which the documentation check returns the given value
+:doc                   | string/regex    | "CLI" "(?i).*CLI.*"          | elements for which the documentation matches the given value
+:tech?                 | boolean         | true, false                  | elements for which the technology check returns the given value
+:tech                  | string          | "Clojure"                    | elements of the given technology
+:techs                 | set of strings  | #{"Clojure" "Java"}          | elements with one or more of the given technologies
+:all-techs             | set of strings  | #{"Clojure" "Java"}          | elements with all of the given technologies
+:tags?                 | boolean         | true, false                  | elements for which the tags check returns the given value
+:tag                   | string          | "critical"                   | elements with the given tag
+:tags                  | set of strings  | #{"Clojure" "Java"}          | elements with one or more of the given tags
+:all-tags              | set of strings  | #{"Clojure" "Java"}          | elements with all of the given tags
+:refers?               | boolean         | true, false                  | nodes for which the check for refers returns the given value
+:referred?             | boolean         | true, false                  | nodes for which the check for referred returns the given value
+:refers-to             | keyword         | :org.soulspace/overarch      | nodes which refer to the node with the given id
+:referred-by           | keyword         | :org.soulspace/overarch      | nodes which are referred by the node with the given id
+:child?                | boolean         | true, false                  | nodes for which the check for child returns the given value
+:child-of              | keyword         | :org.soulspace/overarch      | nodes which are children of the node with the given id
+:descendant-of         | keyword         | :org.soulspace/overarch      | nodes which are descendants of the node with the given id
+:parent?               | boolean         | true, false                  | nodes for which the check for children returns the given value
+:parent-of             | keyword         | :org.soulspace/overarch      | node which is the parent of the node with the given id
+:ancestor-of           | keyword         | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
 # Views
 To show model elements in diagrams or in textual representations you can define
@@ -791,9 +792,9 @@ goals using this system.
 A state machine view is used to show the different states a component can be in. It also shows the
 transitions between these states based on the input events, the component receives. 
 
-### Class Views
-A class view is used to show the design of parts of the software. You can use it e.g. to model a
-domain and to communicate the model with domain experts.
+### Code Views
+A code view is used to show the design of parts of the software. You can use it
+e.g. to model a domain and to communicate the model with domain experts.
 
 ## Conceptual Views
 Overarch also supports conceptual views as part of the documentation of the
@@ -1000,7 +1001,8 @@ key               | type     | values              | default  | description
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection or on the selection as a whole
+:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection
+:per-namespace    | boolean  | true/false          | false    | Apply  the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
 :namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
 :base-namespace   | string   |                     |          | Base namespace to use as path element
@@ -1027,7 +1029,10 @@ Templates can also be applied on views selected by criteria with the
 even if there is only one view selected. So use the :per-element key to enable
 the generation on a view level.
 
-### Example config file
+### Example Templates
+Some example templates can be found in the [templates](/templates) folder.
+
+### Example Generation Config File
 ```clojure
 [;; Report for all systems in the banking namespace
  {:selection {:namespace "banking" :el :system} ; selection criteria for the model elements
@@ -1084,14 +1089,11 @@ java -jar overarch.jar -g gencfg.edn
 ```
 
 ## Comb Template Engine
-Overarch incorporates the [Comb](https://github.com/weavejester/comb)
-template engine by James Reeves.
+Overarch uses the [Comb](https://github.com/weavejester/comb)
+template syntax by James Reeves.
 
 Comb is a simple templating system for Clojure. You can use Comb to embed
 fragments of Clojure code into a text file.
-
-### Example Templates
-Some example templates can be found in the [templates](/templates) folder.
 
 ### Syntax
 Clojure fragments in a template are demarkated with `<%` and `%>`.
@@ -1113,7 +1115,11 @@ Result:
 
 #### Control structures
 ```clojure
-foo<% (dotimes [x 3] %> bar<%) %>
+foo<%
+(dotimes [x 3]
+%> bar<%
+)
+%>
 ```
 Result:
 ```
@@ -1122,8 +1128,8 @@ foo bar bar bar
 
 ### API for Templates
 In the comb templates you can use most of the functions of the clojure.core
-namespace. Additionally the functions of clojure.set and clojure.string are provided under
-the aliases `set` and `str`, e.g. `set/union` or `str/join`.
+namespace. Additionally the functions of clojure.set and clojure.string are
+provided under the aliases `set` and `str`, e.g. `set/union` or `str/join`.
 
 Overarch also provides functions to query and navigate the model under the
 `m` alias, e.g. `m/resolve-element`.

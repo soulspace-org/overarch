@@ -23,6 +23,7 @@
 (s/def :overarch.template/engine keyword?)
 (s/def :overarch.template/encoding string?)
 (s/def :overarch.template/per-element boolean?)
+(s/def :overarch.template/per-namespace boolean?)
 (s/def :overarch.template/path string?)
 (s/def :overarch.template/subdir string?)
 (s/def :overarch.template/namespace-prefix string?)
@@ -37,6 +38,7 @@
 (s/def :overarch.template/id-as-namespace boolean?)
 (s/def :overarch.template/id-as-name boolean?)
 (s/def :overarch.template/protected-area boolean?)
+(s/def :overarch.template/debug boolean?)
 
 (s/def :overarch.template/generation-context
   (s/keys :req-un [:overarch.template/template]
@@ -45,6 +47,7 @@
                    :overarch.template/engine
                    :overarch.template/encoding
                    :overarch.template/per-element
+                   :overarch.template/per-namespace
                    :overarch.template/path
                    :overarch.template/subdir
                    :overarch.template/namespace-prefix
@@ -58,7 +61,8 @@
                    :overarch.template/name-as-namespace
                    :overarch.template/id-as-namespace
                    :overarch.template/id-as-name
-                   :overarch.template/protected-area]))
+                   :overarch.template/protected-area
+                   :overarch.template/debug]))
 
 (s/def :overarch.template/generation-config
   (s/coll-of :overarch.template/generation-context))
@@ -80,7 +84,9 @@
   ([ttype & r]
    ttype))
 
-(defn read-source [source]
+(defn read-source
+  "Reads the `source` as string or file."
+  [source]
   (if (string? source)
     source
     (slurp source)))
@@ -219,6 +225,7 @@
   "Default values for the generator context."
   {:engine          :combsci
    :per-element     false
+   :per-namespace     false
    :encoding        "UTF-8"
    :id-as-namespace false
    :id-as-name      false})
@@ -226,6 +233,7 @@
 (defn read-config
   "Reads the generator configuration specified in `options`."
   [options]
+  ; TODO validate against spec
   (if-let [generation-config (:generation-config options)]
     (map (partial merge ctx-defaults {:generation-dir (:generation-dir options)
                                       :backup-dir (:backup-dir options)})
@@ -245,15 +253,15 @@
 
 (defn generate-artifact-for-selection
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  [parsed-template ctx model e]
-  (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
-        protected-areas (read-protected-areas ctx path)
+  [parsed-template path ctx model e]
+  (let [protected-areas (read-protected-areas ctx path)
         result (apply-template (:engine ctx)
                                parsed-template
                                {:ctx ctx
                                 :e e
                                 :model model
                                 :protected-areas protected-areas})]
+    ; TODO handle backups
     ; write artifact for result
     (write-artifact path result)))
 
@@ -264,13 +272,23 @@
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
           parsed-template (parse-template (:engine ctx) template)
           selection (select-elements model ctx)]
-      (if (:per-element ctx)
+      (cond
+        (:per-element ctx)
         (doseq [e selection]
-          (generate-artifact-for-selection parsed-template ctx model e))
-        (generate-artifact-for-selection parsed-template ctx model selection)))))
+          (let [path (str (artifact-path ctx e) (artifact-filename ctx e))]
+            (generate-artifact-for-selection parsed-template path ctx model e)))
+        (:per-namespace ctx)
+        (doseq [e (vals (group-by el/element-namespace selection))]
+          ;; build path from first element
+          (let [path (str (artifact-path ctx (first e)) (artifact-filename ctx))]
+            (generate-artifact-for-selection parsed-template path ctx model e)))
+        :else
+        (let [path (str (artifact-path ctx) (artifact-filename ctx))]
+          (generate-artifact-for-selection parsed-template path ctx model selection))))))
 
 (comment
   (repo/read-models :file "models")
   (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
+  ;
   )

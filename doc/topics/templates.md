@@ -18,7 +18,8 @@ key               | type     | values              | default  | description
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection or on the selection as a whole
+:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection
+:per-namespace    | boolean  | true/false          | false    | Apply  the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
 :namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
 :base-namespace   | string   |                     |          | Base namespace to use as path element
@@ -31,6 +32,7 @@ key               | type     | values              | default  | description
 :id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
 :id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
 :protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
+:debug            | boolean  | true/false          | false    | Print parsed template on error
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
@@ -45,7 +47,10 @@ Templates can also be applied on views selected by criteria with the
 even if there is only one view selected. So use the :per-element key to enable
 the generation on a view level.
 
-### Example config file
+### Example Templates
+Some example templates can be found in the [templates](/templates) folder.
+
+### Example Generation Config File
 ```clojure
 [;; Report for all systems in the banking namespace
  {:selection {:namespace "banking" :el :system} ; selection criteria for the model elements
@@ -102,14 +107,11 @@ java -jar overarch.jar -g gencfg.edn
 ```
 
 ## Comb Template Engine
-Overarch incorporates the [Comb](https://github.com/weavejester/comb)
-template engine by James Reeves.
+Overarch uses the [Comb](https://github.com/weavejester/comb)
+template syntax by James Reeves.
 
 Comb is a simple templating system for Clojure. You can use Comb to embed
 fragments of Clojure code into a text file.
-
-### Example Templates
-Some example templates can be found in the [templates](/templates) folder.
 
 ### Syntax
 Clojure fragments in a template are demarkated with `<%` and `%>`.
@@ -131,7 +133,11 @@ Result:
 
 #### Control structures
 ```clojure
-foo<% (dotimes [x 3] %> bar<%) %>
+foo<%
+(dotimes [x 3]
+%> bar<%
+)
+%>
 ```
 Result:
 ```
@@ -140,8 +146,8 @@ foo bar bar bar
 
 ### API for Templates
 In the comb templates you can use most of the functions of the clojure.core
-namespace. Additionally the functions of clojure.set and clojure.string are provided under
-the aliases `set` and `str`, e.g. `set/union` or `str/join`.
+namespace. Additionally the functions of clojure.set and clojure.string are
+provided under the aliases `set` and `str`, e.g. `set/union` or `str/join`.
 
 Overarch also provides functions to query and navigate the model under the
 `m` alias, e.g. `m/resolve-element`.

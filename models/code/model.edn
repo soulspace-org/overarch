@@ -1,55 +1,55 @@
 ;;;;
-;;;; Example Class Model
+;;;; Example Code Model
 ;;;;
 
 #{;;
   ;; Elements
   ;;
   {:el :interface
-   :id :class/ishape
+   :id :code/ishape
    :name "IShape"
    :ct [{:el :method
-         :id :class/ishape-area
+         :id :code/ishape-area
          :name "area"}
         {:el :method
-         :id :class/ishape-circumference
+         :id :code/ishape-circumference
          :name "circumference"}]}
   {:el :class
-   :id :class/shape
+   :id :code/shape
    :name "Shape"
    :abstract true
    :ct [{:el :method
-         :id :class/shape-area
+         :id :code/shape-area
          :name "area"}
         {:el :method
-         :id :class/shape-circumference
+         :id :code/shape-circumference
          :name "circumference"}]}
   {:el :class
-   :id :class/circle
+   :id :code/circle
    :name "Circle"
    :ct [{:el :field
-         :id :class/circle-radius
+         :id :code/circle-radius
          :name "radius"}]}
   {:el :class
-   :id :class/square
+   :id :code/square
    :name "Square"
    :ct [{:el :field
-         :id :class/square-width
+         :id :code/square-width
          :name "width"}]}
 
   ;;
   ;; Relations
   ;;
   {:el :implementation
-   :id :class/shape-extends-ishape
-   :from :class/shape
-   :to :class/ishape}
+   :id :code/shape-extends-ishape
+   :from :code/shape
+   :to :code/ishape}
   {:el :inheritance
-   :id :class/circle-extends-shape
-   :from :class/circle
-   :to :class/shape}
+   :id :code/circle-extends-shape
+   :from :code/circle
+   :to :code/shape}
   {:el :inheritance
-   :id :class/square-extends-shape
-   :from :class/square
-   :to :class/shape}
+   :id :code/square-extends-shape
+   :from :code/square
+   :to :code/shape}
 }
