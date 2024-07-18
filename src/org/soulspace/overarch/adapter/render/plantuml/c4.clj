@@ -71,6 +71,14 @@
 ;;;
 ;;; Rendering
 ;;;
+(defn render-link
+  "Renders a link for the element `e`."
+  [e]
+  (when-let [link (:link e)]
+    (if (keyword? link)
+      (str ", $link=\"" (link e) "\"")
+      (str ", $link=\"" link "\""))))
+
 (defmethod puml/render-c4-element :boundary
   [model view indent e]
   (if (seq (:ct e))
@@ -100,6 +108,7 @@
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
         (when (:type e) (str ", $type=\"" (:type e) "\""))
+        (render-link e)
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -113,6 +122,7 @@
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
         (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+        (render-link e)
         (if (:sprite e)
           (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
           (when (puml/sprite? (:tech e))
@@ -130,6 +140,7 @@
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (render-link e)
         (if (:sprite e)
           (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
           (when (puml/sprite? (:tech e))
@@ -154,6 +165,7 @@
                      (el/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+                     (render-link e)
                      (if (:sprite e)
                        (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
                        (when (puml/sprite? (:tech e))
@@ -169,6 +181,7 @@
             (el/element-name e) "\""
             (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
             (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+            (render-link e)
             (if (:sprite e)
               (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
               (when (puml/sprite? (:tech e))

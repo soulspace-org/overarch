@@ -24,7 +24,7 @@
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags set?)    ; check
-(s/def :overarch/link (s/or keyword? string?))
+(s/def :overarch/link (s/or :key keyword? :url string?))
 ; (s/def :overarch/type string?) ; check
 ; (s/def :overarch/index int?)   ; check
 ; (s/def :overarch/href string?) ; TODO url?

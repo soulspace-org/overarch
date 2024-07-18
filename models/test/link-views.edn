@@ -1,0 +1,7 @@
+#{
+  {:el :context-view
+   :id :test/context-view-with-links
+   :title "Context View with links"
+   :ct [{:ref :test/sys1 :link "https://github.com/lsolbach"}
+        {:ref :test/sys2 :link :soulspace/info-url}]}
+}

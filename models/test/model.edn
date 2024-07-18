@@ -8,7 +8,8 @@
   {:el :system
    :id :test/sys2
    :name "Sys2"
-   :external true}
+   :external true
+   :soulspace/info-url "https://github.com/soulspace-org/overarch"}
   {:el :request
    :id :test/sys1-calls-sys2
    :from :test/sys1
