@@ -32,6 +32,7 @@ key               | type     | values              | default  | description
 :id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
 :id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
 :protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
+:debug            | boolean  | true/false          | false    | Print parsed template on error
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.

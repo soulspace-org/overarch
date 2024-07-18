@@ -10,6 +10,7 @@ Version 0.28.0
 * fixed direction of requests navigation functions
 * fixed direction of pub/sub navigation functions
 * fixed relation type for sends navigation functions
+* print parsed template on error when `:debug true` is set in gen config for template
 * updated documentation
 
 Version 0.27.0

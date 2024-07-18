@@ -38,6 +38,7 @@
 (s/def :overarch.template/id-as-namespace boolean?)
 (s/def :overarch.template/id-as-name boolean?)
 (s/def :overarch.template/protected-area boolean?)
+(s/def :overarch.template/debug boolean?)
 
 (s/def :overarch.template/generation-context
   (s/keys :req-un [:overarch.template/template]
@@ -60,7 +61,8 @@
                    :overarch.template/name-as-namespace
                    :overarch.template/id-as-namespace
                    :overarch.template/id-as-name
-                   :overarch.template/protected-area]))
+                   :overarch.template/protected-area
+                   :overarch.template/debug]))
 
 (s/def :overarch.template/generation-config
   (s/coll-of :overarch.template/generation-context))
@@ -223,6 +225,7 @@
   "Default values for the generator context."
   {:engine          :combsci
    :per-element     false
+   :per-namespace     false
    :encoding        "UTF-8"
    :id-as-namespace false
    :id-as-name      false})
@@ -230,6 +233,7 @@
 (defn read-config
   "Reads the generator configuration specified in `options`."
   [options]
+  ; TODO validate against spec
   (if-let [generation-config (:generation-config options)]
     (map (partial merge ctx-defaults {:generation-dir (:generation-dir options)
                                       :backup-dir (:backup-dir options)})
