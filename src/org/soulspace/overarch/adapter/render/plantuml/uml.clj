@@ -46,20 +46,32 @@
 ;;;
 ;;; Rendering
 ;;;
+(defn render-name
+  "Renders the name of the element `e`. If `e` has a :link entry, a link is rendered."
+  [e]
+  (if-let [link (:link e)]
+    (if (keyword? link)
+      (do
+        (println "Element")
+        (println e)
+        (str "[[" (link e) " " (el/element-name e) "]]"))
+      (str "[[" link " " (el/element-name e) "]]"))
+    (el/element-name e)))
+
 
 (defmethod puml/render-uml-element :context-boundary
   [model view indent e]
   (when (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "rectangle \"" (el/element-name e) "\" {")
+                     "rectangle \"" (render-name e) "\" {")
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 "}"]))))
 
 (defmethod puml/render-uml-element :use-case
   [_ _ indent e]
   [(str (render/indent indent)
-        "usecase \"" (el/element-name e) "\" as ("
+        "usecase \"" (render-name e) "\" as ("
         (puml/alias-name (:id e)) ")"
         (when (:level e)
           (str " " (use-case-level->color (:level e)))))])
@@ -67,7 +79,7 @@
 (defmethod puml/render-uml-element :actor-node
   [_ _ indent e]
   [(str (render/indent indent)
-        "actor \"" (el/element-name e) "\" as " (puml/alias-name (:id e)))])
+        "actor \"" (render-name e) "\" as " (puml/alias-name (:id e)))])
 
 (defmethod puml/render-uml-element :uses
   [_ _ indent e]
@@ -113,12 +125,12 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "package \"" (el/element-name e)
+                     "package \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
-          "package \"" (el/element-name e)
+          "package \"" (render-name e)
           "\" as " (puml/alias-name (:id e)) " {}")]))
 
 (defmethod puml/render-uml-element :namespace
@@ -126,12 +138,12 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "namespace \"" (el/element-name e)
+                     "namespace \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
-          "namespace \"" (el/element-name e)
+          "namespace \"" (render-name e)
           "\" as " (puml/alias-name (:id e)) " {}")]))
 
 (defmethod puml/render-uml-element :interface
@@ -139,7 +151,7 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "interface \"" (el/element-name e)
+                     "interface \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
                      (when (:stereotype e)
                        (str " <<" (:stereotype e) ">>"))
@@ -147,7 +159,7 @@
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
-          "interface \"" (el/element-name e)
+          "interface \"" (render-name e)
           "\" as " (puml/alias-name (:id e))
           (when (:stereotype e)
             (str " <<" (:stereotype e) ">>"))
@@ -158,7 +170,7 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "protocol \"" (el/element-name e)
+                     "protocol \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
                      (when (:stereotype e)
                        (str " <<" (:stereotype e) ">>"))
@@ -166,7 +178,7 @@
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
-          "protocol \"" (el/element-name e)
+          "protocol \"" (render-name e)
           "\" as " (puml/alias-name (:id e))
           (when (:stereotype e)
             (str " <<" (:stereotype e) ">>"))
@@ -177,7 +189,7 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
-                     "enum \"" (el/element-name e)
+                     "enum \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
                      (when (:stereotype e)
                        (str " <<" (:stereotype e) ">>"))
@@ -185,7 +197,7 @@
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
-          "enum \"" (el/element-name e)
+          "enum \"" (render-name e)
           "\" as " (puml/alias-name (:id e))
           (when (:stereotype e)
             (str " <<" (:stereotype e) ">>"))
@@ -194,7 +206,7 @@
 (defmethod puml/render-uml-element :enum-value
   [model view indent e]
   [(str (render/indent indent)
-        (el/element-name e)
+        (render-name e)
         (when (:value e)
           (str " = " (:value e)))
         )])
@@ -205,7 +217,7 @@
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(str (render/indent indent)
                      (when (:abstract e) "abstract ")
-                     "class \"" (el/element-name e)
+                     "class \"" (render-name e)
                      (when (:generic e)
                        (str "<" (:generic e) ">"))
                      "\" as " (puml/alias-name (:id e))
@@ -216,7 +228,7 @@
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
           (when (:abstract e) "abstract ")
-          "class \"" (el/element-name e)
+          "class \"" (render-name e)
           (when (:generic e)
             (str "<" (:generic e) ">"))
           "\" as " (puml/alias-name (:id e))
@@ -229,7 +241,7 @@
   [(str (render/indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
-        (el/element-name e)
+        (render-name e)
         (when (:type e)
           (str " : " (:type e)))
         (when (:optional e)
@@ -240,7 +252,7 @@
 
 (defmethod puml/render-uml-element :parameter
   [model view indent e]
-  [(str (el/element-name e)
+  [(str (render-name e)
         (when (:type e)
           (str " : " (:type e))))])
 
@@ -249,7 +261,7 @@
   [(str (render/indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
-        (el/element-name e) "("
+        (render-name e) "("
         (when (:ct e)
           (str/join ", " (map (partial puml/render-uml-element model view 0) (:ct e))))
         ")"
@@ -261,7 +273,7 @@
   [(str (render/indent indent)
         (when (:visibility e)
           (uml-visibility (:visibility e)))
-        (el/element-name e) "()"
+        (render-name e) "()"
         (when (:type e)
           (str " : " (:type e))))])
 
@@ -341,12 +353,12 @@
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
       (flatten [(render/indent indent)
-                (str "state \"" (el/element-name e) "\" as "
+                (str "state \"" (render-name e) "\" as "
                      (puml/alias-name (:id e)) " {")
                 (map #(puml/render-uml-element model view (+ indent 2) %) children)
                 "}"]))
     [(str (render/indent indent)
-          "state \"" (el/element-name e) "\" as " (puml/alias-name (:id e)))]))
+          "state \"" (render-name e) "\" as " (puml/alias-name (:id e)))]))
 
 (defmethod puml/render-uml-element :start-state
   [_ _ indent e]

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.29.0
+--------------
+* added link generation for PlantUML UML diagrams
+
 Version 0.28.0
 --------------
 * added `:link` attribute to be used on refs in views

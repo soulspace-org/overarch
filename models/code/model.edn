@@ -18,6 +18,7 @@
    :id :code/shape
    :name "Shape"
    :abstract true
+   :test/wikipedia-url "https://en.wikipedia.org/wiki/Shape"
    :ct [{:el :method
          :id :code/shape-area
          :name "area"}

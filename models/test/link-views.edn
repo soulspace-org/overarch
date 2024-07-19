@@ -1,7 +1,18 @@
-#{
-  {:el :context-view
+#{{:el :context-view
    :id :test/context-view-with-links
    :title "Context View with links"
    :ct [{:ref :test/sys1 :link "https://github.com/lsolbach"}
         {:ref :test/sys2 :link :soulspace/info-url}]}
-}
+
+  {:el :code-view
+   :id :test/code-view-with-links
+   :title "Code View"
+   :ct [; classes
+        {:ref :code/ishape}
+        {:ref :code/shape :link :test/wikipedia-url}
+        {:ref :code/circle}
+        {:ref :code/square}
+          ; relations
+        {:ref :code/shape-extends-ishape}
+        {:ref :code/circle-extends-shape}
+        {:ref :code/square-extends-shape}]}}
