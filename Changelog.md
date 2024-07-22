@@ -4,6 +4,7 @@ Changelog
 Version 0.29.0
 --------------
 * added link generation for PlantUML UML diagrams
+* added `:index` attribute for relations/refs in dynamic views
 
 Version 0.28.0
 --------------

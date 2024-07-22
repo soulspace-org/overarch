@@ -226,7 +226,6 @@
   ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
     :deployment-view :system-landscape-view
-    ;:dynamic-view
     :state-machine-view :code-view :class-view
     :glossary-view})
 

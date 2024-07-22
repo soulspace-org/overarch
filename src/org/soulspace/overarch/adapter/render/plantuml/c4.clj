@@ -221,9 +221,11 @@
   )
 
 (defmethod puml/render-c4-element :architecture-model-relation
-  [_ _ indent e]
+  [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
+        (when (and (:index e) (= :dynamic-view (:el view)))
+          (str "$index=" (:index e)))
         (if (:direction e)
           ; direction is specified on relation
           (c4-directions (:direction e))
@@ -250,7 +252,7 @@
 
 ; TODO is this neccessary (for :rel)?
 (defmethod puml/render-c4-element :model-relation
-  [_ _ indent e]
+  [_ view indent e]
   (if (:constraint e)
     [(str (render/indent indent) "Lay"
           (when (:direction e) (c4-directions (:direction e))) "("
@@ -259,6 +261,8 @@
           ")")]
     [(str (render/indent indent)
           (c4-element->method (:el e))
+          (when (and (:index e) (= :dynamic-view (:el view)))
+            (str "$index=" (:index e)))
           (when (:direction e) (c4-directions (:direction e))) "("
           (if (:reverse e)
             (str (puml/alias-name (:to e)) ", "
@@ -373,7 +377,9 @@
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
   (let [elements (view/view-elements model view)
-        nodes (view/root-elements model (filter el/model-node? elements))
+        nodes (if (el/hierarchical-view? view)
+                (view/root-elements model (filter el/model-node? elements))
+                (filter el/model-node? elements))
         relations (filter el/model-relation? elements)
         rendered (view/elements-to-render model view (concat nodes relations))]
     (flatten [(str "@startuml " (name (:id view)))

@@ -25,8 +25,8 @@
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags set?)    ; check
 (s/def :overarch/link (s/or :key keyword? :url string?))
+(s/def :overarch/index int?)   ; check
 ; (s/def :overarch/type string?) ; check
-; (s/def :overarch/index int?)   ; check
 ; (s/def :overarch/href string?) ; TODO url?
 
 (s/def :overarch/ct
@@ -47,6 +47,7 @@
 (s/def :overarch/relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
           :opt-un [:overarch/id
+                   :overarch/index
                    :overarch/name :overarch/desc :overarch/doc
                    :overarch/maturity :overarch/tech
                    :overarch/direction :overarch/constraint
@@ -55,7 +56,8 @@
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
-          :opt-un [:overarch/external :overarch/direction :overarch/constraint :overarch/link]))
+          :opt-un [:overarch/index :overarch/external :overarch/direction
+                   :overarch/constraint :overarch/link]))
 
 (s/def :overarch/identifiable
   (s/keys :req-un [:overarch/id]))
