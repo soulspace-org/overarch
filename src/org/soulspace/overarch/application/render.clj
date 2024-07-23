@@ -2,6 +2,7 @@
   "Contains dispatch functions for the rendering of the views."
   ; require views here to register multimethods
   (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.views.code-view :as code-view]
             [org.soulspace.overarch.domain.views.component-view :as component-view]
             [org.soulspace.overarch.domain.views.concept-view :as concept-view]
@@ -41,9 +42,30 @@
   render-format)
 
 (defmulti render-view
-  "Renders the view in the given format." 
+  "Renders the view in the given format."
   render-format)
 
-(defmulti render
+#_(defmulti render
+    "Renders all relevant views in the given format."
+    render-format)
+
+(def render-formats
+  "Contains the supported render formats."
+  #{:graphviz :markdown :plantuml})
+
+(defn render
   "Renders all relevant views in the given format."
-  render-format)
+  [model format options]
+  (if (= :all format)
+    (doseq [current-format render-formats]
+      (when (:debug options)
+        (println "Rendering " current-format))
+      (render model current-format options))
+    (doseq [view (model/views model)]
+      (try
+        (render-view model format options view)
+        (catch Exception e
+          (println "Error rendering view" (:id view) "in format" format ".")
+          (println (.getMessage e))
+          (when (:debug options)
+            (.printStacktrace e)))))))

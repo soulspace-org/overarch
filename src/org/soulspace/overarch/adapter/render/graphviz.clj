@@ -95,13 +95,13 @@
 
 (defmethod rndr/render-view :graphviz
   [model format options view]
-  (let [result (render-graphviz-view model options view)]
-  (with-open [wrt (io/writer (rndr/render-file model format options view))]
-    (binding [*out* wrt]
-      (println (str/join "\n" result))))))
+  (when (graphviz-view? view)
+    (let [result (render-graphviz-view model options view)]
+      (with-open [wrt (io/writer (rndr/render-file model format options view))]
+        (binding [*out* wrt]
+          (println (str/join "\n" result)))))))
 
-(defmethod rndr/render :graphviz
+#_(defmethod rndr/render :graphviz
   [m format options]
   (doseq [view (model/views m)]
-    (when (graphviz-view? view)
-      (rndr/render-view m format options view))))
+    (rndr/render-view m format options view)))

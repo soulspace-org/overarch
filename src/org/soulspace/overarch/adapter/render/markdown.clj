@@ -116,16 +116,16 @@
 
 (defmethod rndr/render-view :markdown
   [model format options view]
-  (let [result (render-markdown-view model options view)]
-    (with-open [wrt (io/writer (rndr/render-file model format options view))]
-      (binding [*out* wrt]
-        (println (str/join "\n" result))))))
+  (when (markdown-view? view)
+    (let [result (render-markdown-view model options view)]
+      (with-open [wrt (io/writer (rndr/render-file model format options view))]
+        (binding [*out* wrt]
+          (println (str/join "\n" result)))))))
 
-(defmethod rndr/render :markdown
+#_(defmethod rndr/render :markdown
   [model format options]
   (doseq [view (model/views model)]
-    (when (markdown-view? view)
-      (rndr/render-view model format options view))))
+    (rndr/render-view model format options view)))
 
 (comment
   (md/image "Bla" "./bla.png")

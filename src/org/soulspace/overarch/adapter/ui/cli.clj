@@ -118,27 +118,12 @@
 ;;;
 ;;; Handler logic
 ;;;
-(def export-formats
-  "Contains the supported render formats."
-  #{:json :structurizr})
-
 (defmethod exp/export :all
   [model format options]
-  (doseq [current-format export-formats]
+  (doseq [current-format exp/export-formats]
     (when (:debug options)
       (println "Exporting " current-format))
     (exp/export model current-format options)))
-
-(def render-formats
-  "Contains the supported render formats."
-  #{:graphviz :markdown :plantuml})
-
-(defmethod rndr/render :all
-  [model format options]
-  (doseq [current-format render-formats]
-    (when (:debug options)
-      (println "Rendering " current-format))
-    (rndr/render model current-format options)))
 
 (defn model-warnings
   "Reports warnings about the model and views."
@@ -310,8 +295,6 @@
 
 (comment ; model navigation 
   (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
-  (model/requests (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
-  (model/requested (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
   ;
   )
 

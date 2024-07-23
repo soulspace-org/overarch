@@ -313,13 +313,13 @@
 
 (defmethod rndr/render-view :plantuml
   [model format options view]
-  (let [result (render-plantuml-view model options view)]
-    (with-open [wrt (io/writer (rndr/render-file model format options view))]
-      (binding [*out* wrt]
-        (println (str/join "\n" result))))))
+  (when (plantuml-view? view)
+    (let [result (render-plantuml-view model options view)]
+      (with-open [wrt (io/writer (rndr/render-file model format options view))]
+        (binding [*out* wrt]
+          (println (str/join "\n" result)))))))
 
-(defmethod rndr/render :plantuml
+#_(defmethod rndr/render :plantuml
   [model format options]
   (doseq [view (model/views model)]
-    (when (plantuml-view? view)
-      (rndr/render-view model format options view))))
+    (rndr/render-view model format options view)))

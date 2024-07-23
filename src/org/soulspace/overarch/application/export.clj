@@ -16,6 +16,10 @@
 ;;; Export multimethods 
 ;;;
 
+(def export-formats
+  "Contains the supported render formats."
+  #{:json :structurizr})
+
 (defn export-format
   "Returns the export format for the data."
   ([m format options]
