@@ -80,6 +80,12 @@ The deployment view shows the infrastucture and deployment of the containers of 
 
 ### Dynamic Views (:dynamic-view)
 Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
+The `:index` attribute can be used on relations or refs to relations to set the
+number for a relation in the view.
+
+If the relations are describing interactions specific for the diagram instead
+of general architectural relations (e.g. interfaces) of the model elements,
+it is ok to to specify the relations in the content of the view.
 
 ## UML Views
 Overarch supports selected UML views to show aspects of a system that are not covered by the C4
