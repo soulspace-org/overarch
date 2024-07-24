@@ -11,6 +11,10 @@
 ;;;
 (s/def :overarch/el keyword?)
 (s/def :overarch/id keyword?)
+
+;;
+;; Model Elements
+;;
 (s/def :overarch/subtype keyword?)
 (s/def :overarch/external boolean?)
 (s/def :overarch/name string?)
@@ -23,11 +27,10 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
-(s/def :overarch/tags set?)    ; check
+(s/def :overarch/tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/link (s/or :key keyword? :url string?))
 (s/def :overarch/index int?)   ; check
-; (s/def :overarch/type string?) ; check
-; (s/def :overarch/href string?) ; TODO url?
+(s/def :overarch/type string?) ; check
 
 (s/def :overarch/ct
   (s/coll-of
@@ -64,88 +67,6 @@
 
 (s/def :overarch/named
   (s/keys :req-un [:overarch/name]))
-
-;;;
-;;; Views
-;;;
-;;
-;; Styles/Themes
-;;
-(s/def :overarch/for keyword?)
-(s/def :overarch/line-style keyword?)
-(s/def :overarch/line-color string?)
-(s/def :overarch/border-color string?)
-(s/def :overarch/text-color string?)
-(s/def :overarch/legend-text string?)
-
-(s/def :overarch/style
-  (s/keys :req-un [:overarch/id]
-          :opt-un [:overarch/for :overarch/el :overarch/line-style
-                   :overarch/legend-text :overarch/border-color
-                   :overarch/line-color :overarch/text-color]))
-
-(s/def :overarch/styles
-  (s/coll-of :overarch/style))
-
-(s/def :overarch/theme
-  (s/keys :req-un [:overarch/el :overarch/id :overarch/styles]))
-
-(s/def :overarch/themes
-  (s/coll-of :overarch/theme))
-
-(s/def :overarch/include keyword?)
-(s/def :overarch/layout keyword?)
-(s/def :overarch/linetype keyword?)
-(s/def :overarch/sketch boolean?)
-
-;;
-;; PlantUML
-;;
-(s/def :overarch/sprite-lib keyword?)
-(s/def :overarch/node-separation integer?)
-(s/def :overarch/rank-separation integer?)
-
-(s/def :overarch/sprite-libs
-  (s/and vector?
-         (s/coll-of :overarch/sprite-lib)))
-
-(s/def :overarch/plantuml
-  (s/keys :req-un []
-          :opt-un [:overarch/node-separation :overarch/rank-separation
-                   :overarch/sprite-libs]))
-
-;;
-;; Markdown
-;;
-(s/def :overarch/references boolean?)
-(s/def :overarch/markdown
-  (s/keys :req-un []
-          :opt-un [:overarch/references]))
-
-;;
-;; View Spec
-;;
-(s/def :overarch/spec
-  (s/keys :opt-un [:overarch/include :overarch/layout :overarch/linetype
-                   :overarch/sketch :overarch/styles :overarch/themes
-                   :overarch/plantuml :overarch/markdown]))
-
-(s/def :overarch/title string?)
-(s/def :overarch/view
-  (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch/name :overarch/desc :overarch/doc :overarch/spec :overarch/title :overarch/ct]))
-
-;;
-;; Input model
-;;
-(s/def :overarch/input-model
-  (s/coll-of
-   (s/or :element     :overarch/element
-         :element-ref :overarch/element-ref
-         :relation    :overarch/relation
-         :view        :overarch/view
-         :theme       :overarch/theme)))
-
 
 ;;
 ;; Criteria for element selection 
@@ -189,24 +110,47 @@
 (s/def :overarch/referred-by keyword?)
 
 (s/def :overarch/criteria
-  (s/keys :opt-un [:overarch/el :overarch/els
-                   :overarch/keys? :overarch/keys
-                   :overarch/namespace :overarch/namespaces :overarch/namespace-prefix
-                   :overarch/from-namespace :overarch/from-namespaces :overarch/from-namespace-prefix
-                   :overarch/to-namespace :overarch/to-namespaces :overarch/to-namespace-prefix
-                   :overarch/id? :overarch/id
-                   :overarch/subtype? :overarch/subtype :overarch/subtypes
+  (s/keys :opt-un [:overarch/el
+                   :overarch/els
+                   :overarch/keys?
+                   :overarch/keys
+                   :overarch/namespace
+                   :overarch/namespaces
+                   :overarch/namespace-prefix
+                   :overarch/from-namespace
+                   :overarch/from-namespaces
+                   :overarch/from-namespace-prefix
+                   :overarch/to-namespace
+                   :overarch/to-namespaces
+                   :overarch/to-namespace-prefix
+                   :overarch/id?
+                   :overarch/id
+                   :overarch/subtype?
+                   :overarch/subtype
+                   :overarch/subtypes
                    :overarch/external?
-                   :overarch/maturity? :overarch/maturity
-                   :overarch/name? :overarch/name
-                   :overarch/desc? :overarch/desc
-                   :overarch/doc? :overarch/doc
-                   :overarch/tech? :overarch/tech  :overarch/techs :overarch/all-techs
-                   :overarch/tags? :overarch/tag :overarch/tags :overarch/all-tags
+                   :overarch/maturity?
+                   :overarch/maturity
+                   :overarch/name?
+                   :overarch/name
+                   :overarch/desc?
+                   :overarch/desc
+                   :overarch/doc?
+                   :overarch/doc
+                   :overarch/tech?
+                   :overarch/tech
+                   :overarch/techs
+                   :overarch/all-techs
+                   :overarch/tags?
+                   :overarch/tag
+                   :overarch/tags
+                   :overarch/all-tags
                    :overarch/children?
                    :overarch/child?
-                   :overarch/refers? :overarch/refers-to
-                   :overarch/referred? :overarch/referred-by]))
+                   :overarch/refers?
+                   :overarch/refers-to
+                   :overarch/referred?
+                   :overarch/referred-by]))
 
 (s/def :overarch/criteria-vector
   (s/and vector? (s/coll-of :overarch/criteria)))
@@ -214,6 +158,101 @@
 (s/def :overarch/selection-criteria
   (s/or :criteria :overarch/criteria
         :criteria-vector :overarch/criteria-vector))
+
+;;;
+;;; Views
+;;;
+;;
+;; Styles/Themes
+;;
+(s/def :overarch.view.style/for keyword?)
+(s/def :overarch.view.style/line-style keyword?)
+(s/def :overarch.view.style/line-color string?)
+(s/def :overarch.view.style/border-color string?)
+(s/def :overarch.view.style/text-color string?)
+(s/def :overarch.view.style/legend-text string?)
+
+(s/def :overarch.view/style
+  (s/keys :req-un [:overarch/id]
+          :opt-un [:overarch.view.style/for :overarch/el :overarch.view.style/line-style
+                   :overarch.view.style/legend-text :overarch.view.style/border-color
+                   :overarch.view.style/line-color :overarch.view.style/text-color]))
+
+(s/def :overarch.view/styles
+  (s/coll-of :overarch.view/style))
+
+(s/def :overarch.view/theme
+  (s/keys :req-un [:overarch/el :overarch/id :overarch.view/styles]))
+
+(s/def :overarch.view.spec/themes
+  (s/coll-of :overarch.view/theme))
+
+(s/def :overarch.view.spec/include (s/and keyword? #{:referenced-only :relations :related}))
+(s/def :overarch.view.spec/layout (s/and keyword? #{:top-down :left-right}))
+(s/def :overarch.view.spec/linetype keyword?)
+(s/def :overarch.view.spec/sketch boolean?)
+
+;;
+;; PlantUML
+;;
+(s/def :overarch.view.spec.plantuml/sprite-lib keyword?)
+(s/def :overarch.view.spec.plantuml/node-separation integer?)
+(s/def :overarch.view.spec.plantuml/rank-separation integer?)
+(s/def :overarch.view.spec.plantuml/skinparams map?)
+
+(s/def :overarch.view.spec.plantuml/sprite-libs
+  (s/and vector?
+         (s/coll-of :overarch.view.spec.plantuml/sprite-lib)))
+
+(s/def :overarch.view.spec/plantuml
+  (s/keys :req-un []
+          :opt-un [:overarch.view.spec.plantuml/node-separation
+                   :overarch.view.spec.plantuml/rank-separation
+                   :overarch.view.spec.plantuml/sprite-libs
+                   :overarch.view.spec.plantuml/skinparams]))
+
+;;
+;; Markdown
+;;
+(s/def :overarch.view.spec.markdown/references boolean?)
+(s/def :overarch.view.spec/markdown
+  (s/keys :req-un []
+          :opt-un [:overarch.view.spec.markdown/references]))
+
+;;
+;; Graphviz
+;;
+(s/def :overarch.view.spec.graphviz/engine keyword?)
+(s/def :overarch.view.spec/graphviz
+  (s/keys :req-un []
+          :opt-un [:overarch.view.spec.graphviz/engine]))
+
+;;
+;; View Spec
+;;
+(s/def :overarch.view/spec
+  (s/keys :opt-un [:overarch/selection :overarch.view.spec/include
+                   :overarch.view.spec/layout :overarch.view.spec/linetype
+                   :overarch.view.spec/sketch :overarch.view/styles :overarch.view.spec/themes
+                   :overarch.view.spec/plantuml :overarch.view.spec/markdown
+                   :overarch.view.spec/graphviz]))
+
+(s/def :overarch.view/title string?)
+(s/def :overarch/view
+  (s/keys :req-un [:overarch/el :overarch/id]
+          :opt-un [:overarch/name :overarch/desc :overarch/doc
+                   :overarch.view/spec :overarch.view/title :overarch/ct]))
+
+;;;
+;;; Input model
+;;;
+(s/def :overarch/input-model
+  (s/coll-of
+   (s/or :element     :overarch/element
+         :element-ref :overarch/element-ref
+         :relation    :overarch/relation
+         :view        :overarch/view
+         :theme       :overarch.view/theme)))
 
 ;;;
 ;;; Schema functions
