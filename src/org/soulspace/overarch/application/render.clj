@@ -66,6 +66,6 @@
         (render-view model format options view)
         (catch Exception e
           (println "Error rendering view" (:id view) "in format" format ".")
-          (println (.getMessage e))
+          (println (ex-message e))
           (when (:debug options)
             (.printStacktrace e)))))))

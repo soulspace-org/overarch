@@ -113,6 +113,8 @@
         :else ; failed custom validation => exit with usage summary
         {:exit-message (usage-msg appname description summary)}))
     (catch Exception e
+           (println "Error validating the CLI arguments" args ".")
+           (println (ex-message e))
            (.printStacktrace e))))
 
 ;;;
