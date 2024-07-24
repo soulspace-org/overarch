@@ -60,7 +60,7 @@
 (s/def :overarch/element-ref
   (s/keys :req-un [:overarch/ref]
           :opt-un [:overarch/index :overarch/external :overarch/direction
-                   :overarch/constraint :overarch/link]))
+                   :overarch/constraint :overarch/link :overarch/index]))
 
 (s/def :overarch/identifiable
   (s/keys :req-un [:overarch/id]))
