@@ -1,8 +1,8 @@
 (ns org.soulspace.overarch.adapter.repository.file-model-repository
   (:require [clojure.edn :as edn]
+            [clojure.string :as str]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.application.model-repository :as mr]
-            [clojure.string :as str]))
+            [org.soulspace.overarch.application.model-repository :as mr]))
 
 (defn windows-path?
   "Returns true, if the path is of a windows system."
