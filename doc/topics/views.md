@@ -134,7 +134,7 @@ key           | type          | example values            | description
 :linetype     | keyword       | :orthogonal, :polygonal   | different line types for relations
 :sketch       | boolean       | true, false               | visual clue for sketches
 :styles       | set           | see Styling               | visual customization of elements
-:theme        | keyword       | id of the theme           | theme containing styles
+:themes       | keyword       | id of the theme           | theme containing styles
 
 ### Selection
 With the `:selection` key a criteria map or a vector of criterias can be specified.
