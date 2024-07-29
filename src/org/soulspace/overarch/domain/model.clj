@@ -886,7 +886,7 @@
     (= :child? k)                (partial child-check? model v)
     (= :child-of k)              (partial child? model v)
     (= :descendant-of k)         (partial descendant-of? model v)
-    (= :children? k)             (partial el/parent-check? v) ; deprecated
+    (= :children? k)             (partial el/parent-check? v) ; deprecate
     (= :parent? k)               (partial el/parent-check? v)
     (= :parent-of k)             (partial parent model v)
     (= :ancestor-of k)           (partial ancestor-of? model v) 

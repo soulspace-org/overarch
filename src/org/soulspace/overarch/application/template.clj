@@ -39,6 +39,7 @@
 (s/def :overarch.template/id-as-name boolean?)
 (s/def :overarch.template/protected-area boolean?)
 (s/def :overarch.template/debug boolean?)
+(s/def :overarch.template/includes (s/and vector? (s/coll-of string?)))
 
 (s/def :overarch.template/generation-context
   (s/keys :req-un [:overarch.template/template]
@@ -62,7 +63,8 @@
                    :overarch.template/id-as-namespace
                    :overarch.template/id-as-name
                    :overarch.template/protected-area
-                   :overarch.template/debug]))
+                   :overarch.template/debug
+                   :overarch.template/includes]))
 
 (s/def :overarch.template/generation-config
   (s/coll-of :overarch.template/generation-context))
