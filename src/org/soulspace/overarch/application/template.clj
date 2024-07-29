@@ -227,7 +227,7 @@
   "Default values for the generator context."
   {:engine          :combsci
    :per-element     false
-   :per-namespace     false
+   :per-namespace   false
    :encoding        "UTF-8"
    :id-as-namespace false
    :id-as-name      false})
@@ -237,7 +237,8 @@
   [options]
   ; TODO validate against spec
   (if-let [generation-config (:generation-config options)]
-    (map (partial merge ctx-defaults {:generation-dir (:generation-dir options)
+    (map (partial merge ctx-defaults {:template-dir (:template-dir options)
+                                      :generation-dir (:generation-dir options)
                                       :backup-dir (:backup-dir options)})
          (edn/read-string (slurp generation-config)))
     []))
