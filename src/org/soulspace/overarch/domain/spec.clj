@@ -107,12 +107,17 @@
 (s/def :overarch.criterium/tag string?)
 (s/def :overarch.criterium/tags (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/all-tags (s/and set? (s/coll-of string?)))
-(s/def :overarch.criterium/children? boolean?)
-(s/def :overarch.criterium/child? boolean?)
 (s/def :overarch.criterium/refers? boolean?)
 (s/def :overarch.criterium/referred? boolean?)
 (s/def :overarch.criterium/refers-to keyword?)
 (s/def :overarch.criterium/referred-by keyword?)
+(s/def :overarch.criterium/child? boolean?)
+(s/def :overarch.criterium/child-of keyword?)
+(s/def :overarch.criterium/descendant-of keyword?)
+(s/def :overarch.criterium/children? boolean?)
+(s/def :overarch.criterium/parent? boolean?)
+(s/def :overarch.criterium/parent-of keyword?)
+(s/def :overarch.criterium/ancestor-of keyword?)
 
 (s/def :overarch/criteria
   (s/keys :opt-un [:overarch.criterium/el
@@ -150,8 +155,13 @@
                    :overarch.criterium/tag
                    :overarch.criterium/tags
                    :overarch.criterium/all-tags
-                   :overarch.criterium/children?
                    :overarch.criterium/child?
+                   :overarch.criterium/child-of
+                   :overarch.criterium/descendant-of
+                   :overarch.criterium/children?
+                   :overarch.criterium/parent?
+                   :overarch.criterium/parent-of
+                   :overarch.criterium/ancestor-of
                    :overarch.criterium/refers?
                    :overarch.criterium/refers-to
                    :overarch.criterium/referred?
