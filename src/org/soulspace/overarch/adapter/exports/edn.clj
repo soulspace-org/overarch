@@ -15,11 +15,17 @@
 ;;
 ;; export model into edn files structured according to the types and namespaces of the elements
 ;;
-(def model-order
+(def model-element-order
   "The order of the model elements in a namespace."
   [:concept-model-element :use-case-model-element
-   :architecture-model-element :deployment-model-element
-   :code-model-element :state-machine-model-element])
+   :architecture-model-element :state-machine-model-element
+   :code-model-element :deployment-model-element])
+
+(def view-order
+  "The order of the views in a namespace."
+  [:concept-view :use-case-view :context-view :container-view :component-view :system-landscape-view :dynamic-view
+   :state-machine-view :code-view :deployment-view]
+  )
 
 (defn file-comment
   "File comment."
@@ -56,8 +62,12 @@
    (str "; " s)))
 
 (defn export-namespace
-  ""
-  [nspace coll])
+  "Exports the namespace `nspace`."
+  [nspace coll]
+  [(file-comment (str "Model for Namespace " nspace))
+   "#{"
+   " }"]
+  )
 
 (defn edn-filename
   "Returns the filename for the `namespace` and the `kind` of data."
