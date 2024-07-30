@@ -557,6 +557,22 @@
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :deployed-to (:el %))))))
 
+(defn links
+  "Returns the deployment nodes the deployment node `e` links in the `model`"
+  [model e]
+  (->> e
+      (:id)
+      (get (:referred-id->relations model))
+      (into #{} (referred-xf model #(= :link (:el %))))))
+
+(defn linked-by
+  "Returns the deployment nodes the deployment node `e` is linked by in the `model`"
+  [model e]
+  (->> e
+      (:id)
+      (get (:referrer-id->relations model))
+      (into #{} (referrer-xf model #(= :link (:el %))))))
+
 ;;
 ;; use case model
 ;;

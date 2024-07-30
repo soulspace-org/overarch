@@ -306,6 +306,16 @@
   [model e]
   (model/deployed-to model e))
 
+(defn links
+  "Returns the deployment nodes the deployment node `e` links in the `model`"
+  [model e]
+  (model/links model e))
+
+(defn linked-by
+  "Returns the deployment nodes the deployment node `e` is linked by in the `model`"
+  [model e]
+  (model/linked-by model e))
+
 
 ;;
 ;; Statemachine model navigation

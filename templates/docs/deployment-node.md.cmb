@@ -1,0 +1,23 @@
+<%
+;;;;
+;;;; Documentation Template for a Deployment Node
+;;;;
+
+(let [children (m/children model e)
+      links (m/links model e)
+      linked-by (m/linked-by model e)
+      deployed-on (m/deployed-on model e)]
+%># <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
+<%
+)
+%>

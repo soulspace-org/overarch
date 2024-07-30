@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Documentation Template for an architecture element
+;;;; Documentation Template for an Architecture Node
 ;;;;
 
 (defn link
@@ -9,18 +9,25 @@
        (m/element-namespace-path target) "/"
        (name (:id target)) ".md"))
 
-(let [c (m/children model e)
-        bounded-contexts (filter #(= :context-boundary (:el %)) c)
-        containers (filter #(= :container (:el %)) c)
-        components (filter #(= :component (:el %)) c)]
+(let [children (m/children model e)
+      bounded-contexts (filter #(= :context-boundary (:el %)) children)
+      containers (filter #(= :container (:el %)) children)
+      components (filter #(= :component (:el %)) children)]
 
-%># <%= (:name e) %> Architecture
+%># <%= (:name e) %>
 ## Description
 <%= (:desc e) %>
-
 <%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
   (when (seq bounded-contexts)
-%>## Subdomains/Bounded Contexts
+%>
+## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
 
 | Bounded Context | Description |
