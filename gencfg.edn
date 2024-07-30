@@ -125,5 +125,16 @@
   :base-namespace "reports"
   :base-name "overarch-report"
   :extension "md"}
+ 
+ ;;;
+ ;;; Exports
+ ;;;
+ {:view-selection {:namespace-prefix "banking"}
+  :template "export/views.edn.cmb"
+  :per-namespace true
+  :subdir "export/edn"
+  :base-name "views"
+  :extension "edn"
+  :debug true}
  ;
  ]
