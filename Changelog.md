@@ -50,6 +50,7 @@ Version 0.25.0
 * added selection criteria for `:doc` and `:maturity`
 * added a `--select-views CRITERIA` command line argument
 * added `:name`, `:desc` and `:doc` as optional view attributes
+* fixed model predicates in model-api
 * updated overarch data model and spec
 * updated usage docs and data model diagrams
 
