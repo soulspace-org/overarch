@@ -8,6 +8,7 @@ Version 0.29.0
 * added context to error reporting for view generation errors
 * enhanced model api for deployment models
 * enhanced documentation templates
+* fixed model predicates in model-api
 * updated spec
 * updated documentation
 
@@ -50,7 +51,6 @@ Version 0.25.0
 * added selection criteria for `:doc` and `:maturity`
 * added a `--select-views CRITERIA` command line argument
 * added `:name`, `:desc` and `:doc` as optional view attributes
-* fixed model predicates in model-api
 * updated overarch data model and spec
 * updated usage docs and data model diagrams
 
