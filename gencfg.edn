@@ -130,7 +130,7 @@
  ;;; Exports
  ;;;
  {:selection {:namespace-prefix "banking"}
-  :template "export/model.edn.cmb"
+  :template "exports/model.edn.cmb"
   :per-namespace true
   :subdir "export/edn"
   :base-name "model"
@@ -138,7 +138,7 @@
   :debug true}
  
  {:view-selection {:namespace-prefix "banking"}
-  :template "export/views.edn.cmb"
+  :template "exports/views.edn.cmb"
   :per-namespace true
   :subdir "export/edn"
   :base-name "views"
