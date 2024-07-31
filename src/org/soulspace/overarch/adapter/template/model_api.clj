@@ -10,6 +10,18 @@
 ;;;;
 
 ;;;
+;;; Render functions
+;;;
+(defn single-line
+  "Converts the string `s` to a single line string."
+  [s]
+  (when s
+    (->> s
+         (str/split-lines)
+         (map str/trim)
+         (str/join " "))))
+
+;;;
 ;;; Element Predicates
 ;;;
 (defn model-element?
