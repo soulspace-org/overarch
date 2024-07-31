@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.29.1
+--------------
+* fixed rendering of `:index` which triggered an NPE in PlantUML
+
 Version 0.29.0
 --------------
 * added link generation for PlantUML UML diagrams

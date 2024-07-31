@@ -234,7 +234,7 @@
             ""))
         "("
         (when (and (:index e) (= :dynamic-view (:el view)))
-          (str "$index=setIndex(" (:index e) "), "))
+          (str "$index=SetIndex(" (:index e) "), "))
         (if (:reverse e)
           (str (puml/alias-name (:to e)) ", "
                (puml/alias-name (:from e)) ", \"")
@@ -250,7 +250,6 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-; TODO is this neccessary (for :rel)?
 (defmethod puml/render-c4-element :model-relation
   [_ view indent e]
   (if (:constraint e)
@@ -263,7 +262,7 @@
           (c4-element->method (:el e))
           (when (:direction e) (c4-directions (:direction e))) "("
           (when (and (:index e) (= :dynamic-view (:el view)))
-            (str "$index=setIndex(" (:index e) "), "))
+            (str "$index=SetIndex(" (:index e) "), "))
           (if (:reverse e)
             (str (puml/alias-name (:to e)) ", "
                  (puml/alias-name (:from e)) ", \"")
