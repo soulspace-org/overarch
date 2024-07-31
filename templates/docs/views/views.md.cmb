@@ -138,3 +138,5 @@
 
 )
 %>
+
+(generated with <%= (:template ctx) %>)

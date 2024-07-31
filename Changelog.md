@@ -6,6 +6,7 @@ Version 0.29.0
 * added link generation for PlantUML UML diagrams
 * added `:index` attribute for relations/refs in dynamic views
 * added context to error reporting for view generation errors
+* added single-line function to model-api
 * enhanced model api for deployment models
 * enhanced documentation templates
 * fixed model predicates in model-api
