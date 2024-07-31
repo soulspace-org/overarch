@@ -11,6 +11,7 @@ Version 0.29.0
 * fixed model predicates in model-api
 * updated spec
 * updated documentation
+* added dynamic-view for testing
 
 Version 0.28.0
 --------------
