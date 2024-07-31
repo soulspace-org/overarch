@@ -224,8 +224,6 @@
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
-        (when (and (:index e) (= :dynamic-view (:el view)))
-          (str "$index=" (:index e)))
         (if (:direction e)
           ; direction is specified on relation
           (c4-directions (:direction e))
@@ -235,6 +233,8 @@
             :subscribe (c4-directions :up)
             ""))
         "("
+        (when (and (:index e) (= :dynamic-view (:el view)))
+          (str "$index=setIndex(" (:index e) "), "))
         (if (:reverse e)
           (str (puml/alias-name (:to e)) ", "
                (puml/alias-name (:from e)) ", \"")
@@ -261,9 +261,9 @@
           ")")]
     [(str (render/indent indent)
           (c4-element->method (:el e))
-          (when (and (:index e) (= :dynamic-view (:el view)))
-            (str "$index=" (:index e)))
           (when (:direction e) (c4-directions (:direction e))) "("
+          (when (and (:index e) (= :dynamic-view (:el view)))
+            (str "$index=setIndex(" (:index e) "), "))
           (if (:reverse e)
             (str (puml/alias-name (:to e)) ", "
                  (puml/alias-name (:from e)) ", \"")
