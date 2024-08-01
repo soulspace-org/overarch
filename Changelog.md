@@ -4,6 +4,7 @@ Changelog
 Version (NEXT)
 --------------
 * refactored template handling
+* enhanced model warnings
 
 Version 0.29.1
 --------------

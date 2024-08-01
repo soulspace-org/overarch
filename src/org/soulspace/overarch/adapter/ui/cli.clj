@@ -130,10 +130,10 @@
   [model options]
   {:unresolved-refs-in-views (al/check-views model)
    :unresolved-refs-in-relations (al/check-relations model)})
-   ;:unnamespaced (al/unnamespaced-elements (repo/elements))
-   ;:unidentifiable (al/unidentifiable-elements (repo/elements))
-   ;:unnamed (al/unnamed-elements (repo/elements))
-   ;:unrelated (al/unrelated-nodes (repo/elements))
+   :unnamespaced (al/unnamespaced-elements (repo/model-elements))
+   :unidentifiable (al/unidentifiable-elements (repo/model-elements))
+   :unnamed (al/unnamed-elements (repo/model-elements))
+   :unrelated (al/unrelated-nodes (repo/model-elements))
    
 (defn model-info
   "Reports information about the model and views."
