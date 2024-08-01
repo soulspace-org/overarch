@@ -19,7 +19,6 @@
 ;;;
 (s/def :overarch.template/selection :overarch/selection-criteria)
 (s/def :overarch.template/view-selection :overarch/selection-criteria)
-(s/def :overarch.template/view :overarch/id)
 (s/def :overarch.template/template string?)
 (s/def :overarch.template/engine keyword?)
 (s/def :overarch.template/encoding string?)
