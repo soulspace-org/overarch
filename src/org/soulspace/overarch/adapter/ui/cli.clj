@@ -5,10 +5,8 @@
             [clojure.edn :as edn]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
-            [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.analytics :as al]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
@@ -268,7 +266,6 @@
   (repo/update-state! "models")
   ;
   )
-
 
 (comment ; model analytics 
   (al/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
