@@ -1,8 +1,9 @@
 ;;;;
-;;;; Code adapted from comb (https://github.com/weavejester/comb).
+;;;; Template Engine implementation based on Comb templates.
+;;;; Some code adapted from comb (https://github.com/weavejester/comb).
 ;;;;
 (ns org.soulspace.overarch.adapter.template.comb
-  "Clojure templating library."
+  "Template Engine implementation based on Comb templates."
   (:refer-clojure :exclude [fn eval])
   (:require [clojure.core :as core]
             [clojure.java.io :as io]
@@ -14,6 +15,9 @@
             [org.soulspace.overarch.adapter.template.model-api :as m]
             [org.soulspace.overarch.adapter.template.view-api :as v]))
 
+;;;
+;;; Parse Comb Templates
+;;;
 (binding [*read-eval* false])
 
 (def delimiters ["<%" "%>"])
@@ -111,7 +115,7 @@
   )
 
 ;;;
-;;; Comb templates evaluated with the Small Clojure Interpreter
+;;; Comb templates evaluated with the Small Clojure Interpreter (SCI)
 ;;;
 (defn sci-opts
   []
@@ -131,7 +135,7 @@
                    str clojure.string
                    m org.soulspace.overarch.adapter.template.model-api
                    v org.soulspace.overarch.adapter.template.view-api}}))
-(def ctx (sci/init sci-opts))
+(def sci-ctx (sci/init sci-opts))
 
 (defn eval-sci
   "Evaluate a `parsed-template` using the supplied `data` bindings."
@@ -169,10 +173,10 @@
    (eval-sci parsed-template data)))
 
 (comment ; Comb SCI
-  (sci/eval-string* ctx "\"Hello\"")
-  (sci/eval-string* ctx "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"")
+  (sci/eval-string* sci-ctx "\"Hello\"")
+  (sci/eval-string* sci-ctx "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"")
   (sci/eval-string (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!") (sci-opts))
-  (sci/eval-string* ctx "(do (print  \"Hello\" ) (dotimes [x 3] (print  \" World\" ) ) (print  \"!\" ))")
+  (sci/eval-string* sci-ctx "(do (print  \"Hello\" ) (dotimes [x 3] (print  \" World\" ) ) (print  \"!\" ))")
   (t/apply-template :combsci "Hello")
   (t/apply-template :combsci "*ns*")
   (t/apply-template :combsci "\"Hello<% (dotimes [x 3] %> World<% ) %>!\"" {})

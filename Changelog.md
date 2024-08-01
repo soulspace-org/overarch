@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version (NEXT)
+--------------
+* refactored template handling
+
 Version 0.29.1
 --------------
 * fixed rendering of `:index` which triggered an NPE in PlantUML

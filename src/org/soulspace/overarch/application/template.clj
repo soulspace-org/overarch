@@ -18,6 +18,7 @@
 ;;; Generation config spec
 ;;;
 (s/def :overarch.template/selection :overarch/selection-criteria)
+(s/def :overarch.template/view-selection :overarch/selection-criteria)
 (s/def :overarch.template/view :overarch/id)
 (s/def :overarch.template/template string?)
 (s/def :overarch.template/engine keyword?)
@@ -44,7 +45,7 @@
 (s/def :overarch.template/generation-context
   (s/keys :req-un [:overarch.template/template]
           :opt-un [:overarch.template/selection
-                   :overarch.template/view
+                   :overarch.template/view-selection
                    :overarch.template/engine
                    :overarch.template/encoding
                    :overarch.template/per-element
@@ -69,22 +70,23 @@
 (s/def :overarch.template/generation-config
   (s/coll-of :overarch.template/generation-context))
 
+
 ;;;
 ;;; Template engine functions
 ;;;
 (defn repo-type
   "Returns the repository type."
-  ([rtype]
-   rtype)
-  ([rtype & r]
-   rtype))
+  ([context]
+   (:engine context))
+  ([context & r]
+   (:engine context)))
 
 (defn engine-type
   "Returns the template engine type."
-  ([ttype]
-   ttype)
-  ([ttype & r]
-   ttype))
+  ([context]
+   (:engine context))
+  ([context & r]
+   (:engine context)))
 
 (defn read-source
   "Reads the `source` as string or file."
@@ -147,26 +149,6 @@
 ;;;
 ;;; Artifact handling
 ;;;
-(defn artifact-filename
-  "Returns the filename of the artifact given the generation context `ctx`
-   and optionally a model element `el`."
-  ([ctx]
-    (str
-     (:prefix ctx)
-     (:base-name ctx)
-     (:suffix ctx)
-     "." (:extension ctx)))
-  ([ctx el]
-   (str
-    (:prefix ctx)
-    (if-let [base-name (:base-name ctx)]
-      base-name
-      (if (or (:id-as-name ctx) (el/view? el))
-        (name (:id el))
-        (:name el)))
-    (:suffix ctx)
-    "." (:extension ctx))))
-
 (defn artifact-path
   "Returns the path for the artifact given the generation context `ctx`
    and optionally a model element `el`."
@@ -190,15 +172,35 @@
       (str (:subdir ctx) "/"))
     (when (:namespace-prefix ctx)
       (str (ns/ns-to-path (:namespace-prefix ctx)) "/"))
-    
+
     (if (:id-as-namespace ctx)
       (str (ns/ns-to-path (name (:id el))) "/")
       (if (:base-namespace ctx)
         (str (ns/ns-to-path (:base-namespace ctx)) "/")
         (str (ns/ns-to-path (el/element-namespace el)) "/")))
-    
+
     (when (:namespace-suffix ctx)
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
+
+(defn artifact-filename
+  "Returns the filename of the artifact given the generation context `ctx`
+   and optionally a model element `el`."
+  ([ctx]
+    (str
+     (:prefix ctx)
+     (:base-name ctx)
+     (:suffix ctx)
+     "." (:extension ctx)))
+  ([ctx el]
+   (str
+    (:prefix ctx)
+    (if-let [base-name (:base-name ctx)]
+      base-name
+      (if (or (:id-as-name ctx) (el/view? el))
+        (name (:id el))
+        (:name el)))
+    (:suffix ctx)
+    "." (:extension ctx))))
 
 (defn create-path
   "Creates the path for `pathname` by creating all neccessary directories."
@@ -254,11 +256,11 @@
     :else
     (println "No selection for template" (:template ctx))))
 
-(defn generate-artifact-for-selection
+(defn generate-artifact
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
   [parsed-template path ctx model e]
   (let [protected-areas (read-protected-areas ctx path)
-        result (apply-template (:engine ctx)
+        result (apply-template ctx
                                parsed-template
                                {:ctx ctx
                                 :e e
@@ -273,21 +275,21 @@
   [model options]
   (doseq [ctx (read-config options)]
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
-          parsed-template (parse-template (:engine ctx) template)
+          parsed-template (parse-template ctx template)
           selection (select-elements model ctx)]
       (cond
         (:per-element ctx)
         (doseq [e selection]
           (let [path (str (artifact-path ctx e) (artifact-filename ctx e))]
-            (generate-artifact-for-selection parsed-template path ctx model e)))
+            (generate-artifact parsed-template path ctx model e)))
         (:per-namespace ctx)
         (doseq [e (vals (group-by el/element-namespace selection))]
           ;; build path from first element
           (let [path (str (artifact-path ctx (first e)) (artifact-filename ctx))]
-            (generate-artifact-for-selection parsed-template path ctx model e)))
+            (generate-artifact parsed-template path ctx model e)))
         :else
         (let [path (str (artifact-path ctx) (artifact-filename ctx))]
-          (generate-artifact-for-selection parsed-template path ctx model selection))))))
+          (generate-artifact parsed-template path ctx model selection))))))
 
 (comment
   (repo/read-models :file "models")
