@@ -622,7 +622,7 @@
   "Returns the name of the element `e`."
   [e]
   (if (:name e)
-    (fns/to-singleline (:name e))
+    (fns/single-line (:name e))
     (->> (name (:id e))
          (#(str/split % #"-"))
          (map str/capitalize)

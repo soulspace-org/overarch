@@ -106,7 +106,7 @@
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
-        (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
         (when (:type e) (str ", $type=\"" (:type e) "\""))
         (render-link e)
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
@@ -120,7 +120,7 @@
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
-        (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
         (when (:tech e) (str ", $type=\"" (:tech e) "\""))
         (render-link e)
         (if (:sprite e)
@@ -138,7 +138,7 @@
         (when (:external e) "_Ext") "("
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
-        (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (render-link e)
         (if (:sprite e)
@@ -163,7 +163,7 @@
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
                      (el/element-name e) "\""
-                     (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+                     (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
                      (when (:tech e) (str ", $type=\"" (:tech e) "\""))
                      (render-link e)
                      (if (:sprite e)
@@ -205,8 +205,8 @@
                  (puml/alias-name (:from e)) ", \"")
             (str (puml/alias-name (:from e)) ", "
                  (puml/alias-name (:to e)) ", \""))
-          (fns/to-singleline (:name e)) "\""
-          (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+          (fns/single-line (:name e)) "\""
+          (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
           (if (:sprite e)
             (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
@@ -240,8 +240,8 @@
                (puml/alias-name (:from e)) ", \"")
           (str (puml/alias-name (:from e)) ", "
                (puml/alias-name (:to e)) ", \""))
-        (fns/to-singleline (:name e)) "\""
-        (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+        (fns/single-line (:name e)) "\""
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
         (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
         (if (:sprite e)
           (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
@@ -268,8 +268,8 @@
                  (puml/alias-name (:from e)) ", \"")
             (str (puml/alias-name (:from e)) ", "
                  (puml/alias-name (:to e)) ", \""))
-          (fns/to-singleline (:name e)) "\""
-          (when (:desc e) (str ", $descr=\"" (fns/to-singleline (:desc e)) "\""))
+          (fns/single-line (:name e)) "\""
+          (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
           (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
           (if (:sprite e)
             (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")

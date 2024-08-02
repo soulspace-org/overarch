@@ -1,25 +1,14 @@
 (ns org.soulspace.overarch.adapter.template.model-api
   "Public API with useful functions on top of the model for use in templates. (Not yet stable!)"
-  (:require [org.soulspace.overarch.domain.element :as el]
+  (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.application.model-repository :as repo]
-            [clojure.string :as str]))
+            ))
 
 ;;;;
 ;;;; Not yet stable!
 ;;;;
-
-;;;
-;;; Render functions
-;;;
-(defn single-line
-  "Converts the string `s` to a single line string."
-  [s]
-  (when s
-    (->> s
-         (str/split-lines)
-         (map str/trim)
-         (str/join " "))))
 
 ;;;
 ;;; Element Predicates
@@ -72,6 +61,11 @@
 ;;;
 ;;; Element functions
 ;;;
+(defn element-type
+  "Renders the element type for element `e`."
+  [e]
+  (str/capitalize (name (:el e))))
+
 (defn element-name
   "Returns the name of the element `e`."
   [e]

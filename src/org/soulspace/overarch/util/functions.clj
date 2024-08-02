@@ -27,7 +27,7 @@
          (map str/trim)
          (into [])))))
 
-(defn to-singleline
+(defn single-line
   "Converts the string to a single line string."
   [s]
   (when s

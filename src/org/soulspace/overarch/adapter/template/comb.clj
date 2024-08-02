@@ -13,7 +13,10 @@
             [clojure.set :as set]
             [clojure.string :as str]
             [org.soulspace.overarch.adapter.template.model-api :as m]
-            [org.soulspace.overarch.adapter.template.view-api :as v]))
+            [org.soulspace.overarch.adapter.template.view-api :as v]
+            [org.soulspace.overarch.adapter.template.template-api :as ta]
+            [org.soulspace.overarch.adapter.template.markdown-api :as md]
+            ))
 
 ;;;
 ;;; Parse Comb Templates
@@ -123,6 +126,10 @@
         model-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.model-api model-ns)
         view-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.view-api)
         view-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.view-api view-ns)
+        template-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.template-api)
+        template-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.template-api template-ns)
+        markdown-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.markdown-api)
+        markdown-sci-ns (sci/copy-ns org.soulspace.overarch.adapter.template.markdown-api markdown-ns)
         set-ns (sci/create-ns 'clojure.set)
         set-sci-ns (sci/copy-ns clojure.set set-ns)
         string-ns (sci/create-ns 'clojure.string)
@@ -130,11 +137,16 @@
     {:namespaces {'clojure.set set-sci-ns
                   'clojure.string string-sci-ns
                   'org.soulspace.overarch.adapter.template.model-api model-sci-ns
-                  'org.soulspace.overarch.adapter.template.view-api view-sci-ns}
+                  'org.soulspace.overarch.adapter.template.view-api view-sci-ns
+                  'org.soulspace.overarch.adapter.template.template-api template-sci-ns
+                  'org.soulspace.overarch.adapter.template.markdown-api markdown-sci-ns}
      :ns-aliases '{set clojure.set
                    str clojure.string
                    m org.soulspace.overarch.adapter.template.model-api
-                   v org.soulspace.overarch.adapter.template.view-api}}))
+                   v org.soulspace.overarch.adapter.template.view-api
+                   t org.soulspace.overarch.adapter.template.template-api
+                   md org.soulspace.overarch.adapter.template.markdown-api}}))
+
 (def sci-ctx (sci/init sci-opts))
 
 (defn eval-sci

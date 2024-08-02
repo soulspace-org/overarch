@@ -32,14 +32,9 @@
   [model view]
   (view/view-elements model view))
 
-; TODO refactor, move to model?
 (defn root-elements
   "Returns the root elements for a collection of `model` `elements` to start the rendering of the `view` with."
   [model elements]
-  ; Difference of the sets of elements have to be done with difference-by-id which treats the elements as entities
-  ; to preserve overrides of keys in the content references included in the view.
-  ; When keys have been added or overridden in the reference in a view, the elements in the different sets
-  ; are not the same values anymore and so have to be treated as entities, even when they are still immutable.
   (view/root-elements model elements))
 
 (defn elements-to-render

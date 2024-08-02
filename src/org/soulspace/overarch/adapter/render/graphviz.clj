@@ -34,7 +34,7 @@
 
 (defmethod render-element :model-node
   [model e indent view]
-  [(str (alias-name (:id e)) "[label=\"" (fns/to-singleline (:name e)) "\", style=\"filled\", fillcolor=\"#dddddd\"];")])
+  [(str (alias-name (:id e)) "[label=\"" (fns/single-line (:name e)) "\", style=\"filled\", fillcolor=\"#dddddd\"];")])
 
 (defmethod render-element :model-relation
   [model e indent view]

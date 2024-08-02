@@ -3,6 +3,7 @@ Changelog
 
 Version (NEXT)
 --------------
+* added template-api and markdown-api to use in templates
 * refactored template handling
 * enhanced model warnings
 
