@@ -201,6 +201,7 @@ A: With :ref the reusablility of model elements in different views is
 
    Implemented.
 
+
 Q: **How is external/internal handled when combining models for different systems?**
 
 A: When combining multiple models, what is external and internal depends on the
@@ -209,6 +210,7 @@ A: When combining multiple models, what is external and internal depends on the
    in the context of the system in scope. But in a combination of models, the
    viewpoint to take has to be set from the outside ignoring the original
    element attribution.
+
 
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
@@ -237,6 +239,10 @@ A: In architecture views there a two interesting directions to show,
    The direction of dataflow is independent of the call direction,
    e.g. data can be send with a request and returned with the response.
 
+   Support semantic relation types, like request/response, publish/subscribe,
+   send and dataflow in the architecture model.
+
+   Implemented.
 
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
    
@@ -396,7 +402,7 @@ A: The process could be
    2. merge directly referenced elements
    3. add additional elements from :include spec, if provided
 
-   Only relevant elements for the views shall be added/rendered.
+   Only relevant elements for the view shall be added/rendered.
 
    Implemented.
 
@@ -544,6 +550,7 @@ A: Overarch would benefit from a template based generation mechanism because
    specific to the context (e.g. the project). The render adapters provided by
    overarch should be generic and useful for all usage contexts.
 
+
 Q: **What properties should a generic generation mechanism have?**
 
 A: 
@@ -564,6 +571,18 @@ A: It does not seem to be needed so far.
 
 
 ## Component Design
+Overarch is using clean architecture to separate the domain core, the
+application layer and the adapters interfacing with the outside world.
+
+The domain layer contains the business logic of Overarch and is implemented
+in a purely functional style.
+
+The application layer contains the use case orchestration and is also
+implemented in a purely functional style.
+
+The adapters handle the input and output of overarch. All side effects are
+handled in the adapters.
+
 The diagram below shows the current structure of the code. The components
 map to clojure namespaces and the diagram describes the reposibilities and
 dependencies of the namespaces.
