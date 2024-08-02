@@ -128,13 +128,15 @@ A: An extension of the model could make sense if there is value in the
 * Functional or nonfunctional requirements and crosscutting concerns
 * Inner workings of some components
   * e.g. state machines, activty or sequence diagrams
-* processes/transformations with inputs and outputs
+* Processes/transformations with inputs and outputs
+* Teams and responsibilities
+* Connecting models (e.g. containers to use cases via an implements relation)
 * ...
 
    Some or all of these extensions might be added to Overarch in the future.
 
    The schema of the model is open, as the spec just checks for the existence
-   of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overach.
+   of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on Overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overarch.
 
 
 Q: **Why EDN as the specification notation?**
@@ -190,14 +192,23 @@ A: With :ref the reusablility of model elements in different views is
    e.g. a diagram and a textual description of the elements shown in the
    diagram.
 
-   Another level of reuse (and composablity) is the combination of smaller models to larger models with loading all EDN files in a directory,
-   namespaced IDs to avoid conflicts and :ref's to refer to other model
+   Another level of reuse (and composablity) is the combination of smaller
+   models to larger models with loading all EDN files in a directory or search
+   path, namespaced IDs to avoid conflicts and :ref's to refer to other model
    elements.
 
    Even another level of reuse lies in the plain data specification and the extensible nature of EDN. you can augment models with information that is not evaluated by Overarch, but maybe other tools working on the data. Because it is just plain data, you don't need a specific parser to read the model and view descriptions. And with the JSON export you can even reuse the data in languages, for which no EDN reader exists. So the model is not bound to Overarch as a specific tool but stands for itself.
 
    Implemented.
 
+Q: **How is external/internal handled when combining models for different systems?**
+
+A: When combining multiple models, what is external and internal depends on the
+   viewpoint one wants to take and not on the attribution on the elements in the
+   respective models. Each models has a different viewpoint, which makes sense
+   in the context of the system in scope. But in a combination of models, the
+   viewpoint to take has to be set from the outside ignoring the original
+   element attribution.
 
 Q: **Shall the boundaries be implicit in the model, e.g. rendering a system as a system-boundary in a container diagram, if it contains container elements, that are visualized?**
 
