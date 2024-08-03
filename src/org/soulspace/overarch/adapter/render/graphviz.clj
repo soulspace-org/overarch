@@ -63,10 +63,11 @@
   (let [ve (view/view-elements model view)
         vn (sort-by :id (filter el/model-node? ve))
         vr (sort-by :id (filter el/model-relation? ve))
-        elements (concat vn vr)]
-    (flatten [(str "digraph \"" (:title view) "\" {")
+        elements (concat vn vr)
+        title (view/title view)]
+    (flatten [(str "digraph \"" title "\" {")
               "labelloc= \"t\""
-              (str "label=\"" (:title view) "\"")
+              (str "label=\"" title "\"")
               (render-layout view)
               (map #(render-element model % 0 view) elements)
               "}"])))

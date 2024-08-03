@@ -271,7 +271,8 @@
 (defn render-title
   "Renders the title of the diagram."
   [view]
-  (when (:title view) (str "title " (:title view))))
+  (when-let [title (view/title view)]
+    (str "title " title)))
 
 (defn render-skinparam
   "Renders a skinparam for the plantuml diagram."

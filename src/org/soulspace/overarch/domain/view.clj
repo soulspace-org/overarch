@@ -73,6 +73,12 @@
 ;;;
 ;;; View functions
 ;;;
+(defn title
+  "Returns the title of the view `v`, uses the name, if no title is set."
+  [v]
+  (if-let [title (:title v)]
+    title
+    (el/element-name v)))
 
 ;;
 ;; Context based content filtering

@@ -86,7 +86,7 @@
   "Renders the `view` with markdown according to the given `options`."
   [model options view]
   (let [elements (sort-by :id (filter el/model-node? (view/view-elements model view)))]
-    (flatten [(md/h1 (:title view))
+    (flatten [(md/h1 (view/title view))
               (render-diagram view)
               (map #(render-element model % options view) elements)])))
 

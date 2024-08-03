@@ -112,8 +112,8 @@
                                      (view/elements-to-render model view))]
                 (map (partial render-element model 6) children))
               (str (export/indent 6) "include *\n"))
-            (when (:title view)
-              (str (export/indent 6) "description \"" (:title view) "\"\n"))
+            (when-let [title (view/title view)]
+              (str (export/indent 6) "description \"" title "\"\n"))
             (str (export/indent 4) "}")]))
 
 (defn render-views

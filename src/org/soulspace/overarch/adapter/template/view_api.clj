@@ -27,6 +27,11 @@
 ;;;
 ;;; View Functions
 ;;;
+(defn title
+  "Returns the title of the view `v`, uses the name, if no title is set."
+  [v]
+  (view/title v))
+
 (defn view-elements
   "Returns the `model` elements specified for the given `view`."
   [model view]
