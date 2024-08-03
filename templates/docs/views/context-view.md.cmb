@@ -11,6 +11,13 @@
 ## Description
 <%= (:desc e) %>
 <%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
   (when (seq roles)
 %>## User Roles
 | Name | Description |

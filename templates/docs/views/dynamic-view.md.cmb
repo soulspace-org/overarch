@@ -8,7 +8,14 @@
 
 ## Description
 <%= (:desc e) %>
-
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
 ## Node Elements
 
 ## Steps

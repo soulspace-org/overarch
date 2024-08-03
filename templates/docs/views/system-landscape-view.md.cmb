@@ -11,13 +11,19 @@
 ## Description
 <%= (:desc e) %>
 <%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
   (when (seq roles)
 %>## User Roles
 | Name | Description |
 |---|---|
 <%
     (doseq [role roles]
-%>| <%= (:name role) %> | <%= (:desc role) %> |
+%>| <%= (md/element-link role) %> | <%= (:desc role) %> |
 <%
     ))
 
@@ -27,7 +33,7 @@
 |---|---|
 <%
     (doseq [system systems]
-%>| <%= (:name system) %> | <%= (:desc system) %> |
+%>| <%= (md/element-link system) %> | <%= (:desc system) %> |
 <%
     ))
 )

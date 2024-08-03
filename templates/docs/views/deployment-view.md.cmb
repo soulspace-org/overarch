@@ -12,7 +12,14 @@
 
 ## Description
 <%= (:desc e) %>
-
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
 ## Nodes
 | Name | Technology | Description |
 |---|---|---|

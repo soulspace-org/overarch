@@ -3,13 +3,6 @@
 ;;;; Documentation Template for a Use Case View
 ;;;;
 
-(defn element-link
-  ""
-  ([e]
-  (str "[" "]" "(" ")"))
-  ([ctx e]
-  (str "[" "]" "(" ")")))
-
 (defn use-case-level
   "Renders the level of the use case `uc`."
   [uc]
@@ -24,7 +17,14 @@
 
 ## Description
 <%= (:desc e) %>
-
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
 ## Actors
 | Name | Type | Description |
 |---|---|---|
@@ -39,7 +39,7 @@
 |---|---|---|
 <%
   (doseq [uc use-cases]
-%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+%>| <%= (md/element-link uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
 <%
   ))
 %>

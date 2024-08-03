@@ -10,21 +10,32 @@
 
 ## Description
 <%= (:desc e) %>
-
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
 ## States
 | Name | Type | Description |
 |---|---|---|
 <%
   (doseq [state states]
-%>| <%=(:name state)%> | <%= (:el state) %> | <%= (:desc state) %> |
+%>| <%= (:name state) %> | <%= (:el state) %> | <%= (:desc state) %> |
 <%
   )
 %>
 
 ## Transitions
-| From | To | Name | Description |
+| Name | From | To | Description |
 |---|---|---|---|
-
 <%
+  (doseq [transition transitions]
+%>
+|---|---|---|---|
+<%
+  )
 )
 %>

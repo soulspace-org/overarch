@@ -9,7 +9,14 @@
 
 ## Description
 <%= (:desc e) %>
-
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+%>
 ## Concepts
 <%
   (doseq [concept (sort-by #(str/capitalize (:name %)) nodes)]
