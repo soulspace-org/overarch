@@ -622,3 +622,4 @@ This section collects ideas that may make sense to implement in the future.
 * Inference on model information e.g. with
   * core.logic
   * Hyperdimensional vectors
+  * LLMs
