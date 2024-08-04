@@ -14,6 +14,7 @@
       code-views (filter #(= :code-view (:el %)) e)
       deployment-views (filter #(= :deployment-view (:el %)) e)
       glossary-views (filter #(= :glossary-view (:el %)) e)]
+      
 %># List of Views
 
 <%

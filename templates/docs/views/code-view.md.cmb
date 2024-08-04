@@ -3,7 +3,12 @@
 ;;;; Documentation Template for a Code View
 ;;;;
 
-(let [elements (v/view-elements model e)]
+(let [elements (v/view-elements model e)
+      packages (filter #(= :package (:el %)) elements)
+      namespaces (filter #(= :namespace (:el %)) elements)
+      interfaces (filter #(= :interface (:el %)) elements)
+      protocols (filter #(= :protocol (:el %)) elements)
+      classes (filter #(= :class (:el %)) elements)]
 %># <%= (:title e)%>
 
 ## Description
