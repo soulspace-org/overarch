@@ -246,12 +246,18 @@ A: In architecture views there a two interesting directions to show,
 
 Q: **Shall relations between low level elements (e.g. components) and the outside world (e.g. users or external systems) be promoted/merged into higher levels in the relevant diagram?**
    
-   The relation between a user and a user interface component would be rendered directly in a component diagram. In a container diagram, the relation would be rendered between the user and the container of the user interface component. In a system diagram, the relation would be rendered between the user and the system of the user interface component.
+   The relation between a user and a user interface component would be rendered
+   directly in a component diagram. In a container diagram, the relation would
+   be rendered between the user and the container of the user interface
+   component. In a system diagram, the relation would be rendered between the
+   user and the system of the user interface component.
 
    An advantage would be that relations would have be specified on the
-   component level, where the interaction is handled or the concrete dependency exists. But only relations between elements that are included
-   in the diagram should be rendered. If a user or an external system is
-   not included as a model element, relations to it should not be promoted or rendered. Otherwise the diagram would be polluted with unwanted elements.
+   component level, where the interaction is handled or the concrete dependency
+   exists. But only relations between elements that are included in the diagram
+   should be rendered. If a user or an external system is not included as a
+   model element, relations to it should not be promoted or rendered.
+   Otherwise the diagram would be polluted with unwanted elements.
 
    Relations of different elements in a lower level could be merged into a
    relation on a higher level, but some merge rules would have to be
@@ -273,6 +279,16 @@ A: Deeper levels than components are not supported in the architecture models.
    On the other hand, components do not have to be all on the same abstraction
    level. If you model components on different levels of abstraction, they can
    be shown together with their relations in a component view.
+
+
+Q: **What additional subtypes for C4 architecture models are useful?**
+
+A: Currently only :database for data storage and :queue for message queues/streams
+   are supported.
+   Other potentially useful subtypes might be
+   * `:frontend` or `:user-interface` for user interface containers or components
+   * `:backend` for application backends
+   * `:service` for microservices
 
 
 Q: **How can methods like domain driven design or architecture patterns like hexagonal architecture be modelled and visualized appropriately within Overarch?**
@@ -343,8 +359,8 @@ Q: **Can views be specified in a generic manner, so that the elements contained 
 
 A: An :include option in the view spec could contain different strategies for
    the automatic selection of content, e.g.
-   * :relations to select all relations for the referenced model elements
-   * :related to select all elements for the referenced relations
+   * `:relations` to select all relations for the referenced model elements
+   * `:related` to select all elements for the referenced relations
 
    Some views are rendered in a hierachical way, where only some top level
    elements have to be specified, and the content of these top level elements
