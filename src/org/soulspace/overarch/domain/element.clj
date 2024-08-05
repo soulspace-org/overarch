@@ -663,7 +663,7 @@
    (keyword (str (namespace from) "/"
                  (name from) "-" (name el) "-" (name to)))))
 
-(defn scope-elements
+(defn scope-element
   "Transforms the element `e` with the internal/external attribute set according to the namespace `scope-ns`."
   [scope-ns e]
   (if (str/starts-with? (element-namespace e) scope-ns)
