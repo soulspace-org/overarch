@@ -6,6 +6,7 @@ Version (NEXT)
 * added fallback on name or id when rendering view titles
 * added template-api and markdown-api to use in templates
 * enhanced model-api and view-api
+* enhanced documentation templates
 * refactored template handling
 * enhanced model warnings
 

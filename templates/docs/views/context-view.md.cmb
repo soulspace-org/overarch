@@ -5,7 +5,15 @@
 
 (let [elements (v/view-elements model e)
       roles (filter #(= :person (:el %)) elements)
-      systems (filter #(= :system (:el %)) elements)]
+      systems (filter #(= :system (:el %)) elements)
+      relations (filter m/model-relation? elements)
+      request-relations (filter #(= :request (:el %)) relations)
+      response-relations (filter #(= :response (:el %)) relations)
+      publish-relations (filter #(= :publish (:el %)) relations)
+      subscribe-relations (filter #(= :subscribe (:el %)) relations)
+      send-relations (filter #(= :send (:el %)) relations)
+      dataflow-relations (filter #(= :dataflow (:el %)) relations)]
+      
 %># <%= (:title e)%>
 
 ## Description
