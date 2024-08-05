@@ -150,10 +150,6 @@
   (set/union container-view-element-types
              #{:container-boundary :component}))
 
-(def code-view-element-types
-  "Element types of a C4 code view."
-  #{})
-
 (def system-landscape-view-element-types
   "Element types of a C4 system-landscape view."
   context-view-element-types)
@@ -666,6 +662,13 @@
   ([el from to]
    (keyword (str (namespace from) "/"
                  (name from) "-" (name el) "-" (name to)))))
+
+(defn scope-elements
+  "Transforms the element `e` with the internal/external attribute set according to the namespace `scope-ns`."
+  [scope-ns e]
+  (if (str/starts-with? (element-namespace e) scope-ns)
+    (assoc e :external false)
+    (assoc e :external true)))
 
 ;;
 ;; recursive traversal of the hierarchical data
