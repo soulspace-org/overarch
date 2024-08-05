@@ -315,7 +315,7 @@
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
 
 (defn requests-incoming
-  "Returns the requests relations issued by client `e` in the `model`."
+  "Returns the request relations served by service `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -323,7 +323,7 @@
        (filter #(= :request (:el %)))))
 
 (defn requests-outgoing
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the request relations issued by client `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -331,7 +331,7 @@
        (filter #(= :request (:el %)))))
 
 (defn responses-incoming
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the response relations handled by client `e` in the `model`."
   [model e]
   (->> e
        (:id)
@@ -339,7 +339,7 @@
        (filter #(= :response (:el %)))))
 
 (defn responses-outgoing
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the response relations served by service `e` in the `model`."
   [model e]
   (->> e
        (:id)

@@ -159,22 +159,22 @@
 ;; Architecture Model navigation
 ;;
 (defn requests-incoming
-  "Returns the requests relations issued by client `e` in the `model`."
+  "Returns the requests relations served by service `e` in the `model`."
   [model e]
   (model/requests-incoming model e))
 
 (defn requests-outgoing
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the requests relations issued by client `e` in the `model`."
   [model e]
   (model/requests-outgoing model e))
 
 (defn responses-incoming
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the response relations handled by client `e` in the `model`."
   [model e]
   (model/responses-incoming model e))
 
 (defn responses-outgoing
-  "Returns the requests relations served by service `e` in the `model`."
+  "Returns the response relations served by service `e` in the `model`."
   [model e]
   (model/responses-outgoing model e))
 
@@ -341,7 +341,7 @@
   (model/using model e))
 
 (defn using
-  "Returns the to side of the relation of type :uses of node `e` in the `model`."
+  "Returns the :to side of the relation of type :uses of node `e` in the `model`."
   [model e]
   (model/using model e))
 

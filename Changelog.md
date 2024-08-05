@@ -7,8 +7,9 @@ Version (NEXT)
 * added template-api and markdown-api to use in templates
 * enhanced model-api and view-api
 * enhanced documentation templates
-* refactored template handling
 * enhanced model warnings
+* refactored template handling
+* fixed docstrings on architecture relation navigation functions
 
 Version 0.29.1
 --------------
