@@ -782,11 +782,17 @@
    (let [p (peek ctx)]
      [(update-acc res p e) (conj ctx e)])))
 
+(defn prepare-input
+  "Performs transformations on the input `coll` prior to building the model."
+  [coll m]
+
+  )
+
 (defn build-model
   "Builds the working model from the input `coll` of elements."
   [coll]
-  (let [relational (el/traverse ->relational-model coll)]
-    (assoc relational :input-elements coll)))
+  (let [model (el/traverse ->relational-model coll)]
+    (assoc model :input-elements coll)))
 
 ;;;
 ;;; filtering element colletions by criteria
