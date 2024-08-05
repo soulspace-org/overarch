@@ -56,6 +56,7 @@
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
+;   [nil  "--set-scope NAMESPACE" "Sets the internal scope by namespace"]
    [nil  "--[no-]model-warnings" "Returns warnings for the loaded model" :default true]
    [nil  "--[no-]model-info" "Returns infos for the loaded model" :default false]
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
