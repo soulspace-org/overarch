@@ -10,7 +10,7 @@
     (str/capitalize (name level))
     "---"))
 
-(let [use-cases nil
+(let [use-cases (m/using model e)
       containers nil]
 %># User Role <%= (:name e) %>
 
