@@ -22,3 +22,5 @@
 <%
 )
 %>
+
+(generated with <%= (:template ctx) %>)

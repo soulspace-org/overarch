@@ -45,3 +45,5 @@
   )
 )
 %>
+
+(generated with <%= (:template ctx) %>)

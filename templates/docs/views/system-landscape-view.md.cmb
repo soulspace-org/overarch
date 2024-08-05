@@ -38,3 +38,5 @@
     ))
 )
 %>
+
+(generated with <%= (:template ctx) %>)

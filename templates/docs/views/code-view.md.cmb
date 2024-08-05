@@ -20,5 +20,42 @@
 <%= (:doc e) %>
 <%
   )
+
+  (when (seq packages)
+%>
+## Packages
+| Name | Description |
+|---|---|
+<%
+    (doseq [package package]
+%>|<%= (:name package) %>|<%= (t/single-line (:desc package)) %>|
+<%
+    )
+  )
+  (when (seq interfaces)
+%>
+## Interfaces
+| Name | Description |
+|---|---|
+<%
+    (doseq [interface interfaces]
+%>|<%= (:name interface) %>|<%= (t/single-line (:desc interface)) %>|
+<%
+    )
+  )
+  (when (seq classes)
+%>
+## Classes
+| Name | Description |
+|---|---|
+<%
+    (doseq [class classes]
+%>|<%= (:name class) %>|<%= (t/single-line (:desc class)) %>|
+<%
+    )
+  )
 )
 %>
+
+(generated with <%= (:template ctx) %>)
+
