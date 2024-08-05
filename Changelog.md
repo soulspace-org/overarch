@@ -3,8 +3,8 @@ Changelog
 
 Version (NEXT)
 --------------
-* added fallback on name or id when rendering view titles
 * added template-api and markdown-api to use in templates
+* added fallback on name or id when rendering view titles
 * enhanced model-api and view-api
 * enhanced documentation templates
 * enhanced model warnings
