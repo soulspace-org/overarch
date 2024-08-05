@@ -4,6 +4,7 @@ Changelog
 Version (NEXT)
 --------------
 * added template-api and markdown-api to use in templates
+* moved single-line function from model-api to template-api
 * added fallback on name or id when rendering view titles
 * enhanced model-api and view-api
 * enhanced documentation templates
