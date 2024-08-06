@@ -30,7 +30,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [package package]
+    (doseq [package packages]
 %>|<%= (:name package) %>|<%= (t/single-line (:desc package)) %>|
 <%
     )
@@ -61,4 +61,3 @@
 %>
 
 (generated with <%= (:template ctx) %>)
-
