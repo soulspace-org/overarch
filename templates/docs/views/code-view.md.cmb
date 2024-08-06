@@ -11,6 +11,9 @@
       classes (filter #(= :class (:el %)) elements)]
 %># <%= (:title e)%>
 
+## Diagramm
+![<%= (name (:el e)) %>](<%= (name (:id e)) %>.png)
+
 ## Description
 <%= (:desc e) %>
 <%
