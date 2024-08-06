@@ -27,6 +27,7 @@
    :subscribe           "Rel"
    :dataflow            "Rel"
    :link                "Rel"
+   :activity            "Rel"
    :rel                 "Rel"})
 
 (def c4-view-type->import
@@ -221,6 +222,36 @@
   )
 
 (defmethod puml/render-c4-element :architecture-model-relation
+  [_ view indent e]
+  [(str (render/indent indent)
+        (c4-element->method (:el e))
+        (if (:direction e)
+          ; direction is specified on relation
+          (c4-directions (:direction e))
+          ; no direction is specified on relation, use reasonable defaults 
+          (case (:el e)
+            :publish (c4-directions :down)
+            :subscribe (c4-directions :up)
+            ""))
+        "("
+        (when (and (:index e) (= :dynamic-view (:el view)))
+          (str "$index=SetIndex(" (:index e) "), "))
+        (if (:reverse e)
+          (str (puml/alias-name (:to e)) ", "
+               (puml/alias-name (:from e)) ", \"")
+          (str (puml/alias-name (:from e)) ", "
+               (puml/alias-name (:to e)) ", \""))
+        (fns/single-line (:name e)) "\""
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
+          (when (puml/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+        ")")])
+
+(defmethod puml/render-c4-element :activity
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))

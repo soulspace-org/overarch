@@ -88,6 +88,29 @@
   "Relation types for usecase models."
   #{:uses :include :extends :generalizes})
 
+;;
+;; Domain Story model 
+;;
+(def domain-story-node-types
+  "Node types for domain story models."
+  ;(set/union architecture-node-types #{:work-object}) ; TODO work-object as explicit node?
+  architecture-node-types)
+
+(def domain-story-relation-types
+  "Relation types for domain story models."
+  #{:activity})
+
+;;
+;; Responsibility model
+;;
+(def responsibility-node-types
+  "Node types for responsibility models."
+  (set/union architecture-node-types deployment-node-types #{:team}))
+
+(def responsibility-relation-types
+  "Relation types for responsibility models."
+  #{:responsibility})
+
 ;; 
 ;; General category definitions
 ;;
@@ -112,7 +135,9 @@
   (set/union architecture-node-types
              deployment-node-types
              uml-node-types
-             concept-node-types))
+             concept-node-types
+             domain-story-node-types
+             responsibility-node-types))
 
 (def model-relation-types
   "Relation types of the model."
@@ -120,7 +145,9 @@
              architecture-relation-types
              deployment-relation-types
              uml-relation-types
-             concept-relation-types))
+             concept-relation-types
+             domain-story-relation-types
+             responsibility-relation-types))
 
 (def model-element-types
   "Element types for the model."
@@ -162,7 +189,7 @@
 
 (def dynamic-view-element-types
   "Element types of a C4 dynamic view."
-  component-view-element-types)
+  (set/union component-view-element-types #{:activity}))
 
 ;;
 ;; UML view category definitions
@@ -319,7 +346,7 @@
       (derive :parameter                         :code-model-node)
       (derive :protocol                          :code-model-node)
       (derive :stereotype                        :code-model-node)
-      (derive :code-model-node                  :code-model-element)
+      (derive :code-model-node                   :code-model-element)
 
       ;; code model relations
       (derive :inheritance                       :code-model-relation)
@@ -328,7 +355,7 @@
       (derive :aggregation                       :code-model-relation)
       (derive :association                       :code-model-relation)
       (derive :dependency                        :code-model-relation)
-      (derive :code-model-relation              :code-model-element)
+      (derive :code-model-relation               :code-model-element)
 
       ;;; concept model
       ;; concept model nodes
@@ -337,9 +364,25 @@
 
       ;; concept model relations
       (derive :is-a                              :concept-model-relation)
-      (derive :has                               :concept-model-relation)
+      (derive :has                               :concept-model-relation) 
       (derive :concept-model-relation            :concept-model-element)
 
+      ;;; domain story model
+      ;; domain story model nodes
+
+      ;; domain story model relations
+      (derive :activity                          :domain-story-model-relation)
+      (derive :domain-story-model-relation       :domain-story-model-element)
+
+      ;;; responsibility model
+      ;; responsibility model nodes
+      (derive :team                              :responsibility-model-node)
+      (derive :responsibility-model-node         :responsibility-model-element)
+
+      ;; responsibility model relations
+      (derive :responsibility                    :responsibility-model-relation)
+      (derive :responsibility-model-relation     :responsibility-model-element)
+      
       ;; model nodes
       (derive :architecture-model-node           :model-node)
       (derive :deployment-model-node             :model-node)
@@ -347,6 +390,7 @@
       (derive :state-machine-model-node          :model-node)
       (derive :code-model-node                   :model-node)
       (derive :concept-model-node                :model-node)
+      (derive :responsibility-model-node         :model-node)
       (derive :boundary                          :model-node)
 
       ;; model relations
@@ -356,6 +400,7 @@
       (derive :state-machine-model-relation      :model-relation)
       (derive :code-model-relation               :model-relation)
       (derive :concept-model-relation            :model-relation)
+      (derive :responsibility-model-relation     :model-relation)
 
       (derive :rel                               :model-relation)
 

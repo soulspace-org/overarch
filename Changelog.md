@@ -3,6 +3,7 @@ Changelog
 
 Version (NEXT)
 --------------
+* added a domain story model and a responsibility model (work in progress)
 * added template-api and markdown-api to use in templates
 * moved single-line function from model-api to template-api
 * added fallback on name or id when rendering view titles
