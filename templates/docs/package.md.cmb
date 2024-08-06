@@ -1,0 +1,59 @@
+<%
+;;;;
+;;;; Documentation Template for a Packages
+;;;;
+
+(let [children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
+      packages  (filter #(= :package (:el %)) children)
+      interfaces (filter #(= :interface (:el %)) children)
+      classes (filter #(= :class (:el %)) children)]
+
+%># Package <%= (:name e) %>
+
+# Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq packages)
+%>
+## Packages
+| Name | Description |
+|---|---|
+<%
+    (doseq [package package]
+%>|<%= (:name package) %>|<%= (t/single-line (:desc package)) %>|
+<%
+    )
+  )
+  (when (seq interfaces)
+%>
+## Interfaces
+| Name | Description |
+|---|---|
+<%
+    (doseq [interface interfaces]
+%>|<%= (:name interface) %>|<%= (t/single-line (:desc interface)) %>|
+<%
+    )
+  )
+  (when (seq classes)
+%>
+## Classes
+| Name | Description |
+|---|---|
+<%
+    (doseq [class classes]
+%>|<%= (:name class) %>|<%= (t/single-line (:desc class)) %>|
+<%
+    )
+  )
+)
+%>
+
+(generated with <%= (:template ctx) %>)

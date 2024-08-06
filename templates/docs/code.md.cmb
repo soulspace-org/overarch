@@ -1,0 +1,73 @@
+<%
+;;;;
+;;;; Documentation Template for a Interfaces and Classes
+;;;;
+
+(let [children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
+      interfaces (m/interfaces model e)
+      superclasses (m/superclasses model e)
+      subclasses (m/subclasses model e)
+      fields  (filter #(= :field (:el %)) children)
+      methods (filter #(= :method (:el %)) children)]
+
+%># <%= (m/element-type e)%> <%= (:name e) %>
+
+## Description
+<%= (:desc e) %>
+
+<%
+  (when (:doc e)
+%>
+## Dokumentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq interfaces)
+%>
+## Interfaces
+<%=(str/join ", " (map element-link interfaces))%>
+<%
+  )
+
+  (when (seq superclasses)
+%>
+## Superclasses
+<%=(str/join ", " (map element-link superclasses))%>
+<%
+  )
+
+  (when (seq subclasses)
+%>
+## Subclasses
+<%=(str/join ", " (map element-link subclasses))%>
+<%
+  )
+
+  (when (seq fields)
+%>
+## Fields
+<%
+    (doseq [field fields]
+%>### <%= (:name field) %>
+<%= (:type field) %> <%= (:name field) %>
+ 
+<%= (t/single-line (:desc field)) %>
+<%
+    ))
+
+  (when (seq methods)
+%>
+## Methods
+<%
+    (doseq [method methods]
+      (let [parameters (m/children model e)]
+%>###  <%= (:name method) %>
+<%= (:type method) %> <%= (:name method) %>(<%= (str/join ", " (map :name parameters)) %>)
+
+<%= (t/single-line (:desc method)) %>
+<%
+      ))))
+%>
+
+(generated with <%= (:template ctx) %>)
