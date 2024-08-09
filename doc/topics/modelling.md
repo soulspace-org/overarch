@@ -58,10 +58,10 @@ used as identifiers for model elements and views.
 Keywords start with a colon (`:`), have an optional namespace followed by a
 slash (`/`) and a mandatory name, e.g. `:namespace/name`.
 
-Keywords should be prefixed with a namespace to avoid collisions with keywords for
-other models, which is especially relevant for identifiers or for custom keys
-in the model elements and views. Namespaces may have different parts, separated
-by a period (`.`), e.g. `:org.soulspace/overarch`.
+Keywords should be prefixed with a namespace to avoid collisions with keywords
+for other models, which is especially relevant for identifiers or for custom
+keys in the model elements and views. Namespaces may have different parts,
+separated by a period (`.`), e.g. `:org.soulspace/overarch`.
 
 ```clojure
 :keyword
@@ -69,8 +69,9 @@ by a period (`.`), e.g. `:org.soulspace/overarch`.
 :my.namespaced/keyword
 ```
 
-*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for overarch.
- Please use your own prefix if you want to add custom information to the maps in the model.*
+*Unprefixed keywords and the namespace 'overarch' for map keys are reserved for
+ overarch. Please use your own prefix if you want to add custom information to
+ the maps in the model.*
 
 ### Sets
 Sets are unordered collections of elements without duplicates. They are used as
@@ -173,10 +174,15 @@ context of the reference. For example you can mark an internal system as externa
 in the context of a specific view by adding `:external true` to the reference.
 
 ## Boundaries
-Boundaries group related elements and are normally rendered as a dashed box in a view. There are currently 4 types of boundaries, two of them implicit.
+Boundaries group related elements and are normally rendered as a dashed box in
+a view. There are currently 4 types of boundaries, two of them implicit.
 
 The implicit boundaries are the system boundary and the container boundary.
-They are not modelled explicitly but are rendered for referenced systems and containers in specific views. A system boundary is rendered, when an internal system with containers as content is referenced in a container view or component view. Likewise a container boundary is rendered for a referenced container in a component view.
+They are not modelled explicitly but are rendered for referenced systems and
+containers in specific views. A system boundary is rendered, when an internal
+system with containers as content is referenced in a container view or
+component view. Likewise a container boundary is rendered for a referenced
+container in a component view.
 
 The explicit boundaries are enterprise boundary and context boundary.
 These are explicitly modelled.
@@ -244,8 +250,8 @@ key       | type    | values             | description
 :tech     | string  | e.g. "REST"        | technology of the relation
 
 ### Example
-Example (exerpt from the [banking model](/models/banking/model.edn) containing context and container
-level elements):
+Example (exerpt from the [banking model](/models/banking/model.edn) containing
+context and container level elements):
 
 ```clojure
 #{{:el :person
@@ -337,18 +343,19 @@ relation type | description
 
 ## Concept Model
 
-A concept model captures relevant concepts of the domain(s) of the system.
-The concepts could be part of the ubiquous language of the systems domain.
+A concept model captures relevant concepts of the domain(s) of the system. The
+concepts could be part of the ubiquous language of the systems domain.
 
-A concept model can contain the concepts of the domain and the high level elements
-of the architecture model, e.g. the persons (actors), external systems and the
-system itself with it's containers.
+A concept model can contain the concepts of the domain and the high level
+elements of the architecture model, e.g. the persons (actors), external systems
+and the system itself with it's containers.
 
 ### Logical Data Model for the Concept Model Elements
 ![Concept Model Elements](/doc/images/overarch/data-model/concept-model-elements.svg)
 
 ### Concepts (:concept)
-A concept which is relevant for the domain of the system. The description should document the meaning of the concept.
+A concept which is relevant for the domain of the system. The description
+should document the meaning of the concept.
 
 ### Concept Model Relations (:is-a, :has, :rel)
 Concepts can be related with other concepts.
@@ -382,7 +389,9 @@ Example [Use Case Model](/models/usecase/model.edn)
 
 ### Use Cases (:use-case)
 
-A use case describes the goal of an actor in the context of the system described. The goal can be a concrete user goal, a high level summary of user goals or a subfunction of a user goal. This is captured by the :level key.
+A use case describes the goal of an actor in the context of the system
+described. The goal can be a concrete user goal, a high level summary of user
+goals or a subfunction of a user goal. This is captured by the :level key.
 
 
 key         | type    | values                           | description 
@@ -416,7 +425,8 @@ kind         | description
 ## State Machine Model
 
 A state model describes a state machine which can be used to model the states
-a system component can be in and the transition from one state to the next state based on the events the system receives as input.
+a system component can be in and the transition from one state to the next
+state based on the events the system receives as input.
 
 The elements of the class model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
@@ -428,23 +438,30 @@ so prior knowledge of UML modelling applies here.
 Example [State Model](/models/state/model.edn)
 
 ### State Machine (:state-machine)
-A state machine is the root element for a state machine view. It contains the set of states and transistions as value of the *:ct* key.
+A state machine is the root element for a state machine view. It contains the
+set of states and transistions as value of the *:ct* key.
 
 ### States (:state, :start-state, :end-state)
-A simple state machine has at least one start state, some normal states to model the different states a system can be in, and at least one end state.
+A simple state machine has at least one start state, some normal states to
+model the different states a system can be in, and at least one end state.
 
-A start state starts the state machine and an end state terminates the state machine.
+A start state starts the state machine and an end state terminates the state
+machine.
 
-States can be compound, they can have an internal state machine. This is modelled as a set of states and transitions in the *:ct* key, analog to the state machine itself.
+States can be compound, they can have an internal state machine. This is
+modelled as a set of states and transitions in the *:ct* key, analog to the
+state machine itself.
 
 ### Transitions (:transition)
-A transition connects two states and models the input that leads to the transition from the current state (:from) to the next state (:to).
+A transition connects two states and models the input that leads to the
+transition from the current state (:from) to the next state (:to).
 
 ### Forks and Joins (:fork-state, :join-state)
 You can split a transition to trigger multiple new states with a fork state.
 A fork has a single input transition and multiple output transitions.
 
-To join multiple transitions after a fork a join state is used. A join has multiple input transitions and a single output transition. 
+To join multiple transitions after a fork a join state is used. A join has
+multiple input transitions and a single output transition. 
 
 
 ## Code Model
@@ -473,7 +490,8 @@ Packages and namespaces are treated the same, so use what suits your system best
 Interfaces and protocols specify related methods. Interfaces also provide a
 type for the static type system.
 
-Interfaces and protocolls are treated the same, so use what suits your system best.
+Interfaces and protocols are treated the same, so use what suits your system
+and inplementation language best.
 
 ### Class (:class)
 A class in object orientation is a typed element that encapsulates state and

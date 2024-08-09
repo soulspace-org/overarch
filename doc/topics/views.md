@@ -79,17 +79,17 @@ The deployment view shows the infrastucture and deployment of the containers of 
 ![Deployment View rendered with PlantUML](/doc/images/banking/deployment-view.svg)
 
 ### Dynamic Views (:dynamic-view)
-Shows the order of interactions. The relations get numerated in the given order and the nuber is rendered in the diagram.
-The `:index` attribute can be used on relations or refs to relations to set the
-number for a relation in the view.
+Shows the order of interactions. The relations get numerated in the given order
+and the nuber is rendered in the diagram. The `:index` attribute can be used on
+relations or refs to relations to set the number for a relation in the view.
 
 If the relations are describing interactions specific for the diagram instead
 of general architectural relations (e.g. interfaces) of the model elements,
 it is ok to to specify the relations in the content of the view.
 
 ## UML Views
-Overarch supports selected UML views to show aspects of a system that are not covered by the C4
-Model.
+Overarch supports selected UML views to show aspects of a system that are not
+covered by the C4 Model.
 
 ### Use Case View
 A use case view is used to show the actors of the system under design and their
@@ -98,8 +98,9 @@ goals using this system.
 ![Use Case View rendered with PlantUML](/doc/images/banking/use-case-view.svg)
 
 ### State Machine Views
-A state machine view is used to show the different states a component can be in. It also shows the
-transitions between these states based on the input events, the component receives. 
+A state machine view is used to show the different states a component can be in.
+It also shows the transitions between these states based on the input events
+the component receives. 
 
 ### Code Views
 A code view is used to show the design of parts of the software. You can use it
@@ -236,7 +237,8 @@ diagrams right from the IDE.
 
 ![PlantUML preview](/doc/images/overarch_plantuml_preview.png)
 
-PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ, Eclipse, Maven, Leiningen).
+PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ,
+Eclipse, Maven, Leiningen).
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 

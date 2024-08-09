@@ -21,7 +21,7 @@ composable and reusable.
 ## Features
 * Models and views as data
   * C4 architecture and deployment models and views
-  * Use case, state machine and code (class) models and views
+  * Use case, state machine and code models and views
   * Concept models, concept maps and glossaries
   * Separation of models and views
   * Hierarchical models and element references
@@ -59,7 +59,7 @@ But the models used for diagram generation with the existing diagram tools are
 not models in the sense of generality. Especially if you describe your model in
 PlantUML files, these descriptions are mere textfiles.
 
-The textfiles don't compose and you can't do anything else with these
+These textfiles don't compose and you can't do anything else with these
 descriptions other than render them with PlantUML. The parsing process is
 opaque and you don't have access to the data of the model. Also the model is
 complected with the diagrams, as layout and rendering information is part of
