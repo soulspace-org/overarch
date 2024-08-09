@@ -26,6 +26,31 @@
           ".md")
         ")")))
 
+; TODO add upward path
+#_(defn relative-element-link
+  "Renders a link to the element `e`, using the optional `context` for customization."
+  ([c e]
+   (element-link e {}))
+  ([c e context]
+   (str "[" (:name e) "]"
+        "("
+        (when (:subdir context)
+          (str (:subdir context) "/"))
+        (when (:namespace-prefix context)
+          (str (:namespace-prefix context) "/"))
+        (m/element-namespace-path e) "/"
+        (when (:namespace-suffix context)
+          (str (:namespace-suffix context) "/"))
+        (when (:prefix context)
+          (:prefix context))
+        (name (:id e))
+        (when (:suffix context)
+          (:suffix context))
+        (if (:extension context)
+          (str "." (:extension context))
+          ".md")
+        ")")))
+
 (defn view-link
   "Renders a link to the view `v`, using the optional `context` for customization."
   ([v]
@@ -49,3 +74,29 @@
           (str "." (:extension context))
           ".md")
         ")")))
+
+; TODO add upward path
+#_(defn relative-view-link
+  "Renders a link to the view `v`, using the optional `context` for customization."
+  ([c v]
+   (element-link v {}))
+  ([c v context]
+   (str "[" (v/title v) "]"
+        "("
+        (when (:subdir context)
+          (str (:subdir context) "/"))
+        (when (:namespace-prefix context)
+          (str (:namespace-prefix context) "/"))
+        (m/element-namespace-path v) "/"
+        (when (:namespace-suffix context)
+          (str (:namespace-suffix context) "/"))
+        (when (:prefix context)
+          (:prefix context))
+        (name (:id v))
+        (when (:suffix context)
+          (:suffix context))
+        (if (:extension context)
+          (str "." (:extension context))
+          ".md")
+        ")")))
+

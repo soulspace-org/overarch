@@ -191,7 +191,6 @@
        (resolve-id model)
        (:name)))
 
-
 (defn related-nodes
   "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
   ([model coll]
