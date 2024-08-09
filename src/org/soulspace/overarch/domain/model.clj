@@ -300,7 +300,7 @@
   "Returns the direct dependencies of the architecture node `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{}
              (referrer-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
@@ -309,7 +309,7 @@
   "Returns the direct dependents of the architecture node `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{}
              (referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
@@ -318,7 +318,7 @@
   "Returns the request relations served by service `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :request (:el %)))))
 
@@ -326,7 +326,7 @@
   "Returns the request relations issued by client `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :request (:el %)))))
 
@@ -334,7 +334,7 @@
   "Returns the response relations handled by client `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :response (:el %)))))
 
@@ -342,7 +342,7 @@
   "Returns the response relations served by service `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :response (:el %)))))
 
@@ -350,7 +350,7 @@
   "Returns the send relations of receiver `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :sends (:el %)))))
 
@@ -358,7 +358,7 @@
   "Returns the send relations of sender `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :sends (:el %)))))
 
@@ -366,7 +366,7 @@
   "Returns the publish relations of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :publish (:el %)))))
 
@@ -374,7 +374,7 @@
   "Returns the publish relations of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :publish (:el %)))))
 
@@ -382,7 +382,7 @@
   "Returns the subscribe relations of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :subscribe (:el %)))))
 
@@ -390,7 +390,7 @@
   "Returns the subscribe relations of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :subscribe (:el %)))))
 
@@ -398,7 +398,7 @@
   "Returns the incoming dataflow relations served by service `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (filter #(= :dataflow (:el %)))))
 
@@ -406,7 +406,7 @@
   "Returns the outgoing dataflow relations of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (filter #(= :dataflow (:el %)))))
 
@@ -445,7 +445,7 @@
   "Returns the set of direct superclasses of the class element `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :inheritance (:el %))))))
 
@@ -453,7 +453,7 @@
   "Returns the set of direct subclasses of the class element `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :inheritance (:el %))))))
 
@@ -461,7 +461,7 @@
   "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :implementation (:el %))))))
 
@@ -469,7 +469,7 @@
   "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :implementation (:el %))))))
 
@@ -477,7 +477,7 @@
   "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
   [model e]
   (->> e
-      (:id)
+      (el/id)
       (get (:referrer-id->relations model))
       (into #{} (referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
@@ -485,7 +485,7 @@
   "Returns the referenced elements of `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
@@ -493,7 +493,7 @@
   "Returns the elements referencing element `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
@@ -510,7 +510,7 @@
   "Returns the superordinates of the concept `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :is-a (:el %))))))
 
@@ -518,7 +518,7 @@
   "Returns the subordinates of the concept `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :is-a (:el %))))))
 
@@ -526,7 +526,7 @@
   "Returns the features of the concept `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :has (:el %))))))
 
@@ -534,7 +534,7 @@
   "Returns the concepts the concept `e` is a feature of in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :has (:el %))))))
 
@@ -545,7 +545,7 @@
   "Returns the architecture nodes deployed on the node `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :deployed-to (:el %))))))
 
@@ -553,7 +553,7 @@
   "Returns the deployment nodes the architecture node `e` is deployed to in the ``model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :deployed-to (:el %))))))
 
@@ -561,7 +561,7 @@
   "Returns the deployment nodes the deployment node `e` links in the `model`"
   [model e]
   (->> e
-      (:id)
+      (el/id)
       (get (:referred-id->relations model))
       (into #{} (referred-xf model #(= :link (:el %))))))
 
@@ -569,7 +569,7 @@
   "Returns the deployment nodes the deployment node `e` is linked by in the `model`"
   [model e]
   (->> e
-      (:id)
+      (el/id)
       (get (:referrer-id->relations model))
       (into #{} (referrer-xf model #(= :link (:el %))))))
 
@@ -580,7 +580,7 @@
   "Returns the actors of a use case `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :uses (:el %))))))
 
@@ -588,7 +588,7 @@
   "Returns the supporting actors of a use case `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :uses (:el %))))))
 
@@ -596,7 +596,7 @@
   "Returns the to side of the relation of type :uses of node `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :uses (:el %))))))
 
@@ -604,7 +604,7 @@
   "Returns the from side of the relation of type :uses of node `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :uses (:el %))))))
 
@@ -612,7 +612,7 @@
   "Returns the extension use cases of a use case `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :extends (:el %))))))
 
@@ -620,9 +620,24 @@
   "Returns the extension use cases of a use case `e` in the `model`."
   [model e]
   (->> e
-       (:id)
+       (el/id)
        (get (:referrer-id->relations model))
        (into #{} (referrer-xf model #(= :include (:el %))))))
+
+;;
+;; responsibility model
+;;
+#_(defn responsible-for
+  [model e]
+  (->> e
+       (el/id)))
+
+(defn responsibilities
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (referrer-xf model #(= :responsibility (:el %))))))
 
 ;;;
 ;;; Build model

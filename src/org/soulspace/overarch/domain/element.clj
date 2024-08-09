@@ -249,8 +249,9 @@
   ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
     :deployment-view :system-landscape-view
-    :state-machine-view :code-view :class-view
-    :glossary-view})
+    :state-machine-view :code-view :glossary-view
+    :class-view
+    })
 
 ;;;
 ;;; Hierarchy of element types
