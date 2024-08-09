@@ -20,6 +20,8 @@ Overarch currently supports the following kinds of models
   to model relevant states and transitions of the system
 * [Deployment Models](#deployment-model)
   to model the physical architecture of the system
+* [Responsibility Models](#responsibility-model)
+  to model the team responsibilities for parts of the system
 
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the
@@ -514,4 +516,20 @@ A function is a first class element in functional programming.
 It has input parameters and calculates results.
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
+
+## Responsibility Model
+The responsibility model captures the organizational structure of the system
+architecture.
+
+### Teams (:team)
+A team is a representation for a group of persons or roles having
+responsibilities in your system architecture.
+
+You can enhance the team node with attributes specific for your organization
+(e.g. support mailboxes) and use these attributes in the templates to generate
+documentation or other artifacts.
+
+### Responsibilities (:responsibility)
+A responsibility is a relation that connects a team with an architectural node
+(e.g. a system or a container).
 
