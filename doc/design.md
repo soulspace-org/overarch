@@ -185,7 +185,7 @@ A: Clojure is a perfect match
 
 Q: **How can reusability of the models and views be achieved?**
 
-A: With :ref the reusablility of model elements in different views is
+A: With `:ref`s the reusablility of model elements in different views is
    archieved, which is a benefit over the diagram focused specification in the
    PlantUML C4 DSL, where you often have to duplicate information in the
    different diagrams. Also the same view may be rendered in different formats,
