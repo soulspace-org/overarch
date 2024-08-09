@@ -14,6 +14,18 @@
    :name "Editor/IDE"
    :desc "Tool for describing the architecture model and the views."}
 
+  {:el :system
+   :id :overarch.architecture/graphviz
+   :external true
+   :name "Graphviz"
+   :desc "Tool for generating graph layouts and diagrams."}
+
+  {:el :system
+   :id :overarch.architecture/plantuml
+   :external true
+   :name "PlantUML"
+   :desc "Tool for generating diagrams."}
+
   ;;
   ;; Internal System
   ;;
