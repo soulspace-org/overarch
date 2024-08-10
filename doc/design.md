@@ -67,13 +67,15 @@ model information reusable.
 
 
 ## Design Goals
-
 * Reusable models
 * Holistic model of the system under description
 * Reduced duplication of information
 * Extensibility of the data format
 * Extensibility of the renderings and exports
 
+### Non Goals
+* Domain specific language
+* Fancy user interface
 
 ## Design Questions and Answers
 This section documents design decisions in the form of questions and answers.
