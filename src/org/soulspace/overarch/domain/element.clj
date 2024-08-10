@@ -913,6 +913,11 @@
   (and (identifiable-element? e)
        (str/starts-with? (element-namespace e) v)))
 
+(defn namespace-prefixes?
+  "Returns true, if one of `v`is a prefix of the namespace of element `e`."
+  [v e]
+  (some #(namespace-prefix? % e) v))
+
 (defn from-namespace?
   "Returns true, if `v`is the namespace of the element referenced by the from id of relation `e`."
   [v e]
@@ -928,6 +933,11 @@
   [v e]
   (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
 
+(defn from-namespace-prefixes?
+  "Returns true, if one of `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
+  [v e]
+  (some #(from-namespace-prefix? % e) v))
+
 (defn to-namespace?
   "Returns true, if `v`is the namespace of the element referenced by the to id of relation `e`."
   [v e]
@@ -942,6 +952,11 @@
   "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
   [v e]
   (str/starts-with? (namespace (get e :to :no-namespace/no-name)) v))
+
+(defn to-namespace-prefixes?
+  "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
+  [v e]
+  (some #(to-namespace-prefix? % e) v))
 
 (defn id-check?
   "Returns true if the check for id on `e` equals the boolean value `v`"
