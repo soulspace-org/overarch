@@ -4,6 +4,7 @@ Changelog
 Version (NEXT)
 --------------
 * added a responsibility model with teams and responsibilities
+* added criteria for sets of namespace prefixes on elements and relations
 * enhanced model navigation functions to handle ids and refs as input
 * added fallback on name or id when rendering view titles
 * added template-api and markdown-api to use in templates
