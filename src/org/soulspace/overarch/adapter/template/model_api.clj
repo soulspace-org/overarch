@@ -4,7 +4,8 @@
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.application.model-repository :as repo]
-            ))
+            
+            [org.soulspace.overarch.adapter.template.model-api :as m]))
 
 ;;;;
 ;;;; Not yet stable!
@@ -359,3 +360,10 @@
   "Returns the included use cases of a use case `e` in the `model`."
   [model e]
   (model/included model e))
+
+;;
+;; Responsibility model navigation
+;;
+(defn responsibilities
+  [model e]
+  (m/responsibilities model e))
