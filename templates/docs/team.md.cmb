@@ -8,7 +8,15 @@
 %># Team <%= (:name e) %>
 ## Description
 <%= (:desc e) %>
+
 <%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+
+<%
+  )
+
   (when (seq responsibilities-for)
 %># Responsible for
 | Name | Description |

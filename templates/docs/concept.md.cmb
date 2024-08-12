@@ -1,0 +1,53 @@
+<%
+;;;;
+;;;; Documentation Template for a Concept
+;;;;
+
+(let [superordinates (m/superordinates model e)
+      subordinates (m/subordinates model e)
+      features (m/features model e)]
+
+%># Concept <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq superordinates)
+%># Superordinates
+| Name | Description |
+|---|---|
+<%
+    (doseq [superordinate superordinates]
+%>| <%= (:name superordinate) %> | <%= (t/single-line (:desc superordinate)) %> |
+<%
+    )
+  )
+
+  (when (seq subordinates)
+%># Subordinates
+| Name | Description |
+|---|---|
+<%
+    (doseq [subordinate subordinates]
+%>| <%= (:name subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
+<%
+    )
+  )
+
+  (when (seq features)
+%># Features
+| Name | Description |
+|---|---|
+<%
+    (doseq [feature features]
+%>| <%= (:name feature) %> | <%= (t/single-line (:desc feature)) %> |
+<%
+    )
+  )
+)
+%>
