@@ -11,7 +11,7 @@ Version (NEXT)
 * added template-api and markdown-api to use in templates
 * moved single-line function from model-api to template-api
 * enhanced model-api and view-api
-* enhanced documentation templates
+* added and enhanced documentation templates
 * enhanced model warnings
 * refactored template handling
 * fixed some docstrings on architecture relation navigation functions

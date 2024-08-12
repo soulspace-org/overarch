@@ -1,0 +1,20 @@
+<%
+;;;;
+;;;; Documentation Template for a State
+;;;;
+
+(let [substates (m/children model e)
+      incoming-transitions nil
+      outgoing-transitions nil]
+
+%># State <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+<%
+  )
+)
+%>

@@ -1,0 +1,31 @@
+<%
+;;;;
+;;;; Documentation Template for a Team
+;;;;
+
+(let [responsibilities-for (m/responsibilities model e)]
+
+%># Team <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+
+<%
+  )
+
+  (when (seq responsibilities-for)
+%># Responsible for
+| Name | Description |
+|---|---|
+<%
+    (doseq [responsible-for responsibilities-for]
+%>| <%= (:name responsible-for) %> | <%= (t/single-line (:desc responsible-for)) %> |
+<%
+    )
+  )
+)
+%>
