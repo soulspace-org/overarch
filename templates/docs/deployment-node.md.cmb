@@ -11,10 +11,10 @@
 %># <%= (:name e) %>
 ## Description
 <%= (:desc e) %>
+
 <%
   (when (:doc e)
-%>
-## Documentation
+%>## Documentation
 <%= (:doc e) %>
 <%
   )
