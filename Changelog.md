@@ -6,15 +6,17 @@ Version (NEXT)
 * added a responsibility model with teams and responsibilities
 * added relation type `:activity` to be used in dynamic views instead of plain `:rel`
 * added criteria for sets of namespace prefixes on elements and relations
+* added analytics functions
 * enhanced model navigation functions to handle ids and refs as input
 * added fallback on name or id when rendering view titles
 * added template-api and markdown-api to use in templates
-* moved single-line function from model-api to template-api
 * enhanced model-api and view-api
+* moved single-line function from model-api to template-api
 * added and enhanced documentation templates
 * enhanced model warnings
 * refactored template handling
 * fixed some docstrings on architecture relation navigation functions
+* fixed typos in example models
 
 Version 0.29.1
 --------------

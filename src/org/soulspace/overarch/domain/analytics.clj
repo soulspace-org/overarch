@@ -70,6 +70,24 @@
        (frequencies)))
 
 ;;;
+;;; Information model
+;;;
+(defn all-keys
+  "Returns a set of all keys used by the maps in `coll`."
+  [coll]
+  (->> coll
+       (mapv keys)
+       (mapv set)
+       (apply set/union)))
+
+(defn all-values-for-key
+  "Returns a set of all keys used by the maps in `coll`."
+  [key coll]
+  (->> coll
+       (mapv key)
+       (into #{})))
+
+;;;
 ;;; Missing information checks
 ;;;
 (defn unidentifiable-elements

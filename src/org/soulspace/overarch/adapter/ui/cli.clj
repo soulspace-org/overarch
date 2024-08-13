@@ -278,6 +278,10 @@
   (al/count-external (concat (repo/nodes) (repo/relations)))
   (al/count-synthetic (concat (repo/nodes) (repo/relations)))
 
+  (al/all-keys (repo/nodes))
+  (al/all-values-for-key :el (repo/nodes))
+
+
   (al/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
   (al/unnamespaced-elements (concat (repo/nodes) (repo/relations)))
   (al/unrelated-nodes @repo/state)
