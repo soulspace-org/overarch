@@ -396,6 +396,23 @@
         (when (:name e)
           (str " : " (el/element-name e))))])
 
+; TODO won't be rendered because of view categories, add extra constraint relation type for views
+(defmethod puml/render-c4-element :model-relation
+  [_ view indent e]
+  [(str (render/indent indent)
+        (puml/alias-name (:from e))
+        (if (:constraint e)
+          (if (= :right (:direction e))
+            "-[hidden]>"
+            "-[hidden]->")
+          (str " -"
+               (when (:direction e)
+                 (uml-directions (:direction e)))
+               "-> "))
+        (puml/alias-name (:to e))
+        (when (:name e)
+          (str " : " (el/element-name e))))])
+
 (defmethod puml/render-uml-element :model-element
   [_ view indent e]
   (println "unhandled element of type "

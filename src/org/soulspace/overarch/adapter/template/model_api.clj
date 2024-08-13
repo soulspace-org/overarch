@@ -323,10 +323,10 @@
   [model e]
   (model/linked-by model e))
 
-
 ;;
 ;; Statemachine model navigation
 ;;
+
 
 ;;
 ;; Use Case model navigation
@@ -367,3 +367,4 @@
 (defn responsibilities
   [model e]
   (m/responsibilities model e))
+
