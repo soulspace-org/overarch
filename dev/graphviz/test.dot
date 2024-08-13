@@ -1,0 +1,74 @@
+digraph Test {
+  # rankdir=LR;
+  outputmode=nodefirst;
+  graph [fontname="Helvetica,Arial,sans-serif"
+         fontsize=12
+         splines=ortho
+         labelloc=t
+         label=<
+         <table border="0" cellspacing="0">
+         <tr><td><br align="center"/>Title: Test Graph</td></tr>
+         <tr><td><font point-size="9">Test graph to display some renderings</font></td></tr>
+         <tr><td><br/></td></tr>
+         </table>
+         >]
+  node [fontname="Helvetica,Arial,sans-serif" fontsize=9];
+
+  a
+
+  b
+
+  c [shape=plain label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td align="center" port="top">
+«abstract»<br align="center"/>
+<b>Class1</b><br align="center"/>
+<font point-size="7">And some documentation for this class</font></td></tr>
+<tr><td align="left">
++field1 : String <br align="left"/>
++field2 : String
+</td></tr>
+<tr><td align="left" port="bottom">
++method(param : String) : String <br align="left"/>
++method2(param : Integer) : String
+</td></tr>
+</table>
+     >]
+
+  d [shape=plain label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td align="center" port="top">
+&lt;&lt;abstract&gt;&gt;<br align="center"/>
+<b>Class2</b><br align="center"/>
+<font point-size="7">And some documentation for this class</font>
+</td></tr>
+<tr><td align="left">
++field1 : String <br align="left"/>
+/field2 : String
+</td></tr>
+<tr><td align="left" port="bottom">
++method(param : String) : String <br align="left"/>
++method2(param : Integer) : String
+</td></tr>
+</table>
+     >]
+
+  e [shape=tab label="Package"]
+
+  a->b [arrowtail=diamond]
+  c->d [arrowtail=odiamond arrowhead=vee]
+  d -> c [style=dashed]
+
+  c -> e
+  d -> e []
+
+  // id must start with cluster
+  subgraph cluster_X {
+    label = "subgraph";
+    style=filled;
+    color=lightgray;
+    x1
+    x2
+    x1 -> x2
+  }
+}
