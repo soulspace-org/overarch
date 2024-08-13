@@ -279,6 +279,7 @@
   (al/count-synthetic (concat (repo/nodes) (repo/relations)))
 
   (al/all-keys (repo/nodes))
+  (al/all-keys (repo/relations))
   (al/all-values-for-key :el (repo/nodes))
 
 
