@@ -645,7 +645,7 @@
   ;;
   {:el :class
    :id :overarch.data-model/typed-node
-   :abscract true
+   :abstract true
    :name "typed-node"
    :desc "A node which may have a type field."
    :tags #{"code-model" "type-hierarchy"}
@@ -657,7 +657,7 @@
 
   {:el :class
    :id :overarch.data-model/optional-node
-   :abscract true
+   :abstract true
    :name "optional-node"
    :desc "A node which may have an optional field."
    :tags #{"code-model" "type-hierarchy"}
@@ -669,7 +669,7 @@
 
   {:el :class
    :id :overarch.data-model/visibility-node
-   :abscract true
+   :abstract true
    :name "visibility-node"
    :desc "A node which may have a visibility field."
    :tags #{"code-model" "type-hierarchy"}
