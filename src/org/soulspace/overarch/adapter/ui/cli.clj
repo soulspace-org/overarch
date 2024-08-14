@@ -56,7 +56,7 @@
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
-;   [nil  "--set-scope NAMESPACE" "Sets the internal scope by namespace"]
+;   [nil  "--scope NAMESPACE" "Sets the internal scope by namespace"]
    [nil  "--[no-]model-warnings" "Returns warnings for the loaded model" :default true]
    [nil  "--[no-]model-info" "Returns infos for the loaded model" :default false]
    [nil  "--plantuml-list-sprites" "Lists the loaded PlantUML sprites" :default false]
@@ -221,7 +221,7 @@
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
-  (let [model (repo/update-state! (:model-dir options))]
+  (let [model (repo/update-state! options)]
     (dispatch model options)))
 
 (defn handle
@@ -263,9 +263,9 @@
                          :render-format :plantuml
                          :debug true})
   
-  (model-info (repo/update-state! "models/banking:models/overarch") {:model-info true})
-  (repo/update-state! "models")
-  ;
+  (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"}) {:model-info true})
+  (repo/update-state! {:model-dir "models"})
+  (repo/update-state! {:model-dir "C:/pag/datona/git/datona-architecture-documentation/models"})  ;
   )
 
 (comment ; model analytics 
@@ -281,7 +281,8 @@
   (al/all-keys (repo/nodes))
   (al/all-keys (repo/relations))
   (al/all-values-for-key :el (repo/nodes))
-
+  (al/all-values-for-key :subtype (repo/nodes))
+  (al/all-values-for-key :tech (repo/nodes))
 
   (al/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
   (al/unnamespaced-elements (concat (repo/nodes) (repo/relations)))

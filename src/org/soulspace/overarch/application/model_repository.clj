@@ -27,13 +27,16 @@
 
 (defn update-state!
   "Updates the state with the registered data read from `path`."
-  [path]
-  (->> path
-       ; TODO don't hardcode repo type
-       (read-models :file)
-       (spec/check-input-model)
-       (model/build-model)
-       (reset! state)))
+  [options]
+  (let [path (:model-dir options)
+        scope (:scope options)]
+    (->> path
+         ; TODO don't hardcode repo type
+         (read-models :file)
+         ;(spec/check-input-model) ; TODO check input model in adapter
+         ; TODO transform input model (e.g. set internal/external scope)
+         (model/build-model)
+         (reset! state))))
 
 (defn model
   "Returns the model."
@@ -119,7 +122,7 @@
        el))))
 
 (comment ; repo
-  (update-state! "models")
+  (update-state! {:model-dir "models"})
   
   (model/build-model (input-elements))
 

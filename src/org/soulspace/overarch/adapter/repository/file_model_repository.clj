@@ -2,7 +2,8 @@
   (:require [clojure.edn :as edn]
             [clojure.string :as str]
             [org.soulspace.clj.java.file :as file]
-            [org.soulspace.overarch.application.model-repository :as mr]))
+            [org.soulspace.overarch.application.model-repository :as mr]
+            [org.soulspace.overarch.domain.spec :as spec]))
 
 (defn windows-path?
   "Returns true, if the path is of a windows system."
@@ -16,21 +17,19 @@
     (str/split path #";")
     (str/split path #":")))
 
-; TODO validate against spec to report problems on a file level
 (defn read-model-file
   "Reads a model `file`."
-  [file]
+  [^java.io.File file]
   (-> file
       (slurp)
-      (edn/read-string)))
+      (edn/read-string)
+      (spec/check-input-model file)))
 
-; TODO use read-model-file 
 (defn read-model
   "Reads a model by reading all files in `dir`."
   [dir]
   (->> (file/all-files-by-extension "edn" dir)
-       (map slurp)
-       (mapcat edn/read-string)))
+       (mapcat read-model-file)))
 
 (defmethod mr/read-models :file
   [rtype path]
