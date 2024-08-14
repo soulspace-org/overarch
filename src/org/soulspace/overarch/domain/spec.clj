@@ -277,7 +277,13 @@
   ([input-model]
    (if (s/valid? :overarch/input-model input-model)
      input-model
-     (expound/expound :overarch/input-model input-model {:print-specs? false}))))
+     (expound/expound :overarch/input-model input-model {:print-specs? false})))
+  ([^java.io.File file input-model]
+   (if (s/valid? :overarch/input-model input-model)
+     input-model
+     (do
+       (println "Error loading" (.getName file))
+       (expound/expound :overarch/input-model input-model {:print-specs? false})))))
 
 (defn check-selection-criteria
   "Checks the `selection criteria` against its specification. If valid returns the selection-criteria, otherwise returns the validation errors."

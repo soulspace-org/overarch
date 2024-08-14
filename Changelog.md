@@ -15,6 +15,7 @@ Version (NEXT)
 * added and enhanced documentation templates
 * enhanced model warnings
 * refactored template handling
+* refactored model loading, check spec on file level
 * fixed some docstrings on architecture relation navigation functions
 * fixed typos in example models
 
