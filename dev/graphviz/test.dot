@@ -40,7 +40,7 @@ digraph Test {
 <tr><td align="center" port="top">
 &lt;&lt;abstract&gt;&gt;<br align="center"/>
 <b>Class2</b><br align="center"/>
-<font point-size="7">And some documentation for this class</font>
+<font point-size="7">And some more documentation for this class,<br/> let's see how this looks.</font>
 </td></tr>
 <tr><td align="left">
 +field1 : String <br align="left"/>
