@@ -170,6 +170,15 @@
   [model]
   (:themes model))
 
+; TODO check
+(defn children
+  "Returns the children of the model node `e`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :contains (:el %)))))
+  
 (defn parent
   "Returns the parent of the model node `e`."
   [model e]
