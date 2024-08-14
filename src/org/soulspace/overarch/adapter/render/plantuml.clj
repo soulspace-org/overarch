@@ -175,20 +175,6 @@
   [kw]
   (sstr/hyphen-to-camel-case (name kw)))
 
-(defmulti render-c4-element
-  "Renders a C4 element in PlantUML.
-   
-   Multifunction dispatching on the value of the :el key of the element `e`."
-  (fn [_ _ _ e] (:el e))
-  :hierarchy #'el/element-hierarchy)
-
-(defmulti render-uml-element
-  "Renders a UML element in PlantUML.
-   
-   Multifunction dispatching on the value of the :el key of the element `e`."
-  (fn [_ _ _ e] (:el e))
-  :hierarchy #'el/element-hierarchy)
-
 ;;;
 ;;; Imports
 ;;;

@@ -80,7 +80,14 @@
       (str ", $link=\"" (link e) "\"")
       (str ", $link=\"" link "\""))))
 
-(defmethod puml/render-c4-element :boundary
+(defmulti render-c4-element
+  "Renders a C4 element in PlantUML.
+   
+   Multifunction dispatching on the value of the :el key of the element `e`."
+  (fn [_ _ _ e] (:el e))
+  :hierarchy #'el/element-hierarchy)
+
+(defmethod render-c4-element :boundary
   [model view indent e]
   (if (seq (:ct e))
     (let [children (view/elements-to-render model view (:ct e))]
@@ -90,7 +97,7 @@
                      (el/element-name e) "\""
                      (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
                      ") {")
-                (map #(puml/render-c4-element model view (+ indent 2) %)
+                (map #(render-c4-element model view (+ indent 2) %)
                      children)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
@@ -100,7 +107,7 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
-(defmethod puml/render-c4-element :person
+(defmethod render-c4-element :person
   [_ _ indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
@@ -113,7 +120,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :system
+(defmethod render-c4-element :system
   [_ _ indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
@@ -131,7 +138,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :technical-architecture-model-node
+(defmethod render-c4-element :technical-architecture-model-node
   [_ _ indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
@@ -149,7 +156,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :node
+(defmethod render-c4-element :node
   [model view indent e]
   (let [deployed (->> model
                       (:referred-id->relations)
@@ -173,7 +180,7 @@
                          (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
                      (when (:style e) (str ", $tag=\"" (puml/short-name (:style e)) "\""))
                      ") {")
-                (map #(puml/render-c4-element model view (+ indent 2) %)
+                (map #(render-c4-element model view (+ indent 2) %)
                      children)
                 (str (render/indent indent) "}")])
       [(str (render/indent indent)
@@ -190,7 +197,7 @@
             (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
             ")")])))
 
-(defmethod puml/render-c4-element :link
+(defmethod render-c4-element :link
   [_ _ indent e]
   (if (:constraint e)
     [(str (render/indent indent) "Lay"
@@ -216,12 +223,12 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
-(defmethod puml/render-c4-element :deployed-to
-  [_ _ indent e]
+(defmethod render-c4-element :deployed-to
+  [_ _ _ _]
   ; don't render deployed on as relation as it is already rendered by :node
   )
 
-(defmethod puml/render-c4-element :architecture-model-relation
+(defmethod render-c4-element :architecture-model-relation
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
@@ -251,7 +258,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :activity
+(defmethod render-c4-element :activity
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
@@ -281,7 +288,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod puml/render-c4-element :model-relation
+(defmethod render-c4-element :model-relation
   [_ view indent e]
   (if (:constraint e)
     [(str (render/indent indent) "Lay"
@@ -309,7 +316,7 @@
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
-(defmethod puml/render-c4-element :model-element
+(defmethod render-c4-element :model-element
   [_ view indent e]
   (println "unhandled element of type "
           (:el e) "with id" (:id e)
@@ -418,6 +425,6 @@
               (render-c4-layout model view)
               (puml/render-skinparams view)
               (puml/render-title view)
-              (map #(puml/render-c4-element model view 0 %) rendered)
+              (map #(render-c4-element model view 0 %) rendered)
               (render-c4-legend view)
               "@enduml"])))
