@@ -4,7 +4,7 @@ Changelog
 Version (NEXT)
 --------------
 * added a responsibility model with teams and responsibilities
-* added initial support for wbs/organigram style diagrams
+* added initial support for wbs/organigram style diagrams (work in progress)
 * added relation type `:activity` to be used in dynamic views instead of plain `:rel`
 * added criteria for sets of namespace prefixes on elements and relations
 * added analytics functions
