@@ -2,6 +2,16 @@
 ;;;; Generation Config
 ;;;;
 [;;;
+ ;;; Views
+ ;;;
+ {:selection {:namespace-prefix "banking"}
+  :template "views/graph-view.dot.cmb"
+  :subdir "views"
+  :base-namespace "banking"
+  :base-name "model-graph"
+  :extension "dot"}
+
+ ;;;
  ;;; Documentation
  ;;;
  ;;
@@ -136,7 +146,7 @@
   :base-name "model"
   :extension "edn"
   :debug true}
- 
+
  {:view-selection {:namespace-prefix "banking"}
   :template "exports/views.edn.cmb"
   :per-namespace true

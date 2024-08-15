@@ -1,0 +1,32 @@
+<%
+;;;;
+;;;; Template for a Graphviz dot view of the Selection
+;;;;
+
+(defn dot-id
+  "Returns an id for graphviz dot for the element `e`"
+  [e]
+  (str/replace (str (namespace e) "__" (name e)) "-" "_"))
+
+(let [nodes (filterv m/model-node? e)
+      relations (filterv m/model-relation? e)]
+
+%>digraph Graph {
+<%
+  (doseq [node nodes]
+%>
+<%= (dot-id (:id node)) %> [label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
+<%
+  )
+%> 
+<%
+  (doseq [rel relations]
+%>
+<%= (dot-id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»"]
+<%
+  )
+%> 
+}
+<%
+)
+%>
