@@ -1,29 +1,29 @@
 @startwbs
-* company
-** branch a
-***_ customers
-****_ A
-****_ B
-****_ C
-****_ D
-****_ E
-***_ projects
-****_ A
-****_ B
-****_ C
-****_ D
-****_ E
-** branch b
-***_ customers
-***_ projects
-** branch c
-***_ customers
-***_ projects
-** r&d
-***_ ai
-***_ cloud
-****_ A
-****_ B
-****_ C
-***_ security
+* Company
+** Branch A
+***_ Customers
+****_ Customer A
+****_ Customer B
+****_ Customer C
+****_ Customer D
+****_ Customer E
+***_ Projects
+****_ Project A
+****_ Project B
+****_ Project C
+****_ Project D
+****_ Project E
+** Branch B
+***_ Customers
+***_ Projects
+** Branch C
+***_ Customers
+***_ Projects
+** R&D
+***_ AI
+***_ Cloud
+****_ Hyperscaler A
+****_ Hyperscaler B
+****_ Hyperscaler C
+***_ Security
 @endwbs
