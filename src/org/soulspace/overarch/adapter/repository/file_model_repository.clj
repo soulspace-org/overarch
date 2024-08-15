@@ -20,7 +20,7 @@
 (defn read-model-file
   "Reads a model `file`."
   [^java.io.File file]
-  (-> file
+  (->> file
       (slurp)
       (edn/read-string)
       (spec/check-input-model file)))
