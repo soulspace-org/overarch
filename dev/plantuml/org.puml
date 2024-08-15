@@ -1,0 +1,29 @@
+@startwbs
+* company
+** branch a
+***_ customers
+****_ A
+****_ B
+****_ C
+****_ D
+****_ E
+***_ projects
+****_ A
+****_ B
+****_ C
+****_ D
+****_ E
+** branch b
+***_ customers
+***_ projects
+** branch c
+***_ customers
+***_ projects
+** r&d
+***_ ai
+***_ cloud
+****_ A
+****_ B
+****_ C
+***_ security
+@endwbs
