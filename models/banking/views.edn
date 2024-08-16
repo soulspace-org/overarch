@@ -177,7 +177,7 @@
 
         {:ref :banking/account-reflects-transaction}
         {:ref :banking/personal-customer-has-account}
-        {:ref :banking/personal-customer-performs-transaction}
+        {:ref :banking/personal-customer-triggers-transaction}
         {:ref :banking/internet-banking-system-implements-internet-banking-concept}
         {:ref :banking/personal-customer-uses-internet-banking-system}]}
 
@@ -196,21 +196,23 @@
   
   {:el :glossary-view
    :id :banking/glossary-view
-   :spec {:markdown {:references true}}
+   :spec {:selection {:namespace "banking"}
+          :markdown {:references true}}
    :title "Glossary of the Banking System"
-   :ct [;; concepts
-        {:ref :banking/account-concept}
-        {:ref :banking/transaction-concept}
-        {:ref :banking/internet-banking-concept}
-        ;; actors
-        {:ref :banking/personal-customer}
-        ;; systems
-        {:ref :banking/email-system}
-        {:ref :banking/mainframe-banking-system}
-        {:ref :banking/internet-banking-system}
-        ;; relations
-        {:ref :banking/account-reflects-transaction}
-        {:ref :banking/internet-banking-system-implements-internet-banking-concept}
-        {:ref :banking/personal-customer-has-account}
-        {:ref :banking/personal-customer-performs-transaction}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}}
+   :ct [; selected elements will be included automatically
+        ; you can include references for additional elements here
+        ; relation references can also be specified here for layout purposes
+
+        ]}
+  
+  #_{:el :graph-view
+   :id :banking/graph-view
+   :spec {:selection {:namespace "banking"}
+          :linetype :orthogonal}
+   :name "Banking Graph View"
+   :title "Banking Graph View"
+   :desc "Shows all elements in the banking model"}
+
+
+  ;
+  }
