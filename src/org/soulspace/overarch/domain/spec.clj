@@ -22,21 +22,31 @@
 (s/def :overarch/doc string?)
 (s/def :overarch/tech string?)
 (s/def :overarch/maturity keyword?)
-;(s/def :overarch/sprite string?)
 (s/def :overarch/from keyword?)
 (s/def :overarch/to keyword?)
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
 (s/def :overarch/tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/link (s/or :key keyword? :url string?))
-(s/def :overarch/index int?)   ; check
 (s/def :overarch/type string?) ; check
+(s/def :overarch/index int?)   ; check
+(s/def :overarch/sprite string?)
+
+(s/def :overarch/element
+  (s/keys :req-un [:overarch/el]
+          :opt-un [:overarch/id
+                   :overarch/name :overarch/desc :overarch/doc]))
+
+(s/def :overarch/ref keyword?)
+(s/def :overarch/element-ref
+  (s/keys :req-un [:overarch/ref]
+          :opt-un [:overarch/index :overarch/external :overarch/direction
+                   :overarch/constraint :overarch/link :overarch/index]))
 
 (s/def :overarch/ct
   (s/coll-of
-   (s/or :element     :overarch/element
-         :element-ref :overarch/element-ref
-         :relation    :overarch/relation)))
+   (s/or :model-node  :overarch/element
+         :element-ref :overarch/element-ref)))
 
 (s/def :overarch/model-element
   (s/keys :req-un [:overarch/el]
@@ -56,40 +66,30 @@
                    :overarch/direction :overarch/constraint
                    :overarch/tags]))
 
-(s/def :overarch/ref keyword?)
-(s/def :overarch/element-ref
-  (s/keys :req-un [:overarch/ref]
-          :opt-un [:overarch/index :overarch/external :overarch/direction
-                   :overarch/constraint :overarch/link :overarch/index]))
-
-(s/def :overarch/identifiable
-  (s/keys :req-un [:overarch/id]))
-
-(s/def :overarch/named
-  (s/keys :req-un [:overarch/name]))
-
 ;;
 ;; Criteria for element selection 
 ;;
-; TODO add missing criteria
 (s/def :overarch.criterium/keys? vector?)
 (s/def :overarch.criterium/keys vector?)
 (s/def :overarch.criterium/el keyword?)
-(s/def :overarch.criterium/els (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/namespace string?) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/from-namespace string?) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/from-namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/from-namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/to-namespace string?) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/to-namespaces (s/and set? (s/coll-of string?))) ; or (s/or :string string? :keyword keyword?)?
-(s/def :overarch.criterium/to-namespace-prefix string?) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch.criterium/els (s/and set? (s/coll-of keyword?)))
+(s/def :overarch.criterium/namespace string?)
+(s/def :overarch.criterium/namespaces (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/namespace-prefix string?)
+(s/def :overarch.criterium/namespace-prefixes (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/from-namespace string?)
+(s/def :overarch.criterium/from-namespaces (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/from-namespace-prefix string?)
+(s/def :overarch.criterium/from-namespace-prefixes (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/to-namespace string?)
+(s/def :overarch.criterium/to-namespaces (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/to-namespace-prefix string?)
+(s/def :overarch.criterium/to-namespace-prefixes (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/id? boolean?)
 (s/def :overarch.criterium/id keyword?)
 (s/def :overarch.criterium/subtype? boolean?)
 (s/def :overarch.criterium/subtype keyword?)
-(s/def :overarch.criterium/subtypes (s/and set? (s/coll-of keyword?))) ; or (s/or :string string? :keyword keyword?)?
+(s/def :overarch.criterium/subtypes (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/maturity? boolean?)
 (s/def :overarch.criterium/maturity keyword?)
 (s/def :overarch.criterium/external? boolean?)
@@ -127,12 +127,15 @@
                    :overarch.criterium/namespace
                    :overarch.criterium/namespaces
                    :overarch.criterium/namespace-prefix
+                   :overarch.criterium/namespace-prefixes
                    :overarch.criterium/from-namespace
                    :overarch.criterium/from-namespaces
                    :overarch.criterium/from-namespace-prefix
+                   :overarch.criterium/from-namespace-prefixes
                    :overarch.criterium/to-namespace
                    :overarch.criterium/to-namespaces
                    :overarch.criterium/to-namespace-prefix
+                   :overarch.criterium/to-namespace-prefixes
                    :overarch.criterium/id?
                    :overarch.criterium/id
                    :overarch.criterium/subtype?
@@ -253,7 +256,7 @@
                    :overarch.view.spec/graphviz]))
 
 (s/def :overarch.view/title string?)
-(s/def :overarch/view
+(s/def :overarch.view/view
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/name :overarch/desc :overarch/doc
                    :overarch.view/spec :overarch.view/title :overarch/ct]))

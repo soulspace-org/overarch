@@ -112,7 +112,7 @@
   #{:responsibility})
 
 ;;
-;; Business model 
+;; Business model
 ;;
 (def business-node-types
   "Node types for business models."
