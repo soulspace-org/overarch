@@ -14,11 +14,15 @@ Version (NEXT)
 * enhanced model-api and view-api
 * moved single-line function from model-api to template-api
 * added and enhanced documentation templates
+* added graphviz graph-view template
 * enhanced model warnings
 * refactored template handling
 * refactored model loading, check spec on file level
 * fixed some docstrings on architecture relation navigation functions
 * fixed typos in example models
+* simplified logical data model
+* updated spec
+* updated documentation
 
 Version 0.29.1
 --------------
