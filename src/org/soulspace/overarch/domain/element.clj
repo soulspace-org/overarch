@@ -101,14 +101,14 @@
   #{:activity})
 
 ;;
-;; Responsibility model
+;; Organization model
 ;;
-(def responsibility-node-types
-  "Node types for responsibility models."
-  (set/union architecture-node-types deployment-node-types #{:team}))
+(def organization-node-types
+  "Node types for organization models."
+  (set/union architecture-node-types deployment-node-types #{:organization :org-unit :team}))
 
-(def responsibility-relation-types
-  "Relation types for responsibility models."
+(def organization-relation-types
+  "Relation types for organization models."
   #{:responsibility})
 
 ;;
@@ -148,17 +148,17 @@
              uml-node-types
              concept-node-types
              domain-story-node-types
-             responsibility-node-types))
+             organization-node-types))
 
 (def model-relation-types
   "Relation types of the model."
-  (set/union #{:rel}
+  (set/union #{:rel :contains}
              architecture-relation-types
              deployment-relation-types
              uml-relation-types
              concept-relation-types
              domain-story-relation-types
-             responsibility-relation-types))
+             organization-relation-types))
 
 (def model-element-types
   "Element types for the model."
@@ -414,6 +414,7 @@
       (derive :concept-model-relation            :model-relation)
       (derive :responsibility-model-relation     :model-relation)
 
+      (derive :contains                          :model-relation)
       (derive :rel                               :model-relation)
 
       ;;; model elements
@@ -466,7 +467,7 @@
 (defn relational-element?
   "Returns true if the given element `e` is a relation."
   [e]
-  (and (element? e) (not= nil (:from e)) (not= nil (:to e))))
+  (and (element? e) (relational? e)))
 
 (defn identifiable-relational-element?
   "Returns true if the given element `e` is an identifiable relation."
