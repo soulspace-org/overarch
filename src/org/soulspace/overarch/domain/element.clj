@@ -89,7 +89,7 @@
   #{:uses :include :extends :generalizes})
 
 ;;
-;; Domain Story model 
+;; Domain Story model ; TODO use a more general name?
 ;;
 (def domain-story-node-types
   "Node types for domain story models."
@@ -110,6 +110,17 @@
 (def responsibility-relation-types
   "Relation types for responsibility models."
   #{:responsibility})
+
+;;
+;; Business model 
+;;
+(def business-node-types
+  "Node types for business models."
+  #{:capability})
+
+(def business-relation-types
+  "Node types for business models."
+  #{})
 
 ;; 
 ;; General category definitions
