@@ -27,6 +27,21 @@
   ;; 
   ;; Concept Model Relations
   ;; 
+  {:el :has
+   :id :banking/bank-provides-internet-banking
+   :from :banking/bank-concept
+   :to :banking/internet-banking-concept
+   :name "provides"}
+  {:el :has
+   :id :banking/bank-provides-accounts
+   :from :banking/bank-concept
+   :to :banking/account-concept
+   :name "provides"}
+  {:el :rel
+   :id :banking/bank-performs-transaction
+   :from :banking/bank-concept
+   :to :banking/transaction-concept
+   :name "performs"}
   {:el :rel
    :id :banking/account-reflects-transaction
    :from :banking/account-concept
@@ -37,16 +52,16 @@
    :from :banking/internet-banking-system
    :to :banking/internet-banking-concept
    :name "implements"}
-  {:el :rel
+  {:el :has
    :id :banking/personal-customer-has-account
    :from :banking/personal-customer
    :to :banking/account-concept
    :name "has"}
   {:el :rel
-   :id :banking/personal-customer-performs-transaction
+   :id :banking/personal-customer-triggers-transaction
    :from :banking/personal-customer
    :to :banking/transaction-concept
-   :name "performs"}
+   :name "triggers"}
 
 
   ;;;
