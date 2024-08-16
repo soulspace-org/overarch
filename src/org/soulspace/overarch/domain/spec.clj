@@ -17,9 +17,9 @@
 ;;
 (s/def :overarch/subtype keyword?)
 (s/def :overarch/external boolean?)
-(s/def :overarch.criterium/name string?)
-(s/def :overarch.criterium/desc string?)
-(s/def :overarch.criterium/doc string?)
+(s/def :overarch/name string?)
+(s/def :overarch/desc string?)
+(s/def :overarch/doc string?)
 (s/def :overarch/tech string?)
 (s/def :overarch/maturity keyword?)
 ;(s/def :overarch/sprite string?)
@@ -27,7 +27,7 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
-(s/def :overarch.criterium/tags (s/and set? (s/coll-of string?)))
+(s/def :overarch/tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/link (s/or :key keyword? :url string?))
 (s/def :overarch/index int?)   ; check
 (s/def :overarch/type string?) ; check
@@ -38,23 +38,23 @@
          :element-ref :overarch/element-ref
          :relation    :overarch/relation)))
 
-(s/def :overarch/element
+(s/def :overarch/model-element
   (s/keys :req-un [:overarch/el]
           :opt-un [:overarch/id
                    :overarch/subtype
-                   :overarch.criterium/name :overarch.criterium/desc :overarch.criterium/doc
+                   :overarch/name :overarch/desc :overarch/doc
                    :overarch/maturity :overarch/external
-                   :overarch/tech :overarch.criterium/tags
+                   :overarch/tech :overarch/tags
                    :overarch/ct]))
 
-(s/def :overarch/relation
+(s/def :overarch/model-relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
           :opt-un [:overarch/id
                    :overarch/index
-                   :overarch.criterium/name :overarch.criterium/desc :overarch.criterium/doc
+                   :overarch/name :overarch/desc :overarch/doc
                    :overarch/maturity :overarch/tech
                    :overarch/direction :overarch/constraint
-                   :overarch.criterium/tags]))
+                   :overarch/tags]))
 
 (s/def :overarch/ref keyword?)
 (s/def :overarch/element-ref
@@ -66,7 +66,7 @@
   (s/keys :req-un [:overarch/id]))
 
 (s/def :overarch/named
-  (s/keys :req-un [:overarch.criterium/name]))
+  (s/keys :req-un [:overarch/name]))
 
 ;;
 ;; Criteria for element selection 
@@ -255,7 +255,7 @@
 (s/def :overarch.view/title string?)
 (s/def :overarch/view
   (s/keys :req-un [:overarch/el :overarch/id]
-          :opt-un [:overarch.criterium/name :overarch.criterium/desc :overarch.criterium/doc
+          :opt-un [:overarch/name :overarch/desc :overarch/doc
                    :overarch.view/spec :overarch.view/title :overarch/ct]))
 
 ;;;
@@ -263,10 +263,10 @@
 ;;;
 (s/def :overarch/input-model
   (s/coll-of
-   (s/or :element     :overarch/element
+   (s/or :element     :overarch/model-element
          :element-ref :overarch/element-ref
-         :relation    :overarch/relation
-         :view        :overarch/view
+         :relation    :overarch/model-relation
+         :view        :overarch.view/view
          :theme       :overarch.view/theme)))
 
 ;;;
