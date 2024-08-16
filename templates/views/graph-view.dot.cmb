@@ -12,17 +12,16 @@
       relations (filterv m/model-relation? e)]
 
 %>digraph Graph {
+  // graph [splines=ortho]
 <%
   (doseq [node nodes]
-%>
-<%= (dot-id (:id node)) %> [label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
+%><%= (dot-id (:id node)) %> [label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
 <%
   )
 %> 
 <%
   (doseq [rel relations]
-%>
-<%= (dot-id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»"]
+%><%= (dot-id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
 <%
   )
 %> 
