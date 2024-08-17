@@ -10,9 +10,18 @@
 * add contributing and code of conduct
 
 
+* rainbow coloured orthogonal relations
+* custom views rendered by templates
+* custom elements {:el :my/xy} included in the graph
+
+* model config via edn?
+
+
 ## Documentation
 * readme
-  * move rationale to docs
+  * move rationale to docs (partially done)
+    * modelling tool
+      * free, extensible, composable, reusable
 
 * restructure docs
   * rationale
@@ -26,6 +35,3 @@
   * commandline interface
   * tutorial
   * best practices
-
-* modelling tool
-  * free, extensible, composable, reusable

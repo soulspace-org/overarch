@@ -131,7 +131,7 @@ A: An extension of the model could make sense if there is value in the
 * Inner workings of some components
   * e.g. state machines, activty or sequence diagrams
 * Processes/transformations with inputs and outputs
-* Teams and responsibilities
+* Organizations, Teams and responsibilities
 * Connecting models (e.g. containers to use cases via an implements relation)
 * ...
 
@@ -284,13 +284,13 @@ A: Deeper levels than components are not supported in the architecture models.
 
 
 Q: **What additional subtypes for C4 architecture models are useful?**
-
-A: Currently only :database for data storage and :queue for message queues/streams
-   are supported.
    Other potentially useful subtypes might be
    * `:frontend` or `:user-interface` for user interface containers or components
    * `:backend` for application backends
    * `:service` for microservices
+
+A: Currently only :database for data storage and :queue for message queues/streams
+   are supported.
 
 
 Q: **How can methods like domain driven design or architecture patterns like hexagonal architecture be modelled and visualized appropriately within Overarch?**
@@ -342,6 +342,30 @@ A: By decoupling the external representation of the model, the input model,
    the tree traversal via the ```:ct``` key of the the elements.
    
    Implemented
+
+Q: **In which direction should the containment be modelled? Should the parent always have to know about the children in the input files?**
+   Currently (v0.29.1) containment has to be modelled at the parent,
+   via `:ct` (elements or refs) or via `:contains` relations (which are
+   created synthetically on model load).
+
+   These mechanisms are a problem for reusability and extensibility of the
+   model, because the parent always has to know the children.
+
+   When modelling the relationship from the child to the parent, the child
+   references the parent and the parent can be extended without adding to it's
+   `:ct` collection or changing the model file of the parent (provided using
+   a hierarchical model structure where the namespace of the model elements
+   are reflected in the folder structure).
+   Having a model file containing all the systems of an organization, these
+   systems could be detailed in specific model files per system, but the
+   systems model would be free of references of the details and could therefore
+   be shared without sharing the details.
+
+A: By replacing the (mostly generated) `:contains` relation with a
+   `:contained-in` or `:part-of`, which could also be used explicitly in the
+   model to keep the parent model files free of references to the childs, the
+   composability, extensibility and reusability of the model files would be
+   greatly enhanced.
 
 Q: **Shall relations be automatically included in a view, when the participating components are included?**
 
@@ -430,7 +454,7 @@ Q: **How can we avoid duplication for style specifications used in multiple view
 A: Themes could encapsulate the specification of the styles and the can be
    referenced in the various diagrams to provide a consistent style.
 
-   Implemented.
+   Implemented for C4 diagrams.
 
 
 Q: **How can we support different exporting formats, e.g. diagramming tools, and not be specific in the specification of the views/diagrams?**
