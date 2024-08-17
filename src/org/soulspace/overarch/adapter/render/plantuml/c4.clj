@@ -27,7 +27,7 @@
    :subscribe           "Rel"
    :dataflow            "Rel"
    :link                "Rel"
-   :activity            "Rel"
+   :step                "Rel"
    :rel                 "Rel"})
 
 (def c4-view-type->import
@@ -258,7 +258,7 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-(defmethod render-c4-element :activity
+(defmethod render-c4-element :step
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))

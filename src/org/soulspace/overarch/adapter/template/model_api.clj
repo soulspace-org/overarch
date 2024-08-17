@@ -362,7 +362,7 @@
   (model/included model e))
 
 ;;
-;; Responsibility model navigation
+;; Organization model navigation
 ;;
 (defn responsibilities
   [model e]

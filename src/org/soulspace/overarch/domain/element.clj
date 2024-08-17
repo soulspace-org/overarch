@@ -89,18 +89,6 @@
   #{:uses :include :extends :generalizes})
 
 ;;
-;; Domain Story model ; TODO use a more general name?
-;;
-(def domain-story-node-types
-  "Node types for domain story models."
-  ;(set/union architecture-node-types #{:work-object}) ; TODO work-object as explicit node?
-  architecture-node-types)
-
-(def domain-story-relation-types
-  "Relation types for domain story models."
-  #{:activity})
-
-;;
 ;; Organization model
 ;;
 (def organization-node-types
@@ -147,7 +135,6 @@
              deployment-node-types
              uml-node-types
              concept-node-types
-             domain-story-node-types
              organization-node-types))
 
 (def model-relation-types
@@ -157,7 +144,6 @@
              deployment-relation-types
              uml-relation-types
              concept-relation-types
-             domain-story-relation-types
              organization-relation-types))
 
 (def model-element-types
@@ -200,7 +186,8 @@
 
 (def dynamic-view-element-types
   "Element types of a C4 dynamic view."
-  (set/union component-view-element-types #{:activity}))
+  ; TODO
+  (set/union component-view-element-types #{:step}))
 
 ;;
 ;; UML view category definitions
@@ -247,6 +234,35 @@
   "Element types of a glossary view."
   (set/union concept-node-types
              concept-relation-types))
+
+;;
+;; Structure view types
+;;
+(def structure-view-types
+  "The set of structure view types."
+  ; TODO team responsibility view?
+  #{:system-structure-view :organization-structure-view})
+
+(def system-structure-view-element-types
+  "Element types of a system structure view"
+  ; Technical architecture node types only?
+  (set/union technical-architecture-node-types architecture-relation-types))
+
+(def organization-structure-view-element-types
+  "Element types of a system structure view"
+  (set/union organization-node-types organization-relation-types))
+
+;;
+;; Other view types
+;;
+;  :element-graph-view
+(def graph-view-types
+  "The set of graph-view types."
+  #{:element-graph-view})
+
+(def element-graph-view-element-types
+  "Element types of a element-graph-view."
+  model-element-types)
 
 ;; 
 ;; General view category definitions
@@ -379,21 +395,14 @@
       (derive :has                               :concept-model-relation) 
       (derive :concept-model-relation            :concept-model-element)
 
-      ;;; domain story model
-      ;; domain story model nodes
+      ;;; organization model
+      ;; organization model nodes
+      (derive :team                              :organization-model-node)
+      (derive :organization-model-node           :organization-model-element)
 
-      ;; domain story model relations
-      (derive :activity                          :domain-story-model-relation)
-      (derive :domain-story-model-relation       :domain-story-model-element)
-
-      ;;; responsibility model
-      ;; responsibility model nodes
-      (derive :team                              :responsibility-model-node)
-      (derive :responsibility-model-node         :responsibility-model-element)
-
-      ;; responsibility model relations
-      (derive :responsibility                    :responsibility-model-relation)
-      (derive :responsibility-model-relation     :responsibility-model-element)
+      ;; organization model relations
+      (derive :organization                      :organization-model-relation)
+      (derive :organization-model-relation       :organization-model-element)
       
       ;; model nodes
       (derive :architecture-model-node           :model-node)
@@ -402,7 +411,7 @@
       (derive :state-machine-model-node          :model-node)
       (derive :code-model-node                   :model-node)
       (derive :concept-model-node                :model-node)
-      (derive :responsibility-model-node         :model-node)
+      (derive :organization-model-node           :model-node)
       (derive :boundary                          :model-node)
 
       ;; model relations
@@ -412,7 +421,7 @@
       (derive :state-machine-model-relation      :model-relation)
       (derive :code-model-relation               :model-relation)
       (derive :concept-model-relation            :model-relation)
-      (derive :responsibility-model-relation     :model-relation)
+      (derive :organization-model-relation       :model-relation)
 
       (derive :contains                          :model-relation)
       (derive :rel                               :model-relation)
