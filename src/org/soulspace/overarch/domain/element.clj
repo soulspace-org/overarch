@@ -269,7 +269,8 @@
 ;;
 (def view-types
   "The set of view types."
-  (set/union c4-view-types uml-view-types concept-view-types))
+  (set/union c4-view-types uml-view-types concept-view-types
+             structure-view-types graph-view-types))
 
 (def hierarchical-view-types
   "The set of hierarchical view types."

@@ -205,14 +205,19 @@
 
         ]}
   
-  #_{:el :graph-view
+  {:el :system-structure-view
+   :id :banking/system-structure
+   :spec {:selection {:namespace "banking" :external? false}}
+   :title "System Structure"
+   :desc "Shows the hierarchical structure of the sytems in scope."}
+
+  {:el :element-graph-view
    :id :banking/graph-view
    :spec {:selection {:namespace "banking"}
           :linetype :orthogonal}
    :name "Banking Graph View"
    :title "Banking Graph View"
    :desc "Shows all elements in the banking model"}
-
 
   ;
   }
