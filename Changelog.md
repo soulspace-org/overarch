@@ -3,14 +3,16 @@ Changelog
 
 Version (NEXT)
 --------------
-* added a organization model with teams and responsibilities
+* added a organization model with
+  * nodes `:organization`, `:org-unit` and `:team`
+  * relations `:responsible`
 * added initial support for wbs/organigram style diagrams (work in progress)
-* added relation type `:activity` to be used in dynamic views instead of plain `:rel`
+* added relation type `:step` to be used in dynamic views instead of plain `:rel`
 * added criteria for sets of namespace prefixes on elements and relations
 * added analytics functions
 * enhanced model navigation functions to handle ids and refs as input
 * added fallback on name or id when rendering view titles
-* added template-api and markdown-api to use in templates
+* added template-api, graphviz-api and  markdown-api to use in templates
 * enhanced model-api and view-api
 * moved single-line function from model-api to template-api
 * added and enhanced documentation templates
