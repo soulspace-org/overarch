@@ -3,19 +3,95 @@
 ;;;; Template for a Graphviz dot view of the Selection
 ;;;;
 
+(defn element-shape
+  [e]
+  (cond
+    (= :person (:el e))
+    "shape=box"
+
+    (contains? #{:system :container :component} (:el e))
+    (if (= :database (:subtype e))
+      "shape=cylinder"
+      "shape=box")
+    
+    (= :node (:el e))
+    "shape=box3d"
+    
+    (= :use-case (:el e))
+    "shape=ellipse"
+    
+    (= :concept (:el e))
+    "shape=underline"
+    
+    (= :package (:el e))
+    "shape=tab"
+    
+    (contains? #{:interface :class} (:el e))
+    "shape=box"
+
+    (contains? #{:state} (:el e))
+    "shape=oval"
+
+    (contains? #{:start-state} (:el e))
+    "shape=circle"
+
+    (contains? #{:end-state} (:el e))
+    "shape=doublecircle"
+
+    :else
+    ""))
+
+(defn element-color
+  [e]
+  (cond
+    (= :person (:el e))
+    (if (:external e)
+      "style=filled fillcolor=darkgrey"
+      "style=filled fillcolor=royalblue")
+
+    (= :system (:el e))
+    (if (:external e)
+      "style=filled fillcolor=darkgrey"
+      "style=filled fillcolor=dodgerblue")
+
+    (= :container (:el e))
+    (if (:external e)
+      "style=filled fillcolor=grey"
+      "style=filled fillcolor=deepskyblue1")
+
+    (= :component (:el e))
+    (if (:external e)
+      "style=filled fillcolor=lightgrey"
+      "style=filled fillcolor=skyblue")
+
+    (= :use-case (:el e))
+    "style=filled fillcolor=yellow"
+
+    (= :concept (:el e))
+    "style=filled fillcolor=lightgrey"
+
+    (contains? #{:start-state :end-state} (:el e))
+    "style=filled fillcolor=black"
+
+    :else
+    ""
+  ))
+
 (defn dot-id
   "Returns an id for graphviz dot for the element `e`"
   [e]
-  (str/replace (str (namespace e) "__" (name e)) "-" "_"))
+  (-> (str (namespace e) "__" (name e))
+    (str/replace  "-" "_")
+    (str/replace  "." "_")))
 
 (let [nodes (filterv m/model-node? e)
       relations (filterv m/model-relation? e)]
 
-%>digraph Graph {
+%>digraph elements {
   // graph [splines=ortho]
 <%
   (doseq [node nodes]
-%><%= (dot-id (:id node)) %> [label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
+%><%= (dot-id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
 <%
   )
 %> 

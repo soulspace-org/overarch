@@ -2,16 +2,6 @@
 ;;;; Generation Config
 ;;;;
 [;;;
- ;;; Views
- ;;;
- {:selection {:namespace-prefix "banking"}
-  :template "views/graph-view.dot.cmb"
-  :subdir "views"
-  :base-namespace "banking"
-  :base-name "model-graph"
-  :extension "dot"}
-
- ;;;
  ;;; Documentation
  ;;;
  ;;
@@ -154,5 +144,22 @@
   :base-name "views"
   :extension "edn"
   :debug true}
- ;
+
+ ;;;
+ ;;; Views
+ ;;;
+ {:selection {:namespace-prefix "banking"}
+  :template "views/graph-view.dot.cmb"
+  :subdir "views"
+  :base-namespace "banking"
+  :base-name "model-graph"
+  :extension "dot"}
+
+ {:selection {:namespace-prefix "overarch"}
+  :template "views/graph-view.dot.cmb"
+  :subdir "views"
+  :base-namespace "overarch"
+  :base-name "model-graph"
+  :extension "dot"}
+  ;
  ]
