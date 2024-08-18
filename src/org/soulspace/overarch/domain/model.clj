@@ -317,7 +317,7 @@
   (cond
     ;; nodes
     (el/model-node? e)
-    (add-node acc p e)
+    (add-node acc p (identified-node e p))
 
     ;; relations
     (el/model-relation? e)

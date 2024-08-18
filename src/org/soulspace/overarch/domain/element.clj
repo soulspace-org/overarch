@@ -705,12 +705,15 @@
    The generated id takes the id of `p` as prefix and appends the lowercase
    name of `e` and the element type of `e` separated by a hyphen."
   ([e p]
-   (when (and e p (:id p))
+   (when (and e p (:id p) (:name e))
      (let [p-namespace (namespace (:id p))
            p-name (name (:id p))]
-       (keyword (str p-namespace "/"
-                     p-name "-"
-                     (str/replace (str/lower-case (:name e)) " " "-") "-"
+       (keyword (str p-namespace
+                     "/"
+                     p-name
+                     "-"
+                     (str/replace (str/lower-case (:name e)) " " "-") ; replace spaces with hyphens
+                     "-"
                      (name (:el e))))))))
 
 (defn generate-relation-id
