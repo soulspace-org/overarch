@@ -710,7 +710,7 @@
            p-name (name (:id p))]
        (keyword (str p-namespace "/"
                      p-name "-"
-                     (str/lower-case (:name e)) "-"
+                     (str/replace (str/lower-case (:name e)) " " "-") "-"
                      (name (:el e))))))))
 
 (defn generate-relation-id
