@@ -147,11 +147,20 @@
 (defn unresolved-refs
   "Checks references in an element."
   [model element]
-  (->> (:ct element)
+  (->> (model/children model element)
        (filter el/reference?)
        (map (partial model/resolve-ref model))
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
+
+(defn unresolved-refs-in-view
+  "Checks references in a view."
+  [model view]
+  (->> (:ct view)
+       (filter el/reference?)
+       (map (partial model/resolve-ref model))
+       (filter el/unresolved-ref?)
+       (map #(assoc % :parent (:id view)))))
 
 (defn check-relations
   "Validates the relations in the model."
@@ -166,4 +175,4 @@
 (defn check-views
   "Validates the references in the views."
   [model]
-  (mapcat (partial unresolved-refs model) (model/views model)))
+  (mapcat (partial unresolved-refs-in-view model) (model/views model)))

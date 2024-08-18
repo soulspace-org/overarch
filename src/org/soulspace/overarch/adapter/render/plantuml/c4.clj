@@ -89,8 +89,8 @@
 
 (defmethod render-c4-element :boundary
   [model view indent e]
-  (if (seq (:ct e))
-    (let [children (view/elements-to-render model view (:ct e))]
+  (if-let [children (seq (model/children model e))]
+    (let [content (view/elements-to-render model view children)]
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
@@ -98,7 +98,7 @@
                      (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
                      ") {")
                 (map #(render-c4-element model view (+ indent 2) %)
-                     children)
+                     content)
                 (str (render/indent indent) "}")]))
     [(str (render/indent indent)
           (c4-element->method (:el e)) "("
@@ -164,7 +164,8 @@
                       (filter (partial el/el? :deployed-to))
                       (map :from)
                       (map (partial model/resolve-id model)))
-        children (concat (view/elements-to-render model view (:ct e))
+        children (model/children model e)
+        content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
     (if (seq children)
       (flatten [(str (render/indent indent)
@@ -181,7 +182,7 @@
                      (when (:style e) (str ", $tag=\"" (puml/short-name (:style e)) "\""))
                      ") {")
                 (map #(render-c4-element model view (+ indent 2) %)
-                     children)
+                     content)
                 (str (render/indent indent) "}")])
       [(str (render/indent indent)
             (c4-element->method (:el e)) "("

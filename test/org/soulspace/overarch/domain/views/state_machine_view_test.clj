@@ -14,7 +14,7 @@
     ;(are [x y] (= x (boolean (as-boundary? y))))
     )
   (testing "as-boundary? false"
-    (are [x y] (= x (boolean (as-boundary? y)))
+    (are [x y] (= x (boolean (as-boundary? test-model y)))
       false {:el :state-machine}
       false {:el :start-state}
       false {:el :state}

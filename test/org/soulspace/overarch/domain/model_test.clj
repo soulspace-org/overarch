@@ -146,10 +146,13 @@
 (deftest referrer-id->relations-test
   (testing "referrer-id->rels"
     (are [x y] (= x y)
-      3 (count (:referrer-id->relations c4-model1))
+      7 (count (:referrer-id->relations c4-model1))
       1 (count (:referrer-id->relations concept-model1))
       2 (count (:test/user1 (:referrer-id->relations c4-model1)))
-      4 (count (:test/system1 (:referrer-id->relations c4-model1))) ; incl. 3 synthetic relations
+      1 (count (:test/system1 (:referrer-id->relations c4-model1))) 
+      4 (count (:test/container1 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
+      1 (count (:test/component11 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
+      1 (count (:test/component12 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
       0 (count (:test/ext-system1 (:referrer-id->relations c4-model1)))
       2 (count (:test/concept1 (:referrer-id->relations concept-model1)))
       0 (count (:test/concept2 (:referrer-id->relations concept-model1)))
@@ -158,10 +161,11 @@
 (deftest referred-id->relations-test
   (testing "referred-id->rels"
     (are [x y] (= x y)
-      7 (count (:referred-id->relations c4-model1))
+      5 (count (:referred-id->relations c4-model1))
       2 (count (:referred-id->relations concept-model1))
       0 (count (:test/user1 (:referred-id->relations c4-model1)))
-      1 (count (:test/system1 (:referred-id->relations c4-model1)))
+      4 (count (:test/system1 (:referred-id->relations c4-model1))) ; 1 synthetic relations
+      3 (count (:test/container1 (:referred-id->relations c4-model1))) ; 1 synthetic relations
       2 (count (:test/ext-system1 (:referred-id->relations c4-model1)))
       0 (count (:test/concept1 (:referred-id->relations concept-model1)))
       1 (count (:test/concept2 (:referred-id->relations concept-model1)))
@@ -226,7 +230,7 @@
        :ct #{{:el :component
               :id :a/component}}}))
   (testing "ancestor-nodes with refs true"
-    (are [x y] (= x (ancestor-nodes hierarchy-model2 y))
+    (are [x y] (= x (do (println hierarchy-model2) (ancestor-nodes hierarchy-model2 y)))
       #{{:el :system
          :id :a/system
          :ct #{{:ref :a/container}}}
@@ -805,6 +809,31 @@
         filter-input)
   ;
   )
+
+(deftest input-child?-test
+  (testing "input-child? true"
+    (is (= true (input-child? {:el :component :id :a/component}
+                        {:el :container
+                         :id :a/container
+                         :ct #{{:el :component
+                                :id :a/component}}}))))
+  (testing "child? false"
+    (are [x y] (= x (input-child? y
+                            {:el :container
+                             :id :a/container
+                             :ct #{{:el :component
+                                    :id :a/component}}}))
+      false {:el :container
+             :id :a/container
+             :ct #{{:el :component
+                    :id :a/component}}}
+      false nil)))
+
+(comment
+  (input-child? nil nil)
+  (input-child? {:el :component :id :a/component} nil)
+  (input-child? nil {:el :component :id :a/component}))
+
 
 ;;
 ;; Class Model

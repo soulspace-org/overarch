@@ -10,11 +10,11 @@
 (defn as-boundary?
   "Returns the boundary element, if the element `e` should be rendered
    as a boundary for this view type, false otherwise."
-  [e]
+  [model e]
   (when (seq e)
     (or (el/boundary? e) ; regular boundary
         (and
-         (seq (:ct e)) ; has children 
+         (seq (model/children model e)) ; has children 
          (element->boundary (:el e)) ; has a boundary mapping for this diagram-type
          (el/internal? e)))))
 

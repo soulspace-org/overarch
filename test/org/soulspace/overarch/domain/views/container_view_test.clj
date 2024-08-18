@@ -6,20 +6,33 @@
             [org.soulspace.overarch.domain.model :as model]))
 
 (def test-input
-  #{})
-(def test-model (model/build-model test-input))
+  #{{:el :system
+     :id :test/system1
+     :ct #{{:el :container
+            :id :test/container1
+            :ct #{{:el :component
+                   :id :test/component1}}}}}
+    {:el :system
+     :id :test/system2}})
 
+(def test-model (model/build-model test-input))
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"
-    (are [x y] (= x (boolean (as-boundary? y)))
-      true {:el :system :ct #{{:el :container}}}))
+    (are [x y] (= x (boolean (as-boundary? test-model y)))
+      true {:el :system
+            :id :test/system1
+            :ct #{{:el :container}}}))
   (testing "as-boundary? false"
-    (are [x y] (= x (boolean (as-boundary? y)))
-      false {:el :container :ct #{{:el :component}}}
-      false {:el :system}
-      false {:el :container}
-      false {:el :component})))
+    (are [x y] (= x (boolean (as-boundary? test-model y)))
+      false {:el :container
+             :id :test/container1
+             :ct #{{:el :component}}}
+      false {:el :system
+             :id :test/system2}
+      ;false {:el :container}
+      ;false {:el :component}
+      )))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"

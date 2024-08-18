@@ -102,8 +102,10 @@
 (defn referenced-elements
   "Returns the `model` elements explicitly referenced in the given `view`."
   [model view]
+  ; use :ct here, not model/children, because the contained-in relations
+  ; are not added for refs in views at the moment
   (->> (:ct view)
-       (map (partial model/resolve-element model))))
+       (map (model/element-resolver model))))
 
 (defn selected-elements
   "Returns the `model` elements selected by criteria for the `view`."

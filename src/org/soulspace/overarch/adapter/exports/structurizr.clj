@@ -79,13 +79,12 @@
 
 (defmethod render-element :model-element
   [model indent e]
-  (if (:ct e)
-    (let [children (map (partial model/resolve-element model) (:ct e))]
-      [(str (export/indent indent) (alias-name (:id e)) " = "
-            (element-type->structurizr (:el e))
-            " \"" (el/element-name e) "\" {")
-       (map (partial render-element model (+ indent 2)) children)
-       (str (export/indent indent) "}")])
+  (if-let [children (mapv (model/element-resolver model) (model/children model e))]
+    [(str (export/indent indent) (alias-name (:id e)) " = "
+          (element-type->structurizr (:el e))
+          " \"" (el/element-name e) "\" {")
+     (map (partial render-element model (+ indent 2)) children)
+     (str (export/indent indent) "}")]
     [(str (export/indent indent) (alias-name (:id e)) " = "
           (element-type->structurizr (:el e))
           " \"" (el/element-name e) "\"")]))
@@ -107,7 +106,7 @@
                  " \"" (sstr/first-upper-case
                         (sstr/hyphen-to-camel-case
                          (view-type->structurizr (:el view)))) "\" {\n")
-            (if (:ct view)
+            (if (seq (model/children model view))
               (let [children (filter el/model-relation?
                                      (view/elements-to-render model view))]
                 (map (partial render-element model 6) children))
