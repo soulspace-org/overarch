@@ -40,6 +40,7 @@
   {:el :container-view
    :id :banking/banking-container-view-with-selection
    :spec {:selection {:namespace :banking}
+          :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "Container View of the Internet Banking System"
    :ct [; selected elements will be included automatically
@@ -124,6 +125,7 @@
 
   {:el :deployment-view
    :id :banking/deployment-view
+   ;:spec {:include :related}
    :title "Deployment View of Big Bank plc"
    :ct [; model elements
         {:ref :banking/personal-customers-mobile-device}

@@ -139,7 +139,8 @@
 
 (def model-relation-types
   "Relation types of the model."
-  (set/union #{:rel :contains}
+  ; TODO only one of contains/contained-in
+  (set/union #{:rel :contains :contained-in}
              architecture-relation-types
              deployment-relation-types
              uml-relation-types
@@ -424,7 +425,9 @@
       (derive :concept-model-relation            :model-relation)
       (derive :organization-model-relation       :model-relation)
 
+      ; TODO only one of contains/contained-in
       (derive :contains                          :model-relation)
+      (derive :contained-in                      :model-relation)
       (derive :rel                               :model-relation)
 
       ;;; model elements
@@ -596,16 +599,6 @@
   [e]
   (boolean (:unresolved-ref e)))
 
-(defn child?
-  "Returns true, if element `e` is a child of model element `p`."
-  [e p]
-  (boolean (and (seq e)
-                (seq p)
-                (identifiable-element? e)
-                (identifiable-element? p)
-                (model-element? p)
-                (contains? (set (:ct p)) e))))
-
 (defn node-of?
   "Returns true if the given element `e` is a node of `kind`."
   [kind e]
@@ -712,12 +705,15 @@
    The generated id takes the id of `p` as prefix and appends the lowercase
    name of `e` and the element type of `e` separated by a hyphen."
   ([e p]
-   (when (and e p (:id p))
+   (when (and e p (:id p) (:name e))
      (let [p-namespace (namespace (:id p))
            p-name (name (:id p))]
-       (keyword (str p-namespace "/"
-                     p-name "-"
-                     (str/lower-case (:name e)) "-"
+       (keyword (str p-namespace
+                     "/"
+                     p-name
+                     "-"
+                     (str/replace (str/lower-case (:name e)) " " "-") ; replace spaces with hyphens
+                     "-"
                      (name (:el e))))))))
 
 (defn generate-relation-id
@@ -737,41 +733,6 @@
   (if (str/starts-with? (element-namespace e) scope-ns)
     (assoc e :external false)
     (assoc e :external true)))
-
-;;
-;; recursive traversal of the hierarchical data
-;;
-(defn traverse
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
-
-   `pred-fn`     - a predicate on the current element
-   `children-fn` - a function to resolve the children of the current element
-   `step-fn`     - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator."
-  ([step-fn coll]
-   (traverse identity identity :ct step-fn coll))
-  ([pred-fn step-fn coll]
-   (traverse identity pred-fn :ct step-fn coll))
-  ([pred-fn children-fn step-fn coll]
-   (traverse identity pred-fn children-fn step-fn coll))
-  ([element-fn pred-fn children-fn step-fn coll]
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (element-fn (first coll))]
-                 (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (children-fn e))
-                          (rest coll))
-                   (recur (trav acc (children-fn e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
-
-; TODO try with tree-seq
 
 ;;
 ;; step functions for traverse
@@ -812,46 +773,9 @@
 ;   Adds the association of the id of the element `e` to the map `acc`."
 ; (key->element :id))
 
-(defn id->parent
-  "Step function to create an id to parent element map.
-   Adds the association from the id of element `e` to the parent `p` to the map `acc`.
-   Uses a list as stack in the accumulator to manage the context of the current element `e`
-   in the traversal of the tree."
-  ([] [{} '()])
-  ([[res ctx]]
-   (if-not (empty? ctx)
-     [res (pop ctx)]
-     res))
-  ([[res ctx] e]
-   (let [p (peek ctx)]
-     (if (child? e p)
-       [(assoc res (:id e) p) (conj ctx e)]
-       [res (conj ctx e)]))))
-
-(defn referrer-id->relation
-  "Step function to create an map of referrer ids to relations.
-   Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
-
-(defn referred-id->relation
-  "Step function to create an map of referred ids to relations.
-   Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:to e) (conj (get acc (:to e) #{}) e))))
-
 ;;
 ;; Accessors and transformations
 ;;
-(defn children
-  "Returns the children of the element `e`."
-  [e]
-  (:ct e))
-
 (defn id->element-map
   "Returns am map of id -> element for the given `elements`."
   ([elements]
@@ -886,35 +810,6 @@
   "Returns a vector of the technologies used by the element `e`."
   [e]
   (fns/tokenize-string (get e :tech "")))
-
-(defn collect-technologies
-  "Returns the set of technologies for the elements of the coll."
-  [coll]
-  (traverse :tech tech-collector coll))
-
-(defn collect-fields
-  "Returns the fields of all classes in the `coll`."
-  [coll]
-  (->> coll
-       (filter #(= :class (:el %)))
-       (map :ct)
-       (remove nil?)
-       (map set)
-       (apply set/union)
-       (filter #(= :field (:el %)))
-       (sort-by :name)))
-
-(defn collect-methods
-  "Returns the methods of all classes in the `coll`."
-  [coll]
-  (->> coll
-       (filter #(= :class (:el %)))
-       (map :ct)
-       (remove nil?)
-       (map set)
-       (apply set/union)
-       (filter #(= :method (:el %)))
-       (sort-by :name)))
 
 ;;;
 ;;; Criteria Predicates
@@ -1131,11 +1026,6 @@
   "Returns true if all of the tags in `v` are tags of `e`."
   [v e]
   (set/subset? (set v) (:tags e)))
-
-(defn parent-check?
-  "Returns true if the check for children of `e` equals the boolean value `v`"
-  [v e]
-  (= v (empty? (:ct e))))
 
 (defn key-check?
   "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.

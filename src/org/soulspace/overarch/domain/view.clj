@@ -36,7 +36,7 @@
 (defn include-spec
   "Returns the include specification for the `view`."
   [view]
-  (get-in view [:spec :include]))
+  (get-in view [:spec :include] :referenced-only))
 
 (defn layout-spec
   "Returns the layout specification for the `view`."
@@ -102,8 +102,10 @@
 (defn referenced-elements
   "Returns the `model` elements explicitly referenced in the given `view`."
   [model view]
+  ; use :ct here, not model/children, because the contained-in relations
+  ; are not added for refs in views at the moment
   (->> (:ct view)
-       (map (partial model/resolve-element model))))
+       (map (model/element-resolver model))))
 
 (defn selected-elements
   "Returns the `model` elements selected by criteria for the `view`."
@@ -126,7 +128,8 @@
   "Returns the `model` elements specified and included for the view, e.g. related nodes or relations."
   [model view specified]
   (case (include-spec view)
-    :relations (let [nodes (->> specified
+    :relations
+    (let [nodes (->> specified
                                 (filter el/model-node?)
                                 (mapcat (partial model/descendant-nodes model))
                                 (map (partial model/resolve-element model))
@@ -138,10 +141,15 @@
                                    (into #{}))
                      elements (el/union-by-id included specified)]
                  elements)
-    :related (let [included (model/related-nodes model (filter el/model-relation? specified))
+    
+    :related
+    (let [included (model/related-nodes model (filter el/model-relation? specified))
                    elements (el/union-by-id included specified)]
                elements)
-    :referenced-only specified
+    
+    :referenced-only
+    specified
+
     (do
       (println "Unhandled include spec" (include-spec view) "in view" (:id view))
       specified)))

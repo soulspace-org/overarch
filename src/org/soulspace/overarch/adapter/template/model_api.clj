@@ -12,6 +12,10 @@
 ;;;;
 
 ;;;
+;;; TODO close over model!?
+;;;
+
+;;;
 ;;; Element Predicates
 ;;;
 (defn model-element?
@@ -121,9 +125,9 @@
   (model/parent model e))
 
 (defn children
-  "Returns the parent of the node `e` in the `model`."
+  "Returns the children of the node `e` in the `model`."
   [model e]
-  (el/children e))
+  (model/children model e))
 
 (defn ancestor-nodes
   "Returns the set of ancestor nodes of the model node `e` in the `model`."
@@ -235,12 +239,12 @@
 (defn all-fields
   "Returns a sequence of all fields of the given collection of `classes`."
   [model classes]
-  (el/collect-fields classes))
+  (model/collect-fields model classes))
 
 (defn all-methods
   "Returns a sequence of all methods of the given collection of `classes`."
   [model classes]
-  (el/collect-methods classes))
+  (model/collect-methods model classes))
 
 (defn superclasses
   "Returns the set of direct superclasses of the class element `e` in the `model`."

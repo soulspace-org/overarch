@@ -175,6 +175,12 @@
                  :id :banking/database
                  :name "Database"
                  :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+                 :tech "Datomic"}
+                {:el :container
+                 :subtype :database
+                 :id :banking/database-read
+                 :name "Database for Reads"
+                 :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
                  :tech "Datomic"}}}
          ; external systems
          {:el :system
@@ -437,12 +443,6 @@
           :name "Secondary DB Server"
           :tech "Datomic"
           :desc "for reads"}}}
-  {:el :container
-   :subtype :database
-   :id :banking/database-read
-   :name "Database for Reads"
-   :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-   :tech "Datomic"}
 
   ;;
   ;; Deployment Model Relations

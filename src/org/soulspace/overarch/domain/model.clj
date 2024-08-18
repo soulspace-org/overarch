@@ -6,13 +6,14 @@
 
    The loaded overarch working model is a map with these keys:
    
-   :input-elements         -> the given data
-   :nodes                  -> the set of nodes (incl. child nodes)
-   :relations              -> the set of relations (incl. contains relations)
+   :input-elements         -> the given data (from edn files)
+   :nodes                  -> the set of all nodes (incl. child nodes)
+   :relations              -> the set of all relations (incl. contained-in relations)
    :views                  -> the set of views
    :themes                 -> the set of themes
    :id->element            -> a map from id to element (nodes, relations and views)
-   :id->parent             -> a map from id to parent element
+   :id->parent             -> a map from id to parent node
+   :id->children           -> a map from id to a vector of contained nodes
    :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
    :referred-id->relations -> a map from id to set of relations where the id is referred (:to)
 "
@@ -57,6 +58,50 @@
   (fn [e]
     (resolve-element model e)))
 
+; TODO resolve children
+(defn children
+  "Returns the children of the model node `e`."
+  [model e]
+  (->> e
+       (el/id) 
+       (get (:referred-id->relations model))
+       (filterv #(= :contained-in (:el %)))
+       (mapv (comp (element-resolver model) :from))
+       ))
+  
+;;
+;; recursive traversal of the hierarchical data
+;;
+(defn traverse
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+
+   `pred-fn`     - a predicate on the current element
+   `children-fn` - a function to resolve the children of the current element
+   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([step-fn coll]
+   (traverse identity identity :ct step-fn coll))
+  ([pred-fn step-fn coll]
+   (traverse identity pred-fn :ct step-fn coll))
+  ([pred-fn children-fn step-fn coll]
+   (traverse identity pred-fn children-fn step-fn coll))
+  ([element-fn pred-fn children-fn step-fn coll]
+   (letfn [(trav [acc coll]
+             (if (seq coll)
+               (let [e (element-fn (first coll))]
+                 (if (pred-fn e)
+                   (recur (trav (step-fn acc e) (children-fn e))
+                          (rest coll))
+                   (recur (trav acc (children-fn e))
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) coll))))
+
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
@@ -92,6 +137,241 @@
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
+
+;;;
+;;; Build model
+;;;
+
+(defn prepare-input
+  "Performs transformations on the input `coll` prior to building the model."
+  [coll m])
+
+(defn input-child?
+  "Returns true, if element `e` is a child of model element `p` in the input model."
+  [e p]
+  (boolean (and (seq e)
+                (seq p)
+                (el/identifiable-element? p)
+                (el/model-element? p)
+                ; working on the input, use :ct
+                (contains? (set (:ct p)) e))))
+
+(defn identified-node
+  "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
+  [e p]
+  (if (:id e)
+    e
+    (assoc e :id (el/generate-node-id e p))))
+
+(defn contained-in-relation
+  "Returns a contained-in relation for parent `p` and element `e`."
+  [p-id e-id]
+  {:el :contained-in
+   :id (el/generate-relation-id :contained-in e-id p-id)
+   :from e-id
+   :to p-id
+   :name "contained-in"
+   :synthetic true})
+
+(defn add-node
+  "Update the accumulator `acc` of the model with the node `e`
+   in the context of the parent `p` (if given)."
+  [acc p e] 
+  (if (and p (input-child? e p))
+    ; a child node, add a contained in relationship, too
+    ; add syntetic ids for nodes without ids (e.g. fields, methods)
+    (let [e (identified-node e p)
+          c-rel (contained-in-relation (:id p) (:id e))]
+      (assoc acc
+             :nodes
+             (conj (:nodes acc) e)
+
+             :relations
+             (conj (:relations acc)
+                   c-rel)
+
+             :id->element
+             (assoc (:id->element acc)
+                    (:id e) e
+                    (:id c-rel) c-rel)
+
+             ; currently only one parent is supported here
+             :id->parent
+             (if-let [po ((:id->parent acc) (:id e))]
+               (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:id e))
+               (assoc (:id->parent acc) (:id e) p))
+
+             :id->children
+             (assoc (:id->children acc)
+                    (:id p)
+                    (conj (get-in acc [:id->children (:id p)] []) e))
+
+             :referrer-id->relations
+             (assoc (:referrer-id->relations acc)
+                    (:from c-rel)
+                    (conj (get-in acc [:referrer-id->relations (:from c-rel)] #{}) c-rel))
+
+             :referred-id->relations
+             (assoc (:referred-id->relations acc)
+                    (:to c-rel)
+                    (conj (get-in acc [:referred-id->relations (:to c-rel)] #{}) c-rel))))
+
+    ; not a child node, just add the node
+    (assoc acc
+           :nodes
+           (conj (:nodes acc) e)
+
+           :id->element
+           (assoc (:id->element acc) (:id e) e))))
+
+(defn add-reference
+  "Update the accumulator `acc` of the model with the reference `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  (if (el/model-node? p)
+    ; reference is a child of a node, add a contained-in relationship
+    (let [c-rel (contained-in-relation (:id p) (:ref e))]
+      (assoc acc
+             :relations
+             (conj (:relations acc)
+                   c-rel)
+
+             :id->element
+             (assoc (:id->element acc)
+                    (:id e) e
+                    (:id c-rel) c-rel)
+
+             ; currently only one parent is supported here
+             :id->parent
+             (if-let [po ((:id->parent acc) (:ref e))]
+               (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:ref e))
+               (assoc (:id->parent acc) (:ref e) p))
+
+             ; FIXME currently adding the ref here, should add the (transformed) element
+             ;       therefore a lookup by id is neccessary for the input elements?!?
+             :id->children
+             (assoc (:id->children acc)
+                    (:id p)
+                    (conj (get-in acc [:id->children (:id p)] []) e))
+
+             :referrer-id->relations
+             (assoc (:referrer-id->relations acc)
+                    (:from c-rel)
+                    (conj (get-in acc [:referrer-id->relations (:from c-rel)] #{}) c-rel))
+
+             :referred-id->relations
+             (assoc (:referred-id->relations acc)
+                    (:to c-rel)
+                    (conj (get-in acc [:referred-id->relations (:to c-rel)] #{}) c-rel))))
+    ; else this reference is a child of a view, leave acc as is
+    acc))
+
+(defn add-relation
+  "Update the accumulator `acc` of the model with the relation `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  (assoc acc
+         :relations
+         (conj (:relations acc) e)
+
+         :id->element
+         (assoc (:id->element acc) (:id e) e)
+
+         :referrer-id->relations
+         (assoc (:referrer-id->relations acc)
+                (:from e)
+                (conj (get-in acc [:referrer-id->relations (:from e)] #{}) e))
+
+         :referred-id->relations
+         (assoc (:referred-id->relations acc)
+                (:to e)
+                (conj (get-in acc [:referred-id->relations (:to e)] #{}) e))))
+
+(defn add-theme
+  "Update the accumulator `acc` of the model with the view `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  (assoc acc
+         :themes
+         (conj (:themes acc) e)
+
+         :id->element
+         (assoc (:id->element acc) (:id e) e)))
+
+(defn add-view
+  "Update the accumulator `acc` of the model with the view `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  ;; views
+  (assoc acc
+         :views
+         (conj (:views acc) e)
+
+         :id->element
+         (assoc (:id->element acc) (:id e) e)))
+
+(defn update-acc
+  "Update the accumulator `acc` of the model with the element `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  (cond
+    ;; nodes
+    (el/model-node? e)
+    (add-node acc p e)
+
+    ;; relations
+    (el/model-relation? e)
+    (add-relation acc p e)
+
+    ;; views
+    (el/view? e)
+    (add-view acc p e)
+
+    ;; references
+    (el/reference? e)
+    (add-reference acc p e)
+
+    ;; themes
+    (el/theme? e)
+    (add-theme acc p e)
+
+    ; unhandled element
+    :else (do (println "Unhandled:" e) acc)))
+
+(defn ->relational-model
+  "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
+  ([]
+   ; initial compound accumulator with empty model and context
+   [{:nodes #{}
+     :relations #{}
+     :views #{}
+     :themes #{}
+     :id->element {}
+     :id->parent {}
+     :id->children {}
+     :referred-id->relations {}
+     :referrer-id->relations {}}
+    '()])
+  ([[res ctx]]
+   ; return result from accumulator
+   (if-not (empty? ctx)
+     ; not done yet because context stack is not empty
+     ; pop element from stack and return accumulator with
+     ; current resulting model and popped context
+     [res (pop ctx)]
+     res))
+  ([[res ctx] e]
+   ; update accumulator in step by calling update function
+   ; with result, parent from context stack (if any) and
+   ; the current element. Also push current element to context stack.
+   (let [p (peek ctx)]
+     [(update-acc res p e) (conj ctx e)])))
+
+(defn build-model
+  "Builds the working model from the input `coll` of elements."
+  [coll]
+  (let [model (traverse ->relational-model coll)]
+    (assoc model :input-elements coll)))
 
 ;;
 ;; Model transducer functions
@@ -170,19 +450,42 @@
   [model]
   (:themes model))
 
-; TODO check
-(defn children
-  "Returns the children of the model node `e`."
-  [model e]
-  (->> e
-       (el/id)
-       (get (:referrer-id->relations model))
-       (filter #(= :contains (:el %)))))
-  
 (defn parent
   "Returns the parent of the model node `e`."
   [model e]
   ((:id->parent model) (:id e)))
+
+#_(defn id->parent
+  "Step function to create an id to parent element map.
+   Adds the association from the id of element `e` to the parent `p` to the map `acc`.
+   Uses a list as stack in the accumulator to manage the context of the current element `e`
+   in the traversal of the tree."
+  ([] [{} '()])
+  ([[res ctx]]
+   (if-not (empty? ctx)
+     [res (pop ctx)]
+     res))
+  ([[res ctx] e]
+   (let [p (peek ctx)]
+     (if (child? e p)
+       [(assoc res (:id e) p) (conj ctx e)]
+       [res (conj ctx e)]))))
+
+#_(defn referrer-id->relation
+  "Step function to create an map of referrer ids to relations.
+   Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
+
+#_(defn referred-id->relation
+  "Step function to create an map of referred ids to relations.
+   Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:to e) (conj (get acc (:to e) #{}) e))))
 
 (defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
@@ -243,7 +546,7 @@
   ([model e]
    )
   ([model f e]
-   (el/traverse (element-resolver model) identity f ->transitive-related #{e})))
+   (traverse (element-resolver model) identity f ->transitive-related #{e})))
 
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
@@ -267,7 +570,7 @@
   "Returns the set of descendants of the node `e`."
   [model e]
   (when (el/model-node? (resolve-element model e))
-    (el/traverse (element-resolver model) el/model-node? :ct el/tree->set (:ct e))))
+    (traverse (element-resolver model) el/model-node? :ct el/tree->set (:ct e))))
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
@@ -511,6 +814,30 @@
   [model e]
   (let []))
 
+(defn collect-fields
+  "Returns the fields of all classes in the `coll`."
+  [model coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map #(children model %))
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :field (:el %)))
+       (sort-by :name)))
+
+(defn collect-methods
+  "Returns the methods of all classes in the `coll`."
+  [model coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map #(children model %))
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :method (:el %)))
+       (sort-by :name)))
+
 ;;
 ;; concept model
 ;;
@@ -648,176 +975,6 @@
        (into #{} (referrer-xf model #(= :responsibility (:el %))))))
 
 ;;;
-;;; Build model
-;;;
-(defn parent-of-relation
-  "Returns a parent-of relation for parent `p` and element `e`."
-  [p-id e-id]
-  {:el :contains
-   :id (el/generate-relation-id :contains p-id e-id)
-   :from p-id
-   :to e-id
-   :name "contains"
-   :synthetic true})
-
-(defn update-acc
-  "Update the accumulator `acc` of the model with the element `e`
-   in the context of the parent `p` (if given)."
-  [acc p e]
-  (cond
-    ;; nodes
-    (el/model-node? e)
-    (if (and p (el/child? e p))
-      ; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
-      ; a child node, add a parent-of relationship, too
-      (let [r (parent-of-relation (:id p) (:id e))]
-        (assoc acc
-               :nodes
-               (conj (:nodes acc) e)
-
-               :relations
-               (conj (:relations acc) r)
-
-               :id->element
-               (assoc (:id->element acc)
-                      (:id e) e
-                      (:id r) r)
-
-               ; currently only one parent is supported here
-               :id->parent
-               (if-let [po ((:id->parent acc) (:id e))]
-                 (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:id e))
-                 (assoc (:id->parent acc) (:id e) p))
-
-               :referrer-id->relations
-               (assoc (:referrer-id->relations acc)
-                      (:from r)
-                      (conj (get-in acc [:referrer-id->relations (:from r)] #{}) r))
-
-               :referred-id->relations
-               (assoc (:referred-id->relations acc)
-                      (:to r)
-                      (conj (get-in acc [:referred-id->relations (:to r)] #{}) r))))
-
-      ; not a child node, just add the node
-      (assoc acc
-             :nodes
-             (conj (:nodes acc) e)
-
-             :id->element
-             (assoc (:id->element acc) (:id e) e)))
-
-    ;; relations
-    (el/model-relation? e)
-    (assoc acc
-           :relations
-           (conj (:relations acc) e)
-
-           :id->element
-           (assoc (:id->element acc) (:id e) e)
-
-           :referrer-id->relations
-           (assoc (:referrer-id->relations acc)
-                  (:from e)
-                  (conj (get-in acc [:referrer-id->relations (:from e)] #{}) e))
-
-           :referred-id->relations
-           (assoc (:referred-id->relations acc)
-                  (:to e)
-                  (conj (get-in acc [:referred-id->relations (:to e)] #{}) e)))
-
-    ;; views
-    (el/view? e)
-    (assoc acc
-           :views
-           (conj (:views acc) e)
-
-           :id->element
-           (assoc (:id->element acc) (:id e) e))
-
-    ;; references
-    (el/reference? e)
-    (if (el/model-node? p)
-      ; reference is a child of a node, add a parent-of relationship
-      (let [r (parent-of-relation (:id p) (:ref e))]
-        (assoc acc
-               :relations
-               (conj (:relations acc) r)
-
-               :id->element
-               (assoc (:id->element acc) (:id r) r)
-
-               ; currently only one parent is supported here
-               :id->parent
-               (if-let [po ((:id->parent acc) (:id e))]
-                 (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element ref" (:ref e))
-                 (assoc (:id->parent acc) (:ref e) p))
-
-               :referrer-id->relations
-               (assoc (:referrer-id->relations acc)
-                      (:from r)
-                      (conj (get-in acc [:referrer-id->relations (:from r)] #{}) r))
-
-               :referred-id->relations
-               (assoc (:referred-id->relations acc)
-                      (:to r)
-                      (conj (get-in acc [:referred-id->relations (:to r)] #{}) r))))
-      ; reference is a child of a view, leave as is
-      acc)
-
-    ;; themes
-    (el/theme? e)
-    (assoc acc
-       :themes
-       (conj (:themes acc) e)
-
-       :id->element
-       (assoc (:id->element acc) (:id e) e))
-
-    ; unhandled element
-    :else (do (println "Unhandled:" e) acc)))
-
-(defn ->relational-model
-  "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
-  ([]
-   ; initial compound accumulator with empty model and context
-   [{:nodes #{}
-     :relations #{}
-     :views #{}
-     :themes #{}
-     :id->element {}
-     :id->parent {}
-     :referred-id->relations {}
-     :referrer-id->relations {}}
-    '()])
-  ([[res ctx]]
-   ; return result from accumulator
-   (if-not (empty? ctx)
-     ; not done yet because context stack is not empty
-     ; pop element from stack and return accumulator with
-     ; current resulting model and popped context
-     [res (pop ctx)]
-     res))
-  ([[res ctx] e]
-   ; update accumulator in step by calling update function
-   ; with result, parent from context stack (if any) and
-   ; the current element. Also push current element to context stack.
-   (let [p (peek ctx)]
-     [(update-acc res p e) (conj ctx e)])))
-
-(defn prepare-input
-  "Performs transformations on the input `coll` prior to building the model."
-  [coll m]
-
-  )
-
-(defn build-model
-  "Builds the working model from the input `coll` of elements."
-  [coll]
-  (let [model (el/traverse ->relational-model coll)]
-    (assoc model :input-elements coll)))
-
-;;;
 ;;; filtering element colletions by criteria
 ;;;
 
@@ -834,7 +991,12 @@
 (defn child?
   "Returns true, if `e` is a child of the node with id `v` in the `model`."
   [model v e]
-  (contains? (:ct (resolve-id model v)) e))
+  (contains? (children model (resolve-id model v)) e))
+
+(defn parent-check?
+  "Returns true if the check for children of `e` equals the boolean value `v`"
+  [model v e]
+  (= v (empty? (children model e))))
 
 (defn parent?
   "Returns true if `v` is the parent of `e`"
@@ -934,8 +1096,8 @@
     (= :child? k)                  (partial child-check? model v)
     (= :child-of k)                (partial child? model v)
     (= :descendant-of k)           (partial descendant-of? model v)
-    (= :children? k)               (partial el/parent-check? v) ; deprecate
-    (= :parent? k)                 (partial el/parent-check? v)
+    (= :children? k)               (partial parent-check? model v) ; deprecate
+    (= :parent? k)                 (partial parent-check? model v)
     (= :parent-of k)               (partial parent model v)
     (= :ancestor-of k)             (partial ancestor-of? model v) 
 

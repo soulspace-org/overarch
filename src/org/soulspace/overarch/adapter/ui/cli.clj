@@ -7,6 +7,7 @@
             [nextjournal.beholder :as beholder]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.analytics :as al]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
@@ -256,16 +257,22 @@
       ; handle options and generate the requested outputs
       (handle options))))
 
-(comment ; state
+;;;
+;;; Rich comments for tests and explorations
+;;;
+(comment ; state update
   (update-and-dispatch! {:model-dir "models"
                          :export-dir "export"
                          :render-dir "export"
                          :render-format :plantuml
                          :debug true})
   
-  (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"}) {:model-info true})
-  (repo/update-state! {:model-dir "models"})
-  (repo/update-state! {:model-dir "C:/pag/datona/git/datona-architecture-documentation/models"})  ;
+  (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"})
+              {:model-info true})
+  (repo/update-state! {:model-dir "models/banking"})
+  (repo/update-state! {:model-dir "models/overarch"})
+  
+  ;
   )
 
 (comment ; model analytics 
@@ -286,10 +293,10 @@
 
   (al/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
   (al/unnamespaced-elements (concat (repo/nodes) (repo/relations)))
-  (al/unrelated-nodes @repo/state)
-  (al/check-relations @repo/state)
-  (al/check-views @repo/state)
-  (al/unresolved-refs  @repo/state (model/resolve-element @repo/state :test/missing-elements))
+  (al/unrelated-nodes (repo/model))
+  (al/check-relations (repo/model))
+  (al/check-views (repo/model))
+  (al/unresolved-refs  (repo/model) (model/resolve-element @repo/state :test/missing-elements))
   (al/unmatched-relation-namespaces (repo/relations))
 
   (el/elements-by-namespace (repo/nodes))
@@ -300,25 +307,85 @@
   )
 
 (comment ; model navigation 
-  (model/descendant-nodes (repo/model) (model/resolve-element (repo/model) :banking/internet-banking-system))
+  (model/descendant-nodes (repo/model)
+                          (model/resolve-element (repo/model)
+                                                 :banking/internet-banking-system))
   ;
   )
 
 (comment ; selections
-  (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/nodes))
-  (into #{} (model/filter-xf @repo/state {:namespace "ddd"}) (repo/relations))
-  (into #{} (model/filter-xf @repo/state {:subtype :queue}) (repo/nodes))
+  (into #{} (model/filter-xf (repo/model) {:namespace "ddd"}) (repo/nodes))
+  (into #{} (model/filter-xf (repo/model) {:namespace "ddd"}) (repo/relations))
+  (into #{} (model/filter-xf (repo/model) {:subtype :queue}) (repo/nodes))
 
-  (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/nodes))
-  (into #{} (model/filter-xf @repo/state {:namespace "banking"}) (repo/relations))
+  (into #{} (model/filter-xf (repo/model) {:namespace "banking"}) (repo/nodes))
+  (into #{} (model/filter-xf (repo/model) {:namespace "banking"}) (repo/relations))
 
   (into #{}
-        (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+        (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
         (repo/model-elements))
   (->> (into #{}
-             (model/filter-xf @repo/state {:namespace "overarch.data-model"})
+             (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
              (repo/model-elements))
-       (el/collect-fields))
+       (model/collect-fields (repo/model)))
+  ;
+  )
+
+(comment ; view functions
+  (def referenced
+    (view/referenced-elements (repo/model)
+                              (model/resolve-element (repo/model)
+                                                     :banking/container-view)))
+  (def selected
+    (view/selected-elements (repo/model)
+                            (model/resolve-element (repo/model)
+                                                   :banking/container-view)))
+  (view/specified-elements (repo/model)
+                           (model/resolve-element (repo/model)
+                                                  :banking/container-view))
+  (def specified
+    (view/specified-elements (repo/model)
+                             (model/resolve-element (repo/model)
+                                                    :banking/container-view)))
+  (def included
+    (view/included-elements (repo/model)
+                            (model/resolve-element (repo/model)
+                                                   :banking/container-view)
+                            specified))
+  included
+  (def in-view
+    (view/view-elements (repo/model)
+                        (model/resolve-element (repo/model)
+                                               :banking/container-view)))
+  (def rendered
+    (view/elements-to-render (repo/model)
+                             (model/resolve-element (repo/model)
+                                                    :banking/container-view)))
+
+  ;
+  )
+
+(comment ; render functions
+  (model/children (repo/model)
+                  (model/resolve-element (repo/model)
+                                         :banking/internet-banking-system))
+  (c4/render-c4-element (repo/model)
+                        (model/resolve-element (repo/model)
+                                               :banking/container-view)
+                        0
+                        (model/resolve-element (repo/model)
+                                               :banking/internet-banking-system))
+  
+  (model/deployed-on (repo/model)
+                     (model/resolve-element (repo/model)
+                                            :banking/big-bank-api-server-pod))
+  (c4/render-c4-element (repo/model)
+                        (model/resolve-element (repo/model)
+                                               :banking/container-view)
+                        0
+                        (model/resolve-element (repo/model)
+                                               :banking/big-bank-plc-datacenter))
+
   ;
   )
 

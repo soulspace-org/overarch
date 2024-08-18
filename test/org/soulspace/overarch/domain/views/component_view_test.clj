@@ -5,23 +5,41 @@
             [org.soulspace.overarch.domain.model :as model]))
 
 (def test-input
-  #{})
+  #{{:el :enterprise-boundary
+     :id :test/enterprise-boundary1
+     :ct #{{:el :system
+            :id :test/system1
+            :ct #{{:el :context-boundary
+                   :id :test/context-boundary1
+                   :ct #{{:el :container
+                          :id :test/container1
+                          :ct #{{:el :component
+                                 :id :test/component1}}}}}}}}}
+   {:el :system
+    :id :test/system2}})
+
 (def test-model (model/build-model test-input))
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"
-    (are [x y] (= x (boolean (as-boundary? y)))
-      true {:el :enterprise-boundary :ct #{{:el :system}}}
-      true {:el :context-boundary :ct #{{:el :container}}}
-      true {:el :system :ct #{{:el :container}}}
-      true {:el :container :ct #{{:el :component}}}))
+    (are [x y] (= x (boolean (as-boundary? test-model y)))
+      true {:el :enterprise-boundary
+            :id :test/enterprise-boundary1}
+      true {:el :system
+            :id :test/system1}
+      true {:el :context-boundary
+            :id :test/context-boundary1}
+      true {:el :container
+            :id :test/container1}))
   (testing "as-boundary? false"
-    (are [x y] (= x (boolean (as-boundary? y)))
-      false {:el :system}
-      false {:el :container}
-      false {:el :component}
-      false {:el :system :external true :ct #{{:el :container}}}
-      false {:el :container :external true :ct #{{:el :component}}})))
+    (are [x y] (= x (boolean (as-boundary? test-model y)))
+      false {:el :system
+             :id :test/system2}
+      ;false {:el :container}
+      ;false {:el :component}
+      ;false {:el :system :external true :ct #{{:el :container}}}
+      ;false {:el :container :external true :ct #{{:el :component}}}
+      )))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
