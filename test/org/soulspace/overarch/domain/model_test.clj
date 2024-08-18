@@ -230,7 +230,7 @@
        :ct #{{:el :component
               :id :a/component}}}))
   (testing "ancestor-nodes with refs true"
-    (are [x y] (= x (do (println hierarchy-model2) (ancestor-nodes hierarchy-model2 y)))
+    (are [x y] (= x (ancestor-nodes hierarchy-model2 y))
       #{{:el :system
          :id :a/system
          :ct #{{:ref :a/container}}}
