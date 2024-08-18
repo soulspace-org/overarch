@@ -14,14 +14,15 @@ Overarch currently supports the following kinds of models
 * [Architecture Models](#architecture-model)
   to model the logical architecture of the system with different levels of detail
 * [Code Models](#code-model)
-  to model the design of the system, e.g. the domain model, and the structure of
-  the implementation
+  to model the design of the system, e.g. the domain model, and the structure
+  of the implementation
 * [State-Machine Models](#state-machine-model)
   to model relevant states and transitions of the system
 * [Deployment Models](#deployment-model)
   to model the physical architecture of the system
-* [Responsibility Models](#responsibility-model)
-  to model the team responsibilities for parts of the system
+* [Organization Models](#responsibility-model)
+  to model organizational structures, collaborations and responsibilities for
+  parts of the system
 
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the
