@@ -141,11 +141,10 @@
 ;;;
 ;;; Build model
 ;;;
-
-(defn prepare-input
-  "Performs transformations on the input `coll` prior to building the model."
-  [coll m])
-
+;; TODOs:
+;;  * remove :ct key in model nodes
+;;  * set :external from scope, if given
+;;  * drop input model from model
 (defn input-child?
   "Returns true, if element `e` is a child of model element `p` in the input model."
   [e p]
@@ -186,10 +185,6 @@
              :nodes
              (conj (:nodes acc) e)
 
-             :relations
-             (conj (:relations acc)
-                   c-rel)
-
              :id->element
              (assoc (:id->element acc)
                     (:id e) e
@@ -205,6 +200,10 @@
              (assoc (:id->children acc)
                     (:id p)
                     (conj (get-in acc [:id->children (:id p)] []) e))
+
+             :relations
+             (conj (:relations acc)
+                   c-rel)
 
              :referrer-id->relations
              (assoc (:referrer-id->relations acc)
@@ -369,9 +368,11 @@
 
 (defn build-model
   "Builds the working model from the input `coll` of elements."
-  [coll]
-  (let [model (traverse ->relational-model coll)]
-    (assoc model :input-elements coll)))
+  ([coll]
+   (build-model {} coll))
+  ([options coll]
+   (let [model (traverse ->relational-model coll)]
+     (assoc model :input-elements coll))))
 
 ;;
 ;; Model transducer functions
