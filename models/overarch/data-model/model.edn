@@ -1526,6 +1526,115 @@
    :tags #{"concept-model"}}
 
   ;;
+  ;; Organization Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/organization-model-element
+   :abstract true
+   :name "organization-model-element"
+   :desc "An element in the organization model"
+   :tags #{"organization-model"}}
+  
+  {:el :class
+   :id :overarch.data-model/organization-model-node
+   :abstract true
+   :name "organization-model-node"
+   :desc "A node in the organization model"
+   :tags #{"organization-model"}}
+  
+  {:el :class
+   :id :overarch.data-model/organization-model-relation
+   :abstract true
+   :name "organization-model-relation"
+   :desc "A relation in the organization model"
+   :tags #{"organization-model"}}
+  
+  {:el :class
+   :id :overarch.data-model/organization
+   :name "organization"
+   :desc "An organization (e.g. a company) in the organization model."
+   :tags #{"organization-model"}}
+  
+  {:el :class
+   :id :overarch.data-model/org-unit
+   :name "org-unit"
+   :desc "An organizational unit (e.g. a department) in the organization model."
+   :tags #{"organization-model"}}
+  
+  #_{:el :class
+   :id :overarch.data-model/team
+   :name "team"
+   :desc "A team in an organizational unit in the organization model."
+   :tags #{"organization-model"}}
+
+  {:el :class
+   :id :overarch.data-model/responsible-for
+   :name "responsible-for"
+   :desc "A relation between organisational model nodes and architecture or deployment model elements."
+   :tags #{"organization-model"}}
+
+  {:el :class
+   :id :overarch.data-model/collaborates-with
+   :name "collaborates-with"
+   :desc "A relation between two organisational model nodes."
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/organization-model-node
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/organization-model-relation
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/organization-model-element
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-model-node-is-a-organization-model-element
+   :to :overarch.data-model/organization-model-element
+   :from :overarch.data-model/organization-model-node
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-model-relation-is-a-organization-model-element
+   :to :overarch.data-model/organization-model-element
+   :from :overarch.data-model/organization-model-relation
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-is-a-organization-model-node
+   :to :overarch.data-model/organization-model-node
+   :from :overarch.data-model/organization
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/org-unit-is-a-organization-model-node
+   :to :overarch.data-model/organization-model-node
+   :from :overarch.data-model/org-unit
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/responsible-for-is-a-organization-model-relation
+   :to :overarch.data-model/organization-model-relation
+   :from :overarch.data-model/responsible-for
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/collaborates-with-is-a-organization-model-relation
+   :to :overarch.data-model/organization-model-relation
+   :from :overarch.data-model/collaborates-with
+   :tags #{"organization-model"}}
+
+
+  ;;
   ;; View Model
   ;;
   {:el :class

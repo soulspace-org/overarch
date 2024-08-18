@@ -4,8 +4,8 @@ Changelog
 Version (NEXT)
 --------------
 * added a organization model with
-  * nodes `:organization`, `:org-unit` and `:team`
-  * relations `:responsible`
+  * nodes `:organization` and `:org-unit`
+  * relations `:responsible-for` and `:collaborates-with`
 * added initial support for wbs/organigram style diagrams (work in progress)
 * added relation type `:step` to be used in dynamic views instead of plain `:rel`
 * added criteria for sets of namespace prefixes on elements and relations
