@@ -139,8 +139,7 @@
 
 (def model-relation-types
   "Relation types of the model."
-  ; TODO only one of contains/contained-in
-  (set/union #{:rel :contains :contained-in}
+  (set/union #{:rel :contained-in}
              architecture-relation-types
              deployment-relation-types
              uml-relation-types
@@ -425,8 +424,6 @@
       (derive :concept-model-relation            :model-relation)
       (derive :organization-model-relation       :model-relation)
 
-      ; TODO only one of contains/contained-in
-      (derive :contains                          :model-relation)
       (derive :contained-in                      :model-relation)
       (derive :rel                               :model-relation)
 

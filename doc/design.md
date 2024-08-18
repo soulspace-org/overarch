@@ -362,10 +362,12 @@ Q: **In which direction should the containment be modelled? Should the parent al
    be shared without sharing the details.
 
 A: By replacing the (mostly generated) `:contains` relation with a
-   `:contained-in` or `:part-of`, which could also be used explicitly in the
+   `:contained-in` relation, which could also be used explicitly in the
    model to keep the parent model files free of references to the childs, the
    composability, extensibility and reusability of the model files would be
    greatly enhanced.
+
+   Implemented.
 
 Q: **Shall relations be automatically included in a view, when the participating components are included?**
 

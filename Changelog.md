@@ -18,6 +18,13 @@ Version (NEXT)
 * added and enhanced documentation templates
 * added graphviz graph-view template
 * enhanced model warnings
+* refactored the handling of contained element hierarchies.
+  * synthetic `:id`s are generated for children missing an id
+    (e.g. fields or methods in classes)
+  * syntethic `:contained-in` relations are created to represent
+    hierarches graph (replaces `:contains` relations)
+  * the children function is used to navigate down the hierarchy
+    in the model graph instead of the :ct key
 * refactored template handling
 * refactored model loading, check spec on file level
 * fixed some docstrings on architecture relation navigation functions

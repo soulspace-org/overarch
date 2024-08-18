@@ -417,6 +417,26 @@
         (map (partial resolve-ref model))
         (filter el/unresolved-ref?)))
 
+;; TODO transitive dependencies with cycle detection/prevention
+(defn ->transitive-related
+  "Step function to build a set of transitively related nodes (with cycle detection)."
+  ([]
+   [#{} ; transitive nodes
+    #{} ; visited nodes
+    ])
+  ([acc]
+   (first acc))
+  ([acc e]
+   ))
+
+;; TODO transitive dependencies with cycle detection/prevention
+(defn related-transitive
+  "Returns the nodes that are transitively related to node `e` in the `model`."
+  ([model e]
+   )
+  ([model f e]
+   (traverse (element-resolver model) identity f ->transitive-related #{e})))
+
 ;;
 ;; Accessors
 ;;
@@ -455,39 +475,7 @@
   [model e]
   ((:id->parent model) (:id e)))
 
-#_(defn id->parent
-  "Step function to create an id to parent element map.
-   Adds the association from the id of element `e` to the parent `p` to the map `acc`.
-   Uses a list as stack in the accumulator to manage the context of the current element `e`
-   in the traversal of the tree."
-  ([] [{} '()])
-  ([[res ctx]]
-   (if-not (empty? ctx)
-     [res (pop ctx)]
-     res))
-  ([[res ctx] e]
-   (let [p (peek ctx)]
-     (if (child? e p)
-       [(assoc res (:id e) p) (conj ctx e)]
-       [res (conj ctx e)]))))
-
-#_(defn referrer-id->relation
-  "Step function to create an map of referrer ids to relations.
-   Adds the relation `r` to the set associated with the id of the :from reference in the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:from e) (conj (get acc (:from e) #{}) e))))
-
-#_(defn referred-id->relation
-  "Step function to create an map of referred ids to relations.
-   Adds the relation `r` to the set associated with the id of the :to reference in the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:to e) (conj (get acc (:to e) #{}) e))))
-
-(defn from-name
++(defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
   (->> rel
@@ -527,26 +515,6 @@
                                             (contains? els (:to r)))))
                        (into #{}))]
      filtered)))
-
-;; TODO transitive dependencies with cycle detection/prevention
-(defn ->transitive-related
-  "Step function to build a set of transitively related nodes (with cycle detection)."
-  ([]
-   [#{} ; transitive nodes
-    #{} ; visited nodes
-    ])
-  ([acc]
-   (first acc))
-  ([acc e]
-   ))
-
-;; TODO transitive dependencies with cycle detection/prevention
-(defn related-transitive
-  "Returns the nodes that are transitively related to node `e` in the `model`."
-  ([model e]
-   )
-  ([model f e]
-   (traverse (element-resolver model) identity f ->transitive-related #{e})))
 
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
