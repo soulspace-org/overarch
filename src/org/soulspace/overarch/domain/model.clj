@@ -65,8 +65,8 @@
   (->> e
        (el/id) 
        (get (:referred-id->relations model))
-       (filter #(= :contained-in (:el %)))
-       ;(map (comp (element-resolver model) :to))
+       (filterv #(= :contained-in (:el %)))
+       (mapv (comp (element-resolver model) :from))
        ))
   
 ;;
@@ -167,10 +167,17 @@
    :name "contained-in"
    :synthetic true})
 
+(defn identified-node
+  "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
+  [e p]
+  (if (:id e)
+    e
+    (assoc e (el/generate-node-id e p))))
+
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
-  [acc p e]
+  [acc p e] 
   (if (and p (input-child? e p))
     ; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
     ; a child node, add a contained in relationship, too
