@@ -161,9 +161,7 @@
   [e p]
   (if (:id e)
     e
-    (let [identified-e (assoc e :id (el/generate-node-id e p))]
-      (println identified-e)
-      identified-e)))
+    (assoc e :id (el/generate-node-id e p))))
 
 (defn contained-in-relation
   "Returns a contained-in relation for parent `p` and element `e`."
