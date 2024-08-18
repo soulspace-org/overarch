@@ -1,0 +1,6 @@
+#{{:el :model-view
+   :id :overarch/model-view
+   :spec {:selection {:namespace-prefix "overarch"}}
+   :title "Overarch Model"
+   :desc "Shows all nodes and relations in the Overarch model"}
+  }

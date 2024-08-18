@@ -16,13 +16,15 @@ Version (NEXT)
 * enhanced model-api and view-api
 * moved single-line function from model-api to template-api
 * added and enhanced documentation templates
-* added graphviz graph-view template
+* added a `:model-view` that contains all selected elements
+* added model-view template for graphviz as an example for customizable rendering
 * enhanced model warnings
 * refactored the handling of contained element hierarchies.
   * synthetic `:id`s are generated for children missing an id
     (e.g. fields or methods in classes)
   * syntethic `:contained-in` relations are created to represent
     hierarches graph (replaces `:contains` relations)
+  * `:contained-in` relations can also be used in models to replace `:ct`
   * the children function is used to navigate down the hierarchy
     in the model graph instead of the :ct key
 * refactored template handling

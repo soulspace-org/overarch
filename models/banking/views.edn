@@ -207,7 +207,7 @@
 
         ]}
   
-  {:el :system-structure-view
+  #_{:el :system-structure-view
    :id :banking/system-structure
    :spec {:selection {:namespace "banking" :external? false}}
    :title "System Structure"

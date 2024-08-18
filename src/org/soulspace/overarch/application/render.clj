@@ -11,6 +11,7 @@
             [org.soulspace.overarch.domain.views.deployment-view :as deployment-view]
             [org.soulspace.overarch.domain.views.dynamic-view :as dynamic-view]
             [org.soulspace.overarch.domain.views.glossary-view :as glossary-view]
+            [org.soulspace.overarch.domain.views.model-view :as model-view]
             [org.soulspace.overarch.domain.views.state-machine-view :as state-machine-view]
             [org.soulspace.overarch.domain.views.system-landscape-view :as system-landscape-view]
             [org.soulspace.overarch.domain.views.use-case-view :as use-case-view]))

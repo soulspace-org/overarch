@@ -148,18 +148,18 @@
  ;;;
  ;;; Views
  ;;;
- {:selection {:namespace-prefix "banking"}
-  :template "views/graph-view.dot.cmb"
+ {:view-selection {:namespace "banking" :el :model-view}
+  :template "views/model-view.dot.cmb"
   :subdir "views"
-  :base-namespace "banking"
-  :base-name "model-graph"
+  :per-element true
+  :id-as-name true
   :extension "dot"}
 
- {:selection {:namespace-prefix "overarch"}
-  :template "views/graph-view.dot.cmb"
+ {:view-selection {:namespace "overarch" :el :model-view}
+  :template "views/model-view.dot.cmb"
   :subdir "views"
-  :base-namespace "overarch"
-  :base-name "model-graph"
+  :per-element true
+  :id-as-name true
   :extension "dot"}
   ;
  ]

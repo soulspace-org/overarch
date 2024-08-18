@@ -84,8 +84,9 @@
     (str/replace  "-" "_")
     (str/replace  "." "_")))
 
-(let [nodes (filterv m/model-node? e)
-      relations (filterv m/model-relation? e)]
+(let [elements (v/view-elements model e)
+      nodes (filterv m/model-node? elements)
+      relations (filterv m/model-relation? elements)]
 
 %>digraph elements {
   // graph [splines=ortho]
