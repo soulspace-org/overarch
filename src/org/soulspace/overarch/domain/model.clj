@@ -151,11 +151,19 @@
   [e p]
   (boolean (and (seq e)
                 (seq p)
-                (el/identifiable-element? e)
                 (el/identifiable-element? p)
                 (el/model-element? p)
-                ; should be the only place in the code using :ct directly
+                ; working on the input, use :ct
                 (contains? (set (:ct p)) e))))
+
+(defn identified-node
+  "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
+  [e p]
+  (if (:id e)
+    e
+    (let [identified-e (assoc e :id (el/generate-node-id e p))]
+      (println identified-e)
+      identified-e)))
 
 (defn contained-in-relation
   "Returns a contained-in relation for parent `p` and element `e`."
@@ -167,21 +175,15 @@
    :name "contained-in"
    :synthetic true})
 
-(defn identified-node
-  "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
-  [e p]
-  (if (:id e)
-    e
-    (assoc e :id (el/generate-node-id e p))))
-
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
   [acc p e] 
   (if (and p (input-child? e p))
-    ; TODO add syntetic ids for nodes without ids (e.g. fields, methods)
     ; a child node, add a contained in relationship, too
-    (let [c-rel (contained-in-relation (:id p) (:id e))]
+    ; add syntetic ids for nodes without ids (e.g. fields, methods)
+    (let [e (identified-node e p)
+          c-rel (contained-in-relation (:id p) (:id e))]
       (assoc acc
              :nodes
              (conj (:nodes acc) e)
@@ -203,7 +205,7 @@
 
              :id->children
              (assoc (:id->children acc)
-                    p
+                    (:id p)
                     (conj (get-in acc [:id->children (:id p)] []) e))
 
              :referrer-id->relations
@@ -216,7 +218,7 @@
                     (:to c-rel)
                     (conj (get-in acc [:referred-id->relations (:to c-rel)] #{}) c-rel))))
 
-      ; not a child node, just add the node
+    ; not a child node, just add the node
     (assoc acc
            :nodes
            (conj (:nodes acc) e)
@@ -317,7 +319,7 @@
   (cond
     ;; nodes
     (el/model-node? e)
-    (add-node acc p (identified-node e p))
+    (add-node acc p e)
 
     ;; relations
     (el/model-relation? e)

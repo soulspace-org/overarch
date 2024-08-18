@@ -270,6 +270,9 @@
   (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"})
               {:model-info true})
   (repo/update-state! {:model-dir "models/banking"})
+  (repo/update-state! {:model-dir "models/overarch"})
+  
+  ;
   )
 
 (comment ; model analytics 
