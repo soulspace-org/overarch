@@ -255,13 +255,13 @@
 ;;
 ;; Other view types
 ;;
-;  :element-graph-view
-(def graph-view-types
-  "The set of graph-view types."
-  #{:element-graph-view})
+;  :model-view
+(def model-view-types
+  "The set of model-view types."
+  #{:model-view})
 
-(def element-graph-view-element-types
-  "Element types of a element-graph-view."
+(def model-view-element-types
+  "Element types of a model-view."
   model-element-types)
 
 ;; 
@@ -270,7 +270,7 @@
 (def view-types
   "The set of view types."
   (set/union c4-view-types uml-view-types concept-view-types
-             structure-view-types graph-view-types))
+             structure-view-types model-view-types))
 
 (def hierarchical-view-types
   "The set of hierarchical view types."

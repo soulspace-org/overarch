@@ -213,12 +213,12 @@
    :title "System Structure"
    :desc "Shows the hierarchical structure of the sytems in scope."}
 
-  {:el :element-graph-view
-   :id :banking/graph-view
+  {:el :model-view
+   :id :banking/model-view
    :spec {:selection {:namespace "banking"}
           :linetype :orthogonal}
-   :name "Banking Graph View"
-   :title "Banking Graph View"
+   :name "Banking Model View"
+   :title "Banking Model View"
    :desc "Shows all elements in the banking model"}
 
   ;
