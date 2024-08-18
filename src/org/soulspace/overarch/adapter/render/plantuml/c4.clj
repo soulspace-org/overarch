@@ -158,16 +158,11 @@
 
 (defmethod render-c4-element :node
   [model view indent e]
-  (let [deployed (->> model
-                      (:referred-id->relations)
-                      ((:id e))
-                      (filter (partial el/el? :deployed-to))
-                      (map :from)
-                      (map (partial model/resolve-id model)))
+  (let [deployed (model/deployed-on model e)
         children (model/children model e)
         content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
-    (if (seq children)
+    (if (seq content)
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
