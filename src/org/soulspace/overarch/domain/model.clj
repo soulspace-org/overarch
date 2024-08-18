@@ -172,7 +172,7 @@
   [e p]
   (if (:id e)
     e
-    (assoc e (el/generate-node-id e p))))
+    (assoc e :id (el/generate-node-id e p))))
 
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
