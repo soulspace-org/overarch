@@ -9,7 +9,7 @@
    :abstract true
    :name "element"
    :desc "An element of data."
-   :tags #{}
+   :tags #{"base-model"}
    :ct [{:el :field
          :name "el"
          :type "keyword"
@@ -33,35 +33,29 @@
          :optional true
          :desc "Documentation of the element."}]}
 
-  ; TODO model ref as association to model-element
   {:el :class
    :id :overarch.data-model/ref
    :name "ref"
    :desc "A reference to an element."
-   :tags #{}
-   :ct #{{:el :field
-          :name "ref"
-          :type "keyword"
-          :desc "The identifier the reference is referring to."}}}
+   :tags #{"base-model"}}
 
-  {:el :class
-   :id :overarch.data-model/compound-node
-   :abstract :true
-   :name "compound-node"
-   :desc "An element which is composed of other elements."
-   :tags #{}
-   :ct [{:el :field
-         :name "ct"
-         :type "collection"
-         :desc "Collection of elements, e.g. a set or a vector, if the elements need to be in order."}]}
+  {:el :association
+   :id :overarch.data-model/ref-references-element
+   :from :overarch.data-model/ref
+   :to :overarch.data-model/element
+   :to-name "ref"
+   :desc "The identifier the reference is referring to."
+   :tags #{"base-model"}}
 
-  ;; new hierarchy
+  ;;
+  ;; Model hierarchies
+  ;;
   {:el :class
    :id :overarch.data-model/model-element
    :abstract true
    :name "model-element"
    :desc "An element which describes the relation of elements."
-   :tags #{}
+   :tags #{"model-model"}
    :ct [{:el :field
          :name "maturity"
          :type "keyword"
@@ -78,15 +72,14 @@
    :abstract true
    :name "model-node"
    :desc "An element which is a node in the model."
-   :tags #{}
-   :ct []}
+   :tags #{"model-model"}}
 
   {:el :class
    :id :overarch.data-model/model-relation
    :abstract true
    :name "model-relation"
    :desc "An element which is a relation in the and describes the relationship of two model nodes."
-   :tags #{}
+   :tags #{"model-model"}
    :ct [{:el :field
          :name "from"
          :type "keyword"
@@ -101,7 +94,7 @@
    :abstract true
    :name "technical-element"
    :desc "An element which is implemented in the given technologies."
-   :tags #{}
+   :tags #{"model-model"}
    :ct #{{:el :field
           :name "tech"
           :type "string"
@@ -113,47 +106,29 @@
    :id :overarch.data-model/model-element-is-a-element
    :to :overarch.data-model/element
    :from :overarch.data-model/model-element
-   :tags #{}}
+   :tags #{"model-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/model-node-is-a-model-element
    :to :overarch.data-model/model-element
    :from :overarch.data-model/model-node
-   :tags #{}}
+   :tags #{"model-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/model-relation-is-a-model-element
    :to :overarch.data-model/model-element
    :from :overarch.data-model/model-relation
-   :tags #{}}
-
-  ;;
-  ;; Model hierarchies
-  ;;
-  {:el :class
-   :id :overarch.data-model/model-element
-   :abstract true
-   :name "model-element"
-   :desc "An element of the overarch model."
-   :tags #{}}
-
-  {:el :class
-   :id :overarch.data-model/model-node
-   :abstract true
-   :name "model-node"
-   :desc "A node of the overarch model."
-   :tags #{}}
-
-  {:el :class
-   :id :overarch.data-model/model-relation
-   :abstract true
-   :name "model-relation"
-   :desc "A relation of the overarch model."
-   :tags #{}}
+   :tags #{"model-model"}}
 
   ;;
   ;; Generic Relation 
   ;;
+  {:el :class
+ :id :overarch.data-model/contained-in
+ :name "contained-in"
+ :desc "A composition relation from child to parent."
+ :tags #{"model-model"}}
+
   {:el :class
    :id :overarch.data-model/rel
    :name "rel"
@@ -1614,6 +1589,13 @@
    :to :overarch.data-model/organization-model-node
    :from :overarch.data-model/organization
    :tags #{"organization-model"}}
+
+  {:el :composition
+   :id :overarch.data-model/organization-contains-organization-model-node
+   :from :overarch.data-model/organization
+   :to :overarch.data-model/organization-model-node
+   :to-card :one-to-many
+   :tags #{"organization-machine-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/org-unit-is-a-organization-model-node
