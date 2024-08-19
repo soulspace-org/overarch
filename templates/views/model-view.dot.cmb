@@ -23,7 +23,7 @@
     (= :concept (:el e))
     "shape=underline"
     
-    (= :package (:el e))
+    (contains #{:package :namespace} (:el e))
     "shape=tab"
     
     (contains? #{:interface :class} (:el e))
@@ -37,6 +37,12 @@
 
     (contains? #{:end-state} (:el e))
     "shape=doublecircle"
+
+    (= :organization (:el e)
+    "shape=box")
+
+    (= :org-unit (:el e)
+    "shape=box")
 
     :else
     ""))
@@ -69,6 +75,12 @@
 
     (= :concept (:el e))
     "style=filled fillcolor=lightgrey"
+
+    (= :organization (:el e))
+    "style=filled fillcolor=indianred"
+
+    (= :org-unit (:el e))
+    "style=filled fillcolor=indianred1"
 
     (contains? #{:start-state :end-state} (:el e))
     "style=filled fillcolor=black"
