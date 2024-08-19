@@ -1,13 +1,13 @@
 <%
 ;;;;
-;;;; Template for a PlantUML WBS diagram of the System Structure View
+;;;; Template for a PlantUML WBS diagram of the Organization Structure View
 ;;;;
 ;;;; config:
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 
 ;; PlantUML WBS only supports single root WBS diagrams, so be sure to select
-;; just one system in the view specification.
+;; just one organization in the view specification.
 
 (defn render-element
   "Renders the element `e` and its children."
