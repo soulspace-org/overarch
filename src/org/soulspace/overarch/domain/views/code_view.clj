@@ -21,8 +21,7 @@
 (defn render-model-node?
   "Returns true if the `model` node `e` is rendered in the code `view`."
   [model view e]
-  (let [p (model/parent model e)]
-    (contains? el/code-view-element-types (:el e))))
+  (contains? el/code-view-element-types (:el e)))
 
 (defn render-model-relation?
   "Returns true if the `model` relation `e` is rendered in the code `view`."
