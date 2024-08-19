@@ -6,7 +6,6 @@ Version (NEXT)
 * added a organization model with
   * nodes `:organization` and `:org-unit`
   * relations `:responsible-for` and `:collaborates-with`
-* added initial support for wbs/organigram style diagrams (work in progress)
 * added relation type `:step` to be used in dynamic views instead of plain `:rel`
 * added criteria for sets of namespace prefixes on elements and relations
 * added analytics functions
@@ -17,9 +16,11 @@ Version (NEXT)
 * moved single-line function from model-api to template-api
 * added and enhanced documentation templates
 * added a `:model-view` that contains all selected elements
-* added model-view template for graphviz as an example for customizable rendering
+* added graphviz template for `:model-view` as an example for customizable rendering
+* added `:system-structure-view` and `organization-structure-view` for organigrams
+* added plantuml templates for `:system-structure-view` and `organization-structure-view`
 * enhanced model warnings
-* refactored the handling of contained element hierarchies.
+* refactored the handling of contained element hierarchies
   * synthetic `:id`s are generated for children missing an id
     (e.g. fields or methods in classes)
   * syntethic `:contained-in` relations are created to represent

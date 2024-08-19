@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Deployment Node
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [children (m/children model e)
       links (m/links model e)

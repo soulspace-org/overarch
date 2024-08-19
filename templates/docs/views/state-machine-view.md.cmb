@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a State Machine View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (defn render-state
   [state]

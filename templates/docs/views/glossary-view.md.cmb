@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Glossary View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [elements (v/view-elements model e)
       nodes (filter m/model-node? elements)]     

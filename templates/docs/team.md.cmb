@@ -1,11 +1,15 @@
 <%
 ;;;;
-;;;; Documentation Template for a Team
+;;;; Documentation Template for an Organizational Unit
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
 ;;;;
 
 (let [responsibilities-for (m/responsibilities model e)]
 
-%># Team <%= (:name e) %>
+%># <%= (:name e) %>
 ## Description
 <%= (:desc e) %>
 

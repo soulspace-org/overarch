@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a State
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [substates (m/children model e)
       incoming-transitions nil

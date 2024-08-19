@@ -2,6 +2,9 @@
 ;;;;
 ;;;; Export Template for a Model Namespace
 ;;;;
+;;;; config:
+;;;;  :per-namespace true
+;;;;
 
 (defn same-ns?
   "Returns true, if the namespaces of the ids of `e1` and `e2` are the same."

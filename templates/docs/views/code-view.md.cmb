@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Code View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [elements (v/view-elements model e)
       packages (filter #(= :package (:el %)) elements)

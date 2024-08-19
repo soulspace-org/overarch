@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Concept
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [superordinates (m/superordinates model e)
       subordinates (m/subordinates model e)

@@ -2,6 +2,9 @@
 ;;;;
 ;;;; Export Template for a Model Namespace
 ;;;;
+;;;; config:
+;;;;  :per-namespace true
+;;;;
 
 (let [concept-views (filter #(= :concept-view (:el %)) e)
       use-case-views (filter #(= :use-case-view (:el %)) e)

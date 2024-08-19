@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for an Architecture Node
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (defn link
   [current target]

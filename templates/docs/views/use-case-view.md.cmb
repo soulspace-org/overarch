@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Use Case View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (defn use-case-level
   "Renders the level of the use case `uc`."

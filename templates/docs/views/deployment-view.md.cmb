@@ -2,6 +2,14 @@
 ;;;;
 ;;;; Documentation Template for a Deployment View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [elements (v/view-elements model e)
       nodes (filter #(= :node (:el %)) elements)

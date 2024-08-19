@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Component View
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [elements (v/view-elements model e)
       roles (filter #(= :person (:el %)) elements)

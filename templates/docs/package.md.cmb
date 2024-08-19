@@ -2,6 +2,10 @@
 ;;;;
 ;;;; Documentation Template for a Packages
 ;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
 
 (let [children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
       packages  (filter #(= :package (:el %)) children)

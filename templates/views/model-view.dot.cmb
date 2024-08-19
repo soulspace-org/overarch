@@ -2,10 +2,11 @@
 ;;;;
 ;;;; Template for a Graphviz Dot Graph of the Model View
 ;;;;
-;;;  config:
-;;;  :per-element true
-;;;  :id-as-name  true
-;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
 (defn element-shape
   [e]
   (cond
