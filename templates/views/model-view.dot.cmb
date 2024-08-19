@@ -1,8 +1,11 @@
 <%
 ;;;;
-;;;; Template for a Graphviz dot view of the Selection
+;;;; Template for a Graphviz Dot Graph of the Model View
 ;;;;
-
+;;;  config:
+;;;  :per-element true
+;;;  :id-as-name  true
+;;;
 (defn element-shape
   [e]
   (cond
@@ -23,7 +26,7 @@
     (= :concept (:el e))
     "shape=underline"
     
-    (contains #{:package :namespace} (:el e))
+    (contains? #{:package :namespace} (:el e))
     "shape=tab"
     
     (contains? #{:interface :class} (:el e))
