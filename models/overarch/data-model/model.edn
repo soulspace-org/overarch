@@ -1777,6 +1777,13 @@
    :tags #{"view-model"}}
 
   {:el :class
+   :id :overarch.data-model/deployment-structure-view
+   :name "deployment-structure-view"
+   :desc "The deployment structure view is a graphical view.
+          It shows the hierarchy of the infrastructure and deployments as an organigram."
+   :tags #{"view-model"}}
+
+  {:el :class
    :id :overarch.data-model/organization-structure-view
    :name "organization-structure-view"
    :desc "The organization structure view is a graphical view.
@@ -1950,6 +1957,20 @@
    :tags #{"view-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/deployment-structure-view-is-a-view
+   :to :overarch.data-model/view
+   :from :overarch.data-model/deployment-structure-view
+   :tags #{"view-model"}}
+
+  {:el :aggregation
+   :id :overarch.data-model/deployment-structure-view-contains-deployment-model-node
+   :from :overarch.data-model/deployment-structure-view
+   :to :overarch.data-model/deployment-model-node
+   :to-name "ct"
+   :to-card :one-to-many
+   :tags #{"view-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/organization-structure-view-is-a-view
    :to :overarch.data-model/view
    :from :overarch.data-model/organization-structure-view
@@ -1962,6 +1983,6 @@
    :to-name "ct"
    :to-card :one-to-many
    :tags #{"view-model"}}
-  
+
   ;
   }
