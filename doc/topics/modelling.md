@@ -20,7 +20,7 @@ Overarch currently supports the following kinds of models
   to model relevant states and transitions of the system
 * [Deployment Models](#deployment-model)
   to model the physical architecture of the system
-* [Organization Models](#responsibility-model)
+* [Organization Models](#organization-model)
   to model organizational structures, collaborations and responsibilities for
   parts of the system
 
@@ -518,19 +518,18 @@ It has input parameters and calculates results.
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 
-## Responsibility Model
+## Organization Model
 The responsibility model captures the organizational structure of the system
 architecture.
 
-### Teams (:team)
-A team is a representation for a group of persons or roles having
-responsibilities in your system architecture.
-
-You can enhance the team node with attributes specific for your organization
+### Organization Structure (:organization :org-unit)
+An organization contains organizational units (e.g. branches and departments)
+and organizational units can cointain other organizational units.
+You can enhance the org-unit node with attributes specific for your organization
 (e.g. support mailboxes) and use these attributes in the templates to generate
 documentation or other artifacts.
 
-### Responsibilities (:responsibility)
-A responsibility is a relation that connects a team with an architectural node
-(e.g. a system or a container).
+### Relations (:responsible-for, :collaborates-with)
+The responsible-for relation captures the responsibility of an organizational
+unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
