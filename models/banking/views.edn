@@ -152,6 +152,14 @@
          :name "synchronises"
          :direction :right}]}
 
+  {:el :deployment-structure-view
+   :id :banking/deployment-structure-view
+   :spec {:selection {:id :banking/big-bank-plc-datacenter}}
+   :name "Big Bank Deployment Structure View"
+   :title "Deployment Structure View of Big Bank Datacenter"
+   :desc "Shows the hierarchical structure of the infrastructure and deployment elements"
+   }
+
   {:el :use-case-view
    :id :banking/use-case-view
    :spec {:layout :left-right}

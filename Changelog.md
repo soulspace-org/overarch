@@ -17,8 +17,8 @@ Version (NEXT)
 * added and enhanced documentation templates
 * added a `:model-view` that contains all selected elements
 * added graphviz template for `:model-view` as an example for customizable rendering
-* added `:system-structure-view` and `organization-structure-view` for organigrams
-* added plantuml templates for `:system-structure-view` and `organization-structure-view`
+* added `:system-structure-view`, `:deployment-structure-view` and `organization-structure-view` for organigrams
+* added plantuml templates for `:system-structure-view`, `:deployment-structure-view` and `organization-structure-view`
 * enhanced model warnings
 * refactored the handling of contained element hierarchies
   * synthetic `:id`s are generated for children missing an id (e.g. fields or methods in classes)

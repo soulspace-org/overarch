@@ -241,12 +241,17 @@
 (def structure-view-types
   "The set of structure view types."
   ; TODO team responsibility view?
-  #{:system-structure-view :organization-structure-view})
+  #{:system-structure-view :deployment-structure-view :organization-structure-view})
 
 (def system-structure-view-element-types
   "Element types of a system structure view"
   ; Technical architecture node types only?
   (set/union technical-architecture-node-types architecture-relation-types))
+
+(def deployment-structure-view-element-types
+  "Element types of a system structure view"
+  ; Technical architecture node types only?
+  (set/union deployment-node-types))
 
 (def organization-structure-view-element-types
   "Element types of a system structure view"
@@ -276,8 +281,10 @@
   "The set of hierarchical view types."
   ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
-    :deployment-view :system-landscape-view
+    :deployment-view :deployment-structure-view
+    :system-landscape-view :system-structure-view
     :state-machine-view :code-view :glossary-view
+    :organization-structure-view
     :class-view
     })
 

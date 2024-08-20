@@ -3,24 +3,39 @@ To show model elements in diagrams or in textual representations you can define
 different kind of views. The kind of view defines the visual rendering of the
 elements and the kind of elements and relations that are shown.
 
-In a specific view you can reference the model elements you want to include in
-this view. A Model element can be included in as many views as you want, but the
-element has to match the expected kinds of model elements to be shown. 
-For example, a system landscape view renders person and system elements but no
-use cases or state machines, even if they are referenced in the view. Please consult
-the models for the model and view elements.
+Overarch supports different types of views and renderings. For architecture and
+deployment models, C4 diagrams can be rendered. Use case models, state machine
+models and code models can be rendered as UML diagrams. Structure diagams can
+be used to show the hierarchical structure of organisations, systems or
+deployments.
+
+Overarch supports the description of all C4 core and supplementary diagrams
+as views. The core C4 views form a hierarchy of views. See
+[c4model.com](https://c4model.com) for the rationale and detailed information
+about the C4 model and diagrams.
+
+Overarch also supports conceptual views as part of the documentation of the
+system. Conceptual views can be used in early stages of the development project,
+when the requirements and the architecture are not yet fixed, to get an overview
+of the system to be designed. They can also be used to document the relevant
+concept ofthe domain of the system for discussion, onboarding and learning.
+Concepts should also be part of the glossary, as well as actors, systems and
+the applications and containers developed for the system.
 
 ## Logical Data Model for the View Model Elements
 ![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
 
-## Architecture and Deployment Views (C4 Model)
+## View Content Specification
+In a specific view you can reference the model elements you want to include in
+this view. A Model element can be included in as many views as you want, but the
+element has to match the expected kinds of model elements to be shown.
+For example, a system landscape view renders person and system elements but no
+use cases or state machines, even if they are referenced in the view. Please consult
+the models for the model and view elements.
 
-Overarch supports the description of all C4 core and supplementary views
-except from code views, which ideally should be generated from the code
-if needed. The core C4 views form a hierarchy of views.
-
-See [c4model.com](https://c4model.com) for the rationale and detailed
-information about the C4 Model.
+Model elements can be referenced directly via a `:ref`. They can also be
+selected via model criteria. Either References for selected nodes or nodes for
+selected references can be included automatically.
 
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
@@ -35,14 +50,14 @@ key       | type    | values                   | description
 :spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
 
-### System Context Views (:context-view)
+## System Context View (:context-view)
 Shows the system in the context of the actors and other systems it is
 interacting with. Contains users, external systems and the system to be
 described.
 
 ![System Context View rendered with PlantUML](/doc/images/banking/system-context-view.svg)
 
-### Container Views (:container-view)
+## Container View (:container-view)
 Shows the containers (e.g. processes, deployment units of the system) and
 the interactions between them and the outside world. Contains the elements
 of the system context diagram and the containers of the system to be described.
@@ -51,32 +66,38 @@ diagram.
 
 ![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
-### Component Views (:component-view)
+## Component View (:component-view)
 Shows the components and their interactions inside of a container and with
 outside systems and actors.
 
 ![Component View rendered with PlantUML](/doc/images/banking/api-component-view.svg)
 
-### C4 Code Views
-A C4 code view is not supported, the level of abstraction for implementation details
-is usually not high enough to justify modelling implemeted code. Also the speed of
-change in the code is most likely to high and renders a code model obsolete fast.
-If you want to visualize existing code, you can use the features of your IDE to generate
-a diagram of it.
+## Code View (:code-view)
+A code view is used to show the design of parts of the software. You can use it
+e.g. to model a domain and to communicate the model with domain experts.
+
+Normally it is not neccessary to model the whole code base, the level of
+abstraction for implementation details is usually not high enough to justify
+modelling implemeted code. Also the speed of change in the code is most likely
+to high and renders a code model obsolete fast.
+If you want to visualize existing code, you can use the features of your IDE to
+generate a diagram of it. Maybe you can generate a code model from the existing
+code base.
 
 On the other hand it can be useful to create a view of code not yet implemented.
-An UML class view can be used to model a domain and communicate a design. See UML views for that.
+An UML class view can be used to model a domain or communicate a design
+pattern.
 
+The data models shown here in the documentation are examples of code-views.
+
+## System Structure View (:deployment-structure-view)
+The system structure view shows hierarchical composition of a system.
 
 ### System Landscape Views (:system-landscape-view)
-The system landscape view shows a high level picture, a broader view of the system landscape and the interactions of the systems.
+The system landscape view shows a high level picture, a broader view of the
+system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking/system-landscape-view.svg)
-
-### Deployment Views (:deployment-view)
-The deployment view shows the infrastucture and deployment of the containers of the system.
-
-![Deployment View rendered with PlantUML](/doc/images/banking/deployment-view.svg)
 
 ### Dynamic Views (:dynamic-view)
 Shows the order of interactions. The relations get numerated in the given order
@@ -87,43 +108,39 @@ If the relations are describing interactions specific for the diagram instead
 of general architectural relations (e.g. interfaces) of the model elements,
 it is ok to to specify the relations in the content of the view.
 
-## UML Views
-Overarch supports selected UML views to show aspects of a system that are not
-covered by the C4 Model.
+## Deployment View (:deployment-view)
+The deployment view shows the infrastucture and deployment of the containers of
+the system.
 
-### Use Case View
+![Deployment View rendered with PlantUML](/doc/images/banking/deployment-view.svg)
+
+## Deployment Structure View (:deployment-structure-view)
+The deployment structure view shows hierarchical composition of the
+infrastructure and deployments of the system.
+
+## State Machine Views (:state-machine-view)
+A state machine view is used to show the different states a component can be in.
+It also shows the transitions between these states based on the input events
+the component receives. 
+
+## Use Case View (:use-case-view)
 A use case view is used to show the actors of the system under design and their
 goals using this system.
 
 ![Use Case View rendered with PlantUML](/doc/images/banking/use-case-view.svg)
 
-### State Machine Views
-A state machine view is used to show the different states a component can be in.
-It also shows the transitions between these states based on the input events
-the component receives. 
-
-### Code Views
-A code view is used to show the design of parts of the software. You can use it
-e.g. to model a domain and to communicate the model with domain experts.
-
-## Conceptual Views
-Overarch also supports conceptual views as part of the documentation of the
-system. Conceptual views can be used in early stages of the development project,
-when the requirements and the architecture are not yet fixed, to get an overview
-of the system to be designed. They can also be used to document the relevant
-concept ofthe domain of the system for discussion, onboarding and learning.
-Concepts should also be part of the glossary, as well as actors, systems and
-the applications and containers developed for the system.
-
-### Concept View
+## Concept View (:concept-view)
 The concept view is a graphical view. It shows the concepts as a concept map
 with the relations between the concepts.
 
-### Glossary View
+## Organization Structure View (:organization-structure-view)
+The organization structure view shows hierarchical composition of a organization.
+
+## Glossary View (:glossary)
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
 
-## View Specs
+## View Content Selection and Customization
 Views can be customized with the `:spec` key. View specs may include general
 directives for a view or directives for specific renderers (e.g. PlantUML).
 
@@ -185,17 +202,23 @@ key           | type    | values                   | description
 
 
 # Rendering
+Views can be rendered into different formats via the Overarch CLI tool.
+Views can also be rendered via templates, which allows full control over the
+output and allows new output formats without changes in Overarch itself (see
+[Template Based Artifact Generation](#template-based-artifact-generation)).
+
+This section describes the rendering of views via the Overarch CLI tool.
 
 ## PlantUML
-The specified views C4 architecture and UML viewscan be exported to PlantUML
-diagrams. These can be rendered into different formats (e.g. SVG, PNG, PDF)
-with PlantUML.
+The specified views C4 architecture and UML views can be rendered to PlantUML
+diagram specification (*.puml files). These can be rendered into different
+formats (e.g. SVG, PNG, PDF) with PlantUML.
 
 You can specify PlantUML specific directives with the **:plantuml** key of a
 view spec.
 
 ```
-   :spec {:plantuml {:sprite-libs [:azure]}}
+   :spec {:plantuml {:sprite-libs [:azure :devicons]}}
 ```
 
 ### Keys

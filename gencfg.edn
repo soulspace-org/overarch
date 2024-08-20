@@ -154,12 +154,27 @@
   :per-element true
   :id-as-name true
   :extension "dot"}
- 
+
  {:view-selection {:el :system-structure-view}
   :template "views/system-structure-view.puml.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "puml"}
-  ;
+
+ {:view-selection {:el :deployment-structure-view}
+  :template "views/deployment-structure-view.puml.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :organization-structure-view}
+  :template "views/organization-structure-view.puml.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ ;
  ]
