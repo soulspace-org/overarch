@@ -130,12 +130,12 @@
   (case (include-spec view)
     :relations
     (let [nodes (->> specified
-                                (filter el/model-node?)
-                                (mapcat (partial model/descendant-nodes model))
-                                (map (partial model/resolve-element model))
-                                (into #{})
-                                (set/union specified)
-                                (filter (partial render-model-element? model view)))
+                     (filter el/model-node?)
+                     (mapcat (partial model/descendant-nodes model))
+                     (map (partial model/resolve-element model))
+                     (into #{})
+                     (set/union specified)
+                     (filter (partial render-model-element? model view)))
                      included (->> nodes
                                    (model/relations-of-nodes model)
                                    (into #{}))
@@ -166,7 +166,7 @@
                    (if (selection-spec view)
                      (specified-elements model view)
                      (referenced-elements model view)))]
-    (remove el/synthetic? (filter (partial render-model-element? model view) elements))))
+    (filter (partial render-model-element? model view) elements)))
 
 ; TODO refactor, move to model?
 (defn root-elements
