@@ -1,621 +1,78 @@
 ;;;;
 ;;;; Data Model Views of Overarch
 ;;;;
-#{
-  ;;;
+#{;;;
   ;;; Logical Data Model Views
   ;;;
   {:el :code-view
    :id :overarch.data-model/data-model
-   :spec {:layout :left-right
-          ;:selection {:namespace "overarch.data-model"}
-          }
+   :spec {:selection {:namespace "overarch.data-model"}
+          :layout :left-right}
    :title "Overarch Data Model"
-   :ct [;; elements
-        {:ref :overarch.data-model/ref}
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/technical-element}
-
-        {:ref :overarch.data-model/rel}
-
-        {:ref :overarch.data-model/architecture-model-element}
-        {:ref :overarch.data-model/architecture-model-node}
-        {:ref :overarch.data-model/architecture-model-relation}
-        {:ref :overarch.data-model/technical-architecture-model-node}
-        {:ref :overarch.data-model/technical-architecture-model-relation}
-
-        {:ref :overarch.data-model/boundary-node}
-        {:ref :overarch.data-model/context-boundary}
-        {:ref :overarch.data-model/enterprise-boundary}
-
-        {:ref :overarch.data-model/person}
-        {:ref :overarch.data-model/system}
-        {:ref :overarch.data-model/container}
-        {:ref :overarch.data-model/component}
-        {:ref :overarch.data-model/request}
-        {:ref :overarch.data-model/response}
-        {:ref :overarch.data-model/publish}
-        {:ref :overarch.data-model/subscribe}
-        {:ref :overarch.data-model/send}
-        {:ref :overarch.data-model/dataflow}
-
-        {:ref :overarch.data-model/deployment-model-element}
-        {:ref :overarch.data-model/deployment-model-node}
-        {:ref :overarch.data-model/deployment-model-relation}
-        {:ref :overarch.data-model/node}
-        {:ref :overarch.data-model/link}
-        {:ref :overarch.data-model/deployed-to}
-
-        {:ref :overarch.data-model/use-case-model-element}
-        {:ref :overarch.data-model/use-case-model-node}
-        {:ref :overarch.data-model/use-case-model-relation}
-        {:ref :overarch.data-model/actor}
-        {:ref :overarch.data-model/use-case}
-        {:ref :overarch.data-model/uses}
-        {:ref :overarch.data-model/include}
-        {:ref :overarch.data-model/extends}
-        {:ref :overarch.data-model/generalizes}
-
-        {:ref :overarch.data-model/code-model-element}
-        {:ref :overarch.data-model/code-model-node}
-        {:ref :overarch.data-model/code-model-relation}
-        {:ref :overarch.data-model/package}
-        {:ref :overarch.data-model/namespace}
-        {:ref :overarch.data-model/interface}
-        {:ref :overarch.data-model/protocol}
-        {:ref :overarch.data-model/class}
-        {:ref :overarch.data-model/enum}
-        {:ref :overarch.data-model/enum-value}
-        {:ref :overarch.data-model/field}
-        {:ref :overarch.data-model/method}
-        {:ref :overarch.data-model/parameter}
-        {:ref :overarch.data-model/implementation}
-        {:ref :overarch.data-model/inheritance}
-        {:ref :overarch.data-model/composition}
-        {:ref :overarch.data-model/aggregation}
-        {:ref :overarch.data-model/association}
-        {:ref :overarch.data-model/dependency}
-
-        {:ref :overarch.data-model/state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-model-node}
-        {:ref :overarch.data-model/state-machine-model-relation}
-        {:ref :overarch.data-model/state-machine}
-        {:ref :overarch.data-model/start-state}
-        {:ref :overarch.data-model/state}
-        {:ref :overarch.data-model/end-state}
-        {:ref :overarch.data-model/fork}
-        {:ref :overarch.data-model/join}
-        {:ref :overarch.data-model/choice}
-        {:ref :overarch.data-model/history-state}
-        {:ref :overarch.data-model/deep-history-state}
-        {:ref :overarch.data-model/transition}
-
-        {:ref :overarch.data-model/concept-model-element}
-        {:ref :overarch.data-model/concept-model-node}
-        {:ref :overarch.data-model/concept-model-relation}
-        {:ref :overarch.data-model/concept}
-
-        {:ref :overarch.data-model/view}
-        {:ref :overarch.data-model/rendering-spec}
-
-        {:ref :overarch.data-model/architecture-view}
-        {:ref :overarch.data-model/system-landscape-view}
-        {:ref :overarch.data-model/context-view}
-        {:ref :overarch.data-model/container-view}
-        {:ref :overarch.data-model/component-view}
-        {:ref :overarch.data-model/deployment-view}
-        {:ref :overarch.data-model/dynamic-view}
-        {:ref :overarch.data-model/code-view}
-        {:ref :overarch.data-model/state-machine-view}
-        {:ref :overarch.data-model/use-case-view}
-        {:ref :overarch.data-model/concept-view}
-        {:ref :overarch.data-model/glossary-view}
-
-        ;; relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/architecture-model-node-is-a-model-node}
-        {:ref :overarch.data-model/architecture-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/architecture-model-node-is-a-architecture-model-element}
-        {:ref :overarch.data-model/architecture-model-relation-is-a-architecture-model-element}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
-        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-technical-element}
-        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-technical-element}
-        {:ref :overarch.data-model/context-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/context-boundary-contains-architecture-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-contains-architecture-model-node}
-        {:ref :overarch.data-model/person-is-a-architecture-model-node}
-        {:ref :overarch.data-model/system-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/system-contains-containers}
-        {:ref :overarch.data-model/container-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/container-contains-components}
-        {:ref :overarch.data-model/component-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/rel-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/request-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/response-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/publish-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/subscribe-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/send-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/dataflow-is-a-technical-architecture-model-relation}
-
-        {:ref :overarch.data-model/deployment-model-node-is-a-model-node}
-        {:ref :overarch.data-model/deployment-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/deployment-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/deployment-model-node-is-a-deployment-model-element}
-        {:ref :overarch.data-model/deployment-model-relation-is-a-deployment-model-element}
-        {:ref :overarch.data-model/node-is-a-deployment-model-node}
-        {:ref :overarch.data-model/node-contains-deployment-model-node}
-        {:ref :overarch.data-model/container-is-a-deployment-model-node}
-        {:ref :overarch.data-model/link-is-a-deployment-model-relation}
-        {:ref :overarch.data-model/deployed-to-is-a-deployment-model-relation}
-
-        {:ref :overarch.data-model/state-machine-model-node-is-a-model-node}
-        {:ref :overarch.data-model/state-machine-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
-        {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/state-contains-state-machine-model-node}
-        {:ref :overarch.data-model/end-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/fork-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/join-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/choice-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/history-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/deep-history-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/transition-is-a-state-machine-model-relation}
-
-        {:ref :overarch.data-model/code-model-node-is-a-model-node}
-        {:ref :overarch.data-model/code-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/code-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/code-model-node-is-a-code-model-element}
-        {:ref :overarch.data-model/code-model-relation-is-a-code-model-element}
-        {:ref :overarch.data-model/package-is-a-code-model-node}
-        {:ref :overarch.data-model/package-contains-code-model-node}
-        {:ref :overarch.data-model/namespace-is-a-code-model-node}
-        {:ref :overarch.data-model/namespace-contains-code-model-node}
-        {:ref :overarch.data-model/interface-is-a-code-model-node}
-        {:ref :overarch.data-model/interface-contains-method}
-        {:ref :overarch.data-model/protocol-is-a-code-model-node}
-        {:ref :overarch.data-model/protocol-contains-method}
-        {:ref :overarch.data-model/class-is-a-code-model-node}
-        {:ref :overarch.data-model/field-is-a-code-model-node}
-        {:ref :overarch.data-model/class-contains-field}
-        {:ref :overarch.data-model/method-is-a-code-model-node}
-        {:ref :overarch.data-model/class-contains-method}
-        {:ref :overarch.data-model/parameter-is-a-code-model-node}
-        {:ref :overarch.data-model/method-contains-parameter}
-        {:ref :overarch.data-model/enum-is-a-code-model-node}
-        {:ref :overarch.data-model/enum-contains-enum-value}
-        {:ref :overarch.data-model/enum-value-is-a-code-model-node}
-        {:ref :overarch.data-model/hierarchy-relation-is-a-code-model-relation}
-        {:ref :overarch.data-model/associative-relation-is-a-code-model-relation}
-        {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
-        {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
-        {:ref :overarch.data-model/composition-is-a-associative-relation}
-        {:ref :overarch.data-model/aggregation-is-a-associative-relation}
-        {:ref :overarch.data-model/association-is-a-associative-relation}
-        {:ref :overarch.data-model/dependency-is-a-code-model-relation}
-
-        {:ref :overarch.data-model/use-case-model-node-is-a-model-node}
-        {:ref :overarch.data-model/use-case-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/use-case-model-relation-is-a-use-case-model-element}
-        {:ref :overarch.data-model/use-case-model-node-is-a-use-case-model-element}
-        {:ref :overarch.data-model/actor-is-a-use-case-model-node}
-        {:ref :overarch.data-model/person-is-a-use-case-model-node}
-        {:ref :overarch.data-model/system-is-a-use-case-model-node}
-        {:ref :overarch.data-model/use-case-is-a-use-case-model-node}
-        {:ref :overarch.data-model/uses-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/include-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/extends-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/generalizes-is-a-use-case-model-relation}
-
-        {:ref :overarch.data-model/concept-model-node-is-a-model-node}
-        {:ref :overarch.data-model/concept-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/concept-model-node-is-a-concept-model-element}
-        {:ref :overarch.data-model/concept-model-relation-is-a-concept-model-element}
-        {:ref :overarch.data-model/concept-is-a-concept-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-is-a-concept-model-node}
-        {:ref :overarch.data-model/context-boundary-is-a-concept-model-node}
-        {:ref :overarch.data-model/person-is-a-concept-model-node}
-        {:ref :overarch.data-model/system-is-a-concept-model-node}
-        {:ref :overarch.data-model/container-is-a-concept-model-node}
-
-        {:ref :overarch.data-model/view-contains-rendering-spec}
-        {:ref :overarch.data-model/architecture-view-is-a-view}
-        {:ref :overarch.data-model/architecture-view-contains-architecture-model-element}
-        {:ref :overarch.data-model/system-landscape-view-is-a-architecture-view}
-        {:ref :overarch.data-model/context-view-is-a-architecture-view}
-        {:ref :overarch.data-model/container-view-is-a-architecture-view}
-        {:ref :overarch.data-model/component-view-is-a-architecture-view}
-        {:ref :overarch.data-model/dynamic-view-is-a-architecture-view}
-        {:ref :overarch.data-model/deployment-view-is-a-view}
-        {:ref :overarch.data-model/deployment-view-contains-deployment-model-element}
-        {:ref :overarch.data-model/code-view-is-a-view}
-        {:ref :overarch.data-model/code-view-contains-code-model-element}
-        {:ref :overarch.data-model/state-machine-view-is-a-view}
-        {:ref :overarch.data-model/state-machine-view-contains-state-machine}
-        {:ref :overarch.data-model/use-case-view-is-a-view}
-        {:ref :overarch.data-model/use-case-view-contains-use-case-model-element}
-        {:ref :overarch.data-model/concept-view-is-a-view}
-        {:ref :overarch.data-model/concept-view-contains-concept-model-element}
-        {:ref :overarch.data-model/glossary-view-is-a-view}
-        {:ref :overarch.data-model/glossary-view-contains-concept-model-element}
-        ;
-        ]}
+   :desc "Shows the whole logical data model of Overarch"}
 
   {:el :code-view
    :id :overarch.data-model/architecture-model-elements
-;  :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "architecture-model"}}
+          :layout :left-right}
    :title "Architecture Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/technical-element}
-
-        {:ref :overarch.data-model/architecture-model-element}
-        {:ref :overarch.data-model/architecture-model-node}
-        {:ref :overarch.data-model/architecture-model-relation}
-;        {:ref :overarch.data-model/technical-architecture-model-element}
-        {:ref :overarch.data-model/technical-architecture-model-node}
-        {:ref :overarch.data-model/technical-architecture-model-relation}
-
-        {:ref :overarch.data-model/context-boundary}
-        {:ref :overarch.data-model/enterprise-boundary}
-        {:ref :overarch.data-model/person}
-        {:ref :overarch.data-model/system}
-        {:ref :overarch.data-model/container}
-        {:ref :overarch.data-model/component}
-        {:ref :overarch.data-model/rel}
-        {:ref :overarch.data-model/request}
-        {:ref :overarch.data-model/response}
-        {:ref :overarch.data-model/publish}
-        {:ref :overarch.data-model/subscribe}
-        {:ref :overarch.data-model/send}
-        {:ref :overarch.data-model/dataflow}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/architecture-model-element-is-a-model-element}
-        {:ref :overarch.data-model/architecture-model-node-is-a-model-node}
-        {:ref :overarch.data-model/architecture-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/architecture-model-node-is-a-architecture-model-element}
-        {:ref :overarch.data-model/architecture-model-relation-is-a-architecture-model-element}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-architecture-model-node}
-        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-architecture-model-relation}
-        {:ref :overarch.data-model/technical-architecture-model-node-is-a-technical-element}
-        {:ref :overarch.data-model/technical-architecture-model-relation-is-a-technical-element}
-
-        {:ref :overarch.data-model/context-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/context-boundary-contains-architecture-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-is-a-architecture-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-contains-architecture-model-node}
-        {:ref :overarch.data-model/person-is-a-architecture-model-node}
-        {:ref :overarch.data-model/system-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/system-contains-containers}
-        {:ref :overarch.data-model/container-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/container-contains-components}
-        {:ref :overarch.data-model/component-is-a-technical-architecture-model-node}
-        {:ref :overarch.data-model/rel-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/request-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/response-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/publish-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/subscribe-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/send-is-a-technical-architecture-model-relation}
-        {:ref :overarch.data-model/dataflow-is-a-technical-architecture-model-relation}
-
-        ;
-        ]}
+   :desc "Shows the logical hierarchy of the architecture model elements"}
 
   {:el :code-view
    :id :overarch.data-model/deployment-model-elements
-;   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "deployment-model"}}
+          :layout :left-right}
    :title "Deployment Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/technical-element}
-
-        {:ref :overarch.data-model/deployment-model-element}
-        {:ref :overarch.data-model/deployment-model-node}
-        {:ref :overarch.data-model/deployment-model-relation}
-
-        ;{:ref :overarch.data-model/system}
-        {:ref :overarch.data-model/container}
-        {:ref :overarch.data-model/node}
-        {:ref :overarch.data-model/link}
-        {:ref :overarch.data-model/deployed-to}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/deployment-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/deployment-model-node-is-a-model-node}
-        {:ref :overarch.data-model/deployment-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/deployment-model-node-is-a-deployment-model-element}
-        {:ref :overarch.data-model/deployment-model-relation-is-a-deployment-model-element}
-        {:ref :overarch.data-model/node-is-a-deployment-model-node}
-        {:ref :overarch.data-model/node-contains-deployment-model-node}
-        {:ref :overarch.data-model/container-is-a-deployment-model-node}
-        {:ref :overarch.data-model/link-is-a-deployment-model-relation}
-        {:ref :overarch.data-model/deployed-to-is-a-deployment-model-relation}
-        ;
-        ]}
+   :desc "Shows the logical hierarchy of the deployment model elements"}
 
   {:el :code-view
    :id :overarch.data-model/code-model-elements
-;   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "code-model"}}
+          :layout :left-right}
    :title "Code Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/technical-element}
-        {:ref :overarch.data-model/code-model-element}
-        {:ref :overarch.data-model/code-model-node}
-        {:ref :overarch.data-model/code-model-relation}
-        {:ref :overarch.data-model/associative-relation}
-        {:ref :overarch.data-model/hierarchy-relation}
-
-        {:ref :overarch.data-model/package}
-        {:ref :overarch.data-model/namespace}
-        {:ref :overarch.data-model/interface}
-        {:ref :overarch.data-model/protocol}
-        {:ref :overarch.data-model/class}
-        {:ref :overarch.data-model/enum}
-        {:ref :overarch.data-model/enum-value}
-        {:ref :overarch.data-model/field}
-        {:ref :overarch.data-model/method}
-        {:ref :overarch.data-model/parameter}
-        {:ref :overarch.data-model/implementation}
-        {:ref :overarch.data-model/inheritance}
-        {:ref :overarch.data-model/composition}
-        {:ref :overarch.data-model/aggregation}
-        {:ref :overarch.data-model/association}
-        {:ref :overarch.data-model/dependency}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/code-model-element-is-a-technical-element}
-        {:ref :overarch.data-model/code-model-node-is-a-model-node}
-        {:ref :overarch.data-model/code-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/code-model-node-is-a-code-model-element}
-        {:ref :overarch.data-model/code-model-relation-is-a-code-model-element}
-        {:ref :overarch.data-model/package-is-a-code-model-node}
-        {:ref :overarch.data-model/package-contains-code-model-node}
-        {:ref :overarch.data-model/namespace-is-a-code-model-node}
-        {:ref :overarch.data-model/namespace-contains-code-model-node}
-        {:ref :overarch.data-model/interface-is-a-code-model-node}
-        {:ref :overarch.data-model/interface-contains-method}
-        {:ref :overarch.data-model/protocol-is-a-code-model-node}
-        {:ref :overarch.data-model/protocol-contains-method}
-        {:ref :overarch.data-model/class-is-a-code-model-node}
-        {:ref :overarch.data-model/field-is-a-code-model-node}
-        {:ref :overarch.data-model/class-contains-field}
-        {:ref :overarch.data-model/method-is-a-code-model-node}
-        {:ref :overarch.data-model/class-contains-method}
-        {:ref :overarch.data-model/parameter-is-a-code-model-node}
-        {:ref :overarch.data-model/method-contains-parameter}
-        {:ref :overarch.data-model/enum-is-a-code-model-node}
-        {:ref :overarch.data-model/enum-contains-enum-value}
-        {:ref :overarch.data-model/enum-value-is-a-code-model-node}
-        {:ref :overarch.data-model/hierarchy-relation-is-a-code-model-relation}
-        {:ref :overarch.data-model/associative-relation-is-a-code-model-relation}
-        {:ref :overarch.data-model/implementation-is-a-hierarchy-relation}
-        {:ref :overarch.data-model/inheritance-is-a-hierarchy-relation}
-        {:ref :overarch.data-model/composition-is-a-associative-relation}
-        {:ref :overarch.data-model/aggregation-is-a-associative-relation}
-        {:ref :overarch.data-model/association-is-a-associative-relation}
-        {:ref :overarch.data-model/dependency-is-a-code-model-relation}
-        ;
-        ]}
+   :desc "Shows the logical hierarchy of the code model elements"}
 
   {:el :code-view
    :id :overarch.data-model/use-case-model-elements
-;   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "use-case-model"}}
+          :layout :left-right}
    :title "Use Case Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/use-case-model-element}
-        {:ref :overarch.data-model/use-case-model-node}
-        {:ref :overarch.data-model/use-case-model-relation}
-
-        {:ref :overarch.data-model/person}
-        {:ref :overarch.data-model/system}
-        {:ref :overarch.data-model/actor}
-        {:ref :overarch.data-model/use-case}
-        {:ref :overarch.data-model/uses}
-        {:ref :overarch.data-model/include}
-        {:ref :overarch.data-model/extends}
-        {:ref :overarch.data-model/generalizes}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/use-case-model-node-is-a-model-node}
-        {:ref :overarch.data-model/use-case-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/use-case-model-node-is-a-use-case-model-element}
-        {:ref :overarch.data-model/use-case-model-relation-is-a-use-case-model-element}
-        {:ref :overarch.data-model/actor-is-a-use-case-model-node}
-        {:ref :overarch.data-model/person-is-a-use-case-model-node}
-        {:ref :overarch.data-model/system-is-a-use-case-model-node}
-        {:ref :overarch.data-model/use-case-is-a-use-case-model-node}
-        {:ref :overarch.data-model/uses-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/include-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/extends-is-a-use-case-model-relation}
-        {:ref :overarch.data-model/generalizes-is-a-use-case-model-relation}
-        ;
-        ]}
+   :desc "Shows the logical hierarchy of the use case model elements"}
 
   {:el :code-view
    :id :overarch.data-model/state-machine-model-elements
-;   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "state-machine-model"}}
+          :layout :left-right}
    :title "State Machine Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-model-node}
-        {:ref :overarch.data-model/state-machine-model-relation}
-
-        {:ref :overarch.data-model/state-machine}
-        {:ref :overarch.data-model/start-state}
-        {:ref :overarch.data-model/state}
-        {:ref :overarch.data-model/end-state}
-        {:ref :overarch.data-model/fork}
-        {:ref :overarch.data-model/join}
-        {:ref :overarch.data-model/choice}
-        {:ref :overarch.data-model/history-state}
-        {:ref :overarch.data-model/deep-history-state}
-        {:ref :overarch.data-model/transition}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/state-machine-model-node-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-model-relation-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-model-node-is-a-model-node}
-        {:ref :overarch.data-model/state-machine-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/state-machine-is-a-state-machine-model-element}
-        {:ref :overarch.data-model/state-machine-contains-state-machine-model-node}
-        {:ref :overarch.data-model/start-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/state-contains-state-machine-model-node}
-        {:ref :overarch.data-model/end-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/fork-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/join-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/choice-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/history-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/deep-history-state-is-a-state-machine-model-node}
-        {:ref :overarch.data-model/transition-is-a-state-machine-model-relation}
-        ;
-        ]}
+   :desc "Shows the logical hierarchy of the state machine model elements"}
 
   {:el :code-view
    :id :overarch.data-model/concept-model-elements
-;   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "concept-model"}}
+          :layout :left-right}
    :title "Concept Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
+   :desc "Shows the logical hierarchy of the concept model elements"}
 
-        {:ref :overarch.data-model/concept-model-element}
-        {:ref :overarch.data-model/concept-model-node}
-        {:ref :overarch.data-model/concept-model-relation}
-        {:ref :overarch.data-model/concept}
-        {:ref :overarch.data-model/person}
-        {:ref :overarch.data-model/context-boundary}
-        {:ref :overarch.data-model/enterprise-boundary}
-        {:ref :overarch.data-model/system}
-        {:ref :overarch.data-model/container}
-        {:ref :overarch.data-model/is-a}
-        {:ref :overarch.data-model/has}
-        {:ref :overarch.data-model/rel}
-
-        ;relations
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/concept-model-node-is-a-concept-model-element}
-        {:ref :overarch.data-model/concept-model-node-is-a-model-node}
-        {:ref :overarch.data-model/concept-model-relation-is-a-model-relation}
-        {:ref :overarch.data-model/concept-model-relation-is-a-concept-model-element}
-        {:ref :overarch.data-model/concept-is-a-concept-model-node}
-        {:ref :overarch.data-model/enterprise-boundary-is-a-concept-model-node}
-        {:ref :overarch.data-model/context-boundary-is-a-concept-model-node}
-        {:ref :overarch.data-model/person-is-a-concept-model-node}
-        {:ref :overarch.data-model/system-is-a-concept-model-node}
-        {:ref :overarch.data-model/container-is-a-concept-model-node}
-        {:ref :overarch.data-model/is-a-is-a-concept-model-relation}
-        {:ref :overarch.data-model/has-is-a-concept-model-relation}
-        {:ref :overarch.data-model/rel-is-a-concept-model-relation}
-
-        ;
-        ]}
+  {:el :code-view
+   :id :overarch.data-model/organization-model-elements
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "organization-model"}}
+          :layout :left-right}
+   :title "Organization Model Elements"
+   :desc "Shows the logical hierarchy of the organization model elements"}
 
   {:el :code-view
    :id :overarch.data-model/view-model-elements
-   :spec {:layout :left-right}
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "view-model"}}
+          :layout :left-right}
    :title "View Model Elements"
-   :ct [;elements
-        {:ref :overarch.data-model/element}
-        {:ref :overarch.data-model/model-element}
-        {:ref :overarch.data-model/model-node}
-        {:ref :overarch.data-model/model-relation}
-        {:ref :overarch.data-model/architecture-model-element}
-        {:ref :overarch.data-model/deployment-model-element}
-        {:ref :overarch.data-model/code-model-element}
-        {:ref :overarch.data-model/use-case-model-element}
-        {:ref :overarch.data-model/state-machine}
-        {:ref :overarch.data-model/concept-model-element}
-
-        {:ref :overarch.data-model/ref}
-
-        {:ref :overarch.data-model/view}
-        {:ref :overarch.data-model/rendering-spec}
-
-        {:ref :overarch.data-model/architecture-view}
-        {:ref :overarch.data-model/system-landscape-view}
-        {:ref :overarch.data-model/context-view}
-        {:ref :overarch.data-model/container-view}
-        {:ref :overarch.data-model/component-view}
-        {:ref :overarch.data-model/deployment-view}
-        {:ref :overarch.data-model/dynamic-view}
-        {:ref :overarch.data-model/code-view}
-        {:ref :overarch.data-model/state-machine-view}
-        {:ref :overarch.data-model/use-case-view}
-        {:ref :overarch.data-model/concept-view}
-        {:ref :overarch.data-model/glossary-view}
-
-        ;relations
-        {:ref :overarch.data-model/view-contains-rendering-spec}
-        {:ref :overarch.data-model/model-element-is-a-element}
-        {:ref :overarch.data-model/model-node-is-a-model-element}
-        {:ref :overarch.data-model/model-relation-is-a-model-element}
-        {:ref :overarch.data-model/architecture-view-is-a-view}
-        {:ref :overarch.data-model/architecture-view-contains-architecture-model-element}
-        {:ref :overarch.data-model/system-landscape-view-is-a-architecture-view}
-        {:ref :overarch.data-model/context-view-is-a-architecture-view}
-        {:ref :overarch.data-model/container-view-is-a-architecture-view}
-        {:ref :overarch.data-model/component-view-is-a-architecture-view}
-        {:ref :overarch.data-model/dynamic-view-is-a-architecture-view}
-        {:ref :overarch.data-model/deployment-view-is-a-view}
-        {:ref :overarch.data-model/deployment-view-contains-deployment-model-element}
-        {:ref :overarch.data-model/code-view-is-a-view}
-        {:ref :overarch.data-model/code-view-contains-code-model-element}
-        {:ref :overarch.data-model/state-machine-view-is-a-view}
-        {:ref :overarch.data-model/state-machine-view-contains-state-machine}
-        {:ref :overarch.data-model/use-case-view-is-a-view}
-        {:ref :overarch.data-model/use-case-view-contains-use-case-model-element}
-        {:ref :overarch.data-model/concept-view-is-a-view}
-        {:ref :overarch.data-model/concept-view-contains-concept-model-element}
-        {:ref :overarch.data-model/glossary-view-is-a-view}
-        {:ref :overarch.data-model/glossary-view-contains-concept-model-element}
-          ;
-        ]}}
+   :desc "Shows the logical hierarchy of the organization model elements"}
+  ;
+  }

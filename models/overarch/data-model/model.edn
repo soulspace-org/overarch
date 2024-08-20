@@ -124,11 +124,11 @@
   ;; Generic Relation 
   ;;
   {:el :class
- :id :overarch.data-model/contained-in
- :name "contained-in"
- :desc "A composition relation from child to parent."
- :tags #{"model-model"}}
-
+   :id :overarch.data-model/contained-in
+   :name "contained-in"
+   :desc "A composition relation from child to parent."
+   :tags #{"model-model"}}
+  
   {:el :class
    :id :overarch.data-model/rel
    :name "rel"
@@ -143,7 +143,8 @@
    :id :overarch.data-model/boundary-node
    :abstract true
    :name "boundary-node"
-   :desc "A grouping of elements belonging together in a context."}
+   :desc "A grouping of elements belonging together in a context."
+   :tags #{"model-model"}}
 
   {:el :class
    :id :overarch.data-model/context-boundary
@@ -1509,38 +1510,38 @@
    :name "organization-model-element"
    :desc "An element in the organization model"
    :tags #{"organization-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/organization-model-node
    :abstract true
    :name "organization-model-node"
    :desc "A node in the organization model"
    :tags #{"organization-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/organization-model-relation
    :abstract true
    :name "organization-model-relation"
    :desc "A relation in the organization model"
    :tags #{"organization-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/organization
    :name "organization"
    :desc "An organization (e.g. a company) in the organization model."
    :tags #{"organization-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/org-unit
    :name "org-unit"
    :desc "An organizational unit (e.g. a department) in the organization model."
    :tags #{"organization-model"}}
-  
+
   #_{:el :class
-   :id :overarch.data-model/team
-   :name "team"
-   :desc "A team in an organizational unit in the organization model."
-   :tags #{"organization-model"}}
+     :id :overarch.data-model/team
+     :name "team"
+     :desc "A team in an organizational unit in the organization model."
+     :tags #{"organization-model"}}
 
   {:el :class
    :id :overarch.data-model/responsible-for
