@@ -28,7 +28,7 @@
 
 (def architecture-relation-types
   "Relation types in the architecture model."
-  #{:rel :request :response :publish :subscribe :send :dataflow})
+  #{:rel :request :response :publish :subscribe :send :dataflow :step})
 
 (def architecture-dependency-relation-types
   #{:request :publish :subscribe :send})
@@ -93,11 +93,11 @@
 ;;
 (def organization-node-types
   "Node types for organization models."
-  (set/union architecture-node-types deployment-node-types #{:organization :org-unit :team}))
+  (set/union architecture-node-types deployment-node-types #{:organization :org-unit}))
 
 (def organization-relation-types
   "Relation types for organization models."
-  #{:responsibility})
+  #{:responsible-for :collaborates-with})
 
 ;;
 ;; Business model
@@ -313,6 +313,7 @@
       (derive :subscribe                         :architecture-model-relation)
       (derive :send                              :architecture-model-relation)
       (derive :dataflow                          :architecture-model-relation)
+      (derive :step                              :architecture-model-relation)
       (derive :architecture-model-relation       :architecture-model-element)
 
       ;;; deployment model

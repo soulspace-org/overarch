@@ -21,13 +21,10 @@ Version (NEXT)
 * added plantuml templates for `:system-structure-view` and `organization-structure-view`
 * enhanced model warnings
 * refactored the handling of contained element hierarchies
-  * synthetic `:id`s are generated for children missing an id
-    (e.g. fields or methods in classes)
-  * syntethic `:contained-in` relations are created to represent
-    hierarches graph (replaces `:contains` relations)
+  * synthetic `:id`s are generated for children missing an id (e.g. fields or methods in classes)
+  * syntethic `:contained-in` relations are created to represent hierarches graph (replaces `:contains` relations)
   * `:contained-in` relations can also be used in models to replace `:ct`
-  * the children function is used to navigate down the hierarchy
-    in the model graph instead of the :ct key
+  * the children function is used to navigate down the hierarchy in the model graph instead of the :ct key
 * refactored template handling
 * refactored model loading, check spec on file level
 * fixed some docstrings on architecture relation navigation functions
