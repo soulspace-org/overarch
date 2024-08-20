@@ -48,7 +48,15 @@ even if there is only one view selected. So use the :per-element key to enable
 the generation on a view level.
 
 ### Example Templates
-Some example templates can be found in the [templates](/templates) folder.
+Example templates can be found in the [templates](/templates) folder.
+The provided templates are usable as is, but they also provide a starting point
+for organization or project specific templates.
+
+As the model is extensible via custom keys and this information is provided for
+the templates, custom templates can make use of all those custom information in
+the model. For example, if containers have a custom key :my-org/repository-url,
+you can use this information in the documentation templates to provide a link
+to the repository of each container.
 
 ### Example Generation Config File
 ```clojure
