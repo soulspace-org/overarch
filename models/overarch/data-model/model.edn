@@ -128,7 +128,7 @@
    :name "contained-in"
    :desc "A composition relation from child to parent."
    :tags #{"model-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/rel
    :name "rel"
@@ -1762,6 +1762,28 @@
           alphabetically sorted."
    :tags #{"view-model"}}
 
+  {:el :class
+   :id :overarch.data-model/model-view
+   :name "model-view"
+   :desc "The model view is a graphical view.
+          It shows all selected elements as a graph."
+   :tags #{"view-model"}}
+
+  {:el :class
+   :id :overarch.data-model/system-structure-view
+   :name "system-structure-view"
+   :desc "The system structure view is a graphical view.
+          It shows the hierarchy of the system and its parts as an organigram."
+   :tags #{"view-model"}}
+
+  {:el :class
+   :id :overarch.data-model/organization-structure-view
+   :name "organization-structure-view"
+   :desc "The organization structure view is a graphical view.
+          It shows the hierarchy of the organization and its parts as an organigram."
+   :tags #{"view-model"}}
+
+
   ;; View Relations
   {:el :aggregation
    :id :overarch.data-model/view-contains-rendering-spec
@@ -1899,5 +1921,47 @@
    :to-card :one-to-many
    :tags #{"view-model"}}
 
+  {:el :inheritance
+   :id :overarch.data-model/model-view-is-a-view
+   :to :overarch.data-model/view
+   :from :overarch.data-model/model-view
+   :tags #{"view-model"}}
+
+  {:el :aggregation
+   :id :overarch.data-model/model-view-contains-model-element
+   :from :overarch.data-model/model-view
+   :to :overarch.data-model/model-element
+   :to-name "ct"
+   :to-card :one-to-many
+   :tags #{"view-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/system-structure-view-is-a-view
+   :to :overarch.data-model/view
+   :from :overarch.data-model/system-structure-view
+   :tags #{"view-model"}}
+
+  {:el :aggregation
+   :id :overarch.data-model/system-structure-view-contains-technical-architecture-model-node
+   :from :overarch.data-model/system-structure-view
+   :to :overarch.data-model/technical-architecture-model-node
+   :to-name "ct"
+   :to-card :one-to-many
+   :tags #{"view-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/organization-structure-view-is-a-view
+   :to :overarch.data-model/view
+   :from :overarch.data-model/organization-structure-view
+   :tags #{"view-model"}}
+
+  {:el :aggregation
+   :id :overarch.data-model/organization-structure-view-contains-organization-model-node
+   :from :overarch.data-model/organization-structure-view
+   :to :overarch.data-model/organization-model-node
+   :to-name "ct"
+   :to-card :one-to-many
+   :tags #{"view-model"}}
+  
   ;
   }

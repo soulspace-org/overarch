@@ -33,7 +33,7 @@ Version (NEXT)
 * fixed some docstrings on architecture relation navigation functions
 * fixed typos in example models
 * simplified logical data model
-* updated spec
+* updated data model and spec
 * updated documentation
 
 Version 0.29.1
