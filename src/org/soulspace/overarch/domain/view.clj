@@ -114,7 +114,8 @@
     (->> model
          (model/model-elements)
          (into #{} (model/filter-xf (concat (model/nodes model) (model/relations model)) criteria))
-         (remove el/synthetic?))
+         ;(remove el/synthetic?)
+         )
     #{}))
 
 (defn specified-elements
