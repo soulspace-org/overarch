@@ -52,10 +52,7 @@
   [e]
   (if-let [link (:link e)]
     (if (keyword? link)
-      (do
-        (println "Element")
-        (println e)
-        (str "[[" (link e) " " (el/element-name e) "]]"))
+      (str "[[" (link e) " " (el/element-name e) "]]")
       (str "[[" link " " (el/element-name e) "]]"))
     (el/element-name e)))
 
@@ -163,7 +160,7 @@
                      (when (:stereotype e)
                        (str " <<" (:stereotype e) ">>"))
                      " {")
-                (map #(render-uml-element model view (+ indent 2) %) content)
+                (map #(render-uml-element model view (+ indent 2) %)  (sort-by :name content))
                 (str (render/indent indent) "}")])
       [(str (render/indent indent)
             "interface \"" (render-name e)
@@ -231,7 +228,7 @@
                      (when (:stereotype e)
                        (str " <<" (:stereotype e) ">>"))
                      " {")
-                (map #(render-uml-element model view (+ indent 2) %) content)
+                (map #(render-uml-element model view (+ indent 2) %) (sort-by :name content))
                 (str (render/indent indent) "}")])
       [(str (render/indent indent)
             (when (:abstract e) "abstract ")
@@ -246,6 +243,8 @@
 (defmethod render-uml-element :field
   [_ _ indent e]
   [(str (render/indent indent)
+        (when (= :classifier (:scope e))
+          "{classifier} ")
         (when (:visibility e)
           (uml-visibility (:visibility e)))
         (render-name e)
@@ -266,6 +265,10 @@
 (defmethod render-uml-element :method
   [model view indent e]
   [(str (render/indent indent)
+        (when (= :classifier (:scope e))
+          "{classifier} ")
+        (when (:abstract e)
+          "{abstract} ")
         (when (:visibility e)
           (uml-visibility (:visibility e)))
         (render-name e) "("
