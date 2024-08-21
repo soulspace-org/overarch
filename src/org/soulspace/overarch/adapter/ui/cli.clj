@@ -1,13 +1,16 @@
 (ns org.soulspace.overarch.adapter.ui.cli
   "Functions for the command line interface of overarch."
   (:require [clojure.string :as str]
+            [clojure.set :as set]
             [clojure.pprint :as pp]
             [clojure.edn :as edn]
             [clojure.tools.cli :as cli]
             [nextjournal.beholder :as beholder]
+            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.domain.spec :as spec]
             [org.soulspace.overarch.domain.analytics :as al]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
@@ -24,9 +27,7 @@
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
             [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo]
-            [org.soulspace.overarch.adapter.template.comb :as comb]
-            [clojure.set :as set]
-            [org.soulspace.overarch.domain.spec :as spec])
+            [org.soulspace.overarch.adapter.template.comb :as comb])
   (:gen-class))
 
 ;;;
@@ -343,9 +344,6 @@
     (view/selected-elements (repo/model)
                             (model/resolve-element (repo/model)
                                                    :banking/container-view)))
-  (view/specified-elements (repo/model)
-                           (model/resolve-element (repo/model)
-                                                  :banking/container-view))
   (def specified
     (view/specified-elements (repo/model)
                              (model/resolve-element (repo/model)
@@ -364,6 +362,41 @@
     (view/elements-to-render (repo/model)
                              (model/resolve-element (repo/model)
                                                     :banking/container-view)))
+
+  ;
+  )
+
+(comment ; view functions for overarch data-model
+  (fns/data-tapper "referenced"
+                   (view/referenced-elements (repo/model)
+                                             (model/resolve-element (repo/model)
+                                                                    :overarch.data-model/data-model)))
+
+  (fns/data-tapper "selected"
+                   (view/selected-elements (repo/model)
+                                           (model/resolve-element (repo/model)
+                                                                  :overarch.data-model/data-model)))
+
+  (fns/data-tapper "specified"
+                   (view/specified-elements (repo/model)
+                                            (model/resolve-element (repo/model)
+                                                                   :overarch.data-model/data-model)))
+
+  (fns/data-tapper "included"
+                   (view/included-elements (repo/model)
+                                           (model/resolve-element (repo/model)
+                                                                  :overarch.data-model/data-model)
+                                           specified))
+
+  (fns/data-tapper "in-view"
+                   (view/view-elements (repo/model)
+                                       (model/resolve-element (repo/model)
+                                                              :overarch.data-model/data-model)))
+
+  (fns/data-tapper "rendered"
+                   (view/elements-to-render (repo/model)
+                                            (model/resolve-element (repo/model)
+                                                                   :overarch.data-model/data-model)))
 
   ;
   )
