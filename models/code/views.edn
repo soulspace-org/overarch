@@ -2,8 +2,7 @@
 ;;;; Example Views for Code Model
 ;;;;
 
-#{
-  {:el :code-view
+#{{:el :code-view
    :id :code/code-view
    :title "Code View"
    :ct [; classes
@@ -14,7 +13,10 @@
         ; relations
         {:ref :code/shape-extends-ishape}
         {:ref :code/circle-extends-shape}
-        {:ref :code/square-extends-shape}
-        ]
-   }
-}
+        {:ref :code/square-extends-shape}]}
+
+  {:el :code-view
+   :id :code/code-view-selction
+   :spec {:selection {:namespace-prefix "code"}}
+   :title "Code View"
+   :ct []}}
