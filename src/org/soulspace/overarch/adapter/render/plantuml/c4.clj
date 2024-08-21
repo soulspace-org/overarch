@@ -89,8 +89,8 @@
 
 (defmethod render-c4-element :boundary
   [model view indent e]
-  (if-let [children (seq (model/children model e))]
-    (let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)]
+    (if-let [content (view/elements-to-render model view children)]
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
@@ -99,13 +99,13 @@
                      ") {")
                 (map #(render-c4-element model view (+ indent 2) %)
                      content)
-                (str (render/indent indent) "}")]))
-    [(str (render/indent indent)
-          (c4-element->method (:el e)) "("
-          (puml/alias-name (:id e)) ", \""
-          (el/element-name e) "\""
-          (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
-          ")")]))
+                (str (render/indent indent) "}")])
+      [(str (render/indent indent)
+            (c4-element->method (:el e)) "("
+            (puml/alias-name (:id e)) ", \""
+            (el/element-name e) "\""
+            (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+            ")")])))
 
 (defmethod render-c4-element :person
   [_ _ indent e]

@@ -306,7 +306,10 @@
   ;
   )
 
-(comment ; model navigation 
+(comment ; model navigation
+  (model/children (repo/model)
+                  (model/resolve-element (repo/model)
+                                         :overarch.data-model/technical-element))
   (model/descendant-nodes (repo/model)
                           (model/resolve-element (repo/model)
                                                  :banking/internet-banking-system))

@@ -63,11 +63,10 @@
   "Returns the children of the model node `e`."
   [model e]
   (->> e
-       (el/id) 
+       (el/id)
        (get (:referred-id->relations model))
        (filterv #(= :contained-in (:el %)))
-       (mapv (comp (element-resolver model) :from))
-       ))
+       (mapv (comp (element-resolver model) :from))))
   
 ;;
 ;; recursive traversal of the hierarchical data
@@ -1111,10 +1110,6 @@
     (filter filter-predicates)))
 
 (comment
-  (re-pattern "\\d+")
-  (re-matches #"(?i)hello.*" "Hello World!")
-  (type #"(?i)hello.*")
-
   (defn aggregable-relation?
     "Returns true, if the relations `r1` and `r2` are aggregable."
     ([model r1 r2]
