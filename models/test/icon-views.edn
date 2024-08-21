@@ -23,4 +23,4 @@
    :id :test/aws-icons
    :title "AWS Icon Test"
    :spec {:plantuml {:sprite-libs [:awslib]}}
-   :ct [{:ref :test/azure}]}}
+   :ct [{:ref :test/aws}]}}
