@@ -241,7 +241,7 @@
           A system can be an external system, which is modelled as a black box
           or an internal system, a system under description, which is modelled as a compound element with all the containers of the system.
           A system can be used in the architecture model, the deployment model (external systems) and the use case model (external systems)."
-   :tags #{"architecture-model" "deployment-model" "use-case-model"}}
+   :tags #{"architecture-model" "use-case-model"}}
 
   {:el :class
    :id :overarch.data-model/container
