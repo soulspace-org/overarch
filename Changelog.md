@@ -19,7 +19,7 @@ Version (NEXT)
 * added graphviz template for `:model-view` as an example for customizable rendering
 * added `:system-structure-view`, `:deployment-structure-view` and `organization-structure-view` for organigrams
 * added plantuml templates for `:system-structure-view`, `:deployment-structure-view` and `organization-structure-view`
-* enhanced model warnings
+* enhanced rendering of abstract methods and static fields/methods in `:code-view` for PlantUML
 * refactored the handling of contained element hierarchies
   * synthetic `:id`s are generated for children missing an id (e.g. fields or methods in classes)
   * syntethic `:contained-in` relations are created to represent hierarches graph (replaces `:contains` relations)
@@ -27,6 +27,7 @@ Version (NEXT)
   * the children function is used to navigate down the hierarchy in the model graph instead of the :ct key
 * refactored template handling
 * refactored model loading, check spec on file level
+* enhanced model warnings
 * fixed some docstrings on architecture relation navigation functions
 * fixed typos in example models
 * simplified logical data model

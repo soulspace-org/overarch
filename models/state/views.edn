@@ -4,6 +4,7 @@
 #{
   {:el :state-machine-view
    :id :state/simple-statemachine1-view
+   :spec {:include :relations}
    :title "Simple State Machine"
    :ct [{:ref :state/state-machine1}]}
   
