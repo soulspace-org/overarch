@@ -1,0 +1,67 @@
+<%
+;;;;
+;;;; Documentation Template for an Organizational Unit
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [parent (m/parent model e)
+      children (m/children model e)
+      responsible-for (m/responsible-for model e)
+      collaborates-with (m/collaborates-with model e)]
+
+%># <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+
+<%
+  )
+
+  (when parent
+%># Parent Unit
+| Name | Description |
+|---|---|
+| <%= (:name parent) %> | <%= (t/single-line (:desc parent)) %> |<%
+  )
+
+  (when (seq children)
+%># Sub Units
+| Name | Description |
+|---|---|
+<%
+    (doseq [sub-unit children]
+%>| <%= (:name sub-unit) %> | <%= (t/single-line (:desc sub-unit)) %> |
+<%
+    )
+  )
+
+  (when (seq responsible-for)
+%># Responsibilities
+| Name | Description |
+|---|---|
+<%
+    (doseq [responsibility responsible-for]
+%>| <%= (:name responsibility) %> | <%= (t/single-line (:desc responsibility)) %> |
+<%
+    )
+  )
+
+  (when (seq collaborates-with)
+%># Collaborations
+| Name | Description |
+|---|---|
+<%
+    (doseq [collaboration collaborates-with]
+%>| <%= (:name collaboration) %> | <%= (t/single-line (:desc collaboration)) %> |
+<%
+    )
+  )
+)
+%>
