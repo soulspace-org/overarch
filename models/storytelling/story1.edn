@@ -22,38 +22,44 @@
         :id :story1/projectionist
         :name "Projectionist"}
 
-       {:el :rel
+       {:el :step
         :id :story1/moviegoer-buys-ticket
         :from :story1/moviegoer
         :to :story1/cashier
+        :index 1
         :name "buys ticket from"}
 
-       {:el :rel
+       {:el :step
         :id :story1/moviegoer-buys-snacks-and-drinks
         :from :story1/moviegoer
         :to :story1/consession-stand
+        :index 2
         :name "buys snacks and drinks from"}
 
-       {:el :rel
+       {:el :step
         :id :story1/moviegoer-shows-ticket
         :from :story1/moviegoer
         :to :story1/usher
+        :index 3
         :name "shows ticket to"}
 
-       {:el :rel
+       {:el :step
         :id :story1/usher-checks-ticket-grants-entrance
         :from :story1/usher
         :to :story1/moviegoer
+        :index 4
         :name "checks ticket and grants entrance"}
 
-       {:el :rel
+       {:el :step
         :id :story1/projectionist-starts-movie
         :from :story1/projectionist
         :to :story1/moviegoer
+        :index 5
         :name "starts movie for"}
 
-       {:el :rel
+       {:el :step
         :id :story1/moviegoer-watches-movie
         :from :story1/moviegoer
         :to :story1/projectionist ; should be movie
+        :index 6
         :name "watches movie"}]}}

@@ -49,6 +49,7 @@
   (require '[clj-java-decompiler.core :refer [decompile disassemble]])
   (decompile (fn [] (println "Hello, World!")))
   (disassemble (fn [] (println "Hello, World!")))
+  ;
   )
 
 (def topic-docs
@@ -61,7 +62,9 @@
   (->> topic-docs
        (mapv #(slurp (str "doc/topics/" % ".md")))
        (str/join "\n")
-       (spit "doc/usage.md")))
+       (spit "doc/usage.md"))
+  ;
+  )
 
 (comment
   (compile-usage-doc)
