@@ -9,13 +9,14 @@
    :spec {:selection {:namespace "overarch.data-model"}
           :layout :left-right}
    :title "Overarch Data Model"
-   :desc "Shows the whole logical data model of Overarch"}
+   :desc "Shows the whole logical data model of Overarch"
+   :ct [{:ref :overarch.data-model/ref-references-element :direction :left}]}
 
   {:el :code-view
    :id :overarch.data-model/architecture-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "architecture-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Architecture Model Elements"
    :desc "Shows the logical hierarchy of the architecture model elements"}
 
@@ -23,7 +24,7 @@
    :id :overarch.data-model/deployment-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "deployment-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Deployment Model Elements"
    :desc "Shows the logical hierarchy of the deployment model elements"}
 
@@ -31,7 +32,7 @@
    :id :overarch.data-model/code-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "code-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Code Model Elements"
    :desc "Shows the logical hierarchy of the code model elements"}
 
@@ -39,7 +40,7 @@
    :id :overarch.data-model/use-case-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "use-case-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Use Case Model Elements"
    :desc "Shows the logical hierarchy of the use case model elements"}
 
@@ -47,7 +48,7 @@
    :id :overarch.data-model/state-machine-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "state-machine-model"}}
-          :layout :left-right}
+          :include :related}
    :title "State Machine Model Elements"
    :desc "Shows the logical hierarchy of the state machine model elements"}
 
@@ -55,7 +56,7 @@
    :id :overarch.data-model/concept-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "concept-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Concept Model Elements"
    :desc "Shows the logical hierarchy of the concept model elements"}
 
@@ -63,7 +64,7 @@
    :id :overarch.data-model/organization-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "organization-model"}}
-          :layout :left-right}
+          :include :related}
    :title "Organization Model Elements"
    :desc "Shows the logical hierarchy of the organization model elements"}
 
@@ -71,6 +72,7 @@
    :id :overarch.data-model/view-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "view-model"}}
+          :include :related
           :layout :left-right}
    :title "View Model Elements"
    :desc "Shows the logical hierarchy of the organization model elements"}

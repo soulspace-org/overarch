@@ -37,7 +37,7 @@
    :id :overarch.data-model/ref
    :name "ref"
    :desc "A reference to an element."
-   :tags #{"base-model"}}
+   :tags #{"ref-model"}}
 
   {:el :association
    :id :overarch.data-model/ref-references-element
@@ -45,7 +45,7 @@
    :to :overarch.data-model/element
    :to-name "ref"
    :desc "The identifier the reference is referring to."
-   :tags #{"base-model"}}
+   :tags #{"ref-model"}}
 
   ;;
   ;; Model hierarchies
@@ -89,18 +89,6 @@
          :type "keyword"
          :desc "The identifier of the model node being referred by another model node."}]}
 
-  {:el :class
-   :id :overarch.data-model/technical-element
-   :abstract true
-   :name "technical-element"
-   :desc "An element which is implemented in the given technologies."
-   :tags #{"model-model"}
-   :ct #{{:el :field
-          :name "tech"
-          :type "string"
-          :optional true
-          :desc "Technology the element is implemented in."}}}
-
   ;; Abstract Type Relations
   {:el :inheritance
    :id :overarch.data-model/model-element-is-a-element
@@ -121,13 +109,19 @@
    :tags #{"model-model"}}
 
   ;;
-  ;; Generic Relation 
+  ;; Generic Relations
   ;;
   {:el :class
    :id :overarch.data-model/contained-in
    :name "contained-in"
    :desc "A composition relation from child to parent."
-   :tags #{"model-model"}}
+   :tags #{"containment-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/contained-in-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/contained-in
+   :tags #{"containment-model"}}
 
   {:el :class
    :id :overarch.data-model/rel
@@ -137,6 +131,21 @@
    :tags #{"architecture-model" "concept-model"}}
 
   ;;
+  ;; Generic Nodes
+  ;;
+  {:el :class
+   :id :overarch.data-model/technical-element
+   :abstract true
+   :name "technical-element"
+   :desc "An element which is implemented in the given technologies."
+   :tags #{"architecture-model" "deployment-model"}
+   :ct #{{:el :field
+          :name "tech"
+          :type "string"
+          :optional true
+          :desc "Technology the element is implemented in."}}}
+
+  ;;
   ;; Boundaries
   ;;
   {:el :class
@@ -144,7 +153,7 @@
    :abstract true
    :name "boundary-node"
    :desc "A grouping of elements belonging together in a context."
-   :tags #{"model-model"}}
+   :tags #{"architecture-model" "concept-model"}}
 
   {:el :class
    :id :overarch.data-model/context-boundary
@@ -602,9 +611,9 @@
           :desc "The visibility of the element."}}}
 
   {:el :class
-   :id :overarch.data-model/hierarchy-relation
+   :id :overarch.data-model/type-hierarchy-relation
    :abstract :true
-   :name "hierarchy-relation"
+   :name "type-hierarchy-relation"
    :desc "A relation that establishes a type hierarchy."
    :tags #{"code-model"}}
 
@@ -903,9 +912,9 @@
    :tags #{"code-model"}}
 
   {:el :composition
-   :id :overarch.data-model/protocol-contains-method
+   :id :overarch.data-model/protocol-contains-function
    :from :overarch.data-model/protocol
-   :to :overarch.data-model/method
+   :to :overarch.data-model/function
    :to-card :zero-to-many
    :tags #{"code-model"}}
 
@@ -929,6 +938,26 @@
    :tags #{"code-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/function-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
+   :from :overarch.data-model/function
+   :tags #{"code-model"}}
+
+  {:el :composition
+   :id :overarch.data-model/class-contains-function
+   :from :overarch.data-model/class
+   :to :overarch.data-model/function
+   :to-card :zero-to-many
+   :tags #{"code-model"}}
+
+  {:el :composition
+   :id :overarch.data-model/function-contains-parameter
+   :from :overarch.data-model/function
+   :to :overarch.data-model/parameter
+   :to-card :zero-to-many
+   :tags #{"code-model"}}
+  
+  {:el :inheritance
    :id :overarch.data-model/method-is-a-code-model-node
    :to :overarch.data-model/code-model-node
    :from :overarch.data-model/method
@@ -941,17 +970,17 @@
    :to-card :zero-to-many
    :tags #{"code-model"}}
 
-  {:el :inheritance
-   :id :overarch.data-model/parameter-is-a-code-model-node
-   :to :overarch.data-model/code-model-node
-   :from :overarch.data-model/parameter
-   :tags #{"code-model"}}
-
   {:el :composition
    :id :overarch.data-model/method-contains-parameter
    :from :overarch.data-model/method
    :to :overarch.data-model/parameter
    :to-card :zero-to-many
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/parameter-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
+   :from :overarch.data-model/parameter
    :tags #{"code-model"}}
 
   {:el :inheritance
@@ -974,9 +1003,9 @@
    :tags #{"code-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/hierarchy-relation-is-a-code-model-relation
+   :id :overarch.data-model/type-hierarchy-relation-is-a-code-model-relation
    :to :overarch.data-model/code-model-relation
-   :from :overarch.data-model/hierarchy-relation
+   :from :overarch.data-model/type-hierarchy-relation
    :tags #{"code-model"}}
 
   {:el :inheritance
@@ -987,13 +1016,13 @@
 
   {:el :inheritance
    :id :overarch.data-model/inheritance-is-a-hierarchy-relation
-   :to :overarch.data-model/hierarchy-relation
+   :to :overarch.data-model/type-hierarchy-relation
    :from :overarch.data-model/inheritance
    :tags #{"code-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/implementation-is-a-hierarchy-relation
-   :to :overarch.data-model/hierarchy-relation
+   :to :overarch.data-model/type-hierarchy-relation
    :from :overarch.data-model/implementation
    :tags #{"code-model"}}
 
@@ -1792,6 +1821,13 @@
 
 
   ;; View Relations
+  ;; Abstract Type Relations
+  {:el :inheritance
+   :id :overarch.data-model/view-is-a-element
+   :to :overarch.data-model/element
+   :from :overarch.data-model/view
+   :tags #{"view-model"}}
+
   {:el :aggregation
    :id :overarch.data-model/view-contains-rendering-spec
    :from :overarch.data-model/view
