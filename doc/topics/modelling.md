@@ -481,7 +481,7 @@ The elements of the code model are mainly borrowed from the UML class model
 so prior knowledge of UML modelling applies here.
 
 ### Logical Data Model for the Code Model Elements
-![Class Model Elements](/doc/images/overarch/data-model/code-model-elements.svg)
+![Code Model Elements](/doc/images/overarch/data-model/code-model-elements.svg)
 
 ### Packages/Namespace (:package, :namespace)
 Packages and namespaces provide a hierarchical structure for the organisation
@@ -532,4 +532,7 @@ documentation or other artifacts.
 ### Relations (:responsible-for, :collaborates-with)
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
+
+### Logical Data Model for the Code Model Elements
+![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
 
