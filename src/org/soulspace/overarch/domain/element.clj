@@ -61,6 +61,7 @@
 ;;
 (def deployment-node-types
   "Node types for deployment models."
+  ; TODO only node and container?
   (set/union technical-architecture-node-types #{:node}))
 
 (def deployment-relation-types
