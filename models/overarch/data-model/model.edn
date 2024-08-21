@@ -575,16 +575,16 @@
   ;; Code Model
   ;;
   {:el :class
-   :id :overarch.data-model/typed-node
+   :id :overarch.data-model/abstract-node
    :abstract true
-   :name "typed-node"
-   :desc "A node which may have a type field."
+   :name "abstract-node"
+   :desc "A node which may have an abstract field."
    :tags #{"code-model"}
    :ct #{{:el :field
-          :name "type"
-          :type "string"
+          :name "abstract"
+          :type "boolean"
           :optional true
-          :desc "The type of the element."}}}
+          :desc "When true the element is abstract. Default is false."}}}
 
   {:el :class
    :id :overarch.data-model/optional-node
@@ -599,6 +599,18 @@
           :desc "When true the element can be null/nil. Default is false."}}}
 
   {:el :class
+   :id :overarch.data-model/scoped-node
+   :abstract true
+   :name "scoped-node"
+   :desc "A node which may have a scope field."
+   :tags #{"code-model"}
+   :ct #{{:el :field
+          :name "scope"
+          :type "keyword"
+          :optional true
+          :desc "The scope of the element (:classifier or :instance). Defaults to instance."}}}
+
+  {:el :class
    :id :overarch.data-model/visibility-node
    :abstract true
    :name "visibility-node"
@@ -609,6 +621,18 @@
           :type "string"
           :optional true
           :desc "The visibility of the element."}}}
+
+  {:el :class
+   :id :overarch.data-model/typed-node
+   :abstract true
+   :name "typed-node"
+   :desc "A node which may have a type field."
+   :tags #{"code-model"}
+   :ct #{{:el :field
+          :name "type"
+          :type "string"
+          :optional true
+          :desc "The type of the element."}}}
 
   {:el :class
    :id :overarch.data-model/type-hierarchy-relation
@@ -720,78 +744,25 @@
    :id :overarch.data-model/field
    :name "field"
    :desc "A field in a code model element."
-   :tags #{"code-model"}
-   :ct #{{:el :field
-          :name "type"
-          :type "string"
-          :optional true
-          :desc "The type of the field."}
-         {:el :field
-          :name "optional"
-          :type "boolean"
-          :desc "When true the field can be null/nil. Default is false."}
-         {:el :field
-          :name "visibility"
-          :type "keyword"
-          :optional true
-          :desc "The visibility of the field."}}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/function
    :name "function"
    :desc "A function in the code model."
-   :tags #{"code-model"}
-   :ct #{{:el :field
-          :name "visibility"
-          :type "keyword"
-          :optional true
-          :desc "The visibility of the method."}
-         {:el :field
-          :name "type"
-          :type "string"
-          :optional true
-          :desc "The return type of the method."}
-         {:el :field
-          :name "optional"
-          :type "boolean"
-          :optional true
-          :desc "When true the return value can be null/nil. Default is false."}}}
+   :tags #{"code-model"}}
 
-  ; TODO add function relations
   {:el :class
    :id :overarch.data-model/method
    :name "method"
    :desc "A method in a code model element."
-   :tags #{"code-model"}
-   :ct #{{:el :field
-          :name "visibility"
-          :type "keyword"
-          :optional true
-          :desc "The visibility of the method."}
-         {:el :field
-          :name "type"
-          :type "string"
-          :optional true
-          :desc "The return type of the method."}
-         {:el :field
-          :name "optional"
-          :type "boolean"
-          :desc "When true the return value can be null/nil. Default is false."}}}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/parameter
    :name "parameter"
    :desc "A parameter in a code model method or function."
-   :tags #{"code-model"}
-   :ct [{:el :field
-         :name "type"
-         :type "string"
-         :optional true
-         :desc "The type of the parameter."}
-        {:el :field
-         :name "optional"
-         :type "boolean"
-         :desc "When true the parameter can be null/nil or omitted. Default is false."}]}
+   :tags #{"code-model"}}
 
   {:el :class
    :id :overarch.data-model/implementation
@@ -924,17 +895,41 @@
    :from :overarch.data-model/class
    :tags #{"code-model"}}
 
+  {:el :composition
+   :id :overarch.data-model/class-contains-field
+   :from :overarch.data-model/class
+   :to :overarch.data-model/field
+   :to-card :zero-to-many
+   :tags #{"code-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/field-is-a-code-model-node
    :to :overarch.data-model/code-model-node
    :from :overarch.data-model/field
    :tags #{"code-model"}}
 
-  {:el :composition
-   :id :overarch.data-model/class-contains-field
-   :from :overarch.data-model/class
-   :to :overarch.data-model/field
-   :to-card :zero-to-many
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-typed-node
+   :to :overarch.data-model/typed-node
+   :from :overarch.data-model/field
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-optional-node
+   :to :overarch.data-model/optional-node
+   :from :overarch.data-model/field
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-scoped-node
+   :to :overarch.data-model/scoped-node
+   :from :overarch.data-model/field
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/field-is-a-visibility-node
+   :to :overarch.data-model/visibility-node
+   :from :overarch.data-model/field
    :tags #{"code-model"}}
 
   {:el :inheritance
@@ -956,10 +951,58 @@
    :to :overarch.data-model/parameter
    :to-card :zero-to-many
    :tags #{"code-model"}}
-  
+
+  {:el :inheritance
+   :id :overarch.data-model/function-is-a-typed-node
+   :to :overarch.data-model/typed-node
+   :from :overarch.data-model/function
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/function-is-a-optional-node
+   :to :overarch.data-model/optional-node
+   :from :overarch.data-model/function
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/function-is-a-visibility-node
+   :to :overarch.data-model/visibility-node
+   :from :overarch.data-model/function
+   :tags #{"code-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/method-is-a-code-model-node
    :to :overarch.data-model/code-model-node
+   :from :overarch.data-model/method
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-abstract-node
+   :to :overarch.data-model/abstract-node
+   :from :overarch.data-model/method
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-typed-node
+   :to :overarch.data-model/typed-node
+   :from :overarch.data-model/method
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-optional-node
+   :to :overarch.data-model/optional-node
+   :from :overarch.data-model/method
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-scoped-node
+   :to :overarch.data-model/scoped-node
+   :from :overarch.data-model/method
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/method-is-a-visibility-node
+   :to :overarch.data-model/visibility-node
    :from :overarch.data-model/method
    :tags #{"code-model"}}
 
@@ -980,6 +1023,18 @@
   {:el :inheritance
    :id :overarch.data-model/parameter-is-a-code-model-node
    :to :overarch.data-model/code-model-node
+   :from :overarch.data-model/parameter
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/parameter-is-a-typed-node
+   :to :overarch.data-model/typed-node
+   :from :overarch.data-model/parameter
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/parameter-is-a-optional-node
+   :to :overarch.data-model/optional-node
    :from :overarch.data-model/parameter
    :tags #{"code-model"}}
 
@@ -1565,12 +1620,6 @@
    :name "org-unit"
    :desc "An organizational unit (e.g. a department) in the organization model."
    :tags #{"organization-model"}}
-
-  #_{:el :class
-     :id :overarch.data-model/team
-     :name "team"
-     :desc "A team in an organizational unit in the organization model."
-     :tags #{"organization-model"}}
 
   {:el :class
    :id :overarch.data-model/responsible-for
