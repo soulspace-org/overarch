@@ -522,6 +522,9 @@ It has input parameters and calculates results.
 The responsibility model captures the organizational structure of the system
 architecture.
 
+### Logical Data Model for the Organization Model Elements
+![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
+
 ### Organization Structure (:organization :org-unit)
 An organization contains organizational units (e.g. branches and departments)
 and organizational units can cointain other organizational units.
@@ -532,7 +535,4 @@ documentation or other artifacts.
 ### Relations (:responsible-for, :collaborates-with)
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
-
-### Logical Data Model for the Code Model Elements
-![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
 
