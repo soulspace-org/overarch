@@ -930,17 +930,37 @@
 ;;
 ;; responsibility model
 ;;
-#_(defn responsible-for
+(defn responsible-for
+  "Returns the nodes the organization unit `e` is responsible for in the `model`."
   [model e]
   (->> e
-       (el/id)))
+      (el/id)
+      (get (:referrer-id->relations model))
+      (into #{} (referrer-xf model #(= :responsible-for (:el %))))))
 
-(defn responsibilities
+(defn responsibility-of
+  "Returns the organization model nodes the `e` is responsible for in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :responsible-for (:el %))))))
+
+(defn collaborates-with
+  "Returns the organization model nodes the organization unit `e` collaborates with in the `model`."
   [model e]
   (->> e
        (el/id)
        (get (:referrer-id->relations model))
-       (into #{} (referrer-xf model #(= :responsibility (:el %))))))
+       (into #{} (referrer-xf model #(= :collaborates-with (:el %))))))
+
+(defn collaboration-with
+  "Returns the organization model nodes the organization unit `e` has a collaboration with in the `model`. Reverse direction of collaborates with."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :collaborates-with (:el %))))))
 
 ;;;
 ;;; filtering element colletions by criteria
