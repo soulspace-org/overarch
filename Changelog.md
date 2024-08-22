@@ -7,14 +7,6 @@ Version (NEXT)
   * nodes `:organization` and `:org-unit`
   * relations `:responsible-for` and `:collaborates-with`
 * added relation type `:step` to be used in dynamic views instead of plain `:rel`
-* added criteria for sets of namespace prefixes on elements and relations
-* added analytics functions
-* enhanced model navigation functions to handle ids and refs as input
-* added fallback on name or id when rendering view titles
-* added template-api, graphviz-api and  markdown-api to use in templates
-* enhanced model-api and view-api
-* moved single-line function from model-api to template-api
-* added and enhanced documentation templates
 * added a `:model-view` that contains all selected elements
 * added graphviz template for `:model-view` as an example for customizable rendering
 * added `:system-structure-view`, `:deployment-structure-view` and `organization-structure-view` for organigrams
@@ -25,6 +17,14 @@ Version (NEXT)
   * syntethic `:contained-in` relations are created to represent hierarches graph (replaces `:contains` relations)
   * `:contained-in` relations can also be used in models to replace `:ct`
   * the children function is used to navigate down the hierarchy in the model graph instead of the :ct key
+* added criteria for sets of namespace prefixes on elements and relations
+* enhanced model navigation functions to handle ids and refs as input
+* added fallback on name or id when rendering view titles
+* added template-api, graphviz-api and  markdown-api to use in templates
+* enhanced model-api and view-api
+* moved single-line function from model-api to template-api
+* added analytics functions
+* added and enhanced documentation templates
 * refactored template handling
 * refactored model loading, check spec on file level
 * enhanced model warnings
