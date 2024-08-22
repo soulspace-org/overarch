@@ -7,7 +7,7 @@
             [org.soulspace.overarch.adapter.render.plantuml :as puml]))
 
 
-(defn render-name
+#_(defn render-name
   "Renders the name of the element `e`. If `e` has a :link entry, a link is rendered."
   [e]
   (if-let [link (:link e)]
@@ -19,21 +19,22 @@
       (str "[[" link " " (el/element-name e) "]]"))
     (el/element-name e)))
 
-(defmulti render-wbs-element
+#_(defmulti render-wbs-element
   "Renders a UML element in PlantUML.
    
    Multifunction dispatching on the value of the :el key of the element `e`."
   (fn [_ _ _ e] (:el e))
   :hierarchy #'el/element-hierarchy)
 
-(defmethod render-wbs-element :org-unit
+#_(defmethod render-wbs-element :org-unit
+  [model view indent e]
   )
 
-(defn render-wbs-layout
+#_(defn render-wbs-layout
   [view]
   )
 
-(defmethod puml/render-plantuml-view :uml-view
+#_(defmethod puml/render-plantuml-view :wbs-view
   [model options view]
   (let [elements (view/view-elements model view)
         nodes (view/root-elements model (filter el/model-node? elements))
