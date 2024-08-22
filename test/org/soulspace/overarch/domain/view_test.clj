@@ -195,7 +195,8 @@
                                              {:ref :test/ext-system1}
                                              {:ref :test/system1}]})))))
   (testing "Selection Only"
-    (is (= 14 (count (selected-elements c4-model1
+    ; including 5 :contained-in synthetic relations
+    (is (= 19 (count (selected-elements c4-model1
                                         {:el :context-view
                                          :id :test/c4-context-view-selection-only
                                          :title "Context View Selection Only"
