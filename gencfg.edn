@@ -5,7 +5,38 @@
  ;;; Documentation
  ;;;
  ;;
- ;; Model Elements
+ ;;  Diagram Generation for Views
+ ;;
+ {:view-selection {:el :model-view}
+  :template "views/model-view.dot.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :system-structure-view}
+  :template "views/system-structure-view.puml.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :deployment-structure-view}
+  :template "views/deployment-structure-view.puml.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :organization-structure-view}
+  :template "views/organization-structure-view.puml.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ ;;
+ ;;  Markdown Generation for Model Elements
  ;;
  {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
@@ -27,7 +58,7 @@
   :extension "md"}
 
  ;;
- ;; Views
+ ;;  Markdown Generation for Views
  ;; 
  {:view-selection {:namespace-prefix "banking"}
   :template "docs/views/views.md.cmb"
@@ -103,7 +134,7 @@
   :extension "md"}
 
  ;;;
- ;;; Reports
+ ;;; Markdown Reports
  ;;;
  {:selection {:namespace-prefix "banking"}
   :template "reports/node-report.md.cmb"
@@ -144,37 +175,6 @@
   :base-name "views"
   :extension "edn"
   :debug true}
-
- ;;;
- ;;; Views
- ;;;
- {:view-selection {:el :model-view}
-  :template "views/model-view.dot.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
- {:view-selection {:el :system-structure-view}
-  :template "views/system-structure-view.puml.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :deployment-structure-view}
-  :template "views/deployment-structure-view.puml.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :organization-structure-view}
-  :template "views/organization-structure-view.puml.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
 
  ;
  ]

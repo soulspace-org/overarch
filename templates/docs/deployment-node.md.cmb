@@ -22,8 +22,51 @@
 <%= (:doc e) %>
 <%
   )
-%>
+
+  (when (seq children)
+%># Contained Nodes
+| Name | Description |
+|---|---|
 <%
+    (doseq [node children]
+%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+<%
+    )
+  )
+
+  (when (seq links)
+%># Links to Nodes
+| Name | Description |
+|---|---|
+<%
+    (doseq [node links]
+%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+<%
+    )
+  )
+
+  (when (seq linked-by)
+%># Linked from Nodes
+| Name | Description |
+|---|---|
+<%
+    (doseq [node linked-by]
+%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+<%
+    )
+  )
+
+  (when (seq deployed-on)
+%># Deployed Elements
+| Name | Description |
+|---|---|
+<%
+    (doseq [containers deployed-on]
+%>| <%= (:name containers) %> | <%= (t/single-line (:desc containers)) %> |
+<%
+    )
+  )
+
 )
 %>
 

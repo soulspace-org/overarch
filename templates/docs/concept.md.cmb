@@ -7,6 +7,7 @@
 ;;;;  :id-as-name  true
 ;;;;
 
+; TODO add featured in and other relations
 (let [superordinates (m/superordinates model e)
       subordinates (m/subordinates model e)
       features (m/features model e)]
@@ -53,5 +54,7 @@
 <%
     )
   )
+
+  ; TODO add featured in and other relations
 )
 %>
