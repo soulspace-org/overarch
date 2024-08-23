@@ -18,8 +18,8 @@ key               | type     | values              | default  | description
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection
-:per-namespace    | boolean  | true/false          | false    | Apply  the template for each namespace of the selection
+:per-element      | boolean  | true/false          | false    | Apply the template for each element of the selection
+:per-namespace    | boolean  | true/false          | false    | Apply the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
 :namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
 :base-namespace   | string   |                     |          | Base namespace to use as path element

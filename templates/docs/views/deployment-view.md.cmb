@@ -55,7 +55,7 @@
 |---|---|---|---|---|
 <%
     (doseq [link (sort-by #(str/capitalize (:name %)) links)]
-%>| <%= (:name link) %> | <%= (m/from-name (:from link)) %> | <%= (m/to-name (:to link)) %> | <%= (:tech link) %> | <%= (:desc link) %> |
+%>| <%= (:name link) %> | <%= (m/from-name model (:from link)) %> | <%= (m/to-name model (:to link)) %> | <%= (:tech link) %> | <%= (:desc link) %> |
 <%
     ))
 %>
