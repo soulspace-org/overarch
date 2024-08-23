@@ -371,22 +371,22 @@
 (defn responsible-for
   "Returns the nodes the organization unit `e` is responsible for in the `model`."
   [model e]
-  (m/responsible-for model e))
+  (model/responsible-for model e))
 
 (defn responsibility-of
   "Returns the organization model nodes the `e` is responsible for in the `model`."
   [model e]
-  (m/responsibility-of model e))
+  (model/responsibility-of model e))
 
 (defn collaborates-with
   "Returns the organization model nodes the organization unit `e` collaborates with in the `model`."
   [model e]
-  (m/collaborates-with model e))
+  (model/collaborates-with model e))
 
 (defn collaboration-with
   "Returns the organization model nodes the organization unit `e` has a collaboration with in the `model`. Reverse direction of collaborates with."
   [model e]
-  (m/collaboration-with model e))
+  (model/collaboration-with model e))
 
 
 
