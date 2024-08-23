@@ -25,14 +25,17 @@
   )
 
   (when parent
-%># Parent Unit
+%>
+# Parent Unit
 | Name | Description |
 |---|---|
-| <%= (:name parent) %> | <%= (t/single-line (:desc parent)) %> |<%
+| <%= (:name parent) %> | <%= (t/single-line (:desc parent)) %> |
+<%
   )
 
   (when (seq children)
-%># Sub Units
+%>
+# Sub Units
 | Name | Description |
 |---|---|
 <%
@@ -43,7 +46,8 @@
   )
 
   (when (seq responsible-for)
-%># Responsibilities
+%>
+# Responsibilities
 | Name | Description |
 |---|---|
 <%
@@ -54,7 +58,8 @@
   )
 
   (when (seq collaborates-with)
-%># Collaborations
+%>
+# Collaborations
 | Name | Description |
 |---|---|
 <%
