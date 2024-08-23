@@ -1,0 +1,5 @@
+{:cljdoc.doc/tree
+ [["Readme" {:file "README.md"}]
+  ["Changes" {:file "Changelog.md"}]
+  ["Usage" {:file "doc/usage.md"}]
+  ["Design" {:file "doc/design.md"}]]}

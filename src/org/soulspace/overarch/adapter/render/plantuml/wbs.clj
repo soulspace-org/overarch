@@ -1,5 +1,6 @@
-(ns org.soulspace.overarch.adapter.render.plantuml.wbs
+(ns org.soulspace.overarch.adapter.render.plantuml.wbs 
   "Functions to render PlantUML diagrams for WBS/Organigram views."
+  {:no-doc true} ; remove when ready
   (:require [clojure.string :as str]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.view :as view]

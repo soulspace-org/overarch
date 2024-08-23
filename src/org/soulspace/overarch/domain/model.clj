@@ -339,7 +339,7 @@
 (defn ->relational-model
   "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
   ([]
-   ; initial compound accumulator with empty model and context
+   ; initial compound accumulator with empty model and context as a stack list
    [{:nodes #{}
      :relations #{}
      :views #{}
