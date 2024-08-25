@@ -6,6 +6,7 @@ Version (NEXT)
 * fixed model-api calls for organization navigation
 * enhanced formatting in organization documentation template
 * added a deps.edn file
+* updated dependencies
 
 Version 0.30.0
 --------------
