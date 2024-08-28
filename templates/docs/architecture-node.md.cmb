@@ -7,12 +7,6 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(defn link
-  [current target]
-  (str (m/root-path current) "/"
-       (m/element-namespace-path target) "/"
-       (name (:id target)) ".md"))
-
 (let [children (m/children model e)
       bounded-contexts (filter #(= :context-boundary (:el %)) children)
       containers (filter #(= :container (:el %)) children)
@@ -38,7 +32,7 @@ The system consists of different subdomains which have been structured into boun
 |---|---|
 <%
     (doseq [bc bounded-contexts]
-%>| [<%= (:name bc) %>](<%= (link e bc) %>) | <%= (:desc bc) %> |
+%>| <%= (md/relative-element-link e bc) %> | <%= (:desc bc) %> |
 <%
     )
   )
@@ -51,7 +45,7 @@ These containers are the main processes of the <%= (:name e) %> system.
 |---|---|
 <%
     (doseq [container containers]
-%>| [<%= (:name container)%>](<%= (link e container) %>) | <%= (:desc container) %> |
+%>| <%= (md/relative-element-link e container)%>| <%= (:desc container) %> |
 <%
     )
   )
@@ -64,7 +58,7 @@ These components show the internal structure of the <%= (:name e) %> container.
 |---|---|
 <%
     (doseq [component components]
-%>| [<%= (:name component) %>](<%= (link e component) %>) | <%= (:desc component) %> |
+%>| <%= (md/relative-element-link e component) %> | <%= (:desc component) %> |
 <%
     )
   )

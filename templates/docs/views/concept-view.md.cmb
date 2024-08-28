@@ -23,7 +23,7 @@
 ## Concepts
 <%
   (doseq [concept (sort-by :name (filter m/model-node? elements))]
-%>### <%= (:name concept) %>
+%>### <%= (md/relative-element-link e concept) %>
 <%= (:desc concept) %>
 
 <%

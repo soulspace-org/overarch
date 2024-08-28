@@ -18,7 +18,7 @@
 |---|---|---|
 <%
   (doseq [use-case use-cases]
-%>| <%= (:name use-case) %> | <%= (use-case-level use-case) %> | <%= (:desc use-case) %> |
+%>| <%= (md/relative-element-link e use-case) %> | <%= (use-case-level use-case) %> | <%= (:desc use-case) %> |
 <%
   )
 )

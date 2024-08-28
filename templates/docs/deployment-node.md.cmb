@@ -29,7 +29,7 @@
 |---|---|
 <%
     (doseq [node children]
-%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
 <%
     )
   )
@@ -40,7 +40,7 @@
 |---|---|
 <%
     (doseq [node links]
-%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
 <%
     )
   )
@@ -51,7 +51,7 @@
 |---|---|
 <%
     (doseq [node linked-by]
-%>| <%= (:name node) %> | <%= (t/single-line (:desc node)) %> |
+%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
 <%
     )
   )
@@ -62,11 +62,10 @@
 |---|---|
 <%
     (doseq [containers deployed-on]
-%>| <%= (:name containers) %> | <%= (t/single-line (:desc containers)) %> |
+%>| <%= (md/relative-element-link e containers) %> | <%= (t/single-line (:desc containers)) %> |
 <%
     )
   )
-
 )
 %>
 

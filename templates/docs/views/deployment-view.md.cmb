@@ -6,10 +6,6 @@
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 ;;;;
-;;;; config:
-;;;;  :per-element true
-;;;;  :id-as-name  true
-;;;;
 
 (let [elements (v/view-elements model e)
       nodes (filter #(= :node (:el %)) elements)
@@ -33,7 +29,7 @@
 |---|---|---|
 <%
   (doseq [node (sort-by #(str/capitalize (:name %)) nodes)]
-%>| <%= (:name node) %> | <%= (:tech node) %> | <%= (:desc node) %> |
+%>| <%= (md/relative-element-link e node) %> | <%= (:tech node) %> | <%= (:desc node) %> |
 <%
   )
 
@@ -44,9 +40,10 @@
 |---|---|---|
 <%
     (doseq [container (sort-by #(str/capitalize (:name %)) containers)]
-%>| <%= (:name container) %> | <%= (:tech container) %> | <%= (:desc container) %> |
+%>| <%= (md/relative-element-link e container) %> | <%= (:tech container) %> | <%= (:desc container) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq links) 
 %>
@@ -57,7 +54,8 @@
     (doseq [link (sort-by #(str/capitalize (:name %)) links)]
 %>| <%= (:name link) %> | <%= (m/from-name model (:from link)) %> | <%= (m/to-name model (:to link)) %> | <%= (:tech link) %> | <%= (:desc link) %> |
 <%
-    ))
+    )
+  )
 %>
 ## Deployments
 <%

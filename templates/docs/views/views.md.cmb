@@ -3,18 +3,26 @@
 ;;;; Template to list all views
 ;;;;
 
+;;;
+;;; should be generated at the top level of the documentation 
+;;;
+
 (let [concept-views (filter #(= :concept-view (:el %)) e)
       use-case-views (filter #(= :use-case-view (:el %)) e)
       context-views (filter #(= :context-view (:el %)) e)
       container-views (filter #(= :container-view (:el %)) e)
       component-views (filter #(= :component-view (:el %)) e)
       system-landscape-views (filter #(= :system-landscape-view (:el %)) e)
+      system-structure-views (filter #(= :system-structure-view (:el %)) e)
       dynamic-views (filter #(= :dynamic-view (:el %)) e)
       state-machine-views (filter #(= :state-machine-view (:el %)) e)
       code-views (filter #(= :code-view (:el %)) e)
       deployment-views (filter #(= :deployment-view (:el %)) e)
-      glossary-views (filter #(= :glossary-view (:el %)) e)]
-      
+      deployment-structure-views (filter #(= :deployment-structure-view (:el %)) e)
+      organization-structure-views (filter #(= :organization-structure-view (:el %)) e)
+      glossary-views (filter #(= :glossary-view (:el %)) e)
+      model-views (filter #(= :model-view (:el %)) e)]
+
 %># List of Views
 
 <%
@@ -26,7 +34,8 @@
     (doseq [view concept-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq use-case-views)
 %>## Use Case Views
@@ -36,7 +45,8 @@
     (doseq [view use-case-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq context-views)
 %>## System Context Views
@@ -46,7 +56,8 @@
     (doseq [view context-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq container-views)
 %>## Container Views
@@ -56,7 +67,8 @@
     (doseq [view container-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq component-views)
 %>## Component Views
@@ -66,7 +78,8 @@
     (doseq [view component-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq system-landscape-views)
 %>## System Landscape Views
@@ -76,7 +89,19 @@
     (doseq [view system-landscape-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
+
+  (when (seq system-structure-views)
+%>## System Structure Views
+| Title | Description |
+|---|---|
+<%
+    (doseq [view system-structure-views]
+%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+<%
+    )
+  )
 
   (when (seq dynamic-views)
 %>## Dynamic Views
@@ -86,7 +111,8 @@
     (doseq [view dynamic-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq state-machine-views)
 %>## State Machine Views
@@ -96,7 +122,8 @@
     (doseq [view state-machine-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq code-views)
 %>## Code Views
@@ -106,7 +133,8 @@
     (doseq [view code-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
   (when (seq deployment-views)
 %>## Deployment Views
@@ -116,7 +144,30 @@
     (doseq [view deployment-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
+
+  (when (seq deployment-structure-views)
+%>## Deployment Structure Views
+| Title | Description |
+|---|---|
+<%
+    (doseq [view deployment-structure-views]
+%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+<%
+    )
+  )
+
+  (when (seq organization-structure-views)
+%>## Organization Structure Views
+| Title | Description |
+|---|---|
+<%
+    (doseq [view organization-structure-views]
+%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+<%
+    )
+  )
 
   (when (seq glossary-views)
 %>## Glossary Views
@@ -126,8 +177,19 @@
     (doseq [view glossary-views]
 %>| <%= (md/view-link view) %> | <%= (:desc view) %> |
 <%
-    ))
+    )
+  )
 
+  (when (seq model-views)
+%>## Model Views
+| Title | Description |
+|---|---|
+<%
+    (doseq [view model-views]
+%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+<%
+    )
+  )
 )
 %>
 

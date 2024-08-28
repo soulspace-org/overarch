@@ -37,42 +37,44 @@
 | Name | Type | Description |
 |---|---|---|
 <%
-  (doseq [actor actors]
-%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+    (doseq [actor actors]
+%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
 <%
-  ))
+    )
+  )
 
   (when (seq supporting-actors)
 %>## Supporting Actors
 | Name | Type | Description |
 |---|---|---|
 <%
-  (doseq [actor supporting-actors]
-%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+    (doseq [actor supporting-actors]
+%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
 <%
-  ))
+    )
+  )
 
   (when (seq included)
 %>## Included Use Cases
 | Name | Level | Description |
 |---|---|---|
 <%
-  (doseq [uc included]
-%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+    (doseq [uc included]
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
 <%
-  ))
+    )
+  )
 
   (when (seq extensions)
 %>## Extension Use Cases
 | Name | Level | Description |
 |---|---|---|
 <%
-  (doseq [uc extensions]
-%>| <%= (:name uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+    (doseq [uc extensions]
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
 <%
-  ))
-%>
-<%
+    )
+  )
 )
 %>
 

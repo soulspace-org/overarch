@@ -30,21 +30,21 @@
   (when (seq interfaces)
 %>
 ## Interfaces
-<%=(str/join ", " (map element-link interfaces))%>
+<%=(str/join ", " (map #(md/relative-element-link e %) interfaces))%>
 <%
   )
 
   (when (seq superclasses)
 %>
 ## Superclasses
-<%=(str/join ", " (map element-link superclasses))%>
+<%=(str/join ", " (map #(md/relative-element-link e %) superclasses))%>
 <%
   )
 
   (when (seq subclasses)
 %>
 ## Subclasses
-<%=(str/join ", " (map element-link subclasses))%>
+<%=(str/join ", " (map #(md/relative-element-link e %) subclasses))%>
 <%
   )
 

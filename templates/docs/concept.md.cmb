@@ -28,7 +28,7 @@
 |---|---|
 <%
     (doseq [superordinate superordinates]
-%>| <%= (:name superordinate) %> | <%= (t/single-line (:desc superordinate)) %> |
+%>| <%= (md/relative-element-link e superordinate) %> | <%= (t/single-line (:desc superordinate)) %> |
 <%
     )
   )
@@ -39,7 +39,7 @@
 |---|---|
 <%
     (doseq [subordinate subordinates]
-%>| <%= (:name subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
+%>| <%= (md/relative-element-link e  subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
 <%
     )
   )

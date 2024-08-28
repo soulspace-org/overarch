@@ -10,7 +10,7 @@
 (defn render-state
   [state]
   (if (= :state (:el state))
-    (md/element-link state)
+    (md/relative-element-link e state)
     (:name state)))
 
 (let [elements (v/view-elements model e)
@@ -44,7 +44,7 @@
 |---|---|---|---|
 <%
   (doseq [transition transitions]
-%>|<%= (:name transition) %>|<%= (md/element-link (m/resolve-element model (:from transition))) %>|<%= (md/element-link (m/resolve-element model (:to transition))) %>|<%= (t/single-line (:name transition)) %>|
+%>|<%= (:name transition) %>|<%= (md/relative-element-link e (m/resolve-element model (:from transition))) %>|<%= (md/element-link (m/resolve-element model (:to transition))) %>|<%= (t/single-line (:name transition)) %>|
 <%
   )
 )

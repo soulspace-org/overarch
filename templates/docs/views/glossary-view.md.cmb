@@ -24,10 +24,11 @@
 ## Concepts
 <%
   (doseq [concept (sort-by #(str/capitalize (:name %)) nodes)]
-%>### <%= (str/capitalize (:name concept)) %>
+%>### <%= (md/relative-element-link e concept) %>
 <%= (:desc concept) %>
 <%
-  ))
+  )
+)
 %>
 
 (generated with <%= (:template ctx) %>)

@@ -34,7 +34,7 @@
 |---|---|---|
 <%
   (doseq [actor actors]
-%>| <%= (:name actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> | 
+%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> | 
 <%
   )
 %>
@@ -43,9 +43,10 @@
 |---|---|---|
 <%
   (doseq [uc use-cases]
-%>| <%= (md/element-link uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
 <%
-  ))
+  )
+)
 %>
 
 (generated with <%= (:template ctx) %>)

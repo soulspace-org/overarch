@@ -27,7 +27,7 @@
 |---|---|
 <%
     (doseq [role roles]
-%>| <%= (md/element-link role) %> | <%= (:desc role) %> |
+%>| <%= (md/relative-element-link e role) %> | <%= (:desc role) %> |
 <%
     ))
 
@@ -37,7 +37,7 @@
 |---|---|
 <%
     (doseq [system systems]
-%>| <%= (md/element-link system) %> | <%= (:desc system) %> |
+%>| <%= (md/relative-element-link e system) %> | <%= (:desc system) %> |
 <%
     ))
 )
