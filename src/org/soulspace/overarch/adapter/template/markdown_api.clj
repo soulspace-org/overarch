@@ -27,8 +27,8 @@
         ")")))
 
 ; TODO add upward path
-#_(defn relative-element-link
-  "Renders a link to the element `e`, using the optional `context` for customization."
+(defn relative-element-link
+  "Renders a relative link from the current element `c` to the element `e`, using the optional `context` for customization."
   ([c e]
    (element-link e {}))
   ([c e context]
@@ -38,6 +38,7 @@
           (str (:subdir context) "/"))
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
+        (m/root-path c) "/"
         (m/element-namespace-path e) "/"
         (when (:namespace-suffix context)
           (str (:namespace-suffix context) "/"))
@@ -76,8 +77,8 @@
         ")")))
 
 ; TODO add upward path
-#_(defn relative-view-link
-  "Renders a link to the view `v`, using the optional `context` for customization."
+(defn relative-view-link
+  "Renders a relative link from the current element `c` to the view `v`, using the optional `context` for customization."
   ([c v]
    (element-link v {}))
   ([c v context]
@@ -87,6 +88,7 @@
           (str (:subdir context) "/"))
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
+        (m/root-path c) "/"
         (m/element-namespace-path v) "/"
         (when (:namespace-suffix context)
           (str (:namespace-suffix context) "/"))
