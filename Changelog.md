@@ -4,9 +4,11 @@ Changelog
 Version (NEXT)
 --------------
 * fixed model-api calls for organization navigation
-* enhanced formatting in organization documentation template
+* added relative link functions to markdown api
+* enhanced documentation templates
 * added a deps.edn file
 * updated dependencies
+* added best practices to usage docs
 
 Version 0.30.0
 --------------
