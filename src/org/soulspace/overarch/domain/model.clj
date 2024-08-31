@@ -6,7 +6,6 @@
 
    The loaded overarch working model is a map with these keys:
    
-   :input-elements         -> the given data (from edn files)
    :nodes                  -> the set of all nodes (incl. child nodes)
    :relations              -> the set of all relations (incl. contained-in relations)
    :views                  -> the set of views
@@ -170,6 +169,13 @@
    :to p-id
    :name "contained-in"
    :synthetic true})
+
+(defn scope-fn
+  [scope]
+  (fn [e]
+    (if (str/starts-with? (el/element-namespace e) scope)
+      (assoc e :external false)
+      (assoc e :external true))))
 
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
@@ -370,8 +376,12 @@
   ([coll]
    (build-model {} coll))
   ([options coll]
-   (let [model (traverse ->relational-model coll)]
-     (assoc model :input-elements coll))))
+   ; TODO if scope option is set, use scope-fn as element-fn
+   ; TODO don't assoc input-elements?
+   ; TODO drop :ct key?
+   (if-let [scope (:scope options)]
+     (traverse (scope-fn scope) identity :ct ->relational-model coll)
+     (traverse ->relational-model coll))))
 
 ;;
 ;; Model transducer functions

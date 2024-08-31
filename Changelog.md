@@ -3,6 +3,10 @@ Changelog
 
 Version (NEXT)
 --------------
+* added an option to set a namespace prefix for the internal `scope` 
+  * lets you combine models from different sources
+  * overrides the `:external` key in the model and views
+  * views with `:external` set to `true` are not rendered
 * fixed model-api calls for organization navigation
 * added relative link functions to markdown api
 * enhanced documentation templates

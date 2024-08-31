@@ -2,6 +2,7 @@
   "Contains dispatch functions for the rendering of the views."
   ; require views here to register multimethods
   (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.views.code-view :as code-view]
             [org.soulspace.overarch.domain.views.component-view :as component-view]
@@ -23,7 +24,6 @@
 ;;;
 ;;; General rendering functions
 ;;;
-
 (defn indent
   "Renders an indent of n space chars."
   [n]
@@ -32,7 +32,6 @@
 ;;;
 ;;; Render multimethods 
 ;;;  
-
 (defn render-format
   "Returns the render format for the multimethod invocation."
   ([m format]
@@ -50,10 +49,6 @@
   "Renders the view in the given format."
   render-format)
 
-#_(defmulti render
-    "Renders all relevant views in the given format."
-    render-format)
-
 (def render-formats
   "Contains the supported render formats."
   #{:graphviz :markdown :plantuml})
@@ -66,7 +61,7 @@
       (when (:debug options)
         (println "Rendering " current-format))
       (render model current-format options))
-    (doseq [view (model/views model)]
+    (doseq [view (remove el/external? (model/views model))]
       (try
         (render-view model format options view)
         (catch Exception e

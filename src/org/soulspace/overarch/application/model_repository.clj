@@ -35,7 +35,7 @@
          (read-models :file)
          ;(spec/check-input-model) ; TODO check input model in adapter
          ; TODO transform input model (e.g. set internal/external scope)
-         (model/build-model)
+         (model/build-model options)
          (reset! state))))
 
 (defn model
