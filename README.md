@@ -331,25 +331,27 @@ Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH              models     Models directory or path
-  -r, --render-format FORMAT                   Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export     Render directory
-      --[no-]render-format-subdirs  true       Use subdir per render format
-  -x, --export-format FORMAT                   Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export     Export directory
-  -w, --watch                       false      Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA               Select and print model elements by criteria
-  -S, --select-references CRITERIA             Select model elements by criteria and print as references
-      --select-views CRITERIA                  Select and print views by criteria
-  -T, --template-dir DIRNAME        templates  Template directory
-  -g, --generation-config FILE                 Generation configuration
-  -G, --generation-dir DIRNAME      generated  Generation artifact directory
-  -B, --backup-dir DIRNAME          backup     Generation backup directory
-      --[no-]model-warnings         true       Returns warnings for the loaded model
-      --[no-]model-info             false      Returns infos for the loaded model
-      --plantuml-list-sprites       false      Lists the loaded PlantUML sprites
-  -h, --help                                   Print help
-      --debug                       false      Print debug messages
+  -m, --model-dir PATH                   models     Models directory or path
+  -r, --render-format FORMAT                        Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME               export     Render directory
+      --[no-]render-format-subdirs       true       Use subdir per render format
+  -x, --export-format FORMAT                        Export format (json, structurizr)
+  -X, --export-dir DIRNAME               export     Export directory
+  -w, --watch                            false      Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA                    Select and print model elements by criteria
+  -S, --select-references CRITERIA                  Select model elements by criteria and print as references
+      --select-views CRITERIA                       Select and print views by criteria
+      --select-view-references CRITERIA             Select views by criteria and print as references
+  -T, --template-dir DIRNAME             templates  Template directory
+  -g, --generation-config FILE                      Generation configuration
+  -G, --generation-dir DIRNAME           generated  Generation artifact directory
+  -B, --backup-dir DIRNAME               backup     Generation backup directory
+      --scope NAMESPACE                             Sets the internal scope by namespace prefix
+      --[no-]model-warnings              true       Returns warnings for the loaded model
+      --[no-]model-info                  false      Returns infos for the loaded model
+      --plantuml-list-sprites            false      Lists the loaded PlantUML sprites
+  -h, --help                                        Print help
+      --debug                            false      Print debug messages
 ```
 
 If you use Visual Studio Code as described above, you can start *Overarch* in watch mode from a terminal inside VS Code. Every time you save some changes in the EDN files, the views will be updated and previews can be rendered with the PlantUML extension.
