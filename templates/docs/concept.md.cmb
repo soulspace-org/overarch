@@ -39,7 +39,7 @@
 |---|---|
 <%
     (doseq [subordinate subordinates]
-%>| <%= (md/relative-element-link e  subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
+%>| <%= (md/relative-element-link e subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
 <%
     )
   )
