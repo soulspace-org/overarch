@@ -34,8 +34,7 @@
   ([c e context]
    (str "[" (:name e) "]"
         "("
-        (when (:subdir context)
-          (str (:subdir context) "/"))
+        (str (m/root-path c) "/")
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
         (m/root-path c) "/"
@@ -84,8 +83,7 @@
   ([c v context]
    (str "[" (v/title v) "]"
         "("
-        (when (:subdir context)
-          (str (:subdir context) "/"))
+        (str (m/root-path c) "/")
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
         (m/root-path c) "/"
