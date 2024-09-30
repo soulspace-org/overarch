@@ -64,25 +64,27 @@ Usage: java -jar overarch.jar [options].
 
 Options:
 
-  -m, --model-dir PATH              models     Models directory or path
-  -r, --render-format FORMAT                   Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME          export     Render directory
-      --[no-]render-format-subdirs  true       Use subdir per render format
-  -x, --export-format FORMAT                   Export format (json, structurizr)
-  -X, --export-dir DIRNAME          export     Export directory
-  -w, --watch                       false      Watch model dir for changes and trigger action
-  -s, --select-elements CRITERIA               Select and print model elements by criteria
-  -S, --select-references CRITERIA             Select model elements by criteria and print as references
-      --select-views CRITERIA                  Select and print views by criteria
-  -T, --template-dir DIRNAME        templates  Template directory
-  -g, --generation-config FILE                 Generation configuration
-  -G, --generation-dir DIRNAME      generated  Generation artifact directory
-  -B, --backup-dir DIRNAME          backup     Generation backup directory
-      --[no-]model-warnings         true       Returns warnings for the loaded model
-      --[no-]model-info             false      Returns infos for the loaded model
-      --plantuml-list-sprites       false      Lists the loaded PlantUML sprites
-  -h, --help                                   Print help
-      --debug                       false      Print debug messages
+  -m, --model-dir PATH                   models     Models directory or path
+  -r, --render-format FORMAT                        Render format (all, graphviz, markdown, plantuml)
+  -R, --render-dir DIRNAME               export     Render directory
+      --[no-]render-format-subdirs       true       Use subdir per render format
+  -x, --export-format FORMAT                        Export format (json, structurizr)
+  -X, --export-dir DIRNAME               export     Export directory
+  -w, --watch                            false      Watch model dir for changes and trigger action
+  -s, --select-elements CRITERIA                    Select and print model elements by criteria
+  -S, --select-references CRITERIA                  Select model elements by criteria and print as references
+      --select-views CRITERIA                       Select and print views by criteria
+      --select-view-references CRITERIA             Select views by criteria and print as references
+  -T, --template-dir DIRNAME             templates  Template directory
+  -g, --generation-config FILE                      Generation configuration
+  -G, --generation-dir DIRNAME           generated  Generation artifact directory
+  -B, --backup-dir DIRNAME               backup     Generation backup directory
+      --scope NAMESPACE                             Sets the internal scope by namespace prefix
+      --[no-]model-warnings              true       Returns warnings for the loaded model
+      --[no-]model-info                  false      Returns infos for the loaded model
+      --plantuml-list-sprites            false      Lists the loaded PlantUML sprites
+  -h, --help                                        Print help
+      --debug                            false      Print debug messages
  ```
 
 ## CLI Examples
@@ -1075,8 +1077,8 @@ key               | type     | values              | default  | description
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
-:per-element      | boolean  | true/false          | false    | Apply  the template for each element of the selection
-:per-namespace    | boolean  | true/false          | false    | Apply  the template for each namespace of the selection
+:per-element      | boolean  | true/false          | false    | Apply the template for each element of the selection
+:per-namespace    | boolean  | true/false          | false    | Apply the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
 :namespace-prefix | string   | "src"               |          | Prefix to the namespace to use as path element
 :base-namespace   | string   |                     |          | Base namespace to use as path element
@@ -1307,3 +1309,39 @@ public class Calc {
   }
 }
 ```
+
+# Best Practices
+Here are some best practices or guidelines from my practical use of Overarch.
+
+The biggest advice is: *Be consistent in your modelling!*
+
+# Modelling
+## Model Structure And Ids
+* Split big models into multiple folders and files. This helps to keep the
+  model files small and comprehensible.
+* The namespace of the element id should reflect the folder structure of the
+  model.
+* When refactoring ids, use the find & replace functionality of your editor/IDE
+  to replace every occurence in the model files at once, so the referential
+  integrity of the model keeps intact.
+* Use refs or `:contained-in` relations to create the hierarchical structure
+  across different folders and files.
+
+
+## Relations
+* The id of a relation should start with the id of the referrer (the `:from`
+  reference), then you know in which file you have to look for the relation.
+* Use specific relation types instead of general `:rel`, if possible.
+
+## Views
+* Use selection criteria and includes to specify the content of views.
+* Use refs in a view to customize elements for the specific view, e.g to
+  override directions for relations.
+* By creating a standard set of views with consistent naming, it's easier to
+  generate a consistent documentation via templates.
+
+# Templates
+* Use the provided templates as a base for customizations.
+* Use just the namespace of the element for path generation, elaborate path
+  configurations (with namespace-prefix/-suffix) makes link generation
+  difficult.

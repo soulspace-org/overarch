@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version (Next)
+--------------
+* added best practices to usage docs
+
 Version 0.31.0
 --------------
 * added an option to set a namespace prefix for the internal `scope` 
@@ -12,7 +16,7 @@ Version 0.31.0
 * enhanced documentation templates
 * added a deps.edn file
 * updated dependencies
-* added best practices to usage docs
+* added best practices to doc topics
 
 Version 0.30.0
 --------------
