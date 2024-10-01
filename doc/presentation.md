@@ -20,6 +20,13 @@ author: "Ludger Solbach"
 Understanding complex systems
 
 ---
+# Problems
+
+* knowledge lost when people leave the project
+* onboarding new collegues
+* discussing solutions with collegues and stakeholders
+
+---
 
 # Overarch
 
