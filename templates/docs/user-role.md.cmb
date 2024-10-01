@@ -34,7 +34,7 @@
 |---|---|---|
 <%
     (doseq [uc use-cases]
-%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
   )
@@ -45,7 +45,7 @@
 |---|---|
 <%
     (doseq [container containers]
-%>| <%= (md/relative-element-link e container) %> | <%= (:desc container) %> |
+%>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
 <%
     )
   )

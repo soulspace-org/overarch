@@ -36,7 +36,7 @@
 |---|---|
 <%
     (doseq [role roles]
-%>| <%= (md/relative-element-link e role) %> | <%= (:desc role) %> |
+%>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
 <%
     ))
 
@@ -46,7 +46,7 @@
 |---|---|
 <%
     (doseq [system systems]
-%>| <%= (md/relative-element-link e system) %> | <%= (:desc system) %> |
+%>| <%= (md/relative-element-link e system) %> | <%= (t/single-line (:desc system)) %> |
 <%
     ))
 )

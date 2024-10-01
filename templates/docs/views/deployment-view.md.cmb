@@ -29,7 +29,7 @@
 |---|---|---|
 <%
   (doseq [node (sort-by #(str/capitalize (:name %)) nodes)]
-%>| <%= (md/relative-element-link e node) %> | <%= (:tech node) %> | <%= (:desc node) %> |
+%>| <%= (md/relative-element-link e node) %> | <%= (:tech node) %> | <%= (t/single-line (:desc node)) %> |
 <%
   )
 
@@ -40,7 +40,7 @@
 |---|---|---|
 <%
     (doseq [container (sort-by #(str/capitalize (:name %)) containers)]
-%>| <%= (md/relative-element-link e container) %> | <%= (:tech container) %> | <%= (:desc container) %> |
+%>| <%= (md/relative-element-link e container) %> | <%= (:tech container) %> | <%= (t/single-line (:desc container)) %> |
 <%
     )
   )
@@ -52,7 +52,7 @@
 |---|---|---|---|---|
 <%
     (doseq [link (sort-by #(str/capitalize (:name %)) links)]
-%>| <%= (:name link) %> | <%= (m/from-name model (:from link)) %> | <%= (m/to-name model (:to link)) %> | <%= (:tech link) %> | <%= (:desc link) %> |
+%>| <%= (:name link) %> | <%= (m/from-name model (:from link)) %> | <%= (m/to-name model (:to link)) %> | <%= (:tech link) %> | <%= (t/single-line (:desc link)) %> |
 <%
     )
   )

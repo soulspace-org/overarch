@@ -32,7 +32,7 @@
 |---|---|
 <%
     (doseq [view concept-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -43,7 +43,7 @@
 |---|---|
 <%
     (doseq [view use-case-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -54,7 +54,7 @@
 |---|---|
 <%
     (doseq [view context-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -65,7 +65,7 @@
 |---|---|
 <%
     (doseq [view container-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -76,7 +76,7 @@
 |---|---|
 <%
     (doseq [view component-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -87,7 +87,7 @@
 |---|---|
 <%
     (doseq [view system-landscape-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -98,7 +98,7 @@
 |---|---|
 <%
     (doseq [view system-structure-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -109,7 +109,7 @@
 |---|---|
 <%
     (doseq [view dynamic-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -120,7 +120,7 @@
 |---|---|
 <%
     (doseq [view state-machine-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -131,7 +131,7 @@
 |---|---|
 <%
     (doseq [view code-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -142,7 +142,7 @@
 |---|---|
 <%
     (doseq [view deployment-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -153,7 +153,7 @@
 |---|---|
 <%
     (doseq [view deployment-structure-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -164,7 +164,7 @@
 |---|---|
 <%
     (doseq [view organization-structure-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -175,7 +175,7 @@
 |---|---|
 <%
     (doseq [view glossary-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )
@@ -186,7 +186,7 @@
 |---|---|
 <%
     (doseq [view model-views]
-%>| <%= (md/view-link view) %> | <%= (:desc view) %> |
+%>| <%= (md/view-link view) %> | <%= (t/single-line (:desc view)) %> |
 <%
     )
   )

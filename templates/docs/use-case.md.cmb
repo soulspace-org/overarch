@@ -38,7 +38,7 @@
 |---|---|---|
 <%
     (doseq [actor actors]
-%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (t/single-line (:desc actor)) %> |
 <%
     )
   )
@@ -49,7 +49,7 @@
 |---|---|---|
 <%
     (doseq [actor supporting-actors]
-%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (:desc actor) %> |
+%>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (t/single-line (:desc actor)) %> |
 <%
     )
   )
@@ -60,7 +60,7 @@
 |---|---|---|
 <%
     (doseq [uc included]
-%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
   )
@@ -71,7 +71,7 @@
 |---|---|---|
 <%
     (doseq [uc extensions]
-%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (:desc uc) %> |
+%>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
   )

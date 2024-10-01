@@ -8,7 +8,7 @@
  Id |Name | Type | Subtype | Description | Tech | Tags
 ----|-----|------|---------|-------------|------|------
 <% (doseq [c nodes]
-%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (:desc c) %> | <%= (:tech c) %> | <%= (:tags c) %>
+%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
 <%))%>
 
 <% (when-let [rels (filter el/model-relation? e)]%>
@@ -16,5 +16,5 @@
  Id |Name | Type | From | To | Description | Tech
 ----|-----|------|------|----|-------------|------
 <% (doseq [c rels]
-%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (:desc c) %> | <%= (:tags c) %>
+%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tags c) %>
 <%))%>

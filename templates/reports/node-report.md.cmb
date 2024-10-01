@@ -6,5 +6,5 @@
 ## Nodes
  Id |Name | Type | Subtype | Description | Techs | Tags
 ----|-----|------|---------|-------------|-------|------
-<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (:desc c) %> | <%= (:tech c) %> | <%= (:tags c) %>
+<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
 <%)%>

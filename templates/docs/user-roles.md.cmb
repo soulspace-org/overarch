@@ -10,7 +10,7 @@
 |---|---|
 <%
   (doseq [role roles]
-%>| <%= (md/element-link role) %> | <%= (:desc role) %> |  
+%>| <%= (md/element-link role) %> | <%= (t/single-line (:desc role)) %> |  
 <%
   )
 )
