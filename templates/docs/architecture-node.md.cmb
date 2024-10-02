@@ -198,9 +198,31 @@ These components show the internal structure of the <%= (:name e) %> container.
       )
     )
   )
-%>
 
+;;
+;; include relevant view diagrams
+;;
+  (when (and (contains? #{:system} (:el e)) (m/resolve-view model e "context-view"))
+%>
+## System Context View
+<%= (md/relative-view-link e (m/resolve-view model e "context-view")) %>
 <%
+  )
+  
+  (when (and (contains? #{:context-boundary :container} (:el e)) (m/resolve-view model e "container-view"))
+%>
+## Container View
+<%= (md/relative-view-link e (m/resolve-view model e "container-view")) %>
+<%
+  )
+
+  (when (and (contains? #{:component} (:el e)) (m/resolve-view model e "component-view"))
+%>
+## Component View
+<%= (md/relative-view-link e (m/resolve-view model e "component-view")) %>
+<%
+  )
 )
 %>
+
 (generated with <%= (:template ctx) %>)

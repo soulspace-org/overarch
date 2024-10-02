@@ -26,7 +26,7 @@
 
   (when parent
 %>
-# Parent Unit
+## Parent Unit
 | Name | Description |
 |---|---|
 | <%= (md/relative-element-link e parent) %> | <%= (t/single-line (:desc parent)) %> |
@@ -35,7 +35,7 @@
 
   (when (seq children)
 %>
-# Sub Units
+## Sub Units
 | Name | Description |
 |---|---|
 <%
@@ -47,7 +47,7 @@
 
   (when (seq responsible-for)
 %>
-# Responsibilities
+## Responsibilities
 | Name | Description |
 |---|---|
 <%
@@ -59,7 +59,7 @@
 
   (when (seq collaborates-with)
 %>
-# Collaborations
+## Collaborations
 | Name | Description |
 |---|---|
 <%
@@ -67,6 +67,17 @@
 %>| <%= (md/relative-element-link e collaboration) %> | <%= (t/single-line (:desc collaboration)) %> |
 <%
     )
+  )
+
+;;
+;; include relevant view diagrams
+;;
+  (when 
+    (and (contains? #{:organization :org-unit} (:el e)) (m/resolve-view model e "organization-structure-view"))
+%>
+## Organization Structure
+<%= (md/relative-view-link e (m/resolve-view model e "organization-structure-view")) %>
+<%
   )
 )
 %>

@@ -10,7 +10,8 @@
 ; TODO add featured in and other relations
 (let [superordinates (m/superordinates model e)
       subordinates (m/subordinates model e)
-      features (m/features model e)]
+      features (m/features model e)
+      features-of (m/feature-of model e)]
 
 %># Concept <%= (:name e) %>
 ## Description
@@ -50,11 +51,24 @@
 |---|---|
 <%
     (doseq [feature features]
-%>| <%= (:name feature) %> | <%= (t/single-line (:desc feature)) %> |
+%>| <%= (md/relative-element-link e feature) %> | <%= (t/single-line (:desc feature)) %> |
 <%
     )
   )
 
-  ; TODO add featured in and other relations
+  (when (seq features-of)
+%># Features
+| Name | Description |
+|---|---|
+<%
+    (doseq [feature features]
+%>| <%= (md/relative-element-link e feature) %> | <%= (t/single-line (:desc feature)) %> |
+<%
+    )
+  )
+
+  ; TODO add other relations
 )
 %>
+
+(generated with <%= (:template ctx) %>)
