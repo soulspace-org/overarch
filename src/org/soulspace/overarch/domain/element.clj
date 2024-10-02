@@ -600,7 +600,7 @@
   (boolean (:ref e)))
 
 (defn unresolved-ref?
-  "Returns true if the given element `e` is a reference."
+  "Returns true if the given element `e` is an unresolved reference."
   [e]
   (boolean (:unresolved-ref e)))
 

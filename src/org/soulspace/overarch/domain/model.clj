@@ -49,7 +49,8 @@
    (cond
      (keyword? e) (resolve-id model e)
      (el/reference? e) (resolve-ref model e)
-     :else e)))
+     (el/element? e) e
+     :else nil)))
 
 (defn element-resolver
   "Returns a element resolver function for the given `model`."

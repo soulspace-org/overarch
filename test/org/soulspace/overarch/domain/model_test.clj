@@ -171,6 +171,66 @@
       1 (count (:test/concept2 (:referred-id->relations concept-model1)))
       1 (count (:test/concept3 (:referred-id->relations concept-model1))))))
 
+(deftest resolve-element-test
+  (testing "resolve-element with id"
+    (are [x y] (= x (resolve-element c4-model1 y))
+      {:el :person
+       :id :test/user1
+       :name "User 1"}
+      :test/user1
+
+      {:el :rel
+       :id :test/user1-uses-system1
+       :from :test/user1
+       :to :test/system1
+       :name "uses"}
+      :test/user1-uses-system1))
+
+  (testing "resolve-element with ref"
+    (are [x y] (= x (resolve-element c4-model1 y))
+      {:el :person
+       :id :test/user1
+       :name "User 1"}
+      {:ref :test/user1}
+
+      {:el :rel
+       :id :test/user1-uses-system1
+       :from :test/user1
+       :to :test/system1
+       :name "uses"}
+      {:ref :test/user1-uses-system1}))
+
+  (testing "resolve-element with element"
+    (are [x y] (= x (resolve-element c4-model1 y))
+      {:el :person
+       :id :test/user1
+       :name "User 1"}
+      {:el :person
+       :id :test/user1
+       :name "User 1"}
+
+      {:el :rel
+       :id :test/user1-uses-system1
+       :from :test/user1
+       :to :test/system1
+       :name "uses"}
+      {:el :rel
+       :id :test/user1-uses-system1
+       :from :test/user1
+       :to :test/system1
+       :name "uses"}))
+
+  (testing "resolve-element with unsupported input"
+    (are [x y] (= x (resolve-element c4-model1 y))
+      nil
+      "test/user1"
+
+      nil
+      {:id :test/user1-uses-system1
+       :from :test/user1
+       :to :test/system1
+       :name "uses"})))
+
 (comment
   :test/user1
   c4-model1
