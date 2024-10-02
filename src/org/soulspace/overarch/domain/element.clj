@@ -594,6 +594,16 @@
   [e]
   (contains? concept-relation-types (:el e)))
 
+(defn organization-model-node?
+  "Returns true if the given element `e` is a organization model node."
+  [e]
+  (contains? organization-node-types (:el e)))
+
+(defn organization-model-relation?
+  "Returns true if the given element `e` is a organization model relation."
+  [e]
+  (contains? organization-relation-types (:el e)))
+
 (defn reference?
   "Returns true if the given element `e` is a reference."
   [e]

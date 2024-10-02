@@ -120,6 +120,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel}
       false {:el :request}
       false {:el :response}
@@ -142,6 +144,8 @@
       false {:el :transition}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-node?-test
@@ -182,6 +186,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel}
       false {:el :request}
       false {:el :response}
@@ -204,6 +210,8 @@
       false {:el :transition}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-relation?-test
@@ -251,6 +259,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :link :from :a :to :b}
       false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
@@ -266,6 +276,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-node?-test
@@ -306,6 +318,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -328,6 +342,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-relation?-test
@@ -370,6 +386,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -390,6 +408,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-node?-test
@@ -430,6 +450,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -452,6 +474,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-relation?-test
@@ -496,6 +520,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -514,6 +540,8 @@
       false {:el :dependency :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest statemachine-node?-test
@@ -554,6 +582,8 @@
       false {:el :stereotype}
       false {:el :annotation}
       false {:el :protocol}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -617,6 +647,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -638,6 +670,8 @@
       false {:el :dependency :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest code-model-node?-test
@@ -666,6 +700,7 @@
       false {:el :context-boundary}
       false {:el :enterprise-boundary}
       false {:el :node}
+      false {:el :concept}
       false {:el :use-case}
       false {:el :actor}
       false {:el :state-machine}
@@ -677,7 +712,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
-      false {:el :concept}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -700,6 +736,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest code-model-relation?-test
@@ -746,6 +784,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -762,6 +802,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-node?-test
@@ -802,6 +844,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -824,6 +868,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-relation?-test
@@ -867,6 +913,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
       false {:el :publish :from :a :to :b}
@@ -886,6 +934,140 @@
       false {:el :aggregation :from :a :to :b}
       false {:el :association :from :a :to :b}
       false {:el :dependency :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
+      false {:el :ref})))
+
+(deftest organization-model-node?-test
+  (testing "organization-model-node? true"
+    (are [x y] (= x (boolean (organization-model-node? y)))
+      true {:el :organization}
+      true {:el :org-unit}))
+
+  (testing "organization-model-node? false"
+    (are [x y] (= x (boolean (organization-model-node? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :context-boundary}
+      false {:el :enterprise-boundary}
+      false {:el :component}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
+      false {:el :ref})))
+
+(deftest organization-model-relation?-test
+  (testing "organization-model-relation? true"
+    (are [x y] (= x (boolean (organization-model-relation? y)))
+      true {:el :responsible-for :from :a :to :b}
+      true {:el :collaborates-with :from :a :to :b}))
+
+  (testing "organization-model-relation? false"
+    (are [x y] (= x (boolean (organization-model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :rel :from :a :to :b}
       false {:el :ref})))
 
 (deftest model-node?-test
@@ -922,7 +1104,9 @@
       true {:el :join}
       true {:el :choice}
       true {:el :history-state}
-      true {:el :deep-history-state}))
+      true {:el :deep-history-state}
+      true {:el :organization}
+      true {:el :org-unit}))
 
   (testing "model-node? false"
     (are [x y] (= x (boolean (model-node? y)))
@@ -948,6 +1132,8 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :ref})))
 
 (deftest model-relation?-test
@@ -974,7 +1160,9 @@
       true {:el :dependency :from :a :to :b}
       true {:el :transition :from :a :to :b}
       true {:el :has :from :a :to :b}
-      true {:el :is-a :from :a :to :b}))
+      true {:el :is-a :from :a :to :b}
+      true {:el :responsible-for :from :a :to :b}
+      true {:el :collaborates-with :from :a :to :b}))
 
   (testing "model-relation? false"
     (are [x y] (= x (boolean (model-relation? y)))
@@ -1010,6 +1198,8 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
       false {:el :ref})))
 
 (deftest model-element?-test
@@ -1047,6 +1237,8 @@
       true {:el :choice}
       true {:el :history-state}
       true {:el :deep-history-state}
+      true {:el :organization}
+      true {:el :org-unit}
       true {:el :rel :from :a :to :b}
       true {:el :request :from :a :to :b}
       true {:el :response :from :a :to :b}
@@ -1068,7 +1260,9 @@
       true {:el :dependency :from :a :to :b}
       true {:el :transition :from :a :to :b}
       true {:el :has :from :a :to :b}
-      true {:el :is-a :from :a :to :b}))
+      true {:el :is-a :from :a :to :b}
+      true {:el :responsible-for :from :a :to :b}
+      true {:el :collaborates-with :from :a :to :b}))
 
   (testing "model-element? false"
     (are [x y] (= x (boolean (model-element? y)))
