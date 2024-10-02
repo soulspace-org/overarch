@@ -30,14 +30,13 @@
 (defn relative-element-link
   "Renders a relative link from the current element `c` to the element `e`, using the optional `context` for customization."
   ([c e]
-   (element-link e {}))
+   (relative-element-link c e {}))
   ([c e context]
    (str "[" (:name e) "]"
         "("
         (str (m/root-path c) "/")
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
-        (m/root-path c) "/"
         (m/element-namespace-path e) "/"
         (when (:namespace-suffix context)
           (str (:namespace-suffix context) "/"))
@@ -79,14 +78,13 @@
 (defn relative-view-link
   "Renders a relative link from the current element `c` to the view `v`, using the optional `context` for customization."
   ([c v]
-   (element-link v {}))
+   (relative-element-link c v {}))
   ([c v context]
    (str "[" (v/title v) "]"
         "("
         (str (m/root-path c) "/")
         (when (:namespace-prefix context)
           (str (:namespace-prefix context) "/"))
-        (m/root-path c) "/"
         (m/element-namespace-path v) "/"
         (when (:namespace-suffix context)
           (str (:namespace-suffix context) "/"))
