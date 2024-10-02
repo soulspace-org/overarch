@@ -3,6 +3,8 @@ Changelog
 
 Version (Next)
 --------------
+* updated markdown-api
+* updated doc templates
 * added best practices to usage docs
 
 Version 0.31.0
