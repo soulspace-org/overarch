@@ -63,6 +63,45 @@
    :to :banking/transaction-concept
    :name "triggers"}
 
+  ;;;
+  ;;; Organization Model
+  ;;;
+  {:el :organization
+   :id :banking/big-bank
+   :name "Big Bank plc"
+   :desc "Big Bank plc Organization"
+   :ct [{:el :org-unit
+         :id :banking/internet-banking-department
+         :name "Internet Banking"
+         :desc "Internet Banking Department"
+         :ct [{:el :org-unit
+               :id :banking/mobile-app-team
+               :name "Mobile App"
+               :desc "Mobile App Team"}
+              {:el :org-unit
+               :id :banking/web-app-team
+               :name "Web App"
+               :desc "Web App Team"}
+              {:el :org-unit
+               :id :banking/api-app-team
+               :name "API App"
+               :desc "API App Team"}]}
+        {:el :org-unit
+         :id :banking/core-banking
+         :name "Core Banking"
+         :desc "Core Banking Department"}
+        {:el :org-unit
+         :id :banking/human-resources
+         :name "Human Resources"
+         :desc "Human Resources Department"
+         :ct [{:el :org-unit
+               :id :banking/recruiting
+               :name "Recruiting"
+               :desc "Recruiting Unit"}]}
+        {:el :org-unit
+         :id :banking/marketing
+         :name "Marketing"
+         :desc "Marketing Department"}]}
 
   ;;;
   ;;; Use Case Model

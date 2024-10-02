@@ -3,9 +3,11 @@ Changelog
 
 Version (Next)
 --------------
-* updated markdown-api
+* fixed relative link functions in markdown api
+* fixed organization structure views
 * updated doc templates
 * added best practices to usage docs
+* enhanced example models
 
 Version 0.31.0
 --------------

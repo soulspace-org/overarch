@@ -221,6 +221,12 @@
    :title "System Structure"
    :desc "Shows the hierarchical structure of the sytems in scope."}
 
+  {:el :organization-structure-view
+   :id :banking/organization-structure-view
+   :spec {:selection {:namespace "banking" :external? false}}
+   :title "Organization Structure"
+   :desc "Shows the hierarchical structure of the organization in scope."}
+
   {:el :model-view
    :id :banking/model-view
    :spec {:selection {:namespace "banking"}

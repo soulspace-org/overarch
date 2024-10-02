@@ -19,7 +19,6 @@
 
 (let [elements (filter m/model-node? (v/root-elements model (v/view-elements model e)))]
 %>
-# Elements <%= (count elements) %>
 @startwbs
 <%
   (doseq [element elements]
