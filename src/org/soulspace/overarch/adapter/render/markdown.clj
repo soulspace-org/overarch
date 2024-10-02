@@ -122,11 +122,6 @@
         (binding [*out* wrt]
           (println (str/join "\n" result)))))))
 
-#_(defmethod rndr/render :markdown
-  [model format options]
-  (doseq [view (model/views model)]
-    (rndr/render-view model format options view)))
-
 (comment
   (md/image "Bla" "./bla.png")
   (md/image-ref "Bla" "./bla.png")

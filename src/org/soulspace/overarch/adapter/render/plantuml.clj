@@ -92,7 +92,6 @@
 ;;;
 ;;; Tech to Sprite mapping
 ;;;
-
 (def sprite-resources
   ["cloudogu" "cloudinsight" "logos" "devicons" "devicons2"
    "font-awesome-5" "azure" "awslib14"])
@@ -310,8 +309,3 @@
       (with-open [wrt (io/writer (rndr/render-file model format options view))]
         (binding [*out* wrt]
           (println (str/join "\n" result)))))))
-
-#_(defmethod rndr/render :plantuml
-  [model format options]
-  (doseq [view (model/views model)]
-    (rndr/render-view model format options view)))

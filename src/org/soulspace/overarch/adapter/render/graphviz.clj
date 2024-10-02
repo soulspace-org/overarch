@@ -101,8 +101,3 @@
       (with-open [wrt (io/writer (rndr/render-file model format options view))]
         (binding [*out* wrt]
           (println (str/join "\n" result)))))))
-
-#_(defmethod rndr/render :graphviz
-  [m format options]
-  (doseq [view (model/views m)]
-    (rndr/render-view m format options view)))
