@@ -45,6 +45,24 @@
   :id-as-name true
   :extension "md"}
  {:selection {:namespace-prefix "banking" :el :use-case}
+  :template "docs/use-case.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :person}
+  :template "docs/user-role.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :organization-model-node}
+  :template "docs/organization.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :use-case}
   :template "docs/use-cases.md.cmb"
   :subdir "docs"
   :base-namespace "banking"
