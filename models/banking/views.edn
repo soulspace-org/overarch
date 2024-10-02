@@ -7,7 +7,7 @@
 
   ;; System context view with criteria based selection of elements
   {:el :context-view
-   :id :banking/system-context-view-with-selection
+   :id :banking/context-view
    :spec {:selection {:namespace-prefix "banking"}
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "System Context View of the Internet Banking System"
@@ -35,10 +35,9 @@
   ;;;
   ;;; Container Views
   ;;;
-
   ;; Container view with criteria based selection of elements
   {:el :container-view
-   :id :banking/banking-container-view-with-selection
+   :id :banking/container-view
    :spec {:selection {:namespace :banking}
           :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
@@ -48,63 +47,19 @@
         ; relation references can also be specified here for layout purposes
         ]}
 
-  ;; System context view with referenced elements
-  {:el :container-view
-   :id :banking/container-view
-   :spec {:plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
-   :title "Container View of the Internet Banking System"
-   :ct [; model elements
-        {:ref :banking/personal-customer}
-        {:ref :banking/internet-banking-system}
-        {:ref :banking/email-system}
-        {:ref :banking/mainframe-banking-system}
-
-       ; relations
-        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
-        {:ref :banking/personal-customer-uses-web-app}
-        {:ref :banking/personal-customer-uses-single-page-app}
-        {:ref :banking/personal-customer-uses-mobile-app}
-
-        {:ref :banking/web-app-deliveres-single-page-app :direction :right}
-        {:ref :banking/single-page-app-calls-api-application}
-        {:ref :banking/mobile-app-calls-api-application}
-        {:ref :banking/api-application-uses-database :direction :left}
-        {:ref :banking/api-application-uses-email-system :direction :right}
-        {:ref :banking/api-application-uses-mainframe-banking-system}]}
-
   ;;;
-  ;;; Container Views
+  ;;; Component Views
   ;;;
-
   {:el :component-view
-   :id :banking/api-component-view
+   :id :banking/component-view
+   :spec {:selection {:namespace-prefix "banking"}
+          :include :related}
    :title "Component View of the API Application"
-   :ct [; model elements
-        {:ref :banking/single-page-app}
-        {:ref :banking/mobile-app}
-        {:ref :banking/api-application}
-        {:ref :banking/database}
-        {:ref :banking/email-system}
-        {:ref :banking/mainframe-banking-system}
-
-       ; relations
-        {:ref :banking/single-page-app-calls-sign-in-controller}
-        {:ref :banking/single-page-app-calls-reset-password-controller}
-        {:ref :banking/single-page-app-calls-accounts-summary-controller}
-        {:ref :banking/mobile-app-calls-sign-in-controller}
-        {:ref :banking/mobile-app-calls-reset-password-controller}
-        {:ref :banking/mobile-app-calls-accounts-summary-controller}
-        {:ref :banking/sign-in-controller-uses-security-component}
-        {:ref :banking/reset-password-controller-uses-email-component}
-        {:ref :banking/accounts-summary-controller-uses-mainframe-banking-system-facade}
-        {:ref :banking/security-component-uses-database}
-        {:ref :banking/email-component-uses-email-system}
-        {:ref :banking/mainframe-banking-system-facade-calls-mainframe-banking-system}]}
+   :ct []}
 
   ;;;
-  ;;; System Landscape Views
+  ;;; System Landscape View
   ;;;
-
   {:el :system-landscape-view
    :id :banking/system-landscape-view
    :title "System Landscape View of Big Bank plc"
@@ -132,13 +87,13 @@
         {:ref :banking/personal-customers-computer}
         {:ref :banking/big-bank-plc-datacenter}
 
-       ; relations
+        ; relations
         {:ref :banking/single-page-app-calls-api-application}
         {:ref :banking/mobile-app-calls-api-application}
         {:ref :banking/web-app-deliveres-single-page-app}
         {:ref :banking/api-application-uses-mainframe-banking-system}
         {:ref :banking/api-application-uses-database}
-       ; add relations for the read database
+        ; add relations for the read database
         {:el :rel
          :id :banking/api-application-uses-database-read
          :from :banking/api-application
@@ -157,9 +112,8 @@
    :spec {:selection {:id :banking/big-bank-plc-datacenter}}
    :name "Big Bank Deployment Structure View"
    :title "Deployment Structure View of Big Bank Datacenter"
-   :desc "Shows the hierarchical structure of the infrastructure and deployment elements"
-   }
-
+   :desc "Shows the hierarchical structure of the infrastructure and deployment elements"}
+  
   {:el :use-case-view
    :id :banking/use-case-view
    :spec {:layout :left-right}
@@ -167,43 +121,20 @@
    :ct [; actors
         {:ref :banking/personal-customer :name "Customer"}
         ; use cases
-        {:ref :banking/view-account}
-        {:ref :banking/make-transaction}
+        {:ref :banking.usecases/view-account}
+        {:ref :banking.usecases/make-transaction}
         ; relations
         {:ref :banking/personal-customer-uses-view-account}
         {:ref :banking/personal-customer-uses-make-transaction}]}
 
   {:el :concept-view
    :id :banking/concept-view
-   :spec {:markdown {:references true}}
-   :title "Concept Map for the Banking System"
-   :ct [{:ref :banking/bank-concept}
-        {:ref :banking/account-concept}
-        {:ref :banking/transaction-concept}
-        {:ref :banking/internet-banking-concept}
-
-        {:ref :banking/personal-customer}
-        {:ref :banking/internet-banking-system}
-
-        {:ref :banking/account-reflects-transaction}
-        {:ref :banking/personal-customer-has-account}
-        {:ref :banking/personal-customer-triggers-transaction}
-        {:ref :banking/internet-banking-system-implements-internet-banking-concept}
-        {:ref :banking/personal-customer-uses-internet-banking-system}]}
-
-  {:el :concept-view
-   :id :banking/concept-view-with-selection-and-include
-   :spec {:selection {:namespace "banking" :el :concept}
-          :include :relations
+   :spec {:selection {:namespace-prefix "banking.concepts"}
+          :include :related
           :markdown {:references true}}
    :title "Concept Map for the Banking System"
-   :ct [; selected elements will be included automatically
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
+   :ct []}
 
-        {:ref :banking/personal-customer}
-        {:ref :banking/internet-banking-system}]}
-  
   {:el :glossary-view
    :id :banking/glossary-view
    :spec {:selection {:namespace "banking"}
@@ -212,9 +143,8 @@
    :ct [; selected elements will be included automatically
         ; you can include references for additional elements here
         ; relation references can also be specified here for layout purposes
-
         ]}
-  
+
   {:el :system-structure-view
    :id :banking/system-structure-view
    :spec {:selection {:namespace "banking" :external? false}}

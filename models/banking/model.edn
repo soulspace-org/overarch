@@ -8,19 +8,19 @@
   ;; Concept Model Nodes
   ;;
   {:el :concept
-   :id :banking/account-concept
+   :id :banking.concepts/account-concept
    :name "Account"
    :desc "Records the transactions of a customer."}
   {:el :concept
-   :id :banking/bank-concept
+   :id :banking.concepts/bank-concept
    :name "Bank"
    :desc "A company providing monetary services for customers."}
   {:el :concept
-   :id :banking/internet-banking-concept
+   :id :banking.concepts/internet-banking-concept
    :name "Internet Banking"
    :desc "Describes banking services provided over the internet. Customers can interact with the bank with their computers or mobile devices."}
   {:el :concept
-   :id :banking/transaction-concept
+   :id :banking.concepts/transaction-concept
    :name "Transaction"
    :desc "An action done on the account, e.g. a withdrawal or a money transfer."}
 
@@ -28,78 +28,78 @@
   ;; Concept Model Relations
   ;; 
   {:el :has
-   :id :banking/bank-provides-internet-banking
-   :from :banking/bank-concept
-   :to :banking/internet-banking-concept
+   :id :banking.concepts/bank-provides-internet-banking
+   :from :banking.concepts/bank-concept
+   :to :banking.concepts/internet-banking-concept
    :name "provides"}
   {:el :has
-   :id :banking/bank-provides-accounts
-   :from :banking/bank-concept
-   :to :banking/account-concept
+   :id :banking.concepts/bank-provides-accounts
+   :from :banking.concepts/bank-concept
+   :to :banking.concepts/account-concept
    :name "provides"}
   {:el :rel
-   :id :banking/bank-performs-transaction
-   :from :banking/bank-concept
-   :to :banking/transaction-concept
+   :id :banking.concepts/bank-performs-transaction
+   :from :banking.concepts/bank-concept
+   :to :banking.concepts/transaction-concept
    :name "performs"}
   {:el :rel
-   :id :banking/account-reflects-transaction
-   :from :banking/account-concept
-   :to :banking/transaction-concept
+   :id :banking.concepts/account-reflects-transaction
+   :from :banking.concepts/account-concept
+   :to :banking.concepts/transaction-concept
    :name "reflects"}
   {:el :rel
-   :id :banking/internet-banking-system-implements-internet-banking-concept
+   :id :banking.concepts/internet-banking-system-implements-internet-banking-concept
    :from :banking/internet-banking-system
-   :to :banking/internet-banking-concept
+   :to :banking.concepts/internet-banking-concept
    :name "implements"}
   {:el :has
-   :id :banking/personal-customer-has-account
+   :id :banking.concepts/personal-customer-has-account
    :from :banking/personal-customer
-   :to :banking/account-concept
+   :to :banking.concepts/account-concept
    :name "has"}
   {:el :rel
-   :id :banking/personal-customer-triggers-transaction
+   :id :banking.concepts/personal-customer-triggers-transaction
    :from :banking/personal-customer
-   :to :banking/transaction-concept
+   :to :banking.concepts/transaction-concept
    :name "triggers"}
 
   ;;;
   ;;; Organization Model
   ;;;
   {:el :organization
-   :id :banking/big-bank
+   :id :banking.organization/big-bank
    :name "Big Bank plc"
    :desc "Big Bank plc Organization"
    :ct [{:el :org-unit
-         :id :banking/internet-banking-department
+         :id :banking.organization/internet-banking-department
          :name "Internet Banking"
          :desc "Internet Banking Department"
          :ct [{:el :org-unit
-               :id :banking/mobile-app-team
+               :id :banking.organization/mobile-app-team
                :name "Mobile App"
                :desc "Mobile App Team"}
               {:el :org-unit
-               :id :banking/web-app-team
+               :id :banking.organization/web-app-team
                :name "Web App"
                :desc "Web App Team"}
               {:el :org-unit
-               :id :banking/api-app-team
+               :id :banking.organization/api-app-team
                :name "API App"
                :desc "API App Team"}]}
         {:el :org-unit
-         :id :banking/core-banking
+         :id :banking.organization/core-banking
          :name "Core Banking"
          :desc "Core Banking Department"}
         {:el :org-unit
-         :id :banking/human-resources
+         :id :banking.organization/human-resources
          :name "Human Resources"
          :desc "Human Resources Department"
          :ct [{:el :org-unit
-               :id :banking/recruiting
+               :id :banking.organization/recruiting
                :name "Recruiting"
                :desc "Recruiting Unit"}]}
         {:el :org-unit
-         :id :banking/marketing
+         :id :banking.organization/marketing
          :name "Marketing"
          :desc "Marketing Department"}]}
 
@@ -117,12 +117,12 @@
   ;; Use Cases
   ;;
   {:el :use-case
-   :id :banking/view-account
+   :id :banking.usecases/view-account
    :name "view account"
    :desc "view the account details"
    :level :user-goal}
   {:el :use-case
-   :id :banking/make-transaction
+   :id :banking.usecases/make-transaction
    :name "transfer money"
    :desc "make a monetary transaction"
    :level :user-goal}
@@ -133,12 +133,12 @@
   {:el :uses
    :id :banking/personal-customer-uses-view-account
    :from :banking/personal-customer
-   :to :banking/view-account
+   :to :banking.usecases/view-account
    :name "uses"}
   {:el :uses
    :id :banking/personal-customer-uses-make-transaction
    :from :banking/personal-customer
-   :to :banking/make-transaction
+   :to :banking.usecases/make-transaction
    :name "uses"}
 
   ;;;
