@@ -5,11 +5,11 @@
 
 (defmethod view/render-model-element? :organization-structure-view
   [model view e]
-  (contains? el/system-structure-view-element-types (:el e)))
+  (contains? el/organization-structure-view-element-types (:el e)))
 
 (defmethod view/include-content? :organization-structure-view
   [model view e]
-  (contains? el/system-structure-view-element-types (:el e)))
+  (contains? el/organization-structure-view-element-types (:el e)))
 
 (defmethod view/element-to-render :organization-structure-view
   [model view e]

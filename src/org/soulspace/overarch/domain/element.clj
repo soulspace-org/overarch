@@ -94,7 +94,7 @@
 ;;
 (def organization-node-types
   "Node types for organization models."
-  (set/union architecture-node-types deployment-node-types #{:organization :org-unit}))
+  (set/union #{:organization :org-unit}))
 
 (def organization-relation-types
   "Relation types for organization models."
@@ -241,7 +241,6 @@
 ;;
 (def structure-view-types
   "The set of structure view types."
-  ; TODO team responsibility view?
   #{:system-structure-view :deployment-structure-view :organization-structure-view})
 
 (def system-structure-view-element-types
