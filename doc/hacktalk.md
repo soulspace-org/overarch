@@ -43,7 +43,7 @@ Understand complex software systems
 
 ---
 
-### Accelerate State of DevOps
+### Accelerate State of DevOps 2021
 
 * Good quality documentation
   * helps readers to accomplish their goals
@@ -54,7 +54,7 @@ Understand complex software systems
 
 ---
 
-### Accelerate State of DevOps
+### Accelerate State of DevOps 2021
 
 * Teams with quality documentation are
   * 3.8x more likely to implement security practices
@@ -269,31 +269,140 @@ Embedded template engine for Clojure templates
 
 ---
 
-# Overarch Use Cases
+### Overarch Use Cases
 
 ![bg right 100%](./images/overarch/use-cases/overarch-use-case-view.svg)
 
 ---
 
-# Example Model
+### Example Model
+```clojure
+#{ ; set of model elements
+  {:el :system
+   :id :example/system1
+   :name "Example System"
+   :desc "An example system to show how to model in overarch"
+   :ct #{ ; set of children
+         {:el :container
+          :id :example/container1
+          :name "Example Container"
+          :tech "Java"
+          :desc "Deployable application in the example system"}}}
+...
+}
+```
+
+---
+
+### Example Model
 
 ![bg right 100%](./images/overarch_vscode_model.png)
 
 ---
 
-# Example View Spec
+### Example View Spec
 
 ![bg right 100%](./images/overarch_vscode_diagram.png)
 
 ---
 
-# Example Context Diagram
+### Example Context Diagram
 
 ![bg right 70%](./images/banking/system-context-view.svg)
 
 ---
 
-# Example Container Diagram
+### Example Container Diagram
 
 ![bg right 90%](./images/banking/container-view.svg)
+
+---
+
+### Architecture Model
+
+#### Elements
+:person :system :container :component
+:enterprise-boundary :context-boundary
+
+#### Relations
+:request :response :publish :subscribe
+:send :dataflow :rel
+
+---
+
+### Deployment Model
+
+#### Elements
+:node :system :container
+
+#### Relations
+:deployed-to :link :rel
+
+---
+
+### Class Model
+
+#### Elements
+:package :interface :class :field :method
+  :enum :enum-value :stereotype :annotation :namespace :function :protocol 
+    
+#### Relations
+:inheritance :implementation :composition :aggregation :association :dependency
+
+---
+
+### Use Case Model
+
+#### Elements
+:use-case :actor :person :system :context-boundary
+
+#### Relations
+:uses :include :extends :generalizes
+
+---
+
+### State Machine Model
+
+#### Elements
+:state-machine :start-state :state :end-state :fork :join
+:choice :history-state :deep-history-state
+
+#### Relations
+:transition
+
+---
+
+### Concept Model
+
+#### Elements
+:concept :person :system :container
+:enterprise-boundary :context-boundary
+
+#### Relations
+:is-a :has :rel
+
+---
+
+### Model Queries
+#### Element Selection by Criteria
+* dynamic views 
+* content 
+
+---
+
+# Model Queries
+
+#### Selection by Criteria
+
+Criteria map:
+  {:namespace "banking" :el container}
+Vector of maps:
+  [{:namespace "banking" :el :container} {:namespace "banking" :el :request}]
+
+---
+### Artifact Generation
+* template based
+* reports
+* project scaffolding
+* code
 
