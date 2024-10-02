@@ -8,9 +8,22 @@
 ;;;;
 
 (let [children (m/children model e)
-      bounded-contexts (filter #(= :context-boundary (:el %)) children)
-      containers (filter #(= :container (:el %)) children)
-      components (filter #(= :component (:el %)) children)]
+      bounded-contexts (filterv #(= :context-boundary (:el %)) children)
+      containers (filterv #(= :container (:el %)) children)
+      app-containers (filterv #(= nil (:subtype %)) containers)
+      data-containers (filterv #(= :database (:subtype %)) containers)
+      queue-containers (filterv #(= :queue (:subtype %)) containers)
+      components (filterv #(= :component (:el %)) children)
+      requests-incoming (m/requests-incoming model e)
+      requests-outgoing (m/requests-outgoing model e)
+      publishes-incoming (m/publishes-incoming model e)
+      publishes-outgoing (m/publishes-outgoing model e)
+      subscribes-incoming (m/subscribes-incoming model e)
+      subscribes-outgoing (m/subscribes-outgoing model e)
+      sends-incoming (m/sends-incoming model e)
+      sends-outgoing (m/sends-outgoing model e)
+      dataflows-incoming (m/dataflows-incoming model e)
+      dataflows-outgoing (m/dataflows-outgoing model e)]
 
 %># <%= (:name e) %>
 ## Description
@@ -62,7 +75,132 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
     )
   )
-)
+
+;;
+;; interface docs for relations
+;;
+%>
+## Interfaces
+<%
+  (when (or (seq requests-incoming) (seq requests-outgoing))
+%>
+### Synchronous Interfaces
+<%
+    (when (seq requests-incoming)
+%>
+#### Service
+| Name | Called From | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req requests-incoming]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+
+    (when (seq requests-outgoing)
+%>
+#### Client
+| Name | Provided By | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req requests-outgoing]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+  )
+
+  (when (or (seq publishes-incoming) (seq publishes-outgoing)
+            (seq subscribes-incoming) (seq subscribes-outgoing))
+%>
+### Asynchronous Publish/Subscribe Interfaces
+<%
+    (when (seq publishes-outgoing)
+%>
+#### Publishing/Producing
+| Name | Queue/Topic | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req publishes-outgoing]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+
+    (when (seq subscribes-outgoing)
+%>
+#### Subscribing/Consuming
+| Name | Queue/Topic | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req subscribes-outgoing]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+  )
+
+  (when (or (seq sends-incoming) (seq sends-outgoing))
+%>
+### Asynchronous Peer-to-Peer Interfaces
+<%
+    (when (seq sends-outgoing)
+%>
+#### Sender
+| Name | Receiver | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req sends-outgoing]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+
+    (when (seq sends-incoming)
+%>
+#### Receiver
+| Name | Sender | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req sends-incoming]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+  )
+
+  (when (or (seq dataflows-incoming) (seq dataflows-incoming))
+%>
+### Dataflow
+<%
+    (when (seq dataflows-incoming)
+%>
+#### Receiver
+| Name | Sender | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req dataflows-incoming]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+
+    (when (seq dataflows-outgoing)
+%>
+#### Sender
+| Name | Receiver | Technology | Description |
+|---|---|---|---|
+<%
+      (doseq [req dataflows-outgoing]
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+<%
+      )
+    )
+  )
 %>
 
+<%
+)
+%>
 (generated with <%= (:template ctx) %>)
