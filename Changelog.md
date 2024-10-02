@@ -5,7 +5,7 @@ Version (Next)
 --------------
 * fixed relative link functions in markdown api
 * fixed organization structure views
-* updated doc templates
+* enhanced doc templates
 * added best practices to usage docs
 * enhanced example models
 

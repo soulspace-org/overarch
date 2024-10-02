@@ -26,7 +26,6 @@
           ".md")
         ")")))
 
-; TODO add upward path
 (defn relative-element-link
   "Renders a relative link from the current element `c` to the element `e`, using the optional `context` for customization."
   ([c e]
@@ -53,9 +52,9 @@
 (defn view-link
   "Renders a link to the view `v`, using the optional `context` for customization."
   ([v]
-   (element-link v {}))
+   (view-link v {}))
   ([v context]
-   (str "[" (v/title v) "]"
+   (str "![" (v/title v) "]"
         "("
         (when (:subdir context)
           (str (:subdir context) "/"))
@@ -71,16 +70,15 @@
           (:suffix context))
         (if (:extension context)
           (str "." (:extension context))
-          ".md")
+          ".png")
         ")")))
 
-; TODO add upward path
 (defn relative-view-link
   "Renders a relative link from the current element `c` to the view `v`, using the optional `context` for customization."
   ([c v]
-   (relative-element-link c v {}))
+   (relative-view-link c v {}))
   ([c v context]
-   (str "[" (v/title v) "]"
+   (str "![" (v/title v) "]"
         "("
         (str (m/root-path c) "/")
         (when (:namespace-prefix context)
@@ -95,6 +93,6 @@
           (:suffix context))
         (if (:extension context)
           (str "." (:extension context))
-          ".md")
+          ".png")
         ")")))
 
