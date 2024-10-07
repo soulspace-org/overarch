@@ -8,8 +8,8 @@
 ;;;;
 
 (let [substates (m/children model e)
-      incoming-transitions nil
-      outgoing-transitions nil]
+      transitions-incoming (m/transitions-incoming model e)
+      transitions-outgoing (m/transitions-outgoing model e)]
 
 %># State <%= (:name e) %>
 ## Description
@@ -20,5 +20,30 @@
 <%= (:doc e) %>
 <%
   )
+%>
+## Transitions
+<%
+  (when (seq transitions-incoming)
+%>### Incoming Transitions
+Name | From | Description
+---|---|---
+<%
+    (doseq [transition transitions-incoming]
+%><%= (:name transition) %> | <%= (md/relative-element-link e (m/resolve-element model (:from transition))) %> | (t/single-line (:desc transition))
+<%
+    )
+  )
+  (when (seq transitions-outgoing)
+%>### Outgoing Transitions
+Name | From | Description
+---|---|---
+<%
+    (doseq [transition transitions-outgoing]
+%><%= (:name transition) %> | <%= (md/relative-element-link e (m/resolve-element model (:from transition))) %> | (t/single-line (:desc transition))
+<%
+    )
+  )
 )
 %>
+
+(generated with <%= (:template ctx) %>)

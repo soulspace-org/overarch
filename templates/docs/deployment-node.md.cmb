@@ -25,44 +25,44 @@
 
   (when (seq children)
 %># Contained Nodes
-| Name | Description |
-|---|---|
+Name | Description 
+---|---
 <%
     (doseq [node children]
-%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
+%><%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %>
 <%
     )
   )
 
   (when (seq links)
 %># Links to Nodes
-| Name | Description |
-|---|---|
+Name | Description
+---|---
 <%
     (doseq [node links]
-%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
+%><%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %>
 <%
     )
   )
 
   (when (seq linked-by)
 %># Linked from Nodes
-| Name | Description |
-|---|---|
+Name | Description
+---|---
 <%
     (doseq [node linked-by]
-%>| <%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %> |
+%><%= (md/relative-element-link e node) %> | <%= (t/single-line (:desc node)) %>
 <%
     )
   )
 
   (when (seq deployed-on)
 %># Deployed Elements
-| Name | Description |
-|---|---|
+Name | Description
+---|---
 <%
     (doseq [containers deployed-on]
-%>| <%= (md/relative-element-link e containers) %> | <%= (t/single-line (:desc containers)) %> |
+%><%= (md/relative-element-link e containers) %> | <%= (t/single-line (:desc containers)) %>
 <%
     )
   )

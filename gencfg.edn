@@ -56,6 +56,12 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :node}
+  :template "docs/deployment-node.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
  {:selection {:namespace-prefix "banking" :el :organization-model-node}
   :template "docs/organization.md.cmb"
   :subdir "docs"

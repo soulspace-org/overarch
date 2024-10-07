@@ -81,3 +81,5 @@
   )
 )
 %>
+
+(generated with <%= (:template ctx) %>)
