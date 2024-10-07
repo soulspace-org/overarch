@@ -11,9 +11,7 @@
 ;;;; Not yet stable!
 ;;;;
 
-;;;
 ;;; TODO close over model!?
-;;;
 
 ;;;
 ;;; Element Predicates

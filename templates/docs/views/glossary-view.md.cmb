@@ -21,7 +21,7 @@
 <%
   )
 %>
-## Concepts
+## Entries
 <%
   (doseq [concept (sort-by #(str/capitalize (:name %)) nodes)]
 %>### <%= (md/relative-element-link e concept) %>
