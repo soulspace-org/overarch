@@ -38,6 +38,18 @@
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
+ {:selection {:namespace-prefix "banking" :el :concept}
+  :template "docs/concept.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :organization-model-node}
+  :template "docs/organization.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
  {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
   :subdir "docs"
@@ -62,8 +74,20 @@
   :per-element true
   :id-as-name true
   :extension "md"}
- {:selection {:namespace-prefix "banking" :el :organization-model-node}
-  :template "docs/organization.md.cmb"
+ {:selection {:namespace-prefix "banking" :el :state}
+  :template "docs/state.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :package}
+  :template "docs/package.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :els #{:interface :class}}
+  :template "docs/code.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
