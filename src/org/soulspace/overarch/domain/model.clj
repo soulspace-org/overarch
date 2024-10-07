@@ -729,6 +729,25 @@
          (into #{} (referred-xf model #(= :publish (:el %)))))))
 
 ;;
+;; statemachine model
+;;
+(defn transitions-incoming
+  "Returns the incoming transitions of state `e` in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :transition (:el %)))))
+
+(defn transitions-outgoing
+  "Returns the outgoing transitions of state `e` in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :transition (:el %)))))
+
+;;
 ;; code model
 ;;
 (defn superclasses

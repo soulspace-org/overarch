@@ -3,6 +3,7 @@ Changelog
 
 Version (Next)
 --------------
+* added model navigation functions for state machines
 * added organization model predicates
 * fixed relative link functions in markdown api
 * fixed organization structure views

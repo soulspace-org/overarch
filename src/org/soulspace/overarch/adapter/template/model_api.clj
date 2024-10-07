@@ -333,7 +333,15 @@
 ;;
 ;; Statemachine model navigation
 ;;
+(defn transitions-incoming
+  "Returns the incoming transitions of state `e` in the `model`."
+  [model e]
+  (model/transitions-incoming model e))
 
+(defn transitions-outgoing
+  "Returns the outgoing transitions of state `e` in the `model`."
+  [model e]
+  (model/transitions-outgoing model e))
 
 ;;
 ;; Use Case model navigation
@@ -390,6 +398,5 @@
   "Returns the organization model nodes the organization unit `e` has a collaboration with in the `model`. Reverse direction of collaborates with."
   [model e]
   (model/collaboration-with model e))
-
 
 
