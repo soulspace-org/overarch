@@ -57,11 +57,11 @@
   )
 
   (when (seq features-of)
-%># Features
+%># Feature of
 | Name | Description |
 |---|---|
 <%
-    (doseq [feature features]
+    (doseq [feature features-of]
 %>| <%= (md/relative-element-link e feature) %> | <%= (t/single-line (:desc feature)) %> |
 <%
     )
