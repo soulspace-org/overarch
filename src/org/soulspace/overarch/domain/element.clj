@@ -419,12 +419,28 @@
 
       ;;; organization model
       ;; organization model nodes
-      (derive :team                              :organization-model-node)
+      (derive :organization                      :organization-model-node)
+      (derive :org-unit                          :organization-model-node)
       (derive :organization-model-node           :organization-model-element)
 
       ;; organization model relations
-      (derive :organization                      :organization-model-relation)
+      (derive :collaborates-with                 :organization-model-relation)
       (derive :organization-model-relation       :organization-model-element)
+      
+      ;;; responsibility model
+      ;; responsibility model nodes
+      (derive :organization                      :responsibility-model-node)
+      (derive :org-unit                          :responsibility-model-node)
+      (derive :system                            :responsibility-model-node)
+      (derive :container                         :responsibility-model-node)
+      (derive :component                         :responsibility-model-node)
+      (derive :person                            :responsibility-model-node)
+      (derive :context-boundary                  :responsibility-model-node)
+      (derive :responsibility-model-node         :responsibility-model-element)
+
+      ;; responsibility model relations
+      (derive :responsible-for                   :responsibility-model-relation)
+      (derive :responsibility-model-relation     :responsibility-model-element)
       
       ;; model nodes
       (derive :architecture-model-node           :model-node)
