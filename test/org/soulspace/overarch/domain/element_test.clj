@@ -1007,7 +1007,6 @@
 (deftest organization-model-relation?-test
   (testing "organization-model-relation? true"
     (are [x y] (= x (boolean (organization-model-relation? y)))
-      true {:el :responsible-for :from :a :to :b}
       true {:el :collaborates-with :from :a :to :b}))
 
   (testing "organization-model-relation? false"
@@ -1067,6 +1066,139 @@
       false {:el :dependency :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :rel :from :a :to :b}
+      false {:el :ref})))
+
+(deftest responsibility-model-node?-test
+  (testing "responsibility-model-node? true"
+    (are [x y] (= x (boolean (responsibility-model-node? y)))
+      true {:el :organization}
+      true {:el :org-unit}
+      true {:el :context-boundary}
+      true {:el :person}
+      true {:el :system}
+      true {:el :container}
+      true {:el :component}))
+
+  (testing "responsibility-model-node? false"
+    (are [x y] (= x (boolean (responsibility-model-node? y)))
+      false {:el :enterprise-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
+      false {:el :ref})))
+
+(deftest responsibility-model-relation?-test
+  (testing "responsibility-model-relation? true"
+    (are [x y] (= x (boolean (responsibility-model-relation? y)))
+      true {:el :responsible-for :from :a :to :b}))
+
+  (testing "responsibility-model-relation? false"
+    (are [x y] (= x (boolean (responsibility-model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :rel :from :a :to :b}
       false {:el :ref})))
 

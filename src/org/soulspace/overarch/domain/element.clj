@@ -98,14 +98,25 @@
 
 (def organization-relation-types
   "Relation types for organization models."
-  #{:responsible-for :collaborates-with})
+  #{:collaborates-with})
+
+;;
+;; Responsibility model
+;;
+(def responsibility-node-types
+  "Node types for responsibility models."
+  (set/union organization-node-types technical-architecture-node-types #{:person :context-boundary}))
+
+(def responsibility-relation-types
+  "Relation types for responsibility models."
+  #{:responsible-for})
 
 ;;
 ;; Business model
 ;;
 (def business-node-types
   "Node types for business models."
-  #{:capability})
+  #{:capability :business-process})
 
 (def business-relation-types
   "Node types for business models."
@@ -136,7 +147,8 @@
              deployment-node-types
              uml-node-types
              concept-node-types
-             organization-node-types))
+             organization-node-types
+             responsibility-node-types))
 
 (def model-relation-types
   "Relation types of the model."
@@ -145,7 +157,8 @@
              deployment-relation-types
              uml-relation-types
              concept-relation-types
-             organization-relation-types))
+             organization-relation-types
+             responsibility-relation-types))
 
 (def model-element-types
   "Element types for the model."
@@ -603,6 +616,16 @@
   "Returns true if the given element `e` is a organization model relation."
   [e]
   (contains? organization-relation-types (:el e)))
+
+(defn responsibility-model-node?
+  "Returns true if the given element `e` is a responsibility model node."
+  [e]
+  (contains? responsibility-node-types (:el e)))
+
+(defn responsibility-model-relation?
+  "Returns true if the given element `e` is a responsibility model relation."
+  [e]
+  (contains? responsibility-relation-types (:el e)))
 
 (defn reference?
   "Returns true if the given element `e` is a reference."
