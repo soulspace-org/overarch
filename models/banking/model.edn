@@ -433,52 +433,52 @@
   ;; Deployment Model Nodes
   ;;
   {:el :node
-   :id :banking/personal-customers-computer
+   :id :banking.deployment/personal-customers-computer
    :name "Customer's Computer"
    :tech "Windows, macOS, Linux"
    :ct #{{:el :node
-          :id :banking/personal-customers-browser
+          :id :banking.deployment/personal-customers-browser
           :name "Web Browser"
           :tech "Chrome, Firefox, Safari or Edge"}}}
   {:el :node
-   :id :banking/personal-customers-mobile-device
+   :id :banking.deployment/personal-customers-mobile-device
    :name "Customer's Mobile Device"
    :tech "Android or iOS"}
   {:el :node
-   :id :banking/big-bank-plc-datacenter
+   :id :banking.deployment/big-bank-plc-datacenter
    :name "Big Bank plc"
    :tech "Datacenter"
    :ct #{{:el :node
-          :id :banking/big-bank-kubernetes-cluster
+          :id :banking.deployment/big-bank-kubernetes-cluster
           :name "Kubernetes Cluster"
           :tech "VM, Ubuntu 22.04 LTS, K8s"
           :sprite "Kubernetes"
           :ct #{{:el :node
-                 :id :banking/big-bank-web-server-node-pool
+                 :id :banking.deployment/big-bank-web-server-node-pool
                  :name "Web Server Node Pool"
                  :tech "VM, Ubuntu 22.04 LTS"
                  :ct #{{:el :node
-                        :id :banking/big-bank-web-server-pod
+                        :id :banking.deployment/big-bank-web-server-pod
                         :name "Web Server Pod"
                         :desc "autoscaled, 2-8 instances"}}}
                 {:el :node
-                 :id :banking/big-bank-api-server-node-pool
+                 :id :banking.deployment/big-bank-api-server-node-pool
                  :name "API Server Node Pool"
                  :tech "VM, Ubuntu 22.04 LTS"
                  :ct #{{:el :node
-                        :id :banking/big-bank-api-server-pod
+                        :id :banking.deployment/big-bank-api-server-pod
                         :name "API Server Pod"
                         :desc "autoscaled, 2-16 instances"}}}}}
          {:el :node
-          :id :banking/big-bank-prod001
+          :id :banking.deployment/big-bank-prod001
           :name "BigBank-prod001"}
          {:el :node
-          :id :banking/big-bank-db01
+          :id :banking.deployment/big-bank-db01
           :name "Primary DB Server"
           :tech "Datomic"
           :desc "for writes"}
          {:el :node
-          :id :banking/big-bank-db02
+          :id :banking.deployment/big-bank-db02
           :name "Secondary DB Server"
           :tech "Datomic"
           :desc "for reads"}}}
@@ -489,37 +489,37 @@
   {:el :deployed-to
    :id :banking/single-page-app-deployed-to-personal-customers-browser
    :from :banking/single-page-app
-   :to :banking/personal-customers-browser}
+   :to :banking.deployment/personal-customers-browser}
 
   {:el :deployed-to
    :id :banking/mobile-app-deployed-to-personal-customers-mobile-device
    :from :banking/mobile-app
-   :to :banking/personal-customers-mobile-device}
+   :to :banking.deployment/personal-customers-mobile-device}
 
   {:el :deployed-to
    :id :banking/web-app-deployed-to-big-bank-web-server-pod
    :from :banking/web-app
-   :to :banking/big-bank-web-server-pod}
+   :to :banking.deployment/big-bank-web-server-pod}
 
   {:el :deployed-to
    :id :banking/api-application-deployed-to-big-bank-api-server-pod
    :from :banking/api-application
-   :to :banking/big-bank-api-server-pod}
+   :to :banking.deployment/big-bank-api-server-pod}
 
   {:el :deployed-to
    :id :banking/mainframe-banking-system-deployed-to-big-bank-prod001
    :from :banking/mainframe-banking-system
-   :to :banking/big-bank-prod001}
+   :to :banking.deployment/big-bank-prod001}
 
   {:el :deployed-to
    :id :banking/database-deployed-to-big-bank-db01
    :from :banking/database
-   :to :banking/big-bank-db01}
+   :to :banking.deployment/big-bank-db01}
 
   {:el :deployed-to
    :id :banking/database-deployed-to-big-bank-db02
    :from :banking/database-read
-   :to :banking/big-bank-db02}
+   :to :banking.deployment/big-bank-db02}
 
   ;
   }

@@ -79,13 +79,13 @@
         {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
 
   {:el :deployment-view
-   :id :banking/deployment-view
+   :id :banking.deployment/deployment-view
    ;:spec {:include :related}
    :title "Deployment View of Big Bank plc"
    :ct [; model elements
-        {:ref :banking/personal-customers-mobile-device}
-        {:ref :banking/personal-customers-computer}
-        {:ref :banking/big-bank-plc-datacenter}
+        {:ref :banking.deployment/personal-customers-mobile-device}
+        {:ref :banking.deployment/personal-customers-computer}
+        {:ref :banking.deployment/big-bank-plc-datacenter}
 
         ; relations
         {:ref :banking/single-page-app-calls-api-application}
