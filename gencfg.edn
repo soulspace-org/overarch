@@ -5,7 +5,7 @@
  ;;; Documentation
  ;;;
  ;;
- ;;  Diagram Generation for Views
+ ;;  Diagram generation for template based views
  ;;
  {:view-selection {:el :model-view}
   :template "views/model-view.dot.cmb"
@@ -36,77 +36,7 @@
   :extension "puml"}
 
  ;;
- ;;  Markdown Generation for Model Elements
- ;;
- {:selection {:namespace-prefix "banking" :el :concept}
-  :template "docs/concept.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :organization-model-node}
-  :template "docs/organization.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
-  :template "docs/architecture-node.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :use-case}
-  :template "docs/use-case.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :person}
-  :template "docs/user-role.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :node}
-  :template "docs/deployment-node.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :state}
-  :template "docs/state.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :package}
-  :template "docs/package.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :els #{:interface :class}}
-  :template "docs/code.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :use-case}
-  :template "docs/use-cases.md.cmb"
-  :subdir "docs"
-  :base-namespace "banking"
-  :base-name "use-cases"
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :person}
-  :template "docs/user-roles.md.cmb"
-  :subdir "docs"
-  :base-namespace "banking"
-  :base-name "user-roles"
-  :extension "md"}
-
- ;;
- ;;  Markdown Generation for Views
+ ;;  Markdown generation for overarch views
  ;; 
  {:view-selection {:namespace-prefix "banking"}
   :template "docs/views/views.md.cmb"
@@ -179,6 +109,76 @@
   :subdir "docs"
   :per-element true
   :id-as-name true
+  :extension "md"}
+
+ ;;
+ ;;  Markdown Generation for Model Elements
+ ;;
+ {:selection {:namespace-prefix "banking" :el :concept}
+  :template "docs/concept.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :organization-model-node}
+  :template "docs/organization.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
+  :template "docs/architecture-node.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :use-case}
+  :template "docs/use-case.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :person}
+  :template "docs/user-role.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :node}
+  :template "docs/deployment-node.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :state}
+  :template "docs/state.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :package}
+  :template "docs/package.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :els #{:interface :class}}
+  :template "docs/code.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :use-case}
+  :template "docs/use-cases.md.cmb"
+  :subdir "docs"
+  :base-namespace "banking"
+  :base-name "use-cases"
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :person}
+  :template "docs/user-roles.md.cmb"
+  :subdir "docs"
+  :base-namespace "banking"
+  :base-name "user-roles"
   :extension "md"}
 
  ;;;
