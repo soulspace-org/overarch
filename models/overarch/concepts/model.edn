@@ -35,8 +35,8 @@
    :name "Package"
    :desc ""}
   {:el :concept
-   :id :overarch.concepts/namespace
-   :name "Namespace"
+   :id :overarch.concepts/interface
+   :name "Interface"
    :desc ""}
   {:el :concept
    :id :overarch.concepts/class
@@ -51,16 +51,24 @@
    :name "Method"
    :desc ""}
   {:el :concept
-   :id :overarch.concepts/function
-   :name "Function"
-   :desc ""}
-  {:el :concept
    :id :overarch.concepts/enum
    :name "Enum"
    :desc ""}
   {:el :concept
    :id :overarch.concepts/enum-value
    :name "Enum Value"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/namespace
+   :name "Namespace"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/protocol
+   :name "Protocol"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/function
+   :name "Function"
    :desc ""}
 
   ;;
