@@ -219,6 +219,12 @@
    :to :overarch.concepts/method
    :name "contains"
    :desc ""}
+  {:el :has
+   :id :overarch.concepts/method-contains-parameter
+   :from :overarch.concepts/method
+   :to :overarch.concepts/parameter
+   :name "contains"
+   :desc ""}
   {:el :rel
    :id :overarch.concepts/class-implements-interface
    :from :overarch.concepts/class
@@ -231,6 +237,20 @@
    :to :overarch.concepts/class
    :name "extends"
    :desc ""}
+
+  {:el :has
+   :id :overarch.concepts/namespace-contains-function
+   :from :overarch.concepts/namespace
+   :to :overarch.concepts/function
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/function-contains-parameter
+   :from :overarch.concepts/function
+   :to :overarch.concepts/parameter
+   :name "contains"
+   :desc ""}
+
 
   ;;
   ;; Deployment
