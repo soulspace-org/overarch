@@ -27,7 +27,53 @@
    :name "Component"
    :desc "A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer)."}
 
+  ;;
+  ;; Code
+  ;;
+  {:el :concept
+   :id :overarch.concepts/package
+   :name "Package"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/namespace
+   :name "Namespace"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/class
+   :name "Class"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/field
+   :name "Field"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/method
+   :name "Method"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/function
+   :name "Function"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/enum
+   :name "Enum"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/enum-value
+   :name "Enum Value"
+   :desc ""}
 
+  ;;
+  ;; Deployment
+  ;;
+  {:el :concept
+   :id :overarch.concepts/node
+   :name "Node"
+   :desc ""}
+
+  ;;
+  ;; Use Case
+  ;;
   {:el :concept
    :id :overarch.concepts/use-case
    :name "Use Case"
@@ -37,48 +83,150 @@
    :name "Actor"
    :desc "An actor (role) in a use case model."}
 
+  ;;
+  ;; Organization
+  ;;
+  {:el :concept
+   :id :overarch.concepts/organization
+   :name "Organization"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/org-unit
+   :name "Organizational Unit"
+   :desc ""}
+
+  ;;
+  ;; State Machine
+  ;;
+  {:el :concept
+   :id :overarch.concepts/state-machine
+   :name "State Machine"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/state
+   :name "State"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/start-state
+   :name "Start State"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/end-state
+   :name "End State"
+   :desc ""}
 
   ;;;
   ;;; Concept Relations
   ;;;
+  ;;
+  ;; Architecture
+  ;;
   {:el :is-a
    :id :overarch.concepts/system-is-a-technical-architecture-node
    :from :overarch.concepts/system
    :to :overarch.concepts/technical-architecture-node
-   :name "is a"}
+   :name "is a"
+   :desc ""}
   {:el :is-a
    :id :overarch.concepts/container-is-a-technical-architecture-node
    :from :overarch.concepts/container
    :to :overarch.concepts/technical-architecture-node
-   :name "is a"}
+   :name "is a"
+   :desc ""}
   {:el :is-a
    :id :overarch.concepts/component-is-a-technical-architecture-node
    :from :overarch.concepts/component
    :to :overarch.concepts/technical-architecture-node
-   :name "is a"}
+   :name "is a"
+   :desc ""}
 
   {:el :has
    :id :overarch.concepts/system-contains-container
    :from :overarch.concepts/system
    :to :overarch.concepts/container
-   :name "contains"}
+   :name "contains"
+   :desc ""}
   {:el :has
    :id :overarch.concepts/container-contains-component
    :from :overarch.concepts/container
    :to :overarch.concepts/component
-   :name "contains"}
+   :name "contains"
+   :desc ""}
 
   {:el :rel
-   :id :overarch.concepts/person-uses-system
+   :id :overarch.concepts/person-uses-technical-architecture-node
    :from :overarch.concepts/person
-   :to :overarch.concepts/system
-   :name "request"}
-  {:el :rel
-   :id :overarch.concepts/person-uses-container
-   :from :overarch.concepts/person
-   :to :overarch.concepts/container
-   :name "request"}
+   :to :overarch.concepts/technical-architecture-node
+   :name "request"
+   :desc ""}
 
+  ;;
+  ;; Deployment
+  ;;
+  {:el :has
+   :id :overarch.concepts/node-contains-node
+   :from :overarch.concepts/node
+   :to :overarch.concepts/node
+   :name "contains"
+   :desc ""}
+
+  {:el :rel
+   :id :overarch.concepts/node-links-node
+   :from :overarch.concepts/node
+   :to :overarch.concepts/node
+   :name "link"
+   :desc ""}
+
+  {:el :rel
+   :id :overarch.concepts/container-deployed-on-node
+   :from :overarch.concepts/container
+   :to :overarch.concepts/node
+   :name "deployed on"
+   :desc ""}
+
+  ;;
+  ;; State Machine
+  ;;
+  {:el :has
+   :id :overarch.concepts/state-machine-contains-state
+   :from :overarch.concepts/state-machine
+   :to :overarch.concepts/state
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/state-contains-state
+   :from :overarch.concepts/state
+   :to :overarch.concepts/state
+   :name "contains substate"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/start-state-is-a-state
+   :from :overarch.concepts/start-state
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/end-state-is-a-state
+   :from :overarch.concepts/end-state
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+
+  ;;
+  ;; Organization
+  ;;
+  {:el :has
+   :id :overarch.concepts/organization-contains-org-unit
+   :from :overarch.concepts/organization
+   :to :overarch.concepts/org-unit
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/org-unit-contains-org-unit
+   :from :overarch.concepts/org-unit
+   :to :overarch.concepts/org-unit
+   :name "contains"
+   :desc ""}
 
   ;
   }
