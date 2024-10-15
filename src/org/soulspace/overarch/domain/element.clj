@@ -416,7 +416,8 @@
 
       ;; concept model relations
       (derive :is-a                              :concept-model-relation)
-      (derive :has                               :concept-model-relation) 
+      (derive :has                               :concept-model-relation)
+      (derive :part-of                           :concept-model-relation)
       (derive :concept-model-relation            :concept-model-element)
 
       ;;; organization model
@@ -428,7 +429,7 @@
       ;; organization model relations
       (derive :collaborates-with                 :organization-model-relation)
       (derive :organization-model-relation       :organization-model-element)
-      
+
       ;;; responsibility model
       ;; responsibility model nodes
       (derive :organization                      :responsibility-model-node)
@@ -443,7 +444,15 @@
       ;; responsibility model relations
       (derive :responsible-for                   :responsibility-model-relation)
       (derive :responsibility-model-relation     :responsibility-model-element)
-      
+
+      ;;; process model
+      ;; process model nodes
+      (derive :capability                        :process-model-node)
+      (derive :process                           :process-model-node)
+      (derive :process-model-node                :process-model-element)
+      ;; process model relations
+      (derive :process-model-relation            :process-model-element)
+
       ;; model nodes
       (derive :architecture-model-node           :model-node)
       (derive :deployment-model-node             :model-node)
