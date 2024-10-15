@@ -54,7 +54,7 @@
 
 (def concept-relation-types
   "Relation types of concept models."
-  #{:rel :is-a :has})
+  #{:rel :is-a :has :part-of})
 
 ;;
 ;; Deployment model
@@ -148,7 +148,8 @@
              uml-node-types
              concept-node-types
              organization-node-types
-             responsibility-node-types))
+             responsibility-node-types
+             process-node-types))
 
 (def model-relation-types
   "Relation types of the model."
@@ -158,7 +159,8 @@
              uml-relation-types
              concept-relation-types
              organization-relation-types
-             responsibility-relation-types))
+             responsibility-relation-types
+             process-relation-types))
 
 (def model-element-types
   "Element types for the model."
