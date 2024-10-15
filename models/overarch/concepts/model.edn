@@ -51,12 +51,24 @@
    :name "Method"
    :desc ""}
   {:el :concept
+   :id :overarch.concepts/parameter
+   :name "Parameter"
+   :desc ""}
+  {:el :concept
    :id :overarch.concepts/enum
    :name "Enum"
    :desc ""}
   {:el :concept
    :id :overarch.concepts/enum-value
    :name "Enum Value"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/annotation
+   :name "Annotation"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/stereotype
+   :name "Stereotype"
    :desc ""}
   {:el :concept
    :id :overarch.concepts/namespace
@@ -169,6 +181,58 @@
    :desc ""}
 
   ;;
+  ;; Code
+  ;;
+  {:el :has
+   :id :overarch.concepts/package-contains-package
+   :from :overarch.concepts/package
+   :to :overarch.concepts/package
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/package-contains-interface
+   :from :overarch.concepts/package
+   :to :overarch.concepts/interface
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/package-contains-class
+   :from :overarch.concepts/package
+   :to :overarch.concepts/class
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/interface-contains-method
+   :from :overarch.concepts/interface
+   :to :overarch.concepts/method
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/class-contains-field
+   :from :overarch.concepts/class
+   :to :overarch.concepts/field
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/class-contains-method
+   :from :overarch.concepts/class
+   :to :overarch.concepts/method
+   :name "contains"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/class-implements-interface
+   :from :overarch.concepts/class
+   :to :overarch.concepts/interface
+   :name "implements"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/class-extends-class
+   :from :overarch.concepts/class
+   :to :overarch.concepts/class
+   :name "extends"
+   :desc ""}
+
+  ;;
   ;; Deployment
   ;;
   {:el :has
@@ -218,6 +282,40 @@
    :from :overarch.concepts/end-state
    :to :overarch.concepts/state
    :name "is a"
+   :desc ""}
+
+  ;;
+  ;; Use Case
+  ;;
+  {:el :is-a
+   :id :overarch.concepts/person-is-a-actor
+   :from :overarch.concepts/person
+   :to :overarch.concepts/actor
+   :name "is an"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/system-is-a-actor
+   :from :overarch.concepts/system
+   :to :overarch.concepts/actor
+   :name "is an"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/actor-uses-use-case
+   :from :overarch.concepts/actor
+   :to :overarch.concepts/use-case
+   :name "uses"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/use-case-includes-use-case
+   :from :overarch.concepts/use-case
+   :to :overarch.concepts/use-case
+   :name "includes"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/use-case-extends-use-case
+   :from :overarch.concepts/use-case
+   :to :overarch.concepts/use-case
+   :name "extends"
    :desc ""}
 
   ;;
