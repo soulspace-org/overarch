@@ -9,6 +9,17 @@
    :name "Person"
    :desc "A human actor or role."}
 
+  ;;
+  ;; Concept
+  ;;
+  {:el :concept
+   :id :overarch.concepts.concept
+   :name "Concept"
+   :desc ""}
+
+  ;;
+  ;; Architecture
+  ;;
   {:el :concept
    :id :overarch.concepts/technical-architecture-node
    :name "Technical Architecture Node"
