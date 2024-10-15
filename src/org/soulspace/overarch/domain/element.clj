@@ -116,7 +116,7 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:capability :process})
+  #{:capability :process :artifact})
 
 (def process-relation-types
   "Node types for process models."
