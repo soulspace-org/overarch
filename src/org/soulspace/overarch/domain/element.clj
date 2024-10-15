@@ -112,14 +112,14 @@
   #{:responsible-for})
 
 ;;
-;; Business model
+;; Process model
 ;;
-(def business-node-types
-  "Node types for business models."
-  #{:capability :business-process})
+(def process-node-types
+  "Node types for process models."
+  #{:capability :process})
 
-(def business-relation-types
-  "Node types for business models."
+(def process-relation-types
+  "Node types for process models."
   #{})
 
 ;; 
