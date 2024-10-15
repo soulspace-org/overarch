@@ -239,6 +239,12 @@
    :desc ""}
 
   {:el :has
+   :id :overarch.concepts/namespace-contains-protocol
+   :from :overarch.concepts/namespace
+   :to :overarch.concepts/protocol
+   :name "contains"
+   :desc ""}
+  {:el :has
    :id :overarch.concepts/namespace-contains-function
    :from :overarch.concepts/namespace
    :to :overarch.concepts/function
