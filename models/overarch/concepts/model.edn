@@ -1,0 +1,84 @@
+;;;;
+;;;; Concept Model for Overarch
+;;;;
+#{;;;
+  ;;; Concepts
+  ;;; 
+  {:el :concept
+   :id :overarch.concepts/person
+   :name "Person"
+   :desc "A human actor or role."}
+
+  {:el :concept
+   :id :overarch.concepts/technical-architecture-node
+   :name "Technical Architecture Node"
+   :desc "A technical node in the architecture model."}
+
+  {:el :concept
+   :id :overarch.concepts/system
+   :name "System"
+   :desc "A system relevant in the architecture."}
+  {:el :concept
+   :id :overarch.concepts/container
+   :name "Container"
+   :desc "A container is a part of a system and describes a deployed process in the architecture (e.g. a service or an application)."}
+  {:el :concept
+   :id :overarch.concepts/component
+   :name "Component"
+   :desc "A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer)."}
+
+
+  {:el :concept
+   :id :overarch.concepts/use-case
+   :name "Use Case"
+   :desc "A use case in the use case model."}
+  {:el :concept
+   :id :overarch.concepts/actor
+   :name "Actor"
+   :desc "An actor (role) in a use case model."}
+
+
+  ;;;
+  ;;; Concept Relations
+  ;;;
+  {:el :is-a
+   :id :overarch.concepts/system-is-a-technical-architecture-node
+   :from :overarch.concepts/system
+   :to :overarch.concepts/technical-architecture-node
+   :name "is a"}
+  {:el :is-a
+   :id :overarch.concepts/container-is-a-technical-architecture-node
+   :from :overarch.concepts/container
+   :to :overarch.concepts/technical-architecture-node
+   :name "is a"}
+  {:el :is-a
+   :id :overarch.concepts/component-is-a-technical-architecture-node
+   :from :overarch.concepts/component
+   :to :overarch.concepts/technical-architecture-node
+   :name "is a"}
+
+  {:el :has
+   :id :overarch.concepts/system-contains-container
+   :from :overarch.concepts/system
+   :to :overarch.concepts/container
+   :name "contains"}
+  {:el :has
+   :id :overarch.concepts/container-contains-component
+   :from :overarch.concepts/container
+   :to :overarch.concepts/component
+   :name "contains"}
+
+  {:el :rel
+   :id :overarch.concepts/person-uses-system
+   :from :overarch.concepts/person
+   :to :overarch.concepts/system
+   :name "request"}
+  {:el :rel
+   :id :overarch.concepts/person-uses-container
+   :from :overarch.concepts/person
+   :to :overarch.concepts/container
+   :name "request"}
+
+
+  ;
+  }
