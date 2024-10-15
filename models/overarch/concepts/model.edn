@@ -134,6 +134,18 @@
    :id :overarch.concepts/end-state
    :name "End State"
    :desc ""}
+  {:el :concept
+   :id :overarch.concepts/fork
+   :name "Fork"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/join
+   :name "Join"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/choice
+   :name "Choice"
+   :desc ""}
 
   ;;;
   ;;; Concept Relations
@@ -172,6 +184,18 @@
    :to :overarch.concepts/component
    :name "contains"
    :desc ""}
+  {:el :has
+   :id :overarch.concepts/component-contains-package
+   :from :overarch.concepts/component
+   :to :overarch.concepts/package
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/component-contains-namespace
+   :from :overarch.concepts/component
+   :to :overarch.concepts/namespace
+   :name "contains"
+   :desc ""}
 
   {:el :rel
    :id :overarch.concepts/person-uses-technical-architecture-node
@@ -199,6 +223,18 @@
    :id :overarch.concepts/package-contains-class
    :from :overarch.concepts/package
    :to :overarch.concepts/class
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/package-contains-enum
+   :from :overarch.concepts/package
+   :to :overarch.concepts/enum
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/package-contains-annotation
+   :from :overarch.concepts/package
+   :to :overarch.concepts/annotation
    :name "contains"
    :desc ""}
   {:el :has
@@ -236,6 +272,12 @@
    :from :overarch.concepts/class
    :to :overarch.concepts/class
    :name "extends"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/enum-contains-enum-value
+   :from :overarch.concepts/enum
+   :to :overarch.concepts/enum-value
+   :name "contains"
    :desc ""}
 
   {:el :has
@@ -309,6 +351,30 @@
    :to :overarch.concepts/state
    :name "is a"
    :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/fork-is-a-state
+   :from :overarch.concepts/fork
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/join-is-a-state
+   :from :overarch.concepts/join
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/choice-is-a-state
+   :from :overarch.concepts/choice
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/state-transition-to-state
+   :from :overarch.concepts/state
+   :to :overarch.concepts/state
+   :name "transition"}
+
 
   ;;
   ;; Use Case
