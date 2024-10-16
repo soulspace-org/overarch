@@ -169,6 +169,14 @@
    :id :overarch.concepts/choice
    :name "Choice"
    :desc ""}
+  {:el :concept
+   :id :overarch.concepts/history-state
+   :name "History State"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/deep-history-state
+   :name "Deep History State"
+   :desc ""}
 
   ;;;
   ;;; Concept Relations
@@ -401,6 +409,18 @@
   {:el :is-a
    :id :overarch.concepts/choice-is-a-state
    :from :overarch.concepts/choice
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/history-state-is-a-state
+   :from :overarch.concepts/history-state
+   :to :overarch.concepts/state
+   :name "is a"
+   :desc ""}
+  {:el :is-a
+   :id :overarch.concepts/deep-history-state-is-a-state
+   :from :overarch.concepts/deep-history-state
    :to :overarch.concepts/state
    :name "is a"
    :desc ""}
