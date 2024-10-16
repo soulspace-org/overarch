@@ -93,7 +93,7 @@ they must be given an id. Model references may be enhanced with additional
 attributes that are specific to the usage context (e.g. a style attribute in
 the context of a diagram)
 
-## Examples
+## Example
 This is an example of the specification of a model and some diagrams based on
 the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
@@ -361,6 +361,15 @@ If you use Visual Studio Code as described above, you can start *Overarch* in wa
 See [Usage](doc/usage.md) for additional information on modelling and usage of the *Overarch* CLI tool.
 
 See [Design](doc/design.md) for information about the design of *Overarch*.
+
+## Example Models
+Here are some Overarch example models:
+
+* [MyBank Model](https://github.com/soulspace-org/my-bank-model) 
+  is a show case model of a banking organization.
+
+* [Domain Driven Design Model](https://github.com/soulspace-org/domain-driven-design-model)
+  is a concept model with the patterns of domain driven design.
 
 ## Plans
 Here are my current plans to enhance overarch in the next releases.

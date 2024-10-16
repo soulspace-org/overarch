@@ -9,7 +9,7 @@ Version (Next)
 * fixed organization structure views
 * enhanced doc templates
 * added best practices to usage docs
-* enhanced example models
+* added links to example model repositories
 
 Version 0.31.0
 --------------
