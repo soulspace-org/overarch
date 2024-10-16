@@ -276,13 +276,13 @@
    :id :overarch.concepts/class-implements-interface
    :from :overarch.concepts/class
    :to :overarch.concepts/interface
-   :name "implements"
+   :name "implementation"
    :desc ""}
   {:el :rel
-   :id :overarch.concepts/class-extends-class
+   :id :overarch.concepts/class-inherits-class
    :from :overarch.concepts/class
    :to :overarch.concepts/class
-   :name "extends"
+   :name "inheritance"
    :desc ""}
   {:el :has
    :id :overarch.concepts/enum-contains-enum-value
