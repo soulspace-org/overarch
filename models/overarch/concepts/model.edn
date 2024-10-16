@@ -127,6 +127,18 @@
    :desc ""}
 
   ;;
+  ;; Process
+  ;;
+  {:el :concept
+   :id :overarch.concepts/capability
+   :name "Capability"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/process
+   :name "Process"
+   :desc ""}
+
+  ;;
   ;; State Machine
   ;;
   {:el :concept
@@ -298,8 +310,20 @@
    :name "contains"
    :desc ""}
   {:el :has
+   :id :overarch.concepts/namespace-contains-field
+   :from :overarch.concepts/namespace
+   :to :overarch.concepts/field
+   :name "contains"
+   :desc ""}
+  {:el :has
    :id :overarch.concepts/namespace-contains-function
    :from :overarch.concepts/namespace
+   :to :overarch.concepts/function
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/protocol-contains-function
+   :from :overarch.concepts/protocol
    :to :overarch.concepts/function
    :name "contains"
    :desc ""}
@@ -386,7 +410,6 @@
    :to :overarch.concepts/state
    :name "transition"}
 
-
   ;;
   ;; Use Case
   ;;
@@ -435,6 +458,38 @@
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/org-unit
    :name "contains"
+   :desc ""}
+
+  ;;
+  ;; Process
+  ;;
+  {:el :rel
+   :id :overarch.concepts/process-implements-capability
+   :from :overarch.concepts/process
+   :to :overarch.concepts/capability
+   :name "implements"
+   :desc ""}
+
+  ;;
+  ;; Model
+  ;;
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-implements-use-case
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/use-case
+   :name "implements"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-implements-process
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/process
+   :name "implements"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-implements-state-machine
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/state-machine
+   :name "implements"
    :desc ""}
 
   ;
