@@ -449,6 +449,7 @@
       ;; process model nodes
       (derive :capability                        :process-model-node)
       (derive :process                           :process-model-node)
+      (derive :artifact                          :process-model-node)
       (derive :process-model-node                :process-model-element)
       ;; process model relations
       (derive :process-model-relation            :process-model-element)
