@@ -98,7 +98,7 @@
 
 (def organization-relation-types
   "Relation types for organization models."
-  #{:collaborates-with})
+  #{:collaborates-with :role-in})
 
 ;;
 ;; Responsibility model
@@ -120,7 +120,7 @@
 
 (def process-relation-types
   "Node types for process models."
-  #{})
+  #{:role-in})
 
 ;; 
 ;; General category definitions
@@ -428,6 +428,7 @@
 
       ;; organization model relations
       (derive :collaborates-with                 :organization-model-relation)
+      (derive :role-in                           :organization-model-relation)
       (derive :organization-model-relation       :organization-model-element)
 
       ;;; responsibility model
@@ -452,6 +453,7 @@
       (derive :artifact                          :process-model-node)
       (derive :process-model-node                :process-model-element)
       ;; process model relations
+      (derive :role-in                           :process-model-relation)
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes
