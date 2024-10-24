@@ -5,8 +5,8 @@ Version (Next)
 --------------
 * added model navigation functions for state machines
 * added organization model predicates
-* added :process and :artifact nodes
-* added :role-in and :implements relations
+* added `:process` and `:artifact` nodes
+* added `:role-in` and `:implements` relations
 * fixed relative link functions in markdown api
 * fixed organization structure views
 * enhanced doc templates
