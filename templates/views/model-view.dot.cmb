@@ -108,13 +108,13 @@
   // graph [splines=ortho]
 <%
   (doseq [node nodes]
-%><%= (dot-id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
+%><%= (gv/id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
 <%
   )
 %> 
 <%
   (doseq [rel relations]
-%><%= (dot-id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
+%><%= (gv/id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
 <%
   )
 %> 
