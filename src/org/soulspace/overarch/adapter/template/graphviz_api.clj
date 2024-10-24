@@ -1,5 +1,6 @@
 (ns org.soulspace.overarch.adapter.template.graphviz-api
-  (:require [org.soulspace.overarch.adapter.render.graphviz :as gv]
+  (:require [clojure.string :as str]
+            [org.soulspace.overarch.adapter.render.graphviz :as gv]
             [org.soulspace.overarch.adapter.template.model-api :as m]))
 
 (defn alias-name
@@ -11,4 +12,11 @@
   "Returns a valid alias for the name part of the keyword `kw`."
   [kw]
   (gv/short-name kw))
+
+(defn id
+  "Returns an id for graphviz dot for the element `e`"
+  [e]
+  (-> (str (namespace e) "__" (name e))
+      (str/replace  "-" "_")
+      (str/replace  "." "_")))
 
