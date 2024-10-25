@@ -1,0 +1,54 @@
+<%
+;;;;
+;;;; Documentation Template for a Organization Structure View
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [elements (v/view-elements model e)
+      organizations (filter #(= :organization (:el %)) elements)
+      org-units (filter #(= :org-unit (:el %)) elements)]
+%># <%= (:title e)%>
+
+## Diagramm
+<%=(md/relative-view-link e e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq organizations)
+%>
+## Organizations
+| Name | Description |
+|---|---|
+<%
+    (doseq [org (sort-by #(str/capitalize (:name %)) organizations)]
+%>| <%= (md/relative-element-link e org) %> | <%= (t/single-line (:desc org)) %> |
+<%
+    )
+  )
+
+  (when (seq org-units)
+%>
+## Organization Units
+| Name | Description |
+|---|---|
+<%
+    (doseq [org-unit (sort-by #(str/capitalize (:name %)) org-units)]
+%>| <%= (md/relative-element-link e org-unit) %> | <%= (t/single-line (:desc org-unit)) %> |
+<%
+    )
+  )
+)
+%>
+
+(generated with <%= (:template ctx) %>)

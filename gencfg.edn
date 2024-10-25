@@ -116,6 +116,12 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :organization-structure-view}
+  :template "docs/views/organization-structure-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
  {:view-selection {:namespace-prefix "banking" :el :glossary-view}
   :template "docs/views/glossary-view.md.cmb"
   :subdir "docs"
