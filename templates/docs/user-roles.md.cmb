@@ -6,6 +6,8 @@
 (let [roles (filter #(= :person (:el %)) e)]
 %># User Roles
 
+This is a list of the user roles.
+
 | User Role | Description |
 |---|---|
 <%
