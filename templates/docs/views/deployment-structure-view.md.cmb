@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Documentation Template for a Deployment View
+;;;; Documentation Template for a Deployment Structure View
 ;;;;
 ;;;; config:
 ;;;;  :per-element true

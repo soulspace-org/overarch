@@ -10,6 +10,9 @@
 (let [elements (v/view-elements model e)]
 %># <%= (:title e)%>
 
+## Diagramm
+<%=(md/relative-view-link e e)%>
+
 ## Description
 <%= (:desc e) %>
 <%

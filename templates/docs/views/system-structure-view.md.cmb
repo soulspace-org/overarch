@@ -1,0 +1,79 @@
+<%
+;;;;
+;;;; Documentation Template for a System Structure View
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [elements (v/view-elements model e)
+      systems (filter #(= :system (:el %)) elements)
+      bounded-contexts (filter #(= :context-boundary (:el %)) elements)
+      containers (filter #(= :container (:el %)) elements)
+      components (filter #(= :component (:el %)) elements)
+]
+      
+%># <%= (:title e)%>
+
+## Diagramm
+<%=(md/relative-view-link e e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when (seq systems)
+%>## Systems
+| Name | Description |
+|---|---|
+<%
+    (doseq [system systems]
+%>| <%= (md/relative-element-link e system) %> | <%= (t/single-line (:desc system)) %> |
+<%
+    )
+  )
+
+  (when (seq bounded-contexts)
+%>## Bounded Contexts
+| Name | Description |
+|---|---|
+<%
+    (doseq [bounded-context bounded-contexts]
+%>| <%= (md/relative-element-link e bounded-context) %> | <%= (t/single-line (:desc bounded-context)) %> |
+<%
+    )
+  )
+
+  (when (seq containers)
+%>## Containers
+| Name | Description |
+|---|---|
+<%
+    (doseq [container containers]
+%>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
+<%
+    )
+  )
+
+  (when (seq components)
+%>## Components
+| Name | Description |
+|---|---|
+<%
+    (doseq [component components]
+%>| <%= (md/relative-element-link e component) %> | <%= (t/single-line (:desc component)) %> |
+<%
+    )
+  )
+
+)
+%>
+
+(generated with <%= (:template ctx) %>)

@@ -16,7 +16,8 @@
 %># <%= (:title e)%>
 
 ## Diagramm
-![<%= (name (:el e)) %>](<%= (name (:id e)) %>.png)
+<%=(md/relative-view-link e e)%>
+
 
 ## Description
 <%= (:desc e) %>
