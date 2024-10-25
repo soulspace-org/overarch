@@ -958,7 +958,7 @@
        (into #{} (referrer-xf model #(= :include (:el %))))))
 
 ;;
-;; responsibility model
+;; organization model
 ;;
 (defn responsible-for
   "Returns the nodes the organization unit `e` is responsible for in the `model`."
@@ -969,7 +969,7 @@
       (into #{} (referrer-xf model #(= :responsible-for (:el %))))))
 
 (defn responsibility-of
-  "Returns the organization model nodes the `e` is responsible for in the `model`."
+  "Returns the organization unit responsible for node `e` in the `model`."
   [model e]
   (->> e
        (el/id)
@@ -991,6 +991,22 @@
        (el/id)
        (get (:referred-id->relations model))
        (into #{} (referred-xf model #(= :collaborates-with (:el %))))))
+
+(defn roles
+  "Returns the person/user roles assigned in this node `e` in the model."
+  [model e]
+  (->> e
+      (el/id)
+      (get (:referrer-id->relations model))
+      (into #{} (referrer-xf model #(= :role-in (:el %))))))
+
+(defn roles-in
+  "Returns the nodes the person/user role 'e' has a role in in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (referred-xf model #(= :role-in (:el %))))))
 
 ;;;
 ;;; filtering element colletions by criteria

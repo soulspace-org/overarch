@@ -383,7 +383,7 @@
   (model/responsible-for model e))
 
 (defn responsibility-of
-  "Returns the organization model nodes the `e` is responsible for in the `model`."
+  "Returns the organization unit responsible for node `e` in the `model`."
   [model e]
   (model/responsibility-of model e))
 
@@ -397,4 +397,12 @@
   [model e]
   (model/collaboration-with model e))
 
+(defn roles
+  "Returns the person/user roles assigned in this node `e` in the model."
+  [model e]
+  (model/roles model e))
 
+(defn roles-in
+  "Returns the nodes the person/user role 'e' has a role in in the `model`."
+  [model e]
+  (model/roles-in model e))
