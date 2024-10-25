@@ -11,6 +11,7 @@
       nodes (filter #(= :node (:el %)) elements)
       containers (filter #(= :container (:el %)) elements)
       links (filter #(= :link (:el %)) elements)
+      deployments (filter #(= :deployed-on (:el %)) elements)
       ]
 %># <%= (:title e)%>
 
@@ -52,13 +53,21 @@
 |---|---|---|---|---|
 <%
     (doseq [link (sort-by #(str/capitalize (:name %)) links)]
-%>| <%= (:name link) %> | <%= (m/from-name model (:from link)) %> | <%= (m/to-name model (:to link)) %> | <%= (:tech link) %> | <%= (t/single-line (:desc link)) %> |
+%>| <%= (:name link) %> | <%= (m/from-name model link) %> | <%= (m/to-name model link) %> | <%= (:tech link) %> | <%= (t/single-line (:desc link)) %> |
 <%
     )
   )
+  (when (seq deployments) 
 %>
 ## Deployments
+| Name | From | To | Description |
+|---|---|---|---|---|
 <%
+    (doseq [deployment (sort-by #(str/capitalize (:name %)) deployments)]
+%>| <%= (:name deployment) %> | <%= (m/from-name model deployment) %> | <%= (m/to-name model deployment) %> | <%= (t/single-line (:desc deployment)) %> |
+<%
+    )
+  )
 )
 %>
 
