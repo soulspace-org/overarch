@@ -3,7 +3,7 @@
 ## Selection
 <%= (:selection ctx) %>
 
-<% (when-let [nodes (filter el/model-node? e)]%>
+<% (when-let [nodes (filter m/model-node? e)]%>
 ## Nodes
  Id |Name | Type | Subtype | Description | Tech | Tags
 ----|-----|------|---------|-------------|------|------
@@ -11,7 +11,7 @@
 %> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
 <%))%>
 
-<% (when-let [rels (filter el/model-relation? e)]%>
+<% (when-let [rels (filter m/model-relation? e)]%>
 ## Relations
  Id |Name | Type | From | To | Description | Tech
 ----|-----|------|------|----|-------------|------
