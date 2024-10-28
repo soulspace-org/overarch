@@ -272,6 +272,7 @@
               {:model-info true})
   (repo/update-state! {:model-dir "models/banking"})
   (repo/update-state! {:model-dir "models/overarch"})
+  (repo/update-state! {:model-dir "../my-bank-model/models/"})
   
   ;
   )
@@ -332,37 +333,26 @@
              (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
              (repo/model-elements))
        (model/collect-fields (repo/model)))
+  (into #{} (model/filter-xf (repo/model) {:namespace-prefix "mybank.compliance"}) (repo/nodes))
   ;
   )
 
 (comment ; view functions
+  (def view (model/resolve-element (repo/model)
+                                   :mybank.compliance/container-view))
   (def referenced
-    (view/referenced-elements (repo/model)
-                              (model/resolve-element (repo/model)
-                                                     :banking/container-view)))
+    (view/referenced-elements (repo/model) view))
   (def selected
-    (view/selected-elements (repo/model)
-                            (model/resolve-element (repo/model)
-                                                   :banking/container-view)))
+    (view/selected-elements (repo/model) view))
   (def specified
-    (view/specified-elements (repo/model)
-                             (model/resolve-element (repo/model)
-                                                    :banking/container-view)))
+    (view/specified-elements (repo/model) view))
   (def included
-    (view/included-elements (repo/model)
-                            (model/resolve-element (repo/model)
-                                                   :banking/container-view)
-                            specified))
+    (view/included-elements (repo/model) view specified))
   included
   (def in-view
-    (view/view-elements (repo/model)
-                        (model/resolve-element (repo/model)
-                                               :banking/container-view)))
+    (view/view-elements (repo/model) view))
   (def rendered
-    (view/elements-to-render (repo/model)
-                             (model/resolve-element (repo/model)
-                                                    :banking/container-view)))
-
+    (view/elements-to-render (repo/model) view))
   ;
   )
 
