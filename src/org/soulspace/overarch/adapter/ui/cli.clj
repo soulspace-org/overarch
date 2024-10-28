@@ -342,17 +342,22 @@
                                    :mybank.compliance/container-view))
   (def referenced
     (view/referenced-elements (repo/model) view))
+  referenced
   (def selected
     (view/selected-elements (repo/model) view))
+  selected
   (def specified
     (view/specified-elements (repo/model) view))
+  specified
   (def included
     (view/included-elements (repo/model) view specified))
   included
   (def in-view
     (view/view-elements (repo/model) view))
+  in-view
   (def rendered
     (view/elements-to-render (repo/model) view))
+  rendered
   ;
   )
 
