@@ -997,16 +997,16 @@
   [model e]
   (->> e
       (el/id)
-      (get (:referrer-id->relations model))
-      (into #{} (referrer-xf model #(= :role-in (:el %))))))
+      (get (:referred-id->relations model))
+      (into #{} (referred-xf model #(= :role-in (:el %))))))
 
 (defn roles-in
   "Returns the nodes the person/user role 'e' has a role in in the `model`."
   [model e]
   (->> e
-       (el/id)
-       (get (:referred-id->relations model))
-       (into #{} (referred-xf model #(= :role-in (:el %))))))
+      (el/id)
+      (get (:referrer-id->relations model))
+      (into #{} (referrer-xf model #(= :role-in (:el %))))))
 
 ;;;
 ;;; filtering element colletions by criteria
