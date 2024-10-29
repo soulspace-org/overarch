@@ -36,7 +36,7 @@
 | Name | Type | Description |
 |---|---|---|
 <%
-  (doseq [state states]
+  (doseq [state (sort-by :name states)]
 %>| <%= (render-state state) %> | <%= (:el state) %> | <%= (t/single-line (:desc state)) %> |
 <%
   )

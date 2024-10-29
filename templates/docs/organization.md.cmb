@@ -40,7 +40,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [sub-unit children]
+    (doseq [sub-unit (sort-by :name children)]
 %>| <%= (md/relative-element-link e sub-unit) %> | <%= (t/single-line (:desc sub-unit)) %> |
 <%
     )
@@ -52,7 +52,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [role roles]
+    (doseq [role (sort-by :name roles)]
 %>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
 <%
     )
@@ -64,7 +64,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [responsibility responsible-for]
+    (doseq [responsibility (sort-by :name responsible-for)]
 %>| <%= (md/relative-element-link e responsibility) %> | <%= (t/single-line (:desc responsibility)) %> |
 <%
     )
@@ -76,7 +76,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [collaboration collaborates-with]
+    (doseq [collaboration (sort-by :name collaborates-with)]
 %>| <%= (md/relative-element-link e collaboration) %> | <%= (t/single-line (:desc collaboration)) %> |
 <%
     )

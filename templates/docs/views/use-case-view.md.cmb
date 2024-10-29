@@ -36,7 +36,7 @@
 | Name | Type | Description |
 |---|---|---|
 <%
-  (doseq [actor actors]
+  (doseq [actor (sort-by :name actors)]
 %>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (t/single-line (:desc actor)) %> | 
 <%
   )
@@ -45,7 +45,7 @@
 | Name | Level | Description |
 |---|---|---|
 <%
-  (doseq [uc use-cases]
+  (doseq [uc (sort-by :name use-cases)]
 %>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
   )

@@ -35,7 +35,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [system systems]
+    (doseq [system (sort-by :name systems)]
 %>| <%= (md/relative-element-link e system) %> | <%= (t/single-line (:desc system)) %> |
 <%
     )
@@ -46,7 +46,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [bounded-context bounded-contexts]
+    (doseq [bounded-context (sort-by :name bounded-contexts)]
 %>| <%= (md/relative-element-link e bounded-context) %> | <%= (t/single-line (:desc bounded-context)) %> |
 <%
     )
@@ -57,7 +57,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [container containers]
+    (doseq [container (sort-by :name containers)]
 %>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
 <%
     )
@@ -68,7 +68,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [component components]
+    (doseq [component (sort-by :name components)]
 %>| <%= (md/relative-element-link e component) %> | <%= (t/single-line (:desc component)) %> |
 <%
     )

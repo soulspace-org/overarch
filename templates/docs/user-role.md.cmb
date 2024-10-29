@@ -15,6 +15,11 @@
     "---"))
 
 (let [use-cases (m/using model e)
+      roles-in  (m/roles-in model e)
+      ; org-units (filter #(contains? #{:organization :org-unit} (:el %)) roles-in)
+      ; processes (filter #(contains? #{:process} (:el %)) roles-in)
+      org-units roles-in
+      processes nil
       containers nil]
 %># User Role <%= (:name e) %>
 
@@ -28,12 +33,38 @@
 <%
   )
 
+  (when (seq org-units)
+%>## Organization Units
+The <%= (:name e) %> is a role in the following organizational units.
+
+| Name | Desc |
+|---|---|
+<%  (doseq [org (sort-by :name org-units)]
+%>| <%= (md/relative-element-link e org) %> | <%= (t/single-line (:desc org)) %> |
+<%
+    )
+  )
+
+  (when (seq (sort-by :name processes))
+%>## Processes
+The <%= (:name e) %> is a role in these processes.
+
+| Name | Desc |
+|---|---|
+<%  (doseq [process processes]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
+<%
+    )
+  )
+
   (when (seq use-cases)
 %>## Use Cases
+The <%= (:name e) %> is an actor in these use cases.
+
 | Name | Level | Desc |
 |---|---|---|
 <%
-    (doseq [uc use-cases]
+    (doseq [uc (sort-by :name use-cases)]
 %>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
@@ -44,7 +75,7 @@
 | Name | Desc |
 |---|---|
 <%
-    (doseq [container containers]
+    (doseq [container (sort-by :name containers)]
 %>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
 <%
     )

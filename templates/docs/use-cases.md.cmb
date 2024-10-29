@@ -19,7 +19,7 @@ This is a list of the use cases.
 | Use Case | Level | Description |
 |---|---|---|
 <%
-  (doseq [use-case use-cases]
+  (doseq [use-case (sort-by :name use-cases)]
 %>| <%= (md/element-link use-case) %> | <%= (use-case-level use-case) %> | <%= (t/single-line (:desc use-case)) %> |
 <%
   )

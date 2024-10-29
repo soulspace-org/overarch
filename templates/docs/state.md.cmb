@@ -18,7 +18,7 @@
   (when (:doc e)
 %>## Documentation
 <%= (:doc e) %>
-<%
+<%extensions
   )
 %>
 ## Transitions
@@ -35,7 +35,7 @@ Name | From | Description
   )
   (when (seq transitions-outgoing)
 %>### Outgoing Transitions
-Name | From | Description
+Name | To | Description
 ---|---|---
 <%
     (doseq [transition transitions-outgoing]
