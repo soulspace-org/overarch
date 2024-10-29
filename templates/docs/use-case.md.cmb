@@ -75,6 +75,18 @@
 <%
     )
   )
+
+;;
+;; include relevant view diagrams
+;;
+  (when 
+    (and (contains? #{:use-case} (:el e)) (m/resolve-view model e "use-case-view"))
+%>
+## Use Case View
+<%= (md/relative-view-link e (m/resolve-view model e "use-case-view")) %>
+
+<%= (md/relative-element-link e (m/resolve-view model e "use-case-view")) %>
+<%
 )
 %>
 

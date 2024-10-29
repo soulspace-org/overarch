@@ -73,6 +73,15 @@ Name | Description
 <%
     )
   )
+;;
+;; include relevant view diagrams
+;;
+  (when 
+    (and (contains? #{:node} (:el e)) (m/resolve-view model e "deployment-structure-view"))
+%>
+## Deployment Structure
+<%= (md/relative-view-link e (m/resolve-view model e "deployment-structure-view")) %>
+<%
 )
 %>
 

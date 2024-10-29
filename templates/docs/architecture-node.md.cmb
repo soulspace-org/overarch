@@ -206,6 +206,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 %>
 ## System Context View
 <%= (md/relative-view-link e (m/resolve-view model e "context-view")) %>
+
+<%= (md/relative-element-link e (m/resolve-view model e "context-view")) %>
 <%
   )
   
@@ -213,6 +215,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 %>
 ## Container View
 <%= (md/relative-view-link e (m/resolve-view model e "container-view")) %>
+
+<%= (md/relative-element-link e (m/resolve-view model e "container-view")) %>
 <%
   )
 
@@ -220,6 +224,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 %>
 ## Component View
 <%= (md/relative-view-link e (m/resolve-view model e "component-view")) %>
+
+<%= (md/relative-element-link e (m/resolve-view model e "component-view")) %>
 <%
   )
 )

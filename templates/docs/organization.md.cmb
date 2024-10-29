@@ -90,6 +90,7 @@
 %>
 ## Organization Structure
 <%= (md/relative-view-link e (m/resolve-view model e "organization-structure-view")) %>
+<%= (md/relative-element-link e (m/resolve-view model e "organization-structure-view")) %>
 <%
   )
 )
