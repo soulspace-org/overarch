@@ -11,7 +11,10 @@
 (let [superordinates (m/superordinates model e)
       subordinates (m/subordinates model e)
       features (m/features model e)
-      features-of (m/feature-of model e)]
+      features-of (m/feature-of model e)
+      related-to nil ; TODO add other relations
+      related-from nil ; TODO add other relations
+      ]
 
 %># Concept <%= (:name e) %>
 ## Description
@@ -28,7 +31,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [superordinate superordinates]
+    (doseq [superordinate (sort-by :name superordinates)]
 %>| <%= (md/relative-element-link e superordinate) %> | <%= (t/single-line (:desc superordinate)) %> |
 <%
     )
@@ -39,7 +42,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [subordinate subordinates]
+    (doseq [subordinate (sort-by :name subordinates)]
 %>| <%= (md/relative-element-link e subordinate) %> | <%= (t/single-line (:desc subordinate)) %> |
 <%
     )
@@ -50,7 +53,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [feature features]
+    (doseq [feature (sort-by :name features)]
 %>| <%= (md/relative-element-link e feature) %> | <%= (t/single-line (:desc feature)) %> |
 <%
     )
@@ -61,13 +64,36 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [feature features-of]
+    (doseq [feature (sort-by :name features-of)]
 %>| <%= (md/relative-element-link e feature) %> | <%= (t/single-line (:desc feature)) %> |
 <%
     )
   )
 
   ; TODO add other relations
+  (when (seq related-to)
+%># Related to
+| Name | Description |
+|---|---|
+<%
+    (doseq [rel (sort-by :name related-to)]
+%>| <%= (md/relative-element-link e rel) %> | <%= (t/single-line (:desc rel)) %> |
+<%
+    )
+  )
+
+  ; TODO add other relations
+  (when (seq related-from)
+%># Relation from
+| Name | Description |
+|---|---|
+<%
+    (doseq [rel (sort-by :name related-from)]
+%>| <%= (md/relative-element-link e rel) %> | <%= (t/single-line (:desc rel)) %> |
+<%
+    )
+  )
+
 )
 %>
 

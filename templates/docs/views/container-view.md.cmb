@@ -43,7 +43,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [role roles]
+    (doseq [role (sort-by :name roles)]
 %>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
 <%
     ))
@@ -53,7 +53,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [system systems]
+    (doseq [system (sort-by :name systems)]
 %>| <%= (md/relative-element-link e system) %> | <%= (t/single-line (:desc system)) %> |
 <%
     ))
@@ -63,7 +63,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [container containers]
+    (doseq [container (sort-by :name containers)]
 %>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
 <%
     ))

@@ -44,7 +44,7 @@ The system consists of different subdomains which have been structured into boun
 | Bounded Context | Description |
 |---|---|
 <%
-    (doseq [bc bounded-contexts]
+    (doseq [bc (sort-by :name bounded-contexts)]
 %>| <%= (md/relative-element-link e bc) %> | <%= (t/single-line (:desc bc)) %> |
 <%
     )
@@ -57,7 +57,7 @@ These containers are the main processes of the <%= (:name e) %> system.
 | Container | Description |
 |---|---|
 <%
-    (doseq [container containers]
+    (doseq [container (sort-by :name containers)]
 %>| <%= (md/relative-element-link e container)%>| <%= (t/single-line (:desc container)) %> |
 <%
     )
@@ -70,7 +70,7 @@ These components show the internal structure of the <%= (:name e) %> container.
 | Component | Description |
 |---|---|
 <%
-    (doseq [component components]
+    (doseq [component (sort-by :name components)]
 %>| <%= (md/relative-element-link e component) %> | <%= (t/single-line (:desc component)) %> |
 <%
     )

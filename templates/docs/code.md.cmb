@@ -52,7 +52,7 @@
 %>
 ## Fields
 <%
-    (doseq [field fields]
+    (doseq [field (sort-by :name fields)]
 %>### <%= (:name field) %>
 <%= (:type field) %> <%= (:name field) %>
  
@@ -64,7 +64,7 @@
 %>
 ## Methods
 <%
-    (doseq [method methods]
+    (doseq [method (sort-by :name methods)]
       (let [parameters (m/children model e)]
 %>###  <%= (:name method) %>
 <%= (:type method) %> <%= (:name method) %>(<%= (str/join ", " (map :name parameters)) %>)

@@ -11,7 +11,7 @@ This is a list of the user roles.
 | User Role | Description |
 |---|---|
 <%
-  (doseq [role roles]
+  (doseq [role (sort-by :name roles)]
 %>| <%= (md/element-link role) %> | <%= (t/single-line (:desc role)) %> |  
 <%
   )

@@ -7,7 +7,8 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [elements (v/view-elements model e)]
+(let [elements (v/view-elements model e)
+      model-nodes (filter m/model-node? elements)]
 %># <%= (:title e)%>
 
 ## Diagramm
@@ -25,7 +26,7 @@
 %>
 ## Concepts
 <%
-  (doseq [concept (sort-by :name (filter m/model-node? elements))]
+  (doseq [concept (sort-by :name model-nodes)]
 %>### <%= (md/relative-element-link e concept) %>
 <%= (:desc concept) %>
 

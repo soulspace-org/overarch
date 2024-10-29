@@ -30,7 +30,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [package package]
+    (doseq [package (sort-by :name package)]
 %>|<%= (md/relative-element-link e package) %>|<%= (t/single-line (:desc package)) %>|
 <%
     )
@@ -41,7 +41,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [interface interfaces]
+    (doseq [interface (sort-by :name interfaces)]
 %>|<%= (md/relative-element-link e interface) %>|<%= (t/single-line (:desc interface)) %>|
 <%
     )
@@ -52,7 +52,7 @@
 | Name | Description |
 |---|---|
 <%
-    (doseq [class classes]
+    (doseq [class (sort-by :name classes)]
 %>|<%= (md/relative-element-link e class) %>|<%= (t/single-line (:desc class)) %>|
 <%
     )

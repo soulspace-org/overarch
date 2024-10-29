@@ -37,7 +37,7 @@
 | Name | Type | Description |
 |---|---|---|
 <%
-    (doseq [actor actors]
+    (doseq [actor (sort-by :name actors)]
 %>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (t/single-line (:desc actor)) %> |
 <%
     )
@@ -48,7 +48,7 @@
 | Name | Type | Description |
 |---|---|---|
 <%
-    (doseq [actor supporting-actors]
+    (doseq [actor (sort-by :name supporting-actors)]
 %>| <%= (md/relative-element-link e actor) %> | <%= (:el actor) %> | <%= (t/single-line (:desc actor)) %> |
 <%
     )
@@ -59,7 +59,7 @@
 | Name | Level | Description |
 |---|---|---|
 <%
-    (doseq [uc included]
+    (doseq [uc (sort-by :name included)]
 %>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
@@ -70,7 +70,7 @@
 | Name | Level | Description |
 |---|---|---|
 <%
-    (doseq [uc extensions]
+    (doseq [uc (sort-by :name extensions)]
 %>| <%= (md/relative-element-link e uc) %> | <%= (use-case-level uc) %> | <%= (t/single-line (:desc uc)) %> |
 <%
     )
