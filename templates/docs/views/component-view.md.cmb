@@ -37,6 +37,51 @@
 <%= (:doc e) %>
 <%
   )
+
+  (when (seq roles)
+%>
+## User Roles
+| Name | Description |
+|---|---|
+<%
+    (doseq [role (sort-by :name roles)]
+%>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
+<%
+    )
+  )
+
+  (when (seq systems)
+%>## Systems
+| Name | Description |
+|---|---|
+<%
+    (doseq [system (sort-by :name systems)]
+%>| <%= (md/relative-element-link e system) %> | <%= (t/single-line (:desc system)) %> |
+<%
+    )
+  )
+  
+  (when (seq containers)
+%>## Containers
+| Name | Description |
+|---|---|
+<%
+    (doseq [container (sort-by :name containers)]
+%>| <%= (md/relative-element-link e container) %> | <%= (t/single-line (:desc container)) %> |
+<%
+    )
+  )
+
+  (when (seq components)
+%>## Containers
+| Name | Description |
+|---|---|
+<%
+    (doseq [component (sort-by :name components)]
+%>| <%= (md/relative-element-link e component) %> | <%= (t/single-line (:desc component)) %> |
+<%
+    )
+  )
 )
 %>
 
