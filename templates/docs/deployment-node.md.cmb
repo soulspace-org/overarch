@@ -82,6 +82,7 @@ Name | Description
 ## Deployment Structure
 <%= (md/relative-view-link e (m/resolve-view model e "deployment-structure-view")) %>
 <%
+  )
 )
 %>
 

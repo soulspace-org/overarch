@@ -87,6 +87,7 @@
 
 <%= (md/relative-element-link e (m/resolve-view model e "use-case-view")) %>
 <%
+  )
 )
 %>
 
