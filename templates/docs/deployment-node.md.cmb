@@ -17,6 +17,9 @@
 ## Description
 <%= (:desc e) %>
 
+## Technology
+<%= (:tech e) %>
+
 <%
   (when (:doc e)
 %>## Documentation
