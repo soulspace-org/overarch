@@ -73,7 +73,7 @@
   )
 
   (when (seq components)
-%>## Containers
+%>## Components
 | Name | Description |
 |---|---|
 <%
