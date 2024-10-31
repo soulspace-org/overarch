@@ -116,7 +116,7 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:capability :process :artifact})
+  #{:capability :process :artifact :requirement :decision})
 
 (def process-relation-types
   "Node types for process models."
@@ -451,6 +451,9 @@
       (derive :capability                        :process-model-node)
       (derive :process                           :process-model-node)
       (derive :artifact                          :process-model-node)
+      (derive :requirement                       :process-model-node)
+      (derive :decision                          :process-model-node)
+      ; (derive :test                              :process-model-node)
       (derive :process-model-node                :process-model-element)
       ;; process model relations
       (derive :role-in                           :process-model-relation)
