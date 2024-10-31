@@ -124,6 +124,18 @@
    :tags #{"containment-model"}}
 
   {:el :class
+   :id :overarch.data-model/implements
+   :name "implements"
+   :desc "A trace relation from an implementation to its definition."
+   :tags #{"trace-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/implements-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/implements
+   :tags #{"trace-model"}}
+
+  {:el :class
    :id :overarch.data-model/rel
    :name "rel"
    :desc "A generic relation between two elements of the model.
@@ -1693,6 +1705,120 @@
    :to :overarch.data-model/organization-model-relation
    :from :overarch.data-model/collaborates-with
    :tags #{"organization-model"}}
+
+  ;;
+  ;; Process Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/process-model-element
+   :abstract true
+   :name "process-model-element"
+   :desc "An element in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/process-model-node
+   :abstract true
+   :name "process-model-node"
+   :desc "A node in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/process-model-relation
+   :abstract true
+   :name "process-model-relation"
+   :desc "A relation in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/capability
+   :name "capability"
+   :desc "A capability in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/process
+   :name "process"
+   :desc "A process in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/requirement
+   :name "requirement"
+   :desc "A requirement in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/decision
+   :name "decision"
+   :desc "An decision in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/artifact
+   :name "artifact"
+   :desc "An artifact in the process model"
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/process-model-node
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/process-model-relation
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/process-model-element
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-model-node-is-a-process-model-element
+   :to :overarch.data-model/process-model-element
+   :from :overarch.data-model/process-model-node
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-model-relation-is-a-process-model-element
+   :to :overarch.data-model/process-model-element
+   :from :overarch.data-model/process-model-relation
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/capability-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/capability
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/process-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/process
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/artifact-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/artifact
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/requirement-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/requirement
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/decision-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/decision
+   :tags #{"process-model"}}
 
 
   ;;
