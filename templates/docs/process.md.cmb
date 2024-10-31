@@ -1,0 +1,38 @@
+<%
+;;;;
+;;;; Documentation Template for an Organizational Unit
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [roles (m/roles model e)
+      ]
+
+%># <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+
+<%
+  )
+
+  (when (seq roles)
+%>
+## Roles
+| Name | Description |
+|---|---|
+<%
+    (doseq [role (sort-by :name roles)]
+%>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
+<%
+    )
+  )
+
+)
+%>

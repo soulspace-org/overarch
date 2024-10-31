@@ -144,6 +144,12 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :process}
+  :template "docs/process.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
  {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
   :subdir "docs"
