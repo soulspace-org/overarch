@@ -144,12 +144,6 @@
   :per-element true
   :id-as-name true
   :extension "md"}
- {:selection {:namespace-prefix "banking" :el :process}
-  :template "docs/process.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
  {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
   :subdir "docs"
@@ -203,6 +197,36 @@
   :subdir "docs"
   :base-namespace "banking"
   :base-name "user-roles"
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :capability}
+  :template "docs/capability.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :process}
+  :template "docs/process.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :artifact}
+  :template "docs/artifact.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :requirement}
+  :template "docs/requirement.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:namespace-prefix "banking" :el :decision}
+  :template "docs/decision.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
   :extension "md"}
 
  ;;;

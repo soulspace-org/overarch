@@ -1,17 +1,15 @@
 <%
 ;;;;
-;;;; Documentation Template for a Process
+;;;; Documentation Template for a Capability
 ;;;;
 ;;;; config:
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [roles (m/roles model e)
-      artifacts nil ; TODO
-      capabilities nil ; TODO
+(let [processes nil ; TODO
       ]
-
+    
 %># <%= (:name e) %>
 ## Description
 <%= (:desc e) %>
@@ -24,14 +22,14 @@
 <%
   )
 
-  (when (seq roles)
+  (when (seq processes)
 %>
 ## Roles
 | Name | Description |
 |---|---|
 <%
-    (doseq [role (sort-by :name roles)]
-%>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
+    (doseq [process (sort-by :name processes)]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
 <%
     )
   )

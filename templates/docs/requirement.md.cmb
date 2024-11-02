@@ -1,0 +1,28 @@
+<%
+;;;;
+;;;; Documentation Template for a Requirement
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [processes nil ; TODO
+      ]
+    
+%># <%= (:name e) %>
+## Description
+<%= (:desc e) %>
+
+<%
+  (when (:doc e)
+%>## Documentation
+<%= (:doc e) %>
+
+<%
+  )
+
+)
+%>
+
+(generated with <%= (:template ctx) %>)
