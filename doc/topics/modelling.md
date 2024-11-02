@@ -121,7 +121,6 @@ syntax check and syntax highlighting.
 
 ![Model editing](/doc/images/overarch_vscode_model.png)
 
-
 # Models
 You can split your model into separate EDN files, which might be reasonable for
 big systems. Overarch can recursively read all models from a directory or
@@ -165,6 +164,18 @@ key       | type               | values                 | description
 :doc      | multiline string   | longer documentation   | documentation of the model element, not to be rendered in diagrams but textual output
 :maturity | keyword            | :proposed, :deprecated | the maturity of the model element
 :tags     | set of strings     | e.g. #{"critical"}     | some tags which can be used in element selection
+
+### Generic relations (:contained-in :implements)
+The `:contained-in` relation is used to model hierarchical composition.
+Hierarchical composition specified with the `:ct` key in the EDN models is
+converted to :contained-in relations when the model is loaded.
+`contained-in` relations can also be used explicitly in the EDN model to
+help structuring the model in separate files.
+
+An `:implements` relation defines the implementation of some type of node by
+another type of node, e.g. the implementation of a use case by a container.
+The `:implements` relations can be used to establish traceability between
+different models or node types in Overarch.
 
 ## References (:ref)
 References refer to a model element with the given id. They are primarily used
@@ -241,8 +252,8 @@ kind        | sync/async  | dependency  | description
 :request    | sync        | true        | synchrounous request
 :response   | sync        | false       | response to a synchronous request
 :send       | async       | true        | asynchronous point-to-point message
-:publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue)
-:subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue)
+:publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
+:subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
 :dataflow   | unspecified | unspecified | flow of data independent of the call semantic
 :rel        | unspecified | unspecified | unclassified relation
 
@@ -331,7 +342,6 @@ Overarch also supports elements for C4 deployment models.
 ### Logical Data Model for the Deployment Model Elements
 ![Deployment Model Elements](/doc/images/overarch/data-model/deployment-model-elements.svg)
 
-
 ### Node (:node)
 A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
@@ -345,7 +355,6 @@ relation type | description
 :rel
 
 ## Concept Model
-
 A concept model captures relevant concepts of the domain(s) of the system. The
 concepts could be part of the ubiquous language of the systems domain.
 
@@ -373,7 +382,6 @@ relation type | description
 See [example concept model](/models/concept/model.edn).
 
 ## Use Case Model
-
 A use case model captures the functionality a system is suposed to deliver.
 High level use cases provide an overview of this functionality and may link
 to business processes, domain stories and arcitectural elements.
@@ -391,7 +399,6 @@ model so prior knowledge of UML modelling applies here.
 Example [Use Case Model](/models/usecase/model.edn)
 
 ### Use Cases (:use-case)
-
 A use case describes the goal of an actor in the context of the system
 described. The goal can be a concrete user goal, a high level summary of user
 goals or a subfunction of a user goal. This is captured by the :level key.
@@ -403,7 +410,6 @@ key         | type    | values                           | description
 :ext-points | string  |                                  | extension points of a use case
 
 ### Actors (:person, :system, :container, :actor)
-
 Persons, systems and containers from the architecture model should be used as
 actors in the use case model to provide a connection between the architecture
 model and the use case model.
@@ -414,7 +420,6 @@ A reason for an :actor element might be the introduction of a time actor to
 model the scheduling of use cases.
 
 ### Relations (:uses :include :extends :generalizes)
-
 Relations connect actors to the use cases or use cases with other use cases.
 Use case models support different kinds of relations.
 
@@ -426,7 +431,6 @@ kind         | description
 :generalizes | 
 
 ## State Machine Model
-
 A state model describes a state machine which can be used to model the states
 a system component can be in and the transition from one state to the next
 state based on the events the system receives as input.
@@ -468,7 +472,6 @@ multiple input transitions and a single output transition.
 
 
 ## Code Model
-
 A code model captures the static structure of the code.
 
 The abstraction level of a code model is not very high compared to the actual
@@ -517,6 +520,7 @@ A function is a first class element in functional programming.
 It has input parameters and calculates results.
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
+The relations connect the nodes of the code model. They are essentially the relation types of the UML.
 
 ## Organization Model
 The responsibility model captures the organizational structure of the system
@@ -525,7 +529,7 @@ architecture.
 ### Logical Data Model for the Organization Model Elements
 ![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
 
-### Organization Structure (:organization :org-unit)
+### Organization Structure Nodes (:organization :org-unit)
 An organization contains organizational units (e.g. branches and departments)
 and organizational units can cointain other organizational units.
 You can enhance the org-unit node with attributes specific for your organization
@@ -536,3 +540,6 @@ documentation or other artifacts.
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
+## Process Model
+
+### Nodes (:capability :process :artifact :requirement :decision)
