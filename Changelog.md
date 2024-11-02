@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version (Next)
+Version 0.32.0
 --------------
 * added model navigation functions for state machines
 * added generic model navigation functions
