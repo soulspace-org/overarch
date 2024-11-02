@@ -4,6 +4,7 @@ Changelog
 Version (Next)
 --------------
 * added model navigation functions for state machines
+* added generic model navigation functions
 * added organization model predicates
 * added `:capability`, `:process`, `:artifact`, `requirement` and `decision` nodes
 * added `:role-in` and `:implements` relations

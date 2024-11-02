@@ -583,6 +583,34 @@
         (map (element-resolver model))
         (into #{}))))
 
+(defn referring-nodes
+  "Returns the nodes referring to `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (->> e
+        (el/id)
+        (get (:referred-id->relations model))
+        (into #{} (referred-xf model))))
+  ([model e rel]
+   (->> e
+        (el/id)
+        (get (:referred-id->relations model))
+        (into #{} (referred-xf model #(contains? rel (:el %)))))))
+
+(defn referred-nodes
+  "Returns the nodes referred by `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (->> e
+        (el/id)
+        (get (:referrer-id->relations model))
+        (into #{} (referrer-xf model))))
+  ([model e rel]
+   (->> e
+        (el/id)
+        (get (:referrer-id->relations model))
+        (into #{} (referrer-xf model #(contains? rel (:el %)))))))
+
 ;;
 ;; architecture model
 ;;

@@ -161,6 +161,23 @@
   [model rel]
   (model/to-name model rel))
 
+(defn referring-nodes
+  "Returns the nodes referring to `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (model/referring-nodes model e))
+  ([model e rel]
+   (model/referring-nodes model e rel)))
+
+(defn referred-nodes
+  "Returns the nodes referred by `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (model/referred-nodes model e))
+  ([model e rel]
+   (model/referred-nodes model e rel)))
+
+
 ;;
 ;; Architecture Model navigation
 ;;
