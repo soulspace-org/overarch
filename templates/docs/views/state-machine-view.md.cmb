@@ -19,7 +19,7 @@
 
 %># <%= (:title e) %>
 
-## Diagramm
+## Diagram
 <%=(md/relative-view-link e e)%>
 
 ## Description

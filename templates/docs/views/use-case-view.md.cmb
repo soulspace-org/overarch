@@ -19,7 +19,7 @@
       use-cases (filter #(and (m/model-node? %) (= :use-case (:el %))) elements)]
 %># <%= (:title e)%>
 
-## Diagramm
+## Diagram
 <%=(md/relative-view-link e e)%>
 
 ## Description

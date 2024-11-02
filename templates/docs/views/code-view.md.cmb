@@ -15,7 +15,7 @@
       classes (filter #(= :class (:el %)) elements)]
 %># <%= (:title e)%>
 
-## Diagramm
+## Diagram
 <%=(md/relative-view-link e e)%>
 
 
