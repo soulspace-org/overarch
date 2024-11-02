@@ -13,7 +13,7 @@
       responsible-for (m/responsible-for model e)
       collaborates-with (m/collaborates-with model e)]
 
-%># <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 

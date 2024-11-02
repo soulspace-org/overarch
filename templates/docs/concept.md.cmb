@@ -16,7 +16,7 @@
       related-from nil ; TODO add other relations
       ]
 
-%># Concept <%= (:name e) %>
+%>#<%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 <%

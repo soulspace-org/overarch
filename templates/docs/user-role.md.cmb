@@ -21,7 +21,7 @@
       org-units roles-in
       processes nil
       containers nil]
-%># User Role <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 
 ## Description
 <%= (:desc e) %>

@@ -13,7 +13,7 @@
       linked-by (m/linked-by model e)
       deployed-on (m/deployed-on model e)]
 
-%># <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 

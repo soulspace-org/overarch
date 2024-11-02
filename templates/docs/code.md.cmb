@@ -14,7 +14,7 @@
       fields  (filter #(= :field (:el %)) children)
       methods (filter #(= :method (:el %)) children)]
 
-%># <%= (m/element-type e)%> <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 
 ## Description
 <%= (:desc e) %>

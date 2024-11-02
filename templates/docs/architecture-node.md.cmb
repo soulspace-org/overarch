@@ -25,7 +25,7 @@
       dataflows-incoming (m/dataflows-incoming model e)
       dataflows-outgoing (m/dataflows-outgoing model e)]
 
-%># <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 

@@ -11,7 +11,7 @@
       transitions-incoming (m/transitions-incoming model e)
       transitions-outgoing (m/transitions-outgoing model e)]
 
-%># State <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 <%

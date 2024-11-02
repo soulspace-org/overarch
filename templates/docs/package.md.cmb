@@ -12,7 +12,7 @@
       interfaces (filter #(= :interface (:el %)) children)
       classes (filter #(= :class (:el %)) children)]
 
-%># Package <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 
 # Description
 <%= (:desc e) %>

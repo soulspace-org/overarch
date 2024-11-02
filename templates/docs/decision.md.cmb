@@ -10,7 +10,7 @@
 (let [processes nil ; TODO
       ]
     
-%># <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
 

@@ -18,7 +18,7 @@
       supporting-actors (m/supporting-actors model e)
       included (m/included model e)
       extensions (m/extensions model e)]
-%># Use Case <%= (:name e) %>
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Level
 <%= (use-case-level e) %>
 
