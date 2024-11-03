@@ -25,7 +25,7 @@
     "shape=ellipse"
     
     (= :concept (:el e))
-    "shape=underline"
+    "shape=ellipse"
     
     (contains? #{:package :namespace} (:el e))
     "shape=tab"
@@ -42,11 +42,8 @@
     (contains? #{:end-state} (:el e))
     "shape=doublecircle"
 
-    (= :organization (:el e)
-    "shape=box")
-
-    (= :org-unit (:el e)
-    "shape=box")
+    (contains? #{:organization :org-unit} (:el e))
+    "shape=underline"
 
     :else
     ""))
@@ -81,17 +78,16 @@
     "style=filled fillcolor=lightgrey"
 
     (= :organization (:el e))
-    "style=filled fillcolor=indianred"
+    "style=filled fillcolor=lightgrey"
 
     (= :org-unit (:el e))
-    "style=filled fillcolor=indianred1"
+    "style=filled fillcolor=lightgrey"
 
     (contains? #{:start-state :end-state} (:el e))
     "style=filled fillcolor=black"
 
     :else
-    ""
-  ))
+    ""))
 
 (defn dot-id
   "Returns an id for graphviz dot for the element `e`"
