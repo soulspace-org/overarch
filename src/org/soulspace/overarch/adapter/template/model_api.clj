@@ -93,13 +93,17 @@
   "Returns a relative upwards path from the element `e` to the root of the model."
   [e]
   (let [e-ns (element-namespace e)]
-    (->> (str/split e-ns #"\.")
-         (map (constantly ".."))
-         (str/join "/"))))
+    (if (seq e-ns)
+      (->> (str/split e-ns #"\.")
+           (map (constantly ".."))
+           (str/join "/"))
+      ".")))
 
 (comment
   (str/split "a.b.c" #"\.")
+  (element-namespace {:id :x})
   (element-namespace {:id :a.b.c/x})
+  (root-path {:id :x})
   (root-path {:id :a.b.c/x})
   ;
   )

@@ -9,19 +9,20 @@
   ([e context]
    (str "[" (:name e) "]"
         "("
-        (when (:subdir context)
+        (when (seq (:subdir context))
           (str (:subdir context) "/"))
-        (when (:namespace-prefix context)
+        (when (seq (:namespace-prefix context))
           (str (:namespace-prefix context) "/"))
-        (m/element-namespace-path e) "/"
-        (when (:namespace-suffix context)
+        (when (seq (m/element-namespace-path e))
+          (str (m/element-namespace-path e) "/"))
+        (when (seq (:namespace-suffix context))
           (str (:namespace-suffix context) "/"))
-        (when (:prefix context)
+        (when (seq (:prefix context))
           (:prefix context))
         (name (:id e))
-        (when (:suffix context)
+        (when (seq (:suffix context))
           (:suffix context))
-        (if (:extension context)
+        (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
         ")")))
@@ -33,66 +34,82 @@
   ([c e context]
    (str "[" (:name e) "]"
         "("
-        (str (m/root-path c) "/")
-        (when (:namespace-prefix context)
+        (when (seq (m/root-path c))
+          (str (m/root-path c) "/"))
+        (when (seq (:namespace-prefix context))
           (str (:namespace-prefix context) "/"))
-        (m/element-namespace-path e) "/"
-        (when (:namespace-suffix context)
+        (when (seq (m/element-namespace-path e))
+          (str (m/element-namespace-path e) "/"))
+        (when (seq (:namespace-suffix context))
           (str (:namespace-suffix context) "/"))
-        (when (:prefix context)
+        (when (seq (:prefix context))
           (:prefix context))
         (name (:id e))
-        (when (:suffix context)
+        (when (seq (:suffix context))
           (:suffix context))
-        (if (:extension context)
+        (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
         ")")))
 
 (defn view-link
-  "Renders a link to the view `v`, using the optional `context` for customization."
+  "Renders an image link to the view `v`, using the optional `context` for customization."
   ([v]
    (view-link v {}))
   ([v context]
    (str "![" (v/title v) "]"
         "("
-        (when (:subdir context)
+        (when (seq (:subdir context))
           (str (:subdir context) "/"))
-        (when (:namespace-prefix context)
+        (when (seq (:namespace-prefix context))
           (str (:namespace-prefix context) "/"))
-        (m/element-namespace-path v) "/"
-        (when (:namespace-suffix context)
+        (when (seq (m/element-namespace-path v))
+          (str (m/element-namespace-path v) "/"))
+        (when (seq (:namespace-suffix context))
           (str (:namespace-suffix context) "/"))
-        (when (:prefix context)
+        (when (seq (:prefix context))
           (:prefix context))
         (name (:id v))
-        (when (:suffix context)
+        (when (seq (:suffix context))
           (:suffix context))
-        (if (:extension context)
+        (if (seq (:extension context))
           (str "." (:extension context))
           ".png")
         ")")))
 
 (defn relative-view-link
-  "Renders a relative link from the current element `c` to the view `v`, using the optional `context` for customization."
+  "Renders a relative image link from the current element `c` to the view `v`, using the optional `context` for customization."
   ([c v]
    (relative-view-link c v {}))
   ([c v context]
    (str "![" (v/title v) "]"
         "("
-        (str (m/root-path c) "/")
-        (when (:namespace-prefix context)
+        (when (seq (m/root-path c))
+          (str (m/root-path c) "/"))
+        (when (seq (:namespace-prefix context))
           (str (:namespace-prefix context) "/"))
-        (m/element-namespace-path v) "/"
-        (when (:namespace-suffix context)
+        (when (seq (m/element-namespace-path v))
+          (str (m/element-namespace-path v) "/"))
+        (when (seq (:namespace-suffix context))
           (str (:namespace-suffix context) "/"))
-        (when (:prefix context)
+        (when (seq (:prefix context))
           (:prefix context))
         (name (:id v))
-        (when (:suffix context)
+        (when (seq (:suffix context))
           (:suffix context))
-        (if (:extension context)
+        (if (seq (:extension context))
           (str "." (:extension context))
           ".png")
         ")")))
 
+(comment ; link generation
+  (element-link {:id :y :name "Y"})
+  (element-link {:id :a.b.c/x :name "X"})
+  (relative-element-link {:id :y :name "Y"} {:id :a.b.c/x :name "X"})
+  (relative-element-link {:id :a.b.c/x :name "X"} {:id :y :name "Y"})
+  (view-link {:id :y :name "Y"})
+  (view-link {:id :a.b.c/x :name "X"})
+  (relative-view-link {:id :y :name "Y"} {:id :a.b.c/x :name "X"})
+  (relative-view-link {:id :a.b.c/x :name "X"} {:id :y :name "Y"})
+  ;
+  )
