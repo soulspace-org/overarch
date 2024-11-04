@@ -1737,6 +1737,18 @@
    :tags #{"process-model"}}
 
   {:el :class
+   :id :overarch.data-model/information
+   :name "information"
+   :desc "An information in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/knowledge
+   :name "knowledge"
+   :desc "A process in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
    :id :overarch.data-model/process
    :name "process"
    :desc "A process in the process model"
@@ -1797,6 +1809,18 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/information-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/information
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/knowledge-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/knowledge
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/process-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/process
@@ -1819,7 +1843,6 @@
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/decision
    :tags #{"process-model"}}
-
 
   ;;
   ;; View Model
