@@ -121,6 +121,7 @@
 (def process-relation-types
   "Node types for process models."
   #{:role-in})
+; :supports :resource-of?
 
 ;; 
 ;; General category definitions

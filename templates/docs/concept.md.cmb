@@ -16,9 +16,10 @@
       related-from nil ; TODO add other relations
       ]
 
-%>#<%= (:name e) %> (<%= (m/element-type e) %>)
+%># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
+
 <%
   (when (:doc e)
 %>## Documentation

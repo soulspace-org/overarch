@@ -134,8 +134,24 @@
    :name "Capability"
    :desc ""}
   {:el :concept
+   :id :overarch.concepts/information
+   :name "Information"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/knowledge
+   :name "Knowledge"
+   :desc ""}
+  {:el :concept
    :id :overarch.concepts/process
    :name "Process"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/requirement
+   :name "Requirement"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/decision
+   :name "Decision"
    :desc ""}
 
   ;;
