@@ -128,6 +128,12 @@
   :per-element true
   :id-as-name true
   :extension "md"}
+ {:view-selection {:namespace-prefix "banking" :el :model-view}
+  :template "docs/views/model-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
 
  ;;
  ;;  Markdown Generation for Model Elements

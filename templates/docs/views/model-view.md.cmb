@@ -1,0 +1,24 @@
+<%
+;;;;
+;;;; Documentation Template for a Model View
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+%># <%= (:title e)%>
+
+## Diagram
+<%=(md/relative-view-link e e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+(when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+)
+%>
