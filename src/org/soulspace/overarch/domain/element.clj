@@ -120,7 +120,7 @@
 
 (def process-relation-types
   "Node types for process models."
-  #{:role-in})
+  #{:role-in :required-for :input-of :output-of})
 ; :supports :resource-of?
 
 ;; 
@@ -460,7 +460,9 @@
       (derive :process-model-node                :process-model-element)
       ;; process model relations
       (derive :role-in                           :process-model-relation)
-      ; (derive :resource-in                       :process-model-relation)
+      (derive :required-for                      :process-model-relation)
+      (derive :input-of                          :process-model-relation)
+      (derive :output-of                         :process-model-relation)
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes

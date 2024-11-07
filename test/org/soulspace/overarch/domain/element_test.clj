@@ -153,6 +153,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-node?-test
@@ -226,6 +230,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest architecture-relation?-test
@@ -299,6 +307,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-node?-test
@@ -372,6 +384,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest deployment-relation?-test
@@ -445,6 +461,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-node?-test
@@ -518,6 +538,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest usecase-relation?-test
@@ -591,6 +615,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest statemachine-node?-test
@@ -662,6 +690,10 @@
       false {:el :transition :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest statemachine-relation?-test
@@ -735,6 +767,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest code-model-node?-test
@@ -808,6 +844,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest code-model-relation?-test
@@ -881,6 +921,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-node?-test
@@ -954,6 +998,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest concept-model-relation?-test
@@ -1027,6 +1075,10 @@
       false {:el :dependency :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest organization-model-node?-test
@@ -1100,12 +1152,17 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest organization-model-relation?-test
   (testing "organization-model-relation? true"
     (are [x y] (= x (boolean (organization-model-relation? y)))
-      true {:el :collaborates-with :from :a :to :b}))
+      true {:el :collaborates-with :from :a :to :b}
+      true {:el :role-in :from :a :to :b}))
 
   (testing "organization-model-relation? false"
     (are [x y] (= x (boolean (organization-model-relation? y)))
@@ -1173,6 +1230,9 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :rel :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest process-model-node?-test
@@ -1246,12 +1306,19 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest process-model-relation?-test
-  #_(testing "process-model-relation? true"
+  (testing "process-model-relation? true"
     (are [x y] (= x (boolean (process-model-relation? y)))
-      ; TODO add relations when defined
+      true {:el :role-in :from :a :to :b}
+      true {:el :required-for :from :a :to :b}
+      true {:el :input-of :from :a :to :b}
+      true {:el :output-of :from :a :to :b}
       ))
 
   (testing "process-model-relation? false"
@@ -1466,6 +1533,10 @@
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :rel :from :a :to :b}
       false {:el :ref})))
 
@@ -1540,6 +1611,10 @@
       false {:el :is-a :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :collaborates-with :from :a :to :b}
+      false {:el :role-in :from :a :to :b}
+      false {:el :required-for :from :a :to :b}
+      false {:el :input-of :from :a :to :b}
+      false {:el :output-of :from :a :to :b}
       false {:el :ref})))
 
 (deftest model-relation?-test
@@ -1568,7 +1643,11 @@
       true {:el :has :from :a :to :b}
       true {:el :is-a :from :a :to :b}
       true {:el :responsible-for :from :a :to :b}
-      true {:el :collaborates-with :from :a :to :b}))
+      true {:el :collaborates-with :from :a :to :b}
+      true {:el :role-in :from :a :to :b}
+      true {:el :required-for :from :a :to :b}
+      true {:el :input-of :from :a :to :b}
+      true {:el :output-of :from :a :to :b}))
 
   (testing "model-relation? false"
     (are [x y] (= x (boolean (model-relation? y)))
@@ -1682,7 +1761,11 @@
       true {:el :has :from :a :to :b}
       true {:el :is-a :from :a :to :b}
       true {:el :responsible-for :from :a :to :b}
-      true {:el :collaborates-with :from :a :to :b}))
+      true {:el :collaborates-with :from :a :to :b}
+      true {:el :role-in :from :a :to :b}
+      true {:el :required-for :from :a :to :b}
+      true {:el :input-of :from :a :to :b}
+      true {:el :output-of :from :a :to :b}))
 
   (testing "model-element? false"
     (are [x y] (= x (boolean (model-element? y)))
