@@ -655,6 +655,16 @@
   [e]
   (contains? organization-relation-types (:el e)))
 
+(defn process-model-node?
+  "Returns true if the given element `e` is a process model node."
+  [e]
+  (contains? process-node-types (:el e)))
+
+(defn process-model-relation?
+  "Returns true if the given element `e` is a process model relation."
+  [e]
+  (contains? process-relation-types (:el e)))
+
 (defn responsibility-model-node?
   "Returns true if the given element `e` is a responsibility model node."
   [e]

@@ -122,6 +122,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel}
       false {:el :request}
       false {:el :response}
@@ -188,6 +195,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel}
       false {:el :request}
       false {:el :response}
@@ -261,6 +275,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :link :from :a :to :b}
       false {:el :deployed-to :from :a :to :b}
       false {:el :uses :from :a :to :b}
@@ -320,6 +341,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -388,6 +416,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -452,6 +487,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -522,6 +564,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -584,6 +633,13 @@
       false {:el :protocol}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -649,6 +705,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -714,6 +777,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -786,6 +856,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -846,6 +923,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -915,6 +999,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
       false {:el :publish :from :a :to :b}
@@ -978,6 +1069,13 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -1045,6 +1143,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
       false {:el :publish :from :a :to :b}
@@ -1066,6 +1171,154 @@
       false {:el :dependency :from :a :to :b}
       false {:el :has :from :a :to :b}
       false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :rel :from :a :to :b}
+      false {:el :ref})))
+
+(deftest process-model-node?-test
+  (testing "process-model-node? true"
+    (are [x y] (= x (boolean (process-model-node? y)))
+      true {:el :capability}
+      true {:el :process}
+      true {:el :artifact}
+      true {:el :information}
+      true {:el :knowledge}
+      true {:el :requirement}
+      true {:el :decision}))
+
+  (testing "process-model-node? false"
+    (are [x y] (= x (boolean (process-model-node? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :context-boundary}
+      false {:el :enterprise-boundary}
+      false {:el :component}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
+      false {:el :rel :from :a :to :b}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :responsible-for :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
+      false {:el :ref})))
+
+(deftest process-model-relation?-test
+  #_(testing "process-model-relation? true"
+    (are [x y] (= x (boolean (process-model-relation? y)))
+      ; TODO add relations when defined
+      ))
+
+  (testing "process-model-relation? false"
+    (are [x y] (= x (boolean (process-model-relation? y)))
+      false {:el :person}
+      false {:el :system}
+      false {:el :container}
+      false {:el :component}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :node}
+      false {:el :concept}
+      false {:el :use-case}
+      false {:el :actor}
+      false {:el :package}
+      false {:el :namespace}
+      false {:el :class}
+      false {:el :interface}
+      false {:el :enum}
+      false {:el :enum-value}
+      false {:el :field}
+      false {:el :function}
+      false {:el :method}
+      false {:el :parameter}
+      false {:el :stereotype}
+      false {:el :annotation}
+      false {:el :protocol}
+      false {:el :state-machine}
+      false {:el :start-state}
+      false {:el :state}
+      false {:el :end-state}
+      false {:el :fork}
+      false {:el :join}
+      false {:el :choice}
+      false {:el :history-state}
+      false {:el :deep-history-state}
+      false {:el :organization}
+      false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
+      false {:el :request :from :a :to :b}
+      false {:el :response :from :a :to :b}
+      false {:el :publish :from :a :to :b}
+      false {:el :subscribe :from :a :to :b}
+      false {:el :send :from :a :to :b}
+      false {:el :dataflow :from :a :to :b}
+      false {:el :link :from :a :to :b}
+      false {:el :deployed-to :from :a :to :b}
+      false {:el :uses :from :a :to :b}
+      false {:el :include :from :a :to :b}
+      false {:el :extends :from :a :to :b}
+      false {:el :generalizes :from :a :to :b}
+      false {:el :transition :from :a :to :b}
+      false {:el :inheritance :from :a :to :b}
+      false {:el :implementation :from :a :to :b}
+      false {:el :composition :from :a :to :b}
+      false {:el :aggregation :from :a :to :b}
+      false {:el :association :from :a :to :b}
+      false {:el :dependency :from :a :to :b}
+      false {:el :has :from :a :to :b}
+      false {:el :is-a :from :a :to :b}
+      false {:el :collaborates-with :from :a :to :b}
       false {:el :responsible-for :from :a :to :b}
       false {:el :rel :from :a :to :b}
       false {:el :ref})))
@@ -1110,6 +1363,13 @@
       false {:el :choice}
       false {:el :history-state}
       false {:el :deep-history-state}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :rel :from :a :to :b}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
@@ -1177,6 +1437,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision}
       false {:el :request :from :a :to :b}
       false {:el :response :from :a :to :b}
       false {:el :publish :from :a :to :b}
@@ -1238,7 +1505,14 @@
       true {:el :history-state}
       true {:el :deep-history-state}
       true {:el :organization}
-      true {:el :org-unit}))
+      true {:el :org-unit}
+      true {:el :capability}
+      true {:el :process}
+      true {:el :artifact}
+      true {:el :information}
+      true {:el :knowledge}
+      true {:el :requirement}
+      true {:el :decision}))
 
   (testing "model-node? false"
     (are [x y] (= x (boolean (model-node? y)))
@@ -1332,6 +1606,13 @@
       false {:el :deep-history-state}
       false {:el :organization}
       false {:el :org-unit}
+      false {:el :capability}
+      false {:el :process}
+      false {:el :artifact}
+      false {:el :information}
+      false {:el :knowledge}
+      false {:el :requirement}
+      false {:el :decision} 
       false {:el :ref})))
 
 (deftest model-element?-test
@@ -1371,6 +1652,13 @@
       true {:el :deep-history-state}
       true {:el :organization}
       true {:el :org-unit}
+      true {:el :capability}
+      true {:el :process}
+      true {:el :artifact}
+      true {:el :information}
+      true {:el :knowledge}
+      true {:el :requirement}
+      true {:el :decision}
       true {:el :rel :from :a :to :b}
       true {:el :request :from :a :to :b}
       true {:el :response :from :a :to :b}
