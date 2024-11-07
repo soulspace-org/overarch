@@ -3,6 +3,8 @@ Changelog
 
 Version (NEXT)
 --------------
+* added `:required-for`, `:input-of` and `:output-of` relations
+* added process model predicates
 * fixed relative link functions in markdown api for empty namespace elements
 
 Version 0.32.0
