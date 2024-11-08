@@ -536,10 +536,12 @@ You can enhance the org-unit node with attributes specific for your organization
 (e.g. support mailboxes) and use these attributes in the templates to generate
 documentation or other artifacts.
 
-### Relations (:responsible-for, :collaborates-with)
+### Relations (:responsible-for, :collaborates-with :role-in)
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
 ## Process Model
 
 ### Nodes (:capability :process :artifact :requirement :decision)
+
+### Relations (:role-in :required-for :input-of :output-of)
