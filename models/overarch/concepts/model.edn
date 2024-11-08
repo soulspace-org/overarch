@@ -146,6 +146,10 @@
    :name "Process"
    :desc ""}
   {:el :concept
+   :id :overarch.concepts/artifact
+   :name "Artifact"
+   :desc ""}
+  {:el :concept
    :id :overarch.concepts/requirement
    :name "Requirement"
    :desc ""}
@@ -495,17 +499,66 @@
    :to :overarch.concepts/org-unit
    :name "contains"
    :desc ""}
+  {:el :rel
+   :id :overarch.concepts/person-role-in-org-unit
+   :from :overarch.concepts/person
+   :to :overarch.concepts/org-unit
+   :name "role in"
+   :desc ""}
+
 
   ;;
   ;; Process
   ;;
   {:el :rel
-   :id :overarch.concepts/process-implements-capability
+   :id :overarch.concepts/process-required-for-capability
    :from :overarch.concepts/process
    :to :overarch.concepts/capability
-   :name "implements"
+   :name "required for"
    :desc ""}
-
+  {:el :rel
+   :id :overarch.concepts/knowledge-required-for-capability
+   :from :overarch.concepts/knowledge
+   :to :overarch.concepts/capability
+   :name "required for"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-required-for-capability
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/capability
+   :name "required for"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/person-role-in-process
+   :from :overarch.concepts/person
+   :to :overarch.concepts/process
+   :name "role in"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/artifact-input-of-process
+   :from :overarch.concepts/artifact
+   :to :overarch.concepts/process
+   :name "input of"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/artifact-output-of-process
+   :from :overarch.concepts/artifact
+   :to :overarch.concepts/process
+   :name "output of"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/information-output-of-process
+   :from :overarch.concepts/information
+   :to :overarch.concepts/process
+   :name "output of"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/information-reqired-for-knowledge
+   :from :overarch.concepts/information
+   :to :overarch.concepts/knowledge
+   :name "required for"
+   :desc ""}
+  
   ;;
   ;; Model
   ;;
@@ -519,6 +572,18 @@
    :id :overarch.concepts/technical-architecture-node-implements-process
    :from :overarch.concepts/technical-architecture-node
    :to :overarch.concepts/process
+   :name "implements"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-implements-requirement
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/requirement
+   :name "implements"
+   :desc ""}
+  {:el :rel
+   :id :overarch.concepts/technical-architecture-node-implements-decision
+   :from :overarch.concepts/technical-architecture-node
+   :to :overarch.concepts/decision
    :name "implements"
    :desc ""}
   {:el :rel
