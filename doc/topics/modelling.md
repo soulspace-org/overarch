@@ -542,6 +542,6 @@ unit for architecture or deployment nodes (e.g. a system or an Azure subscriptio
 
 ## Process Model
 
-### Nodes (:capability :process :artifact :requirement :decision)
+### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
 
 ### Relations (:role-in :required-for :input-of :output-of)
