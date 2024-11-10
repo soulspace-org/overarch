@@ -523,8 +523,7 @@ It has input parameters and calculates results.
 The relations connect the nodes of the code model. They are essentially the relation types of the UML.
 
 ## Organization Model
-The responsibility model captures the organizational structure of the system
-architecture.
+The organization model captures the organizational structure of an organization.
 
 ### Logical Data Model for the Organization Model Elements
 ![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
@@ -541,6 +540,9 @@ The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
 ## Process Model
+The process model captures the structure of capabilities, processes and their resources.
+
+### Logical Data Model for the Process Model Elements
 
 ### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
 

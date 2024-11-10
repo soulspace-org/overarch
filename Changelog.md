@@ -7,6 +7,7 @@ Version (NEXT)
 * added process model predicates
 * fixed relative link functions in markdown api for empty namespace elements
 
+
 Version 0.32.0
 --------------
 * added model navigation functions for state machines
