@@ -101,6 +101,39 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
+(defn traverse-cycle
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+
+   `pred-fn`     - a predicate on the current element
+   `children-fn` - a function to resolve the children of the current element
+   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator."
+  ([step-fn coll]
+   (traverse-cycle identity identity :ct step-fn coll))
+  ([pred-fn step-fn coll]
+   (traverse-cycle identity pred-fn :ct step-fn coll))
+  ([pred-fn children-fn step-fn coll]
+   (traverse-cycle identity pred-fn children-fn step-fn coll))
+  ([element-fn pred-fn children-fn step-fn coll]
+   (letfn [(trav [acc visited coll]
+             (if (seq coll)
+               (let [e (element-fn (first coll))
+                     v (conj visited e)]
+                 (if (and (pred-fn e) (not (contains? visited e)))
+                   (recur (trav (step-fn acc e) v (children-fn e))
+                          v
+                          (rest coll))
+                   (recur (trav acc v (children-fn e))
+                          v
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) #{} coll))))
+
 ;;
 ;; recursive traversal of the hierarchical model
 ;;
@@ -121,9 +154,9 @@
    
    The children-fn takes 2 args [model e], the model and the current element."
   ([model step-fn coll]
-   (traverse-with-model model identity (fn [model e] (:ct e)) step-fn coll))
+   (traverse-with-model model identity (fn [model e] (children model e)) step-fn coll))
   ([model pred-fn step-fn coll]
-   (traverse-with-model model pred-fn (fn [model e] (:ct e)) step-fn coll))
+   (traverse-with-model model pred-fn (fn [model e] (children model e)) step-fn coll))
   ([model pred-fn children-fn step-fn coll]
    ; selection handled by the select function
    (letfn [(trav [acc coll]
@@ -136,6 +169,40 @@
                           (rest coll))))
                (step-fn acc)))]
      (trav (step-fn) coll))))
+
+(defn traverse-model
+  "Recursively traverses the `coll` of elements and returns the elements
+   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+
+   `pred-fn`     - a predicate on the current element
+   `children-fn` - a function to resolve the children of the current element
+   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   
+   The no args signature of the `step-fn` should return an empty accumulator,
+   the one args signature extracts the result from the accumulator on return
+   and the 2 args signature receives the accumulator and the current element and
+   should add the transformed element to the accumulator.
+   
+   The children-fn takes 2 args [model e], the model and the current element."
+  ([model step-fn coll]
+   (traverse-model model identity (fn [model e] (children model e)) step-fn coll))
+  ([model pred-fn step-fn coll]
+   (traverse-model model pred-fn (fn [model e] (children model e)) step-fn coll))
+  ([model pred-fn children-fn step-fn coll]
+   ; selection handled by the select function
+   (letfn [(trav [acc visited coll]
+             (if (seq coll)
+               (let [e (resolve-element model (first coll))
+                     v (conj visited e)]
+                 (if (and (pred-fn e) (not (contains? visited e)))
+                   (recur (trav (step-fn acc e) v (children-fn model e)) 
+                          v
+                          (rest coll))
+                   (recur (trav acc v (children-fn model e)) 
+                          v
+                          (rest coll))))
+               (step-fn acc)))]
+     (trav (step-fn) #{} coll))))
 
 ;;;
 ;;; Build model
@@ -151,7 +218,7 @@
                 (seq p)
                 (el/identifiable-element? p)
                 (el/model-element? p)
-                ; working on the input, use :ct
+                ; working on the input, so use :ct here
                 (contains? (set (:ct p)) e))))
 
 (defn identified-node
@@ -545,6 +612,7 @@
         (recur (parent model p)))
       false)))
 
+; TODO use children
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
