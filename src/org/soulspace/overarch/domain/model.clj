@@ -53,12 +53,11 @@
      :else nil)))
 
 (defn element-resolver
-  "Returns a element resolver function for the given `model`."
+  "Returns an element resolver function for the given `model`."
   [model]
   (fn [e]
     (resolve-element model e)))
 
-; TODO resolve children
 (defn children
   "Returns the children of the model node `e`."
   [model e]
@@ -68,6 +67,12 @@
        (filterv #(= :contained-in (:el %)))
        (mapv (comp (element-resolver model) :from))))
   
+(defn children-resolver
+  "Returns a children resolver function for the given `model`."
+  [model]
+  (fn [e]
+    (children model e)))
+
 ;;
 ;; recursive traversal of the hierarchical data
 ;;

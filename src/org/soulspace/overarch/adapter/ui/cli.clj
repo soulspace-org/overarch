@@ -315,6 +315,8 @@
   (model/descendant-nodes (repo/model)
                           (model/resolve-element (repo/model)
                                                  :banking/internet-banking-system))
+  #_(model/traverse (model/element-resolver (repo/model)) )
+  #_(model/traverse-cycle (model/element-resolver (repo/model)) )
   ;
   )
 
