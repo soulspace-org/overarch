@@ -80,7 +80,8 @@
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `pred-fn`     - a predicate on the current element
+   `element-fn`  - a resolver function for an element, defaults to `identity`
+   `pred-fn`     - a predicate on the current element, defaults to `identity`
    `children-fn` - a function to resolve the children of the current element
    `step-fn`     - a function with three signatures [], [acc] and [acc e]
    
@@ -110,7 +111,8 @@
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `pred-fn`     - a predicate on the current element
+   `element-fn`  - a resolver function for an element, defaults to `identity`
+   `pred-fn`     - a predicate on the current element, defaults to `identity`
    `children-fn` - a function to resolve the children of the current element
    `step-fn`     - a function with three signatures [], [acc] and [acc e]
    
@@ -148,7 +150,7 @@
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
-   `pred-fn`     - a predicate on the current element
+   `pred-fn`     - a predicate on the current element, defaults to `identity`
    `children-fn` - a function to resolve the children of the current element
    `step-fn`     - a function with three signatures [], [acc] and [acc e]
    
@@ -617,7 +619,7 @@
         (recur (parent model p)))
       false)))
 
-; TODO use children
+; TODO use children-resolver fn instead of :ct
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
