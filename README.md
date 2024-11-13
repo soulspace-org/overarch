@@ -1,8 +1,8 @@
 ![overarch - Image © 2019 Ludger Solbach](/doc/images/overarch.jpg)
 
 # Overarch
-A data driven model of software systems based on UML and the C4
-model.
+Overarch provides an ontology and a data driven model of software systems
+and organizations based on e.g. UML and the C4 model.
 
 Model your system as data and specify/generate representations (e.g.
 diagrams) for your system. All core and supplementary C4 diagrams except code
@@ -25,24 +25,29 @@ composable and reusable.
   * C4 architecture and deployment models and views
   * Use case, state machine and code models and views
   * Concept models, concept maps and glossaries
+  * Organization structures, collaborations and responsibilities
+  * Process models
   * Hierarchical models and element references
   * View specific customization of model elements
   * Extensible format
 * Model queries
   * Criteria based selection of model elements
 * Template based artifact generation for e.g.
+  * Documentation
+  * Reports
   * Project templates
   * Code scaffolding
   * CI/CD pipelines
-  * Reports
   * Custom vizualizations
 * View rendering
   * PlantUML
     * All C4 views (except code view)
     * Use case, state machine and class diagrams
+    * Structure diagrams for organizations, systems and deployments
     * Styling and sprite support
   * GraphViz
     * Concept maps
+    * Model view of all elements
   * Markdown
     * Glossary, textual representations of graphical views
 * Model exports
