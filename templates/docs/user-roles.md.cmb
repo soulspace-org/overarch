@@ -18,4 +18,7 @@ This is a list of the user roles.
 )
 %>
 
+## Navigation
+<%= (md/relative-file-link e "views.md" "List of Views") %>
+
 (generated with <%= (:template ctx) %>)
