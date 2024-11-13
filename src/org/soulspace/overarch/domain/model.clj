@@ -76,6 +76,8 @@
 ;;
 ;; recursive traversal of the hierarchical data
 ;;
+;; TODO just one traverse function with the actual algorithm
+;;      maybe some convenience fns for input/model traversion
 (defn traverse
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
@@ -619,7 +621,7 @@
         (recur (parent model p)))
       false)))
 
-; TODO use children-resolver fn instead of :ct
+; FIXME use children-resolver fn instead of :ct
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
