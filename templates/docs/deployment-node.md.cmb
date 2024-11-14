@@ -89,4 +89,7 @@ Name | Description
 )
 %>
 
+## Navigation
+<%= (md/relative-file-link e "views.md" "List of Views") %>
+
 (generated with <%= (:template ctx) %>)

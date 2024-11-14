@@ -83,4 +83,7 @@ The <%= (:name e) %> is an actor in these use cases.
 )
 %>
 
+## Navigation
+<%= (md/relative-file-link e "views.md" "List of Views") %>
+
 (generated with <%= (:template ctx) %>)

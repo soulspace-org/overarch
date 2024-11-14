@@ -234,4 +234,7 @@ These components show the internal structure of the <%= (:name e) %> container.
 )
 %>
 
+## Navigation
+<%= (md/relative-file-link e "views.md" "List of Views") %>
+
 (generated with <%= (:template ctx) %>)
