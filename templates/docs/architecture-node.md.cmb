@@ -235,6 +235,7 @@ These components show the internal structure of the <%= (:name e) %> container.
 %>
 
 ## Navigation
-<%= (md/relative-file-link e "views.md" "List of Views") %>
+<%= (md/file-link "./views-in-namespace.md" "List of views in namespace") %>
+<%= (md/relative-file-link e "views.md" "List of all Views") %>
 
 (generated with <%= (:template ctx) %>)
