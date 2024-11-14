@@ -511,6 +511,12 @@
   ;; Process
   ;;
   {:el :rel
+   :id :overarch.concepts/org-unit-responsible-for-capability
+   :from :overarch.concepts/org-unit
+   :to :overarch.concepts/capability
+   :name "required for"
+   :desc ""}
+  {:el :rel
    :id :overarch.concepts/process-required-for-capability
    :from :overarch.concepts/process
    :to :overarch.concepts/capability
