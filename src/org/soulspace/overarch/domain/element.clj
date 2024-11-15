@@ -291,6 +291,50 @@
   "The set of view types."
   (set/union c4-view-types uml-view-types concept-view-types
              structure-view-types model-view-types))
+
+;;
+;; Element type vectors
+;;
+(def model-node-type-vector
+  "The set of model element types as vector."
+  [; nodes
+   :person :organization :org-unit
+   :concept
+   :capability :knowledge :information :process :artifact :requirement :decision
+   :use-case :actor
+   :system :container :component :enterprise-boundary :context-boundary
+   :state-machine :start-state :end-state
+   :state :fork :join :choice :history-state :deep-history-state
+   :annotation :class :enum :enum-value :field :function :interface
+   :method :namespace :package :parameter :protocol :stereotype
+   :node])
+
+(def model-relation-type-vector
+  "The set of model element types as vector."
+  [; relations
+   :collaborates-with :responsible-for :role-in
+   :has :is-a :part-of
+   :input-of :output-of :required-for
+   :uses :include :extends :generalizes
+   :request :response :publish :subscribe :send :dataflow :step
+   :transition
+   :implementation :inheritance :composition :aggregation :association :dependency
+   :link :deployed-to
+   :rel :contained-in :implements])
+
+(def model-element-type-vector
+  "The set of model element types as vector."
+  (into [] (concat model-node-type-vector model-relation-type-vector)))
+
+(comment
+  (count model-element-types)
+  (count model-element-type-vector)
+  (= (count model-element-types) (count model-element-type-vector))
+  (= model-element-types (set model-element-type-vector))
+  (set/difference model-element-types (set model-element-type-vector))
+  ;
+  )
+
 (def view-types-vector
   "The set of view types as vector."
   [:concept-view :use-case-view :context-view :container-view :component-view
