@@ -6,17 +6,42 @@
 ;;;;  :per-namespace true
 ;;;;
 
+(def view-types
+  [:concept-view :use-case-view :context-view :container-view :component-view
+   :system-landscape-view :system-structure-view :dynamic-view
+   :state-machine-view :code-view :deployment-view :deployment-structure-view
+   :organization-structure-view :glossary-view :model-view])
+
+(defn list-views
+  ""
+  [e view-type]
+  (let [views (filter #(= viewtype (:el %)) e)]
+    (when (seq concept-views)
+%>
+;;
+;; <%= (name view-type)%>
+;;
+<%
+      (doseq [view views]
+%><%= view %>
+<%
+      ))))
+
 (let [concept-views (filter #(= :concept-view (:el %)) e)
       use-case-views (filter #(= :use-case-view (:el %)) e)
       context-views (filter #(= :context-view (:el %)) e)
       container-views (filter #(= :container-view (:el %)) e)
       component-views (filter #(= :component-view (:el %)) e)
       system-landscape-views (filter #(= :system-landscape-view (:el %)) e)
+      system-structure-views (filter #(= :system-structure-view (:el %)) e)
       dynamic-views (filter #(= :dynamic-view (:el %)) e)
       state-machine-views (filter #(= :state-machine-view (:el %)) e)
       code-views (filter #(= :code-view (:el %)) e)
       deployment-views (filter #(= :deployment-view (:el %)) e)
-      glossary-views (filter #(= :glossary-view (:el %)) e)]
+      deployment-structure-views (filter #(= :deployment-structure-view (:el %)) e)
+      organization-structure-views (filter #(= :organization-structure-view (:el %)) e)
+      glossary-views (filter #(= :glossary-view (:el %)) e)
+      model-views (filter #(= :model-view (:el %)) e)]
 
 %>;;;;
 ;;;; Views for Namespace <%= (m/element-namespace (first e)) %>
