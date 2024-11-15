@@ -3,6 +3,8 @@ Changelog
 
 Version (NEXT)
 --------------
+* **breaking** removed view type :class-view
+  * use :code-view in your views
 * added `:required-for`, `:input-of` and `:output-of` relations
 * added process model predicates
 * fixed relative link functions in markdown api for empty namespace elements

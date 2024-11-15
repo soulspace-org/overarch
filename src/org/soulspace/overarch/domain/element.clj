@@ -211,8 +211,7 @@
 ;;
 (def uml-view-types
   "The set of UML view types."
-  ; TODO deprecate :class-view and remove 
-  #{:use-case-view :state-machine-view :code-view :class-view})
+  #{:use-case-view :state-machine-view :code-view})
 
 (def use-case-view-element-types
   "Element types of a use case view."
@@ -292,16 +291,29 @@
   "The set of view types."
   (set/union c4-view-types uml-view-types concept-view-types
              structure-view-types model-view-types))
+(def view-types-vector
+  "The set of view types as vector."
+  [:concept-view :use-case-view :context-view :container-view :component-view
+   :system-landscape-view :system-structure-view :dynamic-view
+   :state-machine-view :code-view :deployment-view :deployment-structure-view
+   :organization-structure-view :glossary-view :model-view])
+
+(comment
+  (count view-types)
+  (count view-types-vector)
+  (= (count view-types) (count view-types-vector))
+  (= view-types (set view-types-vector))
+  (set/difference view-types (set view-types-vector))
+  ;
+  )
 
 (def hierarchical-view-types
   "The set of hierarchical view types."
-  ; TODO deprecate :class-view and remove 
   #{:context-view :container-view :component-view
     :deployment-view :deployment-structure-view
     :system-landscape-view :system-structure-view
     :state-machine-view :code-view :glossary-view
     :organization-structure-view
-    :class-view
     })
 
 ;;;
