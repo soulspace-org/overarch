@@ -295,7 +295,7 @@
 ;;
 ;; Element type vectors
 ;;
-(def model-node-type-vector
+(def model-node-type-order
   "The set of model element types as vector."
   [; nodes
    :person :organization :org-unit
@@ -309,7 +309,7 @@
    :method :namespace :package :parameter :protocol :stereotype
    :node])
 
-(def model-relation-type-vector
+(def model-relation-type-order
   "The set of model element types as vector."
   [; relations
    :collaborates-with :responsible-for :role-in
@@ -322,20 +322,20 @@
    :link :deployed-to
    :rel :contained-in :implements])
 
-(def model-element-type-vector
+(def model-element-type-order
   "The set of model element types as vector."
-  (into [] (concat model-node-type-vector model-relation-type-vector)))
+  (into [] (concat model-node-type-order model-relation-type-order)))
 
 (comment
   (count model-element-types)
-  (count model-element-type-vector)
-  (= (count model-element-types) (count model-element-type-vector))
-  (= model-element-types (set model-element-type-vector))
-  (set/difference model-element-types (set model-element-type-vector))
+  (count model-element-type-order)
+  (= (count model-element-types) (count model-element-type-order))
+  (= model-element-types (set model-element-type-order))
+  (set/difference model-element-types (set model-element-type-order))
   ;
   )
 
-(def view-types-vector
+(def view-types-order
   "The set of view types as vector."
   [:concept-view :use-case-view :context-view :container-view :component-view
    :system-landscape-view :system-structure-view :dynamic-view
@@ -344,10 +344,10 @@
 
 (comment
   (count view-types)
-  (count view-types-vector)
-  (= (count view-types) (count view-types-vector))
-  (= view-types (set view-types-vector))
-  (set/difference view-types (set view-types-vector))
+  (count view-types-order)
+  (= (count view-types) (count view-types-order))
+  (= view-types (set view-types-order))
+  (set/difference view-types (set view-types-order))
   ;
   )
 
