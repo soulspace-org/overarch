@@ -205,7 +205,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 ;;
 ;; include relevant view diagrams
 ;;
-  (when (and (contains? #{:system} (:el e)) (m/resolve-view model e "context-view"))
+  (when (and (contains? #{:system} (:el e))
+             (m/resolve-view model e "context-view"))
 %>
 ## System Context View
 <%= (md/relative-view-link e (m/resolve-view model e "context-view")) %>
@@ -214,7 +215,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
   )
   
-  (when (and (contains? #{:context-boundary :container} (:el e)) (m/resolve-view model e "container-view"))
+  (when (and (contains? #{:context-boundary :container} (:el e))
+             (m/resolve-view model e "container-view"))
 %>
 ## Container View
 <%= (md/relative-view-link e (m/resolve-view model e "container-view")) %>
@@ -223,7 +225,8 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
   )
 
-  (when (and (contains? #{:component} (:el e)) (m/resolve-view model e "component-view"))
+  (when (and (contains? #{:component} (:el e))
+             (m/resolve-view model e "component-view"))
 %>
 ## Component View
 <%= (md/relative-view-link e (m/resolve-view model e "component-view")) %>
@@ -231,11 +234,19 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%= (md/relative-element-link e (m/resolve-view model e "component-view")) %>
 <%
   )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
 )
 %>
 
 ## Navigation
 <%= (md/file-link "./views-in-namespace.md" "List of views in namespace") %>
+
 <%= (md/relative-file-link e "views.md" "List of all Views") %>
 
 (generated with <%= (:template ctx) %>)
