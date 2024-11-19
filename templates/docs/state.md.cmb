@@ -43,6 +43,14 @@ Name | To | Description
 <%
     )
   )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
+
 )
 %>
 

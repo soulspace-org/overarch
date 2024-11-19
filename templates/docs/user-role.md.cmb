@@ -80,6 +80,14 @@ The <%= (:name e) %> is an actor in these use cases.
 <%
     )
   )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
+
 )
 %>
 

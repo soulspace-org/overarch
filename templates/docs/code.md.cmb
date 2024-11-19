@@ -71,7 +71,18 @@
 
 <%= (t/single-line (:desc method)) %>
 <%
-      ))))
+      )
+    )
+  )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
+
+)
 %>
 
 ## Navigation

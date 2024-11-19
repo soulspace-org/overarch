@@ -106,6 +106,14 @@
 <%= (md/relative-element-link e (m/resolve-view model e "concept-view")) %>
 <%
   )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
+
 )
 %>
 

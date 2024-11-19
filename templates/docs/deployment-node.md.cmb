@@ -86,6 +86,14 @@ Name | Description
 <%= (md/relative-view-link e (m/resolve-view model e "deployment-structure-view")) %>
 <%
   )
+
+  (when (seq (:tags e))
+%>
+### Tags
+<%= (str/join ", " (:tags e)) %>
+<%
+  )
+
 )
 %>
 
