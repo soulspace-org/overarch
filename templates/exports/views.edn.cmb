@@ -15,8 +15,8 @@
 (defn list-views
   ""
   [e view-type]
-  (let [views (filter #(= viewtype (:el %)) e)]
-    (when (seq concept-views)
+  (let [views (filter #(= view-type (:el %)) e)]
+    (when (seq views)
 %>
 ;;
 ;; <%= (name view-type)%>
