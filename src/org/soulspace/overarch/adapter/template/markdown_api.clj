@@ -168,6 +168,22 @@
         filename
         ")")))
 
+(defn image-link
+  "Renders an image link to the file `f`, using the optional `context` for customization."
+  ([filename name]
+   (str "![" name "]"
+        "(" filename ")")))
+
+(defn relative-image-link
+  "Renders a relative image link from the current element `c` to the file `f`, using the optional `context` for customization."
+  ([c filename name]
+   (str "![" name "]"
+        "("
+        (when (seq (m/root-path c))
+          (str (m/root-path c) "/"))
+        filename
+        ")")))
+
 (comment ; link generation
   (element-link {:id :y :name "Y"})
   (element-link {:id :a.b.c/x :name "X"})
@@ -186,6 +202,9 @@
   (file-link "file.md" "File")
   (relative-file-link {:id :y :name "Y"} "file.md" "File")
   (relative-file-link {:id :a.b.c/x :name "X"} "file.md" "File")
+  (image-link "file.png" "File")
+  (relative-image-link {:id :y :name "Y"} "file.png" "File")
+  (relative-image-link {:id :a.b.c/x :name "X"} "file.png" "File")
 
   ;
   )
