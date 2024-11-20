@@ -15,19 +15,19 @@
 
 (def model-node-type-order
   "The canonical order of model element types as vector."
-  (el/model-node-type-order))
+  el/model-node-type-order)
 
 (def model-relation-type-order
   "The canonical order of model element types as vector."
-  (el/model-relation-type-order))
+  el/model-relation-type-order)
 
 (def model-element-type-order
   "The canonical order of model element types as vector."
-  (el/model-element-type-order))
+  el/model-element-type-order)
 
 (def view-type-order
   "The canonical order of view types as vector."
-  (el/view-type-order))
+  el/view-type-order)
 
 
 ;;;

@@ -57,6 +57,56 @@
   ([v]
    (view-link v {}))
   ([v context]
+   (str "[" (v/title v) "]"
+        "("
+        (when (seq (:subdir context))
+          (str (:subdir context) "/"))
+        (when (seq (:namespace-prefix context))
+          (str (:namespace-prefix context) "/"))
+        (when (seq (m/element-namespace-path v))
+          (str (m/element-namespace-path v) "/"))
+        (when (seq (:namespace-suffix context))
+          (str (:namespace-suffix context) "/"))
+        (when (seq (:prefix context))
+          (:prefix context))
+        (name (:id v))
+        (when (seq (:suffix context))
+          (:suffix context))
+        (if (seq (:extension context))
+          (str "." (:extension context))
+          ".md")
+        ")")))
+
+(defn relative-view-link
+  "Renders a relative image link from the current element `c` to the view `v`, using the optional `context` for customization."
+  ([c v]
+   (relative-view-link c v {}))
+  ([c v context]
+   (str "[" (v/title v) "]"
+        "("
+        (when (seq (m/root-path c))
+          (str (m/root-path c) "/"))
+        (when (seq (:namespace-prefix context))
+          (str (:namespace-prefix context) "/"))
+        (when (seq (m/element-namespace-path v))
+          (str (m/element-namespace-path v) "/"))
+        (when (seq (:namespace-suffix context))
+          (str (:namespace-suffix context) "/"))
+        (when (seq (:prefix context))
+          (:prefix context))
+        (name (:id v))
+        (when (seq (:suffix context))
+          (:suffix context))
+        (if (seq (:extension context))
+          (str "." (:extension context))
+          ".md")
+        ")")))
+
+(defn diagram-link
+  "Renders an image link to the view `v`, using the optional `context` for customization."
+  ([v]
+   (diagram-link v {}))
+  ([v context]
    (str "![" (v/title v) "]"
         "("
         (when (seq (:subdir context))
@@ -77,10 +127,10 @@
           ".png")
         ")")))
 
-(defn relative-view-link
+(defn relative-diagram-link
   "Renders a relative image link from the current element `c` to the view `v`, using the optional `context` for customization."
   ([c v]
-   (relative-view-link c v {}))
+   (relative-diagram-link c v {}))
   ([c v context]
    (str "![" (v/title v) "]"
         "("
@@ -127,6 +177,12 @@
   (view-link {:id :a.b.c/x :name "X"})
   (relative-view-link {:id :y :name "Y"} {:id :a.b.c/x :name "X"})
   (relative-view-link {:id :a.b.c/x :name "X"} {:id :y :name "Y"})
+  (diagram-link {:id :y :name "Y"})
+  (diagram-link {:id :a.b.c/x :name "X"})
+  (diagram-link {:id :y :name "Y"} {:extension "svg"})
+  (diagram-link {:id :a.b.c/x :name "X"} {:extension "svg"})
+  (relative-diagram-link {:id :y :name "Y"} {:id :a.b.c/x :name "X"})
+  (relative-diagram-link {:id :a.b.c/x :name "X"} {:id :y :name "Y"})
   (file-link "file.md" "File")
   (relative-file-link {:id :y :name "Y"} "file.md" "File")
   (relative-file-link {:id :a.b.c/x :name "X"} "file.md" "File")
