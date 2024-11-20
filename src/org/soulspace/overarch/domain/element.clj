@@ -299,7 +299,7 @@
              structure-view-types model-view-types))
 
 ;;
-;; Element type vectors
+;; Element type vectors for canonical ordering
 ;;
 (def model-node-type-order
   "The set of model element types as vector."
@@ -341,7 +341,7 @@
   ;
   )
 
-(def view-types-order
+(def view-type-order
   "The set of view types as vector."
   [:concept-view :use-case-view :context-view :container-view :component-view
    :system-landscape-view :system-structure-view :dynamic-view
@@ -350,10 +350,10 @@
 
 (comment
   (count view-types)
-  (count view-types-order)
-  (= (count view-types) (count view-types-order))
-  (= view-types (set view-types-order))
-  (set/difference view-types (set view-types-order))
+  (count view-type-order)
+  (= (count view-types) (count view-type-order))
+  (= view-types (set view-type-order))
+  (set/difference view-types (set view-type-order))
   ;
   )
 
