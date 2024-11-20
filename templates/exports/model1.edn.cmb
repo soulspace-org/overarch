@@ -1,0 +1,98 @@
+<%
+;;;;
+;;;; Export Template for a Model Namespace
+;;;;
+;;;; config:
+;;;;  :per-namespace true
+;;;;
+
+(defn same-ns?
+  "Returns true, if the namespaces of the ids of `e1` and `e2` are the same."
+  [e1 e2]
+  (= (namespace (:id e1)) (namespace (:id e2))))
+
+(defn element-or-ref
+  "Returns the element `e`, if the id has the same namespace as the id of the `parent`, otherwise returns a ref."
+  [parent e]
+  (if (same-ns? parent e)
+      e
+      {:ref (:id e)}))
+
+(defn element-to-render
+  [e]
+  (if (seq (:ct e))
+    (assoc e :ct (map #(element-or-ref e %) (:ct e)))
+    e))
+
+(let [concept-model-elements (filter m/concept-model-element? e)
+      use-case-model-elements (filter m/use-case-model-element? e)
+      architecture-model-elements (filter m/architecture-model-element? e)
+      state-machine-model-elements (filter m/state-machine-model-element? e)
+      code-model-elements (filter m/code-model-element? e)
+      deployment-model-elements (filter m/deployment-model-element? e)]
+
+%>;;;;
+;;;; Model for Namespace <%= (m/element-namespace (first e)) %>
+;;;;
+#{
+<%
+  (when (seq concept-model-elements)
+%>
+  ;;;
+  ;;; Concept Model Elements
+  ;;;
+  ;;
+  ;; Nodes
+  ;;
+<%
+    (doseq [el (sort-by :id (filter m/model-node? concept-model-elements))]
+%><%= (element-to-render el) %>
+<%
+    )
+%>
+  ;;
+  ;; Relations
+  ;;
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? concept-model-elements))]
+%><%= (element-to-render el) %>
+<%
+    )
+  )
+
+  (when (seq use-case-model-elements)
+%>
+  ;;;
+  ;;; Use Case Model Elements
+  ;;;
+  ;;
+  ;; Nodes
+  ;;
+<%
+    (doseq [el (sort-by :id (filter m/model-node? use-case-model-elements))]
+%><%= (element-to-render el) %>
+<%
+    )
+%>
+  ;;
+  ;; Relations
+  ;;
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? use-case-model-elements))]
+%><%= (element-to-render el) %>
+<%
+    )
+  )
+
+  (when (seq architecture-model-elements)
+%>
+  ;;;
+  ;;; Architecture Model Elements
+  ;;;
+<%
+  )
+%>
+ }
+<%
+)
+%>

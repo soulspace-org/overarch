@@ -102,8 +102,8 @@
     (and (contains? #{:concept} (:el e)) (m/resolve-view model e "concept-view"))
 %>
 ## Concept Map
+<%= (md/relative-diagram-link e (m/resolve-view model e "concept-view")) %>
 <%= (md/relative-view-link e (m/resolve-view model e "concept-view")) %>
-<%= (md/relative-element-link e (m/resolve-view model e "concept-view")) %>
 <%
   )
 

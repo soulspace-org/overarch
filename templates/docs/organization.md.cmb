@@ -89,8 +89,8 @@
     (and (contains? #{:organization :org-unit} (:el e)) (m/resolve-view model e "organization-structure-view"))
 %>
 ## Organization Structure
+<%= (md/relative-diagram-link e (m/resolve-view model e "organization-structure-view")) %>
 <%= (md/relative-view-link e (m/resolve-view model e "organization-structure-view")) %>
-<%= (md/relative-element-link e (m/resolve-view model e "organization-structure-view")) %>
 <%
   )
 

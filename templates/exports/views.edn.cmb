@@ -27,7 +27,7 @@
 <%
       ))))
 
-(doseq [view-type (m/view-type-order)]
+(doseq [view-type m/view-type-order]
   (list-views e view-type))
 %>
 
