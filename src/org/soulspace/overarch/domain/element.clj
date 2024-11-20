@@ -18,6 +18,9 @@
 ;;
 ;; Architecture model
 ;; 
+;
+; add :used-by relation?
+;
 (def technical-architecture-node-types
   "Technical node types in the architecture model."
   #{:system :container :component})
@@ -59,6 +62,9 @@
 ;;
 ;; Deployment model
 ;;
+;
+; add :environment node?
+;
 (def deployment-node-types
   "Node types for deployment models."
   ; TODO only node and container?
