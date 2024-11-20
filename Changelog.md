@@ -7,8 +7,9 @@ Version (NEXT)
   * use :code-view in your views
 * added `:required-for`, `:input-of` and `:output-of` relations
 * added process model predicates
+* added order vectors for model elements and views
 * fixed relative link functions in markdown api for empty namespace elements
-
+* enhanced doc templates
 
 Version 0.32.0
 --------------
