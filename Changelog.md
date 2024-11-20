@@ -7,6 +7,7 @@ Version (NEXT)
   * use :code-view in your views
 * added `:required-for`, `:input-of` and `:output-of` relations for process model
 * added process model predicates
+* added negated selection criteria
 * added order vectors for model elements and views
 * **breaking** link/image link generation for markdown templates
   * renamed view-link/relative-view-link functions to diagram-link/relative-diagram-link in markdown api
