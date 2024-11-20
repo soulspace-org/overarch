@@ -6,5 +6,5 @@
 ## Relations
  Id |Name | Type | From | To | Description 
 ----|-----|------|------|----|------------
-<% (doseq [c rels]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (t/single-line (:desc c)) %>
+<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (t/single-line (:desc c)) %>
 <%)%>
