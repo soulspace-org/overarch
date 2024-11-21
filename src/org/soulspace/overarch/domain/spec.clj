@@ -73,6 +73,7 @@
 (s/def :overarch.criterium/keys vector?)
 (s/def :overarch.criterium/el keyword?)
 (s/def :overarch.criterium/els (s/and set? (s/coll-of keyword?)))
+(s/def :overarch.criterium/!els (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/namespace string?)
 (s/def :overarch.criterium/namespaces (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/namespace-prefix string?)
@@ -90,8 +91,11 @@
 (s/def :overarch.criterium/subtype? boolean?)
 (s/def :overarch.criterium/subtype keyword?)
 (s/def :overarch.criterium/subtypes (s/and set? (s/coll-of keyword?)))
+(s/def :overarch.criterium/!subtypes (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/maturity? boolean?)
 (s/def :overarch.criterium/maturity keyword?)
+(s/def :overarch.criterium/maturities (s/and set? (s/coll-of keyword?)))
+(s/def :overarch.criterium/!maturities (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/external? boolean?)
 (s/def :overarch.criterium/name? boolean?)
 (s/def :overarch.criterium/name string?)
@@ -102,26 +106,35 @@
 (s/def :overarch.criterium/tech? boolean?)
 (s/def :overarch.criterium/tech string?)
 (s/def :overarch.criterium/techs (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/!techs (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/all-techs (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/tags? boolean?)
 (s/def :overarch.criterium/tag string?)
 (s/def :overarch.criterium/tags (s/and set? (s/coll-of string?)))
+(s/def :overarch.criterium/!tags (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/all-tags (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/refers? boolean?)
 (s/def :overarch.criterium/referred? boolean?)
 (s/def :overarch.criterium/refers-to keyword?)
+(s/def :overarch.criterium/!refers-to keyword?)
 (s/def :overarch.criterium/referred-by keyword?)
+(s/def :overarch.criterium/!referred-by keyword?)
 (s/def :overarch.criterium/child? boolean?)
 (s/def :overarch.criterium/child-of keyword?)
+(s/def :overarch.criterium/!child-of keyword?)
 (s/def :overarch.criterium/descendant-of keyword?)
+(s/def :overarch.criterium/!descendant-of keyword?)
 (s/def :overarch.criterium/children? boolean?)
 (s/def :overarch.criterium/parent? boolean?)
 (s/def :overarch.criterium/parent-of keyword?)
+(s/def :overarch.criterium/!parent-of keyword?)
 (s/def :overarch.criterium/ancestor-of keyword?)
+(s/def :overarch.criterium/!ancestor-of keyword?)
 
 (s/def :overarch/criteria
   (s/keys :opt-un [:overarch.criterium/el
                    :overarch.criterium/els
+                   :overarch.criterium/!els
                    :overarch.criterium/keys?
                    :overarch.criterium/keys
                    :overarch.criterium/namespace
@@ -141,9 +154,12 @@
                    :overarch.criterium/subtype?
                    :overarch.criterium/subtype
                    :overarch.criterium/subtypes
+                   :overarch.criterium/!subtypes
                    :overarch.criterium/external?
                    :overarch.criterium/maturity?
                    :overarch.criterium/maturity
+                   :overarch.criterium/maturities
+                   :overarch.criterium/!maturities
                    :overarch.criterium/name?
                    :overarch.criterium/name
                    :overarch.criterium/desc?
@@ -153,22 +169,30 @@
                    :overarch.criterium/tech?
                    :overarch.criterium/tech
                    :overarch.criterium/techs
+                   :overarch.criterium/!techs
                    :overarch.criterium/all-techs
                    :overarch.criterium/tags?
                    :overarch.criterium/tag
                    :overarch.criterium/tags
+                   :overarch.criterium/!tags
                    :overarch.criterium/all-tags
                    :overarch.criterium/child?
                    :overarch.criterium/child-of
+                   :overarch.criterium/!child-of
                    :overarch.criterium/descendant-of
+                   :overarch.criterium/!descendant-of
                    :overarch.criterium/children?
                    :overarch.criterium/parent?
                    :overarch.criterium/parent-of
+                   :overarch.criterium/!parent-of
                    :overarch.criterium/ancestor-of
+                   :overarch.criterium/!ancestor-of
                    :overarch.criterium/refers?
-                   :overarch.criterium/refers-to
                    :overarch.criterium/referred?
-                   :overarch.criterium/referred-by]))
+                   :overarch.criterium/refers-to
+                   :overarch.criterium/!refers-to
+                   :overarch.criterium/referred-by
+                   :overarch.criterium/!referred-by]))
 
 (s/def :overarch/criteria-vector
   (s/and vector? (s/coll-of :overarch/criteria)))
