@@ -376,13 +376,6 @@ Here are some Overarch example models:
 * [Domain Driven Design Model](https://github.com/soulspace-org/domain-driven-design-model)
   is a concept model with the patterns of domain driven design.
 
-## Plans
-Here are my current plans to enhance overarch in the next releases.
-
-* provide relations between elements of the different models to model
-  traceability information (e.g. from use cases to the containers implementing
-  them or from domain concepts to domain model elements)
-
 ## Copyright
 © 2023 Ludger Solbach
 
