@@ -506,15 +506,20 @@
    :name "role in"
    :desc ""}
 
-
   ;;
   ;; Process
   ;;
   {:el :rel
+   :id :overarch.concepts/org-unit-responsible-for-technical-architecture-node
+   :from :overarch.concepts/org-unit
+   :to :overarch.concepts/technical-architecture-node
+   :name "responsible for"
+   :desc ""}
+  {:el :rel
    :id :overarch.concepts/org-unit-responsible-for-capability
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/capability
-   :name "required for"
+   :name "responsible for"
    :desc ""}
   {:el :rel
    :id :overarch.concepts/process-required-for-capability
