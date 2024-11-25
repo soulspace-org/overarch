@@ -665,8 +665,7 @@ It has input parameters and calculates results.
 The relations connect the nodes of the code model. They are essentially the relation types of the UML.
 
 ## Organization Model
-The responsibility model captures the organizational structure of the system
-architecture.
+The organization model captures the organizational structure of an organization.
 
 ### Logical Data Model for the Organization Model Elements
 ![Organization Model Elements](/doc/images/overarch/data-model/organization-model-elements.svg)
@@ -678,13 +677,18 @@ You can enhance the org-unit node with attributes specific for your organization
 (e.g. support mailboxes) and use these attributes in the templates to generate
 documentation or other artifacts.
 
-### Relations (:responsible-for, :collaborates-with)
+### Relations (:responsible-for, :collaborates-with :role-in)
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
 ## Process Model
+The process model captures the structure of capabilities, processes and their resources.
 
-### Nodes (:capability :process :artifact :requirement :decision)
+### Logical Data Model for the Process Model Elements
+
+### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
+
+### Relations (:role-in :required-for :input-of :output-of)
 
 # Model Element Selection By Criteria
 Model elements can be selected based on criteria.
@@ -702,6 +706,7 @@ key                    | type            | example values            | descripti
 :key                   | vector          | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
 :el                    | keyword         | :system                      | elements of the given type
 :els                   | set of keywords | #{:system :person}           | elements with one of the given types
+:!els                  | set of keywords | #{:system :person}           | elements with none of the given types
 :namespace             | string          | "org.soulspace"              | elements with the given id namespace
 :namespaces            | set of strings  | #{"org.soulspace"}           | elements with one of the given id namespaces
 :namespace-prefix      | string          | "org"                        | elements with the given id namespace prefix
@@ -718,9 +723,11 @@ key                    | type            | example values            | descripti
 :subtype?              | boolean         | true, false                  | nodes for which the subtype check returns the given boolean value
 :subtype               | keyword         | :queue                       | nodes of the given subtype
 :subtypes              | set of keywords | #{:queue :database}          | nodes of one of the given subtypes
+:!subtypes             | set of keywords | #{:queue :database}          | nodes of none of the given subtypes
 :maturity?             | boolean         | true, false                  | elements for which the maturity check returns the given boolean value
 :maturity              | keyword         | :proposed, :deprecated       | elements of the given maturity
 :maturities            | set of keywords | #{:implemented  :deprecated} | elements of the given maturities
+:!maturities           | set of keywords | #{:implemented  :deprecated} | elements not of the given maturities
 :external?             | boolean         | true, false                  | elements of the given external state
 :name?                 | boolean         | true, false                  | elements for which the name check returns the given value
 :name                  | string/regex    | "Overarch CLI"               | elements for which the name matches the given value
@@ -731,21 +738,28 @@ key                    | type            | example values            | descripti
 :tech?                 | boolean         | true, false                  | elements for which the technology check returns the given value
 :tech                  | string          | "Clojure"                    | elements of the given technology
 :techs                 | set of strings  | #{"Clojure" "Java"}          | elements with one or more of the given technologies
+:!techs                | set of strings  | #{"Clojure" "Java"}          | elements with none of the given technologies
 :all-techs             | set of strings  | #{"Clojure" "Java"}          | elements with all of the given technologies
 :tags?                 | boolean         | true, false                  | elements for which the tags check returns the given value
 :tag                   | string          | "critical"                   | elements with the given tag
 :tags                  | set of strings  | #{"Clojure" "Java"}          | elements with one or more of the given tags
+:!tags                 | set of strings  | #{"Clojure" "Java"}          | elements with none of the given tags
 :all-tags              | set of strings  | #{"Clojure" "Java"}          | elements with all of the given tags
 :refers?               | boolean         | true, false                  | nodes for which the check for refers returns the given value
 :referred?             | boolean         | true, false                  | nodes for which the check for referred returns the given value
 :refers-to             | keyword         | :org.soulspace/overarch      | nodes which refer to the node with the given id
-:referred-by           | keyword         | :org.soulspace/overarch      | nodes which are referred by the node with the given id
+:!refers-to            | keyword         | :org.soulspace/overarch      | nodes which not refer to the node with the given id
+:referred-by           | keyword         | :org.soulspace/overarch      | nodes which are referred by the node with the :!referred-by          | keyword         | :org.soulspace/overarch      | nodes which are not referred by the node with the given id
 :child?                | boolean         | true, false                  | nodes for which the check for child returns the given value
 :child-of              | keyword         | :org.soulspace/overarch      | nodes which are children of the node with the given id
+:!child-of             | keyword         | :org.soulspace/overarch      | nodes which are not children of the node with the given id
 :descendant-of         | keyword         | :org.soulspace/overarch      | nodes which are descendants of the node with the given id
+:!descendant-of        | keyword         | :org.soulspace/overarch      | nodes which are not descendants of the node with the given id
 :parent?               | boolean         | true, false                  | nodes for which the check for children returns the given value
 :parent-of             | keyword         | :org.soulspace/overarch      | node which is the parent of the node with the given id
+:!parent-of            | keyword         | :org.soulspace/overarch      | nodes which are not the parent of the node with the given id
 :ancestor-of           | keyword         | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
+:!ancestor-of          | keyword         | :org.soulspace/overarch      | nodes which are not ancestors of the node with the given id
 
 # Views
 To show model elements in diagrams or in textual representations you can define
@@ -1320,7 +1334,10 @@ public class Calc {
 # Best Practices
 Here are some best practices or guidelines from my practical use of Overarch.
 
-The biggest advice is: *Be consistent in your modelling!*
+The biggest advice is: **Be consistent in your modelling!**
+
+Consistency is the key to features like selection based views and artifact
+generation. It also helps you to navigate and maintain huge models.
 
 # Modelling
 ## Model Structure And Ids
@@ -1329,16 +1346,24 @@ The biggest advice is: *Be consistent in your modelling!*
 * The namespace of the element id should reflect the folder structure of the
   model.
 * When refactoring ids, use the find & replace functionality of your editor/IDE
-  to replace every occurence in the model files at once, so the referential
+  to replace every occurence in all the model files at once, so the referential
   integrity of the model keeps intact.
 * Use refs or `:contained-in` relations to create the hierarchical structure
   across different folders and files.
+  * with `:contained-in` relations you don't have to touch the parent when
+    adding new children
+  * The hierarchies modelled with the `:ct` attribute is converted to
+    `:contained-in` relations with the attribute `:synthetic` set to `true`
+    when the model is read.
 
 
 ## Relations
-* The id of a relation should start with the id of the referrer (the `:from`
-  reference), then you know in which file you have to look for the relation.
 * Use specific relation types instead of general `:rel`, if possible.
+* The id of a relation should start with the id of the referrer node (the `:from`
+  id) followed by a verb based on the relation type and the name part of the id
+  of the referred node (the `:to` id), so
+  * the naming scheme is consistent
+  * you know in which file you have to look for the relation
 
 ## Views
 * Use selection criteria and includes to specify the content of views.

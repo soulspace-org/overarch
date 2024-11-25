@@ -1,17 +1,17 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.33.0
 --------------
 * **breaking** * removed view type :class-view
   * use :code-view in your views
+* **breaking** link/image link generation for markdown templates
+  * renamed view-link/relative-view-link functions to diagram-link/relative-diagram-link in markdown api
+  * added new view-link/relative-view-link functions to render normal links to docs for the views in markdown api
 * added `:required-for`, `:input-of` and `:output-of` relations for process model
 * added process model predicates
 * added negated selection criteria
 * added order vectors for model elements and views
-* **breaking** link/image link generation for markdown templates
-  * renamed view-link/relative-view-link functions to diagram-link/relative-diagram-link in markdown api
-  * added new view-link/relative-view-link functions to render normal links to docs for the views in markdown api
 * added file and image link functions in markdown api
 * fixed relative link functions in markdown api for empty namespace elements
 * enhanced doc templates
