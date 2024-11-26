@@ -1,6 +1,9 @@
 Changelog
 =========
 
+Version (NEXT)
+--------------
+
 Version 0.33.0
 --------------
 * **breaking** * removed view type :class-view
