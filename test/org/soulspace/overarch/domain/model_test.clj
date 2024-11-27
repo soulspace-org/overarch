@@ -149,7 +149,7 @@
       7 (count (:referrer-id->relations c4-model1))
       1 (count (:referrer-id->relations concept-model1))
       2 (count (:test/user1 (:referrer-id->relations c4-model1)))
-      1 (count (:test/system1 (:referrer-id->relations c4-model1))) 
+      1 (count (:test/system1 (:referrer-id->relations c4-model1)))
       4 (count (:test/container1 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
       1 (count (:test/component11 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
       1 (count (:test/component12 (:referrer-id->relations c4-model1))) ; 1 synthetic relations
@@ -234,8 +234,7 @@
 (comment
   :test/user1
   c4-model1
-  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}})
-  )
+  (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}}))
 
 (def hierarchy-input1
   #{{:el :system
@@ -331,8 +330,8 @@
                                     {:el :component
                                      :id :a/component}
                                     y))
-                  false {:el :component
-                         :id :a/component})))
+      false {:el :component
+             :id :a/component})))
 
 (deftest descendant-nodes-test
   (testing "descendant-nodes true"
@@ -473,7 +472,7 @@
 
 (def filter-model1 (build-model filter-input))
 
-  (deftest root-nodes-test
+(deftest root-nodes-test
   (testing "root-nodes"
     (are [x y] (= x (root-nodes filter-model1 y))
       #{{:el :person
@@ -543,7 +542,7 @@
       )))
 
 (deftest all-nodes-test
-  (testing "root-nodes"
+  (testing "all-nodes"
     (are [x y] (= x (all-nodes filter-model1 y))
       #{{:el :person
          :id :org.soulspace.external/person
@@ -670,11 +669,11 @@
          :to :org.soulspace.external/system1
          :name "uses"}}
       {:el :rel :namespace "org.soulspace.external"}
-      
+
       #{{:el :container
-       :id :org.soulspace.internal.system/container1-ui
-       :name "Container1 UI"
-       :tech "ClojureScript"}}
+         :id :org.soulspace.internal.system/container1-ui
+         :name "Container1 UI"
+         :tech "ClojureScript"}}
       {:name "Container1 UI"}
 
       #{{:el :container
@@ -712,7 +711,7 @@
          :name "Container1 DB"
          :tech "Datomic"}}
       {:key [:tech "Datomic"]}))
-  
+
   (testing "filter-xf with single criteria map and model based criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
       #{{:el :system
@@ -803,7 +802,7 @@
                 :name "Container2 Events"
                 :tech "Kafka"}}}}
       {:ancestor-of :org.soulspace.internal.system/container1}
-      
+
       #{{:el :component
          :id :org.soulspace.internal.system.container1/component1
          :name "Component1"}}
@@ -873,16 +872,16 @@
 (deftest input-child?-test
   (testing "input-child? true"
     (is (= true (input-child? {:el :component :id :a/component}
-                        {:el :container
-                         :id :a/container
-                         :ct #{{:el :component
-                                :id :a/component}}}))))
+                              {:el :container
+                               :id :a/container
+                               :ct #{{:el :component
+                                      :id :a/component}}}))))
   (testing "child? false"
     (are [x y] (= x (input-child? y
-                            {:el :container
-                             :id :a/container
-                             :ct #{{:el :component
-                                    :id :a/component}}}))
+                                  {:el :container
+                                   :id :a/container
+                                   :ct #{{:el :component
+                                          :id :a/component}}}))
       false {:el :container
              :id :a/container
              :ct #{{:el :component
@@ -908,6 +907,6 @@
 (deftest interfaces-test
   (testing "interfaces"
     (are [x y] (= x (interfaces code-model1
-                                  (resolve-id code-model1 y)))
+                                (resolve-id code-model1 y)))
       #{(resolve-id code-model1 :test/indentifiable-interface)} :test/identified-class)))
 

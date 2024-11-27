@@ -622,11 +622,17 @@
       false)))
 
 ; FIXME use children-resolver fn instead of :ct
-(defn descendant-nodes
+#_(defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
   (when (el/model-node? (resolve-element model e))
     (traverse (element-resolver model) el/model-node? :ct el/tree->set (:ct e))))
+
+(defn descendant-nodes
+  "Returns the set of descendants of the node `e`."
+  [model e]
+  (when (el/model-node? (resolve-element model e))
+    (traverse (element-resolver model) el/model-node? (children-resolver model) el/tree->set (:ct e)))) ;(children model e)
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
@@ -1252,8 +1258,8 @@
     (= :!descendant-of k)          (complement (partial descendant-of? model v))
     (= :children? k)               (partial parent-check? model v) ; deprecate
     (= :parent? k)                 (partial parent-check? model v)
-    (= :parent-of k)               (partial parent model v)
-    (= :!parent-of k)              (complement (partial parent model v))
+    (= :parent-of k)               (partial parent? model v)
+    (= :!parent-of k)              (complement (partial parent? model v))
     (= :ancestor-of k)             (partial ancestor-of? model v)
     (= :!ancestor-of k)            (complement (partial ancestor-of? model v))
 
