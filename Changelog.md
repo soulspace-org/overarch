@@ -5,7 +5,7 @@ Version (NEXT)
 --------------
 * added negated selection criteria ``:!namespace``, ``:!id``, ``:!from`` and ``:!to``
 * refactored error handling and commandline output of the artifact generation
-* fixed ``dependant-nodes`` to work with modelled ``:contained-in`` relations
+* fixed ``descendant-nodes`` to work with modelled ``:contained-in`` relations
 
 Version 0.33.0
 --------------
