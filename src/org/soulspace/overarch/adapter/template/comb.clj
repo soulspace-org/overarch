@@ -167,17 +167,7 @@
                                                                 'protected-areas protected-areas
                                                                 'e e
                                                                 'view view}})]
-     (try
-       (sci/with-out-str (sci/eval-string parsed-template opts))
-       (catch Exception e
-         (println "Exception while generating for template" (:template ctx))
-         (println (ex-message e))
-         (println (ex-data e))
-         (when (:debug ctx)
-           (println "Parsed Template: ")
-           (println parsed-template))
-         ;(println (ex-cause e))
-         )))))
+     (sci/with-out-str (sci/eval-string parsed-template opts)))))
 
 (defmethod t/parse-template :combsci
   ([engine-key template]

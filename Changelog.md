@@ -3,6 +3,8 @@ Changelog
 
 Version (NEXT)
 --------------
+* added negated selection criteria ``:!namespace``, ``:!id``, ``:!from`` and ``:!to``
+* refactored error handling and commandline output of the artifact generation
 
 Version 0.33.0
 --------------

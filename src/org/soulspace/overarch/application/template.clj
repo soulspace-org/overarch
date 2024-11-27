@@ -211,7 +211,7 @@
 (defn write-artifact
   "Write the generated `result` to the artifact `pathname`."
   [pathname result]
-  (println "Writing artifact" pathname)
+  ; (println "Writing artifact" pathname)
   (let [file (io/as-file pathname)
         parent (file/parent-dir file)]
     ; TODO check suppress-write
@@ -258,20 +258,33 @@
 (defn generate-artifact
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
   [parsed-template path ctx model e]
-  (let [protected-areas (read-protected-areas ctx path)
-        result (apply-template ctx
-                               parsed-template
-                               {:ctx ctx
-                                :e e
-                                :model model
-                                :protected-areas protected-areas})]
+  (try
+    (let [protected-areas (read-protected-areas ctx path)
+          result (apply-template ctx
+                                 parsed-template
+                                 {:ctx ctx
+                                  :e e
+                                  :model model
+                                  :protected-areas protected-areas})]
     ; TODO handle backups
     ; write artifact for result
-    (write-artifact path result)))
+      (write-artifact path result))
+    (catch Exception e
+      (println "Exception while generating with template" (:template ctx))
+      (println "  for data:")
+      (println  e)
+      (println "Message:" (ex-message e))
+      (println (ex-data e))
+      (when (:debug ctx)
+        (println "Parsed Template: ")
+        (println parsed-template))
+             ;(println (ex-cause e))
+      )))
 
 (defn generate
   "Generates artifacts for the `model` with the generation configuration specified in `options`."
   [model options]
+  (println "Writing artifacts")
   (doseq [ctx (read-config options)]
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
           parsed-template (parse-template ctx template)
