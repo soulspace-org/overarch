@@ -1183,12 +1183,15 @@
     ;;
     ;; element related
     ;;
+
+    ;; TODO add generic handling of operators [?, !]
     (= :key? k)                    (partial el/key-check? v)
     (= :key k)                     (partial el/key? v)
     (= :el k)                      (partial el/el? v)
     (= :els k)                     (partial el/els? v)
     (= :!els k)                    (complement (partial el/els? v))
     (= :namespace k)               (partial el/namespace? v)
+    (= :!namespace k)              (complement (partial el/namespace? v))
     (= :namespaces k)              (partial el/namespaces? v)
     (= :namespace-prefix k)        (partial el/namespace-prefix? v)
     (= :namespace-prefixes k)      (partial el/namespace-prefixes? v)
@@ -1202,8 +1205,11 @@
     (= :to-namespace-prefixes k)   (partial el/to-namespace-prefixes? v)
     (= :id? k)                     (partial el/id-check? v)
     (= :id k)                      (partial el/id? v)
+    (= :!id k)                     (complement (partial el/id? v))
     (= :from k)                    (partial el/from? v)
+    (= :!from k)                   (complement (partial el/from? v))
     (= :to k)                      (partial el/to? v)
+    (= :!to k)                     (complement (partial el/to? v))
     (= :subtype? k)                (partial el/subtype-check? v)
     (= :subtype k)                 (partial el/subtype? v)
     (= :subtypes k)                (partial el/subtypes? v)
@@ -1248,8 +1254,8 @@
     (= :parent? k)                 (partial parent-check? model v)
     (= :parent-of k)               (partial parent model v)
     (= :!parent-of k)              (complement (partial parent model v))
-    (= :ancestor-of k)             (partial ancestor-of? model v) 
-    (= :!ancestor-of k)            (complement (partial ancestor-of? model v)) 
+    (= :ancestor-of k)             (partial ancestor-of? model v)
+    (= :!ancestor-of k)            (complement (partial ancestor-of? model v))
 
     :else
     (do (println "unknown criterium" (name k))

@@ -75,6 +75,7 @@
 (s/def :overarch.criterium/els (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/!els (s/and set? (s/coll-of keyword?)))
 (s/def :overarch.criterium/namespace string?)
+(s/def :overarch.criterium/!namespace string?)
 (s/def :overarch.criterium/namespaces (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/namespace-prefix string?)
 (s/def :overarch.criterium/namespace-prefixes (s/and set? (s/coll-of string?)))
@@ -88,6 +89,11 @@
 (s/def :overarch.criterium/to-namespace-prefixes (s/and set? (s/coll-of string?)))
 (s/def :overarch.criterium/id? boolean?)
 (s/def :overarch.criterium/id keyword?)
+(s/def :overarch.criterium/!id keyword?)
+(s/def :overarch.criterium/from keyword?)
+(s/def :overarch.criterium/!from keyword?)
+(s/def :overarch.criterium/to keyword?)
+(s/def :overarch.criterium/!to keyword?)
 (s/def :overarch.criterium/subtype? boolean?)
 (s/def :overarch.criterium/subtype keyword?)
 (s/def :overarch.criterium/subtypes (s/and set? (s/coll-of keyword?)))
@@ -138,6 +144,7 @@
                    :overarch.criterium/keys?
                    :overarch.criterium/keys
                    :overarch.criterium/namespace
+                   :overarch.criterium/!namespace
                    :overarch.criterium/namespaces
                    :overarch.criterium/namespace-prefix
                    :overarch.criterium/namespace-prefixes
@@ -151,6 +158,11 @@
                    :overarch.criterium/to-namespace-prefixes
                    :overarch.criterium/id?
                    :overarch.criterium/id
+                   :overarch.criterium/!id
+                   :overarch.criterium/from
+                   :overarch.criterium/!from
+                   :overarch.criterium/to
+                   :overarch.criterium/!to
                    :overarch.criterium/subtype?
                    :overarch.criterium/subtype
                    :overarch.criterium/subtypes
