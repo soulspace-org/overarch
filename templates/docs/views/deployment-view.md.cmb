@@ -52,22 +52,22 @@
   (when (seq links) 
 %>
 ## Links
-| Name | From | To | Technology | Description |
+| From | Name | To | Technology | Description |
 |---|---|---|---|---|
 <%
     (doseq [link (sort-by #(str/capitalize (:name %)) links)]
-%>| <%= (:name link) %> | <%= (m/from-name model link) %> | <%= (m/to-name model link) %> | <%= (:tech link) %> | <%= (t/single-line (:desc link)) %> |
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from link))) %> | <%= (:name link) %> | <%= (md/relative-element-link e (m/resolve-element model (:to link))) %> | <%= (:tech link) %> | <%= (t/single-line (:desc link)) %> |
 <%
     )
   )
   (when (seq deployments) 
 %>
 ## Deployments
-| Name | From | To | Description |
+| From | Name | To | Description |
 |---|---|---|---|---|
 <%
     (doseq [deployment (sort-by #(str/capitalize (:name %)) deployments)]
-%>| <%= (:name deployment) %> | <%= (m/from-name model deployment) %> | <%= (m/to-name model deployment) %> | <%= (t/single-line (:desc deployment)) %> |
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from deployment))) %> | <%= (:name deployment) %> | <%= (md/relative-element-link e (m/resolve-element model (:to deployment))) %> | <%= (t/single-line (:desc deployment)) %> |
 <%
     )
   )
