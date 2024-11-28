@@ -63,6 +63,11 @@
   [view]
   (get-in view [:spec :sketch]))
 
+(defn expand-external-spec
+  "Returns the expand external specification for the `view`."
+  [view]
+  (get-in view [:spec :expand-external] false))
+
 (defn styles-spec
   "Returns the styles specification for the `model` and the `view`."
   [model view]

@@ -3,9 +3,10 @@ Changelog
 
 Version (NEXT)
 --------------
-* added negated selection criteria ``:!namespace``, ``:!id``, ``:!from`` and ``:!to``
+* added negated selection criteria `:!namespace`, `:!id`, `:!from` and `:!to`
+* added `:expand-external` spec key for container and component views, default is false
 * refactored error handling and commandline output of the artifact generation
-* fixed ``descendant-nodes`` to work with modelled ``:contained-in`` relations
+* fixed `descendant-nodes` to work with modelled `:contained-in` relations
 
 Version 0.33.0
 --------------

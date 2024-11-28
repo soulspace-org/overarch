@@ -19,12 +19,12 @@
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"
-    (are [x y] (= x (boolean (as-boundary? test-model y)))
+    (are [x y] (= x (boolean (as-boundary? test-model {:el :container-view} y)))
       true {:el :system
             :id :test/system1
             :ct #{{:el :container}}}))
   (testing "as-boundary? false"
-    (are [x y] (= x (boolean (as-boundary? test-model y)))
+    (are [x y] (= x (boolean (as-boundary? test-model {:el :container-view} y)))
       false {:el :container
              :id :test/container1
              :ct #{{:el :component}}}

@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.state-machine-view :refer :all] 
-            [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]))
 
 (def test-input
@@ -14,7 +13,7 @@
     ;(are [x y] (= x (boolean (as-boundary? y))))
     )
   (testing "as-boundary? false"
-    (are [x y] (= x (boolean (as-boundary? test-model y)))
+    (are [x y] (= x (boolean (as-boundary? test-model {:el :state-machine-view} y)))
       false {:el :state-machine}
       false {:el :start-state}
       false {:el :state}

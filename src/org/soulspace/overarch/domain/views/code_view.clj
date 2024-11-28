@@ -10,7 +10,7 @@
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
-  [model e]
+  [model view e]
   (when (seq e)
     (or (el/boundary? e) ; regular boundary
         (and

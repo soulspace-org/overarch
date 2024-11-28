@@ -10,7 +10,7 @@
 (defn as-boundary?
   "Returns the boundary element, if the element should be rendered
    as a boundary for this view type, false otherwise."
-  [model e]
+  [model view e]
   (when (seq e)
     (or (el/boundary? e) ; regular boundary
         (and
@@ -24,7 +24,7 @@
   (let [p (model/parent model e)]
     (and (contains? el/context-view-element-types (:el e))
          (or (not p) ; has no parent
-             (as-boundary? model p) ; parent is rendered as boundary
+             (as-boundary? model view p) ; parent is rendered as boundary
              ))))
 
 (defn render-model-relation?
