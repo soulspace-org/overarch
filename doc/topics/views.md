@@ -62,13 +62,17 @@ Shows the containers (e.g. processes, deployment units of the system) and
 the interactions between them and the outside world. Contains the elements
 of the system context diagram and the containers of the system to be described.
 The system to be described is rendered as a system boundary in the container
-diagram.
+diagram. External systems are rendered as boxes by default, but can be expanded
+to show their containers by adding `:expand-external true` to the view spec.
 
 ![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
 ## Component View (:component-view)
 Shows the components and their interactions inside of a container and with
-outside systems and actors.
+outside systems and actors. External systems are rendered as boxes by default,
+but can be expanded to show their containers and components by adding
+`:expand-external true` to the view spec.
+
 
 ![Component View rendered with PlantUML](/doc/images/banking/api-component-view.svg)
 
@@ -144,15 +148,16 @@ their type and their descriptions.
 Views can be customized with the `:spec` key. View specs may include general
 directives for a view or directives for specific renderers (e.g. PlantUML).
 
-key           | type          | example values            | description 
---------------|---------------|---------------------------|------------
-:include      | keyword       | :relations :related       | specify automatic includes (work in progress)
-:selection    | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
-:layout       | keyword       | :top-down, :left-right    | rendering direction
-:linetype     | keyword       | :orthogonal, :polygonal   | different line types for relations
-:sketch       | boolean       | true, false               | visual clue for sketches
-:styles       | set           | see Styling               | visual customization of elements
-:themes       | keyword       | id of the theme           | theme containing styles
+key              | type          | example values            | description 
+-----------------|---------------|---------------------------|------------
+:include         | keyword       | :relations :related       | specify automatic includes (work in progress)
+:selection       | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
+:layout          | keyword       | :top-down, :left-right    | rendering direction
+:linetype        | keyword       | :orthogonal, :polygonal   | different line types for relations
+:sketch          | boolean       | true, false               | visual clue for sketches
+:styles          | set           | see Styling               | visual customization of elements
+:themes          | keyword       | id of the theme           | theme containing styles
+:expand-external | boolean       | true, false               | show the content of external systems in container/component views (default false)
 
 ### Selection
 With the `:selection` key a criteria map or a vector of criterias can be specified.

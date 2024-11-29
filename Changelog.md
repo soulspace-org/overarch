@@ -7,6 +7,7 @@ Version (NEXT)
 * added `:expand-external` spec key for container and component views, default is false
 * refactored error handling and commandline output of the artifact generation
 * fixed `descendant-nodes` to work with modelled `:contained-in` relations
+* enhanced doc templates
 
 Version 0.33.0
 --------------

@@ -241,6 +241,7 @@
 (s/def :overarch.view.spec/themes
   (s/coll-of :overarch.view/theme))
 
+(s/def :overarch.view.spec/expand-external boolean?)
 (s/def :overarch.view.spec/include (s/and keyword? #{:referenced-only :relations :related}))
 (s/def :overarch.view.spec/layout (s/and keyword? #{:top-down :left-right}))
 (s/def :overarch.view.spec/linetype keyword?)
@@ -286,8 +287,10 @@
 ;;
 (s/def :overarch.view/spec
   (s/keys :opt-un [:overarch/selection :overarch.view.spec/include
+                   :overarch.view.spec/expand-external
                    :overarch.view.spec/layout :overarch.view.spec/linetype
-                   :overarch.view.spec/sketch :overarch.view/styles :overarch.view.spec/themes
+                   :overarch.view.spec/sketch :overarch.view/styles
+                   :overarch.view.spec/themes
                    :overarch.view.spec/plantuml :overarch.view.spec/markdown
                    :overarch.view.spec/graphviz]))
 
