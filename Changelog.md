@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.34.0
 --------------
 * added negated selection criteria `:!namespace`, `:!id`, `:!from` and `:!to`
 * added `:expand-external` spec key for container and component views, default is false
