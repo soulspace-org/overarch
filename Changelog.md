@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version (NEXT)
+--------------
+* enhanced doc templates
+
 Version 0.34.0
 --------------
 * added negated selection criteria `:!namespace`, `:!id`, `:!from` and `:!to`
