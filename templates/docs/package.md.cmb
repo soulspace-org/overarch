@@ -7,7 +7,8 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
+(let [parent (m/parent model e)
+      children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
       packages  (filter #(= :package (:el %)) children)
       interfaces (filter #(= :interface (:el %)) children)
       classes (filter #(= :class (:el %)) children)]
@@ -21,6 +22,12 @@
   (when (:doc e)
 %>## Documentation
 <%= (:doc e) %>
+<%
+  )
+
+  (when parent
+%>## Parent
+<%= (md/relative-element-link e parent) %>
 <%
   )
 
