@@ -7,7 +7,7 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [input-of input (m/referred-nodes model e #{:input-of})
+(let [input-of (m/referred-nodes model e #{:input-of})
       output-of (m/referred-nodes model e #{:input-of})
       process-input (filter #(= :process (:el %)) input-of)
       process-output (filter #(= :process (:el %)) output-of)]
@@ -38,7 +38,7 @@
 
   (when (seq process-output)
 %>
-## Output Artifact for Process
+## Output Artifact of Process
 | Name | Description |
 |---|---|
 <%

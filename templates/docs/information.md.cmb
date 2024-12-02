@@ -7,8 +7,13 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [processes nil ; TODO
-      ]
+(let [required-for (m/referred-nodes model e #{:required-for})
+      capabilities (filter #(= :capability (:el %)) required-for)
+      input-of (m/referred-nodes model e #{:input-of})
+      output-of (m/referred-nodes model e #{:output-of})
+      process-input (filter #(= :process (:el %)) input-of)
+      process-output (filter #(= :process (:el %)) output-of)
+]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
@@ -20,6 +25,30 @@
 <%= (:doc e) %>
 
 <%
+  )
+
+  (when (seq process-input)
+%>
+## Input Information for Process
+| Name | Description |
+|---|---|
+<%
+    (doseq [process (sort-by :name process-input)]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
+<%
+    )
+  )
+
+  (when (seq process-output)
+%>
+## Output Information of Process
+| Name | Description |
+|---|---|
+<%
+    (doseq [process (sort-by :name process-output)]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
+<%
+    )
   )
 
   (when (seq (:tags e))
