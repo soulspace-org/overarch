@@ -407,6 +407,25 @@
     [(when-not (:no-legend spec)
        "SHOW_LEGEND()")]))
 
+; handle deployment models specifically because containers deployed on nodes
+; should only be rendered as children of nodes, not on their own
+(defmethod puml/render-plantuml-view :deployment-view
+  [model options view]
+  (let [elements  (view/view-elements model view)
+         ; filter for nodes only, drop containers
+        nodes     (view/root-elements model (filter #(= :node (:el %)) elements))
+        relations (filter el/model-relation? elements)
+        rendered  (view/elements-to-render model view (concat nodes relations))]
+    (flatten [(str "@startuml " (name (:id view)))
+              (render-c4-imports view)
+              (puml/render-sprite-imports model view)
+              (render-c4-layout model view)
+              (puml/render-skinparams view)
+              (puml/render-title view)
+              (map #(render-c4-element model view 0 %) rendered)
+              (render-c4-legend view)
+              "@enduml"])))
+
 (defmethod puml/render-plantuml-view :c4-view
   [model options view]
   (let [elements (view/view-elements model view)
