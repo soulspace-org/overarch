@@ -3,6 +3,7 @@ Changelog
 
 Version (NEXT)
 --------------
+* added special handling for plantuml c4 deployment diagrams
 * enhanced doc templates
 
 Version 0.34.0
