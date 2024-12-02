@@ -16,10 +16,8 @@
 
 (let [use-cases (m/using model e)
       roles-in  (m/roles-in model e)
-      ; org-units (filter #(contains? #{:organization :org-unit} (:el %)) roles-in)
-      ; processes (filter #(contains? #{:process} (:el %)) roles-in)
-      org-units roles-in
-      processes nil
+      org-units (filter #(contains? #{:organization :org-unit} (:el %)) roles-in)
+      processes (filter #(contains? #{:process} (:el %)) roles-in)
       containers nil]
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 
