@@ -158,8 +158,8 @@
 
 (defmethod render-c4-element :node
   [model view indent e]
-  (let [deployed (model/deployed-on model e)
-        children (model/children model e)
+  (let [children (model/children model e)    ; selects the child nodes
+        deployed (model/deployed-on model e) ; selects the deployed technical architecture nodes
         content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
     (if (seq content)
