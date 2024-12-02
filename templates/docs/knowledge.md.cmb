@@ -7,8 +7,8 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [processes nil ; TODO
-      ]
+(let [required-for (m/referred-nodes model e #{:required-for})
+      capabilities (filter #(= :capability (:el %)) required-for)]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
@@ -20,6 +20,18 @@
 <%= (:doc e) %>
 
 <%
+  )
+
+  (when (seq capabilities)
+%>
+## Required for Capabilities
+| Name | Description |
+|---|---|
+<%
+    (doseq [capability (sort-by :name capabilities)]
+%>| <%= (md/relative-element-link e capability) %> | <%= (t/single-line (:desc capability)) %> |
+<%
+    )
   )
 
   (when (seq (:tags e))

@@ -36,18 +36,6 @@
 <%
   )
 
-  (when (seq sub-processes)
-%>
-## Sub Processes
-| Name | Description |
-|---|---|
-<%
-    (doseq [process (sort-by :name sub-processes)]
-%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
-<%
-    )
-  )
-
   (when (seq capabilities)
 %>
 ## Required for Capabilities
@@ -56,6 +44,18 @@
 <%
     (doseq [capability (sort-by :name capabilities)]
 %>| <%= (md/relative-element-link e capability) %> | <%= (t/single-line (:desc capability)) %> |
+<%
+    )
+  )
+
+  (when (seq sub-processes)
+%>
+## Sub Processes
+| Name | Description |
+|---|---|
+<%
+    (doseq [process (sort-by :name sub-processes)]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
 <%
     )
   )
