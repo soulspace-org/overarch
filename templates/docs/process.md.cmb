@@ -7,10 +7,16 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [roles (m/roles model e)
-      artifacts nil ; TODO
-      capabilities nil ; TODO
-      ]
+(let [parent (m/parent model e)
+      children (m/children model e)
+      sub-processes (filter #(= :process (:el %)) children)
+      roles (m/roles model e)
+      input (m/referring-nodes model e #{:input-of})
+      output (m/referring-nodes model e #{:output-of})
+      input-artifacts (filter #(= :artifact (:el %)) input)
+      output-artifacts (filter #(= :artifact (:el %)) output)
+      required-for (m/referred-nodes model e #{:required-for})
+      capabilities (filter #(= :capability (:el %)) required-for)]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
@@ -24,6 +30,36 @@
 <%
   )
 
+  (when parent
+%>## Parent
+<%= (md/relative-element-link e parent) %>
+<%
+  )
+
+  (when (seq sub-processes)
+%>
+## Sub Processes
+| Name | Description |
+|---|---|
+<%
+    (doseq [process (sort-by :name sub-processes)]
+%>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
+<%
+    )
+  )
+
+  (when (seq capabilities)
+%>
+## Required for Capabilities
+| Name | Description |
+|---|---|
+<%
+    (doseq [capability (sort-by :name capabilities)]
+%>| <%= (md/relative-element-link e capability) %> | <%= (t/single-line (:desc capability)) %> |
+<%
+    )
+  )
+
   (when (seq roles)
 %>
 ## Roles
@@ -32,6 +68,30 @@
 <%
     (doseq [role (sort-by :name roles)]
 %>| <%= (md/relative-element-link e role) %> | <%= (t/single-line (:desc role)) %> |
+<%
+    )
+  )
+
+  (when (seq input-artifacts)
+%>
+## Input Artifacts
+| Name | Description |
+|---|---|
+<%
+    (doseq [artifact (sort-by :name input-artifacts)]
+%>| <%= (md/relative-element-link e artifact) %> | <%= (t/single-line (:desc artifact)) %> |
+<%
+    )
+  )
+
+  (when (seq output-artifacts)
+%>
+## Output Artifacts
+| Name | Description |
+|---|---|
+<%
+    (doseq [artifact (sort-by :name output-artifacts)]
+%>| <%= (md/relative-element-link e artifact) %> | <%= (t/single-line (:desc artifact)) %> |
 <%
     )
   )
