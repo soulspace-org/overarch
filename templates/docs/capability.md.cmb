@@ -9,8 +9,13 @@
 
 (let [parent (m/parent model e)
       children (m/children model e)
-      processes nil ; TODO
-      ]
+      sub-capabilities (filter #(= :capability (:el %)) children)
+      required (m/referring-nodes model e #{:required-for})
+      processes (filter #(= :process (:el %)) required)
+      information (filter #(= :information (:el %)) required)
+      knowledge (filter #(= :knowledge (:el %)) required)
+      responsible (m/referring-nodes model e #{:responsible-for})
+      org-units (filter #(contains? #{:organization :org-unit} (:el %)) responsible)]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
@@ -30,14 +35,62 @@
 <%
   )
 
+  (when (seq sub-capabilities)
+%>
+## Sub Capabilities
+| Name | Description |
+|---|---|
+<%
+    (doseq [capability (sort-by :name sub-capabilities)]
+%>| <%= (md/relative-element-link e capability) %> | <%= (t/single-line (:desc capability)) %> |
+<%
+    )
+  )
+
+  (when (seq responsible)
+%>
+## Responsible Organization Units
+| Name | Description |
+|---|---|
+<%
+    (doseq [unit (sort-by :name responsible)]
+%>| <%= (md/relative-element-link e unit) %> | <%= (t/single-line (:desc unit)) %> |
+<%
+    )
+  )
+
   (when (seq processes)
 %>
-## Roles
+## Required Processes
 | Name | Description |
 |---|---|
 <%
     (doseq [process (sort-by :name processes)]
 %>| <%= (md/relative-element-link e process) %> | <%= (t/single-line (:desc process)) %> |
+<%
+    )
+  )
+
+  (when (seq information)
+%>
+## Required Information
+| Name | Description |
+|---|---|
+<%
+    (doseq [info (sort-by :name information)]
+%>| <%= (md/relative-element-link e info) %> | <%= (t/single-line (:desc info)) %> |
+<%
+    )
+  )
+
+  (when (seq knowledge)
+%>
+## Required Knowledge
+| Name | Description |
+|---|---|
+<%
+    (doseq [knl (sort-by :name knowledge)]
+%>| <%= (md/relative-element-link e knl) %> | <%= (t/single-line (:desc knl)) %> |
 <%
     )
   )
