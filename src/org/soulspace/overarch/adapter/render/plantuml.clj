@@ -144,9 +144,11 @@
   [tech]
   (tech->sprite tech))
 
-(comment
+(comment ; sprite mapping
   (load-sprite-mappings-from-resource ["azure" "awslib14"])
-  (count (sorted-sprite-mappings tech->sprite)))
+  (count (sorted-sprite-mappings tech->sprite))
+  ;
+  )
 
 ;;;
 ;;; Rendering

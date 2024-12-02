@@ -321,8 +321,6 @@
   )
 
 (comment ; selections
-  (into #{} (model/filter-xf (repo/model) {:namespace "ddd"}) (repo/nodes))
-  (into #{} (model/filter-xf (repo/model) {:namespace "ddd"}) (repo/relations))
   (into #{} (model/filter-xf (repo/model) {:subtype :queue}) (repo/nodes))
 
   (into #{} (model/filter-xf (repo/model) {:namespace "banking"}) (repo/nodes))
@@ -424,6 +422,7 @@
 
 (comment ; CLI calls
          (-main "--debug")
+         (-main "--debug" "--render-format" "plantuml")
          (-main "--debug" "--render-format" "plantuml")
          (-main "--debug" "--render-format" "markdown")
          (-main "--debug" "--render-format" "graphviz")
