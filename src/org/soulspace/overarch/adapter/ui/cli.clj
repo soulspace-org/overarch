@@ -267,13 +267,13 @@
                          :render-dir "export"
                          :render-format :plantuml
                          :debug true})
-  
+
   (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"})
               {:model-info true})
   (repo/update-state! {:model-dir "models/banking"})
   (repo/update-state! {:model-dir "models/overarch"})
   (repo/update-state! {:model-dir "../my-bank-model/models/"})
-  
+
   ;
   )
 
@@ -340,6 +340,11 @@
 (comment ; view functions
   (def view (model/resolve-element (repo/model)
                                    :mybank.compliance/container-view))
+  (def view (model/resolve-element (repo/model)
+                                   :mybank.it-management/deployment-view))
+  view
+  (puml/sprites-for-view (repo/model) view)
+
   (def referenced
     (view/referenced-elements (repo/model) view))
   referenced

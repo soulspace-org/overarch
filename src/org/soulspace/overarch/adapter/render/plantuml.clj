@@ -204,7 +204,7 @@
   "Collects the sprites for the `view`."
   [model view]
   (->> view
-       (view/elements-to-render model) 
+       (view/view-elements model) 
        (collect-all-sprites)
        ;(fns/data-tapper "Sprites")
        (map #(tech->sprite %))))
@@ -249,7 +249,8 @@
      (map (partial render-sprite-import view) icons)]))
 
 (comment
-  (tech->sprite "Angular"))
+  (tech->sprite "Angular")
+  (tech->sprite "Azure Virtual Network"))
 
 ;;;
 ;;; Diagram Layout
