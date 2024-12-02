@@ -900,6 +900,12 @@
   ([acc] acc)
   ([acc e] (set/union acc #{(:tech e)})))
 
+(defn sprite-collector
+  "Adds the sprite of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:sprite e)})))
+
 (defn key->element
   "Returns a step function to create an key `k` to element map.
    Adds the association of the id of the element `e` to the map `acc`."

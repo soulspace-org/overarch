@@ -413,9 +413,11 @@
   [model options view]
   (let [elements  (view/view-elements model view)
          ; filter for nodes only, drop containers
-        nodes     (view/root-elements model (filter #(= :node (:el %)) elements))
+        nodes (view/root-elements model (filter el/model-node? elements))
+        deployment-nodes    (filter #(= :node (:el %)) nodes)
+        architectural-nodes (filter #(contains? #{:person :system :container} (:el %)) elements)
         relations (filter el/model-relation? elements)
-        rendered  (view/elements-to-render model view (concat nodes relations))]
+        rendered  (view/elements-to-render model view (concat deployment-nodes architectural-nodes relations))]
     (flatten [(str "@startuml " (name (:id view)))
               (render-c4-imports view)
               (puml/render-sprite-imports model view)

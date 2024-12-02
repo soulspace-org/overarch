@@ -12,7 +12,8 @@
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as rndr]
             [org.soulspace.overarch.util.io :as oio]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; PlantUML mappings
@@ -182,17 +183,10 @@
 ;; Sprite Imports
 ;;
 
-(defn sprite-collector
-  "Adds the sprite of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e]
-   (set/union acc #{(:sprite e)})))
-
 (defn collect-sprites
   "Returns the set of sprites for the elements of the `coll`."
   [coll]
-  (model/traverse :sprite sprite-collector coll))
+  (model/traverse :sprite el/sprite-collector coll))
 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
@@ -208,8 +202,9 @@
   "Collects the sprites for the `view`."
   [model view]
   (->> view
-       (view/elements-to-render model)
+       (view/elements-to-render model) 
        (collect-all-sprites)
+       ;(fns/data-tapper "Sprites")
        (map #(tech->sprite %))))
 
 (defn local-import
