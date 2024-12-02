@@ -9,7 +9,13 @@
 
 (let [parent (m/parent model e)
       children (m/children model e)
+      implements (m/referred-nodes model e #{:implements})
+      processes (filterv #(= :process (:el %)))
+      state-machines (filterv #(= :state-machine (:el %)))
+      requirements (filterv #(= :requirement (:el %)))
+      decisions (filterv #(= :decision (:el %)))
       bounded-contexts (filterv #(= :context-boundary (:el %)) children)
+      systems (filterv #(= :systems (:el %)) children)
       containers (filterv #(= :container (:el %)) children)
       app-containers (filterv #(= nil (:subtype %)) containers)
       data-containers (filterv #(= :database (:subtype %)) containers)
@@ -24,7 +30,8 @@
       sends-incoming (m/sends-incoming model e)
       sends-outgoing (m/sends-outgoing model e)
       dataflows-incoming (m/dataflows-incoming model e)
-      dataflows-outgoing (m/dataflows-outgoing model e)]
+      dataflows-outgoing (m/dataflows-outgoing model e)
+      ]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
@@ -46,6 +53,54 @@
 <%
   )
 
+  (when (seq processes)
+%>## Implemented Processes
+
+| Process | Description |
+|---|---|
+<%
+    (doseq [process (sort-by :name processes)]
+%>| <%= (md/relative-element-link e process)%>| <%= (t/single-line (:desc process)) %> |
+<%
+    )
+  )
+
+  (when (seq state-machines)
+%>## Implemented State Mchines
+
+| State Machine | Description |
+|---|---|
+<%
+    (doseq [state-machine (sort-by :name state-machines)]
+%>| <%= (md/relative-element-link e state-machine)%>| <%= (t/single-line (:desc state-machine)) %> |
+<%
+    )
+  )
+
+  (when (seq requirements)
+%>## Implemented Requirements
+
+| Requirement | Description |
+|---|---|
+<%
+    (doseq [requirement (sort-by :name requirements)]
+%>| <%= (md/relative-element-link e requirements)%>| <%= (t/single-line (:desc requirements)) %> |
+<%
+    )
+  )
+
+  (when (seq decisions)
+%>## Implemented Decisions
+
+| Decision | Description |
+|---|---|
+<%
+    (doseq [decision (sort-by :name decision)]
+%>| <%= (md/relative-element-link e decisions)%>| <%= (t/single-line (:desc decisions)) %> |
+<%
+    )
+  )
+
   (when (seq bounded-contexts)
 %>
 ## Subdomains/Bounded Contexts
@@ -56,6 +111,19 @@ The system consists of different subdomains which have been structured into boun
 <%
     (doseq [bc (sort-by :name bounded-contexts)]
 %>| <%= (md/relative-element-link e bc) %> | <%= (t/single-line (:desc bc)) %> |
+<%
+    )
+  )
+
+  (when (seq systems)
+%>## Systems
+These systems part of the context <%= (:name e) %>.
+
+| System | Description |
+|---|---|
+<%
+    (doseq [system (sort-by :name systems)]
+%>| <%= (md/relative-element-link e system)%>| <%= (t/single-line (:desc system)) %> |
 <%
     )
   )
