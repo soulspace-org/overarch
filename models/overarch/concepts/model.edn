@@ -448,7 +448,8 @@
    :id :overarch.concepts/state-transition-to-state
    :from :overarch.concepts/state
    :to :overarch.concepts/state
-   :name "transition"}
+   :name "transition"
+   :desc "describes the transition fom one state to another state triggered by an event"}
 
   ;;
   ;; Use Case
@@ -458,31 +459,31 @@
    :from :overarch.concepts/person
    :to :overarch.concepts/actor
    :name "is an"
-   :desc ""}
+   :desc "a person/user role can be a primary actor of a use case"}
   {:el :is-a
    :id :overarch.concepts/system-is-a-actor
    :from :overarch.concepts/system
    :to :overarch.concepts/actor
    :name "is an"
-   :desc ""}
+   :desc "a system can be a primary or supporting actor of a use case"}
   {:el :rel
    :id :overarch.concepts/actor-uses-use-case
    :from :overarch.concepts/actor
    :to :overarch.concepts/use-case
    :name "uses"
-   :desc ""}
+   :desc "describes the goal or usage of the use case by an actor"}
   {:el :rel
    :id :overarch.concepts/use-case-includes-use-case
    :from :overarch.concepts/use-case
    :to :overarch.concepts/use-case
    :name "includes"
-   :desc ""}
+   :desc "describes the inclusion of the functionality of the referred use case"}
   {:el :rel
    :id :overarch.concepts/use-case-extends-use-case
    :from :overarch.concepts/use-case
    :to :overarch.concepts/use-case
    :name "extends"
-   :desc ""}
+   :desc "describes the extension of the functionality of the referred use case"}
 
   ;;
   ;; Organization
@@ -492,19 +493,19 @@
    :from :overarch.concepts/organization
    :to :overarch.concepts/org-unit
    :name "contains"
-   :desc ""}
+   :desc "describes the units of the organization"}
   {:el :has
    :id :overarch.concepts/org-unit-contains-org-unit
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/org-unit
    :name "contains"
-   :desc ""}
+   :desc "describes the subunits of an organizational unit"}
   {:el :rel
    :id :overarch.concepts/person-role-in-org-unit
    :from :overarch.concepts/person
    :to :overarch.concepts/org-unit
    :name "role in"
-   :desc ""}
+   :desc "describes a role in the organizational unit"}
 
   ;;
   ;; Process
@@ -526,7 +527,7 @@
    :from :overarch.concepts/process
    :to :overarch.concepts/capability
    :name "required for"
-   :desc ""}
+   :desc "describes how the capability is fullfilled"}
   {:el :rel
    :id :overarch.concepts/knowledge-required-for-capability
    :from :overarch.concepts/knowledge
@@ -534,17 +535,23 @@
    :name "required for"
    :desc ""}
   {:el :rel
+   :id :overarch.concepts/knowledge-required-for-person
+   :from :overarch.concepts/knowledge
+   :to :overarch.concepts/person
+   :name "required"
+   :desc "to fill the role"}
+  {:el :rel
    :id :overarch.concepts/technical-architecture-node-required-for-capability
    :from :overarch.concepts/technical-architecture-node
    :to :overarch.concepts/capability
    :name "required for"
-   :desc ""}
+   :desc "describes technical requirements to fullfill the capability"}
   {:el :rel
    :id :overarch.concepts/person-role-in-process
    :from :overarch.concepts/person
    :to :overarch.concepts/process
    :name "role in"
-   :desc ""}
+   :desc "describes a personal role in a process"}
   {:el :rel
    :id :overarch.concepts/artifact-input-of-process
    :from :overarch.concepts/artifact
@@ -564,7 +571,7 @@
    :name "output of"
    :desc ""}
   {:el :rel
-   :id :overarch.concepts/information-reqired-for-knowledge
+   :id :overarch.concepts/information-required-for-knowledge
    :from :overarch.concepts/information
    :to :overarch.concepts/knowledge
    :name "required for"
