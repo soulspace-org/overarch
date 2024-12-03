@@ -179,24 +179,24 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
     (when (seq requests-incoming)
 %>
-#### Service
-| Name | Called From | Technology | Description |
+#### Provided Services
+| From | Name | To | Description | Technology |
 |---|---|---|---|
 <%
-      (doseq [req requests-incoming]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+      (doseq [if requests-incoming]
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from if))) %> | <%= (:name if) %> | <%= (md/relative-element-link e (m/resolve-element model (:to if))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
 
     (when (seq requests-outgoing)
 %>
-#### Client
-| Name | Provided By | Technology | Description |
+#### Used Services
+| From | Name | To | Description | Technology |
 |---|---|---|---|
 <%
-      (doseq [req requests-outgoing]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+      (doseq [if requests-outgoing]
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from if))) %> | <%= (:name if) %> | <%= (md/relative-element-link e (m/resolve-element model (:to if))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -210,11 +210,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq publishes-outgoing)
 %>
 #### Publishing/Producing
-| Name | Queue/Topic | Technology | Description |
+| Name | Queue/Topic | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req publishes-outgoing]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -222,11 +222,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq subscribes-outgoing)
 %>
 #### Subscribing/Consuming
-| Name | Queue/Topic | Technology | Description |
+| Name | Queue/Topic | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req subscribes-outgoing]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -239,11 +239,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq sends-outgoing)
 %>
 #### Sender
-| Name | Receiver | Technology | Description |
+| Name | Receiver | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req sends-outgoing]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -251,11 +251,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq sends-incoming)
 %>
 #### Receiver
-| Name | Sender | Technology | Description |
+| Name | Sender | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req sends-incoming]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -268,11 +268,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq dataflows-incoming)
 %>
 #### Receiver
-| Name | Sender | Technology | Description |
+| Name | Sender | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req dataflows-incoming]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:from req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
@@ -280,11 +280,11 @@ These components show the internal structure of the <%= (:name e) %> container.
     (when (seq dataflows-outgoing)
 %>
 #### Sender
-| Name | Receiver | Technology | Description |
+| Name | Receiver | Description | Technology |
 |---|---|---|---|
 <%
       (doseq [req dataflows-outgoing]
-%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (:tech req) %> | <%= (t/single-line (:desc req)) %> |
+%>| <%= (:name req) %> | <%= (md/relative-element-link e (m/resolve-element model (:to req))) %> | <%= (t/single-line (:desc req)) %> | <%= (:tech req) %> |
 <%
       )
     )
