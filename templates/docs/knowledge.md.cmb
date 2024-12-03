@@ -8,7 +8,7 @@
 ;;;;
 
 (let [required-for (m/referred-nodes model e #{:required-for})
-      capabilities (filter #(= :capability (:el %)) required-for)]
+      capabilities (filterv #(= :capability (:el %)) required-for)]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description

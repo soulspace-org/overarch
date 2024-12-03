@@ -10,7 +10,7 @@
     (str/capitalize (name level))
     "---"))
 
-(let [use-cases (filter #(= :use-case (:el %)) e)]
+(let [use-cases (filterv #(= :use-case (:el %)) e)]
 
 %># Use Cases
 

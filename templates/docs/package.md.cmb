@@ -9,9 +9,9 @@
 
 (let [parent (m/parent model e)
       children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
-      packages  (filter #(= :package (:el %)) children)
-      interfaces (filter #(= :interface (:el %)) children)
-      classes (filter #(= :class (:el %)) children)]
+      packages  (filterv #(= :package (:el %)) children)
+      interfaces (filterv #(= :interface (:el %)) children)
+      classes (filterv #(= :class (:el %)) children)]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 

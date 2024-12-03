@@ -9,13 +9,13 @@
 
 (let [parent (m/parent model e)
       children (m/children model e)
-      sub-capabilities (filter #(= :capability (:el %)) children)
+      sub-capabilities (filterv #(= :capability (:el %)) children)
       required (m/referring-nodes model e #{:required-for})
-      processes (filter #(= :process (:el %)) required)
-      information (filter #(= :information (:el %)) required)
-      knowledge (filter #(= :knowledge (:el %)) required)
+      processes (filterv #(= :process (:el %)) required)
+      information (filterv #(= :information (:el %)) required)
+      knowledge (filterv #(= :knowledge (:el %)) required)
       responsible (m/referring-nodes model e #{:responsible-for})
-      org-units (filter #(contains? #{:organization :org-unit} (:el %)) responsible)]
+      org-units (filterv #(contains? #{:organization :org-unit} (:el %)) responsible)]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description

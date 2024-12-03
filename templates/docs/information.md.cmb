@@ -8,11 +8,11 @@
 ;;;;
 
 (let [required-for (m/referred-nodes model e #{:required-for})
-      capabilities (filter #(= :capability (:el %)) required-for)
+      capabilities (filterv #(= :capability (:el %)) required-for)
       input-of (m/referred-nodes model e #{:input-of})
       output-of (m/referred-nodes model e #{:output-of})
-      process-input (filter #(= :process (:el %)) input-of)
-      process-output (filter #(= :process (:el %)) output-of)
+      process-input (filterv #(= :process (:el %)) input-of)
+      process-output (filterv #(= :process (:el %)) output-of)
 ]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)

@@ -9,14 +9,14 @@
 
 (let [parent (m/parent model e)
       children (m/children model e)
-      sub-processes (filter #(= :process (:el %)) children)
+      sub-processes (filterv #(= :process (:el %)) children)
       roles (m/roles model e)
       input (m/referring-nodes model e #{:input-of})
       output (m/referring-nodes model e #{:output-of})
-      input-artifacts (filter #(= :artifact (:el %)) input)
-      output-artifacts (filter #(= :artifact (:el %)) output)
+      input-artifacts (filterv #(= :artifact (:el %)) input)
+      output-artifacts (filterv #(= :artifact (:el %)) output)
       required-for (m/referred-nodes model e #{:required-for})
-      capabilities (filter #(= :capability (:el %)) required-for)]
+      capabilities (filterv #(= :capability (:el %)) required-for)]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
