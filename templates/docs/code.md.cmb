@@ -11,6 +11,7 @@
       children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
       implements (m/referred-nodes model e #{:implements})
       processes (filterv #(= :process (:el %)) implements)
+      use-cases (filterv #(= :use-case (:el %)) implements)
       state-machines (filterv #(= :state-machine (:el %)) implements)
       requirements (filterv #(= :requirement (:el %)) implements)
       decisions (filterv #(= :decision (:el %)) implements)
@@ -51,8 +52,20 @@
     )
   )
 
+  (when (seq use-cases)
+%>## Implemented Use Cases
+
+| Use Case | Description |
+|---|---|
+<%
+    (doseq [use-case (sort-by :name use-cases)]
+%>| <%= (md/relative-element-link e use-case)%>| <%= (t/single-line (:desc use-case)) %> |
+<%
+    )
+  )
+
   (when (seq state-machines)
-%>## Implemented State Mchines
+%>## Implemented State Machines
 
 | State Machine | Description |
 |---|---|
