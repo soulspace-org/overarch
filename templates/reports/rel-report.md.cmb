@@ -3,6 +3,8 @@
 ## Selection
 <%= (:selection ctx) %>
 
+<%= (count e) %> results
+
 ## Relations
  Id |Name | Type | From | To | Description 
 ----|-----|------|------|----|------------

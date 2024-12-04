@@ -1,20 +1,31 @@
+<%
+
+%>
 # <%= (:title ctx) %>
 
 ## Selection
 <%= (:selection ctx) %>
 
+<%= (count e) %> results
+
 <% (when-let [nodes (filter m/model-node? e)]%>
 ## Nodes
  Id |Name | Type | Subtype | Description | Tech | Tags
 ----|-----|------|---------|-------------|------|------
-<% (doseq [c nodes]
+<%   (doseq [c nodes]
 %> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
-<%))%>
+<%
+    )  
+  )
+%>
 
 <% (when-let [rels (filter m/model-relation? e)]%>
 ## Relations
  Id |Name | Type | From | To | Description | Tech
 ----|-----|------|------|----|-------------|------
-<% (doseq [c rels]
+<%   (doseq [c rels]
 %> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:from c) %> | <%= (:to c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tags c) %>
-<%))%>
+<%
+     )
+  )
+%>

@@ -1,7 +1,9 @@
 # <%= (:title ctx) %>
 
 ## Selection
-<%= (:selection ctx) %>
+`<%= (:selection ctx) %>`
+
+<%= (count e) %> results
 
 ## Nodes
  Id |Name | Type | Subtype | Description | Techs | Tags
