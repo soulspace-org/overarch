@@ -1,5 +1,7 @@
 <%
-
+;;;;
+;;;; Markdown Report Template for Element Selections (Node and Relations)
+;;;;
 %>
 # <%= (:title ctx) %>
 

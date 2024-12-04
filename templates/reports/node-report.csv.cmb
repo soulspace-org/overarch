@@ -1,3 +1,8 @@
+<%
+;;;;
+;;;; CSV Report Template for Node Selections
+;;;;
+%>
 Id;Name;Type;Subtype;Description;Techs;Tags
 <%
 (doseq [c e]

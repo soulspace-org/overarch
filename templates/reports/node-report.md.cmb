@@ -1,3 +1,8 @@
+<%
+;;;;
+;;;; Markdown Report Template for Node Selections
+;;;;
+%>
 # <%= (:title ctx) %>
 
 ## Selection
@@ -10,5 +15,9 @@
 ## Nodes
  Id |Name | Type | Subtype | Description | Techs | Tags
 ----|-----|------|---------|-------------|-------|------
-<% (doseq [c e]%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
-<%)%>
+<%
+(doseq [c e]
+%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
+<%
+)
+%>
