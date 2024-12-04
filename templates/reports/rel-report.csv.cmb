@@ -1,0 +1,7 @@
+Id;Name;Type;From;To;Description;Tech;Tags
+<%
+(doseq [rel e]
+%> <%= (:id rel) %> | <%= (:name rel) %> | <%= (:el rel) %> | <%= (:from rel) %> | <%= (:to rel) %> | <%= (t/single-line (:desc rel)) %>;"<%= (:tech rel) %>";<%= (str/join ", " (:tags rel)) %>
+<%
+)
+%>
