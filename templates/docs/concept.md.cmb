@@ -7,28 +7,27 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-; TODO add featured in and other relations
 (let [superordinates (m/superordinates model e)
       subordinates (m/subordinates model e)
       features (m/features model e)
       features-of (m/feature-of model e)
-      related-to nil ; TODO add other relations
-      related-from nil ; TODO add other relations
-      ]
+      related-to (m/referred-relations model e #{:rel}) 
+      related-from (m/referring-relations model e #{:rel})]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description
 <%= (:desc e) %>
-
 <%
   (when (:doc e)
-%>## Documentation
+%>
+## Documentation
 <%= (:doc e) %>
 <%
   )
 
   (when (seq superordinates)
-%># Superordinates
+%>
+## Superordinates
 | Name | Description |
 |---|---|
 <%
@@ -39,7 +38,8 @@
   )
 
   (when (seq subordinates)
-%># Subordinates
+%>
+## Subordinates
 | Name | Description |
 |---|---|
 <%
@@ -50,7 +50,8 @@
   )
 
   (when (seq features)
-%># Features
+%>
+## Features
 | Name | Description |
 |---|---|
 <%
@@ -61,7 +62,8 @@
   )
 
   (when (seq features-of)
-%># Feature of
+%>
+## Feature of
 | Name | Description |
 |---|---|
 <%
@@ -71,26 +73,26 @@
     )
   )
 
-  ; TODO add other relations
   (when (seq related-to)
-%># Related to
-| Name | Description |
-|---|---|
+%>
+## Related to
+| From | Name | To | Description |
+|---|---|---|---|
 <%
     (doseq [rel (sort-by :name related-to)]
-%>| <%= (md/relative-element-link e rel) %> | <%= (t/single-line (:desc rel)) %> |
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from rel))) %> | <%= (:name rel) %> | <%= (md/relative-element-link e (m/resolve-element model (:to rel))) %> | <%= (t/single-line (:desc rel)) %> |
 <%
     )
   )
 
-  ; TODO add other relations
   (when (seq related-from)
-%># Relation from
-| Name | Description |
-|---|---|
+%>
+## Relation from
+| From | Name | To | Description |
+|---|---|---|---|
 <%
     (doseq [rel (sort-by :name related-from)]
-%>| <%= (md/relative-element-link e rel) %> | <%= (t/single-line (:desc rel)) %> |
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from rel))) %> | <%= (:name rel) %> | <%= (md/relative-element-link e (m/resolve-element model (:to rel))) %> | <%= (t/single-line (:desc rel)) %> |
 <%
     )
   )
@@ -119,6 +121,7 @@
 
 ## Navigation
 <%= (md/file-link "./views-in-namespace.md" "List of views in namespace") %>
+
 <%= (md/relative-file-link e "views.md" "List of all Views") %>
 
 (generated with <%= (:template ctx) %>)
