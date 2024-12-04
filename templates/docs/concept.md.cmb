@@ -73,18 +73,6 @@
     )
   )
 
-  (when (seq related-to)
-%>
-## Related to
-| From | Name | To | Description |
-|---|---|---|---|
-<%
-    (doseq [rel (sort-by :name related-to)]
-%>| <%= (md/relative-element-link e (m/resolve-element model (:from rel))) %> | <%= (:name rel) %> | <%= (md/relative-element-link e (m/resolve-element model (:to rel))) %> | <%= (t/single-line (:desc rel)) %> |
-<%
-    )
-  )
-
   (when (seq related-from)
 %>
 ## Relation from
@@ -92,6 +80,18 @@
 |---|---|---|---|
 <%
     (doseq [rel (sort-by :name related-from)]
+%>| <%= (md/relative-element-link e (m/resolve-element model (:from rel))) %> | <%= (:name rel) %> | <%= (md/relative-element-link e (m/resolve-element model (:to rel))) %> | <%= (t/single-line (:desc rel)) %> |
+<%
+    )
+  )
+
+  (when (seq related-to)
+%>
+## Related to
+| From | Name | To | Description |
+|---|---|---|---|
+<%
+    (doseq [rel (sort-by :name related-to)]
 %>| <%= (md/relative-element-link e (m/resolve-element model (:from rel))) %> | <%= (:name rel) %> | <%= (md/relative-element-link e (m/resolve-element model (:to rel))) %> | <%= (t/single-line (:desc rel)) %> |
 <%
     )
