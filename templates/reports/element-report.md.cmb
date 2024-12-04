@@ -4,9 +4,11 @@
 # <%= (:title ctx) %>
 
 ## Selection
+```clojure
 <%= (:selection ctx) %>
-
-<%= (count e) %> results
+```
+## Results
+<%= (count e) %> elements selected
 
 <% (when-let [nodes (filter m/model-node? e)]%>
 ## Nodes

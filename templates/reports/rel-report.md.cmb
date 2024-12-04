@@ -1,9 +1,11 @@
 # <%= (:title ctx) %>
 
 ## Selection
+```clojure
 <%= (:selection ctx) %>
-
-<%= (count e) %> results
+```
+## Results
+<%= (count e) %> relations selected
 
 ## Relations
  Id |Name | Type | From | To | Description 
