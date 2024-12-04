@@ -187,17 +187,32 @@
    Optionally takes a set of relation types `rel` to filter for."
   ([model e]
    (model/referring-nodes model e))
-  ([model e rel]
-   (model/referring-nodes model e rel)))
+  ([model e rels]
+   (model/referring-nodes model e rels)))
 
 (defn referred-nodes
   "Returns the nodes referred by `e` in the `model`.
    Optionally takes a set of relation types `rel` to filter for."
   ([model e]
    (model/referred-nodes model e))
-  ([model e rel]
-   (model/referred-nodes model e rel)))
+  ([model e rels]
+   (model/referred-nodes model e rels)))
 
+(defn referring-relations
+  "Returns the relations referring to `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (model/referring-relations model e))
+  ([model e rels]
+   (model/referring-relations model e rels)))
+
+(defn referred-relations
+  "Returns the relations referred by `e` in the `model`.
+   Optionally takes a set of relation types `rel` to filter for."
+  ([model e]
+   (model/referred-relations model e))
+  ([model e rels]
+   (model/referred-relations model e rels)))
 
 ;;
 ;; Architecture Model navigation

@@ -668,31 +668,57 @@
 
 (defn referring-nodes
   "Returns the nodes referring to `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes a set of relation types `rels` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referred-id->relations model))
         (into #{} (referred-xf model))))
-  ([model e rel]
+  ([model e rels]
    (->> e
         (el/id)
         (get (:referred-id->relations model))
-        (into #{} (referred-xf model #(contains? rel (:el %)))))))
+        (into #{} (referred-xf model #(contains? rels (:el %)))))))
 
 (defn referred-nodes
   "Returns the nodes referred by `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes a set of relation types `rels` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
         (into #{} (referrer-xf model))))
-  ([model e rel]
+  ([model e rels]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
-        (into #{} (referrer-xf model #(contains? rel (:el %)))))))
+        (into #{} (referrer-xf model #(contains? rels (:el %)))))))
+
+(defn referring-relations
+  "Returns the relations referring to `e` in the `model`.
+   Optionally takes a set of relation types `rels` to filter for."
+  ([model e]
+   (->> e
+        (el/id)
+        (get (:referred-id->relations model))))
+  ([model e rels]
+   (->> e
+        (el/id)
+        (get (:referred-id->relations model))
+        (filter #(contains? rels (:el %))))))
+
+(defn referred-relations
+  "Returns the relations referred by `e` in the `model`.
+   Optionally takes a set of relation types `rels` to filter for."
+  ([model e]
+   (->> e
+        (el/id)
+        (get (:referrer-id->relations model))))
+  ([model e rels]
+   (->> e
+        (el/id)
+        (get (:referrer-id->relations model))
+        (filter #(contains? rels (:el %))))))
 
 ;;
 ;; architecture model
