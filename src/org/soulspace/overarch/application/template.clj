@@ -269,12 +269,12 @@
     ; TODO handle backups
     ; write artifact for result
       (write-artifact path result))
-    (catch Exception e
+    (catch Exception ex
       (println "Exception while generating with template" (:template ctx))
       (println "  for data:")
       (println  e)
-      (println "Message:" (ex-message e))
-      (println (ex-data e))
+      (println "Message:" (ex-message ex))
+      (println (ex-data ex))
       (when (:debug ctx)
         (println "Parsed Template: ")
         (println parsed-template))
