@@ -2,6 +2,13 @@
 
 <%= (:desc e) %>
 
-[PA-BEGIN(content)]::
-<%= (:content protected-areas)
-%>[PA-END(content)]::
+## Usage
+
+## Examples
+
+## Documentation
+
+## Copyright
+© 
+
+## License
