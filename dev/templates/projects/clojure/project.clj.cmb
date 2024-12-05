@@ -1,25 +1,5 @@
 (defproject <%= (namespace (:id e)) %>/<%= (name (:id e)) %> "0.1.0"
   :description "<%= (:desc e) %>"
-  :dependencies [[org.clojure/clojure "1.11.3"]
-;PA-BEGIN(dependencies)
-<%= (:dependencies protected-areas)
-%>;PA-END(dependencies)
+  :dependencies [[org.clojure/clojure "1.12.0"]
                 ]
-
-  :plugins [[com.github.liquidz/antq "RELEASE"]]
-  ;; optional - you can add antq options here:
-  :antq {}
-
-  :profiles {:dev {:dependencies [[criterium/criterium "0.4.6"]
-                                  [djblue/portal "0.49.1"]
-                                  [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
-;PA-BEGIN(dev-dependencies)
-<%= (:dev-dependencies protected-areas)
-%>;PA-END(dev-dependencies)
-                                  ]
-                   :global-vars {*warn-on-reflection* true}}}
-
-;PA-BEGIN(content)
-<%= (:content protected-areas)
-%>;PA-END(content)  
 )
