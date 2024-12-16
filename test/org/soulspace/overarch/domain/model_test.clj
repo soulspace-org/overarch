@@ -814,7 +814,12 @@
       #{{:el :system :id :org.soulspace.external/system2 :external true :name "External System 2"}
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
         {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
-        {:el :person :id :org.soulspace.internal/person :name "Internal Person"}}
+        {:el :person :id :org.soulspace.internal/person :name "Internal Person"}
+        {:el :rel
+         :id :org.soulspace.external/person-uses-system1
+         :from :org.soulspace.external/person
+         :to :org.soulspace.external/system1
+         :name "uses"}}
       [{:external? true} {:el :person}]
       ;
       )))
