@@ -1153,6 +1153,14 @@
 ;;      select nodes of model category
 ;;      select relations of category if both nodes are of category
 ;;      (rel is in multiple categories)
+(defn external-check?
+  "Returns true if the check for external on `e` equals the boolean value `v`"
+  [model v e]
+  (= v (if (el/model-node? e)
+         (boolean (el/external? e))
+         (or (el/external? (resolve-element model (:from e)))
+             (el/external? (resolve-element model (:to e)))))))
+
 (defn child-check?
   "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
   [model v e]
@@ -1250,7 +1258,7 @@
     (= :maturity k)                (partial el/maturity? v)
     (= :maturities k)              (partial el/maturities? v)
     (= :!maturities k)             (complement (partial el/maturities? v))
-    (= :external? k)               (partial el/external-check? v)
+    (= :external? k)               (partial external-check? model v)
     (= :synthetic? k)              (partial el/synthetic-check? v)
     (= :name? k)                   (partial el/name-check? v)
     (= :name k)                    (partial el/name? v)

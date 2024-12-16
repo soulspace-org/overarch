@@ -1092,11 +1092,6 @@
   [v e]
   (contains? v (:maturity e)))
 
-(defn external-check?
-  "Returns true if the check for external on `e` equals the boolean value `v`"
-  [v e]
-  (= v (boolean (external? e))))
-
 (defn synthetic-check?
   "Returns true if the check for synthetic on `e` equals the boolean value `v`"
   [v e]

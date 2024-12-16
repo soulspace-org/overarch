@@ -5,6 +5,8 @@ Version (NEXT)
 --------------
 * added generic model navigation functions
 * added special handling for plantuml c4 deployment diagrams
+* extended `external?` criterium to relations
+  * a relation is considered external, if any of the related nodes is external
 * fixed missing sprites in plantuml c4 diagrams
 * enhanced doc templates
 * added CONTRIBUTING document
