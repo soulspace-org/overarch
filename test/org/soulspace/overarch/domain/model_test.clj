@@ -898,7 +898,6 @@
   (input-child? {:el :component :id :a/component} nil)
   (input-child? nil {:el :component :id :a/component}))
 
-
 ;;
 ;; Class Model
 ;;
@@ -914,4 +913,3 @@
     (are [x y] (= x (interfaces code-model1
                                 (resolve-id code-model1 y)))
       #{(resolve-id code-model1 :test/indentifiable-interface)} :test/identified-class)))
-
