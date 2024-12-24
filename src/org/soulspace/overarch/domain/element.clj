@@ -298,6 +298,14 @@
   (set/union c4-view-types uml-view-types concept-view-types
              structure-view-types model-view-types))
 
+(def hierarchical-view-types
+  "The set of hierarchical view types."
+  #{:context-view :container-view :component-view
+    :deployment-view :deployment-structure-view
+    :system-landscape-view :system-structure-view
+    :state-machine-view :code-view :glossary-view
+    :organization-structure-view})
+
 ;;
 ;; Element type vectors for canonical ordering
 ;;
@@ -332,15 +340,6 @@
   "The set of model element types as vector."
   (into [] (concat model-node-type-order model-relation-type-order)))
 
-(comment
-  (count model-element-types)
-  (count model-element-type-order)
-  (= (count model-element-types) (count model-element-type-order))
-  (= model-element-types (set model-element-type-order))
-  (set/difference model-element-types (set model-element-type-order))
-  ;
-  )
-
 (def view-type-order
   "The set of view types as vector."
   [:concept-view :use-case-view :context-view :container-view :component-view
@@ -349,6 +348,11 @@
    :organization-structure-view :glossary-view :model-view])
 
 (comment
+  (count model-element-types)
+  (count model-element-type-order)
+  (= (count model-element-types) (count model-element-type-order))
+  (= model-element-types (set model-element-type-order))
+  (set/difference model-element-types (set model-element-type-order))
   (count view-types)
   (count view-type-order)
   (= (count view-types) (count view-type-order))
@@ -356,15 +360,6 @@
   (set/difference view-types (set view-type-order))
   ;
   )
-
-(def hierarchical-view-types
-  "The set of hierarchical view types."
-  #{:context-view :container-view :component-view
-    :deployment-view :deployment-structure-view
-    :system-landscape-view :system-structure-view
-    :state-machine-view :code-view :glossary-view
-    :organization-structure-view
-    })
 
 ;;;
 ;;; Hierarchy of element types
