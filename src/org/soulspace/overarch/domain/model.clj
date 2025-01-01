@@ -11,7 +11,7 @@
    :views                  -> the set of views
    :themes                 -> the set of themes
    :id->element            -> a map from id to element (nodes, relations and views)
-   :id->parent             -> a map from id to parent node
+   :id->parent-id          -> a map from id to parent node id
    :id->children           -> a map from id to a vector of contained nodes
    :referrer-id->relations -> a map from id to set of relations where the id is the referrer (:from)
    :referred-id->relations -> a map from id to set of relations where the id is referred (:to)
@@ -273,10 +273,10 @@
                     (:id c-rel) c-rel)
 
              ; currently only one parent is supported here
-             :id->parent
-             (if-let [po ((:id->parent acc) (:id e))]
-               (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:id e))
-               (assoc (:id->parent acc) (:id e) p))
+             :id->parent-id
+             (if-let [po ((:id->parent-id acc) (:id e))]
+               (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id e))
+               (assoc (:id->parent-id acc) (:id e) (:id p)))
 
              :id->children
              (assoc (:id->children acc)
@@ -323,13 +323,13 @@
                     (:id c-rel) c-rel)
 
              ; currently only one parent is supported here
-             :id->parent
-             (if-let [po ((:id->parent acc) (:ref e))]
-               (println "Error: Illegal override of parent" (:id po) "with" (:id p) "for element id" (:ref e))
-               (assoc (:id->parent acc) (:ref e) p))
-
-             ; FIXME currently adding the ref here, should add the (transformed) element
-             ;       therefore a lookup by id is neccessary for the input elements?!?
+             :id->parent-id
+             (if-let [po ((:id->parent-id acc) (:ref e))]
+               (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:ref e))
+               (assoc (:id->parent-id acc) (:ref e) (:id p)))
+             
+             ; TODO currently adding the ref here, should add the (transformed) element
+             ;      therefore a lookup by id is neccessary for the input elements?!?
              :id->children
              (assoc (:id->children acc)
                     (:id p)
@@ -357,6 +357,15 @@
 
          :id->element
          (assoc (:id->element acc) (:id e) e)
+
+         :id->parent-id
+         (if (= :contained-in (:el e))
+             ; contained-in relation, add the relation and update the :id->parent-id map
+           (if-let [po ((:id->parent-id acc) (:from e))]
+             (println "Error: Illegal override of parent" (:id po) "with" (:to e) "for element id" (:from e))
+             (assoc (:id->parent-id acc) (:from e) (:to e)))
+             ; a normal relation, no changes to :id->parent-id map
+           (:id->parent-id acc))
 
          :referrer-id->relations
          (assoc (:referrer-id->relations acc)
@@ -428,7 +437,7 @@
      :views #{}
      :themes #{}
      :id->element {}
-     :id->parent {}
+     :id->parent-id {}
      :id->children {}
      :referred-id->relations {}
      :referrer-id->relations {}}
@@ -454,7 +463,6 @@
    (build-model {} coll))
   ([options coll]
    ; TODO if scope option is set, use scope-fn as element-fn
-   ; TODO don't assoc input-elements?
    ; TODO drop :ct key?
    (if-let [scope (:scope options)]
      (traverse (scope-fn scope) identity :ct ->relational-model coll)
@@ -560,7 +568,9 @@
 (defn parent
   "Returns the parent of the model node `e`."
   [model e]
-  ((:id->parent model) (:id e)))
+  (if-let [p-id ((:id->parent-id model) (:id e))]
+    (resolve-element model p-id)
+    nil))
 
 +(defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
@@ -603,6 +613,7 @@
                        (into #{}))]
      filtered)))
 
+; FIXME check for invinite loop
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
   [model e]
@@ -611,6 +622,7 @@
       (recur (conj acc p) (parent model p))
       acc)))
 
+; FIXME check for invinite loop
 (defn ancestor-node?
   "Returns true, if `c` is an ancestor of node `e` in the `model`."
   [model e c]
@@ -621,18 +633,11 @@
         (recur (parent model p)))
       false)))
 
-; FIXME use children-resolver fn instead of :ct
-#_(defn descendant-nodes
-  "Returns the set of descendants of the node `e`."
-  [model e]
-  (when (el/model-node? (resolve-element model e))
-    (traverse (element-resolver model) el/model-node? :ct el/tree->set (:ct e))))
-
 (defn descendant-nodes
   "Returns the set of descendants of the node `e`."
   [model e]
   (when (el/model-node? (resolve-element model e))
-    (traverse (element-resolver model) el/model-node? (children-resolver model) el/tree->set (:ct e)))) ;(children model e)
+    (traverse (element-resolver model) el/model-node? (children-resolver model) el/tree->set (children model e)))) ; (:ct e)
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e`."
@@ -1164,7 +1169,7 @@
 (defn child-check?
   "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
   [model v e]
-  (= v (boolean ((:id->parent model) (:id e)))))
+  (= v (boolean ((:id->parent-id model) (:id e)))))
 
 ; TODO test
 (defn child?
@@ -1180,7 +1185,7 @@
 (defn parent?
   "Returns true if `v` is the parent of `e`"
   [model v e]
-  (= (resolve-id model v) ((:id->parent model) (:id e))))
+  (= v ((:id->parent-id model) (:id e))))
 
 (defn refers-check?
   "Returns true if the check for `e` as a referrer equals the boolean value `v`"

@@ -140,8 +140,8 @@
 (deftest id->parent-test
   (testing "id->parent"
     (are [x y] (= x y)
-      5 (count (:id->parent c4-model1))
-      0 (count (:id->parent concept-model1)))))
+      5 (count (:id->parent-id c4-model1))
+      0 (count (:id->parent-id concept-model1)))))
 
 (deftest referrer-id->relations-test
   (testing "referrer-id->rels"
@@ -255,12 +255,37 @@
             :id :a/component}}}})
 (def hierarchy-model2 (build-model hierarchy-input2))
 
-; (fns/data-tapper "Hierarchy2" hierarchy-model2)
+(def hierarchy-input3
+  #{{:el :system
+     :id :a/system}
+    {:el :container
+     :id :a/container}
+    {:el :component
+     :id :a/component}
+    {:el :contained-in
+     :id :a/container-contained-in-system
+     :from :a/container
+     :to :a/system}
+    {:el :contained-in
+     :id :a/component-contained-in-container
+     :from :a/component
+     :to :a/container}})
+(def hierarchy-model3 (build-model hierarchy-input3))
 
 (comment
   (descendant-nodes hierarchy-model2 {:el :system
                                       :id :a/system
-                                      :ct #{{:ref :a/container}}}))
+                                      :ct #{{:ref :a/container}}})
+  (ancestor-nodes hierarchy-model2 {:id :a/component
+                                    :el :component})
+  hierarchy-model2
+
+  (descendant-nodes hierarchy-model3 {:el :system
+                                      :id :a/system})
+  (ancestor-nodes hierarchy-model3 {:el :component :id :a/component})
+  hierarchy-model3
+  ;
+  )
 
 (deftest ancestor-nodes-test
   (testing "ancestor-nodes true"
