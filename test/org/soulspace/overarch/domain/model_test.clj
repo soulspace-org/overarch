@@ -497,6 +497,77 @@
 
 (def filter-model1 (build-model filter-input))
 
+(comment
+  filter-model1
+
+  ;
+  )
+
+(deftest descendant-nodes-on-filter1-test
+  (testing "descendant-nodes-on-filter1"
+    (are [x y] (= x (descendant-nodes filter-model1 y))
+      #{{:el :container
+         :id :org.soulspace.internal.system/container1
+         :name "Container1"
+         :tech "Clojure"
+         :tags #{"autoscaled"}
+         :ct #{{:el :component
+                :id :org.soulspace.internal.system.container1/component1
+                :name "Component1"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-ui
+         :name "Container1 UI"
+         :tech "ClojureScript"}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-db
+         :subtype :database
+         :name "Container1 DB"
+         :tech "Datomic"}
+        {:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}}
+        {:el :container
+         :id :org.soulspace.internal.system/container2-topic
+         :subtype :queue
+         :name "Container2 Events"
+         :tech "Kafka"}
+        {:el :component
+         :id :org.soulspace.internal.system.container1/component1
+         :name "Component1"}}
+      {:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"
+         :ct #{{:el :container
+                :id :org.soulspace.internal.system/container1
+                :name "Container1"
+                :tech "Clojure"
+                :tags #{"autoscaled"}
+                :ct #{{:el :component
+                       :id :org.soulspace.internal.system.container1/component1
+                       :name "Component1"}}}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-ui
+                :name "Container1 UI"
+                :tech "ClojureScript"}
+               {:el :container
+                :id :org.soulspace.internal.system/container1-db
+                :subtype :database
+                :name "Container1 DB"
+                :tech "Datomic"}
+               {:el :container
+                :id :org.soulspace.internal.system/container2
+                :name "Container2"
+                :tech "Java"
+                :tags #{"critical" "autoscaled"}}
+               {:el :container
+                :id :org.soulspace.internal.system/container2-topic
+                :subtype :queue
+                :name "Container2 Events"
+                :tech "Kafka"}}})
+  ))
+
 (deftest root-nodes-test
   (testing "root-nodes"
     (are [x y] (= x (root-nodes filter-model1 y))
@@ -532,7 +603,17 @@
                {:el :container
                 :id :org.soulspace.internal.system/container1-db
                 :subtype :database
-                :name "Container1 DB"}}}}
+                :name "Container1 DB"}
+               {:el :container
+                :id :org.soulspace.internal.system/container2
+                :name "Container2"
+                :tech "Java"
+                :tags #{"critical" "autoscaled"}}
+               {:el :container
+                :id :org.soulspace.internal.system/container2-topic
+                :subtype :queue
+                :name "Container2 Events"
+                :tech "Kafka"}}}}
       #{{:el :system
          :id :org.soulspace.internal/system
          :name "Internal System"
@@ -601,7 +682,17 @@
                {:el :container
                 :id :org.soulspace.internal.system/container1-db
                 :subtype :database
-                :name "Container1 DB"}}}
+                :name "Container1 DB"}
+               {:el :container
+                :id :org.soulspace.internal.system/container2
+                :name "Container2"
+                :tech "Java"
+                :tags #{"critical" "autoscaled"}}
+               {:el :container
+                :id :org.soulspace.internal.system/container2-topic
+                :subtype :queue
+                :name "Container2 Events"
+                :tech "Kafka"}}}
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
@@ -617,7 +708,17 @@
          :name "Container1 DB"}
         {:el :component,
          :id :org.soulspace.internal.system.container1/component1,
-         :name "Component1"}}
+         :name "Component1"}
+        {:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}}
+        {:el :container
+         :id :org.soulspace.internal.system/container2-topic
+         :subtype :queue
+         :name "Container2 Events"
+         :tech "Kafka"}}
       #{{:el :system
          :id :org.soulspace.internal/system
          :name "Internal System"
@@ -633,7 +734,17 @@
                {:el :container
                 :id :org.soulspace.internal.system/container1-db
                 :subtype :database
-                :name "Container1 DB"}}}}
+                :name "Container1 DB"}
+               {:el :container
+                :id :org.soulspace.internal.system/container2
+                :name "Container2"
+                :tech "Java"
+                :tags #{"critical" "autoscaled"}}
+               {:el :container
+                :id :org.soulspace.internal.system/container2-topic
+                :subtype :queue
+                :name "Container2 Events"
+                :tech "Kafka"}}}}
       ;
       )))
 
