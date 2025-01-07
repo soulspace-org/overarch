@@ -644,7 +644,7 @@
   [model e c]
   (contains? (descendant-nodes model e) (resolve-element model c)))
 
-(defn root-nodes
+#_(defn root-nodes
   "Returns the set of root nodes of the `elements`.
    The root nodes are not contained as descendants in any of the element nodes."
   [model elements]
@@ -653,6 +653,25 @@
                          (map (partial descendant-nodes model))
                          (apply set/union))]
     (set/difference (set elements) descendants)))
+
+(defn root-nodes
+  "Returns the set of root nodes of the `elements`.
+   The root nodes are not contained as descendants in any of the element nodes."
+  [model elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
+                         (mapcat (partial descendant-nodes model))
+                         (into #{}))]
+    (set/difference (set elements) descendants)))
+
+#_(defn all-nodes
+  "Returns the set of all nodes, including descendants, of the `elements`."
+  [model elements]
+  (let [descendants (->> elements
+                         (filter el/model-node?)
+                         (map (partial descendant-nodes model))
+                         (apply set/union))]
+    (set/union (set elements) descendants)))
 
 (defn all-nodes
   "Returns the set of all nodes, including descendants, of the `elements`."
