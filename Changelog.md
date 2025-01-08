@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.35.0
 --------------
 * added generic model navigation functions
 * added special handling for plantuml c4 deployment diagrams
