@@ -174,7 +174,6 @@
                      (referenced-elements model view)))]
     (filter (partial render-model-element? model view) elements)))
 
-; TODO refactor, move to model?
 (defn root-elements
   "Returns the root elements for a collection of `model` `elements`, e.g. to start the rendering of a hierarchical view with."
   [model elements]
@@ -182,11 +181,7 @@
   ; to preserve overrides of keys in the content references included in the view.
   ; When keys have been added or overridden in the reference in a view, the elements in the different sets
   ; are not the same values anymore and so have to be treated as entities, even when they are still immutable.
-  (let [descendants (->> elements
-                         (filter el/model-node?)
-                         (mapcat (partial model/descendant-nodes model))
-                         (map (model/element-resolver model))
-                         (into #{}))]
+  (let [descendants (model/all-descendant-nodes model elements)]
     (el/difference-by-id elements descendants)))
 
 (defn elements-to-render
