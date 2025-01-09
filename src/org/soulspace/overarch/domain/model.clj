@@ -634,18 +634,18 @@
       false)))
 
 (defn descendant-nodes
-  "Returns the set of descendants of the node `e`."
+  "Returns the set of descendants of the node `e` in the `model`."
   [model e]
   (when (el/model-node? (resolve-element model e))
     (traverse (element-resolver model) el/model-node? (children-resolver model) el/tree->set (children model e)))) ; (:ct e)
 
 (defn descendant-node?
-  "Returns true, if `c` is a descendant of `e`."
+  "Returns true, if `c` is a descendant of `e` in the `model`."
   [model e c]
   (contains? (descendant-nodes model e) (resolve-element model c)))
 
 (defn all-descendant-nodes
-  "Returns the set of descendants of the nodes in the collection of `elements`."
+  "Returns the set of descendants of the nodes in the collection of `elements` in the `model`."
   [model elements]
   (->> elements
        (filter el/model-node?)
@@ -653,20 +653,20 @@
        (into #{})))
 
 (defn root-nodes
-  "Returns the set of root nodes of the `elements`.
+  "Returns the set of root nodes of the `elements` in the `model`.
    The root nodes are not contained as descendants in any of the element nodes."
   [model elements]
   (let [descendants (all-descendant-nodes model elements)]
     (set/difference (set elements) descendants)))
 
 (defn all-nodes
-  "Returns the set of all nodes, including descendants, of the `elements`."
+  "Returns the set of all nodes, including descendants, of the `elements` in the `model`."
   [model elements]
   (let [descendants (all-descendant-nodes model elements)]
     (set/union (set elements) descendants)))
 
 (defn all-elements
-  "Returns a set of all elements."
+  "Returns a set of all elements in the `model`."
   ([model]
    (->> (:id->element model)
         (vals)
