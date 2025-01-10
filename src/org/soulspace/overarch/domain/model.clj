@@ -613,7 +613,7 @@
                        (into #{}))]
      filtered)))
 
-; FIXME check for invinite loop
+; TODO check for invinite loop, should not happen because the model build prevents this
 (defn ancestor-nodes
   "Returns the ancestor nodes of the model node `e` in the `model`."
   [model e]
@@ -622,7 +622,7 @@
       (recur (conj acc p) (parent model p))
       acc)))
 
-; FIXME check for invinite loop
+; TODO check for invinite loop, should not happen because the model build prevents this
 (defn ancestor-node?
   "Returns true, if `c` is an ancestor of node `e` in the `model`."
   [model e c]
