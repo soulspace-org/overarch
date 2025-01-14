@@ -3,7 +3,7 @@ Changelog
 
 Version (NEXT)
 --------------
-* 
+* report model file name on exception in import
 
 Version 0.35.0
 --------------

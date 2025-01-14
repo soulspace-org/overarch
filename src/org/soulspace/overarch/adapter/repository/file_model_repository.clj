@@ -20,10 +20,13 @@
 (defn read-model-file
   "Reads a model `file`."
   [^java.io.File file]
-  (->> file
-      (slurp)
-      (edn/read-string)
-      (spec/check-input-model file)))
+  (try
+    (->> file
+         (slurp)
+         (edn/read-string)
+         (spec/check-input-model file))
+    (catch Exception e
+      (throw (ex-info (str "Error reading model file: " (.getPath file)) {} e)))))
 
 (defn read-model
   "Reads a model by reading all files in `dir`."
