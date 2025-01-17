@@ -236,6 +236,38 @@
   c4-model1
   (relations-of-nodes c4-model1 #{{:id :test/user1} {:id :test/system1} {:id :test/ext-system1}}))
 
+(def cycle-input1
+  #{{:el :system
+     :id :a/system1}
+    {:el :system
+     :id :a/system2}
+    {:el :system
+     :id :a/system3}
+    {:el :system
+     :id :a/system4}
+    {:el :request
+     :id :a/system1-calls-system2
+     :from :a/system1
+     :to :a/system2}
+    {:el :request
+     :id :a/system2-calls-system3
+     :from :a/system2
+     :to :a/system3}
+    {:el :request
+     :id :a/system3-calls-system4
+     :from :a/system3
+     :to :a/system4}
+    {:el :request
+     :id :a/system3-calls-system2
+     :from :a/system3
+     :to :a/system2}})
+(def cycle-model1 (build-model cycle-input1))
+
+; TODO
+#_(deftest traverse-cycle-test
+  (testing "traverse model with cycle"
+    (is (= assertion-values)))) 
+
 (def hierarchy-input1
   #{{:el :system
      :id :a/system
