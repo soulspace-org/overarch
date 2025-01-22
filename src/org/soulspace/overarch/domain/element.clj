@@ -880,51 +880,6 @@
     (assoc e :external true)))
 
 ;;
-;; step functions for traverse
-;;
-(defn tree->set
-  "Step function to convert a hierarchical tree of elements to a flat set of elements."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (conj acc e)))
-
-(defn tech-collector
-  "Step function to collect the technologies.
-   Adds the tech of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (set/union acc #{(:tech e)})))
-
-(defn sprite-collector
-  "Adds the sprite of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (set/union acc #{(:sprite e)})))
-
-(defn key->element
-  "Returns a step function to create an key `k` to element map.
-   Adds the association of the id of the element `e` to the map `acc`."
-  [k]
-  (fn
-    ([] {})
-    ([acc] acc)
-    ([acc e]
-     (assoc acc (k e) e))))
-
-(defn id->element 
-  "Step function to create an id to element map.
-   Adds the association of the id of the element `e` to the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:id e) e)))
-
-;(def id->element
-;  "Step function to create an id to element map.
-;   Adds the association of the id of the element `e` to the map `acc`."
-; (key->element :id))
-
-;;
 ;; Accessors and transformations
 ;;
 (defn id->element-map

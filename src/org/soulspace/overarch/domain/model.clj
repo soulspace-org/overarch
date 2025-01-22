@@ -52,11 +52,26 @@
      (el/element? e) e
      :else nil)))
 
+; specific resolver for elements to avoid the `apply` in `partial` for performance
 (defn element-resolver
   "Returns an element resolver function for the given `model`."
   [model]
   (fn [e]
     (resolve-element model e)))
+
+(defn parent
+  "Returns the parent of the model node `e`."
+  [model e]
+  (if-let [p-id ((:id->parent-id model) (:id e))]
+    (resolve-element model p-id)
+    nil))
+
+; specific resolver for elements to avoid the `apply` in `partial` for performance
+(defn parent-resolver
+  "Returns a parent resolver function for the given `model`."
+  [model]
+  (fn [e]
+    (parent model e)))
 
 (defn children
   "Returns the children of the model node `e`."
@@ -67,6 +82,7 @@
        (filterv #(= :contained-in (:el %)))
        (mapv (comp (element-resolver model) :from))))
   
+; specific resolver for elements to avoid the `apply` in `partial` for performance
 (defn children-resolver
   "Returns a children resolver function for the given `model`."
   [model]
@@ -78,7 +94,7 @@
 ;;
 ;; TODO just one traverse function with the actual algorithm
 ;;      maybe some convenience fns for input/model traversion
-(defn traverse
+#_(defn traverse
   "Recursively traverses the `coll` of elements and returns the elements
    (selected by the optional `pred-fn`) and transformed by the `step-fn`.
 
@@ -109,9 +125,11 @@
                (step-fn acc)))]
      (trav (step-fn) coll))))
 
-(defn traverse-cycle
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+; TODO work on a single element, too. Apply children-fn on the element then.
+; TODO rename children-fn to something more general (e.g. connected-fn or related-fn)?
+(defn traverse
+  "Recursively traverses the `coll` of elements filtered by an optional `pred-fn`
+   and returns the elements transformed by the `step-fn`.
 
    `element-fn`  - a resolver function for an element, defaults to `identity`
    `pred-fn`     - a predicate on the current element, defaults to `identity`
@@ -123,20 +141,20 @@
    and the 2 args signature receives the accumulator and the current element and
    should add the transformed element to the accumulator."
   ([step-fn coll]
-   (traverse-cycle identity identity :ct step-fn coll))
+   (traverse identity identity :ct step-fn coll))
   ([pred-fn step-fn coll]
-   (traverse-cycle identity pred-fn :ct step-fn coll))
+   (traverse identity pred-fn :ct step-fn coll))
   ([pred-fn children-fn step-fn coll]
-   (traverse-cycle identity pred-fn children-fn step-fn coll))
+   (traverse identity pred-fn children-fn step-fn coll))
   ([element-fn pred-fn children-fn step-fn coll]
    (letfn [(trav [acc visited coll]
-                 (println "t-visited" visited)
-                 (println "t-coll" coll)
+                 ;(println "t-visited" visited)
+                 ;(println "t-coll" coll)
                  (if (seq coll)
                    (let [e (element-fn (first coll))
                          v (conj visited e)]
-                     (println "t-element" e)
-                     (println "t-v" v)
+                     ;(println "t-element" e)
+                     ;(println "t-v" v)
                      (if (not (contains? visited e))
                        (if (pred-fn e)
                          (recur (trav (step-fn acc e) v (children-fn e))
@@ -149,75 +167,61 @@
                    (step-fn acc)))]
      (trav (step-fn) #{} coll))))
 
-;;
-;; recursive traversal of the hierarchical model
-;;
-; TODO use traverse from element with model closure
-;      and resolve-element as element fn?
-(defn traverse-with-model
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+;;;
+;;; Step functions for traverse
+;;;
+(defn collect-fn
+  "Step function to collect elements `e` in the accumulator `acc`.
+   No transformation on the element is applied."
+  ([]
+   #{})
+  ([acc]
+   acc)
+  ([acc e]
+   (conj acc e)))
 
-   `pred-fn`     - a predicate on the current element, defaults to `identity`
-   `children-fn` - a function to resolve the children of the current element
-   `step-fn`     - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator.
-   
-   The children-fn takes 2 args [model e], the model and the current element."
-  ([model step-fn coll]
-   (traverse-with-model model identity (fn [model e] (children model e)) step-fn coll))
-  ([model pred-fn step-fn coll]
-   (traverse-with-model model pred-fn (fn [model e] (children model e)) step-fn coll))
-  ([model pred-fn children-fn step-fn coll]
-   ; selection handled by the select function
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (resolve-element model (first coll))]
-                 (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (children-fn model e))
-                          (rest coll))
-                   (recur (trav acc (children-fn model e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
+(defn tree->set
+  "Step function to convert a hierarchical tree of elements to a flat set of elements."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (conj acc e)))
 
-(defn traverse-model
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
+(defn tech-collector
+  "Step function to collect the technologies.
+   Adds the tech of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:tech e)})))
 
-   `pred-fn`     - a predicate on the current element
-   `children-fn` - a function to resolve the children of the current element
-   `step-fn`     - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator.
-   
-   The children-fn takes 2 args [model e], the model and the current element."
-  ([model step-fn coll]
-   (traverse-model model identity (fn [model e] (children model e)) step-fn coll))
-  ([model pred-fn step-fn coll]
-   (traverse-model model pred-fn (fn [model e] (children model e)) step-fn coll))
-  ([model pred-fn children-fn step-fn coll]
-   ; selection handled by the select function
-   (letfn [(trav [acc visited coll]
-             (if (seq coll)
-               (let [e (resolve-element model (first coll))
-                     v (conj visited e)]
-                 (if (and (pred-fn e) (not (contains? visited e)))
-                   (recur (trav (step-fn acc e) v (children-fn model e)) 
-                          v
-                          (rest coll))
-                   (recur (trav acc v (children-fn model e)) 
-                          v
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) #{} coll))))
+(defn sprite-collector
+  "Adds the sprite of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:sprite e)})))
+
+(defn key->element
+  "Returns a step function to create an key `k` to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  [k]
+  (fn
+    ([] {})
+    ([acc] acc)
+    ([acc e]
+     (assoc acc (k e) e))))
+
+(defn id->element 
+  "Step function to create an id to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:id e) e)))
+
+;(def id->element
+;  "Step function to create an id to element map.
+;   Adds the association of the id of the element `e` to the map `acc`."
+; (key->element :id))
+
 
 ;;;
 ;;; Build model
@@ -571,14 +575,7 @@
   [model]
   (:themes model))
 
-(defn parent
-  "Returns the parent of the model node `e`."
-  [model e]
-  (if-let [p-id ((:id->parent-id model) (:id e))]
-    (resolve-element model p-id)
-    nil))
-
-+(defn from-name
+(defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
   (->> rel
@@ -643,7 +640,7 @@
   "Returns the set of descendants of the node `e` in the `model`."
   [model e]
   (when (el/model-node? (resolve-element model e))
-    (traverse (element-resolver model) el/model-node? (children-resolver model) el/tree->set (children model e)))) ; (:ct e)
+    (traverse (element-resolver model) el/model-node? (children-resolver model) tree->set (children model e)))) ; (:ct e)
 
 (defn descendant-node?
   "Returns true, if `c` is a descendant of `e` in the `model`."

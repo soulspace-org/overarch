@@ -278,19 +278,10 @@
     (fn [e]
       (requested-nodes model e)))
 
-(defn collect-fn
-  "Step function to collect the elements."
-  ([]
-   #{})
-  ([acc]
-   acc)
-  ([acc e]
-   (conj acc e)))
-
 ; TODO
 (deftest traverse-cycle-test
   (testing "traverse model with cycle"
-    (are [x y] (= x (traverse-cycle (element-resolver cycle-model1)
+    (are [x y] (= x (traverse (element-resolver cycle-model1)
                                     identity
                                     (requested-nodes-resolver cycle-model1)
                                     collect-fn
@@ -310,7 +301,6 @@
   (requested-nodes cycle-model1 :a/system4)
   ;
   )
-
 
 (def hierarchy-input1
   #{{:el :system

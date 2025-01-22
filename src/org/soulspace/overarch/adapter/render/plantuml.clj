@@ -188,12 +188,12 @@
 (defn collect-sprites
   "Returns the set of sprites for the elements of the `coll`."
   [coll]
-  (model/traverse :sprite el/sprite-collector coll))
+  (model/traverse :sprite model/sprite-collector coll))
 
 (defn collect-technologies
   "Returns the set of technologies for the elements of the coll."
   [coll]
-  (model/traverse :tech el/tech-collector coll))
+  (model/traverse :tech model/tech-collector coll))
 
 (defn collect-all-sprites
   "Collects all sprites for the collection of elements."

@@ -4,6 +4,8 @@ Changelog
 Version (NEXT)
 --------------
 * report model file name on exception in import
+* added cycle prevention to traverse to make it a general depth first graph traversal function
+* moved step functions from element to model
 
 Version 0.35.0
 --------------
