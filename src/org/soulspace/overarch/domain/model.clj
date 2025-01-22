@@ -130,17 +130,23 @@
    (traverse-cycle identity pred-fn children-fn step-fn coll))
   ([element-fn pred-fn children-fn step-fn coll]
    (letfn [(trav [acc visited coll]
-             (if (seq coll)
-               (let [e (element-fn (first coll))
-                     v (conj visited e)]
-                 (if (and (pred-fn e) (not (contains? visited e)))
-                   (recur (trav (step-fn acc e) v (children-fn e))
-                          v
-                          (rest coll))
-                   (recur (trav acc v (children-fn e))
-                          v
-                          (rest coll))))
-               (step-fn acc)))]
+                 (println "t-visited" visited)
+                 (println "t-coll" coll)
+                 (if (seq coll)
+                   (let [e (element-fn (first coll))
+                         v (conj visited e)]
+                     (println "t-element" e)
+                     (println "t-v" v)
+                     (if (not (contains? visited e))
+                       (if (pred-fn e)
+                         (recur (trav (step-fn acc e) v (children-fn e))
+                                v
+                                (rest coll))
+                         (recur (trav acc v (children-fn e))
+                                v
+                                (rest coll)))
+                       (step-fn acc)))
+                   (step-fn acc)))]
      (trav (step-fn) #{} coll))))
 
 ;;

@@ -263,10 +263,54 @@
      :to :a/system2}})
 (def cycle-model1 (build-model cycle-input1))
 
+(defn requested-nodes
+  "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
+  [model e]
+  (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
+       (filter #(contains? #{:request} (:el %)))
+       ;(map #(resolve-element model (:to %)))
+       (map :to)
+       ))
+
+(defn requested-nodes-resolver
+    "Returns a resolver function for dependent nodes in the `model`."
+    [model]
+    (fn [e]
+      (requested-nodes model e)))
+
+(defn collect-fn
+  "Step function to collect the elements."
+  ([]
+   #{})
+  ([acc]
+   acc)
+  ([acc e]
+   (conj acc e)))
+
 ; TODO
-#_(deftest traverse-cycle-test
+(deftest traverse-cycle-test
   (testing "traverse model with cycle"
-    (is (= assertion-values)))) 
+    (are [x y] (= x (traverse-cycle (element-resolver cycle-model1)
+                                    identity
+                                    (requested-nodes-resolver cycle-model1)
+                                    collect-fn
+                                    (requested-nodes cycle-model1 y)))
+      #{{:el :system
+         :id :a/system2}
+        {:el :system
+         :id :a/system3}
+        {:el :system
+         :id :a/system4}}
+      :a/system1)))
+
+(comment
+  (requested-nodes cycle-model1 :a/system1)
+  (requested-nodes cycle-model1 :a/system2)
+  (requested-nodes cycle-model1 :a/system3)
+  (requested-nodes cycle-model1 :a/system4)
+  ;
+  )
+
 
 (def hierarchy-input1
   #{{:el :system
