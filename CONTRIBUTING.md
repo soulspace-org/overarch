@@ -2,10 +2,11 @@
 
 There are multiple ways to contribute to the Overarch project.
 
-In the order of involvement, here are some ways to help
-* Star the Overarch project here on github
+In the order of involvement, here are some ways to help:
+* Give the Overarch project a star on github
 * Spread the word, tell your friends and colleagues about Overarch
-* Provide feedback on features, the ontology and the documentation
+* Tell us about your usage as a reference
+* Provide feedback on features, the meta model and the documentation
 * Provide or enhance examples or tutorials
 * Enhance the documentation
 * Report issues on github
