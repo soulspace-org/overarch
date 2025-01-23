@@ -263,6 +263,8 @@
      :to :a/system2}})
 (def cycle-model1 (build-model cycle-input1))
 
+
+;; TODO use functions from model.clj to implement the following test
 (defn requested-nodes
   "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
   [model e]
