@@ -522,26 +522,6 @@
         (map (partial resolve-ref model))
         (filter el/unresolved-ref?)))
 
-;; TODO transitive dependencies with cycle detection/prevention
-(defn ->transitive-related
-  "Step function to build a set of transitively related nodes (with cycle detection)."
-  ([]
-   [#{} ; transitive nodes
-    #{} ; visited nodes
-    ])
-  ([acc]
-   (first acc))
-  ([acc e]
-   ))
-
-;; TODO transitive dependencies with cycle detection/prevention
-(defn related-transitive
-  "Returns the nodes that are transitively related to node `e` in the `model`."
-  ([model e]
-   )
-  ([model f e]
-   (traverse (element-resolver model) identity f ->transitive-related #{e})))
-
 ;;
 ;; Accessors
 ;;
