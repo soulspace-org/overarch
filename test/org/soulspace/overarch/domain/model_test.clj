@@ -264,23 +264,6 @@
 (def cycle-model1 (build-model cycle-input1))
 
 
-;; TODO use functions from model.clj to implement the following test
-(defn requested-nodes
-  "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
-  [model e]
-  (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
-       (filter #(contains? #{:request} (:el %)))
-       ;(map #(resolve-element model (:to %)))
-       (map :to)
-       ))
-
-(defn requested-nodes-resolver
-    "Returns a resolver function for dependent nodes in the `model`."
-    [model]
-    (fn [e]
-      (requested-nodes model e)))
-
-; TODO
 (deftest traverse-cycle-test
   (testing "traverse model with cycle"
     (are [x y] (= x (traverse (element-resolver cycle-model1)

@@ -18,7 +18,7 @@
 "
   (:require [clojure.set :as set]
             [clojure.string :as str]
-            [org.soulspace.overarch.util.functions :as fns]
+;            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
@@ -92,39 +92,6 @@
 ;;
 ;; recursive traversal of the hierarchical data
 ;;
-;; TODO just one traverse function with the actual algorithm
-;;      maybe some convenience fns for input/model traversion
-#_(defn traverse
-  "Recursively traverses the `coll` of elements and returns the elements
-   (selected by the optional `pred-fn`) and transformed by the `step-fn`.
-
-   `element-fn`  - a resolver function for an element, defaults to `identity`
-   `pred-fn`     - a predicate on the current element, defaults to `identity`
-   `children-fn` - a function to resolve the children of the current element
-   `step-fn`     - a function with three signatures [], [acc] and [acc e]
-   
-   The no args signature of the `step-fn` should return an empty accumulator,
-   the one args signature extracts the result from the accumulator on return
-   and the 2 args signature receives the accumulator and the current element and
-   should add the transformed element to the accumulator."
-  ([step-fn coll]
-   (traverse identity identity :ct step-fn coll))
-  ([pred-fn step-fn coll]
-   (traverse identity pred-fn :ct step-fn coll))
-  ([pred-fn children-fn step-fn coll]
-   (traverse identity pred-fn children-fn step-fn coll))
-  ([element-fn pred-fn children-fn step-fn coll]
-   (letfn [(trav [acc coll]
-             (if (seq coll)
-               (let [e (element-fn (first coll))]
-                 (if (pred-fn e)
-                   (recur (trav (step-fn acc e) (children-fn e))
-                          (rest coll))
-                   (recur (trav acc (children-fn e))
-                          (rest coll))))
-               (step-fn acc)))]
-     (trav (step-fn) coll))))
-
 ; TODO work on a single element, too. Apply children-fn on the element then.
 ; TODO rename children-fn to something more general (e.g. connected-fn or related-fn)?
 (defn traverse
@@ -217,19 +184,13 @@
   ([acc e]
    (assoc acc (:id e) e)))
 
-;(def id->element
-;  "Step function to create an id to element map.
-;   Adds the association of the id of the element `e` to the map `acc`."
-; (key->element :id))
-
 
 ;;;
 ;;; Build model
 ;;;
 ;; TODOs:
 ;;  * remove :ct key in model nodes
-;;  * set :external from scope, if given
-;;  * drop input model from model
+;;  * derive :index from vector position, if :ct contains vector?
 (defn input-child?
   "Returns true, if element `e` is a child of model element `p` in the input model."
   [e p]
@@ -472,8 +433,8 @@
   ([coll]
    (build-model {} coll))
   ([options coll]
-   ; TODO if scope option is set, use scope-fn as element-fn
    ; TODO drop :ct key?
+   ; if scope option is set, use scope-fn as element-fn
    (if-let [scope (:scope options)]
      (traverse (scope-fn scope) identity :ct ->relational-model coll)
      (traverse ->relational-model coll))))
@@ -481,14 +442,6 @@
 ;;
 ;; Model transducer functions
 ;;
-(defn related-xf
-  "Transducer to resolve the elements in the `model` referenced by relations."
-  [model]
-  (comp
-   (filter el/model-relation?)
-   (mapcat (fn [e] [(:from e) (:to e)]))
-   (map (partial resolve-id model))))
-
 (defn referrer-xf
   "Transducer to resolve referrer elements of in the `model`.
    Optionally takes a `filter-fn` to filter the relations to take into account."
@@ -525,11 +478,6 @@
 ;;
 ;; Accessors
 ;;
-(defn input-elements
-  "Returns the collection of elements."
-  [model]
-  (:input-elements model))
-
 (defn nodes
   "Returns the collection of model nodes."
   [model]
@@ -570,6 +518,14 @@
        (:to)
        (resolve-id model)
        (:name)))
+
+(defn related-xf
+  "Transducer to resolve the elements in the `model` referenced by relations."
+  [model]
+  (comp
+   (filter el/model-relation?)
+   (mapcat (fn [e] [(:from e) (:to e)]))
+   (map (partial resolve-id model))))
 
 (defn related-nodes
   "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
@@ -1069,6 +1025,23 @@
     (->> (:id e)
          (get (:referred-id->relations model))
          (into #{} (referred-xf model #(= :publish (:el %)))))))
+
+;; TODO rename or replace with more general functions
+(defn requested-nodes
+  "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
+  [model e]
+  (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
+       (filter #(contains? #{:request} (:el %)))
+       ;(map #(resolve-element model (:to %)))
+       (map :to)))
+
+(defn requested-nodes-resolver
+  "Returns a resolver function for dependent nodes in the `model`."
+  [model]
+  (fn [e]
+    (requested-nodes model e)))
+
+
 
 ;;
 ;; statemachine model
