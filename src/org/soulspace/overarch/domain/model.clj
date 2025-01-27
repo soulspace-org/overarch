@@ -696,6 +696,8 @@
     ;; TODO add generic handling of operators [?, !]
     (= :key? k)                    (partial el/key-check? v)
     (= :key k)                     (partial el/key? v)
+    (= :model-node? k)             (partial el/model-node-check? v)
+    (= :model-relation? k)         (partial el/model-relation-check? v)
     (= :el k)                      (partial el/el? v)
     (= :els k)                     (partial el/els? v)
     (= :!els k)                    (complement (partial el/els? v))
@@ -1025,6 +1027,19 @@
     (->> (:id e)
          (get (:referred-id->relations model))
          (into #{} (referred-xf model #(= :publish (:el %)))))))
+
+(defn transitive-sync-dependencies
+  "Returns the transitive synchronous dependencies of the node `e` in the `model`."
+  [model selection]
+  (let [node-pred (criteria-predicates model (:node-selection selection))]
+     (traverse (element-resolver model) (criteria-predicates model (:node-selection selection)) (children-resolver model) collect-fn)
+  )
+)
+
+(defn transitive-sync-dependants
+  "Returns the transitive synchronous dependencies of the node `e` in the `model`."
+  [model selection])
+
 
 ;; TODO rename or replace with more general functions
 (defn requested-nodes

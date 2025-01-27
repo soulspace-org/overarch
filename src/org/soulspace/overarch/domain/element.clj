@@ -920,6 +920,16 @@
 ;;;
 ;;; Criteria Predicates
 ;;; 
+(defn model-node-check?
+  "Returns true if the check for model node on `e` equals the boolean value `v`"
+  [v e]
+  (= v (model-node? e)))
+
+(defn model-relation-check?
+  "Returns true if the check for model relation on `e` equals the boolean value `v`"
+  [v e]
+  (= v (model-relation? e)))
+
 (defn namespace?
   "Returns true, if `v`is the namespace of element `e`."
   [v e]

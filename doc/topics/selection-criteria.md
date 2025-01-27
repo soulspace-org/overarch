@@ -8,8 +8,10 @@ Criterias can also be given as a vector of criteria maps. An element is
 selected, if it is selected by any of the critria maps (logical disjunction). 
 
 ## Keys
-key                    | type            | example values            | description
------------------------|-----------------|---------------------------|------------
+key                    | type            | example values               | description
+-----------------------|-----------------|------------------------------|------------
+:model-node?           | boolean         | true, false                  | elements for which the check for model node returns the given value
+:model-relation?       | boolean         | true, false                  | elements for which the check for model relation returns the given value
 :key?                  | vector          | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
 :key                   | vector          | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
 :el                    | keyword         | :system                      | elements of the given ``:el`` type
@@ -42,7 +44,7 @@ key                    | type            | example values            | descripti
 :!maturities           | set of keywords | #{:implemented  :deprecated} | elements not of the given maturities
 :external?             | boolean         | true, false                  | elements of the given external state
 :name?                 | boolean         | true, false                  | elements for which the ``:name`` check returns the given value
-:name                  | string/regex    | "Overarch CLI"               | elements for which the ``:name`` matches the given value
+:name                  | string/regex    | "Overarch CLI" "(?i).*CLI.*" | elements for which the ``:name`` matches the given value
 :desc?                 | boolean         | true, false                  | elements for which the ``:desc`` check returns the given value
 :desc                  | string/regex    | "CLI" "(?i).*CLI.*"          | elements for which the ``:desc`` matches the given value
 :doc?                  | boolean         | true, false                  | elements for which the ``:doc`` check returns the given value
