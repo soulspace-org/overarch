@@ -19,7 +19,6 @@
             ; require adapters here to register multimethods
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
-            [org.soulspace.overarch.adapter.exports.edn :as eex]
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
             [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
             [org.soulspace.overarch.adapter.render.markdown :as markdown]
