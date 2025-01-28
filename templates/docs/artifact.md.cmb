@@ -7,8 +7,8 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [input-of (m/referred-nodes model e #{:input-of})
-      output-of (m/referred-nodes model e #{:input-of})
+(let [input-of (m/referred-nodes model e {:el :input-of})
+      output-of (m/referred-nodes model e {:el :output-of})
       process-input (filterv #(= :process (:el %)) input-of)
       process-output (filterv #(= :process (:el %)) output-of)]
           

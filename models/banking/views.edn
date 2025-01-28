@@ -153,7 +153,7 @@
 
   {:el :organization-structure-view
    :id :banking/organization-structure-view
-   :spec {:selection {:namespace "banking" :external? false}}
+   :spec {:selection {:namespace-prefix "banking" :external? false}}
    :title "Organization Structure"
    :desc "Shows the hierarchical structure of the organization in scope."}
 

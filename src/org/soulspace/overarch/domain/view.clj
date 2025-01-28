@@ -5,7 +5,6 @@
   "Functions for the definition and handling of views."
   (:require [clojure.set :as set]
             [org.soulspace.overarch.domain.model :as model] 
-            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
@@ -118,9 +117,7 @@
   (if-let [criteria (selection-spec view)]
     (->> model
          (model/model-elements)
-         (into #{} (model/filter-xf (concat (model/nodes model) (model/relations model)) criteria))
-         ;(remove el/synthetic?)
-         )
+         (into #{} (model/filter-xf model criteria)))
     #{}))
 
 (defn specified-elements
@@ -138,7 +135,7 @@
     (let [nodes (->> specified
                      (filter el/model-node?)
                      (mapcat (partial model/descendant-nodes model))
-                     (map (partial model/resolve-element model))
+                     (map (model/element-resolver model))
                      (into #{})
                      (set/union specified)
                      (filter (partial render-model-element? model view)))

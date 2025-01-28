@@ -18,7 +18,6 @@
 "
   (:require [clojure.set :as set]
             [clojure.string :as str]
-;            [org.soulspace.overarch.util.functions :as fns]
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
@@ -27,7 +26,7 @@
 (defn model-element
   "Returns the model element with the given `id`."
   ([model id]
-   ((:id->element model) id)))
+   (get-in model [:id->element id])))
 
 (defn resolve-ref
   "Resolves the model element for the ref `r`."
@@ -813,31 +812,31 @@
 ;;
 (defn referring-nodes
   "Returns the nodes referring to `e` in the `model`.
-   Optionally takes a set of relation types `rels` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referred-id->relations model))
         (into #{} (referred-xf model))))
-  ([model e rels]
+  ([model e criteria]
    (->> e
         (el/id)
         (get (:referred-id->relations model))
-        (into #{} (referred-xf model #(contains? rels (:el %)))))))
+        (into #{} (referred-xf model (criteria-predicates model criteria))))))
 
 (defn referred-nodes
   "Returns the nodes referred by `e` in the `model`.
-   Optionally takes a set of relation types `rels` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
         (into #{} (referrer-xf model))))
-  ([model e rels]
+  ([model e criteria]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
-        (into #{} (referrer-xf model #(contains? rels (:el %)))))))
+        (into #{} (referrer-xf model (criteria-predicates model criteria))))))
 
 #_(defn transitive-referring-nodes
   "Returns the transitive nodes referring to `e` in the `model`."
@@ -853,31 +852,39 @@
 
 (defn referring-relations
   "Returns the relations referring to `e` in the `model`.
-   Optionally takes a set of relation types `rels` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referred-id->relations model))))
-  ([model e rels]
+  ([model e criteria]
    (->> e
         (el/id)
         (get (:referred-id->relations model))
-        (filter #(contains? rels (:el %))))))
+        (filter (criteria-predicates model criteria)))))
 
 (defn referred-relations
   "Returns the relations referred by `e` in the `model`.
-   Optionally takes a set of relation types `rels` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))))
-  ([model e rels]
+  ([model e criteria]
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
-        (filter #(contains? rels (:el %))))))
+        (filter (criteria-predicates model criteria)))))
 
 
+(defn transitive-search
+  ""
+  [model search-criteria]
+  (traverse (element-resolver model) ; resolver element function
+            (criteria-predicates model (:element-selection search-criteria)) ; criteria based element predicate
+            ; TODO criteria based children-fn
+            collect-fn ; collector step function
+            (set (:id search-criteria))))
 
 ;;;
 ;;; Accessors for specific models

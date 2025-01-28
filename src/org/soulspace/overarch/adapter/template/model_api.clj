@@ -184,35 +184,35 @@
 
 (defn referring-nodes
   "Returns the nodes referring to `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (model/referring-nodes model e))
-  ([model e rels]
-   (model/referring-nodes model e rels)))
+  ([model e criteria]
+   (model/referring-nodes model e criteria)))
 
 (defn referred-nodes
   "Returns the nodes referred by `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (model/referred-nodes model e))
-  ([model e rels]
-   (model/referred-nodes model e rels)))
+  ([model e criteria]
+   (model/referred-nodes model e criteria)))
 
 (defn referring-relations
   "Returns the relations referring to `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (model/referring-relations model e))
-  ([model e rels]
-   (model/referring-relations model e rels)))
+  ([model e criteria]
+   (model/referring-relations model e criteria)))
 
 (defn referred-relations
   "Returns the relations referred by `e` in the `model`.
-   Optionally takes a set of relation types `rel` to filter for."
+   Optionally takes `criteria` to filter for."
   ([model e]
    (model/referred-relations model e))
-  ([model e rels]
-   (model/referred-relations model e rels)))
+  ([model e criteria]
+   (model/referred-relations model e criteria)))
 
 ;;
 ;; Architecture Model navigation

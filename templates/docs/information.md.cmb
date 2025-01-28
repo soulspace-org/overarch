@@ -7,10 +7,10 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [required-for (m/referred-nodes model e #{:required-for})
+(let [required-for (m/referred-nodes model e {:el :required-for})
       capabilities (filterv #(= :capability (:el %)) required-for)
-      input-of (m/referred-nodes model e #{:input-of})
-      output-of (m/referred-nodes model e #{:output-of})
+      input-of (m/referred-nodes model e {:el :input-of})
+      output-of (m/referred-nodes model e {:el :output-of})
       process-input (filterv #(= :process (:el %)) input-of)
       process-output (filterv #(= :process (:el %)) output-of)
 ]

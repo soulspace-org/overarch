@@ -11,8 +11,8 @@
       subordinates (m/subordinates model e)
       features (m/features model e)
       features-of (m/feature-of model e)
-      related-to (m/referred-relations model e #{:rel}) 
-      related-from (m/referring-relations model e #{:rel})]
+      related-to (m/referred-relations model e {:el :rel}) 
+      related-from (m/referring-relations model e {:el :rel})]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)
 ## Description

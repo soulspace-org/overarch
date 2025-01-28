@@ -7,7 +7,7 @@
 ;;;;  :id-as-name  true
 ;;;;
 
-(let [required-for (m/referred-nodes model e #{:required-for})
+(let [required-for (m/referred-nodes model e {:el :required-for})
       capabilities (filterv #(= :capability (:el %)) required-for)]
     
 %># <%= (:name e) %> (<%= (m/element-type e) %>)

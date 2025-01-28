@@ -11,11 +11,11 @@
       children (m/children model e)
       sub-processes (filterv #(= :process (:el %)) children)
       roles (m/roles model e)
-      input (m/referring-nodes model e #{:input-of})
-      output (m/referring-nodes model e #{:output-of})
+      input (m/referring-nodes model e {:el :input-of})
+      output (m/referring-nodes model e {:el :output-of})
       input-artifacts (filterv #(= :artifact (:el %)) input)
       output-artifacts (filterv #(= :artifact (:el %)) output)
-      required-for (m/referred-nodes model e #{:required-for})
+      required-for (m/referred-nodes model e {:el :required-for})
       capabilities (filterv #(= :capability (:el %)) required-for)]
 
 %># <%= (:name e) %> (<%= (m/element-type e) %>)

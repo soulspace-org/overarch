@@ -9,7 +9,7 @@
 
 (let [parent (m/parent model e)
       children (sort-by :name (map (partial m/resolve-element model) (m/children model e)))
-      implements (m/referred-nodes model e #{:implements})
+      implements (m/referred-nodes model e {:el :implements})
       processes (filterv #(= :process (:el %)) implements)
       use-cases (filterv #(= :use-case (:el %)) implements)
       state-machines (filterv #(= :state-machine (:el %)) implements)

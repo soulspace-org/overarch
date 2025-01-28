@@ -314,8 +314,6 @@
   (model/descendant-nodes (repo/model)
                           (model/resolve-element (repo/model)
                                                  :banking/internet-banking-system))
-  #_(model/traverse (model/element-resolver (repo/model)) )
-  #_(model/traverse-cycle (model/element-resolver (repo/model)) )
   ;
   )
 
@@ -341,6 +339,11 @@
                                    :mybank.compliance/container-view))
   (def view (model/resolve-element (repo/model)
                                    :mybank.it-management/deployment-view))
+  (def view (model/resolve-element (repo/model)
+                                   :banking/organization-structure-view))
+  (keys (repo/model))
+  (:id->element (repo/model))
+
   view
   (puml/sprites-for-view (repo/model) view)
 
