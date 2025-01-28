@@ -3,9 +3,15 @@ Changelog
 
 Version (NEXT)
 --------------
+* **breaking** changed referring-nodes, referring-relations, referred-nodes and referred-relations
+  * the functions now take criteria instead of a set of element types
+  * this allows for more flexible model graph navigation
+  * the signatures have been updated in the model api
+  * the templates have been updated to reflect those changes
 * report model file name on exception in import
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * moved step functions from element to model
+* fixed model argument in selected-elements
 
 Version 0.35.0
 --------------
