@@ -29,7 +29,7 @@
   "Returns the vector of styles from the themes of the given `view`."
   [model view]
   (->> (get-in view [:spec :themes] [])
-       (map (partial model/resolve-element model))
+       (map (model/element-resolver model))
        (map :styles)))
 
 (defn include-spec
@@ -187,6 +187,6 @@
    (root-elements model (view-elements model view)))
   ([model view coll]
    (->> coll
-        (map (partial model/resolve-element model))
+        (map (model/element-resolver model))
         (filter (partial render-model-element? model view))
         (map #(element-to-render model view %)))))

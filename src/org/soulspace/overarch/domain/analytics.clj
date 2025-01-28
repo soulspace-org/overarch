@@ -149,7 +149,7 @@
   [model element]
   (->> (model/children model element)
        (filter el/reference?)
-       (map (partial model/resolve-ref model))
+       (map (model/element-resolver model))
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
 
@@ -158,7 +158,7 @@
   [model view]
   (->> (:ct view)
        (filter el/reference?)
-       (map (partial model/resolve-ref model))
+       (map (model/element-resolver model))
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id view)))))
 

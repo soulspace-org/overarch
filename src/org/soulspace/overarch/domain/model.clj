@@ -447,12 +447,12 @@
   ([model]
    (comp
     (map :to)
-    (map (partial resolve-id model))))
+    (map (element-resolver model))))
   ([model filter-fn]
    (comp
     (filter filter-fn)
     (map :to)
-    (map (partial resolve-id model)))))
+    (map (element-resolver model)))))
 
 (defn referred-xf
   "Transducer to resolve referred elements in the `model`.
@@ -460,18 +460,18 @@
   ([model]
    (comp
     (map :from)
-    (map (partial resolve-id model))))
+    (map (element-resolver model))))
   ([model filter-fn]
    (comp
     (filter filter-fn)
     (map :from)
-    (map (partial resolve-id model)))))
+    (map (element-resolver model)))))
 
 (defn unresolved-refs-xf 
   "Returns a transducer to extract unresolved refs"
   [model]
   (comp (filter el/reference?)
-        (map (partial resolve-ref model))
+        (map (element-resolver model))
         (filter el/unresolved-ref?)))
 
 ;;
