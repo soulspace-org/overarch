@@ -271,12 +271,9 @@
                                     (requested-nodes-resolver cycle-model1)
                                     collect-fn
                                     (requested-nodes cycle-model1 y)))
-      #{{:el :system
-         :id :a/system2}
-        {:el :system
-         :id :a/system3}
-        {:el :system
-         :id :a/system4}}
+      [{:el :system, :id :a/system2}
+       {:el :system, :id :a/system3}
+       {:el :system, :id :a/system4}]
       :a/system1)))
 
 (comment
@@ -520,18 +517,18 @@
             :name "Container2 Events"
             :tech "Kafka"}}}
 
-    {:el :rel
+    {:el :request
      :id :org.soulspace.external/person-uses-system1
      :from :org.soulspace.external/person
      :to :org.soulspace.external/system1
      :name "uses"}
-    {:el :rel
+    {:el :request
      :id :org.soulspace.internal/person-uses-system
      :from :org.soulspace.internal/person
      :to :org.soulspace.internal/system
      :name "uses"}
-    {:el :rel
-     :id :org.soulspace.internal/person
+    {:el :request
+     :id :org.soulspace.internal/person-uses-container1-ui
      :from :org.soulspace.internal/person
      :to :org.soulspace.internal.system/container1-ui
      :name "uses"}
@@ -901,12 +898,12 @@
          :name "Internal Person"}}
       {:el :person :external? false}
 
-      #{{:el :rel
+      #{{:el :request
          :id :org.soulspace.external/person-uses-system1
          :from :org.soulspace.external/person
          :to :org.soulspace.external/system1
          :name "uses"}}
-      {:el :rel :namespace "org.soulspace.external"}
+      {:el :request :namespace "org.soulspace.external"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container1-ui
@@ -1053,7 +1050,7 @@
         {:el :system :id :org.soulspace.external/system1 :external true :name "External System 1"}
         {:el :person :id :org.soulspace.external/person :external true :name "External Person"}
         {:el :person :id :org.soulspace.internal/person :name "Internal Person"}
-        {:el :rel
+        {:el :request
          :id :org.soulspace.external/person-uses-system1
          :from :org.soulspace.external/person
          :to :org.soulspace.external/system1

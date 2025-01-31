@@ -10,7 +10,20 @@
     (is (= 1 1))))
 
 (def styles-input
-  #{{:el :context-view
+  #{{:el :system
+     :id :test/sys1
+     :name "Sys1"
+     :style :test/critical}
+    {:el :system
+     :id :test/sys2
+     :name "Sys2"
+     :external true}
+    {:el :request
+     :id :test/sys1-calls-sys2
+     :from :test/sys1
+     :to :test/sys2
+     :name "calls"}
+    {:el :context-view
      :id :test/styles-context-view
      :spec {:styles #{{:id :test/dashed-rel
                        :el :rel
@@ -36,19 +49,9 @@
                        :text-color "#000000"
                        :legend-text "critical system"}}}
      :title "Style Test"
-     :ct [{:el :system
-           :id :test/sys1
-           :name "Sys1"
-           :style :test/critical}
-          {:el :system
-           :id :test/sys2
-           :name "Sys2"
-           :external true}
-          {:el :rel
-           :from :test/sys1
-           :to :test/sys2
-           :name "calls"
-           :style :test/dashed-rel}]}
+     :ct [{:ref :test/sys1}
+          {:ref :test/sys2}
+          {:ref :test/sys1-calls-sys2 :style :test/dashed-rel}]}
 
     {:el :theme
      :id :test/test-theme1
@@ -80,19 +83,9 @@
      :id :test/theme-context-view
      :spec {:themes [:test/test-theme1]}
      :title "Theme Test"
-     :ct [{:el :system
-           :id :test/sys1
-           :name "Sys1"
-           :style :test/critical}
-          {:el :system
-           :id :test/sys2
-           :name "Sys2"
-           :external true}
-          {:el :rel
-           :from :test/sys1
-           :to :test/sys2
-           :name "calls"
-           :style :test/dashed-rel}]}})
+     :ct [{:ref :test/sys1}
+          {:ref :test/sys2}
+          {:ref :test/sys1-calls-sys2 :style :test/dashed-rel}]}})
 
 (def styles-model (model/build-model styles-input))
 
@@ -130,32 +123,32 @@
                           :id :test/container-queue1
                           :subtype :queue
                           :name "Test Queue Container 1"}}}
-                  {:el :rel
+                  {:el :request
                    :id :test/user1-uses-system1
                    :from :test/user1
                    :to :test/system1
                    :name "uses"}
-                  {:el :rel
+                  {:el :request
                    :id :test/system1-calls-ext-system1
                    :from :test/system1
                    :to :test/ext-system1
                    :name "calls"}
-                  {:el :rel
+                  {:el :request
                    :id :test/user1-uses-container1
                    :from :test/user1
                    :to :test/container1
                    :name "uses"}
-                  {:el :rel
+                  {:el :request
                    :id :test/container1-calls-ext-system1
                    :from :test/container1
                    :to :test/ext-system1
                    :name "calls"}
-                  {:el :rel
+                  {:el :request
                    :id :test/container1-stores-in-container-db1
                    :from :test/container1
                    :to :test/container-db1
                    :name "stores in"}
-                  {:el :rel
+                  {:el :publish
                    :id :test/container1-sends-to-container-queue1
                    :from :test/container1
                    :to :test/container-queue1
