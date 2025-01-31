@@ -24,18 +24,9 @@
                      :text-color "#000000"
                      :legend-text "critical system"}}}
    :title "Style Test"
-   :ct [{:el :system
-         :id :test/sys1
-         :name "Sys1"
-         :style :test/critical}
-        {:el :system
-         :id :test/sys2
-         :name "Sys2"
-         :external true}
-        {:el :rel
-         :from :test/sys1
-         :to :test/sys2
-         :name "calls"
+   :ct [{:ref :test/sys1}
+        {:ref :test/sys2}
+        {:ref :test/sys1-calls-sys2
          :style :test/dashed-rel}]}
   
   {:el :theme
@@ -68,17 +59,8 @@
    :id :test/theme-context-view
    :spec {:themes [:test/test-theme1]}
    :title "Theme Test"
-   :ct [{:el :system
-         :id :test/sys1
-         :name "Sys1"
-         :style :test/critical}
-        {:el :system
-         :id :test/sys2
-         :name "Sys2"
-         :external true}
-        {:el :rel
-         :from :test/sys1
-         :to :test/sys2
-         :name "calls"
+   :ct [{:ref :test/sys1}
+        {:ref :test/sys2}
+        {:ref :test/sys1-calls-sys2
          :style :test/dashed-rel}]}
 }
