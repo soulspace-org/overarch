@@ -9,8 +9,10 @@ Version (NEXT)
   * the signatures have been updated in the model api
   * the templates have been updated to reflect those changes
 * report model file name on exception in import
+* report missing or duplicate element ids
+* moved traversal step functions from element to model
 * added cycle prevention to traverse to make it a general depth first graph traversal function
-* moved step functions from element to model
+* added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
 
 Version 0.35.0

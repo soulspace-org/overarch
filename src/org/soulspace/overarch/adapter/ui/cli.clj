@@ -128,9 +128,10 @@
     (exp/export model current-format options)))
 
 (defn model-warnings
-  "Reports warnings about the model and views."
+  "Reports warnings about the given `model` and views."
   [model options]
-  {:unresolved-refs-in-views (al/check-views model)
+  {:build-problems (:build-problems model)
+   :unresolved-refs-in-views (al/check-views model)
    :unresolved-refs-in-relations (al/check-relations model)})
    :unnamespaced (al/unnamespaced-elements (repo/model-elements))
    :unidentifiable (al/unidentifiable-elements (repo/model-elements))
@@ -138,7 +139,7 @@
    :unrelated (al/unrelated-nodes (repo/model-elements))
    
 (defn model-info
-  "Reports information about the model and views."
+  "Reports information about the given `model` and views."
   [model options]
   {:nodes-count                 (count (repo/nodes))
    :nodes-by-type-count         (al/count-nodes-per-type (repo/nodes))
@@ -307,15 +308,6 @@
   ;
   )
 
-(comment ; model navigation
-  (model/children (repo/model)
-                  (model/resolve-element (repo/model)
-                                         :overarch.data-model/technical-element))
-  (model/descendant-nodes (repo/model)
-                          (model/resolve-element (repo/model)
-                                                 :banking/internet-banking-system))
-  ;
-  )
 
 (comment ; selections
   (into #{} (model/filter-xf (repo/model) {:subtype :queue}) (repo/nodes))
@@ -332,6 +324,41 @@
        (model/collect-fields (repo/model)))
   (into #{} (model/filter-xf (repo/model) {:namespace-prefix "mybank.compliance"}) (repo/nodes))
   ;
+  )
+
+(comment ; model navigation on banking model
+  (model/descendant-nodes (repo/model)
+                          (model/resolve-element (repo/model)
+                                                 :banking/internet-banking-system))
+
+  ;
+  (model/referred-nodes (repo/model) :banking/api-application)
+  (model/referring-nodes (repo/model) :banking/api-application)
+  (model/referred-relations (repo/model) :banking/api-application)
+  (model/referring-relations (repo/model) :banking/api-application)
+
+  ; 
+  (model/referred-nodes (repo/model) :banking/api-application {:el :request})
+  (model/referring-nodes (repo/model) :banking/api-application {:el :request})
+  ;(model/descendants (repo/model) :banking/internet-banking-system)
+  ;(model/ancestors (repo/model) :banking/internet-banking-system)
+  (model/sync-dependents (repo/model) :banking/api-application)
+  (model/sync-dependencies (repo/model) :banking/api-application)
+  ; 
+  )
+
+(comment ; model navigation on overarch model
+  (model/children (repo/model)
+                  (model/resolve-element (repo/model)
+                                         :overarch.data-model/technical-element))
+  ; type hierarchy of :architecture-model-node (upwards)
+  (model/transitive-search (repo/model)
+                           {:referred-node-selection {:els #{:inheritance :implementation}}}
+                           :overarch.data-model/architecture-model-node)
+  ; type hierarchy of :architecture-model-node (downwards)
+  (model/transitive-search (repo/model)
+                           {:referring-node-selection {:els #{:inheritance :implementation}}}
+                           :overarch.data-model/architecture-model-node)
   )
 
 (comment ; view functions
