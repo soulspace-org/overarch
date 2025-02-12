@@ -2,7 +2,8 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.component-view :refer :all]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
 (def test-input
   #{{:el :enterprise-boundary
@@ -18,7 +19,7 @@
    {:el :system
     :id :test/system2}})
 
-(def test-model (model/build-model test-input))
+(def test-model (repo/build-model test-input))
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"

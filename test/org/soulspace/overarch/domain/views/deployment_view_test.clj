@@ -3,11 +3,12 @@
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.deployment-view :refer :all] 
             [org.soulspace.overarch.domain.model-test :as model-test]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
 (def test-input
   #{})
-(def test-model (model/build-model test-input))
+(def test-model (repo/build-model test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"

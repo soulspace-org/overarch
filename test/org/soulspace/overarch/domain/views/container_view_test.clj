@@ -3,7 +3,8 @@
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.container-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
 (def test-input
   #{{:el :system
@@ -15,7 +16,7 @@
     {:el :system
      :id :test/system2}})
 
-(def test-model (model/build-model test-input))
+(def test-model (repo/build-model test-input))
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"

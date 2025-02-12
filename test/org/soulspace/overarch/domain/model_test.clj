@@ -1,7 +1,7 @@
 (ns org.soulspace.overarch.domain.model-test
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.model :refer :all]
-            [org.soulspace.overarch.util.functions :as fns]))
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
 (def c4-input1
   "Simple test model for C4 Architecture"
@@ -127,9 +127,9 @@
      :from :test/system-class
      :name "extends"}})
 
-(def c4-model1 (build-model c4-input1))
-(def concept-model1 (build-model concept-input1))
-(def code-model1 (build-model code-input1))
+(def c4-model1 (repo/build-model c4-input1))
+(def concept-model1 (repo/build-model concept-input1))
+(def code-model1 (repo/build-model code-input1))
 
 (deftest id->element-test
   (testing "id->elements"
@@ -261,7 +261,7 @@
      :id :a/system3-calls-system2
      :from :a/system3
      :to :a/system2}})
-(def cycle-model1 (build-model cycle-input1))
+(def cycle-model1 (repo/build-model cycle-input1))
 
 
 (deftest traverse-cycle-test
@@ -291,7 +291,7 @@
             :id :a/container
             :ct #{{:el :component
                    :id :a/component}}}}}})
-(def hierarchy-model1 (build-model hierarchy-input1))
+(def hierarchy-model1 (repo/build-model hierarchy-input1))
 
 (def hierarchy-input2
   #{{:el :system
@@ -301,7 +301,7 @@
      :id :a/container
      :ct #{{:el :component
             :id :a/component}}}})
-(def hierarchy-model2 (build-model hierarchy-input2))
+(def hierarchy-model2 (repo/build-model hierarchy-input2))
 
 (def hierarchy-input3
   #{{:el :system
@@ -318,7 +318,7 @@
      :id :a/component-contained-in-container
      :from :a/component
      :to :a/container}})
-(def hierarchy-model3 (build-model hierarchy-input3))
+(def hierarchy-model3 (repo/build-model hierarchy-input3))
 
 (comment
   (descendant-nodes hierarchy-model2 {:el :system
@@ -543,7 +543,7 @@
      :to :org.soulspace.internal.system/container2-topic
      :name "consumes"}})
 
-(def filter-model1 (build-model filter-input))
+(def filter-model1 (repo/build-model filter-input))
 
 (comment
   filter-model1
@@ -1111,13 +1111,13 @@
 
 (deftest input-child?-test
   (testing "input-child? true"
-    (is (= true (input-child? {:el :component :id :a/component}
+    (is (= true (repo/input-child? {:el :component :id :a/component}
                               {:el :container
                                :id :a/container
                                :ct #{{:el :component
                                       :id :a/component}}}))))
   (testing "child? false"
-    (are [x y] (= x (input-child? y
+    (are [x y] (= x (repo/input-child? y
                                   {:el :container
                                    :id :a/container
                                    :ct #{{:el :component
@@ -1129,9 +1129,9 @@
       false nil)))
 
 (comment
-  (input-child? nil nil)
-  (input-child? {:el :component :id :a/component} nil)
-  (input-child? nil {:el :component :id :a/component}))
+  (repo/input-child? nil nil)
+  (repo/input-child? {:el :component :id :a/component} nil)
+  (repo/input-child? nil {:el :component :id :a/component}))
 
 ;;
 ;; Class Model

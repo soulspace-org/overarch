@@ -3,7 +3,8 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
-            [org.soulspace.overarch.domain.view :as view]))
+            [org.soulspace.overarch.domain.view :as view]
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
 (deftest compile-test
   (testing "Compilation"
@@ -87,7 +88,7 @@
           {:ref :test/sys2}
           {:ref :test/sys1-calls-sys2 :style :test/dashed-rel}]}})
 
-(def styles-model (model/build-model styles-input))
+(def styles-model (repo/build-model styles-input))
 
 (deftest styles-spec-test
   ; TODO 
@@ -95,7 +96,7 @@
     (is (= 1 1))))
 
 
-(def c4-model1 (model/build-model
+(def c4-model1 (repo/build-model
                 #{{:el :person
                    :id :test/user1
                    :name "User 1"}
