@@ -11,9 +11,12 @@ Version (NEXT)
 * report model file name on exception in import
 * report missing or duplicate element ids
 * moved traversal step functions from element to model
+* moved model building to repository
+* prepered merging of models
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
+* updated docstrings
 
 Version 0.35.0
 --------------
