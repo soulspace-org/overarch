@@ -24,7 +24,7 @@
   ([acc e]
    (check-missing-id acc nil e))
   ([acc p e]
-   (when (not (:id e))
+   (when (not (or (:id e) (:ref e)))
      {:type :missing-id
       :element e
       :parent p})))
@@ -33,7 +33,7 @@
   ([acc e]
    (check-duplicate-id acc nil e))
   ([acc p e]
-   (when (get-in acc [:id->element (:id e)])
+   (when (and (:id e) (get-in acc [:id->element (:id e)]))
      {:type :duplicate-id
       :element e
       :parent p})))
@@ -72,7 +72,7 @@
 (defn identified-node
   "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
   [e p]
-  (if (:id e)
+  (if (or (:id e) (:ref e))
     e
     (assoc e :id (el/generate-node-id e p))))
 

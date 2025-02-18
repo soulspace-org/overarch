@@ -9,7 +9,7 @@ Version (NEXT)
   * the signatures have been updated in the model api
   * the templates have been updated to reflect those changes
 * report model file name on exception in import
-* report missing or duplicate element ids
+* report missing or duplicate element ids and parent overrides
 * moved traversal step functions from element to model
 * moved model building to repository
 * prepered merging of models
