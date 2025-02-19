@@ -1,0 +1,45 @@
+<%
+;;;;
+;;;; Template for a Glossary View markdown rendering
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(defn first-char
+  "Returns the first character of the name of an element `e`."
+  [e]
+  (-> e
+  :name
+  first
+  str/upper-case))
+
+(let [elements (v/view-elements model e)
+      nodes (filterv m/model-node? elements)
+      grouped-nodes (group-by first-char nodes)
+      chars (sort (into #{} (map first-char nodes)))]
+
+%># <%= (v/title e) %>
+<%
+  (doseq [c chars]
+%>[<%= c %>](#<%= c %>) <%
+  )
+%>
+
+<%
+  (doseq [c chars]
+%>## <%= c %>
+
+<%
+    (doseq [node (sort-by :name (get grouped-nodes c))]
+%>### <%= (md/relative-element-link e node) %> (<%= (str/capitalize (name (:el node))) %>)
+<%= (:desc node) %>
+
+<%
+    )
+  )
+%>
+<%
+)
+%>

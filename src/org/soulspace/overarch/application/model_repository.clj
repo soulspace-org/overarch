@@ -68,7 +68,6 @@
                 ; working on the input, so use :ct here
                 (contains? (set (:ct p)) e))))
 
-
 (defn identified-node
   "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
   [e p]
@@ -476,4 +475,3 @@
   (view/elements-to-render (model) (view-by-id :banking/container-view))
   ;
   )
-

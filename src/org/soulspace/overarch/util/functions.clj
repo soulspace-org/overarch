@@ -27,6 +27,11 @@
          (map str/trim)
          (into [])))))
 
+(defn first-char-uppercase
+  "Returns the first character of the name of an element `e`."
+  [e]
+  (str/upper-case (first (:name e))))
+
 (defn single-line
   "Converts the string to a single line string."
   [s]
