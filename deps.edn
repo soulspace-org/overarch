@@ -11,4 +11,10 @@
  :aliases
  {:test {:extra-paths ["test"]
          ;:extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
-         }}}
+         }
+  ;; tools.build `build.clj` built script
+  :build/task
+  {:replace-paths ["."]
+   :replace-deps {io.github.clojure/tools.build
+                  {:git/tag "v0.10.7" :git/sha "573711e"}}
+   :ns-default build}}}

@@ -16,7 +16,9 @@ Version (NEXT)
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
+* added glossary-view template
 * updated docstrings
+* first steps towards a tools.deps build
 
 Version 0.35.0
 --------------
