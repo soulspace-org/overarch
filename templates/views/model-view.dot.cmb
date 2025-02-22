@@ -53,29 +53,29 @@
   (cond
     (= :person (:el e))
     (if (:external e)
-      "style=filled fillcolor=darkgrey"
-      "style=filled fillcolor=royalblue")
+      "style=filled fillcolor=\"#686868\""
+      "style=filled fillcolor=\"#08427b\"")
 
     (= :system (:el e))
     (if (:external e)
-      "style=filled fillcolor=darkgrey"
-      "style=filled fillcolor=dodgerblue")
+      "style=filled fillcolor=\"#999999\""
+      "style=filled fillcolor=\"#1168bd\"")
 
     (= :container (:el e))
     (if (:external e)
-      "style=filled fillcolor=grey"
-      "style=filled fillcolor=deepskyblue1")
+      "style=filled fillcolor=\"#b3b3b3\""
+      "style=filled fillcolor=\"#438dd5\"")
 
     (= :component (:el e))
     (if (:external e)
       "style=filled fillcolor=lightgrey"
-      "style=filled fillcolor=skyblue")
+      "style=filled fillcolor=\"#85bbf0\"")
 
     (= :use-case (:el e))
     "style=filled fillcolor=yellow"
 
     (= :concept (:el e))
-    "style=filled fillcolor=lightgrey"
+    "style=filled fillcolor=\"#dddddd\""
 
     (= :organization (:el e))
     "style=filled fillcolor=lightgrey"
@@ -88,13 +88,6 @@
 
     :else
     ""))
-
-(defn dot-id
-  "Returns an id for graphviz dot for the element `e`"
-  [e]
-  (-> (str (namespace e) "__" (name e))
-    (str/replace  "-" "_")
-    (str/replace  "." "_")))
 
 (let [elements (v/view-elements model e)
       nodes (filterv m/model-node? elements)
@@ -110,7 +103,7 @@
 %> 
 <%
   (doseq [rel relations]
-%><%= (gv/id (:from rel)) %> -> <%= (dot-id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
+%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
 <%
   )
 %> 
