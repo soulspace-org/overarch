@@ -36,14 +36,14 @@ label="<%= (v/title e) %>"
 // nodes
 <%
   (doseq [concept concepts]
-%><%= (gv/id (:id concept)) %>[label=<<B><%=(:name concept)%></B><BR/><I><%=(:desc concept)%></I>>, style="filled", fillcolor="#dddddd"] 
+%><%= (gv/id (:id concept)) %>[label=<<B><%=(:name concept)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc concept)%> </I></FONT>>, style="filled", fillcolor="#dddddd"] 
 <%
   )
 %>
 // relations
 <%
   (doseq [rel relations]
-%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = <<%= (:name rel) %><BR/><I><%= (:desc rel) %> </I>>]
+%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = <<%= (:name rel) %><BR/><FONT POINT-SIZE="10"><I><%= (:desc rel) %> </I></FONT>>]
 <%
   )
 %>
