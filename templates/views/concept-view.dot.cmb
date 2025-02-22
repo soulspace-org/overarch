@@ -1,0 +1,54 @@
+<%
+;;;;
+;;;; Template for a Graphviz Dot Graph of the Concept View
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+(let [elements (v/view-elements model e)
+      nodes (filterv m/model-node? elements)
+      relations (filterv m/model-relation? elements)
+      concepts (filterv #(= :concept (:el %)) nodes)
+      boundaries (filterv #(= :context-boundary (:el %)) nodes)]
+
+%>digraph "<%= (v/title e) %>" {
+labelloc= "t"
+label="<%= (v/title e) %>"
+<%
+  (when (= :left-right (get-in view [:spec :layout]))
+%>rankdir="LR"
+<%
+  )
+%>
+<%
+  (when (seq boundaries)
+%>
+// context boundaries
+<%
+    (doseq [boundary boundaries]
+%>
+<%
+    )
+  )
+%>
+// nodes
+<%
+  (doseq [concept concepts]
+%><%= (gv/id (:id concept)) %>[label="<%=(:name concept)%>\n<%=(:desc concept)%>", style="filled", fillcolor="#dddddd"] 
+<%
+  )
+%>
+// relations
+<%
+  (doseq [rel relations]
+%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = "<%= (:name rel) %>\n<%= (:desc rel) %>"]
+<%
+  )
+%>
+}
+<%
+)
+%>
+// (generated with <%= (:template ctx) %>)

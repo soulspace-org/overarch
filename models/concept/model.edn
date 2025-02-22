@@ -7,7 +7,7 @@
   {:el :concept
    :id :concept/concept
    :name "Concept"
-   :desc "A concept represents an abstract idea as a semantic unit"}
+   :desc "An abstract idea as a semantic unit"}
   {:el :concept
    :id :concept/name
    :name "Name"

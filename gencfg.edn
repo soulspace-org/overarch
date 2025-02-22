@@ -42,6 +42,13 @@
   :id-as-name true
   :extension "md"}
 
+ {:view-selection {:el :concept-view}
+  :template "views/concept-view.dot.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
  ;;
  ;;  Markdown generation for overarch views
  ;; 
