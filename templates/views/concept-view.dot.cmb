@@ -28,7 +28,17 @@ label="<%= (v/title e) %>"
 // context boundaries
 <%
     (doseq [boundary boundaries]
+      (when-let [children (filterv #(= :concept (:el %)) (m/children model boundary))]
+%>subgraph <%= (gv/id (:id boundary)) %> {
+  label=<<B><%=(:name boundary)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc boundary)%> </I></FONT>>;
+<%
+        (doseq [concept children]
+%>  <%= (gv/id (:id concept)) %>[label=<<B><%=(:name concept)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc concept)%> </I></FONT>>, style="filled", fillcolor="#dddddd"]
+<%    
+        )
+      )
 %>
+}
 <%
     )
   )
