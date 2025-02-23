@@ -23,20 +23,20 @@
   {:el :concept
    :id :overarch.concepts/technical-architecture-node
    :name "Technical Architecture Node"
-   :desc "A technical node in the architecture model."}
+   :desc "A technical node in the architecture model"}
 
   {:el :concept
    :id :overarch.concepts/system
    :name "System"
-   :desc "A system relevant in the architecture."}
+   :desc "A system relevant in the architecture"}
   {:el :concept
    :id :overarch.concepts/container
    :name "Container"
-   :desc "A container is a part of a system and describes a deployed process in the architecture (e.g. a service or an application)."}
+   :desc "a deployed process in the architecture (e.g. a service or an application)"}
   {:el :concept
    :id :overarch.concepts/component
    :name "Component"
-   :desc "A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer)."}
+   :desc "A (logical) building block of a container (e.g. a module or a layer)"}
 
   ;;
   ;; Code
@@ -100,7 +100,7 @@
   {:el :concept
    :id :overarch.concepts/node
    :name "Node"
-   :desc ""}
+   :desc "Part of the infrastructure in the deployment model"}
 
   ;;
   ;; Use Case
@@ -164,39 +164,39 @@
   {:el :concept
    :id :overarch.concepts/state-machine
    :name "State Machine"
-   :desc ""}
+   :desc "A collection of states and transitions"}
   {:el :concept
    :id :overarch.concepts/state
    :name "State"
-   :desc ""}
+   :desc "A state in a state machine"}
   {:el :concept
    :id :overarch.concepts/start-state
    :name "Start State"
-   :desc ""}
+   :desc "The initial state of a state machine"}
   {:el :concept
    :id :overarch.concepts/end-state
    :name "End State"
-   :desc ""}
+   :desc "A final state of a state machine"}
   {:el :concept
    :id :overarch.concepts/fork
    :name "Fork"
-   :desc ""}
+   :desc "Splits the flow into multiple concurrent flows"}
   {:el :concept
    :id :overarch.concepts/join
    :name "Join"
-   :desc ""}
+   :desc "Joins multiple concurrent flows into one flow"}
   {:el :concept
    :id :overarch.concepts/choice
    :name "Choice"
-   :desc ""}
+   :desc "Selects one of several alternative paths"}
   {:el :concept
    :id :overarch.concepts/history-state
    :name "History State"
-   :desc ""}
+   :desc "Remembers the last active substate"}
   {:el :concept
    :id :overarch.concepts/deep-history-state
    :name "Deep History State"
-   :desc ""}
+   :desc "Remembers the last active substate in a substate"}
 
   ;;;
   ;;; Concept Relations
