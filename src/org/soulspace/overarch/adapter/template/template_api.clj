@@ -10,3 +10,9 @@
   [s]
   (fns/single-line s))
 
+(defn multi-lines
+  "Converts the string `s` to a multiline string with a maximum line length of `line-length`."
+  ([s]
+   (multi-lines s 40))
+  ([s line-length]
+   (fns/multi-lines s line-length)))

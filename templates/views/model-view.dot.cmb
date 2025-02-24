@@ -93,15 +93,15 @@
   "Returns the label of the `node` for the `view`."
   [node view]
   (if (= :model-view (:el view))
-    (str "<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
-    (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE=\"10\"><I>" (:desc node) " </I></FONT>>"))
+    (str "label=<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
+    (str "label=<<B>" (:name node) "</B><BR/><FONT POINT-SIZE=\"10\"><I>" (str/join "<BR/>" (t/multi-lines (:desc node))) " </I></FONT>>"))
 
 (defn relation-label
   "Returns the label of the `node` for the `view`."
   [node view]
   (if (= :model-view (:el view))
-    (str "<<FONT POINT-SIZE="10">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
-    (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE="10"><I>" (:desc node) " </I></FONT>>"))
+    (str "label=<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
+    (str "label=<" (:name node) "<BR/><FONT POINT-SIZE=\"10\"><I>" (str/join "<BR/>" (t/multi-lines (:desc node))) " </I></FONT>>"))
 
 (let [elements (v/view-elements model e)
       nodes (filterv m/model-node? elements)
@@ -112,7 +112,7 @@
   label="<%= (v/title e) %>"
 <%
   (when (= :left-right (get-in e [:spec :layout]))
-%>rankdir="LR"
+%>  rankdir="LR"
 <%
   )
 %>
@@ -124,13 +124,13 @@
 %>  layout=<%= (name (get-in e [:spec :graphviz :engine] :dot)) %>
 <%
   (doseq [node nodes]
-%><%= (gv/id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]
+%><%= (gv/id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> <%=(node-label node e)%>]
 <%
   )
 %> 
 <%
   (doseq [rel relations]
-%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = "«<%= (name (:el rel))%>»\n<%= (:name rel) %>"]
+%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [<%=(relation-label rel e)%>]
 <%
   )
 %> 
