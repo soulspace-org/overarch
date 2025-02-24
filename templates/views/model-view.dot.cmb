@@ -21,6 +21,9 @@
     (= :node (:el e))
     "shape=box3d"
     
+    (contains? #{:capability :process} (:el e))
+    "shape=box"
+
     (= :use-case (:el e))
     "shape=ellipse"
     

@@ -18,6 +18,7 @@ Version (NEXT)
 * fixed model argument in selected-elements
 * added a process view definition
 * added glossary view markdown template
+* added multiline description formatting for graphviz rendering
 * enhanced model view graphviz template to be usable for concept and process views
 * updated docstrings
 * first steps towards a tools.deps build
