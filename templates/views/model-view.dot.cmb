@@ -93,14 +93,14 @@
   "Returns the label of the `node` for the `view`."
   [node view]
   (if (= :model-view (:el view))
-    (str "<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»<BR/><I>" (:name node) "</I></FONT>>"))
+    (str "<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
     (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE=\"10\"><I>" (:desc node) " </I></FONT>>"))
 
 (defn relation-label
   "Returns the label of the `node` for the `view`."
   [node view]
   (if (= :model-view (:el view))
-    (str "<<FONT POINT-SIZE="10">«" (name (:el node)) "»<BR/><I>" (:name node) "</I></FONT>>"))
+    (str "<<FONT POINT-SIZE="10">«" (name (:el node)) "»</FONT><BR/>" (:name node) ">"))
     (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE="10"><I>" (:desc node) " </I></FONT>>"))
 
 (let [elements (v/view-elements model e)
@@ -111,17 +111,17 @@
   labelloc= "t"
   label="<%= (v/title e) %>"
 <%
-  (when (= :left-right (get-in view [:spec :layout]))
+  (when (= :left-right (get-in e [:spec :layout]))
 %>rankdir="LR"
 <%
   )
 %>
 <%
-  (when (= :orthogonal (get-in view [:spec :linetype]))
-%>splines=ortho
+  (when (= :orthogonal (get-in e [:spec :linetype]))
+%>  splines=ortho
 <%
   )
-%>
+%>  layout=<%= (name (get-in e [:spec :graphviz :engine] :dot)) %>
 <%
   (doseq [node nodes]
 %><%= (gv/id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> label = "«<%= (name (:el node))%>»\n<%= (:name node) %>"]

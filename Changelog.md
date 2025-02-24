@@ -16,7 +16,9 @@ Version (NEXT)
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
-* added glossary-view template
+* added a process view definition
+* added glossary view markdown template
+* enhanced model view graphviz template to be usable for concept and process views
 * updated docstrings
 * first steps towards a tools.deps build
 

@@ -7,13 +7,6 @@
  ;;
  ;;  Diagram generation for template based views
  ;;
- {:view-selection {:el :model-view}
-  :template "views/model-view.dot.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
  {:view-selection {:el :system-structure-view}
   :template "views/system-structure-view.puml.cmb"
   :subdir "views"
@@ -35,19 +28,33 @@
   :id-as-name true
   :extension "puml"}
  
+ {:view-selection {:el :concept-view}
+  :template "views/model-view.dot.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :process-view}
+  :template "views/model-view.dot.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :model-view}
+  :template "views/model-view.dot.cmb"
+  :subdir "views"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
  {:view-selection {:el :glossary-view}
   :template "views/glossary-view.md.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "md"}
-
- {:view-selection {:el :concept-view}
-  :template "views/concept-view.dot.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
 
  ;;
  ;;  Markdown generation for overarch views
