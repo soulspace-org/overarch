@@ -1,7 +1,8 @@
 ;;;;
 ;;;; Concept model for Concepts
 ;;;;
-#{;;;
+#{;
+  ;;;
   ;;; Concept nodes
   ;;;
   {:el :concept

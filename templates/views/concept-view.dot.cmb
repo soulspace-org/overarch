@@ -7,11 +7,23 @@
 ;;;;  :id-as-name  true
 ;;;;
 
+(defn node-label
+  "Returns the label of the `node` for the `view`."
+  [node view]
+  (if (= :model-view (:el view))
+    (str "<<FONT POINT-SIZE=\"10\">«" (name (:el node)) "»<BR/><I>" (:name node) "</I></FONT>>"))
+    (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE=\"10\"><I>" (:desc node) " </I></FONT>>"))
+
+(defn relation-label
+  "Returns the label of the `node` for the `view`."
+  [node view]
+  (if (= :model-view (:el view))
+    (str "<<FONT POINT-SIZE="10">«" (name (:el node)) "»<BR/><I>" (:name node) "</I></FONT>>"))
+    (str "<<B>" (:name node) "</B><BR/><FONT POINT-SIZE="10"><I>" (:desc node) " </I></FONT>>"))
+
 (let [elements (v/view-elements model e)
       nodes (filterv m/model-node? elements)
-      relations (filterv m/model-relation? elements)
-      concepts (filterv #(= :concept (:el %)) nodes)
-      boundaries (filterv #(= :context-boundary (:el %)) nodes)]
+      relations (filterv m/model-relation? elements)]
 
 %>digraph "<%= (v/title e) %>" {
 labelloc= "t"
@@ -22,38 +34,17 @@ label="<%= (v/title e) %>"
 <%
   )
 %>
-<%
-  (when (seq boundaries)
-%>
-// context boundaries
-<%
-    (doseq [boundary boundaries]
-      (when-let [children (filterv #(= :concept (:el %)) (m/children model boundary))]
-%>subgraph <%= (gv/id (:id boundary)) %> {
-  label=<<B><%=(:name boundary)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc boundary)%> </I></FONT>>;
-<%
-        (doseq [concept children]
-%>  <%= (gv/id (:id concept)) %>[label=<<B><%=(:name concept)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc concept)%> </I></FONT>>, style="filled", fillcolor="#dddddd"]
-<%    
-        )
-      )
-%>
-}
-<%
-    )
-  )
-%>
 // nodes
 <%
-  (doseq [concept concepts]
-%><%= (gv/id (:id concept)) %>[label=<<B><%=(:name concept)%></B><BR/><FONT POINT-SIZE="10"><I><%=(:desc concept)%> </I></FONT>>, style="filled", fillcolor="#dddddd"] 
+  (doseq [node concepts]
+%><%= (gv/id (:id node)) %>[label=<%= (node-label node e) %>, style="filled", fillcolor="#dddddd"] 
 <%
   )
 %>
 // relations
 <%
   (doseq [rel relations]
-%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = <<%= (:name rel) %><BR/><FONT POINT-SIZE="10"><I><%= (:desc rel) %> </I></FONT>>]
+%><%= (gv/id (:from rel)) %> -> <%= (gv/id (:to rel)) %> [label = <%= (relation-label rel e) %>]
 <%
   )
 %>
