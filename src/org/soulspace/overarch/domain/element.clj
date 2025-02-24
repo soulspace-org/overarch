@@ -257,6 +257,16 @@
   (set/union concept-node-types
              concept-relation-types))
 
+(def process-view-types
+  "The set of process view types."
+  #{:process-view})
+
+(def process-view-element-types
+  "Element types of a process view."
+  (set/union process-node-types
+             process-relation-types
+             #{:contained-in :context-boundary}))
+
 ;;
 ;; Structure view types
 ;;
@@ -296,7 +306,7 @@
 (def view-types
   "The set of view types."
   (set/union c4-view-types uml-view-types concept-view-types
-             structure-view-types model-view-types))
+             structure-view-types process-view-types model-view-types))
 
 (def hierarchical-view-types
   "The set of hierarchical view types."
@@ -342,7 +352,7 @@
 
 (def view-type-order
   "The set of view types as vector."
-  [:concept-view :use-case-view :context-view :container-view :component-view
+  [:concept-view :process-view :use-case-view :context-view :container-view :component-view
    :system-landscape-view :system-structure-view :dynamic-view
    :state-machine-view :code-view :deployment-view :deployment-structure-view
    :organization-structure-view :glossary-view :model-view])
