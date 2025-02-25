@@ -1,12 +1,13 @@
 <%
 ;;;;
-;;;; Template for a Graphviz Dot Graph of the Model View
+;;;; Template for a graph of the view as Graphviz Dot file
 ;;;;
 ;;;; config:
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 ;;;;
-
+;;;; TODO: rename to graph.dot.cmb
+;;;;
 (defn element-shape
   [e]
   (cond
