@@ -66,6 +66,16 @@
   [s]
   (str "\"" s "\""))
 
+(defn escape-html
+  "Escapes the HTML special characters in the string `s`."
+  [s]
+  (-> s
+      (str/replace #"&" "&amp;")
+      (str/replace #"<" "&lt;")
+      (str/replace #">" "&gt;")
+      (str/replace #"\"" "&quot;")
+      (str/replace #"'" "&apos;")))
+
 (comment ; string functions
   (single-line "This is a multiline string,
                 which even could be much longer,
@@ -73,7 +83,9 @@
   (multi-lines "This is a very long string, which even could be much longer, that should be split into multiple lines." 20)
   (multi-lines "This is a very long string, which even could be much longer, that should be split into multiple lines." 40)
   (multi-lines "This is a very long string, which even could be much longer, that should be split into multiple lines.")
-  ;
+  (escape-html "<html>")
+  (escape-html "Risk & Compliance")
+  ; 
   )
 
 (defn binding-vector
