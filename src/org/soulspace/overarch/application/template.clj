@@ -181,6 +181,7 @@
     (when (:namespace-suffix ctx)
       (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
 
+; TODO error handling if id is not set
 (defn artifact-filename
   "Returns the filename of the artifact given the generation context `ctx`
    and optionally a model element `el`."
@@ -196,7 +197,7 @@
     (if-let [base-name (:base-name ctx)]
       base-name
       (if (or (:id-as-name ctx) (el/view? el))
-        (name (:id el))
+        (name (:id el)) ; NPE if id is nil
         (:name el)))
     (:suffix ctx)
     "." (:extension ctx))))
