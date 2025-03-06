@@ -55,8 +55,14 @@
   #{:graphviz :markdown :plantuml})
 
 (defn render
-  "Renders all relevant views in the given format."
+  "Renders all relevant views of the `model` in the given `format`.
+   Views marked as external (e.g. by setting the namespace scope in the `options`) are not rendered."
   [model format options]
+  
+  (when (:debug options)
+    (when-let [excluded-views (map :id (filter el/external? (model/views model)))]
+      (println "Excluding external views from rendering" excluded-views)))
+
   (if (= :all format)
     (doseq [current-format render-formats]
       (when (:debug options)
