@@ -1,0 +1,286 @@
+;;;;
+;;;; Generation Config
+;;;;
+[;;;
+ ;;; Documentation
+ ;;;
+ ;;
+ ;;  Diagram Generation for Views
+ ;;
+ {:view-selection {:el :system-structure-view}
+  :template "views/structure-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :deployment-structure-view}
+  :template "views/structure-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :organization-structure-view}
+  :template "views/structure-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ {:view-selection {:el :model-view}
+  :template "views/model-view.dot.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :concept-view}
+  :template "views/model-view.dot.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :process-view}
+  :template "views/model-view.dot.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "dot"}
+
+ {:view-selection {:el :glossary-view}
+  :template "views/glossary-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ ;;
+ ;;  Markdown Generation for Model Elements
+ ;;
+ #_{:selection {}
+    :template "docs/index.md.cmb"
+    :per-element false
+    :title "Documentation Overview"
+    :base-name "index"
+    :extension "md"}
+
+ {:selection {:el :concept}
+  :template "docs/concept.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:els #{:organization :org-unit}}
+  :template "docs/organization.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :capability}
+  :template "docs/capability.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :process}
+  :template "docs/process.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :artifact}
+  :template "docs/artifact.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :requirement}
+  :template "docs/requirement.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :decision}
+  :template "docs/decision.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :use-case}
+  :template "docs/use-case.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :technical-architecture-model-node}
+  :template "docs/architecture-node.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :boundary}
+  :template "docs/architecture-node.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :state}
+  :template "docs/state.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :package}
+  :template "docs/package.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ {:selection {:els #{:interface :class}}
+  :template "docs/code.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :person}
+  :template "docs/user-role.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:selection {:el :node}
+  :template "docs/deployment-node.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ ;;
+ ;;  Markdown Generation for Views
+ ;; 
+ {:view-selection {}
+  :template "docs/views/views.md.cmb"
+  :base-name "views"
+  :extension "md"}
+
+ {:view-selection {:el :concept-view}
+  :template "docs/views/concept-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :use-case-view}
+  :template "docs/views/use-case-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :context-view}
+  :template "docs/views/context-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :system-structure-view}
+  :template "docs/views/system-structure-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :container-view}
+  :template "docs/views/container-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :component-view}
+  :template "docs/views/component-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :system-landscape-view}
+  :template "docs/views/system-landscape-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :dynamic-view}
+  :template "docs/views/dynamic-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :state-machine-view}
+  :template "docs/views/state-machine-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :code-view}
+  :template "docs/views/code-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :deployment-view}
+  :template "docs/views/deployment-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :deployment-structure-view}
+  :template "docs/views/deployment-structure-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :organization-structure-view}
+  :template "docs/views/organization-structure-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :glossary-view}
+  :template "docs/views/glossary-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ {:view-selection {:el :model-view}
+  :template "docs/views/model-view.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+
+ ;;;
+ ;;; Markdown Reports
+ ;;;
+ #_{:selection {}
+    :template "reports/element-report.md.cmb"
+    :title "Model Elements Report"
+    :base-namespace "reports"
+    :base-name "elements-report"
+    :extension "md"}
+
+ #_{:selection {:el :system}
+    :template "reports/node-report.md.cmb"
+    :title "Systems Report"
+    :base-namespace "reports"
+    :base-name "systems-report"
+    :extension "md"}
+
+ ;;;
+ ;;; Exports
+ ;;;
+ #_{:selection {}
+    :template "exports/model.edn.cmb"
+    :per-namespace true
+    :subdir "export/edn"
+    :base-name "model"
+    :extension "edn"
+    :debug true}
+
+ #_{:view-selection {}
+    :template "exports/views.edn.cmb"
+    :per-namespace true
+    :subdir "export/edn"
+    :base-name "views"
+    :extension "edn"
+    :debug true}
+
+ ;
+ ]

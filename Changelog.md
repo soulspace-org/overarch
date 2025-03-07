@@ -20,6 +20,7 @@ Version (NEXT)
 * added glossary view markdown template
 * added multiline description formatting for graphviz rendering
 * enhanced model view graphviz template to be usable for concept and process views
+* added a default generation config in templates dir
 * updated docstrings
 * first steps towards a tools.deps build
 
