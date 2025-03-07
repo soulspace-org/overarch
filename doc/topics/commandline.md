@@ -64,3 +64,8 @@ or
 > java -jar ./target/overarch.jar -S '{:el :container}'
 ```
 
+## Start Scripts
+The [My Bank Example](https://github.com/soulspace-org/my-bank-model) contains
+a setup with the Overarch and PlantUML jar files in the tools directory and
+two simple bash scripts for the development and publication of overarch models.
+
