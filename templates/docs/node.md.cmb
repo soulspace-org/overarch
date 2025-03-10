@@ -45,6 +45,22 @@
   (doseq [node (sort-by :name coll)]
     (node-description-table-row parent node)))
 
+(defn node-type-description-table-row
+  "Generates the markdown for a description table row for `node` and `parent`."
+  [parent node]
+%>| <%= (md/relative-element-link parent node) %> | <%= (get type->name type (str/capitalize (name type))) %> | <%= (t/single-line (:desc node)) %> |
+<%
+)
+
+(defn node-type-description-table
+  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
+  [parent type coll]
+%>| Node | Type | Description |
+|---|---|---|
+<%
+  (doseq [node (sort-by :name coll)]
+    (node-description-table-row parent node)))
+
 (defn relation-description-table-row
   "Generates the markdown for a description table row for the `relation` in the `model`."
   [node rel]
@@ -216,19 +232,19 @@
 
   (when-let [processes (seq (filter #(= :process (:el %)) role-in))]
 %>
-## Role in Process
+## Role in Processes
 <%
     (node-description-table e :process processes))
 
   (when-let [organizations (seq (filter #(= :organization (:el %)) role-in))]
 %>
-## Role in Organization
+## Role in Organizations
 <%
     (node-description-table e :organization organizations))
 
   (when-let [org-units (seq (filter #(= :org-unit (:el %)) role-in))]
 %>
-## Role in Organization Unit
+## Role in Organization Units
 <%
     (node-description-table e :org-unit org-units))
 
