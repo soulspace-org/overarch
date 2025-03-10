@@ -398,15 +398,15 @@
 <%
     (node-description-table e :decision decisions))
 
-  (when-let [org (filterv #(= :organization (:el %)) children)]
+  (when-let [organizations (filterv #(= :organization (:el %)) children)]
 %>## Sub Organizations
 <%
-    (node-description-table e :org-unit org))
+    (node-description-table e :org-unit organizations))
 
-  (when-let [unit (filterv #(= :org-unit (:el %)) children)]
+  (when-let [org-units (filterv #(= :org-unit (:el %)) children)]
 %>## Sub Units
 <%
-    (node-description-table e :org-unit unit))
+    (node-description-table e :org-unit org-units))
 
   (when-let [state-machines (filterv #(= :state-machine (:el %)) implemented)]
 %>
@@ -438,6 +438,21 @@ These containers are the main processes of the <%= (:name e) %> system.
 These components show the internal structure of the <%= (:name e) %> container.
 <%
     (node-description-table e :component components))
+
+  (when-let [packages (filterv #(= :package (:el %)) children)]
+%>## Packages
+<%
+    (node-description-table e :package packages))
+
+  (when-let [interfaces (filterv #(= :interface (:el %)) children)]
+%>## Interfaces
+<%
+    (node-description-table e :interface interfaces))
+
+  (when-let [classes (filterv #(= :class (:el %)) children)]
+%>## Classes
+<%
+    (node-description-table e :class classes))
 
 )
 %>
