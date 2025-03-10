@@ -155,7 +155,7 @@
  ;;
  {:selection {:model-node? true :!els #{:field :method}}
   :template "docs/node.md.cmb"
-  :subdir "docs/node"
+  :subdir "docs"
   :per-element true
   :id-as-name true
   :extension "md"}
