@@ -153,110 +153,13 @@
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
- {:selection {:model-node? true}
+ {:selection {:model-node? true :!els #{:field :method}}
   :template "docs/node.md.cmb"
   :subdir "docs/node"
   :per-element true
   :id-as-name true
   :extension "md"}
  
- {:selection {:namespace-prefix "banking" :el :concept}
-  :template "docs/concept.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :organization-model-node}
-  :template "docs/organization.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :technical-architecture-model-node}
-  :template "docs/architecture-node.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :use-case}
-  :template "docs/use-case.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :person}
-  :template "docs/user-role.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :node}
-  :template "docs/deployment-node.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :state}
-  :template "docs/state.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :package}
-  :template "docs/package.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :els #{:interface :class}}
-  :template "docs/code.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :use-case}
-  :template "docs/use-cases.md.cmb"
-  :subdir "docs"
-  :base-namespace "banking"
-  :base-name "use-cases"
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :person}
-  :template "docs/user-roles.md.cmb"
-  :subdir "docs"
-  :base-namespace "banking"
-  :base-name "user-roles"
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :capability}
-  :template "docs/capability.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :process}
-  :template "docs/process.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :artifact}
-  :template "docs/artifact.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :requirement}
-  :template "docs/requirement.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:selection {:namespace-prefix "banking" :el :decision}
-  :template "docs/decision.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
-
  ;;;
  ;;; Markdown Reports
  ;;;
