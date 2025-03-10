@@ -47,11 +47,6 @@
    :from :banking.concepts/account-concept
    :to :banking.concepts/transaction-concept
    :name "reflects"}
-  {:el :rel
-   :id :banking.concepts/internet-banking-system-implements-internet-banking-concept
-   :from :banking/internet-banking-system
-   :to :banking.concepts/internet-banking-concept
-   :name "implements"}
   {:el :has
    :id :banking.concepts/personal-customer-has-account
    :from :banking/personal-customer
@@ -520,6 +515,17 @@
    :id :banking/database-deployed-to-big-bank-db02
    :from :banking/database-read
    :to :banking.deployment/big-bank-db02}
+
+  
+  ;;;
+  ;;; Implementation Model
+  ;;;
+  {:el :implements
+   :id :banking.concepts/internet-banking-system-implements-internet-banking-concept
+   :from :banking/internet-banking-system
+   :to :banking.concepts/internet-banking-concept
+   :name "implements"}
+
 
   ;
   }
