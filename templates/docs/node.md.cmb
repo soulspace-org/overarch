@@ -668,9 +668,18 @@
   )
 
 ;;
-;; processes (TODO)
+;; processes
 ;;
 
+  (when 
+    (and (contains? #{:process} (:el e)) (m/resolve-view model e "process-view"))
+%>
+## Use Case View
+<%= (md/relative-diagram-link e (m/resolve-view model e "process-view")) %>
+
+<%= (md/relative-view-link e (m/resolve-view model e "process-view")) %>
+<%
+  )
 
 ;;
 ;; use cases
@@ -731,6 +740,16 @@
 ;;
 ;; code (TODO)
 ;;
+
+  (when 
+    (and (contains? #{:package :class :interface} (:el e)) (m/resolve-view model e "code-view"))
+%>
+## Code View
+<%= (md/relative-diagram-link e (m/resolve-view model e "code-view")) %>
+
+<%= (md/relative-view-link e (m/resolve-view model e "code-view")) %>
+<%
+  )
 
 ;;
 ;; deployment
