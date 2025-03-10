@@ -10,7 +10,7 @@
 (def type->name
   {:person   "Person/Role"
    :use-case "Use Case"
-   :context-boundary "Subdomains/Bounded Contexts"})
+   :context-boundary "Subdomain/Bounded Context"})
 
 (defn node-description-table-header
   "Generates the markdown for a description table row for the node `type`."
@@ -80,62 +80,6 @@
 %>
 ## Technology
 <%= (:tech e) %>
-
-<%
-  (when-let [processes (filterv #(= :process (:el %)) implemented)]
-%>
-## Implemented Processes
-<%
-    (node-description-table e :process processes))
-
-  (when-let [use-cases (filterv #(= :use-case (:el %)) implemented)]
-%>
-## Implemented Use Cases
-<%
-    (node-description-table e :use-case use-cases))
-
-  (when-let [requirements (filterv #(= :requirement (:el %)) implemented)]
-%>
-## Implemented Requirements
-<%
-    (node-description-table e :requirement requirements))
-
-  (when-let [decisions (filterv #(= :decision (:el %)) implemented)]
-%>
-## Implemented Decisions
-<%
-    (node-description-table e :decision decisions))
-
-  (when-let [state-machines (filterv #(= :state-machine (:el %)) implemented)]
-%>
-## Implemented State Machines
-<%
-    (node-description-table e :state-machine state-machines))
-
-  (when-let [bounded-contexts (filterv #(= :context-boundary (:el %)) children)]
-%>
-## Subdomains/Bounded Contexts
-The system consists of different subdomains which have been structured into bounded contexts
-<%
-    (node-description-table e :context-boundary bounded-contexts))
-
-  (when-let [systems (filterv #(= :systems (:el %)) children)]
-%>## Systems
-These systems part of the context <%= (:name e) %>.
-<%
-    (node-description-table e :system systems))
-
-  (when-let [containers (filterv #(= :container (:el %)) children)]
-%>## Containers
-These containers are the main processes of the <%= (:name e) %> system.
-<%
-    (node-description-table e :container containers))
-
-  (when-let [components (filterv #(= :component (:el %)) children)]
-%>## Components
-These components show the internal structure of the <%= (:name e) %> container.
-<%
-    (node-description-table e :component components))
 
 ;;
 ;; interface docs for relations
@@ -337,66 +281,6 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
   )
 
-  (when (seq processes)
-%>## Implemented Processes
-
-| Process | Description |
-|---|---|
-<%
-    (doseq [process (sort-by :name processes)]
-%>| <%= (md/relative-element-link e process)%>| <%= (t/single-line (:desc process)) %> |
-<%
-    )
-  )
-
-  (when (seq use-cases)
-%>## Implemented Use Cases
-
-| Use Case | Description |
-|---|---|
-<%
-    (doseq [use-case (sort-by :name use-cases)]
-%>| <%= (md/relative-element-link e use-case)%>| <%= (t/single-line (:desc use-case)) %> |
-<%
-    )
-  )
-
-  (when (seq state-machines)
-%>## Implemented State Machines
-
-| State Machine | Description |
-|---|---|
-<%
-    (doseq [state-machine (sort-by :name state-machines)]
-%>| <%= (md/relative-element-link e state-machine)%>| <%= (t/single-line (:desc state-machine)) %> |
-<%
-    )
-  )
-
-  (when (seq requirements)
-%>## Implemented Requirements
-
-| Requirement | Description |
-|---|---|
-<%
-    (doseq [requirement (sort-by :name requirements)]
-%>| <%= (md/relative-element-link e requirement)%>| <%= (t/single-line (:desc requirement)) %> |
-<%
-    )
-  )
-
-  (when (seq decisions)
-%>## Implemented Decisions
-
-| Decision | Description |
-|---|---|
-<%
-    (doseq [decision (sort-by :name decisions)]
-%>| <%= (md/relative-element-link e decision)%>| <%= (t/single-line (:desc decision)) %> |
-<%
-    )
-  )
-
   (when (seq interfaces)
 %>
 ## Extended/Implemented Interfaces
@@ -514,20 +398,24 @@ These components show the internal structure of the <%= (:name e) %> container.
 <%
     (node-description-table e :decision decisions))
 
+  (when-let [org (filterv #(= :organization (:el %)) children)]
+%>## Sub Organizations
+<%
+    (node-description-table e :org-unit org))
+
+  (when-let [unit (filterv #(= :org-unit (:el %)) children)]
+%>## Sub Units
+<%
+    (node-description-table e :org-unit unit))
+
   (when-let [state-machines (filterv #(= :state-machine (:el %)) implemented)]
 %>
 ## Implemented State Machines
 <%
     (node-description-table e :state-machine state-machines))
 
-  (when (seq implemented-by)
-## Implemented By
-<%
-    (node-description-table e "Implementer" implemented-by))
-
   (when-let [bounded-contexts (filterv #(= :context-boundary (:el %)) children)]
 %>
-
 ## Subdomains/Bounded Contexts
 The system consists of different subdomains which have been structured into bounded contexts
 <%
