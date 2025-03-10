@@ -8,26 +8,26 @@
  ;;  Diagram generation for template based views
  ;;
  {:view-selection {:el :system-structure-view}
-  :template "views/system-structure-view.puml.cmb"
+  :template "views/structure-view.puml.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "puml"}
 
  {:view-selection {:el :deployment-structure-view}
-  :template "views/deployment-structure-view.puml.cmb"
+  :template "views/structure-view.puml.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "puml"}
 
  {:view-selection {:el :organization-structure-view}
-  :template "views/organization-structure-view.puml.cmb"
+  :template "views/structure-view.puml.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "puml"}
- 
+
  {:view-selection {:el :concept-view}
   :template "views/model-view.dot.cmb"
   :subdir "views"
@@ -48,13 +48,6 @@
   :per-element true
   :id-as-name true
   :extension "dot"}
-
- {:view-selection {:el :glossary-view}
-  :template "views/glossary-view.md.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
 
  ;;
  ;;  Markdown generation for overarch views
@@ -143,12 +136,13 @@
   :per-element true
   :id-as-name true
   :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :glossary-view}
-  :template "docs/views/glossary-view.md.cmb"
-  :subdir "docs"
+ {:view-selection {:el :glossary-view}
+  :template "views/glossary-view.md.cmb"
+  :subdir "views"
   :per-element true
   :id-as-name true
   :extension "md"}
+
  {:view-selection {:namespace-prefix "banking" :el :model-view}
   :template "docs/views/model-view.md.cmb"
   :subdir "docs"
@@ -159,6 +153,13 @@
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
+ {:selection {:model-node? true}
+  :template "docs/node.md.cmb"
+  :subdir "docs/node"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ 
  {:selection {:namespace-prefix "banking" :el :concept}
   :template "docs/concept.md.cmb"
   :subdir "docs"
