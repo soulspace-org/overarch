@@ -122,12 +122,6 @@
       requires (m/referring-nodes model e {:el :required-for})
       role-in (m/referred-nodes model e {:el :role-in})
       roles (m/referring-nodes model e {:el :role-in})
-      uses (m/referred-nodes model e {:el :uses})
-      used-by (m/referring-nodes model e {:el :uses})
-      inputs (m/referring-nodes model e {:el :input-for})
-      input-for (m/referred-nodes model e {:el :input-for})
-      outputs (m/referring-nodes model e {:el :output-for})
-      output-for (m/referred-nodes model e {:el :output-for})
       ]
 %>
 # <%= (:name e) %> (<%= (m/element-type e) %>)
@@ -521,10 +515,20 @@
 <%
     (node-description-table e :artifact inputs))
 
+  (when-let [processes (seq (m/referred-nodes model e {:el :input-for}))]
+%>## Input of
+<%
+    (node-description-table e :process processes))
+
   (when-let [outputs (seq (m/referring-nodes model e {:el :output-for}))]
 %>## Output Artifacts
 <%
     (node-description-table e :artifact outputs))
+
+  (when-let [processes (seq (m/referred-nodes model e {:el :output-for}))]
+%>## Output of
+<%
+    (node-description-table e :process processes))
 
 ;;
 ;; architecture
