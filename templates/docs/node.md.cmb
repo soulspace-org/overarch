@@ -10,7 +10,9 @@
 ;;;
 ;;; definitions
 ;;;
+
 (def type->name
+  "Maps an element type to a display name."
   {:person   "Person/Role"
    :use-case "Use Case"
    :context-boundary "Subdomain/Bounded Context"})
@@ -18,6 +20,10 @@
 ;;;
 ;;; functions
 ;;;
+
+;;
+;; model navigation
+;; 
 
 (defn referrer
   "Resolves the referrer node (:from) of the `relation` in the `model`."
@@ -28,6 +34,10 @@
   "Resolves the referred node (:to) of the `relation` in the `model`."
   [model relation]
   (m/resolve-element model (:to relation)))
+
+;;
+;; markdown generation
+;;
 
 (defn node-description-table-row
   "Generates the markdown for a description table row for `node` and `parent`."
@@ -506,6 +516,15 @@
 ;; processes
 ;;
 
+  (when-let [inputs (seq (m/referring-nodes model e {:el :input-for}))]
+%>## Input Artifacts
+<%
+    (node-description-table e :artifact inputs))
+
+  (when-let [outputs (seq (m/referring-nodes model e {:el :output-for}))]
+%>## Output Artifacts
+<%
+    (node-description-table e :artifact outputs))
 
 ;;
 ;; architecture
@@ -580,7 +599,55 @@
 <%
     (node-description-table e :node nodes))
 
+;;
+;; code (TODO add functions, enums, ...)
+;;
 
+  (when-let [interfaces (seq (m/interfaces model e))]
+%>
+## Extended/Implemented Interfaces
+<%=(str/join ", " (map #(md/relative-element-link e %) interfaces))%>
+<%
+  )
+
+  (when-let [superclasses (seq (m/superclasses model e))]
+%>
+## Superclasses
+<%=(str/join ", " (map #(md/relative-element-link e %) superclasses))%>
+<%
+  )
+
+  (when-let [subclasses  (seq (m/subclasses model e))]
+%>
+## Subclasses
+<%=(str/join ", " (map #(md/relative-element-link e %) subclasses))%>
+<%
+  )
+
+  (when-let [fields (seq (filter #(= :field (:el %)) children))]
+%>
+## Fields
+<%
+    (doseq [field (sort-by :name fields)]
+%>### <%= (:name field) %>
+<%= (:type field) %> <%= (:name field) %>
+ 
+<%= (t/single-line (:desc field)) %>
+<%
+    ))
+
+  (when-let [methods (seq (filter #(= :method (:el %)) children))]
+%>
+## Methods
+<%
+    (doseq [method (sort-by :name methods)]
+      (let [parameters (m/children model e)]
+%>###  <%= (:name method) %>
+<%= (:type method) %> <%= (:name method) %>(<%= (str/join ", " (map :name parameters)) %>)
+
+<%= (t/single-line (:desc method)) %>
+<%
+      )))
 
 ;;;
 ;;; diagrams
@@ -599,6 +666,11 @@
 <%= (md/relative-view-link e (m/resolve-view model e "concept-view")) %>
 <%
   )
+
+;;
+;; processes (TODO)
+;;
+
 
 ;;
 ;; use cases
@@ -655,6 +727,10 @@
 <%= (md/relative-view-link e (m/resolve-view model e "component-view")) %>
 <%
     )
+
+;;
+;; code (TODO)
+;;
 
 ;;
 ;; deployment
