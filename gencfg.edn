@@ -1,48 +1,22 @@
 ;;;;
 ;;;; Generation Config
 ;;;;
-[;;;
+[;
+ ;;;
  ;;; Documentation
  ;;;
+ 
  ;;
  ;;  Diagram generation for template based views
  ;;
- {:view-selection {:el :system-structure-view}
+ {:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
   :template "views/structure-view.puml.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
   :extension "puml"}
 
- {:view-selection {:el :deployment-structure-view}
-  :template "views/structure-view.puml.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :organization-structure-view}
-  :template "views/structure-view.puml.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :concept-view}
-  :template "views/model-view.dot.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
- {:view-selection {:el :process-view}
-  :template "views/model-view.dot.cmb"
-  :subdir "views"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
- {:view-selection {:el :model-view}
+ {:view-selection {:els #{:concept-view :process-view :model-view}}
   :template "views/model-view.dot.cmb"
   :subdir "views"
   :per-element true

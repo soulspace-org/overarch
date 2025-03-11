@@ -7,37 +7,13 @@
  ;;
  ;;  Diagram Generation for Views
  ;;
- {:view-selection {:el :system-structure-view}
+ {:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
   :template "views/structure-view.puml.cmb"
   :per-element true
   :id-as-name true
   :extension "puml"}
-
- {:view-selection {:el :deployment-structure-view}
-  :template "views/structure-view.puml.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :organization-structure-view}
-  :template "views/structure-view.puml.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
- {:view-selection {:el :model-view}
-  :template "views/model-view.dot.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
- {:view-selection {:el :concept-view}
-  :template "views/model-view.dot.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "dot"}
-
- {:view-selection {:el :process-view}
+ 
+ {:view-selection {:els #{:concept-view :process-view :model-view}}
   :template "views/model-view.dot.cmb"
   :per-element true
   :id-as-name true
@@ -59,90 +35,96 @@
     :base-name "index"
     :extension "md"}
 
- {:selection {:el :concept}
+ {:selection {:model-node? true :!els #{:field :method}}
+  :template "docs/node.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ 
+ #_{:selection {:el :concept}
   :template "docs/concept.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:els #{:organization :org-unit}}
+ #_{:selection {:els #{:organization :org-unit}}
   :template "docs/organization.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :capability}
+ #_{:selection {:el :capability}
   :template "docs/capability.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :process}
+ #_{:selection {:el :process}
   :template "docs/process.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :artifact}
+ #_{:selection {:el :artifact}
   :template "docs/artifact.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :requirement}
+ #_{:selection {:el :requirement}
   :template "docs/requirement.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :decision}
+ #_{:selection {:el :decision}
   :template "docs/decision.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :use-case}
+ #_{:selection {:el :use-case}
   :template "docs/use-case.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :technical-architecture-model-node}
+ #_{:selection {:el :technical-architecture-model-node}
   :template "docs/architecture-node.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :boundary}
+ #_{:selection {:el :boundary}
   :template "docs/architecture-node.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :state}
+ #_{:selection {:el :state}
   :template "docs/state.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :package}
+ #_{:selection {:el :package}
   :template "docs/package.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
- {:selection {:els #{:interface :class}}
+ #_{:selection {:els #{:interface :class}}
   :template "docs/code.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :person}
+ #_{:selection {:el :person}
   :template "docs/user-role.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
 
- {:selection {:el :node}
+ #_{:selection {:el :node}
   :template "docs/deployment-node.md.cmb"
   :per-element true
   :id-as-name true
