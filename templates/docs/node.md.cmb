@@ -1,6 +1,6 @@
 <%
 ;;;;
-;;;; Documentation Template for an Architecture Node
+;;;; Markdown Documentation Template for a Model Node
 ;;;;
 ;;;; config:
 ;;;;  :per-element true
@@ -105,7 +105,7 @@
 
 
 ;;;
-;;; Generic node markdown documentation
+;;; generic node markdown documentation
 ;;;
 
 (let [referring-nodes (m/referring-nodes model e {})

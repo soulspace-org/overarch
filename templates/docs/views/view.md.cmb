@@ -1,0 +1,225 @@
+<%
+;;;;
+;;;; Markdown Documentation Template for a View
+;;;;
+;;;; config:
+;;;;  :per-element true
+;;;;  :id-as-name  true
+;;;;
+
+;;;
+;;; definitions
+;;;
+
+(def type->name
+  "Maps an element type to a display name."
+  {:person   "Person/Role"
+   :use-case "Use Case"
+   :context-boundary "Subdomain/Bounded Context"})
+
+;;;
+;;; functions
+;;;
+
+;;
+;; model navigation functions
+;; 
+
+(defn referrer
+  "Resolves the referrer node (:from) of the `relation` in the `model`."
+  [model relation]
+  (m/resolve-element model (:from relation)))
+
+(defn referred
+  "Resolves the referred node (:to) of the `relation` in the `model`."
+  [model relation]
+  (m/resolve-element model (:to relation)))
+
+;;
+;; markdown generation functions
+;;
+
+(defn node-description-table-row
+  "Generates the markdown for a description table row for `node` and `parent`."
+  [parent node]
+%>| <%= (md/relative-element-link parent node)%>| <%= (t/single-line (:desc node)) %> |
+<%
+)
+
+(defn node-description-table
+  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
+  [parent type coll]
+%>| <%= (get type->name type (str/capitalize (name type))) %> | Description |
+|---|---|
+<%
+  (doseq [node (sort-by :name coll)]
+    (node-description-table-row parent node)))
+
+(defn node-type-description-table-row
+  "Generates the markdown for a description table row for `node` and `parent`."
+  [parent node]
+%>| <%= (md/relative-element-link parent node) %> | <%= (get type->name type (str/capitalize (name type))) %> | <%= (t/single-line (:desc node)) %> |
+<%
+)
+
+(defn node-type-description-table
+  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
+  [parent type coll]
+%>| Node | Type | Description |
+|---|---|---|
+<%
+  (doseq [node (sort-by :name coll)]
+    (node-description-table-row parent node)))
+
+(defn relation-description-table-row
+  "Generates the markdown for a description table row for the `relation` in the `model`."
+  [node rel]
+%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (t/single-line (:desc rel)) %> |
+<%
+  )
+
+(defn relation-description-table
+  "Generates the markdown for a description table for relations of the `type` in `coll` in the context of the `node` and the `model`."
+  [model node coll]
+%>| From | Name | To | Description |
+|---|---|---|---|
+<%
+  (doseq [rel (sort-by :name coll)]
+    (relation-description-table-row node rel)))
+
+(defn technical-relation-description-table-row
+  "Generates the markdown for a description table row for the technical `relation` in the `model`."
+  [node rel]
+%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (:tech rel) %> | <%= (t/single-line (:desc rel)) %> |
+<%
+  )
+
+(defn technical-relation-description-table
+  "Generates the markdown for a description table for technical relations of the `type` in `coll` in the context of the `node` and the `model`."
+  [model node coll]
+%>| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+<%
+  (doseq [rel (sort-by :name coll)]
+    (relation-description-table-row node rel)))
+
+;;;
+;;; generic view markdown documentation
+;;;
+
+(let [elements (v/view-elements model e)
+      roles (filter #(= :person (:el %)) elements)
+      systems (filter #(= :system (:el %)) elements)
+      relations (filter m/model-relation? elements)
+      request-relations (filter #(= :request (:el %)) relations)
+      response-relations (filter #(= :response (:el %)) relations)
+      publish-relations (filter #(= :publish (:el %)) relations)
+      subscribe-relations (filter #(= :subscribe (:el %)) relations)
+      send-relations (filter #(= :send (:el %)) relations)
+      dataflow-relations (filter #(= :dataflow (:el %)) relations)      ]
+
+%># <%= (:title e)%>
+
+## Diagram
+<%=(md/relative-diagram-link e e)%>
+
+## Description
+<%= (:desc e) %>
+<%
+  (when (:doc e)
+%>
+## Documentation
+<%= (:doc e) %>
+<%
+  )
+
+  (when-let [nodes (seq (filter #(= :concept (:el %)) elements))]
+%>
+## Concepts
+<%
+    (node-description-table e :concept nodes))
+
+  (when-let [nodes (seq (filter #(= :organization (:el %)) elements))]
+%>
+## Organizations
+<%
+    (node-description-table e :organization nodes))
+
+  (when-let [nodes (seq (filter #(= :org-unit (:el %)) elements))]
+%>
+## Organization Units
+<%
+    (node-description-table e :org-unit nodes))
+
+  (when-let [nodes (seq (filter #(= :person (:el %)) elements))]
+%>
+## Roles
+<%
+    (node-description-table e :person nodes))
+
+  (when-let [nodes (seq (filter #(= :use-case (:el %)) elements))]
+%>
+## Use Cases
+<%
+    (node-description-table e :use-case nodes))
+
+  (when-let [nodes (seq (filter #(= :system (:el %)) elements))]
+%>
+## Systems
+<%
+    (node-description-table e :system nodes))
+
+  (when-let [nodes (seq (filter #(= :container (:el %)) elements))]
+%>
+## Containers
+<%
+    (node-description-table e :container nodes))
+
+  (when-let [nodes (seq (filter #(= :component (:el %)) elements))]
+%>
+## Components
+<%
+    (node-description-table e :component nodes))
+
+  (when-let [nodes (seq (filter #(= :package (:el %)) elements))]
+%>
+## Packages
+<%
+    (node-description-table e :package nodes))
+
+  (when-let [nodes (seq (filter #(= :interface (:el %)) elements))]
+%>
+## Interfaces
+<%
+    (node-description-table e :interface nodes))
+
+  (when-let [nodes (seq (filter #(= :class (:el %)) elements))]
+%>
+## Classes
+<%
+    (node-description-table e :class nodes))
+
+  (when-let [nodes (seq (filter #(= :namespace (:el %)) elements))]
+%>
+## Namespaces
+<%
+    (node-description-table e :namespace nodes))
+
+  (when-let [nodes (seq (filter #(= :node (:el %)) elements))]
+%>
+## Deployment Nodes
+<%
+    (node-description-table e :node nodes))
+
+%>
+## Navigation
+<%= (md/file-link "./views-in-namespace.md" "List of views in namespace") %>
+
+<%= (md/relative-file-link e "views.md" "List of all Views") %>
+<%
+
+) ; end of let
+%>
+
+(generated by [Overarch](https://github.com/soulspace-org/overarch) with template <%= (:template ctx) %>)
+
