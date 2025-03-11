@@ -32,80 +32,8 @@
   :base-namespace "banking"
   :base-name "views"
   :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :concept-view}
-  :template "docs/views/concept-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :use-case-view}
-  :template "docs/views/use-case-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :context-view}
-  :template "docs/views/context-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :container-view}
-  :template "docs/views/container-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :component-view}
-  :template "docs/views/component-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :system-landscape-view}
-  :template "docs/views/system-landscape-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :dynamic-view}
-  :template "docs/views/dynamic-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :state-machine-view}
-  :template "docs/views/state-machine-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :system-structure-view}
-  :template "docs/views/system-structure-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :code-view}
-  :template "docs/views/code-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :deployment-view}
-  :template "docs/views/deployment-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :deployment-structure-view}
-  :template "docs/views/deployment-structure-view.md.cmb"
-  :subdir "docs"
-  :per-element true
-  :id-as-name true
-  :extension "md"}
- {:view-selection {:namespace-prefix "banking" :el :organization-structure-view}
-  :template "docs/views/organization-structure-view.md.cmb"
+ {:view-selection {:namespace-prefix "banking" :!els #{:glossary-view}}
+  :template "docs/views/view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
@@ -116,8 +44,86 @@
   :per-element true
   :id-as-name true
   :extension "md"}
-
- {:view-selection {:namespace-prefix "banking" :el :model-view}
+ 
+ #_{:view-selection {:namespace-prefix "banking" :el :concept-view}
+  :template "docs/views/concept-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :use-case-view}
+  :template "docs/views/use-case-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :context-view}
+  :template "docs/views/context-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :container-view}
+  :template "docs/views/container-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :component-view}
+  :template "docs/views/component-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :system-landscape-view}
+  :template "docs/views/system-landscape-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :dynamic-view}
+  :template "docs/views/dynamic-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :state-machine-view}
+  :template "docs/views/state-machine-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :system-structure-view}
+  :template "docs/views/system-structure-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :code-view}
+  :template "docs/views/code-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :deployment-view}
+  :template "docs/views/deployment-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :deployment-structure-view}
+  :template "docs/views/deployment-structure-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :organization-structure-view}
+  :template "docs/views/organization-structure-view.md.cmb"
+  :subdir "docs"
+  :per-element true
+  :id-as-name true
+  :extension "md"}
+ #_{:view-selection {:namespace-prefix "banking" :el :model-view}
   :template "docs/views/model-view.md.cmb"
   :subdir "docs"
   :per-element true
@@ -127,6 +133,8 @@
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
+
+ ; don't generate markdown per field or method
  {:selection {:model-node? true :!els #{:field :method}}
   :template "docs/node.md.cmb"
   :subdir "docs"

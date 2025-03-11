@@ -108,15 +108,8 @@
 ;;;
 
 (let [elements (v/view-elements model e)
-      roles (filter #(= :person (:el %)) elements)
-      systems (filter #(= :system (:el %)) elements)
-      relations (filter m/model-relation? elements)
-      request-relations (filter #(= :request (:el %)) relations)
-      response-relations (filter #(= :response (:el %)) relations)
-      publish-relations (filter #(= :publish (:el %)) relations)
-      subscribe-relations (filter #(= :subscribe (:el %)) relations)
-      send-relations (filter #(= :send (:el %)) relations)
-      dataflow-relations (filter #(= :dataflow (:el %)) relations)      ]
+      model-nodes (filter m/model-node? elements)
+      model-relations (filter m/model-relation? elements)]
 
 %># <%= (:title e)%>
 
@@ -133,83 +126,246 @@
 <%
   )
 
-  (when-let [nodes (seq (filter #(= :concept (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :concept (:el %)) model-nodes))]
 %>
 ## Concepts
 <%
     (node-description-table e :concept nodes))
 
-  (when-let [nodes (seq (filter #(= :organization (:el %)) elements))]
+  (when-let [rels (seq (filter #(= :is-a (:el %)) model-relations))]
+%>
+## Generalizations
+<%
+    (relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :has (:el %)) model-relations))]
+%>
+## Features
+<%
+    (relation-description-table model e rels))
+
+  (when-let [nodes (seq (filter #(= :organization (:el %)) model-nodes))]
 %>
 ## Organizations
 <%
     (node-description-table e :organization nodes))
 
-  (when-let [nodes (seq (filter #(= :org-unit (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :org-unit (:el %)) model-nodes))]
 %>
 ## Organization Units
 <%
     (node-description-table e :org-unit nodes))
 
-  (when-let [nodes (seq (filter #(= :person (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :person (:el %)) model-nodes))]
 %>
 ## Roles
 <%
     (node-description-table e :person nodes))
 
-  (when-let [nodes (seq (filter #(= :use-case (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :information (:el %)) model-nodes))]
+%>
+## Information
+<%
+    (node-description-table e :information nodes))
+
+  (when-let [nodes (seq (filter #(= :knowledge (:el %)) model-nodes))]
+%>
+## Knowledge
+<%
+    (node-description-table e :knowledge nodes))
+
+  (when-let [nodes (seq (filter #(= :capability (:el %)) model-nodes))]
+%>
+## Capabilities
+<%
+    (node-description-table e :capability nodes))
+
+  (when-let [nodes (seq (filter #(= :process (:el %)) model-nodes))]
+%>
+## Processes
+<%
+    (node-description-table e :process nodes))
+
+  (when-let [nodes (seq (filter #(= :artifact (:el %)) model-nodes))]
+%>
+## Artifacts
+<%
+    (node-description-table e :artifact nodes))
+
+  (when-let [nodes (seq (filter #(= :requirement (:el %)) model-nodes))]
+%>
+## Requirements
+<%
+    (node-description-table e :requirement nodes))
+
+  (when-let [nodes (seq (filter #(= :decision (:el %)) model-nodes))]
+%>
+## Decisions
+<%
+    (node-description-table e :decision nodes))
+
+  (when-let [nodes (seq (filter #(= :use-case (:el %)) model-nodes))]
 %>
 ## Use Cases
 <%
     (node-description-table e :use-case nodes))
 
-  (when-let [nodes (seq (filter #(= :system (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :state-machine (:el %)) model-nodes))]
+%>
+## State Machines
+<%
+    (node-description-table e :state-machine nodes))
+
+  (when-let [nodes (seq (filter #(= :start-state (:el %)) model-nodes))]
+%>
+## Start States
+<%
+    (node-description-table e :start-state nodes))
+
+  (when-let [nodes (seq (filter #(= :state (:el %)) model-nodes))]
+%>
+## States
+<%
+    (node-description-table e :state nodes))
+
+  (when-let [nodes (seq (filter #(= :end-state (:el %)) model-nodes))]
+%>
+## End States
+<%
+    (node-description-table e :end-state nodes))
+
+  (when-let [nodes (seq (filter #(= :choice (:el %)) model-nodes))]
+%>
+## Choices
+<%
+    (node-description-table e :choice nodes))
+
+  (when-let [nodes (seq (filter #(= :fork (:el %)) model-nodes))]
+%>
+## Forks
+<%
+    (node-description-table e :fork nodes))
+
+  (when-let [nodes (seq (filter #(= :join (:el %)) model-nodes))]
+%>
+## Joins
+<%
+    (node-description-table e :join nodes))
+
+  (when-let [nodes (seq (filter #(= :history-state (:el %)) model-nodes))]
+%>
+## History States
+<%
+    (node-description-table e :history-state nodes))
+
+  (when-let [nodes (seq (filter #(= :deep-history-state (:el %)) model-nodes))]
+%>
+## Deep History States
+<%
+    (node-description-table e :deep-history-state nodes))
+
+  (when-let [nodes (seq (filter #(= :system (:el %)) model-nodes))]
 %>
 ## Systems
 <%
     (node-description-table e :system nodes))
 
-  (when-let [nodes (seq (filter #(= :container (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :container (:el %)) model-nodes))]
 %>
 ## Containers
 <%
     (node-description-table e :container nodes))
 
-  (when-let [nodes (seq (filter #(= :component (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :component (:el %)) model-nodes))]
 %>
 ## Components
 <%
     (node-description-table e :component nodes))
 
-  (when-let [nodes (seq (filter #(= :package (:el %)) elements))]
+  (when-let [rels (seq (filter #(= :request (:el %)) model-relations))]
+%>
+## Synchronous Requests
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :response (:el %)) model-relations))]
+%>
+## Synchronous Responses
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :publish (:el %)) model-relations))]
+%>
+## Asynchronous Publish/Produce
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :subscribe (:el %)) model-relations))]
+%>
+## Asynchronous Subscribe/Consume
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :sends (:el %)) model-relations))]
+%>
+## Asynchronous Sends
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :dataflow (:el %)) model-relations))]
+%>
+## Dataflows
+<%
+    (technical-relation-description-table model e rels))
+
+
+  (when-let [nodes (seq (filter #(= :package (:el %)) model-nodes))]
 %>
 ## Packages
 <%
     (node-description-table e :package nodes))
 
-  (when-let [nodes (seq (filter #(= :interface (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :interface (:el %)) model-nodes))]
 %>
 ## Interfaces
 <%
     (node-description-table e :interface nodes))
 
-  (when-let [nodes (seq (filter #(= :class (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :class (:el %)) model-nodes))]
 %>
 ## Classes
 <%
     (node-description-table e :class nodes))
 
-  (when-let [nodes (seq (filter #(= :namespace (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :namespace (:el %)) model-nodes))]
 %>
 ## Namespaces
 <%
     (node-description-table e :namespace nodes))
 
-  (when-let [nodes (seq (filter #(= :node (:el %)) elements))]
+  (when-let [nodes (seq (filter #(= :node (:el %)) model-nodes))]
 %>
 ## Deployment Nodes
 <%
     (node-description-table e :node nodes))
+
+  (when-let [rels (seq (filter #(= :links (:el %)) model-relations))]
+%>
+## Links
+<%
+    (technical-relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :deployed-to (:el %)) model-relations))]
+%>
+## Deployed Containers
+<%
+    (relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :rel (:el %)) model-relations))]
+%>
+## Other Relationships
+<%
+    (relation-description-table model e rels))
 
 %>
 ## Navigation

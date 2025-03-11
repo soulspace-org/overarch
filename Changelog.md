@@ -17,9 +17,12 @@ Version (NEXT)
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
 * added a process view definition
-* added glossary view markdown template
 * added multiline description formatting for graphviz rendering
-* enhanced model view graphviz template to be usable for concept and process views
+* reduced number of templates 
+  * enhanced model view graphviz template to be usable for concept and process views
+  * added a markdown model node template to replace more specific markdown templates
+  * added a markdown view template to replace more specific markdown templates 
+* added glossary view markdown template
 * added a default generation config in templates dir
 * updated docstrings
 * first steps towards a tools.deps build
