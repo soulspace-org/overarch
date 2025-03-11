@@ -16,7 +16,7 @@
         {:ref :code/square-extends-shape}]}
 
   {:el :code-view
-   :id :code/code-view-selction
+   :id :code/code-view-selection
    :spec {:selection {:namespace-prefix "code"}}
    :title "Code View"
    :ct []}}
