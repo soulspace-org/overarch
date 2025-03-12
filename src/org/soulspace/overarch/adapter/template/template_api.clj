@@ -20,10 +20,10 @@
 (defn escape-html
   "Escapes the HTML special characters in the string `s`."
   [s]
-  (str/replace s #"&" "&amp;")
-  (str/replace s #"<" "&lt;")
-  (str/replace s #">" "&gt;")
-  (str/replace s #"\"" "&quot;")
-  (str/replace s #"'" "&apos;"))
+  (str/replace s "&" "&amp;")
+  (str/replace s "<" "&lt;")
+  (str/replace s ">" "&gt;")
+  (str/replace s "\"" "&quot;")
+  (str/replace s "'" "&apos;"))
 
 
