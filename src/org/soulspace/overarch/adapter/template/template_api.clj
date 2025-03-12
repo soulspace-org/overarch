@@ -25,5 +25,3 @@
   (str/replace s ">" "&gt;")
   (str/replace s "\"" "&quot;")
   (str/replace s "'" "&apos;"))
-
-
