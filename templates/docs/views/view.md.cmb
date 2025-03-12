@@ -210,6 +210,24 @@
 <%
     (node-description-table e :use-case nodes))
 
+  (when-let [rels (seq (filter #(= :includes (:el %)) model-relations))]
+%>
+## Includes
+<%
+    (relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :extends (:el %)) model-relations))]
+%>
+## Extends
+<%
+    (relation-description-table model e rels))
+
+  (when-let [rels (seq (filter #(= :uses (:el %)) model-relations))]
+%>
+## Uses
+<%
+    (relation-description-table model e rels))
+
   (when-let [nodes (seq (filter #(= :state-machine (:el %)) model-nodes))]
 %>
 ## State Machines
