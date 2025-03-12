@@ -73,11 +73,11 @@
   [s]
   (if (seq s)
     (-> s
-        (str/replace #"&" "&amp;")
-        (str/replace #"<" "&lt;")
-        (str/replace #">" "&gt;")
-        (str/replace #"\"" "&quot;")
-        (str/replace #"'" "&apos;"))
+        (str/replace "&" "&amp;")
+        (str/replace "<" "&lt;")
+        (str/replace ">" "&gt;")
+        (str/replace "\"" "&quot;")
+        (str/replace "'" "&apos;"))
     ""))
 
 (comment ; string functions
@@ -89,6 +89,7 @@
   (multi-lines "This is a very long string, which even could be much longer, that should be split into multiple lines.")
   (escape-html "<html>")
   (escape-html "Risk & Compliance")
+  (escape-html nil)
   ; 
   )
 
