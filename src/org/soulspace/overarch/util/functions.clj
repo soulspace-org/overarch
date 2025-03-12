@@ -50,16 +50,18 @@
 (defn first-char-uppercase
   "Returns the first character of the name of an element `e`."
   [e]
-  (str/upper-case (first (:name e))))
+  (when-let [name (:name e)]
+    (str/upper-case (first name))))
 
 (defn single-line
-  "Converts the string to a single line string."
+  "Converts the string to a single line string. Returns an empty string, if `s` is nil."
   [s]
-  (when s
+  (if s
     (->> s
          (str/split-lines)
          (map str/trim)
-         (str/join " "))))
+         (str/join " "))
+    ""))
 
 (defn wrap-string
   "Wraps the argument `s` in double quotes."
@@ -67,14 +69,16 @@
   (str "\"" s "\""))
 
 (defn escape-html
-  "Escapes the HTML special characters in the string `s`."
+  "Escapes the HTML special characters in the string `s`. Returns an empty string, if `s` is nil."
   [s]
-  (-> s
-      (str/replace #"&" "&amp;")
-      (str/replace #"<" "&lt;")
-      (str/replace #">" "&gt;")
-      (str/replace #"\"" "&quot;")
-      (str/replace #"'" "&apos;")))
+  (if (seq s)
+    (-> s
+        (str/replace #"&" "&amp;")
+        (str/replace #"<" "&lt;")
+        (str/replace #">" "&gt;")
+        (str/replace #"\"" "&quot;")
+        (str/replace #"'" "&apos;"))
+    ""))
 
 (comment ; string functions
   (single-line "This is a multiline string,
