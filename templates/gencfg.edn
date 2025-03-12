@@ -17,7 +17,7 @@
 
  ; rendered as graphviz dot 
  {:view-selection {:els #{:concept-view :process-view :model-view}}
-  :template "views/model-view.dot.cmb"
+  :template "views/view.dot.cmb"
   :per-element true
   :id-as-name true
   :extension "dot"}

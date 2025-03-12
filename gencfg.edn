@@ -17,7 +17,7 @@
   :extension "puml"}
 
  {:view-selection {:els #{:concept-view :process-view :model-view}}
-  :template "views/model-view.dot.cmb"
+  :template "views/view.dot.cmb"
   :subdir "views"
   :per-element true
   :id-as-name true
