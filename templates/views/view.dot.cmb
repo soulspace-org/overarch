@@ -6,8 +6,6 @@
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 ;;;;
-;;;; TODO: rename to graph.dot.cmb
-;;;;
 (defn element-shape
   [e]
   (cond
