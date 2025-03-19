@@ -1,7 +1,8 @@
 ;;;;
 ;;;; Generation Config
 ;;;;
-[;;;
+[;
+ ;;;
  ;;; Documentation
  ;;;
  ;;
@@ -37,20 +38,20 @@
  ;;  Markdown Generation for Views
  ;;
 
- ; list of views
+ ; list of views, select every view
  {:view-selection {}
   :template "docs/views/views.md.cmb"
   :base-name "views"
   :extension "md"}
 
- ; views with diagrams
+ ; markdown for views with diagrams
  {:view-selection {:!els #{:glossary-view}}
   :template "docs/views/view.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
  
- ; the glossary view
+ ; markdown for the glossary
  {:view-selection {:el :glossary-view}
   :template "views/glossary-view.md.cmb"
   :per-element true
