@@ -114,7 +114,9 @@
   (if-let [criteria (selection-spec view)]
     (->> model
          (model/model-elements)
-         (into #{} (model/filter-xf model criteria)))
+         (into #{} (comp (model/filter-xf model criteria)
+                         ; TODO replace partial with function
+                         (filter (partial render-model-element? model view)))))
     #{}))
 
 (defn specified-elements

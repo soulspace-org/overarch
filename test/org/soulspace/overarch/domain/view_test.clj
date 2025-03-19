@@ -189,10 +189,21 @@
                                              {:ref :test/ext-system1}
                                              {:ref :test/system1}]})))))
   (testing "Selection Only"
-    ; including 5 :contained-in synthetic relations
-    (is (= 19 (count (selected-elements c4-model1
-                                        {:el :context-view
-                                         :id :test/c4-context-view-selection-only
+    (is (= 5 (count (selected-elements c4-model1
+                                    {:el :context-view
+                                     :id :test/c4-context-view-selection-only
+                                     :title "Context View Selection Only"
+                                     :spec {:selection {:namespace "test"}}
+                                     :ct []}))))
+    (is (= 10 (count (selected-elements c4-model1
+                                   {:el :container-view
+                                    :id :test/c4-container-view-selection-only
+                                    :title "Context View Selection Only"
+                                    :spec {:selection {:namespace "test"}}
+                                    :ct []}))))
+    (is (= 8 (count (selected-elements c4-model1
+                                        {:el :component-view
+                                         :id :test/c4-component-view-selection-only
                                          :title "Context View Selection Only"
                                          :spec {:selection {:namespace "test"}}
                                          :ct []}))))
