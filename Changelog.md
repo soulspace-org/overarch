@@ -12,11 +12,11 @@ Version (NEXT)
 * report missing or duplicate element ids and parent overrides
 * moved traversal step functions from element to model
 * moved model building to repository
-* prepered merging of models
+* prepared merging of models
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
-* added filtering for rendered model elements in view selections before applying includes 
+* added filtering for rendered model elements in view selections before applying include directives
 * added a process view definition
 * added multiline description formatting for graphviz rendering
 * reduced number of templates 
