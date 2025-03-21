@@ -101,7 +101,7 @@
 |---|---|---|---|---|
 <%
   (doseq [rel (sort-by :name coll)]
-    (relation-description-table-row node rel)))
+    (technical-relation-description-table-row node rel)))
 
 ;;;
 ;;; generic view markdown documentation
