@@ -42,7 +42,7 @@
 (defn node-description-table-row
   "Generates the markdown for a description table row for `node` and `parent`."
   [parent node]
-%>| <%= (md/relative-element-link parent node)%>| <%= (t/single-line (:desc node)) %> |
+%>| <%= (md/relative-element-link parent node) %>| <%= (t/single-line (:desc node)) %> |
 <%
 )
 
