@@ -57,6 +57,7 @@
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
+   [nil  "--[no-]drop-unresolved" "Drop unresolved relations" :default false]
    [nil  "--scope NAMESPACE" "Sets the internal scope by namespace prefix"]
    [nil  "--[no-]model-warnings" "Returns warnings for the loaded model" :default true]
    [nil  "--[no-]model-info" "Returns infos for the loaded model" :default false]

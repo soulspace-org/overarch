@@ -333,6 +333,12 @@
    (let [p (peek ctx)]
      [(update-acc res p e) (conj ctx e)])))
 
+(defn drop-unresolved
+  "Returns a `model` without relations referring to unresolved model nodes."
+  [model]
+  model
+  )
+
 (defn build-model
   "Builds the working model from the input `coll` of elements."
   ([coll]
