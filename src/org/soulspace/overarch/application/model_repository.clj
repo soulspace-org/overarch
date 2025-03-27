@@ -350,7 +350,6 @@
      (model/traverse (scope-fn scope) identity :ct ->relational-model coll)
      (model/traverse ->relational-model coll))))
 
-
 ;;;
 ;;; Repository functions
 ;;;

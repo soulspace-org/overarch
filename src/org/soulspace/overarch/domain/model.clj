@@ -133,6 +133,19 @@
   (fn [e]
     (children model e)))
 
+(defn resolveable-element?
+  "Returns true if the element is resolveable in the model."
+  [model e]
+  (boolean (resolve-element model e)))
+
+(defn resolveable-relation?
+  "Returns true if relation it"
+  [model e]
+  (if-let [rel (resolve-element model e)]
+    (and (resolve-element model (:from rel))
+         (resolve-element model (:to rel)))
+    false))
+
 ;;
 ;; recursive traversal of the graph
 ;;

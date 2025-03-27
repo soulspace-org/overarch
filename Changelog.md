@@ -10,6 +10,7 @@ Version (NEXT)
   * the templates have been updated to reflect those changes
 * report model file name on exception in import
 * report missing or duplicate element ids and parent overrides
+* added predicates for resolveable elements and relations
 * moved traversal step functions from element to model
 * moved model building to repository
 * prepared merging of models
