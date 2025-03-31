@@ -336,6 +336,7 @@
 (defn drop-unresolved
   "Returns a `model` without relations referring to unresolved model nodes."
   [model]
+  ; TODO implement for real
   model
   )
 
