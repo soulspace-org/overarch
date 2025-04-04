@@ -119,7 +119,7 @@
                (conj (:nodes acc) e)
 
                :id->element
-               (if-let [el ((:id->element acc) (:id e))]
+               (if-let [el (get-in acc [:id->element (:id e)])]
                  (println "Error: Duplicate element id" (:id e) "for" e "and" el)
                  (assoc (:id->element acc)
                         (:id e) e
@@ -127,7 +127,7 @@
 
                      ; currently only one parent is supported here
                :id->parent-id
-               (if-let [po ((:id->parent-id acc) (:id e))]
+               (if-let [po (get-in acc [:id->parent-id (:id e)])]
                  (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id e))
                  (assoc (:id->parent-id acc) (:id e) (:id p)))
 
@@ -159,7 +159,7 @@
              (conj (:nodes acc) e)
 
              :id->element
-             (if-let [el ((:id->element acc) (:id e))]
+             (if-let [el (get-in acc [:id->element (:id e)])]
                (println "Error: Duplicate element id" (:id e) "for" e "and" el)
                (assoc (:id->element acc) (:id e) e))
 
@@ -186,7 +186,7 @@
 
              ; currently only one parent is supported here
              :id->parent-id
-             (if-let [po ((:id->parent-id acc) (:ref e))]
+             (if-let [po (get-in acc [:id->parent-id (:ref e)])]
                (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:ref e))
                (assoc (:id->parent-id acc) (:ref e) (:id p)))
 
