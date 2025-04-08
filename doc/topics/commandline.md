@@ -36,32 +36,44 @@ Options:
  ```
 
 ## CLI Examples
+For the CLI examples a model repository with the following directory layout is expected:
+* `models` containes the EDN files for models and views 
+* `templates` contains the templates for the artifact generation
+* `tools` contains the overarch.jar (and the plantuml.jar)
+
+Renders all artifacts to the `generated` directory using the generation config in `templates/gencfg.edn`, this is the commandline used in the `publish.sh` scripts in the example models. 
+```
+java -jar tools/overarch.jar --no-render-format-subdirs -R generated -r plantuml -g templates/gencfg.edn
+```
+
 To render all views for all models, use
 ```
-> java -jar ./target/overarch.jar -r all
+> java -jar tools/overarch.jar -r all
 ```
+
 or
+
 ```
-> java -jar ./target/overarch.jar -r all --debug
+> java -jar tools/overarch.jar -r all --debug
 ```
 
 To render all views for all models with a directory watch to trigger rerendering on changes, use
 ```
-> java -jar ./target/overarch.jar -r all -w --debug
+> java -jar tools/overarch.jar -r all -w --debug
 ```
 
 To export the models to JSON, use
 ```
-> java -jar ./target/overarch.jar -x json
+> java -jar tools/overarch.jar -x json
 ```
 
 To query the model for all containers, use
 ```
-> java -jar ./target/overarch.jar -s '{:el :container}'
+> java -jar tools/overarch.jar -s '{:el :container}'
 ```
 or
 ```
-> java -jar ./target/overarch.jar -S '{:el :container}'
+> java -jar tools/overarch.jar -S '{:el :container}'
 ```
 
 ## Start Scripts
