@@ -41,29 +41,29 @@ Understanding complex systems
 
 # Rationale
 
-System models for
-* thinking
-* communication
-* documentation
-* querying
+* System models for
+  * thinking
+  * communication
+  * documentation
+  * querying
 
 ---
 
 # Rationale
 
-Drawing tools
-e.g. Visio, Gliffy, ExcaliDraw
- * no model, only pretty pictures
- * no reuse between diagrams
+* Drawing tools
+  * e.g. Visio, Gliffy, ExcaliDraw
+  * no model, only pretty pictures
+  * no reuse between diagrams
 
 ---
 
 # Rationale
 
-Commercial modelling tools
-* e.g. Enterprise Architect, Magic Draw
-* comprehensive but complex
-* license needed
+* Commercial modelling tools
+  * e.g. Enterprise Architect, Magic Draw
+  * comprehensive but complex
+  * license needed
 
 ---
 

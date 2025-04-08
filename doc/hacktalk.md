@@ -77,13 +77,13 @@ Understand complex software systems
 
 ### Diagramming vs. Modelling
 
-Diagrams are
-* just one representation of information
-* 'boxes and lines' only
-* not queriable
-* not reusable
-* hard to diff and version
-* missed opportunities
+* Diagrams are
+  * just one representation of information
+  * 'boxes and lines' only
+  * not queriable
+  * not reusable
+  * hard to diff and version
+  * missed opportunities
 
 ---
 
@@ -96,11 +96,11 @@ Diagrams are
 
 ### Models
 
-A model is
-* a description of the elements and relations
-* an abstraction of reality
-* independent of the representations (views, diagrams)
-* queriable, transformable, exportable
+* A model is
+  * a description of the elements and relations
+  * an abstraction of reality
+  * independent of the representations (views, diagrams)
+  * queriable, transformable, exportable
 
 ---
 
@@ -153,10 +153,10 @@ Modelling is central to Domain Driven Design
 
 ### C4 Model Diagrams
 
-Supporting diagrams
-* system landscape diagram
-* deployment diagram
-* dynamic diagram
+* Supporting diagrams
+  * system landscape diagram
+  * deployment diagram
+  * dynamic diagram
 
 ---
 
