@@ -428,7 +428,7 @@ kind         | description
 :uses        | a use case element uses another use case element (e.g. an actor uses a use case or a use case uses an external system)
 :include     | a use case includes the functionality of another use cases
 :extends     | a use case extends the functionality of another use case
-:generalizes | 
+:generalizes | a generalization of two actors or two use cases
 
 ## State Machine Model
 A state model describes a state machine which can be used to model the states
