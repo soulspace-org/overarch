@@ -126,8 +126,9 @@
 
 (defmethod render-uml-element :package
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e))) 
       (flatten [(str (render/indent indent)
                      "package \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
@@ -139,8 +140,9 @@
 
 (defmethod render-uml-element :namespace
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      "namespace \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
@@ -152,8 +154,9 @@
 
 (defmethod render-uml-element :interface
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      "interface \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -171,8 +174,9 @@
 
 (defmethod render-uml-element :protocol
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      "protocol \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -190,8 +194,9 @@
 
 (defmethod render-uml-element :enum
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      "enum \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -217,8 +222,9 @@
 
 (defmethod render-uml-element :class
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (seq (view/elements-to-render model view children))]
+  (let [children (model/children model e)
+        content (seq (view/elements-to-render model view children))]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      (when (:abstract e) "abstract ")
                      "class \"" (render-name e)
@@ -361,8 +367,9 @@
 
 (defmethod render-uml-element :state
   [model view indent e]
-  (let [children (model/children model e)]
-    (if-let [content (view/elements-to-render model view children)]
+  (let [children (model/children model e)
+        content (view/elements-to-render model view children)]
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(render/indent indent)
                 (str "state \"" (render-name e) "\" as "
                      (puml/alias-name (:id e)) " {")

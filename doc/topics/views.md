@@ -50,6 +50,23 @@ key       | type    | values                   | description
 :spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
 
+## View Specific Keys on Model Elements
+There are some keys on model elements that control the rendering of the
+elements in views. As they may be different for specific views, it is best to
+add them as keys on a `:ref` reference to the element in the content of the
+view and not on the model element itself. Keys on the reference are merged
+with the keys on the model element.
+
+# Node Keys
+key        | type    | values                   | description 
+-----------|---------|--------------------------|------------
+:collapsed | boolean | true, false              | if true, don't render children of the element 
+
+# Relation Keys
+key        | type    | values                    | description 
+-----------|---------|---------------------------|------------
+:direction | keyword | :left, :right, :up, :down | hint on the direction of the relation
+
 ## System Context View (:context-view)
 Shows the system in the context of the actors and other systems it is
 interacting with. Contains users, external systems and the system to be
