@@ -16,7 +16,8 @@
         (and
          (seq (model/children model e)) ; has children 
          (element->boundary (:el e)) ; has a boundary mapping for this diagram-type
-         (el/internal? e)))))
+         (el/internal? e)
+         (not= true (:collapsed e))))))
 
 (defn render-model-node?
   "Returns true if the `model` node `e` is rendered in the state-machine `view`."

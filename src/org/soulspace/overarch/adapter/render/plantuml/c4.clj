@@ -162,7 +162,7 @@
         deployed (model/deployed-on model e) ; selects the deployed technical architecture nodes
         content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
-    (if (seq content)
+    (if (and (seq content) (not= true (:collapsed e)))
       (flatten [(str (render/indent indent)
                      (c4-element->method (:el e)) "("
                      (puml/alias-name (:id e)) ", \""
