@@ -1645,6 +1645,12 @@
    :desc "A relation between two organisational model nodes."
    :tags #{"organization-model"}}
 
+  {:el :class
+   :id :overarch.data-model/role-in
+   :name "role-in"
+   :desc "A relation between persons and organization units or processes."
+   :tags #{"organization-model" "process-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/organization-model-node-is-a-model-node
    :to :overarch.data-model/model-node
@@ -1704,6 +1710,12 @@
    :id :overarch.data-model/collaborates-with-is-a-organization-model-relation
    :to :overarch.data-model/organization-model-relation
    :from :overarch.data-model/collaborates-with
+   :tags #{"organization-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-in-is-a-organization-model-relation
+   :to :overarch.data-model/organization-model-relation
+   :from :overarch.data-model/role-in
    :tags #{"organization-model"}}
 
   ;;
@@ -1770,6 +1782,24 @@
    :id :overarch.data-model/artifact
    :name "artifact"
    :desc "An artifact in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/input-of
+   :name "input-of"
+   :desc "A relation between artifacts, information or knowledge and processes."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/output-of
+   :name "output-of"
+   :desc "A relation between artifacts, information or knowledge and processes."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/required-for
+   :name "required-for"
+   :desc "A relation between other nodes and capabilities."
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -1842,6 +1872,30 @@
    :id :overarch.data-model/decision-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/decision
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/input-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/input-of
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/output-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/output-of
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/required-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/required-for
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-in-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/role-in
    :tags #{"process-model"}}
 
   ;;
