@@ -539,11 +539,17 @@ documentation or other artifacts.
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
+The collaborates-with relation captures collaborations between organizations or organizational units (e.g. the collaboration of a business unit with an IT unit).
+
+The role-in relation maps `:person` nodes to organizational units.
+
 ## Process Model
 The process model captures the structure of capabilities, processes and their resources.
 
 ### Logical Data Model for the Process Model Elements
+![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
 ### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
 
 ### Relations (:role-in :required-for :input-of :output-of)
+The role-in relation maps `:person` nodes to `:process` nodes.

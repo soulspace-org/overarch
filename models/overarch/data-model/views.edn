@@ -69,6 +69,14 @@
    :desc "Shows the logical hierarchy of the organization model elements"}
 
   {:el :code-view
+   :id :overarch.data-model/process-model-elements
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "process-model"}}
+          :include :related}
+   :title "Process Model Elements"
+   :desc "Shows the logical hierarchy of the process model elements"}
+
+  {:el :code-view
    :id :overarch.data-model/view-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "view-model"}}

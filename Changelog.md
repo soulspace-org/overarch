@@ -10,6 +10,8 @@ Version (NEXT)
   * the templates have been updated to reflect those changes
 * report model file name on exception in import
 * report missing or duplicate element ids and parent overrides
+* added `:collapsed` key to mark nodes that should not be expanded in a C4/UML view
+  * `:collapsed true` should be added on a `:ref` to the node in the content of the view
 * added predicates for resolveable elements and relations
 * moved traversal step functions from element to model
 * moved model building to repository
@@ -27,6 +29,7 @@ Version (NEXT)
 * added glossary view markdown template
 * added a default generation config in templates dir
 * updated docstrings
+* updated docs
 * first steps towards a tools.deps build
 
 Version 0.35.0
