@@ -19,6 +19,7 @@ Version (NEXT)
 * added cycle prevention to traverse to make it a general depth first graph traversal function
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
+* fixed child check for elements without ids in model building
 * added filtering for rendered model elements in view selections before applying include directives
 * added a process view definition
 * added multiline description formatting for graphviz rendering
