@@ -3,7 +3,7 @@
 ;;;;
 #{;;;
   ;;; Abstract types
-  ;;;
+  ;;; 
   {:el :class
    :id :overarch.data-model/element
    :abstract true

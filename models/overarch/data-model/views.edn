@@ -7,7 +7,8 @@
   {:el :code-view
    :id :overarch.data-model/data-model
    :spec {:selection {:namespace "overarch.data-model"}
-          :layout :left-right}
+          :layout :left-right
+          :linetype :orthogonal}
    :title "Overarch Data Model"
    :desc "Shows the whole logical data model of Overarch"
    :ct [{:ref :overarch.data-model/ref-references-element :direction :left}]}
