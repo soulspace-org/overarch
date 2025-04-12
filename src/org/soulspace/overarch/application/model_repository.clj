@@ -107,34 +107,34 @@
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
   [acc p e]
-  (let [e (identified-node e p)
-        problems (remove nil? (check-element acc p e))]
+  (let [identified-e (identified-node e p)
+        problems (remove nil? (check-element acc p identified-e))]
     (if (and p (input-child? e p))
             ; a child node, add a contained in relationship, too
             ; add syntetic ids for nodes without ids (e.g. fields, methods)
-      (let [c-rel (contained-in-relation (:id p) (:id e))]
+      (let [c-rel (contained-in-relation (:id p) (:id identified-e))]
         (assoc acc
                :nodes
 
-               (conj (:nodes acc) e)
+               (conj (:nodes acc) identified-e)
 
                :id->element
-               (if-let [el (get-in acc [:id->element (:id e)])]
-                 (println "Error: Duplicate element id" (:id e) "for" e "and" el)
+               (if-let [el (get-in acc [:id->element (:id identified-e)])]
+                 (println "Error: Duplicate element id" (:id identified-e) "for" e "and" el)
                  (assoc (:id->element acc)
-                        (:id e) e
+                        (:id identified-e) identified-e
                         (:id c-rel) c-rel))
 
                      ; currently only one parent is supported here
                :id->parent-id
-               (if-let [po (get-in acc [:id->parent-id (:id e)])]
-                 (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id e))
-                 (assoc (:id->parent-id acc) (:id e) (:id p)))
+               (if-let [po (get-in acc [:id->parent-id (:id identified-e)])]
+                 (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id identified-e))
+                 (assoc (:id->parent-id acc) (:id identified-e) (:id p)))
 
                :id->children
                (assoc (:id->children acc)
                       (:id p)
-                      (conj (get-in acc [:id->children (:id p)] []) e))
+                      (conj (get-in acc [:id->children (:id p)] []) identified-e))
 
                :relations
                (conj (:relations acc)
@@ -156,12 +156,12 @@
             ; not a child node, just add the node
       (assoc acc
              :nodes
-             (conj (:nodes acc) e)
+             (conj (:nodes acc) identified-e)
 
              :id->element
-             (if-let [el (get-in acc [:id->element (:id e)])]
-               (println "Error: Duplicate element id" (:id e) "for" e "and" el)
-               (assoc (:id->element acc) (:id e) e))
+             (if-let [el (get-in acc [:id->element (:id identified-e)])]
+               (println "Error: Duplicate element id" (:id identified-e) "for" e "and" el)
+               (assoc (:id->element acc) (:id identified-e) identified-e))
 
              :build-problems
              (concat (:build-problems acc) problems)))))
@@ -215,31 +215,31 @@
   "Update the accumulator `acc` of the model with the relation `e`
    in the context of the parent `p` (if given)."
   [acc p e]
-  (let [e (identified-relation e)
-        problems (remove nil? (check-element acc e))]
+  (let [identified-rel (identified-relation e)
+        problems (remove nil? (check-element acc identified-rel))]
     (assoc acc
            :relations
-           (conj (:relations acc) e)
+           (conj (:relations acc) identified-rel)
 
            :id->element
-           (assoc (:id->element acc) (:id e) e)
+           (assoc (:id->element acc) (:id identified-rel) identified-rel)
 
            :id->parent-id
-           (if (= :contained-in (:el e))
+           (if (= :contained-in (:el identified-rel))
              ; contained-in relation, add the relation and update the :id->parent-id map
-             (assoc (:id->parent-id acc) (:from e) (:to e))
+             (assoc (:id->parent-id acc) (:from identified-rel) (:to identified-rel))
              ; a normal relation, no changes to :id->parent-id map
              (:id->parent-id acc))
 
            :referrer-id->relations
            (assoc (:referrer-id->relations acc)
-                  (:from e)
-                  (conj (get-in acc [:referrer-id->relations (:from e)] #{}) e))
+                  (:from identified-rel)
+                  (conj (get-in acc [:referrer-id->relations (:from identified-rel)] #{}) identified-rel))
 
            :referred-id->relations
            (assoc (:referred-id->relations acc)
-                  (:to e)
-                  (conj (get-in acc [:referred-id->relations (:to e)] #{}) e))
+                  (:to identified-rel)
+                  (conj (get-in acc [:referred-id->relations (:to identified-rel)] #{}) identified-rel))
 
            :build-problems
            (concat (:build-problems acc) problems))))

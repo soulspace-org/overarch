@@ -434,26 +434,6 @@
          (or (el/external? (resolve-element model (:from e)))
              (el/external? (resolve-element model (:to e)))))))
 
-(defn child-check?
-  "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
-  [model v e]
-  (= v (boolean ((:id->parent-id model) (:id e)))))
-
-(defn child?
-  "Returns true, if `e` is a child of the node with id `v` in the `model`."
-  [model v e]
-  (contains? (children model (resolve-id model v)) e))
-
-(defn parent-check?
-  "Returns true if the check for children of `e` equals the boolean value `v`"
-  [model v e]
-  (= v (empty? (children model e))))
-
-(defn parent?
-  "Returns true if `v` is the parent of `e`"
-  [model v e]
-  (= v ((:id->parent-id model) (:id e))))
-
 (defn refers-check?
   "Returns true if the check for `e` as a referrer equals the boolean value `v`"
   [model v e]
@@ -477,6 +457,26 @@
   (contains? (into #{}
                    (map :from ((:referred-id->relations model) (:id e))))
              v))
+
+(defn child-check?
+  "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
+  [model v e]
+  (= v (boolean ((:id->parent-id model) (:id e)))))
+
+(defn child?
+  "Returns true, if `e` is a child of the node with id `v` in the `model`."
+  [model v e]
+  (contains? (children model (resolve-id model v)) e))
+
+(defn parent-check?
+  "Returns true if the check for children of `e` equals the boolean value `v`"
+  [model v e]
+  (= v (empty? (children model e))))
+
+(defn parent?
+  "Returns true if `v` is the parent of `e`"
+  [model v e]
+  (= v ((:id->parent-id model) (:id e))))
 
 (defn descendant-of?
   "Returns true, if `e` is a descendant of the node with id `v` in the `model`."
