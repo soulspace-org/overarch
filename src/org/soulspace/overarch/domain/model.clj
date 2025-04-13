@@ -139,12 +139,48 @@
   (boolean (resolve-element model e)))
 
 (defn resolveable-relation?
-  "Returns true if relation it"
+  "Returns true if relation `e` and the referrer and referred nodes of `e` are resolveable in the `model`."
   [model e]
   (if-let [rel (resolve-element model e)]
     (and (resolve-element model (:from rel))
          (resolve-element model (:to rel)))
     false))
+
+;;
+;; Model transducer functions
+;;
+(defn referrer-xf
+  "Transducer to resolve referrer elements of in the `model`.
+   Optionally takes a `filter-fn` to filter the relations to take into account."
+  ([model]
+   (comp
+    (map :to)
+    (map (element-resolver model))))
+  ([model filter-fn]
+   (comp
+    (filter filter-fn)
+    (map :to)
+    (map (element-resolver model)))))
+
+(defn referred-xf
+  "Transducer to resolve referred elements in the `model`.
+   Optionally takes a `filter-fn` to filter the relations to take into account."
+  ([model]
+   (comp
+    (map :from)
+    (map (element-resolver model))))
+  ([model filter-fn]
+   (comp
+    (filter filter-fn)
+    (map :from)
+    (map (element-resolver model)))))
+
+(defn unresolved-refs-xf
+  "Returns a transducer to extract unresolved refs"
+  [model]
+  (comp (filter el/reference?)
+        (map (element-resolver model))
+        (filter el/unresolved-ref?)))
 
 ;;
 ;; recursive traversal of the graph
@@ -240,46 +276,6 @@
   ([acc] acc)
   ([acc e]
    (assoc acc (:id e) e)))
-
-;;;
-;;; Build model from input
-;;;
-
-;;
-;; Model transducer functions
-;;
-(defn referrer-xf
-  "Transducer to resolve referrer elements of in the `model`.
-   Optionally takes a `filter-fn` to filter the relations to take into account."
-  ([model]
-   (comp
-    (map :to)
-    (map (element-resolver model))))
-  ([model filter-fn]
-   (comp
-    (filter filter-fn)
-    (map :to)
-    (map (element-resolver model)))))
-
-(defn referred-xf
-  "Transducer to resolve referred elements in the `model`.
-   Optionally takes a `filter-fn` to filter the relations to take into account."
-  ([model]
-   (comp
-    (map :from)
-    (map (element-resolver model))))
-  ([model filter-fn]
-   (comp
-    (filter filter-fn)
-    (map :from)
-    (map (element-resolver model)))))
-
-(defn unresolved-refs-xf
-  "Returns a transducer to extract unresolved refs"
-  [model]
-  (comp (filter el/reference?)
-        (map (element-resolver model))
-        (filter el/unresolved-ref?)))
 
 ;;
 ;; Accessors
