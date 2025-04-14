@@ -66,6 +66,7 @@
 
 ;;
 ;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
+;; TODO update views in model building by promoting keys from spec to views 
 ;;
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
