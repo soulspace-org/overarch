@@ -1,0 +1,11 @@
+#{
+  ; Nodes
+  {:el :person
+   :id :test.dynamic-view/movie-goer
+   :name "Movie Goer"}
+  {:el :person
+   :id :test.dynamic-view/cashier
+   :name "Cashier"}
+  
+  ; Relations
+}

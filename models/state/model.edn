@@ -42,7 +42,8 @@
         {:el :transition
          :id :state/state1-to-state2
          :from :state/state1
-         :to :state/state2}
+         :to :state/state2
+         :name "transits from 1 to 2"}
         {:el :transition
          :id :state/state2-to-state3
          :from :state/state2

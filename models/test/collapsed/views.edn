@@ -1,0 +1,9 @@
+#{{:el :container-view
+   :id :test.collapsed/container-view
+   :spec {:selection {:namespace :test.collapsed}}
+   :title "Container View for Collapsed Test"
+   :ct [{:ref :test.collapsed/system :collapsed true}]}
+  {:el :component-view
+   :id :test.collapsed/component-view
+   :title "Component View for Collapsed Test"
+   :ct [{:ref :test.collapsed/system :collapsed true}]}}

@@ -1,0 +1,14 @@
+#{
+  ;
+  {:el :system
+   :id :test.collapsed/system
+   :name "System"
+   :ct #{{:el :container
+          :id :test.collapsed/container
+          :name "Container"
+          :ct #{{:el :component
+                 :id :test.collapsed/component
+                 :name "Component"
+                 :ct #{}}}}}}
+  ;
+  }

@@ -1,23 +1,23 @@
 #{{:el :context-view
-   :id :test/styles-context-view
-   :spec {:styles #{{:id :test/dashed-rel
+   :id :test.styled-views/styles-context-view
+   :spec {:styles #{{:id :test.styled-views/dashed-rel
                      :el :rel
                      :text-color "#000000"
                      :line-color "#000000"
                      :line-style :dashed
                      :tech "async"
                      :legend-text "asynchronous"}
-                    {:id :test/dotted-rel
+                    {:id :test.styled-views/dotted-rel
                      :el :rel
                      :line-style :dotted
                      :legend-text "dependency"}
-                    {:id :test/bold-rel
+                    {:id :test.styled-views/bold-rel
                      :el :rel
                      :line-style :bold
                      :line-color "#007700"
                      :text-color "#000077"
                      :legend-text "synchronous"}
-                    {:id :test/critical
+                    {:id :test.styled-views/critical
                      :el :element
                      :bg-color "#CC0000"
                      :border-color "#330000"
@@ -27,28 +27,28 @@
    :ct [{:ref :test/sys1}
         {:ref :test/sys2}
         {:ref :test/sys1-calls-sys2
-         :style :test/dashed-rel}]}
+         :style :test.styled-views/dashed-rel}]}
   
   {:el :theme
-   :id :test/test-theme1
-   :styles #{{:id :test/dashed-rel
+   :id :test.styled-views/test-theme1
+   :styles #{{:id :test.styled-views/dashed-rel
               :el :rel
               :text-color "#000000"
               :line-color "#000000"
               :line-style :dashed
               :tech "async"
               :legend-text "asynchronous"}
-             {:id :test/dotted-rel
+             {:id :test.styled-views/dotted-rel
               :el :rel
               :line-style :dotted
               :legend-text "dependency"}
-             {:id :test/bold-rel
+             {:id :test.styled-views/bold-rel
               :el :rel
               :line-style :bold
               :line-color "#007700"
               :text-color "#000077"
               :legend-text "synchronous"}
-             {:id :test/critical
+             {:id :test.styled-views/critical
               :el :element
               :bg-color "#CC0000"
               :border-color "#330000"
@@ -56,11 +56,11 @@
               :legend-text "critical system"}}}
 
   {:el :context-view
-   :id :test/theme-context-view
-   :spec {:themes [:test/test-theme1]}
+   :id :test.styled-views/theme-context-view
+   :spec {:themes [:test.styled-views/test-theme1]}
    :title "Theme Test"
    :ct [{:ref :test/sys1}
         {:ref :test/sys2}
         {:ref :test/sys1-calls-sys2
-         :style :test/dashed-rel}]}
+         :style :test.styled-views/dashed-rel}]}
 }

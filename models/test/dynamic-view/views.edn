@@ -1,0 +1,16 @@
+#{{:el :dynamic-view
+ :id :test.dynamic-view/dynamic-view-with-index
+ :title "Dynamic View with :index"
+ :ct [; Nodes
+      {:ref :test.dynamic-view/movie-goer}
+      {:ref :test.dynamic-view/cashier}
+
+      ; Relations (view specific with index)
+      {:el :rel
+       :id :test.dynamic-view/movie-goer-buys-ticket-from-cashier
+       :from :test.dynamic-view/movie-goer
+       :to :test.dynamic-view/cashier
+       :index 1
+       :name "buys ticket from"}
+       ;
+      ]}}
