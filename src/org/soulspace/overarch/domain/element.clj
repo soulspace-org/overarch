@@ -627,6 +627,11 @@
   [e]
   (not (external? e)))
 
+(defn collapsed?
+  "Returns true if the given element `e` is external."
+  [e]
+  (get e :collapsed false))
+
 (defn boundary?
   "Returns true if `e` is a boundary."
   [e]
@@ -799,8 +804,8 @@
 
 (def ids-xf
   "Returns a transducer to extract the id of each element."
-   (comp (filter identifiable?)
-         (map :id)))
+  (comp (filter identifiable?)
+        (map :id)))
 
 (def namespaces-xf
   "Returns a transducer to extract the namespaces of some elements."
@@ -901,17 +906,42 @@
         (map (fn [e] [(:id e) e]))
         (into {}))))
 
+; debug merge
 (defn union-by-id
   "Returns a set that is the union of the input `sets`.
-   Equality is based on the id (:id key) of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
+    Equality is based on the :id key of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
+    Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result."
+  [& sets]
+  (let [id-maps (map id->element-map sets)
+        _ (println "id-map" id-maps)
+        merged (apply (partial merge-with merge) id-maps)
+        _ (println "merged" merged)
+        val-collection (vals merged)
+        result-set (set val-collection)]
+    result-set))
+
+#_(defn union-by-id
+  "Returns a set that is the union of the input `sets`.
+   Equality is based on the :id key of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
    Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result."
   [& sets]
   (->> sets
        ; (map (partial traverse id->element))
        (map id->element-map)
-       (apply merge)
+       (apply (partial merge-with merge))
        (vals)
        (set)))
+
+(comment
+  (union-by-id #{} #{})
+  (union-by-id #{{:el :test :id :hello :name "Hello"}} #{{:el :test :id :world  :name "World"}})
+  (union-by-id #{{:el :test :id :hello :name "Hello"} {:el :test :id :wonderful :name "Wonderful"}} #{{:el :test :id :world  :name "World"}})
+  (union-by-id #{{:el :test :id :hello :name "Hello"}} #{{:el :test :id :hello :name "Hello" :collapsed true}})
+  (union-by-id #{{:el :test :id :hello :name "Hello" :collapsed true}} #{{:el :test :id :hello :name "Hello"}})
+  (union-by-id #{{:el :test :id :hello :name "Hello" :collapsed true}} #{{:el :test :id :hello :name "Hello" :collapsed false}})
+  (union-by-id #{{:el :test :id :hello :name "Hello"}} #{{:el :test :id :hello :name "Hello" :collapsed true}}  #{{:el :test :id :hello :name "Hello" :external true}})
+  ;
+  )
 
 (defn difference-by-id
   "Returns a set of elements that is the difference of the `base-set` and the rest of the `sets`.

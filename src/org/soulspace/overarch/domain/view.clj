@@ -22,47 +22,59 @@
 ;;
 ;; View spec elements
 ;;
+(defn include-spec
+  "Returns the include specification for the `view`. Defaults to :referenced-only."
+  [view]
+  (if-let [spec (get view :include :referenced-only)]
+    spec
+    (get-in view [:spec :include] :referenced-only)))
+
+(defn layout-spec
+  "Returns the layout specification for the `view`. Defaults to :top-down."
+  [view]
+  (if-let [spec (get view :layout :top-down)]
+    spec
+    (get-in view [:spec :layout] :top-down)))
+
+(defn legend-spec
+  "Returns the legend specification for the `view`. Defaults to true."
+  [view]
+  (if-let [spec (get view :legend true)]
+    spec
+    (get-in view [:spec :legend] true)))
+
+(defn linetype-spec
+  "Returns the linetype specification for the `view`. Defaults to :polygonal."
+  [view]
+  (if-let [spec (get view :linetype :polygonal)]
+    spec
+    (get-in view [:spec :linetype])))
+
+(defn selection-spec
+  "Returns the selection specification for the `view`."
+  [view]
+  (if-let [spec (get view :selection)]
+    spec
+    (get-in view [:spec :selection])))
+
+(defn sketch-spec
+  "Returns the sketch specification for the `view`. Defaults to false."
+  [view]
+  (if-let [spec (get view :sketch false)]
+   spec
+    (get-in view [:spec :sketch] false)))
+
+(defn expand-external-spec
+  "Returns the expand external specification for the `view`."
+  [view]
+  (get-in view [:spec :expand-external] false))
+
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
   [model view]
   (->> (get-in view [:spec :themes] [])
        (map (model/element-resolver model))
        (map :styles)))
-
-(defn include-spec
-  "Returns the include specification for the `view`."
-  [view]
-  (get-in view [:spec :include] :referenced-only))
-
-(defn layout-spec
-  "Returns the layout specification for the `view`."
-  ([view]
-   (get-in view [:spec :layout] :top-down)))
-
-(defn legend-spec
-  "Returns the legend specification for the `view`."
-  ([view]
-   (get-in view [:spec :legend] true)))
-
-(defn linetype-spec
-  "Returns the linetype specification for the `view`."
-  [view]
-  (get-in view [:spec :linetype]))
-
-(defn selection-spec
-  "Returns the selection specification for the `view`."
-  [view]
-  (get-in view [:spec :selection]))
-
-(defn sketch-spec
-  "Returns the sketch specification for the `view`."
-  [view]
-  (get-in view [:spec :sketch]))
-
-(defn expand-external-spec
-  "Returns the expand external specification for the `view`."
-  [view]
-  (get-in view [:spec :expand-external] false))
 
 (defn styles-spec
   "Returns the styles specification for the `model` and the `view`."
@@ -116,6 +128,7 @@
          (model/model-elements)
          (into #{} (comp (model/filter-xf model criteria)
                          ; TODO replace partial with function
+                         ; filter drop elements not rendered
                          (filter (partial render-model-element? model view)))))
     #{}))
 
@@ -176,7 +189,8 @@
   ; Difference of the sets of elements have to be done with difference-by-id which treats the elements as entities
   ; to preserve overrides of keys in the content references included in the view.
   ; When keys have been added or overridden in the reference in a view, the elements in the different sets
-  ; are not the same values anymore and so have to be treated as entities, even when they are still immutable.
+  ; are not the same values anymore and so have to be treated as entities with equals implemented on id,
+  ; even when they are still immutable.
   (let [descendants (model/all-descendant-nodes model elements)]
     (el/difference-by-id elements descendants)))
 

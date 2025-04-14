@@ -128,7 +128,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e))) 
+    (if (and (seq content) (not (el/collapsed? e))) 
       (flatten [(str (render/indent indent)
                      "package \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
@@ -142,7 +142,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      "namespace \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
@@ -156,7 +156,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      "interface \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -176,7 +176,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      "protocol \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -196,7 +196,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      "enum \"" (render-name e)
                      "\" as " (puml/alias-name (:id e))
@@ -224,7 +224,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (seq (view/elements-to-render model view children))]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      (when (:abstract e) "abstract ")
                      "class \"" (render-name e)
@@ -369,7 +369,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not= true (:collapsed e)))
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(render/indent indent)
                 (str "state \"" (render-name e) "\" as "
                      (puml/alias-name (:id e)) " {")

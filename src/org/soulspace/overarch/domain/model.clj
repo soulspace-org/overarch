@@ -64,10 +64,10 @@
    (get-in model [:id->element id])))
 
 (defn resolve-ref
-  "Resolves the model element for the ref `r`."
+  "Resolves the model element for the ref `r` and associates any additional keys of `r` to the model element."
   [model r]
   (if-let [e (model-element model (:ref r))]
-    (merge e (dissoc r :ref))
+    (merge e (dissoc r :ref)) ; merge additional keys on ref
     {:unresolved-ref (:ref r)}))
 
 (defn resolve-id

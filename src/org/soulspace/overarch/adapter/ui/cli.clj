@@ -274,6 +274,7 @@
               {:model-info true})
   (repo/update-state! {:model-dir "models/banking"})
   (repo/update-state! {:model-dir "models/overarch"})
+  (repo/update-state! {:model-dir "models/test/collapsed"})
   (repo/update-state! {:model-dir "../my-bank-model/models/"})
 
   ;
@@ -365,11 +366,14 @@
 
 (comment ; view functions
   (def view (model/resolve-element (repo/model)
+                                   :test.collapsed/container-view)) 
+  (def view (model/resolve-element (repo/model)
                                    :mybank.compliance/container-view))
   (def view (model/resolve-element (repo/model)
                                    :mybank.it-management/deployment-view))
   (def view (model/resolve-element (repo/model)
                                    :banking/organization-structure-view))
+
   (keys (repo/model))
   (:id->element (repo/model))
 

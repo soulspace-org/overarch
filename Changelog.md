@@ -20,6 +20,7 @@ Version (NEXT)
 * added generic transitive search capabilities based on traverse
 * fixed model argument in selected-elements
 * fixed child check for elements without ids in model building
+* fixed a bug in union-by-id that could result in ref attributes not merged for content in views
 * added filtering for rendered model elements in view selections before applying include directives
 * added a process view definition
 * added multiline description formatting for graphviz rendering
@@ -31,6 +32,7 @@ Version (NEXT)
 * added a default generation config in templates dir
 * updated docstrings
 * updated docs
+* refactored test models and views
 * first steps towards a tools.deps build
 
 Version 0.35.0

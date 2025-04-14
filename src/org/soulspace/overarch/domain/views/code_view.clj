@@ -17,7 +17,7 @@
          (seq (model/children model e)) ; has children 
          (element->boundary (:el e)) ; has a boundary mapping for this diagram-type
          (el/internal? e) ; only internal elements are expanded
-         (not= true (:collapsed e))))))
+         (not (el/collapsed? e))))))
 
 (defn render-model-node?
   "Returns true if the `model` node `e` is rendered in the code `view`."
