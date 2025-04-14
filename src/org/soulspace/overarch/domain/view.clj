@@ -64,6 +64,9 @@
    spec
     (get-in view [:spec :sketch] false)))
 
+;;
+;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
+;;
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
   [view]

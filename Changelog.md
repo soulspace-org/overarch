@@ -12,6 +12,7 @@ Version (NEXT)
 * report missing or duplicate element ids and parent overrides
 * added `:collapsed` key to mark nodes that should not be expanded in a C4/UML view
   * `:collapsed true` should be added on a `:ref` to the node in the content of the view
+* added flexibility in view attributes
 * added predicates for resolveable elements and relations
 * moved traversal step functions from element to model
 * moved model building to repository
