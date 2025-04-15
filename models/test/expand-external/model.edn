@@ -1,0 +1,17 @@
+#{
+  ;
+  {:el :system
+   :id :test.expand-external/system
+   :external true
+   :name "System"
+   :ct #{{:el :container
+          :id :test.expand-external/container
+          :external true
+          :name "Container"
+          :ct #{{:el :component
+                 :id :test.expand-external/component
+                 :external true
+                 :name "Component"
+                 :ct #{}}}}}}
+  ;
+  }

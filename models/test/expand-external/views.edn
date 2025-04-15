@@ -1,0 +1,13 @@
+#{{:el :container-view
+   :id :test.expand-external/container-view
+   :spec {:selection {:namespace :test.collapsed}
+          :expand-external true}
+   :title "Container View for Expand External Test"
+   :ct [{:ref :test.expand-external/system}]}
+  
+  {:el :component-view
+   :id :test.expand-external/component-view
+   :spec {:selection {:namespace :test.collapsed}
+          :expand-external true}
+   :title "Component View for Expand External Test"
+   :ct [{:ref :test.expand-external/system}]}}
