@@ -1,0 +1,18 @@
+#{;
+  {:el :system-view
+   :id :test.includes/system-view-related
+   :spec {:include :related}
+   :title "Container View Related"
+   :ct [; relationships
+        {:ref :test.includes/system-a-calls-system-b}]}
+
+  {:el :system-view
+   :id :test.includes/system-view-relationships
+   :spec {:include :relations}
+   :title "Container View Relationships"
+   :ct [; nodes
+        {:ref :test.includes/system-a}
+        {:ref :test.includes/system-b}]}
+
+  ;
+  }

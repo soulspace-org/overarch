@@ -1,0 +1,14 @@
+#{;
+  {:el :system
+   :id :test.includes/system-a
+   :name "System A"}
+  {:el :system
+   :id :test.includes/system-b
+   :name "System B"}
+  {:el :request
+   :id :test.includes/system-a-calls-system-b
+   :from :test.includes/system-a
+   :to :test.includes/system-b
+   :name "calls"}
+  ;
+  }
