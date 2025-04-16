@@ -4,7 +4,7 @@
 (ns org.soulspace.overarch.domain.view
   "Functions for the definition and handling of views."
   (:require [clojure.set :as set]
-            [org.soulspace.overarch.domain.model :as model] 
+            [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
@@ -25,43 +25,43 @@
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
   [view]
-  (if-let [spec (get view :include :referenced-only)]
-    spec
+  (if (seq (:include view))
+    (get view :include :referenced-only)
     (get-in view [:spec :include] :referenced-only)))
 
 (defn layout-spec
   "Returns the layout specification for the `view`. Defaults to :top-down."
   [view]
-  (if-let [spec (get view :layout :top-down)]
-    spec
+  (if (seq (:layout view))
+    (get view :layout :top-down)
     (get-in view [:spec :layout] :top-down)))
 
 (defn legend-spec
   "Returns the legend specification for the `view`. Defaults to true."
   [view]
-  (if-let [spec (get view :legend true)]
-    spec
+  (if (seq (:legend view))
+    (get view :legend true)
     (get-in view [:spec :legend] true)))
 
 (defn linetype-spec
   "Returns the linetype specification for the `view`. Defaults to :polygonal."
   [view]
-  (if-let [spec (get view :linetype :polygonal)]
-    spec
+  (if (seq (:linetype view))
+    (get view :linetype :polygonal)
     (get-in view [:spec :linetype])))
 
 (defn selection-spec
   "Returns the selection specification for the `view`."
   [view]
-  (if-let [spec (get view :selection)]
-    spec
+  (if (seq (:selection view))
+    (get view :selection)
     (get-in view [:spec :selection])))
 
 (defn sketch-spec
   "Returns the sketch specification for the `view`. Defaults to false."
   [view]
-  (if-let [spec (get view :sketch false)]
-   spec
+  (if (seq (:sketch view))
+    (get view :sketch false)
     (get-in view [:spec :sketch] false)))
 
 ;;
@@ -71,7 +71,9 @@
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
   [view]
-  (get-in view [:spec :expand-external] false))
+  (if (seq (:expand-external view))
+    (get view :expand-external false)
+    (get-in view [:spec :expand-external] false)))
 
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
@@ -155,17 +157,17 @@
                      (into #{})
                      (set/union specified)
                      (filter (partial render-model-element? model view)))
-                     included (->> nodes
-                                   (model/relations-of-nodes model)
-                                   (into #{}))
-                     elements (el/union-by-id included specified)]
-                 elements)
-    
+          included (->> nodes
+                        (model/relations-of-nodes model)
+                        (into #{}))
+          elements (el/union-by-id included specified)]
+      elements)
+
     :related
     (let [included (model/related-nodes model (filter el/model-relation? specified))
-                   elements (el/union-by-id included specified)]
-               elements)
-    
+          elements (el/union-by-id included specified)]
+      elements)
+
     :referenced-only
     specified
 
