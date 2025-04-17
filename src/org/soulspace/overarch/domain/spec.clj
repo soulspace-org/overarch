@@ -3,8 +3,7 @@
 ;;;;
 (ns org.soulspace.overarch.domain.spec
   (:require [clojure.spec.alpha :as s]
-            [expound.alpha :as expound]
-            [org.soulspace.overarch.domain.element :as el]))
+            [expound.alpha :as expound]))
 
 ;;;
 ;;; Elements
@@ -26,6 +25,7 @@
 (s/def :overarch/to keyword?)
 (s/def :overarch/direction (s/and keyword? #{:left :right :up :down}))
 (s/def :overarch/constraint boolean?)
+(s/def :overarch/collapsed boolean?)
 (s/def :overarch/tags (s/and set? (s/coll-of string?)))
 (s/def :overarch/link (s/or :key keyword? :url string?))
 (s/def :overarch/type string?) ; check
@@ -54,8 +54,10 @@
                    :overarch/subtype
                    :overarch/name :overarch/desc :overarch/doc
                    :overarch/maturity :overarch/external
-                   :overarch/tech :overarch/tags
-                   :overarch/ct]))
+                   :overarch/tech :overarch/tags 
+                   :overarch/collapsed
+                   :overarch/ct
+                   ]))
 
 (s/def :overarch/model-relation
   (s/keys :req-un [:overarch/el :overarch/from :overarch/to]
@@ -291,14 +293,21 @@
                    :overarch.view.spec/layout :overarch.view.spec/linetype
                    :overarch.view.spec/sketch :overarch.view/styles
                    :overarch.view.spec/themes
-                   :overarch.view.spec/plantuml :overarch.view.spec/markdown
+                   :overarch.view.spec/plantuml
+                   :overarch.view.spec/markdown
                    :overarch.view.spec/graphviz]))
 
 (s/def :overarch.view/title string?)
 (s/def :overarch.view/view
   (s/keys :req-un [:overarch/el :overarch/id]
           :opt-un [:overarch/name :overarch/desc :overarch/doc
-                   :overarch.view/spec :overarch.view/title :overarch/ct]))
+                   :overarch.view/spec :overarch.view/title
+                   :overarch/selection :overarch.view.spec/include
+                   :overarch.view.spec/expand-external
+                   :overarch.view.spec/layout :overarch.view.spec/linetype
+                   :overarch.view.spec/sketch
+                   :overarch.view.spec/themes ;:overarch.view/styles
+                   :overarch/ct]))
 
 ;;;
 ;;; Input model
