@@ -23,7 +23,6 @@ generation. It also helps you to navigate and maintain huge models.
     `:contained-in` relations with the attribute `:synthetic` set to `true`
     when the model is read.
 
-
 ## Relations
 * Use specific relation types instead of general `:rel`, if possible.
 * The id of a relation should start with the id of the referrer node (the `:from`
@@ -34,13 +33,21 @@ generation. It also helps you to navigate and maintain huge models.
 
 ## Views
 * Use selection criteria and includes to specify the content of views.
-* Use refs in a view to customize elements for the specific view, e.g to
-  override directions for relations.
+  E.g. select the model nodes to show in the view via selection criteria and
+  use `:include :relations` to render the relationships betwen them.
+* Use refs in a view via the `:ct` key to customize elements for the specific
+  view, e.g to override directions for relations. The selection and the refs
+  are combined. 
 * By creating a standard set of views with consistent naming, it's easier to
-  generate a consistent documentation via templates.
+  generate a consistent documentation via templates. E.g. have a system context
+  view named 'context-view' in top level architecture namespaces.
+* Provide additional focused views where it makes sense. E.g. With the use of
+  tags on model elements you can select the model elements for a view via
+  `:tags` or `:all-tags`.
+
 
 # Templates
 * Use the provided templates as a base for customizations.
 * Use just the namespace of the element for path generation, elaborate path
-  configurations (with namespace-prefix/-suffix) makes link generation
-  difficult.
+  configurations (with namespace-prefix/-suffix) in the generation config makes
+  link generation for the interconnection of the documentation difficult.
