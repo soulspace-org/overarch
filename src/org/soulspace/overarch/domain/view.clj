@@ -64,10 +64,6 @@
     (get view :sketch false)
     (get-in view [:spec :sketch] false)))
 
-;;
-;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
-;; TODO update views in model building by promoting keys from spec to views 
-;;
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
   [view]
@@ -75,13 +71,24 @@
     (get view :expand-external false)
     (get-in view [:spec :expand-external] false)))
 
+(defn themes-spec
+  "Returns the themes specification for the `view`."
+  [view]
+  (if (seq (:themes view))
+    (get view :themes [])
+    (get-in view [:spec :themes] [])))
+
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
   [model view]
-  (->> (get-in view [:spec :themes] [])
+  (->> (themes-spec view)
        (map (model/element-resolver model))
        (map :styles)))
 
+;;
+;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
+;; TODO update views in model building by promoting keys from spec to views 
+;;
 (defn styles-spec
   "Returns the styles specification for the `model` and the `view`."
   [model view]
