@@ -25,13 +25,13 @@ generation. It also helps you to navigate and maintain huge models.
 
 ## Relations
 * Use specific relation types instead of general `:rel`, if possible.
-* The id of a relation should start with the id of the referrer node (the `:from`
-  id) followed by a verb based on the relation type and the name part of the id
-  of the referred node (the `:to` id), so
+* The id of a relation should start with the id of the referrer node (the
+  `:from` id) followed by a verb based on the relation type and the name part
+  of the id of the referred node (the `:to` id), so
   * the naming scheme is consistent
   * you know in which file you have to look for the relation
 
-## Views
+# Views
 * Use selection criteria and includes to specify the content of views.
   E.g. select the model nodes to show in the view via selection criteria and
   use `:include :relations` to render the relationships betwen them.
@@ -44,7 +44,9 @@ generation. It also helps you to navigate and maintain huge models.
 * Provide additional focused views where it makes sense. E.g. With the use of
   tags on model elements you can select the model elements for a view via
   `:tags` or `:all-tags`.
-
+* A `:model-view` with an empty map as a selection (`:selection {}`) generates
+  a graph of the whole model. This can be useful to detect unconnected elements
+  or to assess the structure of the model visually.
 
 # Templates
 * Use the provided templates as a base for customizations.
