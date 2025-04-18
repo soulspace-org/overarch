@@ -21,8 +21,10 @@ Overarch currently supports the following kinds of models
 * [Deployment Models](#deployment-model)
   to model the physical architecture of the system
 * [Organization Models](#organization-model)
-  to model organizational structures, collaborations and responsibilities for
+  to model organizational structures, roles, collaborations and responsibilities for
   parts of the system
+* [Process Models](#process-model)
+  to model capabilities, processes, artifacts, information, knowledge, roles, requirements, decisions and their relationships
 
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the

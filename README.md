@@ -373,8 +373,12 @@ Here are some Overarch example models:
 * [MyBank Model](https://github.com/soulspace-org/my-bank-model) 
   is a show case model of a banking organization.
 
-* [Domain Driven Design Model](https://github.com/soulspace-org/domain-driven-design-model)
-  is a concept model with the patterns of domain driven design.
+* [Overarch Models](https://github.com/lsolbach/overarch-models)
+  contains some personal models about concepts in software development, e.g.
+  * Domain Driven Design
+  * Cloud Computing
+  * DORA State of DevOps
+  * Clean Architecture
 
 ## Copyright
 © 2023 Ludger Solbach
