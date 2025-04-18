@@ -1,11 +1,11 @@
 {:paths ["resources" "src"]
- :deps {org.clojure/clojure {:mvn/version "1.11.4"}
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
         org.clojure/tools.cli {:mvn/version "1.1.230"}
-        com.cnuernber/charred {:mvn/version "1.034"}
+        com.cnuernber/charred {:mvn/version "1.037"}
         com.nextjournal/beholder {:mvn/version "1.0.2"}
         expound/expound {:mvn/version "0.9.0"}
-        org.babashka/sci {:mvn/version "0.8.43"}
-        org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
+        org.babashka/sci {:mvn/version "0.9.45"}
+        org.slf4j/slf4j-nop {:mvn/version "2.0.17"}
         org.soulspace.clj/clj.java {:mvn/version "0.9.1"}
         org.soulspace.clj/cmp.markdown {:mvn/version "0.4.1"}}
  :aliases
