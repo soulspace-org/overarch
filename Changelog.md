@@ -31,6 +31,7 @@ Version (NEXT)
   * added a markdown view template to replace more specific markdown templates 
 * added glossary view markdown template
 * added a default generation config in templates dir
+* fixed generation of views per namespace markdown page
 * updated docstrings
 * updated docs
 * refactored test models and views

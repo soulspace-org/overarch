@@ -26,7 +26,7 @@
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
- 
+
  ; every model node except fields and methods
  {:selection {:model-node? true :!els #{:field :method}}
   :template "docs/node.md.cmb"
@@ -44,26 +44,26 @@
   :base-name "views"
   :extension "md"}
 
+ ; list of views per namespace, select every view
+ {:view-selection {}
+  :template "docs/views/views.md.cmb"
+  :per-namespace true
+  :base-name "views-in-namespace"
+  :extension "md"}
+
  ; markdown for views with diagrams
  {:view-selection {:!els #{:glossary-view}}
   :template "docs/views/view.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
- 
+
  ; markdown for the glossary
  {:view-selection {:el :glossary-view}
   :template "views/glossary-view.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
-
- #_{:selection {}
-    :template "docs/index.md.cmb"
-    :per-element false
-    :title "Documentation Overview"
-    :base-name "index"
-    :extension "md"}
 
  ;;;
  ;;; Markdown Reports
@@ -80,6 +80,13 @@
     :title "Systems Report"
     :base-namespace "reports"
     :base-name "systems-report"
+    :extension "md"}
+
+ #_{:selection {:el :implements}
+    :template "reports/rel-report.md.cmb"
+    :title "Traceablility Report"
+    :base-namespace "reports"
+    :base-name "traceablility-report"
     :extension "md"}
 
  ;;;
