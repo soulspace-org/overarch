@@ -1,9 +1,7 @@
 (ns org.soulspace.overarch.application.model-repository
   (:require [clojure.string :as str]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.domain.spec :as spec]
-            [org.soulspace.overarch.domain.view :as view]))
+            [org.soulspace.overarch.domain.model :as model]))
 
 ;;;
 ;;; Model building functions
@@ -471,13 +469,11 @@
 (comment ; repo
   (update-state! {:model-dir "models"})
   
-  (model/build-model (input-elements))
+  (build-model (input-elements))
 
   (count (nodes))
   (count (relations))
   (count (views))
   (count (themes))
-
-  (view/elements-to-render (model) (view-by-id :banking/container-view))
   ;
   )
