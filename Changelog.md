@@ -1,10 +1,10 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.36.0
 --------------
 * **breaking** changed referring-nodes, referring-relations, referred-nodes and referred-relations
-  * the functions now take criteria instead of a set of element types
+  * the functions now take selection criteria instead of a set of element types
   * this allows for more flexible model graph navigation
   * the signatures have been updated in the model api
   * the templates have been updated to reflect those changes
@@ -34,6 +34,7 @@ Version (NEXT)
 * fixed generation of views per namespace markdown page
 * updated docstrings
 * updated docs
+* updated dependencies
 * refactored test models and views
 * first steps towards a tools.deps build
 

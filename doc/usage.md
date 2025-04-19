@@ -88,33 +88,50 @@ Options:
  ```
 
 ## CLI Examples
+For the CLI examples a model repository with the following directory layout is expected:
+* `models` containes the EDN files for models and views 
+* `templates` contains the templates for the artifact generation
+* `tools` contains the overarch.jar (and the plantuml.jar)
+
+Renders all artifacts to the `generated` directory using the generation config in `templates/gencfg.edn`, this is the commandline used in the `publish.sh` scripts in the example models. 
+```
+java -jar tools/overarch.jar --no-render-format-subdirs -R generated -r plantuml -g templates/gencfg.edn
+```
+
 To render all views for all models, use
 ```
-> java -jar ./target/overarch.jar -r all
+> java -jar tools/overarch.jar -r all
 ```
+
 or
+
 ```
-> java -jar ./target/overarch.jar -r all --debug
+> java -jar tools/overarch.jar -r all --debug
 ```
 
 To render all views for all models with a directory watch to trigger rerendering on changes, use
 ```
-> java -jar ./target/overarch.jar -r all -w --debug
+> java -jar tools/overarch.jar -r all -w --debug
 ```
 
 To export the models to JSON, use
 ```
-> java -jar ./target/overarch.jar -x json
+> java -jar tools/overarch.jar -x json
 ```
 
 To query the model for all containers, use
 ```
-> java -jar ./target/overarch.jar -s '{:el :container}'
+> java -jar tools/overarch.jar -s '{:el :container}'
 ```
 or
 ```
-> java -jar ./target/overarch.jar -S '{:el :container}'
+> java -jar tools/overarch.jar -S '{:el :container}'
 ```
+
+## Start Scripts
+The [My Bank Example](https://github.com/soulspace-org/my-bank-model) contains
+a setup with the Overarch and PlantUML jar files in the tools directory and
+two simple bash scripts for the development and publication of overarch models.
 
 
 # Editor/IDE Integration
@@ -163,8 +180,10 @@ Overarch currently supports the following kinds of models
 * [Deployment Models](#deployment-model)
   to model the physical architecture of the system
 * [Organization Models](#organization-model)
-  to model organizational structures, collaborations and responsibilities for
+  to model organizational structures, roles, collaborations and responsibilities for
   parts of the system
+* [Process Models](#process-model)
+  to model capabilities, processes, artifacts, information, knowledge, roles, requirements, decisions and their relationships
 
 The model contains all the elements relevant in the architecture of the system.
 Models are specified in the
@@ -570,7 +589,7 @@ kind         | description
 :uses        | a use case element uses another use case element (e.g. an actor uses a use case or a use case uses an external system)
 :include     | a use case includes the functionality of another use cases
 :extends     | a use case extends the functionality of another use case
-:generalizes | 
+:generalizes | a generalization of two actors or two use cases
 
 ## State Machine Model
 A state model describes a state machine which can be used to model the states
@@ -681,14 +700,20 @@ documentation or other artifacts.
 The responsible-for relation captures the responsibility of an organizational
 unit for architecture or deployment nodes (e.g. a system or an Azure subscription).
 
+The collaborates-with relation captures collaborations between organizations or organizational units (e.g. the collaboration of a business unit with an IT unit).
+
+The role-in relation maps `:person` nodes to organizational units.
+
 ## Process Model
 The process model captures the structure of capabilities, processes and their resources.
 
 ### Logical Data Model for the Process Model Elements
+![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
 ### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
 
 ### Relations (:role-in :required-for :input-of :output-of)
+The role-in relation maps `:person` nodes to `:process` nodes.
 
 # Model Element Selection By Criteria
 Model elements can be selected based on criteria.
@@ -700,8 +725,10 @@ Criterias can also be given as a vector of criteria maps. An element is
 selected, if it is selected by any of the critria maps (logical disjunction). 
 
 ## Keys
-key                    | type            | example values            | description
------------------------|-----------------|---------------------------|------------
+key                    | type            | example values               | description
+-----------------------|-----------------|------------------------------|------------
+:model-node?           | boolean         | true, false                  | elements for which the check for model node returns the given value
+:model-relation?       | boolean         | true, false                  | elements for which the check for model relation returns the given value
 :key?                  | vector          | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
 :key                   | vector          | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
 :el                    | keyword         | :system                      | elements of the given ``:el`` type
@@ -734,7 +761,7 @@ key                    | type            | example values            | descripti
 :!maturities           | set of keywords | #{:implemented  :deprecated} | elements not of the given maturities
 :external?             | boolean         | true, false                  | elements of the given external state
 :name?                 | boolean         | true, false                  | elements for which the ``:name`` check returns the given value
-:name                  | string/regex    | "Overarch CLI"               | elements for which the ``:name`` matches the given value
+:name                  | string/regex    | "Overarch CLI" "(?i).*CLI.*" | elements for which the ``:name`` matches the given value
 :desc?                 | boolean         | true, false                  | elements for which the ``:desc`` check returns the given value
 :desc                  | string/regex    | "CLI" "(?i).*CLI.*"          | elements for which the ``:desc`` matches the given value
 :doc?                  | boolean         | true, false                  | elements for which the ``:doc`` check returns the given value
@@ -817,6 +844,23 @@ key       | type    | values                   | description
 :title    | string  |                          | rendered title
 :spec     | map     | see view specs           | rendering customization (e.g. styling)
 :ct       | list    | model refs (or elements) | view specific keys possible
+
+## View Specific Keys on Model Elements
+There are some keys on model elements that control the rendering of the
+elements in views. As they may be different for specific views, it is best to
+add them as keys on a `:ref` reference to the element in the content of the
+view and not on the model element itself. Keys on the reference are merged
+with the keys on the model element.
+
+# Node Keys
+key        | type    | values                   | description 
+-----------|---------|--------------------------|------------
+:collapsed | boolean | true, false              | if true, don't render children of the element 
+
+# Relation Keys
+key        | type    | values                    | description 
+-----------|---------|---------------------------|------------
+:direction | keyword | :left, :right, :up, :down | hint on the direction of the relation
 
 ## System Context View (:context-view)
 Shows the system in the context of the actors and other systems it is
@@ -1366,24 +1410,33 @@ generation. It also helps you to navigate and maintain huge models.
     `:contained-in` relations with the attribute `:synthetic` set to `true`
     when the model is read.
 
-
 ## Relations
 * Use specific relation types instead of general `:rel`, if possible.
-* The id of a relation should start with the id of the referrer node (the `:from`
-  id) followed by a verb based on the relation type and the name part of the id
-  of the referred node (the `:to` id), so
+* The id of a relation should start with the id of the referrer node (the
+  `:from` id) followed by a verb based on the relation type and the name part
+  of the id of the referred node (the `:to` id), so
   * the naming scheme is consistent
   * you know in which file you have to look for the relation
 
-## Views
+# Views
 * Use selection criteria and includes to specify the content of views.
-* Use refs in a view to customize elements for the specific view, e.g to
-  override directions for relations.
+  E.g. select the model nodes to show in the view via selection criteria and
+  use `:include :relations` to render the relationships betwen them.
+* Use refs in a view via the `:ct` key to customize elements for the specific
+  view, e.g to override directions for relations. The selection and the refs
+  are combined. 
 * By creating a standard set of views with consistent naming, it's easier to
-  generate a consistent documentation via templates.
+  generate a consistent documentation via templates. E.g. have a system context
+  view named 'context-view' in top level architecture namespaces.
+* Provide additional focused views where it makes sense. E.g. With the use of
+  tags on model elements you can select the model elements for a view via
+  `:tags` or `:all-tags`.
+* A `:model-view` with an empty map as a selection (`:selection {}`) generates
+  a graph of the whole model. This can be useful to detect unconnected elements
+  or to assess the structure of the model visually.
 
 # Templates
 * Use the provided templates as a base for customizations.
 * Use just the namespace of the element for path generation, elaborate path
-  configurations (with namespace-prefix/-suffix) makes link generation
-  difficult.
+  configurations (with namespace-prefix/-suffix) in the generation config makes
+  link generation for the interconnection of the documentation difficult.
