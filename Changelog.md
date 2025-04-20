@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version (NEXT)
+--------------
+
+
 Version 0.36.0
 --------------
 * **breaking** changed referring-nodes, referring-relations, referred-nodes and referred-relations
