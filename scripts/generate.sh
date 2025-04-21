@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # read model and generate output with overarch
-java -jar overarch.jar --no-render-format-subdirs -R generated -r all -g ./gencfg.edn
+java -jar overarch.jar --no-render-format-subdirs -R generated -r plantuml -g templates/gencfg.edn
 
 # generate diagrams with PlantUML
 find generated -type f -name "*.puml" | while read file; do
