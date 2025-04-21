@@ -670,7 +670,7 @@
 (defn transitive-search
   "Returns the result of a transitive search for the `model` based on the `search-criteria`."
   ([model search-criteria]
-   (transitive-search model search-criteria (:element search-criteria)))
+   (transitive-search model search-criteria (:element-selection search-criteria)))
   ([model search-criteria e]
    (let [pred-fn (if-let [element-criteria (:element-selection search-criteria)]
                    (criteria-predicates model element-criteria)
