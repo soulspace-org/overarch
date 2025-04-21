@@ -354,14 +354,14 @@
   (model/children (repo/model)
                   (model/resolve-element (repo/model)
                                          :overarch.data-model/technical-element))
-  ; type hierarchy of :architecture-model-node (upwards)
+  ; type hierarchy of :code-model-node (upwards)
   (model/transitive-search (repo/model)
                            {:referred-node-selection {:els #{:inheritance :implementation}}}
-                           :overarch.data-model/architecture-model-node)
-  ; type hierarchy of :architecture-model-node (downwards)
+                           :overarch.data-model/code-model-node)
+  ; type hierarchy of :code-model-node (downwards)
   (model/transitive-search (repo/model)
                            {:referring-node-selection {:els #{:inheritance :implementation}}}
-                           :overarch.data-model/architecture-model-node)
+                           :overarch.data-model/code-model-node)
   )
 
 (comment ; view functions
@@ -481,4 +481,3 @@
          (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
   ;
   )
-         
