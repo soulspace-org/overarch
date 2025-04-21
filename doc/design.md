@@ -77,6 +77,37 @@ model information reusable.
 * Domain specific language
 * Fancy user interface
 
+## Terminology
+### Element
+Any element specified in Overarch.
+
+### Model Element
+An element of an Overarch model, a model node or model relation.
+
+### Model Node
+A node in an Overarch model graph.
+
+### Model Relation
+An edge in an Overarch model graph connecting model nodes.
+
+### Referring Node
+The model node referenced with `:from` in a model relation.
+
+### Referred Node
+The model node referenced with `:to` in a model relation.
+
+### Referring Relation
+A model relation in which a given model node is referenced with `:to`.
+
+### Referred Relation
+A model relation in which a given model node is referenced with `:from`.
+
+### View
+An element specified in Overarch which references model elements and which defines how these model elements are presented.
+
+### Theme
+An element specified in Overarch which provides a customization of views.
+
 ## Design Questions and Answers
 This section documents design decisions in the form of questions and answers.
 It represents some of the inner dialogue in finding good solutions.
