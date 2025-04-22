@@ -269,7 +269,7 @@
     (are [x y] (= x (traverse (element-resolver cycle-model1)
                                     identity
                                     (requested-nodes-resolver cycle-model1)
-                                    collect-fn
+                                    collect-in-vector
                                     (requested-nodes cycle-model1 y)))
       [{:el :system, :id :a/system2}
        {:el :system, :id :a/system3}

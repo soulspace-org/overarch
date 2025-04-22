@@ -362,6 +362,14 @@
   (model/transitive-search (repo/model)
                            {:referring-node-selection {:els #{:inheritance :implementation}}}
                            :overarch.data-model/code-model-node)
+
+  (model/t-descendants (repo/model)
+                       (model/resolve-element (repo/model)
+                                              :banking/internet-banking-system))
+  (model/t-ancestors (repo/model)
+                       (model/resolve-element (repo/model)
+                                              :banking/api-application))
+  ;
   )
 
 (comment ; view functions

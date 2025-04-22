@@ -200,7 +200,17 @@
 ;;;
 ;;; Step functions for traverse
 ;;;
-(defn collect-fn
+(defn collect-in-vector
+  "Step function to collect elements `e` in the accumulator `acc`.
+   No transformation on the element is applied."
+  ([]
+   [])
+  ([acc]
+   acc)
+  ([acc e]
+   (conj acc e)))
+
+(defn collect-in-set
   "Step function to collect elements `e` in the accumulator `acc`.
    No transformation on the element is applied."
   ([]
@@ -647,7 +657,7 @@
                    identity)
          children-fn (cond
                        (:referred-node-selection search-criteria)
-                       (fn [e] (referred-nodes model e (:referred-node-selection search-criteria))) 
+                       (fn [e] (referred-nodes model e (:referred-node-selection search-criteria)))
                        (:referring-node-selection search-criteria)
                        (fn [e] (referring-nodes model e (:referring-node-selection search-criteria)))
                        :else
@@ -655,7 +665,7 @@
      (traverse (element-resolver model) ; resolver element function
                pred-fn ; criteria based element predicate
                children-fn ; children function
-               collect-fn ; collector step function
+               collect-in-vector ; collector step function
                (children-fn e)))))
 
 (defn t-descendants
