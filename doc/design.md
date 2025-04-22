@@ -65,7 +65,6 @@ model information reusable.
 * Possible disadvantages
   * likely not as compact and succint as DSLs
 
-
 ## Design Goals
 * Reusable models
 * Holistic model of the system under description
