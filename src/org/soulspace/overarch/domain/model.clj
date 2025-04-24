@@ -652,6 +652,8 @@
   ([model search-criteria]
    (transitive-search model search-criteria (:element-selection search-criteria)))
   ([model search-criteria e]
+   (transitive-search model collect-in-vector search-criteria e))
+  ([model collect-fn search-criteria e]
    (let [pred-fn (if-let [element-criteria (:element-selection search-criteria)]
                    (criteria-predicates model element-criteria)
                    identity)
@@ -665,7 +667,7 @@
      (traverse (element-resolver model) ; resolver element function
                pred-fn ; criteria based element predicate
                children-fn ; children function
-               collect-in-vector ; collector step function
+               collect-fn ; collector step function
                (children-fn e)))))
 
 (defn t-descendants
