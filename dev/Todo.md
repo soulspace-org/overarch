@@ -15,11 +15,18 @@
 ## Views
 * add styling to graphviz and plantuml uml rendering
 
-* rainbow coloured orthogonal relations
 * custom views rendered by templates
 * custom elements {:el :my/xy} included in the graph
+* rainbow coloured orthogonal relations
 
 * model config via edn?
+
+## Templates
+* check import/require mechanisms of SCI
+
+## UI
+* make transitive search accessible from the CLI
+* add option to ignore unresolved nodes
 
 ## Documentation
 * readme
