@@ -3,7 +3,8 @@ Changelog
 
 Version (NEXT)
 --------------
-
+* fixed view export template
+* fixed test views
 
 Version 0.36.0
 --------------
