@@ -126,10 +126,7 @@
       (assoc e :external false)
       (assoc e :external true))))
 
-;; TODOs:
-;;  * remove :ct key in model nodes
-;;  * derive :index from vector position, if :ct contains vector?
-;;
+;; TODO derive :index from vector position, if :ct contains vector?
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
@@ -331,7 +328,8 @@
     :else (do (println "Unhandled:" e) acc)))
 
 (defn ->relational-model
-  "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views."
+  "Step function for the conversion of the hierachical input model into a relational model of nodes, relations and views.
+   `res` accumulates the result and the context `ctx` acts as the stack of the recusive calls."
   ([]
    ; initial compound accumulator with empty model and context as a stack list
    [{:nodes #{}

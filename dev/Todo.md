@@ -12,14 +12,16 @@
   * How good? (NFRs, quality metrics)
   * How long? (retentions, ...)
 
+* model config via edn?
+
 ## Views
 * add styling to graphviz and plantuml uml rendering
+* update PlantUML sprites
 
 * custom views rendered by templates
 * custom elements {:el :my/xy} included in the graph
 * rainbow coloured orthogonal relations
 
-* model config via edn?
 
 ## Templates
 * check import/require mechanisms of SCI
@@ -35,4 +37,3 @@
       * free, extensible, composable, reusable
 
 * add code of conduct
-
