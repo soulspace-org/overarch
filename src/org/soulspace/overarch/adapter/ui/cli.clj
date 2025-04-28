@@ -57,7 +57,7 @@
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
    ["-B" "--backup-dir DIRNAME" "Generation backup directory" :default "backup"]
-;   [nil  "--[no-]ignore-unresolved" "Ignore unresolved relations" :default false]
+;   [nil  "--[no-]ignore-unresolved" "Ignore unresolved elements" :default false]
    [nil  "--scope NAMESPACE" "Sets the internal scope by namespace prefix"]
    [nil  "--[no-]model-warnings" "Returns warnings for the loaded model" :default true]
    [nil  "--[no-]model-info" "Returns infos for the loaded model" :default false]
@@ -469,23 +469,27 @@
   )
 
 (comment ; CLI calls
-         (-main "--debug")
-         (-main "--debug" "--render-format" "plantuml")
-         (-main "--debug" "--render-format" "plantuml")
-         (-main "--debug" "--render-format" "markdown")
-         (-main "--debug" "--render-format" "graphviz")
-         (-main "--debug" "--render-format" "all")
-         (-main "--debug" "--render-format" "all"  "--no-format-subdirs")
-         (-main "--debug" "--export-format" "json")
-         (-main "--model-dir" "models/banking" "--export-format" "structurizr")
-         (-main "--model-info")
-         (-main "--no-model-warnings")
-         (-main "--plantuml-list-sprites")
-         (-main "--help") ; ends REPL session
+  (-main "--debug")
+  (-main "--debug" "--render-format" "plantuml")
+  (-main "--debug" "--render-format" "plantuml")
+  (-main "--debug" "--render-format" "markdown")
+  (-main "--debug" "--render-format" "graphviz")
+  (-main "--debug" "--render-format" "all")
+  (-main "--debug" "--render-format" "all" "--no-render-format-subdirs")
+  (-main "--debug" "--export-format" "json")
+  (-main "--model-dir" "models/banking" "--export-format" "structurizr")
+  (-main "--model-info")
+  (-main "--no-model-warnings")
+  (-main "--plantuml-list-sprites")
+  (-main "--help") ; ends REPL session
 
-         ; overarch development
-         (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")
-         (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
-         (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
+  ; 
+  (-main "--debug" "--no-render-format-subdirs" "--render-format" "plantuml" "--generation-config" "templates/gencfg.edn")
+
+
+  ; overarch development
+  (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")
+  (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
+  (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
   ;
   )
