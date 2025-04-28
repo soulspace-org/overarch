@@ -73,22 +73,15 @@
 ;;;
 ;;; Template engine functions
 ;;;
-(defn repo-type
-  "Returns the repository type."
-  ([context]
-   (:engine context))
-  ([context & r]
-   (:engine context)))
-
 (defn engine-type
   "Returns the template engine type."
   ([context]
-   (:engine context))
+   (get context :engine :combsci))
   ([context & r]
-   (:engine context)))
+   (get context :engine :combsci)))
 
 (defn read-source
-  "Reads the `source` as string or file."
+  "Reads the `source` from string or file."
   [source]
   (if (string? source)
     source
@@ -306,7 +299,7 @@
 
 (comment
   (repo/read-models :file "models")
-  (apply-template :comb (io/as-file "templates/clojure/gitignore.cmb") {})
+  (apply-template :comb (io/as-file "dev/templates/projects/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
   ;
   )
