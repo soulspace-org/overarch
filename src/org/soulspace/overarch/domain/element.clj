@@ -908,20 +908,6 @@
         (map (fn [e] [(:id e) e]))
         (into {}))))
 
-; debug merge
-#_(defn union-by-id
-  "Returns a set that is the union of the input `sets`.
-    Equality is based on the :id key of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
-    Element maps with the same id will be merged in left-to-right order. If a key occurs in more than one map, the mapping from the latter (left-to-right) will be the mapping in the result."
-  [& sets]
-  (let [id-maps (map id->element-map sets)
-        _ (println "id-map" id-maps)
-        merged (apply (partial merge-with merge) id-maps)
-        _ (println "merged" merged)
-        val-collection (vals merged)
-        result-set (set val-collection)]
-    result-set))
-
 (defn union-by-id
   "Returns a set that is the union of the input `sets`.
    Equality is based on the :id key of the element maps in the sets, not on value equality of the maps (entity equality vs. value equality).
@@ -963,243 +949,288 @@
 ;;;
 ;;; Criteria Predicates
 ;;; 
-(defn model-node-check?
-  "Returns true if the check for model node on `e` equals the boolean value `v`"
-  [v e]
-  (= v (model-node? e)))
+(defn model-node-pred
+  "Returns a predicate that returns true, if the check for model node on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (model-node? e))))
 
-(defn model-relation-check?
-  "Returns true if the check for model relation on `e` equals the boolean value `v`"
-  [v e]
-  (= v (model-relation? e)))
+(defn model-relation-pred
+  "Returns a predicate that returns true, if the check for model relation on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (model-relation? e))))
 
-(defn namespace?
-  "Returns true, if `v`is the namespace of element `e`."
-  [v e]
-  (= (name v) (element-namespace e)))
+(defn namespace-pred
+  "Returns a predicate that returns true, if `v`is the namespace of element `e`."
+  [v]
+  (fn [e]
+    (= (name v) (element-namespace e))))
 
-(defn namespaces?
-  "Returns true, if the set of namespaces `v` contains the namespace of element `e`."
-  [v e]
-  (contains? (name v) (element-namespace e)))
+(defn namespaces-pred
+  "Returns a predicate that returns true, if the set of namespaces `v` contains the namespace of element `e`."
+  [v]
+  (fn [e]
+    (contains? (name v) (element-namespace e))))
 
-(defn namespace-prefix?
-  "Returns true, if `v`is a prefix of the namespace of element `e`."
-  [v e]
-  (and (identifiable-element? e)
-       (str/starts-with? (element-namespace e) v)))
+(defn namespace-prefix-pred
+  "Returns a predicate that returns true, if `v`is a prefix of the namespace of element `e`."
+  [v]
+  (fn [e]
+    (and (identifiable-element? e)
+         (str/starts-with? (element-namespace e) v))))
 
-(defn namespace-prefixes?
-  "Returns true, if one of `v`is a prefix of the namespace of element `e`."
-  [v e]
-  (some #(namespace-prefix? % e) v))
+(defn namespace-prefixes-pred
+  "Returns a predicate that returns true, if one of `v`is a prefix of the namespace of element `e`."
+  [v]
+  (fn [e]
+    (some #(and (identifiable-element? e)
+                (str/starts-with? (element-namespace e) %)) v)))
 
-(defn from-namespace?
-  "Returns true, if `v`is the namespace of the element referenced by the from id of relation `e`."
-  [v e]
-  (= (name v) (namespace (get e :from :no-namespace/no-name))))
+(defn from-namespace-pred
+  "Returns a predicate that returns true, if `v`is the namespace of the element referenced by the from id of relation `e`."
+  [v]
+  (fn [e]
+    (= (name v) (namespace (get e :from :no-namespace/no-name)))))
 
-(defn from-namespaces?
-  "Returns true, if the set of namespaces `v` contains the namespace of the from id of relation `e`."
-  [v e]
-  (contains? (name v) (namespace (get e :from :no-namespace/no-name))))
+(defn from-namespaces-pred
+  "Returns a predicate that returns true, if the set of namespaces `v` contains the namespace of the from id of relation `e`."
+  [v]
+  (fn [e]
+    (contains? (name v) (namespace (get e :from :no-namespace/no-name)))))
 
-(defn from-namespace-prefix?
-  "Returns true, if `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
-  [v e]
-  (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v))
+(defn from-namespace-prefix-pred
+  "Returns a predicate that returns true, if `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
+  [v]
+  (fn [e]
+    (str/starts-with? (namespace (get e :from :no-namespace/no-name)) v)))
 
-(defn from-namespace-prefixes?
-  "Returns true, if one of `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
-  [v e]
-  (some #(from-namespace-prefix? % e) v))
+(defn from-namespace-prefixes-pred
+  "Returns a predicate that returns true, if one of `v`is a prefix of the namespace of element referenced by the from id of relation `e`."
+  [v]
+  (fn [e]
+    (some #(str/starts-with? (namespace (get e :from :no-namespace/no-name)) %) v)))
 
-(defn to-namespace?
-  "Returns true, if `v`is the namespace of the element referenced by the to id of relation `e`."
-  [v e]
-  (= (name v) (namespace (get e :to :no-namespace/no-name))))
+(defn to-namespace-pred
+  "Returns a predicate that returns true, if `v`is the namespace of the element referenced by the to id of relation `e`."
+  [v]
+  (fn [e]
+    (= (name v) (namespace (get e :to :no-namespace/no-name)))))
 
-(defn to-namespaces?
-  "Returns true, if the set of namespaces `v` contains the namespace of the to id of relation `e`."
-  [v e]
-  (contains? (name v) (namespace (get e :to :no-namespace/no-name))))
+(defn to-namespaces-pred
+  "Returns a predicate that returns true, if the set of namespaces `v` contains the namespace of the to id of relation `e`."
+  [v]
+  (fn [e]
+    (contains? (name v) (namespace (get e :to :no-namespace/no-name)))))
 
-(defn to-namespace-prefix?
-  "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
-  [v e]
-  (str/starts-with? (namespace (get e :to :no-namespace/no-name)) v))
+(defn to-namespace-prefix-pred
+  "Returns a predicate that returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
+  [v]
+  (fn [e]
+    (str/starts-with? (namespace (get e :to :no-namespace/no-name)) v)))
 
-(defn to-namespace-prefixes?
-  "Returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
-  [v e]
-  (some #(to-namespace-prefix? % e) v))
+(defn to-namespace-prefixes-pred
+  "Returns a predicate that returns true, if `v`is a prefix of the namespace of element referenced by the to id of relation `e`."
+  [v]
+  (fn [e]
+    (some #(str/starts-with? (namespace (get e :to :no-namespace/no-name)) %) v)))
 
-(defn id-check?
-  "Returns true if the check for id on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :id false)))
+(defn id-check-pred
+  "Returns a predicate that returns true if the check for id on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :id false))))
 
-(defn id?
-  "Returns true if the id of `e` is equal to `v`."
-  [v e]
-  (= (keyword v) (:id e)))
+(defn id-pred
+  "Returns a predicate that returns true if the id of `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (= (keyword v) (:id e))))
 
-(defn from?
-  "Returns true if the from id of the relation `e` is equal to `v`."
-  [v e]
-  (= (keyword v) (:from e)))
+(defn from-pred
+  "Returns a predicate that returns true if the from id of the relation `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (= (keyword v) (:from e))))
 
-(defn to?
-  "Returns true if the to id of the relation `e` is equal to `v`."
-  [v e]
-  (= (keyword v) (:to e)))
+(defn to-pred
+  "Returns a predicate that returns true if the to id of the relation `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (= (keyword v) (:to e))))
 
-(defn el?
-  "Returns true if the element type of `e` is equal to `v`."
-  [v e]
-  (isa? element-hierarchy (:el e) v))
+(defn el-pred
+  "Returns a predicate that returns true if the element type of `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (isa? element-hierarchy (:el e) v)))
 
-(defn els?
-  "Returns true if the element type of `e` is contained in `v`."
-  [v e]
-  (contains? v (:el e)) ; TODO use isa? too
+(defn els-pred
+  "Returns a predicate that returns true if the element type of `e` is contained in `v`."
+  [v]
+  (fn [e]
+    (contains? v (:el e))) ; TODO use isa? too
   )
 
-(defn subtype-check?
-  "Returns true if the check for subtype on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :subtype false)))
+(defn subtype-check-pred
+  "Returns a predicate that returns true if the check for subtype on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :subtype false))))
 
-(defn subtype?
-  "Returns true if the subtype of `e` is equal to `v`."
-  [v e]
-  (= (keyword v) (:subtype e)))
+(defn subtype-pred
+  "Returns a predicate that returns true if the subtype of `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (= (keyword v) (:subtype e))))
 
-(defn subtypes?
-  "Returns true if the subtype of `e` is contained in `v`."
-  [v e]
-  (contains? v (:subtype e)))
+(defn subtypes-pred
+  "Returns a predicate that returns true if the subtype of `e` is contained in `v`."
+  [v]
+  (fn [e]
+    (contains? v (:subtype e))))
 
-(defn maturity-check?
-  "Returns true if the check for maturity on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :maturity false)))
+(defn maturity-check-pred
+  "Returns a predicate that returns true if the check for maturity on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :maturity false))))
 
-(defn maturity?
-  "Returns true if the maturity of `e` is equal to `v`."
-  [v e]
-  (= (keyword v) (:maturity e)))
+(defn maturity-pred
+  "Returns a predicate that returns true if the maturity of `e` is equal to `v`."
+  [v]
+  (fn [e]
+    (= (keyword v) (:maturity e))))
 
-(defn maturities?
-  "Returns true if the maturity of `e` is contained in `v`."
-  [v e]
-  (contains? v (:maturity e)))
+(defn maturities-pred
+  "Returns a predicate that returns true if the maturity of `e` is contained in `v`."
+  [v]
+  (fn [e]
+    (contains? v (:maturity e))))
 
-(defn synthetic-check?
-  "Returns true if the check for synthetic on `e` equals the boolean value `v`"
-  [v e]
-  (= v (boolean (synthetic? e))))
+(defn synthetic-check-pred
+  "Returns a predicate that returns true if the check for synthetic on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (boolean (synthetic? e)))))
 
-(defn name-check?
-  "Returns true if the check for name on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :name false)))
+(defn name-check-pred
+  "Returns a predicate that returns true if the check for name on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :name false))))
 
-(defn name?
-  "Returns true if the name of `e` matches `v`."
-  [v e]
-  (if-let [s (:name e)]
-    (re-matches (re-pattern v) s)
-    false))
+(defn name-pred
+  "Returns a predicate that returns true if the name of `e` matches `v`."
+  [v]
+  (fn [e]
+    (if-let [s (:name e)]
+      (re-matches (re-pattern v) s)
+      false)))
 
-(defn name-prefix?
-  "Returns true if the name of `e` starts with `v`."
-  [v e]
-  (str/starts-with? (:name e) v))
+(defn name-prefix-pred
+  "Returns a predicate that returns true if the name of `e` starts with `v`."
+  [v]
+  (fn [e]
+    (str/starts-with? (:name e) v)))
 
-(defn desc-check?
-  "Returns true if the check for desc on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :desc false)))
+(defn desc-check-pred
+  "Returns a predicate that returns true if the check for desc on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :desc false))))
 
-(defn desc?
-  "Returns true if the description of `e` matches the regular expression`v`."
-  [v e]
-  (if-let [s (:desc e)]
-    (re-matches (re-pattern v) s)
-    false))
+(defn desc-pred
+  "Returns a predicate that returns true if the description of `e` matches the regular expression`v`."
+  [v]
+  (fn [e]
+    (if-let [s (:desc e)]
+      (re-matches (re-pattern v) s)
+      false)))
 
-(defn doc-check?
-  "Returns true if the check for documentation on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :doc false)))
+(defn doc-check-pred
+  "Returns a predicate that returns true if the check for documentation on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :doc false))))
 
-(defn doc?
-  "Returns true if the documentation of `e` matches the regular expression`v`."
-  [v e]
-  (if-let [s (:doc e)]
-    (re-matches (re-pattern v) s)
-    false))
+(defn doc-pred
+  "Returns a predicate that returns true if the documentation of `e` matches the regular expression`v`."
+  [v]
+  (fn [e]
+    (if-let [s (:doc e)]
+      (re-matches (re-pattern v) s)
+      false)))
 
-(defn tech-check?
-  "Returns true if the check for tech on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :tech false)))
+(defn tech-check-pred
+  "Returns a predicate that returns true if the check for tech on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :tech false))))
 
-(defn tech?
-  "Returns true if `v` is a technology of `e`."
-  [v e]
-  (contains? (set (technologies e)) v))
+(defn tech-pred
+  "Returns a predicate that returns true if `v` is a technology of `e`."
+  [v]
+  (fn [e]
+    (contains? (set (technologies e)) v)))
 
-(defn techs?
-  "Returns true if any of the technologies in `v` are technologies of `e`."
-  [v e]
-  (seq (set/intersection v (set (technologies e)))))
+(defn techs-pred
+  "Returns a predicate that returns true if any of the technologies in `v` are technologies of `e`."
+  [v]
+  (fn [e]
+    (seq (set/intersection v (set (technologies e))))))
 
-(defn all-techs?
-  "Returns true if all of the technologies in `v` are technologies of `e`."
-  [v e]
-  (set/subset? (set v) (set (technologies e))))
+(defn all-techs-pred
+  "Returns a predicate that returns true if all of the technologies in `v` are technologies of `e`."
+  [v]
+  (fn [e]
+    (set/subset? (set v) (set (technologies e)))))
 
-(defn tags-check?
-  "Returns true if the check for tags on `e` equals the boolean value `v`"
-  [v e]
-  (= v (get e :tags false)))
+(defn tags-check-pred
+  "Returns a predicate that returns true if the check for tags on `e` equals the boolean value `v`"
+  [v]
+  (fn [e]
+    (= v (get e :tags false))))
 
-(defn tag?
-  "Returns true if `v` is a tag of `e`."
-  [v e]
-  (contains? (:tags e) v))
+(defn tag-pred
+  "Returns a predicate that returns true if `v` is a tag of `e`."
+  [v]
+  (fn [e]
+    (contains? (:tags e) v)))
 
-(defn tags?
-  "Returns true if any of the tags in `v` are tags of `e`."
-  [v e]
-  (seq (set/intersection v (:tags e))))
+(defn tags-pred
+  "Returns a predicate that returns true if any of the tags in `v` are tags of `e`."
+  [v]
+  (fn [e]
+    (seq (set/intersection v (:tags e)))))
 
-(defn all-tags?
-  "Returns true if all of the tags in `v` are tags of `e`."
-  [v e]
-  (set/subset? (set v) (:tags e)))
+(defn all-tags-pred
+  "Returns a predicate that returns true if all of the tags in `v` are tags of `e`."
+  [v]
+  (fn [e]
+    (set/subset? (set v) (:tags e))))
 
-(defn key-check?
-  "Returns true if the check for the key `k` on element `e` equals the boolean value `v`.
+(defn key-check-pred
+  "Returns a predicate that returns true if the check for the key `k` on element `e` equals the boolean value `v`.
    Useful to check for custom keys."
-  [[k v] e]
-  (= v (boolean (get e (keyword k) false))))
+  [[k v]]
+  (fn [e]
+    (= v (boolean (get e (keyword k) false)))))
 
-(defn key?
-  "Returns true if the check for `entry` on element `e` equals the boolean value `v."
-  [[k v] e]
-  (= v (get e (keyword k))))
+(defn key-pred
+  "Returns a predicate that returns true if the check for `entry` on element `e` equals the boolean value `v."
+  [[k v]]
+  (fn [e]
+    (= v (get e (keyword k)))))
 
 (comment
-  (tech? "Datomic" {:tech "Datomic"})
-  (tag? "Datomic" {:tags #{"Datomic"}})
-  (key-check? [:tech true] {:tech "Datomic"})
-  (key-check? [:tech true] {:name "Datomic"})
-  (key? [:tech "Datomic"] {:tech "Datomic"})
-  (key? [:tech "Datomic"] {:tech "Blubb"})
-  (desc? "(?i).*account.*" {:desc "Application to manage accounts."})
-  (desc? "(?i).*account.*" {})
+  ((tech-pred "Datomic") {:tech "Datomic"})
+  ((tag-pred "Datomic") {:tags #{"Datomic"}})
+  ((key-check-pred [:tech true]) {:tech "Datomic"})
+  ((key-check-pred [:tech true]) {:name "Datomic"})
+  ((key-pred [:tech "Datomic"]) {:tech "Datomic"})
+  ((key-pred [:tech "Datomic"]) {:tech "Blubb"})
+  ((desc-pred "(?i).*account.*") {:desc "Application to manage accounts."})
+  ((desc-pred "(?i).*account.*") {})
   ;
   )

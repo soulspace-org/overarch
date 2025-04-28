@@ -397,72 +397,101 @@
 ;;;
 ;;; filtering element collections by criteria
 ;;;
+(declare criteria-predicate)
 
 ;; TODO add criteria for model type (architecture, etc.)
 ;;      select nodes of model category
 ;;      select relations of category if both nodes are of category
 ;;      (rel is in multiple categories)
-(defn external-check?
-  "Returns true if the check for external on `e` equals the boolean value `v`"
-  [model v e]
-  (= v (if (el/model-node? e)
-         (boolean (el/external? e))
-         (or (el/external? (resolve-element model (:from e)))
-             (el/external? (resolve-element model (:to e)))))))
 
-(defn refers-check?
-  "Returns true if the check for `e` as a referrer equals the boolean value `v`"
-  [model v e]
-  (= v (boolean ((:referrer-id->relations model) (:id e)))))
+(defn from-pred
+  "Returns a predicate that returns true, "
+  [model v]
+  (if (or (map? v) (vector? v))
+    (fn [e]
+      ((criteria-predicate model v) (resolve-element model (:from e))))
+    (el/from-pred v)))
 
-(defn referred-check?
-  "Returns true if the check for `e` as referred to equals the boolean value `v`"
-  [model v e]
-  (= v (boolean ((:referred-id->relations model) (:id e)))))
+(defn to-pred
+  "Returns a predicate that returns true, "
+  [model v]
+  (if (or (map? v) (vector? v))
+    (fn [e]
+      ((criteria-predicate model v) (resolve-element model (:to e))))
+    (el/to-pred v)))
 
-(defn refers-to?
-  "Returns true, if the node with id `v` refers to `e` in the `model`."
-  [model v e]
-  (contains? (into #{}
+(defn external-check-pred
+  "Returns a predicate that returns true, if the check for external on `e` equals the boolean value `v`"
+  [model v]
+  (fn [e]
+    (= v (if (el/model-node? e)
+           (boolean (el/external? e))
+           (or (el/external? (resolve-element model (:from e)))
+               (el/external? (resolve-element model (:to e))))))))
+
+(defn refers-check-pred
+  "Returns a predicate that returns true, if the check for `e` as a referrer equals the boolean value `v`"
+  [model v]
+  (fn [e]
+    (= v (boolean ((:referrer-id->relations model) (:id e))))))
+
+(defn referred-check-pred
+  "Returns a predicate that returns true if the check for `e` as referred to equals the boolean value `v`"
+  [model v]
+  (fn [e]
+    (= v (boolean ((:referred-id->relations model) (:id e))))))
+
+(defn refers-to-pred
+  "Returns a predicate that returns true, if the node with id `v` refers to `e` in the `model`."
+  [model v]
+  (fn [e]
+    (contains? (into #{}
                    (map :to ((:referrer-id->relations model) (:id e))))
-             v))
+             v)))
 
-(defn referred-by?
-  "Returns true, if `e` is referred by the node with id `v` in the `model`."
-  [model v e]
-  (contains? (into #{}
+(defn referred-by-pred
+  "Returns a predicate that returns true, if `e` is referred by the node with id `v` in the `model`."
+  [model v]
+  (fn [e]
+    (contains? (into #{}
                    (map :from ((:referred-id->relations model) (:id e))))
-             v))
+             v)))
 
-(defn child-check?
-  "Returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
-  [model v e]
-  (= v (boolean ((:id->parent-id model) (:id e)))))
+(defn child-check-pred
+  "Returns a predicate that returns true, if the check for `e` is a child in the `model` equals the boolean value `v`."
+  [model v]
+  (fn [e]
+    (= v (boolean ((:id->parent-id model) (:id e))))))
 
-(defn child?
-  "Returns true, if `e` is a child of the node with id `v` in the `model`."
-  [model v e]
-  (contains? (children model (resolve-id model v)) e))
+(defn child-pred
+  "Returns a predicate that returns true, if `e` is a child of the node with id `v` in the `model`."
+  [model v]
+  (fn [e]
+    (contains? (children model (resolve-id model v)) e)))
 
-(defn parent-check?
-  "Returns true if the check for children of `e` equals the boolean value `v`"
-  [model v e]
-  (= v (empty? (children model e))))
+(defn parent-check-pred
+  "Returns a predicate that returns true if the check for children of `e` equals the boolean value `v`"
+  [model v]
+  (fn [e]
+    (= v (empty? (children model e)))))
 
-(defn parent?
-  "Returns true if `v` is the parent of `e`"
-  [model v e]
-  (= v ((:id->parent-id model) (:id e))))
+(defn parent-pred
+  "Returns a predicate that returns true if `v` is the parent of `e`"
+  [model v]
+  (fn [e]
+    (= v ((:id->parent-id model) (:id e)))))
 
-(defn descendant-of?
-  "Returns true, if `e` is a descendant of the node with id `v` in the `model`."
-  [model v e]
-  (contains? (descendant-nodes model (resolve-id model v)) e))
+(defn descendant-of-pred
+  "Returns a predicate that returns true, if `e` is a descendant of the node with id `v` in the `model`."
+  [model v]
+  (fn [e]
+    (contains? (descendant-nodes model (resolve-id model v)) e)))
 
-(defn ancestor-of?
-  "Returns true, if `e` is an ancestor of the node with id `v` in the `model`."
-  [model v e]
-  (contains? (ancestor-nodes model (resolve-id model v)) e))
+(defn ancestor-of-pred
+  "Returns a predicate that returns true, if `e` is an ancestor of the node with id `v` in the `model`."
+  [model v]
+  (fn [e]
+    (contains? (ancestor-nodes model (resolve-id model v)) e)))
 
 ;;
 ;; Building criterium predicates and filters
@@ -474,87 +503,87 @@
     ;;
     ;; element related
     ;;
-
+    
     ;; TODO generic handling of operators [?, !]
-    (= :key? k)                    (partial el/key-check? v)
-    (= :key k)                     (partial el/key? v)
-    (= :model-node? k)             (partial el/model-node-check? v)
-    (= :model-relation? k)         (partial el/model-relation-check? v)
-    (= :el k)                      (partial el/el? v)
-    (= :els k)                     (partial el/els? v)
-    (= :!els k)                    (complement (partial el/els? v))
-    (= :namespace k)               (partial el/namespace? v)
-    (= :!namespace k)              (complement (partial el/namespace? v))
-    (= :namespaces k)              (partial el/namespaces? v)
-    (= :namespace-prefix k)        (partial el/namespace-prefix? v)
-    (= :namespace-prefixes k)      (partial el/namespace-prefixes? v)
-    (= :from-namespace k)          (partial el/from-namespace? v)
-    (= :from-namespaces k)         (partial el/from-namespaces? v)
-    (= :from-namespace-prefix k)   (partial el/from-namespace-prefix? v)
-    (= :from-namespace-prefixes k) (partial el/from-namespace-prefixes? v)
-    (= :to-namespace k)            (partial el/to-namespace? v)
-    (= :to-namespaces k)           (partial el/to-namespaces? v)
-    (= :to-namespace-prefix k)     (partial el/to-namespace-prefix? v)
-    (= :to-namespace-prefixes k)   (partial el/to-namespace-prefixes? v)
-    (= :id? k)                     (partial el/id-check? v)
-    (= :id k)                      (partial el/id? v)
-    (= :!id k)                     (complement (partial el/id? v))
-    (= :from k)                    (partial el/from? v)
-    (= :!from k)                   (complement (partial el/from? v))
-    (= :to k)                      (partial el/to? v)
-    (= :!to k)                     (complement (partial el/to? v))
-    (= :subtype? k)                (partial el/subtype-check? v)
-    (= :subtype k)                 (partial el/subtype? v)
-    (= :subtypes k)                (partial el/subtypes? v)
-    (= :!subtypes k)               (complement (partial el/subtypes? v))
-    (= :maturity? k)               (partial el/maturity-check? v)
-    (= :maturity k)                (partial el/maturity? v)
-    (= :maturities k)              (partial el/maturities? v)
-    (= :!maturities k)             (complement (partial el/maturities? v))
-    (= :external? k)               (partial external-check? model v)
-    (= :synthetic? k)              (partial el/synthetic-check? v)
-    (= :name? k)                   (partial el/name-check? v)
-    (= :name k)                    (partial el/name? v)
-    (= :name-prefix k)             (partial el/name-prefix? v)
-    (= :desc? k)                   (partial el/desc-check? v)
-    (= :desc k)                    (partial el/desc? v)
-    (= :doc? k)                    (partial el/doc-check? v)
-    (= :doc k)                     (partial el/doc? v)
-    (= :tech? k)                   (partial el/tech-check? v)
-    (= :tech k)                    (partial el/tech? v)
-    (= :techs k)                   (partial el/techs? v)
-    (= :!techs k)                  (complement (partial el/techs? v))
-    (= :all-techs k)               (partial el/all-techs? v)
-    (= :tags? k)                   (partial el/tags-check? v)
-    (= :tag k)                     (partial el/tag? v)
-    (= :tags k)                    (partial el/tags? v)
-    (= :!tags k)                   (complement (partial el/tags? v)) ; el/all-tags?
-    (= :all-tags k)                (partial el/all-tags? v)
+    (= :key? k)                    (el/key-check-pred v)
+    (= :key k)                     (el/key-pred v)
+    (= :model-node? k)             (el/model-node-pred v)
+    (= :model-relation? k)         (el/model-relation-pred v)
+    (= :el k)                      (el/el-pred v)
+    (= :els k)                     (el/els-pred v)
+    (= :!els k)                    (complement (el/els-pred v))
+    (= :namespace k)               (el/namespace-pred v)
+    (= :!namespace k)              (complement (el/namespace-pred v))
+    (= :namespaces k)              (el/namespaces-pred v)
+    (= :namespace-prefix k)        (el/namespace-prefix-pred v)
+    (= :namespace-prefixes k)      (el/namespace-prefixes-pred v)
+    (= :from-namespace k)          (el/from-namespace-pred v)
+    (= :from-namespaces k)         (el/from-namespaces-pred v)
+    (= :from-namespace-prefix k)   (el/from-namespace-prefix-pred v)
+    (= :from-namespace-prefixes k) (el/from-namespace-prefixes-pred v)
+    (= :to-namespace k)            (el/to-namespace-pred v)
+    (= :to-namespaces k)           (el/to-namespaces-pred v)
+    (= :to-namespace-prefix k)     (el/to-namespace-prefix-pred v)
+    (= :to-namespace-prefixes k)   (el/to-namespace-prefixes-pred v)
+    (= :id? k)                     (el/id-check-pred v)
+    (= :id k)                      (el/id-pred v)
+    (= :!id k)                     (complement (el/id-pred v))
+    (= :subtype? k)                (el/subtype-check-pred v)
+    (= :subtype k)                 (el/subtype-pred v)
+    (= :subtypes k)                (el/subtypes-pred v)
+    (= :!subtypes k)               (complement (el/subtypes-pred v))
+    (= :maturity? k)               (el/maturity-check-pred v)
+    (= :maturity k)                (el/maturity-pred v)
+    (= :maturities k)              (el/maturities-pred v)
+    (= :!maturities k)             (complement (el/maturities-pred v))
+    (= :synthetic? k)              (el/synthetic-check-pred v)
+    (= :name? k)                   (el/name-check-pred v)
+    (= :name k)                    (el/name-pred v)
+    (= :name-prefix k)             (el/name-prefix-pred v)
+    (= :desc? k)                   (el/desc-check-pred v)
+    (= :desc k)                    (el/desc-pred v)
+    (= :doc? k)                    (el/doc-check-pred v)
+    (= :doc k)                     (el/doc-pred v)
+    (= :tech? k)                   (el/tech-check-pred v)
+    (= :tech k)                    (el/tech-pred v)
+    (= :techs k)                   (el/techs-pred v)
+    (= :!techs k)                  (complement (el/techs-pred v))
+    (= :all-techs k)               (el/all-techs-pred v)
+    (= :tags? k)                   (el/tags-check-pred v)
+    (= :tag k)                     (el/tag-pred v)
+    (= :tags k)                    (el/tags-pred v)
+    (= :!tags k)                   (complement (el/tags-pred v)) ; el/all-tags?
+    (= :all-tags k)                (el/all-tags-pred v)
 
     ;; model related
-    (= :refers? k)                 (partial refers-check? model v)
-    (= :referred? k)               (partial referred-check? model v)
-    (= :refers-to k)               (partial refers-to? model v)
-    (= :!refers-to k)              (complement (partial refers-to? model v))
-    (= :referred-by k)             (partial referred-by? model v)
-    (= :!referred-by k)            (complement (partial referred-by? model v))
-    (= :child? k)                  (partial child-check? model v)
-    (= :child-of k)                (partial child? model v)
-    (= :!child-of k)               (complement (partial child? model v))
-    (= :descendant-of k)           (partial descendant-of? model v)
-    (= :!descendant-of k)          (complement (partial descendant-of? model v))
-    (= :children? k)               (partial parent-check? model v) ; deprecate
-    (= :parent? k)                 (partial parent-check? model v)
-    (= :parent-of k)               (partial parent? model v)
-    (= :!parent-of k)              (complement (partial parent? model v))
-    (= :ancestor-of k)             (partial ancestor-of? model v)
-    (= :!ancestor-of k)            (complement (partial ancestor-of? model v))
+    (= :from k)                    (from-pred model v)
+    (= :!from k)                   (complement (from-pred model v))
+    (= :to k)                      (to-pred model v)
+    (= :!to k)                     (complement (to-pred model v))
+    (= :external? k)               (external-check-pred model v)
+    (= :refers? k)                 (refers-check-pred model v)
+    (= :referred? k)               (referred-check-pred model v)
+    (= :refers-to k)               (refers-to-pred model v)
+    (= :!refers-to k)              (complement (refers-to-pred model v))
+    (= :referred-by k)             (referred-by-pred model v)
+    (= :!referred-by k)            (complement (referred-by-pred model v))
+    (= :child? k)                  (child-check-pred model v)
+    (= :child-of k)                (child-pred model v)
+    (= :!child-of k)               (complement (child-pred model v))
+    (= :descendant-of k)           (descendant-of-pred model v)
+    (= :!descendant-of k)          (complement (descendant-of-pred model v))
+    (= :children? k)               (parent-check-pred model v) ; deprecate
+    (= :parent? k)                 (parent-check-pred model v)
+    (= :parent-of k)               (parent-pred model v)
+    (= :!parent-of k)              (complement (parent-pred model v))
+    (= :ancestor-of k)             (ancestor-of-pred model v)
+    (= :!ancestor-of k)            (complement (ancestor-of-pred model v))
 
     :else
     (do (println "unknown criterium" (name k))
         (fn [_] false))))
 
-(defn criteria-predicate
+(defn criteria-map-predicate
   "Returns a filter predicate for the given `criteria`.
    The resulting predicate is a logical conjunction (and) of the predicates for
    each criterium."
@@ -567,7 +596,7 @@
       ; add a predicate which returns true to return at least one predicate
       (apply every-pred (conj (remove nil? predicates) (fn [_] true))))))
 
-(defn criteria-predicates
+(defn criteria-predicate
   "Returns a filter predicate for the given `criteria`.
    If a vector of criteria maps is given, the resulting predicate is a logical
    disjunction (or) of the predicates."
@@ -578,15 +607,15 @@
            predicates []]
       (if (seq remaining)
         (recur (rest remaining)
-               (conj predicates (criteria-predicate model (first remaining))))
+               (conj predicates (criteria-map-predicate model (first remaining))))
         (apply some-fn predicates)))
     ; simple criteria map
-    (criteria-predicate model criteria)))
+    (criteria-map-predicate model criteria)))
 
 (defn filter-xf
   "Returns a filter transducer for the given `criteria`."
   [model criteria]
-  (let [filter-predicates (criteria-predicates model criteria)]
+  (let [filter-predicates (criteria-predicate model criteria)]
     ; compose the filtering functions and create a filter transducer
     (filter filter-predicates)))
 
@@ -605,7 +634,7 @@
    (->> e
         (el/id)
         (get (:referred-id->relations model))
-        (into #{} (referred-xf model (criteria-predicates model criteria))))))
+        (into #{} (referred-xf model (criteria-predicate model criteria))))))
 
 (defn referred-nodes
   "Returns the nodes referred by `e` in the `model`.
@@ -619,7 +648,7 @@
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
-        (into #{} (referrer-xf model (criteria-predicates model criteria))))))
+        (into #{} (referrer-xf model (criteria-predicate model criteria))))))
 
 (defn referring-relations
   "Returns the relations referring to `e` in the `model`.
@@ -632,7 +661,7 @@
    (->> e
         (el/id)
         (get (:referred-id->relations model))
-        (filter (criteria-predicates model criteria)))))
+        (filter (criteria-predicate model criteria)))))
 
 (defn referred-relations
   "Returns the relations referred by `e` in the `model`.
@@ -645,7 +674,7 @@
    (->> e
         (el/id)
         (get (:referrer-id->relations model))
-        (filter (criteria-predicates model criteria)))))
+        (filter (criteria-predicate model criteria)))))
 
 (defn transitive-search
   "Returns the result of a transitive search for the `model` based on the `search-criteria`."
@@ -655,7 +684,7 @@
    (transitive-search model collect-in-vector search-criteria e))
   ([model collect-fn search-criteria e]
    (let [pred-fn (if-let [element-criteria (:element-selection search-criteria)]
-                   (criteria-predicates model element-criteria)
+                   (criteria-predicate model element-criteria)
                    identity)
          children-fn (cond
                        (:referred-node-selection search-criteria)
