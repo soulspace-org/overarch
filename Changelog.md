@@ -7,6 +7,8 @@ Version (NEXT)
 * enhanced element hierarchy and model API for process model elements
 * added criteria-predicate function to model API
 * returned predicate functions for search criteria directly to get rid of partial
+* enhanced :from/:to selection criteria to handle selection critera as parameters
+  * enables relation queries based on the properties of the related nodes
 * enhanced export templates
 * fixed test views
 
