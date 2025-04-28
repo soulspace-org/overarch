@@ -29,7 +29,8 @@
       architecture-model-elements (filter m/architecture-model-element? e)
       state-machine-model-elements (filter m/state-machine-model-element? e)
       code-model-elements (filter m/code-model-element? e)
-      deployment-model-elements (filter m/deployment-model-element? e)]
+      deployment-model-elements (filter m/deployment-model-element? e)
+      organization-model-elements (filter m/organization-model-element? e)]
 
 %>;;;;
 ;;;; Model for Namespace <%= (m/element-namespace (first e)) %>
@@ -41,21 +42,19 @@
   ;;;
   ;;; Concept Model Elements
   ;;;
-  ;;
+
   ;; Nodes
-  ;;
 <%
     (doseq [el (sort-by :id (filter m/model-node? concept-model-elements))]
-%><%= (element-to-render el) %>
+%>  <%= (element-to-render el) %>
 <%
     )
 %>
-  ;;
+
   ;; Relations
-  ;;
 <%
     (doseq [el (sort-by :id (filter m/model-relation? concept-model-elements))]
-%><%= (element-to-render el) %>
+%>  <%= (element-to-render el) %>
 <%
     )
   )
@@ -65,21 +64,19 @@
   ;;;
   ;;; Use Case Model Elements
   ;;;
-  ;;
+
   ;; Nodes
-  ;;
 <%
     (doseq [el (sort-by :id (filter m/model-node? use-case-model-elements))]
-%><%= (element-to-render el) %>
+%>  <%= (element-to-render el) %>
 <%
     )
 %>
-  ;;
+
   ;; Relations
-  ;;
 <%
     (doseq [el (sort-by :id (filter m/model-relation? use-case-model-elements))]
-%><%= (element-to-render el) %>
+%>  <%= (element-to-render el) %>
 <%
     )
   )
@@ -89,7 +86,87 @@
   ;;;
   ;;; Architecture Model Elements
   ;;;
+
+  ;; Nodes
 <%
+    (doseq [el (sort-by :id (filter m/model-node? architecture-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+%>
+
+  ;; Relations
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? architecture-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+  )
+
+  (when (seq code-model-elements)
+%>
+  ;;;
+  ;;; Code Model Elements
+  ;;;
+
+  ;; Nodes
+<%
+    (doseq [el (sort-by :id (filter m/model-node? code-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+%>
+
+  ;; Relations
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? code-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+  )
+
+  (when (seq deployment-model-elements)
+%>
+  ;;;
+  ;;; Deployment Model Elements
+  ;;;
+
+  ;; Nodes
+<%
+    (doseq [el (sort-by :id (filter m/model-node? deployment-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+%>
+
+  ;; Relations
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? deployment-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+  )
+
+  (when (seq organization-model-elements)
+%>
+  ;;;
+  ;;; Organization Model Elements
+  ;;;
+
+  ;; Nodes
+<%
+    (doseq [el (sort-by :id (filter m/model-node? organization-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
+%>
+
+  ;; Relations
+<%
+    (doseq [el (sort-by :id (filter m/model-relation? organization-model-elements))]
+%>  <%= (element-to-render el) %>
+<%
+    )
   )
 %>
  }

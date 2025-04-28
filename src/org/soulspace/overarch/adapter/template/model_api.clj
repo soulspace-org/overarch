@@ -78,6 +78,16 @@
   [e]
   (isa? el/element-hierarchy (:el e) :use-case-model-element))
 
+(defn organization-model-element?
+  "Returns true if the given element `e` is a organization model element."
+  [e]
+  (isa? el/element-hierarchy (:el e) :organization-model-element))
+
+(defn process-model-element?
+  "Returns true if the given element `e` is a process model element."
+  [e]
+  (isa? el/element-hierarchy (:el e) :process-model-element))
+
 ;;;
 ;;; Element functions
 ;;;

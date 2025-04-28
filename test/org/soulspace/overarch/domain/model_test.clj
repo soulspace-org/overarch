@@ -339,47 +339,29 @@
   (testing "ancestor-nodes true"
     (are [x y] (= x (ancestor-nodes hierarchy-model1 y))
       #{{:el :system
-         :id :a/system
-         :ct #{{:el :container
-                :id :a/container
-                :ct #{{:el :component
-                       :id :a/component}}}}}
+         :id :a/system}
         {:el :container
-         :id :a/container
-         :ct #{{:el :component
-                :id :a/component}}}}
+         :id :a/container}}
       {:el :component
        :id :a/component}
 
       #{{:el :system
-         :id :a/system
-         :ct #{{:el :container
-                :id :a/container
-                :ct #{{:el :component
-                       :id :a/component}}}}}}
+         :id :a/system}}
       {:el :container
-       :id :a/container
-       :ct #{{:el :component
-              :id :a/component}}}))
+       :id :a/container}))
   (testing "ancestor-nodes with refs true"
     (are [x y] (= x (ancestor-nodes hierarchy-model2 y))
       #{{:el :system
-         :id :a/system
-         :ct #{{:ref :a/container}}}
+         :id :a/system}
         {:el :container
-         :id :a/container
-         :ct #{{:el :component
-                :id :a/component}}}}
+         :id :a/container}}
       {:el :component
        :id :a/component}
 
       #{{:el :system
-         :id :a/system
-         :ct #{{:ref :a/container}}}}
+         :id :a/system}}
       {:el :container
-       :id :a/container
-       :ct #{{:el :component
-              :id :a/component}}})))
+       :id :a/container})))
 
 (deftest ancestor-node?-test
   (testing "ancestor-node? true"
@@ -388,16 +370,10 @@
                                      :id :a/component}
                                     y))
       true {:el :system
-            :id :a/system
-            :ct #{{:el :container
-                   :id :a/container
-                   :ct #{{:el :component
-                          :id :a/component}}}}}
+            :id :a/system}
 
       true {:el :container
-            :id :a/container
-            :ct #{{:el :component
-                   :id :a/component}}}))
+            :id :a/container}))
   (testing "ancestor-node? false"
     (are [x y] (= x (ancestor-node? hierarchy-model1
                                     {:el :component
@@ -410,35 +386,24 @@
   (testing "descendant-nodes true"
     (are [x y] (= x (descendant-nodes hierarchy-model1 y))
       #{{:el :container
-         :id :a/container
-         :ct #{{:el :component
-                :id :a/component}}}
+         :id :a/container}
         {:el :component
          :id :a/component}}
       {:el :system
-       :id :a/system
-       :ct #{{:el :container
-              :id :a/container
-              :ct #{{:el :component
-                     :id :a/component}}}}}
+       :id :a/system}
 
       #{{:el :component
          :id :a/component}}
       {:el :container
-       :id :a/container
-       :ct #{{:el :component
-              :id :a/component}}}))
+       :id :a/container}))
   (testing "descendant-nodes with refs true"
     (are [x y] (= x (descendant-nodes hierarchy-model2 y))
       #{{:el :container
-         :id :a/container
-         :ct #{{:el :component
-                :id :a/component}}}
+         :id :a/container}
         {:el :component
          :id :a/component}}
       {:el :system
-       :id :a/system
-       :ct #{{:ref :a/container}}}
+       :id :a/system}
 
       #{{:el :component
          :id :a/component}}
@@ -451,24 +416,14 @@
   (testing "descendant-node? true"
     (are [x y] (= x (descendant-node? hierarchy-model1
                                       {:el :system
-                                       :id :a/system
-                                       :ct #{{:el :container
-                                              :id :a/container
-                                              :ct #{{:el :component
-                                                     :id :a/component}}}}}
+                                       :id :a/system}
                                       y))
-      true {:el :container :id :a/container
-            :ct #{{:el :component
-                   :id :a/component}}}
+      true {:el :container :id :a/container}
       true {:el :component :id :a/component}))
   (testing "descendant-node? false"
     (are [x y] (= x (descendant-node? hierarchy-model1 hierarchy-input1 y))
       false {:el :system
-             :id :a/system
-             :ct #{{:el :container
-                    :id :a/container
-                    :ct #{{:el :component
-                           :id :a/component}}}}})))
+             :id :a/system})))
 
 (def filter-input
   #{{:el :person
@@ -558,10 +513,7 @@
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}
+         :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
@@ -586,34 +538,7 @@
          :name "Component1"}}
       {:el :system
        :id :org.soulspace.internal/system
-       :name "Internal System"
-       :ct #{{:el :container
-              :id :org.soulspace.internal.system/container1
-              :name "Container1"
-              :tech "Clojure"
-              :tags #{"autoscaled"}
-              :ct #{{:el :component
-                     :id :org.soulspace.internal.system.container1/component1
-                     :name "Component1"}}}
-             {:el :container
-              :id :org.soulspace.internal.system/container1-ui
-              :name "Container1 UI"
-              :tech "ClojureScript"}
-             {:el :container
-              :id :org.soulspace.internal.system/container1-db
-              :subtype :database
-              :name "Container1 DB"
-              :tech "Datomic"}
-             {:el :container
-              :id :org.soulspace.internal.system/container2
-              :name "Container2"
-              :tech "Java"
-              :tags #{"critical" "autoscaled"}}
-             {:el :container
-              :id :org.soulspace.internal.system/container2-topic
-              :subtype :queue
-              :name "Container2 Events"
-              :tech "Kafka"}}}
+       :name "Internal System"}
       ;
       #{{:el :component
          :id :org.soulspace.internal.system.container1/component1
@@ -622,10 +547,7 @@
        :id :org.soulspace.internal.system/container1
        :name "Container1"
        :tech "Clojure"
-       :tags #{"autoscaled"}
-       :ct #{{:el :component
-              :id :org.soulspace.internal.system.container1/component1
-              :name "Component1"}}}
+       :tags #{"autoscaled"}}
       ;
       #{}
       {:el :component
@@ -655,72 +577,15 @@
       ;
       #{{:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}}
+         :name "Internal System"}}
       #{{:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}
+         :name "Internal System"}
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}
+         :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
@@ -756,42 +621,12 @@
 
       #{{:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}
+         :name "Internal System"}
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}
+         :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
@@ -816,34 +651,7 @@
          :tech "Kafka"}}
       #{{:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}}
+         :name "Internal System"}}
       ;
       )))
 
@@ -869,10 +677,7 @@
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}
+         :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container2
          :name "Container2"
@@ -927,10 +732,7 @@
          :id :org.soulspace.internal.system/container1
          :name "Container1"
          :tech "Clojure"
-         :tags #{"autoscaled"}
-         :ct #{{:el :component
-                :id :org.soulspace.internal.system.container1/component1
-                :name "Component1"}}}}
+         :tags #{"autoscaled"}}}
       {:tag "autoscaled"}
 
       #{{:el :container
@@ -955,34 +757,7 @@
          :name "External System 1"}
         {:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}}
+         :name "Internal System"}}
       {:el :system :referred? true}
 
       #{{:el :person
@@ -1008,34 +783,7 @@
 
       #{{:el :system
          :id :org.soulspace.internal/system
-         :name "Internal System"
-         :ct #{{:el :container
-                :id :org.soulspace.internal.system/container1
-                :name "Container1"
-                :tech "Clojure"
-                :tags #{"autoscaled"}
-                :ct #{{:el :component
-                       :id :org.soulspace.internal.system.container1/component1
-                       :name "Component1"}}}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-ui
-                :name "Container1 UI"
-                :tech "ClojureScript"}
-               {:el :container
-                :id :org.soulspace.internal.system/container1-db
-                :subtype :database
-                :name "Container1 DB"
-                :tech "Datomic"}
-               {:el :container
-                :id :org.soulspace.internal.system/container2
-                :name "Container2"
-                :tech "Java"
-                :tags #{"critical" "autoscaled"}}
-               {:el :container
-                :id :org.soulspace.internal.system/container2-topic
-                :subtype :queue
-                :name "Container2 Events"
-                :tech "Kafka"}}}}
+         :name "Internal System"}}
       {:ancestor-of :org.soulspace.internal.system/container1}
 
       #{{:el :component

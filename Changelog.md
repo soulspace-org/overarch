@@ -3,7 +3,9 @@ Changelog
 
 Version (NEXT)
 --------------
-* fixed view export template
+* dropped :ct key in loaded model nodes
+* enhanced element hierarchy and model API for process model elements
+* enhanced export templates
 * fixed test views
 
 Version 0.36.0

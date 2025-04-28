@@ -540,6 +540,7 @@
       (derive :code-model-node                   :model-node)
       (derive :concept-model-node                :model-node)
       (derive :organization-model-node           :model-node)
+      (derive :process-model-node                :model-node)
       (derive :boundary                          :model-node)
 
       ;; model relations
@@ -550,6 +551,7 @@
       (derive :code-model-relation               :model-relation)
       (derive :concept-model-relation            :model-relation)
       (derive :organization-model-relation       :model-relation)
+      (derive :process-model-relation            :model-relation)
 
       (derive :implements                        :model-relation)
       (derive :contained-in                      :model-relation)

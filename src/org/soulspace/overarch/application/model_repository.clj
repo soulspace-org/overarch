@@ -134,7 +134,7 @@
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
   [acc p e]
-  (let [identified-e (identified-node e p)
+  (let [identified-e (dissoc (identified-node e p) :ct)
         problems (remove nil? (check-element acc p identified-e))]
     (if (and p (input-child? e p))
             ; a child node, add a contained in relationship, too
