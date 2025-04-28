@@ -151,6 +151,11 @@
       nil
       result)))
 
+(defn criteria-predicate
+  "Returns a predicate function for the `model` and the `criteria`."
+  [model criteria]
+  (model/criteria-predicate model criteria))
+
 (defn parent
   "Returns the parent of the node `e` in the `model`."
   [model e]
