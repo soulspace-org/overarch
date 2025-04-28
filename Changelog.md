@@ -5,6 +5,8 @@ Version (NEXT)
 --------------
 * dropped :ct key in loaded model nodes
 * enhanced element hierarchy and model API for process model elements
+* added criteria-predicate function to model API
+* returned predicate functions for search criteria directly to get rid of partial
 * enhanced export templates
 * fixed test views
 
@@ -17,7 +19,7 @@ Version 0.36.0
   * the templates have been updated to reflect those changes
 * report model file name on exception in import
 * report missing or duplicate element ids and parent overrides
-* added `:collapsed` key to mark nodes that should not be expanded in a C4/UML view
+* added `:collapsed` key to mark nodes that should not be expanded in a hierarchical (C4/UML) view
   * `:collapsed true` should be added on a `:ref` to the node in the content of the view
 * added flexibility in view attributes
 * added predicates for resolveable elements and relations

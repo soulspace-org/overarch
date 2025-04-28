@@ -95,12 +95,7 @@
    (eval parsed-template data)))
 
 (comment ; Comb
-  (defn greet-code [x] (print "Hello" x "!"))
-
-  (core/eval (read-string "el/technical-architecture-node-types"))
-
   (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!")
-  (core/eval (read-string (parse-string (slurp "templates/ns-test.cmb"))))
 
   (t/apply-template :comb "Hello" {})
   (t/apply-template :comb "Hello<% (dotimes [x 3] %> World<% ) %>!" {})
