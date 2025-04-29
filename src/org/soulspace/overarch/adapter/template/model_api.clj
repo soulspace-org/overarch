@@ -11,6 +11,28 @@
 ;;;; Not yet stable!
 ;;;;
 
+(def model-queries
+  {:role-model          [{:els #{:person}}
+                         {:from {:els #{:person}}}]
+   :concept-model       [{:els #{:concept}}
+                         {:els #{:is-a :has :rel}}]
+   :use-case-model      [{:els #{:actor :use-case}}
+                         {:els #{:uses :include :extends :generalizes}}]
+   :architecture-model  [{:els #{:enterprise-boundary :context-boundary :system :container :component}}
+                         {:els #{:request :response :publish :subscribe :send :dataflow}}]
+   :state-machine-model [{:els #{:state-machine :state :start-state :end-state :fork :join}}
+                         {:els #{:transition}}]
+   :code-model          [{:els #{:package :namespace :interface :protocol :class :field :method :enum :enum-value :function :stereotype}}
+                         {:els #{:inheritance :implementation :composition :aggregation :association :dependency}}]
+   :deployment-model    [{:els #{:node}}
+                         {:els #{:link :deployed-to}}]
+   :organization-model  [{:els #{:organization :org-unit}}
+                         {:els #{:responsible-for :collaborates-with}}]
+   :process-model       [{:els #{:capability :process :artifact :requirement :information :knowledge :decision}}
+                         {:els #{:input-of :output-of}}]
+   :trace-model         [{:els #{:implements}}]})
+
+
 ;;; TODO close over model!?
 
 (def model-node-type-order

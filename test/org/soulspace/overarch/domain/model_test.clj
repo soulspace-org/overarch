@@ -502,7 +502,6 @@
 
 (comment
   filter-model1
-
   ;
   )
 
@@ -747,7 +746,32 @@
          :subtype :database
          :name "Container1 DB"
          :tech "Datomic"}}
-      {:key [:tech "Datomic"]}))
+      {:key [:tech "Datomic"]}
+
+      #{{:el :request
+         :id :org.soulspace.external/person-uses-system1
+         :from :org.soulspace.external/person
+         :to :org.soulspace.external/system1
+         :name "uses"}
+        {:el :request
+         :id :org.soulspace.internal/person-uses-system
+         :from :org.soulspace.internal/person
+         :to :org.soulspace.internal/system
+         :name "uses"}
+        {:el :request
+         :id :org.soulspace.internal/person-uses-container1-ui
+         :from :org.soulspace.internal/person
+         :to :org.soulspace.internal.system/container1-ui
+         :name "uses"}}
+      {:from {:el :person}}
+
+      #{{:el :request
+         :id :org.soulspace.internal/person-uses-container1-ui
+         :from :org.soulspace.internal/person
+         :to :org.soulspace.internal.system/container1-ui
+         :name "uses"}}
+      {:from {:el :person}
+       :to {:el :container}}))
 
   (testing "filter-xf with single criteria map and model based criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
