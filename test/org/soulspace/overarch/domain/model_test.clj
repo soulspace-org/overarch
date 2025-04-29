@@ -702,6 +702,11 @@
          :name "Internal Person"}}
       {:el :person :external? false}
 
+      #{{:el :person
+         :id :org.soulspace.internal/person
+         :name "Internal Person"}}
+      {:el :person :!id :org.soulspace.external/person}
+
       #{{:el :request
          :id :org.soulspace.external/person-uses-system1
          :from :org.soulspace.external/person
@@ -771,7 +776,37 @@
          :to :org.soulspace.internal.system/container1-ui
          :name "uses"}}
       {:from {:el :person}
-       :to {:el :container}}))
+       :to {:el :container}}
+
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}
+        {:el :person
+         :id :org.soulspace.internal/person
+         :name "Internal Person"}}
+      {:refers {:el :request}}
+
+      #{{:el :system
+         :id :org.soulspace.external/system1
+         :external true
+         :name "External System 1"}
+        {:el :system
+         :id :org.soulspace.internal/system
+         :name "Internal System"}
+        {:el :container
+         :id :org.soulspace.internal.system/container1-ui
+         :name "Container1 UI"
+         :tech "ClojureScript"}}
+      {:referred {:el :request}}
+
+      #{{:el :person
+         :id :org.soulspace.external/person
+         :external true
+         :name "External Person"}}
+      {:refers {:el :request
+                :to {:el :system
+                     :external? true}}}))
 
   (testing "filter-xf with single criteria map and model based criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))

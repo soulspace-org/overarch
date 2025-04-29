@@ -9,6 +9,8 @@ Version (NEXT)
 * returned predicate functions for search criteria directly to get rid of partial
 * enhanced :from/:to selection criteria to handle selection critera as parameters
   * enables relation queries based on the properties of the related nodes
+* added :refers/:referred selection criteria
+  * enables node queries based on the properties of the relations referring to them
 * enhanced export templates
 * fixed test views
 
