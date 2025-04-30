@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.37.0
 --------------
 * dropped :ct key in loaded model nodes
 * enhanced element hierarchy and model API for process model elements
@@ -13,6 +13,7 @@ Version (NEXT)
   * enables node queries based on the properties of the relations referring to them
 * enhanced export templates
 * fixed test views
+* enhanced assertions for selection criteria
 
 Version 0.36.0
 --------------

@@ -248,6 +248,7 @@ A component is unit of software, which lives in a container of the system.
 
 ### Relations
 Relations describe the connections and interactions of the parts of a view.
+The relations in the architecture model have different semantics depending on their type.
 
 kind        | sync/async  | dependency  | description
 ------------|-------------|-------------|------------
@@ -257,8 +258,6 @@ kind        | sync/async  | dependency  | description
 :publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
 :subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
 :dataflow   | unspecified | unspecified | flow of data independent of the call semantic
-:rel        | unspecified | unspecified | unclassified relation
-
 
 ### Additional Keys for Architecture Model Relations
 key       | type    | values             | description 
