@@ -1,4 +1,34 @@
-{:views {:context-view {:nodes {:els #{:enterprise-boundary :context-boundary
+{:models {:role-model {:nodes {:els #{:person}}
+                       :relations {:els #{:role-in}}}
+          :concept-model {:nodes {:els #{:concept}}
+                          :relations {:els #{:is-a :has :part-of :rel}}}
+          :organization-model {:nodes {:els #{:organization :org-unit}}
+                               :relations {:els #{:responsible-for :collaborates-with}}}
+          :process-model {:nodes {:els #{:capability :knowledge :information :process
+                                         :artifact :requirement :decision}}
+                          :relations {:els #{:role-in :required-for :input-of :output-of}}}
+          :use-case-model {:nodes {:els #{:use-case :actor :person :system :container
+                                          :context-boundary}}
+                           :relations {:els #{:uses :include :extends :generalizes}}}
+          :architecture-model {:nodes {:els #{:enterprise-boundary :context-boundary
+                                              :system :container :component}}
+                               :relations {:els #{:request :response :publish
+                                                  :subscribe :send :dataflow}}}
+          :state-machine-model {:nodes {:els #{:state-machine :start-state :end-state
+                                               :state :fork :join :choice
+                                               :history-state :deep-history-state}}
+                                :relations {:els #{:transition}}}
+          :deployment-model {:nodes {:els #{:node :container}}
+                             :relations {:els #{:link :deployed-to}}}
+          :code-model {:nodes {:els #{:annotation :class :enum :enum-value
+                                      :field :function :interface :method
+                                      :namespace :package :parameter
+                                      :protocol :stereotype}}
+                       :relations {:els #{:aggregation :association :composition
+                                          :dependency :implementation :inheritance}}}
+          ;
+          }
+ :views {:context-view {:nodes {:els #{:enterprise-boundary :context-boundary
                                        :system :person}}
                         :relations {:els #{:request :response :publish
                                            :subscribe :send :dataflow}}
