@@ -744,9 +744,7 @@ criteria key           | type            | example values               | descri
 :id?                   | boolean         | true, false                  | elements for which the ``:id`` check returns the given value
 :id                    | keyword         | :org.soulspace/overarch      | the element with the given ``:id``
 :from                  | criteria        | {:el system :external? true} | relations where the ``:from`` node matches the criteria
-criteria
 :to                    | criteria        | {:el system :external? true} | relations where the ``:to`` node matches the criteria
-criteria
 :subtype?              | boolean         | true, false                  | nodes for which the ``:subtype`` check returns the given boolean value
 :subtype               | keyword         | :queue                       | nodes of the given ``:subtype``
 :subtypes              | set of keywords | #{:queue :database}          | nodes of one of the given ``:subtype``s
@@ -777,10 +775,8 @@ criteria
 :child?                | boolean         | true, false                  | nodes for which the check for child returns the given value
 :child-of              | keyword         | :org.soulspace/overarch      | nodes which are children of the node with the given id
 :descendant-of         | keyword         | :org.soulspace/overarch      | nodes which are descendants of the node with the given id
-id
 :parent?               | boolean         | true, false                  | nodes for which the check for children returns the given value
 :parent-of             | keyword         | :org.soulspace/overarch      | node which is the parent of the node with the given id
-id
 :ancestor-of           | keyword         | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
 ## Deprecated Criteria keys
