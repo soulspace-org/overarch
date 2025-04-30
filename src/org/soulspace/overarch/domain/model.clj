@@ -521,10 +521,7 @@
     (if (str/starts-with? key-name "!")
       (complement (criterium-predicate model [(keyword (subs key-name 1)) v]))
       (cond
-        ;;
         ;; element related
-        ;;
-
         (= :key? k)                    (el/key-check-pred v)
         (= :key k)                     (el/key-pred v)
         (= :model-node? k)             (el/model-node-pred v)
@@ -535,14 +532,14 @@
         (= :namespaces k)              (el/namespaces-pred v)
         (= :namespace-prefix k)        (el/namespace-prefix-pred v)
         (= :namespace-prefixes k)      (el/namespace-prefixes-pred v)
-        (= :from-namespace k)          (el/from-namespace-pred v)
-        (= :from-namespaces k)         (el/from-namespaces-pred v)
-        (= :from-namespace-prefix k)   (el/from-namespace-prefix-pred v)
-        (= :from-namespace-prefixes k) (el/from-namespace-prefixes-pred v)
-        (= :to-namespace k)            (el/to-namespace-pred v)
-        (= :to-namespaces k)           (el/to-namespaces-pred v)
-        (= :to-namespace-prefix k)     (el/to-namespace-prefix-pred v)
-        (= :to-namespace-prefixes k)   (el/to-namespace-prefixes-pred v)
+        (= :from-namespace k)          (el/from-namespace-pred v) ; deprecated
+        (= :from-namespaces k)         (el/from-namespaces-pred v) ; deprecated
+        (= :from-namespace-prefix k)   (el/from-namespace-prefix-pred v) ; deprecated
+        (= :from-namespace-prefixes k) (el/from-namespace-prefixes-pred v) ; deprecated
+        (= :to-namespace k)            (el/to-namespace-pred v) ; deprecated
+        (= :to-namespaces k)           (el/to-namespaces-pred v) ; deprecated
+        (= :to-namespace-prefix k)     (el/to-namespace-prefix-pred v) ; deprecated
+        (= :to-namespace-prefixes k)   (el/to-namespace-prefixes-pred v) ; deprecated
         (= :id? k)                     (el/id-check-pred v)
         (= :id k)                      (el/id-pred v)
         (= :subtype? k)                (el/subtype-check-pred v)
@@ -581,7 +578,7 @@
         (= :child? k)                  (child-check-pred model v)
         (= :child-of k)                (child-pred model v)
         (= :descendant-of k)           (descendant-of-pred model v)
-        (= :children? k)               (parent-check-pred model v) ; deprecate
+        (= :children? k)               (parent-check-pred model v) ; deprecated
         (= :parent? k)                 (parent-check-pred model v)
         (= :parent-of k)               (parent-pred model v)
         (= :ancestor-of k)             (ancestor-of-pred model v)
