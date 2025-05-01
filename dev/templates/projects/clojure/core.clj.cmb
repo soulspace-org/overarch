@@ -4,6 +4,8 @@
 (ns <%= (namespace (:id e)) %>/<%= (name (:id e)) %>
   "Functions for <%= (:desc e) %>")
 
+;; TODO add functionality
+
 (defn foo
   "docstring"
   [param]

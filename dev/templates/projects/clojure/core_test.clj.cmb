@@ -5,6 +5,8 @@
   (:require [clojure.test :refer :all]
             [(namespace (:id e)) %>/<%= (name (:id e)) %> :refer :all]))
 
+;; TODO add real tests here
+
 (deftest compile-test
   (testing "Just compilation"
     (is = 1 1)))
