@@ -85,16 +85,35 @@
        (map (model/element-resolver model))
        (map :styles)))
 
+(defn styles-spec
+  "Returns the styles specification for the `model` and the `view`."
+  [model view]
+  (let [styles (if (contains? view :styles)
+                 (get view :styles #{})
+                 (get-in view [:spec :styles] #{}))]
+    (apply set/union (conj
+                      (themes->styles model view)
+                      styles))))
 ;;
 ;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
 ;; TODO update views in model building by promoting keys from spec to views 
 ;;
-(defn styles-spec
-  "Returns the styles specification for the `model` and the `view`."
-  [model view]
-  (apply set/union (conj
-                    (themes->styles model view)
-                    (get-in view [:spec :styles] #{}))))
+
+(defn plantuml-spec
+  "Returns the plantuml specification for the `view`."
+  [view]
+  (if (contains? view :plantuml)
+    (get view :plantuml [])
+    (get-in view [:spec :plantuml] [])))
+
+(defn graphviz-spec
+  "Returns the graphviz specification for the `view`."
+  [view]
+  (if (contains? view :graphviz)
+    (get view :graphviz [])
+    (get-in view [:spec :graphviz] [])))
+
+
 
 ;;;
 ;;; View functions

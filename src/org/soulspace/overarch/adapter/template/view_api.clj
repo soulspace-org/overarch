@@ -4,7 +4,8 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.model-repository :as repo]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [org.soulspace.overarch.adapter.template.view-api :as v]))
 
 ;;;;
 ;;;; Not yet stable!
@@ -48,3 +49,61 @@
    (view/elements-to-render model view))
   ([model view coll]
    (view/elements-to-render model view coll)))
+
+(defn include-spec
+  "Returns the include specification for the `view`. Defaults to :referenced-only."
+  [view]
+  (view/include-spec view))
+
+(defn layout-spec
+  "Returns the layout specification for the `view`. Defaults to :top-down."
+  [view]
+  (view/layout-spec view))
+
+(defn legend-spec
+  "Returns the legend specification for the `view`. Defaults to true."
+  [view]
+  (view/legend-spec view))
+
+(defn linetype-spec
+  "Returns the linetype specification for the `view`. Defaults to :polygonal."
+  [view]
+  (view/linetype-spec view))
+
+(defn selection-spec
+  "Returns the selection specification for the `view`."
+  [view]
+  (view/selection-spec view))
+
+(defn sketch-spec
+  "Returns the sketch specification for the `view`. Defaults to false."
+  [view]
+  (view/sketch-spec view))
+
+(defn expand-external-spec
+  "Returns the expand external specification for the `view`."
+  [view]
+  (view/expand-external-spec view))
+
+(defn themes-spec
+  "Returns the themes specification for the `view`."
+  [view]
+  (view/themes-spec view))
+
+(defn styles-spec
+  "Returns the styles specification for the `model` and the `view`."
+  [model view]
+  (view/styles-spec model view))
+
+(defn plantuml-spec
+  "Returns the plantuml specification for the `view`."
+  [view]
+  (view/plantuml-spec view))
+
+(defn graphviz-spec
+  "Returns the graphviz specification for the `view`."
+  [view]
+  (view/graphviz-spec view))
+
+
+
