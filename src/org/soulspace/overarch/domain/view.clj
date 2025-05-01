@@ -25,56 +25,56 @@
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
   [view]
-  (if (seq (:include view))
+  (if (contains? view :include)
     (get view :include :referenced-only)
     (get-in view [:spec :include] :referenced-only)))
 
 (defn layout-spec
   "Returns the layout specification for the `view`. Defaults to :top-down."
   [view]
-  (if (seq (:layout view))
+  (if (contains? view :layout)
     (get view :layout :top-down)
     (get-in view [:spec :layout] :top-down)))
 
 (defn legend-spec
   "Returns the legend specification for the `view`. Defaults to true."
   [view]
-  (if (seq (:legend view))
+  (if (contains? view :legend)
     (get view :legend true)
     (get-in view [:spec :legend] true)))
 
 (defn linetype-spec
   "Returns the linetype specification for the `view`. Defaults to :polygonal."
   [view]
-  (if (seq (:linetype view))
+  (if (contains? view :linetype)
     (get view :linetype :polygonal)
     (get-in view [:spec :linetype])))
 
 (defn selection-spec
   "Returns the selection specification for the `view`."
   [view]
-  (if (seq (:selection view))
+  (if (contains? view :selection)
     (get view :selection)
     (get-in view [:spec :selection])))
 
 (defn sketch-spec
   "Returns the sketch specification for the `view`. Defaults to false."
   [view]
-  (if (seq (:sketch view))
+  (if (contains? view :sketch)
     (get view :sketch false)
     (get-in view [:spec :sketch] false)))
 
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
   [view]
-  (if (seq (:expand-external view))
+  (if (contains? view :expand-external)
     (get view :expand-external false)
     (get-in view [:spec :expand-external] false)))
 
 (defn themes-spec
   "Returns the themes specification for the `view`."
   [view]
-  (if (seq (:themes view))
+  (if (contains? view :themes)
     (get view :themes [])
     (get-in view [:spec :themes] [])))
 

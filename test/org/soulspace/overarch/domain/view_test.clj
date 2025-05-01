@@ -155,6 +155,33 @@
                    :to :test/container-queue1
                    :name "sends to"}}))
 
+(deftest layout-spec-test
+  (testing "Layout in :spec"
+    (is (= :left-right (layout-spec {:el :context-view
+                                     :id :test/c4-context-view
+                                     :title "Context View"
+                                     :spec {:layout :left-right}
+                                     :ct []}))))
+  (testing "Layout in view"
+    (is (= :left-right (layout-spec {:el :context-view
+                                     :id :test/c4-context-view
+                                     :title "Context View"
+                                     :layout :left-right
+                                     :ct []})))))
+
+(deftest include-spec-test
+  (testing "Include in :spec"
+    (is (= :related (include-spec {:el :context-view
+                                     :id :test/c4-context-view
+                                     :title "Context View"
+                                     :spec {:include :related}
+                                     :ct []}))))
+  (testing "Include in view"
+    (is (= :related (include-spec {:el :context-view
+                                     :id :test/c4-context-view
+                                     :title "Context View"
+                                     :include :related
+                                     :ct []})))))
 
 (deftest referenced-elements-test
   (testing "referenced-elements Refs Only"
