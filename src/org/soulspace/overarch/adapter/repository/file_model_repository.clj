@@ -1,12 +1,11 @@
 (ns org.soulspace.overarch.adapter.repository.file-model-repository
   (:require [clojure.edn :as edn]
-            [clojure.string :as str]
             [org.soulspace.overarch.application.model-repository :as mr]
             [org.soulspace.overarch.domain.spec :as spec]
             [org.soulspace.overarch.util.io :as io]))
 
 ;; TODO different file model repositories?
-;; TODO Rewrite input model on load? Could be different for different input formats
+;; TODO transform input model on load? could be different for different input formats
 
 (defn read-model-file
   "Reads a model `file`."
