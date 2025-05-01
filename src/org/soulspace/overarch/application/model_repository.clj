@@ -283,6 +283,7 @@
            :build-problems
            (concat (:build-problems acc) problems))))
 
+; TODO update views in model building by promoting keys from spec to views 
 (defn add-view
   "Update the accumulator `acc` of the model with the view `e`
    in the context of the parent `p` (if given)."

@@ -22,6 +22,10 @@
 ;;
 ;; View spec elements
 ;;
+;;
+;; TODO add flexibility for :markdown,
+;; TODO update views in model building by promoting keys from spec to views 
+;;
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
   [view]
@@ -39,9 +43,9 @@
 (defn legend-spec
   "Returns the legend specification for the `view`. Defaults to true."
   [view]
-  (if (contains? view :legend)
-    (get view :legend true)
-    (get-in view [:spec :legend] true)))
+  (not (if (contains? view :no-legend)
+         (get view :no-legend false)
+         (get-in view [:spec :no-legend] false))))
 
 (defn linetype-spec
   "Returns the linetype specification for the `view`. Defaults to :polygonal."
@@ -94,11 +98,6 @@
     (apply set/union (conj
                       (themes->styles model view)
                       styles))))
-;;
-;; TODO add flexibility for :plantuml, :graphviz, :markdown, :expand-external, :styles and :themes
-;; TODO update views in model building by promoting keys from spec to views 
-;;
-
 (defn plantuml-spec
   "Returns the plantuml specification for the `view`."
   [view]
@@ -112,8 +111,6 @@
   (if (contains? view :graphviz)
     (get view :graphviz [])
     (get-in view [:spec :graphviz] [])))
-
-
 
 ;;;
 ;;; View functions

@@ -381,12 +381,11 @@
   "Renders the layout for the C4 diagram."
   [model view]
   ; TODO use destructuring
-  (let [spec (:spec view)
-        layout (view/layout-spec view)
+  (let [layout (view/layout-spec view)
         linetype (view/linetype-spec view)
         sketch (view/sketch-spec view)
         styles (view/styles-spec model view)
-        plantuml-spec (:plantuml spec)] 
+        plantuml-spec (view/plantuml-spec view)] 
     (flatten [(when (seq styles)
                 (into [] (map #(render-c4-style view %)) styles))
               (when sketch
@@ -403,9 +402,8 @@
 (defn render-c4-legend
   "Renders the legend for the diagram."
   [view]
-  (let [spec (:spec view)]
-    [(when-not (:no-legend spec)
-       "SHOW_LEGEND()")]))
+  [(when (view/legend-spec view)
+     "SHOW_LEGEND()")])
 
 ; handle deployment models specifically because containers deployed on nodes
 ; should only be rendered as children of nodes, not on their own

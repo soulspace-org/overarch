@@ -3,7 +3,9 @@ Changelog
 
 Version (NEXT)
 --------------
-* 
+* spec keys (e.g. :selection, :plantuml) can be defined in the view directly
+  * no need for the :spec map anymore
+* added spec accessors to view API
 
 Version 0.37.0
 --------------
