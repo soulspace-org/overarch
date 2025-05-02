@@ -22,11 +22,12 @@ composable and reusable.
 * Models and views as data
   * Reusable and composable models
   * Separation of model and views
-  * C4 architecture and deployment models and views
-  * Use case, state machine and code models and views
-  * Concept models, concept maps and glossaries
-  * Organization structures, collaborations and responsibilities
-  * Process models
+  * Models to capture architecture on different levels
+    * Use case, state machine and code models and views
+    * Concept models, concept maps and glossaries
+    * C4 architecture and deployment models and views
+    * Organization structures, collaborations and responsibilities
+    * Process models
   * Hierarchical models and element references
   * View specific customization of model elements
   * Extensible format
@@ -159,26 +160,29 @@ Further information about modelling with *Overarch* can be found in [Usage](doc/
   :desc "The internal Microsoft Exchange email system."}
 
  ; Context view relations 
- {:el :rel
+ {:el :request
   :id :banking/personal-customer-uses-internet-banking-system
   :from :banking/personal-customer
   :to :banking/internet-banking-system
-  :name "Views account balances and makes payments using"}
- {:el :rel
+  :name "Views account balances and makes payments using"
+  :tech "HTTPS"}
+ {:el :request
   :id :banking/internet-banking-system-uses-email-system
   :from :banking/internet-banking-system
   :to :banking/email-system
-  :name "Sends e-mail using"}
- {:el :rel
+  :name "Sends e-mail using"
+  :tech "HTTPS, REST"}
+ {:el :request
   :id :banking/internet-banking-system-using-mainframe-banking-system
   :from :banking/internet-banking-system
   :to :banking/mainframe-banking-system
   :name "Gets account information from, and makes payments using"}
- {:el :rel
+ {:el :send
   :id :banking/email-system-sends-mail-to-personal-customer
   :from :banking/email-system
   :to :banking/personal-customer
-  :name "Sends e-mail to"}} 
+  :name "Sends e-mail to"
+  :tech "SMTP"}} 
  ```
 
 ### Example of a views specification
