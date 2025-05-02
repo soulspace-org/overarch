@@ -255,6 +255,18 @@ SHOW_LEGEND()
 ### Container View rendered with PlantUML
 ![Container View rendered with PlantUML](/doc/images/banking/container-view.svg)
 
+## Example Models
+Here are some Overarch example model repositories, containing the models and views and also the overarch and plantuml JARs and start scripts:
+
+* [MyBank Model](https://github.com/soulspace-org/my-bank-model) 
+  is a show case model of a banking organization.
+
+* [Overarch Models](https://github.com/lsolbach/overarch-models)
+  contains some personal models about concepts in software development, e.g.
+  * Domain Driven Design
+  * Cloud Computing
+  * DORA State of DevOps
+  * Clean Architecture
 
 ## Build
 Overarch is written in [Clojure](https://clojure.org) and gets built with
@@ -370,19 +382,6 @@ If you use Visual Studio Code as described above, you can start *Overarch* in wa
 See [Usage](doc/usage.md) for additional information on modelling and usage of the *Overarch* CLI tool.
 
 See [Design](doc/design.md) for information about the design of *Overarch*.
-
-## Example Models
-Here are some Overarch example models:
-
-* [MyBank Model](https://github.com/soulspace-org/my-bank-model) 
-  is a show case model of a banking organization.
-
-* [Overarch Models](https://github.com/lsolbach/overarch-models)
-  contains some personal models about concepts in software development, e.g.
-  * Domain Driven Design
-  * Cloud Computing
-  * DORA State of DevOps
-  * Clean Architecture
 
 ## Copyright
 © 2023 Ludger Solbach
