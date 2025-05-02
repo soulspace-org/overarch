@@ -603,6 +603,7 @@ Q: **How can duplication reduced in views of specific instanciations of the mode
    Deployment view to different stages with replacement of the stage
    variable with the name of the stage or stage specific values (e.g.
    CIDR ranges, ...).
+
    Merging of additional elements in the instantiation with elements in
    the template, e.g. local queues for testing in the dev stage, which
    are external in the prod stage.
@@ -624,12 +625,20 @@ A: Overarch would benefit from a template based generation mechanism because
    specific to the context (e.g. the project). The render adapters provided by
    overarch should be generic and useful for all usage contexts.
 
-
 Q: **What properties should a generic generation mechanism have?**
 
-A: 
+A: It should be open, extensible, configurable.
+   Reusing code from overarch makes the templates compact and flexible.
 
-Q: ****
+Q: **What is essential for the model at runtime? What can be dropped from the current model state?**
+
+A: The sets of elements, the id->element, referrer-id->relation and
+   referred-id->relation maps are needed at runtime.
+   The id->element map is used in model building for duplication checks.
+   The id->parent-id map is used to check for parent overrides.
+
+   The id->children is currently not used anymore, as the children function is
+   implemented by the :contained-in relation.
 
 ## PlantUML Export
 

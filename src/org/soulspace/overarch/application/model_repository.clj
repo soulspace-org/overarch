@@ -7,7 +7,6 @@
 ;;;
 ;;; Model building functions
 ;;;
-
 (defn merge-model
   "Merges the `model` with the `other` model."
   ([]
@@ -38,7 +37,6 @@
 ;;
 ;; Input checks
 ;;
-
 (def problem->severity
   "Map of problem to severity."
   {:missing-id :error
@@ -149,7 +147,7 @@
                         (:id identified-e) identified-e
                         (:id c-rel) c-rel))
 
-                     ; currently only one parent is supported here
+               ; currently only one parent is supported here
                :id->parent-id
                (if-let [po (get-in acc [:id->parent-id (:id identified-e)])]
                  (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id identified-e))
