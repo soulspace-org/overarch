@@ -2,15 +2,20 @@
 ;;;; Example architecture views for the Internet Banking System
 ;;;;
 #{;;;
-  ;;; System Context Views
+  ;;; System Context
   ;;;
 
   ;; System context view with criteria based selection of elements
   {:el :context-view
    :id :banking/context-view
-   :spec {:selection {:namespace-prefix "banking"}
+   :spec {:selection {:namespace-prefix "banking"
+                      :model-node? true
+                      :!ids #{:banking/atm :banking/backoffice-stuff
+                              :banking/customer-service-stuff}}
+          :include :relations
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "System Context View of the Internet Banking System"
+   :desc "shows the Internet Banking System and its context"
    :ct [; selected elements will be included automatically        
         ; you can include references for additional elements here
         ; relation references can also be specified here for layout purposes
@@ -20,6 +25,7 @@
   {:el :context-view
    :id :banking/system-context-view
    :title "System Context View of the Internet Banking System"
+   :desc "shows the Internet Banking System and its context"
    :ct [; model elements
         {:ref :banking/personal-customer}
         {:ref :banking/email-system}
@@ -33,51 +39,44 @@
         {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;;;
-  ;;; Container Views
+  ;;; Container
   ;;;
   ;; Container view with criteria based selection of elements
   {:el :container-view
    :id :banking/container-view
-   :spec {:selection {:namespace :banking}
-          :include :related
+   :spec {:selection {:namespace "banking"
+                      :model-node? true
+                      :!ids #{:banking/atm :banking/backoffice-stuff
+                              :banking/customer-service-stuff}}
+          :include :relations
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "Container View of the Internet Banking System"
-   :ct [; selected elements will be included automatically
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
-        ]}
+   :desc "shows the containers of the Internet Banking System and their relations"}
 
   ;;;
-  ;;; Component Views
+  ;;; Components
   ;;;
   {:el :component-view
    :id :banking/component-view
-   :spec {:selection {:namespace-prefix "banking"}
+   :spec {:selection {:namespace-prefix "banking"
+                      :!ids #{:banking/atm :banking/backoffice-stuff
+                              :banking/customer-service-stuff}}
           :include :related}
    :title "Component View of the API Application"
-   :ct []}
+   :desc "shows the components of the Internet Banking System and their relations"}
 
   ;;;
-  ;;; System Landscape View
+  ;;; System Landscape
   ;;;
   {:el :system-landscape-view
    :id :banking/system-landscape-view
-   :title "System Landscape View of Big Bank plc"
-   :ct [; model elements
-        {:ref :banking/big-bank-plc}
-        {:ref :banking/personal-customer}
+   :spec {:selection {:namespace-prefix "banking"}
+          :include :related}
+   :title "System Landscape View of Big Bank plc"}
 
-       ; relations
-        {:ref :banking/personal-customer-uses-atm}
-        {:ref :banking/atm-uses-mainframe-banking-system}
-        {:ref :banking/personal-customer-asks-customer-service-stuff}
-        {:ref :banking/personal-customer-uses-internet-banking-system}
-        {:ref :banking/email-system-sends-mail-to-personal-customer}
-        {:ref :banking/backoffice-stuff-uses-mainframe-banking-system :direction :right}
-        {:ref :banking/customer-service-stuff-uses-mainframe-banking-system}
-        {:ref :banking/internet-banking-system-uses-email-system}
-        {:ref :banking/internet-banking-system-using-mainframe-banking-system}]}
-
+  ;;;
+  ;;; Deployment
+  ;;;
   {:el :deployment-view
    :id :banking.deployment/deployment-view
    ;:spec {:include :related}
@@ -113,7 +112,7 @@
    :name "Big Bank Deployment Structure View"
    :title "Deployment Structure View of Big Bank Datacenter"
    :desc "Shows the hierarchical structure of the infrastructure and deployment elements"}
-  
+
   {:el :use-case-view
    :id :banking/use-case-view
    :spec {:layout :left-right}
@@ -137,13 +136,9 @@
 
   {:el :glossary-view
    :id :banking/glossary-view
-   :spec {:selection {:namespace "banking"}
-          :markdown {:references true}}
+   :spec {:selection {:namespace "banking"}}
    :title "Glossary of the Banking System"
-   :ct [; selected elements will be included automatically
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
-        ]}
+   :desc "defines the elements of the banking model"}
 
   {:el :system-structure-view
    :id :banking/system-structure-view
