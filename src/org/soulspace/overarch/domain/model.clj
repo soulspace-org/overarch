@@ -542,6 +542,7 @@
         (= :to-namespace-prefixes k)   (el/to-namespace-prefixes-pred v) ; deprecated
         (= :id? k)                     (el/id-check-pred v)
         (= :id k)                      (el/id-pred v)
+        (= :ids k)                     (el/ids-pred v)
         (= :subtype? k)                (el/subtype-check-pred v)
         (= :subtype k)                 (el/subtype-pred v)
         (= :subtypes k)                (el/subtypes-pred v)

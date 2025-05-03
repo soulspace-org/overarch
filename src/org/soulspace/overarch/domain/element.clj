@@ -1047,6 +1047,12 @@
   (fn [e]
     (= (keyword v) (:id e))))
 
+(defn ids-pred
+  "Returns a predicate that returns true if the id of `e` is contained in `v`."
+  [v]
+  (fn [e]
+    (contains? v (:id e))))
+
 (defn from-pred
   "Returns a predicate that returns true if the from id of the relation `e` is equal to `v`."
   [v]

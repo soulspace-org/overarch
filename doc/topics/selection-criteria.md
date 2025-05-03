@@ -20,13 +20,14 @@ criteria key           | type            | example values               | descri
 :model-relation?       | boolean         | true, false                  | elements for which the check for model relation returns the given value
 :key?                  | vector          | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
 :key                   | vector          | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
-:el                    | keyword         | :system                      | elements of the given ``:el`` type
+:el                    | keyword         | :system                      | elements in the given set of ``:el`` types
 :els                   | set of keywords | #{:system :person}           | elements with one of the given ``:el`` types
 :namespace             | string          | "org.soulspace"              | elements with the given ``:id`` namespace
 :namespaces            | set of strings  | #{"org.soulspace"}           | elements with one of the given ``:id`` namespaces
 :namespace-prefix      | string          | "org"                        | elements with the given ``:id`` namespace prefix
 :id?                   | boolean         | true, false                  | elements for which the ``:id`` check returns the given value
 :id                    | keyword         | :org.soulspace/overarch      | the element with the given ``:id``
+:ids                   | keyword         | #{:org.soulspace/overarch}   | elements in the given set of``:id``s
 :from                  | criteria        | {:el system :external? true} | relations where the ``:from`` node matches the criteria
 :to                    | criteria        | {:el system :external? true} | relations where the ``:to`` node matches the criteria
 :subtype?              | boolean         | true, false                  | nodes for which the ``:subtype`` check returns the given boolean value
