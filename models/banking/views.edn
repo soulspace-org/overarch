@@ -8,18 +8,13 @@
   ;; System context view with criteria based selection of elements
   {:el :context-view
    :id :banking/context-view
-   :spec {:selection {:namespace-prefix "banking"
-                      :model-node? true
-                      :!ids #{:banking/atm :banking/backoffice-stuff
-                              :banking/customer-service-stuff}}
-          :include :relations
+   :spec {:selection [{:from {:id :banking/internet-banking-system}}
+                      {:to {:id :banking/internet-banking-system}}]
+          :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "System Context View of the Internet Banking System"
    :desc "shows the Internet Banking System and its context"
-   :ct [; selected elements will be included automatically        
-        ; you can include references for additional elements here
-        ; relation references can also be specified here for layout purposes
-        ]}
+   :ct [{:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;; System context view with referenced elements (only the referenced elements will be rendered)
   {:el :context-view
