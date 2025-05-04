@@ -5,6 +5,8 @@
   ;;;
   ;;; Roles
   ;;;
+
+  ;; Nodes
   {:el :person
    :id :banking/personal-customer
    :name "Personal Banking Customer"
@@ -303,7 +305,6 @@
    :to :banking.mainframe/mainframe-banking-system
    :name "uses"}
 
-
   ;; Container Level
   {:el :request
    :id :banking/personal-customer-uses-web-app
@@ -517,7 +518,6 @@
    :id :banking.internet-banking/database-deployed-to-big-bank-db02
    :from :banking.internet-banking/database-read
    :to :banking.deployment/big-bank-db02}
-
 
   ;;;
   ;;; Implementation Model
