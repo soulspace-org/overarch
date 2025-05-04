@@ -8,13 +8,13 @@
   ;; System context view with criteria based selection of elements
   {:el :context-view
    :id :banking/context-view
-   :spec {:selection [{:from {:id :banking/internet-banking-system}}
-                      {:to {:id :banking/internet-banking-system}}]
+   :spec {:selection [{:from {:id :banking.internet-banking/internet-banking-system}}
+                      {:to {:id :banking.internet-banking/internet-banking-system}}]
           :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "System Context View of the Internet Banking System"
    :desc "shows the Internet Banking System and its context"
-   :ct [{:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
+   :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;; System context view with referenced elements (only the referenced elements will be rendered)
   {:el :context-view
@@ -23,15 +23,15 @@
    :desc "shows the Internet Banking System and its context"
    :ct [; model elements
         {:ref :banking/personal-customer}
-        {:ref :banking/email-system}
-        {:ref :banking/mainframe-banking-system}
-        {:ref :banking/internet-banking-system}
+        {:ref :banking.email/email-system}
+        {:ref :banking.mainframe/mainframe-banking-system}
+        {:ref :banking.internet-banking/internet-banking-system}
 
        ; relations
         {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
-        {:ref :banking/internet-banking-system-uses-email-system :direction :right}
-        {:ref :banking/internet-banking-system-using-mainframe-banking-system}
-        {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
+        {:ref :banking.internet-banking/internet-banking-system-uses-email-system :direction :right}
+        {:ref :banking.internet-banking/internet-banking-system-using-mainframe-banking-system}
+        {:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;;;
   ;;; Container
@@ -39,14 +39,14 @@
   ;; Container view with criteria based selection of elements
   {:el :container-view
    :id :banking/container-view
-   :spec {:selection {:namespace "banking"
-                      :model-node? true
-                      :!ids #{:banking/atm :banking/backoffice-stuff
-                              :banking/customer-service-stuff}}
-          :include :relations
+   :spec {:selection [{:namespace-prefix "banking.internet-banking"}
+                      {:from {:namespace-prefix "banking.internet-banking"}}
+                      {:to {:namespace-prefix "banking.internet-banking"}}]
+          :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "Container View of the Internet Banking System"
-   :desc "shows the containers of the Internet Banking System and their relations"}
+   :desc "shows the containers of the Internet Banking System and their relations" 
+   :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}  
 
   ;;;
   ;;; Components
@@ -54,11 +54,12 @@
   {:el :component-view
    :id :banking/component-view
    :spec {:selection {:namespace-prefix "banking"
-                      :!ids #{:banking/atm :banking/backoffice-stuff
+                      :!ids #{:banking.atm/atm :banking/backoffice-stuff
                               :banking/customer-service-stuff}}
           :include :related}
    :title "Component View of the API Application"
-   :desc "shows the components of the Internet Banking System and their relations"}
+   :desc "shows the components of the Internet Banking System and their relations"
+   :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;;;
   ;;; System Landscape
@@ -82,22 +83,22 @@
         {:ref :banking.deployment/big-bank-plc-datacenter}
 
         ; relations
-        {:ref :banking/single-page-app-calls-api-application}
-        {:ref :banking/mobile-app-calls-api-application}
-        {:ref :banking/web-app-deliveres-single-page-app}
-        {:ref :banking/api-application-uses-mainframe-banking-system}
-        {:ref :banking/api-application-uses-database}
+        {:ref :banking.internet-banking/single-page-app-calls-api-application}
+        {:ref :banking.internet-banking/mobile-app-calls-api-application}
+        {:ref :banking.internet-banking/web-app-deliveres-single-page-app}
+        {:ref :banking.internet-banking/api-application-uses-mainframe-banking-system}
+        {:ref :banking.internet-banking/api-application-uses-database}
         ; add relations for the read database
         {:el :rel
-         :id :banking/api-application-uses-database-read
-         :from :banking/api-application
-         :to :banking/database-read
+         :id :banking.internet-banking/api-application-uses-database-read
+         :from :banking.internet-banking/api-application
+         :to :banking.internet-banking/database-read
          :name "Reads from"
          :tech "Datalog"}
         {:el :rel
-         :id :banking/database-sync
-         :from :banking/database
-         :to :banking/database-read
+         :id :banking.internet-banking/database-sync
+         :from :banking.internet-banking/database
+         :to :banking.internet-banking/database-read
          :name "synchronises"
          :direction :right}]}
 
