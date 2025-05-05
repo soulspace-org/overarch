@@ -5,6 +5,9 @@ Version (NEXT)
 --------------
 * spec keys (e.g. :selection, :plantuml) can be defined in the view directly
   * no need for the :spec map anymore
+* added selection criterium ``:ids``, which takes a set of element ids
+* all selection criteria can be negated by prepending them with an exclamation mark
+  * e.g. ``:!ids`` or ``:!el`` 
 * added spec accessors to view API
 
 Version 0.37.0
