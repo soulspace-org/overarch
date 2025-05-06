@@ -816,8 +816,7 @@
 
 (def node-ids-xf
   "Returns a transducer to extract the id of each node."
-  (comp (remove relational?)
-        (remove view?)
+  (comp (filter model-node?)
         ids-xf))
 
 ;;

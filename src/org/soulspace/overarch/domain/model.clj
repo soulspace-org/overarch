@@ -57,6 +57,19 @@
      (el/element? e) e
      :else nil)))
 
+(defn resolveable-element?
+  "Returns true if the element is resolveable in the model."
+  [model e]
+  (boolean (resolve-element model e)))
+
+(defn resolveable-relation?
+  "Returns true if relation `e` and the referrer and referred nodes of `e` are resolveable in the `model`."
+  [model e]
+  (if-let [rel (resolve-element model e)]
+    (and (resolve-element model (:from rel))
+         (resolve-element model (:to rel)))
+    false))
+
 ; specific resolver for elements to avoid the `apply` in `partial` for performance
 (defn element-resolver
   "Returns an element resolver function for the given `model`."
@@ -104,19 +117,6 @@
   (fn [e]
     (children model e)))
 
-(defn resolveable-element?
-  "Returns true if the element is resolveable in the model."
-  [model e]
-  (boolean (resolve-element model e)))
-
-(defn resolveable-relation?
-  "Returns true if relation `e` and the referrer and referred nodes of `e` are resolveable in the `model`."
-  [model e]
-  (if-let [rel (resolve-element model e)]
-    (and (resolve-element model (:from rel))
-         (resolve-element model (:to rel)))
-    false))
-
 ;;
 ;; Model transducer functions
 ;;
@@ -124,27 +124,30 @@
   "Transducer to resolve referrer elements of in the `model`.
    Optionally takes a `filter-fn` to filter the relations to take into account."
   ([model]
-   (comp
-    (map :to)
-    (map (element-resolver model))))
+   (comp (map :to)
+         (map (element-resolver model))))
   ([model filter-fn]
-   (comp
-    (filter filter-fn)
-    (map :to)
-    (map (element-resolver model)))))
+   (comp (filter filter-fn)
+         (map :to)
+         (map (element-resolver model)))))
 
 (defn referred-xf
   "Transducer to resolve referred elements in the `model`.
    Optionally takes a `filter-fn` to filter the relations to take into account."
   ([model]
-   (comp
-    (map :from)
-    (map (element-resolver model))))
+   (comp (map :from)
+         (map (element-resolver model))))
   ([model filter-fn]
-   (comp
-    (filter filter-fn)
-    (map :from)
-    (map (element-resolver model)))))
+   (comp (filter filter-fn)
+         (map :from)
+         (map (element-resolver model)))))
+
+(defn related-xf
+  "Transducer to resolve the elements in the `model` referenced by relations."
+  [model]
+  (comp (filter el/model-relation?)
+        (mapcat (fn [e] [(:from e) (:to e)]))
+        (map (partial resolve-id model))))
 
 (defn unresolved-refs-xf
   "Returns a transducer to extract unresolved refs"
@@ -153,8 +156,63 @@
         (map (element-resolver model))
         (filter el/unresolved-ref?)))
 
+
+;;;
+;;; Step functions for traverse
+;;;
+(defn collect-in-vector
+  "Step function to collect elements `e` in the accumulator `acc`.
+   No transformation on the element is applied."
+  ([] [])
+  ([acc] acc)
+  ([acc e] (conj acc e)))
+
+(defn collect-in-set
+  "Step function to collect elements `e` in the accumulator `acc`.
+   No transformation on the element is applied."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{e})))
+
+(defn tree->set
+  "Step function to convert a hierarchical tree of elements to a flat set of elements."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (conj acc e)))
+
+(defn tech-collector
+  "Step function to collect the technologies.
+   Adds the tech of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:tech e)})))
+
+(defn sprite-collector
+  "Adds the sprite of `e` to the accumulator `acc`."
+  ([] #{})
+  ([acc] acc)
+  ([acc e] (set/union acc #{(:sprite e)})))
+
+(defn key->element
+  "Returns a step function to create an key `k` to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  [k]
+  (fn
+    ([] {})
+    ([acc] acc)
+    ([acc e]
+     (assoc acc (k e) e))))
+
+(defn id->element 
+  "Step function to create an id to element map.
+   Adds the association of the id of the element `e` to the map `acc`."
+  ([] {})
+  ([acc] acc)
+  ([acc e]
+   (assoc acc (:id e) e)))
+
 ;;
-;; recursive traversal of the graph
+;; recursive traversal of the model graph
 ;;
 ; TODO work on a single element, too. Apply children-fn on the element then.
 ; TODO rename children-fn to something more general (e.g. connected-fn or related-fn)?
@@ -198,65 +256,13 @@
                    (step-fn acc)))]
      (trav (step-fn) #{} coll))))
 
-;;;
-;;; Step functions for traverse
-;;;
-(defn collect-in-vector
-  "Step function to collect elements `e` in the accumulator `acc`.
-   No transformation on the element is applied."
-  ([]
-   [])
-  ([acc]
-   acc)
-  ([acc e]
-   (conj acc e)))
-
-(defn collect-in-set
-  "Step function to collect elements `e` in the accumulator `acc`.
-   No transformation on the element is applied."
-  ([]
-   [])
-  ([acc]
-   acc)
-  ([acc e]
-   (conj acc e)))
-
-(defn tree->set
-  "Step function to convert a hierarchical tree of elements to a flat set of elements."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (conj acc e)))
-
-(defn tech-collector
-  "Step function to collect the technologies.
-   Adds the tech of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (set/union acc #{(:tech e)})))
-
-(defn sprite-collector
-  "Adds the sprite of `e` to the accumulator `acc`."
-  ([] #{})
-  ([acc] acc)
-  ([acc e] (set/union acc #{(:sprite e)})))
-
-(defn key->element
-  "Returns a step function to create an key `k` to element map.
-   Adds the association of the id of the element `e` to the map `acc`."
-  [k]
-  (fn
-    ([] {})
-    ([acc] acc)
-    ([acc e]
-     (assoc acc (k e) e))))
-
-(defn id->element 
-  "Step function to create an id to element map.
-   Adds the association of the id of the element `e` to the map `acc`."
-  ([] {})
-  ([acc] acc)
-  ([acc e]
-   (assoc acc (:id e) e)))
+#_(defn traverse-model
+  "Recursively traverses the `coll` of elements."
+  [model & {:keys [step-fn node-pred rel-pred start-nodes]
+            :or {node-pred identity
+                 rel-pred identity}
+            :as opts} ]
+  )
 
 ;;
 ;; Accessors
@@ -301,14 +307,6 @@
        (:to)
        (resolve-id model)
        (:name)))
-
-(defn related-xf
-  "Transducer to resolve the elements in the `model` referenced by relations."
-  [model]
-  (comp
-   (filter el/model-relation?)
-   (mapcat (fn [e] [(:from e) (:to e)]))
-   (map (partial resolve-id model))))
 
 (defn related-nodes
   "Returns the set of nodes of the `model` that are part of at least one relation in the `coll`."
@@ -623,6 +621,8 @@
   (let [filter-predicates (criteria-predicate model criteria)]
     ; compose the filtering functions and create a filter transducer
     (filter filter-predicates)))
+
+
 
 ;;
 ;; Graph based functions
@@ -970,7 +970,7 @@
        (into #{} (referred-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
 ;; TODO type hierarcy with cycle detection/prevention
-(defn type-hierarchy
+#_(defn type-hierarchy
   "Returns the type hierarchy of the class or interface element `e` in the model."
   [model e]
   (let []))
