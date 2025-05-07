@@ -1,40 +1,32 @@
 (ns org.soulspace.overarch.adapter.reader.input-model-reader
-  "Functions to read and build the model from overarch input models."
+  "Functions to read and build the working model from overarch input models.
+   
+The built model is a map with the following keys
+
+| Key                     | Description 
+|-------------------------|-------------
+| **Relation keys**       | 
+| :nodes                  | the set of all nodes
+| :relations              | the set of all relations
+| :views                  | the set of views
+| :themes                 | the set of themes
+| **Index keys**          | 
+| :id->element            | a map from id to element (nodes, relations and views)
+| :id->parent-id          | a map from id to parent node id
+| :id->children           | a map from id to a vector of contained nodes (deprecated)
+| :referrer-id->relations | a map from id to set of relations where the id is the referrer (:from)
+| :referred-id->relations | a map from id to set of relations where the id is referred (:to)
+| **Problem keys**        | 
+| :problems               | the set of problems found during model building
+
+The input model is transformed by
+* computing missing ids, if possible
+* converting the node hierarchies to :contained-in relations
+   "
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.adapter.reader.model-reader :as model-reader]
             [clojure.string :as str]))
-
-(defn main-node?
-  "Returns true if the `node` is the main node."
-  [node]
-  (or (= (el/internal? node) true)
-      (seq (:ct node))))
-
-(defn merge-nodes
-  "Returns a node that is the merge of `node` and `new-node`."
-  ([] {})
-  ([node] node)
-  ([node new-node]
-   (if (main-node? node)
-     (merge new-node node)
-     (merge node new-node))))
-
-(defn merge-relations
-  "Returns a relation that is the merge of `relation` and `new-relation`."
-  ([] {})
-  ([relation] relation)
-  ([relation new-relation]
-   (merge relation new-relation)))
-
-(defn merge-views
-  "Returns a view that is the merge of `view` and `new-view`."
-  ([] {})
-  ([view] view)
-  ([view new-view]
-   (let [new-spec (merge (:spec view) (:spec new-view))
-         new-ct (concat (:ct view) (:ct new-view))]
-     (assoc view :spec new-spec :ct new-ct))))
 
 ;;
 ;; Input checks
@@ -85,6 +77,43 @@
 (def check-element
   (juxt check-missing-id check-duplicate-id check-parent-override))
 
+;;;
+;;; Merging (TODO)
+;;;
+(defn main-node?
+  "Returns true if the `node` is the main node."
+  [node]
+  (or (= (el/internal? node) true)
+      (seq (:ct node))))
+
+(defn merge-nodes
+  "Returns a node that is the merge of `node` and `new-node`."
+  ([] {})
+  ([node] node)
+  ([node new-node]
+   (if (main-node? node)
+     (merge new-node node)
+     (merge node new-node))))
+
+(defn merge-relations
+  "Returns a relation that is the merge of `relation` and `new-relation`."
+  ([] {})
+  ([relation] relation)
+  ([relation new-relation]
+   (merge relation new-relation)))
+
+(defn merge-views
+  "Returns a view that is the merge of `view` and `new-view`."
+  ([] {})
+  ([view] view)
+  ([view new-view]
+   (let [new-spec (merge (:spec view) (:spec new-view))
+         new-ct (concat (:ct view) (:ct new-view))]
+     (assoc view :spec new-spec :ct new-ct))))
+
+;;;
+;;; Building
+;;;
 (defn input-child?
   "Returns true, if element `e` is a child of model element `p` in the input model."
   [e p]

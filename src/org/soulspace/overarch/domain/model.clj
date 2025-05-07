@@ -2,26 +2,7 @@
 ;;;; Functions for the definition and handling of the overarch model
 ;;;;
 (ns org.soulspace.overarch.domain.model
-  "Functions for the definition and handling of the overarch model.
-
-   The loaded overarch working model is a map with the following keys
-
-   | Key                     | Description 
-   |-------------------------|-------------
-   | **Relation keys**       | 
-   | :nodes                  | the set of all nodes (incl. child nodes)
-   | :relations              | the set of all relations (incl. contained-in relations)
-   | :views                  | the set of views
-   | :themes                 | the set of themes
-   | **Index keys**          | 
-   | :id->element            | a map from id to element (nodes, relations and views)
-   | :id->parent-id          | a map from id to parent node id (deprecated)
-   | :id->children           | a map from id to a vector of contained nodes (deprecated)
-   | :referrer-id->relations | a map from id to set of relations where the id is the referrer (:from)
-   | :referred-id->relations | a map from id to set of relations where the id is referred (:to)
-   | **Problem keys**        | 
-   | :problems               | the set of problems found during model building
-   "
+  "Functions for the definition and handling of the overarch model."
   (:require [clojure.set :as set]
             [org.soulspace.overarch.domain.element :as el]
             [clojure.string :as str]))

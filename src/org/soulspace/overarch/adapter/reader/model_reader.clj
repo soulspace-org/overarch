@@ -1,6 +1,8 @@
 (ns org.soulspace.overarch.adapter.reader.model-reader
   "Functions for reading and building models and setting the repository state.
-   The multimethods should be implemented by specific readers."
+   The multimethods should be implemented by specific readers.
+   
+   "
   (:require [clojure.set :as set]
             [org.soulspace.overarch.application.model-repository :as repo]))
 
