@@ -43,7 +43,7 @@
     (csv/write-csv wrt coll)))
 
 (defn sprite-entry
-  "Prepares sprite entry info from collection PlantUML imports."
+  "Prepares sprite entry info from the collection of PlantUML imports."
   [x]
   (let [path-entries (str/split (first x) #"/")
         sprite-prefix (first path-entries)

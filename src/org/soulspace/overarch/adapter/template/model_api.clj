@@ -1,37 +1,14 @@
 (ns org.soulspace.overarch.adapter.template.model-api
   "Public API with useful functions on top of the model for use in templates. (Not yet stable!)"
   (:require [clojure.string :as str]
+            [clojure.set :as set]
             [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.application.model-repository :as repo]
-            
             [org.soulspace.overarch.adapter.template.model-api :as m]))
 
 ;;;;
 ;;;; Not yet stable!
 ;;;;
-
-(def model-queries
-  {:role-model          [{:els #{:person}}
-                         {:from {:els #{:person}}}]
-   :concept-model       [{:els #{:concept}}
-                         {:els #{:is-a :has :rel}}]
-   :use-case-model      [{:els #{:actor :use-case}}
-                         {:els #{:uses :include :extends :generalizes}}]
-   :architecture-model  [{:els #{:enterprise-boundary :context-boundary :system :container :component}}
-                         {:els #{:request :response :publish :subscribe :send :dataflow}}]
-   :state-machine-model [{:els #{:state-machine :state :start-state :end-state :fork :join}}
-                         {:els #{:transition}}]
-   :code-model          [{:els #{:package :namespace :interface :protocol :class :field :method :enum :enum-value :function :stereotype}}
-                         {:els #{:inheritance :implementation :composition :aggregation :association :dependency}}]
-   :deployment-model    [{:els #{:node}}
-                         {:els #{:link :deployed-to}}]
-   :organization-model  [{:els #{:organization :org-unit}}
-                         {:els #{:responsible-for :collaborates-with}}]
-   :process-model       [{:els #{:capability :process :artifact :requirement :information :knowledge :decision}}
-                         {:els #{:input-of :output-of}}]
-   :trace-model         [{:els #{:implements}}]})
-
 
 ;;; TODO close over model!?
 
@@ -252,171 +229,333 @@
    (model/referred-relations model e criteria)))
 
 ;;
-;; Architecture Model navigation
+;; Architecture model navigation
 ;;
-(defn requests-incoming
-  "Returns the requests relations served by service `e` in the `model`."
+(defn dependency-nodes
+  "Returns the direct dependencies of the architecture node `e` in the `model`."
   [model e]
-  (model/requests-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{}
+             (model/referrer-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
+
+(defn dependent-nodes
+  "Returns the direct dependents of the architecture node `e` in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{}
+             (model/referred-xf model #(contains? el/architecture-dependency-relation-types (:el %))))))
+
+(defn sync-dependencies
+  "Returns the transitive dependencies of the `element` in the `model`."
+  [model e]
+  (model/transitive-search model {:referred-node-selection {:el :request}} e))
+
+(defn sync-dependents
+  "Returns the transitive dependants of the `element` in the `model`."
+  [model e]
+  (model/transitive-search model {:referring-node-selection {:el :request}} e))
+
+(defn requests-incoming
+  "Returns the request relations served by service `e` in the `model`."
+  [model e]
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :request (:el %)))))
 
 (defn requests-outgoing
-  "Returns the requests relations issued by client `e` in the `model`."
+  "Returns the request relations issued by client `e` in the `model`."
   [model e]
-  (model/requests-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :request (:el %)))))
 
 (defn responses-incoming
   "Returns the response relations handled by client `e` in the `model`."
   [model e]
-  (model/responses-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :response (:el %)))))
 
 (defn responses-outgoing
   "Returns the response relations served by service `e` in the `model`."
   [model e]
-  (model/responses-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :response (:el %)))))
 
 (defn sends-incoming
   "Returns the send relations of receiver `e` in the `model`."
   [model e]
-  (model/sends-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :sends (:el %)))))
 
 (defn sends-outgoing
   "Returns the send relations of sender `e` in the `model`."
   [model e]
-  (model/sends-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :sends (:el %)))))
 
 (defn publishes-incoming
   "Returns the publish relations of `e` in the `model`."
   [model e]
-  (model/publishes-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :publish (:el %)))))
 
 (defn publishes-outgoing
   "Returns the publish relations of `e` in the `model`."
   [model e]
-  (model/publishes-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :publish (:el %)))))
 
 (defn subscribes-incoming
   "Returns the subscribe relations of `e` in the `model`."
   [model e]
-  (model/subscribes-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :subscribe (:el %)))))
 
 (defn subscribes-outgoing
   "Returns the subscribe relations of `e` in the `model`."
   [model e]
-  (model/subscribes-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :subscribe (:el %)))))
 
 (defn dataflows-incoming
   "Returns the incoming dataflow relations served by service `e` in the `model`."
   [model e]
-  (model/dataflows-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :dataflow (:el %)))))
 
 (defn dataflows-outgoing
   "Returns the outgoing dataflow relations of `e` in the `model`."
   [model e]
-  (model/dataflows-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :dataflow (:el %)))))
 
 (defn subscribers-of
   "Returns the subscribers of the queue or publish relation `e` in the `model`."
   [model e]
-  (model/subscribers-of model e))
+  (cond
+    (= :publish (:el e))
+    (->> (:to e)
+         (get (:referrer-id->relations model))
+         (into #{} (model/referrer-xf model #(= :subscribe (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referrer-id->relations model))
+         (into #{} (model/referrer-xf model #(= :subscribe (:el %)))))))
 
 (defn publishers-of
   "Returns the publishers of the queue or subscribe relation `e` in the `model`."
   [model e]
-  (model/publishers-of model e))
+  (cond
+    (= :subscribe (:el e))
+    (->> (:to e)
+         (get (:referred-id->relations model))
+         (into #{} (model/referred-xf model #(= :publish (:el %)))))
+
+    (and (= :container (:el e)) (= :queue (:subtype e)))
+    (->> (:id e)
+         (get (:referred-id->relations model))
+         (into #{} (model/referred-xf model #(= :publish (:el %)))))))
+
+;; TODO rename or replace with more general functions
+#_(defn requested-nodes
+  "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
+  [model e]
+  (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
+       (filter #(contains? #{:request} (:el %)))
+       ;(map #(resolve-element model (:to %)))
+       (map :to)))
+
+#_(defn requested-nodes-resolver
+  "Returns a resolver function for dependent nodes in the `model`."
+  [model]
+  (fn [e]
+    (requested-nodes model e)))
 
 ;;
 ;; Code model navigation
 ;;
-(defn all-fields
-  "Returns a sequence of all fields of the given collection of `classes`."
-  [model classes]
-  (model/collect-fields model classes))
-
-(defn all-methods
-  "Returns a sequence of all methods of the given collection of `classes`."
-  [model classes]
-  (model/collect-methods model classes))
-
 (defn superclasses
   "Returns the set of direct superclasses of the class element `e` in the `model`."
   [model e]
-  (model/superclasses model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :inheritance (:el %))))))
 
 (defn subclasses
   "Returns the set of direct subclasses of the class element `e` in the `model`."
   [model e]
-  (model/subclasses model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :inheritance (:el %))))))
 
 (defn interfaces
   "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
-  (model/interfaces model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :implementation (:el %))))))
 
 (defn implementations
-  "Returns the set of direct implementations of the class element `e` in the `model`."
+  "Returns the set of direct interfaces of the class element `e` in the `model`."
   [model e]
-  (model/implementations model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :implementation (:el %))))))
 
 (defn supertypes
   "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
   [model e]
-  (model/supertypes model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(contains? #{:implementation :inheritance} (:el %))))))
 
 (defn referencing
   "Returns the referenced elements of `e` in the `model`."
   [model e]
-  (model/referencing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
 
 (defn referenced-by
   "Returns the elements referencing element `e` in the `model`."
   [model e]
-  (model/referenced-by model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(contains? #{:association :aggregation :composition} (:el %))))))
+
+;; TODO type hierarcy with cycle detection/prevention
+#_(defn type-hierarchy
+    "Returns the type hierarchy of the class or interface element `e` in the model."
+    [model e]
+    (let []))
+
+(defn collect-fields
+  "Returns the fields of all classes in the `coll`."
+  [model coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map #(children model %))
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :field (:el %)))
+       (sort-by :name)))
+
+(defn collect-methods
+  "Returns the methods of all classes in the `coll`."
+  [model coll]
+  (->> coll
+       (filter #(= :class (:el %)))
+       (map #(children model %))
+       (remove nil?)
+       (map set)
+       (apply set/union)
+       (filter #(= :method (:el %)))
+       (sort-by :name)))
 
 ;;
 ;; Concept model navigation
 ;;
 (defn superordinates
-  "Returns the set of direct superordinates of the concept element `e` in the `model`."
+  "Returns the superordinates of the concept `e` in the `model`."
   [model e]
-  (model/superordinates model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :is-a (:el %))))))
 
 (defn subordinates
-  "Returns the set of direct subordinates of the concept element `e` in the `model`."
+  "Returns the subordinates of the concept `e` in the `model`."
   [model e]
-  (model/subordinates model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :is-a (:el %))))))
 
 (defn features
   "Returns the features of the concept `e` in the `model`."
   [model e]
-  (model/features model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :has (:el %))))))
 
 (defn feature-of
   "Returns the concepts the concept `e` is a feature of in the `model`."
   [model e]
-  (model/feature-of model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :has (:el %))))))
 
 ;;
 ;; Deployment model navigation
 ;;
 (defn deployed-on
-  "Returns the architecture nodes deployed on the node `e` in the ``model`."
+  "Returns the architecture nodes deployed on the node `e` in the `model`."
   [model e]
-  (model/deployed-on model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :deployed-to (:el %))))))
 
 (defn deployed-to
   "Returns the deployment nodes the architecture node `e` is deployed to in the ``model`."
   [model e]
-  (model/deployed-to model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :deployed-to (:el %))))))
 
 (defn links
   "Returns the deployment nodes the deployment node `e` links in the `model`"
   [model e]
-  (model/links model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :link (:el %))))))
 
 (defn linked-by
   "Returns the deployment nodes the deployment node `e` is linked by in the `model`"
   [model e]
-  (model/linked-by model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :link (:el %))))))
 
 ;;
 ;; Statemachine model navigation
@@ -424,12 +563,18 @@
 (defn transitions-incoming
   "Returns the incoming transitions of state `e` in the `model`."
   [model e]
-  (model/transitions-incoming model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (filter #(= :transition (:el %)))))
 
 (defn transitions-outgoing
   "Returns the outgoing transitions of state `e` in the `model`."
   [model e]
-  (model/transitions-outgoing model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (filter #(= :transition (:el %)))))
 
 ;;
 ;; Use Case model navigation
@@ -437,32 +582,50 @@
 (defn actors
   "Returns the actors of a use case `e` in the `model`."
   [model e]
-  (model/used-by model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :uses (:el %))))))
 
 (defn supporting-actors
   "Returns the supporting actors of a use case `e` in the `model`."
   [model e]
-  (model/using model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :uses (:el %))))))
 
 (defn using
-  "Returns the :to side of the relation of type :uses of node `e` in the `model`."
+  "Returns the to side of the relation of type :uses of node `e` in the `model`."
   [model e]
-  (model/using model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :uses (:el %))))))
 
 (defn used-by
   "Returns the from side of the relation of type :uses of node `e` in the `model`."
   [model e]
-  (model/used-by model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :uses (:el %))))))
 
 (defn extensions
   "Returns the extension use cases of a use case `e` in the `model`."
   [model e]
-  (model/extensions model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :extends (:el %))))))
 
 (defn included
-  "Returns the included use cases of a use case `e` in the `model`."
+  "Returns the extension use cases of a use case `e` in the `model`."
   [model e]
-  (model/included model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :include (:el %))))))
 
 ;;
 ;; Organization model navigation
@@ -470,29 +633,48 @@
 (defn responsible-for
   "Returns the nodes the organization unit `e` is responsible for in the `model`."
   [model e]
-  (model/responsible-for model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :responsible-for (:el %))))))
 
 (defn responsibility-of
   "Returns the organization unit responsible for node `e` in the `model`."
   [model e]
-  (model/responsibility-of model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :responsible-for (:el %))))))
 
 (defn collaborates-with
   "Returns the organization model nodes the organization unit `e` collaborates with in the `model`."
   [model e]
-  (model/collaborates-with model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :collaborates-with (:el %))))))
 
 (defn collaboration-with
   "Returns the organization model nodes the organization unit `e` has a collaboration with in the `model`. Reverse direction of collaborates with."
   [model e]
-  (model/collaboration-with model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :collaborates-with (:el %))))))
 
 (defn roles
   "Returns the person/user roles assigned in this node `e` in the model."
   [model e]
-  (model/roles model e))
+  (->> e
+       (el/id)
+       (get (:referred-id->relations model))
+       (into #{} (model/referred-xf model #(= :role-in (:el %))))))
 
 (defn roles-in
   "Returns the nodes the person/user role 'e' has a role in in the `model`."
   [model e]
-  (model/roles-in model e))
+  (->> e
+       (el/id)
+       (get (:referrer-id->relations model))
+       (into #{} (model/referrer-xf model #(= :role-in (:el %))))))
+

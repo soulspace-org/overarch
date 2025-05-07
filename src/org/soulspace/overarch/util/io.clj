@@ -64,6 +64,8 @@
   (split-path "/p1/models")
   (split-path "/p1/models:/p2/models")
   (split-path "\\C:\\p1\\models;\\C:\\p2\\models")
+
+  (load-edn-from-resource "specs.edn")
   ;
   )
 

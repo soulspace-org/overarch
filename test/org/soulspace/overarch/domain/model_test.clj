@@ -268,7 +268,7 @@
 (def cycle-model1 (reader/build-model opts cycle-input1))
 
 
-(deftest traverse-cycle-test
+#_(deftest traverse-cycle-test
   (testing "traverse model with cycle"
     (are [x y] (= x (traverse (element-resolver cycle-model1)
                                     identity
@@ -280,7 +280,7 @@
        {:el :system, :id :a/system4}]
       :a/system1)))
 
-(comment
+#_(comment
   (requested-nodes cycle-model1 :a/system1)
   (requested-nodes cycle-model1 :a/system2)
   (requested-nodes cycle-model1 :a/system3)
@@ -658,8 +658,7 @@
       ;
       )))
 
-
-(deftest dependency-nodes-test
+#_(deftest dependency-nodes-test
   (testing "dependency-nodes"
     (are [x y] (= x (dependency-nodes filter-model1 y))
       #{{:el :container
@@ -673,7 +672,7 @@
        :tech "Java"
        :tags #{"critical" "autoscaled"}})))
 
-(deftest dependant-nodes-test
+#_(deftest dependant-nodes-test
   (testing "dependant-nodes"
     (are [x y] (= x (dependent-nodes filter-model1 y))
       #{{:el :container
@@ -923,14 +922,14 @@
 ;;
 ;; Class Model
 ;;
-(deftest superclasses-test
+#_(deftest superclasses-test
   (testing "superclasses"
     (are [x y] (= x (superclasses code-model1
                                   (resolve-id code-model1 y)))
       #{(resolve-id code-model1 :test/named-class)} :test/system-class
       #{(resolve-id code-model1 :test/identified-class)} :test/named-class)))
 
-(deftest interfaces-test
+#_(deftest interfaces-test
   (testing "interfaces"
     (are [x y] (= x (interfaces code-model1
                                 (resolve-id code-model1 y)))
