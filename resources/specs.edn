@@ -36,8 +36,10 @@
          :container-view {:nodes {:els #{:enterprise-boundary :context-boundary
                                          :system :container :person}}
                           :relations {:els #{:request :response :publish
-                                             :subscribe :send :dataflow}}
-                          :as-boundary {:els #{:system} :external? false}
+                                             :subscribe :send :dataflow}
+                                      :!to {:el :system :children? true :external? false}
+                                      :!from {:el :system :children? true :external? false}}
+                          :as-boundary {:el :system :external? false}
                           :hierarchical? true}
          :component-view {:nodes {:els #{:enterprise-boundary :context-boundary
                                          :system :container :component :person}}
