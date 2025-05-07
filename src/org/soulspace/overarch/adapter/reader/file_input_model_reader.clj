@@ -1,12 +1,11 @@
 (ns org.soulspace.overarch.adapter.reader.file-input-model-reader
+  "Functions to read the overarch input models from filesystem."
   (:require [clojure.edn :as edn]
             [org.soulspace.overarch.domain.spec :as spec]
             [org.soulspace.overarch.util.io :as io]
             [org.soulspace.overarch.adapter.reader.model-reader :as reader]))
 
-;; TODO different file model repositories?
-;; TODO transform input model on load? could be different for different input formats
-
+;; TODO transform input model on load?
 (defn read-model-file
   "Reads a model `file`."
   [^java.io.File file]

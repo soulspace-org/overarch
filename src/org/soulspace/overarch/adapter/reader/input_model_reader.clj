@@ -1,4 +1,5 @@
 (ns org.soulspace.overarch.adapter.reader.input-model-reader
+  "Functions to read and build the model from overarch input models."
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.adapter.reader.model-reader :as model-reader]

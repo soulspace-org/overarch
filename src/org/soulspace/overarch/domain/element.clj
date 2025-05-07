@@ -136,10 +136,6 @@
   "Element types of boundaries."
   #{:enterprise-boundary :context-boundary :system-boundary :container-boundary})
 
-(def reference-types
-  "Element types of references."
-  #{:ref})
-
 (def uml-node-types
   "Node types for UML models."
   (set/union usecase-node-types statemachine-node-types code-node-types))
