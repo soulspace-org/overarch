@@ -358,13 +358,6 @@
    (let [p (peek ctx)]
      [(update-acc res p e) (conj ctx e)])))
 
-(defn drop-unresolved
-  "Returns a `model` without relations referring to unresolved model nodes."
-  [model]
-  ; TODO implement for real
-  model
-  )
-
 (defmethod model-reader/build-model :overarch-input
   [options coll]
    ; TODO drop :ct key?

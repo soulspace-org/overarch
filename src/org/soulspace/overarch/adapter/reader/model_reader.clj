@@ -1,8 +1,11 @@
 (ns org.soulspace.overarch.adapter.reader.model-reader
   "Functions for reading models from different sources."
-  (:require [org.soulspace.overarch.application.model-repository :as model-repository]
-            [org.soulspace.overarch.domain.spec :as spec]))
+  (:require [clojure.set :as set]
+            [org.soulspace.overarch.application.model-repository :as repo]))
 
+;;;
+;;; Reader functions
+;;;
 (defn reader-type
   "Returns the reader type."
   ([options]
@@ -16,10 +19,39 @@
    (:input-model-format options))
   ([options _]
    (:input-model-format options)))
-
 (defmulti read-models
-  "Reads the models with the reader of type `rtype` from all locations of the given `path`."
+  "Reads the models as specified in the `options`."
   reader-type)
+
+;;;
+;;; Model building functions
+;;;
+(defn merge-model
+  "Merges the `model` with the `other` model."
+  ([]
+   {:nodes #{}
+    :relations #{}
+    :views #{}
+    :themes #{}
+    :id->element {}
+    :id->parent-id {}
+    :id->children {}
+    :referrer-id->relations {}
+    :referred-id->relations {}
+    :problems #{}})
+  ([model]
+   model)
+  ([model other-model]
+   {:nodes (set/union (:nodes model) (:nodes other-model))
+    :relations (set/union (:relations model) (:relations other-model))
+    :views (set/union (:views model) (:views other-model))
+    :themes (set/union (:themes model) (:themes other-model))
+    :id->element (merge (:id->element model) (:id->element other-model))
+    :id->parent-id (merge (:id->parent-id model) (:id->parent-id other-model))
+    :id->children (merge (:id->children model) (:id->children other-model))
+    :referrer-id-relations (merge (:referrer-id-relations model) (:referrer-id-relations other-model))
+    :referred-id-relations (merge (:referred-id-relations model) (:referred-id-relations other-model))
+    :problems (set/union (:problems model) (:problems other-model))}))
 
 (defmulti build-model
   "Builds the model."
@@ -28,14 +60,7 @@
 (defn update-state!
   "Updates the state with the registered data read from `path`."
   [options]
-  (let [path (:model-dir options)
-        scope (:scope options)]
-    (->> path
-         ; TODO don't hardcode repo type
-         (read-models options)
-         ;(spec/check-input-model) ; TODO check input model in adapter
-         ; TODO transform input model (e.g. set internal/external scope)
-         ; extract model type from options
-         (build-model options)
-         (reset! model-repository/state))))
+  (->> (read-models options)
+       (build-model options)
+       (reset! repo/state)))
 

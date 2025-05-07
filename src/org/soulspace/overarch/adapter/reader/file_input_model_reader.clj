@@ -2,7 +2,7 @@
   (:require [clojure.edn :as edn]
             [org.soulspace.overarch.domain.spec :as spec]
             [org.soulspace.overarch.util.io :as io]
-            [org.soulspace.overarch.adapter.reader.model-reader :as mr]))
+            [org.soulspace.overarch.adapter.reader.model-reader :as reader]))
 
 ;; TODO different file model repositories?
 ;; TODO transform input model on load? could be different for different input formats
@@ -24,9 +24,9 @@
   (->> (io/all-files-by-extension dir "edn")
        (mapcat read-model-file)))
 
-(defmethod mr/read-models :file
-  [options path]
-  (->> path
+(defmethod reader/read-models :file
+  [options]
+  (->> (:model-dir options)
        (io/split-path)
        (mapcat read-model)))
 
