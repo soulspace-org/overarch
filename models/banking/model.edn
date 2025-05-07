@@ -245,11 +245,6 @@
   ;; Relations
   ;; System Level
   {:el :request
-   :id :banking/personal-customer-uses-internet-banking-system
-   :from :banking/personal-customer
-   :to :banking.internet-banking/internet-banking-system
-   :name "uses"}
-  {:el :request
    :id :banking/personal-customer-uses-email-system
    :from :banking/personal-customer
    :to :banking.email/email-system
