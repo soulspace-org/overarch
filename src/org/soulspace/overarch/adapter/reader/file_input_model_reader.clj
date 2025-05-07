@@ -1,8 +1,8 @@
-(ns org.soulspace.overarch.adapter.repository.file-model-repository
+(ns org.soulspace.overarch.adapter.reader.file-input-model-reader
   (:require [clojure.edn :as edn]
-            [org.soulspace.overarch.application.model-repository :as mr]
             [org.soulspace.overarch.domain.spec :as spec]
-            [org.soulspace.overarch.util.io :as io]))
+            [org.soulspace.overarch.util.io :as io]
+            [org.soulspace.overarch.adapter.reader.model-reader :as mr]))
 
 ;; TODO different file model repositories?
 ;; TODO transform input model on load? could be different for different input formats
@@ -25,8 +25,10 @@
        (mapcat read-model-file)))
 
 (defmethod mr/read-models :file
-  [rtype path]
+  [options path]
   (->> path
        (io/split-path)
        (mapcat read-model)))
+
+
 

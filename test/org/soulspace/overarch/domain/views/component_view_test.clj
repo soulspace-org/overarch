@@ -2,8 +2,9 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.view :refer :all]
             [org.soulspace.overarch.domain.views.component-view :refer :all]
-            [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.application.model-repository :as repo]))
+            [org.soulspace.overarch.adapter.reader.model-reader :as reader]))
+
+(def opts {:input-model-format :overarch-input})
 
 (def test-input
   #{{:el :enterprise-boundary
@@ -19,7 +20,7 @@
    {:el :system
     :id :test/system2}})
 
-(def test-model (repo/build-model test-input))
+(def test-model (reader/build-model opts test-input))
 
 (deftest as-boundary?-test
   (testing "as-boundary? true"

@@ -2,13 +2,9 @@
   (:require [clojure.test :refer :all]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :refer :all]
-            [org.soulspace.overarch.domain.model-test :as model-test]
-            [org.soulspace.overarch.domain.view :as view]
-            [org.soulspace.overarch.application.model-repository :as repo]))
+            [org.soulspace.overarch.adapter.reader.model-reader :as reader]))
 
-(deftest compile-test
-  (testing "Compilation"
-    (is (= 1 1))))
+(def opts {:input-model-format :overarch-input})
 
 (def styles-input
   #{{:el :system
@@ -88,15 +84,15 @@
           {:ref :test/sys2}
           {:ref :test/sys1-calls-sys2 :style :test/dashed-rel}]}})
 
-(def styles-model (repo/build-model styles-input))
+(def styles-model (reader/build-model opts styles-input))
 
 (deftest styles-spec-test
   ; TODO 
   (testing "styles-spec-test"
     (is (= 1 1))))
 
-
-(def c4-model1 (repo/build-model
+(def c4-model1 (reader/build-model
+                opts
                 #{{:el :person
                    :id :test/user1
                    :name "User 1"}

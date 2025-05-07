@@ -20,12 +20,14 @@
             ; require dynamically?
             [org.soulspace.overarch.adapter.exports.json :as json]
             [org.soulspace.overarch.adapter.exports.structurizr :as structurizr]
+            [org.soulspace.overarch.adapter.reader.model-reader :as reader]
+            [org.soulspace.overarch.adapter.reader.input-model-reader :as imreader]
+            [org.soulspace.overarch.adapter.reader.file-input-model-reader :as fimreader]
             [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
             [org.soulspace.overarch.adapter.render.markdown :as markdown]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
-            [org.soulspace.overarch.adapter.repository.file-model-repository :as frepo]
             [org.soulspace.overarch.adapter.template.comb :as comb])
   (:gen-class))
 
@@ -65,6 +67,10 @@
 ;  [nil  "--plantuml-find-sprite" "Searches the loaded PlantUML sprites for the given name"]
    ["-h" "--help" "Print help"]
    [nil  "--debug" "Print debug messages" :default false]])
+
+(def default-options
+  {:input-model-format :overarch-input
+   :reader-type :file})
 
 ;;;
 ;;; Output messages
@@ -224,7 +230,7 @@
 (defn update-and-dispatch!
   "Read models and export the data according to the given `options`."
   [options]
-  (let [model (repo/update-state! options)]
+  (let [model (reader/update-state! options)]
     (dispatch model options)))
 
 (defn handle
@@ -250,7 +256,11 @@
 (defn -main
   "Main function as CLI entry point."
   [& args] 
-  (let [{:keys [options exit-message success]} (validate-args args cli-opts)]
+  (let [{:keys [options exit-message success]} (validate-args args cli-opts)
+        options (merge default-options options)
+        exit-message (or exit-message
+                         (when (:help options)
+                           (usage-msg appname description (:summary options))))]
     (when (:debug options)
       (println options))
     (if exit-message
@@ -270,12 +280,12 @@
                          :render-format :plantuml
                          :debug true})
 
-  (model-info (repo/update-state! {:model-dir "models/banking:models/overarch"})
+  (model-info (reader/update-state! {:model-dir "models/banking:models/overarch"})
               {:model-info true})
-  (repo/update-state! {:model-dir "models/banking"})
-  (repo/update-state! {:model-dir "models/overarch"})
-  (repo/update-state! {:model-dir "models/test/collapsed"})
-  (repo/update-state! {:model-dir "../my-bank-model/models/"})
+  (reader/update-state! {:model-dir "models/banking"})
+  (reader/update-state! {:model-dir "models/overarch"})
+  (reader/update-state! {:model-dir "models/test/collapsed"})
+  (reader/update-state! {:model-dir "../my-bank-model/models/"})
 
   ;
   )

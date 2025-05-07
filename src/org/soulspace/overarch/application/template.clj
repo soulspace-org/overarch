@@ -4,15 +4,12 @@
 (ns org.soulspace.overarch.application.template
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
+            [clojure.spec.alpha :as s]
             [org.soulspace.clj.namespace :as ns]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.model :as model]
-            ; register multimethods
-            [org.soulspace.overarch.adapter.repository.file-model-repository :as fmr]
-            [clojure.spec.alpha :as s]
-            [org.soulspace.overarch.domain.view :as view]))
+            [org.soulspace.overarch.domain.model :as model]))
 
 ;;;
 ;;; Generation config spec

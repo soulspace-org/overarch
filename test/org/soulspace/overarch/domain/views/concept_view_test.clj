@@ -4,11 +4,13 @@
             [org.soulspace.overarch.domain.views.concept-view :refer :all]
             [org.soulspace.overarch.domain.model-test :as model-test]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.application.model-repository :as repo]))
+            [org.soulspace.overarch.adapter.reader.model-reader :as reader]))
+
+(def opts {:input-model-format :overarch-input})
 
 (def test-input
   #{})
-(def test-model (repo/build-model test-input))
+(def test-model (reader/build-model opts test-input))
 
 (deftest render-model-element?-test
   (testing "render-model-element? true"
