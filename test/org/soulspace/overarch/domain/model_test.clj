@@ -658,39 +658,6 @@
       ;
       )))
 
-#_(deftest dependency-nodes-test
-  (testing "dependency-nodes"
-    (are [x y] (= x (dependency-nodes filter-model1 y))
-      #{{:el :container
-         :id :org.soulspace.internal.system/container2-topic
-         :subtype :queue
-         :name "Container2 Events"
-         :tech "Kafka"}}
-      {:el :container
-       :id :org.soulspace.internal.system/container2
-       :name "Container2"
-       :tech "Java"
-       :tags #{"critical" "autoscaled"}})))
-
-#_(deftest dependant-nodes-test
-  (testing "dependant-nodes"
-    (are [x y] (= x (dependent-nodes filter-model1 y))
-      #{{:el :container
-         :id :org.soulspace.internal.system/container1
-         :name "Container1"
-         :tech "Clojure"
-         :tags #{"autoscaled"}}
-        {:el :container
-         :id :org.soulspace.internal.system/container2
-         :name "Container2"
-         :tech "Java"
-         :tags #{"critical" "autoscaled"}}}
-      {:el :container
-       :id :org.soulspace.internal.system/container2-topic
-       :subtype :queue
-       :name "Container2 Events"
-       :tech "Kafka"})))
-
 (deftest filter-xf-test
   (testing "filter-xf with single criteria map and element based criteria"
     (are [x y] (= x (into #{} (filter-xf filter-model1 y) (model-elements filter-model1)))
@@ -918,6 +885,44 @@
         filter-input)
   ;
   )
+
+;;; TODO move to model-api-test
+
+;;;
+;;; Architecture Model
+;;;
+#_(deftest dependency-nodes-test
+    (testing "dependency-nodes"
+      (are [x y] (= x (dependency-nodes filter-model1 y))
+        #{{:el :container
+           :id :org.soulspace.internal.system/container2-topic
+           :subtype :queue
+           :name "Container2 Events"
+           :tech "Kafka"}}
+        {:el :container
+         :id :org.soulspace.internal.system/container2
+         :name "Container2"
+         :tech "Java"
+         :tags #{"critical" "autoscaled"}})))
+
+#_(deftest dependant-nodes-test
+    (testing "dependant-nodes"
+      (are [x y] (= x (dependent-nodes filter-model1 y))
+        #{{:el :container
+           :id :org.soulspace.internal.system/container1
+           :name "Container1"
+           :tech "Clojure"
+           :tags #{"autoscaled"}}
+          {:el :container
+           :id :org.soulspace.internal.system/container2
+           :name "Container2"
+           :tech "Java"
+           :tags #{"critical" "autoscaled"}}}
+        {:el :container
+         :id :org.soulspace.internal.system/container2-topic
+         :subtype :queue
+         :name "Container2 Events"
+         :tech "Kafka"})))
 
 ;;
 ;; Class Model
