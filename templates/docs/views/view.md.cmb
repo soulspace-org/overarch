@@ -126,6 +126,18 @@
 <%
   )
 
+  (when-let [nodes (seq (filter #(= :enterprise-boundary (:el %)) model-nodes))]
+%>
+## Enterprise Boundaries
+<%
+    (node-description-table e :enterprise-boundary nodes))
+
+  (when-let [nodes (seq (filter #(= :context-boundary (:el %)) model-nodes))]
+%>
+## Subdomains/Bounded Contexts
+<%
+    (node-description-table e :context-boundary nodes))
+
   (when-let [nodes (seq (filter #(= :concept (:el %)) model-nodes))]
 %>
 ## Concepts
