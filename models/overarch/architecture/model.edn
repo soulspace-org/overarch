@@ -49,11 +49,15 @@
                 {:el :component
                  :id :overarch.application/model-repository
                  :name "application.model-repository"
-                 :desc "Contains the repository multimethods to be implemented by the concrete repository adapter implementations."}
+                 :desc "Contains a stateful representation of the model and accessor functions to the model state."}
                 {:el :component
                  :id :overarch.application/export
                  :name "application.export"
                  :desc "Contains the export multimethods to be implemented by the concrete export adapter implementations."}
+                {:el :component
+                 :id :overarch.application/reader
+                 :name "application.reader"
+                 :desc "Contains the reader multimethods to be implemented by the concrete reader adapter implementations."}
                 {:el :component
                  :id :overarch.application/render
                  :name "application.render"
@@ -62,6 +66,10 @@
                  :id :overarch.application/template
                  :name "application.template"
                  :desc "Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations."}
+                {:el :component
+                 :id :overarch.adapter.reader/model-reader
+                 :name "adapter.reader.model-reader"
+                 :desc "Contains the functions for reading and building models and setting the repository state. The multimethods should be implemented by specific readers."}
                 {:el :component
                  :id :overarch.adapter.render/plantuml
                  :name "adapter.render.plantuml"
