@@ -25,7 +25,8 @@ generation. It also helps you to navigate and maintain huge models.
 
 ## Relations
 * Use specific relation types instead of general `:rel`, if possible.
-* The id of a relation should start with the id of the referrer node (the
+  * `:rel` should only be used as a general relation type in concept models.
+* The id of a relation should start with the id of the referring node (the
   `:from` id) followed by a verb based on the relation type and the name part
   of the id of the referred node (the `:to` id), so
   * the naming scheme is consistent

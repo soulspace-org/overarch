@@ -126,7 +126,9 @@ syntax check and syntax highlighting.
 # Models
 You can split your model into separate EDN files, which might be reasonable for
 big systems. Overarch can recursively read all models from a directory or
-search path so you are quite free in structuring your model files.
+search path so you are quite free in structuring your model files. I have
+documented some [best practices](#best-practices) from my experience modelling
+big systems as a guidance.
 
 The top level element in each model EDN file is a **set** which contains the top
 level model elements. Model elements are denoted as maps in the EDN file.
