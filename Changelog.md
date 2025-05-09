@@ -8,6 +8,7 @@ Version (NEXT)
 * added selection criterium ``:ids``, which takes a set of element ids
 * all selection criteria can be negated by prepending them with an exclamation mark
   * e.g. ``:!ids`` or ``:!el``
+* added ``:artifact`` node to deployment model and deployment view 
 * refactored model reading to enable support for different input formats and sources
 * added spec accessors to view API
 
