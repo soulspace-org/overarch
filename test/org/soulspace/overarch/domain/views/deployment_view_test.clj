@@ -15,15 +15,16 @@
 (deftest render-model-element?-test
   (testing "render-model-element? true"
     (are [x y] (= x (boolean (render-model-element? test-model {:el :deployment-view} y)))
-      true {:el :enterprise-boundary}
-      true {:el :context-boundary}
-      true {:el :person}
-      true {:el :system}
-      true {:el :system-boundary}
+      true {:el :artifact}
       true {:el :container}
       true {:el :node}))
   (testing "render-model-element? false"
     (are [x y] (= x (boolean (render-model-element? test-model {:el :deployment-view} y)))
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :person}
+      false {:el :system}
+      false {:el :system-boundary}
       false {:el :container-boundary}
       false {:el :component}
       false {:el :actor}
@@ -64,16 +65,17 @@
 (deftest include-content?-test
   (testing "include-content? true"
     (are [x y] (= x (boolean (include-content? test-model {:el :deployment-view} y)))
-      true {:el :enterprise-boundary}
-      true {:el :context-boundary}
-      true {:el :person}
-      true {:el :system}
-      true {:el :system-boundary}
+      true {:el :artifact}
       true {:el :container}
       true {:el :node}))
   (testing "include-content? false"
     (are [x y] (= x (boolean (include-content? test-model {:el :deployment-view} y)))
       false {:el :container-boundary}
+      false {:el :enterprise-boundary}
+      false {:el :context-boundary}
+      false {:el :person}
+      false {:el :system}
+      false {:el :system-boundary}
       false {:el :component}
       false {:el :actor}
       false {:el :use-case}
