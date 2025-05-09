@@ -511,7 +511,7 @@
   {:el :class
    :id :overarch.data-model/deployed-to
    :name "deployed-to"
-   :desc "A deployment relation between a container and a node in the deployment model. The container is deployed to the node."
+   :desc "A deployment relation between a container or an artifact and a node in the deployment model. The container or artifact is deployed to the node."
    :tags #{"deployment-model"}}
 
   ;; Deployment Model Relations
@@ -1782,7 +1782,7 @@
    :id :overarch.data-model/artifact
    :name "artifact"
    :desc "An artifact in the process model"
-   :tags #{"process-model"}}
+   :tags #{"process-model" "deployment-model"}}
 
   {:el :class
    :id :overarch.data-model/input-of
@@ -1861,6 +1861,12 @@
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/artifact
    :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/artifact-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/artifact
+   :tags #{"process-model" "deployment-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/requirement-is-a-process-model-node

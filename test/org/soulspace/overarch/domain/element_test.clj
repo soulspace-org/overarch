@@ -317,15 +317,16 @@
   (testing "deployment-node? true"
     (are [x y] (= x (boolean (deployment-node? y)))
       true {:el :node}
-      true {:el :system}
       true {:el :container}
-      true {:el :component}))
+      true {:el :artifact}))
 
   (testing "deployment-node? false"
     (are [x y] (= x (boolean (deployment-node? y)))
       false {:el :person}
       false {:el :enterprise-boundary}
       false {:el :context-boundary}
+      false {:el :system}
+      false {:el :component}
       false {:el :concept}
       false {:el :use-case}
       false {:el :actor}
@@ -355,7 +356,6 @@
       false {:el :org-unit}
       false {:el :capability}
       false {:el :process}
-      false {:el :artifact}
       false {:el :information}
       false {:el :knowledge}
       false {:el :requirement}

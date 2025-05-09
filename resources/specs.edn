@@ -60,7 +60,7 @@
          :dynamic-view {:nodes {:els #{:enterprise-boundary :context-boundary
                                        :system :container :component :person}}
                         :relations {:els #{:step}}}
-         :deployment-view {:nodes {:els #{:node :container}}
+         :deployment-view {:nodes {:els #{:node :container :artifact}}
                            :relations {:els #{:link :deployed-to}}
                            :hierarchical? true}
          :deployment-structure-view {:nodes {:els #{:node :container}}

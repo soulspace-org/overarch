@@ -19,6 +19,7 @@
    :container-boundary  "Container_Boundary"
    :context-boundary    "Boundary"
    :component           "Component"
+   :artifact            "Container"
    :node                "Node"
    :send                "Rel"
    :request             "Rel"
@@ -138,6 +139,26 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
+; Render artifacts as containers for now, as they are deployed like containers
+(defmethod render-c4-element :artifact
+  [model view indent e]
+  [(str (render/indent indent)
+        (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
+        (when (:external e) "_Ext") "("
+        (puml/alias-name (:id e)) ", \""
+        (el/element-name e) "\""
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
+        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (render-link e)
+        (if (:sprite e)
+          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
+          (when (puml/sprite? (:tech e))
+            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+        ")")])
+
+; Systems don't have a `techn` but `type`
 (defmethod render-c4-element :technical-architecture-model-node
   [_ _ indent e]
   [(str (render/indent indent)
