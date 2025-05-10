@@ -1,5 +1,6 @@
 (ns org.soulspace.overarch.util.functions 
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            ))
 
 ;;;
 ;;; Helper functions
@@ -25,10 +26,9 @@
   ([s]
    (tokenize-string s #","))
   ([s re]
-  (when s
-    (->> (str/split s re)
-         (map str/trim)
-         (into [])))))
+   (when s
+     (->> (str/split s re)
+          (mapv str/trim)))))
 
 (defn multi-lines
   "Converts the string `s` to a multiline string with a maximum line length of `line-length`."

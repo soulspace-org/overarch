@@ -9,6 +9,7 @@
    of elements without references to the model as a whole."
   (:require [clojure.string :as str]
             [clojure.set :as set]
+            [tiara.data :as td]
             [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
@@ -938,7 +939,7 @@
 (defn technologies
   "Returns a vector of the technologies used by the element `e`."
   [e]
-  (fns/tokenize-string (get e :tech "")))
+  (into (td/ordered-set) (fns/tokenize-string (get e :tech ""))))
 
 ;;;
 ;;; Criteria Predicates

@@ -4,8 +4,9 @@
 (ns org.soulspace.overarch.domain.model
   "Functions for the definition and handling of the overarch model."
   (:require [clojure.set :as set]
-            [org.soulspace.overarch.domain.element :as el]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [tiara.data :as td ]
+            [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
 ;;; Basic accessor functions
@@ -154,6 +155,13 @@
   ([] #{})
   ([acc] acc)
   ([acc e] (set/union acc #{e})))
+
+(defn collect-in-ordered-set
+  "Step function to collect elements `e` in the accumulator `acc`.
+   No transformation on the element is applied."
+  ([] (td/ordered-set))
+  ([acc] acc)
+  ([acc e] (conj acc e)))
 
 (defn tree->set
   "Step function to convert a hierarchical tree of elements to a flat set of elements."
