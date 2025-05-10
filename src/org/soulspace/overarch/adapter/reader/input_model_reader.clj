@@ -124,6 +124,9 @@ The input model is transformed by
                 ; working on the input, so use :ct here
                 (contains? (set (:ct p)) e))))
 
+;; TODO rename to prepare-*
+;; TODO convert :tech to ordered-set with el/technology-set
+;; TODO check for other transformations from input to working elements
 (defn identified-node
   "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
   [e p]
@@ -137,6 +140,15 @@ The input model is transformed by
   (if (:id e)
     e
     (assoc e :id (el/generate-relation-id e))))
+
+; TODO hoist spec entries to view
+(defn prepare-view
+  "Returns the prepered view `e` with the id set. Generates the id from `e`s name."
+  [e]
+  #_(if (:id e)
+    e
+    (assoc e :id (el/generate-view-id e p)))
+  )
 
 (defn contained-in-relation
   "Returns a contained-in relation for parent `p` and element `e`."
