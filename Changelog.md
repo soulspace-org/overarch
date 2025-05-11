@@ -10,7 +10,7 @@ Version (NEXT)
   * e.g. ``:!ids`` or ``:!el``
 * added ``:artifact`` node to deployment model and deployment view 
 * refactored model reading to enable support for different input formats and sources
-* added criteria queries to model repository
+* added criteria query functions to model, delegated from model repository to model
 * added view spec accessors to view API
 
 Version 0.37.0
