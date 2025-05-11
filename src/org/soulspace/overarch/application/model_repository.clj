@@ -57,8 +57,7 @@
 (defn nodes-by-criteria
   "Returns a set of nodes that match the `criteria`"
   [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (model/nodes-by-criteria (model) criteria)))
+    (model/nodes-by-criteria (model) criteria))
 
 (defn relation-by-id
   "Returns the relation with the given `id`."
@@ -68,14 +67,12 @@
 (defn relations-by-criteria
   "Returns a set of relations that match the `criteria`"
   [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (model/relations-by-criteria (model) criteria)))
+    (model/relations-by-criteria (model) criteria))
 
 (defn model-elements-by-criteria
   "Returns a set of model elements that match the `criteria`"
   [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (model/model-elements-by-criteria (model) criteria)))
+    (model/model-elements-by-criteria (model) criteria))
 
 ;;;
 ;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
@@ -106,9 +103,8 @@
 (defn views-by-criteria
   "Returns a set of views that match the `criteria`"
   [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
     (into #{} (model/filter-xf @state criteria)
-          (views))))
+          (views)))
 
 (defn theme-by-id
   "Returns the theme with the given `id`."

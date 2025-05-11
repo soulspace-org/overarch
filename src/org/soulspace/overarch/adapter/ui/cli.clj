@@ -171,17 +171,16 @@
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
-    (into #{} (model/filter-xf @repo/state criteria)
-          (set/union (repo/nodes) (repo/relations)))))
+    (repo/model-elements-by-criteria criteria)))
 
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
-    (into []
-          (comp (model/filter-xf @repo/state criteria)
-                (map el/element->ref))
-          (repo/model-elements))))
+    (->> criteria
+         (repo/model-elements-by-criteria)
+         (map el/element->ref)
+         into [])))
 
 (defn select-views
   "Returns the views selected by criteria specified in the `options`."

@@ -12,6 +12,7 @@
 ;;;
 ;;; Model Statistics
 ;;;
+; TODO move to element
 (defn count-elements-per-namespace
   "Returns a map with the count of identifiable elements per namespace in the given `coll`."
   [coll]
@@ -20,6 +21,7 @@
        (frequencies)
        (into (sorted-map))))
 
+; TODO move to element
 (defn count-nodes-per-type
   "Returns a map with the count of nodes per type in the given `coll`."
   [coll]
@@ -29,6 +31,7 @@
        (frequencies)
        (into (sorted-map))))
 
+; TODO move to element
 (defn count-relations-per-type
   "Returns a map with the count of relations per type in the given `coll`."
   [coll]
@@ -38,6 +41,7 @@
        (frequencies)
        (into (sorted-map))))
 
+; TODO move to element
 (defn count-views-per-type
   "Returns a map with the count of views per type in the given `coll`."
   [coll]
@@ -47,6 +51,7 @@
        (frequencies)
        (into (sorted-map))))
 
+; TODO move to element
 (defn count-elements-per-type
   "Returns a map with the count of views per type in the given `coll`."
   [coll]
@@ -55,6 +60,7 @@
        (frequencies)
        (into (sorted-map))))
 
+; TODO move to element
 (defn count-external
   "Returns a map with the count of external and internal elements in the given `coll`."
   [coll]
@@ -62,6 +68,7 @@
        (map #(if (:external %) :external :internal))
        (frequencies)))
 
+; TODO move to element
 (defn count-synthetic
   "Returns a map with the count of synthetic and normal elements in the given `coll`."
   [coll]
@@ -72,6 +79,7 @@
 ;;;
 ;;; Information model
 ;;;
+; TODO move to element
 (defn all-keys
   "Returns a set of all keys used by the maps in `coll`."
   [coll]
@@ -80,6 +88,7 @@
        (mapv set)
        (apply set/union)))
 
+; TODO move to element
 (defn all-values-for-key
   "Returns a set of all keys used by the maps in `coll`."
   [key coll]
@@ -90,12 +99,14 @@
 ;;;
 ;;; Missing information checks
 ;;;
+; TODO move to element
 (defn unidentifiable-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
   (->> coll
        (remove el/identifiable?)))
 
+; TODO move to element
 (defn unnamespaced-elements
   "Returns the elements without a namespaced id."
   [coll]
@@ -103,6 +114,7 @@
        (remove el/namespaced?)
        (map :id)))
 
+; TODO move to element
 (defn unnamed-elements
   "Returns the elements without an id in the given `coll`."
   [coll]
@@ -110,11 +122,13 @@
        (remove el/named?)
        (map :id)))
 
+; TODO move to element
 (defn namespace-match?
   "Returns true, if the relation namespace matches the referrer namespace."
   [r]
   (= (namespace (:id r)) (namespace (:from r))))
 
+; TODO move to element
 (defn unmatched-relation-namespaces
   "Checks if the relation namespace matches the referrer namespace."
   [coll]
@@ -122,6 +136,7 @@
        (filter el/identifiable-relational-element?)
        (remove namespace-match?)))
 
+; TODO move to model
 (defn unrelated-nodes
   "Returns the set of ids of identifiable model nodes not taking part in any relation."
   [model]
@@ -133,6 +148,7 @@
 ;;;
 ;;; Reference checks
 ;;;
+; TODO move to model
 (defn unresolved-related
   "Checks references in a relation."
   [model rel]
@@ -144,6 +160,7 @@
              (when (el/unresolved-ref? to-el)
                (assoc to-el :parent (:id rel)))])))
 
+; TODO move to model
 (defn unresolved-refs
   "Checks references in an element."
   [model element]
@@ -153,6 +170,7 @@
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id element)))))
 
+; TODO move to view
 (defn unresolved-refs-in-view
   "Checks references in a view."
   [model view]
@@ -162,16 +180,19 @@
        (filter el/unresolved-ref?)
        (map #(assoc % :parent (:id view)))))
 
+; TODO move to model
 (defn check-relations
   "Validates the relations in the model."
   [model]
   (mapcat (partial unresolved-related model) (model/relations model)))
 
+; TODO move to model
 (defn check-nodes
   "Validates the content references in the model."
   [model]
   (mapcat (partial unresolved-refs model) (model/nodes model)))
 
+; TODO move to views
 (defn check-views
   "Validates the references in the views."
   [model]
