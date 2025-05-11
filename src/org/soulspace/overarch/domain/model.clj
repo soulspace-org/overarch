@@ -6,7 +6,8 @@
   (:require [clojure.set :as set]
             [clojure.string :as str]
             [tiara.data :as td ]
-            [org.soulspace.overarch.domain.element :as el]))
+            [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.util.functions :as fns]))
 
 ;;;
 ;;; Basic accessor functions
@@ -751,6 +752,66 @@
        (let [~'criteria# ~criteria]
          (and (= (:model-type e#) ~model-type)
               (~'criteria# e#))))))
+
+;;;
+;;; Checks and Stats
+;;;
+(defn unrelated-nodes
+  "Returns the set of ids of identifiable model nodes not taking part in any relation."
+  [model]
+  (let [id-set (into #{} el/node-ids-xf (nodes model))]
+    (set/difference id-set
+                    (fns/key-set (:referrer-id->relations model))
+                    (fns/key-set (:referred-id->relations model)))))
+
+;;;
+;;; Reference checks
+;;;
+(defn unresolved-related
+  "Checks references in a relation."
+  [model rel]
+  (let [from-el (resolve-id model (:from rel))
+        to-el (resolve-id model (:to rel))]
+    (remove nil?
+            [(when (el/unresolved-ref? from-el)
+               (assoc from-el :parent (:id rel)))
+             (when (el/unresolved-ref? to-el)
+               (assoc to-el :parent (:id rel)))])))
+
+(defn unresolved-refs
+  "Checks references in an element."
+  [model element]
+  (->> (children model element)
+       (filter el/reference?)
+       (map (element-resolver model))
+       (filter el/unresolved-ref?)
+       (map #(assoc % :parent (:id element)))))
+
+(defn unresolved-refs-in-view
+  "Checks references in a view."
+  [model view]
+  (->> (:ct view)
+       (filter el/reference?)
+       (map (element-resolver model))
+       (filter el/unresolved-ref?)
+       (map #(assoc % :parent (:id view)))))
+
+
+(defn check-relations
+  "Validates the relations in the model."
+  [model]
+  (mapcat (partial unresolved-related model) (relations model)))
+
+(defn check-nodes
+  "Validates the content references in the model."
+  [model]
+  (mapcat (partial unresolved-refs model) (nodes model)))
+
+(defn check-views
+  "Validates the references in the views."
+  [model]
+  (mapcat (partial unresolved-refs-in-view model) (views model)))
+
 
 (comment
   (defn aggregable-relation?

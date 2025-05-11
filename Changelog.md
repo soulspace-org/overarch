@@ -12,6 +12,8 @@ Version (NEXT)
 * refactored model reading to enable support for different input formats and sources
 * added criteria query functions to model, delegated from model repository to model
 * moved implementations from adapter layer to application layer
+* moved functions from analytics to element and model namespaces
+* removed analytics namespace
 * added view spec accessors to view API
 
 Version 0.37.0

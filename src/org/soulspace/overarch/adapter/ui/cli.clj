@@ -11,7 +11,6 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.spec :as spec]
-            [org.soulspace.overarch.domain.analytics :as al]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
             [org.soulspace.overarch.application.render :as rndr]
@@ -128,36 +127,29 @@
 ;;;
 ;;; Handler logic
 ;;;
-(defmethod exp/export :all
-  [model format options]
-  (doseq [current-format exp/export-formats]
-    (when (:debug options)
-      (println "Exporting " current-format))
-    (exp/export model current-format options)))
-
 (defn model-warnings
   "Reports warnings about the given `model` and views."
   [model options]
   {:build-problems (:build-problems model)
-   :unresolved-refs-in-views (al/check-views model)
-   :unresolved-refs-in-relations (al/check-relations model)})
-   :unnamespaced (al/unnamespaced-elements (repo/model-elements))
-   :unidentifiable (al/unidentifiable-elements (repo/model-elements))
-   :unnamed (al/unnamed-elements (repo/model-elements))
-   :unrelated (al/unrelated-nodes (repo/model-elements))
+   :unresolved-refs-in-views (model/check-views model)
+   :unresolved-refs-in-relations (model/check-relations model)})
+   :unnamespaced (el/unnamespaced-elements (repo/model-elements))
+   :unidentifiable (el/unidentifiable-elements (repo/model-elements))
+   :unnamed (el/unnamed-elements (repo/model-elements))
+   :unrelated (model/unrelated-nodes (repo/model-elements))
    
 (defn model-info
   "Reports information about the given `model` and views."
   [model options]
   {:nodes-count                 (count (repo/nodes))
-   :nodes-by-type-count         (al/count-nodes-per-type (repo/nodes))
+   :nodes-by-type-count         (el/count-nodes-per-type (repo/nodes))
    :relations-count             (count (repo/relations))
-   :relations-by-type-count     (al/count-relations-per-type (repo/relations))
+   :relations-by-type-count     (el/count-relations-per-type (repo/relations))
    :views-count                 (count (repo/views))
-   :views-by-type-count         (al/count-views-per-type (repo/views))
-   :elements-by-namespace-count (al/count-elements-per-namespace (repo/model-elements))
-   :external-count              (al/count-external (repo/model-elements))
-   :synthetic-count             (al/count-synthetic (repo/model-elements))})
+   :views-by-type-count         (el/count-views-per-type (repo/views))
+   :elements-by-namespace-count (el/count-elements-per-namespace (repo/model-elements))
+   :external-count              (el/count-external (repo/model-elements))
+   :synthetic-count             (el/count-synthetic (repo/model-elements))})
    
 (defn print-sprite-mappings
   "Prints the given list of the sprite mappings."
@@ -291,29 +283,30 @@
   )
 
 (comment ; model analytics 
-  (al/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
-  (al/count-elements-per-type (concat (repo/nodes) (repo/relations)))
-  (al/count-nodes-per-type (repo/nodes))
-  (al/count-relations-per-type (repo/relations))
-  (al/count-views-per-type (repo/views))
+  (el/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
+  (el/count-elements-per-type (concat (repo/nodes) (repo/relations)))
+  (el/count-nodes-per-type (repo/nodes))
+  (el/count-relations-per-type (repo/relations))
+  (el/count-views-per-type (repo/views))
 
-  (al/count-external (concat (repo/nodes) (repo/relations)))
-  (al/count-synthetic (concat (repo/nodes) (repo/relations)))
+  (el/count-external (concat (repo/nodes) (repo/relations)))
+  (el/count-synthetic (concat (repo/nodes) (repo/relations)))
 
-  (al/all-keys (repo/nodes))
-  (al/all-keys (repo/relations))
-  (al/all-values-for-key :el (repo/nodes))
-  (al/all-values-for-key :subtype (repo/nodes))
-  (al/all-values-for-key :tech (repo/nodes))
+  (el/all-keys (repo/nodes))
+  (el/all-keys (repo/relations))
+  (el/all-values-for-key :el (repo/nodes))
+  (el/all-values-for-key :subtype (repo/nodes))
+  (el/all-values-for-key :tech (repo/nodes))
 
-  (al/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
-  (al/unnamespaced-elements (concat (repo/nodes) (repo/relations)))
-  (al/unrelated-nodes (repo/model))
-  (al/check-relations (repo/model))
-  (al/check-views (repo/model))
-  (al/unresolved-refs  (repo/model) (model/resolve-element @repo/state :test/missing-elements))
-  (al/unmatched-relation-namespaces (repo/relations))
+  (el/unidentifiable-elements (concat (repo/nodes) (repo/relations)))
+  (el/unnamespaced-elements (concat (repo/nodes) (repo/relations)))
+  (el/unmatched-relation-namespaces (repo/relations))
 
+  (model/unrelated-nodes (repo/model))
+  (model/check-relations (repo/model))
+  (model/check-views (repo/model))
+  (model/unresolved-refs  (repo/model) (model/resolve-element @repo/state :test/missing-elements))
+ 
   (el/elements-by-namespace (repo/nodes))
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))

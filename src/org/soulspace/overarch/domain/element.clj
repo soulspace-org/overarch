@@ -1235,3 +1235,116 @@
   ((desc-pred "(?i).*account.*") {})
   ;
   )
+
+;;;
+;;; Model Statistics
+;;;
+(defn count-elements-per-namespace
+  "Returns a map with the count of identifiable elements per namespace in the given `coll`."
+  [coll]
+  (->> coll
+       (eduction namespaces-xf)
+       (frequencies)
+       (into (sorted-map))))
+
+(defn count-nodes-per-type
+  "Returns a map with the count of nodes per type in the given `coll`."
+  [coll]
+  (->> coll
+       (filter model-node?)
+       (map :el)
+       (frequencies)
+       (into (sorted-map))))
+
+(defn count-relations-per-type
+  "Returns a map with the count of relations per type in the given `coll`."
+  [coll]
+  (->> coll
+       (filter relational?)
+       (map :el)
+       (frequencies)
+       (into (sorted-map))))
+
+(defn count-views-per-type
+  "Returns a map with the count of views per type in the given `coll`."
+  [coll]
+  (->> coll
+       (filter view?)
+       (map :el)
+       (frequencies)
+       (into (sorted-map))))
+
+(defn count-elements-per-type
+  "Returns a map with the count of views per type in the given `coll`."
+  [coll]
+  (->> coll
+       (map :el)
+       (frequencies)
+       (into (sorted-map))))
+
+(defn count-external
+  "Returns a map with the count of external and internal elements in the given `coll`."
+  [coll]
+  (->> coll
+       (map #(if (:external %) :external :internal))
+       (frequencies)))
+
+(defn count-synthetic
+  "Returns a map with the count of synthetic and normal elements in the given `coll`."
+  [coll]
+  (->> coll
+       (map #(if (:synthetic %) :synthetic :normal))
+       (frequencies)))
+
+;;;
+;;; Information model
+;;;
+(defn all-keys
+  "Returns a set of all keys used by the maps in `coll`."
+  [coll]
+  (->> coll
+       (mapv keys)
+       (mapv set)
+       (apply set/union)))
+
+(defn all-values-for-key
+  "Returns a set of all keys used by the maps in `coll`."
+  [key coll]
+  (->> coll
+       (mapv key)
+       (into #{})))
+
+;;;
+;;; Missing information checks
+;;;
+(defn unidentifiable-elements
+  "Returns the elements without an id in the given `coll`."
+  [coll]
+  (->> coll
+       (remove identifiable?)))
+
+(defn unnamespaced-elements
+  "Returns the elements without a namespaced id."
+  [coll]
+  (->> coll
+       (remove namespaced?)
+       (map :id)))
+
+(defn unnamed-elements
+  "Returns the elements without an id in the given `coll`."
+  [coll]
+  (->> coll
+       (remove named?)
+       (map :id)))
+
+(defn namespace-match?
+  "Returns true, if the relation namespace matches the referrer namespace."
+  [r]
+  (= (namespace (:id r)) (namespace (:from r))))
+
+(defn unmatched-relation-namespaces
+  "Checks if the relation namespace matches the referrer namespace."
+  [coll]
+  (->> coll
+       (filter identifiable-relational-element?)
+       (remove namespace-match?)))

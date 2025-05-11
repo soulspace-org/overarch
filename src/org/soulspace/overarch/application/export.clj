@@ -35,3 +35,10 @@
   "Exports the data in the given format."
   export-format)
 
+(defmethod export :all
+  [model format options]
+  (doseq [current-format export-formats]
+    (when (:debug options)
+      (println "Exporting " current-format))
+    (export model current-format options)))
+
