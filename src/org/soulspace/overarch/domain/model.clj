@@ -256,6 +256,8 @@
 ;;
 ;; Accessors
 ;;
+(declare filter-xf)
+
 (defn nodes
   "Returns the collection of model nodes."
   [model]
@@ -280,6 +282,38 @@
   "Returns the set of themes from the `model`."
   [model]
   (:themes model))
+
+(defn node-by-id
+  "Returns the node with the given `id`."
+  [model id]
+  (when-let [el (get (:id->element model) id)]
+    (when (el/model-node? el)
+      el)))
+
+(defn relation-by-id
+  "Returns the node with the given `id`."
+  [model id]
+  (when-let [el (get (:id->element model) id)]
+    (when (el/model-relation? el)
+      el)))
+
+(defn nodes-by-criteria
+  "Returns a set of nodes that match the `criteria`"
+  [model criteria]
+  (into #{} (filter-xf model criteria)
+        (nodes model)))
+
+(defn relations-by-criteria
+  "Returns a set of relations that match the `criteria`"
+  [model criteria]
+  (into #{} (filter-xf model criteria)
+        (relations model)))
+
+(defn model-elements-by-criteria
+  "Returns a set of relations that match the `criteria`"
+  [model criteria]
+  (into #{} (filter-xf model criteria)
+        (set/union (nodes model) (relations model))))
 
 (defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."

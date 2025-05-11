@@ -28,82 +28,71 @@
   ([model]
    (:input-elements model)))
 
-;;;
-;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
-;;;
 (defn nodes
   "Returns the set of nodes."
   ([]
    (nodes (model)))
   ([model]
-   (:nodes model)))
+   (model/nodes model)))
 
 (defn relations
   "Returns the set of relations."
   ([]
    (relations (model)))
   ([model]
-   (:relations model)))
+   (model/relations model)))
 
 (defn model-elements
   "Returns the set of model elements (nodes and relations)."
   ([]
    (model-elements (model)))
   ([model]
-   (concat (nodes model) (relations model))))
+   (concat (model/nodes model) (model/relations model))))
 
+(defn node-by-id
+  "Returns the node with the given `id`."
+  ([id]
+   (model/node-by-id (model) id)))
+
+(defn nodes-by-criteria
+  "Returns a set of nodes that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (model/nodes-by-criteria (model) criteria)))
+
+(defn relation-by-id
+  "Returns the relation with the given `id`."
+  ([id]
+   (model/relation-by-id (model) id)))
+
+(defn relations-by-criteria
+  "Returns a set of relations that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (model/relations-by-criteria (model) criteria)))
+
+(defn model-elements-by-criteria
+  "Returns a set of model elements that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (model/model-elements-by-criteria (model) criteria)))
+
+;;;
+;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
+;;;
 (defn views
   "Returns the set of views."
   ([]
    (views (model)))
   ([model]
-   (:views model)))
+   (model/views model)))
 
 (defn themes
   "Returns the set of themes."
   ([]
    (themes (model)))
   ([model]
-   (:themes model)))
-
-(defn node-by-id
-  "Returns the node with the given `id`."
-  ([id]
-   (node-by-id (model) id))
-  ([model id]
-   (when-let [el (get (:id->element model) id)]
-     (when (el/model-node? el)
-       el))))
-
-(defn nodes-by-criteria
-  "Returns a set of nodes that match the `criteria`"
-  [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (into #{} (model/filter-xf @state criteria)
-          (nodes))))
-
-(defn relation-by-id
-  "Returns the relation with the given `id`."
-  ([id]
-   (relation-by-id (model) id))
-  ([model id]
-   (when-let [el (get (:id->element model) id)]
-     (when (el/model-relation? el)
-       el))))
-
-(defn relations-by-criteria
-  "Returns a set of relations that match the `criteria`"
-  [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (into #{} (model/filter-xf @state criteria)
-          (relations))))
-
-(defn model-elements-by-criteria
-  "Returns a set of model elements that match the `criteria`"
-  [criteria]
-  (when-let [criteria (spec/check-selection-criteria criteria)]
-    (into #{} (model/filter-xf @state criteria)
-          (set/union (nodes) (relations)))))
+   (model/themes model)))
 
 (defn view-by-id
   "Returns the view with the given `id`."
