@@ -2,7 +2,8 @@
   (:require [clojure.set :as set]
             [clojure.string :as str]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.model :as model]))
+            [org.soulspace.overarch.domain.model :as model]
+            [org.soulspace.overarch.domain.spec :as spec]))
 
 ;;;
 ;;; Repository functions
@@ -19,6 +20,7 @@
   []
   @state)
 
+; Deprecated, input elements should not be part of the model
 (defn input-elements
   "Returns the set of input elements."
   ([]
@@ -26,6 +28,9 @@
   ([model]
    (:input-elements model)))
 
+;;;
+;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
+;;;
 (defn nodes
   "Returns the set of nodes."
   ([]
@@ -70,6 +75,13 @@
      (when (el/model-node? el)
        el))))
 
+(defn nodes-by-criteria
+  "Returns a set of nodes that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (into #{} (model/filter-xf @state criteria)
+          (nodes))))
+
 (defn relation-by-id
   "Returns the relation with the given `id`."
   ([id]
@@ -79,6 +91,20 @@
      (when (el/model-relation? el)
        el))))
 
+(defn relations-by-criteria
+  "Returns a set of relations that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (into #{} (model/filter-xf @state criteria)
+          (relations))))
+
+(defn model-elements-by-criteria
+  "Returns a set of model elements that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (into #{} (model/filter-xf @state criteria)
+          (set/union (nodes) (relations)))))
+
 (defn view-by-id
   "Returns the view with the given `id`."
   ([id]
@@ -87,6 +113,13 @@
    (when-let [el (get (:id->element model) id)]
      (when (el/view? el)
        el))))
+
+(defn views-by-criteria
+  "Returns a set of views that match the `criteria`"
+  [criteria]
+  (when-let [criteria (spec/check-selection-criteria criteria)]
+    (into #{} (model/filter-xf @state criteria)
+          (views))))
 
 (defn theme-by-id
   "Returns the theme with the given `id`."
