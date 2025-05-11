@@ -68,6 +68,7 @@
    ["-h" "--help" "Print help"]
    [nil  "--debug" "Print debug messages" :default false]])
 
+; TODO merge with options and use in reader
 (def default-options
   {:input-model-format :overarch-input
    :reader-type :file})
