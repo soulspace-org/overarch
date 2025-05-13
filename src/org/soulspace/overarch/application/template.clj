@@ -5,6 +5,7 @@
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
             [clojure.spec.alpha :as s]
+            [zprint.core :as zp]
             [org.soulspace.clj.namespace :as ns]
             [org.soulspace.clj.java.file :as file]
             [org.soulspace.overarch.application.model-repository :as repo]
@@ -65,7 +66,6 @@
 
 (s/def :overarch.template/generation-config
   (s/coll-of :overarch.template/generation-context))
-
 
 ;;;
 ;;; Template engine functions
@@ -224,6 +224,13 @@
    :id-as-namespace false
    :id-as-name      false})
 
+(def edn-format-options
+  {:style :respect-bl
+   :map {:comma? false
+         :force-nl? true
+         :sort? true
+         :key-order [:el :id :subtype :name :desc :doc :tech :maturity :external :tags]}})
+
 (defn read-config
   "Reads the generator configuration specified in `options`."
   [options]
@@ -256,7 +263,10 @@
                                  {:ctx ctx
                                   :e e
                                   :model model
-                                  :protected-areas protected-areas})]
+                                  :protected-areas protected-areas})
+          result (if (= "edn" (:extension ctx))
+                   (zp/zprint-file-str result (:template ctx) edn-format-options)
+                   result)]
     ; TODO handle backups
     ; write artifact for result
       (write-artifact path result))
@@ -298,5 +308,7 @@
   (repo/read-models :file "models")
   (apply-template :comb (io/as-file "dev/templates/projects/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
+  (spit "test.txt" "Hello World!")
+  
   ;
   )

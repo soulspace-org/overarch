@@ -35,7 +35,7 @@
 %>;;;;
 ;;;; Model for Namespace <%= (m/element-namespace (first e)) %>
 ;;;;
-#{
+#{;
 <%
   (when (seq concept-model-elements)
 %>
@@ -47,6 +47,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? concept-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -55,6 +56,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? concept-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )
@@ -69,6 +71,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? use-case-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -77,6 +80,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? use-case-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )
@@ -91,6 +95,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? architecture-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -99,6 +104,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? architecture-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )
@@ -113,6 +119,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? code-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -121,6 +128,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? code-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )
@@ -135,6 +143,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? deployment-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -143,6 +152,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? deployment-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )
@@ -157,6 +167,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-node? organization-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
 %>
@@ -165,6 +176,7 @@
 <%
     (doseq [el (sort-by :id (filter m/model-relation? organization-model-elements))]
 %>  <%= (element-to-render el) %>
+
 <%
     )
   )

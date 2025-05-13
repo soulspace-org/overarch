@@ -14,6 +14,7 @@ Version (NEXT)
 * moved implementations from adapter layer to application layer
 * moved functions from analytics to element and model namespaces
 * removed analytics namespace
+* added formatting of generated edn files with zprint
 * added view spec accessors to view API
 
 Version 0.37.0

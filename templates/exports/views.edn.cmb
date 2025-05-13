@@ -13,7 +13,7 @@
    :organization-structure-view :glossary-view :model-view])
 
 (defn list-views
-  ""
+  "Lists the views of a specific type."
   [e view-type]
   (let [views (filter #(= view-type (:el %)) e)]
     (when (seq views)
@@ -24,6 +24,7 @@
 <%
       (doseq [view views]
 %>  <%= view %>
+
 <%
       ))))
 %>;;;;
