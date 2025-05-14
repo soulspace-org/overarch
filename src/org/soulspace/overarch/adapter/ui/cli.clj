@@ -323,6 +323,8 @@
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
 
+  ; Filter all techs staring with Azure 
+  (filter #(str/starts-with? % "Azure") (model/traverse :tech model/tech-collector (repo/model-elements)))
   ;
   )
 
@@ -336,11 +338,8 @@
   (into #{}
         (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
         (repo/model-elements))
-  (->> (into #{}
-             (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
-             (repo/model-elements))
-       (model/collect-fields (repo/model)))
   (into #{} (model/filter-xf (repo/model) {:namespace-prefix "mybank.compliance"}) (repo/nodes))
+  
   ;
   )
 
@@ -360,8 +359,8 @@
   (model/referring-nodes (repo/model) :banking/api-application {:el :request})
   ;(model/descendants (repo/model) :banking/internet-banking-system)
   ;(model/ancestors (repo/model) :banking/internet-banking-system)
-  (model/sync-dependents (repo/model) :banking/api-application)
-  (model/sync-dependencies (repo/model) :banking/api-application)
+  ;(model/sync-dependents (repo/model) :banking/api-application)
+  ;(model/sync-dependencies (repo/model) :banking/api-application)
   ; 
   )
 
@@ -426,9 +425,9 @@
 
 (comment ; view functions for overarch data-model
   (fns/data-tapper "referenced"
-                   (view/referenced-elements (repo/model)
-                                             (model/resolve-element (repo/model)
-                                                                    :overarch.data-model/data-model)))
+                 (view/referenced-elements (repo/model)
+                                           (model/resolve-element (repo/model)
+                                                                  :overarch.data-model/data-model)))
 
   (fns/data-tapper "selected"
                    (view/selected-elements (repo/model)
@@ -470,9 +469,6 @@
                         (model/resolve-element (repo/model)
                                                :banking/internet-banking-system))
   
-  (model/deployed-on (repo/model)
-                     (model/resolve-element (repo/model)
-                                            :banking/big-bank-api-server-pod))
   (c4/render-c4-element (repo/model)
                         (model/resolve-element (repo/model)
                                                :banking/container-view)
