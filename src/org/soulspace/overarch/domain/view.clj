@@ -29,58 +29,42 @@
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
   [view]
-  (if (contains? view :include)
-    (get view :include :referenced-only)
-    (get-in view [:spec :include] :referenced-only)))
+  (get view :include :referenced-only))
 
 (defn layout-spec
   "Returns the layout specification for the `view`. Defaults to :top-down."
   [view]
-  (if (contains? view :layout)
-    (get view :layout :top-down)
-    (get-in view [:spec :layout] :top-down)))
+  (get view :layout :top-down))
 
 (defn legend-spec
   "Returns the legend specification for the `view`. Defaults to true."
   [view]
-  (not (if (contains? view :no-legend)
-         (get view :no-legend false)
-         (get-in view [:spec :no-legend] false))))
+  (get view :no-legend false))
 
 (defn linetype-spec
   "Returns the linetype specification for the `view`. Defaults to :polygonal."
   [view]
-  (if (contains? view :linetype)
-    (get view :linetype :polygonal)
-    (get-in view [:spec :linetype])))
+  (get view :linetype :polygonal))
 
 (defn selection-spec
   "Returns the selection specification for the `view`."
   [view]
-  (if (contains? view :selection)
-    (get view :selection)
-    (get-in view [:spec :selection])))
+  (get view :selection))
 
 (defn sketch-spec
   "Returns the sketch specification for the `view`. Defaults to false."
   [view]
-  (if (contains? view :sketch)
-    (get view :sketch false)
-    (get-in view [:spec :sketch] false)))
+  (get view :sketch false))
 
 (defn expand-external-spec
   "Returns the expand external specification for the `view`."
   [view]
-  (if (contains? view :expand-external)
-    (get view :expand-external false)
-    (get-in view [:spec :expand-external] false)))
+  (get view :expand-external false))
 
 (defn themes-spec
   "Returns the themes specification for the `view`."
   [view]
-  (if (contains? view :themes)
-    (get view :themes [])
-    (get-in view [:spec :themes] [])))
+  (get view :themes []))
 
 (defn themes->styles
   "Returns the vector of styles from the themes of the given `view`."
@@ -92,25 +76,19 @@
 (defn styles-spec
   "Returns the styles specification for the `model` and the `view`."
   [model view]
-  (let [styles (if (contains? view :styles)
-                 (get view :styles #{})
-                 (get-in view [:spec :styles] #{}))]
-    (apply set/union (conj
-                      (themes->styles model view)
-                      styles))))
+  (apply set/union (conj
+                    (themes->styles model view)
+                    (get view :styles #{}))))
+
 (defn plantuml-spec
   "Returns the plantuml specification for the `view`."
   [view]
-  (if (contains? view :plantuml)
-    (get view :plantuml [])
-    (get-in view [:spec :plantuml] [])))
+  (get view :plantuml []))
 
 (defn graphviz-spec
   "Returns the graphviz specification for the `view`."
   [view]
-  (if (contains? view :graphviz)
-    (get view :graphviz [])
-    (get-in view [:spec :graphviz] [])))
+  (get view :graphviz []))
 
 ;;;
 ;;; View functions

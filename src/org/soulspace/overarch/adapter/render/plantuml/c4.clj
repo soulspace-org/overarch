@@ -121,6 +121,14 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
+(defn sprite
+  "Returns the sprite for the element `e`."
+  [e]
+  (if (:sprite e)
+    (puml/tech->sprite (:sprite e))
+    (puml/tech->sprite (first (:tech e)
+    ))))
+
 (defmethod render-c4-element :system
   [_ _ indent e]
   [(str (render/indent indent)
@@ -130,12 +138,10 @@
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-        (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+        (when (seq (:tech e)) (str ", $type=\"" (str/join ", " (:tech e)) "\""))
         (render-link e)
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) "\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -149,12 +155,10 @@
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
         (render-link e)
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) "\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -168,12 +172,10 @@
         (puml/alias-name (:id e)) ", \""
         (el/element-name e) "\""
         (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
+        (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
         (render-link e)
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) "\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -189,12 +191,10 @@
                      (puml/alias-name (:id e)) ", \""
                      (el/element-name e) "\""
                      (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-                     (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+                     (when (seq (:tech e)) (str ", $type=\"" (str/join ", " (:tech e)) "\""))
                      (render-link e)
-                     (if (:sprite e)
-                       (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-                       (when (puml/sprite? (:tech e))
-                         (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+                     (when-let [sprite (sprite e)]
+                       (str ", $sprite=\"" (:name sprite) "\""))
                      (when (:style e) (str ", $tag=\"" (puml/short-name (:style e)) "\""))
                      ") {")
                 (map #(render-c4-element model view (+ indent 2) %)
@@ -205,12 +205,10 @@
             (puml/alias-name (:id e)) ", \""
             (el/element-name e) "\""
             (when (:desc e) (str ", $descr=\"" (:desc e) "\""))
-            (when (:tech e) (str ", $type=\"" (:tech e) "\""))
+            (when (seq (:tech e)) (str ", $type=\"" (str/join ", " (:tech e)) "\""))
             (render-link e)
-            (if (:sprite e)
-              (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) "\"")
-              (when (puml/sprite? (:tech e))
-                (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) "\"")))
+            (when-let [sprite (sprite e)]
+              (str ", $sprite=\"" (:name sprite) "\""))
             (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
             ")")])))
 
@@ -232,11 +230,9 @@
                  (puml/alias-name (:to e)) ", \""))
           (fns/single-line (:name e)) "\""
           (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-          (if (:sprite e)
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
-            (when (puml/sprite? (:tech e))
-              (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+          (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
+          (when-let [sprite (sprite e)]
+            (str ", $sprite=\"" (:name sprite) ",scale=0.5\""))
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 
@@ -267,11 +263,9 @@
                (puml/alias-name (:to e)) ", \""))
         (fns/single-line (:name e)) "\""
         (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+        (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) ",scale=0.5\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -279,15 +273,7 @@
   [_ view indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))
-        (if (:direction e)
-          ; direction is specified on relation
-          (c4-directions (:direction e))
-          ; no direction is specified on relation, use reasonable defaults 
-          (case (:el e)
-            :publish (c4-directions :down)
-            :subscribe (c4-directions :up)
-            ""))
-        "("
+        (when (:direction e) (c4-directions (:direction e))) "("
         (when (and (:index e) (= :dynamic-view (:el view)))
           (str "$index=SetIndex(" (:index e) "), "))
         (if (:reverse e)
@@ -297,11 +283,9 @@
                (puml/alias-name (:to e)) ", \""))
         (fns/single-line (:name e)) "\""
         (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-        (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-        (if (:sprite e)
-          (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
-          (when (puml/sprite? (:tech e))
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+        (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) ",scale=0.5\""))
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
@@ -325,11 +309,9 @@
                  (puml/alias-name (:to e)) ", \""))
           (fns/single-line (:name e)) "\""
           (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
-          (when (:tech e) (str ", $techn=\"" (:tech e) "\""))
-          (if (:sprite e)
-            (str ", $sprite=\"" (:name (puml/tech->sprite (:sprite e))) ",scale=0.5\"")
-            (when (puml/sprite? (:tech e))
-              (str ", $sprite=\"" (:name (puml/tech->sprite (:tech e))) ",scale=0.5\"")))
+          (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
+          (when-let [sprite (sprite e)]
+            (str ", $sprite=\"" (:name sprite) ",scale=0.5\""))
           (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
           ")")]))
 

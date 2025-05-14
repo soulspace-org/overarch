@@ -198,7 +198,7 @@
 (defn collect-all-sprites
   "Collects all sprites for the collection of elements."
   [coll]
-  (filter sprite? (set/union (collect-technologies coll) (collect-sprites coll))))
+  (filter tech->sprite (set/union (collect-technologies coll) (collect-sprites coll))))
 
 (defn sprites-for-view
   "Collects the sprites for the `view`."

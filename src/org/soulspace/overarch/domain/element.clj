@@ -938,8 +938,16 @@
 
 (defn technology-set
   "Returns a vector of the technologies used by the element `e`."
-  [e]
-  (into (td/ordered-set) (fns/tokenize-string (get e :tech ""))))
+  [v]
+  (cond
+    (string? v)
+    (into (td/ordered-set) (fns/tokenize-string v))
+
+    (set? v)
+    v
+
+    (coll? v)
+    (into (td/ordered-set) v)))
 
 ;;;
 ;;; Criteria Predicates
@@ -1173,19 +1181,19 @@
   "Returns a predicate that returns true if `v` is a technology of `e`."
   [v]
   (fn [e]
-    (contains? (set (technology-set e)) v)))
+    (contains? (:tech e) v)))
 
 (defn techs-pred
   "Returns a predicate that returns true if any of the technologies in `v` are technologies of `e`."
   [v]
   (fn [e]
-    (seq (set/intersection v (set (technology-set e))))))
+    (seq (set/intersection v (:tech e)))))
 
 (defn all-techs-pred
   "Returns a predicate that returns true if all of the technologies in `v` are technologies of `e`."
   [v]
   (fn [e]
-    (set/subset? (set v) (set (technology-set e)))))
+    (set/subset? (set v) (:tech e))))
 
 (defn tags-check-pred
   "Returns a predicate that returns true if the check for tags on `e` equals the boolean value `v`"

@@ -266,18 +266,30 @@
 ;;;
 
 (comment ; state update
-  (update-and-dispatch! {:model-dir "models"
-                         :export-dir "export"
-                         :render-dir "export"
-                         :render-format :plantuml
-                         :debug true})
+  (update-and-dispatch! (merge
+                         default-options
+                         {:model-dir "models"
+                          :export-dir "export"
+                          :render-dir "export"
+                          :render-format :plantuml
+                          :debug true}))
 
-  (model-info (reader/update-state! {:model-dir "models/banking:models/overarch"})
+  (model-info (reader/update-state! (merge
+                                     default-options
+                                     {:model-dir "models/banking:models/overarch"}))
               {:model-info true})
-  (reader/update-state! {:model-dir "models/banking"})
-  (reader/update-state! {:model-dir "models/overarch"})
-  (reader/update-state! {:model-dir "models/test/collapsed"})
-  (reader/update-state! {:model-dir "../my-bank-model/models/"})
+  (reader/update-state! (merge
+                         default-options
+                         {:model-dir "models/banking"}))
+  (reader/update-state! (merge
+                         default-options
+                         {:model-dir "models/overarch"}))
+  (reader/update-state! (merge
+                         default-options
+                         {:model-dir "models/test/collapsed"}))
+  (reader/update-state! (merge
+                         default-options
+                         {:model-dir "../my-bank-model/models/"}))
 
   ;
   )

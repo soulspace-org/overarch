@@ -23,10 +23,10 @@ The input model is transformed by
 * computing missing ids, if possible
 * converting the node hierarchies to :contained-in relations
    "
-  (:require [org.soulspace.overarch.domain.element :as el]
+  (:require [clojure.string :as str]
+            [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.adapter.reader.model-reader :as model-reader]
-            [clojure.string :as str]))
+            [org.soulspace.overarch.adapter.reader.model-reader :as model-reader]))
 
 ;;
 ;; Input checks
@@ -124,31 +124,34 @@ The input model is transformed by
                 ; working on the input, so use :ct here
                 (contains? (set (:ct p)) e))))
 
-;; TODO rename to prepare-*
-;; TODO convert :tech to ordered-set with el/technology-set
 ;; TODO check for other transformations from input to working elements
-(defn identified-node
+(defn prepare-node
   "Returns the node `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
   [e p]
-  (if (or (:id e) (:ref e))
-    e
-    (assoc e :id (el/generate-node-id e p))))
+  (let [node (if (or (:id e) (:ref e))
+           e
+           (assoc e :id (el/generate-node-id e p)))
+        node (if (seq (:tech node))
+           (assoc node :tech (el/technology-set (:tech node)))
+           node)]
+    (dissoc node :ct)))
 
-(defn identified-relation
+(defn prepare-relation
   "Returns the relation `e` with the id set. Generates the id from `e`s name and the parent `p`s id."
   [e]
-  (if (:id e)
-    e
-    (assoc e :id (el/generate-relation-id e))))
+  (let [rel (if (:id e)
+            e
+            (assoc e :id (el/generate-relation-id e)))
+        rel (if (seq (:tech rel))
+              (assoc rel :tech (el/technology-set (:tech rel)))
+              rel)]
+    rel))
 
-; TODO hoist spec entries to view
 (defn prepare-view
   "Returns the prepered view `e` with the id set. Generates the id from `e`s name."
   [e]
-  #_(if (:id e)
-    e
-    (assoc e :id (el/generate-view-id e p)))
-  )
+  ; hoist spec entries to view
+  (merge (dissoc e :spec) (:spec e)))
 
 (defn contained-in-relation
   "Returns a contained-in relation for parent `p` and element `e`."
@@ -172,34 +175,34 @@ The input model is transformed by
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
   [acc p e]
-  (let [identified-e (dissoc (identified-node e p) :ct)
-        problems (remove nil? (check-element acc p identified-e))]
+  (let [prepared-node (prepare-node e p)
+        problems (remove nil? (check-element acc p prepared-node))]
     (if (and p (input-child? e p))
             ; a child node, add a contained in relationship, too
             ; add syntetic ids for nodes without ids (e.g. fields, methods)
-      (let [c-rel (contained-in-relation (:id p) (:id identified-e))]
+      (let [c-rel (contained-in-relation (:id p) (:id prepared-node))]
         (assoc acc
                :nodes
 
-               (conj (:nodes acc) identified-e)
+               (conj (:nodes acc) prepared-node)
 
                :id->element
-               (if-let [el (get-in acc [:id->element (:id identified-e)])]
-                 (println "Error: Duplicate element id" (:id identified-e) "for" e "and" el)
+               (if-let [el (get-in acc [:id->element (:id prepared-node)])]
+                 (println "Error: Duplicate element id" (:id prepared-node) "for" e "and" el)
                  (assoc (:id->element acc)
-                        (:id identified-e) identified-e
+                        (:id prepared-node) prepared-node
                         (:id c-rel) c-rel))
 
                ; currently only one parent is supported here
                :id->parent-id
-               (if-let [po (get-in acc [:id->parent-id (:id identified-e)])]
-                 (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id identified-e))
-                 (assoc (:id->parent-id acc) (:id identified-e) (:id p)))
+               (if-let [po (get-in acc [:id->parent-id (:id prepared-node)])]
+                 (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id prepared-node))
+                 (assoc (:id->parent-id acc) (:id prepared-node) (:id p)))
 
                :id->children
                (assoc (:id->children acc)
                       (:id p)
-                      (conj (get-in acc [:id->children (:id p)] []) identified-e))
+                      (conj (get-in acc [:id->children (:id p)] []) prepared-node))
 
                :relations
                (conj (:relations acc)
@@ -221,12 +224,12 @@ The input model is transformed by
             ; not a child node, just add the node
       (assoc acc
              :nodes
-             (conj (:nodes acc) identified-e)
+             (conj (:nodes acc) prepared-node)
 
              :id->element
-             (if-let [el (get-in acc [:id->element (:id identified-e)])]
-               (println "Error: Duplicate element id" (:id identified-e) "for" e "and" el)
-               (assoc (:id->element acc) (:id identified-e) identified-e))
+             (if-let [el (get-in acc [:id->element (:id prepared-node)])]
+               (println "Error: Duplicate element id" (:id prepared-node) "for" e "and" el)
+               (assoc (:id->element acc) (:id prepared-node) prepared-node))
 
              :build-problems
              (concat (:build-problems acc) problems)))))
@@ -280,31 +283,31 @@ The input model is transformed by
   "Update the accumulator `acc` of the model with the relation `e`
    in the context of the parent `p` (if given)."
   [acc p e]
-  (let [identified-rel (identified-relation e)
-        problems (remove nil? (check-element acc identified-rel))]
+  (let [prepared-rel (prepare-relation e)
+        problems (remove nil? (check-element acc prepared-rel))]
     (assoc acc
            :relations
-           (conj (:relations acc) identified-rel)
+           (conj (:relations acc) prepared-rel)
 
            :id->element
-           (assoc (:id->element acc) (:id identified-rel) identified-rel)
+           (assoc (:id->element acc) (:id prepared-rel) prepared-rel)
 
            :id->parent-id
-           (if (= :contained-in (:el identified-rel))
+           (if (= :contained-in (:el prepared-rel))
              ; contained-in relation, add the relation and update the :id->parent-id map
-             (assoc (:id->parent-id acc) (:from identified-rel) (:to identified-rel))
+             (assoc (:id->parent-id acc) (:from prepared-rel) (:to prepared-rel))
              ; a normal relation, no changes to :id->parent-id map
              (:id->parent-id acc))
 
            :referrer-id->relations
            (assoc (:referrer-id->relations acc)
-                  (:from identified-rel)
-                  (conj (get-in acc [:referrer-id->relations (:from identified-rel)] #{}) identified-rel))
+                  (:from prepared-rel)
+                  (conj (get-in acc [:referrer-id->relations (:from prepared-rel)] #{}) prepared-rel))
 
            :referred-id->relations
            (assoc (:referred-id->relations acc)
-                  (:to identified-rel)
-                  (conj (get-in acc [:referred-id->relations (:to identified-rel)] #{}) identified-rel))
+                  (:to prepared-rel)
+                  (conj (get-in acc [:referred-id->relations (:to prepared-rel)] #{}) prepared-rel))
 
            :build-problems
            (concat (:build-problems acc) problems))))
@@ -330,13 +333,14 @@ The input model is transformed by
    in the context of the parent `p` (if given)."
   [acc p e]
   ;; views
-  (let [problems (remove nil? (check-element acc e))]
+  (let [prepared-view (prepare-view e)
+        problems (remove nil? (check-element acc prepared-view))]
     (assoc acc
            :views
-           (conj (:views acc) e)
+           (conj (:views acc) prepared-view)
 
            :id->element
-           (assoc (:id->element acc) (:id e) e)
+           (assoc (:id->element acc) (:id prepared-view) prepared-view)
 
            :build-problems
            (concat (:build-problems acc) problems))))
