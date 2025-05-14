@@ -270,15 +270,26 @@
                          :export-dir "export"
                          :render-dir "export"
                          :render-format :plantuml
+                         :input-model-format :overarch-input
+                         :reader-type :file
                          :debug true})
 
-  (model-info (reader/update-state! {:model-dir "models/banking:models/overarch"})
+  (model-info (reader/update-state! {:model-dir "models/banking:models/overarch"
+                                     :input-model-format :overarch-input
+                                     :reader-type :file})
               {:model-info true})
-  (reader/update-state! {:model-dir "models/banking"})
-  (reader/update-state! {:model-dir "models/overarch"})
-  (reader/update-state! {:model-dir "models/test/collapsed"})
-  (reader/update-state! {:model-dir "../my-bank-model/models/"})
-
+  (reader/update-state! {:model-dir "models/banking"
+                         :input-model-format :overarch-input
+                         :reader-type :file})
+  (reader/update-state! {:model-dir "models/overarch"
+                         :input-model-format :overarch-input
+                         :reader-type :file})
+  (reader/update-state! {:model-dir "models/test/collapsed"
+                         :input-model-format :overarch-input
+                         :reader-type :file})
+  (reader/update-state! {:model-dir "../my-bank-model/models/"
+                         :input-model-format :overarch-input
+                         :reader-type :file})
   ;
   )
 
@@ -311,6 +322,8 @@
   (el/elements-by-namespace (repo/relations))
   (el/elements-by-namespace (repo/views))
 
+  ; Filter all techs staring with Azure 
+  (filter #(str/starts-with? % "Azure") (model/traverse :tech model/tech-collector (repo/model-elements)))
   ;
   )
 
@@ -324,11 +337,8 @@
   (into #{}
         (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
         (repo/model-elements))
-  (->> (into #{}
-             (model/filter-xf (repo/model) {:namespace "overarch.data-model"})
-             (repo/model-elements))
-       (model/collect-fields (repo/model)))
   (into #{} (model/filter-xf (repo/model) {:namespace-prefix "mybank.compliance"}) (repo/nodes))
+  
   ;
   )
 
@@ -348,8 +358,8 @@
   (model/referring-nodes (repo/model) :banking/api-application {:el :request})
   ;(model/descendants (repo/model) :banking/internet-banking-system)
   ;(model/ancestors (repo/model) :banking/internet-banking-system)
-  (model/sync-dependents (repo/model) :banking/api-application)
-  (model/sync-dependencies (repo/model) :banking/api-application)
+  ;(model/sync-dependents (repo/model) :banking/api-application)
+  ;(model/sync-dependencies (repo/model) :banking/api-application)
   ; 
   )
 
@@ -414,9 +424,9 @@
 
 (comment ; view functions for overarch data-model
   (fns/data-tapper "referenced"
-                   (view/referenced-elements (repo/model)
-                                             (model/resolve-element (repo/model)
-                                                                    :overarch.data-model/data-model)))
+                 (view/referenced-elements (repo/model)
+                                           (model/resolve-element (repo/model)
+                                                                  :overarch.data-model/data-model)))
 
   (fns/data-tapper "selected"
                    (view/selected-elements (repo/model)
@@ -458,9 +468,6 @@
                         (model/resolve-element (repo/model)
                                                :banking/internet-banking-system))
   
-  (model/deployed-on (repo/model)
-                     (model/resolve-element (repo/model)
-                                            :banking/big-bank-api-server-pod))
   (c4/render-c4-element (repo/model)
                         (model/resolve-element (repo/model)
                                                :banking/container-view)
