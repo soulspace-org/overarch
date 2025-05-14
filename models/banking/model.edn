@@ -153,56 +153,56 @@
                  :id :banking.internet-banking/web-app
                  :name "Web Application"
                  :desc "Deliveres the static content and the internet banking single page application."
-                 :tech "Clojure and Luminus"
+                 :tech "Clojure, Luminus"
                  :sprite "Clojure"}
                 {:el :container
                  :id :banking.internet-banking/single-page-app
                  :name "Single-Page Application"
                  :desc "Provides all of the internet banking functionality to customers via their web browser."
-                 :tech "ClojureScript and Re-Frame"
+                 :tech "ClojureScript, Re-Frame"
                  :sprite "ClojureScript"}
                 {:el :container
                  :id :banking.internet-banking/mobile-app
                  :name "Mobile App"
                  :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
-                 :tech "ClojureScript and Reagent"
+                 :tech "ClojureScript, Reagent"
                  :sprite "ClojureScript"}
                 {:el :container
                  :id :banking.internet-banking/api-application
                  :name "API Application"
                  :desc "Provides internet banking functionality via a JSON/HTTPS API."
-                 :tech "Clojure and Liberator"
+                 :tech "Clojure, Pedestal"
                  :sprite "Clojure"
                  :ct #{{:el :component
                         :id :banking.internet-banking.api-application/sign-in-controller
                         :name "Sign In Controller"
                         :desc "Allows users to sign in to the banking system."
-                        :tech "Clojure namespace"}
+                        :tech "Clojure"}
                        {:el :component
                         :id :banking.internet-banking.api-application/security-component
                         :name "Security Component"
                         :desc "Provides functionality related to signing in, changing passwords, etc."
-                        :tech "Clojure namespace"}
+                        :tech "Clojure"}
                        {:el :component
                         :id :banking.internet-banking.api-application/reset-password-controller
                         :name "Reset Password Controller"
                         :desc "Allows users to reset their passwords with a single use URL."
-                        :tech "Clojure namespace"}
+                        :tech "Clojure"}
                        {:el :component
                         :id :banking.internet-banking.api-application/email-component
                         :name "E-mail Component"
                         :desc "Sends e-mail to users."
-                        :tech "Clojure namespace"}
+                        :tech "Clojure"}
                        {:el :component
                         :id :banking.internet-banking.api-application/accounts-summary-controller
                         :name "Accounts Summary Controller"
                         :desc "Provides customers with a summary of their bank accounts."
-                        :tech "Clojure Namespace"}
+                        :tech "Clojure"}
                        {:el :component
                         :id :banking.internet-banking.api-application/mainframe-banking-system-facade
                         :name "Mainframe Banking System Facade"
                         :desc "A facade onto the mainframe banking system."
-                        :tech "Clojure Namespace, http-client"}}}
+                        :tech "Clojure, http-client"}}}
                 {:el :container
                  :subtype :database
                  :id :banking.internet-banking/database
@@ -224,7 +224,7 @@
          {:el :system
           :id :banking.email/email-system
           :external true
-          :name "E-mail System"
+          :name "E-Mail System"
           :desc "The internal Microsoft Exchange email system."}
          {:el :system
           :id :banking.atm/atm
@@ -327,13 +327,13 @@
    :from :banking.internet-banking/single-page-app
    :to :banking.internet-banking/api-application
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/mobile-app-calls-api-application
    :from :banking.internet-banking/mobile-app
    :to :banking.internet-banking/api-application
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/api-application-uses-database
    :from :banking.internet-banking/api-application
@@ -350,7 +350,7 @@
    :from :banking.internet-banking/api-application
    :to :banking.mainframe/mainframe-banking-system
    :name "makes API calls to"
-   :tech "XML/HTTPS"}
+   :tech "XML, HTTPS"}
 
   ;; Component Level
   {:el :request
@@ -358,37 +358,37 @@
    :from :banking.internet-banking/single-page-app
    :to :banking.internet-banking.api-application/sign-in-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/single-page-app-calls-reset-password-controller
    :from :banking.internet-banking/single-page-app
    :to :banking.internet-banking.api-application/reset-password-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/single-page-app-calls-accounts-summary-controller
    :from :banking.internet-banking/single-page-app
    :to :banking.internet-banking.api-application/accounts-summary-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/mobile-app-calls-sign-in-controller
    :from :banking.internet-banking/mobile-app
    :to :banking.internet-banking.api-application/sign-in-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/mobile-app-calls-reset-password-controller
    :from :banking.internet-banking/mobile-app
    :to :banking.internet-banking.api-application/reset-password-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking/mobile-app-calls-accounts-summary-controller
    :from :banking.internet-banking/mobile-app
    :to :banking.internet-banking.api-application/accounts-summary-controller
    :name "makes API calls to"
-   :tech "Transit/HTTPS"}
+   :tech "HTTPS, Transit"}
   {:el :request
    :id :banking.internet-banking.api-application/sign-in-controller-uses-security-component
    :from :banking.internet-banking.api-application/sign-in-controller
@@ -420,7 +420,7 @@
    :from :banking.internet-banking.api-application/mainframe-banking-system-facade
    :to :banking.mainframe/mainframe-banking-system
    :name "makes API calls to"
-   :tech "XML/HTTPS"}
+   :tech "XML, HTTPS"}
 
   ;;;
   ;;; Deployment Model
@@ -430,15 +430,15 @@
   {:el :node
    :id :banking.deployment/personal-customers-computer
    :name "Customer's Computer"
-   :tech "Windows, macOS, Linux"
+   :tech "Linux, macOS, Windows"
    :ct #{{:el :node
           :id :banking.deployment/personal-customers-browser
           :name "Web Browser"
-          :tech "Chrome, Firefox, Safari or Edge"}}}
+          :tech "Firefox, Chrome, Safari, Edge"}}}
   {:el :node
    :id :banking.deployment/personal-customers-mobile-device
    :name "Customer's Mobile Device"
-   :tech "Android or iOS"}
+   :tech "Android, iOS"}
   {:el :node
    :id :banking.deployment/big-bank-plc-datacenter
    :name "Big Bank plc"
@@ -446,12 +446,12 @@
    :ct #{{:el :node
           :id :banking.deployment/big-bank-kubernetes-cluster
           :name "Kubernetes Cluster"
-          :tech "VM, Ubuntu 22.04 LTS, K8s"
-          :sprite "Kubernetes"
+          :tech "Kubernetes"
           :ct #{{:el :node
                  :id :banking.deployment/big-bank-web-server-node-pool
                  :name "Web Server Node Pool"
                  :tech "VM, Ubuntu 22.04 LTS"
+                 :sprite "Ubuntu"
                  :ct #{{:el :node
                         :id :banking.deployment/big-bank-web-server-pod
                         :name "Web Server Pod"
@@ -460,6 +460,7 @@
                  :id :banking.deployment/big-bank-api-server-node-pool
                  :name "API Server Node Pool"
                  :tech "VM, Ubuntu 22.04 LTS"
+                 :sprite "Ubuntu"
                  :ct #{{:el :node
                         :id :banking.deployment/big-bank-api-server-pod
                         :name "API Server Pod"
