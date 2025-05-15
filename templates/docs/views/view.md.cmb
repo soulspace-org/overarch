@@ -90,7 +90,7 @@
 (defn technical-relation-description-table-row
   "Generates the markdown for a description table row for the technical `relation` in the `model`."
   [node rel]
-%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (:tech rel) %> | <%= (t/single-line (:desc rel)) %> |
+%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (str/join ", " (:tech rel)) %> | <%= (t/single-line (:desc rel)) %> |
 <%
   )
 
