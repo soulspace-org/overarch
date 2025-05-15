@@ -38,22 +38,22 @@
  ;;  Markdown Generation for Views
  ;;
 
- ; list of views, select every view
+ ; list of all views, select every view
  {:view-selection {}
-  :template "docs/views/views.md.cmb"
+  :template "docs/views.md.cmb"
   :base-name "views"
   :extension "md"}
 
  ; list of views per namespace, select every view
  {:view-selection {}
-  :template "docs/views/views.md.cmb"
+  :template "docs/views.md.cmb"
   :per-namespace true
   :base-name "views-in-namespace"
   :extension "md"}
 
  ; markdown for views with diagrams
  {:view-selection {:!els #{:glossary-view}}
-  :template "docs/views/view.md.cmb"
+  :template "docs/view.md.cmb"
   :per-element true
   :id-as-name true
   :extension "md"}
