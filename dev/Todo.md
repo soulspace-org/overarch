@@ -1,18 +1,24 @@
 # ToDos
 
-## Model Structure
+## Modelling
 * Answers to the following questions on different levels
   * What? (capabilities, use case goals, data? ...)
   * Why? (purpose, description?)
   * Who? (organizations, roles, use case actors)
-  * With what/whom? (collaborations, supporting actors/systems, interfaces)
+  * With what/whom? (collaborations, supporting actors/systems, interfaces, artifacts)
   * How? (processes, use cases, scenarios/stories, sequences, activities, state machines, data?)
   * When? (events, triggers, timings, policies, state machines)
   * Where (locations, regions, deployment/infrastructure)
   * How good? (NFRs, quality metrics)
   * How long? (retentions, ...)
+  * How configured? (parameters, environments)
 
-* model config via edn?
+* model/view config via edn?
+
+## Export/Import
+* canonical model export
+* model merge with element merge
+* model extract by selection
 
 ## Views
 * add styling to graphviz and plantuml uml rendering
@@ -20,15 +26,14 @@
 
 * custom views rendered by templates
 * custom elements {:el :my/xy} included in the graph
-* rainbow coloured orthogonal relations
-
+* rainbow coloured orthogonal relations?
 
 ## Templates
 * check import/require mechanisms of SCI
 
 ## UI
 * make transitive search accessible from the CLI
-* add option to ignore unresolved nodes
+* add option to ignore unresolved nodes in processing
 
 ## Documentation
 * readme
