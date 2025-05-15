@@ -23,8 +23,6 @@
 ;; View spec elements
 ;;
 ;;
-;; TODO add flexibility for :markdown,
-;; TODO update views in model building by promoting keys from spec to views 
 ;;
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
@@ -34,17 +32,17 @@
 (defn layout-spec
   "Returns the layout specification for the `view`. Defaults to :top-down."
   [view]
-  (get view :layout :top-down))
+  (get view :layout))
 
 (defn legend-spec
   "Returns the legend specification for the `view`. Defaults to true."
   [view]
-  (get view :no-legend false))
+  (not (get view :no-legend false)))
 
 (defn linetype-spec
-  "Returns the linetype specification for the `view`. Defaults to :polygonal."
+  "Returns the linetype specification for the `view`."
   [view]
-  (get view :linetype :polygonal))
+  (get view :linetype))
 
 (defn selection-spec
   "Returns the selection specification for the `view`."
