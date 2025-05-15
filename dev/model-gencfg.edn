@@ -6,6 +6,7 @@
   :base-namespace "overarch.domain"
   :base-name "spec"
   :extension "clj"}
+ 
  {:selection {:namespace "overarch.data-model" :tags #{"element-hierarchy" "type-hierarchy"}}
   :overarch-models ["architecture-model" "class-model" "concept-model"
                   "deployment-model" "state-machine-model" "use-case-model"] 
@@ -15,6 +16,7 @@
   :base-namespace "overarch.domain"
   :base-name "hierarchy"
   :extension "clj"}
+ 
  {:selection {:namespace "overarch.data-model"}
   :overarch-models ["architecture-model" "class-model" "concept-model"
                     "deployment-model" "state-machine-model" "use-case-model"] 
