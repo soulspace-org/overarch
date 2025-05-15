@@ -113,17 +113,17 @@
   labelloc= "t"
   label="<%= (v/title e) %>"
 <%
-  (when (= :left-right (get-in e [:spec :layout]))
+  (when (= :left-right (get e :layout))
 %>  rankdir="LR"
 <%
   )
 %>
 <%
-  (when (= :orthogonal (get-in e [:spec :linetype]))
+  (when (= :orthogonal (get e :linetype))
 %>  splines=ortho
 <%
   )
-%>  layout=<%= (name (get-in e [:spec :graphviz :engine] :dot)) %>
+%>  layout=<%= (name (get-in e [:graphviz :engine] :dot)) %>
 <%
   (doseq [node nodes]
 %><%= (gv/id (:id node)) %> [<%= (element-shape node) %> <%= (element-color node) %> <%=(node-label node e)%>]
