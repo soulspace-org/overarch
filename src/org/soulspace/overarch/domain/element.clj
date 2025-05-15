@@ -936,18 +936,16 @@
         remaining-ids (set/difference base-ids diff-ids)]
     (into #{} (map base-map remaining-ids))))
 
-(defn technology-set
+(defn technology-vector
   "Returns a vector of the technologies used by the element `e`."
   [v]
   (cond
     (string? v)
-    (into (td/ordered-set) (fns/tokenize-string v))
-
-    (set? v)
-    v
+    ; use the ordered set to remove duplicates while preserving the order
+    (into [] (into (td/ordered-set) (fns/tokenize-string v)))
 
     (coll? v)
-    (into (td/ordered-set) v)))
+    (into [] v)))
 
 ;;;
 ;;; Criteria Predicates
@@ -1181,19 +1179,19 @@
   "Returns a predicate that returns true if `v` is a technology of `e`."
   [v]
   (fn [e]
-    (contains? (:tech e) v)))
+    (contains? (set (:tech e)) v)))
 
 (defn techs-pred
   "Returns a predicate that returns true if any of the technologies in `v` are technologies of `e`."
   [v]
   (fn [e]
-    (seq (set/intersection v (:tech e)))))
+    (seq (set/intersection v (set (:tech e))))))
 
 (defn all-techs-pred
   "Returns a predicate that returns true if all of the technologies in `v` are technologies of `e`."
   [v]
   (fn [e]
-    (set/subset? (set v) (:tech e))))
+    (set/subset? (set v) (set (:tech e)))))
 
 (defn tags-check-pred
   "Returns a predicate that returns true if the check for tags on `e` equals the boolean value `v`"

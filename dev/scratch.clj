@@ -1,6 +1,12 @@
 (ns scratch
-  (:require [clojure.set :as set]))
+  (:require [tiara.data :as td]))
 
+(def e1 {:techs #{"Clojure" "ClojureScript"}})
+(def e2 {:techs (td/ordered-set "Clojure" "ClojureScript")}) 
+
+(= e1 e2)
+(contains? #{e1} e2)
+(contains? #{e2} e1)
 
 ;;
 ;; Metadata Handling

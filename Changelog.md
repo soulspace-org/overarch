@@ -6,9 +6,10 @@ Version (NEXT)
 * spec keys (e.g. :selection, :plantuml) can be defined in the view directly
   * no need for the ``:spec`` map anymore
   * ``:spec`` map attributes wil be added to view map on load
-* added conversion of ``:tech`` string value into ordered set on load
+* added conversion of ``:tech`` string value into deduplicated vector on load
   * the string value gets tokenized on commas (``,``)
-  * the first entry will be used for sprites in C4 diagrams 
+  * to get back to the string, e.g. in templates, use ``(str/join ", " (:tech e))``
+  * the first entry will be used for sprites in C4 diagrams
 * added selection criterium ``:ids``, which takes a set of element ids
 * all selection criteria can be negated by prepending them with an exclamation mark
   * e.g. ``:!ids`` or ``:!el``
