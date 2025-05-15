@@ -22,8 +22,6 @@
 ;;
 ;; View spec elements
 ;;
-;;
-;;
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
   [view]
@@ -81,12 +79,12 @@
 (defn plantuml-spec
   "Returns the plantuml specification for the `view`."
   [view]
-  (get view :plantuml []))
+  (get view :plantuml {}))
 
 (defn graphviz-spec
   "Returns the graphviz specification for the `view`."
   [view]
-  (get view :graphviz []))
+  (get view :graphviz {}))
 
 ;;;
 ;;; View functions

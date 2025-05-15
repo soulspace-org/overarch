@@ -443,18 +443,17 @@
 (defn render-uml-layout
   "Renders the layout for the UML diagram."
   [view]
-  (let [spec (:spec view)
-        plantuml-spec (:plantuml spec)]
+  (let [plantuml-spec (view/plantuml-spec view)]
     (flatten [;(when (:styles spec)
               ;  (into [] (map #(render-uml-style view %)) (:styles spec)))
-              (when (:sketch spec)
+              (when (view/sketch-spec view)
                 "skinparam handwritten true")
-              (when (:compact spec)
+              (when (:compact view)
                 (uml-hides (:el view)))
-              (when (:layout spec)
-                (uml-layouts (:layout spec)))
-              (when (:linetype spec)
-                (puml/linetypes (:linetype spec)))
+              (when (view/layout-spec view)
+                (uml-layouts (view/layout-spec view)))
+              (when (view/linetype-spec view)
+                (puml/linetypes (view/linetype-spec view)))
               (when (:node-separation plantuml-spec)
                 (str "skinparam nodesep " (:node-separation plantuml-spec)))
               (when (:rank-separation plantuml-spec)

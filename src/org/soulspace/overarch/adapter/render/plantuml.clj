@@ -223,17 +223,18 @@
   ([prefix path]
    (str "!includeurl " (str/upper-case prefix) "/" path)))
 
+;; TODO use plantuml-spec from view
 (defn render-sprite-import
   "Renders the import for an sprite."
   [view sprite]
-  (if (get-in view [:spec :plantuml :remote-imports])
+  (if (get-in view [:plantuml :remote-imports])
     (remote-import (sprite-path sprite))
     (local-import (sprite-path sprite))))
 
 (defn render-spritelib-import
   "Renders the imports for an sprite library."
   [view sprite-lib]
-  (if (get-in view [:spec :plantuml :remote-imports])
+  (if (get-in view [:plantuml :remote-imports])
     [(str "!define " (:remote-prefix sprite-lib) (:remote-url sprite-lib))
      (map (partial remote-import (:remote-prefix sprite-lib))
           (:remote-imports (sprite-libraries sprite-lib)))]
@@ -243,7 +244,7 @@
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
   [model view]
-  (let [icon-libs (get-in view [:spec :plantuml :sprite-libs])
+  (let [icon-libs (get-in view [:plantuml :sprite-libs])
         icons (sprites-for-view model view)]
     [(map (partial render-spritelib-import view) icon-libs)
      (map (partial render-sprite-import view) icons)]))

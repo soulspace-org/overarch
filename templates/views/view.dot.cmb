@@ -113,13 +113,13 @@
   labelloc= "t"
   label="<%= (v/title e) %>"
 <%
-  (when (= :left-right (get e :layout))
+  (when (= :left-right (v/layout-spec e))
 %>  rankdir="LR"
 <%
   )
 %>
 <%
-  (when (= :orthogonal (get e :linetype))
+  (when (= :orthogonal (v/linetype-spec e))
 %>  splines=ortho
 <%
   )
