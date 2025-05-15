@@ -22,29 +22,29 @@
      :name "calls"}
     {:el :context-view
      :id :test/styles-context-view
-     :spec {:styles #{{:id :test/dashed-rel
-                       :el :rel
-                       :text-color "#000000"
-                       :line-color "#000000"
-                       :line-style :dashed
-                       :tech "async"
-                       :legend-text "asynchronous"}
-                      {:id :test/dotted-rel
-                       :el :rel
-                       :line-style :dotted
-                       :legend-text "dependency"}
-                      {:id :test/bold-rel
-                       :el :rel
-                       :line-style :bold
-                       :line-color "#007700"
-                       :text-color "#000077"
-                       :legend-text "synchronous"}
-                      {:id :test/critical
-                       :el :element
-                       :bg-color "#CC0000"
-                       :border-color "#330000"
-                       :text-color "#000000"
-                       :legend-text "critical system"}}}
+     :styles #{{:id :test/dashed-rel
+                :el :rel
+                :text-color "#000000"
+                :line-color "#000000"
+                :line-style :dashed
+                :tech "async"
+                :legend-text "asynchronous"}
+               {:id :test/dotted-rel
+                :el :rel
+                :line-style :dotted
+                :legend-text "dependency"}
+               {:id :test/bold-rel
+                :el :rel
+                :line-style :bold
+                :line-color "#007700"
+                :text-color "#000077"
+                :legend-text "synchronous"}
+               {:id :test/critical
+                :el :element
+                :bg-color "#CC0000"
+                :border-color "#330000"
+                :text-color "#000000"
+                :legend-text "critical system"}}
      :title "Style Test"
      :ct [{:ref :test/sys1}
           {:ref :test/sys2}
@@ -78,7 +78,7 @@
 
     {:el :context-view
      :id :test/theme-context-view
-     :spec {:themes [:test/test-theme1]}
+     :themes [:test/test-theme1]
      :title "Theme Test"
      :ct [{:ref :test/sys1}
           {:ref :test/sys2}
@@ -152,12 +152,6 @@
                    :name "sends to"}}))
 
 (deftest layout-spec-test
-  (testing "Layout in :spec"
-    (is (= :left-right (layout-spec {:el :context-view
-                                     :id :test/c4-context-view
-                                     :title "Context View"
-                                     :spec {:layout :left-right}
-                                     :ct []}))))
   (testing "Layout in view"
     (is (= :left-right (layout-spec {:el :context-view
                                      :id :test/c4-context-view
@@ -166,18 +160,12 @@
                                      :ct []})))))
 
 (deftest include-spec-test
-  (testing "Include in :spec"
-    (is (= :related (include-spec {:el :context-view
-                                     :id :test/c4-context-view
-                                     :title "Context View"
-                                     :spec {:include :related}
-                                     :ct []}))))
   (testing "Include in view"
     (is (= :related (include-spec {:el :context-view
-                                     :id :test/c4-context-view
-                                     :title "Context View"
-                                     :include :related
-                                     :ct []})))))
+                                   :id :test/c4-context-view
+                                   :title "Context View"
+                                   :include :related
+                                   :ct []})))))
 
 (deftest referenced-elements-test
   (testing "referenced-elements Refs Only"
@@ -195,7 +183,7 @@
                                          {:el :context-view
                                           :id :test/c4-context-view-selection-only
                                           :title "Context View Selection Only"
-                                          :spec {:selection {:namespace "test"}}
+                                          :selection {:namespace "test"}
                                           :ct []}))))
     ;
     ))
@@ -216,25 +204,25 @@
                                     {:el :context-view
                                      :id :test/c4-context-view-selection-only
                                      :title "Context View Selection Only"
-                                     :spec {:selection {:namespace "test"}}
+                                     :selection {:namespace "test"}
                                      :ct []}))))
     (is (= 10 (count (selected-elements c4-model1
                                    {:el :container-view
                                     :id :test/c4-container-view-selection-only
                                     :title "Context View Selection Only"
-                                    :spec {:selection {:namespace "test"}}
+                                    :selection {:namespace "test"}
                                     :ct []}))))
     (is (= 8 (count (selected-elements c4-model1
                                         {:el :component-view
                                          :id :test/c4-component-view-selection-only
                                          :title "Context View Selection Only"
-                                         :spec {:selection {:namespace "test"}}
+                                         :selection {:namespace "test"}
                                          :ct []}))))
     (is (= 2 (count (selected-elements c4-model1
                                        {:el :context-view
                                         :id :test/c4-context-view-selection-only
                                         :title "Context View Selection Only"
-                                        :spec {:selection {:el :system}}
+                                        :selection {:el :system}
                                         :ct []}))))
     ;
     ))
@@ -255,13 +243,13 @@
                                     {:el :context-view
                                      :id :test/c4-context-view-selection-only
                                      :title "Context View Selection Only"
-                                     :spec {:selection {:namespace "test"}}
+                                     :selection {:namespace "test"}
                                      :ct []}))))
     (is (= 2 (count (view-elements c4-model1
                                    {:el :context-view
                                     :id :test/c4-context-view-selection-only
                                     :title "Context View Selection Only"
-                                    :spec {:selection {:el :system}}
+                                    :selection {:el :system}
                                     :ct []})))))
   (testing "Refs and Selection"
     ;
@@ -270,7 +258,7 @@
     (is (= 5 (count (view-elements c4-model1
                                    {:el :context-view
                                     :id :test/c4-context-view-refs-only
-                                    :spec {:include :related}
+                                    :include :related
                                     :title "Context View Refs Only"
                                     :ct [{:ref :test/user1-uses-system1}
                                          {:ref :test/system1-calls-ext-system1}]}))))
@@ -280,7 +268,7 @@
     (is (= 5 (count (view-elements c4-model1
                                    {:el :context-view
                                     :id :test/c4-context-view-refs-only
-                                    :spec {:include :relations}
+                                    :include :relations
                                     :title "Context View Refs Only"
                                     :ct [{:ref :test/user1}
                                          {:ref :test/ext-system1}
