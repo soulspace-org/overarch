@@ -268,21 +268,25 @@ Here are some Overarch example model repositories, containing the models and vie
   * DORA State of DevOps
   * Clean Architecture
 
-## Build
-Overarch is written in [Clojure](https://clojure.org) and gets built with
-[leiningen](https://leiningen.org/). To build it, you need to have Java 11 or higher
-and leiningen installed.
-
-In the cloned overarch repository, run
-
-```
-lein uberjar
-```
-
-to build a JAR file with all dependencies. This JAR file is created in the *target* folder and is named *overarch.jar*
-
-
 ## Installation
+The general way of using Overarch is downloading the `overarch.jar` and 
+`templates.zip` from the latest release on the [releases](https://github.com/soulspace-org/overarch/releases)
+page and use them in your modelling project.
+
+See [MyBank Model](https://github.com/soulspace-org/my-bank-model) for a simple
+project layout and useful start scripts.
+
+### Homebrew on macOS
+This project has been packaged in Homebrew for macOS users. Install it using
+```
+brew install overarch
+```
+
+This package includes an `overarch` convenience wrapper which handles tracking
+the location of the `overarch.jar` uberjar for you. This `overarch` command can
+be substituted for the `java -jar overarch.jar` references throughout this
+documentation.
+
 ### Visual Studio Code
 
 If you have a clojure environment in some editor or IDE, just use it. Maybe a PlantUML plugin exists for this environment too.
@@ -310,18 +314,6 @@ install graphviz for your operating system.
 To get support for icons (PlantUML sprites) from the PlantUML standard library, a recent **plantuml.jar** is highly recommended. Please download it from [PlantUML Releases](https://github.com/plantuml/plantuml/releases) and reference it in the PlantUML extension settings.
 
 ![PlantUML Extension Settings](/doc/images/vscode_plantuml_ext_settings.png)
-
-### Homebrew on macOS
-
-This project has been packaged in Homebrew for macOS users. Install it using
-```
-brew install overarch
-```
-
-This package includes an `overarch` convenience wrapper which handles tracking
-the location of the `overarch.jar` uberjar for you. This `overarch` command can
-be substituted for the `java -jar overarch.jar` references throughout this
-documentation.
 
 ## Usage
 Use a folder for all the data (e.g. models, view specifications) of a project.
@@ -382,6 +374,20 @@ If you use Visual Studio Code as described above, you can start *Overarch* in wa
 See [Usage](doc/usage.md) for additional information on modelling and usage of the *Overarch* CLI tool.
 
 See [Design](doc/design.md) for information about the design of *Overarch*.
+
+## Build
+Overarch is written in [Clojure](https://clojure.org) and gets built with
+[leiningen](https://leiningen.org/). To build it, you need to have Java 11 or higher
+and leiningen installed.
+
+In the cloned overarch repository, run
+
+```
+lein uberjar
+```
+
+to build a JAR file with all dependencies. This JAR file is created in the *target* folder and is named *overarch.jar*
+
 
 ## Copyright
 © 2023 Ludger Solbach
