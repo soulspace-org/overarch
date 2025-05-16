@@ -189,43 +189,25 @@ Further information about modelling with *Overarch* can be found in [Usage](doc/
 
 ```clojure
 #{{:el :context-view
-  :id :banking/system-context-view
+  :id :banking/context-view
+  :spec {:selection [{:from {:id :banking.internet-banking/internet-banking-system}}
+                     {:to   {:id :banking.internet-banking/internet-banking-system}}]
+         :include :related
+         :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
   :title "System Context View of the Internet Banking System"
-  :ct [; model elements
-       {:ref :banking/personal-customer}
-       {:ref :banking/email-system}
-       {:ref :banking/mainframe-banking-system}
-       {:ref :banking/internet-banking-system}
-       
-       ; relations
-       {:ref :banking/personal-customer-uses-internet-banking-system :direction :down}
-       {:ref :banking/internet-banking-system-uses-email-system :direction :right}
-       {:ref :banking/internet-banking-system-using-mainframe-banking-system}
-       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}]}
+  :desc "shows the Internet Banking System and its context"
+  :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
 
  {:el :container-view
   :id :banking/container-view
+  :spec {:selection [{:namespace-prefix "banking.internet-banking"}
+                     {:from {:namespace-prefix "banking.internet-banking"}}
+                     {:to {:namespace-prefix "banking.internet-banking"}}]
+         :include :related
+         :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
   :title "Container View of the Internet Banking System"
-  :ct [; model elements
-       {:ref :banking/personal-customer}
-       {:ref :banking/internet-banking-system}
-       {:ref :banking/email-system}
-       {:ref :banking/mainframe-banking-system}
-
-       ; relations
-       {:ref :banking/email-system-sends-mail-to-personal-customer :direction :up}
-       {:ref :banking/personal-customer-uses-web-app}
-       {:ref :banking/personal-customer-uses-single-page-app}
-       {:ref :banking/personal-customer-uses-mobile-app}
-
-       {:ref :banking/web-app-deliveres-single-page-app :direction :right}
-       {:ref :banking/single-page-app-calls-api-application}
-       {:ref :banking/mobile-app-calls-api-application}
-       {:ref :banking/api-application-uses-database :direction :left}
-       {:ref :banking/api-application-uses-email-system :direction :right}
-       {:ref :banking/api-application-uses-mainframe-banking-system}
-       ]}
-}
+  :desc "shows the containers of the Internet Banking System and their relations" 
+  :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}}
  ```
 
 ### PlantUML export of the System Context View
