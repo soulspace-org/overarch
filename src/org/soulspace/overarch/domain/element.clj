@@ -945,7 +945,22 @@
     (into [] (into (td/ordered-set) (fns/tokenize-string v)))
 
     (coll? v)
-    (into [] v)))
+    (into (td/ordered-set) v)))
+
+(defn technology-set
+  "Returns a set of the technologies used by the element `e`.
+   The returned set is an ordered set, if `v` is ordered."
+  [v]
+  (cond
+    (string? v)
+    ; use the ordered set to remove duplicates while preserving the order
+    (into (td/ordered-set) (fns/tokenize-string v))
+
+    (set? v)
+    v
+
+    (coll? v)
+    (into (td/ordered-set) v)))
 
 ;;;
 ;;; Criteria Predicates

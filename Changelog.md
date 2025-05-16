@@ -14,7 +14,7 @@ Version (NEXT)
 * all selection criteria can be negated by prepending them with an exclamation mark
   * e.g. ``:!ids`` or ``:!el``
 * added ``:artifact`` node to deployment model and deployment view 
-* refactored model reading to enable support for different input formats and sources
+* refactored model reading to enable supporting different input formats and sources
 * added criteria query functions to model, delegated from model repository to model
 * added formatting of generated edn files with zprint
 * moved implementations from adapter layer to application layer

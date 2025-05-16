@@ -132,7 +132,7 @@ The input model is transformed by
            e
            (assoc e :id (el/generate-node-id e p)))
         node (if (seq (:tech node))
-           (assoc node :tech (el/technology-vector (:tech node)))
+           (assoc node :tech (el/technology-set (:tech node)))
            node)]
     (dissoc node :ct)))
 
@@ -143,7 +143,7 @@ The input model is transformed by
             e
             (assoc e :id (el/generate-relation-id e)))
         rel (if (seq (:tech rel))
-              (assoc rel :tech (el/technology-vector (:tech rel)))
+              (assoc rel :tech (el/technology-set (:tech rel)))
               rel)]
     rel))
 

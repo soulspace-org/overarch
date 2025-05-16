@@ -516,27 +516,27 @@
       #{{:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
-         :tech ["Clojure"]
+         :tech #{"Clojure"}
          :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
-         :tech ["ClojureScript"]}
+         :tech #{"ClojureScript"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
-         :tech ["Datomic"]}
+         :tech #{"Datomic"}}
         {:el :container
          :id :org.soulspace.internal.system/container2
          :name "Container2"
-         :tech ["Java"]
+         :tech #{"Java"}
          :tags #{"critical" "autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container2-topic
          :subtype :queue
          :name "Container2 Events"
-         :tech ["Kafka"]}
+         :tech #{"Kafka"}}
         {:el :component
          :id :org.soulspace.internal.system.container1/component1
          :name "Component1"}}
@@ -550,7 +550,7 @@
       {:el :container
        :id :org.soulspace.internal.system/container1
        :name "Container1"
-       :tech ["Clojure"]
+       :tech #{"Clojure"}
        :tags #{"autoscaled"}}
       ;
       #{}
@@ -588,17 +588,17 @@
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
-         :tech ["Clojure"]
+         :tech #{"Clojure"}
          :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
-         :tech ["ClojureScript"]}
+         :tech #{"ClojureScript"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
-         :tech ["Datomic"]}}
+         :tech #{"Datomic"}}}
         ;
       )))
 
@@ -629,30 +629,30 @@
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
-         :tech ["Clojure"]
+         :tech #{"Clojure"}
          :tags #{"autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
-         :tech ["ClojureScript"]}
+         :tech #{"ClojureScript"}}
         {:el :container
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
-         :tech ["Datomic"]}
+         :tech #{"Datomic"}}
         {:el :component,
          :id :org.soulspace.internal.system.container1/component1,
          :name "Component1"}
         {:el :container
          :id :org.soulspace.internal.system/container2
          :name "Container2"
-         :tech ["Java"]
+         :tech #{"Java"}
          :tags #{"critical" "autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container2-topic
          :subtype :queue
          :name "Container2 Events"
-         :tech ["Kafka"]}}
+         :tech #{"Kafka"}}}
       #{{:el :system
          :id :org.soulspace.internal/system
          :name "Internal System"}}
@@ -688,25 +688,25 @@
       #{{:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
-         :tech ["ClojureScript"]}}
+         :tech #{"ClojureScript"}}}
       {:name "Container1 UI"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container2
          :name "Container2"
-         :tech ["Java"]
+         :tech #{"Java"}
          :tags #{"critical" "autoscaled"}}}
       {:tag "critical"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container2
          :name "Container2"
-         :tech ["Java"]
+         :tech #{"Java"}
          :tags #{"critical" "autoscaled"}}
         {:el :container
          :id :org.soulspace.internal.system/container1
          :name "Container1"
-         :tech ["Clojure"]
+         :tech #{"Clojure"}
          :tags #{"autoscaled"}}}
       {:tag "autoscaled"}
 
@@ -714,15 +714,15 @@
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
-         :tech ["Datomic"]}}
+         :tech #{"Datomic"}}}
       {:tech "Datomic"}
 
       #{{:el :container
          :id :org.soulspace.internal.system/container1-db
          :subtype :database
          :name "Container1 DB"
-         :tech ["Datomic"]}}
-      {:key [:tech ["Datomic"]]}
+         :tech #{"Datomic"}}}
+      {:key [:tech #{"Datomic"}]}
 
       #{{:el :request
          :id :org.soulspace.external/person-uses-system1
@@ -768,7 +768,7 @@
         {:el :container
          :id :org.soulspace.internal.system/container1-ui
          :name "Container1 UI"
-         :tech ["ClojureScript"]}}
+         :tech #{"ClojureScript"}}}
       {:referred {:el :request}}
 
       #{{:el :person
