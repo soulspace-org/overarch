@@ -27,14 +27,14 @@
  ;;  Markdown generation for views
  ;; 
  {:view-selection {:namespace-prefix "banking"}
-  :template "docs/views/views.md.cmb"
+  :template "docs/views.md.cmb"
   :subdir "docs"
   :base-namespace "banking"
   :base-name "views"
   :extension "md"}
  
  {:view-selection {:namespace-prefix "banking" :!els #{:glossary-view}}
-  :template "docs/views/view.md.cmb"
+  :template "docs/view.md.cmb"
   :subdir "docs"
   :per-element true
   :id-as-name true
