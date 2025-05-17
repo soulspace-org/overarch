@@ -5,6 +5,7 @@
   (:require [clojure.string :as str]))
 
 (def topic-docs
+  "List of topics to be compiled into the usage.md file in order."
   ["overview" "rationale" "commandline" "editor" "modelling"
    "selection-criteria" "views" "exports" "templates" "best-practices"])
 
