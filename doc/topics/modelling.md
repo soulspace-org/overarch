@@ -142,7 +142,7 @@ identifiers.
 Model Nodes describe the elements of the different kind of models for the system.
 
 ### Common Keys of Model Nodes
-key       | type               | values                 | description 
+key       | type               | values/examples        | description 
 ----------|--------------------|----------------------  |------------
 :el       | keyword            | see model elements     | type of the model node
 :id       | keyword            | namespaced id          | id of the model node
@@ -157,7 +157,7 @@ key       | type               | values                 | description
 Relations describe the connections and interactions of the nodes.
 
 ### Common Keys of Relations
-key       | type               | values                 | description 
+key       | type               | values/examples        | description 
 ----------|--------------------|------------------------|-------------
 :el       | keyword            | e.g. :rel, :request    | type of the relation
 :id       | keyword            | namespaced id          | id of the relation
@@ -217,13 +217,12 @@ Overarch supports elements for C4 architecture models.
 ### Logical Data Model for the Architecture Model Elements
 ![Architecture and Deployment Model Elements](/doc/images/overarch/data-model/architecture-model-elements.svg)
 
-
 ### Additional Keys for Architecture Model Nodes
-key       | type    | values             | description 
-----------|---------|--------------------|------------
-:subtype  | keyword | :database, :queue  | specific role of the model node
-:external | boolean | true, false        | default is false
-:tech     | string  |                    | technology of the model node
+key       | type    | values/examples     | description 
+----------|---------|---------------------|------------
+:subtype  | keyword | :database, :queue   | specific role of the model node
+:external | boolean | true, false         | default is false
+:tech     | string  | "Java, Spring Boot" | technologies of the model node
 
 ### Person (:person)
 Persons are internal or external actors of the system.
@@ -262,9 +261,9 @@ kind        | sync/async  | dependency  | description
 :dataflow   | unspecified | unspecified | flow of data independent of the call semantic
 
 ### Additional Keys for Architecture Model Relations
-key       | type    | values             | description 
+key       | type    | values/examples    | description 
 ----------|---------|--------------------|------------
-:tech     | string  | e.g. "REST"        | technology of the relation
+:tech     | string  | e.g. "HTTPS, REST" | technologies of the relation
 
 ### Example
 Example (exerpt from the [banking model](/models/banking/model.edn) containing
@@ -407,7 +406,7 @@ described. The goal can be a concrete user goal, a high level summary of user
 goals or a subfunction of a user goal. This is captured by the :level key.
 
 
-key         | type    | values                           | description 
+key         | type    | values/examples                  | description 
 ------------|---------|----------------------------------|------------
 :level      | keyword | :summary :user-goal :subfunction | specific role of the element
 :ext-points | string  |                                  | extension points of a use case

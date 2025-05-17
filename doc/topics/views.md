@@ -22,51 +22,6 @@ concept ofthe domain of the system for discussion, onboarding and learning.
 Concepts should also be part of the glossary, as well as actors, systems and
 the applications and containers developed for the system.
 
-## Logical Data Model for the View Model Elements
-![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
-
-## View Content Specification
-In a specific view you can reference the model elements you want to include in
-this view. A Model element can be included in as many views as you want, but the
-element has to match the expected kinds of model elements to be shown.
-For example, a system landscape view renders person and system elements but no
-use cases or state machines, even if they are referenced in the view. Please consult
-the models for the model and view elements.
-
-Model elements can be referenced directly via a `:ref`. They can also be
-selected via model criteria. Either References for selected nodes or nodes for
-selected references can be included automatically.
-
-The views can reference elements from the model as their content. The
-content of a view should be a list instead of a set because the order
-of elements may be relevant in the rendering of a view. 
-
-### Keys
-key       | type    | values                   | description 
-----------|---------|--------------------------|------------
-:el       | keyword | see views                | type of the view
-:id       | keyword | namespaced id            | used for export file name
-:title    | string  |                          | rendered title
-:spec     | map     | see view specs           | rendering customization (e.g. styling)
-:ct       | list    | model refs (or elements) | view specific keys possible
-
-## View Specific Keys on Model Elements
-There are some keys on model elements that control the rendering of the
-elements in views. As they may be different for specific views, it is best to
-add them as keys on a `:ref` reference to the element in the content of the
-view and not on the model element itself. Keys on the reference are merged
-with the keys on the model element.
-
-# Node Keys
-key        | type    | values                   | description 
------------|---------|--------------------------|------------
-:collapsed | boolean | true, false              | if true, don't render children of the element 
-
-# Relation Keys
-key        | type    | values                    | description 
------------|---------|---------------------------|------------
-:direction | keyword | :left, :right, :up, :down | hint on the direction of the relation
-
 ## System Context View (:context-view)
 Shows the system in the context of the actors and other systems it is
 interacting with. Contains users, external systems and the system to be
@@ -161,20 +116,59 @@ The organization structure view shows hierarchical composition of a organization
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
 
-## View Content Selection and Customization
-Views can be customized with the `:spec` key. View specs may include general
-directives for a view or directives for specific renderers (e.g. PlantUML).
+## Logical Data Model for the View Model Elements
+![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
 
+## View Content Specification
+In a specific view you can reference the model elements you want to include in
+this view. A Model element can be included in as many views as you want, but the
+element has to match the expected kinds of model elements to be shown.
+For example, a system landscape view renders person and system elements but no
+use cases or state machines, even if they are referenced in the view. Please consult
+the models for the model and view elements.
+
+Model elements can be referenced directly via a `:ref`. They can also be
+selected via model criteria. Either References for selected nodes or nodes for
+selected references can be included automatically.
+
+The views can reference elements from the model as their content. The
+content of a view should be a list instead of a set because the order
+of elements may be relevant in the rendering of a view. 
+
+### Keys
 key              | type          | example values            | description 
 -----------------|---------------|---------------------------|------------
-:include         | keyword       | :relations :related       | specify automatic includes (work in progress)
+:el              | keyword       | see views                 | type of the view
+:id              | keyword       | namespaced id             | used for export file name
+:title           | string        |                           | rendered title
 :selection       | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
+:include         | keyword       | :relations :related       | specify automatic includes (work in progress)
+:ct              | list          | model refs (or elements)  | view specific keys possible
 :layout          | keyword       | :top-down, :left-right    | rendering direction
 :linetype        | keyword       | :orthogonal, :polygonal   | different line types for relations
 :sketch          | boolean       | true, false               | visual clue for sketches
 :styles          | set           | see Styling               | visual customization of elements
 :themes          | keyword       | id of the theme           | theme containing styles
 :expand-external | boolean       | true, false               | show the content of external systems in container/component views (default false)
+
+Since Overarch v0.38.0 it is not neccessary to use a ``:spec`` map for keys like ``:selection`` or ``:plantuml`` anymore.
+
+## View Specific Keys on Model Elements
+There are some keys on model elements that control the rendering of the
+elements in views. As they may be different for specific views, it is best to
+add them as keys on a `:ref` reference to the element in the content of the
+view and not on the model element itself. Keys on the reference are merged
+with the keys on the model element.
+
+# Node Keys
+key        | type    | values                   | description 
+-----------|---------|--------------------------|------------
+:collapsed | boolean | true, false              | if true, don't render children of the element 
+
+# Relation Keys
+key        | type    | values                    | description 
+-----------|---------|---------------------------|------------
+:direction | keyword | :left, :right, :up, :down | hint on the direction of the relation
 
 ### Selection
 With the `:selection` key a criteria map or a vector of criterias can be specified.
@@ -221,7 +215,6 @@ key           | type    | values                   | description
 :border-color | hex rgb | #FF0000 for bright red   | border color for nodes
 :text-color   | hex rgb | #003300 for dark green   | text color for names and descriptions
 :legend-text  | string  |                          | meaningful text to show in legend
-
 
 # Rendering
 Views can be rendered into different formats via the Overarch CLI tool.
