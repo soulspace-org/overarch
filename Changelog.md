@@ -1,26 +1,30 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.38.0
 --------------
 * spec keys (e.g. :selection, :plantuml) can be defined in the view directly
   * no need for the ``:spec`` map anymore
   * ``:spec`` map attributes wil be added to view map on load
-* added conversion of ``:tech`` string value into deduplicated vector on load
+* added conversion of ``:tech`` string value into ordered set on load
   * the string value gets tokenized on commas (``,``)
-  * to get back to the string, e.g. in templates, use ``(str/join ", " (:tech e))``
-  * the first entry will be used for sprites in C4 diagrams
+  * to get back to the stringin templates instead of ``(:tech e)`` use ``(str/join ", " (:tech e))``
+  * the first tech will be used for sprites in C4 diagrams
 * added selection criterium ``:ids``, which takes a set of element ids
 * all selection criteria can be negated by prepending them with an exclamation mark
   * e.g. ``:!ids`` or ``:!el``
-* added ``:artifact`` node to deployment model and deployment view 
+* cleaned up deployment-views
+  * removed ``:system`` nodes and added ``:artifact`` nodes, e.g. for certificates
+  * removed architecture relations, e.g. ``:request`` or ``:subscribe``
 * refactored model reading to enable supporting different input formats and sources
-* added criteria query functions to model, delegated from model repository to model
+* added criteria query functions to model-repository, delegating from model-repository to model
 * added formatting of generated edn files with zprint
 * moved implementations from adapter layer to application layer
 * moved functions from analytics to element and model namespaces
 * removed analytics namespace
-* updated banking model
+* updated templates and generation config
+* updated dependencies
+* updated example model and README
 
 Version 0.37.0
 --------------

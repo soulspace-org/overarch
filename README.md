@@ -19,38 +19,23 @@ composable and reusable.
 
 
 ## Features
+* Models to capture architecture on different levels
+  * Concepts, use cases, architecture, state machines, code, deployments,   organization sructures, processes
 * Models and views as data
-  * Reusable and composable models
-  * Separation of model and views
-  * Models to capture architecture on different levels
-    * Use case, state machine and code models and views
-    * Concept models, concept maps and glossaries
-    * C4 architecture and deployment models and views
-    * Organization structures, collaborations and responsibilities
-    * Process models
-  * Hierarchical models and element references
-  * View specific customization of model elements
-  * Extensible format
-* Model queries
-  * Criteria based selection of model elements
+* Separation of model and views
+* Models are queriable, extensible, composeable and reusable
+* View specific customization of model elements
+* Criteria based model queries
 * Template based artifact generation for e.g.
-  * Documentation
-  * Reports
-  * Project templates
-  * Code scaffolding
-  * CI/CD pipelines
-  * Custom vizualizations
-* View rendering
+  * Documentation, reports, project templates, code, CI/CD pipelines, custom visualizations
+* Diagram generation
   * PlantUML
-    * All C4 views (except code view)
-    * Use case, state machine and class diagrams
-    * Structure diagrams for organizations, systems and deployments
+    * All C4 views, use case, state machine and code diagrams, structure
+     diagrams for organizations, systems and deployments
     * Styling and sprite support
   * GraphViz
     * Concept maps
     * Model view of all elements
-  * Markdown
-    * Glossary, textual representations of graphical views
 * Model exports
   * JSON if you need to process models with languages without EDN support
   * Structurizr *experimental*
@@ -63,15 +48,14 @@ expressive description and visualization of an architecture with different
 views.
 
 But the models used for diagram generation with the existing diagram tools are
-not models in the sense of generality. Especially if you describe your model in
-PlantUML files, these descriptions are mere textfiles.
-
-These textfiles don't compose and you can't do anything else with these
-descriptions other than render them with PlantUML. The parsing process is
-opaque and you don't have access to the data of the model. Also the model is
-complected with the diagrams, as layout and rendering information is part of
-the model description and vice versa. The model should capture the essence of
-the architecture and not its representation.
+not models in the sense of generality. E.g. if you describe your model in
+PlantUML files, these descriptions are mere textfiles. These textfiles don't
+compose and you can't do anything else with these descriptions other than
+render them with PlantUML. The parsing process is opaque and you don't have
+access to the data of the model. Also the model is complected with the
+diagrams, as layout and rendering information is part of the model description
+and vice versa. The model should capture the essence of the architecture and
+not its representation.
 
 If the model is described as plain *data* in an open format, it can be
 transformed into a graphical representation, e.g. into PlantUML textfiles, via
@@ -88,16 +72,6 @@ The native format is the Extensible Data Notation (EDN) with representations
 in other formats like JSON. EDN is a textual format for data, which is human
 readable. It is also directly readable into data structures in clojure or java
 code. The data format is also open for extension. E.g. it copes with additional attributes or element types in the data structures.
-
-The model describes the architecture (the structure) of your system(s). The
-elements are based on UML and the C4 model and are a hierarchical composition
-of the elements of the architecture.
-
-Model references are used to refer to model elements from other models and
-representations (e.g. diagrams). To allow references to elements and relations,
-they must be given an id. Model references may be enhanced with additional
-attributes that are specific to the usage context (e.g. a style attribute in
-the context of a diagram)
 
 ## Example
 This is an example of the specification of a model and some diagrams based on
@@ -117,37 +91,37 @@ Further information about modelling with *Overarch* can be found in [Usage](doc/
   :name "Personal Banking Customer"
   :desc "A customer of the bank, with personal banking accounts."}
  ; system under design
- {:el :system
-  :id :banking/internet-banking-system
-  :name "Internet Banking System"
-  :desc "Allows customers to view information about their bank accounts and make payments."
-  :ct #{{:el :container
-         :id :banking/web-app
-         :name "Web Application"
-         :desc "Deliveres the static content and the internet banking single page application."
-         :tech "Clojure and Luminus"}
-        {:el :container
-         :id :banking/single-page-app
-         :name "Single-Page Application"
-         :desc "Provides all of the internet banking functionality to customers via their web browser."
-         :tech "ClojureScript and Re-Frame"}
-        {:el :container
-         :id :banking/mobile-app
-         :name "Mobile App"
-         :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
-         :tech "ClojureScript and Reagent"}
-        {:el :container
-         :id :banking/api-application
-         :name "API Application"
-         :desc "Provides internet banking functionality via a JSON/HTTPS API."
-         :tech "Clojure and Liberator"}
-        {:el :container
-         :subtype :database
-         :id :banking/database
-         :name "Database"
-         :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
-         :tech "Datomic"}}}
- ; external systems
+{:el :system
+ :id :banking.internet-banking/internet-banking-system
+ :name "Internet Banking System"
+ :desc "Allows customers to view information about their bank accounts and make payments."
+ :ct #{{:el :container
+        :id :banking.internet-banking/web-app
+        :name "Web Application"
+        :desc "Deliveres the static content and the internet banking single page application."
+        :tech "Clojure, Luminus"}
+       {:el :container
+        :id :banking.internet-banking/single-page-app
+        :name "Single-Page Application"
+        :desc "Provides all of the internet banking functionality to customers via their web browser."
+        :tech "ClojureScript, Re-Frame"}
+       {:el :container
+        :id :banking.internet-banking/mobile-app
+        :name "Mobile App"
+        :desc "Provides a limited subset of the internet banking functionality to customers via their mobile device."
+        :tech "ClojureScript, Reagent"}
+       {:el :container
+        :id :banking.internet-banking/api-application
+        :name "API Application"
+        :desc "Provides internet banking functionality via a JSON/HTTPS API."
+        :tech "Clojure, Pedestal"}
+       {:el :container
+        :subtype :database
+        :id :banking.internet-banking/database
+        :name "Database"
+        :desc "Stores the user registration information, hashed authentication credentials, access logs, etc."
+        :tech "Datomic"}}}
+; external systems
  {:el :system
   :id :banking/mainframe-banking-system
   :external true
@@ -163,18 +137,18 @@ Further information about modelling with *Overarch* can be found in [Usage](doc/
  {:el :request
   :id :banking/personal-customer-uses-internet-banking-system
   :from :banking/personal-customer
-  :to :banking/internet-banking-system
+  :to :banking.internet-banking/internet-banking-system
   :name "Views account balances and makes payments using"
   :tech "HTTPS"}
  {:el :request
-  :id :banking/internet-banking-system-uses-email-system
-  :from :banking/internet-banking-system
+  :id :banking.internet-banking/internet-banking-system-uses-email-system
+  :from :banking.internet-banking/internet-banking-system
   :to :banking/email-system
   :name "Sends e-mail using"
   :tech "HTTPS, REST"}
  {:el :request
-  :id :banking/internet-banking-system-using-mainframe-banking-system
-  :from :banking/internet-banking-system
+  :id :banking.internet-banking/internet-banking-system-using-mainframe-banking-system
+  :from :banking.internet-banking/internet-banking-system
   :to :banking/mainframe-banking-system
   :name "Gets account information from, and makes payments using"}
  {:el :send
@@ -212,21 +186,18 @@ Further information about modelling with *Overarch* can be found in [Usage](doc/
 
 ### PlantUML export of the System Context View
 ```plantuml
-@startuml banking_systemContextView
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+@startuml context-view
+!include <C4/C4_Context.puml>
 
 title System Context View of the Internet Banking System
-
+System_Ext(banking_mainframe_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
+System(banking_internetBanking_internetBankingSystem, "Internet Banking System", $descr="Allows customers to view information about their bank accounts and make payments.")
+System_Ext(banking_email_emailSystem, "E-Mail System", $descr="The internal Microsoft Exchange email system.")
 Person(banking_personalCustomer, "Personal Banking Customer", $descr="A customer of the bank, with personal banking accounts.")
-System_Ext(banking_emailSystem, "E-mail System", $descr="The internal Microsoft Exchange email system.")
-System_Ext(banking_mainframeBankingSystem, "Mainframe Banking System", $descr="Stores all the core banking information about customers, accounts, transactions, etc.")
-System(banking_internetBankingSystem, "Internet Banking System", $descr="Allows customers to view information about their bank accounts and make payments.")
-
-Rel_Down(banking_personalCustomer, banking_internetBankingSystem, "Views account balances and makes payments using")
-Rel_Right(banking_internetBankingSystem, banking_emailSystem, "Sends e-mail using")
-Rel(banking_internetBankingSystem, banking_mainframeBankingSystem, "Gets account information from, and makes payments using")
-Rel_Up(banking_emailSystem, banking_personalCustomer, "Sends e-mail to")
-
+Rel(banking_internetBanking_internetBankingSystem, banking_mainframe_mainframeBankingSystem, "gets account information from, and makes payments using")
+Rel(banking_internetBanking_internetBankingSystem, banking_email_emailSystem, "sends e-mail using")
+Rel(banking_personalCustomer, banking_internetBanking_internetBankingSystem, "views account balances and makes payments using")
+Rel_U(banking_email_emailSystem, banking_personalCustomer, "sends e-mail to")
 SHOW_LEGEND()
 @enduml
 ```
@@ -244,11 +215,7 @@ Here are some Overarch example model repositories, containing the models and vie
   is a show case model of a banking organization.
 
 * [Overarch Models](https://github.com/lsolbach/overarch-models)
-  contains some personal models about concepts in software development, e.g.
-  * Domain Driven Design
-  * Cloud Computing
-  * DORA State of DevOps
-  * Clean Architecture
+  contains some personal models about concepts in software development, e.g. Domain Driven Design,  Cloud Computing, DORA State of DevOps or Clean Architecture.
 
 ## Installation
 The general way of using Overarch is downloading the `overarch.jar` and 
