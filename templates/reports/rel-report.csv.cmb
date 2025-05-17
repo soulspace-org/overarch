@@ -6,7 +6,7 @@
 Id;Name;Type;From;To;Description;Tech;Tags
 <%
 (doseq [rel e]
-%> <%= (:id rel) %> | <%= (:name rel) %> | <%= (:el rel) %> | <%= (:from rel) %> | <%= (:to rel) %> | <%= (t/single-line (:desc rel)) %>;"<%= (:tech rel) %>";<%= (str/join ", " (:tags rel)) %>
+%> <%= (:id rel) %> | <%= (:name rel) %> | <%= (:el rel) %> | <%= (:from rel) %> | <%= (:to rel) %> | <%= (t/single-line (:desc rel)) %>;"<%= (str/join ", " (:tech c)) %>";<%= (str/join ", " (:tags rel)) %>
 <%
 )
 %>

@@ -17,7 +17,7 @@
 ----|-----|------|---------|-------------|-------|------
 <%
 (doseq [c e]
-%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (:tech c) %> | <%= (:tags c) %>
+%> <%= (:id c) %> | <%= (:name c) %> | <%= (:el c) %> | <%= (:subtype c) %> | <%= (t/single-line (:desc c)) %> | <%= (str/join ", " (:tech c)) %> | <%= (:tags c) %>
 <%
 )
 %>
