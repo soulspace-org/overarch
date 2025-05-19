@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version (NEXT)
+--------------
+* added using the first resolved icon of the technologies
+
 Version 0.38.0
 --------------
 * spec keys (e.g. :selection, :plantuml) can be defined in the view directly

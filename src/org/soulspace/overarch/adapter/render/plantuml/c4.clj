@@ -121,14 +121,14 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-;; TODO use some (or some-fn) to resolve the sprites, so if the first one is not found, the next one is used
 (defn sprite
   "Returns the sprite for the element `e`."
   [e]
   (if (:sprite e)
     (puml/tech->sprite (:sprite e))
-    (puml/tech->sprite (first (:tech e)
-    ))))
+    ;(puml/tech->sprite (first (:tech e)
+    (some puml/tech->sprite (:tech e))
+    ))
 
 (defmethod render-c4-element :system
   [_ _ indent e]

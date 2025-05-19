@@ -83,6 +83,8 @@
       (derive :state-machine-view    :uml-view)
       (derive :code-view             :uml-view)
       (derive :class-view            :uml-view)
+      (derive :c4-view               :view)
+      (derive :uml-view              :view)
       ))
 
 (def linetypes
@@ -139,11 +141,6 @@
        (sort)
        (map (fn [key] (merge {:key key} (m key))))))
 
-(defn sprite?
-  "Returns true if the icon-map contains an icon for the given technology."
-  [tech]
-  (tech->sprite tech))
-
 (comment ; sprite mapping
   (load-sprite-mappings-from-resource ["azure" "awslib14"])
   (count (sorted-sprite-mappings tech->sprite))
@@ -153,7 +150,6 @@
 ;;;
 ;;; Rendering
 ;;;
-
 (defn renderer
   "Returns the renderer for the view."
   [_ _ view]
