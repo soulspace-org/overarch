@@ -126,8 +126,9 @@
   [e]
   (if (:sprite e)
     (puml/tech->sprite (:sprite e))
-    (puml/tech->sprite (first (:tech e)
-    ))))
+    ;(puml/tech->sprite (first (:tech e)
+    (some puml/tech->sprite (:tech e))
+    ))
 
 (defmethod render-c4-element :system
   [_ _ indent e]
