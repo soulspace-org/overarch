@@ -125,6 +125,11 @@
            (str/join "/"))
       ".")))
 
+;; Sorting
+(defn index-name-sorter
+  [{:keys [index name]}]
+  [(if (nil? index) ##Inf index) name])
+
 (comment
   (str/split "a.b.c" #"\.")
   (element-namespace {:id :x})
