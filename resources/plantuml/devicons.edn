@@ -124,7 +124,8 @@
  "Nancy"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nancy"}
  "NetBeans"               {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "netbeans"}
  "Netmagazine"            {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "netmagazine"}
- "Nginx"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nginx"} "MSQL Server" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "msql_server"}
+ "Nginx"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nginx"}
+ "MSQL Server"            {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "msql_server"}
  "NodeJS"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nodejs"}
  "NodeJS Small"           {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "nodejs_small"}
  "Npm"                    {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "npm"}
@@ -141,7 +142,8 @@
  "Rackspace"              {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "rackspace"}
  "Raphael"                {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "raphael"}
  "Raspberry Pi"           {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "raspberry_pi"}
- "React"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "react"} "Perl" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "perl"}
+ "React"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "react"}
+ "Perl"                   {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "perl"}
  "Redhat"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "redhat"}
  "Redis"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "redis"}
  "RequireJS"              {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "requirejs"}
@@ -170,7 +172,8 @@
  "Techcrunch"             {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "techcrunch"}
  "Terminal Badge"         {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "terminal_badge"}
  "Terminal"               {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "terminal"}
- "Travis"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "travis"} "Typo3" {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "typo3"}
+ "Travis"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "travis"}
+ "Typo3"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "typo3"}
  "Trello"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "trello"}
  "Ubuntu"                 {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "ubuntu"}
  "UIKit"                  {:lib "devicons" :prefix "tupadr3" :path "devicons" :name "uikit"}
