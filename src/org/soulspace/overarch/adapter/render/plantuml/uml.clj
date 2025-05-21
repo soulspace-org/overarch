@@ -56,6 +56,33 @@
       (str "[[" link " " (el/element-name e) "]]"))
     (el/element-name e)))
 
+(defn render-from
+  "Renders the referred side of the relation."
+  [e]
+  (cond
+    (and (:from-name e) (:from-card e))
+    (str " \"" (:from-name e) "\\n" (uml-cardinality (:from-card e)) "\" ")
+
+    (:from-name e)
+    (str " \"" (:from-name e) "\" ")
+
+    (:from-card e)
+    (str " \"" (uml-cardinality (:from-card e)) "\" ")))
+
+(defn render-to
+  "Renders the referred side of the relation."
+  [e]
+  (cond
+    (and (:to-name e) (:to-card e))
+    (str " \"" (:to-name e) "\\n" (uml-cardinality (:to-card e)) "\" ")
+
+    (:to-name e)
+    (str " \"" (:to-name e) "\" ")
+
+    (:to-card e)
+    (str " \"" (uml-cardinality (:to-card e)) "\" ")))
+
+
 (defmulti render-uml-element
   "Renders a UML element in PlantUML.
    
@@ -128,7 +155,7 @@
   [model view indent e]
   (let [children (model/children model e)
         content (view/elements-to-render model view children)]
-    (if (and (seq content) (not (el/collapsed? e))) 
+    (if (and (seq content) (not (el/collapsed? e)))
       (flatten [(str (render/indent indent)
                      "package \"" (render-name e)
                      "\" as " (puml/alias-name (:id e)) " {")
@@ -217,8 +244,7 @@
   [(str (render/indent indent)
         (render-name e)
         (when (:value e)
-          (str " = " (:value e)))
-        )])
+          (str " = " (:value e))))])
 
 (defmethod render-uml-element :class
   [model view indent e]
@@ -259,8 +285,7 @@
         (when (:optional e)
           (str " [" (uml-cardinality :zero-to-one) "]"))
         (when (:collection e)
-          (str " [" (uml-cardinality :zero-to-many) "]"))
-        )])
+          (str " [" (uml-cardinality :zero-to-many) "]")))])
 
 (defmethod render-uml-element :parameter
   [_ _ _ e]
@@ -296,40 +321,38 @@
 
 (defmethod render-uml-element :composition
   [_ _ indent e]
-  ; TODO render roles
   [(str (render/indent indent)
         (puml/alias-name (:from e))
-        " *--> "
-        (when (:to-card e)
-          (str " \"" (uml-cardinality (:to-card e)) "\" "))
+        (render-from e)
+        " *-"
+        (when (:direction e)
+          (uml-directions (:direction e)))
+        "-> "
+        (render-to e)
         (puml/alias-name (:to e)))])
 
 (defmethod render-uml-element :aggregation
   [_ _ indent e]
-  ; TODO render roles
   [(str (render/indent indent)
         (puml/alias-name (:from e))
-        (when (:from-card e)
-          (str " \"" (uml-cardinality (:from-card e)) "\" "))
+        (render-from e)
         " o-"
         (when (:direction e)
           (uml-directions (:direction e)))
         "-> "
-        (when (:to-card e)
-          (str " \"" (uml-cardinality (:to-card e)) "\" "))
+        (render-to e)
         (puml/alias-name (:to e)))])
 
 (defmethod render-uml-element :association
   [_ _ indent e]
-  ; TODO render roles
   [(str (render/indent indent)
         (puml/alias-name (:from e))
+        (render-from e)
         " -"
         (when (:direction e)
           (uml-directions (:direction e)))
         "-> "
-        (when (:to-card e)
-          (str " \"" (uml-cardinality (:to-card e)) "\" "))
+        (render-to e)
         (puml/alias-name (:to e)))])
 
 (defmethod render-uml-element :inheritance

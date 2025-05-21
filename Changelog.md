@@ -4,6 +4,7 @@ Changelog
 Version (NEXT)
 --------------
 * added using the first resolved icon of the technologies
+* added rendering of roles for ``:association``, ``:aggregation`` and ``:composition`` in code-view
 
 Version 0.38.0
 --------------
