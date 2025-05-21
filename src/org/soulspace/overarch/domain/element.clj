@@ -936,17 +936,6 @@
         remaining-ids (set/difference base-ids diff-ids)]
     (into #{} (map base-map remaining-ids))))
 
-(defn technology-vector
-  "Returns a vector of the technologies used by the element `e`."
-  [v]
-  (cond
-    (string? v)
-    ; use the ordered set to remove duplicates while preserving the order
-    (into [] (into (td/ordered-set) (fns/tokenize-string v)))
-
-    (coll? v)
-    (into (td/ordered-set) v)))
-
 (defn technology-set
   "Returns a set of the technologies used by the element `e`.
    The returned set is an ordered set, if `v` is ordered."
