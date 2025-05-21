@@ -56,6 +56,7 @@
       (str "[[" link " " (el/element-name e) "]]"))
     (el/element-name e)))
 
+;; TODO use verbatim cardinality, if it's not a keyword/can't be looked up
 (defn render-from
   "Renders the referred side of the relation."
   [e]
