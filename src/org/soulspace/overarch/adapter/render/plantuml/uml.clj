@@ -56,6 +56,18 @@
       (str "[[" link " " (el/element-name e) "]]"))
     (el/element-name e)))
 
+(defn render-type
+  "Renders the type of the element `e`. If `e` is a keyword, it is resolved as element the model"
+  [model e]
+  (if-let [type (:type e)]
+    (if (keyword? type)
+      (let [type-ref (model/resolve-element model type)]
+        (el/element-name type-ref))
+      type)
+    ; TODO default type?
+    ""
+    ))
+
 ;; TODO use verbatim cardinality, if it's not a keyword/can't be looked up
 (defn render-from
   "Renders the referred side of the relation."
@@ -82,7 +94,6 @@
 
     (:to-card e)
     (str " \"" (uml-cardinality (:to-card e)) "\" ")))
-
 
 (defmulti render-uml-element
   "Renders a UML element in PlantUML.
@@ -274,7 +285,7 @@
             " {}")])))
 
 (defmethod render-uml-element :field
-  [_ _ indent e]
+  [model _ indent e]
   [(str (render/indent indent)
         (when (= :classifier (:scope e))
           "{classifier} ")
@@ -282,17 +293,17 @@
           (uml-visibility (:visibility e)))
         (render-name e)
         (when (:type e)
-          (str " : " (:type e)))
+          (str " : " (render-type model e)))
         (when (:optional e)
           (str " [" (uml-cardinality :zero-to-one) "]"))
         (when (:collection e)
           (str " [" (uml-cardinality :zero-to-many) "]")))])
 
 (defmethod render-uml-element :parameter
-  [_ _ _ e]
+  [model _ _ e]
   [(str (render-name e)
         (when (:type e)
-          (str " : " (:type e))))])
+          (str " : " (render-type model e))))])
 
 (defmethod render-uml-element :method
   [model view indent e]
@@ -309,7 +320,7 @@
                               (view/elements-to-render model view children))))
         ")"
         (when (:type e)
-          (str " : " (:type e))))])
+          (str " : " (render-type model e))))])
 
 (defmethod render-uml-element :function
   [_ _ indent e]
