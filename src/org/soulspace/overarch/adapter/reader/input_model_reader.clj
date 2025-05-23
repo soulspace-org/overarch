@@ -52,10 +52,12 @@ The input model is transformed by
   ([acc e]
    (check-duplicate-id acc nil e))
   ([acc p e]
-   (when (and (:id e) (get-in acc [:id->element (:id e)]))
-     {:type :duplicate-id
-      :element e
-      :parent p})))
+   (when (:id e)
+     (when-let [e-ex (get-in acc [:id->element (:id e)])]
+       (when (not= e e-ex)
+         {:type :duplicate-id
+          :element e
+          :parent p})))))
 
 (defn check-parent-override
   ([acc e]
@@ -91,25 +93,42 @@ The input model is transformed by
   ([] {})
   ([node] node)
   ([node new-node]
-   (if (main-node? node)
-     (merge new-node node)
-     (merge node new-node))))
+   (cond 
+     (= node new-node)
+     node
+   
+     (= (:el node) (:el new-node))
+     (if (main-node? node)
+       (merge new-node node)
+       (merge node new-node)))))
 
 (defn merge-relations
   "Returns a relation that is the merge of `relation` and `new-relation`."
   ([] {})
   ([relation] relation)
   ([relation new-relation]
-   (merge relation new-relation)))
+   (cond
+     (= relation new-relation)
+     relation
+
+     (and (= (:el relation) (:el new-relation))
+          (= (:from relation) (:from new-relation))
+          (= (:to relation) (:to new-relation)))
+     (merge relation new-relation))))
 
 (defn merge-views
   "Returns a view that is the merge of `view` and `new-view`."
   ([] {})
   ([view] view)
   ([view new-view]
-   (let [new-spec (merge (:spec view) (:spec new-view))
-         new-ct (concat (:ct view) (:ct new-view))]
-     (assoc view :spec new-spec :ct new-ct))))
+   (cond
+     (= view new-view)
+     view
+     
+     (= (:el view) (:el new-view))
+     (let [merged (merge view new-view)
+           new-ct (into [] (distinct (concat (:ct view) (:ct new-view))))]
+       (assoc merged :ct new-ct)))))
 
 ;;;
 ;;; Building
@@ -171,6 +190,7 @@ The input model is transformed by
       (assoc e :external true))))
 
 ;; TODO derive :index from vector position, if :ct contains vector?
+;; TODO only report duplicate ids if the elements can't be merged
 (defn add-node
   "Update the accumulator `acc` of the model with the node `e`
    in the context of the parent `p` (if given)."
