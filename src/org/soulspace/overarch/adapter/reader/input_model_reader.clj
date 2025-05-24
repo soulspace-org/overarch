@@ -13,7 +13,6 @@ The built model is a map with the following keys
 | **Index keys**          | 
 | :id->element            | a map from id to element (nodes, relations and views)
 | :id->parent-id          | a map from id to parent node id
-| :id->children           | a map from id to a vector of contained nodes (deprecated)
 | :referrer-id->relations | a map from id to set of relations where the id is the referrer (:from)
 | :referred-id->relations | a map from id to set of relations where the id is referred (:to)
 | **Problem keys**        | 
@@ -22,6 +21,7 @@ The built model is a map with the following keys
 The input model is transformed by
 * computing missing ids, if possible
 * converting the node hierarchies to :contained-in relations
+* dropping the :ct key from nodes
    "
   (:require [clojure.string :as str]
             [org.soulspace.overarch.domain.element :as el]
@@ -219,11 +219,6 @@ The input model is transformed by
                  (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id prepared-node))
                  (assoc (:id->parent-id acc) (:id prepared-node) (:id p)))
 
-               :id->children
-               (assoc (:id->children acc)
-                      (:id p)
-                      (conj (get-in acc [:id->children (:id p)] []) prepared-node))
-
                :relations
                (conj (:relations acc)
                      c-rel)
@@ -277,13 +272,6 @@ The input model is transformed by
              (if-let [po (get-in acc [:id->parent-id (:ref e)])]
                (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:ref e))
                (assoc (:id->parent-id acc) (:ref e) (:id p)))
-
-             ; TODO currently adding the ref here, should add the (transformed) element
-             ;      therefore a lookup by id is neccessary for the input elements?!?
-             :id->children
-             (assoc (:id->children acc)
-                    (:id p)
-                    (conj (get-in acc [:id->children (:id p)] []) e))
 
              :referrer-id->relations
              (assoc (:referrer-id->relations acc)
@@ -404,7 +392,6 @@ The input model is transformed by
      :themes #{}
      :id->element {}
      :id->parent-id {}
-     :id->children {}
      :referred-id->relations {}
      :referrer-id->relations {}
      :build-problems #{}}

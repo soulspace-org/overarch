@@ -36,7 +36,6 @@
     :themes #{}
     :id->element {}
     :id->parent-id {}
-    :id->children {}
     :referrer-id->relations {}
     :referred-id->relations {}
     :problems #{}})
@@ -49,7 +48,6 @@
     :themes (set/union (:themes model) (:themes other-model))
     :id->element (merge (:id->element model) (:id->element other-model))
     :id->parent-id (merge (:id->parent-id model) (:id->parent-id other-model))
-    :id->children (merge (:id->children model) (:id->children other-model))
     :referrer-id-relations (merge (:referrer-id-relations model) (:referrer-id-relations other-model))
     :referred-id-relations (merge (:referred-id-relations model) (:referred-id-relations other-model))
     :problems (set/union (:problems model) (:problems other-model))}))

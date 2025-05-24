@@ -5,6 +5,7 @@ Version (NEXT)
 --------------
 * added using the first resolved icon of the technologies
 * added rendering of roles for ``:association``, ``:aggregation`` and ``:composition`` in code-view
+* removed :id->children index from model
 
 Version 0.38.0
 --------------
