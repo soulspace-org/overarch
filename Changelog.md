@@ -7,6 +7,7 @@ Version (NEXT)
 * added rendering of roles for ``:association``, ``:aggregation`` and ``:composition`` in code-view
 * removed :id->children index from model
 * added `elements` and `namespaces` functions to model
+* added `views-by-criteria` function to model
 
 Version 0.38.0
 --------------

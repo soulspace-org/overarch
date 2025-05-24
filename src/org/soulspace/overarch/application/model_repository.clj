@@ -80,6 +80,11 @@
   [criteria]
     (model/model-elements-by-criteria (model) criteria))
 
+(defn views-by-criteria
+  "Returns a set of model elements that match the `criteria`"
+  [criteria]
+  (model/views-by-criteria (model) criteria))
+
 ;;;
 ;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
 ;;;

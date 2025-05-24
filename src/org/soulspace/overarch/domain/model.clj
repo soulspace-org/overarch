@@ -331,6 +331,12 @@
   (into #{} (filter-xf model criteria)
         (set/union (nodes model) (relations model))))
 
+(defn views-by-criteria
+  "Returns a set of views that match the `criteria`"
+  [model criteria]
+  (into #{} (filter-xf model criteria)
+        (views model)))
+
 (defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
