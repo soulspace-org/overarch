@@ -17,6 +17,17 @@
 ;;;
 
 ;;
+;; Role model
+;;
+(def role-node-types
+  "Node types for role models."
+  #{:person :permission})
+
+(def role-relation-types
+  "Relation types for role models."
+  #{:role-in :responsible-for :granted :permission-of})
+
+;;
 ;; Architecture model
 ;; 
 ;
@@ -147,7 +158,8 @@
 
 (def model-node-types
   "Node types of the model."
-  (set/union architecture-node-types
+  (set/union role-node-types
+             architecture-node-types
              deployment-node-types
              uml-node-types
              concept-node-types
@@ -158,6 +170,7 @@
 (def model-relation-types
   "Relation types of the model."
   (set/union #{:rel :contained-in :implements}
+             role-relation-types
              architecture-relation-types
              deployment-relation-types
              uml-relation-types

@@ -8,6 +8,9 @@ Version (NEXT)
 * removed :id->children index from model
 * added `elements` and `namespaces` functions to model
 * added `views-by-criteria` function to model
+* added role model categories
+* added ``:permission`` node
+* added ``:granted`` and ``permission-of`` relationships
 
 Version 0.38.0
 --------------
