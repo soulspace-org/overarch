@@ -20,14 +20,6 @@
   []
   @state)
 
-; Deprecated, input elements should not be part of the model
-(defn input-elements
-  "Returns the set of input elements."
-  ([]
-   (input-elements (model)))
-  ([model]
-   (:input-elements model)))
-
 (defn nodes
   "Returns the set of nodes."
   ([]
@@ -47,7 +39,21 @@
   ([]
    (model-elements (model)))
   ([model]
-   (concat (model/nodes model) (model/relations model))))
+   (model/model-elements model)))
+
+(defn elements
+  "Returns the set of elements (nodes, relations, views, themes)."
+  ([]
+   (elements (model)))
+  ([model]
+   (model/elements model)))
+
+(defn namespaces
+  "Returns the set of namespaces."
+  ([]
+   (namespaces (model)))
+  ([model]
+   (model/namespaces model)))
 
 (defn node-by-id
   "Returns the node with the given `id`."

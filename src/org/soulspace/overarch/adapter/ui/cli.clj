@@ -294,6 +294,12 @@
   ;
   )
 
+(comment ; model repository
+  (repo/elements)
+  (repo/namespaces)
+  ;
+  )
+
 (comment ; model analytics 
   (el/count-elements-per-namespace (concat (repo/nodes) (repo/relations)))
   (el/count-elements-per-type (concat (repo/nodes) (repo/relations)))

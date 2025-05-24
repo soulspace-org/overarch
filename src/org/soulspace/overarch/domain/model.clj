@@ -7,7 +7,8 @@
             [clojure.string :as str]
             [tiara.data :as td ]
             [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.util.functions :as fns]))
+            [org.soulspace.overarch.util.functions :as fns]
+            [clojure.core :as c]))
 
 ;;;
 ;;; Basic accessor functions
@@ -283,6 +284,20 @@
   "Returns the set of themes from the `model`."
   [model]
   (:themes model))
+
+(defn elements
+  "Returns the set of elements from the `model`."
+  [model]
+  (concat (nodes model) (relations model) (views model) (themes model)))
+
+(defn namespaces
+  "Returns the set of namespaces."
+  [model]
+  (->> (elements model)
+       (el/elements-by-namespace)
+       (keys)
+       (sort)
+       (into [])))
 
 (defn node-by-id
   "Returns the node with the given `id`."
