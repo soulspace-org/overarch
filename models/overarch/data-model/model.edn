@@ -214,7 +214,7 @@
    :tags #{"role-model"}}
 
   {:el :class
-   :id :overarch.data-model/person
+   :id :overarch.data-model/role
    :name "role"
    :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
    :tags #{"role-model architecture-model" "use-case-model"}}
@@ -270,7 +270,7 @@
   {:el :inheritance
    :id :overarch.data-model/role-is-a-role-model-node
    :to :overarch.data-model/role-model-node
-   :from :overarch.data-model/node
+   :from :overarch.data-model/role
    :tags #{"role-model"}}
 
   {:el :inheritance
