@@ -4,10 +4,22 @@
 #{;;;
   ;;; Concepts
   ;;; 
+
+  ;;
+  ;; Role
+  ;;
+  {:el :concept
+   :id :overarch.concepts/role
+   :name "Role"
+   :desc "A role in the model, e.g. a person or a system."}
   {:el :concept
    :id :overarch.concepts/person
    :name "Person"
-   :desc "A human actor or role."}
+   :desc "A human actor or role (deprecated, use role)."}
+  {:el :concept
+   :id :overarch.concepts/permission
+   :name "Permission"
+   :desc "A permission, e.g. an access right."}
 
   ;;
   ;; Concept
