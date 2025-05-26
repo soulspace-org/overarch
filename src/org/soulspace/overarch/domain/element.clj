@@ -25,7 +25,7 @@
 
 (def role-relation-types
   "Relation types for role models."
-  #{:role-in :responsible-for :granted :permission-of})
+  #{:role-in :responsible-for :granted-for :permission-of})
 
 ;;
 ;; Architecture model
@@ -331,7 +331,7 @@
 (def model-node-type-order
   "The set of model element types as vector."
   [; nodes
-   :person :organization :org-unit
+   :person :permission :organization :org-unit
    :concept
    :capability :knowledge :information :process :artifact :requirement :decision
    :use-case :actor
@@ -345,6 +345,7 @@
 (def model-relation-type-order
   "The set of model element types as vector."
   [; relations
+   :granted-for :permission-of
    :collaborates-with :responsible-for :role-in
    :has :is-a :part-of
    :input-of :output-of :required-for
@@ -396,8 +397,21 @@
       (derive :actor                             :role)
       (derive :person                            :role)
 
+      ;;; role model
+      ;;  role model nodes
+      (derive :person                            :role-model-node)
+      (derive :permission                        :role-model-node)
+      (derive :role-model-node                   :role-model-element)
+
+      ;;  role model relations
+      (derive :granted-for                       :role-model-relation)
+      (derive :permission-of                     :role-model-relation)
+      (derive :role-in                           :role-model-relation)
+      (derive :responsible-for                   :role-model-relation)
+      (derive :role-model-relation               :role-model-element)
+
       ;;; architecture model
-      ;; architecture model nodes
+      ;;  architecture model nodes
       (derive :system                            :technical-architecture-model-node)
       (derive :container                         :technical-architecture-model-node)
       (derive :component                         :technical-architecture-model-node)
@@ -542,6 +556,7 @@
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes
+      (derive :role-model-node                   :model-node)
       (derive :architecture-model-node           :model-node)
       (derive :deployment-model-node             :model-node)
       (derive :use-case-model-node               :model-node)
@@ -553,6 +568,7 @@
       (derive :boundary                          :model-node)
 
       ;; model relations
+      (derive :role-model-relation               :model-relation)
       (derive :architecture-model-relation       :model-relation)
       (derive :deployment-model-relation         :model-relation)
       (derive :use-case-model-relation           :model-relation)

@@ -10,7 +10,8 @@ Version (NEXT)
 * added `views-by-criteria` function to model
 * added role model categories
 * added ``:permission`` node
-* added ``:granted`` and ``permission-of`` relationships
+* added ``:granted-for`` and ``permission-of`` relationships
+* updated data model
 
 Version 0.38.0
 --------------

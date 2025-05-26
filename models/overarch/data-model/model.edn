@@ -192,6 +192,106 @@
    :tags #{"architecture-model" "concept-model"}}
 
   ;;
+  ;; Role Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/role-model-element
+   :abstract true
+   :name "role-model-element"
+   :desc "An element of the role model."
+   :tags #{"role-model"}
+   :ct [{:el :field
+         :name "external"
+         :type "boolean"
+         :optional true
+         :desc "When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false."}]}
+
+  {:el :class
+   :id :overarch.data-model/role-model-node
+   :abstract true
+   :name "role-model-node"
+   :desc "A node in the role model."
+   :tags #{"role-model"}}
+
+  {:el :class
+   :id :overarch.data-model/person
+   :name "role"
+   :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
+   :tags #{"role-model architecture-model" "use-case-model"}}
+
+  {:el :class
+   :id :overarch.data-model/permission
+   :name "permission"
+   :desc "A permission, entitlement or access right for some action e.g. in a system."
+   :tags #{"role-model"}}
+
+  {:el :class
+   :id :overarch.data-model/granted-for
+   :name "granted-for"
+   :desc "A relationship between a permission and a role."
+   :tags #{"role-model"}}
+
+  {:el :class
+   :id :overarch.data-model/permission-of
+   :name "permission-of"
+   :desc "A relationship between a permission and an architecture node, e.g. a system."
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/role-model-relation
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/role-model-node
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/role-model-element
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-model-node-is-a-role-model-element
+   :to :overarch.data-model/role-model-element
+   :from :overarch.data-model/role-model-node
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-model-relation-is-a-role-model-element
+   :to :overarch.data-model/role-model-element
+   :from :overarch.data-model/role-model-relation
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/role-is-a-role-model-node
+   :to :overarch.data-model/role-model-node
+   :from :overarch.data-model/node
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/permission-is-a-role-model-node
+   :to :overarch.data-model/role-model-node
+   :from :overarch.data-model/permission
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/permission-of-is-a-role-model-relation
+   :to :overarch.data-model/role-model-relation
+   :from :overarch.data-model/permission-of
+   :tags #{"role-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/granted-for-is-a-role-model-relation
+   :to :overarch.data-model/role-model-relation
+   :from :overarch.data-model/granted-for
+   :tags #{"role-model"}}
+
+  ;;
   ;; Architecture Model
   ;;
   {:el :class
@@ -239,12 +339,11 @@
    :desc "A technical relation in the architecture model."
    :tags #{"architecture-model"}}
 
-  ;; Person
   {:el :class
    :id :overarch.data-model/person
    :name "person"
    :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
-   :tags #{"architecture-model" "use-case-model"}}
+   :tags #{"role-model architecture-model" "use-case-model"}}
 
   {:el :class
    :id :overarch.data-model/system
