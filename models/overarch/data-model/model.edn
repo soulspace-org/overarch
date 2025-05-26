@@ -214,6 +214,13 @@
    :tags #{"role-model"}}
 
   {:el :class
+   :id :overarch.data-model/role-model-relation
+   :abstract true
+   :name "role-model-relation"
+   :desc "A relation in the role model."
+   :tags #{"role-model"}}
+
+  {:el :class
    :id :overarch.data-model/role
    :name "role"
    :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."

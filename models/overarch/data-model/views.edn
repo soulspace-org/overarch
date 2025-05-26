@@ -14,6 +14,14 @@
    :ct [{:ref :overarch.data-model/ref-references-element :direction :left}]}
 
   {:el :code-view
+   :id :overarch.data-model/role-model-elements
+   :spec {:selection {:namespace "overarch.data-model"
+                      :tags #{"base-model" "model-model" "role-model"}}
+          :include :related}
+   :title "Role Model Elements"
+   :desc "Shows the logical hierarchy of the role model elements"}
+
+  {:el :code-view
    :id :overarch.data-model/architecture-model-elements
    :spec {:selection {:namespace "overarch.data-model"
                       :tags #{"base-model" "model-model" "architecture-model"}}
