@@ -267,7 +267,7 @@
 (defn render-skinparams
   "Renders skinparams for the plantuml diagram."
   [view]
-  (when-let [skinparams (get-in view [:spec :plantuml :skinparams])]
+  (when-let [skinparams (get-in view [:plantuml :skinparams])]
     (->> skinparams
          (map render-skinparam)
          (str/join "\n"))))

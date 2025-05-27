@@ -12,6 +12,7 @@ Version (NEXT)
 * added ``:permission`` node
 * added ``:granted-for`` and ``permission-of`` relationships
 * updated data model
+* fixed missing skinparams in plantuml rendering
 
 Version 0.38.0
 --------------
