@@ -396,9 +396,10 @@
       ;; roles
       (derive :actor                             :role)
       (derive :person                            :role)
-
+      
       ;;; role model
       ;;  role model nodes
+      (derive :role                              :role-model-node)
       (derive :person                            :role-model-node)
       (derive :permission                        :role-model-node)
       (derive :role-model-node                   :role-model-element)
