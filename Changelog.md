@@ -11,6 +11,7 @@ Version (NEXT)
 * added role model categories
 * added ``:permission`` node
 * added ``:granted-for`` and ``permission-of`` relationships
+* added functions to build specific indices in model-reader
 * updated data model
 * fixed missing skinparams in plantuml rendering
 
