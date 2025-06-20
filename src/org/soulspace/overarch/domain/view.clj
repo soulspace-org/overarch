@@ -136,14 +136,16 @@
     #{}))
 
 (defn specified-elements
-  "Returns the `model` elements specified for the view, either as refs or as selection."
+  "Returns the `model` elements specified for the view,
+   either as refs or as selection."
   [model view]
   (let [selected (selected-elements model view)
         referenced (referenced-elements model view)]
     (el/union-by-id selected referenced)))
 
 (defn included-elements
-  "Returns the `model` elements specified and included for the view, e.g. related nodes or relations."
+  "Returns the `model` elements specified and included for the view,
+   e.g. related nodes or relations."
   [model view specified]
   (case (include-spec view)
     :relations
@@ -187,7 +189,8 @@
     (filter (partial render-model-element? model view) elements)))
 
 (defn root-elements
-  "Returns the root elements for a collection of `model` `elements`, e.g. to start the rendering of a hierarchical view with."
+  "Returns the root elements for a collection of `model` `elements`,
+   e.g. to start the rendering of a hierarchical view with."
   [model elements]
   ; Difference of the sets of elements have to be done with difference-by-id which treats the elements as entities
   ; to preserve overrides of keys in the content references included in the view.
@@ -197,8 +200,20 @@
   (let [descendants (model/all-descendant-nodes model elements)]
     (el/difference-by-id elements descendants)))
 
+(defn rendered-elements
+  "Returns the elements to render in the `view` for the given `model`."
+  ([model view]
+   (rendered-elements model view (view-elements model view)))
+  ([model view coll]
+   (->> coll
+        (model/all-descendant-nodes model)
+        (map (model/element-resolver model))
+        (filter (partial render-model-element? model view))
+        (map #(element-to-render model view %)))))
+
 (defn elements-to-render
-  "Returns the list of elements to render from the `view` or the given `coll` of elements, depending on the type of the view."
+  "Returns the list of elements to render in the `view` or the given `coll` of
+   elements, depending on the type of the view."
   ([model view]
    (root-elements model (view-elements model view)))
   ([model view coll]

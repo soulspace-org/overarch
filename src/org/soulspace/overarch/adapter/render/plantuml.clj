@@ -180,7 +180,6 @@
 ;;
 ;; Sprite Imports
 ;;
-
 (defn collect-sprites
   "Returns the set of sprites for the elements of the `coll`."
   [coll]
@@ -200,7 +199,7 @@
   "Collects the sprites for the `view`."
   [model view]
   (->> view
-       (view/view-elements model) 
+       (view/rendered-elements model) 
        (collect-all-sprites)
        ;(fns/data-tapper "Sprites")
        (map #(tech->sprite %))))
@@ -277,9 +276,8 @@
 ;;;
 (def plantuml-views
   "Contains the views to be rendered with plantuml."
-  ; TODO deprecate :class-view and remove 
   #{:system-landscape-view :context-view :container-view :component-view
-    :deployment-view :dynamic-view :code-view :class-view :use-case-view
+    :deployment-view :dynamic-view :code-view :use-case-view
     :state-machine-view})
 
 (defn plantuml-view?
@@ -288,7 +286,7 @@
   (contains? plantuml-views (:el view)))
 
 (defmethod rndr/render-file :plantuml
-  [model format options view]
+  [_model _format options view]
   (let [dir-name (str (:render-dir options) "/"
                       (when (:render-format-subdirs options)
                         "plantuml/")
