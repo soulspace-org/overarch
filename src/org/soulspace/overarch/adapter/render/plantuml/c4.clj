@@ -328,7 +328,7 @@
 (defn render-c4-imports
   "Renders the imports for the diagram."
   [view]
-  (if (get-in view [:spec :plantuml :remote-imports])
+  (if (get (view/plantuml-spec view) :remote-imports)
     (str "!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/"
          (c4-view-type->import (:el view)))
     (str "!include <C4/"
