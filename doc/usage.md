@@ -1027,11 +1027,10 @@ The specified views C4 architecture and UML views can be rendered to PlantUML
 diagram specification (*.puml files). These can be rendered into different
 formats (e.g. SVG, PNG, PDF) with PlantUML.
 
-You can specify PlantUML specific directives with the **:plantuml** key of a
-view spec.
+You can specify PlantUML specific directives with the **:plantuml** key.
 
 ```
-   :spec {:plantuml {:sprite-libs [:azure :devicons]}}
+   :plantuml {:sprite-libs [:azure :devicons]}
 ```
 
 ### Keys
@@ -1064,6 +1063,10 @@ Currently the following keys for sprite libs are supported:
  * :font-awesome-5
  * :logos
 
+Overarch uses a default list of sprite libs to resolve sprites, if none is
+provided in the view. By specifying the sprite list in the view, you can
+change the order of the libs for lookups or specify different sprite libs.
+
 The command line interface supports the option `--plantuml-list-sprites`
 which prints the (long) list of sprite mappings. 
 
@@ -1088,7 +1091,7 @@ allow previews of the generated Graphviz files.
 The images can be created with the *dot* executable, which resides in the bin
 directory of the GraphViz installation.
 
-You can specify Graphviz directives with the **:graphviz** key in a view spec.
+You can specify Graphviz directives with the **:graphviz** key.
 Currently only the configuration of the
 [layout engine](https://graphviz.org/docs/layouts/) is supported.
 
@@ -1102,8 +1105,7 @@ key              | type    | values                   | description
 Markdown is used to render textual representations of the views.
 You can use converters to generate other formats like HTML or PDF from markdown.
 
-You can specify Markdown directives with the **:markdown** key in a
-view spec.
+You can specify Markdown directives with the **:markdown** key.
 
 ### Keys
 
