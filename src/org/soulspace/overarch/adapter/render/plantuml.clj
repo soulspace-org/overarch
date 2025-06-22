@@ -239,10 +239,10 @@
 (defn render-sprite-imports
   "Renders the imports for icon/sprite libraries."
   [model view]
-  (let [icon-libs (get (view/plantuml-spec view) :sprite-libs [:awslib :azure :devicons :devicons2 :font-awesome-5 :logos])
-        icons (sprites-for-view model view)]
-    [(map (partial render-spritelib-import view) icon-libs)
-     (map (partial render-sprite-import view) icons)]))
+  (let [sprite-libs (get (view/plantuml-spec view) :sprite-libs [:awslib :azure :devicons :devicons2 :font-awesome-5 :logos])
+        sprites (sprites-for-view model view)]
+    [(distinct (map (partial render-spritelib-import view) sprite-libs))
+     (map (partial render-sprite-import view) sprites)]))
 
 (comment
   (tech->sprite "Angular")
