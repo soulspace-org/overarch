@@ -5,6 +5,8 @@ Version (NEXT)
 --------------
 * added `rendered-elements`, used to resolve sprites
 * added using the first resolved sprite of the technologies
+* added a default list of sprite libs, if no sprite-libs are defined in view
+  * default list: `[:awslib :azure :devicons :devicons2 :font-awesome-5 :logos]`
 * added rendering of roles for `:association`, `:aggregation` and `:composition` in code-view
 * removed :id->children index from model
 * added `elements` and `namespaces` functions to model
