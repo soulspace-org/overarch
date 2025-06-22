@@ -1,0 +1,7 @@
+#{{:el :system :id :sys-1 :name "sys-1" :desc "sys-1"
+   :sprite "Chess Bishop"
+   :ct #{{:el :context-boundary :id :ctx-1 :name "ctx-1"
+          :ct #{{:el :container :id :cnt-1 :name "cnt-1" :desc "cnt-1" :sprite "Chess Bishop"}
+                {:el :container :id :cnt-2 :name "cnt-2" :desc "cnt-2" :sprite "Chess Knight"}}}}}
+
+  {:el :rel :id :cnt-1->cnt-2 :from :cnt-1 :to :cnt-2}}

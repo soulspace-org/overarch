@@ -207,6 +207,7 @@
   ([model view coll]
    (->> coll
         (model/all-descendant-nodes model)
+        (el/union-by-id coll)
         (map (model/element-resolver model))
         (filter (partial render-model-element? model view))
         (map #(element-to-render model view %)))))

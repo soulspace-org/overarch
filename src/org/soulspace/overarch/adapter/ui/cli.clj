@@ -289,6 +289,9 @@
                          {:model-dir "models/test/collapsed"}))
   (reader/update-state! (merge
                          default-options
+                         {:model-dir "models/test/sprite-issue"}))
+  (reader/update-state! (merge
+                         default-options
                          {:model-dir "../my-bank-model/models/"}))
 
   ;
@@ -394,13 +397,17 @@
 
 (comment ; view functions
   (def view (model/resolve-element (repo/model)
-                                   :test.collapsed/container-view)) 
+                                   :test.collapsed/container-view))
   (def view (model/resolve-element (repo/model)
                                    :mybank.compliance/container-view))
+  (def view (model/resolve-element (repo/model)
+                                   :mybank.core-banking/container-view))
   (def view (model/resolve-element (repo/model)
                                    :mybank.it-management/deployment-view))
   (def view (model/resolve-element (repo/model)
                                    :banking/organization-structure-view))
+  (def view (model/resolve-element (repo/model)
+                                   :views/comp1))
 
   (keys (repo/model))
   (:id->element (repo/model))
@@ -423,9 +430,30 @@
   (def in-view
     (view/view-elements (repo/model) view))
   in-view
+  (def roots
+    (view/root-elements (repo/model) in-view))
+  roots
   (def rendered
     (view/elements-to-render (repo/model) view))
   rendered
+  (def rendered-new
+    (view/rendered-elements (repo/model) view))
+  rendered-new
+
+  (count referenced)
+  (count selected)
+  (count specified)
+  (count included)
+  (count in-view)
+  (count roots)
+  (count rendered)
+  (count rendered-new)
+
+  (model/children (repo/model) :sys-1)
+  (model/descendant-nodes (repo/model) :sys-1)
+  (puml/sprites-for-view (repo/model) view)
+  (view/elements-to-render (repo/model) (repo/view-by-id :views/comp1))
+  (view/rendered-elements (repo/model) (repo/view-by-id :views/comp1))
   ;
   )
 

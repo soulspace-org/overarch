@@ -1,6 +1,7 @@
 ;;;;
 ;;;; Markdown rendering and export
 ;;;;
+^:deprecated
 (ns org.soulspace.overarch.adapter.render.markdown
   "Functions to export views to markdown."
   (:require [clojure.string :as str]

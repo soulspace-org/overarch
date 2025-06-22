@@ -1,6 +1,7 @@
 ;;;;
 ;;;; GraphViz rendering and export
 ;;;;
+^:deprecated
 (ns org.soulspace.overarch.adapter.render.graphviz
   "Functions to export views to GraphViz."
   (:require [clojure.string :as str]

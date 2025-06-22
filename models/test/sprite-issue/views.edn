@@ -1,0 +1,3 @@
+#{{:el   :component-view :id :views/comp1
+   :spec {:plantuml {:sprite-libs [:font-awesome-5]}}
+   :ct   [{:ref :sys-1}]}}
