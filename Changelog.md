@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version (NEXT)
+Version 0.39.0
 --------------
 * added `rendered-elements`, used to resolve sprites
 * added using the first resolved sprite of the technologies
