@@ -3,7 +3,7 @@ Changelog
 
 Version (NEXT)
 --------------
-* 
+* updated dependencies
 
 Version 0.39.0
 --------------
