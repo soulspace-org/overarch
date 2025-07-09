@@ -8,6 +8,83 @@
             [org.soulspace.overarch.domain.element :as el]))
 
 ;;;
+;;; Config data for views (TODO read from classpath or fs)
+;;;
+(def view-config
+  {:context-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                 :system :person}}
+                  :relations {:els #{:request :response :publish
+                                     :subscribe :send :dataflow}}
+                  :hierarchical? true}
+   :container-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                   :system :container :person}}
+                    :relations {:els #{:request :response :publish
+                                       :subscribe :send :dataflow}
+                                :!to {:el :system :children? true :external? false}
+                                :!from {:el :system :children? true :external? false}}
+                    :as-boundary {:el :system :external? false}
+                    :hierarchical? true}
+   :component-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                   :system :container :component :person}}
+                    :relations {:els #{:request :response :publish
+                                       :subscribe :send :dataflow}}
+                    :as-boundary {:els #{:system :container} :external? false}
+                    :hierarchical? true}
+   :system-structure-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                          :system :container :component :person}}
+                           :relations {:els #{:request :response :publish
+                                              :subscribe :send :dataflow}}
+                           :hierarchical? true}
+   :system-landscape-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                          :system :person}}
+                           :relations {:els #{:request :response :publish
+                                              :subscribe :send :dataflow}}
+                           :hierarchical? true}
+   :dynamic-view {:nodes {:els #{:enterprise-boundary :context-boundary
+                                 :system :container :component :person}}
+                  :relations {:els #{:step}}}
+   :deployment-view {:nodes {:els #{:node :container :artifact}}
+                     :relations {:els #{:link :deployed-to}}
+                     :hierarchical? true}
+   :deployment-architecture-view {:nodes {:els #{:node :system :container :artifact}}
+                     :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
+                     :hierarchical? true}
+   :deployment-structure-view {:nodes {:els #{:node :container}}
+                               :relations {:els #{:link :deployed-to}}
+                               :hierarchical? true}
+   :code-view {:nodes {:els #{:annotation :class :enum :enum-value
+                              :field :function :interface :method
+                              :namespace :package :parameter
+                              :protocol :stereotype}}
+               :relations {:els #{:aggregation :association :composition
+                                  :dependency :implementation :inheritance}}
+               :hierarchical? true}
+   :state-machine-view {:nodes {:els #{:state-machine :start-state :end-state
+                                       :state :fork :join :choice
+                                       :history-state :deep-history-state}}
+                        :relations {:els #{:transition}}
+                        :hierarchical? true}
+   :use-case-view {:nodes {:els #{:use-case :actor :person :system :container
+                                  :context-boundary}}
+                   :relations {:els #{:uses :include :extends :generalizes}}}
+   :concept-view {:nodes {:els #{:concept}}
+                  :relations {:els #{:is-a :has :part-of :rel}}}
+   :glossary-view {:nodes {:els #{:concept :person :system :container
+                                  :organization
+                                  :enterprise-boundary :context-boundary}}
+                   :relations {:els #{:is-a :has :part-of :rel}}}
+   :organization-structure-view {:nodes {:els #{:organization :org-unit}}
+                                 :relations {:els #{:collaborates-with}}
+                                 :hierarchical? true}
+   :process-view {:nodes {:els #{:capability :knowledge :information :process
+                                 :artifact :requirement :decision}}
+                  :relations {:els #{:role-in :required-for :input-of :output-of}}}
+   :model-view {:nodes {:model-node? true}
+                :relations {:model-relation? true}}
+           ;
+   })
+
+;;;
 ;;; Accessors
 ;;;
 (defn view-type
