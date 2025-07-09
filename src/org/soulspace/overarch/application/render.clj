@@ -10,6 +10,7 @@
             [org.soulspace.overarch.domain.views.container-view :as container-view]
             [org.soulspace.overarch.domain.views.context-view :as context-view]
             [org.soulspace.overarch.domain.views.deployment-view :as deployment-view]
+            [org.soulspace.overarch.domain.views.deployment-architecture-view :as deployment-architecture-view]
             [org.soulspace.overarch.domain.views.deployment-structure-view :as deployment-structure-view]
             [org.soulspace.overarch.domain.views.dynamic-view :as dynamic-view]
             [org.soulspace.overarch.domain.views.glossary-view :as glossary-view]

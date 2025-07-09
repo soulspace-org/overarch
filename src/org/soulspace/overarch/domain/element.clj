@@ -189,7 +189,7 @@
 (def c4-view-types
   "The set of C4 view types."
   #{:context-view :container-view :component-view
-    :deployment-view :system-landscape-view
+    :deployment-architecture-view :deployment-view :system-landscape-view
     :dynamic-view})
 
 (def context-view-element-types
@@ -215,6 +215,12 @@
   "Element types of a C4 deployment view."
   (set/union deployment-node-types
              deployment-relation-types))
+
+(def deployment-arcitecture-view-element-types
+  "Element types of a C4 deployment view with system architecture elements."
+  (set/union deployment-node-types 
+             deployment-relation-types
+             container-view-element-types))
 
 (def dynamic-view-element-types
   "Element types of a C4 dynamic view."

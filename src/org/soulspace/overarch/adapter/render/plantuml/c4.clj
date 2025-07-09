@@ -33,12 +33,14 @@
 
 (def c4-view-type->import
   "Map from diagram type to PlantUML C4 import."
-  {:system-landscape-view "C4_Context.puml"
-   :context-view          "C4_Context.puml"
-   :container-view        "C4_Container.puml"
-   :component-view        "C4_Component.puml"
-   :dynamic-view          "C4_Dynamic.puml"
-   :deployment-view       "C4_Deployment.puml"})
+  {:system-landscape-view        "C4_Context.puml"
+   :context-view                 "C4_Context.puml"
+   :container-view               "C4_Container.puml"
+   :component-view               "C4_Component.puml"
+   :dynamic-view                 "C4_Dynamic.puml"
+   :deployment-view              "C4_Deployment.puml"
+   :deployment-architecture-view "C4_Deployment.puml"
+   })
 
 (def c4-subtype->suffix
   "Maps the subtype of an element to the PlantUML C4 suffix."

@@ -27,7 +27,8 @@
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
-            [org.soulspace.overarch.adapter.template.comb :as comb])
+            [org.soulspace.overarch.adapter.template.comb :as comb]
+            [org.soulspace.overarch.application.render :as render])
   (:gen-class))
 
 ;;;
@@ -408,6 +409,8 @@
                                    :banking/organization-structure-view))
   (def view (model/resolve-element (repo/model)
                                    :views/comp1))
+  (def view (model/resolve-element (repo/model)
+                                   :banking.deployment/deployment-architecture-view))
 
   (keys (repo/model))
   (:id->element (repo/model))
@@ -439,6 +442,16 @@
   (def rendered-new
     (view/rendered-elements (repo/model) view))
   rendered-new
+
+  (require '[org.soulspace.overarch.adapter.render.plantuml :as plantuml])  
+  (plantuml/plantuml-view? view)
+
+  (render/render-view (repo/model)
+                      :plantuml
+                      (merge {:render-dir "exports"
+                              :render-format :plantuml}
+                             default-options)
+                      view)
 
   (count referenced)
   (count selected)
@@ -530,7 +543,6 @@
 
   ; 
   (-main "--debug" "--no-render-format-subdirs" "--render-format" "plantuml" "--generation-config" "templates/gencfg.edn")
-
 
   ; overarch development
   (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")

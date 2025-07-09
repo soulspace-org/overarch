@@ -45,8 +45,8 @@
           :include :related
           :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
    :title "Container View of the Internet Banking System"
-   :desc "shows the containers of the Internet Banking System and their relations" 
-   :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}  
+   :desc "shows the containers of the Internet Banking System and their relations"
+   :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
 
   ;;;
   ;;; Components
@@ -75,6 +75,35 @@
   ;;;
   {:el :deployment-view
    :id :banking.deployment/deployment-view
+   ;:spec {:include :related}
+   :title "Deployment View of Big Bank plc"
+   :ct [; model elements
+        {:ref :banking.deployment/personal-customers-mobile-device}
+        {:ref :banking.deployment/personal-customers-computer}
+        {:ref :banking.deployment/big-bank-plc-datacenter}
+
+        ; relations
+        {:ref :banking.internet-banking/single-page-app-calls-api-application}
+        {:ref :banking.internet-banking/mobile-app-calls-api-application}
+        {:ref :banking.internet-banking/web-app-deliveres-single-page-app}
+        {:ref :banking.internet-banking/api-application-uses-mainframe-banking-system}
+        {:ref :banking.internet-banking/api-application-uses-database}
+        ; add relations for the read database
+        {:el :rel
+         :id :banking.internet-banking/api-application-uses-database-read
+         :from :banking.internet-banking/api-application
+         :to :banking.internet-banking/database-read
+         :name "Reads from"
+         :tech "Datalog"}
+        {:el :rel
+         :id :banking.internet-banking/database-sync
+         :from :banking.internet-banking/database
+         :to :banking.internet-banking/database-read
+         :name "synchronises"
+         :direction :right}]}
+
+  {:el :deployment-architecture-view
+   :id :banking.deployment/deployment-architecture-view
    ;:spec {:include :related}
    :title "Deployment View of Big Bank plc"
    :ct [; model elements

@@ -73,19 +73,19 @@
   "Hierarchy for views"
   ; TODO deprecate :class-view and remove 
   (-> (make-hierarchy)
-      (derive :system-landscape-view :c4-view)
-      (derive :context-view          :c4-view)
-      (derive :container-view        :c4-view)
-      (derive :component-view        :c4-view)
-      (derive :deployment-view       :c4-view)
-      (derive :dynamic-view          :c4-view)
-      (derive :use-case-view         :uml-view)
-      (derive :state-machine-view    :uml-view)
-      (derive :code-view             :uml-view)
-      (derive :class-view            :uml-view)
-      (derive :c4-view               :view)
-      (derive :uml-view              :view)
-      ))
+      (derive :deployment-architecture-view :deployment-view)
+      (derive :deployment-view              :c4-view)
+      (derive :system-landscape-view        :c4-view)
+      (derive :context-view                 :c4-view)
+      (derive :container-view               :c4-view)
+      (derive :component-view               :c4-view)
+      (derive :dynamic-view                 :c4-view)
+      (derive :use-case-view                :uml-view)
+      (derive :state-machine-view           :uml-view)
+      (derive :code-view                    :uml-view)
+      (derive :class-view                   :uml-view)
+      (derive :c4-view                      :view)
+      (derive :uml-view                     :view)))
 
 (def linetypes
   "Maps linetype keys to PlantUML C4."
@@ -277,7 +277,7 @@
 (def plantuml-views
   "Contains the views to be rendered with plantuml."
   #{:system-landscape-view :context-view :container-view :component-view
-    :deployment-view :dynamic-view :code-view :use-case-view
+    :deployment-view :deployment-architecture-view :dynamic-view :code-view :use-case-view
     :state-machine-view})
 
 (defn plantuml-view?
@@ -297,7 +297,7 @@
 
 (defmethod rndr/render-view :plantuml
   [model format options view]
-  (when (plantuml-view? view)
+  (when (plantuml-view? view) 
     (let [result (render-plantuml-view model options view)]
       (with-open [wrt (io/writer (rndr/render-file model format options view))]
         (binding [*out* wrt]
