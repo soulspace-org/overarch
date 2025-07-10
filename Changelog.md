@@ -3,6 +3,9 @@ Changelog
 
 Version (NEXT)
 --------------
+* adding `:deployment-architecture-view`
+* added view configuration
+* added functions for view configuration
 * updated dependencies
 
 Version 0.39.0

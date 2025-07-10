@@ -7,6 +7,12 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.element :as el]))
 
+(def element->boundary
+  "Maps model types to boundary types depending on the view type."
+  {:system    :system-boundary
+   :container :container-boundary
+   :component :component-boundary})
+
 ;;;
 ;;; Config data for views (TODO read from classpath or fs)
 ;;;
@@ -83,6 +89,47 @@
                 :relations {:model-relation? true}}
            ;
    })
+
+;;;
+;;; Functions based on view configurations
+;;;
+(defn hierarchical?
+  ""
+  [view config]
+  (get-in config [(:el view) :hierarchical?] false))
+
+(defn node-pred
+  "Returns a predicate function to check if a node should be rendered
+   as specified in the `config` for the `view`"
+  [model view config]
+  (if-let [node-criteria (get-in config [(:el view) :nodes])]
+    (model/criteria-predicate model node-criteria)
+    (constantly false)))
+
+(defn relation-pred
+  "Returns a predicate function to check if a node should be rendered
+   as specified in the `config` for the `view`"
+  [model view config]
+  (if-let [relation-criteria (get-in config [(:el view) :nodes])]
+    (model/criteria-predicate model relation-criteria)
+    (constantly false)))
+
+(defn boundary-pred
+  "Returns a predicate function to check if an element should be transformed to a boundary
+   as specified in the `config` for the `view`"
+  [model view config]
+  (if-let [boundary-criteria (get-in config [(:el view) :as-boundary])]
+    (model/criteria-predicate model boundary-criteria)
+    (constantly false)))
+
+(defn element-to-render_
+  "Returns the element to render in the `view` for the given element `e` in the context of the `model`.
+   Transforms a node to a boundary, if necessary."
+  [model view config e]
+  (if ((model view config) e)
+    (assoc e :el (element->boundary (:el e)))
+    e)
+  )
 
 ;;;
 ;;; Accessors
