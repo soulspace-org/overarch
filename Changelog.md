@@ -1,15 +1,12 @@
-Changelog
-=========
+# Changelog
 
-Version (NEXT)
---------------
+## Version (NEXT)
 * adding `:deployment-architecture-view`
 * added view configuration
 * added functions for view configuration
 * updated dependencies
 
-Version 0.39.0
---------------
+## Version 0.39.0
 * added `rendered-elements`, used to resolve sprites
 * added using the first resolved sprite of the technologies
 * added a default list of sprite libs, if no sprite-libs are defined in view
@@ -26,8 +23,7 @@ Version 0.39.0
 * updated data model
 * fixed missing skinparams in plantuml rendering
 
-Version 0.38.0
---------------
+## Version 0.38.0
 * spec keys (e.g. :selection, :plantuml) can be defined in the view directly
   * no need for the ``:spec`` map anymore
   * ``:spec`` map attributes wil be added to view map on load
@@ -51,8 +47,7 @@ Version 0.38.0
 * updated dependencies
 * updated example model and README
 
-Version 0.37.0
---------------
+## Version 0.37.0
 * dropped ``:ct`` key in loaded model nodes
 * enhanced element hierarchy and model API for process model elements
 * added criteria-predicate function to model API
@@ -65,8 +60,7 @@ Version 0.37.0
 * fixed test views
 * enhanced assertions for selection criteria
 
-Version 0.36.0
---------------
+## Version 0.36.0
 * **breaking** changed referring-nodes, referring-relations, referred-nodes and referred-relations
   * the functions now take selection criteria instead of a set of element types
   * this allows for more flexible model graph navigation
@@ -102,8 +96,7 @@ Version 0.36.0
 * refactored test models and views
 * first steps towards a tools.deps build
 
-Version 0.35.0
---------------
+## Version 0.35.0
 * added generic model navigation functions
 * added special handling for plantuml c4 deployment diagrams
 * extended `external?` criterium to relations
@@ -115,16 +108,14 @@ Version 0.35.0
 * enhanced doc templates
 * added CONTRIBUTING document
 
-Version 0.34.0
---------------
+## Version 0.34.0
 * added negated selection criteria `:!namespace`, `:!id`, `:!from` and `:!to`
 * added `:expand-external` spec key for container and component views, default is `false`
 * refactored error handling and commandline output of the artifact generation
 * fixed `descendant-nodes` to work with modelled `:contained-in` relations
 * enhanced doc templates
 
-Version 0.33.0
---------------
+## Version 0.33.0
 * **breaking** * removed view type :class-view
   * use :code-view in your views
 * **breaking** link/image link generation for markdown templates
@@ -138,8 +129,7 @@ Version 0.33.0
 * fixed relative link functions in markdown api for empty namespace elements
 * enhanced doc templates
 
-Version 0.32.0
---------------
+## Version 0.32.0
 * added model navigation functions for state machines
 * added generic model navigation functions
 * added organization model predicates
@@ -151,8 +141,7 @@ Version 0.32.0
 * added best practices to usage docs
 * added links to example model repositories
 
-Version 0.31.0
---------------
+## Version 0.31.0
 * added an option to set a namespace prefix for the internal `scope` 
   * lets you combine models from different sources/projects
   * overrides the `:external` key in the model and views
@@ -164,8 +153,7 @@ Version 0.31.0
 * updated dependencies
 * added best practices to doc topics
 
-Version 0.30.0
---------------
+## Version 0.30.0
 * added a organization model with
   * nodes `:organization` and `:org-unit`
   * relations `:responsible-for` and `:collaborates-with`
@@ -197,12 +185,10 @@ Version 0.30.0
 * updated data model and spec
 * updated documentation
 
-Version 0.29.1
---------------
+## Version 0.29.1
 * fixed rendering of `:index` which triggered an NPE in PlantUML
 
-Version 0.29.0
---------------
+## Version 0.29.0
 * added link generation for PlantUML UML diagrams
 * added `:index` attribute for relations/refs in dynamic views
 * rendered `:index` attribute in PlantUML C4 dynamic views
@@ -215,8 +201,7 @@ Version 0.29.0
 * updated documentation
 * added dynamic-view for testing
 
-Version 0.28.0
---------------
+## Version 0.28.0
 * added `:link` attribute to be used on refs in views
   * value can be a URL or a keyword as key to a property containing a URL 
   * see [discussion](https://github.com/soulspace-org/overarch/discussions/27)
@@ -227,16 +212,14 @@ Version 0.28.0
 * print parsed template on error when `:debug true` is set in gen config for template
 * updated documentation
 
-Version 0.27.0
---------------
+## Version 0.27.0
 * added architecture model navigation functions
 * added set of supported directions to spec
 * enhanced documentation templates and generation config
 * updated use case model
 * updated documentation
 
-Version 0.26.0
---------------
+## Version 0.26.0
 * *attention* renamed `:class-view` to `:code-view` for generalization
   * `:class-view` is still supported but will be removed in the future
 * renamed class model to code model for generalization
@@ -248,8 +231,7 @@ Version 0.26.0
 * changed keys in model-info result map to more meaningful names
 * updated overarch architecture model and diagrams
 
-Version 0.25.0
---------------
+## Version 0.25.0
 * refactored and enhanced analytics functions
 * added selection criteria for `:doc` and `:maturity`
 * added a `--select-views CRITERIA` command line argument
@@ -257,21 +239,18 @@ Version 0.25.0
 * updated overarch data model and spec
 * updated usage docs and data model diagrams
 
-Version 0.24.0
---------------
+## Version 0.24.0
 * added template based artifact generation for views
 * added a view API functions
 * optimized template parsing
 * added and enhanced documentation templates
 * added `:doc` and `:maturity` attributes for nodes and relations 
 
-Version 0.23.0
---------------
+## Version 0.23.0
 * enhanced model api for architecture models
 * fixed :to-namespace-prefix selection criterium
 
-Version 0.22.0
---------------
+## Version 0.22.0
 * added more model navigation functions for architecture, use case and class models
 * enhanced model API, added resolve-view and use-case navigation
 * enhanced architecture documentation template
@@ -279,8 +258,7 @@ Version 0.22.0
 * expose `clojure.string` with alias `str` for `:combsci` templates
 * updated `:combsci` engine exception handling, print errors but don't fail
 
-Version 0.21.0
---------------
+## Version 0.21.0
 * added default directions for relations in plantuml use case rendering
 * added model navigation functions
 * enhanced model API
@@ -288,15 +266,13 @@ Version 0.21.0
 * updated overarch use case model
 * restructured and enhanced usage docs
 
-Version 0.20.0
---------------
+## Version 0.20.0
 * render multi line names and descriptions as single line for plantuml and graphviz
 * added added :id-as-name option in template generation context
 * added option to include diagrams in generated markdown view (the diagram should reside in the same directory)
 * added model API functions
 
-Version 0.19.0
---------------
+## Version 0.19.0
 * commandline updates
   * *attention* changed short option for template dir from `-t` to `-T` for consistency with other arguments
   * added the possibility to explicitly set boolean options to false, which default to true
@@ -311,16 +287,14 @@ Version 0.19.0
 * added a new, more complex example model named big-bank
 * updated usage docs
 
-Version 0.18.0
---------------
+## Version 0.18.0
 * enhanced dependent-node functions to handle model references
 * added default directions for some architecture relations in plantuml c4 diagrams
 * added selection criteria
 * fixed id->parent mapping for refs
 * removed leiningen dev profile
 
-Version 0.17.0
---------------
+## Version 0.17.0
 * enhanced content handling for views
   * criteria based content selection via :selection key in view spec 
   * :include spec should work for all views, include relations or related nodes automatically
@@ -336,8 +310,7 @@ Version 0.17.0
 * updated dependencies and added antq for dependency checks
 * fixed typo in element hierarchy affecting deployment models
 
-Version 0.16.0
---------------
+## Version 0.16.0
 * *attention* changed export folder structure for views 
 * changed id generation of plantuml views to make the plantuml output
   location more reasonable
@@ -348,13 +321,11 @@ Version 0.16.0
 * added selection criteria
 * updated overarch data-model and documentation
 
-Version 0.15.1
---------------
+## Version 0.15.1
 * fixed handling of generation-config option
 * removed debug output
 
-Version 0.15.0
---------------
+## Version 0.15.0
 * added generation of artifacts via templates
   * integrated comb template engine
 * added selection criteria
@@ -367,8 +338,7 @@ Version 0.15.0
 * updated tests
 * updated documentation
 
-Version 0.14.0
---------------
+## Version 0.14.0
 * added selection of model elements by criteria
 * added options for element/reference selection in CLI
 * added :tags key to model nodes and relations
@@ -378,8 +348,7 @@ Version 0.14.0
 * updated tests
 * updated documentation
 
-Version 0.13.0
---------------
+## Version 0.13.0
 * added semantic relation types in concept model (:is-a, :has)
 * added containers from architecture model to allowed actors in use case model
 * added rendering of element subtype in markdown (e.g Database Container)
@@ -388,21 +357,18 @@ Version 0.13.0
 * restructured overarch models
 * updated documentation
 
-Version 0.12.0
---------------
+## Version 0.12.0
 * enhanched dispatch hierarchy for views
   * fixes missing dispatch values in renderers
 
-Version 0.11.0
---------------
+## Version 0.11.0
 * added include specifications to graphviz and markdown renderers
 * updated overarch and test models
 * updated documentation
 * fixed rendering of references in markdown
 * fixed referrer-id->relations lookup creation for nodes
 
-Version 0.10.0
---------------
+## Version 0.10.0
 * added support for new semantic relation types in architecture and deployment models
   * additional architecture relations
     * :request, :response, :publish, :subscribe, :send, :dataflow
@@ -424,8 +390,7 @@ Version 0.10.0
 * refactored and enhanced example models
 * updated documentation
 
-Version 0.9.0
--------------
+## Version 0.9.0
 * added model warnings for inconsistencies
 * added reporting for unresolvable references in views
 * added support for skinparams nodesep and ranksep for plantuml
@@ -435,8 +400,7 @@ Version 0.9.0
 * refactored and enhanced hierarchical model traversal
 * fixed arity exception in structurizr export
 
-Version 0.8.0
--------------
+## Version 0.8.0
 * support for loading models from multiple locations by specifying a model path
 * (WIP) adding include specification for views
 * refactored codebase to clean architecture for better maintainablity/extensibility
@@ -447,14 +411,12 @@ Version 0.8.0
 * extracted spec namespace
 * added compilation tests for each namespace
 
-Version 0.7.0
--------------
+## Version 0.7.0
 * make file watches work on Macs by using beholder instead of hawk 
 * added direction rendering to relations in class and state machine views
 * enhanced example models
 
-Version 0.6.0
--------------
+## Version 0.6.0
 * refactored exports, distinguish between
   * exports of model data (to JSON, structurizr)
   * rendering of views (e.g. to PlantUML)
@@ -462,13 +424,11 @@ Version 0.6.0
 * added render-format 'all' to generate all formats in one go
 * updated usage and design documentation and diagrams
 
-Version 0.5.0
--------------
+## Version 0.5.0
 * fixed and enhanced class view rendering
 * enhanced example models
 
-Version 0.4.0
--------------
+## Version 0.4.0
 * added concept view for concept maps
 * added graphviz export for concept view
 * updated logical data model to incorporate enhancements
@@ -476,23 +436,19 @@ Version 0.4.0
 * updated and enhanced usage documentation
 * updated design document
 
-Version 0.3.0
--------------
+## Version 0.3.0
 * added first markdown export
 * added concept model elements
 * added glossary view (textual view)
 * added logical data model for overarch
 * enhanced documentation and examples
 
-Version 0.2.0
--------------
+## Version 0.2.0
 * added sprite includes for :sprite entries
 * added support for UML use case, state and class views/diagrams
 * enhanced documentation
 
-Version 0.1.0
--------------
-* initial import
+## Version 0.1.0
 * data format specification
 * data loading
 * support for views
