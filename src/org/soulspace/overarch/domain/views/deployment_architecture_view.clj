@@ -23,14 +23,14 @@
   "Returns true if the `model` node `e` is rendered in the deployment `view`."
   [model view e]
   (let [p (model/parent model e)]
-    (contains? el/deployment-view-element-types (:el e))))
+    (contains? el/deployment-architecture-view-element-types (:el e))))
 
 (defn render-model-relation?
   "Returns true if the `model` relation `e` is rendered in the deployment `view`."
   [model view e]
   (let [from (model/model-element model (:from e))
         to (model/model-element model (:to e))]
-    (and (contains? el/deployment-view-element-types (:el e))
+    (and (contains? el/deployment-architecture-view-element-types (:el e))
          (render-model-node? model view from)
          (render-model-node? model view to))))
 

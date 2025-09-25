@@ -216,7 +216,7 @@
   (set/union deployment-node-types
              deployment-relation-types))
 
-(def deployment-arcitecture-view-element-types
+(def deployment-architecture-view-element-types
   "Element types of a C4 deployment view with system architecture elements."
   (set/union deployment-node-types 
              deployment-relation-types
