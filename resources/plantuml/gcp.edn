@@ -1,0 +1,109 @@
+{"GCP AI Hub"                            {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AI_Hub"}
+ "GCP AI Platform"                       {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AI_Platform"}
+ "GCP AI Platform Data Labeling Service" {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AI_Platform_Data_Labeling_Service"}
+ "GCP Advanced Solutions Lab"            {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Advanced_Solutions_Lab"}
+ "GCP AutoML Natural Language"           {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AutoML_Natural_Language"}
+ "GCP AutoML Tables"                     {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AutoML_Tables"}
+ "GCP AutoML Translation"                {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AutoML_Translation"}
+ "GCP AutoML Video Intelligence"         {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AutoML_Video_Intelligence"}
+ "GCP AutoML Vision"                     {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "AutoML_Vision"}
+ "GCP Cloud AutoML"                      {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_AutoML"}
+ "GCP Cloud Inference API"               {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Inference_API"}
+ "GCP Cloud Jobs API"                    {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Jobs_API"}
+ "GCP Cloud Natural Language API"        {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Natural_Language_API"}
+ "GCP Cloud Speech to Text"              {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Speech_to_Text"}
+ "GCP Cloud TPU"                         {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_TPU"}
+ "GCP Cloud Text to Speech"              {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Text_to_Speech"}
+ "GCP Cloud Translation API"             {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Translation_API"}
+ "GCP Cloud Video Intelligence API"      {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Video_Intelligence_API"}
+ "GCP Cloud Vision API"                  {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Cloud_Vision_API"}
+ "GCP Dialog Flow Enterprise Edition"    {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Dialog_Flow_Enterprise_Edition"}
+ "GCP Recommendations AI"                {:lib "gcp", :prefix "gcp", :path "AI_and_Machine_Learning", :name "Recommendations_AI"}
+ "GCP API Analytics"                     {:lib "gcp", :prefix "gcp", :path "API_Management", :name "API_Analytics"}
+ "GCP API Monetization"                  {:lib "gcp", :prefix "gcp", :path "API_Management", :name "API_Monetization"}
+ "GCP Apigee API Platform"               {:lib "gcp", :prefix "gcp", :path "API_Management", :name "Apigee_API_Platform"}
+ "GCP Apigee Sense"                      {:lib "gcp", :prefix "gcp", :path "API_Management", :name "Apigee_Sense"}
+ "GCP Cloud Endpoints"                   {:lib "gcp", :prefix "gcp", :path "API_Management", :name "Cloud_Endpoints"}
+ "GCP Developer Portal"                  {:lib "gcp", :prefix "gcp", :path "API_Management", :name "Developer_Portal"}
+ "GCP App Engine"                        {:lib "gcp", :prefix "gcp", :path "Compute", :name "App_Engine"}
+ "GCP Cloud Functions"                   {:lib "gcp", :prefix "gcp", :path "Compute", :name "Cloud_Functions"}
+ "GCP Cloud Run"                         {:lib "gcp", :prefix "gcp", :path "Compute", :name "Cloud_Run"}
+ "GCP Compute Engine"                    {:lib "gcp", :prefix "gcp", :path "Compute", :name "Compute_Engine"}
+ "GCP Container Optimized OS"            {:lib "gcp", :prefix "gcp", :path "Compute", :name "Container_Optimized_OS"}
+ "GCP GKE On Prem"                       {:lib "gcp", :prefix "gcp", :path "Compute", :name "GKE_On_Prem"}
+ "GCP GPU"                               {:lib "gcp", :prefix "gcp", :path "Compute", :name "GPU"}
+ "GCP Kubernetes Engine"                 {:lib "gcp", :prefix "gcp", :path "Compute", :name "Kubernetes_Engine"}
+ "GCP BigQuery"                          {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "BigQuery"}
+ "GCP Cloud Composer"                    {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Composer"}
+ "GCP Cloud Data Catalog"                {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Data_Catalog"}
+ "GCP Cloud Data Fusion"                 {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Data_Fusion"}
+ "GCP Cloud Dataflow"                    {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Dataflow"}
+ "GCP Cloud Datalab"                     {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Datalab"}
+ "GCP Cloud Dataprep"                    {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Dataprep"}
+ "GCP Cloud Dataproc"                    {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_Dataproc"}
+ "GCP Cloud PubSub"                      {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Cloud_PubSub"}
+ "GCP Genomics"                          {:lib "gcp", :prefix "gcp", :path "Data_Analytics", :name "Genomics"}
+ "GCP Cloud Bigtable"                    {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_Bigtable"}
+ "GCP Cloud Datastore"                   {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_Datastore"}
+ "GCP Cloud Firestore"                   {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_Firestore"}
+ "GCP Cloud Memorystore"                 {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_Memorystore"}
+ "GCP Cloud SQL"                         {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_SQL"}
+ "GCP Cloud Spanner"                     {:lib "gcp", :prefix "gcp", :path "Databases", :name "Cloud_Spanner"}
+ "GCP Cloud Build"                       {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Build"}
+ "GCP Cloud Code"                        {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Code"}
+ "GCP Cloud Code for IntelliJ"           {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Code_for_IntelliJ"}
+ "GCP Cloud SDK"                         {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_SDK"}
+ "GCP Cloud Scheduler"                   {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Scheduler"}
+ "GCP Cloud Source Repositories"         {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Source_Repositories"}
+ "GCP Cloud Tasks"                       {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Tasks"}
+ "GCP Cloud Test Lab"                    {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Test_Lab"}
+ "GCP Cloud Tools for Eclipse"           {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Tools_for_Eclipse"}
+ "GCP Cloud Tools for PowerShell"        {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Tools_for_PowerShell"}
+ "GCP Cloud Tools for Visual Studio"     {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Cloud_Tools_for_Visual_Studio"}
+ "GCP Container Registry"                {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Container_Registry"}
+ "GCP Gradle App Engine Plugin"          {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Gradle_App_Engine_Plugin"}
+ "GCP IDE Plugins"                       {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "IDE_Plugins"}
+ "GCP Maven App Engine Plugin"           {:lib "gcp", :prefix "gcp", :path "Developer_Tools", :name "Maven_App_Engine_Plugin"}
+ "Multicloud Stackdriver"                {:lib "gcp", :prefix "gcp", :path "Hybrid_and_Multi_Cloud", :name "Stackdriver"}
+ "Multicloud Traffic Director"           {:lib "gcp", :prefix "gcp", :path "Hybrid_and_Multi_Cloud", :name "Traffic_Director"}
+ "GCP Cloud IoT Core"                    {:lib "gcp", :prefix "gcp", :path "Internet_of_Things", :name "Cloud_IoT_Core"}
+ "GCP Cloud APIs"                        {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_APIs"}
+ "GCP Cloud Billing API"                 {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Billing_API"}
+ "GCP Cloud Console"                     {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Console"}
+ "GCP Cloud Deployment Manager"          {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Deployment_Manager"}
+ "GCP Cloud Mobile App"                  {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Mobile_App"}
+ "GCP Cloud Service Mesh"                {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Service_Mesh"}
+ "GCP Cloud Shell"                       {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Cloud_Shell"}
+ "GCP Debugger"                          {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Debugger"}
+ "GCP Error Reporting"                   {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Error_Reporting"}
+ "GCP Logging"                           {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Logging"}
+ "GCP Monitoring"                        {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Monitoring"}
+ "GCP Profiler"                          {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Profiler"}
+ "GCP Stackdriver"                       {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Stackdriver"}
+ "GCP Trace"                             {:lib "gcp", :prefix "gcp", :path "Management_Tools", :name "Trace"}
+ "GCP Transfer Appliance"                {:lib "gcp", :prefix "gcp", :path "Migration", :name "Transfer_Appliance"}
+ "GCP Cloud Armor"                       {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Armor"}
+ "GCP Cloud CDN"                         {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_CDN"}
+ "GCP Cloud DNS"                         {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_DNS"}
+ "GCP Cloud External IP Addresses"       {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_External_IP_Addresses"}
+ "GCP Cloud Firewall Rules"              {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Firewall_Rules"}
+ "GCP Cloud Load Balancing"              {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Load_Balancing"}
+ "GCP Cloud NAT"                         {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_NAT"}
+ "GCP Cloud Network"                     {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Network"}
+ "GCP Cloud Router"                      {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Router"}
+ "GCP Cloud Routes"                      {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_Routes"}
+ "GCP Cloud VPN"                         {:lib "gcp", :prefix "gcp", :path "Networking", :name "Cloud_VPN"}
+ "GCP Dedicated Interconnect"            {:lib "gcp", :prefix "gcp", :path "Networking", :name "Dedicated_Interconnect"}
+ "GCP Partner Interconnect"              {:lib "gcp", :prefix "gcp", :path "Networking", :name "Partner_Interconnect"}
+ "GCP Premium Network Tier"              {:lib "gcp", :prefix "gcp", :path "Networking", :name "Premium_Network_Tier"}
+ "GCP Standard Network Tier"             {:lib "gcp", :prefix "gcp", :path "Networking", :name "Standard_Network_Tier"}
+ "GCP Traffic Director"                  {:lib "gcp", :prefix "gcp", :path "Networking", :name "Traffic_Director"}
+ "GCP Virtual Private Cloud"             {:lib "gcp", :prefix "gcp", :path "Networking", :name "Virtual_Private_Cloud"}
+ "GCP Cloud IAM"                         {:lib "gcp", :prefix "gcp", :path "Security", :name "Cloud_IAM"}
+ "GCP Cloud Resource Manager"            {:lib "gcp", :prefix "gcp", :path "Security", :name "Cloud_Resource_Manager"}
+ "GCP Cloud Security Command Center"     {:lib "gcp", :prefix "gcp", :path "Security", :name "Cloud_Security_Command_Center"}
+ "GCP Cloud Security Scanner"            {:lib "gcp", :prefix "gcp", :path "Security", :name "Cloud_Security_Scanner"}
+ "GCP Key Management Service"            {:lib "gcp", :prefix "gcp", :path "Security", :name "Key_Management_Service"}
+ "GCP Cloud Filestore"                   {:lib "gcp", :prefix "gcp", :path "Storage", :name "Cloud_Filestore"}
+ "GCP Cloud Storage"                     {:lib "gcp", :prefix "gcp", :path "Storage", :name "Cloud_Storage"}
+ "GCP Persistent Disk"                   {:lib "gcp", :prefix "gcp", :path "Storage", :name "Persistent_Disk"}}

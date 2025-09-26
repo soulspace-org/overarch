@@ -5,6 +5,7 @@
 * added view configuration
 * added functions for view configuration
 * updated dependencies
+* added GCP as a new sprite lib
 
 ## Version 0.39.0
 * added `rendered-elements`, used to resolve sprites
