@@ -38,6 +38,14 @@
                     :remote-url ""
                     :remote-imports ["AWSCommon"
                                      "AWSC4Integration"]}
+   :gcp           {:name "gcp"
+                    :local-prefix "gcp"
+                    :local-imports ["GCPCommon"
+                                    "GCPC4Integration"]
+                    :remote-prefix "GCP"
+                    :remote-url ""
+                    :remote-imports ["GCPCommon"
+                                     "GCPC4Integration"]}
    :cloudinsight   {:name "cloudinsight"
                     :local-prefix "cloudinsight"
                     :local-imports []
@@ -97,7 +105,7 @@
 ;;;
 (def sprite-resources
   ["cloudogu" "cloudinsight" "logos" "devicons" "devicons2"
-   "font-awesome-5" "azure" "awslib14"])
+   "font-awesome-5" "azure" "awslib14" "gcp"])
 
 (defn load-sprite-mappings-from-dir
   "Loads the mappings from the directory `dir` and returns the merged map."

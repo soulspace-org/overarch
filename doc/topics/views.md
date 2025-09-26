@@ -263,6 +263,7 @@ Currently the following keys for sprite libs are supported:
  * :devicons
  * :devicons2
  * :font-awesome-5
+ * :gcp
  * :logos
 
 Overarch uses a default list of sprite libs to resolve sprites, if none is
