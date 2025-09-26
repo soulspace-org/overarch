@@ -3,13 +3,13 @@
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.12.1"]
+  :dependencies [[org.clojure/clojure "1.12.3"]
                  [org.clojure/tools.cli "1.1.230"]
                  [org.clojars.quoll/tiara "0.4.0"]
                  [com.cnuernber/charred "1.037"]
                  [com.nextjournal/beholder "1.0.3"]
                  [expound/expound "0.9.0"]
-                 [org.babashka/sci "0.10.47"]
+                 [org.babashka/sci "0.10.49"]
                  [zprint/zprint "1.3.0"]
                  [org.slf4j/slf4j-nop "2.0.17"]
                  [org.soulspace.clj/clj.java "0.9.1"]

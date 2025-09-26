@@ -1,11 +1,11 @@
 # Changelog
 
 ## Version (NEXT)
-* adding `:deployment-architecture-view`
-* added view configuration
-* added functions for view configuration
-* updated dependencies
-* added GCP as a new sprite lib
+* add sprite lib for Google Cloud Platform (GCP) (thanks Chris)
+* add `:deployment-architecture-view`
+* add view configuration
+* add functions for view configuration
+* update dependencies
 
 ## Version 0.39.0
 * added `rendered-elements`, used to resolve sprites
