@@ -265,7 +265,6 @@
 ;;;
 ;;; Rich comments for tests and explorations
 ;;;
-
 (comment ; state update
   (update-and-dispatch! (merge
                          default-options
