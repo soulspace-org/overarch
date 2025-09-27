@@ -1,0 +1,22 @@
+@startuml
+
+!include <gcp/GCPCommon>
+!include <gcp/GCPC4Integration>
+
+!include <gcp/AI_and_Machine_Learning/all>
+!include <gcp/API_Management/all>
+!include <gcp/Compute/all>
+!include <gcp/Data_Analytics/all>
+!include <gcp/Databases/all>
+!include <gcp/Developer_Tools/all>
+!include <gcp/Hybrid_and_Multi_Cloud/all>
+!include <gcp/Internet_of_Things/all>
+!include <gcp/Management_Tools/all>
+!include <gcp/Migration/all>
+!include <gcp/Networking/all>
+!include <gcp/Security/all>
+!include <gcp/Storage/all>
+
+listsprites
+
+@enduml
