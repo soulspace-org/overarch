@@ -89,13 +89,13 @@
         {:ref :banking.internet-banking/api-application-uses-mainframe-banking-system}
         {:ref :banking.internet-banking/api-application-uses-database}
         ; add relations for the read database
-        {:el :rel
+        {:el :request
          :id :banking.internet-banking/api-application-uses-database-read
          :from :banking.internet-banking/api-application
          :to :banking.internet-banking/database-read
          :name "Reads from"
          :tech "Datalog"}
-        {:el :rel
+        {:el :request
          :id :banking.internet-banking/database-sync
          :from :banking.internet-banking/database
          :to :banking.internet-banking/database-read
@@ -118,13 +118,13 @@
         {:ref :banking.internet-banking/api-application-uses-mainframe-banking-system}
         {:ref :banking.internet-banking/api-application-uses-database}
         ; add relations for the read database
-        {:el :rel
+        {:el :request
          :id :banking.internet-banking/api-application-uses-database-read
          :from :banking.internet-banking/api-application
          :to :banking.internet-banking/database-read
          :name "Reads from"
          :tech "Datalog"}
-        {:el :rel
+        {:el :request
          :id :banking.internet-banking/database-sync
          :from :banking.internet-banking/database
          :to :banking.internet-banking/database-read
