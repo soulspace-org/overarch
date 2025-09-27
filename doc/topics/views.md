@@ -90,6 +90,13 @@ the system.
 
 ![Deployment View rendered with PlantUML](/doc/images/banking/deployment-view.svg)
 
+## Deployment View (:deployment-architecture-view)
+The deployment architecture view combines the deployment and container view.
+It shows the deployment of the containers on the nodes of the system.
+The relations of the containers with the parts of the system are also shown.
+
+![Deployment Architecture View rendered with PlantUML](/doc/images/banking/deployment-architecture-view.svg)
+
 ## Deployment Structure View (:deployment-structure-view)
 The deployment structure view shows hierarchical composition of the
 infrastructure and deployments of the system.
