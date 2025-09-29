@@ -1,5 +1,8 @@
 # Changelog
 
+## Version (NEXT)
+*
+
 ## Version 0.40.0
 * added sprite lib for Google Cloud Platform (GCP) (thanks Chris)
 * added `:deployment-architecture-view`

@@ -94,7 +94,7 @@
 ;;; Functions based on view configurations
 ;;;
 (defn hierarchical?
-  ""
+  "Returns true, if the `view` is flagged as hierarchical."
   [view config]
   (get-in config [(:el view) :hierarchical?] false))
 
