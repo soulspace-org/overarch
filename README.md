@@ -20,7 +20,7 @@ composable and reusable.
 
 ## Features
 * Models to capture architecture on different levels
-  * Concepts, use cases, architecture, state machines, code, deployments,   organization sructures, processes
+  * Concepts, use cases, architecture, state machines, code, deployments, organization structures and processes
 * Models and views as data
 * Separation of model and views
 * Models are queriable, extensible, composeable and reusable

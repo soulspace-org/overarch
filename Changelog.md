@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version (NEXT)
-*
+* added prompt files
 
 ## Version 0.40.0
 * added sprite lib for Google Cloud Platform (GCP) (thanks Chris)
