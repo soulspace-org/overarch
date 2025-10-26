@@ -1615,7 +1615,7 @@
    :id :overarch.data-model/rel
    :name "rel"
    :desc "A generic relation between the concepts."
-   :tags #{"concept-model"}}
+   :tags #{"architecture-model" "concept-model"}} ; architecture-model for backward compatibility
 
   ;; Concept Model Relations
   {:el :inheritance
