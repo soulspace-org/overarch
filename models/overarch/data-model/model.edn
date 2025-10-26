@@ -65,7 +65,7 @@
          :name "tags"
          :type "set"
          :optional true
-         :desc "Maturity of the element. Values are :proposed, :implemented and :deprecated. Default is :implemented."}]}
+         :desc "Set of string tags associated with the element."}]}
 
   {:el :class
    :id :overarch.data-model/model-node
@@ -134,13 +134,6 @@
    :to :overarch.data-model/model-relation
    :from :overarch.data-model/implements
    :tags #{"trace-model"}}
-
-  {:el :class
-   :id :overarch.data-model/rel
-   :name "rel"
-   :desc "A generic relation between two elements of the model.
-          A rel can be used in the architecture model and the concept model."
-   :tags #{"architecture-model" "concept-model"}}
 
   ;;
   ;; Generic Nodes
@@ -1616,6 +1609,12 @@
    :id :overarch.data-model/has
    :name "has"
    :desc "A composition or association relationship between the concepts."
+   :tags #{"concept-model"}}
+
+  {:el :class
+   :id :overarch.data-model/rel
+   :name "rel"
+   :desc "A generic relation between the concepts."
    :tags #{"concept-model"}}
 
   ;; Concept Model Relations
