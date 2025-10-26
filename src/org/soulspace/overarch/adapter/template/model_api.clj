@@ -10,6 +10,10 @@
 ;;;; Not yet stable!
 ;;;;
 
+(def element-hierarchy
+  "The element hierarchy map."
+  el/element-hierarchy)
+
 ;;; TODO close over model!?
 
 (def model-node-type-order

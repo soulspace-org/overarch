@@ -13,7 +13,7 @@
   "Renders the element `e` and its children."
   [e level]
   (dotimes [x level] %>*<%) %> <%= (:name e) %>
-<%  
+<%
   (doseq [child (m/children model e)]
     (render-element child (inc level))))
 
