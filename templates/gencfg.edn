@@ -9,19 +9,26 @@
  ;;  Diagram Generation for Views
  ;;
 
- ; rendered as plantuml wbs
- {:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
-  :template "views/structure-view.puml.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
-
  ; rendered as graphviz dot 
  {:view-selection {:els #{:concept-view :process-view :model-view}}
   :template "views/view.dot.cmb"
   :per-element true
   :id-as-name true
   :extension "dot"}
+
+ ; rendered as plantuml WBS
+ {:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
+  :template "views/structure-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ ; rendered as plantuml UML
+ {:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
+  :template "views/uml-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
 
  ;;
  ;;  Markdown Generation for Model Elements
