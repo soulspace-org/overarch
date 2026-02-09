@@ -551,7 +551,7 @@ The process model captures the structure of capabilities, processes and their re
 ### Logical Data Model for the Process Model Elements
 ![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
-### Nodes (:capability :information :knowledge :process :artifact :requirement :decision)
+### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision)
 
-### Relations (:role-in :required-for :input-of :output-of)
+### Relations (:role-in :required-for :input-of :output-of :version-of)
 The role-in relation maps `:person` nodes to `:process` nodes.

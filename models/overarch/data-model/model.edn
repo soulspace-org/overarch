@@ -1890,6 +1890,12 @@
    :tags #{"process-model" "deployment-model"}}
 
   {:el :class
+   :id :overarch.data-model/version
+   :name "version"
+   :desc "A version of an artifact in the process model"
+   :tags #{"process-model" "deployment-model"}}
+
+  {:el :class
    :id :overarch.data-model/input-of
    :name "input-of"
    :desc "A relation between artifacts, information or knowledge and processes."
@@ -1899,6 +1905,12 @@
    :id :overarch.data-model/output-of
    :name "output-of"
    :desc "A relation between artifacts, information or knowledge and processes."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/version-of
+   :name "version-of"
+   :desc "A relation between versions and artifacts."
    :tags #{"process-model"}}
 
   {:el :class

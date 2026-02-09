@@ -134,11 +134,11 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:capability :knowledge :information :process :artifact :requirement :decision})
+  #{:capability :knowledge :information :process :artifact :version :requirement :decision})
 
 (def process-relation-types
   "Node types for process models."
-  #{:role-in :required-for :input-of :output-of})
+  #{:role-in :required-for :input-of :output-of :version-of})
 ; :supports :resource-of?
 
 ;; 
@@ -339,7 +339,7 @@
   [; nodes
    :person :permission :organization :org-unit
    :concept
-   :capability :knowledge :information :process :artifact :requirement :decision
+   :capability :knowledge :information :process :artifact :version :requirement :decision
    :use-case :actor
    :system :container :component :enterprise-boundary :context-boundary
    :state-machine :start-state :end-state
@@ -354,7 +354,7 @@
    :granted-for :permission-of
    :collaborates-with :responsible-for :role-in
    :has :is-a :part-of
-   :input-of :output-of :required-for
+   :input-of :output-of :required-for :version-of
    :uses :include :extends :generalizes
    :request :response :publish :subscribe :send :dataflow :step
    :transition
@@ -402,7 +402,7 @@
       ;; roles
       (derive :actor                             :role)
       (derive :person                            :role)
-      
+
       ;;; role model
       ;;  role model nodes
       (derive :role                              :role-model-node)
@@ -550,6 +550,7 @@
       (derive :information                       :process-model-node)
       (derive :process                           :process-model-node)
       (derive :artifact                          :process-model-node)
+      (derive :version                           :process-model-node)
       (derive :requirement                       :process-model-node)
       (derive :decision                          :process-model-node)
       ; (derive :test                              :process-model-node)
@@ -559,6 +560,7 @@
       (derive :required-for                      :process-model-relation)
       (derive :input-of                          :process-model-relation)
       (derive :output-of                         :process-model-relation)
+      (derive :version-of                         :process-model-relation)
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes
