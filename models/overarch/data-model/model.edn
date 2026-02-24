@@ -404,6 +404,12 @@
    :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."
    :tags #{"architecture-model"}}
 
+  {:el :class
+   :id :overarch.data-model/instance-of
+   :name "instance-of"
+   :desc "An element is an instance of another element."
+   :tags #{"architecture-model"}}
+
   ;; Architecture Model Relations
   {:el :inheritance
    :id :overarch.data-model/architecture-model-node-is-a-model-node
@@ -565,6 +571,12 @@
 
   {:el :inheritance
    :id :overarch.data-model/dataflow-is-a-technical-architecture-model-relation
+   :to :overarch.data-model/technical-architecture-model-relation
+   :from :overarch.data-model/dataflow
+   :tags #{"architecture-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/instance-of-is-a-technical-architecture-model-relation
    :to :overarch.data-model/technical-architecture-model-relation
    :from :overarch.data-model/dataflow
    :tags #{"architecture-model"}}
@@ -833,6 +845,13 @@
    :tags #{"code-model"}}
 
   {:el :class
+   :id :overarch.data-model/schema
+   :name "schema"
+   :desc "A schema in the code model.
+          A schema defines the shape of data."
+   :tags #{"code-model"}}
+
+  {:el :class
    :id :overarch.data-model/class
    :name "class"
    :desc "A class in the code model."
@@ -997,6 +1016,19 @@
    :id :overarch.data-model/protocol-contains-function
    :from :overarch.data-model/protocol
    :to :overarch.data-model/function
+   :to-card :zero-to-many
+   :tags #{"code-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/schema-is-a-code-model-node
+   :to :overarch.data-model/code-model-node
+   :from :overarch.data-model/schema
+   :tags #{"code-model"}}
+
+  {:el :composition
+   :id :overarch.data-model/schema-contains-field
+   :from :overarch.data-model/schema
+   :to :overarch.data-model/field
    :to-card :zero-to-many
    :tags #{"code-model"}}
 

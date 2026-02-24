@@ -258,6 +258,24 @@
         (when (:value e)
           (str " = " (:value e))))])
 
+(defmethod render-uml-element :schema
+  [model view indent e]
+  (let [children (model/children model e)
+        content (seq (view/elements-to-render model view children))]
+    (if (and (seq content) (not (el/collapsed? e)))
+      (flatten [(str (render/indent indent)
+                     "class \"" (render-name e)
+                     "\" as " (puml/alias-name (:id e))
+                     " <<schema>>"
+                     " {")
+                (map #(render-uml-element model view (+ indent 2) %) (sort-by :name content))
+                (str (render/indent indent) "}")])
+      [(str (render/indent indent)
+            "class \"" (render-name e)
+            "\" as " (puml/alias-name (:id e))
+            " <<schema>>"
+            " {}")])))
+
 (defmethod render-uml-element :class
   [model view indent e]
   (let [children (model/children model e)
@@ -467,7 +485,7 @@
           (str " : " (el/element-name e))))])
 
 (defmethod render-uml-element :model-element
-  [_ view indent e]
+  [_ view _ e]
   (println "unhandled element of type "
            (:el e) "with id" (:id e)
            "in PlantUML UML rendering of view " (:id view)))

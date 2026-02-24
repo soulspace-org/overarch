@@ -43,7 +43,7 @@
 
 (def architecture-relation-types
   "Relation types in the architecture model."
-  #{:rel :request :response :publish :subscribe :send :dataflow :step})
+  #{:rel :request :response :publish :subscribe :send :dataflow :instance-of :step})
 
 (def architecture-dependency-relation-types
   #{:request :publish :subscribe :send})
@@ -54,7 +54,7 @@
 (def code-node-types
   "Node types for code models."
   #{:annotation :class :enum :enum-value :field :function :interface
-    :method :namespace :package :parameter :protocol :stereotype})
+    :method :namespace :package :parameter :protocol :schema :stereotype})
 (def code-relation-types
   "Relation types for code models."
   #{:aggregation :association :composition :dependency :implementation :inheritance})
@@ -344,7 +344,7 @@
    :system :container :component :enterprise-boundary :context-boundary
    :state-machine :start-state :end-state
    :state :fork :join :choice :history-state :deep-history-state
-   :annotation :class :enum :enum-value :field :function :interface
+   :annotation :schema :class :enum :enum-value :field :function :interface
    :method :namespace :package :parameter :protocol :stereotype
    :node])
 
@@ -356,7 +356,7 @@
    :has :is-a :part-of
    :input-of :output-of :required-for :version-of
    :uses :include :extends :generalizes
-   :request :response :publish :subscribe :send :dataflow :step
+   :request :response :publish :subscribe :send :dataflow :instance-of :step
    :transition
    :implementation :inheritance :composition :aggregation :association :dependency
    :link :deployed-to
@@ -432,6 +432,7 @@
       (derive :subscribe                         :architecture-model-relation)
       (derive :send                              :architecture-model-relation)
       (derive :dataflow                          :architecture-model-relation)
+      (derive :instance-of                       :architecture-model-relation)
       (derive :step                              :architecture-model-relation)
       (derive :architecture-model-relation       :architecture-model-element)
 
@@ -494,6 +495,7 @@
       (derive :package                           :code-model-node)
       (derive :parameter                         :code-model-node)
       (derive :protocol                          :code-model-node)
+      (derive :schema                            :code-model-node)
       (derive :stereotype                        :code-model-node)
       (derive :code-model-node                   :code-model-element)
 
