@@ -1829,7 +1829,7 @@
    :from :overarch.data-model/organization
    :to :overarch.data-model/organization-model-node
    :to-card :one-to-many
-   :tags #{"organization-machine-model"}}
+   :tags #{"organization-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/org-unit-is-a-organization-model-node
@@ -1940,16 +1940,22 @@
    :tags #{"process-model"}}
 
   {:el :class
+   :id :overarch.data-model/required-for
+   :name "required-for"
+   :desc "A relation between other nodes and capabilities."
+   :tags #{"process-model"}}
+
+  {:el :class
    :id :overarch.data-model/version-of
    :name "version-of"
    :desc "A relation between versions and artifacts."
    :tags #{"process-model"}}
 
   {:el :class
-   :id :overarch.data-model/required-for
-   :name "required-for"
-   :desc "A relation between other nodes and capabilities."
-   :tags #{"process-model"}}
+   :id :artifact-of
+   :name "artifact-of"
+   :desc "A relation between artifacts and other process or deployment model nodes."
+   :tags #{"process-model" "deployment-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/process-model-node-is-a-model-node
@@ -2051,6 +2057,18 @@
    :id :overarch.data-model/role-in-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
    :from :overarch.data-model/role-in
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/version-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/version-of
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/artifact-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/artifact-of
    :tags #{"process-model"}}
 
   ;;
