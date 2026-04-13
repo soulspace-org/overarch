@@ -1,6 +1,6 @@
 # Changelog
 
-## Version (NEXT)
+## Version 0.41.0
 * added :instance-of relation
 * added :schema node
 * added :version node and :version-of relation
@@ -9,6 +9,7 @@
 * updated node markdown template to render instance-of and version-of relations
 * updated data model
 * updated generate script example
+* updated dependencies
 
 ## Version 0.40.0
 * added sprite lib for Google Cloud Platform (GCP) (thanks Chris)
