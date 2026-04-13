@@ -15,7 +15,9 @@
   "Maps an element type to a display name."
   {:person   "Person/Role"
    :use-case "Use Case"
-   :context-boundary "Subdomain/Bounded Context"})
+   :context-boundary "Subdomain/Bounded Context"
+   :subject "Subject"
+   :type "Type"})
 
 ;;;
 ;;; functions
@@ -122,6 +124,10 @@
       requires (m/referring-nodes model e {:el :required-for})
       role-in (m/referred-nodes model e {:el :role-in})
       roles (m/referring-nodes model e {:el :role-in})
+      instance-of (m/referred-nodes model e {:el :instance-of})
+      instances (m/referring-nodes model e {:el :instance-of})
+      version-of (m/referred-nodes model e {:el :version-of})
+      versions (m/referring-nodes model e {:el :version-of})
       ]
 %>
 # <%= (:name e) %> (<%= (m/element-type e) %>)
@@ -531,6 +537,38 @@
     (node-description-table e :process processes))
 
 ;;
+;; artifacts 
+;;
+
+  (when-let [artifacts (seq (m/referring-nodes model e {:el :artifact-of}))]
+%>## Artifacts
+<%  
+    (node-description-table e :artifact artifacts)
+  )
+
+  (when-let [subject (seq (m/referred-nodes model e {:el :artifact-of}))]
+%>## Artifact of
+<%  
+    (node-description-table e :subject subject)
+  )
+
+;;
+;; versions
+;;
+
+  (when-let [versions (seq (m/referring-nodes model e {:el :version-of}))]
+%>## Versions
+<%  
+    (node-description-table e :version versions)
+  )
+
+  (when-let [artifacts (seq (m/referred-nodes model e {:el :version-of}))]
+%>## Version of
+<%  
+    (node-description-table e :artifact artifacts)
+  )
+
+;;
 ;; architecture
 ;;
 
@@ -583,6 +621,22 @@
 %>## Outgoing Dataflows
 <%
     (technical-relation-description-table model e dataflows))
+
+;;
+;; instances
+;;
+
+  (when-let [instances (seq (m/referring-nodes model e {:el :instance-of}))]
+%>## Instances
+<%  
+    (node-description-table e :version instances)
+  )
+
+  (when-let [subject (seq (m/referred-nodes model e {:el :instance-of}))]
+%>## Instance of
+<%  
+    (node-description-table e :type subject)
+  )
 
 ;;
 ;; deployment

@@ -30,6 +30,7 @@
 
 ## Templates
 * check import/require mechanisms of SCI
+* check generation for :artifact-of, :version-of and :instance-of relationships
 
 ## UI
 * make transitive search accessible from the CLI
