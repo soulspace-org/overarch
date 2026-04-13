@@ -1,7 +1,14 @@
 # Changelog
 
 ## Version (NEXT)
+* added :instance-of relation
+* added :schema node
+* added :version node and :version-of relation
+* added element-hierarchy function to model api
 * added prompt files
+* updated node markdown template to render instance-of and version-of relations
+* updated data model
+* updated generate script example
 
 ## Version 0.40.0
 * added sprite lib for Google Cloud Platform (GCP) (thanks Chris)
