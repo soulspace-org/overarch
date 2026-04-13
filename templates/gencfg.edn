@@ -24,7 +24,7 @@
   :extension "puml"}
 
  ; rendered as plantuml UML
- {:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
+ #_{:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
   :template "views/uml-view.puml.cmb"
   :per-element true
   :id-as-name true
