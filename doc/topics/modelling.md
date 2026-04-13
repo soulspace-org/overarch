@@ -251,14 +251,15 @@ A component is unit of software, which lives in a container of the system.
 Relations describe the connections and interactions of the parts of a view.
 The relations in the architecture model have different semantics depending on their type.
 
-kind        | sync/async  | dependency  | description
-------------|-------------|-------------|------------
-:request    | sync        | true        | synchrounous request
-:response   | sync        | false       | response to a synchronous request
-:send       | async       | true        | asynchronous point-to-point message
-:publish    | async       | true        | asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
-:subscribe  | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
-:dataflow   | unspecified | unspecified | flow of data independent of the call semantic
+kind         | sync/async  | dependency  | description
+-------------|-------------|-------------|------------
+:request     | sync        | true        | synchrounous request
+:response    | sync        | false       | response to a synchronous request
+:send        | async       | true        | asynchronous point-to-point message
+:publish     | async       | true        | asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
+:subscribe   | async       | true        | subscribtion to an asynchronous broadcast message (via broker, topic, queue), forms a dependency to the broker/queue
+:dataflow    | unspecified | unspecified | flow of data independent of the call semantic
+:instance-of | unspecified | true        | an architectural instance of a system, container or component. e.g. a customization
 
 ### Additional Keys for Architecture Model Relations
 key       | type    | values/examples    | description 
@@ -521,6 +522,10 @@ A method is part of the behaviour of a class or an interface.
 A function is a first class element in functional programming.
 It has input parameters and calculates results.
 
+### Schema (:schema)
+A schema is a specification of the structure of data. It contains the fields of the data and their types, which can be used to validate the shape of data at runtime.
+
+
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
 The relations connect the nodes of the code model. They are essentially the relation types of the UML.
 
@@ -553,5 +558,5 @@ The process model captures the structure of capabilities, processes and their re
 
 ### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision)
 
-### Relations (:role-in :required-for :input-of :output-of :version-of)
+### Relations (:role-in :required-for :input-of :output-of :version-of :artifact-of)
 The role-in relation maps `:person` nodes to `:process` nodes.
