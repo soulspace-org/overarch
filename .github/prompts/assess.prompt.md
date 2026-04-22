@@ -1,0 +1,2 @@
+Thoroughly assess the #codebase to answer the given question and document your assessment in a markdown document in the 'dev/assessments' folder.
+Use subagents if useful to break down the task into smaller steps. The final output should be a markdown document that includes your assessment and any relevant code snippets or references to the codebase. Make sure to provide clear explanations and justifications for your assessment.
