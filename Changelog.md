@@ -1,5 +1,7 @@
 # Changelog
 
+## Version (NEXT)
+
 ## Version 0.41.0
 * added :instance-of relation
 * added :schema node
