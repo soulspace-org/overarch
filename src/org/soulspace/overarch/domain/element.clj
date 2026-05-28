@@ -72,6 +72,17 @@
   #{:rel :is-a :has :part-of})
 
 ;;
+;; Domain Model
+;;
+(def domain-node-types
+  "Node types for domain models."
+  #{:domain :bounded-context})
+
+(def domain-relation-types
+  "Relation types for domain models."
+  #{})
+
+;;
 ;; Deployment model
 ;;
 ;
@@ -165,7 +176,8 @@
              concept-node-types
              organization-node-types
              responsibility-node-types
-             process-node-types))
+             process-node-types
+             domain-node-types))
 
 (def model-relation-types
   "Relation types of the model."
@@ -177,7 +189,8 @@
              concept-relation-types
              organization-relation-types
              responsibility-relation-types
-             process-relation-types))
+             process-relation-types
+             domain-relation-types))
 
 (def model-element-types
   "Element types for the model."
@@ -281,6 +294,13 @@
   (set/union process-node-types
              process-relation-types
              #{:contained-in :context-boundary}))
+
+(def domain-view-element-types
+  "Element types of domain views."
+  (set/union domain-node-types
+             domain-relation-types
+             #{:contained-in :implements :context-boundary}))
+
 
 ;;
 ;; Structure view types
@@ -518,6 +538,15 @@
       (derive :has                               :concept-model-relation)
       (derive :part-of                           :concept-model-relation)
       (derive :concept-model-relation            :concept-model-element)
+
+      ;;; domain model
+      ;; domain model nodes
+      (derive :domain                            :domain-model-node)
+      (derive :domain-model-node                 :domain-model-element)
+      
+      ;; domain model relations
+      (derive :implements                        :domain-model-relation)
+      (derive :domain-model-relation             :domain-model-element)
 
       ;;; organization model
       ;; organization model nodes
