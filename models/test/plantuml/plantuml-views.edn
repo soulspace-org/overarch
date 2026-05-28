@@ -3,12 +3,12 @@
 ;;;;
 #{{:el :context-view
    :id :test.plantuml/context-view-with-skinparams
-   :spec {:plantuml {:skinparams {"monochrome" "true"
-                                  "defaultFontName" "Courier"}}}
+   :plantuml {:skinparams {"monochrome" "true"
+                           "defaultFontName" "Courier"}}
    :title "PlantUML skinparam test"
    :ct [{:ref :test/sys1}
         {:ref :test/sys2}
         {:ref :test/sys1-calls-sys2}]}
-  
+
   ;
   }
