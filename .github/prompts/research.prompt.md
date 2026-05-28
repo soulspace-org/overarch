@@ -1,0 +1,3 @@
+Research the following topic thoroughly using all available resources. Please define all abbreviations at least once before using it.
+Document your research in a markdown document in the 'dev/research' folder.
+Use subagents if useful to break down the task into smaller steps. The final output should be a markdown document that includes your research findings and any relevant code snippets or references to the codebase. Make sure to provide clear explanations and justifications for your research findings.

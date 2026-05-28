@@ -1,0 +1,3 @@
+Use the plan agent to plan the following task in detail and describe each step clearly in a markdown document in the 'dev/plans' folder.
+Use relevant information from your research and the #codebase to inform your plan. The plan should be followable by a competent software developer or an LLM with coding capabilities.
+Use subagents if useful to break down the task into smaller steps. The final output should be a markdown document that includes your plan and any relevant code snippets or references to the codebase. Make sure to provide clear explanations and justifications for each step in your plan.
