@@ -46,6 +46,7 @@
   #{:rel :request :response :publish :subscribe :send :dataflow :instance-of :step})
 
 (def architecture-dependency-relation-types
+  "Relation types in the architecture model which represent dependencies."
   #{:request :publish :subscribe :send})
 
 ;;
