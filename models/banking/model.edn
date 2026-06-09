@@ -137,6 +137,42 @@
    :name "uses"}
 
   ;;;
+  ;;; Domain Model
+  ;;;
+  ;; Nodes
+  {:el :domain
+   :id :banking.domain/banking-domain
+   :name "Banking"
+   :desc "The domain of banking."
+   :ct #{{:el :aggregate
+          :id :banking.domain/account-aggregate
+          :name "Account"
+          :desc "An account aggregate, which contains the account information and the transactions performed on the account."}
+         {:el :domain-event
+          :id :banking.domain/account-created-event
+          :name "Account Created"
+          :desc "An event which is triggered when a new account is created."}
+         {:el :domain-event
+          :id :banking.domain/transaction-performed-event
+          :name "Transaction Performed"
+          :desc "An event which is triggered when a transaction is performed on an account."}
+         {:el :policy
+          :id :banking.domain/overdraft-policy
+          :name "Overdraft Policy"
+          :desc "A policy which defines the rules for overdrafts on accounts."}
+         {:el :command
+          :id :banking.domain/create-account-command
+          :name "Create Account Command"
+          :desc "A command to create a new account."}
+         {:el :command
+          :id :banking.domain/perform-transaction-command
+          :name "Perform Transaction Command"
+          :desc "A command to perform a transaction on an account."}}}
+
+  ;; Relations
+
+
+  ;;;
   ;;; Architecture Model
   ;;;
 

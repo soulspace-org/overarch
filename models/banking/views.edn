@@ -1,17 +1,45 @@
 ;;;;
 ;;;; Example architecture views for the Internet Banking System
 ;;;;
-#{;;;
+#{  ;;; Use Case
+  {:el :use-case-view
+   :id :banking/use-case-view
+   :layout :left-right
+   :title "Use Cases of the Internet Banking System"
+   :ct [; actors
+        {:ref :banking/personal-customer :name "Customer"}
+          ; use cases
+        {:ref :banking.usecases/view-account}
+        {:ref :banking.usecases/make-transaction}
+          ; relations
+        {:ref :banking/personal-customer-uses-view-account}
+        {:ref :banking/personal-customer-uses-make-transaction}]}
+
+  ;;; Concept Map
+  {:el :concept-view
+   :id :banking/concept-view
+   :selection {:namespace-prefix "banking.concepts"}
+   :include :related
+   :title "Concept Map for the Banking System"
+   :ct []}
+
+  {:el :domain-view
+   :id :banking/domain-view
+   :selection {:namespace-prefix "banking.domain"}
+   :include :related
+   :title "Domain View for the Banking System"}
+
+  ;;;
   ;;; System Context
   ;;;
-
+  
   ;; System context view with criteria based selection of elements
   {:el :context-view
    :id :banking/context-view
-   :spec {:selection [{:from {:id :banking.internet-banking/internet-banking-system}}
-                      {:to {:id :banking.internet-banking/internet-banking-system}}]
-          :include :related
-          :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
+   :selection [{:from {:id :banking.internet-banking/internet-banking-system}}
+               {:to {:id :banking.internet-banking/internet-banking-system}}]
+   :include :related
+   :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}
    :title "System Context View of the Internet Banking System"
    :desc "shows the Internet Banking System and its context"
    :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
@@ -39,11 +67,11 @@
   ;; Container view with criteria based selection of elements
   {:el :container-view
    :id :banking/container-view
-   :spec {:selection [{:namespace-prefix "banking.internet-banking"}
-                      {:from {:namespace-prefix "banking.internet-banking"}}
-                      {:to {:namespace-prefix "banking.internet-banking"}}]
-          :include :related
-          :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}}
+   :selection [{:namespace-prefix "banking.internet-banking"}
+               {:from {:namespace-prefix "banking.internet-banking"}}
+               {:to {:namespace-prefix "banking.internet-banking"}}]
+   :include :related
+   :plantuml {:sprite-libs [:azure :devicons :font-awesome-5]}
    :title "Container View of the Internet Banking System"
    :desc "shows the containers of the Internet Banking System and their relations"
    :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
@@ -53,10 +81,10 @@
   ;;;
   {:el :component-view
    :id :banking/component-view
-   :spec {:selection {:namespace-prefix "banking"
-                      :!ids #{:banking.atm/atm :banking/backoffice-stuff
-                              :banking/customer-service-stuff}}
-          :include :related}
+   :selection {:namespace-prefix "banking"
+               :!ids #{:banking.atm/atm :banking/backoffice-stuff
+                       :banking/customer-service-stuff}}
+   :include :related
    :title "Component View of the API Application"
    :desc "shows the components of the Internet Banking System and their relations"
    :ct [{:ref :banking.email/email-system-sends-mail-to-personal-customer :direction :up}]}
@@ -66,8 +94,8 @@
   ;;;
   {:el :system-landscape-view
    :id :banking/system-landscape-view
-   :spec {:selection {:namespace-prefix "banking"}
-          :include :related}
+   :selection {:namespace-prefix "banking"}
+   :include :related
    :title "System Landscape View of Big Bank plc"}
 
   ;;;
@@ -75,7 +103,7 @@
   ;;;
   {:el :deployment-view
    :id :banking.deployment/deployment-view
-   ;:spec {:include :related}
+   ;:include :related
    :title "Deployment View of Big Bank plc"
    :ct [; model elements
         {:ref :banking.deployment/personal-customers-mobile-device}
@@ -104,7 +132,7 @@
 
   {:el :deployment-architecture-view
    :id :banking.deployment/deployment-architecture-view
-   ;:spec {:include :related}
+   ;:include :related
    :title "Deployment View of Big Bank plc"
    :ct [; model elements
         {:ref :banking.deployment/personal-customers-mobile-device}
@@ -137,27 +165,6 @@
    :name "Big Bank Deployment Structure View"
    :title "Deployment Structure View of Big Bank Datacenter"
    :desc "Shows the hierarchical structure of the infrastructure and deployment elements"}
-
-  {:el :use-case-view
-   :id :banking/use-case-view
-   :spec {:layout :left-right}
-   :title "Use Cases of the Internet Banking System"
-   :ct [; actors
-        {:ref :banking/personal-customer :name "Customer"}
-        ; use cases
-        {:ref :banking.usecases/view-account}
-        {:ref :banking.usecases/make-transaction}
-        ; relations
-        {:ref :banking/personal-customer-uses-view-account}
-        {:ref :banking/personal-customer-uses-make-transaction}]}
-
-  {:el :concept-view
-   :id :banking/concept-view
-   :spec {:selection {:namespace-prefix "banking.concepts"}
-          :include :related
-          :markdown {:references true}}
-   :title "Concept Map for the Banking System"
-   :ct []}
 
   {:el :glossary-view
    :id :banking/glossary-view

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Version (NEXT)
+* added domain model elements
+* updated banking model
 
 ## Version 0.41.0
 * added :instance-of relation
