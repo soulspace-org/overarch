@@ -2073,7 +2073,7 @@
    :tags #{"process-model"}}
 
   {:el :class
-   :id :artifact-of
+   :id :overarch.data-model/artifact-of
    :name "artifact-of"
    :desc "A relation between artifacts and other process or deployment model nodes."
    :tags #{"process-model" "deployment-model"}}
