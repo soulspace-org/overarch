@@ -27,7 +27,7 @@
     "shape=ellipse"
     
     (= :concept (:el e))
-    "shape=ellipse"
+    "shape=box"
     
     (contains? #{:package :namespace} (:el e))
     "shape=tab"
@@ -49,6 +49,7 @@
 
     :else
     ""))
+
 
 (defn element-color
   [e]
@@ -87,6 +88,18 @@
 
     (contains? #{:start-state :end-state} (:el e))
     "style=filled fillcolor=black"
+
+    (contains? #{:domain-event} (:el e))
+    "style=filled fillcolor=\"#FF7700\""
+
+    (contains? #{:aggregate} (:el e))
+    style=filled fillcolor=\"#DDDD00\""
+
+    (contains? #{:policy} (:el e))
+    style=filled fillcolor=\"#7700FF\""
+
+    (contains? #{:command} (:el e))
+    style=filled fillcolor=\"#88BBFF\""
 
     :else
     ""))

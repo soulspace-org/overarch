@@ -77,7 +77,7 @@
 ;;
 (def domain-node-types
   "Node types for domain models."
-  #{:domain :bounded-context})
+  #{:domain :bounded-context :aggregate :domain-event :policy :command})
 
 (def domain-relation-types
   "Relation types for domain models."
@@ -301,7 +301,6 @@
   (set/union domain-node-types
              domain-relation-types
              #{:contained-in :implements :context-boundary}))
-
 
 ;;
 ;; Structure view types
@@ -543,8 +542,13 @@
       ;;; domain model
       ;; domain model nodes
       (derive :domain                            :domain-model-node)
+      (derive :bounded-context                   :domain-model-node)
+      (derive :aggregate                         :domain-model-node)
+      (derive :domain-event                      :domain-model-node)
+      (derive :policy                            :domain-model-node)
+      (derive :command                           :domain-model-node)
       (derive :domain-model-node                 :domain-model-element)
-      
+
       ;; domain model relations
       (derive :implements                        :domain-model-relation)
       (derive :domain-model-relation             :domain-model-element)

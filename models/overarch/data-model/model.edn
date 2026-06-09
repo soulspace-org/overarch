@@ -1735,6 +1735,127 @@
    :tags #{"concept-model"}}
 
   ;;
+  ;; Domain Model
+  ;;
+  {:el :class
+   :id :overarch.data-model/domain-model-element
+   :abstract true
+   :name "domain-model-element"
+   :desc "An element in the domain model."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/domain-model-node
+   :abstract true
+   :name "domain-model-node"
+   :desc "A node in the domain model."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/domain-model-relation
+   :abstract true
+   :name "domain-model-relation"
+   :desc "A relation in the domain model."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/domain
+   :name "domain"
+   :desc "A specific area of knowledge, activity or subject matter. Part of the problem space."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/bounded-context
+   :name "bounded-context"
+   :desc "A boundary within which a particular domain model is valid and consistent. Part of the solution space."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/domain-event
+   :name "domain-event"
+   :desc "A record of a significant event that happened in the domain that domain experts would recognize and care about. A fact in the past."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/aggregate
+   :name "aggregate"
+   :desc "A cluster of domain objects that can be treated as a single unit for consistency and invariants. Part of the solution space."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/policy
+   :name "policy"
+   :desc "A rule or guideline that governs the behavior or actions within the domain."
+   :tags #{"domain-model"}}
+
+  {:el :class
+   :id :overarch.data-model/command
+   :name "command"
+   :desc "An instruction to perform a specific action or operation within the domain."
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-model-node-is-a-model-node
+   :to :overarch.data-model/model-node
+   :from :overarch.data-model/domain-model-node
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-model-relation-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/domain-model-relation
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-model-element-is-a-model-element
+   :to :overarch.data-model/model-element
+   :from :overarch.data-model/domain-model-element
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-model-node-is-a-domain-model-element
+   :to :overarch.data-model/domain-model-element
+   :from :overarch.data-model/domain-model-node
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-model-relation-is-a-domain-model-element
+   :to :overarch.data-model/domain-model-element
+   :from :overarch.data-model/domain-model-relation
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/domain
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/bounded-context-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/bounded-context
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/aggregate-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/aggregate
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/domain-event-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/domain-event
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/policy-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/policy
+   :tags #{"domain-model"}}
+
+
+  ;;
   ;; Organization Model
   ;;
   {:el :class
