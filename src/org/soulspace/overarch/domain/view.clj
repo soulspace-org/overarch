@@ -53,8 +53,8 @@
                      :relations {:els #{:link :deployed-to}}
                      :hierarchical? true}
    :deployment-architecture-view {:nodes {:els #{:node :system :container :artifact}}
-                     :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
-                     :hierarchical? true}
+                                  :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
+                                  :hierarchical? true}
    :deployment-structure-view {:nodes {:els #{:node :container}}
                                :relations {:els #{:link :deployed-to}}
                                :hierarchical? true}
@@ -85,6 +85,8 @@
    :process-view {:nodes {:els #{:capability :knowledge :information :process
                                  :artifact :requirement :decision}}
                   :relations {:els #{:role-in :required-for :input-of :output-of}}}
+   :domain-view {:nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
+                  :relations {:els #{:triggers}}}
    :model-view {:nodes {:model-node? true}
                 :relations {:model-relation? true}}
            ;

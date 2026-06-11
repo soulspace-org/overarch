@@ -10,7 +10,7 @@
  ;;
 
  ; rendered as graphviz dot 
- {:view-selection {:els #{:concept-view :process-view :model-view}}
+ {:view-selection {:els #{:concept-view :process-view :domain-view :model-view}}
   :template "views/view.dot.cmb"
   :per-element true
   :id-as-name true
