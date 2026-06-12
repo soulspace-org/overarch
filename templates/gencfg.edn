@@ -25,10 +25,10 @@
 
  ; rendered as plantuml UML
  #_{:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
-  :template "views/uml-view.puml.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "puml"}
+    :template "views/uml-view.puml.cmb"
+    :per-element true
+    :id-as-name true
+    :extension "puml"}
 
  ;;
  ;;  Markdown Generation for Model Elements
