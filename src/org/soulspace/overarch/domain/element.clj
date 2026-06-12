@@ -296,6 +296,10 @@
              process-relation-types
              #{:contained-in :context-boundary}))
 
+(def domain-view-types
+  "The set of domain view types."
+  #{:domain-view})
+
 (def domain-view-element-types
   "Element types of domain views."
   (set/union domain-node-types
@@ -340,7 +344,7 @@
 ;;
 (def view-types
   "The set of view types."
-  (set/union c4-view-types uml-view-types concept-view-types
+  (set/union c4-view-types uml-view-types concept-view-types domain-view-types
              structure-view-types process-view-types model-view-types))
 
 (def hierarchical-view-types

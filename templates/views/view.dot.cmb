@@ -6,6 +6,10 @@
 ;;;;  :per-element true
 ;;;;  :id-as-name  true
 ;;;;
+
+(require '[lib.text :as t])
+(require '[lib.graphviz :as gv])
+
 (defn element-shape
   [e]
   (cond

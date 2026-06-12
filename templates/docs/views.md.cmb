@@ -8,6 +8,10 @@
 ;;; or per namespace
 ;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+
 (defn view-link
   [ctx e view]
   (if (:per-namespace ctx)

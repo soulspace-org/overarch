@@ -3,6 +3,9 @@
 ;;;; Documentation Template for a Collection of Persons (User Roles)
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (let [roles (filterv #(= :person (:el %)) e)]
 %># User Roles
 

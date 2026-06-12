@@ -7,6 +7,9 @@
 ;;;;  :id-as-name  true
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (defn first-char
   "Returns the first character of the name of an element `e`."
   [e]

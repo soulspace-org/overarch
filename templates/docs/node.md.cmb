@@ -7,6 +7,9 @@
 ;;;;  :id-as-name  true
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 ;;;
 ;;; definitions
 ;;;

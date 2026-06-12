@@ -1,6 +1,5 @@
-(ns org.soulspace.overarch.util.functions 
-  (:require [clojure.string :as str]
-            ))
+(ns org.soulspace.overarch.util.functions
+  (:require [clojure.string :as str]))
 
 ;;;
 ;;; Helper functions

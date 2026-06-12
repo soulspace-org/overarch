@@ -3,6 +3,9 @@
 ;;;; Documentation Template for a Collection of Use Cases
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (defn use-case-level
   "Renders the level of the use case `uc`."
   [uc]

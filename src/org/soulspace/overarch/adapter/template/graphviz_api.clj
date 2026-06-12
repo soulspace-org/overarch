@@ -1,7 +1,6 @@
 (ns org.soulspace.overarch.adapter.template.graphviz-api
   (:require [clojure.string :as str]
-            [org.soulspace.overarch.adapter.render.graphviz :as gv]
-            [org.soulspace.overarch.adapter.template.model-api :as m]))
+            [org.soulspace.overarch.adapter.render.graphviz :as gv]))
 
 (defn alias-name
   "Returns a valid alias for the namespaced keyword `kw`."
