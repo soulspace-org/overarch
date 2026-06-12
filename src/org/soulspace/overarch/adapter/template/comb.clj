@@ -58,64 +58,25 @@
               (print ")")))))))
 
 ;;;
-;;; Comb templates evaluated with core.eval
-;;;
-(defn compile-fn
-  [args parsed]
-  (core/eval
-   `(core/fn ~args
-      (with-out-str
-        ~(read-string parsed)))))
-
-(defmacro fn
-  "Compile a template into a function that takes the supplied arguments. The
-  template source may be a string, or an I/O source such as a File, Reader or
-  InputStream."
-  [args parsed]
-  `(compile-fn '~args ~parsed))
-
-(defn eval
-  "Evaluate a template using the supplied bindings. The template source may
-  be a string, or an I/O source such as a File, Reader or InputStream."
-  ([parsed bindings]
-   (let [current-ns *ns*]
-     (binding [*ns* current-ns]
-       (let [keys (map (comp symbol name) (keys bindings))
-             func (compile-fn [{:keys (vec keys)}] parsed)]
-         (func bindings))))))
-
-(defmethod t/parse-template :comb
-  ([engine-key template]
-   (-> template
-       (t/read-source)
-       (parse-string))))
-
-(defmethod t/apply-template :comb
-  ([engine-key parsed-template data]
-   (eval parsed-template data)))
-
-(comment ; Comb
-  (parse-string "Hello<% (dotimes [x 3] %> World<% ) %>!")
-
-  (t/apply-template :comb "Hello" {})
-  (t/apply-template :comb "Hello<% (dotimes [x 3] %> World<% ) %>!" {})
-  (t/apply-template :comb "Hello <%= name %>!" {:name "World"})
-  (t/apply-template :comb "Hello <% (:name bindings) %>!" {:name "World"})
-  (t/apply-template :comb "<% (defn greet-template [x] (print \"Hello\" x))
-                             (greet-template \"World\")%>" {})
-  (t/apply-template :comb "<% (greet-code \"World\")%>" {})
-  (t/apply-template :comb "<%= (el/element-name e) %>" {:e {:el :system
-                                                            :id :foo/foo-bar}})
-  (t/apply-template :comb "<%= (:id e) %>" {:e {:el :system
-                                                :id :foo/foo-bar}})
-  (t/apply-template :comb (io/as-file "dev/templates/ns-test.cmb") {:e {:el :system
-                                                                        :id :foo/foo-bar}})
-  ;
-  )
-
-;;;
 ;;; Comb templates evaluated with the Small Clojure Interpreter (SCI)
 ;;;
+
+; FIXME we need the options to get the template directory for loading templates from other templates
+(defn load-fn
+  "Load a template namespace into the SCI context."
+  [{:keys [namespace]}]
+  (let [template-dir "templates/"
+        path (str/replace (name namespace) #"\." "/")
+        filename (str template-dir path ".clj")
+        source (slurp filename)
+        result {:file filename
+                :source source}]
+    ;(println "Loading namespace" namespace "from file:" filename)
+    ;(println "Source:" source)
+    result))
+
+(def memoized-load-fn (memoize load-fn))
+
 (defn sci-opts
   []
   (let [model-ns (sci/create-ns 'org.soulspace.overarch.adapter.template.model-api)
@@ -145,7 +106,8 @@
                    v org.soulspace.overarch.adapter.template.view-api
                    t org.soulspace.overarch.adapter.template.template-api
                    md org.soulspace.overarch.adapter.template.markdown-api
-                   gv org.soulspace.overarch.adapter.template.graphviz-api}}))
+                   gv org.soulspace.overarch.adapter.template.graphviz-api}
+     :load-fn memoized-load-fn}))
 
 (def sci-ctx (sci/init sci-opts))
 
