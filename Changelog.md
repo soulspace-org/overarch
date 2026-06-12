@@ -3,7 +3,9 @@
 ## Version (NEXT)
 * added domain model elements
 * updated banking model
-* add arc42 templates
+* added loading of template library namespaces from templates
+* added template library
+* added arc42 templates
 * updated dependencies
 
 ## Version 0.41.0
