@@ -24,20 +24,6 @@
 ;;;
 
 ;;
-;; model navigation functions
-;; 
-
-(defn referrer
-  "Resolves the referrer node (:from) of the `relation` in the `model`."
-  [model relation]
-  (m/resolve-element model (:from relation)))
-
-(defn referred
-  "Resolves the referred node (:to) of the `relation` in the `model`."
-  [model relation]
-  (m/resolve-element model (:to relation)))
-
-;;
 ;; markdown generation functions
 ;;
 
@@ -76,7 +62,7 @@
 (defn relation-description-table-row
   "Generates the markdown for a description table row for the `relation` in the `model`."
   [node rel]
-%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (t/single-line (:desc rel)) %> |
+%>| <%= (md/relative-element-link node (m/referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (m/referred model rel)) %> | <%= (t/single-line (:desc rel)) %> |
 <%
   )
 
@@ -92,7 +78,7 @@
 (defn technical-relation-description-table-row
   "Generates the markdown for a description table row for the technical `relation` in the `model`."
   [node rel]
-%>| <%= (md/relative-element-link node (referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (referred model rel)) %> | <%= (str/join ", " (:tech rel)) %> | <%= (t/single-line (:desc rel)) %> |
+%>| <%= (md/relative-element-link node (m/referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (m/referred model rel)) %> | <%= (str/join ", " (:tech rel)) %> | <%= (t/single-line (:desc rel)) %> |
 <%
   )
 
