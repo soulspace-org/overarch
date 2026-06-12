@@ -1,8 +1,8 @@
 (ns lib.markdown
   (:require [clojure.string :as str]
+            [lib.text :as t]
             [org.soulspace.overarch.adapter.template.model-api :as m]
             [org.soulspace.overarch.adapter.template.view-api :as v]))
-
 
 ;;;
 ;;; Markdown Links
@@ -201,7 +201,7 @@
 (defn node-description-table
   "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
   [parent type coll]
-  (str "| " (get type->name type (str/capitalize (name type))) " | Description |\n"
+  (str "| " (get t/type->name type (str/capitalize (name type))) " | Description |\n"
        "|---|---|"
        (apply str
               (for [node (sort-by :name coll)]
@@ -210,7 +210,7 @@
 (defn node-type-description-table-row
   "Generates the markdown for a description table row for `node` and `parent`."
   [parent node]
-  (str "| " (relative-element-link parent node) " | " (get type->name (:type node) (str/capitalize (name (:type node)))) " | " (t/single-line (:desc node)) " |"))
+  (str "| " (relative-element-link parent node) " | " (get t/type->name (:type node) (str/capitalize (name (:type node)))) " | " (t/single-line (:desc node)) " |"))
 
 (defn node-type-description-table
   "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."

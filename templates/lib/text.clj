@@ -1,6 +1,14 @@
 (ns lib.text
   (:require [org.soulspace.overarch.util.functions :as fns]))
 
+(def type->name
+  "Maps an element type to a display name."
+  {:person   "Person/Role"
+   :use-case "Use Case"
+   :context-boundary "Subdomain/Bounded Context"
+   :subject "Subject"
+   :type "Type"})
+
 ;;;
 ;;; General Render functions
 ;;;
@@ -20,12 +28,3 @@
   "Escapes the HTML special characters in the string `s`."
   [s]
   (fns/escape-html s))
-
-(def type->name
-  "Maps an element type to a display name."
-  {:person   "Person/Role"
-   :use-case "Use Case"
-   :context-boundary "Subdomain/Bounded Context"
-   :subject "Subject"
-   :type "Type"})
-
