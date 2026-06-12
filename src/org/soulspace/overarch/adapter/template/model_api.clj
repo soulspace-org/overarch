@@ -205,6 +205,16 @@
   [model rel]
   (model/to-name model rel))
 
+(defn referrer
+  "Resolves the referrer node (:from) of the `relation` in the `model`."
+  [model relation]
+  (resolve-element model (:from relation)))
+
+(defn referred
+  "Resolves the referred node (:to) of the `relation` in the `model`."
+  [model relation]
+  (resolve-element model (:to relation)))
+
 (defn referring-nodes
   "Returns the nodes referring to `e` in the `model`.
    Optionally takes `criteria` to filter for."
