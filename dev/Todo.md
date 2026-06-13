@@ -29,8 +29,10 @@
 * rainbow coloured orthogonal relations?
 
 ## Templates
-* check import/require mechanisms of SCI
+* check template include mechanism?
 * check generation for :artifact-of, :version-of and :instance-of relationships
+* add templates for plantuml C4 and UML
+* add templates for mermaid
 
 ## UI
 * make transitive search accessible from the CLI
