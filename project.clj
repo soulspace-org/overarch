@@ -5,8 +5,8 @@
 
   :dependencies [[org.clojure/clojure "1.12.5"]
                  [org.clojure/tools.cli "1.4.256"]
-                 [org.clojars.quoll/tiara "0.5.1"]
-                 [com.cnuernber/charred "1.038"]
+                 [org.clojars.quoll/tiara "0.5.2"]
+                 [com.cnuernber/charred "1.039"]
                  [com.nextjournal/beholder "1.0.3"]
                  [expound/expound "0.9.0"]
                  [org.babashka/sci "0.12.51"]
