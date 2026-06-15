@@ -17,8 +17,7 @@
             [org.soulspace.overarch.adapter.template.view-api :as v]
             [org.soulspace.overarch.adapter.template.template-api :as ta]
             [org.soulspace.overarch.adapter.template.graphviz-api :as gv]
-            [org.soulspace.overarch.adapter.template.markdown-api :as md]
-            ))
+            [org.soulspace.overarch.adapter.template.markdown-api :as md]))
 
 ;;;
 ;;; Parse Comb Templates
@@ -103,6 +102,14 @@
      :load-fn memoized-load-fn}))
 
 (def sci-ctx (sci/init sci-opts))
+
+;; TODO check sci/parse-next with a sci context to parse the template once into a
+;;      clojure form and then evaluate the form with sci/eval-form instead of
+;;      parsing the template into a string of clojure code and evaluating that
+;;      string with sci/eval-string.
+;;      This would allow to catch parsing errors in the template and also be more
+;;      efficient as the template is only parsed once.
+;;      The context would also cache required namespaces.
 
 (defn eval-sci
   "Evaluate a `parsed-template` using the supplied `data` bindings."
