@@ -94,14 +94,12 @@
                   'clojure.string string-sci-ns
                   'org.soulspace.overarch.adapter.template.model-api model-sci-ns
                   'org.soulspace.overarch.adapter.template.view-api view-sci-ns
-                  'org.soulspace.clj.string sstr-sci-ns
-                  }
+                  'org.soulspace.clj.string sstr-sci-ns}
      :ns-aliases '{set clojure.set
                    str clojure.string
                    m org.soulspace.overarch.adapter.template.model-api
                    v org.soulspace.overarch.adapter.template.view-api
-                   sstr org.soulspace.clj.string
-                   }
+                   sstr org.soulspace.clj.string}
      :load-fn memoized-load-fn}))
 
 (def sci-ctx (sci/init sci-opts))
