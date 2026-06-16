@@ -148,6 +148,23 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
+; Systems don't have a `techn` but `type`
+(defmethod render-c4-element :technical-architecture-model-node
+  [_ _ indent e]
+  [(str (render/indent indent)
+        (c4-element->method (:el e))
+        (when (:subtype e) (c4-subtype->suffix (:subtype e)))
+        (when (:external e) "_Ext") "("
+        (puml/alias-name (:id e)) ", \""
+        (el/element-name e) "\""
+        (when (:desc e) (str ", $descr=\"" (fns/single-line (:desc e)) "\""))
+        (when (seq (:tech e)) (str ", $techn=\"" (str/join ", " (:tech e)) "\""))
+        (render-link e)
+        (when-let [sprite (sprite e)]
+          (str ", $sprite=\"" (:name sprite) "\""))
+        (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
+        ")")])
+
 ; Render artifacts as containers for now, as they are deployed like containers
 (defmethod render-c4-element :artifact
   [model view indent e]
@@ -165,8 +182,8 @@
         (when (:style e) (str ", $tags=\"" (puml/short-name (:style e)) "\""))
         ")")])
 
-; Systems don't have a `techn` but `type`
-(defmethod render-c4-element :technical-architecture-model-node
+; Render container instances and artifacts
+(defmethod render-c4-element :deployable-node
   [_ _ indent e]
   [(str (render/indent indent)
         (c4-element->method (:el e))

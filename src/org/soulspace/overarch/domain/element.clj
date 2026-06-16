@@ -91,8 +91,8 @@
 ;
 (def deployment-node-types
   "Node types for deployment models."
-  ; TODO only node and container?
-  (set/union  #{:container :artifact :node}))
+  ; TODO: remove containers for container-instances? Would break existing models.
+  (set/union  #{:container :container-instance :artifact :node}))
 
 (def deployment-relation-types
   "Relation types for deployment models."
@@ -296,6 +296,8 @@
              process-relation-types
              #{:contained-in :context-boundary}))
 
+; TODO rename to :domain-event-view (capture of event storming sessions)
+; TODO add other useful views for domain driven design
 (def domain-view-types
   "The set of domain view types."
   #{:domain-view})
@@ -314,23 +316,42 @@
   #{:system-structure-view :deployment-structure-view :organization-structure-view})
 
 (def system-structure-view-element-types
-  "Element types of a system structure view"
+  "Element types of a system structure view."
   ; Technical architecture node types only?
   (set/union technical-architecture-node-types architecture-relation-types))
 
 (def deployment-structure-view-element-types
-  "Element types of a system structure view"
-  ; Technical architecture node types only?
+  "Element types of a system structure view."
   (set/union deployment-node-types))
 
 (def organization-structure-view-element-types
-  "Element types of a system structure view"
+  "Element types of a system structure view."
   (set/union organization-node-types organization-relation-types))
+
+;;
+;; Traceability view types
+;;
+
+; TODO implement views
+(def traceability-view-types
+  "The set traceability view types."
+  ; TODO define :trace-view for global traceability
+  #{:instanciation-view :implementation-view})
+
+(def instanciation-view-element-types
+  "Element types of a instanciation view."
+  (set/union model-node-types #{:instance-of}))
+
+(def implementation-view-element-types
+  "Element types of a instanciation view."
+  (set/union model-node-types #{:implements}))
+
 
 ;;
 ;; Other view types
 ;;
-;  :model-view
+
+; :model-view
 (def model-view-types
   "The set of model-view types."
   #{:model-view})
@@ -370,7 +391,7 @@
    :state :fork :join :choice :history-state :deep-history-state
    :annotation :schema :class :enum :enum-value :field :function :interface
    :method :namespace :package :parameter :protocol :stereotype
-   :node])
+   :node :container-instance])
 
 (def model-relation-type-order
   "The set of model element types as vector."
@@ -463,6 +484,9 @@
       ;;; deployment model
       ;; deployment model nodes
       (derive :node                              :deployment-model-node)
+      (derive :container-instance                :deployable-node)
+      (derive :artifact                          :deployable-node)
+      (derive :deployable-node                   :deployment-model-node)
       (derive :deployment-model-node             :deployment-model-element)
 
       ;; deployment model relations
@@ -600,7 +624,8 @@
       (derive :required-for                      :process-model-relation)
       (derive :input-of                          :process-model-relation)
       (derive :output-of                         :process-model-relation)
-      (derive :version-of                         :process-model-relation)
+      (derive :version-of                        :process-model-relation)
+      (derive :artifact-of                       :process-model-relation)
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes

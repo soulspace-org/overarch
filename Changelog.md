@@ -1,7 +1,9 @@
 # Changelog
 
 ## Version (NEXT)
+* adding views for traceability (e.g. instanciation/implementation views)
 * added domain model elements
+* added :container-instance to deployment model
 * added loading of template library namespaces from templates
 * added template library
 * added arc42 templates
