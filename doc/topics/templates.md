@@ -16,7 +16,7 @@ key               | type     | values              | default  | description
 :selection        | CRITERIA | {:el :system}       |          | Criteria to select model elements
 :view-selection   | CRITERIA | {:el :context-view} |          | Criteria to select views
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
-:engine           | :keyword | :comb               | :combsci | The template engine to use (currently just :comb and :combsci)
+:engine           | :keyword | :combsci            | :combsci | The template engine to use (currently just :combsci)
 :encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
 :per-element      | boolean  | true/false          | false    | Apply the template for each element of the selection
 :per-namespace    | boolean  | true/false          | false    | Apply the template for each namespace of the selection
@@ -64,7 +64,7 @@ to the repository of each container.
  {:selection {:namespace "banking" :el :system} ; selection criteria for the model elements
  :template "node-report.md.cmb"  ; relative path of the template to apply
  :title "Banking Systems Report" ; title of the report
- :engine :comb                   ; the template engine to use (currently only :comb)
+ :engine :combsci                ; the template engine to use (currently only :combsci)
  :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
@@ -83,7 +83,7 @@ to the repository of each container.
 {:selection {:el :model-relation :techs #{"REST"}} ; selection criteria for the model elements
  :template "rel-report.md.cmb"   ; relative path of the template to apply
  :title "REST Interface Report"  ; title of the report
- :engine :comb                   ; the template engine to use (currently only :comb)
+ :engine :combsci                ; the template engine to use (currently only :combsci)
  :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
@@ -161,13 +161,8 @@ Overarch also provides functions to query and navigate the model under the
 `m` alias, e.g. `m/resolve-element`.
 
 ### Security Considerations
-Comb templates evaluated with `:comb` are compiled and can contain arbitrary
-clojure code, which gets evaluated in the context of the overarch process.
-Be aware of this fact and review templates accordingly, especially when using
-templates from external sources.
-
-When the comp templates are evaluated by the `:combsci` engine, they are
-interpreted with Babashka SCI, the small clojure interpreter. This has many
+The comp templates are evaluated by the `:combsci` engine, they are
+interpreted with Babashka SCI, the Small Clojure Interpreter. This has many
 advantages:
 * sandboxed evaluation
 * control over the the available clojure namespaces and symbols

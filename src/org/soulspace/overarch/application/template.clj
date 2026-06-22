@@ -304,7 +304,7 @@
 
 (comment
   (repo/read-models :file "models")
-  (apply-template :comb (io/as-file "dev/templates/projects/clojure/gitignore.cmb") {})
+  (apply-template :combsci (io/as-file "dev/templates/projects/clojure/gitignore.cmb") {})
   (into #{} (model/filter-xf (repo/model) {:el :container}) (repo/model-elements))
   (spit "test.txt" "Hello World!")
   
