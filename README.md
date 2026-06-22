@@ -78,7 +78,7 @@ This is an example of the specification of a model and some diagrams based on
 the Internet Banking System example of Simon Brown at [C4 Model](https://c4model.com).
 
 The complete model and diagram specifications can be found under
-[models/banking](/models/banking).
+[models/banking](/examples/banking).
 
 Further information about modelling with *Overarch* can be found in [Usage](doc/usage.md).
 
