@@ -26,7 +26,7 @@
   ;; Concept
   ;;
   {:el :concept
-   :id :overarch.concepts.concept
+   :id :overarch.concepts/concept
    :name "Concept"
    :desc ""}
 
@@ -65,6 +65,10 @@
   {:el :concept
    :id :overarch.concepts/class
    :name "Class"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/schema
+   :name "Schema"
    :desc ""}
   {:el :concept
    :id :overarch.concepts/field
@@ -305,6 +309,12 @@
    :id :overarch.concepts/interface-contains-method
    :from :overarch.concepts/interface
    :to :overarch.concepts/method
+   :name "contains"
+   :desc ""}
+  {:el :has
+   :id :overarch.concepts/schema-contains-field
+   :from :overarch.concepts/schema
+   :to :overarch.concepts/field
    :name "contains"
    :desc ""}
   {:el :has
@@ -589,7 +599,7 @@
    :to :overarch.concepts/knowledge
    :name "required for"
    :desc ""}
-  
+
   ;;
   ;; Model
   ;;

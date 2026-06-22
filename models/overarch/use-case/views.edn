@@ -4,9 +4,9 @@
 #{
   {:el :use-case-view
    :id :overarch.use-case/overarch-use-case-view
-   :spec {:selection {:namespace-prefix "overarch.use-case"}
-          :include :relations
-          :layout :left-right}
+   :selection {:namespace-prefix "overarch.use-case"}
+   :include :relations
+   :layout :left-right
    :title "Use Case View of Overarch"
    :ct [;; actors
         {:ref :overarch.roles/modeller}
@@ -14,4 +14,4 @@
         {:ref :overarch.architecture/editor}
         ;
         ]}
-}
+  }
