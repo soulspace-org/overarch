@@ -1,7 +1,19 @@
 # Overarch Architecture
-All overarch code is located in ```org.soulspace.overarch```.
 
-## Implementation Architecture
+## General Architecture 
+Overarch is a Clojure project built with Leiningen. The general organization is
+* [Source Code](/src/)
+* [Test Code](/test)
+* [Resources](/resources)
+* [Templates](/templates)
+* [Development Code](/dev)
+* [Documentation](/doc)
+* [Overarch Models](/models)
+* [Example Models](/examples)
+
+The namespace prefix for code is ```org.soulspace.overarch```.
+
+## Clean Architecture
 The implementation architecture is *Clean architecture*.
 
 ### ```org.soulspace.overarch.domain```

@@ -12,7 +12,7 @@ Overarch is a lightweight modelling tool to capture architecture knowledge at va
 * queryable via selection criteria
 
 ## Extensible Meta Model
-* metamodel contains various domain models for
+The meta model contains various domain models for
   * concepts
   * organisations
   * processes
@@ -23,8 +23,10 @@ Overarch is a lightweight modelling tool to capture architecture knowledge at va
   * deployment architecture
   * domain driven design
 
+The meta model is also an overarch data model residing at `models/overarch/data-model/model.edn`.
+
 ## Template Based Text Generation
-* user customizable Comb templates for rendering for textual formats, e.g.
+* user customizable weavejester/comb templates for rendering for textual formats, e.g.
   * PlantUML .puml files
   * Graphviz .dot files
   * markdown files
