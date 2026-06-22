@@ -182,7 +182,7 @@ With the `:selection` key a criteria map or a vector of criterias can be specifi
 The matching elements will be included in the view. This feature can be used to
 create 'dynamic' views that always contain the latest model content matching
 the criteria. See section [Model Element Selection by Criteria](#model-element-selection-by-criteria)
-for details and [banking views](/models/banking/views.edn) for examples.
+for details and [banking views](/examples/banking/views.edn) for examples.
 
 ### Includes
 With the `:include` key elements can be automatically included in a view. 
@@ -209,7 +209,7 @@ view.
 
 ### Styling
 Overarch supports custom styles for elements. For an example see
-[views.edn](/models/test/views.edn).
+[views.edn](/examples/test/views.edn).
 
 #### Keys
 

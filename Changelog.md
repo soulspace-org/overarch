@@ -7,6 +7,7 @@
 * added loading of template library namespaces from templates
 * added template library
 * added arc42 templates
+* moved example modes to examples folder
 * updated banking model
 * updated dependencies
 
@@ -325,7 +326,7 @@
   * directly referenced elements have precedence over selection/inclusion for adding/overriding of keys in references
 * added deployed-to relation to deployment model to decouple architecture and deployment models
   * no need to reference containers as content of deployment nodes (that is deprecated now)
-  * see [Banking Deployment Model](/models/banking/model.edn)
+  * see [Banking Deployment Model](/examples/banking/model.edn)
 * added selection criteria
 * added and enhanced domain model functions
 * added and enhanced clojure project templates
