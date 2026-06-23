@@ -1,0 +1,9 @@
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Risks and Technical Dept
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?># Risks and Technical Dept

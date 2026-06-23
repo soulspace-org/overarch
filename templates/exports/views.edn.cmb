@@ -6,6 +6,9 @@
 ;;;;  :per-namespace true
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (def view-types
   [:concept-view :use-case-view :context-view :container-view :component-view
    :system-landscape-view :system-structure-view :dynamic-view

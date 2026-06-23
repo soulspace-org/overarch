@@ -208,12 +208,26 @@
                 (str "\n" (node-description-table-row parent node))))))
 
 (defn node-type-description-table-row
-  "Generates the markdown for a description table row for `node` and `parent`."
+  "Generates the markdown for a description table row with type for `node` and `parent`."
   [parent node]
   (str "| " (relative-element-link parent node) " | " (get t/type->name (:type node) (str/capitalize (name (:type node)))) " | " (t/single-line (:desc node)) " |"))
 
 (defn node-type-description-table
-  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
+  "Generates the markdown for a description table with type for nodes of the `type` in `coll` in the context of the `node`."
+  [parent coll]
+  (str "| Node | Type | Description |\n"
+       "|---|---|---|"
+       (apply str
+              (for [node (sort-by :name coll)]
+                (str "\n" (node-type-description-table-row parent node))))))
+
+(defn node-type-subtype-description-table-row
+  "Generates the markdown for a description table row with type and subtype for `node` and `parent`."
+  [parent node]
+  (str "| " (relative-element-link parent node) " | " (get t/type->name (:type node) (str/capitalize (name (:type node)))) " | " (t/single-line (:desc node)) " |"))
+
+(defn node-type-subtype-description-table
+  "Generates the markdown for a description table with type and subtype for nodes of the `type` in `coll` in the context of the `node`."
   [parent coll]
   (str "| Node | Type | Description |\n"
        "|---|---|---|"

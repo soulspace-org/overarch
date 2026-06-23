@@ -1,0 +1,9 @@
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template for the System Context and Scope
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?># System Context and Scope

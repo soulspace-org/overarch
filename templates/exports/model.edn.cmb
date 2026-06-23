@@ -6,6 +6,9 @@
 ;;;;  :per-namespace true
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (defn same-ns?
   "Returns true, if the namespaces of the ids of `e1` and `e2` are the same."
   [e1 e2]

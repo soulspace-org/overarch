@@ -6,6 +6,9 @@
 ;;;;   :per-namespace true
 ;;;;
 
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
 (def types->avro
   {"nil"              "null"
    "bytes"            "int"

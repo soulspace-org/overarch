@@ -1,2 +1,0 @@
-# Risks and Technical Dept
-

@@ -1,0 +1,9 @@
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Introduction and Goals
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?># Introduction and Goals

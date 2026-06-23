@@ -2,8 +2,11 @@
 ;;;;
 ;;;; CSV Report Template for Relation Selections
 ;;;;
-%>
-Id;Name;Type;From;To;Description;Tech;Tags
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%>Id;Name;Type;From;To;Description;Tech;Tags
 <%
 (doseq [rel e]
 %> <%= (:id rel) %> | <%= (:name rel) %> | <%= (:el rel) %> | <%= (:from rel) %> | <%= (:to rel) %> | <%= (t/single-line (:desc rel)) %>;"<%= (str/join ", " (:tech c)) %>";<%= (str/join ", " (:tags rel)) %>

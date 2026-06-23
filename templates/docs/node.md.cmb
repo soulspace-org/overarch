@@ -151,6 +151,17 @@
 <%
   )
 
+  (when-let [doc-links (:doc/links e)]
+%>
+## Links
+<%
+     (doseq [[k v] doc-links]
+%>* [<%= k %>](<%= v %>)
+<%
+    )
+  )
+
+
 ;;;
 ;;; general relations
 ;;;

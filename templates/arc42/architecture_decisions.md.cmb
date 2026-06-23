@@ -1,0 +1,9 @@
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Architecture Decisions
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?># Architecture Decisions

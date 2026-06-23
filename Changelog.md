@@ -7,6 +7,7 @@
 * added loading of template library namespaces from templates
 * added template library
 * added arc42 templates
+* removed references to :comb template engine
 * moved example modes to examples folder
 * updated banking model
 * updated dependencies
