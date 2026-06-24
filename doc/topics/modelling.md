@@ -113,8 +113,8 @@ For more information see the [EDN specification](https://github.com/edn-format/e
 ## Examples
 The model and diagram descriptions of the C4 model banking example can be
 found in models/banking folder:
- * [model.edn](/models/banking/model.edn)
- * [views.edn](/models/banking/views.edn)
+ * [model.edn](/examples/banking/model.edn)
+ * [views.edn](/examples/banking/views.edn)
 
 If you have a Clojure environment in some editor or IDE, just use it.
 If not, try Visual Studio Code with the Calva and PlantUML extensions.
@@ -267,7 +267,7 @@ key       | type    | values/examples    | description
 :tech     | string  | e.g. "HTTPS, REST" | technologies of the relation
 
 ### Example
-Example (exerpt from the [banking model](/models/banking/model.edn) containing
+Example (exerpt from the [banking model](/examples/banking/model.edn) containing
 context and container level elements):
 
 ```clojure
@@ -382,7 +382,7 @@ relation type | description
 :rel          | unclassified relation between the nodes
 
 ### Example
-See [example concept model](/models/concept/model.edn).
+See [example concept model](/examples/concept/model.edn).
 
 ## Use Case Model
 A use case model captures the functionality a system is suposed to deliver.
@@ -399,7 +399,7 @@ model so prior knowledge of UML modelling applies here.
 ![Use Case Model Elements](/doc/images/overarch/data-model/use-case-model-elements.svg)
 
 ### Example
-Example [Use Case Model](/models/usecase/model.edn)
+Example [Use Case Model](/examples/usecase/model.edn)
 
 ### Use Cases (:use-case)
 A use case describes the goal of an actor in the context of the system
@@ -445,7 +445,7 @@ so prior knowledge of UML modelling applies here.
 ![State Machine Elements](/doc/images/overarch/data-model/state-machine-model-elements.svg)
 
 ### Example
-Example [State Model](/models/state/model.edn)
+Example [State Model](/examples/state/model.edn)
 
 ### State Machine (:state-machine)
 A state machine is the root element for a state machine view. It contains the

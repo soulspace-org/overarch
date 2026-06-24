@@ -332,7 +332,7 @@ A: Concepts and patterns like the ones from Domain Driven Design can be
    can be modeled as a system in the architecture model.
    Each container would contain components with the responsibilities and
    dependencies as specified by the given architecture. This is perfectly
-   possible in the current C4 model (see [DDD example](/models/ddd/)).
+   possible in the current C4 model (see [DDD example](/examples/ddd/)).
 
    The same approach would be possible e.g. for deployment blueprints.
 

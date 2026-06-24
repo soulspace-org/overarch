@@ -6,92 +6,101 @@
   ;;;
   {:el :code-view
    :id :overarch.data-model/data-model
-   :spec {:selection {:namespace "overarch.data-model"}
-          :layout :left-right
-          :linetype :orthogonal}
+   :selection {:namespace "overarch.data-model"}
+   :layout :left-right
+   :linetype :orthogonal
    :title "Overarch Data Model"
    :desc "Shows the whole logical data model of Overarch"
    :ct [{:ref :overarch.data-model/ref-references-element :direction :left}]}
 
   {:el :code-view
    :id :overarch.data-model/role-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "role-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "role-model"}}
+   :include :related
    :title "Role Model Elements"
    :desc "Shows the logical hierarchy of the role model elements"}
 
   {:el :code-view
    :id :overarch.data-model/architecture-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "architecture-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "architecture-model"}}
+   :include :related
    :title "Architecture Model Elements"
    :desc "Shows the logical hierarchy of the architecture model elements"}
 
   {:el :code-view
    :id :overarch.data-model/deployment-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "deployment-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "deployment-model"}}
+   :include :related
    :title "Deployment Model Elements"
    :desc "Shows the logical hierarchy of the deployment model elements"}
 
   {:el :code-view
    :id :overarch.data-model/code-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "code-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "code-model"}}
+   :include :related
    :title "Code Model Elements"
    :desc "Shows the logical hierarchy of the code model elements"}
 
   {:el :code-view
    :id :overarch.data-model/use-case-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "use-case-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "use-case-model"}}
+   :include :related
    :title "Use Case Model Elements"
    :desc "Shows the logical hierarchy of the use case model elements"}
 
   {:el :code-view
    :id :overarch.data-model/state-machine-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "state-machine-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "state-machine-model"}}
+   :include :related
    :title "State Machine Model Elements"
    :desc "Shows the logical hierarchy of the state machine model elements"}
 
   {:el :code-view
    :id :overarch.data-model/concept-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "concept-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "concept-model"}}
+   :include :related
    :title "Concept Model Elements"
    :desc "Shows the logical hierarchy of the concept model elements"}
 
   {:el :code-view
    :id :overarch.data-model/organization-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "organization-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "organization-model"}}
+   :include :related
    :title "Organization Model Elements"
    :desc "Shows the logical hierarchy of the organization model elements"}
 
   {:el :code-view
    :id :overarch.data-model/process-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "process-model"}}
-          :include :related}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "process-model"}}
+   :include :related
    :title "Process Model Elements"
    :desc "Shows the logical hierarchy of the process model elements"}
 
   {:el :code-view
+   :id :overarch.data-model/domain-model-elements
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "domain-model"}}
+   :include :related
+   :title "Domain Model Elements"
+   :desc "Shows the logical hierarchy of the domain model elements"}
+
+  {:el :code-view
    :id :overarch.data-model/view-model-elements
-   :spec {:selection {:namespace "overarch.data-model"
-                      :tags #{"base-model" "model-model" "view-model"}}
-          :include :related
-          :layout :left-right}
+   :selection {:namespace "overarch.data-model"
+               :tags #{"base-model" "model-model" "view-model"}}
+   :include :related
+   :layout :left-right
    :title "View Model Elements"
    :desc "Shows the logical hierarchy of the organization model elements"}
+
   ;
   }
