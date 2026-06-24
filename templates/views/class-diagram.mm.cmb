@@ -1,0 +1,11 @@
+<%
+;;;;
+;;;; Template for a Mermaid class diagram
+;;;;
+
+
+%>
+---
+title: <%= (v/title e) %>
+---
+classDiagram
