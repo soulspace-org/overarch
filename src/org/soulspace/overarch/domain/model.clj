@@ -667,6 +667,12 @@
     ; compose the filtering functions and create a filter transducer
     (filter filter-predicates)))
 
+(comment
+  ((criteria-predicate {} {:name "User Service"}) {:name "User Service"}) ; true
+  ((criteria-predicate {} {:name "User Service"}) {:name "Order Service"}) ; false
+  ((criteria-predicate {} {:name-prefix "User"}) {:name "User Service"}) ; true
+  ;
+  )
 
 ;;
 ;; Graph based functions

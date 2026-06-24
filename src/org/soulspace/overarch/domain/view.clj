@@ -112,7 +112,7 @@
   "Returns a predicate function to check if a node should be rendered
    as specified in the `config` for the `view`"
   [model view config]
-  (if-let [relation-criteria (get-in config [(:el view) :nodes])]
+  (if-let [relation-criteria (get-in config [(:el view) :relations])]
     (model/criteria-predicate model relation-criteria)
     (constantly false)))
 
