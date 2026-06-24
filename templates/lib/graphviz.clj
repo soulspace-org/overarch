@@ -1,4 +1,5 @@
 (ns lib.graphviz
+  "Functions for templates generating Graphviz files."
   (:require [clojure.string :as str]
             [org.soulspace.clj.string :as sstr]))
 

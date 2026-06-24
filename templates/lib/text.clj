@@ -1,4 +1,5 @@
 (ns lib.text
+  "Functions for templates generating text."
   (:require [clojure.string :as str]))
 
 ;;;

@@ -1,4 +1,5 @@
 (ns lib.markdown
+  "Functions for templates generating Markdown files."
   (:require [clojure.string :as str]
             [lib.text :as t]
             [org.soulspace.overarch.adapter.template.model-api :as m]
@@ -7,6 +8,9 @@
 ;;;
 ;;; Markdown Links
 ;;;
+
+;; TODO extract path building (path, relative-path) 
+
 (defn element-link
   "Renders a link to the element `e`, using the optional `context` for customization."
   ([e]
@@ -192,6 +196,10 @@
 ;;;
 ;;; Markdown Tables
 ;;;
+
+;; TODO generic table with vector of keys
+;; TODO criteria as parameter to filter elements
+
 (defn node-description-table-row
   "Generates the markdown for a description table row for `node` and `parent`."
   [parent node]
