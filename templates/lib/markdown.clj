@@ -11,6 +11,45 @@
 
 ;; TODO extract path building (path, relative-path) 
 
+(defn link-path
+  "Returns the path to the element `e`, using the optional `context` for customization.
+   The path contains the basename of the file without the extension."
+  [e context]
+  (str
+   (when (seq (:subdir context))
+     (str (:subdir context) "/"))
+   (when (seq (:namespace-prefix context))
+     (str (:namespace-prefix context) "/"))
+   (when (seq (m/element-namespace-path e))
+     (str (m/element-namespace-path e) "/"))
+   (when (seq (:namespace-suffix context))
+     (str (:namespace-suffix context) "/"))
+   (when (seq (:prefix context))
+     (:prefix context))
+   (name (:id e))
+   (when (seq (:suffix context))
+     (:suffix context)))
+  )
+
+(defn relative-link-path
+  "Returns the relative path from the current element `c` to the element `e`, using the optional `context` for customization.
+   The path contains the basename of the file without the extension."
+  [c e context]
+  (str
+   (when (seq (m/root-path c))
+     (str (m/root-path c) "/"))
+   (when (seq (:namespace-prefix context))
+     (str (:namespace-prefix context) "/"))
+   (when (seq (m/element-namespace-path e))
+     (str (m/element-namespace-path e) "/"))
+   (when (seq (:namespace-suffix context))
+     (str (:namespace-suffix context) "/"))
+   (when (seq (:prefix context))
+     (:prefix context))
+   (name (:id e))
+   (when (seq (:suffix context))
+     (:suffix context))))
+
 (defn element-link
   "Renders a link to the element `e`, using the optional `context` for customization."
   ([e]
@@ -18,19 +57,7 @@
   ([e context]
    (str "[" (:name e) "]"
         "("
-        (when (seq (:subdir context))
-          (str (:subdir context) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path e))
-          (str (m/element-namespace-path e) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id e))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (link-path e context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
@@ -43,19 +70,7 @@
   ([c e context]
    (str "[" (:name e) "]"
         "("
-        (when (seq (m/root-path c))
-          (str (m/root-path c) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path e))
-          (str (m/element-namespace-path e) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id e))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (relative-link-path c e context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
@@ -68,19 +83,7 @@
   ([v context]
    (str "[" (v/title v) "]"
         "("
-        (when (seq (:subdir context))
-          (str (:subdir context) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path v))
-          (str (m/element-namespace-path v) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id v))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (link-path v context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
@@ -93,19 +96,7 @@
   ([c v context]
    (str "[" (v/title v) "]"
         "("
-        (when (seq (m/root-path c))
-          (str (m/root-path c) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path v))
-          (str (m/element-namespace-path v) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id v))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (relative-link-path c v context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".md")
@@ -118,19 +109,7 @@
   ([v context]
    (str "![" (v/title v) "]"
         "("
-        (when (seq (:subdir context))
-          (str (:subdir context) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path v))
-          (str (m/element-namespace-path v) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id v))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (link-path v context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".png")
@@ -143,19 +122,7 @@
   ([c v context]
    (str "![" (v/title v) "]"
         "("
-        (when (seq (m/root-path c))
-          (str (m/root-path c) "/"))
-        (when (seq (:namespace-prefix context))
-          (str (:namespace-prefix context) "/"))
-        (when (seq (m/element-namespace-path v))
-          (str (m/element-namespace-path v) "/"))
-        (when (seq (:namespace-suffix context))
-          (str (:namespace-suffix context) "/"))
-        (when (seq (:prefix context))
-          (:prefix context))
-        (name (:id v))
-        (when (seq (:suffix context))
-          (:suffix context))
+        (relative-link-path c v context)
         (if (seq (:extension context))
           (str "." (:extension context))
           ".png")
