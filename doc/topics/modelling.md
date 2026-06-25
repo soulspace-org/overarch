@@ -502,18 +502,19 @@ type for the static type system.
 Interfaces and protocols are treated the same, so use what suits your system
 and inplementation language best.
 
+### Schema (:schema)
+A schema is a specification of the structure of data. It contains the fields of the data and their types, which can be used to validate the shape of data at runtime.
+
 ### Class (:class)
 A class in object orientation is a typed element that encapsulates state and
 behaviour. The state is modelled with fields, the behaviour with methods.
-
-In functional programming, you can use classes to model the values of your
-system.
 
 ### Enumeration (:enum)
 An enumeration is a typed enumeration of values.
 
 ### Field (:field)
-A field is part of the state of a class.
+A field is part of the state of a class. It is also used to model the elements of
+a schema for data.
 
 ### Method (:method)
 A method is part of the behaviour of a class or an interface.
@@ -521,9 +522,6 @@ A method is part of the behaviour of a class or an interface.
 ### Function (:function)
 A function is a first class element in functional programming.
 It has input parameters and calculates results.
-
-### Schema (:schema)
-A schema is a specification of the structure of data. It contains the fields of the data and their types, which can be used to validate the shape of data at runtime.
 
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
