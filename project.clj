@@ -9,7 +9,7 @@
                  [com.cnuernber/charred "1.039"]
                  [com.nextjournal/beholder "1.0.3"]
                  [expound/expound "0.9.0"]
-                 [org.babashka/sci "0.12.51"]
+                 [org.babashka/sci "0.13.53"]
                  [zprint/zprint "1.3.0"]
                  [org.slf4j/slf4j-nop "2.0.18"]
                  [org.soulspace.clj/clj.java "0.9.1"]
