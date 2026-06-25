@@ -14,10 +14,7 @@
             [clojure.string :as str]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.overarch.adapter.template.model-api :as m]
-            [org.soulspace.overarch.adapter.template.view-api :as v]
-            [org.soulspace.overarch.adapter.template.template-api :as ta]
-            [org.soulspace.overarch.adapter.template.graphviz-api :as gv]
-            [org.soulspace.overarch.adapter.template.markdown-api :as md]))
+            [org.soulspace.overarch.adapter.template.view-api :as v]))
 
 ;;;
 ;;; Parse Comb Templates
