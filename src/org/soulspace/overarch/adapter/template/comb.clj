@@ -6,18 +6,15 @@
   "Template Engine implementation based on Comb templates."
   (:refer-clojure :exclude [fn eval])
   (:require [clojure.core :as core]
+            [clojure.string :as str]
             [clojure.java.io :as io]
             [sci.core :as sci]
             [org.soulspace.overarch.application.template :as t]
-            ; require to expose namespaces in templates
+            ; required to expose namespaces in templates
             [clojure.set :as set]
-            [clojure.string :as str]
             [org.soulspace.clj.string :as sstr]
             [org.soulspace.overarch.adapter.template.model-api :as m]
-            [org.soulspace.overarch.adapter.template.view-api :as v]
-            [org.soulspace.overarch.adapter.template.template-api :as ta]
-            [org.soulspace.overarch.adapter.template.graphviz-api :as gv]
-            [org.soulspace.overarch.adapter.template.markdown-api :as md]))
+            [org.soulspace.overarch.adapter.template.view-api :as v]))
 
 ;;;
 ;;; Parse Comb Templates

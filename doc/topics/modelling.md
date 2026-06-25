@@ -350,12 +350,19 @@ A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
+### Container Instance (:container-instance)
+A container instance is a specific instance of a container deployed on a
+specific node.
+
+### Artifact (:artifact)
+A specific artifact, e.g. a configuration file, deployed on a node.
+
 ### Deployment model relations
 relation type | description
 --------------|------------
 :link         | A link between two nodes of the deployment model, e.g. two virtual networks
 :deployed-to  | A deployment relation between a container and a node in the deployment model
-:rel
+:instance-of  | A relation of a container instance and the container.
 
 ## Concept Model
 A concept model captures relevant concepts of the domain(s) of the system. The
@@ -502,18 +509,19 @@ type for the static type system.
 Interfaces and protocols are treated the same, so use what suits your system
 and inplementation language best.
 
+### Schema (:schema)
+A schema is a specification of the structure of data. It contains the fields of the data and their types, which can be used to validate the shape of data at runtime.
+
 ### Class (:class)
 A class in object orientation is a typed element that encapsulates state and
 behaviour. The state is modelled with fields, the behaviour with methods.
-
-In functional programming, you can use classes to model the values of your
-system.
 
 ### Enumeration (:enum)
 An enumeration is a typed enumeration of values.
 
 ### Field (:field)
-A field is part of the state of a class.
+A field is part of the state of a class. It is also used to model the elements of
+a schema for data.
 
 ### Method (:method)
 A method is part of the behaviour of a class or an interface.
@@ -521,9 +529,6 @@ A method is part of the behaviour of a class or an interface.
 ### Function (:function)
 A function is a first class element in functional programming.
 It has input parameters and calculates results.
-
-### Schema (:schema)
-A schema is a specification of the structure of data. It contains the fields of the data and their types, which can be used to validate the shape of data at runtime.
 
 
 ### Relations (:association :aggregation, :composition :inheritance :implementation :dependency)
@@ -556,7 +561,7 @@ The process model captures the structure of capabilities, processes and their re
 ### Logical Data Model for the Process Model Elements
 ![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
-### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision)
+### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision :permission)
 
-### Relations (:role-in :required-for :input-of :output-of :version-of :artifact-of)
+### Relations (:role-in :required-for :input-of :output-of :version-of :artifact-of :permission-of :granted-for)
 The role-in relation maps `:person` nodes to `:process` nodes.
