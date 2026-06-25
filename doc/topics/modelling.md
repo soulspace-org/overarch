@@ -350,12 +350,19 @@ A node is a unit in a deployment view. Nodes represent parts of the
 infrastructure in which the containers of the system are deployed. They can
 contain a set of other nodes or containers.
 
+### Container Instance (:container-instance)
+A container instance is a specific instance of a container deployed on a
+specific node.
+
+### Artifact (:artifact)
+A specific artifact, e.g. a configuration file, deployed on a node.
+
 ### Deployment model relations
 relation type | description
 --------------|------------
 :link         | A link between two nodes of the deployment model, e.g. two virtual networks
 :deployed-to  | A deployment relation between a container and a node in the deployment model
-:rel
+:instance-of  | A relation of a container instance and the container.
 
 ## Concept Model
 A concept model captures relevant concepts of the domain(s) of the system. The
@@ -554,7 +561,7 @@ The process model captures the structure of capabilities, processes and their re
 ### Logical Data Model for the Process Model Elements
 ![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
-### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision)
+### Nodes (:capability :information :knowledge :process :artifact :version :requirement :decision :permission)
 
-### Relations (:role-in :required-for :input-of :output-of :version-of :artifact-of)
+### Relations (:role-in :required-for :input-of :output-of :version-of :artifact-of :permission-of :granted-for)
 The role-in relation maps `:person` nodes to `:process` nodes.
