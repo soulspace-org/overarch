@@ -30,6 +30,13 @@
     :id-as-name true
     :extension "puml"}
 
+ ; rendered as Mermaid treemap
+ #_{:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
+  :template "views/treemap.mm.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "mermaid"}
+
  ;;
  ;;  Markdown Generation for Model Elements
  ;;
