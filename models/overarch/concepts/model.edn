@@ -119,6 +119,11 @@
    :name "Node"
    :desc "Part of the infrastructure in the deployment model"}
 
+  {:el :concept
+   :id :overarch.concepts/container-instance
+   :name "Container Instance"
+   :desc "Deployed instance of a container in the deployment model"}
+
   ;;
   ;; Use Case
   ;;
@@ -165,14 +170,46 @@
   {:el :concept
    :id :overarch.concepts/artifact
    :name "Artifact"
-   :desc ""}
+   :desc "An artifact in the process model, e.g. a document or a docker container"}
+  {:el :concept
+   :id :overarch.concepts/version
+   :name "Version"
+   :desc "The version of an artifact in the process model"}
   {:el :concept
    :id :overarch.concepts/requirement
    :name "Requirement"
-   :desc ""}
+   :desc "A Requirement in the process model, e.g. a functional or non-functional requirement"}
   {:el :concept
    :id :overarch.concepts/decision
    :name "Decision"
+   :desc "A decision in the process model, e.g. an architectural decision or a business decision"}
+
+  ;;
+  ;; Domain
+  ;;
+  {:el :concept
+   :id :overarch.concepts/domain
+   :name "Domain"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/bounded-context
+   :name "Bounded Context"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/aggregate
+   :name "Aggregate"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/domain-event
+   :name "Domain Event"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/policy
+   :name "Policy"
+   :desc ""}
+  {:el :concept
+   :id :overarch.concepts/command
+   :name "Command"
    :desc ""}
 
   ;;
