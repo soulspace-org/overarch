@@ -32,7 +32,14 @@
 * check template include mechanism?
 * check generation for :artifact-of, :version-of and :instance-of relationships
 * add templates for plantuml C4 and UML
-* add templates for mermaid
+* check templates for mermaid
+  * treeview/treemap
+  * class/state diagrams?
+  * architecture diagram
+  * block diagram
+  * event modeling diagram
+  * wardley maps (needs a wardley model)
+
 
 ## UI
 * make transitive search accessible from the CLI
