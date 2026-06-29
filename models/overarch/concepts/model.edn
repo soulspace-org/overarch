@@ -28,7 +28,7 @@
   {:el :concept
    :id :overarch.concepts/concept
    :name "Concept"
-   :desc ""}
+   :desc "Describes a thing or an idea."}
 
   ;;
   ;; Architecture
@@ -57,59 +57,59 @@
   {:el :concept
    :id :overarch.concepts/package
    :name "Package"
-   :desc ""}
+   :desc "A collection of related classes or modules."}
   {:el :concept
    :id :overarch.concepts/interface
    :name "Interface"
-   :desc ""}
+   :desc "A contract that defines a set of operations that a class must implement."}
   {:el :concept
    :id :overarch.concepts/class
    :name "Class"
-   :desc ""}
+   :desc "A class in the code model."}
   {:el :concept
    :id :overarch.concepts/schema
    :name "Schema"
-   :desc ""}
+   :desc "Describes the structure of data, e.g. a database schema or a JSON schema."}
   {:el :concept
    :id :overarch.concepts/field
    :name "Field"
-   :desc ""}
+   :desc "A field of a class, namespace or schema in the code model."}
   {:el :concept
    :id :overarch.concepts/method
    :name "Method"
-   :desc ""}
+   :desc "A method of a class or interface in the code model."}
   {:el :concept
    :id :overarch.concepts/parameter
    :name "Parameter"
-   :desc ""}
+   :desc "A parameter of a method or function in the code model."}
   {:el :concept
    :id :overarch.concepts/enum
    :name "Enum"
-   :desc ""}
+   :desc "An enumeration in the code model."}
   {:el :concept
    :id :overarch.concepts/enum-value
    :name "Enum Value"
-   :desc ""}
+   :desc "A value of an enumeration in the code model."}
   {:el :concept
    :id :overarch.concepts/annotation
    :name "Annotation"
-   :desc ""}
+   :desc "An annotation in the code model."}
   {:el :concept
    :id :overarch.concepts/stereotype
    :name "Stereotype"
-   :desc ""}
+   :desc "A stereotype in the code model."}
   {:el :concept
    :id :overarch.concepts/namespace
    :name "Namespace"
-   :desc ""}
+   :desc "A namespace in the code model."}
   {:el :concept
    :id :overarch.concepts/protocol
    :name "Protocol"
-   :desc ""}
+   :desc "A contract that defines a set of operations that a type must implement."}
   {:el :concept
    :id :overarch.concepts/function
    :name "Function"
-   :desc ""}
+   :desc "A function in the code model."}
 
   ;;
   ;; Deployment
@@ -142,11 +142,11 @@
   {:el :concept
    :id :overarch.concepts/organization
    :name "Organization"
-   :desc ""}
+   :desc "An organization (e.g. a company) in the organization model."}
   {:el :concept
    :id :overarch.concepts/org-unit
    :name "Organizational Unit"
-   :desc ""}
+   :desc "An organizational unit (e.g. a department) in the organization model."}
 
   ;;
   ;; Process
@@ -154,19 +154,19 @@
   {:el :concept
    :id :overarch.concepts/capability
    :name "Capability"
-   :desc ""}
+   :desc "A capability in the process model, e.g. a business capability or a technical capability."}
   {:el :concept
    :id :overarch.concepts/information
    :name "Information"
-   :desc ""}
+   :desc "Information in the process model."}
   {:el :concept
    :id :overarch.concepts/knowledge
    :name "Knowledge"
-   :desc ""}
+   :desc "The understanding and skills acquired through experience and education."}
   {:el :concept
    :id :overarch.concepts/process
    :name "Process"
-   :desc ""}
+   :desc "A process in the process model, e.g. a business process or a software development process."}
   {:el :concept
    :id :overarch.concepts/artifact
    :name "Artifact"
@@ -174,7 +174,7 @@
   {:el :concept
    :id :overarch.concepts/version
    :name "Version"
-   :desc "The version of an artifact in the process model"}
+   :desc "A version of an artifact in the process model"}
   {:el :concept
    :id :overarch.concepts/requirement
    :name "Requirement"
@@ -190,27 +190,35 @@
   {:el :concept
    :id :overarch.concepts/domain
    :name "Domain"
-   :desc ""}
+   :desc "A specific area of knowledge, activity or subject matter. Part of the problem space."}
   {:el :concept
    :id :overarch.concepts/bounded-context
    :name "Bounded Context"
-   :desc ""}
+   :desc "A boundary within which a particular domain model is valid and consistent. Part of the solution space."}
   {:el :concept
    :id :overarch.concepts/aggregate
    :name "Aggregate"
-   :desc ""}
+   :desc "A cluster of domain objects that can be treated as a single unit for consistency and invariants. Part of the solution space."}
+  {:el :concept
+   :id :overarch.concepts/entity
+   :name "Entity"
+   :desc "An object that is defined by its identity, rather than its attributes. Part of the solution space."}
+  {:el :concept
+   :id :overarch.concepts/value-object
+   :name "Value Object"
+   :desc "An object that is defined by its attributes, rather than its identity. Part of the solution space."}
   {:el :concept
    :id :overarch.concepts/domain-event
    :name "Domain Event"
-   :desc ""}
+   :desc "An event that represents a significant change in the state of the domain. Part of the solution space."}
   {:el :concept
    :id :overarch.concepts/policy
    :name "Policy"
-   :desc ""}
+   :desc "A rule or guideline that governs the behavior or actions within the domain. Part of the solution space."}
   {:el :concept
    :id :overarch.concepts/command
    :name "Command"
-   :desc ""}
+   :desc "An instruction to perform a specific action or operation within the domain. Part of the solution space."}
 
   ;;
   ;; State Machine
@@ -553,19 +561,19 @@
    :from :overarch.concepts/organization
    :to :overarch.concepts/org-unit
    :name "contains"
-   :desc "describes the units of the organization"}
+   :desc "organizational unit of the organization"}
   {:el :has
    :id :overarch.concepts/org-unit-contains-org-unit
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/org-unit
    :name "contains"
-   :desc "describes the subunits of an organizational unit"}
+   :desc "sub-units of the organizational unit"}
   {:el :rel
    :id :overarch.concepts/person-role-in-org-unit
    :from :overarch.concepts/person
    :to :overarch.concepts/org-unit
    :name "role in"
-   :desc "describes a role in the organizational unit"}
+   :desc "role in the organizational unit"}
 
   ;;
   ;; Process
@@ -575,67 +583,101 @@
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/technical-architecture-node
    :name "responsible for"
-   :desc ""}
+   :desc "organizational unit responsible for the technical architecture node (system, container, component)"}
   {:el :rel
    :id :overarch.concepts/org-unit-responsible-for-capability
    :from :overarch.concepts/org-unit
    :to :overarch.concepts/capability
    :name "responsible for"
-   :desc ""}
+   :desc "organizational unit responsible for the capability"}
   {:el :rel
    :id :overarch.concepts/process-required-for-capability
    :from :overarch.concepts/process
    :to :overarch.concepts/capability
    :name "required for"
-   :desc "describes how the capability is fullfilled"}
+   :desc "process required for the capability"}
   {:el :rel
    :id :overarch.concepts/knowledge-required-for-capability
    :from :overarch.concepts/knowledge
    :to :overarch.concepts/capability
    :name "required for"
-   :desc ""}
+   :desc "knowledge required for the capability"}
   {:el :rel
    :id :overarch.concepts/knowledge-required-for-person
    :from :overarch.concepts/knowledge
    :to :overarch.concepts/person
    :name "required"
-   :desc "to fill the role"}
+   :desc "knowledge required for a role"}
   {:el :rel
    :id :overarch.concepts/technical-architecture-node-required-for-capability
    :from :overarch.concepts/technical-architecture-node
    :to :overarch.concepts/capability
    :name "required for"
-   :desc "describes technical requirements to fullfill the capability"}
+   :desc "technical component required for the capability"}
   {:el :rel
    :id :overarch.concepts/person-role-in-process
    :from :overarch.concepts/person
    :to :overarch.concepts/process
    :name "role in"
-   :desc "describes a personal role in a process"}
+   :desc "personal role in a process"}
   {:el :rel
    :id :overarch.concepts/artifact-input-of-process
    :from :overarch.concepts/artifact
    :to :overarch.concepts/process
    :name "input of"
-   :desc ""}
+   :desc "artifact required by the process"}
   {:el :rel
    :id :overarch.concepts/artifact-output-of-process
    :from :overarch.concepts/artifact
    :to :overarch.concepts/process
    :name "output of"
-   :desc ""}
+   :desc "artifact produced by the process"}
   {:el :rel
    :id :overarch.concepts/information-output-of-process
    :from :overarch.concepts/information
    :to :overarch.concepts/process
    :name "output of"
-   :desc ""}
+   :desc "information produced by the process"}
   {:el :rel
    :id :overarch.concepts/information-required-for-knowledge
    :from :overarch.concepts/information
    :to :overarch.concepts/knowledge
    :name "required for"
-   :desc ""}
+   :desc "information required to gain knowledge"}
+  {:el :rel
+   :id :overarch.concepts/information-required-for-process
+   :from :overarch.concepts/information
+   :to :overarch.concepts/process
+   :name "required for"
+   :desc "information required to fullfill the process"}
+  {:el :rel
+   :id :overarch.concepts/version-version-of-artifact
+   :from :overarch.concepts/version
+   :to :overarch.concepts/artifact
+   :name "version of"
+   :desc "version of an artifact"}
+
+  ;;
+  ;; Domain
+  ;;
+  {:el :rel
+   :id :overarch.concepts/bounded-context-contains-aggregate
+   :from :overarch.concepts/bounded-context
+   :to :overarch.concepts/aggregate
+   :name "contains"
+   :desc "aggregates contained in the bounded context"}
+  {:el :rel
+   :id :overarch.concepts/domain-event-triggers-policy
+   :from :overarch.concepts/domain-event
+   :to :overarch.concepts/policy
+   :name "triggers"
+   :desc "policy triggered by the domain event"}
+  {:el :rel
+   :id :overarch.concepts/policy-triggers-command
+   :from :overarch.concepts/policy
+   :to :overarch.concepts/command
+   :name "triggers"
+   :desc "command triggered by the policy"}
 
   ;;
   ;; Model
