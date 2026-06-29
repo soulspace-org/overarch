@@ -1771,6 +1771,12 @@
    :tags #{"domain-model"}}
 
   {:el :class
+   :id :overarch.data-model/model
+   :name "model"
+   :desc "A representation of a domain that captures the essential aspects. Part of the solution space."
+   :tags #{"domain-model"}}
+
+  {:el :class
    :id :overarch.data-model/aggregate
    :name "aggregate"
    :desc "A cluster of domain objects that can be treated as a single unit for consistency and invariants. Part of the solution space."
@@ -1781,13 +1787,13 @@
    :name "entity"
    :desc "An object that is defined by its identity rather than its attributes. Part of the solution space."
    :tags #{"domain-model"}}
-  
+
   {:el :class
    :id :overarch.concepts/value-object
    :name "value-object"
    :desc "An object that is defined by its attributes rather than its identity. Part of the solution space."
    :tags #{"domain-model"}}
-  
+
   {:el :class
    :id :overarch.data-model/domain-event
    :name "domain-event"
@@ -1849,9 +1855,27 @@
    :tags #{"domain-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/model-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/model
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/aggregate-is-a-domain-model-node
    :to :overarch.data-model/domain-model-node
    :from :overarch.data-model/aggregate
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/entity-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/entity
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/value-object-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/value-object
    :tags #{"domain-model"}}
 
   {:el :inheritance
@@ -1864,6 +1888,12 @@
    :id :overarch.data-model/policy-is-a-domain-model-node
    :to :overarch.data-model/domain-model-node
    :from :overarch.data-model/policy
+   :tags #{"domain-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/command-is-a-domain-model-node
+   :to :overarch.data-model/domain-model-node
+   :from :overarch.data-model/command
    :tags #{"domain-model"}}
 
 
