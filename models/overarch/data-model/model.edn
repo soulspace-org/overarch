@@ -1896,7 +1896,6 @@
    :from :overarch.data-model/command
    :tags #{"domain-model"}}
 
-
   ;;
   ;; Organization Model
   ;;
