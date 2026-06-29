@@ -2,8 +2,10 @@
 
 ## Version (NEXT)
 * adding views for traceability (e.g. instanciation/implementation views)
-* added domain model elements
-* added :container-instance to deployment model
+* added domain model elements for domain-driven design
+  * :domain, :bounded-context, :aggregate, :domain-event, :command and :policy nodes
+  * :triggers relation 
+* added :container-instance node to deployment model
 * added loading of template library namespaces from templates
 * added template library
 * added arc42 templates
