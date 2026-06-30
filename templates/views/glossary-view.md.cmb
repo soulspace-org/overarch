@@ -16,7 +16,7 @@
   (-> e
   :name
   first
-  str/lower-case))
+  str/upper-case))
 
 (let [elements (v/view-elements model e)
       nodes (filterv m/model-node? elements)
@@ -26,7 +26,7 @@
 %># <%= (v/title e) %>
 <%
   (doseq [c chars]
-%>[<%= c %>](#<%= c %>) <%
+%>[<%= c %>](#<%= (str/lower-case c) %>) <%
   )
 %>
 
