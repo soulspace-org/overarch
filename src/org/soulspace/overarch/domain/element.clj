@@ -77,7 +77,7 @@
 ;;
 (def domain-node-types
   "Node types for domain models."
-  #{:domain :bounded-context :aggregate :domain-event :policy :command})
+  #{:domain :bounded-context :aggregate :entity :value-object :domain-event :policy :command})
 
 (def domain-relation-types
   "Relation types for domain models."
@@ -135,7 +135,8 @@
 ;;
 (def responsibility-node-types
   "Node types for responsibility models."
-  (set/union organization-node-types technical-architecture-node-types #{:person :context-boundary}))
+  (set/union organization-node-types technical-architecture-node-types
+             #{:capability :process :regulation :person :context-boundary}))
 
 (def responsibility-relation-types
   "Relation types for responsibility models."
@@ -146,11 +147,12 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:capability :knowledge :information :process :artifact :version :requirement :decision})
+  #{:artifact :capability :control :decision :goal :information :knowledge :process
+    :regulation :requirement :test :version})
 
 (def process-relation-types
   "Node types for process models."
-  #{:role-in :required-for :input-of :output-of :version-of})
+  #{:artifact-of :control-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
 ; :supports :resource-of?
 
 ;; 
@@ -594,12 +596,15 @@
 
       ;;; responsibility model
       ;; responsibility model nodes
+      (derive :capability                        :responsibility-model-node)
       (derive :organization                      :responsibility-model-node)
       (derive :org-unit                          :responsibility-model-node)
       (derive :system                            :responsibility-model-node)
       (derive :container                         :responsibility-model-node)
       (derive :component                         :responsibility-model-node)
       (derive :person                            :responsibility-model-node)
+      (derive :process                           :responsibility-model-node)
+      (derive :regulation                        :responsibility-model-node)
       (derive :context-boundary                  :responsibility-model-node)
       (derive :responsibility-model-node         :responsibility-model-element)
 
@@ -609,23 +614,31 @@
 
       ;;; process model
       ;; process model nodes
-      (derive :capability                        :process-model-node)
-      (derive :knowledge                         :process-model-node)
-      (derive :information                       :process-model-node)
-      (derive :process                           :process-model-node)
       (derive :artifact                          :process-model-node)
-      (derive :version                           :process-model-node)
-      (derive :requirement                       :process-model-node)
+      (derive :capability                        :process-model-node)
+      (derive :control                           :process-model-node)
       (derive :decision                          :process-model-node)
-      ; (derive :test                              :process-model-node)
+      (derive :goal                              :process-model-node)
+      (derive :information                       :process-model-node)
+      (derive :knowledge                         :process-model-node)
+      (derive :process                           :process-model-node)
+      (derive :regulation                        :process-model-node)
+      (derive :requirement                       :process-model-node)
+      (derive :test                              :process-model-node)
+      (derive :version                           :process-model-node) 
       (derive :process-model-node                :process-model-element)
+
       ;; process model relations
-      (derive :role-in                           :process-model-relation)
-      (derive :required-for                      :process-model-relation)
+      (derive :artifact-of                       :process-model-relation)
+      (derive :control-for                       :process-model-relation)
+      (derive :goal-for                          :process-model-relation)
       (derive :input-of                          :process-model-relation)
       (derive :output-of                         :process-model-relation)
+      (derive :regulation-for                    :process-model-relation)
+      (derive :required-for                      :process-model-relation)
+      (derive :role-in                           :process-model-relation)
+      (derive :test-for                          :process-model-relation)
       (derive :version-of                        :process-model-relation)
-      (derive :artifact-of                       :process-model-relation)
       (derive :process-model-relation            :process-model-element)
 
       ;; model nodes
@@ -651,6 +664,8 @@
       (derive :organization-model-relation       :model-relation)
       (derive :process-model-relation            :model-relation)
 
+      ;; generic model relations
+      (derive :instance-of                       :model-relation)
       (derive :implements                        :model-relation)
       (derive :contained-in                      :model-relation)
       (derive :rel                               :model-relation)
