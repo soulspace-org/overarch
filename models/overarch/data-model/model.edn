@@ -1783,13 +1783,13 @@
    :tags #{"domain-model"}}
 
   {:el :class
-   :id :overarch.concepts/entity
+   :id :overarch.data-model/entity
    :name "entity"
    :desc "An object that is defined by its identity rather than its attributes. Part of the solution space."
    :tags #{"domain-model"}}
 
   {:el :class
-   :id :overarch.concepts/value-object
+   :id :overarch.data-model/value-object
    :name "value-object"
    :desc "An object that is defined by its attributes rather than its identity. Part of the solution space."
    :tags #{"domain-model"}}
