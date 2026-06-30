@@ -2150,9 +2150,27 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/artifact-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/artifact
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/artifact-is-a-technical-element
+   :to :overarch.data-model/technical-element
+   :from :overarch.data-model/artifact
+   :tags #{"process-model" "deployment-model"}}
+  
+  {:el :inheritance
    :id :overarch.data-model/capability-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/capability
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/decision-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/decision
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -2174,27 +2192,9 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/artifact-is-a-process-model-node
-   :to :overarch.data-model/process-model-node
-   :from :overarch.data-model/artifact
-   :tags #{"process-model"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/artifact-is-a-technical-element
-   :to :overarch.data-model/technical-element
-   :from :overarch.data-model/artifact
-   :tags #{"process-model" "deployment-model"}}
-
-  {:el :inheritance
    :id :overarch.data-model/requirement-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/requirement
-   :tags #{"process-model"}}
-
-  {:el :inheritance
-   :id :overarch.data-model/decision-is-a-process-model-node
-   :to :overarch.data-model/process-model-node
-   :from :overarch.data-model/decision
    :tags #{"process-model"}}
 
   {:el :inheritance
