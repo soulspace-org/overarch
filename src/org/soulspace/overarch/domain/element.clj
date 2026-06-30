@@ -479,7 +479,7 @@
       (derive :subscribe                         :architecture-model-relation)
       (derive :send                              :architecture-model-relation)
       (derive :dataflow                          :architecture-model-relation)
-      (derive :instance-of                       :architecture-model-relation)
+      ;(derive :instance-of                       :architecture-model-relation)
       (derive :step                              :architecture-model-relation)
       (derive :architecture-model-relation       :architecture-model-element)
 
