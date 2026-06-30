@@ -16,7 +16,7 @@
   (-> e
   :name
   first
-  str/upper-case))
+  str/lower-case))
 
 (let [elements (v/view-elements model e)
       nodes (filterv m/model-node? elements)

@@ -40,7 +40,6 @@
   * event modeling diagram
   * wardley maps (needs a wardley model)
 
-
 ## UI
 * make transitive search accessible from the CLI
 * add option to ignore unresolved nodes in processing
