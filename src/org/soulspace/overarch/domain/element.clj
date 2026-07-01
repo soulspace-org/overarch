@@ -147,12 +147,12 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:artifact :capability :control :decision :goal :information :knowledge :process
+  #{:artifact :capability :constraint :control :decision :goal :information :knowledge :process
     :regulation :requirement :test :version})
 
 (def process-relation-types
   "Node types for process models."
-  #{:artifact-of :control-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
+  #{:artifact-of :constraint-for :control-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
 ; :supports :resource-of?
 
 ;; 
@@ -616,6 +616,7 @@
       ;; process model nodes
       (derive :artifact                          :process-model-node)
       (derive :capability                        :process-model-node)
+      (derive :constraint                        :process-model-node)
       (derive :control                           :process-model-node)
       (derive :decision                          :process-model-node)
       (derive :goal                              :process-model-node)
@@ -630,6 +631,7 @@
 
       ;; process model relations
       (derive :artifact-of                       :process-model-relation)
+      (derive :constraint-for                    :process-model-relation)
       (derive :control-for                       :process-model-relation)
       (derive :goal-for                          :process-model-relation)
       (derive :input-of                          :process-model-relation)

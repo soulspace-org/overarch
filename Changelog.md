@@ -6,8 +6,8 @@
   * :domain, :bounded-context, :aggregate, :entity :value-object, :domain-event, :command and :policy nodes
   * :triggers relation
 * added process model elements
-  * :control, :goal, :regulation and :test nodes
-  * :control-for, :goal-for, :regulation-for and :test-for relations
+  * :constraint, :control, :goal, :regulation and :test nodes
+  * :constraint-for, :control-for, :goal-for, :regulation-for and :test-for relations
 * added :container-instance node to deployment model
 * added loading of template library namespaces from templates
 * added template library

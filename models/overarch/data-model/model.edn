@@ -2042,9 +2042,39 @@
    :tags #{"process-model"}}
 
   {:el :class
+   :id :overarch.data-model/artifact
+   :name "artifact"
+   :desc "An artifact in the process model"
+   :tags #{"process-model" "deployment-model"}}
+
+  {:el :class
    :id :overarch.data-model/capability
    :name "capability"
    :desc "A capability in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/constraint
+   :name "constraint"
+   :desc "A constraint in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/control
+   :name "control"
+   :desc "A control in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/decision
+   :name "decision"
+   :desc "An decision in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/goal
+   :name "goal"
+   :desc "An goal in the process model"
    :tags #{"process-model"}}
 
   {:el :class
@@ -2066,22 +2096,22 @@
    :tags #{"process-model"}}
 
   {:el :class
+   :id :overarch.data-model/regulation
+   :name "regulation"
+   :desc "A regulation in the process model"
+   :tags #{"process-model"}}
+
+  {:el :class
    :id :overarch.data-model/requirement
    :name "requirement"
    :desc "A requirement in the process model"
    :tags #{"process-model"}}
 
   {:el :class
-   :id :overarch.data-model/decision
-   :name "decision"
-   :desc "An decision in the process model"
+   :id :overarch.data-model/test
+   :name "test"
+   :desc "A test in the process model"
    :tags #{"process-model"}}
-
-  {:el :class
-   :id :overarch.data-model/artifact
-   :name "artifact"
-   :desc "An artifact in the process model"
-   :tags #{"process-model" "deployment-model"}}
 
   {:el :class
    :id :overarch.data-model/version
@@ -2160,7 +2190,7 @@
    :to :overarch.data-model/technical-element
    :from :overarch.data-model/artifact
    :tags #{"process-model" "deployment-model"}}
-  
+
   {:el :inheritance
    :id :overarch.data-model/capability-is-a-process-model-node
    :to :overarch.data-model/process-model-node
