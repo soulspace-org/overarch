@@ -230,13 +230,15 @@
 (def deployment-view-element-types
   "Element types of a C4 deployment view."
   (set/union deployment-node-types
-             deployment-relation-types))
+             deployment-relation-types
+             #{:ref}))
 
 (def deployment-architecture-view-element-types
   "Element types of a C4 deployment view with system architecture elements."
   (set/union deployment-node-types 
              deployment-relation-types
-             container-view-element-types))
+             container-view-element-types
+             #{:ref}))
 
 (def dynamic-view-element-types
   "Element types of a C4 dynamic view."
