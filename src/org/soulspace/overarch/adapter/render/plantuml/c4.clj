@@ -6,7 +6,8 @@
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.application.render :as render]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
-            [org.soulspace.overarch.util.functions :as fns]))
+            [org.soulspace.overarch.util.functions :as fns]
+            [clojure.set :as set]))
 
 (def c4-element->method
   "Map from element type to PlantUML C4 method."
@@ -202,7 +203,9 @@
 (defmethod render-c4-element :node
   [model view indent e]
   (let [children (model/children model e)    ; selects the child nodes
-        deployed (model/referring-nodes model e {:el :deployed-to}) ; selects the deployed technical architecture nodes
+        ; selects the deployed elements that are rendered in the view, e.g. containers and artifacts
+        deployed (set/intersection (model/referring-nodes model e {:el :deployed-to})
+                                   (view/rendered-elements model view))
         content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
     (if (and (seq content) (not (el/collapsed? e)))
