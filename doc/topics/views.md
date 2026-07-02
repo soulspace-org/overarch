@@ -173,9 +173,11 @@ key        | type    | values                   | description
 :collapsed | boolean | true, false              | if true, don't render children of the element 
 
 # Relation Keys
-key        | type    | values                    | description 
------------|---------|---------------------------|------------
-:direction | keyword | :left, :right, :up, :down | hint on the direction of the relation
+key         | type    | values                    | description 
+------------|---------|---------------------------|------------
+:direction  | keyword | :left, :right, :up, :down | hint on the direction of the relation
+:reverse    | boolean | true, false               | if true, the direction will be reversed (C4 diagrams)
+:constraint | boolean | true, false               | if true, the relation acts as a hint and will not be rendered (C4 diagrams) 
 
 ### Selection
 With the `:selection` key a criteria map or a vector of criterias can be specified.
