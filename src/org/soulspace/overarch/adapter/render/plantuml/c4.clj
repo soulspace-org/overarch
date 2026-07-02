@@ -204,8 +204,8 @@
   [model view indent e]
   (let [children (model/children model e)    ; selects the child nodes
         ; selects the deployed elements that are rendered in the view, e.g. containers and artifacts
-        deployed (set/intersection (model/referring-nodes model e {:el :deployed-to})
-                                   (view/rendered-elements model view))
+        deployed (set/intersection (set (model/referring-nodes model e {:el :deployed-to}))
+                                   (set (view/rendered-elements model view)))
         content (concat (view/elements-to-render model view children)
                          (view/elements-to-render model view deployed))]
     (if (and (seq content) (not (el/collapsed? e)))
