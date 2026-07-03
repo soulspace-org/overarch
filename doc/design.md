@@ -1,9 +1,9 @@
 # Design
 
 ## Situation
-When you architecture diagrams with the C4 models and PlantUML, the various diagrams contain duplicate model information and there isn't a single model description. Changes are made in specific diagrams and are missing from others.
+When you create architecture diagrams, e.g. with drawing tools or PlantUML, the various diagrams contain duplicate model information and there isn't a single model description. Changes are made in specific diagrams and are missing from others.
 
-The DSL of C4/PlantUML is not very consistent and errors are rendered
+Also the DSL of C4/PlantUML is not very consistent and errors are rendered
 in the generated image and are often not very helpful. On the other hand,
 PlantUML in combination with GraphViz is a pragmatic option to generate
 C4 architecture diagrams.
