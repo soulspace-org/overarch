@@ -12,7 +12,6 @@ Therefore a model description as data and views specification based on this mode
 as pure data would also solve the problem of DSL parsers and would make the
 model information reusable.
 
-
 ### Existing Tools
 * [C4 PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
   * C4 standard library for PlantUML
