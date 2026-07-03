@@ -1,7 +1,8 @@
 ;;;;
 ;;;; Logical Data Model of Overarch
 ;;;;
-#{;;;
+#{;
+  ;;;
   ;;; Abstract types
   ;;; 
   {:el :class
@@ -129,10 +130,22 @@
    :desc "A trace relation from an implementation to its definition."
    :tags #{"trace-model"}}
 
+  {:el :class
+   :id :overarch.data-model/instance-of
+   :name "instance-of"
+   :desc "An element is an instance of another element."
+   :tags #{"trace-model"}}
+
   {:el :inheritance
    :id :overarch.data-model/implements-is-a-model-relation
    :to :overarch.data-model/model-relation
    :from :overarch.data-model/implements
+   :tags #{"trace-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/instance-of-is-a-model-relation
+   :to :overarch.data-model/model-relation
+   :from :overarch.data-model/instance-of
    :tags #{"trace-model"}}
 
   ;;
@@ -402,12 +415,6 @@
    :id :overarch.data-model/subscribe
    :name "subscribe"
    :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."
-   :tags #{"architecture-model"}}
-
-  {:el :class
-   :id :overarch.data-model/instance-of
-   :name "instance-of"
-   :desc "An element is an instance of another element."
    :tags #{"architecture-model"}}
 
   ;; Architecture Model Relations
@@ -2120,6 +2127,30 @@
    :tags #{"process-model" "deployment-model"}}
 
   {:el :class
+   :id :overarch.data-model/artifact-of
+   :name "artifact-of"
+   :desc "A relation between artifacts and other process or deployment model nodes."
+   :tags #{"process-model" "deployment-model"}}
+
+  {:el :class
+   :id :overarch.data-model/constraint-for
+   :name "constraint-for"
+   :desc "A relation between constraint and other elements."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/control-for
+   :name "control-for"
+   :desc "A relation between control and other elements."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/goal-for
+   :name "goal-for"
+   :desc "A relation between goal and other elements."
+   :tags #{"process-model"}}
+
+  {:el :class
    :id :overarch.data-model/input-of
    :name "input-of"
    :desc "A relation between artifacts, information or knowledge and processes."
@@ -2132,9 +2163,21 @@
    :tags #{"process-model"}}
 
   {:el :class
+   :id :overarch.data-model/regulation-for
+   :name "regulation-for"
+   :desc "A relation between regulation and other elements."
+   :tags #{"process-model"}}
+
+  {:el :class
    :id :overarch.data-model/required-for
    :name "required-for"
    :desc "A relation between other nodes and capabilities."
+   :tags #{"process-model"}}
+
+  {:el :class
+   :id :overarch.data-model/test-for
+   :name "test-for"
+   :desc "A relation between a test and other elements."
    :tags #{"process-model"}}
 
   {:el :class
@@ -2142,12 +2185,6 @@
    :name "version-of"
    :desc "A relation between versions and artifacts."
    :tags #{"process-model"}}
-
-  {:el :class
-   :id :overarch.data-model/artifact-of
-   :name "artifact-of"
-   :desc "A relation between artifacts and other process or deployment model nodes."
-   :tags #{"process-model" "deployment-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/process-model-node-is-a-model-node
@@ -2198,9 +2235,27 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/constraint-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/constraint
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/control-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/control
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/decision-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/decision
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/goal-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/goal
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -2222,9 +2277,51 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/regulation-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/regulation
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/requirement-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/requirement
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/test-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/test
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/version-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/version
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/artifact-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/artifact-of
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/constraint-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/constraint-for
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/control-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/control-for
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/goal-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/goal-for
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -2240,15 +2337,21 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/regulation-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/regulation-for
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/required-for-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
    :from :overarch.data-model/required-for
    :tags #{"process-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/role-in-is-a-process-model-relation
+   :id :overarch.data-model/test-for-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
-   :from :overarch.data-model/role-in
+   :from :overarch.data-model/test-for
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -2258,9 +2361,9 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
-   :id :overarch.data-model/artifact-of-is-a-process-model-relation
+   :id :overarch.data-model/role-in-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
-   :from :overarch.data-model/artifact-of
+   :from :overarch.data-model/role-in
    :tags #{"process-model"}}
 
   ;;
