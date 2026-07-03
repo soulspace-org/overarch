@@ -1,6 +1,6 @@
 # Changelog
 
-## Version (NEXT)
+## Version 0.42.0
 * adding views for traceability (e.g. instanciation/implementation views)
 * added domain model elements for domain-driven design
   * :domain, :bounded-context, :aggregate, :entity :value-object, :domain-event, :command and :policy nodes
