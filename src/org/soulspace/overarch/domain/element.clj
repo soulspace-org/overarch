@@ -152,7 +152,7 @@
 
 (def process-relation-types
   "Node types for process models."
-  #{:artifact-of :constraint-for :control-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
+  #{:artifact-of :constraint-for :control-for :decision-for :goal-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
 ; :supports :resource-of?
 
 ;; 

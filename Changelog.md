@@ -1,5 +1,9 @@
 # Changelog
 
+## Version (0.42.1)
+* fix :goal-for relation
+* add :decision-for relation
+
 ## Version 0.42.0
 * adding views for traceability (e.g. instanciation/implementation views)
 * added domain model elements for domain-driven design
