@@ -1,8 +1,121 @@
 ;;;;
 ;;;; Architecture Model of the Overarch System
 ;;;;
-#{;;;
-  ;;; Architecture Model Elements
+#{;
+
+  ;;;
+  ;;; Process Elements
+  ;;;
+
+  ;; Nodes
+  {:el :goal
+   :id :overarch.architecture.goal/knowledge-models
+   :priority 1
+   :name "Knowledge Models"
+   :desc "An Overarch model shall capture architectural knowledge on different levels (e.g. enterprise, business, system, code, deployment)."
+   :doc "The central goal for Overarch is to provide a facility to capturing architectural knowledge."}
+
+  {:el :goal
+   :id :overarch.architecture.goal/open-models
+   :priority 2
+   :name "Open Models"
+   :desc "The the models shall be open and accessible for other tools"}
+
+  {:el :goal
+   :id :overarch.architecture.goal/composeable-models
+   :priority 2
+   :name "Composeable Models"
+   :desc "Models from different sources can be composed to form a larger model."}
+
+  {:el :goal
+   :id :overarch.architecture.goal/queryably-models
+   :priority 2
+   :name "Queryable Models"
+   :desc "Model can be queried to answer specific questions or to select a specific subset of the model."}
+
+  {:el :goal
+   :id :overarch.architecture.goal/extensible-model-elements
+   :priority 2
+   :name "Extensible Models"
+   :desc "Model elements are open and can be extended with additional information."}
+
+  {:el :decision
+   :id :overarch.architecture.decision/implementation-language
+   :idx 1
+   :name "Implementation Language"
+   :desc "What language should be used to implement Overarch?"
+   :doc ""}
+
+  {:el :decision
+   :id :overarch.architecture.decision/implementation-architecture
+   :idx 2
+   :name "Implementation Architecture"
+   :desc "What is the implementation architecture for Overarch?"
+   :doc ""}
+
+  {:el :decision
+   :id :overarch.architecture.decision/data-representation
+   :idx 3
+   :name "Internal Data Representation"
+   :desc "What is the internal representation of the model?"
+   :doc ""}
+
+  {:el :decision
+   :id :overarch.architecture.decision/data-format
+   :idx 4
+   :name "Data Format for Models"
+   :desc "Which external data format for the model?"
+   :doc ""}
+
+  {:el :requirement
+   :id :overarch.architecture.requirement/namespaced-ids
+   :name "Namespaced IDs for Overarch elements"
+   :desc "For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models."}
+
+  ;; Relations
+  {:el :goal-for
+   :from :overarch.architecture.goal/knowledge-modeling
+   :to :overarch.architecture/overarch
+   :name "goal for"}
+
+  {:el :goal-for
+   :to :overarch.architecture/overarch
+   :from :overarch.architecture.goal/open-models
+   :name "goal for"}
+
+  {:el :goal-for
+   :from :overarch.architecture.goal/composeable-models
+   :to :overarch.architecture/overarch
+   :name "goal for"}
+
+  {:el :goal-for
+   :from :overarch.architecture.goal/queryably-models
+   :to :overarch.architecture/overarch
+   :name "goal for"}
+
+  {:el :goal-for
+   :from :overarch.architecture.goal/extensible-model-elements
+   :to :overarch.architecture/overarch
+   :name "goal for"}
+
+  {:el :decision-for
+   :from :overarch.architecture.decision/implementation-language
+   :to :overarch.architecture/overarch}
+
+  {:el :decision-for
+   :from :overarch.architecture.decision/data-representation
+   :to :overarch.architecture/overarch}
+
+  {:el :decision-for
+   :from :overarch.architecture.decision/data-format
+   :to :overarch.architecture/overarch}
+
+  {:el :decision-for
+   :from :overarch.architecture.decision/implementation-architecture
+   :to :overarch.architecture/overarch}
+
+  ;;;
+  ;;; Architecture Elements
   ;;;
 
   ;;

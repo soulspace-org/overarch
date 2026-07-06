@@ -7,3 +7,11 @@
 (require '[lib.markdown :as md])
 
 ?># Introduction and Goals
+
+<?
+; TODO use protected areas for hand written content?
+?>
+
+<?
+; TODO add table of goals, selected with criteria and sorted by priority
+?>
