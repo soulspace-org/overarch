@@ -898,6 +898,11 @@
   [e]
   (contains? view-types (:el e)))
 
+(defn view-spec?
+  "Returns true if the given element `e` is a view-spec."
+  [e]
+  (= :view-spec (:el e)))
+
 (defn hierarchical-view?
   "Returns true if the given element `e` is a hierarchical view."
   [e]

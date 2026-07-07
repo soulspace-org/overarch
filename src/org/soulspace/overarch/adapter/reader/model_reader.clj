@@ -99,6 +99,7 @@
    {:nodes #{}
     :relations #{}
     :views #{}
+    :view-specs #{}
     :themes #{}
     :id->element {}
     :id->parent-id {}
@@ -111,6 +112,7 @@
    {:nodes (set/union (:nodes model) (:nodes other-model))
     :relations (set/union (:relations model) (:relations other-model))
     :views (set/union (:views model) (:views other-model))
+    :view-specs (set/union (:view-specs model) (:view-specs other-model))
     :themes (set/union (:themes model) (:themes other-model))
     :id->element (merge (:id->element model) (:id->element other-model))
     :id->parent-id (merge (:id->parent-id model) (:id->parent-id other-model))

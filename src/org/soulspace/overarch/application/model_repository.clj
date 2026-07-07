@@ -102,6 +102,13 @@
   ([model]
    (model/themes model)))
 
+(defn view-specs
+  "Returns the set of view specs."
+  ([]
+   (view-specs (model)))
+  ([model]
+   (model/view-specs model)))
+
 (defn view-by-id
   "Returns the view with the given `id`."
   ([id]

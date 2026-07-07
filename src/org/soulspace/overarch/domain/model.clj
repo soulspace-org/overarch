@@ -280,6 +280,11 @@
   [model]
   (:views model))
 
+(defn view-specs
+  "Returns the set of view specs from the `model`."
+  [model]
+  (:view-specs model))
+
 (defn themes
   "Returns the set of themes from the `model`."
   [model]

@@ -335,7 +335,22 @@ The input model is transformed by
            :build-problems
            (concat (:build-problems acc) problems))))
 
-; TODO update views in model building by promoting keys from spec to views 
+(defn add-view-spec
+  "Update the accumulator `acc` of the model with the view `e`
+   in the context of the parent `p` (if given)."
+  [acc p e]
+  ;; view spec
+  (let [problems (remove nil? (check-element acc e))]
+    (assoc acc
+           :view-specs
+           (conj (:view-specs acc) e)
+           
+           :id->element
+           (assoc (:id->element acc) (:id e) e)
+
+           :build-problems
+           (concat (:build-problems acc) problems))))
+
 (defn add-view
   "Update the accumulator `acc` of the model with the view `e`
    in the context of the parent `p` (if given)."
@@ -370,6 +385,10 @@ The input model is transformed by
     (el/view? e)
     (add-view acc p e)
 
+    ;; views
+    (el/view-spec? e)
+    (add-view-spec acc p e)
+
     ;; references
     (el/reference? e)
     (add-reference acc p e)
@@ -389,6 +408,7 @@ The input model is transformed by
    [{:nodes #{}
      :relations #{}
      :views #{}
+     :view-specs #{}
      :themes #{}
      :id->element {}
      :id->parent-id {}
