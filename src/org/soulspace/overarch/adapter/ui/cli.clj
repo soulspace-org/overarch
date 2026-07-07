@@ -276,20 +276,20 @@
 
   (model-info (reader/update-state! (merge
                                      default-options
-                                     {:model-dir "models/banking:models/overarch"}))
+                                     {:model-dir "examples/banking:models/overarch"}))
               {:model-info true})
   (reader/update-state! (merge
                          default-options
-                         {:model-dir "models/banking"}))
+                         {:model-dir "examples/banking"}))
   (reader/update-state! (merge
                          default-options
                          {:model-dir "models/overarch"}))
   (reader/update-state! (merge
                          default-options
-                         {:model-dir "models/test/collapsed"}))
+                         {:model-dir "examples/test/collapsed"}))
   (reader/update-state! (merge
                          default-options
-                         {:model-dir "models/test/sprite-issue"}))
+                         {:model-dir "examples/test/sprite-issue"}))
   (reader/update-state! (merge
                          default-options
                          {:model-dir "../my-bank-model/models/"}))
@@ -442,8 +442,7 @@
     (view/rendered-elements (repo/model) view))
   rendered-new
 
-  (require '[org.soulspace.overarch.adapter.render.plantuml :as plantuml])  
-  (plantuml/plantuml-view? view)
+  (puml/plantuml-view? view)
 
   (render/render-view (repo/model)
                       :plantuml
@@ -534,7 +533,7 @@
   (-main "--debug" "--render-format" "all")
   (-main "--debug" "--render-format" "all" "--no-render-format-subdirs")
   (-main "--debug" "--export-format" "json")
-  (-main "--model-dir" "models/banking" "--export-format" "structurizr")
+  (-main "--model-dir" "examples/banking" "--export-format" "structurizr")
   (-main "--model-info")
   (-main "--no-model-warnings")
   (-main "--plantuml-list-sprites")
