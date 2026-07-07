@@ -16,81 +16,153 @@
 ;;;
 ;;; Config data for views (TODO read from classpath or fs)
 ;;;
-(def view-config
-  {:context-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                 :system :person}}
-                  :relations {:els #{:request :response :publish
-                                     :subscribe :send :dataflow}}
-                  :hierarchical? true}
-   :container-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                   :system :container :person}}
-                    :relations {:els #{:request :response :publish
-                                       :subscribe :send :dataflow}
-                                :!to {:el :system :children? true :external? false}
-                                :!from {:el :system :children? true :external? false}}
-                    :as-boundary {:el :system :external? false}
-                    :hierarchical? true}
-   :component-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                   :system :container :component :person}}
-                    :relations {:els #{:request :response :publish
-                                       :subscribe :send :dataflow}}
-                    :as-boundary {:els #{:system :container} :external? false}
-                    :hierarchical? true}
-   :system-structure-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                          :system :container :component :person}}
-                           :relations {:els #{:request :response :publish
-                                              :subscribe :send :dataflow}}
-                           :hierarchical? true}
-   :system-landscape-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                          :system :person}}
-                           :relations {:els #{:request :response :publish
-                                              :subscribe :send :dataflow}}
-                           :hierarchical? true}
-   :dynamic-view {:nodes {:els #{:enterprise-boundary :context-boundary
-                                 :system :container :component :person}}
-                  :relations {:els #{:step}}}
-   :deployment-view {:nodes {:els #{:node :container :artifact}}
-                     :relations {:els #{:link :deployed-to}}
-                     :hierarchical? true}
-   :deployment-architecture-view {:nodes {:els #{:node :system :container :artifact}}
-                                  :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
-                                  :hierarchical? true}
-   :deployment-structure-view {:nodes {:els #{:node :container}}
-                               :relations {:els #{:link :deployed-to}}
-                               :hierarchical? true}
-   :code-view {:nodes {:els #{:annotation :class :enum :enum-value
-                              :field :function :interface :method
-                              :namespace :package :parameter
-                              :protocol :stereotype}}
-               :relations {:els #{:aggregation :association :composition
-                                  :dependency :implementation :inheritance}}
-               :hierarchical? true}
-   :state-machine-view {:nodes {:els #{:state-machine :start-state :end-state
-                                       :state :fork :join :choice
-                                       :history-state :deep-history-state}}
-                        :relations {:els #{:transition}}
-                        :hierarchical? true}
-   :use-case-view {:nodes {:els #{:use-case :actor :person :system :container
-                                  :context-boundary}}
-                   :relations {:els #{:uses :include :extends :generalizes}}}
-   :concept-view {:nodes {:els #{:concept}}
-                  :relations {:els #{:is-a :has :part-of :rel}}}
-   :glossary-view {:nodes {:els #{:concept :person :system :container
-                                  :organization
-                                  :enterprise-boundary :context-boundary}}
-                   :relations {:els #{:is-a :has :part-of :rel}}}
-   :organization-structure-view {:nodes {:els #{:organization :org-unit}}
-                                 :relations {:els #{:collaborates-with}}
-                                 :hierarchical? true}
-   :process-view {:nodes {:els #{:capability :knowledge :information :process
-                                 :artifact :requirement :decision}}
-                  :relations {:els #{:role-in :required-for :input-of :output-of}}}
-   :domain-view {:nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
-                  :relations {:els #{:triggers}}}
-   :model-view {:nodes {:model-node? true}
-                :relations {:model-relation? true}}
-           ;
-   })
+(def view-specs
+  [{:el :view-spec
+    :id :context-view
+    :name "Context View"
+    :desc "shows the system as a black box in its environment, with its users, systems and other external entities."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :container-view
+    :name "Container View"
+    :desc "shows the system as a set of containers and interactions."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}
+                :!to {:el :system :children? true :external? false}
+                :!from {:el :system :children? true :external? false}}
+    :as-boundary {:el :system :external? false}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :component-view
+    :name "Component View"
+    :desc "shows the containers as a set of components and interactions."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :component :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :as-boundary {:els #{:system :container} :external? false}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :system-structure-view
+    :name "System Structure View"
+    :desc "shows the structrural decomposition of a system."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :component :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :system-landscape-view
+    :name "System Landscape View"
+    :desc "shows the system landscape with all systems and their interactions."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :dynamic-view
+    :name "Dynamic View"
+    :desc "shows the interactions between elements in a sequence of steps."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :component :person}}
+    :relations {:els #{:step}}}
+   {:el :view-spec
+    :id :deployment-view
+    :name "Deployment View"
+    :desc "shows the deployment of containers and artifacts to nodes."
+    :nodes {:els #{:node :container :artifact}}
+    :relations {:els #{:link :deployed-to}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :deployment-architecture-view
+    :name "Deployment Architecture View"
+    :desc "shows the deployment of containers and artifacts to nodes, also shows the interactions."
+    :nodes {:els #{:node :system :container :artifact}}
+    :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :deployment-structure-view
+    :name "Deployment Structure View"
+    :desc "shows the structural decomposition of the deployment of nodes, containers and artifacts."
+    :nodes {:els #{:node :container}}
+    :relations {:els #{:link :deployed-to}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :code-view
+    :name "Code View"
+    :desc "shows the code structure of the system, e.g. classes, interfaces, methods, functions, etc."
+    :nodes {:els #{:annotation :class :enum :enum-value
+                   :field :function :interface :method
+                   :namespace :package :parameter
+                   :protocol :stereotype}}
+    :relations {:els #{:aggregation :association :composition
+                       :dependency :implementation :inheritance}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :state-machine-view
+    :name "State Machine View"
+    :desc "shows the state machine of a system, container, component or class."
+    :nodes {:els #{:state-machine :start-state :end-state
+                   :state :fork :join :choice
+                   :history-state :deep-history-state}}
+    :relations {:els #{:transition}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :use-case-view
+    :name "Use Case View"
+    :desc "shows the use cases of a system and their interactions with actors."
+    :nodes {:els #{:use-case :actor :person :system :container
+                   :context-boundary}}
+    :relations {:els #{:uses :include :extends :generalizes}}}
+   {:el :view-spec
+    :id :concept-view
+    :name "Concept View"
+    :desc "shows the concepts of a domain and their relationships."
+    :nodes {:els #{:concept}}
+    :relations {:els #{:is-a :has :part-of :rel}}}
+   {:el :view-spec
+    :id :glossary-view
+    :name "Glossary View"
+    :desc "shows the glossary for a domain."
+    :nodes {:els #{:concept :person :system :container
+                   :organization
+                   :enterprise-boundary :context-boundary}}
+    :relations {:els #{:is-a :has :part-of :rel}}}
+   {:el :view-spec
+    :id :organization-structure-view
+    :name "Organization Structure View"
+    :desc "shows the organizational structure of an enterprise."
+    :nodes {:els #{:organization :org-unit}}
+    :relations {:els #{:collaborates-with}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :process-view
+    :name "Process View"
+    :desc "shows the process related elements of a domain."
+    :nodes {:els #{:capability :knowledge :information :process
+                   :artifact :requirement :decision}}
+    :relations {:els #{:role-in :required-for :input-of :output-of}}}
+   {:el :view-spec
+    :id :domain-view
+    :name "Domain View"
+    :desc "shows the design of a domain."
+    :nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
+    :relations {:els #{:triggers}}}
+   {:el :view-spec
+    :id :model-view
+    :name "Model View"
+    :desc "shows the complete model of a domain."
+    :nodes {:model-node? true}
+    :relations {:model-relation? true}}
+   ;
+   ])
 
 ;;;
 ;;; Functions based on view configurations

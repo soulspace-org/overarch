@@ -684,7 +684,6 @@ structure of the data model Overarch cares about and acts on.
 
 ![Data Model of Overarch](/doc/images/overarch/data-model/data-model.svg)
 
-
 ### Remarks
 Abstract elements in the logical data model, denoted by the (A) in the class,
 are just a way to structure the logical data model and to reduce redundancy
