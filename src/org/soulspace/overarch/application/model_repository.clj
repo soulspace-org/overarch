@@ -1,9 +1,6 @@
 (ns org.soulspace.overarch.application.model-repository
-  (:require [clojure.set :as set]
-            [clojure.string :as str]
-            [org.soulspace.overarch.domain.element :as el]
-            [org.soulspace.overarch.domain.model :as model]
-            [org.soulspace.overarch.domain.spec :as spec]))
+  (:require [org.soulspace.overarch.domain.element :as el]
+            [org.soulspace.overarch.domain.model :as model]))
 
 ;;;
 ;;; Repository functions
@@ -80,34 +77,28 @@
   [criteria]
     (model/model-elements-by-criteria (model) criteria))
 
-(defn views-by-criteria
-  "Returns a set of model elements that match the `criteria`"
-  [criteria]
-  (model/views-by-criteria (model) criteria))
-
-;;;
-;;; TODO move the model parameter versions to domain/model.clj and delegate to them with the model from state
-;;;
-(defn views
-  "Returns the set of views."
-  ([]
-   (views (model)))
-  ([model]
-   (model/views model)))
-
-(defn themes
-  "Returns the set of themes."
-  ([]
-   (themes (model)))
-  ([model]
-   (model/themes model)))
-
 (defn view-specs
   "Returns the set of view specs."
   ([]
    (view-specs (model)))
   ([model]
    (model/view-specs model)))
+
+(defn view-spec-by-id
+  "Returns the view spec with the given `id`."
+  ([id]
+   (view-spec-by-id (model) id))
+  ([model id]
+   (when-let [el (get (:id->element model) id)]
+     (when (el/view-spec? el)
+       el))))
+
+(defn views
+  "Returns the set of views."
+  ([]
+   (views (model)))
+  ([model]
+   (model/views model)))
 
 (defn view-by-id
   "Returns the view with the given `id`."
@@ -119,10 +110,16 @@
        el))))
 
 (defn views-by-criteria
-  "Returns a set of views that match the `criteria`"
+  "Returns a set of model elements that match the `criteria`"
   [criteria]
-    (into #{} (model/filter-xf @state criteria)
-          (views)))
+  (model/views-by-criteria (model) criteria))
+
+(defn themes
+  "Returns the set of themes."
+  ([]
+   (themes (model)))
+  ([model]
+   (model/themes model)))
 
 (defn theme-by-id
   "Returns the theme with the given `id`."
@@ -137,6 +134,7 @@
   (count (nodes))
   (count (relations))
   (count (views))
+  (count (view-specs))
   (count (themes))
   ;
   )
