@@ -8,6 +8,13 @@
 (require '[lib.text :as t])
 (require '[lib.markdown :as md])
 
+(let [goals []
+      constraints []
+      quality-reqs []
+      adrs []
+      risks []
+      tech-depts []]
+
 %>
 # Architecture Documentation for <%= (:name e) %>
 <%= (:desc e) %>
@@ -101,3 +108,7 @@
 ## Risk and Technical Dept
 
 ## Glossary
+
+<%
+) ; end of let
+%>
