@@ -247,6 +247,11 @@
   ([model e criteria]
    (model/referred-relations model e criteria)))
 
+(defn model-elements-by-criteria
+  "Returns a set of model elements that match the `criteria`"
+  [model criteria]
+  (model/model-elements-by-criteria model criteria))
+
 ;;
 ;; Architecture model navigation
 ;;
@@ -368,18 +373,18 @@
 
 ;; TODO rename or replace with more general functions
 #_(defn synchronously-coupled
-  "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
-  [model e]
-  (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
-       (filter #(contains? #{:request} (:el %)))
+    "Returns the nodes in the `model` on which `e` is dependent on via a synchronous request relation."
+    [model e]
+    (->> (get (:referrer-id->relations model) (:id (resolve-element model e)))
+         (filter #(contains? #{:request} (:el %)))
        ;(map #(resolve-element model (:to %)))
-       (map :to)))
+         (map :to)))
 
 #_(defn requested-nodes-resolver
-  "Returns a resolver function for dependent nodes in the `model`."
-  [model]
-  (fn [e]
-    (requested-nodes model e)))
+    "Returns a resolver function for dependent nodes in the `model`."
+    [model]
+    (fn [e]
+      (requested-nodes model e)))
 
 ;;
 ;; Code model navigation
