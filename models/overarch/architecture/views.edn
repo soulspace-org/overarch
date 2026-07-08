@@ -7,6 +7,7 @@
   {:el :context-view
    :id :overarch.architecture/overarch-context-view
    :spec {:selection {:namespace-prefix "overarch"}}
+   :name "Overarch Context View"
    :title "Context View of Overarch"
    :desc "Gives a high level overview of the roles, systems and their interactions"
    :ct []}
@@ -14,18 +15,21 @@
   {:el :container-view
    :id :overarch.architecture/overarch-container-view
    :spec {:selection {:namespace-prefix "overarch"}}
+   :name "Overarch Container View"
    :title "Container View of Overarch"
    :ct []}
 
   {:el :component-view
    :id :overarch.architecture/overarch-component-view
    :spec {:selection {:namespace-prefix "overarch"}}
+   :name "Overarch Component View"
    :title "Component View of Overarch"
    :ct []}
 
   {:el :system-structure-view
    :id :overarch.architecture/system-structure-view
    :spec {:selection {:namespace-prefix "overarch" :external? false}}
+   :name "Overarch System Structure View"
    :title "System Structure View of Overarch"
    :desc "Shows the structure of the Overarch systems."
    :ct []}

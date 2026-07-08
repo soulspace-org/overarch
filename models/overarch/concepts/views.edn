@@ -6,5 +6,6 @@
    :id :overarch.concepts/concept-view
    :spec {:selection {:namespace-prefix "overarch.concepts"}}
    :name "Concept Map for Overarch"
+   :title "Concept Map of Overarch"
    :desc "Contains the relevant concepts for overarch."}  
 }
