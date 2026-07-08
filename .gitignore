@@ -27,8 +27,8 @@ bin/
 hs_err_pid*.log
 
 ## Project
-backup/
+/backup/
 /docs/
-export/
-generated/
+/export/
+/generated/
 
