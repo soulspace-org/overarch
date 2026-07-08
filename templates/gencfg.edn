@@ -87,7 +87,8 @@
   :per-element true
   :id-as-name true
   :suffix "_architecture"
-  :extension "md"}
+  :extension "md"
+  :protected-area "PA"}
 
  ;;;
  ;;; Markdown Reports

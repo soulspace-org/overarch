@@ -17,7 +17,6 @@ composable and reusable.
 [![cljdoc badge](https://cljdoc.org/badge/org.soulspace.clj/overarch)](https://cljdoc.org/d/org.soulspace.clj/overarch)
 ![GitHub](https://img.shields.io/github/license/soulspace-org/overarch)
 
-
 ## Features
 * Models to capture architecture on different levels
   * Concepts, use cases, architecture, state machines, code, deployments, organization structures and processes
