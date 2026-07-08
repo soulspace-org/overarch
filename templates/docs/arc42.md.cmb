@@ -11,9 +11,9 @@
 (let [implements (m/referred-nodes model e {:el :implements})
       implemented-by (m/referring-nodes model e {:el :implements})
       goals (m/select-model-elements model {:el :goal})
-      architecture-constraints (m/select-model-elements model {:el :constraint})
-      quality-requirements (m/select-model-elements model {:el :requirement})
-      architecture-decisions (m/select-model-elements model {:el :decision})
+      architecture-constraints (m/select-model-elements model {:el :constraint :tags #{"architecture"}})
+      quality-requirements (m/select-model-elements model {:el :requirement :tags #{"quality"}})
+      architecture-decisions (m/select-model-elements model {:el :decision :tags #{"architecture"}})
       risks []
       technical-depts []]
 
@@ -36,6 +36,8 @@
 1. [Glossary](#glossary)
 
 ## Introduction and Goals
+<!-- PA-BEGIN(Introduction) -->
+<!-- PA-END(Introduction) -->
 
 <%
   (when (seq goals)
@@ -68,7 +70,14 @@
     )
 %>
 
+### Scope
+<!-- PA-BEGIN(Scope) -->
+<!-- PA-END(Scope) -->
+
+
 ## Solution Strategy
+<!-- PA-BEGIN(SolutionStrategy) -->
+<!-- PA-END(SolutionStrategy) -->
 
 
 ## Building Blocks
@@ -101,6 +110,8 @@
 %>
 
 ## Crosscutting Concepts
+<!-- PA-BEGIN(CrosscuttingConcepts) -->
+<!-- PA-END(CrosscuttingConcepts) -->
 
 
 ## Architecture Decisions
