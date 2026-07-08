@@ -13,18 +13,18 @@
 <%= (:desc e) %>
 
 ## Table of Content
-1. [Introduction and Goals](introduction_and_goals)
-1. [Architecture Constraints](architecture_constraints.md)
-1. [Context and Scope](context_scope.md)
-1. [Solution Strategy](solution_strategy.md)
-1. [Building Block View](building_blocks.md)
-1. [Runtime View](runtime_view.md)
-1. [Deployment View](deployment_view.md)
-1. [Crosscutting Concepts](crosscutting_concepts.md)
-1. [Architectural Decisions](architecture_decisions.md)
-1. [Quality Requirements](quality_requirements.md)
-1. [Risk and Technical Dept](risks_technical_dept.md)
-1. [Glossary](/docs/glossary.md)
+1. [Introduction and Goals](#introduction-and-goals)
+1. [Architecture Constraints](#architecture-constraints)
+1. [System Context and Scope](#system-context-and-scope)
+1. [Solution Strategy](#solution-strategy)
+1. [Building Block View](#building-blocks)
+1. [Runtime View](#runtime-view)
+1. [Deployment View](#deployment-view)
+1. [Crosscutting Concepts](#crosscutting-concepts)
+1. [Architectural Decisions](#architecture-decisions)
+1. [Quality Requirements](#quality-requirements)
+1. [Risk and Technical Dept](#risk-and-technical-dept)
+1. [Glossary](#glossary)
 
 ## Introduction and Goals
 
