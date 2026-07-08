@@ -1,0 +1,101 @@
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template
+;;;;
+
+; TODO use protected areas for hand written content?
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?># Architecture Documentation for <?= (:name e) ?>
+
+## Table of Content
+1. [Introduction and Goals](introduction_and_goals)
+1. [Architecture Constraints](architecture_constraints.md)
+1. [Context and Scope](context_scope.md)
+1. [Solution Strategy](solution_strategy.md)
+1. [Building Block View](building_blocks.md)
+1. [Runtime View](runtime_view.md)
+1. [Deployment View](deployment_view.md)
+1. [Crosscutting Concepts](crosscutting_concepts.md)
+1. [Architectural Decisions](architecture_decisions.md)
+1. [Quality Requirements](quality_requirements.md)
+1. [Risk and Technical Dept](risks_technical_dept.md)
+1. [Glossary](/docs/glossary.md)
+
+## Introduction and Goals
+
+<?
+; TODO add table of goals, selected with criteria and sorted by priority
+?>
+
+## Architecture Constraints
+
+<?
+; TODO add table of architecture constraints, selected with criteria and sorted by priority
+?>
+
+## System Context and Scope
+
+<?
+    (when-let [context-view (m/resolve-view model e "context-view")]
+%>
+### System Context View
+<%= (md/relative-diagram-link e context-view) %>
+
+<%= (md/relative-view-link e context-view) %>
+<%
+    )
+?>
+
+## Solution Strategy
+
+
+## Building Blocks
+
+<?
+    (when-let [container-view (m/resolve-view model e "container-view")]
+%>
+### Container View
+<%= (md/relative-diagram-link e container-view) %>
+
+<%= (md/relative-view-link e container-view) %>
+<%
+    )
+?>
+
+## Runtime View
+
+
+## Deployment View
+
+  (when-let [deployment-view (m/resolve-view model e "deployment-view")]
+%>
+
+### Deployment View
+<%= (md/relative-diagram-link e deployment-view) %>
+
+<%= (md/relative-view-link e deployment-view) %>
+<%
+  )
+
+
+## Crosscutting Concepts
+
+
+## Architecture Decisions
+
+<?
+; TODO add table of architecture decisions, selected with criteria and sorted by priority
+?>
+
+## Quality Requirements
+
+<?
+; TODO add table of quality requirements, selected with criteria and sorted by priority
+?>
+
+## Risk and Technical Dept
+
+## Glossary
