@@ -32,10 +32,10 @@
 
  ; rendered as Mermaid treemap
  #_{:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}
-  :template "views/treemap.mm.cmb"
-  :per-element true
-  :id-as-name true
-  :extension "mermaid"}
+    :template "views/treemap.mm.cmb"
+    :per-element true
+    :id-as-name true
+    :extension "mermaid"}
 
  ;;
  ;;  Markdown Generation for Model Elements
@@ -77,6 +77,16 @@
   :template "views/glossary-view.md.cmb"
   :per-element true
   :id-as-name true
+  :extension "md"}
+
+ ;;;
+ ;;; Markdown Architecture Documentation
+ ;;;
+ {:selection {:model-node? true :el #{:system} :external? false}
+  :template "docs/arc42.md.cmb"
+  :per-element true
+  :id-as-namespace true
+  :basename "architecture"
   :extension "md"}
 
  ;;;
