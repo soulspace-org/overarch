@@ -5,20 +5,20 @@
   ;;; Architecture Views
   ;;;
   {:el :context-view
-   :id :overarch.architecture/overarch-context-view
+   :id :overarch.architecture/context-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :title "Context View of Overarch"
    :desc "Gives a high level overview of the roles, systems and their interactions"
    :ct []}
 
   {:el :container-view
-   :id :overarch.architecture/overarch-container-view
+   :id :overarch.architecture/container-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :title "Container View of Overarch"
    :ct []}
 
   {:el :component-view
-   :id :overarch.architecture/overarch-component-view
+   :id :overarch.architecture/component-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :title "Component View of Overarch"
    :ct []}
