@@ -52,14 +52,21 @@
   ;;
   ;; System Relations
   ;;
-  {:el :rel
+  {:el :request
    :id :overarch.roles/modeller-models-in-editor
    :from :overarch.roles/modeller
    :to :overarch.architecture/editor
    :name "models in"
    :desc "creates models and views"}
 
-  {:el :rel
+  {:el :request
+   :id :overarch.roles/template-programmer-models-in-editor
+   :from :overarch.roles/template-programmer
+   :to :overarch.architecture/editor
+   :name "programs in"
+   :desc "creates templates"}
+
+  {:el :request
    :id :overarch.roles/modeller-uses-overarch
    :from :overarch.roles/modeller
    :to :overarch.architecture/overarch
@@ -67,7 +74,7 @@
    :desc "for diagram generation and model transformation."}
 
   ;;
-  ;; System Relations
+  ;; Container Relations
   ;;
   {:el :rel
    :id :overarch.roles/modeller-uses-overarch-cli

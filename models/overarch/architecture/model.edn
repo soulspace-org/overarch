@@ -4,7 +4,7 @@
 #{;
 
   ;;;
-  ;;; Process Elements
+  ;;; Goals
   ;;;
 
   ;; Nodes
@@ -39,83 +39,103 @@
    :name "Extensible Models"
    :desc "Model elements are open and can be extended with additional information."}
 
+  {:el :goal
+   :id :overarch.architecture.goal/extensible-target-artifacts
+   :priority 2
+   :name "Customizeable Artifact Generation"
+   :desc "The generation of artifacts from information in the model is fully customizeable."}
+
+  ;; Relations
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/knowledge-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/open-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/composeable-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/queryably-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/extensible-model-elements}
+
+  ;;;
+  ;;; Requirements
+  ;;;
+
+  ;; Nodes
+  {:el :requirement
+   :id :overarch.architecture.requirement/namespaced-ids
+   :name "Namespaced IDs for Overarch elements"
+   :desc "For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models."
+   :tags #{"functional"}}
+
+  ;; Relations
+
+
+  ;;;
+  ;;; Decisions
+  ;;;
+
+  ;; Nodes
   {:el :decision
    :id :overarch.architecture.decision/implementation-language
    :idx 1
    :name "Implementation Language"
    :desc "What language should be used to implement Overarch?"
-   :doc ""}
+   :doc ""
+   :tags #{"architecture"}}
 
   {:el :decision
    :id :overarch.architecture.decision/implementation-architecture
    :idx 2
    :name "Implementation Architecture"
    :desc "What is the implementation architecture for Overarch?"
-   :doc ""}
+   :doc ""
+   :tags #{"architecture"}}
 
   {:el :decision
    :id :overarch.architecture.decision/data-representation
    :idx 3
    :name "Internal Data Representation"
    :desc "What is the internal representation of the model?"
-   :doc ""}
+   :doc ""
+   :tags #{"architecture"}}
 
   {:el :decision
    :id :overarch.architecture.decision/data-format
    :idx 4
    :name "Data Format for Models"
    :desc "Which external data format for the model?"
-   :doc ""}
-
-  {:el :requirement
-   :id :overarch.architecture.requirement/namespaced-ids
-   :name "Namespaced IDs for Overarch elements"
-   :desc "For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models."}
+   :doc ""
+   :tags #{"architecture"}}
 
   ;; Relations
-  {:el :goal-for
-   :from :overarch.architecture.goal/knowledge-models
-   :to :overarch.architecture/overarch
-   :name "goal for"}
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/implementation-language}
 
-  {:el :goal-for
-   :to :overarch.architecture/overarch
-   :from :overarch.architecture.goal/open-models
-   :name "goal for"}
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/data-representation}
 
-  {:el :goal-for
-   :from :overarch.architecture.goal/composeable-models
-   :to :overarch.architecture/overarch
-   :name "goal for"}
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/data-format}
 
-  {:el :goal-for
-   :from :overarch.architecture.goal/queryably-models
-   :to :overarch.architecture/overarch
-   :name "goal for"}
-
-  {:el :goal-for
-   :from :overarch.architecture.goal/extensible-model-elements
-   :to :overarch.architecture/overarch
-   :name "goal for"}
-
-  {:el :decision-for
-   :from :overarch.architecture.decision/implementation-language
-   :to :overarch.architecture/overarch}
-
-  {:el :decision-for
-   :from :overarch.architecture.decision/data-representation
-   :to :overarch.architecture/overarch}
-
-  {:el :decision-for
-   :from :overarch.architecture.decision/data-format
-   :to :overarch.architecture/overarch}
-
-  {:el :decision-for
-   :from :overarch.architecture.decision/implementation-architecture
-   :to :overarch.architecture/overarch}
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/implementation-architecture}
 
   ;;;
-  ;;; Architecture Elements
+  ;;; Architecture Model
   ;;;
 
   ;;
@@ -223,137 +243,137 @@
   ;;;
   ;;; Architecture Model Relations
   ;;;
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/cli-loads-data
    :from :overarch.adapter.ui/cli
    :to :overarch.application/model-repository
    :name "loads"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/cli-calls-export
    :from :overarch.adapter.ui/cli
    :to :overarch.application/export
    :name "calls"
    :desc "export functions"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/cli-calls-render
    :from :overarch.adapter.ui/cli
    :to :overarch.application/render
    :name "calls"
    :desc "render functions"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/cli-calls-template
    :from :overarch.adapter.ui/cli
    :to :overarch.application/template
    :name "calls"
    :desc "template functions"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/comb-implements-template
    :from :overarch.adapter.template/comb
    :to :overarch.application/template
    :name "implements"
    :desc "template functions for Comb templates"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/template-accesses-model
    :from :overarch.application/template
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/template-accesses-view
    :from :overarch.application/template
    :to :overarch.domain/view
    :name "accesses"
    :desc "view"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/plantuml-implements-render
    :from :overarch.adapter.render/plantuml
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for PlantUML diagrams"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/plantuml-accesses-model
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/plantuml-calls-io
    :from :overarch.adapter.render/plantuml
    :to :overarch.util/io
    :name "calls"
    :desc "loads sprite mappings"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/plantuml-calls-view
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/view
    :name "queries"
    :desc "view"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/markdown-implements-render
    :from :overarch.adapter.render/markdown
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for Markdown representations"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/markdown-accesses-model
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/markdown-calls-view
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/view
    :name " queries"
    :desc "view"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/graphviz-implements-render
    :from :overarch.adapter.render/graphviz
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for GraphViz diagrams"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/graphviz-accesses-model
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/graphviz-calls-view
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/view
    :name "calls"
    :desc "view queries and rendering functions"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/json-implements-export
    :from :overarch.adapter.exports/json
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for JSON"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/json-calls-io
    :from :overarch.adapter.exports/json
    :to :overarch.util/io
    :name "calls"
    :desc "writes JSON"}
-  {:el :rel
+  {:el :implements
    :id :overarch.architecture/structurizr-implements-export
    :from :overarch.adapter.exports/structurizr
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for Structurizr"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/structurizr-accesses-model
    :from :overarch.adapter.exports/structurizr
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  {:el :rel
+  {:el :request
    :id :overarch.architecture/view-queries-model
    :from :overarch.domain/view
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
-  ;
+  ; 
   }
