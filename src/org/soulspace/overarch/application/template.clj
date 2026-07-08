@@ -120,17 +120,19 @@
             (recur (rest remaining-lines) (nth (first begin-matches) 1) "" area-map) ; line starting a protected area
             (recur (rest remaining-lines) nil "" area-map)) ; line outside any protected areas
           (if-let [end-match (re-matches (end-pattern area-marker area-id) (first remaining-lines))]
-            (recur (rest remaining-lines) nil "" (assoc area-map (keyword area-id) area-content)) ; line ending a protected area
+            (recur (rest remaining-lines) nil "" (assoc area-map (str area-id) area-content)) ; line ending a protected area
             (recur (rest remaining-lines) area-id (str area-content (first remaining-lines) "\n") area-map))) ; line inside a protected area
         area-map)))) ; no more lines, return area map
 
 (defn read-protected-areas
   "Reads the given path and returns the proected areas as a map."
-  [ctx path]
+  [ctx path] 
   (if (and (:protected-area ctx)
            (file/exists? (io/as-file path)))
-    (let [area-marker (:protected-area ctx)]
-      (parse-protected-areas area-marker (read-lines path)))
+    (let [area-marker (:protected-area ctx)
+          protected-areas (parse-protected-areas area-marker (read-lines path))]
+      (println protected-areas)
+      protected-areas)
     {}))
 
 ;;;
@@ -155,6 +157,39 @@
    (str
     (when (:generation-dir ctx)
       (str (:generation-dir ctx) "/"))
+    (when (:subdir ctx)
+      (str (:subdir ctx) "/"))
+    (when (:namespace-prefix ctx)
+      (str (ns/ns-to-path (:namespace-prefix ctx)) "/"))
+
+    (if (:id-as-namespace ctx)
+      (str (ns/ns-to-path (name (:id el))) "/")
+      (if (:base-namespace ctx)
+        (str (ns/ns-to-path (:base-namespace ctx)) "/")
+        (str (ns/ns-to-path (el/element-namespace el)) "/")))
+
+    (when (:namespace-suffix ctx)
+      (str (ns/ns-to-path (:namespace-suffix ctx)) "/")))))
+
+(defn backup-artifact-path
+  "Returns the path for the artifact given the generation context `ctx`
+   and optionally a model element `el`."
+  ([ctx]
+   (str
+    (when (:backup-dir ctx)
+      (str (:backup-dir ctx) "/"))
+    (when (:subdir ctx)
+      (str (:subdir ctx) "/"))
+    (when (:namespace-prefix ctx)
+      (str (ns/ns-to-path (:namespace-prefix ctx)) "/"))
+    (when (:base-namespace ctx)
+      (str (ns/ns-to-path (:base-namespace ctx)) "/"))
+    (when (:namespace-suffix ctx)
+      (str (ns/ns-to-path (:namespace-suffix ctx)) "/"))))
+  ([ctx el]
+   (str
+    (when (:backup-dir ctx)
+      (str (:backup-dir ctx) "/"))
     (when (:subdir ctx)
       (str (:subdir ctx) "/"))
     (when (:namespace-prefix ctx)
@@ -253,9 +288,9 @@
 
 (defn generate-artifact
   "Generates an artifact with the `template` and the context `ctx` for the `model` and the selection `e`."
-  [parsed-template path ctx model e]
+  [parsed-template path backup-path ctx model e]
   (try
-    (let [protected-areas (read-protected-areas ctx path)
+    (let [protected-areas (read-protected-areas ctx backup-path)
           result (apply-template ctx
                                  parsed-template
                                  {:ctx ctx
@@ -265,8 +300,7 @@
           result (if (= "edn" (:extension ctx))
                    (zp/zprint-file-str result (:template ctx) edn-format-options)
                    result)]
-    ; TODO handle backups
-    ; write artifact for result
+      ; write artifact for result
       (write-artifact path result))
     (catch Exception ex
       (println "Exception while generating with template" (:template ctx))
@@ -288,19 +322,24 @@
     (let [template (io/as-file (str (:template-dir options) "/" (:template ctx)))
           parsed-template (parse-template ctx template)
           selection (select-elements model ctx)]
+      ;; TODO generate-artifact also needs a path to the previously generated artifact
+      ;;      to parse the protected area content from
       (cond
         (:per-element ctx)
         (doseq [e selection]
-          (let [path (str (artifact-path ctx e) (artifact-filename ctx e))]
-            (generate-artifact parsed-template path ctx model e)))
+          (let [path (str (artifact-path ctx e) (artifact-filename ctx e))
+                backup-path (str (backup-artifact-path ctx e) (artifact-filename ctx e))]
+            (generate-artifact parsed-template path backup-path ctx model e)))
         (:per-namespace ctx)
         (doseq [e (vals (group-by el/element-namespace selection))]
-          ;; build path from first element
-          (let [path (str (artifact-path ctx (first e)) (artifact-filename ctx))]
-            (generate-artifact parsed-template path ctx model e)))
+          ;; build namespace path from first element
+          (let [path (str (artifact-path ctx (first e)) (artifact-filename ctx))
+                backup-path (str (backup-artifact-path ctx (first e)) (artifact-filename ctx))]
+            (generate-artifact parsed-template path backup-path ctx model e)))
         :else
-        (let [path (str (artifact-path ctx) (artifact-filename ctx))]
-          (generate-artifact parsed-template path ctx model selection))))))
+        (let [path (str (artifact-path ctx) (artifact-filename ctx))
+              backup-path (str (artifact-path ctx) (artifact-filename ctx))]
+          (generate-artifact parsed-template path backup-path ctx model selection))))))
 
 (comment
   (repo/read-models :file "models")

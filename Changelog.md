@@ -1,8 +1,9 @@
 # Changelog
 
 ## Version (0.42.1)
-* fix :goal-for relation
-* add :decision-for relation
+* added :decision-for relation
+* fixed :goal-for relation
+* fixed and improved protected area handling in templates
 
 ## Version 0.42.0
 * adding views for traceability (e.g. instanciation/implementation views)
