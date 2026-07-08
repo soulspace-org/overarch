@@ -5,6 +5,19 @@
             [org.soulspace.overarch.adapter.template.view-api :as view]))
 
 ;;;
+;;; PlantUML Aliases
+;;;
+(defn alias-name
+  "Returns a valid PlantUML alias for the namespaced keyword `kw`."
+  [kw]
+  (symbol (str (str/replace (sstr/hyphen-to-camel-case (namespace kw)) \. \_) "_"
+               (sstr/hyphen-to-camel-case (name kw)))))
+(defn short-name
+  "Returns a valid PlantUML alias for the name part of the keyword `kw`."
+  [kw]
+  (sstr/hyphen-to-camel-case (name kw)))
+
+;;;
 ;;; Diagram Layout
 ;;;
 
@@ -26,4 +39,3 @@
     (->> skinparams
          (map render-skinparam)
          (str/join "\n"))))
-
