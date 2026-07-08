@@ -247,7 +247,7 @@
   ([model e criteria]
    (model/referred-relations model e criteria)))
 
-(defn model-elements-by-criteria
+(defn select-model-elements
   "Returns a set of model elements that match the `criteria`"
   [model criteria]
   (model/model-elements-by-criteria model criteria))
