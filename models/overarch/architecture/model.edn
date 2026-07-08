@@ -74,7 +74,7 @@
 
   ;; Relations
   {:el :goal-for
-   :from :overarch.architecture.goal/knowledge-modeling
+   :from :overarch.architecture.goal/knowledge-models
    :to :overarch.architecture/overarch
    :name "goal for"}
 
