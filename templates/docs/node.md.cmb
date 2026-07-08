@@ -23,79 +23,6 @@
    :type "Type"})
 
 ;;;
-;;; functions
-;;;
-
-;;
-;; markdown generation functions
-;;
-
-(defn node-description-table-row
-  "Generates the markdown for a description table row for `node` and `parent`."
-  [parent node]
-%>| <%= (md/relative-element-link parent node) %>| <%= (t/single-line (:desc node)) %> |
-<%
-)
-
-(defn node-description-table
-  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
-  [parent type coll]
-%>| <%= (get type->name type (str/capitalize (name type))) %> | Description |
-|---|---|
-<%
-  (doseq [node (sort-by :name coll)]
-    (node-description-table-row parent node)))
-
-(defn node-type-description-table-row
-  "Generates the markdown for a description table row for `node` and `parent`."
-  [parent node]
-%>| <%= (md/relative-element-link parent node) %> | <%= (get type->name type (str/capitalize (name type))) %> | <%= (t/single-line (:desc node)) %> |
-<%
-)
-
-(defn node-type-description-table
-  "Generates the markdown for a description table for nodes of the `type` in `coll` in the context of the `node`."
-  [parent type coll]
-%>| Node | Type | Description |
-|---|---|---|
-<%
-  (doseq [node (sort-by :name coll)]
-    (node-description-table-row parent node)))
-
-(defn relation-description-table-row
-  "Generates the markdown for a description table row for the `relation` in the `model`."
-  [node rel]
-%>| <%= (md/relative-element-link node (m/referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (m/referred model rel)) %> | <%= (t/single-line (:desc rel)) %> |
-<%
-  )
-
-(defn relation-description-table
-  "Generates the markdown for a description table for relations of the `type` in `coll` in the context of the `node` and the `model`."
-  [model node coll]
-%>| From | Name | To | Description |
-|---|---|---|---|
-<%
-  (doseq [rel (sort-by :name coll)]
-    (relation-description-table-row node rel)))
-
-(defn technical-relation-description-table-row
-  "Generates the markdown for a description table row for the technical `relation` in the `model`."
-  [node rel]
-%>| <%= (md/relative-element-link node (m/referrer model rel)) %> | <%= (:name rel) %> | <%= (md/relative-element-link node (m/referred model rel)) %> | <%= (str/join ", " (:tech rel)) %> | <%= (t/single-line (:desc rel)) %> |
-<%
-  )
-
-(defn technical-relation-description-table
-  "Generates the markdown for a description table for technical relations of the `type` in `coll` in the context of the `node` and the `model`."
-  [model node coll]
-%>| From | Name | To | Technology | Description |
-|---|---|---|---|---|
-<%
-  (doseq [rel (sort-by :name coll)]
-    (technical-relation-description-table-row node rel)))
-
-
-;;;
 ;;; generic node markdown documentation
 ;;;
 
@@ -173,62 +100,73 @@
   (when-let [processes (seq (filter #(= :process (:el %)) implemented-by))]
 %>
 ## Implementing Processes
+<%= (md/node-description-table e :process processes) %>
 <%
-    (node-description-table e :process processes))
+  )
 
   (when-let [processes (seq (filter #(= :process (:el %)) implements))]
 %>
 ## Implemented Processes
+<%= (md/node-description-table e :process processes) %>
 <%
-    (node-description-table e :process processes))
+  )
 
   (when-let [use-cases (seq (filter #(= :use-case (:el %)) implemented-by))]
 %>
 ## Implementing Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (filter #(= :use-case (:el %)) implements))]
 %>
 ## Implemented Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [requirements (seq (filter #(= :requirement (:el %)) implemented-by))]
 %>
 ## Implementing Requirements
+<%= (md/node-description-table e :requirement requirements) %>
 <%
-    (node-description-table e :requirement requirements))
+  )
 
   (when-let [requirements (seq (filter #(= :requirement (:el %)) implements))]
 %>
 ## Implemented Requirements
+<%= (md/node-description-table e :requirement requirements) %>
 <%
-    (node-description-table e :requirement requirements))
+  )
 
   (when-let [decisions (seq (filter #(= :decision (:el %)) implemented-by))]
 %>
 ## Implementing Decisions
+<%= (md/node-description-table e :decision decisions) %>
 <%
-    (node-description-table e :decision decisions))
+  )
 
   (when-let [decisions (seq (filter #(= :decision (:el %)) implements))]
 %>
 ## Implemented Decisions
+<%= (md/node-description-table e :decision decisions) %>
 <%
-    (node-description-table e :decision decisions))
+  )
 
   (when-let [state-machines (seq (filter #(= :state-machine (:el %)) implemented-by))]
 %>
 ## Implementing State Machines
+<%= (md/node-description-table e :state-machine state-machines) %>
 <%
-    (node-description-table e :state-machine state-machines))
+  )
 
   (when-let [state-machines (seq (filter #(= :state-machine (:el %)) implements))]
 %>
 ## Implemented State Machines
+<%= (md/node-description-table e :state-machine state-machines) %>
 <%
-    (node-description-table e :state-machine state-machines))
+  )
+
 
 ;;
 ;; roles
@@ -237,26 +175,30 @@
   (when (seq roles)
 %>
 ## Roles
+<%= (md/node-description-table e :person roles) %>
 <%
-    (node-description-table e :person roles))
+  )
 
   (when-let [processes (seq (filter #(= :process (:el %)) role-in))]
 %>
 ## Role in Processes
+<%= (md/node-description-table e :process processes) %>
 <%
-    (node-description-table e :process processes))
+  )
 
   (when-let [organizations (seq (filter #(= :organization (:el %)) role-in))]
 %>
 ## Role in Organizations
+<%= (md/node-description-table e :organization organizations) %>
 <%
-    (node-description-table e :organization organizations))
+  )
 
   (when-let [org-units (seq (filter #(= :org-unit (:el %)) role-in))]
 %>
 ## Role in Organization Units
+<%= (md/node-description-table e :org-unit org-units) %>
 <%
-    (node-description-table e :org-unit org-units))
+  )
 
 
 ;;
@@ -266,38 +208,45 @@
   (when-let [responsibilities (seq (filter #(= :context-boundary (:el %)) responsible-for))]
 %>
 ## Responsibility for Bounded Contexts
+<%= (md/node-description-table e :context-boundary responsibilities) %>
 <%
-    (node-description-table e :context-boundary responsibilities))
+  )
 
   (when-let [responsibilities (seq (filter #(= :systems (:el %)) responsible-for))]
 %>
 ## Responsibility for Systems
+<%= (md/node-description-table e :system responsibilities) %>
 <%
-    (node-description-table e :system responsibilities))
+  )
 
   (when-let [responsibilities (seq (filter #(= :container (:el %)) responsible-for))]
 %>
 ## Responsibility for Containers
+<%= (md/node-description-table e :container responsibilities) %>
 <%
-    (node-description-table e :container responsibilities))
+  )
 
   (when-let [responsibilities (seq (filter #(= :capability (:el %)) responsible-for))]
 %>
 ## Responsibility for Capabilities
+<%= (md/node-description-table e :capability responsibilities) %>
 <%
-    (node-description-table e :capability responsibilities))
+  )
 
   (when-let [responsibilities (seq (filter #(= :organization (:el %)) responsibility-of))]
 %>
 ## Responsibility of Organization
+<%= (md/node-description-table e :organization responsibilities) %>
 <%
-    (node-description-table e :organization responsibilities))
+  )
 
   (when-let [responsibilities (seq (filter #(= :org-unit (:el %)) responsibility-of))]
 %>
 ## Responsibility of Organization Unit
+<%= (md/node-description-table e :org-unit responsibilities) %>
 <%
-    (node-description-table e :org-unit responsibilities))
+  )
+
 
 ;;
 ;; requirements
@@ -306,8 +255,9 @@
   (when-let [requirements (seq (filter #(= :capability (:el %)) required-for))]
 %>
 ## Required for Capabilities
+<%= (md/node-description-table e :capability requirements) %>
 <%
-    (node-description-table e :capability requirements))
+  )
 
 
 ;;;
@@ -319,8 +269,10 @@
 ;;
   (when-let [concepts (seq (filter #(= :concept (:el %)) children))]
 %>## Concepts
+<%= (md/node-description-table e :concept concepts) %>
 <%
-    (node-description-table e :concept concepts))
+  )
+
 
 ;;
 ;; organizations/org-units
@@ -328,14 +280,17 @@
   (when-let [organizations (seq (filter #(= :organization (:el %)) children))]
 %>
 ## Sub Organizations
+<%= (md/node-description-table e :organization organizations) %>
 <%
-    (node-description-table e :organization organizations))
+  )
 
   (when-let [org-units (seq (filter #(= :org-unit (:el %)) children))]
 %>
 ## Sub Units
+<%= (md/node-description-table e :org-unit org-units) %>
 <%
-    (node-description-table e :org-unit org-units))
+  )
+
 
 ;;
 ;; boundaries
@@ -343,101 +298,123 @@
   (when-let [enterprise-boundaries (seq (filter #(= :enterprise-boundary (:el %)) children))]
 %>
 ## Enterprise Boundaries
+<%= (md/node-description-table e :enterprise-boundary enterprise-boundaries) %>
 <%
-    (node-description-table e :enterprise-boundary enterprise-boundaries))
+  )
 
   (when-let [bounded-contexts (seq (filter #(= :context-boundary (:el %)) children))]
 %>
 ## Subdomains/Bounded Contexts
+<%= (md/node-description-table e :context-boundary bounded-contexts) %>
 <%
-    (node-description-table e :context-boundary bounded-contexts))
+  )
+
 
 ;;
 ;; technical architecture
 ;;
   (when-let [systems (seq (filter #(= :systems (:el %)) children))]
 %>## Systems
+<%= (md/node-description-table e :system systems) %>
 <%
-    (node-description-table e :system systems))
+  )
 
   (when-let [containers (seq (filter #(= :container (:el %)) children))]
 %>## Containers
+<%= (md/node-description-table e :container containers) %>
 <%
-    (node-description-table e :container containers))
+  )
 
   (when-let [components (seq (filter #(= :component (:el %)) children))]
 %>## Components
+<%= (md/node-description-table e :component components) %>
 <%
-    (node-description-table e :component components))
+  )
+
 
 ;;
 ;; code
 ;;
   (when-let [packages (seq (filter #(= :package (:el %)) children))]
 %>## Packages
+<%= (md/node-description-table e :package packages) %>
 <%
-    (node-description-table e :package packages))
+  )
 
   (when-let [interfaces (seq (filter #(= :interface (:el %)) children))]
 %>## Interfaces
+<%= (md/node-description-table e :interface interfaces) %>
 <%
-    (node-description-table e :interface interfaces))
+  )
 
   (when-let [classes (seq (filter #(= :class (:el %)) children))]
 %>## Classes
+<%= (md/node-description-table e :class classes) %>
 <%
-    (node-description-table e :class classes))
+  )
+
 
 ;;
 ;; deployment
 ;;
+
   (when-let [nodes (seq (filter #(= :node (:el %)) children))]
 %>## Nodes
+<%= (md/node-description-table e :node nodes) %>
 <%
-    (node-description-table e :node nodes))
+  )
+
 
 ;;
 ;; state machines
 ;;
   (when-let [states (seq (filter #(= :start-state (:el %)) children))]
 %>## Start States
+<%= (md/node-description-table e :start-state states) %>
 <%
-    (node-description-table e :start-state states))
+  )
 
   (when-let [states (seq (filter #(= :state (:el %)) children))]
 %>## States
+<%= (md/node-description-table e :state states) %>
 <%
-    (node-description-table e :state states))
+  )
 
   (when-let [states (seq (filter #(= :end-state (:el %)) children))]
 %>## End States
+<%= (md/node-description-table e :end-state states) %>
 <%
-    (node-description-table e :end-state states))
+  )
 
   (when-let [states (seq (filter #(= :history-state (:el %)) children))]
 %>## History States
+<%= (md/node-description-table e :history-state states) %>
 <%
-    (node-description-table e :history-state states))
+  )
 
   (when-let [states (seq (filter #(= :deep-history-state (:el %)) children))]
 %>## Deep History States
+<%= (md/node-description-table e :deep-history-state states) %>
 <%
-    (node-description-table e :deep-history-state states))
+  )
 
   (when-let [states (seq (filter #(= :choice (:el %)) children))]
 %>## Choices
+<%= (md/node-description-table e :choice states) %>
 <%
-    (node-description-table e :choice states))
+  )
 
   (when-let [states (seq (filter #(= :fork (:el %)) children))]
 %>## Forks
+<%= (md/node-description-table e :fork states) %>
 <%
-    (node-description-table e :fork states))
+  )
 
   (when-let [states (seq (filter #(= :join (:el %)) children))]
 %>## Joins
+<%= (md/node-description-table e :join states) %>
 <%
-    (node-description-table e :join states))
+  )
 
 
 ;;;
@@ -450,28 +427,34 @@
 
   (when-let [concepts (seq (m/referred-nodes model e {:el :is-a}))]
 %>## Superordinates
+<%= (md/node-description-table e :concept concepts) %>
 <%
-    (node-description-table e :concept concepts))
+  )
 
   (when-let [concepts (seq (m/referring-nodes model e {:el :is-a}))]
 %>## Subordinates
+<%= (md/node-description-table e :concept concepts) %>
 <%
-    (node-description-table e :concept concepts))
+  )
 
   (when-let [concepts (seq (m/referred-nodes model e {:el :has}))]
 %>## Features
+<%= (md/node-description-table e :concept concepts) %>
 <%
-    (node-description-table e :concept concepts))
+  )
 
   (when-let [concepts (seq (m/referring-nodes model e {:el :has}))]
 %>## Feature of
+<%= (md/node-description-table e :concept concepts) %>
 <%
-    (node-description-table e :concept concepts))
+  )
 
   (when-let [relations (seq (concat (m/referring-relations model e {:el :rel}) (m/referred-relations model e {:el :rel})) )]
 %>## Other Relations
+<%= (md/relation-description-table model e relations) %>
 <%
-    (relation-description-table model e relations))
+  )
+
 
 ;;
 ;; use cases
@@ -479,38 +462,46 @@
 
   (when-let [actors (seq (m/referring-nodes model e {:el :uses}))]
 %>## Actors
+<%= (md/node-description-table e :actor actors) %>
 <%
-    (node-description-table e :actor actors))
+  )
 
   (when-let [use-cases (seq (m/referred-nodes model e {:el :uses}))]
 %>## Actor in Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (m/referring-nodes model e {:el :includes}))]
 %>## Including Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (m/referred-nodes model e {:el :includes}))]
 %>## Included Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (m/referring-nodes model e {:el :includes}))]
 %>## Including Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (m/referred-nodes model e {:el :extends}))]
 %>## Extended Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
 
   (when-let [use-cases (seq (m/referring-nodes model e {:el :extends}))]
 %>## Extending Use Cases
+<%= (md/node-description-table e :use-case use-cases) %>
 <%
-    (node-description-table e :use-case use-cases))
+  )
+
 
 ;;
 ;; processes
@@ -518,23 +509,28 @@
 
   (when-let [inputs (seq (m/referring-nodes model e {:el :input-for}))]
 %>## Input Artifacts
+<%= (md/node-description-table e :artifact inputs) %>
 <%
-    (node-description-table e :artifact inputs))
+  )
 
   (when-let [processes (seq (m/referred-nodes model e {:el :input-for}))]
 %>## Input of
+<%= (md/node-description-table e :process processes) %>
 <%
-    (node-description-table e :process processes))
+  )
 
   (when-let [outputs (seq (m/referring-nodes model e {:el :output-for}))]
 %>## Output Artifacts
+<%= (md/node-description-table e :artifact outputs) %>
 <%
-    (node-description-table e :artifact outputs))
+  )
 
   (when-let [processes (seq (m/referred-nodes model e {:el :output-for}))]
 %>## Output of
+<%= (md/node-description-table e :process processes) %>
 <%
-    (node-description-table e :process processes))
+  )
+
 
 ;;
 ;; artifacts 
@@ -542,14 +538,14 @@
 
   (when-let [artifacts (seq (m/referring-nodes model e {:el :artifact-of}))]
 %>## Artifacts
-<%  
-    (node-description-table e :artifact artifacts)
+<%= (md/node-description-table e :artifact artifacts) %>
+<%
   )
 
   (when-let [subject (seq (m/referred-nodes model e {:el :artifact-of}))]
 %>## Artifact of
-<%  
-    (node-description-table e :subject subject)
+<%= (md/node-description-table e :subject subject) %>
+<%
   )
 
 ;;
@@ -558,15 +554,16 @@
 
   (when-let [versions (seq (m/referring-nodes model e {:el :version-of}))]
 %>## Versions
-<%  
-    (node-description-table e :version versions)
+<%= (md/node-description-table e :version versions) %>
+<%
   )
 
   (when-let [artifacts (seq (m/referred-nodes model e {:el :version-of}))]
 %>## Version of
-<%  
-    (node-description-table e :artifact artifacts)
+<%= (md/node-description-table e :artifact artifacts) %>
+<%
   )
+
 
 ;;
 ;; architecture
@@ -574,53 +571,64 @@
 
   (when-let [requests (seq (m/referring-relations model e {:el :request}))]
 %>## Incoming Synchronous Requests 
+<%= (md/technical-relation-description-table model e requests) %>
 <%
-    (technical-relation-description-table model e requests))
+  )
 
   (when-let [requests (seq (m/referred-relations model e {:el :request}))]
 %>## Outgoing Synchronous Requests 
+<%= (md/technical-relation-description-table model e requests) %>
 <%
-    (technical-relation-description-table model e requests))
+  )
 
   (when-let [publishes (seq (m/referring-relations model e {:el :publish}))]
 %>## Incoming Asynchronous Publish/Produce 
+<%= (md/technical-relation-description-table model e publishes) %>
 <%
-    (technical-relation-description-table model e publishes))
+  )
 
   (when-let [publishes (seq (m/referred-relations model e {:el :publish}))]
 %>## Outgoing Asynchronous Publish/Produce
+<%= (md/technical-relation-description-table model e publishes) %>
 <%
-    (technical-relation-description-table model e publishes))
+  )
 
   (when-let [subscribes (seq (m/referring-relations model e {:el :subscribe}))]
 %>## Incoming Asynchronous Subscribe/Consume 
+<%= (md/technical-relation-description-table model e subscribes) %>
 <%
-    (technical-relation-description-table model e subscribes))
+  )
 
   (when-let [subscribes (seq (m/referred-relations model e {:el :subscribe}))]
 %>## Outgoing Asynchronous Subscribe/Consume
+<%= (md/technical-relation-description-table model e subscribes) %>
 <%
-    (technical-relation-description-table model e subscribes))
+  )
 
   (when-let [sends (seq (m/referring-relations model e {:el :send}))]
 %>## Incoming Asynchronous Sends
+<%= (md/technical-relation-description-table model e sends) %>
 <%
-    (technical-relation-description-table model e sends))
+  )
 
   (when-let [sends (seq (m/referred-relations model e {:el :send}))]
 %>## Outgoing Asynchronous Sends
+<%= (md/technical-relation-description-table model e sends) %>
 <%
-    (technical-relation-description-table model e sends))
+  )
 
   (when-let [dataflows (seq (m/referring-relations model e {:el :dataflow}))]
 %>## Incoming Dataflows
+<%= (md/technical-relation-description-table model e dataflows) %>
 <%
-    (technical-relation-description-table model e dataflows))
+  )
 
   (when-let [dataflows (seq (m/referred-relations model e {:el :dataflow}))]
 %>## Outgoing Dataflows
+<%= (md/technical-relation-description-table model e dataflows) %>
 <%
-    (technical-relation-description-table model e dataflows))
+  )
+
 
 ;;
 ;; instances
@@ -628,14 +636,14 @@
 
   (when-let [instances (seq (m/referring-nodes model e {:el :instance-of}))]
 %>## Instances
-<%  
-    (node-description-table e :version instances)
+<%= (md/node-description-table e :version instances) %>
+<%
   )
 
   (when-let [subject (seq (m/referred-nodes model e {:el :instance-of}))]
 %>## Instance of
-<%  
-    (node-description-table e :type subject)
+<%= (md/node-description-table e :type subject) %>
+<%
   )
 
 ;;
@@ -644,18 +652,21 @@
 
   (when-let [links (seq (concat (m/referring-relations model e {:el :link}) (m/referred-relations model e {:el :link})))]
 %>## Links to
+<%= (md/technical-relation-description-table model e links) %>
 <%
-    (technical-relation-description-table model e links))
+  )
 
   (when-let [containers (seq (m/referring-nodes model e {:el :deployed-to}))]
 %>## Deployed Containers
+<%= (md/node-description-table e :container containers) %>
 <%
-    (node-description-table e :container containers))
+  )
 
   (when-let [nodes (seq (m/referred-nodes model e {:el :deployed-to}))]
 %>## Deployed to
+<%= (md/node-description-table e :node nodes) %>
 <%
-    (node-description-table e :node nodes))
+  )
 
 ;;
 ;; code (TODO add functions, enums, ...)
@@ -664,21 +675,21 @@
   (when-let [interfaces (seq (m/interfaces model e))]
 %>
 ## Extended/Implemented Interfaces
-<%=(str/join ", " (map #(md/relative-element-link e %) interfaces))%>
+<%= (str/join ", " (map #(md/relative-element-link e %) interfaces)) %>
 <%
   )
 
   (when-let [superclasses (seq (m/superclasses model e))]
 %>
 ## Superclasses
-<%=(str/join ", " (map #(md/relative-element-link e %) superclasses))%>
+<%= (str/join ", " (map #(md/relative-element-link e %) superclasses)) %>
 <%
   )
 
   (when-let [subclasses  (seq (m/subclasses model e))]
 %>
 ## Subclasses
-<%=(str/join ", " (map #(md/relative-element-link e %) subclasses))%>
+<%= (str/join ", " (map #(md/relative-element-link e %) subclasses)) %>
 <%
   )
 
