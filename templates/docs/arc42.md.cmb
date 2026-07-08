@@ -8,12 +8,14 @@
 (require '[lib.text :as t])
 (require '[lib.markdown :as md])
 
-(let [goals []
-      constraints []
-      quality-reqs []
-      adrs []
+(let [implements (m/referred-nodes model e {:el :implements})
+      implemented-by (m/referring-nodes model e {:el :implements})
+      goals (m/select-model-elements model {:el :goal})
+      architecture-constraints (m/select-model-elements model {:el :constraint})
+      quality-requirements (m/select-model-elements model {:el :requirement})
+      architecture-decisions (m/select-model-elements model {:el :decision})
       risks []
-      tech-depts []]
+      technical-depts []]
 
 %>
 # Architecture Documentation for <%= (:name e) %>
@@ -36,13 +38,21 @@
 ## Introduction and Goals
 
 <%
-; TODO add table of goals, selected with criteria and sorted by priority
+  (when (seq goals)
+%>
+### Goals
+<%=
+    (md/node-description-table e :goal goals))
 %>
 
 ## Architecture Constraints
 
 <%
-; TODO add table of architecture constraints, selected with criteria and sorted by priority
+  (when (seq architecture-constraints)
+%>
+### Constraints
+<%=
+    (md/node-description-table e :constraint architecture-constraints))
 %>
 
 ## System Context and Scope
@@ -96,16 +106,33 @@
 ## Architecture Decisions
 
 <%
-; TODO add table of architecture decisions, selected with criteria and sorted by priority
+  (when (seq architecture-decisions)
+%>
+### Decisions
+<%=
+    (md/node-description-table e :decision architecture-decisions))
 %>
 
 ## Quality Requirements
 
 <%
-; TODO add table of quality requirements, selected with criteria and sorted by priority
+  (when (seq quality-requirements)
+%>
+### Requirements
+<%=
+    (md/node-description-table e :requirement quality-requirements))
 %>
 
 ## Risk and Technical Dept
+
+<%
+  (when (seq risks)
+%>
+### Risks
+<%=
+    (md/node-description-table e :risk risks))
+%>
+
 
 ## Glossary
 
