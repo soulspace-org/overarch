@@ -33,21 +33,24 @@
 1. [Architectural Decisions](#architecture-decisions)
 1. [Quality Requirements](#quality-requirements)
 1. [Risk and Technical Dept](#risk-and-technical-dept)
-1. [Glossary](#glossary)
 
 ## Introduction and Goals
 <!-- PA-BEGIN(Introduction) -->
-<!-- PA-END(Introduction) -->
+<%= (get protected-areas "Introduction" "")
+%><!-- PA-END(Introduction) -->
 
 <%
   (when (seq goals)
 %>
 ### Goals
 <%=
-    (md/node-description-table e :goal goals))
+    (md/node-description-table e :goal (sort-by :priority goals)))
 %>
 
 ## Architecture Constraints
+<!-- PA-BEGIN(ArchitectureConstraints) -->
+<%= (get protected-areas "ArchitectureConstraints" "")
+%><!-- PA-END(ArchitectureConstraints) -->
 
 <%
   (when (seq architecture-constraints)
@@ -58,7 +61,9 @@
 %>
 
 ## System Context and Scope
-
+<!-- PA-BEGIN(SystemContext) -->
+<%= (get protected-areas "SystemContext" "")
+%><!-- PA-END(SystemContext) -->
 <%
     (when-let [context-view (m/resolve-view model e "context-view")]
 %>
@@ -72,12 +77,13 @@
 
 ### Scope
 <!-- PA-BEGIN(Scope) -->
-<!-- PA-END(Scope) -->
-
+<%= (get protected-areas "Scope" "")
+%><!-- PA-END(Scope) -->
 
 ## Solution Strategy
 <!-- PA-BEGIN(SolutionStrategy) -->
-<!-- PA-END(SolutionStrategy) -->
+<%= (get protected-areas "SolutionStrategy" "")
+%><!-- PA-END(SolutionStrategy) -->
 
 
 ## Building Blocks
@@ -94,14 +100,19 @@
 %>
 
 ## Runtime View
-
+<!-- PA-BEGIN(RuntimeView) -->
+<%= (get protected-areas "RuntimeView" "")
+%><!-- PA-END(RuntimeView) -->
 
 ## Deployment View
+<!-- PA-BEGIN(DeploymentView) -->
+<%= (get protected-areas "DeploymentView" "")
+%><!-- PA-END(DeploymentView) -->
 <%
   (when-let [deployment-view (m/resolve-view model e "deployment-view")]
 %>
 
-### Deployment View
+### Deployment Diagram
 <%= (md/relative-diagram-link e deployment-view) %>
 
 <%= (md/relative-view-link e deployment-view) %>
@@ -111,10 +122,14 @@
 
 ## Crosscutting Concepts
 <!-- PA-BEGIN(CrosscuttingConcepts) -->
-<!-- PA-END(CrosscuttingConcepts) -->
+<%= (get protected-areas "CrosscuttingConcepts" "")
+%><!-- PA-END(CrosscuttingConcepts) -->
 
 
 ## Architecture Decisions
+<!-- PA-BEGIN(ArchitectureDecisions) -->
+<%= (get protected-areas "ArchitectureDecisions" "")
+%><!-- PA-END(ArchitectureDecisions) -->
 
 <%
   (when (seq architecture-decisions)
@@ -125,6 +140,9 @@
 %>
 
 ## Quality Requirements
+<!-- PA-BEGIN(QualityRequirements) -->
+<%= (get protected-areas "QualityRequirements" "")
+%><!-- PA-END(QualityRequirements) -->
 
 <%
   (when (seq quality-requirements)
@@ -135,17 +153,21 @@
 %>
 
 ## Risk and Technical Dept
+### Risks
+<!-- PA-BEGIN(Risk) -->
+<%= (get protected-areas "Risk" "")
+%><!-- PA-END(Risk) -->
 
 <%
   (when (seq risks)
-%>
-### Risks
-<%=
+%><%=
     (md/node-description-table e :risk risks))
 %>
 
-
-## Glossary
+### Technical Dept
+<!-- PA-BEGIN(TechnicalDept) -->
+<%= (get protected-areas "TechnicalDept" "")
+%><!-- PA-END(TechnicalDept) -->
 
 <%
 ) ; end of let
