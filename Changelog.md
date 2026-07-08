@@ -4,6 +4,8 @@
 * added :decision-for relation
 * fixed :goal-for relation
 * fixed and improved protected area handling in templates
+* updated arc42 template
+* updated overarch models
 
 ## Version 0.42.0
 * adding views for traceability (e.g. instanciation/implementation views)

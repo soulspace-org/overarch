@@ -11,60 +11,74 @@
   {:el :goal
    :id :overarch.architecture.goal/knowledge-models
    :priority 1
-   :name "Knowledge Models"
+   :name "Open Architecture Knowledge Platform"
    :desc "An Overarch model shall capture architectural knowledge on different levels (e.g. enterprise, business, system, code, deployment)."
-   :doc "The central goal for Overarch is to provide a facility to capturing architectural knowledge."}
+   :doc "The central goal for Overarch is to provide a facility to capturing
+architectural knowledge and make it accessible for different use cases."}
 
   {:el :goal
    :id :overarch.architecture.goal/open-models
    :priority 2
    :name "Open Models"
-   :desc "The the models shall be open and accessible for other tools"}
-
-  {:el :goal
-   :id :overarch.architecture.goal/composeable-models
-   :priority 2
-   :name "Composeable Models"
-   :desc "Models from different sources can be composed to form a larger model."}
+   :desc "The knowledge captured in the models shall be open and accessible for other tools"
+   :doc "Capturing knowledge in a model is a big effort which is often lost
+when the system for capturing stores the knowledge in closed formats and locks
+the user in. Overarch provides value by storing the model as text files and by
+providing exporters to other common file formats like JSON. Other tools can
+read these files and implement features based on the information, which are not
+provided by Overarch itself."}
 
   {:el :goal
    :id :overarch.architecture.goal/queryably-models
    :priority 2
    :name "Queryable Models"
-   :desc "Model can be queried to answer specific questions or to select a specific subset of the model."}
+   :desc "Model can be queried to answer specific questions or to select a specific subset of the model."
+   :doc ""}
+
+  {:el :goal
+   :id :overarch.architecture.goal/composeable-models
+   :priority 2
+   :name "Composeable Models"
+   :desc "Models from different sources can be composed to form a larger model."
+   :doc ""}
 
   {:el :goal
    :id :overarch.architecture.goal/extensible-model-elements
    :priority 2
    :name "Extensible Models"
-   :desc "Model elements are open and can be extended with additional information."}
+   :desc "Model elements are open and can be extended with additional information."
+   :doc ""}
 
   {:el :goal
-   :id :overarch.architecture.goal/extensible-target-artifacts
+   :id :overarch.architecture.goal/template-based-artifact-generation
    :priority 2
-   :name "Customizeable Artifact Generation"
-   :desc "The generation of artifacts from information in the model is fully customizeable."}
+   :name "Template-based Artifact Generation"
+   :desc "The generation of artifacts from the model is fully customizeable via templates."
+   :doc "Users should be able to customize existing templates and create new
+templates for new types of artifacts without the need to update the overarch
+codebase."}
 
-  ;; Relations
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.goal/knowledge-models}
+  {:el :goal
+   :id :overarch.architecture.goal/customizable-model-scopes
+   :priority 3
+   :name "Customizable Scopes"
+   :desc "The scope of the viewpoints on the model is selectable."
+   :doc "The scope defines which elements of the model are considered internal
+and which are considered external in the viewpoints. Selecting the scope allows
+to focus on a specific part of the model and to hide the rest in the context of
+viewpoints and the generation of artifacts.
+         
+By supporting customizable model scopes, models can be created on an enterprise
+level and still be views from the scope of e.g. a single system."}
 
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.goal/open-models}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.goal/composeable-models}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.goal/queryably-models}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.goal/extensible-model-elements}
+  {:el :goal
+   :id :overarch.architecture.goal/customizable-view-specifications
+   :priority 3
+   :name "Customizable View Specifications"
+   :desc "The viewpoints on the model are fully customizable."
+   :doc "The view specifications define which selection of elements are part of
+a viewpoint. Users should be able to define new view specifications for their
+purpose without the need to update the overarch codebase."}
 
   ;;;
   ;;; Requirements
@@ -243,6 +257,40 @@
   ;;;
   ;;; Architecture Model Relations
   ;;;
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/knowledge-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/open-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/composeable-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/queryably-models}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/extensible-model-elements}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/customizable-model-scopes}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/template-based-artifact-generation}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.goal/customizable-view-specifications
+   :maturity :proposed}
+
   {:el :request
    :id :overarch.architecture/cli-loads-data
    :from :overarch.adapter.ui/cli
