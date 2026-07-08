@@ -818,6 +818,8 @@
 %>
 
 ## Deployment
+<%= (md/relative-diagram-link e (m/resolve-view model e "deployment-view")) %>
+
 <%= (md/relative-view-link e (m/resolve-view model e "deployment-view")) %>
 <%
   )
