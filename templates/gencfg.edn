@@ -82,11 +82,11 @@
  ;;;
  ;;; Markdown Architecture Documentation
  ;;;
- {:selection {:model-node? true :el #{:system} :external? false}
+ {:selection {:el :system :external? false}
   :template "docs/arc42.md.cmb"
   :per-element true
-  :id-as-namespace true
-  :basename "architecture"
+  :id-as-name true
+  :suffix "_architecture"
   :extension "md"}
 
  ;;;
