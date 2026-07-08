@@ -7,3 +7,7 @@
 (require '[lib.markdown :as md])
 
 ?># Architecture Decisions
+
+<?
+; TODO add table of architecture decisions, selected with criteria and sorted by priority
+?>

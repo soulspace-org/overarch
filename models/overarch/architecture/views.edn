@@ -5,7 +5,7 @@
   ;;; Architecture Views
   ;;;
   {:el :context-view
-   :id :overarch.architecture/overarch-context-view
+   :id :overarch.architecture/context-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :name "Overarch Context View"
    :title "Context View of Overarch"
@@ -13,14 +13,14 @@
    :ct []}
 
   {:el :container-view
-   :id :overarch.architecture/overarch-container-view
+   :id :overarch.architecture/container-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :name "Overarch Container View"
    :title "Container View of Overarch"
    :ct []}
 
   {:el :component-view
-   :id :overarch.architecture/overarch-component-view
+   :id :overarch.architecture/component-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :name "Overarch Component View"
    :title "Component View of Overarch"

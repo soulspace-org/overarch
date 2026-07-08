@@ -145,11 +145,11 @@
   {:el :system
    :id :overarch.architecture/overarch
    :name "Overarch"
-   :desc "Provides the schema for architecture models and views. Generates representations like diagrams."
+   :desc "An Open Architecture Knowledge Platform"
    :ct #{{:el :container
           :id :overarch.architecture/overarch-cli
           :name "Overarch CLI"
-          :desc "CLI tool for the export of the architecture models into different formats."
+          :desc "CLI tool for the generation of value from the knowledge."
           :tech "Clojure"
           :ct #{{:el :component
                  :id :overarch.domain/model

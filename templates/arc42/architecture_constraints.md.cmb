@@ -7,3 +7,7 @@
 (require '[lib.markdown :as md])
 
 ?># Architecture Constraints
+
+<?
+; TODO add table of architecture constraints, selected with criteria and sorted by priority
+?>

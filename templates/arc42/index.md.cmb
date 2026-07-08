@@ -1,4 +1,15 @@
-# 
+<?
+;;;;
+;;;; Markdown Arc42 Documentation Template
+;;;;
+
+; TODO use protected areas for hand written content?
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+?>#  Architecture Documentation for <?= (:name e) ?>
+
 ## Table of Content
 1. [Introduction and Goals](introduction_goals.md)
 1. [Architecture Constraints](architecture_constraints.md)
@@ -11,4 +22,4 @@
 1. [Architectural Decisions](architecture_decisions.md)
 1. [Quality Requirements](quality_requirements.md)
 1. [Risk and Technical Dept](risks_technical_dept.md)
-1. [Glossary](/docs/mybank/glossary.md)
+1. [Glossary](/docs/glossary.md)

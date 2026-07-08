@@ -3,7 +3,7 @@
 ;;;;
 #{
   {:el :use-case-view
-   :id :overarch.use-case/overarch-use-case-view
+   :id :overarch.use-case/use-case-view
    :selection {:namespace-prefix "overarch.use-case"}
    :include :relations
    :layout :left-right
