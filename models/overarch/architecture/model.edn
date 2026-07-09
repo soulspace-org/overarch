@@ -130,17 +130,6 @@ purpose without the need to update the overarch codebase."}
    :tags #{"architecture"}}
 
   {:el :decision
-   :id :overarch.architecture.decision/data-representation
-   :name "Internal Data Representation"
-   :desc "Model elements are stored in a graph of nodes and relations"
-   :doc "## Problem
-## Option 1: Graph
-## Option 2: Tree
-## Option 3: Combination of Graph an Trees
-"
-   :tags #{"architecture"}}
-
-  {:el :decision
    :id :overarch.architecture.decision/data-format
    :name "Data Format for Models"
    :desc "Extensible Data Notation (EDN) is used as the data format for models and other
