@@ -1,14 +1,90 @@
 
 # Data Format for Models (Decision)
 ## Description
-Which external data format for the model?
+Extensible Data Notation (EDN) is used as the data format for models and other
+customization/configuration data
 
 
 ## Tags
 architecture
 
 ## Documentation
+## Problem
+The Overarch model should be stored in an open text format.
+The text format should be structured, compact and easy to read and edit for
+human users and for tools and AI models.
 
+## Options
+### Option 1: EDN
+Extensible Data Notation (EDN) is a subset of clojure containing the clojure data literals.
+
+#### Benefits
+* simple syntax
+  * very readable for humans and AI
+* rich semantics, supports relevant data types
+  * namespaced keywords, sets, tagged values
+* native Clojure format
+  * no parsers needed for Clojure languages
+  * readers for Clojure host languages (e.g. Java, JavaScript, .NET)
+* very good support for major editors/IDEs with type completion, syntax highlighting
+  * VSCode + Calva
+  * IntelliJ + Cursive
+  * Emacs + Cider  
+* easily convertable to other formats, e.g.
+  * JSON (lossy, keywords -> strings, sets -> arrays)
+  * YAML (lossy, keywords -> strings, sets -> arrays)
+  * XML (lossy or complex XML)
+
+#### Drawbacks
+* less familiar to developers than JSON or YAML
+
+## Option 2: JSON
+JavaScript Object Notation
+
+#### Benefits
+* simple syntax
+  * very readable for humans and AI
+* very familiar to most developers
+* very good support for major editors/IDEs with type completion, syntax highlighting
+#### Drawbacks
+* missing support for relevant data types
+  * namespaced keywords, sets, numerical types, tagged values
+  
+## Option 3: YAML
+Yet Another Markup Language
+
+#### Benefits
+* familiar to most developers
+* very good support for major editors/IDEs with type completion, syntax highlighting
+
+#### Drawbacks
+* terse syntax, not very readable for humans
+* missing support for relevant data types
+  * namespaced keywords, sets
+
+## Option 4: XML
+eXtensible Markup Language
+
+#### Benefits
+* familiar to most developers
+
+#### Drawbacks
+* complicated syntax (compared to the other options)
+* not very readable for humans
+* bigger files with lower signal to noise ratio
+* parsers needed
+
+## Decision
+Option 1: EDN is used as the data format for the model and all other
+customization and configuration data.
+
+### Consequences
+* Uniform data handling in the Overarch codebase
+* Users have to learn a single data format for all Overarch model and
+  configuration data
+* Conversion in the other formats is easy, so the model information is also
+  available for tools written in languages, for which no EDN reader is
+  available
 
 
 ## Navigation

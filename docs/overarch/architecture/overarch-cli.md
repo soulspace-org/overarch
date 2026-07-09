@@ -11,23 +11,23 @@ Clojure
 ## Components
 | Component | Description |
 |---|---|
-| [adapter.exports.json](../../overarch/adapter/exports/json.md)| Contains the implementation of the JSON export. |
-| [adapter.exports.structurizr](../../overarch/adapter/exports/structurizr.md)| Contains the implementation of the Structurizr export. |
-| [adapter.reader.model-reader](../../overarch/adapter/reader/model-reader.md)| Contains the functions for reading and building models and setting the repository state. The multimethods should be implemented by specific readers. |
-| [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md)| Contains the implementation of the Graphviz rendering. |
-| [adapter.render.markdown](../../overarch/adapter/render/markdown.md)| Contains the implementation of the Markdown rendering. |
-| [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md)| Contains the implementation of the PlantUML rendering. |
-| [adapter.template.comb](../../overarch/adapter/template/comb.md)| Contains the implementation of a template engine for Comb templates. |
-| [adapter.ui.cli](../../overarch/adapter/ui/cli.md)| Parses the command line options and dispatches functions on them. |
-| [application.export](../../overarch/application/export.md)| Contains the export multimethods to be implemented by the concrete export adapter implementations. |
-| [application.model-repository](../../overarch/application/model-repository.md)| Contains a stateful representation of the model and accessor functions to the model state. |
-| [application.reader](../../overarch/application/reader.md)| Contains the reader multimethods to be implemented by the concrete reader adapter implementations. |
-| [application.render](../../overarch/application/render.md)| Contains the render multimethods to be implemented by the concrete render adapter implementations. |
-| [application.template](../../overarch/application/template.md)| Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations. |
-| [domain.model](../../overarch/domain/model.md)| Contains the model specification and functions. |
-| [domain.view](../../overarch/domain/view.md)| Contains the view specification and functions. |
-| [util.functions](../../overarch/util/functions.md)| Contains common functions. |
-| [util.io](../../overarch/util/io.md)| Contains I/O related functions. |
+| [adapter.exports.json](../../overarch/adapter/exports/json.md) | Contains the implementation of the JSON export. |
+| [adapter.exports.structurizr](../../overarch/adapter/exports/structurizr.md) | Contains the implementation of the Structurizr export. |
+| [adapter.reader.model-reader](../../overarch/adapter/reader/model-reader.md) | Contains the functions for reading and building models and setting the repository state. The multimethods should be implemented by specific readers. |
+| [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md) | Contains the implementation of the Graphviz rendering. |
+| [adapter.render.markdown](../../overarch/adapter/render/markdown.md) | Contains the implementation of the Markdown rendering. |
+| [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md) | Contains the implementation of the PlantUML rendering. |
+| [adapter.template.comb](../../overarch/adapter/template/comb.md) | Contains the implementation of a template engine for Comb templates. |
+| [adapter.ui.cli](../../overarch/adapter/ui/cli.md) | Parses the command line options and dispatches functions on them. |
+| [application.export](../../overarch/application/export.md) | Contains the export multimethods to be implemented by the concrete export adapter implementations. |
+| [application.model-repository](../../overarch/application/model-repository.md) | Contains a stateful representation of the model and accessor functions to the model state. |
+| [application.reader](../../overarch/application/reader.md) | Contains the reader multimethods to be implemented by the concrete reader adapter implementations. |
+| [application.render](../../overarch/application/render.md) | Contains the render multimethods to be implemented by the concrete render adapter implementations. |
+| [application.template](../../overarch/application/template.md) | Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations. |
+| [domain.model](../../overarch/domain/model.md) | Contains the model specification and functions. |
+| [domain.view](../../overarch/domain/view.md) | Contains the view specification and functions. |
+| [util.functions](../../overarch/util/functions.md) | Contains common functions. |
+| [util.io](../../overarch/util/io.md) | Contains I/O related functions. |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

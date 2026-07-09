@@ -6,9 +6,9 @@ A technical node in the architecture model
 ## Subordinates
 | Concept | Description |
 |---|---|
-| [Component](../../overarch/concepts/component.md)| A (logical) building block of a container (e.g. a module or a layer) |
-| [Container](../../overarch/concepts/container.md)| a deployed process in the architecture (e.g. a service or an application) |
-| [System](../../overarch/concepts/system.md)| A system relevant in the architecture |
+| [Component](../../overarch/concepts/component.md) | A (logical) building block of a container (e.g. a module or a layer) |
+| [Container](../../overarch/concepts/container.md) | a deployed process in the architecture (e.g. a service or an application) |
+| [System](../../overarch/concepts/system.md) | A system relevant in the architecture |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

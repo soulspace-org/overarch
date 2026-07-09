@@ -6,22 +6,22 @@ A state in a state machine
 ## Subordinates
 | Concept | Description |
 |---|---|
-| [Choice](../../overarch/concepts/choice.md)| Selects one of several alternative paths |
-| [Deep History State](../../overarch/concepts/deep-history-state.md)| Remembers the last active substate in a substate |
-| [End State](../../overarch/concepts/end-state.md)| A final state of a state machine |
-| [Fork](../../overarch/concepts/fork.md)| Splits the flow into multiple concurrent flows |
-| [History State](../../overarch/concepts/history-state.md)| Remembers the last active substate |
-| [Join](../../overarch/concepts/join.md)| Joins multiple concurrent flows into one flow |
-| [Start State](../../overarch/concepts/start-state.md)| The initial state of a state machine |
+| [Choice](../../overarch/concepts/choice.md) | Selects one of several alternative paths |
+| [Deep History State](../../overarch/concepts/deep-history-state.md) | Remembers the last active substate in a substate |
+| [End State](../../overarch/concepts/end-state.md) | A final state of a state machine |
+| [Fork](../../overarch/concepts/fork.md) | Splits the flow into multiple concurrent flows |
+| [History State](../../overarch/concepts/history-state.md) | Remembers the last active substate |
+| [Join](../../overarch/concepts/join.md) | Joins multiple concurrent flows into one flow |
+| [Start State](../../overarch/concepts/start-state.md) | The initial state of a state machine |
 ## Features
 | Concept | Description |
 |---|---|
-| [State](../../overarch/concepts/state.md)| A state in a state machine |
+| [State](../../overarch/concepts/state.md) | A state in a state machine |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [State](../../overarch/concepts/state.md)| A state in a state machine |
-| [State Machine](../../overarch/concepts/state-machine.md)| A collection of states and transitions |
+| [State](../../overarch/concepts/state.md) | A state in a state machine |
+| [State Machine](../../overarch/concepts/state-machine.md) | A collection of states and transitions |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

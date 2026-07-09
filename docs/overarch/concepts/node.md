@@ -6,11 +6,11 @@ Part of the infrastructure in the deployment model
 ## Features
 | Concept | Description |
 |---|---|
-| [Node](../../overarch/concepts/node.md)| Part of the infrastructure in the deployment model |
+| [Node](../../overarch/concepts/node.md) | Part of the infrastructure in the deployment model |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Node](../../overarch/concepts/node.md)| Part of the infrastructure in the deployment model |
+| [Node](../../overarch/concepts/node.md) | Part of the infrastructure in the deployment model |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

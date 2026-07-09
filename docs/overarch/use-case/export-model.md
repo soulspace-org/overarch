@@ -6,12 +6,12 @@ Export the model in different formats.
 ## Actors
 | Actor | Description |
 |---|---|
-| [Modeller](../../overarch/roles/modeller.md)| Models the architecture of a system and specifies views of the model. |
+| [Modeller](../../overarch/roles/modeller.md) | Models the architecture of a system and specifies views of the model. |
 ## Extending Use Cases
 | Use Case | Description |
 |---|---|
-| [export JSON](../../overarch/use-case/export-json.md)| Export the model and views to JSON. |
-| [export Structurizr](../../overarch/use-case/export-structurizr.md)| Export the architecture model and views as a Structurizr workspace. |
+| [export JSON](../../overarch/use-case/export-json.md) | Export the model and views to JSON. |
+| [export Structurizr](../../overarch/use-case/export-structurizr.md) | Export the architecture model and views as a Structurizr workspace. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

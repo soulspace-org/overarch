@@ -6,11 +6,11 @@ A contract that defines a set of operations that a class must implement.
 ## Features
 | Concept | Description |
 |---|---|
-| [Method](../../overarch/concepts/method.md)| A method of a class or interface in the code model. |
+| [Method](../../overarch/concepts/method.md) | A method of a class or interface in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Package](../../overarch/concepts/package.md)| A collection of related classes or modules. |
+| [Package](../../overarch/concepts/package.md) | A collection of related classes or modules. |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

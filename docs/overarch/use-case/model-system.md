@@ -6,11 +6,11 @@ Textually model the system in the Overarch data model.
 ## Actors
 | Actor | Description |
 |---|---|
-| [Modeller](../../overarch/roles/modeller.md)| Models the architecture of a system and specifies views of the model. |
+| [Modeller](../../overarch/roles/modeller.md) | Models the architecture of a system and specifies views of the model. |
 ## Actor in Use Cases
 | Use Case | Description |
 |---|---|
-| [Editor/IDE](../../overarch/architecture/editor.md)| Tool for describing the architecture model and the views. |
+| [Editor/IDE](../../overarch/architecture/editor.md) | Tool for describing the architecture model and the views. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

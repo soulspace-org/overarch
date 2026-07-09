@@ -6,12 +6,12 @@ A class in the code model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Field](../../overarch/concepts/field.md)| A field of a class, namespace or schema in the code model. |
-| [Method](../../overarch/concepts/method.md)| A method of a class or interface in the code model. |
+| [Field](../../overarch/concepts/field.md) | A field of a class, namespace or schema in the code model. |
+| [Method](../../overarch/concepts/method.md) | A method of a class or interface in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Package](../../overarch/concepts/package.md)| A collection of related classes or modules. |
+| [Package](../../overarch/concepts/package.md) | A collection of related classes or modules. |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

@@ -6,8 +6,8 @@ A parameter of a method or function in the code model.
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Function](../../overarch/concepts/function.md)| A function in the code model. |
-| [Method](../../overarch/concepts/method.md)| A method of a class or interface in the code model. |
+| [Function](../../overarch/concepts/function.md) | A function in the code model. |
+| [Method](../../overarch/concepts/method.md) | A method of a class or interface in the code model. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

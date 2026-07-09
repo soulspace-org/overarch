@@ -8,7 +8,7 @@ A node in the concept model.
 concept-model
 
 ## Superclasses
-[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [person](../../overarch/data-model/person.md), [context-boundary](../../overarch/data-model/context-boundary.md), [concept](../../overarch/data-model/concept.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md)
+[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md), [context-boundary](../../overarch/data-model/context-boundary.md), [concept](../../overarch/data-model/concept.md)
 
 ## Subclasses
 [concept-model-element](../../overarch/data-model/concept-model-element.md), [model-node](../../overarch/data-model/model-node.md)

@@ -6,11 +6,11 @@ An enumeration in the code model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Enum Value](../../overarch/concepts/enum-value.md)| A value of an enumeration in the code model. |
+| [Enum Value](../../overarch/concepts/enum-value.md) | A value of an enumeration in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Package](../../overarch/concepts/package.md)| A collection of related classes or modules. |
+| [Package](../../overarch/concepts/package.md) | A collection of related classes or modules. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

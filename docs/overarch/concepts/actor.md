@@ -6,8 +6,8 @@ An actor (role) in a use case model.
 ## Subordinates
 | Concept | Description |
 |---|---|
-| [Person](../../overarch/concepts/person.md)| A human actor or role (deprecated, use role). |
-| [System](../../overarch/concepts/system.md)| A system relevant in the architecture |
+| [Person](../../overarch/concepts/person.md) | A human actor or role (deprecated, use role). |
+| [System](../../overarch/concepts/system.md) | A system relevant in the architecture |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

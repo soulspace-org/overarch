@@ -6,7 +6,7 @@ Query the model with selection criteria.
 ## Actors
 | Actor | Description |
 |---|---|
-| [Modeller](../../overarch/roles/modeller.md)| Models the architecture of a system and specifies views of the model. |
+| [Modeller](../../overarch/roles/modeller.md) | Models the architecture of a system and specifies views of the model. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

@@ -6,7 +6,7 @@ An organization (e.g. a company) in the organization model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Organizational Unit](../../overarch/concepts/org-unit.md)| An organizational unit (e.g. a department) in the organization model. |
+| [Organizational Unit](../../overarch/concepts/org-unit.md) | An organizational unit (e.g. a department) in the organization model. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

@@ -6,9 +6,9 @@ Tool for describing the architecture model and the views.
 ## Actors
 | Actor | Description |
 |---|---|
-| [create templates](../../overarch/use-case/create-templates.md)| Create templates to generate artifacts from model selections. |
-| [define views](../../overarch/use-case/define-views.md)| Textually define views of the system in the Overarch view model. |
-| [model system](../../overarch/use-case/model-system.md)| Textually model the system in the Overarch data model. |
+| [create templates](../../overarch/use-case/create-templates.md) | Create templates to generate artifacts from model selections. |
+| [define views](../../overarch/use-case/define-views.md) | Textually define views of the system in the Overarch view model. |
+| [model system](../../overarch/use-case/model-system.md) | Textually model the system in the Overarch data model. |
 ## Incoming Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|

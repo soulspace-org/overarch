@@ -1,11 +1,12 @@
 
-# Knowledge Models (Goal)
+# Open Architecture Knowledge Platform (Goal)
 ## Description
 An Overarch model shall capture architectural knowledge on different levels (e.g. enterprise, business, system, code, deployment).
 
 
 ## Documentation
-The central goal for Overarch is to provide a facility to capturing architectural knowledge.
+The central goal for Overarch is to provide a facility to capturing
+architectural knowledge and make it accessible for different use cases.
 
 
 ## Navigation

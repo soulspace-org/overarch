@@ -8,7 +8,7 @@ A node in the code model.
 code-model
 
 ## Superclasses
-[method](../../overarch/data-model/method.md), [enum-value](../../overarch/data-model/enum-value.md), [field](../../overarch/data-model/field.md), [function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md), [namespace](../../overarch/data-model/namespace.md), [schema](../../overarch/data-model/schema.md), [interface](../../overarch/data-model/interface.md), [package](../../overarch/data-model/package.md), [enum](../../overarch/data-model/enum.md), [class](../../overarch/data-model/class.md), [protocol](../../overarch/data-model/protocol.md)
+[method](../../overarch/data-model/method.md), [enum-value](../../overarch/data-model/enum-value.md), [field](../../overarch/data-model/field.md), [function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md), [namespace](../../overarch/data-model/namespace.md), [package](../../overarch/data-model/package.md), [enum](../../overarch/data-model/enum.md), [interface](../../overarch/data-model/interface.md), [class](../../overarch/data-model/class.md), [protocol](../../overarch/data-model/protocol.md), [schema](../../overarch/data-model/schema.md)
 
 ## Subclasses
 [model-node](../../overarch/data-model/model-node.md), [code-model-element](../../overarch/data-model/code-model-element.md)

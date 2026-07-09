@@ -1,13 +1,19 @@
 
 # Internal Data Representation (Decision)
 ## Description
-What is the internal representation of the model?
+Model elements are stored in a graph of nodes and relations
 
 
 ## Tags
 architecture
 
 ## Documentation
+## Problem
+## Option 1: Graph
+## Option 2: Tree
+## Option 3: Combination of Graph an Trees
+
+## Desision
 
 
 

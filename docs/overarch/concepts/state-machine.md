@@ -6,7 +6,7 @@ A collection of states and transitions
 ## Features
 | Concept | Description |
 |---|---|
-| [State](../../overarch/concepts/state.md)| A state in a state machine |
+| [State](../../overarch/concepts/state.md) | A state in a state machine |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

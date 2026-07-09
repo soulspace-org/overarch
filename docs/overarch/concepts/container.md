@@ -6,15 +6,15 @@ a deployed process in the architecture (e.g. a service or an application)
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md)| A technical node in the architecture model |
+| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md) | A technical node in the architecture model |
 ## Features
 | Concept | Description |
 |---|---|
-| [Component](../../overarch/concepts/component.md)| A (logical) building block of a container (e.g. a module or a layer) |
+| [Component](../../overarch/concepts/component.md) | A (logical) building block of a container (e.g. a module or a layer) |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [System](../../overarch/concepts/system.md)| A system relevant in the architecture |
+| [System](../../overarch/concepts/system.md) | A system relevant in the architecture |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

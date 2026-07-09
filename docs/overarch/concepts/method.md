@@ -6,12 +6,12 @@ A method of a class or interface in the code model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Parameter](../../overarch/concepts/parameter.md)| A parameter of a method or function in the code model. |
+| [Parameter](../../overarch/concepts/parameter.md) | A parameter of a method or function in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Class](../../overarch/concepts/class.md)| A class in the code model. |
-| [Interface](../../overarch/concepts/interface.md)| A contract that defines a set of operations that a class must implement. |
+| [Class](../../overarch/concepts/class.md) | A class in the code model. |
+| [Interface](../../overarch/concepts/interface.md) | A contract that defines a set of operations that a class must implement. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

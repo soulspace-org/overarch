@@ -26,6 +26,8 @@ abstract class "technical-element" as overarch_dataModel_technicalElement {
   tech : string [0..1]
 }
 class "response" as overarch_dataModel_response {}
+class "system" as overarch_dataModel_system {}
+class "container" as overarch_dataModel_container {}
 class "dataflow" as overarch_dataModel_dataflow {}
 class "context-boundary" as overarch_dataModel_contextBoundary {}
 abstract class "model-node" as overarch_dataModel_modelNode {}
@@ -36,7 +38,6 @@ abstract class "model-relation" as overarch_dataModel_modelRelation {
 class "rel" as overarch_dataModel_rel {}
 abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
 class "subscribe" as overarch_dataModel_subscribe {}
-class "system" as overarch_dataModel_system {}
 abstract class "technical-architecture-model-relation" as overarch_dataModel_technicalArchitectureModelRelation {}
 abstract class "element" as overarch_dataModel_element {
   desc : string [0..1]
@@ -48,7 +49,6 @@ abstract class "element" as overarch_dataModel_element {
 abstract class "architecture-model-element" as overarch_dataModel_architectureModelElement {
   external : boolean [0..1]
 }
-class "container" as overarch_dataModel_container {}
 overarch_dataModel_architectureModelNode <|-- overarch_dataModel_person
 overarch_dataModel_modelElement <|-- overarch_dataModel_architectureModelElement
 overarch_dataModel_modelNode <|-- overarch_dataModel_architectureModelNode
