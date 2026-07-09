@@ -6,7 +6,7 @@ Splits the flow into multiple concurrent flows
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [State](../../overarch/concepts/state.md)| A state in a state machine |
+| [State](../../overarch/concepts/state.md) | A state in a state machine |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

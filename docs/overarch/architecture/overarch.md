@@ -7,14 +7,14 @@ An Open Architecture Knowledge Platform
 ## Implemented Decisions
 | Decision | Description |
 |---|---|
-| [Data Format for Models](../../overarch/architecture/decision/data-format.md)| Which external data format for the model? |
-| [Implementation Architecture](../../overarch/architecture/decision/implementation-architecture.md)| What is the implementation architecture for Overarch? |
-| [Implementation Language](../../overarch/architecture/decision/implementation-language.md)| What language should be used to implement Overarch? |
-| [Internal Data Representation](../../overarch/architecture/decision/data-representation.md)| What is the internal representation of the model? |
+| [Data Format for Models](../../overarch/architecture/decision/data-format.md) | Extensible Data Notation (EDN) is used as the data format for models and other customization/configuration data |
+| [Implementation Architecture](../../overarch/architecture/decision/implementation-architecture.md) | Clean Architecture is used to structure the implementation |
+| [Implementation Language](../../overarch/architecture/decision/implementation-language.md) | Clojure is used as sole implementation language |
+| [Internal Data Representation](../../overarch/architecture/decision/data-representation.md) | Model elements are stored in a graph of nodes and relations |
 ## Containers
 | Container | Description |
 |---|---|
-| [Overarch CLI](../../overarch/architecture/overarch-cli.md)| CLI tool for the generation of value from the knowledge. |
+| [Overarch CLI](../../overarch/architecture/overarch-cli.md) | CLI tool for the generation of value from the knowledge. |
 ## Incoming Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|

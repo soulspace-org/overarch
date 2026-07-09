@@ -6,7 +6,7 @@ A value of an enumeration in the code model.
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Enum](../../overarch/concepts/enum.md)| An enumeration in the code model. |
+| [Enum](../../overarch/concepts/enum.md) | An enumeration in the code model. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

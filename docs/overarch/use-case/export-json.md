@@ -6,7 +6,7 @@ Export the model and views to JSON.
 ## Extended Use Cases
 | Use Case | Description |
 |---|---|
-| [export model](../../overarch/use-case/export-model.md)| Export the model in different formats. |
+| [export model](../../overarch/use-case/export-model.md) | Export the model in different formats. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

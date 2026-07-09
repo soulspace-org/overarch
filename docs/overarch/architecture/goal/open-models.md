@@ -1,8 +1,16 @@
 
 # Open Models (Goal)
 ## Description
-The the models shall be open and accessible for other tools
+The knowledge captured in the models shall be open and accessible for other tools
 
+
+## Documentation
+Capturing knowledge in a model is a big effort which is often lost
+when the system for capturing stores the knowledge in closed formats and locks
+the user in. Overarch provides value by storing the model as text files and by
+providing exporters to other common file formats like JSON. Other tools can
+read these files and implement features based on the information, which are not
+provided by Overarch itself.
 
 
 ## Navigation

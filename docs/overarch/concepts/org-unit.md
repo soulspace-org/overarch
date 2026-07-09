@@ -6,12 +6,12 @@ An organizational unit (e.g. a department) in the organization model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Organizational Unit](../../overarch/concepts/org-unit.md)| An organizational unit (e.g. a department) in the organization model. |
+| [Organizational Unit](../../overarch/concepts/org-unit.md) | An organizational unit (e.g. a department) in the organization model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Organization](../../overarch/concepts/organization.md)| An organization (e.g. a company) in the organization model. |
-| [Organizational Unit](../../overarch/concepts/org-unit.md)| An organizational unit (e.g. a department) in the organization model. |
+| [Organization](../../overarch/concepts/organization.md) | An organization (e.g. a company) in the organization model. |
+| [Organizational Unit](../../overarch/concepts/org-unit.md) | An organizational unit (e.g. a department) in the organization model. |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

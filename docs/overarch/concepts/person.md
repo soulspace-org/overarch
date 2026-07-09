@@ -6,7 +6,7 @@ A human actor or role (deprecated, use role).
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [Actor](../../overarch/concepts/actor.md)| An actor (role) in a use case model. |
+| [Actor](../../overarch/concepts/actor.md) | An actor (role) in a use case model. |
 ## Other Relations
 | From | Name | To | Description |
 |---|---|---|---|

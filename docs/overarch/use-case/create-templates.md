@@ -6,11 +6,11 @@ Create templates to generate artifacts from model selections.
 ## Actors
 | Actor | Description |
 |---|---|
-| [Template Programmer](../../overarch/roles/template-programmer.md)| Creates templates for artifact generation. |
+| [Template Programmer](../../overarch/roles/template-programmer.md) | Creates templates for artifact generation. |
 ## Actor in Use Cases
 | Use Case | Description |
 |---|---|
-| [Editor/IDE](../../overarch/architecture/editor.md)| Tool for describing the architecture model and the views. |
+| [Editor/IDE](../../overarch/architecture/editor.md) | Tool for describing the architecture model and the views. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

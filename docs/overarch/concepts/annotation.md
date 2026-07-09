@@ -6,7 +6,7 @@ An annotation in the code model.
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Package](../../overarch/concepts/package.md)| A collection of related classes or modules. |
+| [Package](../../overarch/concepts/package.md) | A collection of related classes or modules. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

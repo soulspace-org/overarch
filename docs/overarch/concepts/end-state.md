@@ -6,7 +6,7 @@ A final state of a state machine
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [State](../../overarch/concepts/state.md)| A state in a state machine |
+| [State](../../overarch/concepts/state.md) | A state in a state machine |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

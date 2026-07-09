@@ -4,6 +4,9 @@
 Model elements are open and can be extended with additional information.
 
 
+## Documentation
+
+
 
 ## Navigation
 [List of views in namespace](./views-in-namespace.md)

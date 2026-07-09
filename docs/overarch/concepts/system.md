@@ -6,12 +6,12 @@ A system relevant in the architecture
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [Actor](../../overarch/concepts/actor.md)| An actor (role) in a use case model. |
-| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md)| A technical node in the architecture model |
+| [Actor](../../overarch/concepts/actor.md) | An actor (role) in a use case model. |
+| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md) | A technical node in the architecture model |
 ## Features
 | Concept | Description |
 |---|---|
-| [Container](../../overarch/concepts/container.md)| a deployed process in the architecture (e.g. a service or an application) |
+| [Container](../../overarch/concepts/container.md) | a deployed process in the architecture (e.g. a service or an application) |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

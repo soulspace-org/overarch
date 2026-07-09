@@ -6,7 +6,7 @@ Creates templates for artifact generation.
 ## Actor in Use Cases
 | Use Case | Description |
 |---|---|
-| [create templates](../../overarch/use-case/create-templates.md)| Create templates to generate artifacts from model selections. |
+| [create templates](../../overarch/use-case/create-templates.md) | Create templates to generate artifacts from model selections. |
 ## Outgoing Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|

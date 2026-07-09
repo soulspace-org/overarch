@@ -122,10 +122,10 @@ Shows all nodes and relations in the Overarch model
 ## Decisions
 | Decision | Description |
 |---|---|
-| [Data Format for Models](../overarch/architecture/decision/data-format.md)| Which external data format for the model? |
-| [Implementation Architecture](../overarch/architecture/decision/implementation-architecture.md)| What is the implementation architecture for Overarch? |
-| [Implementation Language](../overarch/architecture/decision/implementation-language.md)| What language should be used to implement Overarch? |
-| [Internal Data Representation](../overarch/architecture/decision/data-representation.md)| What is the internal representation of the model? |
+| [Data Format for Models](../overarch/architecture/decision/data-format.md)| Extensible Data Notation (EDN) is used as the data format for models and other customization/configuration data |
+| [Implementation Architecture](../overarch/architecture/decision/implementation-architecture.md)| Clean Architecture is used to structure the implementation |
+| [Implementation Language](../overarch/architecture/decision/implementation-language.md)| Clojure is used as sole implementation language |
+| [Internal Data Representation](../overarch/architecture/decision/data-representation.md)| Model elements are stored in a graph of nodes and relations |
 
 ## Use Cases
 | Use Case | Description |

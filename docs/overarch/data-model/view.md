@@ -8,7 +8,7 @@ An element for describing a view.
 view-model
 
 ## Superclasses
-[concept-view](../../overarch/data-model/concept-view.md), [model-view](../../overarch/data-model/model-view.md), [glossary-view](../../overarch/data-model/glossary-view.md), [deployment-structure-view](../../overarch/data-model/deployment-structure-view.md), [system-structure-view](../../overarch/data-model/system-structure-view.md), [use-case-view](../../overarch/data-model/use-case-view.md), [deployment-view](../../overarch/data-model/deployment-view.md), [state-machine-view](../../overarch/data-model/state-machine-view.md), [organization-structure-view](../../overarch/data-model/organization-structure-view.md), [architecture-view](../../overarch/data-model/architecture-view.md), [code-view](../../overarch/data-model/code-view.md)
+[state-machine-view](../../overarch/data-model/state-machine-view.md), [concept-view](../../overarch/data-model/concept-view.md), [system-structure-view](../../overarch/data-model/system-structure-view.md), [use-case-view](../../overarch/data-model/use-case-view.md), [code-view](../../overarch/data-model/code-view.md), [deployment-structure-view](../../overarch/data-model/deployment-structure-view.md), [glossary-view](../../overarch/data-model/glossary-view.md), [deployment-view](../../overarch/data-model/deployment-view.md), [model-view](../../overarch/data-model/model-view.md), [architecture-view](../../overarch/data-model/architecture-view.md), [organization-structure-view](../../overarch/data-model/organization-structure-view.md)
 
 ## Subclasses
 [element](../../overarch/data-model/element.md)

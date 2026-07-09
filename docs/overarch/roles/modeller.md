@@ -11,12 +11,12 @@ Models the architecture of a system and specifies views of the model.
 ## Actor in Use Cases
 | Use Case | Description |
 |---|---|
-| [define views](../../overarch/use-case/define-views.md)| Textually define views of the system in the Overarch view model. |
-| [export model](../../overarch/use-case/export-model.md)| Export the model in different formats. |
-| [generate artifacts ](../../overarch/use-case/generate-artifacts.md)| Generate artifacts with templates from model selections. |
-| [model system](../../overarch/use-case/model-system.md)| Textually model the system in the Overarch data model. |
-| [query model](../../overarch/use-case/query-model.md)| Query the model with selection criteria. |
-| [render views](../../overarch/use-case/render-views.md)| Render the views of the system. |
+| [define views](../../overarch/use-case/define-views.md) | Textually define views of the system in the Overarch view model. |
+| [export model](../../overarch/use-case/export-model.md) | Export the model in different formats. |
+| [generate artifacts ](../../overarch/use-case/generate-artifacts.md) | Generate artifacts with templates from model selections. |
+| [model system](../../overarch/use-case/model-system.md) | Textually model the system in the Overarch data model. |
+| [query model](../../overarch/use-case/query-model.md) | Query the model with selection criteria. |
+| [render views](../../overarch/use-case/render-views.md) | Render the views of the system. |
 ## Outgoing Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|

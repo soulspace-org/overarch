@@ -6,11 +6,11 @@ A contract that defines a set of operations that a type must implement.
 ## Features
 | Concept | Description |
 |---|---|
-| [Function](../../overarch/concepts/function.md)| A function in the code model. |
+| [Function](../../overarch/concepts/function.md) | A function in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Namespace](../../overarch/concepts/namespace.md)| A namespace in the code model. |
+| [Namespace](../../overarch/concepts/namespace.md) | A namespace in the code model. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

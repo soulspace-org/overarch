@@ -6,9 +6,9 @@ A field of a class, namespace or schema in the code model.
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Class](../../overarch/concepts/class.md)| A class in the code model. |
-| [Namespace](../../overarch/concepts/namespace.md)| A namespace in the code model. |
-| [Schema](../../overarch/concepts/schema.md)| Describes the structure of data, e.g. a database schema or a JSON schema. |
+| [Class](../../overarch/concepts/class.md) | A class in the code model. |
+| [Namespace](../../overarch/concepts/namespace.md) | A namespace in the code model. |
+| [Schema](../../overarch/concepts/schema.md) | Describes the structure of data, e.g. a database schema or a JSON schema. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

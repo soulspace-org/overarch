@@ -6,7 +6,7 @@ Describes the structure of data, e.g. a database schema or a JSON schema.
 ## Features
 | Concept | Description |
 |---|---|
-| [Field](../../overarch/concepts/field.md)| A field of a class, namespace or schema in the code model. |
+| [Field](../../overarch/concepts/field.md) | A field of a class, namespace or schema in the code model. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

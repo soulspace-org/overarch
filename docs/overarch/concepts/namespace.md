@@ -6,13 +6,13 @@ A namespace in the code model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Field](../../overarch/concepts/field.md)| A field of a class, namespace or schema in the code model. |
-| [Function](../../overarch/concepts/function.md)| A function in the code model. |
-| [Protocol](../../overarch/concepts/protocol.md)| A contract that defines a set of operations that a type must implement. |
+| [Field](../../overarch/concepts/field.md) | A field of a class, namespace or schema in the code model. |
+| [Function](../../overarch/concepts/function.md) | A function in the code model. |
+| [Protocol](../../overarch/concepts/protocol.md) | A contract that defines a set of operations that a type must implement. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Component](../../overarch/concepts/component.md)| A (logical) building block of a container (e.g. a module or a layer) |
+| [Component](../../overarch/concepts/component.md) | A (logical) building block of a container (e.g. a module or a layer) |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

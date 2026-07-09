@@ -6,16 +6,16 @@ A (logical) building block of a container (e.g. a module or a layer)
 ## Superordinates
 | Concept | Description |
 |---|---|
-| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md)| A technical node in the architecture model |
+| [Technical Architecture Node](../../overarch/concepts/technical-architecture-node.md) | A technical node in the architecture model |
 ## Features
 | Concept | Description |
 |---|---|
-| [Namespace](../../overarch/concepts/namespace.md)| A namespace in the code model. |
-| [Package](../../overarch/concepts/package.md)| A collection of related classes or modules. |
+| [Namespace](../../overarch/concepts/namespace.md) | A namespace in the code model. |
+| [Package](../../overarch/concepts/package.md) | A collection of related classes or modules. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Container](../../overarch/concepts/container.md)| a deployed process in the architecture (e.g. a service or an application) |
+| [Container](../../overarch/concepts/container.md) | a deployed process in the architecture (e.g. a service or an application) |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)

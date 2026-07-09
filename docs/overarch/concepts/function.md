@@ -6,12 +6,12 @@ A function in the code model.
 ## Features
 | Concept | Description |
 |---|---|
-| [Parameter](../../overarch/concepts/parameter.md)| A parameter of a method or function in the code model. |
+| [Parameter](../../overarch/concepts/parameter.md) | A parameter of a method or function in the code model. |
 ## Feature of
 | Concept | Description |
 |---|---|
-| [Namespace](../../overarch/concepts/namespace.md)| A namespace in the code model. |
-| [Protocol](../../overarch/concepts/protocol.md)| A contract that defines a set of operations that a type must implement. |
+| [Namespace](../../overarch/concepts/namespace.md) | A namespace in the code model. |
+| [Protocol](../../overarch/concepts/protocol.md) | A contract that defines a set of operations that a type must implement. |
 
 ## Concept Map
 ![Concept Map of Overarch](../../overarch/concepts/concept-view.png)
