@@ -169,7 +169,6 @@ A: An extension of the model could make sense if there is value in the
    The schema of the model is open, as the spec just checks for the existence
    of elements (keys) needed for overarch (e.g. the generation of the implemented view representations). Additional elements can be added without impact on Overarch. The keys for additional elements should be prefixed with a meaningful namespace to avoid conflicts with future extensions of Overarch.
 
-
 Q: **Why EDN as the specification notation?**
 
 A: Because it is an open and extensible data format
