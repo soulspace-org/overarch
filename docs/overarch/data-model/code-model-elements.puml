@@ -1,0 +1,127 @@
+@startuml code-model-elements
+
+
+
+
+
+
+title Code Model Elements
+
+class "aggregation" as overarch_dataModel_aggregation {}
+class "method" as overarch_dataModel_method {}
+abstract class "type-hierarchy-relation" as overarch_dataModel_typeHierarchyRelation {}
+class "enum-value" as overarch_dataModel_enumValue {}
+class "field" as overarch_dataModel_field {}
+class "inheritance" as overarch_dataModel_inheritance {}
+class "function" as overarch_dataModel_function {}
+class "parameter" as overarch_dataModel_parameter {}
+class "namespace" as overarch_dataModel_namespace {}
+abstract class "scoped-node" as overarch_dataModel_scopedNode {
+  scope : keyword [0..1]
+}
+class "association" as overarch_dataModel_association {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "schema" as overarch_dataModel_schema {}
+abstract class "visibility-node" as overarch_dataModel_visibilityNode {
+  visibility : string [0..1]
+}
+abstract class "optional-node" as overarch_dataModel_optionalNode {
+  optional : boolean [0..1]
+}
+abstract class "technical-element" as overarch_dataModel_technicalElement {
+  tech : string [0..1]
+}
+class "interface" as overarch_dataModel_interface {}
+class "package" as overarch_dataModel_package {}
+abstract class "abstract-node" as overarch_dataModel_abstractNode {
+  abstract : boolean [0..1]
+}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+class "enum" as overarch_dataModel_enum {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+abstract class "typed-node" as overarch_dataModel_typedNode {
+  type : string [0..1]
+}
+abstract class "code-model-relation" as overarch_dataModel_codeModelRelation {}
+class "composition" as overarch_dataModel_composition {}
+abstract class "code-model-node" as overarch_dataModel_codeModelNode {}
+class "class" as overarch_dataModel_class {}
+abstract class "associative-relation" as overarch_dataModel_associativeRelation {
+  from-card : string [0..1]
+  from-role : string [0..1]
+  qualifier : string [0..1]
+  to-card : string
+  to-role : string [0..1]
+}
+class "implementation" as overarch_dataModel_implementation {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "dependency" as overarch_dataModel_dependency {}
+class "protocol" as overarch_dataModel_protocol {}
+abstract class "code-model-element" as overarch_dataModel_codeModelElement {}
+overarch_dataModel_optionalNode <|-- overarch_dataModel_field
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_class
+overarch_dataModel_namespace *-->  "0..n" overarch_dataModel_codeModelNode
+overarch_dataModel_technicalElement <|-- overarch_dataModel_codeModelElement
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_function
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_enumValue
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_method
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_interface
+overarch_dataModel_typedNode <|-- overarch_dataModel_function
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_typedNode <|-- overarch_dataModel_field
+overarch_dataModel_interface *-->  "0..n" overarch_dataModel_method
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_enum
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_method
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_modelNode <|-- overarch_dataModel_codeModelNode
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_dependency
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_parameter
+overarch_dataModel_package *-->  "0..n" overarch_dataModel_codeModelNode
+overarch_dataModel_typeHierarchyRelation <|-- overarch_dataModel_implementation
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_associativeRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_codeModelElement <|-- overarch_dataModel_codeModelNode
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_package
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_field
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_function
+overarch_dataModel_abstractNode <|-- overarch_dataModel_method
+overarch_dataModel_optionalNode <|-- overarch_dataModel_function
+overarch_dataModel_codeModelElement <|-- overarch_dataModel_codeModelRelation
+overarch_dataModel_protocol *-->  "0..n" overarch_dataModel_function
+overarch_dataModel_typedNode <|-- overarch_dataModel_parameter
+overarch_dataModel_typeHierarchyRelation <|-- overarch_dataModel_inheritance
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_schema
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_namespace
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_protocol
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_typeHierarchyRelation
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_field
+overarch_dataModel_schema *-->  "0..n" overarch_dataModel_field
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_method
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_association
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_field
+overarch_dataModel_enum *-->  "1..n" overarch_dataModel_enumValue
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_aggregation
+overarch_dataModel_method *-->  "0..n" overarch_dataModel_parameter
+overarch_dataModel_scopedNode <|-- overarch_dataModel_method
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_composition
+overarch_dataModel_optionalNode <|-- overarch_dataModel_parameter
+overarch_dataModel_optionalNode <|-- overarch_dataModel_method
+overarch_dataModel_typedNode <|-- overarch_dataModel_method
+overarch_dataModel_modelRelation <|-- overarch_dataModel_codeModelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_codeModelElement
+overarch_dataModel_function *-->  "0..n" overarch_dataModel_parameter
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_function
+overarch_dataModel_scopedNode <|-- overarch_dataModel_field
+@enduml

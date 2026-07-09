@@ -1,0 +1,61 @@
+@startuml state-machine-model-elements
+
+
+
+
+
+
+title State Machine Model Elements
+
+class "fork" as overarch_dataModel_fork {}
+class "state-machine" as overarch_dataModel_stateMachine {}
+class "history-state" as overarch_dataModel_historyState {}
+abstract class "state-machine-model-element" as overarch_dataModel_stateMachineModelElement {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "deep-history-state" as overarch_dataModel_deepHistoryState {}
+class "choice" as overarch_dataModel_choice {
+  condition : string
+}
+class "state" as overarch_dataModel_state {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+abstract class "state-machine-model-relation" as overarch_dataModel_stateMachineModelRelation {}
+class "transition" as overarch_dataModel_transition {}
+class "join" as overarch_dataModel_join {}
+class "end-state" as overarch_dataModel_endState {}
+abstract class "state-machine-model-node" as overarch_dataModel_stateMachineModelNode {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "start-state" as overarch_dataModel_startState {}
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_choice
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_stateMachineModelRelation <|-- overarch_dataModel_transition
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachine
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_endState
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_fork
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_startState
+overarch_dataModel_modelElement <|-- overarch_dataModel_stateMachineModelElement
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_deepHistoryState
+overarch_dataModel_state *-->  "1..n" overarch_dataModel_stateMachineModelNode
+overarch_dataModel_modelRelation <|-- overarch_dataModel_stateMachineModelRelation
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachineModelRelation
+overarch_dataModel_stateMachine *-->  "1..n" overarch_dataModel_stateMachineModelNode
+overarch_dataModel_modelNode <|-- overarch_dataModel_stateMachineModelNode
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachineModelNode
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_historyState
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_state
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_join
+@enduml

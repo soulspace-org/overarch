@@ -1,0 +1,58 @@
+@startuml use-case-model-elements
+
+
+
+
+
+
+title Use Case Model Elements
+
+class "actor" as overarch_dataModel_actor {}
+class "extends" as overarch_dataModel_extends {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "include" as overarch_dataModel_include {}
+class "use-case" as overarch_dataModel_useCase {
+  level : keyword
+}
+class "person" as overarch_dataModel_person {}
+class "generalizes" as overarch_dataModel_generalizes {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+abstract class "use-case-model-relation" as overarch_dataModel_useCaseModelRelation {}
+abstract class "use-case-model-node" as overarch_dataModel_useCaseModelNode {}
+class "uses" as overarch_dataModel_uses {}
+class "role" as overarch_dataModel_role {}
+class "system" as overarch_dataModel_system {}
+abstract class "use-case-model-element" as overarch_dataModel_useCaseModelElement {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "container" as overarch_dataModel_container {}
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_extends
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_modelNode <|-- overarch_dataModel_useCaseModelNode
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_useCase
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_system
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_person
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_actor
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_container
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_include
+overarch_dataModel_modelElement <|-- overarch_dataModel_useCaseModelElement
+overarch_dataModel_useCaseModelElement <|-- overarch_dataModel_useCaseModelRelation
+overarch_dataModel_useCaseModelElement <|-- overarch_dataModel_useCaseModelNode
+overarch_dataModel_modelRelation <|-- overarch_dataModel_useCaseModelRelation
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_uses
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_generalizes
+@enduml

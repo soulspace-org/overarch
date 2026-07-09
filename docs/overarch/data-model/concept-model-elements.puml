@@ -1,0 +1,58 @@
+@startuml concept-model-elements
+
+
+
+
+
+
+title Concept Model Elements
+
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary {}
+abstract class "concept-model-element" as overarch_dataModel_conceptModelElement {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "person" as overarch_dataModel_person {}
+class "context-boundary" as overarch_dataModel_contextBoundary {}
+class "concept" as overarch_dataModel_concept {}
+class "has" as overarch_dataModel_has {}
+abstract class "concept-model-node" as overarch_dataModel_conceptModelNode {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "rel" as overarch_dataModel_rel {}
+abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
+class "system" as overarch_dataModel_system {}
+abstract class "concept-model-relation" as overarch_dataModel_conceptModelRelation {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "container" as overarch_dataModel_container {}
+class "is-a" as overarch_dataModel_isA {}
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_rel
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_has
+overarch_dataModel_conceptModelElement <|-- overarch_dataModel_conceptModelNode
+overarch_dataModel_modelNode <|-- overarch_dataModel_conceptModelNode
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_container
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_modelElement <|-- overarch_dataModel_conceptModelElement
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_isA
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_concept
+overarch_dataModel_modelRelation <|-- overarch_dataModel_conceptModelRelation
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_person
+overarch_dataModel_conceptModelElement <|-- overarch_dataModel_conceptModelRelation
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_system
+@enduml

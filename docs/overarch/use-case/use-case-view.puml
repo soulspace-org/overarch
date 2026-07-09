@@ -1,0 +1,36 @@
+@startuml use-case-view
+
+
+left to right direction
+
+
+
+title Use Case View of Overarch
+
+actor "Editor/IDE" as overarch_architecture_editor
+usecase "define views" as (overarch_useCase_defineViews) #BBBBFF
+usecase "generate artifacts" as (overarch_useCase_generateArtifacts) #BBBBFF
+usecase "render views" as (overarch_useCase_renderViews) #BBBBFF
+actor "Modeller" as overarch_roles_modeller
+usecase "export JSON" as (overarch_useCase_exportJson) #8888DD
+usecase "query model" as (overarch_useCase_queryModel) #BBBBFF
+actor "Template Programmer" as overarch_roles_templateProgrammer
+usecase "export model" as (overarch_useCase_exportModel) #BBBBFF
+usecase "create templates" as (overarch_useCase_createTemplates) #BBBBFF
+usecase "model system" as (overarch_useCase_modelSystem) #BBBBFF
+usecase "export Structurizr" as (overarch_useCase_exportStructurizr) #8888DD
+overarch_roles_modeller --> overarch_useCase_generateArtifacts
+overarch_useCase_createTemplates --> overarch_architecture_editor
+overarch_roles_modeller --> overarch_useCase_modelSystem
+overarch_useCase_defineViews --> overarch_architecture_editor
+overarch_roles_modeller --> overarch_useCase_queryModel
+overarch_roles_modeller --> overarch_useCase_defineViews
+overarch_roles_modeller --> overarch_useCase_renderViews
+overarch_useCase_exportJson .up.> overarch_useCase_exportModel : extends
+overarch_roles_templateProgrammer --> overarch_useCase_createTemplates
+overarch_roles_modeller --> overarch_useCase_exportModel
+overarch_useCase_modelSystem --> overarch_architecture_editor
+overarch_useCase_generateArtifacts .down.> overarch_useCase_queryModel : include
+overarch_useCase_renderViews .down.> overarch_useCase_queryModel : include
+overarch_useCase_exportStructurizr .up.> overarch_useCase_exportModel : extends
+@enduml

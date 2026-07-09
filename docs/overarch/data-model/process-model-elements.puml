@@ -1,0 +1,89 @@
+@startuml process-model-elements
+
+
+
+
+
+
+title Process Model Elements
+
+class "control" as overarch_dataModel_control {}
+class "regulation-for" as overarch_dataModel_regulationFor {}
+class "artifact" as overarch_dataModel_artifact {}
+class "test-for" as overarch_dataModel_testFor {}
+class "control-for" as overarch_dataModel_controlFor {}
+class "information" as overarch_dataModel_information {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "input-of" as overarch_dataModel_inputOf {}
+class "constraint" as overarch_dataModel_constraint {}
+abstract class "process-model-element" as overarch_dataModel_processModelElement {}
+class "capability" as overarch_dataModel_capability {}
+abstract class "technical-element" as overarch_dataModel_technicalElement {
+  tech : string [0..1]
+}
+class "knowledge" as overarch_dataModel_knowledge {}
+class "version" as overarch_dataModel_version {}
+class "required-for" as overarch_dataModel_requiredFor {}
+class "artifact-of" as overarch_dataModel_artifactOf {}
+abstract class "process-model-node" as overarch_dataModel_processModelNode {}
+abstract class "process-model-relation" as overarch_dataModel_processModelRelation {}
+class "goal-for" as overarch_dataModel_goalFor {}
+class "output-of" as overarch_dataModel_outputOf {}
+class "process" as overarch_dataModel_process {}
+class "role-in" as overarch_dataModel_roleIn {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "requirement" as overarch_dataModel_requirement {}
+class "regulation" as overarch_dataModel_regulation {}
+class "constraint-for" as overarch_dataModel_constraintFor {}
+class "test" as overarch_dataModel_test {}
+class "goal" as overarch_dataModel_goal {}
+class "decision" as overarch_dataModel_decision {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "version-of" as overarch_dataModel_versionOf {}
+overarch_dataModel_processModelNode <|-- overarch_dataModel_version
+overarch_dataModel_modelNode <|-- overarch_dataModel_processModelNode
+overarch_dataModel_processModelNode <|-- overarch_dataModel_knowledge
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_inputOf
+overarch_dataModel_processModelNode <|-- overarch_dataModel_information
+overarch_dataModel_processModelNode <|-- overarch_dataModel_test
+overarch_dataModel_modelRelation <|-- overarch_dataModel_processModelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_processModelNode <|-- overarch_dataModel_process
+overarch_dataModel_processModelElement <|-- overarch_dataModel_processModelNode
+overarch_dataModel_modelElement <|-- overarch_dataModel_processModelElement
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_controlFor
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_regulationFor
+overarch_dataModel_processModelNode <|-- overarch_dataModel_decision
+overarch_dataModel_processModelNode <|-- overarch_dataModel_constraint
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_processModelNode <|-- overarch_dataModel_regulation
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_roleIn
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_versionOf
+overarch_dataModel_technicalElement <|-- overarch_dataModel_artifact
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_goalFor
+overarch_dataModel_processModelNode <|-- overarch_dataModel_requirement
+overarch_dataModel_processModelNode <|-- overarch_dataModel_goal
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_requiredFor
+overarch_dataModel_processModelNode <|-- overarch_dataModel_capability
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_constraintFor
+overarch_dataModel_processModelNode <|-- overarch_dataModel_control
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_artifactOf
+overarch_dataModel_processModelElement <|-- overarch_dataModel_processModelRelation
+overarch_dataModel_processModelNode <|-- overarch_dataModel_artifact
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_testFor
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_outputOf
+@enduml

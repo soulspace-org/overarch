@@ -1,0 +1,48 @@
+@startuml organization-model-elements
+
+
+
+
+
+
+title Organization Model Elements
+
+abstract class "organization-model-relation" as overarch_dataModel_organizationModelRelation {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "org-unit" as overarch_dataModel_orgUnit {}
+abstract class "organization-model-element" as overarch_dataModel_organizationModelElement {}
+class "collaborates-with" as overarch_dataModel_collaboratesWith {}
+class "role-in" as overarch_dataModel_roleIn {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+class "responsible-for" as overarch_dataModel_responsibleFor {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "organization" as overarch_dataModel_organization {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+abstract class "organization-model-node" as overarch_dataModel_organizationModelNode {}
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_organization *-->  "1..n" overarch_dataModel_organizationModelNode
+overarch_dataModel_modelRelation <|-- overarch_dataModel_organizationModelRelation
+overarch_dataModel_organizationModelElement <|-- overarch_dataModel_organizationModelNode
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_collaboratesWith
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_organizationModelElement <|-- overarch_dataModel_organizationModelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_organizationModelElement
+overarch_dataModel_organizationModelNode <|-- overarch_dataModel_orgUnit
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_responsibleFor
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_roleIn
+overarch_dataModel_modelNode <|-- overarch_dataModel_organizationModelNode
+overarch_dataModel_organizationModelNode <|-- overarch_dataModel_organization
+@enduml

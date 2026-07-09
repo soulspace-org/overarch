@@ -1,0 +1,84 @@
+@startuml architecture-model-elements
+
+
+
+
+
+
+title Architecture Model Elements
+
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary {}
+abstract class "technical-architecture-model-node" as overarch_dataModel_technicalArchitectureModelNode {
+  subtype : string [0..1]
+}
+class "publish" as overarch_dataModel_publish {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "request" as overarch_dataModel_request {}
+abstract class "architecture-model-node" as overarch_dataModel_architectureModelNode {}
+class "person" as overarch_dataModel_person {}
+class "component" as overarch_dataModel_component {}
+abstract class "architecture-model-relation" as overarch_dataModel_architectureModelRelation {}
+class "send" as overarch_dataModel_send {}
+abstract class "technical-element" as overarch_dataModel_technicalElement {
+  tech : string [0..1]
+}
+class "response" as overarch_dataModel_response {}
+class "dataflow" as overarch_dataModel_dataflow {}
+class "context-boundary" as overarch_dataModel_contextBoundary {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "rel" as overarch_dataModel_rel {}
+abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
+class "subscribe" as overarch_dataModel_subscribe {}
+class "system" as overarch_dataModel_system {}
+abstract class "technical-architecture-model-relation" as overarch_dataModel_technicalArchitectureModelRelation {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+abstract class "architecture-model-element" as overarch_dataModel_architectureModelElement {
+  external : boolean [0..1]
+}
+class "container" as overarch_dataModel_container {}
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_person
+overarch_dataModel_modelElement <|-- overarch_dataModel_architectureModelElement
+overarch_dataModel_modelNode <|-- overarch_dataModel_architectureModelNode
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_rel
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_send
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_component
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_publish
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_architectureModelRelation <|-- overarch_dataModel_technicalArchitectureModelRelation
+overarch_dataModel_contextBoundary *-->  "ct\n0..n" overarch_dataModel_architectureModelNode
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_technicalElement <|-- overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_dataflow
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_container
+overarch_dataModel_architectureModelElement <|-- overarch_dataModel_architectureModelNode
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_dataflow
+overarch_dataModel_system *-->  "ct\n0..n" overarch_dataModel_container
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_architectureModelElement <|-- overarch_dataModel_architectureModelRelation
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_system
+overarch_dataModel_technicalElement <|-- overarch_dataModel_technicalArchitectureModelRelation
+overarch_dataModel_container *-->  "ct\n0..n" overarch_dataModel_component
+overarch_dataModel_enterpriseBoundary *-->  "ct\n0..n" overarch_dataModel_architectureModelNode
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_request
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_subscribe
+overarch_dataModel_modelRelation <|-- overarch_dataModel_architectureModelRelation
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_response
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_contextBoundary
+@enduml

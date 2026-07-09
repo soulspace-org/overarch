@@ -1,0 +1,63 @@
+@startuml component-view
+!include <C4/C4_Component.puml>
+!include <awslib14/AWSCommon>
+!include <awslib14/AWSC4Integration>
+!include <azure/AzureCommon>
+!include <azure/AzureC4Integration>
+!include <tupadr3/common>
+!include <tupadr3/devicons/clojure>
+
+
+
+
+
+
+
+title Component View of Overarch
+System_Ext(overarch_architecture_editor, "Editor/IDE", $descr="Tool for describing the architecture model and the views.")
+Person(overarch_roles_modeller, "Modeller", $descr="Models the architecture of a system and specifies views of the model.")
+Person(overarch_roles_templateProgrammer, "Template Programmer", $descr="Creates templates for artifact generation.")
+System_Ext(overarch_architecture_plantuml, "PlantUML", $descr="Tool for generating diagrams.")
+System_Ext(overarch_architecture_graphviz, "Graphviz", $descr="Tool for generating graph layouts and diagrams.")
+System_Boundary(overarch_architecture_overarch, "Overarch") {
+  Container_Boundary(overarch_architecture_overarchCli, "Overarch CLI") {
+    Component(overarch_util_functions, "util.functions", $descr="Contains common functions.")
+    Component(overarch_domain_view, "domain.view", $descr="Contains the view specification and functions.")
+    Component(overarch_application_modelRepository, "application.model-repository", $descr="Contains a stateful representation of the model and accessor functions to the model state.")
+    Component(overarch_application_template, "application.template", $descr="Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations.")
+    Component(overarch_adapter_render_graphviz, "adapter.render.graphviz", $descr="Contains the implementation of the Graphviz rendering.")
+    Component(overarch_domain_model, "domain.model", $descr="Contains the model specification and functions.")
+    Component(overarch_adapter_template_comb, "adapter.template.comb", $descr="Contains the implementation of a template engine for Comb templates.")
+    Component(overarch_adapter_render_plantuml, "adapter.render.plantuml", $descr="Contains the implementation of the PlantUML rendering.")
+    Component(overarch_adapter_exports_json, "adapter.exports.json", $descr="Contains the implementation of the JSON export.")
+    Component(overarch_util_io, "util.io", $descr="Contains I/O related functions.")
+    Component(overarch_adapter_render_markdown, "adapter.render.markdown", $descr="Contains the implementation of the Markdown rendering.")
+    Component(overarch_application_export, "application.export", $descr="Contains the export multimethods to be implemented by the concrete export adapter implementations.")
+    Component(overarch_application_render, "application.render", $descr="Contains the render multimethods to be implemented by the concrete render adapter implementations.")
+    Component(overarch_adapter_reader_modelReader, "adapter.reader.model-reader", $descr="Contains the functions for reading and building models and setting the repository state. The multimethods should be implemented by specific readers.")
+    Component(overarch_application_reader, "application.reader", $descr="Contains the reader multimethods to be implemented by the concrete reader adapter implementations.")
+    Component(overarch_adapter_exports_structurizr, "adapter.exports.structurizr", $descr="Contains the implementation of the Structurizr export.")
+    Component(overarch_adapter_ui_cli, "adapter.ui.cli", $descr="Parses the command line options and dispatches functions on them.")
+  }
+}
+Rel(overarch_adapter_exports_structurizr, overarch_domain_model, "queries", $descr="model")
+Rel(overarch_application_template, overarch_domain_view, "accesses", $descr="view")
+Rel(overarch_adapter_ui_cli, overarch_application_export, "calls", $descr="export functions")
+Rel(overarch_adapter_render_plantuml, overarch_util_io, "calls", $descr="loads sprite mappings")
+Rel(overarch_adapter_render_markdown, overarch_domain_model, "queries", $descr="model")
+Rel(overarch_adapter_render_plantuml, overarch_domain_view, "queries", $descr="view")
+Rel(overarch_roles_modeller, overarch_adapter_ui_cli, "starts", $descr="with the provided options.")
+Rel(overarch_adapter_ui_cli, overarch_application_template, "calls", $descr="template functions")
+Rel(overarch_adapter_ui_cli, overarch_application_modelRepository, "loads", $descr="model")
+Rel(overarch_application_template, overarch_domain_model, "queries", $descr="model")
+Rel(overarch_adapter_render_graphviz, overarch_domain_view, "calls", $descr="view queries and rendering functions")
+Rel(overarch_roles_templateProgrammer, overarch_architecture_editor, "programs in", $descr="creates templates")
+Rel(overarch_adapter_render_graphviz, overarch_domain_model, "queries", $descr="model")
+Rel(overarch_adapter_render_markdown, overarch_domain_view, "queries", $descr="view")
+Rel(overarch_roles_modeller, overarch_architecture_editor, "models in", $descr="creates models and views")
+Rel(overarch_adapter_ui_cli, overarch_application_render, "calls", $descr="render functions")
+Rel(overarch_adapter_exports_json, overarch_util_io, "calls", $descr="writes JSON")
+Rel(overarch_domain_view, overarch_domain_model, "queries", $descr="model")
+Rel(overarch_adapter_render_plantuml, overarch_domain_model, "queries", $descr="model")
+SHOW_LEGEND()
+@enduml

@@ -1,0 +1,26 @@
+@startuml context-view
+!include <C4/C4_Context.puml>
+!include <awslib14/AWSCommon>
+!include <awslib14/AWSC4Integration>
+!include <azure/AzureCommon>
+!include <azure/AzureC4Integration>
+!include <tupadr3/common>
+
+
+
+
+
+
+
+title Context View of Overarch
+System_Ext(overarch_architecture_editor, "Editor/IDE", $descr="Tool for describing the architecture model and the views.")
+Person(overarch_roles_modeller, "Modeller", $descr="Models the architecture of a system and specifies views of the model.")
+Person(overarch_roles_templateProgrammer, "Template Programmer", $descr="Creates templates for artifact generation.")
+System_Ext(overarch_architecture_plantuml, "PlantUML", $descr="Tool for generating diagrams.")
+System_Ext(overarch_architecture_graphviz, "Graphviz", $descr="Tool for generating graph layouts and diagrams.")
+System(overarch_architecture_overarch, "Overarch", $descr="An Open Architecture Knowledge Platform")
+Rel(overarch_roles_modeller, overarch_architecture_overarch, "uses", $descr="for diagram generation and model transformation.")
+Rel(overarch_roles_templateProgrammer, overarch_architecture_editor, "programs in", $descr="creates templates")
+Rel(overarch_roles_modeller, overarch_architecture_editor, "models in", $descr="creates models and views")
+SHOW_LEGEND()
+@enduml

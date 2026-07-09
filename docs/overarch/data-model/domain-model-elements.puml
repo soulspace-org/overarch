@@ -1,0 +1,55 @@
+@startuml domain-model-elements
+
+
+
+
+
+
+title Domain Model Elements
+
+class "aggregate" as overarch_dataModel_aggregate {}
+abstract class "domain-model-relation" as overarch_dataModel_domainModelRelation {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "command" as overarch_dataModel_command {}
+class "model" as overarch_dataModel_model {}
+class "value-object" as overarch_dataModel_valueObject {}
+class "entity" as overarch_dataModel_entity {}
+class "policy" as overarch_dataModel_policy {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+abstract class "domain-model-element" as overarch_dataModel_domainModelElement {}
+abstract class "domain-model-node" as overarch_dataModel_domainModelNode {}
+class "bounded-context" as overarch_dataModel_boundedContext {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+class "domain-event" as overarch_dataModel_domainEvent {}
+class "domain" as overarch_dataModel_domain {}
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_modelNode <|-- overarch_dataModel_domainModelNode
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_domainEvent
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_valueObject
+overarch_dataModel_domainModelElement <|-- overarch_dataModel_domainModelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_domainModelElement
+overarch_dataModel_modelRelation <|-- overarch_dataModel_domainModelRelation
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_aggregate
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_boundedContext
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_entity
+overarch_dataModel_domainModelElement <|-- overarch_dataModel_domainModelNode
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_model
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_command
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_domain
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_policy
+@enduml

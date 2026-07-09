@@ -1,0 +1,457 @@
+@startuml data-model
+
+
+left to right direction
+skinparam linetype ortho
+
+
+title Overarch Data Model
+
+class "control" as overarch_dataModel_control {}
+class "aggregation" as overarch_dataModel_aggregation {}
+class "fork" as overarch_dataModel_fork {}
+class "permission" as overarch_dataModel_permission {}
+class "node" as overarch_dataModel_node {}
+class "contained-in" as overarch_dataModel_containedIn {}
+class "method" as overarch_dataModel_method {}
+class "concept-view" as overarch_dataModel_conceptView {}
+abstract class "type-hierarchy-relation" as overarch_dataModel_typeHierarchyRelation {}
+class "enum-value" as overarch_dataModel_enumValue {}
+class "regulation-for" as overarch_dataModel_regulationFor {}
+class "state-machine" as overarch_dataModel_stateMachine {}
+class "field" as overarch_dataModel_field {}
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary {}
+abstract class "technical-architecture-model-node" as overarch_dataModel_technicalArchitectureModelNode {
+  subtype : string [0..1]
+}
+class "actor" as overarch_dataModel_actor {}
+class "publish" as overarch_dataModel_publish {}
+class "aggregate" as overarch_dataModel_aggregate {}
+abstract class "domain-model-relation" as overarch_dataModel_domainModelRelation {}
+class "inheritance" as overarch_dataModel_inheritance {}
+abstract class "concept-model-element" as overarch_dataModel_conceptModelElement {}
+class "function" as overarch_dataModel_function {}
+class "parameter" as overarch_dataModel_parameter {}
+abstract class "organization-model-relation" as overarch_dataModel_organizationModelRelation {}
+class "namespace" as overarch_dataModel_namespace {}
+class "artifact" as overarch_dataModel_artifact {}
+class "extends" as overarch_dataModel_extends {}
+class "history-state" as overarch_dataModel_historyState {}
+abstract class "scoped-node" as overarch_dataModel_scopedNode {
+  scope : keyword [0..1]
+}
+class "association" as overarch_dataModel_association {}
+class "test-for" as overarch_dataModel_testFor {}
+class "control-for" as overarch_dataModel_controlFor {}
+abstract class "deployment-model-relation" as overarch_dataModel_deploymentModelRelation {}
+class "information" as overarch_dataModel_information {}
+class "link" as overarch_dataModel_link {}
+abstract class "state-machine-model-element" as overarch_dataModel_stateMachineModelElement {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "include" as overarch_dataModel_include {}
+class "request" as overarch_dataModel_request {}
+class "schema" as overarch_dataModel_schema {}
+class "model-view" as overarch_dataModel_modelView {}
+class "use-case" as overarch_dataModel_useCase {
+  level : keyword
+}
+class "command" as overarch_dataModel_command {}
+class "instance-of" as overarch_dataModel_instanceOf {}
+abstract class "architecture-model-node" as overarch_dataModel_architectureModelNode {}
+class "model" as overarch_dataModel_model {}
+class "glossary-view" as overarch_dataModel_glossaryView {}
+class "ref" as overarch_dataModel_ref {}
+class "person" as overarch_dataModel_person {}
+class "deployment-structure-view" as overarch_dataModel_deploymentStructureView {}
+class "component" as overarch_dataModel_component {}
+abstract class "architecture-model-relation" as overarch_dataModel_architectureModelRelation {}
+class "container-view" as overarch_dataModel_containerView {}
+class "input-of" as overarch_dataModel_inputOf {}
+class "constraint" as overarch_dataModel_constraint {}
+abstract class "visibility-node" as overarch_dataModel_visibilityNode {
+  visibility : string [0..1]
+}
+class "send" as overarch_dataModel_send {}
+abstract class "process-model-element" as overarch_dataModel_processModelElement {}
+class "granted-for" as overarch_dataModel_grantedFor {}
+abstract class "optional-node" as overarch_dataModel_optionalNode {
+  optional : boolean [0..1]
+}
+class "implements" as overarch_dataModel_implements {}
+class "deployed-to" as overarch_dataModel_deployedTo {}
+class "capability" as overarch_dataModel_capability {}
+abstract class "technical-element" as overarch_dataModel_technicalElement {
+  tech : string [0..1]
+}
+class "generalizes" as overarch_dataModel_generalizes {}
+class "knowledge" as overarch_dataModel_knowledge {}
+class "version" as overarch_dataModel_version {}
+class "interface" as overarch_dataModel_interface {}
+class "deep-history-state" as overarch_dataModel_deepHistoryState {}
+class "system-structure-view" as overarch_dataModel_systemStructureView {}
+class "org-unit" as overarch_dataModel_orgUnit {}
+class "choice" as overarch_dataModel_choice {
+  condition : string
+}
+class "value-object" as overarch_dataModel_valueObject {}
+class "response" as overarch_dataModel_response {}
+class "entity" as overarch_dataModel_entity {}
+class "required-for" as overarch_dataModel_requiredFor {}
+class "artifact-of" as overarch_dataModel_artifactOf {}
+abstract class "organization-model-element" as overarch_dataModel_organizationModelElement {}
+abstract class "process-model-node" as overarch_dataModel_processModelNode {}
+abstract class "deployment-model-node" as overarch_dataModel_deploymentModelNode {}
+class "collaborates-with" as overarch_dataModel_collaboratesWith {}
+class "dataflow" as overarch_dataModel_dataflow {}
+abstract class "process-model-relation" as overarch_dataModel_processModelRelation {}
+class "goal-for" as overarch_dataModel_goalFor {}
+class "output-of" as overarch_dataModel_outputOf {}
+class "process" as overarch_dataModel_process {}
+class "state" as overarch_dataModel_state {}
+class "package" as overarch_dataModel_package {}
+class "context-boundary" as overarch_dataModel_contextBoundary {}
+abstract class "abstract-node" as overarch_dataModel_abstractNode {
+  abstract : boolean [0..1]
+}
+class "concept" as overarch_dataModel_concept {}
+class "context-view" as overarch_dataModel_contextView {}
+class "dynamic-view" as overarch_dataModel_dynamicView {}
+class "has" as overarch_dataModel_has {}
+class "use-case-view" as overarch_dataModel_useCaseView {}
+class "policy" as overarch_dataModel_policy {}
+class "deployment-view" as overarch_dataModel_deploymentView {}
+abstract class "concept-model-node" as overarch_dataModel_conceptModelNode {}
+class "role-in" as overarch_dataModel_roleIn {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "role-model-relation" as overarch_dataModel_roleModelRelation {}
+class "responsible-for" as overarch_dataModel_responsibleFor {}
+class "enum" as overarch_dataModel_enum {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "requirement" as overarch_dataModel_requirement {}
+abstract class "use-case-model-relation" as overarch_dataModel_useCaseModelRelation {}
+class "system-landscape-view" as overarch_dataModel_systemLandscapeView {}
+class "organization" as overarch_dataModel_organization {}
+abstract class "typed-node" as overarch_dataModel_typedNode {
+  type : string [0..1]
+}
+class "rel" as overarch_dataModel_rel {}
+class "state-machine-view" as overarch_dataModel_stateMachineView {}
+abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
+abstract class "use-case-model-node" as overarch_dataModel_useCaseModelNode {}
+abstract class "code-model-relation" as overarch_dataModel_codeModelRelation {}
+class "regulation" as overarch_dataModel_regulation {}
+class "organization-structure-view" as overarch_dataModel_organizationStructureView {}
+class "uses" as overarch_dataModel_uses {}
+class "subscribe" as overarch_dataModel_subscribe {}
+abstract class "state-machine-model-relation" as overarch_dataModel_stateMachineModelRelation {}
+class "permission-of" as overarch_dataModel_permissionOf {}
+abstract class "deployment-model-element" as overarch_dataModel_deploymentModelElement {}
+class "composition" as overarch_dataModel_composition {}
+class "constraint-for" as overarch_dataModel_constraintFor {}
+class "role" as overarch_dataModel_role {}
+abstract class "code-model-node" as overarch_dataModel_codeModelNode {}
+abstract class "domain-model-element" as overarch_dataModel_domainModelElement {}
+class "system" as overarch_dataModel_system {}
+abstract class "role-model-element" as overarch_dataModel_roleModelElement {
+  external : boolean [0..1]
+}
+abstract class "domain-model-node" as overarch_dataModel_domainModelNode {}
+abstract class "technical-architecture-model-relation" as overarch_dataModel_technicalArchitectureModelRelation {}
+abstract class "architecture-view" as overarch_dataModel_architectureView {}
+class "test" as overarch_dataModel_test {}
+class "goal" as overarch_dataModel_goal {}
+class "decision" as overarch_dataModel_decision {}
+class "class" as overarch_dataModel_class {}
+abstract class "use-case-model-element" as overarch_dataModel_useCaseModelElement {}
+class "transition" as overarch_dataModel_transition {}
+class "component-view" as overarch_dataModel_componentView {}
+class "join" as overarch_dataModel_join {}
+abstract class "associative-relation" as overarch_dataModel_associativeRelation {
+  from-card : string [0..1]
+  from-role : string [0..1]
+  qualifier : string [0..1]
+  to-card : string
+  to-role : string [0..1]
+}
+class "bounded-context" as overarch_dataModel_boundedContext {}
+class "implementation" as overarch_dataModel_implementation {}
+class "end-state" as overarch_dataModel_endState {}
+abstract class "state-machine-model-node" as overarch_dataModel_stateMachineModelNode {}
+abstract class "concept-model-relation" as overarch_dataModel_conceptModelRelation {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+abstract class "architecture-model-element" as overarch_dataModel_architectureModelElement {
+  external : boolean [0..1]
+}
+class "version-of" as overarch_dataModel_versionOf {}
+class "code-view" as overarch_dataModel_codeView {}
+class "spec" as overarch_dataModel_renderingSpec {
+  include : keyword
+  layout : keyword
+  linetype : keyword
+  selection : criteria
+  sketch : boolean
+  styles : map
+  theme : map
+}
+class "dependency" as overarch_dataModel_dependency {}
+class "domain-event" as overarch_dataModel_domainEvent {}
+class "container" as overarch_dataModel_container {}
+class "protocol" as overarch_dataModel_protocol {}
+abstract class "code-model-element" as overarch_dataModel_codeModelElement {}
+class "domain" as overarch_dataModel_domain {}
+abstract class "organization-model-node" as overarch_dataModel_organizationModelNode {}
+abstract class "view" as overarch_dataModel_view {
+  title : string
+}
+class "is-a" as overarch_dataModel_isA {}
+class "start-state" as overarch_dataModel_startState {}
+abstract class "role-model-node" as overarch_dataModel_roleModelNode {}
+overarch_dataModel_optionalNode <|-- overarch_dataModel_field
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_class
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_person
+overarch_dataModel_namespace *-->  "0..n" overarch_dataModel_codeModelNode
+overarch_dataModel_modelElement <|-- overarch_dataModel_architectureModelElement
+overarch_dataModel_modelNode <|-- overarch_dataModel_architectureModelNode
+overarch_dataModel_processModelNode <|-- overarch_dataModel_version
+overarch_dataModel_modelNode <|-- overarch_dataModel_processModelNode
+overarch_dataModel_technicalElement <|-- overarch_dataModel_codeModelElement
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_choice
+overarch_dataModel_processModelNode <|-- overarch_dataModel_knowledge
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_function
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_enumValue
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_extends
+overarch_dataModel_codeView o-->  "ct\n1..n" overarch_dataModel_codeModelElement
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_method
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_interface
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_rel
+overarch_dataModel_architectureView <|-- overarch_dataModel_dynamicView
+overarch_dataModel_typedNode <|-- overarch_dataModel_function
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_send
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_view <|-- overarch_dataModel_systemStructureView
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_component
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_inputOf
+overarch_dataModel_modelNode <|-- overarch_dataModel_domainModelNode
+overarch_dataModel_processModelNode <|-- overarch_dataModel_information
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_publish
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_domainEvent
+overarch_dataModel_architectureView <|-- overarch_dataModel_systemLandscapeView
+overarch_dataModel_processModelNode <|-- overarch_dataModel_test
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_modelRelation <|-- overarch_dataModel_processModelRelation
+overarch_dataModel_modelRelation <|-- overarch_dataModel_deploymentModelRelation
+overarch_dataModel_typedNode <|-- overarch_dataModel_field
+overarch_dataModel_architectureModelRelation <|-- overarch_dataModel_technicalArchitectureModelRelation
+overarch_dataModel_roleModelElement <|-- overarch_dataModel_roleModelRelation
+overarch_dataModel_contextBoundary *-->  "ct\n0..n" overarch_dataModel_architectureModelNode
+overarch_dataModel_roleModelNode <|-- overarch_dataModel_permission
+overarch_dataModel_interface *-->  "0..n" overarch_dataModel_method
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_enum
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_method
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_technicalElement <|-- overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_view <|-- overarch_dataModel_organizationStructureView
+overarch_dataModel_processModelNode <|-- overarch_dataModel_process
+overarch_dataModel_modelNode <|-- overarch_dataModel_codeModelNode
+overarch_dataModel_element <|-- overarch_dataModel_view
+overarch_dataModel_node *-->  "ct\n0..n" overarch_dataModel_deploymentModelNode
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_dataflow
+overarch_dataModel_stateMachineModelRelation <|-- overarch_dataModel_transition
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_dependency
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachine
+overarch_dataModel_view <|-- overarch_dataModel_stateMachineView
+overarch_dataModel_processModelElement <|-- overarch_dataModel_processModelNode
+overarch_dataModel_modelElement <|-- overarch_dataModel_processModelElement
+overarch_dataModel_organization *-->  "1..n" overarch_dataModel_organizationModelNode
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_parameter
+overarch_dataModel_view <|-- overarch_dataModel_deploymentView
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_conceptView o-->  "ct\n1..n" overarch_dataModel_conceptModelElement
+overarch_dataModel_modelRelation <|-- overarch_dataModel_organizationModelRelation
+overarch_dataModel_modelNode <|-- overarch_dataModel_useCaseModelNode
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_valueObject
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_useCase
+overarch_dataModel_architectureView <|-- overarch_dataModel_containerView
+overarch_dataModel_package *-->  "0..n" overarch_dataModel_codeModelNode
+overarch_dataModel_organizationModelElement <|-- overarch_dataModel_organizationModelNode
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_endState
+overarch_dataModel_architectureView <|-- overarch_dataModel_componentView
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_collaboratesWith
+overarch_dataModel_view <|-- overarch_dataModel_codeView
+overarch_dataModel_typeHierarchyRelation <|-- overarch_dataModel_implementation
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_controlFor
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_system
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_regulationFor
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_associativeRelation
+overarch_dataModel_processModelNode <|-- overarch_dataModel_decision
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_fork
+overarch_dataModel_domainModelElement <|-- overarch_dataModel_domainModelRelation
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_container
+overarch_dataModel_architectureView o-->  "ct\n1..n" overarch_dataModel_architectureModelElement
+overarch_dataModel_processModelNode <|-- overarch_dataModel_constraint
+overarch_dataModel_architectureModelElement <|-- overarch_dataModel_architectureModelNode
+overarch_dataModel_boundaryNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_dataflow
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_person
+overarch_dataModel_organizationStructureView o-->  "ct\n1..n" overarch_dataModel_organizationModelNode
+overarch_dataModel_view <|-- overarch_dataModel_conceptView
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_rel
+overarch_dataModel_modelRelation <|-- overarch_dataModel_implements
+overarch_dataModel_deploymentModelElement <|-- overarch_dataModel_deploymentModelNode
+overarch_dataModel_codeModelElement <|-- overarch_dataModel_codeModelNode
+overarch_dataModel_system *-->  "ct\n0..n" overarch_dataModel_container
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_package
+overarch_dataModel_view <|-- overarch_dataModel_useCaseView
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_has
+overarch_dataModel_processModelNode <|-- overarch_dataModel_regulation
+overarch_dataModel_organizationModelElement <|-- overarch_dataModel_organizationModelRelation
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_field
+overarch_dataModel_systemStructureView o-->  "ct\n1..n" overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_startState
+overarch_dataModel_roleModelNode <|-- overarch_dataModel_role
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_roleIn
+overarch_dataModel_modelElement <|-- overarch_dataModel_organizationModelElement
+overarch_dataModel_deploymentView o-->  "ct\n1..n" overarch_dataModel_deploymentModelElement
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_actor
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_function
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_versionOf
+overarch_dataModel_abstractNode <|-- overarch_dataModel_method
+overarch_dataModel_modelElement <|-- overarch_dataModel_domainModelElement
+overarch_dataModel_optionalNode <|-- overarch_dataModel_function
+overarch_dataModel_modelElement <|-- overarch_dataModel_stateMachineModelElement
+overarch_dataModel_technicalElement <|-- overarch_dataModel_artifact
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_codeModelElement <|-- overarch_dataModel_codeModelRelation
+overarch_dataModel_protocol *-->  "0..n" overarch_dataModel_function
+overarch_dataModel_organizationModelNode <|-- overarch_dataModel_orgUnit
+overarch_dataModel_typedNode <|-- overarch_dataModel_parameter
+overarch_dataModel_typeHierarchyRelation <|-- overarch_dataModel_inheritance
+overarch_dataModel_conceptModelElement <|-- overarch_dataModel_conceptModelNode
+overarch_dataModel_deploymentModelRelation <|-- overarch_dataModel_deployedTo
+overarch_dataModel_modelRelation <|-- overarch_dataModel_roleModelRelation
+overarch_dataModel_modelNode <|-- overarch_dataModel_conceptModelNode
+overarch_dataModel_useCaseModelNode <|-- overarch_dataModel_container
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_goalFor
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_schema
+overarch_dataModel_architectureModelElement <|-- overarch_dataModel_architectureModelRelation
+overarch_dataModel_modelNode <|-- overarch_dataModel_deploymentModelNode
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_include
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_deepHistoryState
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_namespace
+overarch_dataModel_codeModelNode <|-- overarch_dataModel_protocol
+overarch_dataModel_technicalArchitectureModelNode <|-- overarch_dataModel_system
+overarch_dataModel_view <|-- overarch_dataModel_deploymentStructureView
+overarch_dataModel_technicalElement <|-- overarch_dataModel_deploymentModelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_deploymentModelElement
+overarch_dataModel_modelView o-->  "ct\n1..n" overarch_dataModel_modelElement
+overarch_dataModel_modelRelation <|-- overarch_dataModel_domainModelRelation
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_aggregate
+overarch_dataModel_stateMachineView o-->  "ct\n1" overarch_dataModel_stateMachine
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_container
+overarch_dataModel_codeModelRelation <|-- overarch_dataModel_typeHierarchyRelation
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_boundedContext
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_field
+overarch_dataModel_view o-->  "spec\n0..1" overarch_dataModel_renderingSpec
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_enterpriseBoundary
+overarch_dataModel_schema *-->  "0..n" overarch_dataModel_field
+overarch_dataModel_modelElement <|-- overarch_dataModel_roleModelElement
+overarch_dataModel_processModelNode <|-- overarch_dataModel_requirement
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_method
+overarch_dataModel_roleModelRelation <|-- overarch_dataModel_grantedFor
+overarch_dataModel_processModelNode <|-- overarch_dataModel_goal
+overarch_dataModel_view <|-- overarch_dataModel_glossaryView
+overarch_dataModel_modelElement <|-- overarch_dataModel_conceptModelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_useCaseModelElement
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_requiredFor
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_association
+overarch_dataModel_modelRelation <|-- overarch_dataModel_instanceOf
+overarch_dataModel_class *-->  "0..n" overarch_dataModel_field
+overarch_dataModel_technicalElement <|-- overarch_dataModel_technicalArchitectureModelRelation
+overarch_dataModel_enum *-->  "1..n" overarch_dataModel_enumValue
+overarch_dataModel_modelNode <|-- overarch_dataModel_roleModelNode
+overarch_dataModel_processModelNode <|-- overarch_dataModel_capability
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_entity
+overarch_dataModel_domainModelElement <|-- overarch_dataModel_domainModelNode
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_constraintFor
+overarch_dataModel_useCaseModelElement <|-- overarch_dataModel_useCaseModelRelation
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_model
+overarch_dataModel_deploymentModelRelation <|-- overarch_dataModel_link
+overarch_dataModel_conceptModelRelation <|-- overarch_dataModel_isA
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_aggregation
+overarch_dataModel_processModelNode <|-- overarch_dataModel_control
+overarch_dataModel_method *-->  "0..n" overarch_dataModel_parameter
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_concept
+overarch_dataModel_container *-->  "ct\n0..n" overarch_dataModel_component
+overarch_dataModel_enterpriseBoundary *-->  "ct\n0..n" overarch_dataModel_architectureModelNode
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_command
+overarch_dataModel_state *-->  "1..n" overarch_dataModel_stateMachineModelNode
+overarch_dataModel_useCaseModelElement <|-- overarch_dataModel_useCaseModelNode
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_artifactOf
+overarch_dataModel_deploymentStructureView o-->  "ct\n1..n" overarch_dataModel_deploymentModelNode
+overarch_dataModel_ref -left->  "ref" overarch_dataModel_element
+overarch_dataModel_view <|-- overarch_dataModel_modelView
+overarch_dataModel_architectureView <|-- overarch_dataModel_contextView
+overarch_dataModel_deploymentModelNode <|-- overarch_dataModel_node
+overarch_dataModel_processModelElement <|-- overarch_dataModel_processModelRelation
+overarch_dataModel_modelRelation <|-- overarch_dataModel_stateMachineModelRelation
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachineModelRelation
+overarch_dataModel_roleModelElement <|-- overarch_dataModel_roleModelNode
+overarch_dataModel_modelRelation <|-- overarch_dataModel_useCaseModelRelation
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_request
+overarch_dataModel_stateMachine *-->  "1..n" overarch_dataModel_stateMachineModelNode
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_subscribe
+overarch_dataModel_modelRelation <|-- overarch_dataModel_architectureModelRelation
+overarch_dataModel_scopedNode <|-- overarch_dataModel_method
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_responsibleFor
+overarch_dataModel_associativeRelation <|-- overarch_dataModel_composition
+overarch_dataModel_technicalArchitectureModelRelation <|-- overarch_dataModel_response
+overarch_dataModel_modelNode <|-- overarch_dataModel_stateMachineModelNode
+overarch_dataModel_modelRelation <|-- overarch_dataModel_conceptModelRelation
+overarch_dataModel_optionalNode <|-- overarch_dataModel_parameter
+overarch_dataModel_processModelNode <|-- overarch_dataModel_artifact
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_optionalNode <|-- overarch_dataModel_method
+overarch_dataModel_typedNode <|-- overarch_dataModel_method
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_person
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_uses
+overarch_dataModel_modelRelation <|-- overarch_dataModel_codeModelRelation
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_testFor
+overarch_dataModel_roleModelRelation <|-- overarch_dataModel_permissionOf
+overarch_dataModel_glossaryView o-->  "ct\n1..n" overarch_dataModel_conceptModelElement
+overarch_dataModel_conceptModelElement <|-- overarch_dataModel_conceptModelRelation
+overarch_dataModel_modelRelation <|-- overarch_dataModel_containedIn
+overarch_dataModel_stateMachineModelElement <|-- overarch_dataModel_stateMachineModelNode
+overarch_dataModel_conceptModelNode <|-- overarch_dataModel_system
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_domain
+overarch_dataModel_modelElement <|-- overarch_dataModel_codeModelElement
+overarch_dataModel_domainModelNode <|-- overarch_dataModel_policy
+overarch_dataModel_function *-->  "0..n" overarch_dataModel_parameter
+overarch_dataModel_view <|-- overarch_dataModel_architectureView
+overarch_dataModel_architectureModelNode <|-- overarch_dataModel_contextBoundary
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_historyState
+overarch_dataModel_organizationModelRelation <|-- overarch_dataModel_roleIn
+overarch_dataModel_deploymentModelNode <|-- overarch_dataModel_container
+overarch_dataModel_useCaseView o-->  "ct\n1..n" overarch_dataModel_useCaseModelElement
+overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_generalizes
+overarch_dataModel_modelNode <|-- overarch_dataModel_organizationModelNode
+overarch_dataModel_organizationModelNode <|-- overarch_dataModel_organization
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_state
+overarch_dataModel_visibilityNode <|-- overarch_dataModel_function
+overarch_dataModel_deploymentModelElement <|-- overarch_dataModel_deploymentModelRelation
+overarch_dataModel_processModelRelation <|-- overarch_dataModel_outputOf
+overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_join
+overarch_dataModel_scopedNode <|-- overarch_dataModel_field
+@enduml

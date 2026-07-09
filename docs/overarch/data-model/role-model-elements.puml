@@ -1,0 +1,47 @@
+@startuml role-model-elements
+
+
+
+
+
+
+title Role Model Elements
+
+class "permission" as overarch_dataModel_permission {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "granted-for" as overarch_dataModel_grantedFor {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "role-model-relation" as overarch_dataModel_roleModelRelation {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "permission-of" as overarch_dataModel_permissionOf {}
+class "role" as overarch_dataModel_role {}
+abstract class "role-model-element" as overarch_dataModel_roleModelElement {
+  external : boolean [0..1]
+}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+abstract class "role-model-node" as overarch_dataModel_roleModelNode {}
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_roleModelElement <|-- overarch_dataModel_roleModelRelation
+overarch_dataModel_roleModelNode <|-- overarch_dataModel_permission
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_roleModelNode <|-- overarch_dataModel_role
+overarch_dataModel_modelRelation <|-- overarch_dataModel_roleModelRelation
+overarch_dataModel_modelElement <|-- overarch_dataModel_roleModelElement
+overarch_dataModel_roleModelRelation <|-- overarch_dataModel_grantedFor
+overarch_dataModel_modelNode <|-- overarch_dataModel_roleModelNode
+overarch_dataModel_roleModelElement <|-- overarch_dataModel_roleModelNode
+overarch_dataModel_roleModelRelation <|-- overarch_dataModel_permissionOf
+@enduml

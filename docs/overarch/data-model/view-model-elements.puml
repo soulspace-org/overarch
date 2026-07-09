@@ -1,0 +1,99 @@
+@startuml view-model-elements
+
+
+left to right direction
+
+
+
+title View Model Elements
+
+class "concept-view" as overarch_dataModel_conceptView {}
+class "state-machine" as overarch_dataModel_stateMachine {}
+abstract class "technical-architecture-model-node" as overarch_dataModel_technicalArchitectureModelNode {
+  subtype : string [0..1]
+}
+abstract class "concept-model-element" as overarch_dataModel_conceptModelElement {}
+abstract class "model-element" as overarch_dataModel_modelElement {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "model-view" as overarch_dataModel_modelView {}
+class "glossary-view" as overarch_dataModel_glossaryView {}
+class "deployment-structure-view" as overarch_dataModel_deploymentStructureView {}
+class "container-view" as overarch_dataModel_containerView {}
+class "system-structure-view" as overarch_dataModel_systemStructureView {}
+abstract class "deployment-model-node" as overarch_dataModel_deploymentModelNode {}
+class "context-view" as overarch_dataModel_contextView {}
+class "dynamic-view" as overarch_dataModel_dynamicView {}
+class "use-case-view" as overarch_dataModel_useCaseView {}
+class "deployment-view" as overarch_dataModel_deploymentView {}
+abstract class "model-node" as overarch_dataModel_modelNode {}
+abstract class "model-relation" as overarch_dataModel_modelRelation {
+  from : keyword
+  to : keyword
+}
+class "system-landscape-view" as overarch_dataModel_systemLandscapeView {}
+class "state-machine-view" as overarch_dataModel_stateMachineView {}
+class "organization-structure-view" as overarch_dataModel_organizationStructureView {}
+abstract class "deployment-model-element" as overarch_dataModel_deploymentModelElement {}
+abstract class "architecture-view" as overarch_dataModel_architectureView {}
+abstract class "use-case-model-element" as overarch_dataModel_useCaseModelElement {}
+class "component-view" as overarch_dataModel_componentView {}
+abstract class "element" as overarch_dataModel_element {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
+abstract class "architecture-model-element" as overarch_dataModel_architectureModelElement {
+  external : boolean [0..1]
+}
+class "code-view" as overarch_dataModel_codeView {}
+class "spec" as overarch_dataModel_renderingSpec {
+  include : keyword
+  layout : keyword
+  linetype : keyword
+  selection : criteria
+  sketch : boolean
+  styles : map
+  theme : map
+}
+abstract class "code-model-element" as overarch_dataModel_codeModelElement {}
+abstract class "organization-model-node" as overarch_dataModel_organizationModelNode {}
+abstract class "view" as overarch_dataModel_view {
+  title : string
+}
+overarch_dataModel_codeView o-->  "ct\n1..n" overarch_dataModel_codeModelElement
+overarch_dataModel_architectureView <|-- overarch_dataModel_dynamicView
+overarch_dataModel_element <|-- overarch_dataModel_modelElement
+overarch_dataModel_view <|-- overarch_dataModel_systemStructureView
+overarch_dataModel_architectureView <|-- overarch_dataModel_systemLandscapeView
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
+overarch_dataModel_view <|-- overarch_dataModel_organizationStructureView
+overarch_dataModel_element <|-- overarch_dataModel_view
+overarch_dataModel_view <|-- overarch_dataModel_stateMachineView
+overarch_dataModel_view <|-- overarch_dataModel_deploymentView
+overarch_dataModel_conceptView o-->  "ct\n1..n" overarch_dataModel_conceptModelElement
+overarch_dataModel_architectureView <|-- overarch_dataModel_containerView
+overarch_dataModel_architectureView <|-- overarch_dataModel_componentView
+overarch_dataModel_view <|-- overarch_dataModel_codeView
+overarch_dataModel_architectureView o-->  "ct\n1..n" overarch_dataModel_architectureModelElement
+overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
+overarch_dataModel_organizationStructureView o-->  "ct\n1..n" overarch_dataModel_organizationModelNode
+overarch_dataModel_view <|-- overarch_dataModel_conceptView
+overarch_dataModel_view <|-- overarch_dataModel_useCaseView
+overarch_dataModel_systemStructureView o-->  "ct\n1..n" overarch_dataModel_technicalArchitectureModelNode
+overarch_dataModel_deploymentView o-->  "ct\n1..n" overarch_dataModel_deploymentModelElement
+overarch_dataModel_view <|-- overarch_dataModel_deploymentStructureView
+overarch_dataModel_modelView o-->  "ct\n1..n" overarch_dataModel_modelElement
+overarch_dataModel_stateMachineView o-->  "ct\n1" overarch_dataModel_stateMachine
+overarch_dataModel_view o-->  "spec\n0..1" overarch_dataModel_renderingSpec
+overarch_dataModel_view <|-- overarch_dataModel_glossaryView
+overarch_dataModel_deploymentStructureView o-->  "ct\n1..n" overarch_dataModel_deploymentModelNode
+overarch_dataModel_view <|-- overarch_dataModel_modelView
+overarch_dataModel_architectureView <|-- overarch_dataModel_contextView
+overarch_dataModel_glossaryView o-->  "ct\n1..n" overarch_dataModel_conceptModelElement
+overarch_dataModel_view <|-- overarch_dataModel_architectureView
+overarch_dataModel_useCaseView o-->  "ct\n1..n" overarch_dataModel_useCaseModelElement
+@enduml
