@@ -1,0 +1,18 @@
+;;;;
+;;;; Requirements
+;;;;
+#{;
+  
+  ;; Nodes
+  {:el :requirement
+   :id :overarch.architecture.requirement/namespaced-ids
+   :name "Namespaced IDs for Overarch elements"
+   :desc "For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models."
+   :doc ""
+   :tags #{"functional"}}
+
+  ;; Relations
+
+
+  
+}

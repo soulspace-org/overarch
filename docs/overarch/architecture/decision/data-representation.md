@@ -9,11 +9,38 @@ architecture
 
 ## Documentation
 ## Problem
-## Option 1: Graph
-## Option 2: Tree
-## Option 3: Combination of Graph an Trees
+Some of the nodes in the model form a containment tree and some are just plain
+nodes without contained children. Initially, nodes with contained children were
+stored as a tree of nodes in a graph. The input model supports modeling of
+containment hierarchies via the `:ct` key. Changing the input model to a plain
+graph would break existing models. 
 
-## Desision
+## Option 1: Combination of Graph and Trees
+
+Benefits:
+* No transformation on read needed, the input model would be the internal
+  representation
+
+Drawbacks:
+* higher complexity
+  * complex navigation and selection algorithms needed
+
+## Option 2: Plain Graph
+
+Benefits:
+* uniform model of flat nodes and relations, with a `:contained-in` relation
+  for the hierarchical containement
+  * enables uniform navigation and selection
+
+Drawbacks:
+* The input model has to be transformed to the graph representation on read
+
+## Decision
+Option 2: Plain Graph
+
+Consequences
+The input model has to be transformed on read, but that complexity is
+encapsulated and needed only once on read.
 
 
 

@@ -5,7 +5,7 @@ Clean Architecture is used to structure the implementation
 
 
 ## Tags
-architecture
+architecture, strategy
 
 ## Documentation
 ## Problem
