@@ -131,7 +131,7 @@
            (file/exists? (io/as-file path)))
     (let [area-marker (:protected-area ctx)
           protected-areas (parse-protected-areas area-marker (read-lines path))]
-      (println protected-areas)
+      ;(println protected-areas)
       protected-areas)
     {}))
 
