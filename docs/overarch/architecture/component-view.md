@@ -15,10 +15,11 @@
 ## Systems
 | System | Description |
 |---|---|
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md)| Generates and publishes artifacts (e.g. build script/pipeline) |
+| [Diagram Generators](../../overarch/architecture/diagram-generator.md)| generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid) |
 | [Editor/IDE](../../overarch/architecture/editor.md)| Tool for describing the architecture model and the views. |
-| [Graphviz](../../overarch/architecture/graphviz.md)| Tool for generating graph layouts and diagrams. |
 | [Overarch](../../overarch/architecture/overarch.md)| An Open Architecture Knowledge Platform |
-| [PlantUML](../../overarch/architecture/plantuml.md)| Tool for generating diagrams. |
+| [Repository](../../overarch/architecture/vc-repository.md)| Version controlled repository (e.g. git) |
 
 ## Containers
 | Container | Description |
@@ -55,6 +56,7 @@
 | [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md) | calls | [util.io](../../overarch/util/io.md) |  | loads sprite mappings |
 | [adapter.ui.cli](../../overarch/adapter/ui/cli.md) | calls | [application.template](../../overarch/application/template.md) |  | template functions |
 | [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md) | calls | [domain.view](../../overarch/domain/view.md) |  | view queries and rendering functions |
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Diagram Generators](../../overarch/architecture/diagram-generator.md) |  | generate diagrams |
 | [adapter.ui.cli](../../overarch/adapter/ui/cli.md) | calls | [application.render](../../overarch/application/render.md) |  | render functions |
 | [adapter.exports.json](../../overarch/adapter/exports/json.md) | calls | [util.io](../../overarch/util/io.md) |  | writes JSON |
 | [adapter.ui.cli](../../overarch/adapter/ui/cli.md) | loads | [application.model-repository](../../overarch/application/model-repository.md) |  | model |
@@ -67,6 +69,13 @@
 | [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 | [domain.view](../../overarch/domain/view.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 | [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
+
+## Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Repository](../../overarch/architecture/vc-repository.md) | generated diagram files | [Diagram Generators](../../overarch/architecture/diagram-generator.md) |  |  |
+| [Diagram Generators](../../overarch/architecture/diagram-generator.md) | generated images | [Repository](../../overarch/architecture/vc-repository.md) |  |  |
+| [Editor/IDE](../../overarch/architecture/editor.md) | models, templates | [Repository](../../overarch/architecture/vc-repository.md) |  |  |
 
 ## Other Relationships
 | From | Name | To | Description |

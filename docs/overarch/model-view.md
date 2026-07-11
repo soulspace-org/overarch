@@ -163,10 +163,11 @@ Shows all nodes and relations in the Overarch model
 ## Systems
 | System | Description |
 |---|---|
+| [Build Pipeline](../overarch/architecture/build-pipeline.md)| Generates and publishes artifacts (e.g. build script/pipeline) |
+| [Diagram Generators](../overarch/architecture/diagram-generator.md)| generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid) |
 | [Editor/IDE](../overarch/architecture/editor.md)| Tool for describing the architecture model and the views. |
-| [Graphviz](../overarch/architecture/graphviz.md)| Tool for generating graph layouts and diagrams. |
 | [Overarch](../overarch/architecture/overarch.md)| An Open Architecture Knowledge Platform |
-| [PlantUML](../overarch/architecture/plantuml.md)| Tool for generating diagrams. |
+| [Repository](../overarch/architecture/vc-repository.md)| Version controlled repository (e.g. git) |
 
 ## Containers
 | Container | Description |
@@ -199,10 +200,13 @@ Shows all nodes and relations in the Overarch model
 |---|---|---|---|---|
 | [adapter.render.markdown](../overarch/adapter/render/markdown.md) |  queries | [domain.view](../overarch/domain/view.md) |  | view |
 | [application.template](../overarch/application/template.md) | accesses | [domain.view](../overarch/domain/view.md) |  | view |
+| [Build Pipeline](../overarch/architecture/build-pipeline.md) | calls | [Overarch CLI](../overarch/architecture/overarch-cli.md) |  | generate artifacts |
 | [adapter.ui.cli](../overarch/adapter/ui/cli.md) | calls | [application.export](../overarch/application/export.md) |  | export functions |
 | [adapter.render.plantuml](../overarch/adapter/render/plantuml.md) | calls | [util.io](../overarch/util/io.md) |  | loads sprite mappings |
+| [Build Pipeline](../overarch/architecture/build-pipeline.md) | calls | [Overarch](../overarch/architecture/overarch.md) |  | generate artifacts |
 | [adapter.ui.cli](../overarch/adapter/ui/cli.md) | calls | [application.template](../overarch/application/template.md) |  | template functions |
 | [adapter.render.graphviz](../overarch/adapter/render/graphviz.md) | calls | [domain.view](../overarch/domain/view.md) |  | view queries and rendering functions |
+| [Build Pipeline](../overarch/architecture/build-pipeline.md) | calls | [Diagram Generators](../overarch/architecture/diagram-generator.md) |  | generate diagrams |
 | [adapter.ui.cli](../overarch/adapter/ui/cli.md) | calls | [application.render](../overarch/application/render.md) |  | render functions |
 | [adapter.exports.json](../overarch/adapter/exports/json.md) | calls | [util.io](../overarch/util/io.md) |  | writes JSON |
 | [adapter.ui.cli](../overarch/adapter/ui/cli.md) | loads | [application.model-repository](../overarch/application/model-repository.md) |  | model |
@@ -216,6 +220,17 @@ Shows all nodes and relations in the Overarch model
 | [domain.view](../overarch/domain/view.md) | queries | [domain.model](../overarch/domain/model.md) |  | model |
 | [adapter.render.plantuml](../overarch/adapter/render/plantuml.md) | queries | [domain.model](../overarch/domain/model.md) |  | model |
 | [Modeller](../overarch/roles/modeller.md) | uses | [Overarch](../overarch/architecture/overarch.md) |  | for diagram generation and model transformation. |
+
+## Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Overarch CLI](../overarch/architecture/overarch-cli.md) | generated artifacts | [Repository](../overarch/architecture/vc-repository.md) |  | e.g. markdown, dot/puml files |
+| [Overarch](../overarch/architecture/overarch.md) | generated artifacts | [Repository](../overarch/architecture/vc-repository.md) |  | e.g. markdown, dot/puml files |
+| [Repository](../overarch/architecture/vc-repository.md) | generated diagram files | [Diagram Generators](../overarch/architecture/diagram-generator.md) |  |  |
+| [Diagram Generators](../overarch/architecture/diagram-generator.md) | generated images | [Repository](../overarch/architecture/vc-repository.md) |  |  |
+| [Repository](../overarch/architecture/vc-repository.md) | models, templates | [Overarch CLI](../overarch/architecture/overarch-cli.md) |  |  |
+| [Editor/IDE](../overarch/architecture/editor.md) | models, templates | [Repository](../overarch/architecture/vc-repository.md) |  |  |
+| [Repository](../overarch/architecture/vc-repository.md) | models, templates | [Overarch](../overarch/architecture/overarch.md) |  |  |
 
 ## Classes
 | Class | Description |
@@ -415,7 +430,6 @@ Shows all nodes and relations in the Overarch model
 | [State](../overarch/concepts/state.md) | transition | [State](../overarch/concepts/state.md) | describes the transition fom one state to another state triggered by an event |
 | [Domain Event](../overarch/concepts/domain-event.md) | triggers | [Policy](../overarch/concepts/policy.md) | policy triggered by the domain event |
 | [Policy](../overarch/concepts/policy.md) | triggers | [Command](../overarch/concepts/command.md) | command triggered by the policy |
-| [Modeller](../overarch/roles/modeller.md) | uses | [Overarch CLI](../overarch/architecture/overarch-cli.md) | for diagram generation and model transformation. |
 | [Actor](../overarch/concepts/actor.md) | uses | [Use Case](../overarch/concepts/use-case.md) | describes the goal or usage of the use case by an actor |
 | [Version](../overarch/concepts/version.md) | version of | [Artifact](../overarch/concepts/artifact.md) | version of an artifact |
 

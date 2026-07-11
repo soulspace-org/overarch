@@ -91,7 +91,6 @@ Shows the structure of the Overarch systems.
 | [State](../../overarch/concepts/state.md) | transition | [State](../../overarch/concepts/state.md) | describes the transition fom one state to another state triggered by an event |
 | [Domain Event](../../overarch/concepts/domain-event.md) | triggers | [Policy](../../overarch/concepts/policy.md) | policy triggered by the domain event |
 | [Policy](../../overarch/concepts/policy.md) | triggers | [Command](../../overarch/concepts/command.md) | command triggered by the policy |
-| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) | for diagram generation and model transformation. |
 | [Actor](../../overarch/concepts/actor.md) | uses | [Use Case](../../overarch/concepts/use-case.md) | describes the goal or usage of the use case by an actor |
 | [Version](../../overarch/concepts/version.md) | version of | [Artifact](../../overarch/concepts/artifact.md) | version of an artifact |
 

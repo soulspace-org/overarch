@@ -10,14 +10,16 @@
    :name "Overarch Context View"
    :title "Context View of Overarch"
    :desc "Gives a high level overview of the roles, systems and their interactions"
-   :ct []}
+   :ct [{:ref :overarch.architecture/build-pipeline-calls-overarch :direction :up}
+        {:ref :overarch.architecture/build-pipeline-calls-diagram-generator :direction :up}]}
 
   {:el :container-view
    :id :overarch.architecture/container-view
    :spec {:selection {:namespace-prefix "overarch"}}
    :name "Overarch Container View"
    :title "Container View of Overarch"
-   :ct []}
+   :ct [{:ref :overarch.architecture/build-pipeline-calls-overarch-cli :direction :up}
+        {:ref :overarch.architecture/build-pipeline-calls-diagram-generator :direction :up}]}
 
   {:el :component-view
    :id :overarch.architecture/component-view

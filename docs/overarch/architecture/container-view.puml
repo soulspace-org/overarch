@@ -17,13 +17,20 @@ title Container View of Overarch
 System_Ext(overarch_architecture_editor, "Editor/IDE", $descr="Tool for describing the architecture model and the views.")
 Person(overarch_roles_modeller, "Modeller", $descr="Models the architecture of a system and specifies views of the model.")
 Person(overarch_roles_templateProgrammer, "Template Programmer", $descr="Creates templates for artifact generation.")
-System_Ext(overarch_architecture_plantuml, "PlantUML", $descr="Tool for generating diagrams.")
-System_Ext(overarch_architecture_graphviz, "Graphviz", $descr="Tool for generating graph layouts and diagrams.")
+System_Ext(overarch_architecture_diagramGenerator, "Diagram Generators", $descr="generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid)")
 System_Boundary(overarch_architecture_overarch, "Overarch") {
   Container(overarch_architecture_overarchCli, "Overarch CLI", $descr="CLI tool for the generation of value from the knowledge.", $techn="Clojure", $sprite="clojure")
 }
+System_Ext(overarch_architecture_buildPipeline, "Build Pipeline", $descr="Generates and publishes artifacts (e.g. build script/pipeline)")
+SystemDb_Ext(overarch_architecture_vcRepository, "Repository", $descr="Version controlled repository (e.g. git)")
+Rel(overarch_architecture_overarchCli, overarch_architecture_vcRepository, "generated artifacts", $descr="e.g. markdown, dot/puml files")
+Rel_U(overarch_architecture_buildPipeline, overarch_architecture_overarchCli, "calls", $descr="generate artifacts")
+Rel(overarch_architecture_vcRepository, overarch_architecture_diagramGenerator, "generated diagram files")
+Rel_U(overarch_architecture_buildPipeline, overarch_architecture_diagramGenerator, "calls", $descr="generate diagrams")
+Rel(overarch_architecture_vcRepository, overarch_architecture_overarchCli, "models, templates", $descr="")
+Rel(overarch_architecture_editor, overarch_architecture_vcRepository, "models, templates", $descr="")
 Rel(overarch_roles_templateProgrammer, overarch_architecture_editor, "programs in", $descr="creates templates")
-Rel(overarch_roles_modeller, overarch_architecture_overarchCli, "uses", $descr="for diagram generation and model transformation.")
 Rel(overarch_roles_modeller, overarch_architecture_editor, "models in", $descr="creates models and views")
+Rel(overarch_architecture_diagramGenerator, overarch_architecture_vcRepository, "generated images")
 SHOW_LEGEND()
 @enduml

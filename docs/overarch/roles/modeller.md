@@ -7,7 +7,6 @@ Models the architecture of a system and specifies views of the model.
 | From | Name | To | Description |
 |---|---|---|---|
 | [Modeller](../../overarch/roles/modeller.md) | starts | [adapter.ui.cli](../../overarch/adapter/ui/cli.md) | with the provided options. |
-| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) | for diagram generation and model transformation. |
 ## Actor in Use Cases
 | Use Case | Description |
 |---|---|

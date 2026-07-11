@@ -28,10 +28,18 @@ Clojure
 | [domain.view](../../overarch/domain/view.md) | Contains the view specification and functions. |
 | [util.functions](../../overarch/util/functions.md) | Contains common functions. |
 | [util.io](../../overarch/util/io.md) | Contains I/O related functions. |
-## Other Relations
-| From | Name | To | Description |
-|---|---|---|---|
-| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) | for diagram generation and model transformation. |
+## Incoming Synchronous Requests 
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  | generate artifacts |
+## Incoming Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Repository](../../overarch/architecture/vc-repository.md) | models, templates | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  |  |
+## Outgoing Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Overarch CLI](../../overarch/architecture/overarch-cli.md) | generated artifacts | [Repository](../../overarch/architecture/vc-repository.md) |  | e.g. markdown, dot/puml files |
 
 ## Container View
 ![Container View of Overarch](../../overarch/architecture/container-view.png)

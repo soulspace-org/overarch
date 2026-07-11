@@ -3,9 +3,11 @@
 ;;;;
 #{;
 
-  ;; TODO Quality Goals: Open, Simple, Comprehensive, Customizable, Extensible
+  ;; TODO Quality Goals: open, simple, comprehensive, customizable, extensible
 
-    ;; Nodes
+  ;; TODO Constraints: open source, platform independent
+
+  ;; Nodes
   {:el :goal
    :id :overarch.architecture.goal/knowledge-models
    :priority 1
@@ -76,8 +78,4 @@ level and still be views from the scope of e.g. a single system."}
    :desc "The viewpoints on the model are fully customizable."
    :doc "The view specifications define which selection of elements are part of
 a viewpoint. Users should be able to define new view specifications for their
-purpose without the need to update the overarch codebase."}
-
-
-  
-  }
+purpose without the need to update the overarch codebase."}}

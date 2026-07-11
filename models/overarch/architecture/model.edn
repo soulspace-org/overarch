@@ -4,23 +4,6 @@
 #{;
 
 
-  ;; Relations
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.decision/implementation-language}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.decision/data-representation}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.decision/data-format}
-
-  {:el :implements
-   :from :overarch.architecture/overarch
-   :to :overarch.architecture.decision/implementation-architecture}
-
   ;;;
   ;;; Architecture Model
   ;;;
@@ -35,16 +18,25 @@
    :desc "Tool for describing the architecture model and the views."}
 
   {:el :system
-   :id :overarch.architecture/graphviz
+   :id :overarch.architecture/vc-repository
+   :subtype :database
    :external true
-   :name "Graphviz"
-   :desc "Tool for generating graph layouts and diagrams."}
+   :name "Repository"
+   :desc "Version controlled repository (e.g. git)"}
 
   {:el :system
-   :id :overarch.architecture/plantuml
+   :id :overarch.architecture/diagram-generator
    :external true
-   :name "PlantUML"
-   :desc "Tool for generating diagrams."}
+   :name "Diagram Generators"
+   :desc "generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid)"
+   :tags #{"generic"}}
+
+  ; TODO external system or internal container?
+  {:el :system
+   :id :overarch.architecture/build-pipeline
+   :external true
+   :name "Build Pipeline"
+   :desc "Generates and publishes artifacts (e.g. build script/pipeline)"}
 
   ;;
   ;; Internal System
@@ -131,6 +123,7 @@
   ;;; Architecture Model Relations
   ;;;
 
+  ;; Goal Relations
   {:el :implements
    :from :overarch.architecture/overarch
    :to :overarch.architecture.goal/knowledge-models}
@@ -164,132 +157,234 @@
    :to :overarch.architecture.goal/customizable-view-specifications
    :maturity :proposed}
 
+  ;; Decision Relations
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/implementation-language}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/data-representation}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/data-format}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.decision/implementation-architecture}
+
+  ;; System Relations
+  {:el :dataflow
+   :from :overarch.architecture/editor
+   :to :overarch.architecture/vc-repository
+   :name "models, templates"
+   :desc ""}
+
+  {:el :dataflow
+   :from :overarch.architecture/vc-repository
+   :to :overarch.architecture/overarch
+   :name "models, templates"
+   :desc ""}
+
+  {:el :dataflow
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture/vc-repository
+   :name "generated artifacts"
+   :desc "e.g. markdown, dot/puml files"}
+
+  {:el :request
+   :id :overarch.architecture/build-pipeline-calls-overarch
+   :from :overarch.architecture/build-pipeline
+   :to :overarch.architecture/overarch
+   :name "calls"
+   :desc "generate artifacts"}
+
+  {:el :request
+   :id :overarch.architecture/build-pipeline-calls-diagram-generator
+   :from :overarch.architecture/build-pipeline
+   :to :overarch.architecture/diagram-generator
+   :name "calls"
+   :desc "generate diagrams"}
+
+  {:el :dataflow
+   :from :overarch.architecture/vc-repository
+   :to :overarch.architecture/diagram-generator
+   :name "generated diagram files"}
+
+  {:el :dataflow
+   :from :overarch.architecture/diagram-generator
+   :to :overarch.architecture/vc-repository
+   :name "generated images"}
+
+  ;; Container Relations
+  {:el :request
+   :id :overarch.architecture/build-pipeline-calls-overarch-cli
+   :from :overarch.architecture/build-pipeline
+   :to :overarch.architecture/overarch-cli
+   :name "calls"
+   :desc "generate artifacts"}
+
+  {:el :dataflow
+   :from :overarch.architecture/vc-repository
+   :to :overarch.architecture/overarch-cli
+   :name "models, templates"
+   :desc ""}
+
+  {:el :dataflow
+   :from :overarch.architecture/overarch-cli
+   :to :overarch.architecture/vc-repository
+   :name "generated artifacts"
+   :desc "e.g. markdown, dot/puml files"}
+
+  ;; Component Relations
   {:el :request
    :id :overarch.architecture/cli-loads-data
    :from :overarch.adapter.ui/cli
    :to :overarch.application/model-repository
    :name "loads"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/cli-calls-export
    :from :overarch.adapter.ui/cli
    :to :overarch.application/export
    :name "calls"
    :desc "export functions"}
+
   {:el :request
    :id :overarch.architecture/cli-calls-render
    :from :overarch.adapter.ui/cli
    :to :overarch.application/render
    :name "calls"
    :desc "render functions"}
+
   {:el :request
    :id :overarch.architecture/cli-calls-template
    :from :overarch.adapter.ui/cli
    :to :overarch.application/template
    :name "calls"
    :desc "template functions"}
+
   {:el :implements
    :id :overarch.architecture/comb-implements-template
    :from :overarch.adapter.template/comb
    :to :overarch.application/template
    :name "implements"
    :desc "template functions for Comb templates"}
+
   {:el :request
    :id :overarch.architecture/template-accesses-model
    :from :overarch.application/template
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/template-accesses-view
    :from :overarch.application/template
    :to :overarch.domain/view
    :name "accesses"
    :desc "view"}
+
   {:el :implements
    :id :overarch.architecture/plantuml-implements-render
    :from :overarch.adapter.render/plantuml
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for PlantUML diagrams"}
+
   {:el :request
    :id :overarch.architecture/plantuml-accesses-model
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/plantuml-calls-io
    :from :overarch.adapter.render/plantuml
    :to :overarch.util/io
    :name "calls"
    :desc "loads sprite mappings"}
+
   {:el :request
    :id :overarch.architecture/plantuml-calls-view
    :from :overarch.adapter.render/plantuml
    :to :overarch.domain/view
    :name "queries"
    :desc "view"}
+
   {:el :implements
    :id :overarch.architecture/markdown-implements-render
    :from :overarch.adapter.render/markdown
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for Markdown representations"}
+
   {:el :request
    :id :overarch.architecture/markdown-accesses-model
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/markdown-calls-view
    :from :overarch.adapter.render/markdown
    :to :overarch.domain/view
    :name " queries"
    :desc "view"}
+
   {:el :implements
    :id :overarch.architecture/graphviz-implements-render
    :from :overarch.adapter.render/graphviz
    :to :overarch.application/render
    :name "implements"
    :desc "render functions for GraphViz diagrams"}
+
   {:el :request
    :id :overarch.architecture/graphviz-accesses-model
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/graphviz-calls-view
    :from :overarch.adapter.render/graphviz
    :to :overarch.domain/view
    :name "calls"
    :desc "view queries and rendering functions"}
+
   {:el :implements
    :id :overarch.architecture/json-implements-export
    :from :overarch.adapter.exports/json
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for JSON"}
+
   {:el :request
    :id :overarch.architecture/json-calls-io
    :from :overarch.adapter.exports/json
    :to :overarch.util/io
    :name "calls"
    :desc "writes JSON"}
+
   {:el :implements
    :id :overarch.architecture/structurizr-implements-export
    :from :overarch.adapter.exports/structurizr
    :to :overarch.application/export
    :name "implements"
    :desc "export functions for Structurizr"}
+
   {:el :request
    :id :overarch.architecture/structurizr-accesses-model
    :from :overarch.adapter.exports/structurizr
    :to :overarch.domain/model
    :name "queries"
    :desc "model"}
+
   {:el :request
    :id :overarch.architecture/view-queries-model
    :from :overarch.domain/view

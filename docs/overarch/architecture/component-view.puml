@@ -17,8 +17,7 @@ title Component View of Overarch
 System_Ext(overarch_architecture_editor, "Editor/IDE", $descr="Tool for describing the architecture model and the views.")
 Person(overarch_roles_modeller, "Modeller", $descr="Models the architecture of a system and specifies views of the model.")
 Person(overarch_roles_templateProgrammer, "Template Programmer", $descr="Creates templates for artifact generation.")
-System_Ext(overarch_architecture_plantuml, "PlantUML", $descr="Tool for generating diagrams.")
-System_Ext(overarch_architecture_graphviz, "Graphviz", $descr="Tool for generating graph layouts and diagrams.")
+System_Ext(overarch_architecture_diagramGenerator, "Diagram Generators", $descr="generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid)")
 System_Boundary(overarch_architecture_overarch, "Overarch") {
   Container_Boundary(overarch_architecture_overarchCli, "Overarch CLI") {
     Component(overarch_util_functions, "util.functions", $descr="Contains common functions.")
@@ -40,8 +39,11 @@ System_Boundary(overarch_architecture_overarch, "Overarch") {
     Component(overarch_adapter_ui_cli, "adapter.ui.cli", $descr="Parses the command line options and dispatches functions on them.")
   }
 }
+System_Ext(overarch_architecture_buildPipeline, "Build Pipeline", $descr="Generates and publishes artifacts (e.g. build script/pipeline)")
+SystemDb_Ext(overarch_architecture_vcRepository, "Repository", $descr="Version controlled repository (e.g. git)")
 Rel(overarch_adapter_exports_structurizr, overarch_domain_model, "queries", $descr="model")
 Rel(overarch_application_template, overarch_domain_view, "accesses", $descr="view")
+Rel(overarch_architecture_vcRepository, overarch_architecture_diagramGenerator, "generated diagram files")
 Rel(overarch_adapter_ui_cli, overarch_application_export, "calls", $descr="export functions")
 Rel(overarch_adapter_render_plantuml, overarch_util_io, "calls", $descr="loads sprite mappings")
 Rel(overarch_adapter_render_markdown, overarch_domain_model, "queries", $descr="model")
@@ -51,11 +53,14 @@ Rel(overarch_adapter_ui_cli, overarch_application_template, "calls", $descr="tem
 Rel(overarch_adapter_ui_cli, overarch_application_modelRepository, "loads", $descr="model")
 Rel(overarch_application_template, overarch_domain_model, "queries", $descr="model")
 Rel(overarch_adapter_render_graphviz, overarch_domain_view, "calls", $descr="view queries and rendering functions")
+Rel(overarch_architecture_editor, overarch_architecture_vcRepository, "models, templates", $descr="")
 Rel(overarch_roles_templateProgrammer, overarch_architecture_editor, "programs in", $descr="creates templates")
 Rel(overarch_adapter_render_graphviz, overarch_domain_model, "queries", $descr="model")
 Rel(overarch_adapter_render_markdown, overarch_domain_view, "queries", $descr="view")
 Rel(overarch_roles_modeller, overarch_architecture_editor, "models in", $descr="creates models and views")
+Rel(overarch_architecture_buildPipeline, overarch_architecture_diagramGenerator, "calls", $descr="generate diagrams")
 Rel(overarch_adapter_ui_cli, overarch_application_render, "calls", $descr="render functions")
+Rel(overarch_architecture_diagramGenerator, overarch_architecture_vcRepository, "generated images")
 Rel(overarch_adapter_exports_json, overarch_util_io, "calls", $descr="writes JSON")
 Rel(overarch_domain_view, overarch_domain_model, "queries", $descr="model")
 Rel(overarch_adapter_render_plantuml, overarch_domain_model, "queries", $descr="model")

@@ -18,7 +18,16 @@ An Open Architecture Knowledge Platform
 ## Incoming Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Overarch](../../overarch/architecture/overarch.md) |  | generate artifacts |
 | [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch](../../overarch/architecture/overarch.md) |  | for diagram generation and model transformation. |
+## Incoming Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Repository](../../overarch/architecture/vc-repository.md) | models, templates | [Overarch](../../overarch/architecture/overarch.md) |  |  |
+## Outgoing Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Overarch](../../overarch/architecture/overarch.md) | generated artifacts | [Repository](../../overarch/architecture/vc-repository.md) |  | e.g. markdown, dot/puml files |
 
 ## System Context View
 ![Context View of Overarch](../../overarch/architecture/context-view.png)

@@ -15,10 +15,11 @@
 ## Systems
 | System | Description |
 |---|---|
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md)| Generates and publishes artifacts (e.g. build script/pipeline) |
+| [Diagram Generators](../../overarch/architecture/diagram-generator.md)| generates diagrams from text (e.g. Graphviz, PlantUML, Mermaid) |
 | [Editor/IDE](../../overarch/architecture/editor.md)| Tool for describing the architecture model and the views. |
-| [Graphviz](../../overarch/architecture/graphviz.md)| Tool for generating graph layouts and diagrams. |
 | [Overarch](../../overarch/architecture/overarch.md)| An Open Architecture Knowledge Platform |
-| [PlantUML](../../overarch/architecture/plantuml.md)| Tool for generating diagrams. |
+| [Repository](../../overarch/architecture/vc-repository.md)| Version controlled repository (e.g. git) |
 
 ## Containers
 | Container | Description |
@@ -28,13 +29,19 @@
 ## Synchronous Requests
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  | generate artifacts |
+| [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Diagram Generators](../../overarch/architecture/diagram-generator.md) |  | generate diagrams |
 | [Modeller](../../overarch/roles/modeller.md) | models in | [Editor/IDE](../../overarch/architecture/editor.md) |  | creates models and views |
 | [Template Programmer](../../overarch/roles/template-programmer.md) | programs in | [Editor/IDE](../../overarch/architecture/editor.md) |  | creates templates |
 
-## Other Relationships
-| From | Name | To | Description |
-|---|---|---|---|
-| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) | for diagram generation and model transformation. |
+## Dataflows
+| From | Name | To | Technology | Description |
+|---|---|---|---|---|
+| [Overarch CLI](../../overarch/architecture/overarch-cli.md) | generated artifacts | [Repository](../../overarch/architecture/vc-repository.md) |  | e.g. markdown, dot/puml files |
+| [Repository](../../overarch/architecture/vc-repository.md) | generated diagram files | [Diagram Generators](../../overarch/architecture/diagram-generator.md) |  |  |
+| [Diagram Generators](../../overarch/architecture/diagram-generator.md) | generated images | [Repository](../../overarch/architecture/vc-repository.md) |  |  |
+| [Repository](../../overarch/architecture/vc-repository.md) | models, templates | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  |  |
+| [Editor/IDE](../../overarch/architecture/editor.md) | models, templates | [Repository](../../overarch/architecture/vc-repository.md) |  |  |
 
 ## Navigation
 [List of views in namespace](./views-in-namespace.md)
