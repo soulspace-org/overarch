@@ -5,8 +5,6 @@
 
   ;; TODO Quality Goals: open, simple, comprehensive, customizable, extensible
 
-  ;; TODO Constraints: open source, platform independent
-
   ;; Nodes
   {:el :goal
    :id :overarch.architecture.goal/knowledge-models
