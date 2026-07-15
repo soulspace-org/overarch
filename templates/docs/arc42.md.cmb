@@ -11,7 +11,7 @@
 (let [implements (m/referred-nodes model e {:el :implements})
       implemented-by (m/referring-nodes model e {:el :implements})
       goals (m/select-model-elements model {:el :goal})
-      architecture-constraints (m/select-model-elements model {:el :constraint :tags #{"architecture"}})
+      architecture-constraints (m/select-model-elements model {:el :constraint})
       quality-requirements (m/select-model-elements model {:el :requirement :tags #{"quality"}})
       architecture-decisions (m/select-model-elements model {:el :decision :tags #{"architecture"}})
       risks []
