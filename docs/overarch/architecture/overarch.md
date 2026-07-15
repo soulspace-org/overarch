@@ -4,6 +4,12 @@
 An Open Architecture Knowledge Platform
 
 
+## Implemented Requirements
+| Requirement | Description |
+|---|---|
+| [Namespaced IDs for elements](../../overarch/architecture/requirement/namespaced-ids.md) | For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models. |
+| [Watch model path](../../overarch/architecture/requirement/watch-model-path.md) | The model path should be watched for changes and the model should be reloaded when changes are detected. |
+
 ## Implemented Decisions
 | Decision | Description |
 |---|---|
