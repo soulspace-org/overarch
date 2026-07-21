@@ -117,7 +117,8 @@ Shows all nodes and relations in the Overarch model
 ## Requirements
 | Requirement | Description |
 |---|---|
-| [Namespaced IDs for Overarch elements](../overarch/architecture/requirement/namespaced-ids.md)| For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models. |
+| [Namespaced IDs for elements](../overarch/architecture/requirement/namespaced-ids.md)| For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models. |
+| [Watch model path](../overarch/architecture/requirement/watch-model-path.md)| The model path should be watched for changes and the model should be reloaded when changes are detected. |
 
 ## Decisions
 | Decision | Description |

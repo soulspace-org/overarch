@@ -2,16 +2,21 @@
 ;;;; Requirements
 ;;;;
 #{;
-  
+
   ;; Nodes
   {:el :requirement
    :id :overarch.architecture.requirement/namespaced-ids
-   :name "Namespaced IDs for Overarch elements"
+   :name "Namespaced IDs for elements"
    :desc "For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models."
    :doc ""
    :tags #{"functional"}}
 
-  ;; Relations
+  {:el :requirement
+   :id :overarch.architecture.requirement/watch-model-path
+   :name "Watch model path"
+   :desc "The model path should be watched for changes and the model should be reloaded when changes are detected."
+   :doc ""
+   :tags #{"functional"}}
 
-  
-}
+  ;; Relations
+  }

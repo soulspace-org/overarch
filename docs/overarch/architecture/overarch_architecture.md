@@ -43,6 +43,11 @@ This knowledge model can be queried to answer architectural questions.
 <!-- PA-END(ArchitectureConstraints1) -->
 
 
+### Constraints
+| Constraint | Description |
+|---|---|
+| [Open Source](../../overarch/architecture/constraint/open-source.md) | The Overarch system shall be open source. |
+| [Platform Independent](../../overarch/architecture/constraint/platform-independent.md) | The Overarch system shall be platform independent. |
 
 <!-- PA-BEGIN(ArchitectureConstraints2) -->
 <!-- PA-END(ArchitectureConstraints2) -->

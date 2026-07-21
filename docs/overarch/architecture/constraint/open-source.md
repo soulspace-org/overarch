@@ -1,14 +1,12 @@
 
-# Namespaced IDs for elements (Requirement)
+# Open Source (Constraint)
 ## Description
-For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models.
+The Overarch system shall be open source.
 
-
-## Tags
-functional
 
 ## Documentation
-
+The Overarch system shall be open source with a permissive license (no strong copy-left)
+and the source code shall be available on a public repository.
 
 
 ## Navigation

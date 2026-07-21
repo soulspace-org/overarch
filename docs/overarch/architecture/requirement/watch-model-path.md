@@ -1,7 +1,7 @@
 
-# Namespaced IDs for elements (Requirement)
+# Watch model path (Requirement)
 ## Description
-For models to be composeable, the IDs for elements of Overarch models must be namespaced to avoid clashes across different models.
+The model path should be watched for changes and the model should be reloaded when changes are detected.
 
 
 ## Tags

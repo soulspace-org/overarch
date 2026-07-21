@@ -1,0 +1,22 @@
+;;;;
+;;;; Constraints
+;;;;
+#{;
+
+  {:el :constraint
+   :id :overarch.architecture.constraint/open-source
+   :name "Open Source"
+   :desc "The Overarch system shall be open source."
+   :doc "The Overarch system shall be open source with a permissive license (no strong copy-left)
+and the source code shall be available on a public repository."}
+
+  {:el :constraint
+   :id :overarch.architecture.constraint/platform-independent
+   :name "Platform Independent"
+   :desc "The Overarch system shall be platform independent."
+   :doc "The Overarch system shall be platform independent and run on different
+operating systems (Linux, Windows, MacOS) and different hardware platforms
+(e.g. x86, ARM)."}
+
+  ;
+  }

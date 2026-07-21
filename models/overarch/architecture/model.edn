@@ -157,6 +157,24 @@
    :to :overarch.architecture.goal/customizable-view-specifications
    :maturity :proposed}
 
+  ;; Constraints Relations
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.constraint/open-source}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.constraint/platform-independent}
+  
+  ;; Requirements Relations
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.requirement/namespaced-ids}
+
+  {:el :implements
+   :from :overarch.architecture/overarch
+   :to :overarch.architecture.requirement/watch-model-path}
+
   ;; Decision Relations
   {:el :implements
    :from :overarch.architecture/overarch
