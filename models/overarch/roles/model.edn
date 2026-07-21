@@ -76,6 +76,12 @@
   ;;
   ;; Container Relations
   ;;
+  {:el :request
+   :id :overarch.roles/modeller-uses-overarch-cli
+   :from :overarch.roles/modeller
+   :to :overarch.architecture/overarch-cli
+   :name "uses"
+   :desc "for diagram generation and model transformation."}
 
   ;;
   ;; Component Relations

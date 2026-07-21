@@ -1,5 +1,4 @@
-#{
-  ;
+#{  ;
   {:el :system
    :id :test.collapsed/system
    :name "System"
@@ -10,5 +9,15 @@
                  :id :test.collapsed/component
                  :name "Component"
                  :ct #{}}}}}}
+
+  {:el :node
+   :id :test.collapsed/vm
+   :name "VM"
+   :ct #{{:el :node
+          :id :test.collapsed/k8s
+          :name "Kubernetes"
+          :ct #{{:el :node
+                 :id :test.collapsed/k8s-namespace
+                 :name "Namespace"}}}}}
   ;
   }

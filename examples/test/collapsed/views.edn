@@ -3,7 +3,17 @@
    :spec {:selection {:namespace :test.collapsed}}
    :title "Container View for Collapsed Test"
    :ct [{:ref :test.collapsed/system :collapsed true}]}
+  
   {:el :component-view
    :id :test.collapsed/component-view
    :title "Component View for Collapsed Test"
-   :ct [{:ref :test.collapsed/system :collapsed true}]}}
+   :ct [{:ref :test.collapsed/system :collapsed true}]}
+  
+  {:el :deployment-view
+   :id :test.collapsed/deployment-view
+   ;:selection {}
+   :title "Deployment View for Collapsed Test"
+   :ct [{:ref :test.collapsed/k8s :collapsed true}]
+   }
+  ;
+  }
