@@ -23,7 +23,7 @@ The meta model contains various domain models for
   * deployment architecture
   * domain driven design
 
-The meta model is also an overarch data model residing at `models/overarch/data-model/model.edn`.
+The [meta model](/models/overarch/data-model/model.edn) is an overarch model.
 
 ## Template Based Text Generation
 * user customizable weavejester/comb templates for rendering for textual formats, e.g.
