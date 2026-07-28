@@ -27,6 +27,7 @@ Rel(overarch_architecture_overarchCli, overarch_architecture_vcRepository, "gene
 Rel_U(overarch_architecture_buildPipeline, overarch_architecture_overarchCli, "calls", $descr="generate artifacts")
 Rel(overarch_architecture_vcRepository, overarch_architecture_diagramGenerator, "generated diagram files")
 Rel_U(overarch_architecture_buildPipeline, overarch_architecture_diagramGenerator, "calls", $descr="generate diagrams")
+Rel(overarch_roles_modeller, overarch_architecture_overarchCli, "uses", $descr="for diagram generation and model transformation.")
 Rel(overarch_architecture_vcRepository, overarch_architecture_overarchCli, "models, templates", $descr="")
 Rel(overarch_architecture_editor, overarch_architecture_vcRepository, "models, templates", $descr="")
 Rel(overarch_roles_templateProgrammer, overarch_architecture_editor, "programs in", $descr="creates templates")

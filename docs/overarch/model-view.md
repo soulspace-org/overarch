@@ -221,6 +221,7 @@ Shows all nodes and relations in the Overarch model
 | [domain.view](../overarch/domain/view.md) | queries | [domain.model](../overarch/domain/model.md) |  | model |
 | [adapter.render.plantuml](../overarch/adapter/render/plantuml.md) | queries | [domain.model](../overarch/domain/model.md) |  | model |
 | [Modeller](../overarch/roles/modeller.md) | uses | [Overarch](../overarch/architecture/overarch.md) |  | for diagram generation and model transformation. |
+| [Modeller](../overarch/roles/modeller.md) | uses | [Overarch CLI](../overarch/architecture/overarch-cli.md) |  | for diagram generation and model transformation. |
 
 ## Dataflows
 | From | Name | To | Technology | Description |

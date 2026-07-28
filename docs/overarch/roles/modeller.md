@@ -21,6 +21,7 @@ Models the architecture of a system and specifies views of the model.
 |---|---|---|---|---|
 | [Modeller](../../overarch/roles/modeller.md) | models in | [Editor/IDE](../../overarch/architecture/editor.md) |  | creates models and views |
 | [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch](../../overarch/architecture/overarch.md) |  | for diagram generation and model transformation. |
+| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  | for diagram generation and model transformation. |
 
 
 ## Navigation

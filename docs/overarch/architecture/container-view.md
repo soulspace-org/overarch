@@ -33,6 +33,7 @@
 | [Build Pipeline](../../overarch/architecture/build-pipeline.md) | calls | [Diagram Generators](../../overarch/architecture/diagram-generator.md) |  | generate diagrams |
 | [Modeller](../../overarch/roles/modeller.md) | models in | [Editor/IDE](../../overarch/architecture/editor.md) |  | creates models and views |
 | [Template Programmer](../../overarch/roles/template-programmer.md) | programs in | [Editor/IDE](../../overarch/architecture/editor.md) |  | creates templates |
+| [Modeller](../../overarch/roles/modeller.md) | uses | [Overarch CLI](../../overarch/architecture/overarch-cli.md) |  | for diagram generation and model transformation. |
 
 ## Dataflows
 | From | Name | To | Technology | Description |

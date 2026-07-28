@@ -29,4 +29,4 @@ done
 echo "publishing the documentation"
 rm -rf docs
 mv generated docs
-cp -r docs-in/* docs/
+cp -r docs-src/* docs/
