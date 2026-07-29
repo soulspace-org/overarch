@@ -1,8 +1,9 @@
 ---
-applyTo: "**/*.clj"
+name: 'Clojure Instructions'
+description: 'General instructions for Clojure code'
+applyTo: '**/*.clj'
 ---
 # Clojure Instructions
-
 Develop REPL-driven: define test data, sketch a minimal skeleton, build and test incrementally in the REPL, then refactor for simplicity before adding `clojure.test` tests.
 
 If Calva Backseat Driver tools are available, use them for REPL evaluation, symbol/doc lookup, and the output log — reload the namespace before looking up symbols. Otherwise use `lein repl` / `lein test` directly. Use rich comment blocks in the namespace under experimentation.
