@@ -6,6 +6,7 @@
 * fixed and improved protected area handling in templates
 * updated arc42 template
 * updated overarch models
+* enhanced AI instructions
 
 ## Version 0.42.0
 * adding views for traceability (e.g. instanciation/implementation views)

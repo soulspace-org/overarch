@@ -61,7 +61,7 @@ When a template needs logic beyond simple lookups, prefer adding a function to t
 
 ## Protected areas
 * Mark manually-edited regions with matching begin/end comments using the configured marker (default `PA`), e.g. `// PA-BEGIN(name)` / `// PA-END(name)`, and re-emit the preserved content between them with `(:name protected-areas)`.
-* Only add protected areas where a human is expected to fill in logic or content  the model cannot express (e.g. method bodies); don't add them speculatively.
+* Only add protected areas where a human is expected to fill in logic or content the model cannot express (e.g. method bodies); don't add them speculatively.
 
 ## Generation config awareness
 * Templates are applied per the generation config (see `templates/gencfg.edn` and [doc/topics/templates.md](/doc/topics/templates.md)); when adding a new template, also add or update its generation-context entry (`:selection`/`:view-selection`, `:template`, `:per-element`, `:extension`, etc.).

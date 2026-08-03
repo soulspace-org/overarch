@@ -21,10 +21,10 @@ Contains
 The adapter layer handles all IO. It depends on the application layer and the domain core.
 
 Contains
-* implementations of the multimethods from the application layer ports.
+* implementations of the multimethods from the application layer.
 
 Implements
-* multimethods from the 
+* multimethods from the namespaces in the application layer
 
 ### ```org.soulspace.overarch.util```
 The utility layer contains utility functions. It is stateless and all functions are referentially transparent and has no dependencies to the other layers.
