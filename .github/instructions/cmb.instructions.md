@@ -9,4 +9,4 @@ Comb templates
 * contain Clojure code
   * control code is demarcated by `<%` and `%>`
   * expressions generating output in the artifact are demarcated by `<%=` and `%>`
-* text not demarcated is written to the artifact as is
+* text not demarcated is written to the artifact as-is
