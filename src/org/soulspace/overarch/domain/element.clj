@@ -147,12 +147,15 @@
 ;;
 (def process-node-types
   "Node types for process models."
-  #{:artifact :capability :constraint :control :decision :goal :information :knowledge :process
-    :regulation :requirement :test :version})
+  #{:artifact :capability :constraint :control :decision :goal :information
+    :knowledge :non-goal :process
+    :regulation :requirement :risk :stakeholder :test :version})
 
 (def process-relation-types
   "Node types for process models."
-  #{:artifact-of :constraint-for :control-for :decision-for :goal-for :input-of :output-of :regulation-for :required-for :role-in :test-for :version-of})
+  #{:artifact-of :constraint-for :control-for :decision-for :goal-for :input-of
+    :non-goal-for :output-of :regulation-for :required-for :risk-for
+    :role-in :stakeholder-of :test-for :version-of})
 ; :supports :resource-of?
 
 ;; 
@@ -624,9 +627,12 @@
       (derive :goal                              :process-model-node)
       (derive :information                       :process-model-node)
       (derive :knowledge                         :process-model-node)
+      (derive :non-goal                          :process-model-node)
       (derive :process                           :process-model-node)
       (derive :regulation                        :process-model-node)
       (derive :requirement                       :process-model-node)
+      (derive :risk                              :process-model-node)
+      (derive :stakeholder                       :process-model-node)
       (derive :test                              :process-model-node)
       (derive :version                           :process-model-node) 
       (derive :process-model-node                :process-model-element)
@@ -637,10 +643,13 @@
       (derive :control-for                       :process-model-relation)
       (derive :goal-for                          :process-model-relation)
       (derive :input-of                          :process-model-relation)
+      (derive :non-goal-for                      :process-model-relation)
       (derive :output-of                         :process-model-relation)
       (derive :regulation-for                    :process-model-relation)
       (derive :required-for                      :process-model-relation)
       (derive :role-in                           :process-model-relation)
+      (derive :risk-for                          :process-model-relation)
+      (derive :stakeholder-of                    :process-model-relation)
       (derive :test-for                          :process-model-relation)
       (derive :version-of                        :process-model-relation)
       (derive :process-model-relation            :process-model-element)
