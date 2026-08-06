@@ -2,7 +2,7 @@
 ;;;; Decisions
 ;;;;
 #{;
-  
+
   ;; Nodes
   {:el :decision
    :id :overarch.architecture.decision/implementation-language
@@ -10,7 +10,7 @@
    :desc "Clojure is used as sole implementation language"
    :doc "## Problem"
    :status :decided
-   :tags #{"architecture" "strategy"}}
+   :tags #{"solution strategy"}}
 
   {:el :decision
    :id :overarch.architecture.decision/implementation-architecture
@@ -18,7 +18,7 @@
    :desc "Clean Architecture is used to structure the implementation"
    :doc "## Problem"
    :status :decided
-   :tags #{"architecture" "strategy"}}
+   :tags #{"solution strategy"}}
 
   {:el :decision
    :id :overarch.architecture.decision/data-representation
@@ -145,5 +145,5 @@ customization and configuration data.
    :status :decided
    :tags #{"architecture"}}
 
-
+  ;
   }
