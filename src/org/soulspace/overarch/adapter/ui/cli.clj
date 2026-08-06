@@ -170,8 +170,7 @@
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
-    (->> criteria
-         (repo/model-elements-by-criteria)
+    (->> (repo/model-elements-by-criteria criteria)
          (map el/element->ref)
          into [])))
 
