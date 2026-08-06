@@ -1,5 +1,5 @@
-{:models {:role-model {:nodes {:els #{:person}}
-                       :relations {:els #{:role-in}}}
+{:models {:role-model {:nodes {:els #{:person :permission}}
+                       :relations {:els #{:role-in :responsible-for :granted-for :permission-of}}}
           :concept-model {:nodes {:els #{:concept}}
                           :relations {:els #{:is-a :has :part-of :rel}}}
           :organization-model {:nodes {:els #{:organization :org-unit}}
@@ -7,6 +7,9 @@
           :process-model {:nodes {:els #{:capability :knowledge :information :process
                                          :artifact :requirement :decision}}
                           :relations {:els #{:role-in :required-for :input-of :output-of}}}
+          :domain-model {:nodes {:els #{:domain :bounded-context :aggregate :entity
+                                        :value-object :domain-event :policy :command}}
+                         :relations {:els #{}}}
           :use-case-model {:nodes {:els #{:use-case :actor :person :system :container
                                           :context-boundary}}
                            :relations {:els #{:uses :include :extends :generalizes}}}
@@ -18,14 +21,11 @@
                                                :state :fork :join :choice
                                                :history-state :deep-history-state}}
                                 :relations {:els #{:transition}}}
-          :deployment-model {:nodes {:els #{:node :container}}
+          :deployment-model {:nodes {:els #{:container :container-instance :artifact :node}}
                              :relations {:els #{:link :deployed-to}}}
-          :code-model {:nodes {:els #{:annotation :class :enum :enum-value
-                                      :field :function :interface :method
-                                      :namespace :package :parameter
-                                      :protocol :stereotype}}
-                       :relations {:els #{:aggregation :association :composition
-                                          :dependency :implementation :inheritance}}}
+          :code-model {:nodes {:els #{:annotation :class :enum :enum-value :field :function :interface
+                                      :method :namespace :package :parameter :protocol :schema :stereotype}}
+                       :relations {:els #{:aggregation :association :composition :dependency :implementation :inheritance}}}
           ;
           }
  :views {:context-view {:nodes {:els #{:enterprise-boundary :context-boundary
