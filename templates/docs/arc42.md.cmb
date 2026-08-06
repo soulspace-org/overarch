@@ -3,8 +3,6 @@
 ;;;; Markdown Arc42 Documentation Template
 ;;;;
 
-; TODO use protected areas for hand written content?
-
 (require '[lib.text :as t])
 (require '[lib.markdown :as md])
 
@@ -13,8 +11,9 @@
       goals (m/select-model-elements model {:el :goal})
       architecture-constraints (m/select-model-elements model {:el :constraint})
       quality-requirements (m/select-model-elements model {:el :requirement :tags #{"quality"}})
+      strategy-decisions (m/select-model-elements model {:el :decision :tags #{"solution strategy"}})
       architecture-decisions (m/select-model-elements model {:el :decision :tags #{"architecture"}})
-      risks []
+      risks (m/select-model-elements model {:el :risk})
       technical-depts []]
 
 %>
@@ -95,6 +94,14 @@
 <!-- PA-BEGIN(SolutionStrategy) -->
 <%= (get protected-areas "SolutionStrategy" "")
 %><!-- PA-END(SolutionStrategy) -->
+<%
+  (when (seq strategy-decisions)
+%>
+### Decisions
+<%=
+    (md/node-description-table e :decision strategy-decisions))
+%>
+
 
 ## Building Blocks
 <!-- PA-BEGIN(BuildingBlocks1) -->

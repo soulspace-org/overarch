@@ -78,6 +78,13 @@ This knowledge model can be queried to answer architectural questions.
 * Use templates for rendering viewpoints
 <!-- PA-END(SolutionStrategy) -->
 
+### Decisions
+| Decision | Description |
+|---|---|
+| [Implementation Architecture](../../overarch/architecture/decision/implementation-architecture.md) | Clean Architecture is used to structure the implementation |
+| [Implementation Language](../../overarch/architecture/decision/implementation-language.md) | Clojure is used as sole implementation language |
+
+
 ## Building Blocks
 <!-- PA-BEGIN(BuildingBlocks1) -->
 <!-- PA-END(BuildingBlocks1) -->
@@ -118,8 +125,6 @@ This knowledge model can be queried to answer architectural questions.
 | Decision | Description |
 |---|---|
 | [Data Format for Models](../../overarch/architecture/decision/data-format.md) | Extensible Data Notation (EDN) is used as the data format for models and other customization/configuration data |
-| [Implementation Architecture](../../overarch/architecture/decision/implementation-architecture.md) | Clean Architecture is used to structure the implementation |
-| [Implementation Language](../../overarch/architecture/decision/implementation-language.md) | Clojure is used as sole implementation language |
 | [Internal Data Representation](../../overarch/architecture/decision/data-representation.md) | Model elements are stored in a graph of nodes and relations |
 
 <!-- PA-BEGIN(ArchitectureDecisions2) -->

@@ -5,7 +5,7 @@ Clojure is used as sole implementation language
 
 
 ## Tags
-architecture, strategy
+strategy
 
 ## Documentation
 ## Problem
