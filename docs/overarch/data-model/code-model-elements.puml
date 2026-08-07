@@ -15,7 +15,6 @@ class "field" as overarch_dataModel_field {}
 class "inheritance" as overarch_dataModel_inheritance {}
 class "function" as overarch_dataModel_function {}
 class "parameter" as overarch_dataModel_parameter {}
-class "namespace" as overarch_dataModel_namespace {}
 abstract class "scoped-node" as overarch_dataModel_scopedNode {
   scope : keyword [0..1]
 }
@@ -24,7 +23,8 @@ abstract class "model-element" as overarch_dataModel_modelElement {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "schema" as overarch_dataModel_schema {}
+class "namespace" as overarch_dataModel_namespace {}
+class "package" as overarch_dataModel_package {}
 abstract class "visibility-node" as overarch_dataModel_visibilityNode {
   visibility : string [0..1]
 }
@@ -34,8 +34,6 @@ abstract class "optional-node" as overarch_dataModel_optionalNode {
 abstract class "technical-element" as overarch_dataModel_technicalElement {
   tech : string [0..1]
 }
-class "interface" as overarch_dataModel_interface {}
-class "package" as overarch_dataModel_package {}
 abstract class "abstract-node" as overarch_dataModel_abstractNode {
   abstract : boolean [0..1]
 }
@@ -49,9 +47,11 @@ abstract class "typed-node" as overarch_dataModel_typedNode {
   type : string [0..1]
 }
 abstract class "code-model-relation" as overarch_dataModel_codeModelRelation {}
+class "interface" as overarch_dataModel_interface {}
 class "composition" as overarch_dataModel_composition {}
 abstract class "code-model-node" as overarch_dataModel_codeModelNode {}
 class "class" as overarch_dataModel_class {}
+class "protocol" as overarch_dataModel_protocol {}
 abstract class "associative-relation" as overarch_dataModel_associativeRelation {
   from-card : string [0..1]
   from-role : string [0..1]
@@ -68,7 +68,7 @@ abstract class "element" as overarch_dataModel_element {
   name : string
 }
 class "dependency" as overarch_dataModel_dependency {}
-class "protocol" as overarch_dataModel_protocol {}
+class "schema" as overarch_dataModel_schema {}
 abstract class "code-model-element" as overarch_dataModel_codeModelElement {}
 overarch_dataModel_optionalNode <|-- overarch_dataModel_field
 overarch_dataModel_codeModelNode <|-- overarch_dataModel_class

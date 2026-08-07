@@ -7,7 +7,6 @@
 
 title Use Case Model Elements
 
-class "actor" as overarch_dataModel_actor {}
 class "extends" as overarch_dataModel_extends {}
 abstract class "model-element" as overarch_dataModel_modelElement {
   maturity : keyword [0..1]
@@ -19,6 +18,8 @@ class "use-case" as overarch_dataModel_useCase {
 }
 class "person" as overarch_dataModel_person {}
 class "generalizes" as overarch_dataModel_generalizes {}
+class "system" as overarch_dataModel_system {}
+class "container" as overarch_dataModel_container {}
 abstract class "model-node" as overarch_dataModel_modelNode {}
 abstract class "model-relation" as overarch_dataModel_modelRelation {
   from : keyword
@@ -28,7 +29,7 @@ abstract class "use-case-model-relation" as overarch_dataModel_useCaseModelRelat
 abstract class "use-case-model-node" as overarch_dataModel_useCaseModelNode {}
 class "uses" as overarch_dataModel_uses {}
 class "role" as overarch_dataModel_role {}
-class "system" as overarch_dataModel_system {}
+class "actor" as overarch_dataModel_actor {}
 abstract class "use-case-model-element" as overarch_dataModel_useCaseModelElement {}
 abstract class "element" as overarch_dataModel_element {
   desc : string [0..1]
@@ -37,7 +38,6 @@ abstract class "element" as overarch_dataModel_element {
   id : keyword
   name : string
 }
-class "container" as overarch_dataModel_container {}
 overarch_dataModel_useCaseModelRelation <|-- overarch_dataModel_extends
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode

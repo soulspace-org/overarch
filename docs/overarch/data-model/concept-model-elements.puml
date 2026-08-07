@@ -14,6 +14,8 @@ abstract class "model-element" as overarch_dataModel_modelElement {
   tags : set [0..1]
 }
 class "person" as overarch_dataModel_person {}
+class "system" as overarch_dataModel_system {}
+class "container" as overarch_dataModel_container {}
 class "context-boundary" as overarch_dataModel_contextBoundary {}
 class "concept" as overarch_dataModel_concept {}
 class "has" as overarch_dataModel_has {}
@@ -25,7 +27,6 @@ abstract class "model-relation" as overarch_dataModel_modelRelation {
 }
 class "rel" as overarch_dataModel_rel {}
 abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
-class "system" as overarch_dataModel_system {}
 abstract class "concept-model-relation" as overarch_dataModel_conceptModelRelation {}
 abstract class "element" as overarch_dataModel_element {
   desc : string [0..1]
@@ -34,7 +35,6 @@ abstract class "element" as overarch_dataModel_element {
   id : keyword
   name : string
 }
-class "container" as overarch_dataModel_container {}
 class "is-a" as overarch_dataModel_isA {}
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary

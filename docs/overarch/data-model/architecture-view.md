@@ -8,7 +8,7 @@ An architectural view.
 view-model
 
 ## Superclasses
-[container-view](../../overarch/data-model/container-view.md), [context-view](../../overarch/data-model/context-view.md), [dynamic-view](../../overarch/data-model/dynamic-view.md), [system-landscape-view](../../overarch/data-model/system-landscape-view.md), [component-view](../../overarch/data-model/component-view.md)
+[system-landscape-view](../../overarch/data-model/system-landscape-view.md), [component-view](../../overarch/data-model/component-view.md), [dynamic-view](../../overarch/data-model/dynamic-view.md), [context-view](../../overarch/data-model/context-view.md), [container-view](../../overarch/data-model/container-view.md)
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
