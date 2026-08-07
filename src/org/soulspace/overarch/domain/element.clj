@@ -270,12 +270,6 @@
   (set/union code-node-types
              code-relation-types))
 
-(def uml-view-element-types
-  "Element types of UML views."
-  (set/union use-case-view-element-types
-             state-machine-view-element-types
-             code-view-element-types))
-
 ;;
 ;; Concept view category definitions
 ;;
@@ -334,25 +328,6 @@
 (def organization-structure-view-element-types
   "Element types of a system structure view."
   (set/union organization-node-types organization-relation-types))
-
-;;
-;; Traceability view types
-;;
-
-; TODO implement views
-(def traceability-view-types
-  "The set traceability view types."
-  ; TODO define :trace-view for global traceability
-  #{:instanciation-view :implementation-view})
-
-(def instanciation-view-element-types
-  "Element types of a instanciation view."
-  (set/union model-node-types #{:instance-of}))
-
-(def implementation-view-element-types
-  "Element types of a instanciation view."
-  (set/union model-node-types #{:implements}))
-
 
 ;;
 ;; Other view types
@@ -715,35 +690,15 @@
   [e]
   (not= nil (:name e)))
 
-(defn named-element?
-  "Returns true if the given element `e` is an element and named."
-  [e]
-  (and (element? e) (named? e)))
-
-(defn identifiable-named-element?
-  "Returns true if the given element `e` is an element, identifiable and named."
-  [e]
-  (and (element? e) (identifiable? e) (named? e)))
-
 (defn relational?
   "Returns true if the given element `e` is a relation."
   [e]
   (and (not= nil (:from e)) (not= nil (:to e))))
 
-(defn relational-element?
-  "Returns true if the given element `e` is a relation."
-  [e]
-  (and (element? e) (relational? e)))
-
 (defn identifiable-relational-element?
   "Returns true if the given element `e` is an identifiable relation."
   [e]
   (and (element? e) (identifiable? e) (relational? e)))
-
-(defn named-relational-element?
-  "Returns true if the given element `e` is a named relation."
-  [e]
-  (and (named-element? e) (relational-element? e)))
 
 (defn external?
   "Returns true if the given element `e` is external."
@@ -821,11 +776,6 @@
   "Returns true if the given element `e` is a hierarchical view."
   [e]
   (contains? hierarchical-view-types (:el e)))
-
-(defn view-of?
-  "Returns true if the given element `e` is a view of `kind`."
-  [e kind]
-  (and (view? e) (= (:el e) kind)))
 
 (defn synthetic?
   "Returns true, if the element `e` is a synthetic element."

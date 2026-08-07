@@ -1,7 +1,8 @@
 # Changelog
 
-## Version (0.42.1)
-* added :decision-for relation
+## Version (0.43.0)
+* added :non-goal, :risk and :stakeholder nodes
+* added :decision-for, :non-goal-for, :risk-for and :stakeholder-of relations
 * fixed :goal-for relation
 * fixed and improved protected area handling in templates
 * updated arc42 template
