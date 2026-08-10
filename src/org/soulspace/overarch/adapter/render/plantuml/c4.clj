@@ -17,6 +17,7 @@
    :enterprise-boundary "Enterprise_Boundary"
    :system-boundary     "System_Boundary"
    :container           "Container"
+   :container-instance  "Container"
    :container-boundary  "Container_Boundary"
    :context-boundary    "Boundary"
    :component           "Component"
