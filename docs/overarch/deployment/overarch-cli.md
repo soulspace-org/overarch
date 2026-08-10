@@ -5,6 +5,10 @@
 
 ## Parent
 [Java Virtual Machine](../../overarch/deployment/jvm.md)
+## Instance of
+| Type | Description |
+|---|---|
+| [Overarch CLI](../../overarch/architecture/overarch-cli.md) | CLI tool for the generation of value from the knowledge. |
 
 
 ## Navigation

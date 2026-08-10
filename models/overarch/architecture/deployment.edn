@@ -2,6 +2,8 @@
 ;;;; Deployment Model for Overarch
 ;;;;
 #{;
+
+  ;; Nodes
   {:el :node
    :id :overarch.deployment/os
    :name "Operating System"
@@ -11,13 +13,18 @@
           :name "Java Virtual Machine"
           :desc "Java Virtual Machine"
           :ct #{{:el :container-instance
-               :id :overarch.deployment/overarch-cli
-               :name "Overarch CLI"
-               :desc ""}}}
+                 :id :overarch.deployment/overarch-cli
+                 :name "Overarch CLI"
+                 :desc ""}}}
          {:el :container-instance
           :id :overarch.deployment/graphviz
           :name "GraphViz"
-          :desc "generates diagrams for text based graph descriptions."}
-         }}
+          :desc "generates diagrams for text based graph descriptions."}}}
+
+  ;; Relationships
+  {:el :instance-of
+   :from :overarch.deployment/overarch-cli
+   :to :overarch.architecture/overarch-cli}
+  
   ;
   }

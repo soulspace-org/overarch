@@ -352,6 +352,7 @@ overarch_data_model__information -> overarch_data_model__process_model_node [lab
 overarch_data_model__publish -> overarch_data_model__technical_architecture_model_relation [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
 overarch_architecture__overarch -> overarch_architecture_goal__extensible_model_elements [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
 overarch_data_model__domain_event -> overarch_data_model__domain_model_node [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
+overarch_deployment__overarch_cli -> overarch_architecture__overarch_cli [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
 overarch_deployment__overarch_cli -> overarch_deployment__jvm [label=<contained-in<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
 overarch_data_model__system_landscape_view -> overarch_data_model__architecture_view [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
 overarch_data_model__test -> overarch_data_model__process_model_node [label=<<BR/><FONT POINT-SIZE="10"><I> </I></FONT>>]
