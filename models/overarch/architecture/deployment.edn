@@ -1,0 +1,23 @@
+;;;;
+;;;; Deployment Model for Overarch
+;;;;
+#{;
+  {:el :node
+   :id :overarch.deployment/os
+   :name "Operating System"
+   :desc "e.g. Linux, MacOS, Windows"
+   :ct #{{:el :node
+          :id :overarch.deployment/jvm
+          :name "Java Virtual Machine"
+          :desc "Java Virtual Machine"
+          :ct #{{:el :container-instance
+               :id :overarch.deployment/overarch-cli
+               :name "Overarch CLI"
+               :desc ""}}}
+         {:el :container-instance
+          :id :overarch.deployment/graphviz
+          :name "GraphViz"
+          :desc "generates diagrams for text based graph descriptions."}
+         }}
+  ;
+  }

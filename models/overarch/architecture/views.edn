@@ -6,7 +6,7 @@
   ;;;
   {:el :context-view
    :id :overarch.architecture/context-view
-   :spec {:selection {:namespace-prefix "overarch"}}
+   :selection {:namespace-prefix "overarch"}
    :name "Overarch Context View"
    :title "Context View of Overarch"
    :desc "Gives a high level overview of the roles, systems and their interactions"
@@ -15,7 +15,7 @@
 
   {:el :container-view
    :id :overarch.architecture/container-view
-   :spec {:selection {:namespace-prefix "overarch"}}
+   :selection {:namespace-prefix "overarch"}
    :name "Overarch Container View"
    :title "Container View of Overarch"
    :ct [{:ref :overarch.architecture/build-pipeline-calls-overarch-cli :direction :up}
@@ -23,18 +23,24 @@
 
   {:el :component-view
    :id :overarch.architecture/component-view
-   :spec {:selection {:namespace-prefix "overarch"}}
+   :selection {:namespace-prefix "overarch"}
    :name "Overarch Component View"
    :title "Component View of Overarch"
    :ct []}
 
   {:el :system-structure-view
    :id :overarch.architecture/system-structure-view
-   :spec {:selection {:namespace-prefix "overarch" :external? false}}
+   :selection {:namespace-prefix "overarch" :external? false}
    :name "Overarch System Structure View"
    :title "System Structure View of Overarch"
    :desc "Shows the structure of the Overarch systems."
    :ct []}
 
+  {:el :deployment-view
+   :id :overarch.architecture/deployment-view
+   :selection {:id :overarch.deployment/os}
+   :name "Deployment View for Overarch"
+   :title "Deployment View for Overarch"
+   :desc "Shows the deployment of overarch."}
   ;
   }
