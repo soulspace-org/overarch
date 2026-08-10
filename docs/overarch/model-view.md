@@ -399,6 +399,12 @@ Shows all nodes and relations in the Overarch model
 | [view](../overarch/data-model/view.md)| An element for describing a view. |
 | [visibility-node](../overarch/data-model/visibility-node.md)| A node which may have a visibility field. |
 
+## Deployment Nodes
+| Node | Description |
+|---|---|
+| [Java Virtual Machine](../overarch/deployment/jvm.md)| Java Virtual Machine |
+| [Operating System](../overarch/deployment/os.md)| e.g. Linux, MacOS, Windows |
+
 ## Other Relationships
 | From | Name | To | Description |
 |---|---|---|---|

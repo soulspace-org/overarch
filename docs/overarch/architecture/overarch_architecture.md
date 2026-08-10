@@ -114,6 +114,11 @@ This knowledge model can be queried to answer architectural questions.
 <!-- PA-BEGIN(DeploymentView1) -->
 <!-- PA-END(DeploymentView1) -->
 
+### Deployment Diagram
+![Deployment View for Overarch](../../overarch/architecture/deployment-view.png)
+
+[Deployment View for Overarch](../../overarch/architecture/deployment-view.md)
+
 
 <!-- PA-BEGIN(DeploymentView2) -->
 <!-- PA-END(DeploymentView2) -->
