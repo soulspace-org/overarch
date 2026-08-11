@@ -352,23 +352,25 @@
   )
 
 (comment ; model navigation on banking model
+  (model/resolve-element (repo/model)
+                         :banking.internet-banking/internet-banking-system)
   (model/descendant-nodes (repo/model)
                           (model/resolve-element (repo/model)
-                                                 :banking/internet-banking-system))
+                                                 :banking.internet-banking/internet-banking-system))
 
   ;
-  (model/referred-nodes (repo/model) :banking/api-application)
-  (model/referring-nodes (repo/model) :banking/api-application)
-  (model/referred-relations (repo/model) :banking/api-application)
-  (model/referring-relations (repo/model) :banking/api-application)
+  (model/referred-nodes (repo/model) :banking.internet-banking/api-application)
+  (model/referring-nodes (repo/model) :banking.internet-banking/api-application)
+  (model/referred-relations (repo/model) :banking.internet-banking/api-application)
+  (model/referring-relations (repo/model) :banking.internet-banking/api-application)
 
   ; 
-  (model/referred-nodes (repo/model) :banking/api-application {:el :request})
-  (model/referring-nodes (repo/model) :banking/api-application {:el :request})
-  ;(model/descendants (repo/model) :banking/internet-banking-system)
-  ;(model/ancestors (repo/model) :banking/internet-banking-system)
-  ;(model/sync-dependents (repo/model) :banking/api-application)
-  ;(model/sync-dependencies (repo/model) :banking/api-application)
+  (model/referred-nodes (repo/model) :banking.internet-banking/api-application {:el :request})
+  (model/referring-nodes (repo/model) :banking.internet-banking/api-application {:el :request})
+  (model/t-descendants (repo/model) :banking.internet-banking/internet-banking-system)
+  (model/t-ancestors (repo/model) :banking.internet-banking/internet-banking-system)
+  ;(model/sync-dependents (repo/model) :banking.internet-banking/api-application)
+  ;(model/sync-dependencies (repo/model) :banking.internet-banking/api-application)
   ; 
   )
 
@@ -387,10 +389,10 @@
 
   (model/t-descendants (repo/model)
                        (model/resolve-element (repo/model)
-                                              :banking/internet-banking-system))
+                                              :banking.internet-banking/internet-banking-system))
   (model/t-ancestors (repo/model)
                        (model/resolve-element (repo/model)
-                                              :banking/api-application))
+                                              :banking.internet-banking/api-application))
   ;
   )
 
@@ -505,13 +507,13 @@
 (comment ; render functions
   (model/children (repo/model)
                   (model/resolve-element (repo/model)
-                                         :banking/internet-banking-system))
+                                         :banking.internet-banking/internet-banking-system))
   (c4/render-c4-element (repo/model)
                         (model/resolve-element (repo/model)
                                                :banking/container-view)
                         0
                         (model/resolve-element (repo/model)
-                                               :banking/internet-banking-system))
+                                               :banking.internet-banking/internet-banking-system))
   
   (c4/render-c4-element (repo/model)
                         (model/resolve-element (repo/model)
