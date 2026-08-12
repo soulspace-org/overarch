@@ -55,6 +55,8 @@
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
    [nil  "--select-views CRITERIA" "Select and print views by criteria" :parse-fn edn/read-string]
    [nil  "--select-view-references CRITERIA" "Select views by criteria and print as references" :parse-fn edn/read-string]
+   ["-q" "--transitive-select-elements CRITERIA" "Transitively select and print model elements by criteria" :parse-fn edn/read-string]
+   ["-Q" "--transitive-select-references CRITERIA" "Transitively select model elements by criteria and print as references" :parse-fn edn/read-string]
    ["-T" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
@@ -189,6 +191,21 @@
                    (map el/element->ref))
           (repo/views))))
 
+(defn transitive-select-elements
+  "Returns the model elements transitively selected by criteria criteria specified in the `options`."
+  [options]
+  (when-let [criteria (spec/check-selection-criteria (:transitive-select-elements options))]
+    ; TODO: implement transitive selection of elements
+    ))
+
+(defn transitive-select-references
+  "Returns the references to the model elements transitively selected by criteria criteria specified in the `options`."
+  [options]
+  (when-let [criteria (spec/check-selection-criteria (:transitive-select-references options))]
+    ; TODO: implement transitive selection of references
+   ))
+
+; TODO: use multimethods for dispatching on options and actions to be extensible
 (defn dispatch
   "Dispatch on `options` to the requested actions."
   [model options]
@@ -199,17 +216,23 @@
     (println "Model Information:")
     (pp/pprint (model-info model options)))
   (when (:select-elements options)
-    (println "Selected Elements for" (:select-elements options))
+    (println "Selected elements for" (:select-elements options))
     (pp/pprint (select-elements options)))
   (when (:select-references options)
-    (println "Selected References for" (:select-references options))
+    (println "Selected references for" (:select-references options))
     (pp/pprint (select-references options)))
   (when (:select-views options)
-    (println "Selected Views for" (:select-views options))
+    (println "Selected views for" (:select-views options))
     (pp/pprint (select-views options)))
   (when (:select-view-references options)
-    (println "Selected Views for" (:select-view-references options))
+    (println "Selected view references for" (:select-view-references options))
     (pp/pprint (select-view-references options)))
+  (when (:transitive-select-elements options)
+    (println "Transitively selected elements for" (:transitive-select-elements options))
+    (pp/pprint (transitive-select-elements options)))
+  (when (:transitive-select-references options)
+    (println "Transitively selected references for" (:transitive-select-references options))
+    (pp/pprint (transitive-select-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)

@@ -215,6 +215,18 @@
   (s/or :criteria :overarch/criteria
         :criteria-vector :overarch/criteria-vector))
 
+(s/def :overarch/selection
+  (s/or :criteria :overarch/criteria
+        :criteria-vector :overarch/criteria-vector))
+
+(s/def :overarch/selection-criteria
+  (s/or :criteria :overarch/criteria
+        :criteria-vector :overarch/criteria-vector))
+
+(s/def :overarch/transitive-selection-criteria
+  (s/keys :req-un [:overarch.criterium/id :overarch/selection-criteria]
+          :opt-un []))
+
 ;;;
 ;;; Views
 ;;;
@@ -343,3 +355,19 @@
    selection-criteria
    (do (expound/expound :overarch/selection-criteria selection-criteria {:print-specs? false})
        nil)))
+
+(defn check-transitive-selection-criteria
+  "Checks the `transitive selection criteria` against its specification. If valid returns the selection-criteria, otherwise returns the validation errors."
+  [transitive-selection-criteria]
+  (if (s/valid? :overarch/transitive-selection-criteria transitive-selection-criteria)
+    transitive-selection-criteria
+    (do (expound/expound :overarch/transitive-selection-criteria transitive-selection-criteria {:print-specs? false})
+        nil)))
+
+(comment
+  (check-transitive-selection-criteria {:id :some-id
+                                        :selection-criteria {:els #{:el1 :el2}
+                                                             :subtype :some-subtype
+                                                             :maturity :some-maturity}})
+  ; 
+  )
