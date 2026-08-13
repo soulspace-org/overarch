@@ -22,7 +22,7 @@ A criterium can be negated by adding a ``!`` in front of the key name.
 For example a criteria map of ```{:el :component :!namespace "overarch.domain"}``` 
 selects all components not in the "overarch.domain" namespace.
 
-## Criterium Keys
+### Criterium Keys
 criterium key           | type            | scope   | example values               | description
 ------------------------|-----------------|---------|------------------------------|------------
 :model-node?            | boolean         | element | true, false                  | elements for which the check for model node returns the given value
@@ -73,7 +73,7 @@ criterium key           | type            | scope   | example values            
 :parent-of              | keyword         | model   | :org.soulspace/overarch      | node which is the parent of the node with the given id
 :ancestor-of            | keyword         | model   | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
-## Deprecated Criterium keys
+### Deprecated Criterium keys
 The following keys are deprecated since version 0.37.0 and can be rewritten
 using ``:from`` and ``:to``, e.g ```{:to-namespace "overarch.domain"}```
 should be replaced by ```{:to {:namespace "overarch.domain"}}```.
@@ -103,6 +103,7 @@ provided. The relations to follow transitively are specified by either the
 `:referred` key or the `:referring` key. A selection predicate for the elements
  to be selected can be specified with the `:elements` key. 
 
+### Transitive Selection Keys
 key        | type | example values | description
 -----------|------|----------------|------------
 :start     | selection criteria | {:id :overarch.data-model/architecture-element} | criteria for the start element of the transitive query
