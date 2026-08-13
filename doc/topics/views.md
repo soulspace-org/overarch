@@ -135,12 +135,13 @@ use cases or state machines, even if they are referenced in the view. Please con
 the models for the model and view elements.
 
 Model elements can be referenced directly via a `:ref`. They can also be
-selected via model criteria. Either References for selected nodes or nodes for
-selected references can be included automatically.
+selected via selection criteria (see [Model Element Selection](#model-element-selection-by-criteria)).
+Either References for selected nodes or nodes for selected references can be
+included automatically.
 
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
-of elements may be relevant in the rendering of a view. 
+of elements may be relevant in the rendering of a view.
 
 ### Keys
 key              | type          | example values            | description 
@@ -148,7 +149,7 @@ key              | type          | example values            | description
 :el              | keyword       | see views                 | type of the view
 :id              | keyword       | namespaced id             | used for export file name
 :title           | string        |                           | rendered title
-:selection       | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
+:selection       | map or vector | {:namespace "banking"}    | select the content by criteria
 :include         | keyword       | :relations :related       | specify automatic includes (work in progress)
 :ct              | list          | model refs (or elements)  | view specific keys possible
 :layout          | keyword       | :top-down, :left-right    | rendering direction
