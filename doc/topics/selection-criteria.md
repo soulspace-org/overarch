@@ -74,20 +74,14 @@ criterium key           | type            | scope   | example values            
 :ancestor-of            | keyword         | model   | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
 ### Deprecated Criterium keys
-The following keys are deprecated since version 0.37.0 and can be rewritten
-using ``:from`` and ``:to``, e.g ```{:to-namespace "overarch.domain"}```
-should be replaced by ```{:to {:namespace "overarch.domain"}}```.
-By using the new form, additional criteria could be added for the referred
-nodes to match the relation.
+The following keys are deprecated since version 0.37.0: `:from-namespace`,
+`:from-namespaces`, `:from-namespace-prefix`, `:to-namespace`, `:to-namespaces`
+and `:to-namespace-prefix`. 
 
-criterium key           | type            | scope   | example values               | description
-------------------------|-----------------|---------|------------------------------|------------
-:from-namespace         | string          | element | "org.soulspace"              | relations with the given id namespace of the ``:from`` reference
-:from-namespaces        | set of strings  | element | #{"org.soulspace"}           | relations with one of the given id namespaces of the ``:from`` reference
-:from-namespace-prefix  | string          | element | "org"                        | relations with the given id namespace prefix of the ``:from`` reference
-:to-namespace           | string          | element | "org.soulspace"              | relations with the given id namespace of the ``:to`` reference
-:to-namespaces          | set of strings  | element | #{"org.soulspace"}           | relations with one of the given id namespaces of the ``:to`` reference
-:to-namespace-prefix    | string          | element | "org"                        | relations with the given id namespace prefix of the ``:to`` reference
+They should be rewritten using `:from` and `:to`, e.g `{:to-namespace "overarch.domain"}`
+should be replaced by `{:to {:namespace "overarch.domain"}}`. By using the new
+form, additional criteria could be added for the referred nodes to match the
+relation.
 
 ## Transitive Model Element Selection
 *Experimental, subject to change*
@@ -100,14 +94,13 @@ architectural questions, e.g.
 
 To use a transitive query of model elements, a map with a `:start` key must be
 provided. The relations to follow transitively are specified by either the
-`:referred` key or the `:referring` key. A selection predicate for the elements
+`:referred` key or the `:refers` key. A selection predicate for the elements
  to be selected can be specified with the `:elements` key. 
 
 ### Transitive Selection Keys
-key        | type | example values | description
------------|------|----------------|------------
-:start     | selection criteria | {:id :overarch.data-model/architecture-element} | criteria for the start element of the transitive query
-:elements  | selection criteria | {:el :class} | optional criteria for the elements to select
-:referred  | selection criteria | {:el :inheritance} | criteria for the relations to follow transitively in the `:to` direction
-:referring | selection criteria | {:el :inheritance} | criteria for the relations to follow transitively in the `:from` direction
-
+key        | type     | example values | description
+-----------|----------|----------------|------------
+:start     | criteria | {:id :overarch.data-model/architecture-element} | criteria for the start element of the transitive query
+:elements  | criteria | {:el :class} | optional criteria for the elements to select
+:refers    | criteria | {:el :inheritance} | nodes with a referring relation matching the criteria
+:referred  | criteria | {:el :inheritance} | nodes with a referred relation matching the criteria

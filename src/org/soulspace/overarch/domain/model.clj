@@ -747,8 +747,8 @@
          connected-fn (cond
                         (:referred transitive-criteria)
                         (fn [e] (referred-nodes model e (:referred transitive-criteria)))
-                        (:referring transitive-criteria)
-                        (fn [e] (referring-nodes model e (:referring transitive-criteria)))
+                        (:refers transitive-criteria)
+                        (fn [e] (referring-nodes model e (:refers transitive-criteria)))
                         :else
                         (children-resolver model))
          ; start from connected nodes to exclude the start nodes from inclusion in the result
@@ -773,8 +773,8 @@
          connected-fn (cond
                         (:referred transitive-criteria)
                         (fn [e] (referred-nodes model e (:referred transitive-criteria)))
-                        (:referring transitive-criteria)
-                        (fn [e] (referring-nodes model e (:referring transitive-criteria)))
+                        (:refers transitive-criteria)
+                        (fn [e] (referring-nodes model e (:refers transitive-criteria)))
                         :else
                         (children-resolver model))
          ; start from connected nodes to exclude the start node from inclusion in the result

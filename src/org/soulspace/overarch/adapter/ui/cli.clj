@@ -387,7 +387,7 @@
   (model/transitive-search (repo/model)
                            {:start {:id :banking.internet-banking/api-application}
                             ;:elements {:els #{:container}}
-                            :referring {:els #{:request}}})
+                            :refers {:els #{:request}}})
   
   ; 
   )
@@ -402,7 +402,7 @@
                             :referred {:els #{:inheritance :implementation}}})
   ; type hierarchy of :code-model-node (downwards)
   (model/transitive-search (repo/model)
-                           {:referring {:els #{:inheritance :implementation}}}
+                           {:refers {:els #{:inheritance :implementation}}}
                            :overarch.data-model/code-model-node)
   ;
   )
@@ -564,6 +564,6 @@
   (-main "--model-dir" "examples/banking" "--select-elements" "{:start {:id :banking.internet-banking/api-application}
                                                                 :referred {:els #{:request}}}")
   (-main "--model-dir" "examples/banking" "--select-elements" "{:start {:id :banking.internet-banking/api-application}
-                                                                :referring {:els #{:request}}}")
+                                                                :refers {:els #{:request}}}")
   ;
   )
