@@ -92,7 +92,13 @@ criterium key           | type            | scope   | example values            
 ## Transitive Model Element Selection
 *Experimental, subject to change*
 
-To use a transitive query on model elements, a map with a `:start` key must be
+Transitive queries on the model are a powerful tool to answer important
+architectural questions, e.g.
+* which services, applications and roles will be affected by a problem with a
+  specific service because of synchronous coupling via request/response
+* which service outages will cause a problem in my service or application
+
+To use a transitive query of model elements, a map with a `:start` key must be
 provided. The relations to follow transitively are specified by either the
 `:referred` key or the `:referring` key. A selection predicate for the elements
  to be selected can be specified with the `:elements` key. 
