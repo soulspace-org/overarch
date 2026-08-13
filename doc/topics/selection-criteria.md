@@ -65,10 +65,11 @@ criteria key           | type            | scope   | example values             
 :ancestor-of           | keyword         | model   | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
 ## Deprecated Criteria keys
-The following keys are deprecated and can be rewritten using ``:from`` and
-``:to``, e.g ```{:to-namespace "overarch.domain"}``` should be replaced by
-```{:to {:namespace "overarch.domain"}}```. By using the new form, additional
- criteria could be added for the referred nodes to match the relation.
+The following keys are deprecated since version 0.37.0 and can be rewritten
+using ``:from`` and ``:to``, e.g ```{:to-namespace "overarch.domain"}```
+should be replaced by ```{:to {:namespace "overarch.domain"}}```.
+By using the new form, additional criteria could be added for the referred
+nodes to match the relation.
 
 criteria key           | type            | scope   | example values               | description
 -----------------------|-----------------|---------|------------------------------|------------

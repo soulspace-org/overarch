@@ -161,21 +161,26 @@
      (println (str (:key sprite) ": " (puml/sprite-path sprite))))))
 
 ;; TODO use transitive search if criteria is a map containing a :start key
+(defn find-elements
+  "Returns the elements selected by the `criteria`.
+   Searches transitively, if specified in the criteria."
+  [criteria]
+  (if (and (map? criteria) (contains? criteria :start))
+    (repo/transitive-search criteria)
+    (repo/model-elements-by-criteria criteria)))
+
 (defn select-elements
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
-    (if (and (map? criteria) (contains? criteria :start))
-     (repo/transitive-search criteria)
-     (repo/model-elements-by-criteria criteria))
-    ))
+    (find-elements criteria)))
 
 ;; TODO use transitive search if criteria is a map containing a :start key
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
-    (->> (repo/model-elements-by-criteria criteria)
+    (->> (find-elements criteria)
          (map el/element->ref)
          into [])))
 
