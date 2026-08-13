@@ -77,6 +77,12 @@
   [criteria]
     (model/model-elements-by-criteria (model) criteria))
 
+; TODO move dispatch from cli to model-elements-by-criteria or other function?
+(defn transitive-search
+  "Returns a set of model elements by transitive search based on the `criteria`."
+  [criteria]
+  (model/transitive-search (model) criteria))
+
 (defn view-specs
   "Returns the set of view specs."
   ([]

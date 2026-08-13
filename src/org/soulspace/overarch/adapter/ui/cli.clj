@@ -165,7 +165,10 @@
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
-    (repo/model-elements-by-criteria criteria)))
+    (if (and (map? criteria) (contains? criteria :start))
+     (repo/transitive-search criteria)
+     (repo/model-elements-by-criteria criteria))
+    ))
 
 ;; TODO use transitive search if criteria is a map containing a :start key
 (defn select-references
@@ -550,5 +553,12 @@
   (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")
   (-main "--debug" "--generation-config" "dev/report-gencfg.edn")
   (-main "--debug" "--generation-config" "dev/test-gencfg.edn")
+
+  (-main "--model-dir" "examples/banking" "--select-elements" "{:id :banking.internet-banking/internet-banking-system}")
+  (-main "--model-dir" "examples/banking" "--select-elements" "{:el :request}")
+  (-main "--model-dir" "examples/banking" "--select-elements" "{:start {:id :banking.internet-banking/api-application}
+                                                                :referred {:els #{:request}}}")
+  (-main "--model-dir" "examples/banking" "--select-elements" "{:start {:id :banking.internet-banking/api-application}
+                                                                :referring {:els #{:request}}}")
   ;
   )
