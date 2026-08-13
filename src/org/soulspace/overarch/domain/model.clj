@@ -341,6 +341,7 @@
   (into #{} (filter-xf model criteria)
         (views model)))
 
+;; Relation based functions
 (defn from-name
   "Returns the name of the from reference of the relation `rel` in the context of the `model`."
   [model rel]
@@ -799,16 +800,6 @@
    (if (== 1 (count coll))
      (transitive-search-element model collect-in-set transitive-criteria (first coll))
      (transitive-search-collection model collect-in-set transitive-criteria coll))))
-
-(defn t-descendants
-  "Returns the descendants of the `element` in the `model`."
-  [model e]
-  (transitive-search model {:referring {:el :contained-in}} [e]))
-  
-(defn t-ancestors
-  "Returns the ancestors of the `element` in the `model`."
-  [model e]
-  (transitive-search model {:referred {:el :contained-in}} [e]))
 
 ;;;
 ;;; Selection based predicates
