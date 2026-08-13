@@ -20,6 +20,11 @@
 * model merge with element merge
 * model extract by selection
 
+## Simplification/Extensibility
+* remove model types from element/model source
+  * node/relation distinction for element types neccessary?
+* views specs should specify the selection criteria for model elements
+
 ## Views
 * add styling to graphviz and plantuml uml rendering
 * update PlantUML sprites
@@ -29,7 +34,6 @@
 * rainbow coloured orthogonal relations?
 
 ## Templates
-* check template include mechanism?
 * check generation for :artifact-of, :version-of and :instance-of relationships
 * add templates for plantuml C4 and UML
 * check templates for mermaid
@@ -41,7 +45,6 @@
   * wardley maps (needs a wardley model)
 
 ## UI
-* make transitive search accessible from the CLI
 * add option to ignore unresolved nodes in processing
 
 ## Documentation
