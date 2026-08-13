@@ -206,15 +206,14 @@
 ;; recursive traversal of the model graph
 ;;
 ; TODO work on a single element, too. Apply children-fn on the element then.
-; TODO rename children-fn to something more general (e.g. connected-fn or related-fn)?
 (defn traverse
   "Recursively traverses the `coll` of elements filtered by an optional `pred-fn`
    and returns the elements transformed by the `step-fn`.
 
-   `element-fn`  - a resolver function for an element, defaults to `identity`
-   `pred-fn`     - a predicate on the current element, defaults to `identity`
-   `children-fn` - a function to resolve the children of the current element
-   `step-fn`     - a function with three signatures [], [acc] and [acc e]
+   `element-fn`   - a resolver function for an element, defaults to `identity`
+   `pred-fn`      - a predicate on the current element, defaults to `identity`
+   `connected-fn` - a function to resolve the elements connected to the current element
+   `step-fn`      - a step function with three signatures [], [acc] and [acc e]
    
    The no args signature of the `step-fn` should return an empty accumulator,
    the one args signature extracts the result from the accumulator on return
@@ -736,38 +735,80 @@
         (get (:referrer-id->relations model))
         (filter (criteria-predicate model criteria)))))
 
-(defn transitive-search
-  "Returns the result of a transitive search for the `model` based on the `search-criteria`."
-  ([model search-criteria]
-   (transitive-search model search-criteria (:element-selection search-criteria)))
-  ([model search-criteria e]
-   (transitive-search model collect-in-vector search-criteria e))
-  ([model collect-fn search-criteria e]
-   (let [pred-fn (if-let [element-criteria (:element-selection search-criteria)]
+(defn transitive-search-collection
+  "Returns the result of a transitive search for the `model` based on the `transitive-criteria`."
+  ([model transitive-criteria coll]
+   (transitive-search-collection model collect-in-set transitive-criteria coll))
+  ([model collect-fn transitive-criteria coll]
+   ;(println "transitive-search-collection")
+   (let [pred-fn (if-let [element-criteria (:elements transitive-criteria)]
                    (criteria-predicate model element-criteria)
                    identity)
-         children-fn (cond
-                       (:referred-node-selection search-criteria)
-                       (fn [e] (referred-nodes model e (:referred-node-selection search-criteria)))
-                       (:referring-node-selection search-criteria)
-                       (fn [e] (referring-nodes model e (:referring-node-selection search-criteria)))
-                       :else
-                       (children-resolver model))]
+         connected-fn (cond
+                        (:referred transitive-criteria)
+                        (fn [e] (referred-nodes model e (:referred transitive-criteria)))
+                        (:referring transitive-criteria)
+                        (fn [e] (referring-nodes model e (:referring transitive-criteria)))
+                        :else
+                        (children-resolver model))
+         ; start from connected nodes to exclude the start nodes from inclusion in the result
+         ; coll (map connected-fn coll)
+         ;_ (println "Traverse from " coll)
+         ]
      (traverse (element-resolver model) ; resolver element function
                pred-fn ; criteria based element predicate
-               children-fn ; children function
+               connected-fn ; connected function
                collect-fn ; collector step function
-               (children-fn e)))))
+               coll))))
+
+(defn transitive-search-element
+  "Returns the result of a transitive search for the `model` based on the `transitive-criteria`."
+  ([model transitive-criteria e]
+   (transitive-search-element model collect-in-set transitive-criteria e))
+  ([model collect-fn transitive-criteria e]
+   ;(println "transitive-search-element")
+   (let [pred-fn (if-let [element-criteria (:elements transitive-criteria)]
+                   (criteria-predicate model element-criteria)
+                   identity)
+         connected-fn (cond
+                        (:referred transitive-criteria)
+                        (fn [e] (referred-nodes model e (:referred transitive-criteria)))
+                        (:referring transitive-criteria)
+                        (fn [e] (referring-nodes model e (:referring transitive-criteria)))
+                        :else
+                        (children-resolver model))
+         ; start from connected nodes to exclude the start node from inclusion in the result
+         coll (connected-fn e)
+         ;_ (println "Traverse from " coll)
+         ]
+     (traverse (element-resolver model) ; resolver element function
+               pred-fn ; criteria based element predicate
+               connected-fn ; connected function
+               collect-fn ; collector step function
+               coll))))
+
+(defn transitive-search
+  "Returns the result of a transitive search for the `model` based on the `transitive-criteria`."
+  ([model transitive-criteria]
+   (if-let [start-criteria (:start transitive-criteria)]
+     (let [coll (model-elements-by-criteria model start-criteria)]
+       ;(println "Start collection" coll)
+       (transitive-search model transitive-criteria coll))
+     #{}))
+  ([model transitive-criteria coll]
+   (if (== 1 (count coll))
+     (transitive-search-element model collect-in-set transitive-criteria (first coll))
+     (transitive-search-collection model collect-in-set transitive-criteria coll))))
 
 (defn t-descendants
   "Returns the descendants of the `element` in the `model`."
   [model e]
-  (transitive-search model {:referring-node-selection {:el :contained-in}} e))
+  (transitive-search model {:referring {:el :contained-in}} [e]))
   
 (defn t-ancestors
   "Returns the ancestors of the `element` in the `model`."
   [model e]
-  (transitive-search model {:referred-node-selection {:el :contained-in}} e))
+  (transitive-search model {:referred {:el :contained-in}} [e]))
 
 ;;;
 ;;; Selection based predicates

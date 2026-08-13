@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version (0.43.0)
+* exposed transitive search via cli
 * added :non-goal, :risk and :stakeholder nodes
 * added :decision-for, :non-goal-for, :risk-for and :stakeholder-of relations
 * fixed :goal-for relation

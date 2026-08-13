@@ -55,8 +55,6 @@
    ["-S" "--select-references CRITERIA" "Select model elements by criteria and print as references" :parse-fn edn/read-string]
    [nil  "--select-views CRITERIA" "Select and print views by criteria" :parse-fn edn/read-string]
    [nil  "--select-view-references CRITERIA" "Select views by criteria and print as references" :parse-fn edn/read-string]
-   ["-q" "--transitive-select-elements CRITERIA" "Transitively select and print model elements by criteria" :parse-fn edn/read-string]
-   ["-Q" "--transitive-select-references CRITERIA" "Transitively select model elements by criteria and print as references" :parse-fn edn/read-string]
    ["-T" "--template-dir DIRNAME" "Template directory" :default "templates"]
    ["-g" "--generation-config FILE" "Generation configuration"]
    ["-G" "--generation-dir DIRNAME" "Generation artifact directory" :default "generated"]
@@ -162,12 +160,14 @@
    (doseq [sprite sprite-mappings]
      (println (str (:key sprite) ": " (puml/sprite-path sprite))))))
 
+;; TODO use transitive search if criteria is a map containing a :start key
 (defn select-elements
   "Returns the model elements selected by criteria specified in the `options`."
   [options]
   (when-let [criteria (spec/check-selection-criteria (:select-elements options))]
     (repo/model-elements-by-criteria criteria)))
 
+;; TODO use transitive search if criteria is a map containing a :start key
 (defn select-references
   "Returns references to the model elements selected by criteria specified in the `options`."
   [options]
@@ -191,20 +191,6 @@
                    (map el/element->ref))
           (repo/views))))
 
-(defn transitive-select-elements
-  "Returns the model elements transitively selected by criteria criteria specified in the `options`."
-  [options]
-  (when-let [criteria (spec/check-selection-criteria (:transitive-select-elements options))]
-    ; TODO: implement transitive selection of elements
-    ))
-
-(defn transitive-select-references
-  "Returns the references to the model elements transitively selected by criteria criteria specified in the `options`."
-  [options]
-  (when-let [criteria (spec/check-selection-criteria (:transitive-select-references options))]
-    ; TODO: implement transitive selection of references
-   ))
-
 ; TODO: use multimethods for dispatching on options and actions to be extensible
 (defn dispatch
   "Dispatch on `options` to the requested actions."
@@ -227,12 +213,6 @@
   (when (:select-view-references options)
     (println "Selected view references for" (:select-view-references options))
     (pp/pprint (select-view-references options)))
-  (when (:transitive-select-elements options)
-    (println "Transitively selected elements for" (:transitive-select-elements options))
-    (pp/pprint (transitive-select-elements options)))
-  (when (:transitive-select-references options)
-    (println "Transitively selected references for" (:transitive-select-references options))
-    (pp/pprint (transitive-select-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
   (when (:render-format options)
@@ -390,10 +370,17 @@
   ; 
   (model/referred-nodes (repo/model) :banking.internet-banking/api-application {:el :request})
   (model/referring-nodes (repo/model) :banking.internet-banking/api-application {:el :request})
-  (model/t-descendants (repo/model) :banking.internet-banking/internet-banking-system)
-  (model/t-ancestors (repo/model) :banking.internet-banking/internet-banking-system)
-  ;(model/sync-dependents (repo/model) :banking.internet-banking/api-application)
-  ;(model/sync-dependencies (repo/model) :banking.internet-banking/api-application)
+
+  ;
+  (model/transitive-search (repo/model)
+                           {:start {:id :banking.internet-banking/api-application}
+                            ;:elements {:els #{:container}}
+                            :referred {:els #{:request}}})
+  (model/transitive-search (repo/model)
+                           {:start {:id :banking.internet-banking/api-application}
+                            ;:elements {:els #{:container}}
+                            :referring {:els #{:request}}})
+  
   ; 
   )
 
@@ -403,19 +390,12 @@
                                          :overarch.data-model/technical-element))
   ; type hierarchy of :code-model-node (upwards)
   (model/transitive-search (repo/model)
-                           {:referred-node-selection {:els #{:inheritance :implementation}}}
-                           :overarch.data-model/code-model-node)
+                           {:start {:id :overarch.data-model/code-model-node}
+                            :referred {:els #{:inheritance :implementation}}})
   ; type hierarchy of :code-model-node (downwards)
   (model/transitive-search (repo/model)
-                           {:referring-node-selection {:els #{:inheritance :implementation}}}
+                           {:referring {:els #{:inheritance :implementation}}}
                            :overarch.data-model/code-model-node)
-
-  (model/t-descendants (repo/model)
-                       (model/resolve-element (repo/model)
-                                              :banking.internet-banking/internet-banking-system))
-  (model/t-ancestors (repo/model)
-                       (model/resolve-element (repo/model)
-                                              :banking.internet-banking/api-application))
   ;
   )
 
