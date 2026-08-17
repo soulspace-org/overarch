@@ -182,7 +182,7 @@
   (when-let [criteria (spec/check-selection-criteria (:select-references options))]
     (->> (find-elements criteria)
          (map el/element->ref)
-         into [])))
+         (into []))))
 
 (defn select-views
   "Returns the views selected by criteria specified in the `options`."
