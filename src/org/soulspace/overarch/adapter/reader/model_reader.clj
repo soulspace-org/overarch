@@ -23,6 +23,7 @@
    (:input-model-format options))
   ([options _]
    (:input-model-format options)))
+
 (defmulti read-models
   "Reads the models as specified in the `options`."
   reader-type)
