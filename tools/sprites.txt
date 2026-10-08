@@ -1,0 +1,4093 @@
+100tb: logos/100tb
+500px: tupadr3/font-awesome-5/500px
+6px: logos/6px
+ADN: tupadr3/font-awesome-5/adn
+AI: cloudinsight/ai
+API AI: logos/api-ai
+APItools: logos/apitools
+AWS: tupadr3/font-awesome-5/aws
+AWS API Gateway: awslib14/ApplicationIntegration/APIGateway
+AWS API Gateway Endpoint: awslib14/ApplicationIntegration/APIGatewayEndpoint
+AWS AWS Cloud Alt: awslib14/Groups/AWSCloudAlt
+AWS Account: awslib14/Groups/AWSAccount
+AWS Activate: awslib14/CustomerEnablement/Activate
+AWS Alert: awslib14/General/Alert
+AWS Alexa For Business: awslib14/BusinessApplications/AlexaForBusiness
+AWS Amplify: awslib14/FrontEndWebMobile/Amplify
+AWS Amplify AWA Amplify Studio: awslib14/FrontEndWebMobile/AmplifyAWSAmplifyStudio
+AWS Analytics: awslib14/Analytics/Analytics
+AWS Apache MXNet on AWS: awslib14/MachineLearning/ApacheMXNetonAWS
+AWS App Config: awslib14/ManagementGovernance/AppConfig
+AWS App Flow: awslib14/ApplicationIntegration/AppFlow
+AWS App Mesh: awslib14/NetworkingContentDelivery/AppMesh
+AWS App Mesh Mesh: awslib14/NetworkingContentDelivery/AppMeshMesh
+AWS App Mesh Virtual Gateway: awslib14/NetworkingContentDelivery/AppMeshVirtualGateway
+AWS App Mesh Virtual Node: awslib14/NetworkingContentDelivery/AppMeshVirtualNode
+AWS App Mesh Virtual Router: awslib14/NetworkingContentDelivery/AppMeshVirtualRouter
+AWS App Mesh Virtual Service: awslib14/NetworkingContentDelivery/AppMeshVirtualService
+AWS App Runner: awslib14/Compute/AppRunner
+AWS App Stream: awslib14/EndUserComputing/AppStream
+AWS App Sync: awslib14/ApplicationIntegration/AppSync
+AWS Application Auto Scaling: awslib14/Compute/ApplicationAutoScaling
+AWS Application Auto Scaling2: awslib14/ManagementGovernance/ApplicationAutoScaling2
+AWS Application Cost Profiler: awslib14/CloudFinancialManagement/ApplicationCostProfiler
+AWS Application Discovery Service: awslib14/MigrationTransfer/ApplicationDiscoveryService
+AWS Application Integration: awslib14/ApplicationIntegration/ApplicationIntegration
+AWS Application Migration Service: awslib14/MigrationTransfer/ApplicationMigrationService
+AWS Artifact: awslib14/SecurityIdentityCompliance/Artifact
+AWS Athena: awslib14/Analytics/Athena
+AWS Audit Manager: awslib14/SecurityIdentityCompliance/AuditManager
+AWS Augmented AI A2I: awslib14/MachineLearning/AugmentedAIA2I
+AWS Aurora: awslib14/Database/Aurora
+AWS Aurora Amazon Aurora Instancealternate: awslib14/Database/AuroraAmazonAuroraInstancealternate
+AWS Aurora Amazon RDS Instance: awslib14/Database/AuroraAmazonRDSInstance
+AWS Aurora Amazon RDS Instance Aternate: awslib14/Database/AuroraAmazonRDSInstanceAternate
+AWS Aurora Instance: awslib14/Database/AuroraInstance
+AWS Aurora MariaDB Instance: awslib14/Database/AuroraMariaDBInstance
+AWS Aurora MariaDB Instance Alternate: awslib14/Database/AuroraMariaDBInstanceAlternate
+AWS Aurora MySQL Instance: awslib14/Database/AuroraMySQLInstance
+AWS Aurora MySQL Instance Alternate: awslib14/Database/AuroraMySQLInstanceAlternate
+AWS Aurora Oracle Instance: awslib14/Database/AuroraOracleInstance
+AWS Aurora Oracle Instance Alternate: awslib14/Database/AuroraOracleInstanceAlternate
+AWS Aurora PIOPS Instance: awslib14/Database/AuroraPIOPSInstance
+AWS Aurora Postgre SQL Instance Alternate: awslib14/Database/AuroraPostgreSQLInstanceAlternate
+AWS Aurora PostgreSQL Instance: awslib14/Database/AuroraPostgreSQLInstance
+AWS Aurora SQL Server Instance: awslib14/Database/AuroraSQLServerInstance
+AWS Aurora SQL Server Instance Alternate: awslib14/Database/AuroraSQLServerInstanceAlternate
+AWS Auto Scaling: awslib14/ManagementGovernance/AutoScaling
+AWS Auto Scaling Group: awslib14/GroupIcons/AutoScalingGroup
+AWS Availability Zone: awslib14/Groups/AvailabilityZone
+AWS Backint Agent: awslib14/ManagementGovernance/BackintAgent
+AWS Backup: awslib14/Storage/Backup
+AWS Backup AWS Backup support for VMware Workloads: awslib14/Storage/BackupAWSBackupsupportforVMwareWorkloads
+AWS Backup Aws Backupsupportfor Amazon F Sxfor Net App Ontap: awslib14/Storage/BackupAWSBackupsupportforAmazonFSxforNetAppONTAP
+AWS Backup Aws Backupsupportfor Amazon S3: awslib14/Storage/BackupAWSBackupsupportforAmazonS3
+AWS Backup Backup Plan: awslib14/Storage/BackupBackupPlan
+AWS Backup Backup Restore: awslib14/Storage/BackupBackupRestore
+AWS Backup Backup Vault: awslib14/Storage/BackupBackupVault
+AWS Backup Compliance Reporting: awslib14/Storage/BackupComplianceReporting
+AWS Backup Compute: awslib14/Storage/BackupCompute
+AWS Backup Database: awslib14/Storage/BackupDatabase
+AWS Backup Gateway: awslib14/Storage/BackupGateway
+AWS Backup Recovery Point Objective: awslib14/Storage/BackupRecoveryPointObjective
+AWS Backup Recovery Time Objective: awslib14/Storage/BackupRecoveryTimeObjective
+AWS Backup Storage: awslib14/Storage/BackupStorage
+AWS Backup Virtual Machine: awslib14/Storage/BackupVirtualMachine
+AWS Backup Virtual Machine Monitor: awslib14/Storage/BackupVirtualMachineMonitor
+AWS Batch: awslib14/Compute/Batch
+AWS Billing Conductor: awslib14/CloudFinancialManagement/BillingConductor
+AWS Blockchain: awslib14/Blockchain/Blockchain
+AWS Bottlerocket: awslib14/Compute/Bottlerocket
+AWS Braket: awslib14/QuantumTechnologies/Braket
+AWS Braket Chandelier: awslib14/QuantumTechnologies/BraketChandelier
+AWS Braket Chip: awslib14/QuantumTechnologies/BraketChip
+AWS Braket Embedded Simulator: awslib14/QuantumTechnologies/BraketEmbeddedSimulator
+AWS Braket Managed Simulator: awslib14/QuantumTechnologies/BraketManagedSimulator
+AWS Braket Noise Simulator: awslib14/QuantumTechnologies/BraketNoiseSimulator
+AWS Braket QPU: awslib14/QuantumTechnologies/BraketQPU
+AWS Braket Simulator: awslib14/QuantumTechnologies/BraketSimulator
+AWS Braket Simulator1: awslib14/QuantumTechnologies/BraketSimulator1
+AWS Braket Simulator2: awslib14/QuantumTechnologies/BraketSimulator2
+AWS Braket Simulator3: awslib14/QuantumTechnologies/BraketSimulator3
+AWS Braket Simulator4: awslib14/QuantumTechnologies/BraketSimulator4
+AWS Braket State Vector: awslib14/QuantumTechnologies/BraketStateVector
+AWS Braket Tensor Network: awslib14/QuantumTechnologies/BraketTensorNetwork
+AWS Budgets: awslib14/CloudFinancialManagement/Budgets
+AWS Business Applications: awslib14/BusinessApplications/BusinessApplications
+AWS Camera: awslib14/General/Camera
+AWS Certificate Manager: awslib14/SecurityIdentityCompliance/CertificateManager
+AWS Certificate Manager Certificate Authority: awslib14/SecurityIdentityCompliance/CertificateManagerCertificateAuthority
+AWS Chat: awslib14/General/Chat
+AWS Chatbot: awslib14/ManagementGovernance/Chatbot
+AWS Chime: awslib14/BusinessApplications/Chime
+AWS Chime SDK: awslib14/BusinessApplications/ChimeSDK
+AWS Chime Voice Connector: awslib14/BusinessApplications/ChimeVoiceConnector
+AWS Client: awslib14/General/Client
+AWS Client VPN: awslib14/NetworkingContentDelivery/ClientVPN
+AWS Cloud: awslib14/Groups/AWSCloud
+AWS Cloud Control Api: awslib14/DeveloperTools/CloudControlAPI
+AWS Cloud Development Kit: awslib14/DeveloperTools/CloudDevelopmentKit
+AWS Cloud Digital Interface: awslib14/MediaServices/CloudDigitalInterface
+AWS Cloud Directory: awslib14/SecurityIdentityCompliance/CloudDirectory
+AWS Cloud Directory2: awslib14/NetworkingContentDelivery/CloudDirectory2
+AWS Cloud Endure Disaster Recovery: awslib14/Storage/CloudEndureDisasterRecovery
+AWS Cloud Financial Management: awslib14/CloudFinancialManagement/CloudFinancialManagement
+AWS Cloud Formation: awslib14/ManagementGovernance/CloudFormation
+AWS Cloud Formation Change Set: awslib14/ManagementGovernance/CloudFormationChangeSet
+AWS Cloud Formation Stack: awslib14/ManagementGovernance/CloudFormationStack
+AWS Cloud Formation Template: awslib14/ManagementGovernance/CloudFormationTemplate
+AWS Cloud Front: awslib14/NetworkingContentDelivery/CloudFront
+AWS Cloud Front Download Distribution: awslib14/NetworkingContentDelivery/CloudFrontDownloadDistribution
+AWS Cloud Front Edge Location: awslib14/NetworkingContentDelivery/CloudFrontEdgeLocation
+AWS Cloud Front Functions: awslib14/NetworkingContentDelivery/CloudFrontFunctions
+AWS Cloud Front Streaming Distribution: awslib14/NetworkingContentDelivery/CloudFrontStreamingDistribution
+AWS Cloud HSM: awslib14/SecurityIdentityCompliance/CloudHSM
+AWS Cloud Map: awslib14/NetworkingContentDelivery/CloudMap
+AWS Cloud Map Namespace: awslib14/NetworkingContentDelivery/CloudMapNamespace
+AWS Cloud Map Resource: awslib14/NetworkingContentDelivery/CloudMapResource
+AWS Cloud Map Service: awslib14/NetworkingContentDelivery/CloudMapService
+AWS Cloud Search: awslib14/Analytics/CloudSearch
+AWS Cloud Search Search Documents: awslib14/Analytics/CloudSearchSearchDocuments
+AWS Cloud Shell: awslib14/DeveloperTools/CloudShell
+AWS Cloud Trail: awslib14/ManagementGovernance/CloudTrail
+AWS Cloud WAN: awslib14/NetworkingContentDelivery/CloudWAN
+AWS Cloud WAN Core Network Edge: awslib14/NetworkingContentDelivery/CloudWANCoreNetworkEdge
+AWS Cloud WAN Segment Network: awslib14/NetworkingContentDelivery/CloudWANSegmentNetwork
+AWS Cloud WAN Virtual Pop: awslib14/NetworkingContentDelivery/CloudWANVirtualPoP
+AWS Cloud Watch: awslib14/ManagementGovernance/CloudWatch
+AWS Cloud Watch Alarm: awslib14/ManagementGovernance/CloudWatchAlarm
+AWS Cloud Watch Event Event Based: awslib14/ManagementGovernance/CloudWatchEventEventBased
+AWS Cloud Watch Event Time Based: awslib14/ManagementGovernance/CloudWatchEventTimeBased
+AWS Cloud Watch Evidently: awslib14/ManagementGovernance/CloudWatchEvidently
+AWS Cloud Watch Logs: awslib14/ManagementGovernance/CloudWatchLogs
+AWS Cloud Watch Metrics Insights: awslib14/ManagementGovernance/CloudWatchMetricsInsights
+AWS Cloud Watch RUM: awslib14/ManagementGovernance/CloudWatchRUM
+AWS Cloud Watch Rule: awslib14/ManagementGovernance/CloudWatchRule
+AWS Cloud Watch Synthetics: awslib14/ManagementGovernance/CloudWatchSynthetics
+AWS Cloud9: awslib14/DeveloperTools/Cloud9
+AWS Cloud9 Cloud9: awslib14/DeveloperTools/Cloud9Cloud9
+AWS Cloudalt: awslib14/GroupIcons/Cloudalt
+AWS Cloudformation: logos/aws-cloudformation
+AWS Cloudfront: logos/aws-cloudfront
+AWS Cloudsearch: logos/aws-cloudsearch
+AWS Cloudwatch: logos/aws-cloudwatch
+AWS Code Artifact: awslib14/DeveloperTools/CodeArtifact
+AWS Code Build: awslib14/DeveloperTools/CodeBuild
+AWS Code Commit: awslib14/DeveloperTools/CodeCommit
+AWS Code Deploy: awslib14/DeveloperTools/CodeDeploy
+AWS Code Guru: awslib14/MachineLearning/CodeGuru
+AWS Code Pipeline: awslib14/DeveloperTools/CodePipeline
+AWS Code Star: awslib14/DeveloperTools/CodeStar
+AWS Code Whisperer: awslib14/MachineLearning/CodeWhisperer
+AWS Codedeploy: logos/aws-codedeploy
+AWS Cognito: awslib14/SecurityIdentityCompliance/Cognito
+AWS Command Line Interface: awslib14/DeveloperTools/CommandLineInterface
+AWS Comprehend: awslib14/MachineLearning/Comprehend
+AWS Comprehend Medical: awslib14/MachineLearning/ComprehendMedical
+AWS Compute: awslib14/Compute/Compute
+AWS Compute Optimizer: awslib14/Compute/ComputeOptimizer
+AWS Config: awslib14/ManagementGovernance/Config
+AWS Connect: awslib14/BusinessApplications/Connect
+AWS Console Mobile Application: awslib14/ApplicationIntegration/ConsoleMobileApplication
+AWS Containers: awslib14/Containers/Containers
+AWS Control Tower: awslib14/ManagementGovernance/ControlTower
+AWS Corporate Data Center: awslib14/GroupIcons/CorporateDataCenter
+AWS Corretto: awslib14/DeveloperTools/Corretto
+AWS Cost Explorer: awslib14/CloudFinancialManagement/CostExplorer
+AWS Costand Usage Report: awslib14/CloudFinancialManagement/CostandUsageReport
+AWS Customer Enablement: awslib14/CustomerEnablement/CustomerEnablement
+AWS Data Exchange: awslib14/Analytics/DataExchange
+AWS Data Exchangefor APIs: awslib14/Analytics/DataExchangeforAPIs
+AWS Data Pipeline: awslib14/Analytics/DataPipeline
+AWS Data Sync: awslib14/MigrationTransfer/DataSync
+AWS Database: awslib14/Database/Database
+AWS Database Migration Service: awslib14/Database/DatabaseMigrationService
+AWS Database Migration Service Database Migration Workflow Job: awslib14/Database/DatabaseMigrationServiceDatabasemigrationworkflowjob
+AWS Datasync Agent: awslib14/MigrationTransfer/DatasyncAgent
+AWS Deep Composer: awslib14/MachineLearning/DeepComposer
+AWS Deep Learning AMIs: awslib14/MachineLearning/DeepLearningAMIs
+AWS Deep Learning Containers: awslib14/MachineLearning/DeepLearningContainers
+AWS Deep Lens: awslib14/MachineLearning/DeepLens
+AWS Deep Racer: awslib14/MachineLearning/DeepRacer
+AWS Detective: awslib14/SecurityIdentityCompliance/Detective
+AWS DevOps Guru: awslib14/MachineLearning/DevOpsGuru
+AWS DevOps Guru Insights: awslib14/MachineLearning/DevOpsGuruInsights
+AWS Developer Tools: awslib14/DeveloperTools/DeveloperTools
+AWS Device Farm: awslib14/FrontEndWebMobile/DeviceFarm
+AWS Direct Connect: awslib14/NetworkingContentDelivery/DirectConnect
+AWS Direct Connect Gateway: awslib14/NetworkingContentDelivery/DirectConnectGateway
+AWS Directory Service: awslib14/SecurityIdentityCompliance/DirectoryService
+AWS Directory Service AWS Managed Microsoft AD: awslib14/SecurityIdentityCompliance/DirectoryServiceAWSManagedMicrosoftAD
+AWS Directory Service Ad Connector: awslib14/SecurityIdentityCompliance/DirectoryServiceADConnector
+AWS Directory Service Simple Ad: awslib14/SecurityIdentityCompliance/DirectoryServiceSimpleAD
+AWS Disk: awslib14/General/Disk
+AWS Distrofor Open Telemetry: awslib14/ManagementGovernance/DistroforOpenTelemetry
+AWS Document: awslib14/General/Document
+AWS DocumentDB: awslib14/Database/DocumentDB
+AWS Documents: awslib14/General/Documents
+AWS DynamoDB: awslib14/Database/DynamoDB
+AWS DynamoDB Amazon DynamoDB Accelerator: awslib14/Database/DynamoDBAmazonDynamoDBAccelerator
+AWS DynamoDB Attribute: awslib14/Database/DynamoDBAttribute
+AWS DynamoDB Attributes: awslib14/Database/DynamoDBAttributes
+AWS DynamoDB Global Secondary Index: awslib14/Database/DynamoDBGlobalsecondaryindex
+AWS DynamoDB Item: awslib14/Database/DynamoDBItem
+AWS DynamoDB Items: awslib14/Database/DynamoDBItems
+AWS DynamoDB Standard Access Table Class: awslib14/Database/DynamoDBStandardAccessTableClass
+AWS DynamoDB Standard Infrequent Access Table Class: awslib14/Database/DynamoDBStandardInfrequentAccessTableClass
+AWS DynamoDB Stream: awslib14/Database/DynamoDBStream
+AWS DynamoDB Table: awslib14/Database/DynamoDBTable
+AWS EC2: awslib14/Compute/EC2
+AWS EC2 A1 Instance: awslib14/Compute/EC2A1Instance
+AWS EC2 AMI: awslib14/Compute/EC2AMI
+AWS EC2 AWS Inferentia: awslib14/Compute/EC2AWSInferentia
+AWS EC2 Auto Scaling: awslib14/Compute/EC2AutoScaling
+AWS EC2 Auto Scaling Resource: awslib14/Compute/EC2AutoScalingResource
+AWS EC2 Aws Microservice Extractorfor Net: awslib14/Compute/EC2AWSMicroserviceExtractorforNET
+AWS EC2 C4 Instance: awslib14/Compute/EC2C4Instance
+AWS EC2 C5 Instance: awslib14/Compute/EC2C5Instance
+AWS EC2 C5a Instance: awslib14/Compute/EC2C5aInstance
+AWS EC2 C5ad Instance: awslib14/Compute/EC2C5adInstance
+AWS EC2 C5d Instance: awslib14/Compute/EC2C5dInstance
+AWS EC2 C5n Instance: awslib14/Compute/EC2C5nInstance
+AWS EC2 C6a Instance: awslib14/Compute/EC2C6aInstance
+AWS EC2 C6g Instance: awslib14/Compute/EC2C6gInstance
+AWS EC2 C6gd Instance: awslib14/Compute/EC2C6gdInstance
+AWS EC2 C6gn Instance: awslib14/Compute/EC2C6gnInstance
+AWS EC2 C6i Instance: awslib14/Compute/EC2C6iInstance
+AWS EC2 C7g Instance: awslib14/Compute/EC2C7gInstance
+AWS EC2 D L1 Instance: awslib14/Compute/EC2DL1Instance
+AWS EC2 D2 Instance: awslib14/Compute/EC2D2Instance
+AWS EC2 D3 Instance: awslib14/Compute/EC2D3Instance
+AWS EC2 D3en Instance: awslib14/Compute/EC2D3enInstance
+AWS EC2 DB Instance: awslib14/Compute/EC2DBInstance
+AWS EC2 Elastic IP Address: awslib14/Compute/EC2ElasticIPAddress
+AWS EC2 F1 Instance: awslib14/Compute/EC2F1Instance
+AWS EC2 G3 Instance: awslib14/Compute/EC2G3Instance
+AWS EC2 G4ad Instance: awslib14/Compute/EC2G4adInstance
+AWS EC2 G4dn Instance: awslib14/Compute/EC2G4dnInstance
+AWS EC2 G5 Instance: awslib14/Compute/EC2G5Instance
+AWS EC2 G5g Instance: awslib14/Compute/EC2G5gInstance
+AWS EC2 H1 Instance: awslib14/Compute/EC2H1Instance
+AWS EC2 Habana Gaudi Instance: awslib14/Compute/EC2HabanaGaudiInstance
+AWS EC2 Hmi Instance: awslib14/Compute/EC2HMIInstance
+AWS EC2 Hpc6a Instance: awslib14/Compute/EC2Hpc6aInstance
+AWS EC2 I2 Instance: awslib14/Compute/EC2I2Instance
+AWS EC2 I3 Instance: awslib14/Compute/EC2I3Instance
+AWS EC2 I3en Instance: awslib14/Compute/EC2I3enInstance
+AWS EC2 I4i Instance: awslib14/Compute/EC2I4iInstance
+AWS EC2 Im4gn Instance: awslib14/Compute/EC2Im4gnInstance
+AWS EC2 Image Builder: awslib14/Compute/EC2ImageBuilder
+AWS EC2 Inf1 Instance: awslib14/Compute/EC2Inf1Instance
+AWS EC2 Instance: awslib14/Compute/EC2Instance
+AWS EC2 Instance Container: awslib14/GroupIcons/EC2InstanceContainer
+AWS EC2 Instance Contents: awslib14/Groups/EC2InstanceContents
+AWS EC2 Instances: awslib14/Compute/EC2Instances
+AWS EC2 Instancewith Cloud Watch: awslib14/Compute/EC2InstancewithCloudWatch
+AWS EC2 Is4gen Instance: awslib14/Compute/EC2Is4genInstance
+AWS EC2 M1 Mac Instance: awslib14/Compute/EC2M1MacInstance
+AWS EC2 M4 Instance: awslib14/Compute/EC2M4Instance
+AWS EC2 M5 Instance: awslib14/Compute/EC2M5Instance
+AWS EC2 M5a Instance: awslib14/Compute/EC2M5aInstance
+AWS EC2 M5d Instance: awslib14/Compute/EC2M5dInstance
+AWS EC2 M5dn Instance: awslib14/Compute/EC2M5dnInstance
+AWS EC2 M5n Instance: awslib14/Compute/EC2M5nInstance
+AWS EC2 M5zn Instance: awslib14/Compute/EC2M5znInstance
+AWS EC2 M6a Instance: awslib14/Compute/EC2M6aInstance
+AWS EC2 M6g Instance: awslib14/Compute/EC2M6gInstance
+AWS EC2 M6gd Instance: awslib14/Compute/EC2M6gdInstance
+AWS EC2 M6i Instance: awslib14/Compute/EC2M6iInstance
+AWS EC2 Mac Instance: awslib14/Compute/EC2MacInstance
+AWS EC2 P2 Instance: awslib14/Compute/EC2P2Instance
+AWS EC2 P3 Instance: awslib14/Compute/EC2P3Instance
+AWS EC2 P3dn Instance: awslib14/Compute/EC2P3dnInstance
+AWS EC2 P4 Instance: awslib14/Compute/EC2P4Instance
+AWS EC2 P4d Instance: awslib14/Compute/EC2P4dInstance
+AWS EC2 P4de Instance: awslib14/Compute/EC2P4deInstance
+AWS EC2 R4 Instance: awslib14/Compute/EC2R4Instance
+AWS EC2 R5 Instance: awslib14/Compute/EC2R5Instance
+AWS EC2 R5a Instance: awslib14/Compute/EC2R5aInstance
+AWS EC2 R5ad Instance: awslib14/Compute/EC2R5adInstance
+AWS EC2 R5b Instance: awslib14/Compute/EC2R5bInstance
+AWS EC2 R5d Instance: awslib14/Compute/EC2R5dInstance
+AWS EC2 R5gd Instance: awslib14/Compute/EC2R5gdInstance
+AWS EC2 R5n Instance: awslib14/Compute/EC2R5nInstance
+AWS EC2 R6g Instance: awslib14/Compute/EC2R6gInstance
+AWS EC2 R6i Instance: awslib14/Compute/EC2R6iInstance
+AWS EC2 Rdn Instance: awslib14/Compute/EC2RdnInstance
+AWS EC2 Rescue: awslib14/Compute/EC2Rescue
+AWS EC2 Spot Instance: awslib14/Compute/EC2SpotInstance
+AWS EC2 T2 Instance: awslib14/Compute/EC2T2Instance
+AWS EC2 T3 Instance: awslib14/Compute/EC2T3Instance
+AWS EC2 T3a Instance: awslib14/Compute/EC2T3aInstance
+AWS EC2 T4g Instance: awslib14/Compute/EC2T4gInstance
+AWS EC2 Trainium Instance: awslib14/Compute/EC2TrainiumInstance
+AWS EC2 Trn1 Instance: awslib14/Compute/EC2Trn1Instance
+AWS EC2 V T1 Instance: awslib14/Compute/EC2VT1Instance
+AWS EC2 X1 Instance: awslib14/Compute/EC2X1Instance
+AWS EC2 X1e Instance: awslib14/Compute/EC2X1eInstance
+AWS EC2 X2gd Instance: awslib14/Compute/EC2X2gdInstance
+AWS EC2 X2idn Instance: awslib14/Compute/EC2X2idnInstance
+AWS EC2 X2iedn Instance: awslib14/Compute/EC2X2iednInstance
+AWS EC2 X2iezn Instance: awslib14/Compute/EC2X2ieznInstance
+AWS EC2 z1d Instance: awslib14/Compute/EC2z1dInstance
+AWS ECS Anywhere: awslib14/Containers/ECSAnywhere
+AWS EFS: awslib14/Storage/EFS
+AWS EKS Anywhere: awslib14/Containers/EKSAnywhere
+AWS EKS Cloud: awslib14/Containers/EKSCloud
+AWS EKS Distro: awslib14/Containers/EKSDistro
+AWS EMR: awslib14/Analytics/EMR
+AWS EMR Cluster: awslib14/Analytics/EMRCluster
+AWS EMR EMR Engine: awslib14/Analytics/EMREMREngine
+AWS EMR HDFS Cluster: awslib14/Analytics/EMRHDFSCluster
+AWS Elasti Cache: awslib14/Database/ElastiCache
+AWS Elasti Cache Cache Node: awslib14/Database/ElastiCacheCacheNode
+AWS ElastiCache ElastiCache for Memcached: awslib14/Database/ElastiCacheElastiCacheforMemcached
+AWS ElastiCache ElastiCache for Redis: awslib14/Database/ElastiCacheElastiCacheforRedis
+AWS Elastic Beanstalk: awslib14/Compute/ElasticBeanstalk
+AWS Elastic Beanstalk Application: awslib14/Compute/ElasticBeanstalkApplication
+AWS Elastic Beanstalk Container: awslib14/GroupIcons/ElasticBeanstalkContainer
+AWS Elastic Beanstalk Deployment: awslib14/Compute/ElasticBeanstalkDeployment
+AWS Elastic Block Store: awslib14/Storage/ElasticBlockStore
+AWS Elastic Block Store Amazon Data Lifecycle Manager: awslib14/Storage/ElasticBlockStoreAmazonDataLifecycleManager
+AWS Elastic Block Store Multiple Volumes: awslib14/Storage/ElasticBlockStoreMultipleVolumes
+AWS Elastic Block Store Snapshot: awslib14/Storage/ElasticBlockStoreSnapshot
+AWS Elastic Block Store Volume: awslib14/Storage/ElasticBlockStoreVolume
+AWS Elastic Block Store Volumegp3: awslib14/Storage/ElasticBlockStoreVolumegp3
+AWS Elastic Cache: logos/aws-elastic-cache
+AWS Elastic Container Registry: awslib14/Containers/ElasticContainerRegistry
+AWS Elastic Container Registry Image: awslib14/Containers/ElasticContainerRegistryImage
+AWS Elastic Container Registry Registry: awslib14/Containers/ElasticContainerRegistryRegistry
+AWS Elastic Container Service: awslib14/Containers/ElasticContainerService
+AWS Elastic Container Service Container1: awslib14/Containers/ElasticContainerServiceContainer1
+AWS Elastic Container Service Container2: awslib14/Containers/ElasticContainerServiceContainer2
+AWS Elastic Container Service Container3: awslib14/Containers/ElasticContainerServiceContainer3
+AWS Elastic Container Service Copilot CLI: awslib14/Containers/ElasticContainerServiceCopilotCLI
+AWS Elastic Container Service ECS Anywhere: awslib14/Containers/ElasticContainerServiceECSAnywhere
+AWS Elastic Container Service Service: awslib14/Containers/ElasticContainerServiceService
+AWS Elastic Container Service Task: awslib14/Containers/ElasticContainerServiceTask
+AWS Elastic Fabric Adapter: awslib14/Compute/ElasticFabricAdapter
+AWS Elastic File System File System: awslib14/Storage/ElasticFileSystemFileSystem
+AWS Elastic File System Intelligent Tiering: awslib14/Storage/ElasticFileSystemIntelligentTiering
+AWS Elastic File System One Zone: awslib14/Storage/ElasticFileSystemOneZone
+AWS Elastic File System One Zone Infrequent Access: awslib14/Storage/ElasticFileSystemOneZoneInfrequentAccess
+AWS Elastic File System Standard: awslib14/Storage/ElasticFileSystemStandard
+AWS Elastic File System Standard Infrequent Access: awslib14/Storage/ElasticFileSystemStandardInfrequentAccess
+AWS Elastic Inference: awslib14/MachineLearning/ElasticInference
+AWS Elastic Kubernetes Service: awslib14/Containers/ElasticKubernetesService
+AWS Elastic Load Balancing: awslib14/NetworkingContentDelivery/ElasticLoadBalancing
+AWS Elastic Load Balancing Application Load Balancer: awslib14/NetworkingContentDelivery/ElasticLoadBalancingApplicationLoadBalancer
+AWS Elastic Load Balancing Classic Load Balancer: awslib14/NetworkingContentDelivery/ElasticLoadBalancingClassicLoadBalancer
+AWS Elastic Load Balancing Gateway Load Balancer: awslib14/NetworkingContentDelivery/ElasticLoadBalancingGatewayLoadBalancer
+AWS Elastic Load Balancing Network Load Balancer: awslib14/NetworkingContentDelivery/ElasticLoadBalancingNetworkLoadBalancer
+AWS Elastic Transcoder: awslib14/MediaServices/ElasticTranscoder
+AWS Elemental Appliances Software: awslib14/MediaServices/ElementalAppliancesSoftware
+AWS Elemental Conductor: awslib14/MediaServices/ElementalConductor
+AWS Elemental Delta: awslib14/MediaServices/ElementalDelta
+AWS Elemental Link: awslib14/MediaServices/ElementalLink
+AWS Elemental Live: awslib14/MediaServices/ElementalLive
+AWS Elemental Media Connect: awslib14/MediaServices/ElementalMediaConnect
+AWS Elemental Media Convert: awslib14/MediaServices/ElementalMediaConvert
+AWS Elemental Media Live: awslib14/MediaServices/ElementalMediaLive
+AWS Elemental Media Package: awslib14/MediaServices/ElementalMediaPackage
+AWS Elemental Media Store: awslib14/MediaServices/ElementalMediaStore
+AWS Elemental Media Tailor: awslib14/MediaServices/ElementalMediaTailor
+AWS Elemental Server: awslib14/MediaServices/ElementalServer
+AWS Email: awslib14/General/Email
+AWS End User Computing: awslib14/EndUserComputing/EndUserComputing
+AWS Event Bridge: awslib14/ApplicationIntegration/EventBridge
+AWS Event Bridge Custom Event Bus: awslib14/ApplicationIntegration/EventBridgeCustomEventBus
+AWS Event Bridge Default Event Bus: awslib14/ApplicationIntegration/EventBridgeDefaultEventBus
+AWS Event Bridge Event: awslib14/ApplicationIntegration/EventBridgeEvent
+AWS Event Bridge Rule: awslib14/ApplicationIntegration/EventBridgeRule
+AWS Event Bridge SaaS Partner Event: awslib14/ApplicationIntegration/EventBridgeSaasPartnerEvent
+AWS Event Bridge Schema: awslib14/ApplicationIntegration/EventBridgeSchema
+AWS Event Bridge Schema Registry: awslib14/ApplicationIntegration/EventBridgeSchemaRegistry
+AWS Express Workflows: awslib14/ApplicationIntegration/ExpressWorkflows
+AWS FSx: awslib14/Storage/FSx
+AWS FSx for Lustre: awslib14/Storage/FSxforLustre
+AWS FSx for Net App ONTAP: awslib14/Storage/FSxforNetAppONTAP
+AWS FSx for Open ZFS: awslib14/Storage/FSxforOpenZFS
+AWS FSx for WFS: awslib14/Storage/FSxforWFS
+AWS Fargate: awslib14/Containers/Fargate
+AWS Fargate2: awslib14/Compute/Fargate2
+AWS Fault Injection Simulator: awslib14/ManagementGovernance/FaultInjectionSimulator
+AWS Fin Space: awslib14/Analytics/FinSpace
+AWS Firewall: awslib14/General/Firewall
+AWS Firewall Manager: awslib14/SecurityIdentityCompliance/FirewallManager
+AWS Folder: awslib14/General/Folder
+AWS Folders: awslib14/General/Folders
+AWS Forecast: awslib14/MachineLearning/Forecast
+AWS Forums: awslib14/General/Forums
+AWS Fraud Detector: awslib14/MachineLearning/FraudDetector
+AWS Free RTOS: awslib14/InternetOfThings/FreeRTOS
+AWS Front End Web Mobile: awslib14/FrontEndWebMobile/FrontEndWebMobile
+AWS Game Kit: awslib14/GameTech/GameKit
+AWS Game Lift: awslib14/GameTech/GameLift
+AWS Game Sparks: awslib14/GameTech/GameSparks
+AWS Game Tech: awslib14/GameTech/GameTech
+AWS Gear: awslib14/General/Gear
+AWS Generic: awslib14/Groups/Generic
+AWS Generic Alt: awslib14/Groups/GenericAlt
+AWS Generic Application: awslib14/General/GenericApplication
+AWS Generic Blue: awslib14/Groups/GenericBlue
+AWS Generic Database: awslib14/General/Genericdatabase
+AWS Generic Green: awslib14/Groups/GenericGreen
+AWS Generic Orange: awslib14/Groups/GenericOrange
+AWS Generic Pink: awslib14/Groups/GenericPink
+AWS Generic Purple: awslib14/Groups/GenericPurple
+AWS Generic Red: awslib14/Groups/GenericRed
+AWS Generic Turquoise: awslib14/Groups/GenericTurquoise
+AWS Genomics CLI: awslib14/Compute/GenomicsCLI
+AWS Git Repository: awslib14/General/GitRepository
+AWS Glacier: logos/aws-glacier
+AWS Global Accelerator: awslib14/NetworkingContentDelivery/GlobalAccelerator
+AWS Globe: awslib14/General/Globe
+AWS Glue: awslib14/Analytics/Glue
+AWS Glue Crawler: awslib14/Analytics/GlueCrawler
+AWS Glue Data Brew: awslib14/Analytics/GlueDataBrew
+AWS Glue Data Catalog: awslib14/Analytics/GlueDataCatalog
+AWS Glue Elastic Views: awslib14/Analytics/GlueElasticViews
+AWS Ground Station: awslib14/Satellite/GroundStation
+AWS Guard Duty: awslib14/SecurityIdentityCompliance/GuardDuty
+AWS Health Lake: awslib14/MachineLearning/HealthLake
+AWS Honeycode: awslib14/BusinessApplications/Honeycode
+AWS IAM: logos/aws-iam
+AWS IAM Identity Center: awslib14/SecurityIdentityCompliance/IAMIdentityCenter
+AWS IQ: awslib14/CustomerEnablement/IQ
+AWS Identity Access Management AWSSTS: awslib14/SecurityIdentityCompliance/IdentityAccessManagementAWSSTS
+AWS Identity Access Management AWSSTS Alternate: awslib14/SecurityIdentityCompliance/IdentityAccessManagementAWSSTSAlternate
+AWS Identity Access Management Addon: awslib14/SecurityIdentityCompliance/IdentityAccessManagementAddon
+AWS Identity Access Management Data Encryption Key: awslib14/SecurityIdentityCompliance/IdentityAccessManagementDataEncryptionKey
+AWS Identity Access Management Encrypted Data: awslib14/SecurityIdentityCompliance/IdentityAccessManagementEncryptedData
+AWS Identity Access Management Iam Access Analyzer: awslib14/SecurityIdentityCompliance/IdentityAccessManagementIAMAccessAnalyzer
+AWS Identity Access Management Iam Roles Anywhere: awslib14/SecurityIdentityCompliance/IdentityAccessManagementIAMRolesAnywhere
+AWS Identity Access Management Long Term Security Credential: awslib14/SecurityIdentityCompliance/IdentityAccessManagementLongTermSecurityCredential
+AWS Identity Access Management MFA Token: awslib14/SecurityIdentityCompliance/IdentityAccessManagementMFAToken
+AWS Identity Access Management Permissions: awslib14/SecurityIdentityCompliance/IdentityAccessManagementPermissions
+AWS Identity Access Management Role: awslib14/SecurityIdentityCompliance/IdentityAccessManagementRole
+AWS Identity Access Management Temporary Security Credential: awslib14/SecurityIdentityCompliance/IdentityAccessManagementTemporarySecurityCredential
+AWS Identity and Access Management: awslib14/SecurityIdentityCompliance/IdentityandAccessManagement
+AWS Inspector: awslib14/SecurityIdentityCompliance/Inspector
+AWS Inspector Agent: awslib14/SecurityIdentityCompliance/InspectorAgent
+AWS Interactive Video Service: awslib14/MediaServices/InteractiveVideoService
+AWS Internet: awslib14/General/Internet
+AWS Internet Of Things: awslib14/InternetOfThings/InternetOfThings
+AWS Internetalt1: awslib14/General/Internetalt1
+AWS Internetalt2: awslib14/General/Internetalt2
+AWS IoT 1 Click: awslib14/InternetOfThings/IoT1Click
+AWS IoT Action: awslib14/InternetOfThings/IoTAction
+AWS IoT Actuator: awslib14/InternetOfThings/IoTActuator
+AWS IoT Alexa Enabled Device: awslib14/InternetOfThings/IoTAlexaEnabledDevice
+AWS IoT Alexa Skill: awslib14/InternetOfThings/IoTAlexaSkill
+AWS IoT Alexa Voice Service: awslib14/InternetOfThings/IoTAlexaVoiceService
+AWS IoT Analytics: awslib14/InternetOfThings/IoTAnalytics
+AWS IoT Analytics Channel: awslib14/InternetOfThings/IoTAnalyticsChannel
+AWS IoT Analytics Data Store: awslib14/InternetOfThings/IoTAnalyticsDataStore
+AWS IoT Analytics Dataset: awslib14/InternetOfThings/IoTAnalyticsDataset
+AWS IoT Analytics Notebook: awslib14/InternetOfThings/IoTAnalyticsNotebook
+AWS IoT Analytics Pipeline: awslib14/InternetOfThings/IoTAnalyticsPipeline
+AWS IoT Button: awslib14/InternetOfThings/IoTButton
+AWS IoT Certificate: awslib14/InternetOfThings/IoTCertificate
+AWS IoT Core: awslib14/InternetOfThings/IoTCore
+AWS IoT Desired State: awslib14/InternetOfThings/IoTDesiredState
+AWS IoT Device Defender: awslib14/InternetOfThings/IoTDeviceDefender
+AWS IoT Device Defender IoT Device Jobs: awslib14/InternetOfThings/IoTDeviceDefenderIoTDeviceJobs
+AWS IoT Device Gateway: awslib14/InternetOfThings/IoTDeviceGateway
+AWS IoT Device Management: awslib14/InternetOfThings/IoTDeviceManagement
+AWS IoT Device Management Fleet Hub: awslib14/InternetOfThings/IoTDeviceManagementFleetHub
+AWS IoT Echo: awslib14/InternetOfThings/IoTEcho
+AWS IoT Edu Kit: awslib14/InternetOfThings/IoTEduKit
+AWS IoT Events: awslib14/InternetOfThings/IoTEvents
+AWS IoT Express Link: awslib14/InternetOfThings/IoTExpressLink
+AWS IoT Fire TV: awslib14/InternetOfThings/IoTFireTV
+AWS IoT Fire TV Stick: awslib14/InternetOfThings/IoTFireTVStick
+AWS IoT Fleet Wise: awslib14/InternetOfThings/IoTFleetWise
+AWS IoT Greengrass: awslib14/Groups/IoTGreengrass
+AWS IoT Greengrass Artifact: awslib14/InternetOfThings/IoTGreengrassArtifact
+AWS IoT Greengrass Component: awslib14/InternetOfThings/IoTGreengrassComponent
+AWS IoT Greengrass Component Machine Learning: awslib14/InternetOfThings/IoTGreengrassComponentMachineLearning
+AWS IoT Greengrass Component Nucleus: awslib14/InternetOfThings/IoTGreengrassComponentNucleus
+AWS IoT Greengrass Component Private: awslib14/InternetOfThings/IoTGreengrassComponentPrivate
+AWS IoT Greengrass Component Public: awslib14/InternetOfThings/IoTGreengrassComponentPublic
+AWS IoT Greengrass Connector: awslib14/InternetOfThings/IoTGreengrassConnector
+AWS IoT Greengrass Deployment: awslib14/Groups/IoTGreengrassDeployment
+AWS IoT Greengrass Interprocess Communication: awslib14/InternetOfThings/IoTGreengrassInterprocessCommunication
+AWS IoT Greengrass Protocol: awslib14/InternetOfThings/IoTGreengrassProtocol
+AWS IoT Greengrass Recipe: awslib14/InternetOfThings/IoTGreengrassRecipe
+AWS IoT Greengrass Stream Manager: awslib14/InternetOfThings/IoTGreengrassStreamManager
+AWS IoT HTTP Protocol: awslib14/InternetOfThings/IoTHTTPProtocol
+AWS IoT HTTP2 Protocol: awslib14/InternetOfThings/IoTHTTP2Protocol
+AWS IoT Hardware Board: awslib14/InternetOfThings/IoTHardwareBoard
+AWS IoT Lambda Function: awslib14/InternetOfThings/IoTLambdaFunction
+AWS IoT LoRaWAN Protocol: awslib14/InternetOfThings/IoTLoRaWANProtocol
+AWS IoT MQTT Protocol: awslib14/InternetOfThings/IoTMQTTProtocol
+AWS IoT Over Air Update: awslib14/InternetOfThings/IoTOverAirUpdate
+AWS IoT Policy: awslib14/InternetOfThings/IoTPolicy
+AWS IoT Reported State: awslib14/InternetOfThings/IoTReportedState
+AWS IoT Robo Runner: awslib14/InternetOfThings/IoTRoboRunner
+AWS IoT Rule: awslib14/InternetOfThings/IoTRule
+AWS IoT Sailboat: awslib14/InternetOfThings/IoTSailboat
+AWS IoT Sensor: awslib14/InternetOfThings/IoTSensor
+AWS IoT Servo: awslib14/InternetOfThings/IoTServo
+AWS IoT Shadow: awslib14/InternetOfThings/IoTShadow
+AWS IoT Simulator: awslib14/InternetOfThings/IoTSimulator
+AWS IoT Site Wise: awslib14/InternetOfThings/IoTSiteWise
+AWS IoT Site Wise Asset: awslib14/InternetOfThings/IoTSiteWiseAsset
+AWS IoT Site Wise Asset Hierarchy: awslib14/InternetOfThings/IoTSiteWiseAssetHierarchy
+AWS IoT Site Wise Asset Model: awslib14/InternetOfThings/IoTSiteWiseAssetModel
+AWS IoT Site Wise Asset Properties: awslib14/InternetOfThings/IoTSiteWiseAssetProperties
+AWS IoT Site Wise Data Streams: awslib14/InternetOfThings/IoTSiteWiseDataStreams
+AWS IoT Thing Bank: awslib14/InternetOfThings/IoTThingBank
+AWS IoT Thing Bicycle: awslib14/InternetOfThings/IoTThingBicycle
+AWS IoT Thing Camera: awslib14/InternetOfThings/IoTThingCamera
+AWS IoT Thing Car: awslib14/InternetOfThings/IoTThingCar
+AWS IoT Thing Cart: awslib14/InternetOfThings/IoTThingCart
+AWS IoT Thing Coffee Pot: awslib14/InternetOfThings/IoTThingCoffeePot
+AWS IoT Thing Door Lock: awslib14/InternetOfThings/IoTThingDoorLock
+AWS IoT Thing Factory: awslib14/InternetOfThings/IoTThingFactory
+AWS IoT Thing Free RTOS Device: awslib14/InternetOfThings/IoTThingFreeRTOSDevice
+AWS IoT Thing Generic: awslib14/InternetOfThings/IoTThingGeneric
+AWS IoT Thing House: awslib14/InternetOfThings/IoTThingHouse
+AWS IoT Thing Humidity Sensor: awslib14/InternetOfThings/IoTThingHumiditySensor
+AWS IoT Thing Industrial PC: awslib14/InternetOfThings/IoTThingIndustrialPC
+AWS IoT Thing Lightbulb: awslib14/InternetOfThings/IoTThingLightbulb
+AWS IoT Thing Medical Emergency: awslib14/InternetOfThings/IoTThingMedicalEmergency
+AWS IoT Thing PLC: awslib14/InternetOfThings/IoTThingPLC
+AWS IoT Thing Police Emergency: awslib14/InternetOfThings/IoTThingPoliceEmergency
+AWS IoT Thing Relay: awslib14/InternetOfThings/IoTThingRelay
+AWS IoT Thing Stacklight: awslib14/InternetOfThings/IoTThingStacklight
+AWS IoT Thing Temperature Humidity Sensor: awslib14/InternetOfThings/IoTThingTemperatureHumiditySensor
+AWS IoT Thing Temperature Sensor: awslib14/InternetOfThings/IoTThingTemperatureSensor
+AWS IoT Thing Temperature Vibration Sensor: awslib14/InternetOfThings/IoTThingTemperatureVibrationSensor
+AWS IoT Thing Thermostat: awslib14/InternetOfThings/IoTThingThermostat
+AWS IoT Thing Travel: awslib14/InternetOfThings/IoTThingTravel
+AWS IoT Thing Utility: awslib14/InternetOfThings/IoTThingUtility
+AWS IoT Thing Vibration Sensor: awslib14/InternetOfThings/IoTThingVibrationSensor
+AWS IoT Thing Windfarm: awslib14/InternetOfThings/IoTThingWindfarm
+AWS IoT Things Graph: awslib14/InternetOfThings/IoTThingsGraph
+AWS IoT Topic: awslib14/InternetOfThings/IoTTopic
+AWS IoT Twin Maker: awslib14/InternetOfThings/IoTTwinMaker
+AWS Kendra: awslib14/MachineLearning/Kendra
+AWS Key Management Service: awslib14/SecurityIdentityCompliance/KeyManagementService
+AWS Keyspaces: awslib14/Database/Keyspaces
+AWS Kinesis: awslib14/Analytics/Kinesis
+AWS Kinesis Data Analytics: awslib14/Analytics/KinesisDataAnalytics
+AWS Kinesis Data Streams: awslib14/Analytics/KinesisDataStreams
+AWS Kinesis Firehose: awslib14/Analytics/KinesisFirehose
+AWS Kinesis Video Streams: awslib14/Analytics/KinesisVideoStreams
+AWS Kinesis Video Streams2: awslib14/MediaServices/KinesisVideoStreams2
+AWS Lake Formation: awslib14/Analytics/LakeFormation
+AWS Lake Formation Data Lake: awslib14/Analytics/LakeFormationDataLake
+AWS Lambda: awslib14/Compute/Lambda
+AWS Lambda Lambda Function: awslib14/Compute/LambdaLambdaFunction
+AWS Launch Wizard: awslib14/ManagementGovernance/LaunchWizard
+AWS Lex: awslib14/MachineLearning/Lex
+AWS License Manager: awslib14/ManagementGovernance/LicenseManager
+AWS License Manager Application Discovery: awslib14/ManagementGovernance/LicenseManagerApplicationDiscovery
+AWS License Manager License Blending: awslib14/ManagementGovernance/LicenseManagerLicenseBlending
+AWS Lightsail: awslib14/Compute/Lightsail
+AWS Local Zones: awslib14/Compute/LocalZones
+AWS Location Service: awslib14/FrontEndWebMobile/LocationService
+AWS Location Service Geofence: awslib14/FrontEndWebMobile/LocationServiceGeofence
+AWS Location Service Map: awslib14/FrontEndWebMobile/LocationServiceMap
+AWS Location Service Place: awslib14/FrontEndWebMobile/LocationServicePlace
+AWS Location Service Routes: awslib14/FrontEndWebMobile/LocationServiceRoutes
+AWS Location Service Track: awslib14/FrontEndWebMobile/LocationServiceTrack
+AWS Lookout for Equipment: awslib14/MachineLearning/LookoutforEquipment
+AWS Lookout for Metrics: awslib14/MachineLearning/LookoutforMetrics
+AWS Lookoutfor Vision: awslib14/MachineLearning/LookoutforVision
+AWS Lumberyard: awslib14/GameTech/Lumberyard
+AWS MQ: awslib14/ApplicationIntegration/MQ
+AWS MQ Broker: awslib14/ApplicationIntegration/MQBroker
+AWS MSK Amazon MSK Connect: awslib14/Analytics/MSKAmazonMSKConnect
+AWS Machine Learning: awslib14/MachineLearning/MachineLearning
+AWS Macie: awslib14/SecurityIdentityCompliance/Macie
+AWS Magnifying Glass: awslib14/General/MagnifyingGlass
+AWS Mainframe Modernization: awslib14/MigrationTransfer/MainframeModernization
+AWS Mainframe Modernization Analyzer: awslib14/MigrationTransfer/MainframeModernizationAnalyzer
+AWS Mainframe Modernization Compiler: awslib14/MigrationTransfer/MainframeModernizationCompiler
+AWS Mainframe Modernization Converter: awslib14/MigrationTransfer/MainframeModernizationConverter
+AWS Mainframe Modernization Developer: awslib14/MigrationTransfer/MainframeModernizationDeveloper
+AWS Mainframe Modernization Runtime: awslib14/MigrationTransfer/MainframeModernizationRuntime
+AWS Managed Blockchain: awslib14/Blockchain/ManagedBlockchain
+AWS Managed Blockchain Blockchain: awslib14/Blockchain/ManagedBlockchainBlockchain
+AWS Managed Grafana: awslib14/ManagementGovernance/ManagedGrafana
+AWS Managed Servicefor Prometheus: awslib14/ManagementGovernance/ManagedServiceforPrometheus
+AWS Managed Services: awslib14/CustomerEnablement/ManagedServices
+AWS Managed Streamingfor Apache Kafka: awslib14/Analytics/ManagedStreamingforApacheKafka
+AWS Managed Workflowsfor Apache Airflow: awslib14/ApplicationIntegration/ManagedWorkflowsforApacheAirflow
+AWS Management Console: awslib14/General/AWSManagementConsole
+AWS Management Governance: awslib14/ManagementGovernance/ManagementGovernance
+AWS Marketplace Dark: awslib14/General/MarketplaceDark
+AWS Marketplace Light: awslib14/General/MarketplaceLight
+AWS Media Services: awslib14/MediaServices/MediaServices
+AWS MemoryDB for Redis: awslib14/Database/MemoryDBforRedis
+AWS Migration Evaluator: awslib14/MigrationTransfer/MigrationEvaluator
+AWS Migration Hub: awslib14/MigrationTransfer/MigrationHub
+AWS Migration Hub Refactor Spaces Applications: awslib14/MigrationTransfer/MigrationHubRefactorSpacesApplications
+AWS Migration Hub Refactor Spaces Environments: awslib14/MigrationTransfer/MigrationHubRefactorSpacesEnvironments
+AWS Migration Hub Refactor Spaces Services: awslib14/MigrationTransfer/MigrationHubRefactorSpacesServices
+AWS Migration Transfer: awslib14/MigrationTransfer/MigrationTransfer
+AWS Mobileclient: awslib14/General/Mobileclient
+AWS Mobilehub: logos/aws-mobilehub
+AWS Monitron: awslib14/MachineLearning/Monitron
+AWS Multimedia: awslib14/General/Multimedia
+AWS NICED CV: awslib14/Compute/NICEDCV
+AWS Neptune: awslib14/Database/Neptune
+AWS Network Firewall: awslib14/SecurityIdentityCompliance/NetworkFirewall
+AWS Network Firewall Endpoints: awslib14/SecurityIdentityCompliance/NetworkFirewallEndpoints
+AWS Networking Content Delivery: awslib14/NetworkingContentDelivery/NetworkingContentDelivery
+AWS Neuron: awslib14/MachineLearning/Neuron
+AWS Nice Engin Frame: awslib14/Compute/NICEEnginFrame
+AWS Nimble Studio: awslib14/MediaServices/NimbleStudio
+AWS Nitro Enclaves: awslib14/Compute/NitroEnclaves
+AWS Office Building: awslib14/General/Officebuilding
+AWS Open Search Service: awslib14/Analytics/OpenSearchService
+AWS Open3D Engine: awslib14/GameTech/Open3DEngine
+AWS Ops Works: awslib14/ManagementGovernance/OpsWorks
+AWS Ops Works Apps: awslib14/ManagementGovernance/OpsWorksApps
+AWS Ops Works Deployments: awslib14/ManagementGovernance/OpsWorksDeployments
+AWS Ops Works Instances: awslib14/ManagementGovernance/OpsWorksInstances
+AWS Ops Works Layers: awslib14/ManagementGovernance/OpsWorksLayers
+AWS Ops Works Monitoring: awslib14/ManagementGovernance/OpsWorksMonitoring
+AWS Ops Works Permissions: awslib14/ManagementGovernance/OpsWorksPermissions
+AWS Ops Works Resources: awslib14/ManagementGovernance/OpsWorksResources
+AWS Ops Works Stack2: awslib14/ManagementGovernance/OpsWorksStack2
+AWS Opsworks: logos/aws-opsworks
+AWS Organizations: awslib14/ManagementGovernance/Organizations
+AWS Organizations Account: awslib14/ManagementGovernance/OrganizationsAccount
+AWS Organizations Management Account: awslib14/ManagementGovernance/OrganizationsManagementAccount
+AWS Organizations Organizational Unit: awslib14/ManagementGovernance/OrganizationsOrganizationalUnit
+AWS Outposts Family: awslib14/Compute/Outpostsfamily
+AWS Outposts Rack: awslib14/Compute/Outpostsrack
+AWS Outposts Servers: awslib14/Compute/Outpostsservers
+AWS Panorama: awslib14/MachineLearning/Panorama
+AWS Parallel Cluster: awslib14/Compute/ParallelCluster
+AWS Personal Health Dashboard: awslib14/ManagementGovernance/PersonalHealthDashboard
+AWS Personalize: awslib14/MachineLearning/Personalize
+AWS Pinpoint: awslib14/BusinessApplications/Pinpoint
+AWS Pinpoint APIs: awslib14/BusinessApplications/PinpointAPIs
+AWS Pinpoint Journey: awslib14/BusinessApplications/PinpointJourney
+AWS Polly: awslib14/MachineLearning/Polly
+AWS Private 5G: awslib14/NetworkingContentDelivery/Private5G
+AWS Private Link: awslib14/NetworkingContentDelivery/PrivateLink
+AWS Private Subnet: awslib14/Groups/PrivateSubnet
+AWS Professional Services: awslib14/CustomerEnablement/ProfessionalServices
+AWS Proton: awslib14/ManagementGovernance/Proton
+AWS Public Subnet: awslib14/Groups/PublicSubnet
+AWS Quantum Ledger Database: awslib14/Blockchain/QuantumLedgerDatabase
+AWS Quantum Ledger Database2: awslib14/Database/QuantumLedgerDatabase2
+AWS Quantum Technologies: awslib14/QuantumTechnologies/QuantumTechnologies
+AWS Question: awslib14/General/Question
+AWS Quick Sight: awslib14/Analytics/QuickSight
+AWS Quicksight: logos/aws-quicksight
+AWS RDS: awslib14/Database/RDS
+AWS RDS Multi AZ: awslib14/Database/RDSMultiAZ
+AWS RDS Multi AZDB Cluster: awslib14/Database/RDSMultiAZDBCluster
+AWS RDS Proxy Instance: awslib14/Database/RDSProxyInstance
+AWS RDS Proxy Instance Alternate: awslib14/Database/RDSProxyInstanceAlternate
+AWS RDS on VMware: awslib14/Database/RDSonVMware
+AWS RePost: awslib14/CustomerEnablement/rePost
+AWS Recover: awslib14/General/Recover
+AWS Red Hat Open Shift: awslib14/Containers/RedHatOpenShift
+AWS Redshift: awslib14/Analytics/Redshift
+AWS Redshift Dense Compute Node: awslib14/Analytics/RedshiftDenseComputeNode
+AWS Redshift Dense Storage Node: awslib14/Analytics/RedshiftDenseStorageNode
+AWS Redshift ML: awslib14/Analytics/RedshiftML
+AWS Redshift RA3: awslib14/Analytics/RedshiftRA3
+AWS Region: awslib14/GroupIcons/Region
+AWS Rekognition: awslib14/MachineLearning/Rekognition
+AWS Rekognition Image: awslib14/MachineLearning/RekognitionImage
+AWS Rekognition Video: awslib14/MachineLearning/RekognitionVideo
+AWS Reserved Instance Reporting: awslib14/CloudFinancialManagement/ReservedInstanceReporting
+AWS Resilience Hub: awslib14/ManagementGovernance/ResilienceHub
+AWS Resource Access Manager: awslib14/SecurityIdentityCompliance/ResourceAccessManager
+AWS Robo Maker: awslib14/Robotics/RoboMaker
+AWS Robo Maker Cloud Extensions Ros: awslib14/Robotics/RoboMakerCloudExtensionsROS
+AWS Robo Maker Development Environment: awslib14/Robotics/RoboMakerDevelopmentEnvironment
+AWS Robo Maker Fleet Management: awslib14/Robotics/RoboMakerFleetManagement
+AWS Robo Maker Simulation: awslib14/Robotics/RoboMakerSimulation
+AWS Robotics: awslib14/Robotics/Robotics
+AWS Route53: awslib14/NetworkingContentDelivery/Route53
+AWS Route53 Application Recovery Controller: awslib14/NetworkingContentDelivery/Route53ApplicationRecoveryController
+AWS Route53 Hosted Zone: awslib14/NetworkingContentDelivery/Route53HostedZone
+AWS Route53 Readiness Checks: awslib14/NetworkingContentDelivery/Route53ReadinessChecks
+AWS Route53 Resolver: awslib14/NetworkingContentDelivery/Route53Resolver
+AWS Route53 Resolver DNS Firewall: awslib14/NetworkingContentDelivery/Route53ResolverDNSFirewall
+AWS Route53 Resolver Query Logging: awslib14/NetworkingContentDelivery/Route53ResolverQueryLogging
+AWS Route53 Route Table: awslib14/NetworkingContentDelivery/Route53RouteTable
+AWS Route53 Routing Controls: awslib14/NetworkingContentDelivery/Route53RoutingControls
+AWS S3: logos/aws-s3
+AWS S3 on Outposts: awslib14/Storage/S3onOutposts
+AWS SAML Token: awslib14/General/SAMLtoken
+AWS SDK: awslib14/General/SDK
+AWS SES: logos/aws-ses
+AWS SNS: logos/aws-sns
+AWS SQS: logos/aws-sqs
+AWS SSL Padlock: awslib14/General/SSLpadlock
+AWS Sage Maker: awslib14/MachineLearning/SageMaker
+AWS Sage Maker Canvas: awslib14/MachineLearning/SageMakerCanvas
+AWS Sage Maker Ground Truth: awslib14/MachineLearning/SageMakerGroundTruth
+AWS Sage Maker Model: awslib14/MachineLearning/SageMakerModel
+AWS Sage Maker Notebook: awslib14/MachineLearning/SageMakerNotebook
+AWS Sage Maker Studio Lab: awslib14/MachineLearning/SageMakerStudioLab
+AWS Sage Maker Train: awslib14/MachineLearning/SageMakerTrain
+AWS Satellite: awslib14/Satellite/Satellite
+AWS Savings Plans: awslib14/CloudFinancialManagement/SavingsPlans
+AWS Secrets Manager: awslib14/SecurityIdentityCompliance/SecretsManager
+AWS Security Group: awslib14/Groups/SecurityGroup
+AWS Security Hub: awslib14/SecurityIdentityCompliance/SecurityHub
+AWS Security Hub Finding: awslib14/SecurityIdentityCompliance/SecurityHubFinding
+AWS Security Identity Compliance: awslib14/SecurityIdentityCompliance/SecurityIdentityCompliance
+AWS Server Contents: awslib14/GroupIcons/ServerContents
+AWS Server Migration Service: awslib14/MigrationTransfer/ServerMigrationService
+AWS Serverless: awslib14/Serverless/Serverless
+AWS Serverless Application Repository: awslib14/Compute/ServerlessApplicationRepository
+AWS Servers: awslib14/General/Servers
+AWS Service Catalog: awslib14/ManagementGovernance/ServiceCatalog
+AWS Shield: awslib14/SecurityIdentityCompliance/Shield
+AWS Shield AWS Shield Advanced: awslib14/SecurityIdentityCompliance/ShieldAWSShieldAdvanced
+AWS Shield2: awslib14/General/Shield2
+AWS Signer: awslib14/SecurityIdentityCompliance/Signer
+AWS Simple Email Service: awslib14/BusinessApplications/SimpleEmailService
+AWS Simple Email Service Email: awslib14/BusinessApplications/SimpleEmailServiceEmail
+AWS Simple Notification Service: awslib14/ApplicationIntegration/SimpleNotificationService
+AWS Simple Notification Service Email Notification: awslib14/ApplicationIntegration/SimpleNotificationServiceEmailNotification
+AWS Simple Notification Service Http Notification: awslib14/ApplicationIntegration/SimpleNotificationServiceHTTPNotification
+AWS Simple Notification Service Topic: awslib14/ApplicationIntegration/SimpleNotificationServiceTopic
+AWS Simple Queue Service: awslib14/ApplicationIntegration/SimpleQueueService
+AWS Simple Queue Service Message: awslib14/ApplicationIntegration/SimpleQueueServiceMessage
+AWS Simple Queue Service Queue: awslib14/ApplicationIntegration/SimpleQueueServiceQueue
+AWS Simple Storage Service: awslib14/Storage/SimpleStorageService
+AWS Simple Storage Service Bucket: awslib14/Storage/SimpleStorageServiceBucket
+AWS Simple Storage Service Bucket With Objects: awslib14/Storage/SimpleStorageServiceBucketWithObjects
+AWS Simple Storage Service General Access Points: awslib14/Storage/SimpleStorageServiceGeneralAccessPoints
+AWS Simple Storage Service Glacier: awslib14/Storage/SimpleStorageServiceGlacier
+AWS Simple Storage Service Glacier Archive: awslib14/Storage/SimpleStorageServiceGlacierArchive
+AWS Simple Storage Service Glacier Vault: awslib14/Storage/SimpleStorageServiceGlacierVault
+AWS Simple Storage Service Object: awslib14/Storage/SimpleStorageServiceObject
+AWS Simple Storage Service S3 Glacier Deep Archive: awslib14/Storage/SimpleStorageServiceS3GlacierDeepArchive
+AWS Simple Storage Service S3 Glacier Flexible Retrieval: awslib14/Storage/SimpleStorageServiceS3GlacierFlexibleRetrieval
+AWS Simple Storage Service S3 Glacier Instant Retrieval: awslib14/Storage/SimpleStorageServiceS3GlacierInstantRetrieval
+AWS Simple Storage Service S3 Intelligent Tiering: awslib14/Storage/SimpleStorageServiceS3IntelligentTiering
+AWS Simple Storage Service S3 Object Lambda: awslib14/Storage/SimpleStorageServiceS3ObjectLambda
+AWS Simple Storage Service S3 Object Lambda Access Points: awslib14/Storage/SimpleStorageServiceS3ObjectLambdaAccessPoints
+AWS Simple Storage Service S3 On Outposts: awslib14/Storage/SimpleStorageServiceS3OnOutposts
+AWS Simple Storage Service S3 One Zone IA: awslib14/Storage/SimpleStorageServiceS3OneZoneIA
+AWS Simple Storage Service S3 Replication: awslib14/Storage/SimpleStorageServiceS3Replication
+AWS Simple Storage Service S3 Replication Time Control: awslib14/Storage/SimpleStorageServiceS3ReplicationTimeControl
+AWS Simple Storage Service S3 Standard: awslib14/Storage/SimpleStorageServiceS3Standard
+AWS Simple Storage Service S3 Standard IA: awslib14/Storage/SimpleStorageServiceS3StandardIA
+AWS Simple Storage Service S3 Storage Lens: awslib14/Storage/SimpleStorageServiceS3StorageLens
+AWS Simple Storage Service VPC Access Points: awslib14/Storage/SimpleStorageServiceVPCAccessPoints
+AWS Site to Site VPN: awslib14/NetworkingContentDelivery/SitetoSiteVPN
+AWS Snowball: awslib14/Storage/Snowball
+AWS Snowball Edge: awslib14/Storage/SnowballEdge
+AWS Snowball Snowball Import Export: awslib14/Storage/SnowballSnowballImportExport
+AWS Snowcone: awslib14/Storage/Snowcone
+AWS Snowmobile: awslib14/Storage/Snowmobile
+AWS Source Code: awslib14/General/SourceCode
+AWS Spot Fleet: awslib14/GroupIcons/SpotFleet
+AWS Step Function: awslib14/GroupIcons/StepFunction
+AWS Step Functions: awslib14/ApplicationIntegration/StepFunctions
+AWS Step Functions Workflow: awslib14/Groups/StepFunctionsWorkflow
+AWS Storage: awslib14/Storage/Storage
+AWS Storage Gateway: awslib14/Storage/StorageGateway
+AWS Storage Gateway Amazon FSx File Gateway: awslib14/Storage/StorageGatewayAmazonFSxFileGateway
+AWS Storage Gateway Amazon S3 File Gateway: awslib14/Storage/StorageGatewayAmazonS3FileGateway
+AWS Storage Gateway Cached Volume: awslib14/Storage/StorageGatewayCachedVolume
+AWS Storage Gateway File Gateway: awslib14/Storage/StorageGatewayFileGateway
+AWS Storage Gateway Noncached Volume: awslib14/Storage/StorageGatewayNoncachedVolume
+AWS Storage Gateway Tape Gateway: awslib14/Storage/StorageGatewayTapeGateway
+AWS Storage Gateway Virtual Tape Library: awslib14/Storage/StorageGatewayVirtualTapeLibrary
+AWS Storage Gateway Volume Gateway: awslib14/Storage/StorageGatewayVolumeGateway
+AWS Sumerian: awslib14/VRAR/Sumerian
+AWS Support: awslib14/CustomerEnablement/Support
+AWS Systems Manager: awslib14/ManagementGovernance/SystemsManager
+AWS Systems Manager Automation: awslib14/ManagementGovernance/SystemsManagerAutomation
+AWS Systems Manager Change Calendar: awslib14/ManagementGovernance/SystemsManagerChangeCalendar
+AWS Systems Manager Change Manager: awslib14/ManagementGovernance/SystemsManagerChangeManager
+AWS Systems Manager Compliance: awslib14/ManagementGovernance/SystemsManagerCompliance
+AWS Systems Manager Documents: awslib14/ManagementGovernance/SystemsManagerDocuments
+AWS Systems Manager Incident Manager: awslib14/ManagementGovernance/SystemsManagerIncidentManager
+AWS Systems Manager Inventory: awslib14/ManagementGovernance/SystemsManagerInventory
+AWS Systems Manager Maintenance Windows: awslib14/ManagementGovernance/SystemsManagerMaintenanceWindows
+AWS Systems Manager Ops Center: awslib14/ManagementGovernance/SystemsManagerOpsCenter
+AWS Systems Manager Parameter Store: awslib14/ManagementGovernance/SystemsManagerParameterStore
+AWS Systems Manager Patch Manager: awslib14/ManagementGovernance/SystemsManagerPatchManager
+AWS Systems Manager Run Command: awslib14/ManagementGovernance/SystemsManagerRunCommand
+AWS Systems Manager Session Manager: awslib14/ManagementGovernance/SystemsManagerSessionManager
+AWS Systems Manager State Manager: awslib14/ManagementGovernance/SystemsManagerStateManager
+AWS Tapestorage: awslib14/General/Tapestorage
+AWS Tensor Flow on AWS: awslib14/MachineLearning/TensorFlowonAWS
+AWS Textract: awslib14/MachineLearning/Textract
+AWS Thinkbox Deadline: awslib14/Compute/ThinkboxDeadline
+AWS Thinkbox Frost: awslib14/Compute/ThinkboxFrost
+AWS Thinkbox Krakatoa: awslib14/Compute/ThinkboxKrakatoa
+AWS Thinkbox Sequoia: awslib14/Compute/ThinkboxSequoia
+AWS Thinkbox Stoke: awslib14/Compute/ThinkboxStoke
+AWS Thinkbox X Mesh: awslib14/Compute/ThinkboxXMesh
+AWS Timestream: awslib14/Database/Timestream
+AWS Toolkit: awslib14/General/Toolkit
+AWS Tools and SDKs: awslib14/DeveloperTools/ToolsandSDKs
+AWS Torch Serve: awslib14/MachineLearning/TorchServe
+AWS Traditional Server: awslib14/General/Traditionalserver
+AWS Training Certification: awslib14/CustomerEnablement/TrainingCertification
+AWS Transcribe: awslib14/MachineLearning/Transcribe
+AWS Transfer Family: awslib14/MigrationTransfer/TransferFamily
+AWS Transfer Family AWS FTP: awslib14/MigrationTransfer/TransferFamilyAWSFTP
+AWS Transfer Family AWS FTPS: awslib14/MigrationTransfer/TransferFamilyAWSFTPS
+AWS Transfer Family AWS SFTP: awslib14/MigrationTransfer/TransferFamilyAWSSFTP
+AWS Transit Gateway: awslib14/NetworkingContentDelivery/TransitGateway
+AWS Transit Gateway Attachment: awslib14/NetworkingContentDelivery/TransitGatewayAttachment
+AWS Translate: awslib14/MachineLearning/Translate
+AWS Trusted Advisor: awslib14/ManagementGovernance/TrustedAdvisor
+AWS Trusted Advisor Checklist: awslib14/ManagementGovernance/TrustedAdvisorChecklist
+AWS Trusted Advisor Checklist Cost: awslib14/ManagementGovernance/TrustedAdvisorChecklistCost
+AWS Trusted Advisor Checklist Fault Tolerant: awslib14/ManagementGovernance/TrustedAdvisorChecklistFaultTolerant
+AWS Trusted Advisor Checklist Performance: awslib14/ManagementGovernance/TrustedAdvisorChecklistPerformance
+AWS Trusted Advisor Checklist Security: awslib14/ManagementGovernance/TrustedAdvisorChecklistSecurity
+AWS User: awslib14/General/User
+AWS Users: awslib14/General/Users
+AWS VMware Cloud on AWS: awslib14/Compute/VMwareCloudonAWS
+AWS VPC: awslib14/Groups/VPC
+AWS VPC Carrier Gateway: awslib14/NetworkingContentDelivery/VPCCarrierGateway
+AWS VPC Customer Gateway: awslib14/NetworkingContentDelivery/VPCCustomerGateway
+AWS VPC Elastic Network Adapter: awslib14/NetworkingContentDelivery/VPCElasticNetworkAdapter
+AWS VPC Elastic Network Interface: awslib14/NetworkingContentDelivery/VPCElasticNetworkInterface
+AWS VPC Endpoints: awslib14/NetworkingContentDelivery/VPCEndpoints
+AWS VPC Flow Logs: awslib14/NetworkingContentDelivery/VPCFlowLogs
+AWS VPC Internet Gateway: awslib14/NetworkingContentDelivery/VPCInternetGateway
+AWS VPC NAT Gateway: awslib14/NetworkingContentDelivery/VPCNATGateway
+AWS VPC Network Access Analyzer: awslib14/NetworkingContentDelivery/VPCNetworkAccessAnalyzer
+AWS VPC Network Access Control List: awslib14/NetworkingContentDelivery/VPCNetworkAccessControlList
+AWS VPC Peering Connection: awslib14/NetworkingContentDelivery/VPCPeeringConnection
+AWS VPC Reachability Analyzer: awslib14/NetworkingContentDelivery/VPCReachabilityAnalyzer
+AWS VPC Router: awslib14/NetworkingContentDelivery/VPCRouter
+AWS VPC Subnet Private: awslib14/GroupIcons/VPCSubnetPrivate
+AWS VPC Subnet Public: awslib14/GroupIcons/VPCSubnetPublic
+AWS VPC Traffic Mirroring: awslib14/NetworkingContentDelivery/VPCTrafficMirroring
+AWS VPC VPN Connection: awslib14/NetworkingContentDelivery/VPCVPNConnection
+AWS VPC VPN Gateway: awslib14/NetworkingContentDelivery/VPCVPNGateway
+AWS VRAR: awslib14/VRAR/VRAR
+AWS Virtual Private Cloud: awslib14/NetworkingContentDelivery/VirtualPrivateCloud
+AWS Virtual Private Cloud Vpc: awslib14/GroupIcons/VirtualPrivateCloudVPC
+AWS WAF: awslib14/SecurityIdentityCompliance/WAF
+AWS WAF Bad Bot: awslib14/SecurityIdentityCompliance/WAFBadBot
+AWS WAF Bot: awslib14/SecurityIdentityCompliance/WAFBot
+AWS WAF Bot Control: awslib14/SecurityIdentityCompliance/WAFBotControl
+AWS WAF Filtering Rule: awslib14/SecurityIdentityCompliance/WAFFilteringRule
+AWS WAF Labels: awslib14/SecurityIdentityCompliance/WAFLabels
+AWS WAF Managed Rule: awslib14/SecurityIdentityCompliance/WAFManagedRule
+AWS WAF Rule: awslib14/SecurityIdentityCompliance/WAFRule
+AWS Waf: logos/aws-waf
+AWS Wavelength: awslib14/Compute/Wavelength
+AWS Well Architected Tool: awslib14/ManagementGovernance/WellArchitectedTool
+AWS Work Docs: awslib14/BusinessApplications/WorkDocs
+AWS Work Docs SDK: awslib14/BusinessApplications/WorkDocsSDK
+AWS Work Link: awslib14/EndUserComputing/WorkLink
+AWS Work Mail: awslib14/BusinessApplications/WorkMail
+AWS Work Spaces: awslib14/EndUserComputing/WorkSpaces
+AWS Work Spaces Web: awslib14/EndUserComputing/WorkSpacesWeb
+AWS X Ray: awslib14/DeveloperTools/XRay
+Aarch64: tupadr3/devicons2/aarch64
+Accessible Icon: tupadr3/font-awesome-5/accessible_icon
+Accusoft: tupadr3/font-awesome-5/accusoft
+Acquisitions Incorporated: tupadr3/font-awesome-5/acquisitions_incorporated
+ActiveMQ: cloudinsight/activemq
+Ad: tupadr3/font-awesome-5/ad
+Address Book: tupadr3/font-awesome-5/address_book
+Address Card: tupadr3/font-awesome-5/address_card
+Adjust: tupadr3/font-awesome-5/adjust
+Admob: logos/admob
+Adroll: logos/adroll
+Adversal: tupadr3/font-awesome-5/adversal
+Adyen: logos/adyen
+Aerospike: logos/aerospike
+Affiliatetheme: tupadr3/font-awesome-5/affiliatetheme
+Aftereffects: tupadr3/devicons2/aftereffects
+Air Freshener: tupadr3/font-awesome-5/air_freshener
+Airbnb: tupadr3/font-awesome-5/airbnb
+Airbrake: logos/airbrake
+Airflow: logos/airflow
+Airtable: logos/airtable
+Akamai: logos/akamai
+Akka: logos/akka
+Alfresco: logos/alfresco
+Algolia: tupadr3/font-awesome-5/algolia
+Align Center: tupadr3/font-awesome-5/align_center
+Align Justify: tupadr3/font-awesome-5/align_justify
+Align Left: tupadr3/font-awesome-5/align_left
+Align Right: tupadr3/font-awesome-5/align_right
+Alipay: tupadr3/font-awesome-5/alipay
+Aliyun: cloudinsight/aliyun
+Allergies: tupadr3/font-awesome-5/allergies
+Alma: logos/alma
+Altair: logos/altair
+Amazon: tupadr3/font-awesome-5/amazon
+Amazon Chime: logos/amazon-chime
+Amazon Connect: logos/amazon-connect
+Amazon Pay: tupadr3/font-awesome-5/amazon_pay
+Amazon Web Services Original: tupadr3/devicons2/amazonwebservices_original
+Amazon Web Services Wordmark: tupadr3/devicons2/amazonwebservices_wordmark
+Ambulance: tupadr3/font-awesome-5/ambulance
+American Sign Language Interpreting: tupadr3/font-awesome-5/american_sign_language_interpreting
+Amex: logos/amex
+Amilia: tupadr3/font-awesome-5/amilia
+Ampersand: logos/ampersand
+Anchor: tupadr3/font-awesome-5/anchor
+Android: tupadr3/font-awesome-5/android
+Android Icon: logos/android-icon
+Android Wordmark: tupadr3/devicons2/android_wordmark
+Angellist: tupadr3/font-awesome-5/angellist
+Angle Double Down: tupadr3/font-awesome-5/angle_double_down
+Angle Double Left: tupadr3/font-awesome-5/angle_double_left
+Angle Double Right: tupadr3/font-awesome-5/angle_double_right
+Angle Double Up: tupadr3/font-awesome-5/angle_double_up
+Angle Down: tupadr3/font-awesome-5/angle_down
+Angle Left: tupadr3/font-awesome-5/angle_left
+Angle Right: tupadr3/font-awesome-5/angle_right
+Angle Up: tupadr3/font-awesome-5/angle_up
+Angry: tupadr3/font-awesome-5/angry
+Angrycreative: tupadr3/font-awesome-5/angrycreative
+Angular: tupadr3/font-awesome-5/angular
+Angular Icon: logos/angular-icon
+AngularJS: tupadr3/devicons2/angularjs
+AngularJS Wordmark: tupadr3/devicons2/angularjs_wordmark
+Ankh: tupadr3/font-awesome-5/ankh
+Ansible: logos/ansible
+Apache: tupadr3/devicons2/apache
+Apache Camel: logos/apache-camel
+Apache Cloudstack: logos/apache_cloudstack
+Apache Line: tupadr3/devicons2/apache_line
+Apache Line Wordmark: tupadr3/devicons2/apache_line_wordmark
+Apache Wordmark: tupadr3/devicons2/apache_wordmark
+Apiary: logos/apiary
+Apigee: logos/apigee
+Apollostack: logos/apollostack
+App Configuration: azure/Management/AppConfiguration
+App Store: tupadr3/font-awesome-5/app_store
+App Store Ios: tupadr3/font-awesome-5/app_store_ios
+Appbase: logos/appbase
+Appcelerator: tupadr3/devicons/appcelerator
+Appcelerator Original: tupadr3/devicons2/appcelerator_original
+Appcelerator Wordmark: tupadr3/devicons2/appcelerator_wordmark
+Appcode: logos/appcode
+Appdynamics: logos/appdynamics
+Apper: tupadr3/font-awesome-5/apper
+Appfog: logos/appfog
+Apphub: logos/apphub
+Appium: logos/appium
+Apple: tupadr3/font-awesome-5/apple
+Apple Alt: tupadr3/font-awesome-5/apple_alt
+Apple App Store: logos/apple-app-store
+Apple Original: tupadr3/devicons2/apple_original
+Apple Pay: tupadr3/font-awesome-5/apple_pay
+Appmaker: logos/appmaker
+Apportable: logos/apportable
+Appsignal: logos/appsignal
+Appsignal Icon: logos/appsignal-icon
+Appstore: tupadr3/devicons/appstore
+Apptentive: logos/apptentive
+Appveyor: logos/appveyor
+Appwrite: tupadr3/devicons2/appwrite
+Appwrite Wordmark: tupadr3/devicons2/appwrite_wordmark
+Aptana: tupadr3/devicons/aptana
+ArangoDB: logos/arangodb
+ArchLinux: logos/archlinux
+Archive: tupadr3/font-awesome-5/archive
+Archway: tupadr3/font-awesome-5/archway
+Arduino: logos/arduino
+Armory: logos/armory
+Arrow Alt Circle Down: tupadr3/font-awesome-5/arrow_alt_circle_down
+Arrow Alt Circle Left: tupadr3/font-awesome-5/arrow_alt_circle_left
+Arrow Alt Circle Right: tupadr3/font-awesome-5/arrow_alt_circle_right
+Arrow Alt Circle Up: tupadr3/font-awesome-5/arrow_alt_circle_up
+Arrow Circle Down: tupadr3/font-awesome-5/arrow_circle_down
+Arrow Circle Left: tupadr3/font-awesome-5/arrow_circle_left
+Arrow Circle Right: tupadr3/font-awesome-5/arrow_circle_right
+Arrow Circle Up: tupadr3/font-awesome-5/arrow_circle_up
+Arrow Down: tupadr3/font-awesome-5/arrow_down
+Arrow Left: tupadr3/font-awesome-5/arrow_left
+Arrow Right: tupadr3/font-awesome-5/arrow_right
+Arrow Up: tupadr3/font-awesome-5/arrow_up
+Arrows Alt: tupadr3/font-awesome-5/arrows_alt
+Arrows Alt H: tupadr3/font-awesome-5/arrows_alt_h
+Arrows Alt V: tupadr3/font-awesome-5/arrows_alt_v
+Artstation: tupadr3/font-awesome-5/artstation
+Asana: logos/asana
+Assistive Listening Systems: tupadr3/font-awesome-5/assistive_listening_systems
+Asterisk: tupadr3/font-awesome-5/asterisk
+Astronomer: logos/astronomer
+Asymmetrik: tupadr3/font-awesome-5/asymmetrik
+At: tupadr3/font-awesome-5/at
+Atlas: tupadr3/font-awesome-5/atlas
+Atlassian: tupadr3/font-awesome-5/atlassian
+Atom: tupadr3/font-awesome-5/atom
+Atom Original: tupadr3/devicons2/atom_original
+Atom Original Wordmark: tupadr3/devicons2/atom_original_wordmark
+Atomic: logos/atomic
+Audible: tupadr3/font-awesome-5/audible
+Audio Description: tupadr3/font-awesome-5/audio_description
+Aurelia: logos/aurelia
+Aurora: logos/aurora
+Aurous: logos/aurous
+Auth0: logos/auth0
+Authy: logos/authy
+AutoIT: logos/autoit
+Autocode: logos/autocode
+Autoprefixer: tupadr3/font-awesome-5/autoprefixer
+Ava: logos/ava
+Avianex: tupadr3/font-awesome-5/avianex
+Aviato: tupadr3/font-awesome-5/aviato
+Award: tupadr3/font-awesome-5/award
+Awesome: logos/awesome
+Azure: azure/General/Azure
+Azure API Management: azure/Web/AzureAPIManagement
+Azure Access Control: azure/Security/AzureAccessControl
+Azure Active Directory: azure/Identity/AzureActiveDirectory
+Azure Active Directory B2C: azure/Identity/AzureActiveDirectoryB2C
+Azure Active Directory Connect Health: azure/Identity/AzureActiveDirectoryConnectHealth
+Azure Active Directory Domain Services: azure/Identity/AzureActiveDirectoryDomainServices
+Azure Active Directory Group: azure/Identity/AzureActiveDirectoryGroup
+Azure Active Directory Identity Protection: azure/Identity/AzureActiveDirectoryIdentityProtection
+Azure Active Directory Roles And Administrators: azure/Identity/AzureActiveDirectoryRolesAndAdministrators
+Azure Active Directory User: azure/Identity/AzureActiveDirectoryUser
+Azure Advanced Tools: azure/Web/AzureAdvancedTools
+Azure Analysis Services: azure/Analytics/AzureAnalysisServices
+Azure App Registration: azure/Identity/AzureAppRegistration
+Azure App Service: azure/Compute/AzureAppService
+Azure App Service Certificate: azure/Web/AzureAppServiceCertificate
+Azure App Service Domain: azure/Web/AzureAppServiceDomain
+Azure App Service Plan: azure/Compute/AzureAppServicePlan
+Azure App Service Plan Linux: azure/Compute/AzureAppServicePlanLinux
+Azure Application Gateway: azure/Networking/AzureApplicationGateway
+Azure Application Insights: azure/DevOps/AzureApplicationInsights
+Azure Application Security Group: azure/Security/AzureApplicationSecurityGroup
+Azure Arc: azure/Management/AzureArc
+Azure Arc Machine: azure/Management/AzureArcMachine
+Azure Artifacts: azure/DevOps/AzureArtifacts
+Azure Automanaged Virtual Machine: azure/Compute/AzureAutomanagedVirtualMachine
+Azure Automation: azure/Management/AzureAutomation
+Azure Availabilty Set: azure/Compute/AzureAvailabiltySet
+Azure Azure DDoS Protection: azure/Networking/AzureAzureDDoSProtection
+Azure Backup: azure/Management/AzureBackup
+Azure Bastion: azure/Networking/AzureBastion
+Azure Batch: azure/Compute/AzureBatch
+Azure Batch AI: azure/AIMachineLearning/AzureBatchAI
+Azure Batch Account: azure/Compute/AzureBatchAccount
+Azure Biz Talk: azure/Integration/AzureBizTalk
+Azure Blob Storage: azure/Storage/AzureBlobStorage
+Azure Blockchain Connection: azure/Blockchain/AzureBlockchainConnection
+Azure Blockchain Consortium: azure/Blockchain/AzureBlockchainConsortium
+Azure Blockchain Member: azure/Blockchain/AzurBlockchainMember
+Azure Blockchain Service: azure/Blockchain/AzurBlockchainService
+Azure Blockchain Token Service: azure/Blockchain/AzurBlockchainTokenService
+Azure Blueprints: azure/Management/AzureBlueprints
+Azure Boards: azure/DevOps/AzureBoards
+Azure Bot Service: azure/AIMachineLearning/AzureBotService
+Azure CDN: azure/Web/AzureCDN
+Azure CORS: azure/Web/AzureCORS
+Azure Cdn Profile: azure/Networking/AzureCDNProfile
+Azure Cloud Services: azure/Compute/AzureCloudServices
+Azure Cognitive Services: azure/AIMachineLearning/AzureCognitiveServices
+Azure Compliance: azure/Management/AzureCompliance
+Azure Conditional Access: azure/Security/AzureConditionalAccess
+Azure Container App: azure/Containers/AzureContainerApp
+Azure Container Instance: azure/Containers/AzureContainerInstance
+Azure Container Registry: azure/Containers/AzureContainerRegistry
+Azure Container Service: azure/Compute/AzureContainerService
+Azure Container Settings: azure/Web/AzureContainerSettings
+Azure Cosmos DB: azure/Databases/AzureCosmosDb
+Azure Cost Alert: azure/Management/AzureCostAlert
+Azure Cost Analysis: azure/Management/AzureCostAnalysis
+Azure Cost Budget: azure/Management/AzureCostBudget
+Azure Cost Management: azure/Management/AzureCostManagement
+Azure Cost Management And Billing: azure/Management/AzureCostManagementAndBilling
+Azure DNS: azure/Networking/AzureDNS
+Azure DNS Server: azure/Networking/AzureDNSServer
+Azure Data Box: azure/Storage/AzureDataBox
+Azure Data Box Edge: azure/Migrate/AzureDataBoxEdge
+Azure Data Catalog: azure/Analytics/AzureDataCatalog
+Azure Data Explorer: azure/Analytics/AzureDataExplorer
+Azure Data Explorer Cluster: azure/Databases/AzureDataExplorerCluster
+Azure Data Factory: azure/Databases/AzureDataFactory
+Azure Data Lake Storage: azure/Storage/AzureDataLakeStorage
+Azure Data Lake Store Gen1: azure/Analytics/AzureDataLakeStoreGen1
+Azure DataBricks: azure/Databases/AzureDataBricks
+Azure Database For Maria DB: azure/Databases/AzureDatabaseForMariaDB
+Azure Database For MySql: azure/Databases/AzureDatabaseForMySQL
+Azure Database For PostgreSQL: azure/Databases/AzureDatabaseForPostgreSQL
+Azure Database Migration Service: azure/Databases/AzureDatabaseMigrationService
+Azure Databricks: azure/Analytics/AzureDatabricks
+Azure Defender: azure/Security/AzureDefender
+Azure Deployment Credentials: azure/Web/AzureDeploymentCredentials
+Azure Dev Test Labs: azure/DevOps/AzureDevTestLabs
+Azure DevOps: azure/DevOps/AzureDevOps
+Azure DevOps Organisation: azure/DevOps/AzureDevOpsOrganisation
+Azure Device Provisioning Service: azure/InternetOfThings/AzureDeviceProvisioningService
+Azure Digital Twins: azure/InternetOfThings/AzureDigitalTwins
+Azure Disk: azure/Compute/AzureDisk
+Azure Disk Encryption Set: azure/Compute/AzureDiskEncryptionSet
+Azure Disk Snapshot: azure/Compute/AzureDiskSnapshot
+Azure Disk Storage: azure/Storage/AzureDiskStorage
+Azure Disk Storage Classic: azure/Storage/AzureDiskStorageClassic
+Azure Enterprise Application: azure/Identity/AzureEnterpriseApplication
+Azure Event Grid: azure/Integration/AzureEventGrid
+Azure Event Grid Domain: azure/Integration/AzureEventGridDomain
+Azure Event Grid Subscription: azure/Integration/AzureEventGridSubscription
+Azure Event Grid Topic: azure/Integration/AzureEventGridTopic
+Azure Event Hub: azure/Analytics/AzureEventHub
+Azure Event Hub Cluster: azure/Analytics/AzureEventHubCluster
+Azure Express Route: azure/Networking/AzureExpressRoute
+Azure Express Route Circuit: azure/Networking/AzureExpressRouteCircuit
+Azure Express Route Direct: azure/Networking/AzureExpressRouteDirect
+Azure File Storage: azure/Storage/AzureFileStorage
+Azure Firewall: azure/Networking/AzureFirewall
+Azure Firewall Manager: azure/Networking/AzureFirewallManager
+Azure Front Door: azure/Networking/AzureFrontDoor
+Azure Front Door Service: azure/Networking/AzureFrontDoorService
+Azure Function: azure/Compute/AzureFunction
+Azure Geo Recovery: azure/Management/AzureGeoRecovery
+Azure Hd Insight Cluster: azure/Analytics/AzureHDInsightCluster
+Azure IP Address Space: azure/Networking/AzureIPAddressSpace
+Azure IP Group: azure/Networking/AzureIPGroups
+Azure Identity Governance: azure/Identity/AzureIdentityGovernance
+Azure Image Classic: azure/Compute/AzureImageClassic
+Azure Image Definition: azure/Compute/AzureImageDefinition
+Azure Image Version: azure/Compute/AzureImageVersion
+Azure Instance Pool: azure/Databases/AzureInstancePool
+Azure Integration Account: azure/Integration/AzureIntegrationAccount
+Azure Intune: azure/Intune/AzureIntune
+Azure Intune Apple: azure/Intune/AzureIntuneApple
+Azure Intune Google: azure/Intune/AzureIntuneGoogle
+Azure Intune Windows: azure/Intune/AzureIntuneWindows
+Azure IoT Central: azure/InternetOfThings/AzureIoTCentral
+Azure IoT Central Applications: azure/InternetOfThings/AzureIoTCentralApplications
+Azure IoT Edge: azure/InternetOfThings/AzureIoTEdge
+Azure IoT Hub: azure/InternetOfThings/AzureIoTHub
+Azure Key Vault: azure/Security/AzureKeyVault
+Azure Kubernetes Service: azure/Containers/AzureKubernetesService
+Azure Lab Services: azure/DevOps/AzureLabServices
+Azure Lighthouse: azure/Management/AzureLighthouse
+Azure Load Balancer: azure/Networking/AzureLoadBalancer
+Azure Log Analytics: azure/Management/AzureLogAnalytics
+Azure Log Analytics Workspace: azure/Analytics/AzureLogAnalyticsWorkspace
+Azure Log Stream: azure/Web/AzureLogStream
+Azure Logic Apps: azure/Integration/AzureLogicApps
+Azure Machine Learning Service: azure/AIMachineLearning/AzureMachineLearningService
+Azure Machine Learning Studio: azure/AIMachineLearning/AzureMachineLearningStudio
+Azure Machine Learning Studio Classic: azure/AIMachineLearning/AzureMachineLearningStudioClassic
+Azure Machine Learning Studio Web Service Plan: azure/AIMachineLearning/AzureMachineLearningStudioWebServicePlan
+Azure Machine Learning Studio Workspace: azure/AIMachineLearning/AzureMachineLearningStudioWorkspace
+Azure Managed Application Center: azure/Management/AzureManagedApplicationCenter
+Azure Managed Applications: azure/Management/AzureManagedApplications
+Azure Managed Database: azure/Databases/AzureManagedDatabase
+Azure Managed Disks: azure/Storage/AzureManagedDisks
+Azure Managed Identity: azure/Identity/AzureManagedIdentity
+Azure Management Groups: azure/Management/AzureManagementGroups
+Azure Management Portal: azure/Management/AzureManagementPortal
+Azure Maps: azure/InternetOfThings/AzureMaps
+Azure Media: azure/Media/AzureMedia
+Azure Media File: azure/Media/AzureMediaFile
+Azure Media Services: azure/Media/AzureMediaServices
+Azure Mesh Application: azure/Compute/AzureMeshApplication
+Azure Metrics: azure/Management/AzureMetrics
+Azure Migrate: azure/Migrate/AzureMigrate
+Azure Mobile App: azure/Mobile/AzureMobileApp
+Azure Mobile Engagement: azure/Mobile/AzureMobileEngagement
+Azure Monitor: azure/Management/AzureMonitor
+Azure NAT: azure/Networking/AzureNAT
+Azure NSG: azure/Networking/AzureNSG
+Azure Net App Files: azure/Storage/AzureNetAppFiles
+Azure Network Interface: azure/Networking/AzureNetworkInterface
+Azure Notification Hub: azure/Mobile/AzureNotificationHub
+Azure Notification Hub Namespace: azure/Mobile/AzureNotificationHubNamespace
+Azure Notification Hubs: azure/Mobile/AzureNotificationHubs
+Azure Partner Topic: azure/Integration/AzurePartnerTopic
+Azure Pipelines: azure/DevOps/AzurePipelines
+Azure Policy: azure/Management/AzurePolicy
+Azure PowerBI Embedded: azure/Analytics/AzurePowerBIEmbedded
+Azure Private Link: azure/Networking/AzurePrivateLink
+Azure Private Link Hub: azure/Networking/AzurePrivateLinkHub
+Azure Private Link Service: azure/Networking/AzurePrivateLinkService
+Azure Properties: azure/Web/AzureProperties
+Azure Public IP Address Classic: azure/Networking/AzurePublicIPAddressClassic
+Azure Public IP Prefix: azure/Networking/AzurePublicIPPrefix
+Azure Public Ip Address: azure/Networking/AzurePublicIPAddress
+Azure Purview Account: azure/Analytics/AzurePurviewAccount
+Azure Queue Storage: azure/Storage/AzureQueueStorage
+Azure Quota: azure/Web/AzureQuota
+Azure Recovery Service Vault: azure/Management/AzureRecoveryServiceVault
+Azure Redis Cache: azure/Databases/AzureRedisCache
+Azure Repos: azure/DevOps/AzureRepos
+Azure Resource Graph Explorer: azure/Management/AzureResourceGraphExplorer
+Azure Resource Group: azure/Management/AzureResourceGroups
+Azure Resource Group List: azure/Management/AzureResourceGroupList
+Azure Resource Linked: azure/Management/AzureResourceLinked
+Azure Route Filter: azure/Networking/AzureRouteFilter
+Azure Route Table: azure/Networking/AzureRouteTable
+Azure SQL: azure/Databases/AzureSql
+Azure SQL Data Warehouse: azure/Databases/AzureSqlDataWarehouse
+Azure SQL Database: azure/Databases/AzureSqlDatabase
+Azure SQL Elastic Pool: azure/Databases/AzureSqlElasticPool
+Azure SQL Managed Instance: azure/Databases/AzureSqlManagedInstance
+Azure SQL Server: azure/Databases/AzureSqlServer
+Azure SQL Stretch Database: azure/Databases/AzureSqlStretchDatabase
+Azure SQL Virtual Machine: azure/Databases/AzureSqlVirtualMachine
+Azure SSIS Lift And Shift: azure/Databases/AzureSSISLiftAndShift
+Azure Scheduler: azure/Management/AzureScheduler
+Azure Search: azure/Web/AzureSearch
+Azure Security Center: azure/Security/AzureSecurityCenter
+Azure Sentinel: azure/Security/AzureSentinel
+Azure Server Farm: azure/Compute/AzureServerFarm
+Azure Service Bus: azure/Integration/AzureServiceBus
+Azure Service Bus Queue: azure/Integration/AzureServiceBusQueue
+Azure Service Bus Topic: azure/Integration/AzureServiceBusTopic
+Azure Service Endpoint: azure/Networking/AzureServiceEndpoint
+Azure Service Endpoint Policy: azure/Networking/AzureServiceEndpointPolicy
+Azure Service Environment: azure/Containers/AzureServiceEnvironment
+Azure Service Fabric: azure/Compute/AzureServiceFabric
+Azure Shared Image Gallery: azure/Compute/AzureSharedImageGallery
+Azure Signal R Service: azure/Web/AzureSignalRService
+Azure Site Recovery: azure/Management/AzureSiteRecovery
+Azure Solutions: azure/Management/AzureSolutions
+Azure Spring Cloud: azure/Compute/AzureSpringCloud
+Azure Stack: azure/Stack/AzureStack
+Azure Stack Capacity: azure/Stack/AzureStackCapacity
+Azure Stack Infrastructure Backup: azure/Stack/AzureStackInfrastructureBackup
+Azure Stack Multi Tenancy: azure/Stack/AzureStackMultiTenancy
+Azure Stack Offer: azure/Stack/AzureStackOffer
+Azure Stack Plan: azure/Stack/AzureStackPlan
+Azure Stack Update: azure/Stack/AzureStackUpdate
+Azure Stack User Subscription: azure/Stack/AzureStackUserSubscription
+Azure Stor Simple: azure/Storage/AzureStorSimple
+Azure Storage: azure/Storage/AzureStorage
+Azure Storage Classic: azure/Storage/AzureStorageClassic
+Azure Storage Container: azure/Storage/AzureStorageContainer
+Azure Stream Analytics Job: azure/Analytics/AzureStreamAnalyticsJob
+Azure Subnet: azure/Networking/AzureSubnet
+Azure Subscription: azure/Management/AzureSubscription
+Azure Synapse Analytics: azure/Analytics/AzureSynapseAnalytics
+Azure System Topic: azure/Integration/AzureSystemTopic
+Azure Tag: azure/Management/AzureTag
+Azure Test Plans: azure/DevOps/AzureTestPlans
+Azure Time Series Data Set: azure/InternetOfThings/AzureTimeSeriesDataSet
+Azure Time Series Insights: azure/InternetOfThings/AzureTimeSeriesInsights
+Azure Time Series Insights Access Policy: azure/InternetOfThings/AzureTimeSeriesInsightsAccessPolicy
+Azure Time Series Insights Environment: azure/InternetOfThings/AzureTimeSeriesInsightsEnvironment
+Azure Time Series Insights Event Source: azure/InternetOfThings/AzureTimeSeriesInsightsEventSource
+Azure Traffic Manager: azure/Networking/AzureTrafficManager
+Azure Translator Text: azure/AIMachineLearning/AzureTranslatorText
+Azure User Privacy: azure/Management/AzureUserPrivacy
+Azure VPN Gateway: azure/Networking/AzureVPNGateway
+Azure Virtual Cluster: azure/Databases/AzureVirtualCluster
+Azure Virtual Desktop: azure/Compute/AzureVirtualDesktop
+Azure Virtual Desktop Application Group: azure/Compute/AzureVirtualDesktopApplicationGroup
+Azure Virtual Desktop Host Pool: azure/Compute/AzureVirtualDesktopHostPool
+Azure Virtual Desktop Workspace: azure/Compute/AzureVirtualDesktopWorkspace
+Azure Virtual Machine: azure/Compute/AzureVirtualMachine
+Azure Virtual Machine Classic: azure/Compute/AzureVirtualMachineClassic
+Azure Virtual Machine Scale Set: azure/Compute/AzureVirtualMachineScaleSet
+Azure Virtual Network: azure/Networking/AzureVirtualNetwork
+Azure Virtual Network Peering: azure/Networking/AzureVirtualNetworkPeering
+Azure Virtual WAN: azure/Networking/AzureVirtualWAN
+Azure WAF Policies: azure/Networking/AzureWAFPolicies
+Azure Web App: azure/Web/AzureWebApp
+Azure Web Slot: azure/Compute/AzureWebSlot
+Azure Web Test: azure/Compute/AzureWebTest
+Azure Workbook: azure/General/AzureWorkbook
+Azure Workflow: azure/General/AzureWorkflow
+Azure Workspace: azure/Compute/AzureWorkspace
+BI: cloudinsight/bi
+Babel: tupadr3/devicons2/babel
+Baby: tupadr3/font-awesome-5/baby
+Baby Carriage: tupadr3/font-awesome-5/baby_carriage
+Backbone: tupadr3/devicons/backbone
+Backbone Icon: logos/backbone-icon
+BackboneJS: tupadr3/devicons2/backbonejs
+BackboneJS Wordmark: tupadr3/devicons2/backbonejs_wordmark
+Backerkit: logos/backerkit
+Backspace: tupadr3/font-awesome-5/backspace
+Backward: tupadr3/font-awesome-5/backward
+Bacon: tupadr3/font-awesome-5/bacon
+Bacteria: tupadr3/font-awesome-5/bacteria
+Bacterium: tupadr3/font-awesome-5/bacterium
+Bahai: tupadr3/font-awesome-5/bahai
+Baker Street: logos/baker-street
+Balance Scale: tupadr3/font-awesome-5/balance_scale
+Balance Scale Left: tupadr3/font-awesome-5/balance_scale_left
+Balance Scale Right: tupadr3/font-awesome-5/balance_scale_right
+Bamboo: logos/bamboo
+Ban: tupadr3/font-awesome-5/ban
+Band Aid: tupadr3/font-awesome-5/band_aid
+Bandcamp: tupadr3/font-awesome-5/bandcamp
+Barcode: tupadr3/font-awesome-5/barcode
+Bars: tupadr3/font-awesome-5/bars
+Baseball Ball: tupadr3/font-awesome-5/baseball_ball
+Basecamp: logos/basecamp
+Basekit: logos/basekit
+Bash: tupadr3/devicons2/bash
+Basketball Ball: tupadr3/font-awesome-5/basketball_ball
+Batch: logos/batch
+Bath: tupadr3/font-awesome-5/bath
+Battery Empty: tupadr3/font-awesome-5/battery_empty
+Battery Full: tupadr3/font-awesome-5/battery_full
+Battery Half: tupadr3/font-awesome-5/battery_half
+Battery Quarter: tupadr3/font-awesome-5/battery_quarter
+Battery Three Quarters: tupadr3/font-awesome-5/battery_three_quarters
+Battle Net: tupadr3/font-awesome-5/battle_net
+BearyChat: cloudinsight/bearychat
+Beats: logos/beats
+Bed: tupadr3/font-awesome-5/bed
+Beer: tupadr3/font-awesome-5/beer
+Behance: tupadr3/font-awesome-5/behance
+Behance Square: tupadr3/font-awesome-5/behance_square
+Behance Wordmark: tupadr3/devicons2/behance_wordmark
+Bell: tupadr3/font-awesome-5/bell
+Bell Slash: tupadr3/font-awesome-5/bell_slash
+Bem: logos/bem
+Bem 2: logos/bem-2
+Bezier Curve: tupadr3/font-awesome-5/bezier_curve
+Bible: tupadr3/font-awesome-5/bible
+Bicycle: tupadr3/font-awesome-5/bicycle
+Bigpanda: logos/bigpanda
+Biking: tupadr3/font-awesome-5/biking
+Bimobject: tupadr3/font-awesome-5/bimobject
+Bing: logos/bing
+Bing Small: tupadr3/devicons/bing_small
+Binoculars: tupadr3/font-awesome-5/binoculars
+Bintray: tupadr3/devicons/bintray
+Biohazard: tupadr3/font-awesome-5/biohazard
+Birthday Cake: tupadr3/font-awesome-5/birthday_cake
+Bitballoon: logos/bitballoon
+Bitbucket: tupadr3/font-awesome-5/bitbucket
+Bitbucket Original: tupadr3/devicons2/bitbucket_original
+Bitbucket Original Wordmark: tupadr3/devicons2/bitbucket_original_wordmark
+Bitcoin: tupadr3/font-awesome-5/bitcoin
+Bitnami: logos/bitnami
+Bitrise: logos/bitrise
+Bitrise Icon: logos/bitrise-icon
+Bity: tupadr3/font-awesome-5/bity
+Black Tie: tupadr3/font-awesome-5/black_tie
+Blackberry: tupadr3/font-awesome-5/blackberry
+Blender: tupadr3/font-awesome-5/blender
+Blender Phone: tupadr3/font-awesome-5/blender_phone
+Blind: tupadr3/font-awesome-5/blind
+Blocs: logos/blocs
+Blog: tupadr3/font-awesome-5/blog
+Blogger: tupadr3/font-awesome-5/blogger
+Blogger B: tupadr3/font-awesome-5/blogger_b
+Blossom: logos/blossom
+Bluemix: logos/bluemix
+Blueprint: logos/blueprint
+Bluetooth: tupadr3/font-awesome-5/bluetooth
+Bluetooth B: tupadr3/font-awesome-5/bluetooth_b
+Bold: tupadr3/font-awesome-5/bold
+Bolt: tupadr3/font-awesome-5/bolt
+Bomb: tupadr3/font-awesome-5/bomb
+Bone: tupadr3/font-awesome-5/bone
+Bong: tupadr3/font-awesome-5/bong
+Book: tupadr3/font-awesome-5/book
+Book Dead: tupadr3/font-awesome-5/book_dead
+Book Medical: tupadr3/font-awesome-5/book_medical
+Book Open: tupadr3/font-awesome-5/book_open
+Book Reader: tupadr3/font-awesome-5/book_reader
+Bookmark: tupadr3/font-awesome-5/bookmark
+Bootstrap: tupadr3/font-awesome-5/bootstrap
+Bootstrap Wordmark: tupadr3/devicons2/bootstrap_wordmark
+Border All: tupadr3/font-awesome-5/border_all
+Border None: tupadr3/font-awesome-5/border_none
+Border Style: tupadr3/font-awesome-5/border_style
+Bosun: logos/bosun
+Botanalytics: logos/botanalytics
+Bourbon: logos/bourbon
+Bower: tupadr3/devicons2/bower
+Bower Line: tupadr3/devicons2/bower_line
+Bower Line Wordmark: tupadr3/devicons2/bower_line_wordmark
+Bower Wordmark: tupadr3/devicons2/bower_wordmark
+Bowling Ball: tupadr3/font-awesome-5/bowling_ball
+Bowtie: logos/bowtie
+Box: tupadr3/font-awesome-5/box
+Box Open: tupadr3/font-awesome-5/box_open
+Box Tissue: tupadr3/font-awesome-5/box_tissue
+Boxes: tupadr3/font-awesome-5/boxes
+Brackets: tupadr3/devicons/brackets
+Braille: tupadr3/font-awesome-5/braille
+Brain: tupadr3/font-awesome-5/brain
+Branch: logos/branch
+Brandfolder: logos/brandfolder
+Brandfolder Icon: logos/brandfolder-icon
+Brave: logos/brave
+Braze: logos/braze
+Bread Slice: tupadr3/font-awesome-5/bread_slice
+Briefcase: tupadr3/font-awesome-5/briefcase
+Briefcase Medical: tupadr3/font-awesome-5/briefcase_medical
+Broadcast Tower: tupadr3/font-awesome-5/broadcast_tower
+Broccoli: logos/broccoli
+Broom: tupadr3/font-awesome-5/broom
+Brotli: logos/brotli
+Browserify: logos/browserify
+Browserify Icon: logos/browserify-icon
+Browserling: logos/browserling
+Browserslist: logos/browserslist
+Browserstack: logos/browserstack
+Browsersync: logos/browsersync
+Brunch: logos/brunch
+Brush: tupadr3/font-awesome-5/brush
+Btc: tupadr3/font-awesome-5/btc
+Buck: logos/buck
+Buddy: logos/buddy
+Buffer: tupadr3/font-awesome-5/buffer
+Bug: tupadr3/font-awesome-5/bug
+Bugherd: logos/bugherd
+Bugsee: logos/bugsee
+Bugsense: tupadr3/devicons/bugsense
+Bugsnag: logos/bugsnag
+Building: tupadr3/font-awesome-5/building
+Bullhorn: tupadr3/font-awesome-5/bullhorn
+Bullseye: tupadr3/font-awesome-5/bullseye
+Bulma: tupadr3/devicons2/bulma
+Burn: tupadr3/font-awesome-5/burn
+Buromobelexperte: tupadr3/font-awesome-5/buromobelexperte
+Bus: tupadr3/font-awesome-5/bus
+Bus Alt: tupadr3/font-awesome-5/bus_alt
+Business Time: tupadr3/font-awesome-5/business_time
+Buy N Large: tupadr3/font-awesome-5/buy_n_large
+Buysellads: tupadr3/font-awesome-5/buysellads
+C: tupadr3/devicons2/c
+C Line: tupadr3/devicons2/c_line
+C#: tupadr3/devicons2/csharp
+C# Line: tupadr3/devicons2/csharp_line
+C++: tupadr3/devicons2/cplusplus
+C++ Line: tupadr3/devicons2/cplusplus_line
+CAS: cloudogu/dogus/cas
+CC Amazon Pay: tupadr3/font-awesome-5/cc_amazon_pay
+CC Amex: tupadr3/font-awesome-5/cc_amex
+CC Apple Pay: tupadr3/font-awesome-5/cc_apple_pay
+CC Diners Club: tupadr3/font-awesome-5/cc_diners_club
+CC Discover: tupadr3/font-awesome-5/cc_discover
+CC Jcb: tupadr3/font-awesome-5/cc_jcb
+CC Mastercard: tupadr3/font-awesome-5/cc_mastercard
+CC Paypal: tupadr3/font-awesome-5/cc_paypal
+CC Stripe: tupadr3/font-awesome-5/cc_stripe
+CC Visa: tupadr3/font-awesome-5/cc_visa
+CI: cloudinsight/ci
+CI Large: cloudinsight/ci-large
+COG: cloudinsight/cog
+CSS 3: logos/css-3
+CSS 3 Official: logos/css-3_official
+CSS Tricks: tupadr3/devicons/css_tricks
+CSS3: tupadr3/devicons2/css3
+CSS3 Alt: tupadr3/font-awesome-5/css3_alt
+CSS3 Full: tupadr3/devicons/css3_full
+CSS3 Wordmark: tupadr3/devicons2/css3_wordmark
+CSSdeck: tupadr3/devicons/cssdeck
+CSSnext: logos/cssnext
+CT: cloudinsight/ct
+Cachet: logos/cachet
+Cacti: cloudinsight/cacti
+Caffe2: logos/caffe2
+CakePHP: logos/cakephp
+CakePHP Wordmark: tupadr3/devicons2/cakephp_wordmark
+Cakephp: tupadr3/devicons2/cakephp
+Calculator: tupadr3/font-awesome-5/calculator
+Calendar: tupadr3/font-awesome-5/calendar
+Calendar Alt: tupadr3/font-awesome-5/calendar_alt
+Calendar Check: tupadr3/font-awesome-5/calendar_check
+Calendar Day: tupadr3/font-awesome-5/calendar_day
+Calendar Minus: tupadr3/font-awesome-5/calendar_minus
+Calendar Plus: tupadr3/font-awesome-5/calendar_plus
+Calendar Times: tupadr3/font-awesome-5/calendar_times
+Calendar Week: tupadr3/font-awesome-5/calendar_week
+Camera: tupadr3/font-awesome-5/camera
+Camera Retro: tupadr3/font-awesome-5/camera_retro
+Campaignmonitor: logos/campaignmonitor
+Campaignmonitor Icon: logos/campaignmonitor-icon
+Campfire: logos/campfire
+Campground: tupadr3/font-awesome-5/campground
+CanJS: logos/canjs
+Canadian Maple Leaf: tupadr3/font-awesome-5/canadian_maple_leaf
+Candy Cane: tupadr3/font-awesome-5/candy_cane
+Cannabis: tupadr3/font-awesome-5/cannabis
+Capistrano: logos/capistrano
+Capsules: tupadr3/font-awesome-5/capsules
+Car: tupadr3/font-awesome-5/car
+Car Alt: tupadr3/font-awesome-5/car_alt
+Car Battery: tupadr3/font-awesome-5/car_battery
+Car Crash: tupadr3/font-awesome-5/car_crash
+Car Side: tupadr3/font-awesome-5/car_side
+Caravan: tupadr3/font-awesome-5/caravan
+Carbide: logos/carbide
+Caret Down: tupadr3/font-awesome-5/caret_down
+Caret Left: tupadr3/font-awesome-5/caret_left
+Caret Right: tupadr3/font-awesome-5/caret_right
+Caret Square Down: tupadr3/font-awesome-5/caret_square_down
+Caret Square Left: tupadr3/font-awesome-5/caret_square_left
+Caret Square Right: tupadr3/font-awesome-5/caret_square_right
+Caret Square Up: tupadr3/font-awesome-5/caret_square_up
+Caret Up: tupadr3/font-awesome-5/caret_up
+Carrot: tupadr3/font-awesome-5/carrot
+Cart Arrow Down: tupadr3/font-awesome-5/cart_arrow_down
+Cart Plus: tupadr3/font-awesome-5/cart_plus
+Cash Register: tupadr3/font-awesome-5/cash_register
+Cassandra: logos/cassandra
+Cat: tupadr3/font-awesome-5/cat
+Celluloid: tupadr3/devicons/celluloid
+CentOS: logos/centos
+Centercode: tupadr3/font-awesome-5/centercode
+Centos: tupadr3/font-awesome-5/centos
+Centos Icon: logos/centos-icon
+Certbot: logos/certbot
+Certificate: tupadr3/font-awesome-5/certificate
+Ceylon: tupadr3/devicons2/ceylon
+Chai: logos/chai
+Chair: tupadr3/font-awesome-5/chair
+Chalk: logos/chalk
+Chalkboard: tupadr3/font-awesome-5/chalkboard
+Chalkboard Teacher: tupadr3/font-awesome-5/chalkboard_teacher
+Changetip: logos/changetip
+Chargebee: logos/chargebee
+Chargebee Icon: logos/chargebee-icon
+Charging Station: tupadr3/font-awesome-5/charging_station
+Chart Area: tupadr3/font-awesome-5/chart_area
+Chart Bar: tupadr3/font-awesome-5/chart_bar
+Chart Line: tupadr3/font-awesome-5/chart_line
+Chart Pie: tupadr3/font-awesome-5/chart_pie
+Chartblocks: logos/chartblocks
+Check: tupadr3/font-awesome-5/check
+Check Circle: tupadr3/font-awesome-5/check_circle
+Check Double: tupadr3/font-awesome-5/check_double
+Check Square: tupadr3/font-awesome-5/check_square
+Cheese: tupadr3/font-awesome-5/cheese
+Chef: logos/chef
+Chess: tupadr3/font-awesome-5/chess
+Chess Bishop: tupadr3/font-awesome-5/chess_bishop
+Chess Board: tupadr3/font-awesome-5/chess_board
+Chess King: tupadr3/font-awesome-5/chess_king
+Chess Knight: tupadr3/font-awesome-5/chess_knight
+Chess Pawn: tupadr3/font-awesome-5/chess_pawn
+Chess Queen: tupadr3/font-awesome-5/chess_queen
+Chess Rook: tupadr3/font-awesome-5/chess_rook
+Chevereto: logos/chevereto
+Chevron Circle Down: tupadr3/font-awesome-5/chevron_circle_down
+Chevron Circle Left: tupadr3/font-awesome-5/chevron_circle_left
+Chevron Circle Right: tupadr3/font-awesome-5/chevron_circle_right
+Chevron Circle Up: tupadr3/font-awesome-5/chevron_circle_up
+Chevron Down: tupadr3/font-awesome-5/chevron_down
+Chevron Left: tupadr3/font-awesome-5/chevron_left
+Chevron Right: tupadr3/font-awesome-5/chevron_right
+Chevron Up: tupadr3/font-awesome-5/chevron_up
+Child: tupadr3/font-awesome-5/child
+Chromatic: logos/chromatic
+Chromatic Icon: logos/chromatic-icon
+Chrome: tupadr3/font-awesome-5/chrome
+Chrome Wordmark: tupadr3/devicons2/chrome_wordmark
+Chromecast: tupadr3/font-awesome-5/chromecast
+Church: tupadr3/font-awesome-5/church
+Circle: tupadr3/font-awesome-5/circle
+Circle Notch: tupadr3/font-awesome-5/circle_notch
+CircleCI: tupadr3/devicons2/circleci
+CircleCI Wordmark: tupadr3/devicons2/circleci_wordmark
+Cirrus: logos/cirrus
+Cisco: tupadr3/devicons/cisco
+City: tupadr3/font-awesome-5/city
+Clickdeploy: logos/clickdeploy
+Clinic Medical: tupadr3/font-awesome-5/clinic_medical
+Clion: logos/clion
+Clipboard: tupadr3/font-awesome-5/clipboard
+Clipboard Check: tupadr3/font-awesome-5/clipboard_check
+Clipboard List: tupadr3/font-awesome-5/clipboard_list
+Cljs: logos/cljs
+Clock: tupadr3/font-awesome-5/clock
+Clojure: tupadr3/devicons/clojure
+Clojure Alt: tupadr3/devicons/clojure_alt
+Clojure Line: tupadr3/devicons2/clojure_line
+Clojurescript: tupadr3/devicons2/clojurescript
+Clone: tupadr3/font-awesome-5/clone
+Close: logos/close
+Closed Captioning: tupadr3/font-awesome-5/closed_captioning
+Cloud: tupadr3/font-awesome-5/cloud
+Cloud Download Alt: tupadr3/font-awesome-5/cloud_download_alt
+Cloud Meatball: tupadr3/font-awesome-5/cloud_meatball
+Cloud Moon: tupadr3/font-awesome-5/cloud_moon
+Cloud Moon Rain: tupadr3/font-awesome-5/cloud_moon_rain
+Cloud Rain: tupadr3/font-awesome-5/cloud_rain
+Cloud Showers Heavy: tupadr3/font-awesome-5/cloud_showers_heavy
+Cloud Sun: tupadr3/font-awesome-5/cloud_sun
+Cloud Sun Rain: tupadr3/font-awesome-5/cloud_sun_rain
+Cloud Upload Alt: tupadr3/font-awesome-5/cloud_upload_alt
+Cloud9: tupadr3/devicons/cloud9
+Cloudacademy: logos/cloudacademy
+Cloudant: logos/cloudant
+Cloudcraft: logos/cloudcraft
+Cloudera: logos/cloudera
+Cloudflare: tupadr3/font-awesome-5/cloudflare
+Cloudinary: logos/cloudinary
+Cloudlinux: logos/cloudlinux
+Cloudogu: cloudogu/dogus/cloudogu
+Cloudscale: tupadr3/font-awesome-5/cloudscale
+Cloudsmith: tupadr3/font-awesome-5/cloudsmith
+Cloudversify: tupadr3/font-awesome-5/cloudversify
+ClusterHQ: logos/clusterhq
+Cobalt: logos/cobalt
+Cockpit: logos/cockpit
+Cocktail: tupadr3/font-awesome-5/cocktail
+Cocoapods: logos/cocoapods
+Coda: tupadr3/devicons/coda
+Codacy: logos/codacy
+Code: tupadr3/font-awesome-5/code
+Code Badge: tupadr3/devicons/code_badge
+Code Branch: tupadr3/font-awesome-5/code_branch
+CodeCov: tupadr3/devicons2/codecov
+Codebase: logos/codebase
+Codebeat: logos/codebeat
+Codecademy: logos/codecademy
+Codeception: logos/codeception
+Codeclimate: logos/codeclimate
+Codecov: logos/codecov
+Codefactor: logos/codefactor
+Codefund: logos/codefund
+Codefund Icon: logos/codefund-icon
+Codeigniter: tupadr3/devicons2/codeigniter
+Codeigniter Wordmark: tupadr3/devicons2/codeigniter_wordmark
+Codepen: tupadr3/font-awesome-5/codepen
+Codepen Icon: logos/codepen-icon
+Codepen Original Wordmark: tupadr3/devicons2/codepen_original_wordmark
+Codepicnic: logos/codepicnic
+Codepush: logos/codepush
+Coderwall: logos/coderwall
+Codesandbox: logos/codesandbox
+Codeschool: logos/codeschool
+Codeship: logos/codeship
+Codiepie: tupadr3/font-awesome-5/codiepie
+Codio: logos/codio
+Codrops: tupadr3/devicons/codrops
+Coffee: tupadr3/font-awesome-5/coffee
+Coffeescript: tupadr3/devicons/coffeescript
+Coffeescript Original: tupadr3/devicons2/coffeescript_original
+Coffeescript Original Wordmark: tupadr3/devicons2/coffeescript_original_wordmark
+Cog: tupadr3/font-awesome-5/cog
+Cogs: tupadr3/font-awesome-5/cogs
+Coins: tupadr3/font-awesome-5/coins
+Columns: tupadr3/font-awesome-5/columns
+Comment: tupadr3/font-awesome-5/comment
+Comment Alt: tupadr3/font-awesome-5/comment_alt
+Comment Dollar: tupadr3/font-awesome-5/comment_dollar
+Comment Dots: tupadr3/font-awesome-5/comment_dots
+Comment Medical: tupadr3/font-awesome-5/comment_medical
+Comment Slash: tupadr3/font-awesome-5/comment_slash
+Comments: tupadr3/font-awesome-5/comments
+Comments Dollar: tupadr3/font-awesome-5/comments_dollar
+Compact Disc: tupadr3/font-awesome-5/compact_disc
+Compass: tupadr3/font-awesome-5/compass
+Component: logos/component
+Componentkit: logos/componentkit
+Compose: logos/compose
+Composer: tupadr3/devicons/composer
+Composer Line: tupadr3/devicons2/composer_line
+Composer Line Wordmark: tupadr3/devicons2/composer_line_wordmark
+Compress: tupadr3/font-awesome-5/compress
+Compress Alt: tupadr3/font-awesome-5/compress_alt
+Compress Arrows Alt: tupadr3/font-awesome-5/compress_arrows_alt
+Concierge Bell: tupadr3/font-awesome-5/concierge_bell
+Concourse: logos/concourse
+Concrete5: logos/concrete5
+Confluence: tupadr3/font-awesome-5/confluence
+Confluence Original: tupadr3/devicons2/confluence_original
+Confluence Original Wordmark: tupadr3/devicons2/confluence_original_wordmark
+Connectdevelop: tupadr3/font-awesome-5/connectdevelop
+Consul: logos/consul
+Containership: logos/containership
+Contao: tupadr3/font-awesome-5/contao
+Contentful: logos/contentful
+Convox: logos/convox
+Cookie: tupadr3/font-awesome-5/cookie
+Cookie Bite: tupadr3/font-awesome-5/cookie_bite
+Copy: tupadr3/font-awesome-5/copy
+Copyleft: logos/copyleft
+Copyleft Pirate: logos/copyleft-pirate
+Copyright: tupadr3/font-awesome-5/copyright
+Cordova: logos/cordova
+Coreos: logos/coreos
+Coreos Icon: logos/coreos-icon
+Cotton Bureau: tupadr3/font-awesome-5/cotton_bureau
+Couch: tupadr3/font-awesome-5/couch
+CouchDB: tupadr3/devicons2/couchdb
+CouchDB Icon: logos/couchdb-icon
+CouchDB Wordmark: tupadr3/devicons2/couchdb_wordmark
+Couchbase: logos/couchbase
+Coursera: logos/coursera
+Coveralls: logos/coveralls
+Cpanel: tupadr3/font-awesome-5/cpanel
+CraftCMS: logos/craftcms
+Crashlytics: logos/crashlytics
+CrateIO: logos/crateio
+CreateJS: logos/createjs
+Creative Commons: tupadr3/font-awesome-5/creative_commons
+Creative Commons BY: tupadr3/font-awesome-5/creative_commons_by
+Creative Commons Badge: tupadr3/devicons/creativecommons_badge
+Creative Commons NC: tupadr3/font-awesome-5/creative_commons_nc
+Creative Commons NC EU: tupadr3/font-awesome-5/creative_commons_nc_eu
+Creative Commons NC JP: tupadr3/font-awesome-5/creative_commons_nc_jp
+Creative Commons ND: tupadr3/font-awesome-5/creative_commons_nd
+Creative Commons PD: tupadr3/font-awesome-5/creative_commons_pd
+Creative Commons PD Alt: tupadr3/font-awesome-5/creative_commons_pd_alt
+Creative Commons Remix: tupadr3/font-awesome-5/creative_commons_remix
+Creative Commons SA: tupadr3/font-awesome-5/creative_commons_sa
+Creative Commons Sampling: tupadr3/font-awesome-5/creative_commons_sampling
+Creative Commons Sampling Plus: tupadr3/font-awesome-5/creative_commons_sampling_plus
+Creative Commons Share: tupadr3/font-awesome-5/creative_commons_share
+Creative Commons Zero: tupadr3/font-awesome-5/creative_commons_zero
+Credit Card: tupadr3/font-awesome-5/credit_card
+Critical Role: tupadr3/font-awesome-5/critical_role
+Crop: tupadr3/font-awesome-5/crop
+Crop Alt: tupadr3/font-awesome-5/crop_alt
+Cross: tupadr3/font-awesome-5/cross
+Cross Browser Testing: logos/cross-browser-testing
+Crosshairs: tupadr3/font-awesome-5/crosshairs
+Crow: tupadr3/font-awesome-5/crow
+Crown: tupadr3/font-awesome-5/crown
+Crucible: logos/crucible
+Crutch: tupadr3/font-awesome-5/crutch
+Crystal: logos/crystal
+Crystal Original: tupadr3/devicons2/crystal_original
+Crystal Original Wordmark: tupadr3/devicons2/crystal_original_wordmark
+Css3: tupadr3/font-awesome-5/css3
+Cube: tupadr3/font-awesome-5/cube
+Cubes: tupadr3/font-awesome-5/cubes
+Cucumber: tupadr3/devicons2/cucumber
+Cucumber Wordmark: tupadr3/devicons2/cucumber_wordmark
+CustomerIO: logos/customerio
+Cut: tupadr3/font-awesome-5/cut
+Cuttlefish: tupadr3/font-awesome-5/cuttlefish
+CycleJS: logos/cyclejs
+Cypress: logos/cypress
+D And D: tupadr3/font-awesome-5/d_and_d
+D And D Beyond: tupadr3/font-awesome-5/d_and_d_beyond
+D3: logos/d3
+D3JS: tupadr3/devicons2/d3js
+D3JS Original: tupadr3/devicons2/d3js_original
+DICOM Service: azure/Health/DICOMService
+DLang: tupadr3/devicons/dlang
+Dailymotion: tupadr3/font-awesome-5/dailymotion
+Dapulse: logos/dapulse
+Dart: tupadr3/devicons2/dart
+Dart Wordmark: tupadr3/devicons2/dart_wordmark
+Dashboard: cloudinsight/dashboard
+Dashcube: tupadr3/font-awesome-5/dashcube
+Dashlane: logos/dashlane
+Dat: logos/dat
+Database: tupadr3/font-awesome-5/database
+Database Labs: logos/database-labs
+Dcos: logos/dcos
+Deaf: tupadr3/font-awesome-5/deaf
+Debian: tupadr3/devicons2/debian
+Debian Wordmark: tupadr3/devicons2/debian_wordmark
+Deezer: tupadr3/font-awesome-5/deezer
+Delicious: tupadr3/font-awesome-5/delicious
+Delighted: logos/delighted
+Democrat: tupadr3/font-awesome-5/democrat
+DependencyCI: logos/dependencyci
+Deploy: logos/deploy
+Deploydog: tupadr3/font-awesome-5/deploydog
+Deppbot: logos/deppbot
+Derby: logos/derby
+Designernews: logos/designernews
+Desk: logos/desk
+Deskpro: tupadr3/font-awesome-5/deskpro
+Desktop: tupadr3/font-awesome-5/desktop
+Dev: tupadr3/font-awesome-5/dev
+Deviantart: tupadr3/font-awesome-5/deviantart
+Devicon: tupadr3/devicons2/devicon
+Devicon Wordmark: tupadr3/devicons2/devicon_wordmark
+Dharmachakra: tupadr3/font-awesome-5/dharmachakra
+Dhl: tupadr3/font-awesome-5/dhl
+Diagnoses: tupadr3/font-awesome-5/diagnoses
+Diaspora: tupadr3/font-awesome-5/diaspora
+Dice: tupadr3/font-awesome-5/dice
+Dice D20: tupadr3/font-awesome-5/dice_d20
+Dice D6: tupadr3/font-awesome-5/dice_d6
+Dice Five: tupadr3/font-awesome-5/dice_five
+Dice Four: tupadr3/font-awesome-5/dice_four
+Dice One: tupadr3/font-awesome-5/dice_one
+Dice Six: tupadr3/font-awesome-5/dice_six
+Dice Three: tupadr3/font-awesome-5/dice_three
+Dice Two: tupadr3/font-awesome-5/dice_two
+Digg: tupadr3/font-awesome-5/digg
+Digital Ocean: tupadr3/font-awesome-5/digital_ocean
+Digital Tachograph: tupadr3/font-awesome-5/digital_tachograph
+Digitalocean: tupadr3/devicons2/digitalocean
+Digitalocean Wordmark: tupadr3/devicons2/digitalocean_wordmark
+Dimer: logos/dimer
+Dinersclub: logos/dinersclub
+Directions: tupadr3/font-awesome-5/directions
+Disable: cloudinsight/disable
+Discord: tupadr3/font-awesome-5/discord
+Discourse: tupadr3/font-awesome-5/discourse
+Discover: logos/discover
+Disease: tupadr3/font-awesome-5/disease
+Disqus: logos/disqus
+Divide: tupadr3/font-awesome-5/divide
+Dizzy: tupadr3/font-awesome-5/dizzy
+Django: tupadr3/devicons2/django
+Django Line: tupadr3/devicons2/django_line
+Dna: tupadr3/font-awesome-5/dna
+Dochub: tupadr3/font-awesome-5/dochub
+Dockbit: logos/dockbit
+Docker: tupadr3/font-awesome-5/docker
+Docker Icon: logos/docker-icon
+Docker Wordmark: tupadr3/devicons2/docker_wordmark
+Doctrine: tupadr3/devicons2/doctrine
+Doctrine Line: tupadr3/devicons2/doctrine_line
+Doctrine Line Wordmark: tupadr3/devicons2/doctrine_line_wordmark
+Doctrine Wordmark: tupadr3/devicons2/doctrine_wordmark
+Docusaurus: logos/docusaurus
+Dog: tupadr3/font-awesome-5/dog
+Dojo: tupadr3/devicons/dojo
+Dojo Icon: logos/dojo-icon
+Dojo Toolkit: logos/dojo-toolkit
+Dollar Sign: tupadr3/font-awesome-5/dollar_sign
+Dolly: tupadr3/font-awesome-5/dolly
+Dolly Flatbed: tupadr3/font-awesome-5/dolly_flatbed
+Donate: tupadr3/font-awesome-5/donate
+Door Closed: tupadr3/font-awesome-5/door_closed
+Door Open: tupadr3/font-awesome-5/door_open
+Dot Circle: tupadr3/font-awesome-5/dot_circle
+Dot Net Wordmark: tupadr3/devicons2/dot_net_wordmark
+DotNet: tupadr3/devicons2/dot_net
+DotNet Core: tupadr3/devicons2/dotnetcore
+Dotnet: logos/dotnet
+Doubleclick: logos/doubleclick
+Dove: tupadr3/font-awesome-5/dove
+Download: tupadr3/font-awesome-5/download
+Draft2digital: tupadr3/font-awesome-5/draft2digital
+Drafting Compass: tupadr3/font-awesome-5/drafting_compass
+Dragon: tupadr3/font-awesome-5/dragon
+Draw Polygon: tupadr3/font-awesome-5/draw_polygon
+Dreamfactory: logos/dreamfactory
+Dreamhost: logos/dreamhost
+Dreamweaver: tupadr3/devicons/dreamweaver
+Dribbble: tupadr3/font-awesome-5/dribbble
+Dribbble Icon: logos/dribbble-icon
+Dribbble Square: tupadr3/font-awesome-5/dribbble_square
+Drift: logos/drift
+Drip: logos/drip
+Drone: logos/drone
+Dropbox: tupadr3/font-awesome-5/dropbox
+Dropmark: logos/dropmark
+Dropzone: logos/dropzone
+Drum: tupadr3/font-awesome-5/drum
+Drum Steelpan: tupadr3/font-awesome-5/drum_steelpan
+Drumstick Bite: tupadr3/font-awesome-5/drumstick_bite
+Drupal: tupadr3/font-awesome-5/drupal
+Drupal Icon: logos/drupal-icon
+Drupal Wordmark: tupadr3/devicons2/drupal_wordmark
+Duckduckgo: logos/duckduckgo
+Dumbbell: tupadr3/font-awesome-5/dumbbell
+Dumpster: tupadr3/font-awesome-5/dumpster
+Dumpster Fire: tupadr3/font-awesome-5/dumpster_fire
+Dungeon: tupadr3/font-awesome-5/dungeon
+Dyalog: tupadr3/font-awesome-5/dyalog
+Dyndns: logos/dyndns
+ES6: logos/es6
+Eager: logos/eager
+Earlybirds: tupadr3/font-awesome-5/earlybirds
+Ebanx: logos/ebanx
+Ebay: tupadr3/font-awesome-5/ebay
+Eclipse: tupadr3/devicons/eclipse
+Edge: tupadr3/font-awesome-5/edge
+Edge Legacy: tupadr3/font-awesome-5/edge_legacy
+Edit: tupadr3/font-awesome-5/edit
+Egg: tupadr3/font-awesome-5/egg
+Egghead: logos/egghead
+Eject: tupadr3/font-awesome-5/eject
+Elastic: cloudogu/tools/elastic
+ElasticSearch: cloudinsight/elasticsearch
+Elasticbox: logos/elasticbox
+Elasticsearch: logos/elasticsearch
+Electron: logos/electron
+Electron Original: tupadr3/devicons2/electron_original
+Electron Original Wordmark: tupadr3/devicons2/electron_original_wordmark
+Element: logos/element
+Elemental UI: logos/elemental-ui
+Elementary: logos/elementary
+Elementor: tupadr3/font-awesome-5/elementor
+Eleventy: tupadr3/devicons2/eleventy
+Elixir: tupadr3/devicons2/elixir
+Elixir Wordmark: tupadr3/devicons2/elixir_wordmark
+Ellipsis H: tupadr3/font-awesome-5/ellipsis_h
+Ellipsis V: tupadr3/font-awesome-5/ellipsis_v
+Ello: tupadr3/font-awesome-5/ello
+Elm: tupadr3/devicons2/elm
+Elm Wordmark: tupadr3/devicons2/elm_wordmark
+Elo: logos/elo
+Emacs: logos/emacs
+EmbeddedC: tupadr3/devicons2/embeddedc
+EmbeddedC Wordmark: tupadr3/devicons2/embeddedc_wordmark
+Embedly: logos/embedly
+Ember: tupadr3/font-awesome-5/ember
+Ember Original Wordmark: tupadr3/devicons2/ember_original_wordmark
+Ember Tomster: logos/ember-tomster
+Emmet: logos/emmet
+Empire: tupadr3/font-awesome-5/empire
+Engine Yard: logos/engine-yard
+Envato: tupadr3/devicons/envato
+Envelope: tupadr3/font-awesome-5/envelope
+Envelope Open: tupadr3/font-awesome-5/envelope_open
+Envelope Open Text: tupadr3/font-awesome-5/envelope_open_text
+Envelope Square: tupadr3/font-awesome-5/envelope_square
+Envira: tupadr3/font-awesome-5/envira
+Envoyer: logos/envoyer
+Enyo: logos/enyo
+Equals: tupadr3/font-awesome-5/equals
+Eraser: tupadr3/font-awesome-5/eraser
+Erlang: tupadr3/font-awesome-5/erlang
+Erlang Wordmark: tupadr3/devicons2/erlang_wordmark
+Esdoc: logos/esdoc
+Eslint: logos/eslint
+Eslint Old: logos/eslint-old
+Eta Lang: logos/eta-lang
+Etcd: logos/etcd
+Ethereum: tupadr3/font-awesome-5/ethereum
+Ethernet: tupadr3/font-awesome-5/ethernet
+Ethnio: logos/ethnio
+Etsy: tupadr3/font-awesome-5/etsy
+Euro Sign: tupadr3/font-awesome-5/euro_sign
+Eventbrite: logos/eventbrite
+Eventbrite Icon: logos/eventbrite-icon
+Eventsentry: logos/eventsentry
+Evernote: tupadr3/font-awesome-5/evernote
+Exchange Alt: tupadr3/font-awesome-5/exchange_alt
+Exclamation: tupadr3/font-awesome-5/exclamation
+Exclamation Circle: tupadr3/font-awesome-5/exclamation_circle
+Exclamation Triangle: tupadr3/font-awesome-5/exclamation_triangle
+Exit: cloudinsight/exit
+Expand: tupadr3/font-awesome-5/expand
+Expand Alt: tupadr3/font-awesome-5/expand_alt
+Expand Arrows Alt: tupadr3/font-awesome-5/expand_arrows_alt
+Expeditedssl: tupadr3/font-awesome-5/expeditedssl
+Expo: logos/expo
+Exponent: logos/exponent
+Express: logos/express
+Express Original: tupadr3/devicons2/express_original
+Express Original Wordmark: tupadr3/devicons2/express_original_wordmark
+ExtJS: tupadr3/devicons/extjs
+External Link Alt: tupadr3/font-awesome-5/external_link_alt
+External Link Square Alt: tupadr3/font-awesome-5/external_link_square_alt
+Eye: tupadr3/font-awesome-5/eye
+Eye Dropper: tupadr3/font-awesome-5/eye_dropper
+Eye Slash: tupadr3/font-awesome-5/eye_slash
+F#: tupadr3/devicons2/fsharp
+FHIR Service: azure/Health/FHIRService
+Fabric: logos/fabric
+Fabric IO: logos/fabric_io
+Facebook: tupadr3/font-awesome-5/facebook
+Facebook F: tupadr3/font-awesome-5/facebook_f
+Facebook Messenger: tupadr3/font-awesome-5/facebook_messenger
+Facebook Square: tupadr3/font-awesome-5/facebook_square
+Falcor: logos/falcor
+Fan: tupadr3/font-awesome-5/fan
+Fantasy Flight Games: tupadr3/font-awesome-5/fantasy_flight_games
+Fast Backward: tupadr3/font-awesome-5/fast_backward
+Fast Forward: tupadr3/font-awesome-5/fast_forward
+Fastlane: logos/fastlane
+Fastly: logos/fastly
+Faucet: tupadr3/font-awesome-5/faucet
+Fax: tupadr3/font-awesome-5/fax
+Feather: tupadr3/font-awesome-5/feather
+Feather Alt: tupadr3/font-awesome-5/feather_alt
+FeathersJS: logos/feathersjs
+Fedex: tupadr3/font-awesome-5/fedex
+Fedora: tupadr3/font-awesome-5/fedora
+Female: tupadr3/font-awesome-5/female
+Fighter Jet: tupadr3/font-awesome-5/fighter_jet
+Figma: tupadr3/font-awesome-5/figma
+File: tupadr3/font-awesome-5/file
+File Alt: tupadr3/font-awesome-5/file_alt
+File Archive: tupadr3/font-awesome-5/file_archive
+File Audio: tupadr3/font-awesome-5/file_audio
+File CSV: tupadr3/font-awesome-5/file_csv
+File Code: tupadr3/font-awesome-5/file_code
+File Contract: tupadr3/font-awesome-5/file_contract
+File Download: tupadr3/font-awesome-5/file_download
+File Excel: tupadr3/font-awesome-5/file_excel
+File Export: tupadr3/font-awesome-5/file_export
+File Image: tupadr3/font-awesome-5/file_image
+File Import: tupadr3/font-awesome-5/file_import
+File Invoice: tupadr3/font-awesome-5/file_invoice
+File Invoice Dollar: tupadr3/font-awesome-5/file_invoice_dollar
+File Medical: tupadr3/font-awesome-5/file_medical
+File Medical Alt: tupadr3/font-awesome-5/file_medical_alt
+File PDF: tupadr3/font-awesome-5/file_pdf
+File Powerpoint: tupadr3/font-awesome-5/file_powerpoint
+File Prescription: tupadr3/font-awesome-5/file_prescription
+File Signature: tupadr3/font-awesome-5/file_signature
+File Upload: tupadr3/font-awesome-5/file_upload
+File Video: tupadr3/font-awesome-5/file_video
+File Word: tupadr3/font-awesome-5/file_word
+Fill: tupadr3/font-awesome-5/fill
+Fill Drip: tupadr3/font-awesome-5/fill_drip
+Film: tupadr3/font-awesome-5/film
+Filter: tupadr3/font-awesome-5/filter
+Fingerprint: tupadr3/font-awesome-5/fingerprint
+Fire: tupadr3/font-awesome-5/fire
+Fire Alt: tupadr3/font-awesome-5/fire_alt
+Fire Extinguisher: tupadr3/font-awesome-5/fire_extinguisher
+Firebase: tupadr3/devicons2/firebase
+Firebase Wordmark: tupadr3/devicons2/firebase_wordmark
+Firefox: tupadr3/font-awesome-5/firefox
+Firefox Browser: tupadr3/font-awesome-5/firefox_browser
+Firefox Wordmark: tupadr3/devicons2/firefox_wordmark
+First Aid: tupadr3/font-awesome-5/first_aid
+First Order: tupadr3/font-awesome-5/first_order
+First Order Alt: tupadr3/font-awesome-5/first_order_alt
+Firstdraft: tupadr3/font-awesome-5/firstdraft
+Fish: tupadr3/font-awesome-5/fish
+Fist Raised: tupadr3/font-awesome-5/fist_raised
+Flag: tupadr3/font-awesome-5/flag
+Flag Checkered: tupadr3/font-awesome-5/flag_checkered
+Flag USA: tupadr3/font-awesome-5/flag_usa
+Flannel: logos/flannel
+Flarum: logos/flarum
+Flask: tupadr3/font-awesome-5/flask
+Flask Original: tupadr3/devicons2/flask_original
+Flask Original Wordmark: tupadr3/devicons2/flask_original_wordmark
+Flat UI: logos/flat-ui
+Flattr: logos/flattr
+Fleep: logos/fleep
+Flexible GS: logos/flexible-gs
+Flickr: tupadr3/font-awesome-5/flickr
+Flight: logos/flight
+Flipboard: tupadr3/font-awesome-5/flipboard
+Flocker: logos/flocker
+Floodio: logos/floodio
+Flow: logos/flow
+Flowxo: logos/flowxo
+Floydhub: logos/floydhub
+Flushed: tupadr3/font-awesome-5/flushed
+Flutter: tupadr3/devicons2/flutter
+Flux: logos/flux
+Fluxxor: logos/fluxxor
+Fly: tupadr3/font-awesome-5/fly
+Flyjs: logos/flyjs
+Folder: tupadr3/font-awesome-5/folder
+Folder Minus: tupadr3/font-awesome-5/folder_minus
+Folder Open: tupadr3/font-awesome-5/folder_open
+Folder Plus: tupadr3/font-awesome-5/folder_plus
+Fomo: logos/fomo
+Font: tupadr3/font-awesome-5/font
+Font Awesome: tupadr3/font-awesome-5/font_awesome
+Font Awesome Alt: tupadr3/font-awesome-5/font_awesome_alt
+Font Awesome Flag: tupadr3/font-awesome-5/font_awesome_flag
+Fonticons: tupadr3/font-awesome-5/fonticons
+Fonticons Fi: tupadr3/font-awesome-5/fonticons_fi
+Football Ball: tupadr3/font-awesome-5/football_ball
+Forest: logos/forest
+Forever: logos/forever
+Formkeep: logos/formkeep
+Fort Awesome: tupadr3/font-awesome-5/fort_awesome
+Fort Awesome Alt: tupadr3/font-awesome-5/fort_awesome_alt
+Forumbee: tupadr3/font-awesome-5/forumbee
+Forward: tupadr3/font-awesome-5/forward
+Foundation: tupadr3/devicons2/foundation
+Foundation Wordmark: tupadr3/devicons2/foundation_wordmark
+Foursquare: tupadr3/font-awesome-5/foursquare
+Framework7: logos/framework7
+Free Code Camp: tupadr3/font-awesome-5/free_code_camp
+Freebsd: tupadr3/font-awesome-5/freebsd
+Freedcamp: logos/freedcamp
+Freedcamp Icon: logos/freedcamp-icon
+Freedomdefined: logos/freedomdefined
+Frog: tupadr3/font-awesome-5/frog
+Frontapp: logos/frontapp
+Frown: tupadr3/font-awesome-5/frown
+Frown Open: tupadr3/font-awesome-5/frown_open
+Fsharp: logos/fsharp
+Fuchsia: logos/fuchsia
+Fulcrum: tupadr3/font-awesome-5/fulcrum
+Funnel Dollar: tupadr3/font-awesome-5/funnel_dollar
+Futbol: tupadr3/font-awesome-5/futbol
+GCP AI Hub: gcp/AI_and_Machine_Learning/AI_Hub
+GCP AI Platform: gcp/AI_and_Machine_Learning/AI_Platform
+GCP AI Platform Data Labeling Service: gcp/AI_and_Machine_Learning/AI_Platform_Data_Labeling_Service
+GCP API Analytics: gcp/API_Management/API_Analytics
+GCP API Monetization: gcp/API_Management/API_Monetization
+GCP Advanced Solutions Lab: gcp/AI_and_Machine_Learning/Advanced_Solutions_Lab
+GCP Apigee API Platform: gcp/API_Management/Apigee_API_Platform
+GCP Apigee Sense: gcp/API_Management/Apigee_Sense
+GCP App Engine: gcp/Compute/App_Engine
+GCP AutoML Natural Language: gcp/AI_and_Machine_Learning/AutoML_Natural_Language
+GCP AutoML Tables: gcp/AI_and_Machine_Learning/AutoML_Tables
+GCP AutoML Translation: gcp/AI_and_Machine_Learning/AutoML_Translation
+GCP AutoML Video Intelligence: gcp/AI_and_Machine_Learning/AutoML_Video_Intelligence
+GCP AutoML Vision: gcp/AI_and_Machine_Learning/AutoML_Vision
+GCP BigQuery: gcp/Data_Analytics/BigQuery
+GCP Cloud APIs: gcp/Management_Tools/Cloud_APIs
+GCP Cloud Armor: gcp/Networking/Cloud_Armor
+GCP Cloud AutoML: gcp/AI_and_Machine_Learning/Cloud_AutoML
+GCP Cloud Bigtable: gcp/Databases/Cloud_Bigtable
+GCP Cloud Billing API: gcp/Management_Tools/Cloud_Billing_API
+GCP Cloud Build: gcp/Developer_Tools/Cloud_Build
+GCP Cloud CDN: gcp/Networking/Cloud_CDN
+GCP Cloud Code: gcp/Developer_Tools/Cloud_Code
+GCP Cloud Code for IntelliJ: gcp/Developer_Tools/Cloud_Code_for_IntelliJ
+GCP Cloud Composer: gcp/Data_Analytics/Cloud_Composer
+GCP Cloud Console: gcp/Management_Tools/Cloud_Console
+GCP Cloud DNS: gcp/Networking/Cloud_DNS
+GCP Cloud Data Catalog: gcp/Data_Analytics/Cloud_Data_Catalog
+GCP Cloud Data Fusion: gcp/Data_Analytics/Cloud_Data_Fusion
+GCP Cloud Dataflow: gcp/Data_Analytics/Cloud_Dataflow
+GCP Cloud Datalab: gcp/Data_Analytics/Cloud_Datalab
+GCP Cloud Dataprep: gcp/Data_Analytics/Cloud_Dataprep
+GCP Cloud Dataproc: gcp/Data_Analytics/Cloud_Dataproc
+GCP Cloud Datastore: gcp/Databases/Cloud_Datastore
+GCP Cloud Deployment Manager: gcp/Management_Tools/Cloud_Deployment_Manager
+GCP Cloud Endpoints: gcp/API_Management/Cloud_Endpoints
+GCP Cloud External IP Addresses: gcp/Networking/Cloud_External_IP_Addresses
+GCP Cloud Filestore: gcp/Storage/Cloud_Filestore
+GCP Cloud Firestore: gcp/Databases/Cloud_Firestore
+GCP Cloud Firewall Rules: gcp/Networking/Cloud_Firewall_Rules
+GCP Cloud Functions: gcp/Compute/Cloud_Functions
+GCP Cloud IAM: gcp/Security/Cloud_IAM
+GCP Cloud Inference API: gcp/AI_and_Machine_Learning/Cloud_Inference_API
+GCP Cloud IoT Core: gcp/Internet_of_Things/Cloud_IoT_Core
+GCP Cloud Jobs API: gcp/AI_and_Machine_Learning/Cloud_Jobs_API
+GCP Cloud Load Balancing: gcp/Networking/Cloud_Load_Balancing
+GCP Cloud Memorystore: gcp/Databases/Cloud_Memorystore
+GCP Cloud Mobile App: gcp/Management_Tools/Cloud_Mobile_App
+GCP Cloud NAT: gcp/Networking/Cloud_NAT
+GCP Cloud Natural Language API: gcp/AI_and_Machine_Learning/Cloud_Natural_Language_API
+GCP Cloud Network: gcp/Networking/Cloud_Network
+GCP Cloud PubSub: gcp/Data_Analytics/Cloud_PubSub
+GCP Cloud Resource Manager: gcp/Security/Cloud_Resource_Manager
+GCP Cloud Router: gcp/Networking/Cloud_Router
+GCP Cloud Routes: gcp/Networking/Cloud_Routes
+GCP Cloud Run: gcp/Compute/Cloud_Run
+GCP Cloud SDK: gcp/Developer_Tools/Cloud_SDK
+GCP Cloud SQL: gcp/Databases/Cloud_SQL
+GCP Cloud Scheduler: gcp/Developer_Tools/Cloud_Scheduler
+GCP Cloud Security Command Center: gcp/Security/Cloud_Security_Command_Center
+GCP Cloud Security Scanner: gcp/Security/Cloud_Security_Scanner
+GCP Cloud Service Mesh: gcp/Management_Tools/Cloud_Service_Mesh
+GCP Cloud Shell: gcp/Management_Tools/Cloud_Shell
+GCP Cloud Source Repositories: gcp/Developer_Tools/Cloud_Source_Repositories
+GCP Cloud Spanner: gcp/Databases/Cloud_Spanner
+GCP Cloud Speech to Text: gcp/AI_and_Machine_Learning/Cloud_Speech_to_Text
+GCP Cloud Storage: gcp/Storage/Cloud_Storage
+GCP Cloud TPU: gcp/AI_and_Machine_Learning/Cloud_TPU
+GCP Cloud Tasks: gcp/Developer_Tools/Cloud_Tasks
+GCP Cloud Test Lab: gcp/Developer_Tools/Cloud_Test_Lab
+GCP Cloud Text to Speech: gcp/AI_and_Machine_Learning/Cloud_Text_to_Speech
+GCP Cloud Tools for Eclipse: gcp/Developer_Tools/Cloud_Tools_for_Eclipse
+GCP Cloud Tools for PowerShell: gcp/Developer_Tools/Cloud_Tools_for_PowerShell
+GCP Cloud Tools for Visual Studio: gcp/Developer_Tools/Cloud_Tools_for_Visual_Studio
+GCP Cloud Translation API: gcp/AI_and_Machine_Learning/Cloud_Translation_API
+GCP Cloud VPN: gcp/Networking/Cloud_VPN
+GCP Cloud Video Intelligence API: gcp/AI_and_Machine_Learning/Cloud_Video_Intelligence_API
+GCP Cloud Vision API: gcp/AI_and_Machine_Learning/Cloud_Vision_API
+GCP Compute Engine: gcp/Compute/Compute_Engine
+GCP Container Optimized OS: gcp/Compute/Container_Optimized_OS
+GCP Container Registry: gcp/Developer_Tools/Container_Registry
+GCP Debugger: gcp/Management_Tools/Debugger
+GCP Dedicated Interconnect: gcp/Networking/Dedicated_Interconnect
+GCP Developer Portal: gcp/API_Management/Developer_Portal
+GCP Dialog Flow Enterprise Edition: gcp/AI_and_Machine_Learning/Dialog_Flow_Enterprise_Edition
+GCP Error Reporting: gcp/Management_Tools/Error_Reporting
+GCP GKE On Prem: gcp/Compute/GKE_On_Prem
+GCP GPU: gcp/Compute/GPU
+GCP Genomics: gcp/Data_Analytics/Genomics
+GCP Gradle App Engine Plugin: gcp/Developer_Tools/Gradle_App_Engine_Plugin
+GCP IDE Plugins: gcp/Developer_Tools/IDE_Plugins
+GCP Key Management Service: gcp/Security/Key_Management_Service
+GCP Kubernetes Engine: gcp/Compute/Kubernetes_Engine
+GCP Logging: gcp/Management_Tools/Logging
+GCP Maven App Engine Plugin: gcp/Developer_Tools/Maven_App_Engine_Plugin
+GCP Monitoring: gcp/Management_Tools/Monitoring
+GCP Partner Interconnect: gcp/Networking/Partner_Interconnect
+GCP Persistent Disk: gcp/Storage/Persistent_Disk
+GCP Premium Network Tier: gcp/Networking/Premium_Network_Tier
+GCP Profiler: gcp/Management_Tools/Profiler
+GCP Recommendations AI: gcp/AI_and_Machine_Learning/Recommendations_AI
+GCP Stackdriver: gcp/Management_Tools/Stackdriver
+GCP Standard Network Tier: gcp/Networking/Standard_Network_Tier
+GCP Trace: gcp/Management_Tools/Trace
+GCP Traffic Director: gcp/Networking/Traffic_Director
+GCP Transfer Appliance: gcp/Migration/Transfer_Appliance
+GCP Virtual Private Cloud: gcp/Networking/Virtual_Private_Cloud
+GG: tupadr3/font-awesome-5/gg
+GG Circle: tupadr3/font-awesome-5/gg_circle
+GUnicorn: cloudinsight/gunicorn
+GWT: logos/gwt
+Galactic Republic: tupadr3/font-awesome-5/galactic_republic
+Galactic Senate: tupadr3/font-awesome-5/galactic_senate
+Galliumos: logos/galliumos
+Game Analytics: logos/game-analytics
+Gamepad: tupadr3/font-awesome-5/gamepad
+Gas Pump: tupadr3/font-awesome-5/gas_pump
+Gatling: tupadr3/devicons2/gatling
+Gatling Wordmark: tupadr3/devicons2/gatling_wordmark
+Gatsby: tupadr3/devicons2/gatsby
+Gatsby Wordmark: tupadr3/devicons2/gatsby_wordmark
+Gaugeio: logos/gaugeio
+Gavel: tupadr3/font-awesome-5/gavel
+Gearman: cloudinsight/gearman
+Geekbot: logos/geekbot
+Gem: tupadr3/font-awesome-5/gem
+Genderless: tupadr3/font-awesome-5/genderless
+Gentoo: logos/gentoo
+Get Pocket: tupadr3/font-awesome-5/get_pocket
+Get Satisfaction: logos/get-satisfaction
+Ghost: tupadr3/font-awesome-5/ghost
+Ghost Small: tupadr3/devicons/ghost_small
+Giantswarm: logos/giantswarm
+Gift: tupadr3/font-awesome-5/gift
+Gifts: tupadr3/font-awesome-5/gifts
+Gimp: tupadr3/devicons2/gimp
+Git: tupadr3/font-awesome-5/git
+Git Alt: tupadr3/font-awesome-5/git_alt
+Git Branch: tupadr3/devicons/git_branch
+Git Commit: tupadr3/devicons/git_commit
+Git Compare: tupadr3/devicons/git_compare
+Git Icon: logos/git-icon
+Git Merge: tupadr3/devicons/git_merge
+Git Pull Request: tupadr3/devicons/git_pull_request
+Git Square: tupadr3/font-awesome-5/git_square
+Git Wordmark: tupadr3/devicons2/git_wordmark
+Gitboard: logos/gitboard
+Github: tupadr3/font-awesome-5/github
+Github Alt: tupadr3/font-awesome-5/github_alt
+Github Badge: tupadr3/devicons/github_badge
+Github Full: tupadr3/devicons/github_full
+Github Icon: logos/github-icon
+Github Octocat: logos/github-octocat
+Github Original: tupadr3/devicons2/github_original
+Github Original Wordmark: tupadr3/devicons2/github_original_wordmark
+Github Square: tupadr3/font-awesome-5/github_square
+Gitkraken: tupadr3/font-awesome-5/gitkraken
+Gitlab: tupadr3/font-awesome-5/gitlab
+Gitlab Wordmark: tupadr3/devicons2/gitlab_wordmark
+Gitter: tupadr3/font-awesome-5/gitter
+Gitter Wordmark: tupadr3/devicons2/gitter_wordmark
+Gitup: logos/gitup
+Glamorous: logos/glamorous
+Glass Cheers: tupadr3/font-awesome-5/glass_cheers
+Glass Martini: tupadr3/font-awesome-5/glass_martini
+Glass Martini Alt: tupadr3/font-awesome-5/glass_martini_alt
+Glass Whiskey: tupadr3/font-awesome-5/glass_whiskey
+Glasses: tupadr3/font-awesome-5/glasses
+Gleam: logos/gleam
+Glide: tupadr3/font-awesome-5/glide
+Glide G: tupadr3/font-awesome-5/glide_g
+Glimmerjs: logos/glimmerjs
+Glint: logos/glint
+Globe: tupadr3/font-awesome-5/globe
+Globe Africa: tupadr3/font-awesome-5/globe_africa
+Globe Americas: tupadr3/font-awesome-5/globe_americas
+Globe Asia: tupadr3/font-awesome-5/globe_asia
+Globe Europe: tupadr3/font-awesome-5/globe_europe
+Gnu: tupadr3/devicons/gnu
+Go: tupadr3/devicons2/go
+Go Line: tupadr3/devicons2/go_line
+Gocd: logos/gocd
+Godot: tupadr3/devicons2/godot
+Godot Wordmark: tupadr3/devicons2/godot_wordmark
+Gofore: tupadr3/font-awesome-5/gofore
+Golf Ball: tupadr3/font-awesome-5/golf_ball
+Gomix: logos/gomix
+Goodreads: tupadr3/font-awesome-5/goodreads
+Goodreads G: tupadr3/font-awesome-5/goodreads_g
+Google: tupadr3/font-awesome-5/google
+Google 2014: logos/google-2014
+Google 360suite: logos/google-360suite
+Google Ads: logos/google-ads
+Google Adsense: logos/google-adsense
+Google Adwords: logos/google-adwords
+Google Analytics: tupadr3/devicons/google_analytics
+Google Calendar: logos/google-calendar
+Google Cloud: tupadr3/devicons2/googlecloud
+Google Cloud Functions: logos/google-cloud-functions
+Google Cloud Platform: tupadr3/devicons/google_cloud_platform
+Google Cloud Run: logos/google-cloud-run
+Google Cloud Wordmark: tupadr3/devicons2/googlecloud_wordmark
+Google Data Studio: logos/google-data-studio
+Google Developers: logos/google-developers
+Google Developers Icon: logos/google-developers-icon
+Google Drive: tupadr3/font-awesome-5/google_drive
+Google Gmail: logos/google-gmail
+Google Gsuite: logos/google-gsuite
+Google Icon: logos/google-icon
+Google Inbox: logos/google-inbox
+Google Marketing Platform: logos/google-marketing-platform
+Google Meet: logos/google-meet
+Google Optimize: logos/google-optimize
+Google Pay: tupadr3/font-awesome-5/google_pay
+Google Photos: logos/google-photos
+Google Play: tupadr3/font-awesome-5/google_play
+Google Play Icon: logos/google-play-icon
+Google Plus: tupadr3/font-awesome-5/google_plus
+Google Plus G: tupadr3/font-awesome-5/google_plus_g
+Google Plus Square: tupadr3/font-awesome-5/google_plus_square
+Google Tag Manager: logos/google-tag-manager
+Google Wallet: tupadr3/font-awesome-5/google_wallet
+Google Wordmark: tupadr3/devicons2/google_wordmark
+Gopher: logos/gopher
+Gopuram: tupadr3/font-awesome-5/gopuram
+Gordon: logos/gordon
+Gradle: tupadr3/devicons2/gradle
+Gradle Wordmark: tupadr3/devicons2/gradle_wordmark
+Graduation Cap: tupadr3/font-awesome-5/graduation_cap
+Grafana: logos/grafana
+Grails: tupadr3/devicons2/grails
+Grape: logos/grape
+GraphQL: tupadr3/devicons2/graphql
+GraphQL Wordmark: tupadr3/devicons2/graphql_wordmark
+Graphcool: logos/graphcool
+Graphene: logos/graphene
+Gratipay: tupadr3/font-awesome-5/gratipay
+Grav: tupadr3/font-awesome-5/grav
+Gravatar: logos/gravatar
+Graylog: logos/graylog
+Greater Than: tupadr3/font-awesome-5/greater_than
+Greater Than Equal: tupadr3/font-awesome-5/greater_than_equal
+Gridsome: logos/gridsome
+Gridsome Icon: logos/gridsome-icon
+Grimace: tupadr3/font-awesome-5/grimace
+Grin: tupadr3/font-awesome-5/grin
+Grin Alt: tupadr3/font-awesome-5/grin_alt
+Grin Beam: tupadr3/font-awesome-5/grin_beam
+Grin Beam Sweat: tupadr3/font-awesome-5/grin_beam_sweat
+Grin Hearts: tupadr3/font-awesome-5/grin_hearts
+Grin Squint: tupadr3/font-awesome-5/grin_squint
+Grin Squint Tears: tupadr3/font-awesome-5/grin_squint_tears
+Grin Stars: tupadr3/font-awesome-5/grin_stars
+Grin Tears: tupadr3/font-awesome-5/grin_tears
+Grin Tongue: tupadr3/font-awesome-5/grin_tongue
+Grin Tongue Squint: tupadr3/font-awesome-5/grin_tongue_squint
+Grin Tongue Wink: tupadr3/font-awesome-5/grin_tongue_wink
+Grin Wink: tupadr3/font-awesome-5/grin_wink
+Grip Horizontal: tupadr3/font-awesome-5/grip_horizontal
+Grip Lines: tupadr3/font-awesome-5/grip_lines
+Grip Lines Vertical: tupadr3/font-awesome-5/grip_lines_vertical
+Grip Vertical: tupadr3/font-awesome-5/grip_vertical
+Gripfire: tupadr3/font-awesome-5/gripfire
+Grommet: logos/grommet
+Groovehq: logos/groovehq
+Groovy: tupadr3/devicons2/groovy
+Grove: logos/grove
+Grunt: tupadr3/font-awesome-5/grunt
+Grunt Line: tupadr3/devicons2/grunt_line
+Grunt Line Wordmark: tupadr3/devicons2/grunt_line_wordmark
+Grunt Wordmark: tupadr3/devicons2/grunt_wordmark
+Guilded: tupadr3/font-awesome-5/guilded
+Guitar: tupadr3/font-awesome-5/guitar
+Gulp: tupadr3/font-awesome-5/gulp
+Gunicorn: logos/gunicorn
+Gusto: logos/gusto
+H Square: tupadr3/font-awesome-5/h_square
+HAProxy: cloudinsight/haproxy
+HDFS: cloudinsight/hdfs
+HTML5: tupadr3/devicons/html5
+HTML5 3D Effects: tupadr3/devicons/html5_3d_effects
+HTML5 Connectivity: tupadr3/devicons/html5_connectivity
+HTML5 Device Access: tupadr3/devicons/html5_device_access
+HTML5 Multimedia: tupadr3/devicons/html5_multimedia
+Hack: logos/hack
+Hacker News: tupadr3/font-awesome-5/hacker_news
+Hacker News Square: tupadr3/font-awesome-5/hacker_news_square
+Hacker One: logos/hacker-one
+HackerNews: tupadr3/devicons/hackernews
+Hackerrank: tupadr3/font-awesome-5/hackerrank
+Hadoop: logos/hadoop
+Haiku: logos/haiku
+Hamburger: tupadr3/font-awesome-5/hamburger
+Haml: logos/haml
+Hammer: tupadr3/font-awesome-5/hammer
+Hamsa: tupadr3/font-awesome-5/hamsa
+Hanami: logos/hanami
+Hand Holding: tupadr3/font-awesome-5/hand_holding
+Hand Holding Heart: tupadr3/font-awesome-5/hand_holding_heart
+Hand Holding Medical: tupadr3/font-awesome-5/hand_holding_medical
+Hand Holding USD: tupadr3/font-awesome-5/hand_holding_usd
+Hand Holding Water: tupadr3/font-awesome-5/hand_holding_water
+Hand Lizard: tupadr3/font-awesome-5/hand_lizard
+Hand Middle Finger: tupadr3/font-awesome-5/hand_middle_finger
+Hand Paper: tupadr3/font-awesome-5/hand_paper
+Hand Peace: tupadr3/font-awesome-5/hand_peace
+Hand Point Down: tupadr3/font-awesome-5/hand_point_down
+Hand Point Left: tupadr3/font-awesome-5/hand_point_left
+Hand Point Right: tupadr3/font-awesome-5/hand_point_right
+Hand Point Up: tupadr3/font-awesome-5/hand_point_up
+Hand Pointer: tupadr3/font-awesome-5/hand_pointer
+Hand Rock: tupadr3/font-awesome-5/hand_rock
+Hand Scissors: tupadr3/font-awesome-5/hand_scissors
+Hand Sparkles: tupadr3/font-awesome-5/hand_sparkles
+Hand Spock: tupadr3/font-awesome-5/hand_spock
+Handlebars: tupadr3/devicons2/handlebars
+Handlebars Wordmark: tupadr3/devicons2/handlebars_wordmark
+Hands: tupadr3/font-awesome-5/hands
+Hands Helping: tupadr3/font-awesome-5/hands_helping
+Hands Wash: tupadr3/font-awesome-5/hands_wash
+Handshake: tupadr3/font-awesome-5/handshake
+Handshake Alt Slash: tupadr3/font-awesome-5/handshake_alt_slash
+Handshake Slash: tupadr3/font-awesome-5/handshake_slash
+Hanukiah: tupadr3/font-awesome-5/hanukiah
+Hapi: logos/hapi
+Hard Hat: tupadr3/font-awesome-5/hard_hat
+Harrow: logos/harrow
+Hashnode: logos/hashnode
+Hashtag: tupadr3/font-awesome-5/hashtag
+Haskell: tupadr3/devicons2/haskell
+Haskell Icon: logos/haskell-icon
+Haskell Wordmark: tupadr3/devicons2/haskell_wordmark
+Hasura: logos/hasura
+Hat Cowboy: tupadr3/font-awesome-5/hat_cowboy
+Hat Cowboy Side: tupadr3/font-awesome-5/hat_cowboy_side
+Hat Wizard: tupadr3/font-awesome-5/hat_wizard
+Haxe: tupadr3/devicons2/haxe
+Haxl: logos/haxl
+Hbase: logos/hbase
+Hdd: tupadr3/font-awesome-5/hdd
+Head Side Cough: tupadr3/font-awesome-5/head_side_cough
+Head Side Cough Slash: tupadr3/font-awesome-5/head_side_cough_slash
+Head Side Mask: tupadr3/font-awesome-5/head_side_mask
+Head Side Virus: tupadr3/font-awesome-5/head_side_virus
+Heading: tupadr3/font-awesome-5/heading
+Headphones: tupadr3/font-awesome-5/headphones
+Headphones Alt: tupadr3/font-awesome-5/headphones_alt
+Headset: tupadr3/font-awesome-5/headset
+Health Data Services: azure/Health/HealthDataServices
+Heap: logos/heap
+Heart: tupadr3/font-awesome-5/heart
+Heart Broken: tupadr3/font-awesome-5/heart_broken
+Heartbeat: tupadr3/font-awesome-5/heartbeat
+Helicopter: tupadr3/font-awesome-5/helicopter
+Helpscout: logos/helpscout
+Heroku: tupadr3/devicons2/heroku
+Heroku Icon: logos/heroku-icon
+Heroku Line: tupadr3/devicons2/heroku_line
+Heroku Line Wordmark: tupadr3/devicons2/heroku_line_wordmark
+Heroku Redis: logos/heroku-redis
+Heroku Wordmark: tupadr3/devicons2/heroku_wordmark
+Heron: logos/heron
+Hexo: logos/hexo
+Hhvm: logos/hhvm
+Hibernate: logos/hibernate
+Highcharts: logos/highcharts
+Highlighter: tupadr3/font-awesome-5/highlighter
+Hiking: tupadr3/font-awesome-5/hiking
+Hipercard: logos/hipercard
+Hippo: tupadr3/font-awesome-5/hippo
+Hips: tupadr3/font-awesome-5/hips
+Hire A Helper: tupadr3/font-awesome-5/hire_a_helper
+History: tupadr3/font-awesome-5/history
+Hive: tupadr3/font-awesome-5/hive
+Hoa: logos/hoa
+Hockey Puck: tupadr3/font-awesome-5/hockey_puck
+Holly Berry: tupadr3/font-awesome-5/holly_berry
+Home: tupadr3/font-awesome-5/home
+Hoodie: logos/hoodie
+Hooli: tupadr3/font-awesome-5/hooli
+Horizon: logos/horizon
+Hornbill: tupadr3/font-awesome-5/hornbill
+Horse: tupadr3/font-awesome-5/horse
+Horse Head: tupadr3/font-awesome-5/horse_head
+Hospital: tupadr3/font-awesome-5/hospital
+Hospital Alt: tupadr3/font-awesome-5/hospital_alt
+Hospital Symbol: tupadr3/font-awesome-5/hospital_symbol
+Hospital User: tupadr3/font-awesome-5/hospital_user
+Hosted Graphite: logos/hosted-graphite
+Hostgator: logos/hostgator
+Hot Tub: tupadr3/font-awesome-5/hot_tub
+Hotdog: tupadr3/font-awesome-5/hotdog
+Hotel: tupadr3/font-awesome-5/hotel
+Hotjar: tupadr3/font-awesome-5/hotjar
+HoundCI: logos/houndci
+Hourglass: tupadr3/font-awesome-5/hourglass
+Hourglass End: tupadr3/font-awesome-5/hourglass_end
+Hourglass Half: tupadr3/font-awesome-5/hourglass_half
+Hourglass Start: tupadr3/font-awesome-5/hourglass_start
+House Damage: tupadr3/font-awesome-5/house_damage
+House User: tupadr3/font-awesome-5/house_user
+Houzz: tupadr3/font-awesome-5/houzz
+Hryvnia: tupadr3/font-awesome-5/hryvnia
+Html 5: logos/html-5
+Html5: tupadr3/font-awesome-5/html5
+Html5 Boilerplate: logos/html5-boilerplate
+Html5 Wordmark: tupadr3/devicons2/html5_wordmark
+Hubspot: tupadr3/font-awesome-5/hubspot
+Hugo: logos/hugo
+Humongous: logos/humongous
+Hyper: logos/hyper
+Hyperapp: logos/hyperapp
+I Cursor: tupadr3/font-awesome-5/i_cursor
+IBM: logos/ibm
+ID Badge: tupadr3/font-awesome-5/id_badge
+ID Card: tupadr3/font-awesome-5/id_card
+IE10 Original: tupadr3/devicons2/ie10_original
+IEEE: logos/ieee
+IIS: cloudinsight/iis
+IMDB: tupadr3/font-awesome-5/imdb
+ITsalive: logos/itsalive
+Ice Cream: tupadr3/font-awesome-5/ice_cream
+Icicles: tupadr3/font-awesome-5/icicles
+Icons: tupadr3/font-awesome-5/icons
+Id Card Alt: tupadr3/font-awesome-5/id_card_alt
+Ideal: tupadr3/font-awesome-5/ideal
+Ifttt: logos/ifttt
+Igloo: tupadr3/font-awesome-5/igloo
+Illustrator: tupadr3/devicons2/illustrator
+Illustrator Line: tupadr3/devicons2/illustrator_line
+Image: tupadr3/font-awesome-5/image
+Imagemin: logos/imagemin
+Images: tupadr3/font-awesome-5/images
+Immutable: logos/immutable
+Impala: logos/impala
+Importio: logos/importio
+Inbox: tupadr3/font-awesome-5/inbox
+Indent: tupadr3/font-awesome-5/indent
+Industry: tupadr3/font-awesome-5/industry
+Infer: logos/infer
+Inferno: logos/inferno
+Infinity: tupadr3/font-awesome-5/infinity
+Influxdb: logos/influxdb
+Info: tupadr3/font-awesome-5/info
+Info Circle: tupadr3/font-awesome-5/info_circle
+Ink: logos/ink
+Inkscape: tupadr3/devicons2/inkscape
+Inkscape Wordmark: tupadr3/devicons2/inkscape_wordmark
+Innosoft: tupadr3/font-awesome-5/innosoft
+Instagram: tupadr3/font-awesome-5/instagram
+Instagram Icon: logos/instagram-icon
+Instagram Square: tupadr3/font-awesome-5/instagram_square
+Instalod: tupadr3/font-awesome-5/instalod
+IntelliJ: tupadr3/devicons2/intellij
+IntelliJ Wordmark: tupadr3/devicons2/intellij_wordmark
+Intellij Idea: logos/intellij-idea
+Intercom: tupadr3/font-awesome-5/intercom
+Internet Explorer: tupadr3/font-awesome-5/internet_explorer
+Internetexplorer: logos/internetexplorer
+Invision: tupadr3/font-awesome-5/invision
+Io: logos/io
+Ionic: tupadr3/devicons/ionic
+Ionic Original: tupadr3/devicons2/ionic_original
+Ionic Original Wordmark: tupadr3/devicons2/ionic_original_wordmark
+Ios: logos/ios
+Ioxhost: tupadr3/font-awesome-5/ioxhost
+Iron: logos/iron
+Iron Icon: logos/iron-icon
+Italic: tupadr3/font-awesome-5/italic
+Itch IO: tupadr3/font-awesome-5/itch_io
+JCB: logos/jcb
+JHipster: logos/jhipster
+JQuery: tupadr3/devicons2/jquery
+JQuery Mobile: logos/jquery-mobile
+JQuery UI: tupadr3/devicons/jquery_ui
+JQuery Wordmark: tupadr3/devicons2/jquery_wordmark
+JRuby: logos/jruby
+JS: tupadr3/font-awesome-5/js
+JS Square: tupadr3/font-awesome-5/js_square
+JSON: logos/json
+JSbin: logos/jsbin
+JSdelivr: logos/jsdelivr
+JSdom: logos/jsdom
+JSfiddle: tupadr3/font-awesome-5/jsfiddle
+JSpm: logos/jspm
+JUnit: cloudogu/tools/junit
+Jade: logos/jade
+Jaeger: logos/jaeger
+Jamstack: logos/jamstack
+Jasmine: tupadr3/devicons2/jasmine
+Jasmine Wordmark: tupadr3/devicons2/jasmine_wordmark
+Java: tupadr3/font-awesome-5/java
+Java Wordmark: tupadr3/devicons2/java_wordmark
+Javascript: tupadr3/devicons2/javascript
+Javascript Badge: tupadr3/devicons/javascript_badge
+Javascript Shield: tupadr3/devicons/javascript_shield
+Jedi: tupadr3/font-awesome-5/jedi
+Jedi Order: tupadr3/font-awesome-5/jedi_order
+Jeet: tupadr3/devicons2/jeet
+Jeet Wordmark: tupadr3/devicons2/jeet_wordmark
+Jekyll: logos/jekyll
+Jekyll Small: tupadr3/devicons/jekyll_small
+Jelastic: logos/jelastic
+Jenkins: tupadr3/font-awesome-5/jenkins
+Jenkins Line: tupadr3/devicons2/jenkins_line
+Jest: tupadr3/devicons2/jest
+JetBrains: logos/jetbrains
+Jetbrains: tupadr3/devicons2/jetbrains
+Jianliao: cloudinsight/jianliao
+Jira: tupadr3/font-awesome-5/jira
+Joget: tupadr3/font-awesome-5/joget
+Joint: tupadr3/font-awesome-5/joint
+Joomla: tupadr3/font-awesome-5/joomla
+Journal Whills: tupadr3/font-awesome-5/journal_whills
+Juju: logos/juju
+Julia: tupadr3/devicons2/julia
+Julia Wordmark: tupadr3/devicons2/julia_wordmark
+Jupyter: tupadr3/devicons2/jupyter
+Jupyter Wordmark: tupadr3/devicons2/jupyter_wordmark
+K8s: cloudogu/tools/k8s
+Kaaba: tupadr3/font-awesome-5/kaaba
+Kafka: logos/kafka
+Kafka Icon: logos/kafka-icon
+Kaggle: tupadr3/font-awesome-5/kaggle
+Kaios: logos/kaios
+Kali: logos/kali
+Kallithea: logos/kallithea
+Karma: tupadr3/devicons2/karma
+Keen: logos/keen
+Kemal: logos/kemal
+Key: tupadr3/font-awesome-5/key
+KeyCDN: tupadr3/font-awesome-5/keycdn
+Keybase: tupadr3/font-awesome-5/keybase
+Keyboard: tupadr3/font-awesome-5/keyboard
+Keycloak: cloudinsight/keycloak
+KeystoneJS: logos/keystonejs
+Khan Academy: logos/khan_academy
+Khanda: tupadr3/font-awesome-5/khanda
+Kibana: logos/kibana
+Kickstarter: tupadr3/font-awesome-5/kickstarter
+Kickstarter K: tupadr3/font-awesome-5/kickstarter_k
+Kinto: logos/kinto
+Kinvey: logos/kinvey
+Kirby: logos/kirby
+Kiss: tupadr3/font-awesome-5/kiss
+Kiss Beam: tupadr3/font-awesome-5/kiss_beam
+Kiss Wink Heart: tupadr3/font-awesome-5/kiss_wink_heart
+Kissmetrics: logos/kissmetrics
+Kitematic: logos/kitematic
+Kiwi Bird: tupadr3/font-awesome-5/kiwi_bird
+Kloudless: logos/kloudless
+Knex: logos/knex
+Knockout: logos/knockout
+Knockout Wordmark: tupadr3/devicons2/knockout_wordmark
+Koa: logos/koa
+Komodo: tupadr3/devicons/komodo
+Kong: logos/kong
+Kontena: logos/kontena
+Kops: logos/kops
+Kore: logos/kore
+Koreio: logos/koreio
+Korvue: tupadr3/font-awesome-5/korvue
+Kotlin: tupadr3/devicons2/kotlin
+Kotlin Wordmark: tupadr3/devicons2/kotlin_wordmark
+Kraken: logos/kraken
+KrakenJS: tupadr3/devicons2/krakenjs
+KrakenJS Badge: tupadr3/devicons/krakenjs_badge
+KrakenJS Wordmark: tupadr3/devicons2/krakenjs_wordmark
+Kubernetes: tupadr3/devicons2/kubernetes
+Kubernetes Wordmark: tupadr3/devicons2/kubernetes_wordmark
+Kustomer: logos/kustomer
+Labview: tupadr3/devicons2/labview
+Labview Wordmark: tupadr3/devicons2/labview_wordmark
+Landmark: tupadr3/font-awesome-5/landmark
+Language: tupadr3/font-awesome-5/language
+Laptop: tupadr3/font-awesome-5/laptop
+Laptop Code: tupadr3/font-awesome-5/laptop_code
+Laptop House: tupadr3/font-awesome-5/laptop_house
+Laptop Medical: tupadr3/font-awesome-5/laptop_medical
+Laravel: tupadr3/font-awesome-5/laravel
+Laravel Wordmark: tupadr3/devicons2/laravel_wordmark
+Lastfm: tupadr3/font-awesome-5/lastfm
+Lastfm Square: tupadr3/font-awesome-5/lastfm_square
+Lateral: logos/lateral
+Laugh: tupadr3/font-awesome-5/laugh
+Laugh Beam: tupadr3/font-awesome-5/laugh_beam
+Laugh Squint: tupadr3/font-awesome-5/laugh_squint
+Laugh Wink: tupadr3/font-awesome-5/laugh_wink
+Launchkit: logos/launchkit
+Launchrock: logos/launchrock
+Layer Group: tupadr3/font-awesome-5/layer_group
+Leaf: tupadr3/font-awesome-5/leaf
+Leafjet: logos/leafjet
+Leankit: logos/leankit
+Leankit Icon: logos/leankit-icon
+Leanpub: tupadr3/font-awesome-5/leanpub
+Left: cloudinsight/left
+Lemon: tupadr3/font-awesome-5/lemon
+Less: tupadr3/font-awesome-5/less
+Less Than: tupadr3/font-awesome-5/less_than
+Less Than Equal: tupadr3/font-awesome-5/less_than_equal
+Less Wordmark: tupadr3/devicons2/less_wordmark
+Let's Encrypt: logos/letsencrypt
+Level Down Alt: tupadr3/font-awesome-5/level_down_alt
+Level Up Alt: tupadr3/font-awesome-5/level_up_alt
+LevelDB: logos/leveldb
+Librato: logos/librato
+Life Ring: tupadr3/font-awesome-5/life_ring
+Liftweb: logos/liftweb
+Lightbulb: tupadr3/font-awesome-5/lightbulb
+Lighttpd: logos/lighttpd
+Line: tupadr3/font-awesome-5/line
+Link: tupadr3/font-awesome-5/link
+LinkedIn: tupadr3/font-awesome-5/linkedin
+Linkedin: tupadr3/devicons2/linkedin
+Linkedin In: tupadr3/font-awesome-5/linkedin_in
+Linkedin Wordmark: tupadr3/devicons2/linkedin_wordmark
+Linkerd: logos/linkerd
+Linode: tupadr3/font-awesome-5/linode
+Linux: tupadr3/font-awesome-5/linux
+Linux Mint: logos/linux-mint
+Linux Tux: logos/linux-tux
+Lira Sign: tupadr3/font-awesome-5/lira_sign
+List: tupadr3/font-awesome-5/list
+List Alt: tupadr3/font-awesome-5/list_alt
+List Ol: tupadr3/font-awesome-5/list_ol
+List Ul: tupadr3/font-awesome-5/list_ul
+Listalt: cloudinsight/listalt
+Litmus: logos/litmus
+Loader: logos/loader
+Loading: cloudinsight/loading
+Location Arrow: tupadr3/font-awesome-5/location_arrow
+Locent: logos/locent
+Lock: tupadr3/font-awesome-5/lock
+Lock Open: tupadr3/font-awesome-5/lock_open
+Lodash: logos/lodash
+Logentries: logos/logentries
+Loggly: logos/loggly
+Logmatic: logos/logmatic
+Logstash: logos/logstash
+Long Arrow Alt Down: tupadr3/font-awesome-5/long_arrow_alt_down
+Long Arrow Alt Left: tupadr3/font-awesome-5/long_arrow_alt_left
+Long Arrow Alt Right: tupadr3/font-awesome-5/long_arrow_alt_right
+Long Arrow Alt Up: tupadr3/font-awesome-5/long_arrow_alt_up
+Lookback: logos/lookback
+Looker: logos/looker
+Loopback: logos/loopback
+Loopback Icon: logos/loopback-icon
+Losant: logos/losant
+Low Vision: tupadr3/font-awesome-5/low_vision
+Lua: tupadr3/devicons2/lua
+Lua Wordmark: tupadr3/devicons2/lua_wordmark
+Lucene: logos/lucene
+Lucene Net: logos/lucene.net
+Luggage Cart: tupadr3/font-awesome-5/luggage_cart
+Lumen: logos/lumen
+Lungs: tupadr3/font-awesome-5/lungs
+Lungs Virus: tupadr3/font-awesome-5/lungs_virus
+Lyft: tupadr3/font-awesome-5/lyft
+Lynda: logos/lynda
+MI: cloudinsight/mi
+MIT Licence: tupadr3/devicons/mitlicence
+MSQL Server: tupadr3/devicons/msql_server
+Mac OS: logos/macOS
+Maestro: logos/maestro
+Mageia: logos/mageia
+Magento: tupadr3/font-awesome-5/magento
+Magento Line: tupadr3/devicons2/magento_line
+Magento Original: tupadr3/devicons2/magento_original
+Magento Original Wordmark: tupadr3/devicons2/magento_original_wordmark
+Magic: tupadr3/font-awesome-5/magic
+Magnet: tupadr3/font-awesome-5/magnet
+Magneto: logos/magneto
+Mail Bulk: tupadr3/font-awesome-5/mail_bulk
+Mailchimp: tupadr3/font-awesome-5/mailchimp
+Mailchimp Freddie: logos/mailchimp-freddie
+Maildeveloper: logos/maildeveloper
+Mailgun: logos/mailgun
+Mailgun Icon: logos/mailgun-icon
+Male: tupadr3/font-awesome-5/male
+Mandalorian: tupadr3/font-awesome-5/mandalorian
+Mandrill: logos/mandrill
+Mandrill Shield: logos/mandrill-shield
+ManifoldJS: logos/manifoldjs
+Mantl: logos/mantl
+Manuscript: logos/manuscript
+Map: tupadr3/font-awesome-5/map
+Map Marked: tupadr3/font-awesome-5/map_marked
+Map Marked Alt: tupadr3/font-awesome-5/map_marked_alt
+Map Marker: tupadr3/font-awesome-5/map_marker
+Map Marker Alt: tupadr3/font-awesome-5/map_marker_alt
+Map Pin: tupadr3/font-awesome-5/map_pin
+Map Signs: tupadr3/font-awesome-5/map_signs
+Mapbox: logos/mapbox
+Maps Me: logos/maps-me
+Mapzen: logos/mapzen
+MariaDB: logos/mariadb
+MariaDB Icon: logos/mariadb-icon
+Marionette: logos/marionette
+Markdown: tupadr3/font-awesome-5/markdown
+Marker: tupadr3/font-awesome-5/marker
+Marko: logos/marko
+Mars: tupadr3/font-awesome-5/mars
+Mars Double: tupadr3/font-awesome-5/mars_double
+Mars Stroke: tupadr3/font-awesome-5/mars_stroke
+Mars Stroke H: tupadr3/font-awesome-5/mars_stroke_h
+Mars Stroke V: tupadr3/font-awesome-5/mars_stroke_v
+Marvel: logos/marvel
+Mask: tupadr3/font-awesome-5/mask
+Mastercard: logos/mastercard
+Mastodon: tupadr3/font-awesome-5/mastodon
+Material UI: logos/material-ui
+MaterialUI: tupadr3/devicons2/materialui
+MaterializeCSS: tupadr3/devicons/materializecss
+Matlab: tupadr3/devicons2/matlab
+Matlab Line: tupadr3/devicons2/matlab_line
+Mattermost: logos/mattermost
+MaxCDN: tupadr3/font-awesome-5/maxcdn
+Mdb: tupadr3/font-awesome-5/mdb
+Mdn: logos/mdn
+Mdx: logos/mdx
+Med Tech Service: azure/Health/MedTechService
+Medal: tupadr3/font-awesome-5/medal
+Medapps: tupadr3/font-awesome-5/medapps
+Medium: tupadr3/font-awesome-5/medium
+Medium M: tupadr3/font-awesome-5/medium_m
+Medkit: tupadr3/font-awesome-5/medkit
+Medrt: tupadr3/font-awesome-5/medrt
+Meetup: tupadr3/font-awesome-5/meetup
+Megaport: tupadr3/font-awesome-5/megaport
+Meh: tupadr3/font-awesome-5/meh
+Meh Blank: tupadr3/font-awesome-5/meh_blank
+Meh Rolling Eyes: tupadr3/font-awesome-5/meh_rolling_eyes
+MemSQL: logos/memsql
+MemSQL Icon: logos/memsql-icon
+Memcached: logos/memcached
+Memory: tupadr3/font-awesome-5/memory
+Mendeley: tupadr3/font-awesome-5/mendeley
+Menorah: tupadr3/font-awesome-5/menorah
+Mention: logos/mention
+Mercurial: logos/mercurial
+Mercury: tupadr3/font-awesome-5/mercury
+Mern: logos/mern
+Mesos: logos/mesos
+Mesosphere: logos/mesosphere
+Metabase: logos/metabase
+Meteor: tupadr3/font-awesome-5/meteor
+Meteor Full: tupadr3/devicons/meteorfull
+Meteor Icon: logos/meteor-icon
+Meteor Wordmark: tupadr3/devicons2/meteor_wordmark
+Microblog: tupadr3/font-awesome-5/microblog
+Microchip: tupadr3/font-awesome-5/microchip
+Microcosm: logos/microcosm
+Microphone: tupadr3/font-awesome-5/microphone
+Microphone Alt: tupadr3/font-awesome-5/microphone_alt
+Microphone Alt Slash: tupadr3/font-awesome-5/microphone_alt_slash
+Microphone Slash: tupadr3/font-awesome-5/microphone_slash
+Microscope: tupadr3/font-awesome-5/microscope
+Microsoft: tupadr3/font-awesome-5/microsoft
+Microsoft Edge: logos/microsoft-edge
+Microsoft Genomics: azure/AIMachineLearning/MicrosoftGenomics
+Microsoft SQL Server: tupadr3/devicons2/microsoftsqlserver
+Microsoft Windows: logos/microsoft-windows
+Microsoftsqlserver Wordmark: tupadr3/devicons2/microsoftsqlserver_wordmark
+Middleman: logos/middleman
+Mikrotik: logos/mikrotik
+Milligram: logos/milligram
+Minitab: tupadr3/devicons2/minitab
+Mint: logos/mint
+Minus: tupadr3/font-awesome-5/minus
+Minus Circle: tupadr3/font-awesome-5/minus_circle
+Minus Square: tupadr3/font-awesome-5/minus_square
+Mio: logos/mio
+Mist: logos/mist
+Mithril: logos/mithril
+Mitten: tupadr3/font-awesome-5/mitten
+Mix: tupadr3/font-awesome-5/mix
+Mixcloud: tupadr3/font-awesome-5/mixcloud
+Mixer: tupadr3/font-awesome-5/mixer
+Mixmax: logos/mixmax
+Mixpanel: logos/mixpanel
+Mizuni: tupadr3/font-awesome-5/mizuni
+Mlab: logos/mlab
+Mobile: tupadr3/font-awesome-5/mobile
+Mobile Alt: tupadr3/font-awesome-5/mobile_alt
+Mobx: logos/mobx
+Mocha: tupadr3/devicons2/mocha
+Mock Server: logos/mock-server
+Mockflow: logos/mockflow
+Modernizr: tupadr3/devicons/modernizr
+Modx: tupadr3/font-awesome-5/modx
+Modx Wordmark: tupadr3/devicons2/modx_wordmark
+Moltin: logos/moltin
+Moltin Icon: logos/moltin-icon
+MomentJS: logos/momentjs
+Monero: tupadr3/font-awesome-5/monero
+Money Bill: tupadr3/font-awesome-5/money_bill
+Money Bill Alt: tupadr3/font-awesome-5/money_bill_alt
+Money Bill Wave: tupadr3/font-awesome-5/money_bill_wave
+Money Bill Wave Alt: tupadr3/font-awesome-5/money_bill_wave_alt
+Money Check: tupadr3/font-awesome-5/money_check
+Money Check Alt: tupadr3/font-awesome-5/money_check_alt
+MongoDB: tupadr3/devicons2/mongodb
+MongoDB Wordmark: tupadr3/devicons2/mongodb_wordmark
+Mono: logos/mono
+Monument: tupadr3/font-awesome-5/monument
+Moodle: tupadr3/devicons2/moodle
+Moodle Wordmark: tupadr3/devicons2/moodle_wordmark
+Moon: tupadr3/font-awesome-5/moon
+Mootools: tupadr3/devicons/mootools
+Mootools Badge: tupadr3/devicons/mootools_badge
+Morpheus: logos/morpheus
+Mortar Pestle: tupadr3/font-awesome-5/mortar_pestle
+Mosque: tupadr3/font-awesome-5/mosque
+Motorcycle: tupadr3/font-awesome-5/motorcycle
+Mountain: tupadr3/font-awesome-5/mountain
+Mouse: tupadr3/font-awesome-5/mouse
+Mouse Pointer: tupadr3/font-awesome-5/mouse_pointer
+Mozilla: tupadr3/devicons/mozilla
+Mparticle: logos/mparticle
+Mug Hot: tupadr3/font-awesome-5/mug_hot
+Multicloud Stackdriver: gcp/Hybrid_and_Multi_Cloud/Stackdriver
+Multicloud Traffic Director: gcp/Hybrid_and_Multi_Cloud/Traffic_Director
+Music: tupadr3/font-awesome-5/music
+MySQL: tupadr3/devicons2/mysql
+MySQL Wordmark: tupadr3/devicons2/mysql_wordmark
+Myth: logos/myth
+NS8: tupadr3/font-awesome-5/ns8
+Nagios: cloudinsight/nagios
+Namecheap: logos/namecheap
+Nancy: tupadr3/devicons/nancy
+Nanonets: logos/nanonets
+Napster: tupadr3/font-awesome-5/napster
+Nativescript: logos/nativescript
+Neat: logos/neat
+Neo4J: logos/neo4j
+Neonmetrics: logos/neonmetrics
+Neos: tupadr3/font-awesome-5/neos
+Neovim: logos/neovim
+NestJS: logos/nestjs
+NestJS Wordmark: tupadr3/devicons2/nestjs_wordmark
+Nestjs: tupadr3/devicons2/nestjs
+NetBeans: tupadr3/devicons/netbeans
+Netbeans: logos/netbeans
+Netflix: logos/netflix
+Netflix Icon: logos/netflix-icon
+Netlify: logos/netlify
+Netmagazine: tupadr3/devicons/netmagazine
+Netuitive: logos/netuitive
+Network Wired: tupadr3/font-awesome-5/network_wired
+Neuter: tupadr3/font-awesome-5/neuter
+New Relic: logos/new-relic
+Newspaper: tupadr3/font-awesome-5/newspaper
+NextJS: logos/nextjs
+NextJS Line: tupadr3/devicons2/nextjs_line
+NextJS Original: tupadr3/devicons2/nextjs_original
+NextJS Original Wordmark: tupadr3/devicons2/nextjs_original_wordmark
+Nextcloud: logos/nextcloud
+Nexus: cloudogu/dogus/nexus
+Nginx: tupadr3/devicons/nginx
+Nginx Original: tupadr3/devicons2/nginx_original
+Nightwatch: logos/nightwatch
+Nimblr: tupadr3/font-awesome-5/nimblr
+Nixos: tupadr3/devicons2/nixos
+Nixos Wordmark: tupadr3/devicons2/nixos_wordmark
+Nodal: logos/nodal
+Node: tupadr3/font-awesome-5/node
+Node JS: tupadr3/font-awesome-5/node_js
+Node Sass: logos/node-sass
+NodeJS: tupadr3/devicons/nodejs
+NodeJS Icon: logos/nodejs-icon
+NodeJS Small: tupadr3/devicons/nodejs_small
+Nodebots: logos/nodebots
+Nodejitsu: logos/nodejitsu
+Nodejs: tupadr3/devicons2/nodejs
+Nodejs Wordmark: tupadr3/devicons2/nodejs_wordmark
+Nodemon: logos/nodemon
+Nodeos: logos/nodeos
+Nodewebkit: tupadr3/devicons2/nodewebkit
+Nodewebkit Line: tupadr3/devicons2/nodewebkit_line
+Nodewebkit Line Wordmark: tupadr3/devicons2/nodewebkit_line_wordmark
+Nodewebkit Wordmark: tupadr3/devicons2/nodewebkit_wordmark
+Nomad: logos/nomad
+Not Equal: tupadr3/font-awesome-5/not_equal
+Notes Medical: tupadr3/font-awesome-5/notes_medical
+Now: logos/now
+Noysi: logos/noysi
+Npm: tupadr3/font-awesome-5/npm
+Npm 2: logos/npm-2
+Npm Original Wordmark: tupadr3/devicons2/npm_original_wordmark
+Nuclide: logos/nuclide
+NuoDB: logos/nuodb
+Nutritionix: tupadr3/font-awesome-5/nutritionix
+Nuxt: logos/nuxt
+O'Reilly: logos/oreilly
+OAuth: logos/oauth
+OCaml: tupadr3/devicons2/ocaml
+OCaml Wordmark: tupadr3/devicons2/ocaml_wordmark
+OSHW: logos/oshw
+OSquery: logos/osquery
+Object Group: tupadr3/font-awesome-5/object_group
+Object Ungroup: tupadr3/font-awesome-5/object_ungroup
+ObjectiveC: tupadr3/devicons2/objectivec
+OctoDNS: logos/octodns
+Octopus Deploy: tupadr3/font-awesome-5/octopus_deploy
+Odnoklassniki: tupadr3/font-awesome-5/odnoklassniki
+Odnoklassniki Square: tupadr3/font-awesome-5/odnoklassniki_square
+Oil Can: tupadr3/font-awesome-5/oil_can
+Olapic: logos/olapic
+Olark: logos/olark
+Old Republic: tupadr3/font-awesome-5/old_republic
+Om: tupadr3/font-awesome-5/om
+OneAPM: cloudinsight/oneapmlogo
+OneAlert: cloudinsight/onealert
+OneDrive: tupadr3/devicons/onedrive
+Onesignal: logos/onesignal
+Opbeat: logos/opbeat
+Open Graph: logos/open-graph
+Open Source: tupadr3/devicons/opensource
+OpenCV: logos/opencv
+OpenCollective: logos/opencollective
+OpenGL: logos/opengl
+OpenID: tupadr3/font-awesome-5/openid
+OpenLDAP: cloudogu/dogus/openldap
+OpenLayers: logos/openlayers
+OpenShift: logos/openshift
+OpenStack: cloudinsight/openstack
+Opencart: tupadr3/font-awesome-5/opencart
+Openshift: tupadr3/devicons/openshift
+Openstack: logos/openstack
+Opera: tupadr3/font-awesome-5/opera
+Opsee: logos/opsee
+Opsgenie: logos/opsgenie
+Optimizely: logos/optimizely
+Optin Monster: tupadr3/font-awesome-5/optin_monster
+Oracle: logos/oracle
+Oracle Original: tupadr3/devicons2/oracle_original
+Orcid: tupadr3/font-awesome-5/orcid
+Origami: logos/origami
+Origin: logos/origin
+Osi: tupadr3/font-awesome-5/osi
+Otter: tupadr3/font-awesome-5/otter
+Otto: logos/otto
+Outdent: tupadr3/font-awesome-5/outdent
+Overview: cloudinsight/overview
+PHP: tupadr3/font-awesome-5/php
+PHP FPM: cloudinsight/php_fpm
+PHPstorm: tupadr3/devicons2/phpstorm
+PHPstorm Wordmark: tupadr3/devicons2/phpstorm_wordmark
+PM2: logos/pm2
+Packer: logos/packer
+Page4: tupadr3/font-awesome-5/page4
+Pagekit: logos/pagekit
+Pagekite: logos/pagekite
+Pagelines: tupadr3/font-awesome-5/pagelines
+Pager: tupadr3/font-awesome-5/pager
+Paint Brush: tupadr3/font-awesome-5/paint_brush
+Paint Roller: tupadr3/font-awesome-5/paint_roller
+Palette: tupadr3/font-awesome-5/palette
+Palfed: tupadr3/font-awesome-5/palfed
+Pallet: tupadr3/font-awesome-5/pallet
+Panda: logos/panda
+Paper Plane: tupadr3/font-awesome-5/paper_plane
+Paperclip: tupadr3/font-awesome-5/paperclip
+Parachute Box: tupadr3/font-awesome-5/parachute_box
+Paragraph: tupadr3/font-awesome-5/paragraph
+Parking: tupadr3/font-awesome-5/parking
+Parse: logos/parse
+Parsehub: logos/parsehub
+Passbolt: logos/passbolt
+Passport: tupadr3/font-awesome-5/passport
+Pastafarianism: tupadr3/font-awesome-5/pastafarianism
+Paste: tupadr3/font-awesome-5/paste
+Patreon: tupadr3/font-awesome-5/patreon
+Pause: tupadr3/font-awesome-5/pause
+Pause Circle: tupadr3/font-awesome-5/pause_circle
+Paw: tupadr3/font-awesome-5/paw
+Paypal: tupadr3/font-awesome-5/paypal
+Peace: tupadr3/font-awesome-5/peace
+Peer5: logos/peer5
+Pen: tupadr3/font-awesome-5/pen
+Pen Alt: tupadr3/font-awesome-5/pen_alt
+Pen Fancy: tupadr3/font-awesome-5/pen_fancy
+Pen Nib: tupadr3/font-awesome-5/pen_nib
+Pen Square: tupadr3/font-awesome-5/pen_square
+Pencil Alt: tupadr3/font-awesome-5/pencil_alt
+Pencil Ruler: tupadr3/font-awesome-5/pencil_ruler
+Penny Arcade: tupadr3/font-awesome-5/penny_arcade
+People Arrows: tupadr3/font-awesome-5/people_arrows
+People Carry: tupadr3/font-awesome-5/people_carry
+Pepper Hot: tupadr3/font-awesome-5/pepper_hot
+Pepperoni: logos/pepperoni
+Perbyte: tupadr3/font-awesome-5/perbyte
+Percent: tupadr3/font-awesome-5/percent
+Percentage: tupadr3/font-awesome-5/percentage
+Percona: logos/percona
+Percy: logos/percy
+Perf Rocks: logos/perf-rocks
+Periscope: tupadr3/font-awesome-5/periscope
+Perl: tupadr3/devicons2/perl
+Person Booth: tupadr3/font-awesome-5/person_booth
+Phabricator: tupadr3/font-awesome-5/phabricator
+Phalcon: tupadr3/devicons2/phalcon
+Phoenix: tupadr3/devicons2/phoenix
+Phoenix Framework: tupadr3/font-awesome-5/phoenix_framework
+Phoenix Squadron: tupadr3/font-awesome-5/phoenix_squadron
+Phoenix Wordmark: tupadr3/devicons2/phoenix_wordmark
+Phone: tupadr3/font-awesome-5/phone
+Phone Alt: tupadr3/font-awesome-5/phone_alt
+Phone Slash: tupadr3/font-awesome-5/phone_slash
+Phone Square: tupadr3/font-awesome-5/phone_square
+Phone Square Alt: tupadr3/font-awesome-5/phone_square_alt
+Phone Volume: tupadr3/font-awesome-5/phone_volume
+PhoneGap: tupadr3/devicons/phonegap
+Phonegap: logos/phonegap
+Phonegap Bot: logos/phonegap-bot
+Photo Video: tupadr3/font-awesome-5/photo_video
+Photoshop: tupadr3/devicons2/photoshop
+Photoshop Line: tupadr3/devicons2/photoshop_line
+Php: logos/php
+Phpstorm: logos/phpstorm
+Picasa: logos/picasa
+Pied Piper: tupadr3/font-awesome-5/pied_piper
+Pied Piper Alt: tupadr3/font-awesome-5/pied_piper_alt
+Pied Piper Hat: tupadr3/font-awesome-5/pied_piper_hat
+Pied Piper PP: tupadr3/font-awesome-5/pied_piper_pp
+Pied Piper Square: tupadr3/font-awesome-5/pied_piper_square
+Piggy Bank: tupadr3/font-awesome-5/piggy_bank
+Pills: tupadr3/font-awesome-5/pills
+Pingdom: logos/pingdom
+Pingy: logos/pingy
+Pinterest: tupadr3/font-awesome-5/pinterest
+Pinterest P: tupadr3/font-awesome-5/pinterest_p
+Pinterest Square: tupadr3/font-awesome-5/pinterest_square
+Pipedrive: logos/pipedrive
+Pipefy: logos/pipefy
+Pivotal Tracker: logos/pivotal_tracker
+Pixate: logos/pixate
+Pizza Slice: tupadr3/font-awesome-5/pizza_slice
+Pkg: logos/pkg
+Place Of Worship: tupadr3/font-awesome-5/place_of_worship
+Plane: tupadr3/font-awesome-5/plane
+Plane Arrival: tupadr3/font-awesome-5/plane_arrival
+Plane Departure: tupadr3/font-awesome-5/plane_departure
+Plane Slash: tupadr3/font-awesome-5/plane_slash
+Planless: logos/planless
+PlantUML: cloudogu/dogus/plantuml
+Plastic SCM: logos/plastic-scm
+PlatformIO: logos/platformio
+Play: tupadr3/font-awesome-5/play
+Play Circle: tupadr3/font-awesome-5/play_circle
+Playstation: tupadr3/font-awesome-5/playstation
+Plug: tupadr3/font-awesome-5/plug
+Plus: tupadr3/font-awesome-5/plus
+Plus Circle: tupadr3/font-awesome-5/plus_circle
+Plus Square: tupadr3/font-awesome-5/plus_square
+PodIO: logos/podio
+Podcast: tupadr3/font-awesome-5/podcast
+Poeditor: logos/poeditor
+Point: cloudinsight/point
+Poll: tupadr3/font-awesome-5/poll
+Poll H: tupadr3/font-awesome-5/poll_h
+Polymer: logos/polymer
+Poo: tupadr3/font-awesome-5/poo
+Poo Storm: tupadr3/font-awesome-5/poo_storm
+Poop: tupadr3/font-awesome-5/poop
+Portrait: tupadr3/font-awesome-5/portrait
+Positionly: logos/positionly
+PostCSS: logos/postcss
+Postfix: cloudogu/dogus/postfix
+PostgreSQL: tupadr3/devicons2/postgresql
+PostgreSQL Wordmark: tupadr3/devicons2/postgresql_wordmark
+Postman: logos/postman
+PouchDB: logos/pouchdb
+Pound Sign: tupadr3/font-awesome-5/pound_sign
+Power Off: tupadr3/font-awesome-5/power_off
+PowerBI: azure/Analytics/PowerBI
+Pray: tupadr3/font-awesome-5/pray
+Praying Hands: tupadr3/font-awesome-5/praying_hands
+Preact: logos/preact
+Precursor: logos/precursor
+Premierepro: tupadr3/devicons2/premierepro
+Prescription: tupadr3/font-awesome-5/prescription
+Prescription Bottle: tupadr3/font-awesome-5/prescription_bottle
+Prescription Bottle Alt: tupadr3/font-awesome-5/prescription_bottle_alt
+Prestashop: logos/prestashop
+Presto: logos/presto
+Prettier: logos/prettier
+Print: tupadr3/font-awesome-5/print
+Prisma: logos/prisma
+Procedures: tupadr3/font-awesome-5/procedures
+Processwire: logos/processwire
+Processwire Icon: logos/processwire-icon
+Product Hunt: tupadr3/font-awesome-5/product_hunt
+Productboard: logos/productboard
+Producthunt: logos/producthunt
+Progress: logos/progress
+Project Diagram: tupadr3/font-awesome-5/project_diagram
+Prolog: tupadr3/devicons/prolog
+Prometheus: logos/prometheus
+Promises: logos/promises
+Proofy: logos/proofy
+Prospect: logos/prospect
+Protactor: logos/protactor
+ProtoIO: logos/protoio
+Protonet: logos/protonet
+Protractor: tupadr3/devicons2/protractor
+Protractor Wordmark: tupadr3/devicons2/protractor_wordmark
+Prott: logos/prott
+Pubu: cloudinsight/pubu
+Pug: logos/pug
+Pump Medical: tupadr3/font-awesome-5/pump_medical
+Pump Soap: tupadr3/font-awesome-5/pump_soap
+Pumpkindb: logos/pumpkindb
+Puppet: logos/puppet
+Puppet Icon: logos/puppet-icon
+Puppeteer: logos/puppeteer
+Puppy Linux: logos/puppy-linux
+Pushbullet: logos/pushbullet
+Pushed: tupadr3/font-awesome-5/pushed
+Pusher: logos/pusher
+Puzzle Piece: tupadr3/font-awesome-5/puzzle_piece
+Pycharm: tupadr3/devicons2/pycharm
+Pycharm Wordmark: tupadr3/devicons2/pycharm_wordmark
+Python: tupadr3/font-awesome-5/python
+Python Wordmark: tupadr3/devicons2/python_wordmark
+Pytorch: logos/pytorch
+Pyup: logos/pyup
+Q: logos/q
+QEmu: cloudogu/tools/qemu
+QQ: tupadr3/font-awesome-5/qq
+QRcode: tupadr3/font-awesome-5/qrcode
+Qordoba: logos/qordoba
+Qt: logos/qt
+Quay: logos/quay
+Question: tupadr3/font-awesome-5/question
+Question Circle: tupadr3/font-awesome-5/question_circle
+Quidditch: tupadr3/font-awesome-5/quidditch
+Quinscape: tupadr3/font-awesome-5/quinscape
+Quobyte: logos/quobyte
+Quora: tupadr3/font-awesome-5/quora
+Quote Left: tupadr3/font-awesome-5/quote_left
+Quote Right: tupadr3/font-awesome-5/quote_right
+Quran: tupadr3/font-awesome-5/quran
+R: tupadr3/devicons2/r
+R Lang: logos/r-lang
+R Original: tupadr3/devicons2/r_original
+R Project: tupadr3/font-awesome-5/r_project
+R Studio: tupadr3/devicons2/rstudio
+RSA: logos/rsa
+RabbitMQ: logos/rabbitmq
+Rackspace: tupadr3/devicons/rackspace
+Radiation: tupadr3/font-awesome-5/radiation
+Radiation Alt: tupadr3/font-awesome-5/radiation_alt
+Rails: tupadr3/devicons2/rails
+Rails Wordmark: tupadr3/devicons2/rails_wordmark
+Rainbow: tupadr3/font-awesome-5/rainbow
+Ramda: logos/ramda
+Raml: logos/raml
+Rancher: logos/rancher
+Random: tupadr3/font-awesome-5/random
+Raphael: tupadr3/devicons/raphael
+Raspberry Pi: tupadr3/font-awesome-5/raspberry_pi
+Raspberry Pi Line: tupadr3/devicons2/raspberrypi_line
+Raspberry Pi Line Wordmark: tupadr3/devicons2/raspberrypi_line_wordmark
+Ravelry: tupadr3/font-awesome-5/ravelry
+Rax: logos/rax
+ReIndex: logos/reindex
+React: tupadr3/font-awesome-5/react
+React Original: tupadr3/devicons2/react_original
+React Original Wordmark: tupadr3/devicons2/react_original_wordmark
+React Router: logos/react-router
+React Styleguidist: logos/react-styleguidist
+Reacteurope: tupadr3/font-awesome-5/reacteurope
+ReactiveX: logos/reactivex
+Readme: tupadr3/font-awesome-5/readme
+Realm: logos/realm
+Reapp: logos/reapp
+ReasonML: logos/reasonml
+ReasonML Icon: logos/reasonml-icon
+Rebel: tupadr3/font-awesome-5/rebel
+Recast AI: logos/recast.ai
+Receipt: tupadr3/font-awesome-5/receipt
+Record Vinyl: tupadr3/font-awesome-5/record_vinyl
+Recycle: tupadr3/font-awesome-5/recycle
+Red River: tupadr3/font-awesome-5/red_river
+Reddit: tupadr3/font-awesome-5/reddit
+Reddit Alien: tupadr3/font-awesome-5/reddit_alien
+Reddit Icon: logos/reddit-icon
+Reddit Square: tupadr3/font-awesome-5/reddit_square
+Redhat: tupadr3/font-awesome-5/redhat
+Redhat Wordmark: tupadr3/devicons2/redhat_wordmark
+Redis: tupadr3/devicons2/redis
+Redis Wordmark: tupadr3/devicons2/redis_wordmark
+Redmine: cloudogu/dogus/redmine
+Redo: tupadr3/font-awesome-5/redo
+Redo Alt: tupadr3/font-awesome-5/redo_alt
+Redsmin: logos/redsmin
+Redspread: logos/redspread
+Redux: logos/redux
+Redux Observable: logos/redux-observable
+Redux Original: tupadr3/devicons2/redux_original
+Redux Saga: logos/redux-saga
+Refactor: logos/refactor
+Registered: tupadr3/font-awesome-5/registered
+Registrator: cloudogu/dogus/registrator
+Relay: logos/relay
+Remergr: logos/remergr
+Remove Format: tupadr3/font-awesome-5/remove_format
+Remove Sign: cloudinsight/remove-sign
+Renren: tupadr3/font-awesome-5/renren
+Reply: tupadr3/font-awesome-5/reply
+Reply All: tupadr3/font-awesome-5/reply_all
+Replyd: tupadr3/font-awesome-5/replyd
+Republican: tupadr3/font-awesome-5/republican
+Require: logos/require
+RequireJS: tupadr3/devicons/requirejs
+Researchgate: tupadr3/font-awesome-5/researchgate
+Resolving: tupadr3/font-awesome-5/resolving
+Responsive: tupadr3/devicons/responsive
+Rest: logos/rest
+Rest Li: logos/rest-li
+Restroom: tupadr3/font-awesome-5/restroom
+RethinkDB: logos/rethinkdb
+Retweet: tupadr3/font-awesome-5/retweet
+Rev: tupadr3/font-awesome-5/rev
+Riak: logos/riak
+Ribbon: tupadr3/font-awesome-5/ribbon
+Right: cloudinsight/right
+Ring: tupadr3/font-awesome-5/ring
+Riot: logos/riot
+Rkt: logos/rkt
+Road: tupadr3/font-awesome-5/road
+Robot: tupadr3/font-awesome-5/robot
+Rocket: tupadr3/font-awesome-5/rocket
+Rocket Chat: logos/rocket-chat
+Rocketchat: tupadr3/font-awesome-5/rocketchat
+Rockrms: tupadr3/font-awesome-5/rockrms
+RocksDB: tupadr3/devicons2/rocksdb
+Rocky: logos/rocky
+Rollbar: logos/rollbar
+Rollup: logos/rollup
+RollupJS: logos/rollupjs
+Route: tupadr3/font-awesome-5/route
+RsMQ: logos/rsmq
+Rss: tupadr3/font-awesome-5/rss
+Rss Square: tupadr3/font-awesome-5/rss_square
+Ruble Sign: tupadr3/font-awesome-5/ruble_sign
+Rubocop: logos/rubocop
+Ruby: tupadr3/devicons2/ruby
+Ruby On Rails: tupadr3/devicons/ruby_on_rails
+Ruby Rough: tupadr3/devicons/ruby_rough
+Ruby Wordmark: tupadr3/devicons2/ruby_wordmark
+Rubygems: logos/rubygems
+Rubymine: tupadr3/devicons2/rubymine
+Rubymine Wordmark: tupadr3/devicons2/rubymine_wordmark
+Ruler: tupadr3/font-awesome-5/ruler
+Ruler Combined: tupadr3/font-awesome-5/ruler_combined
+Ruler Horizontal: tupadr3/font-awesome-5/ruler_horizontal
+Ruler Vertical: tupadr3/font-awesome-5/ruler_vertical
+Rum: logos/rum
+Run Above: logos/run-above
+Runnable: logos/runnable
+Running: tupadr3/font-awesome-5/running
+Runscope: logos/runscope
+Rupee Sign: tupadr3/font-awesome-5/rupee_sign
+Rust: tupadr3/font-awesome-5/rust
+RxDB: logos/rxdb
+SCM: cloudogu/dogus/scm
+SD Card: tupadr3/font-awesome-5/sd_card
+SMS: tupadr3/font-awesome-5/sms
+SNMP: cloudinsight/snmp
+SPSS: tupadr3/devicons2/spss
+SQL Server: cloudinsight/sqlserver
+SQLalchemy: tupadr3/devicons2/sqlalchemy
+SQLalchemy Original Wordmark: tupadr3/devicons2/sqlalchemy_original_wordmark
+SQLdep: logos/sqldep
+SQLite: logos/sqlite
+SQLlite: tupadr3/devicons/sqllite
+SSH Original: tupadr3/devicons2/ssh_original
+SSH Original Wordmark: tupadr3/devicons2/ssh_original_wordmark
+SVG: logos/svg
+Sad Cry: tupadr3/font-awesome-5/sad_cry
+Sad Tear: tupadr3/font-awesome-5/sad_tear
+Safari: tupadr3/font-awesome-5/safari
+Safari Line: tupadr3/devicons2/safari_line
+Safari Line Wordmark: tupadr3/devicons2/safari_line_wordmark
+Safari Wordmark: tupadr3/devicons2/safari_wordmark
+SagUI: logos/sagui
+Sails: logos/sails
+Salesforce: tupadr3/font-awesome-5/salesforce
+Saltstack: logos/saltstack
+Sameroom: logos/sameroom
+Sanity: logos/sanity
+Sass: tupadr3/font-awesome-5/sass
+Sass Doc: logos/sass-doc
+Sass Original: tupadr3/devicons2/sass_original
+Satellite: tupadr3/font-awesome-5/satellite
+Satellite Dish: tupadr3/font-awesome-5/satellite_dish
+Saucelabs: logos/saucelabs
+Save: tupadr3/font-awesome-5/save
+Scala: tupadr3/devicons2/scala
+Scala Wordmark: tupadr3/devicons2/scala_wordmark
+Scaledrone: logos/scaledrone
+Scaphold: logos/scaphold
+Schlix: tupadr3/font-awesome-5/schlix
+School: tupadr3/font-awesome-5/school
+Screwdriver: tupadr3/font-awesome-5/screwdriver
+Scribd: tupadr3/font-awesome-5/scribd
+ScriptCS: tupadr3/devicons/scriptcs
+Scroll: tupadr3/font-awesome-5/scroll
+Scrum: tupadr3/devicons/scrum
+Search: tupadr3/font-awesome-5/search
+Search Dollar: tupadr3/font-awesome-5/search_dollar
+Search Location: tupadr3/font-awesome-5/search_location
+Search Minus: tupadr3/font-awesome-5/search_minus
+Search Plus: tupadr3/font-awesome-5/search_plus
+Searchengin: tupadr3/font-awesome-5/searchengin
+Sectionio: logos/sectionio
+Seedling: tupadr3/font-awesome-5/seedling
+Segment: logos/segment
+Selenium: logos/selenium
+Sellcast: tupadr3/font-awesome-5/sellcast
+Sellsy: tupadr3/font-awesome-5/sellsy
+Semantic UI: logos/semantic-ui
+Semantic Web: logos/semantic-web
+Semaphore: logos/semaphore
+Sencha: logos/sencha
+Senchatouch: tupadr3/devicons/senchatouch
+Sendgrid: logos/sendgrid
+Seneca: logos/seneca
+Sensu: logos/sensu
+Sentry: logos/sentry
+Sequelize: tupadr3/devicons2/sequelize
+Sequelize Wordmark: tupadr3/devicons2/sequelize_wordmark
+Serveless: logos/serveless
+Server: tupadr3/font-awesome-5/server
+Serverless: logos/serverless
+Servicestack: tupadr3/font-awesome-5/servicestack
+Shapes: tupadr3/font-awesome-5/shapes
+Share: tupadr3/font-awesome-5/share
+Share Alt: tupadr3/font-awesome-5/share_alt
+Share Alt Square: tupadr3/font-awesome-5/share_alt_square
+Share Square: tupadr3/font-awesome-5/share_square
+Shekel Sign: tupadr3/font-awesome-5/shekel_sign
+Sherlock: logos/sherlock
+Shield Alt: tupadr3/font-awesome-5/shield_alt
+Shield Virus: tupadr3/font-awesome-5/shield_virus
+Shields: logos/shields
+Ship: tupadr3/font-awesome-5/ship
+Shipit: logos/shipit
+Shippable: logos/shippable
+Shipping Fast: tupadr3/font-awesome-5/shipping_fast
+Shirtsinbulk: tupadr3/font-awesome-5/shirtsinbulk
+Shoe Prints: tupadr3/font-awesome-5/shoe_prints
+Shogun: logos/shogun
+Shopify: tupadr3/font-awesome-5/shopify
+Shopping Bag: tupadr3/font-awesome-5/shopping_bag
+Shopping Basket: tupadr3/font-awesome-5/shopping_basket
+Shopping Cart: tupadr3/font-awesome-5/shopping_cart
+Shopware: tupadr3/font-awesome-5/shopware
+Shopware Original: tupadr3/devicons2/shopware_original
+Shopware Original Wordmark: tupadr3/devicons2/shopware_original_wordmark
+Shower: tupadr3/font-awesome-5/shower
+Shuttle Van: tupadr3/font-awesome-5/shuttle_van
+Sidekick: logos/sidekick
+Sidekiq: logos/sidekiq
+Sign: tupadr3/font-awesome-5/sign
+Sign In Alt: tupadr3/font-awesome-5/sign_in_alt
+Sign Language: tupadr3/font-awesome-5/sign_language
+Sign Out Alt: tupadr3/font-awesome-5/sign_out_alt
+Signal: tupadr3/font-awesome-5/signal
+Signature: tupadr3/font-awesome-5/signature
+Sim Card: tupadr3/font-awesome-5/sim_card
+Simplybuilt: tupadr3/font-awesome-5/simplybuilt
+Sinatra: logos/sinatra
+Single Page: cloudinsight/singlePage
+Sink: tupadr3/font-awesome-5/sink
+Siphon: logos/siphon
+Sistrix: tupadr3/font-awesome-5/sistrix
+Sitemap: tupadr3/font-awesome-5/sitemap
+Sitepoint: logos/sitepoint
+Sith: tupadr3/font-awesome-5/sith
+SizzleJS: tupadr3/devicons/sizzlejs
+Skating: tupadr3/font-awesome-5/skating
+Sketch: tupadr3/font-awesome-5/sketch
+Sketch Line: tupadr3/devicons2/sketch_line
+Sketch Line Wordmark: tupadr3/devicons2/sketch_line_wordmark
+Sketchapp: logos/sketchapp
+Skiing: tupadr3/font-awesome-5/skiing
+Skiing Nordic: tupadr3/font-awesome-5/skiing_nordic
+Skull: tupadr3/font-awesome-5/skull
+Skull Crossbones: tupadr3/font-awesome-5/skull_crossbones
+Skyatlas: tupadr3/font-awesome-5/skyatlas
+Skylight: logos/skylight
+Skype: tupadr3/font-awesome-5/skype
+Slack: tupadr3/font-awesome-5/slack
+Slack Hash: tupadr3/font-awesome-5/slack_hash
+Slack Icon: logos/slack-icon
+Slack Wordmark: tupadr3/devicons2/slack_wordmark
+Slash: tupadr3/font-awesome-5/slash
+Sleigh: tupadr3/font-awesome-5/sleigh
+Sliders H: tupadr3/font-awesome-5/sliders_h
+Slides: logos/slides
+Slideshare: tupadr3/font-awesome-5/slideshare
+Slim: logos/slim
+Smartling: logos/smartling
+Smashing Magazine: tupadr3/devicons/smashing_magazine
+Smashingmagazine: logos/smashingmagazine
+Smeagol: cloudogu/dogus/smeagol
+Smile: tupadr3/font-awesome-5/smile
+Smile Beam: tupadr3/font-awesome-5/smile_beam
+Smile Wink: tupadr3/font-awesome-5/smile_wink
+Smog: tupadr3/font-awesome-5/smog
+Smoking: tupadr3/font-awesome-5/smoking
+Smoking Ban: tupadr3/font-awesome-5/smoking_ban
+Snap SVG: tupadr3/devicons/snap_svg
+Snapchat: tupadr3/font-awesome-5/snapchat
+Snapchat Ghost: tupadr3/font-awesome-5/snapchat_ghost
+Snapchat Square: tupadr3/font-awesome-5/snapchat_square
+Sninnaker: logos/sninnaker
+Snowboarding: tupadr3/font-awesome-5/snowboarding
+Snowflake: tupadr3/font-awesome-5/snowflake
+Snowman: tupadr3/font-awesome-5/snowman
+Snowplow: tupadr3/font-awesome-5/snowplow
+Snupps: logos/snupps
+Snyk: logos/snyk
+Soap: tupadr3/font-awesome-5/soap
+Socket IO: logos/socket.io
+Socks: tupadr3/font-awesome-5/socks
+Solar Panel: tupadr3/font-awesome-5/solar_panel
+Solid: logos/solid
+Solr: logos/solr
+SonarQube: cloudogu/dogus/sonarqube
+Sonarqube: logos/sonarqube
+Sort: tupadr3/font-awesome-5/sort
+Sort Alpha Down: tupadr3/font-awesome-5/sort_alpha_down
+Sort Alpha Down Alt: tupadr3/font-awesome-5/sort_alpha_down_alt
+Sort Alpha Up: tupadr3/font-awesome-5/sort_alpha_up
+Sort Alpha Up Alt: tupadr3/font-awesome-5/sort_alpha_up_alt
+Sort Amount Down: tupadr3/font-awesome-5/sort_amount_down
+Sort Amount Down Alt: tupadr3/font-awesome-5/sort_amount_down_alt
+Sort Amount Up: tupadr3/font-awesome-5/sort_amount_up
+Sort Amount Up Alt: tupadr3/font-awesome-5/sort_amount_up_alt
+Sort Down: tupadr3/font-awesome-5/sort_down
+Sort Numeric Down: tupadr3/font-awesome-5/sort_numeric_down
+Sort Numeric Down Alt: tupadr3/font-awesome-5/sort_numeric_down_alt
+Sort Numeric Up: tupadr3/font-awesome-5/sort_numeric_up
+Sort Numeric Up Alt: tupadr3/font-awesome-5/sort_numeric_up_alt
+Sort Up: tupadr3/font-awesome-5/sort_up
+Soundcloud: tupadr3/font-awesome-5/soundcloud
+Sourcegraph: logos/sourcegraph
+Sourcetrail: logos/sourcetrail
+Sourcetree: tupadr3/font-awesome-5/sourcetree
+Sourcetree Original: tupadr3/devicons2/sourcetree_original
+Sourcetree Original Wordmark: tupadr3/devicons2/sourcetree_original_wordmark
+Spa: tupadr3/font-awesome-5/spa
+Space Shuttle: tupadr3/font-awesome-5/space_shuttle
+Spark: logos/spark
+Sparkcentral: logos/sparkcentral
+Sparkpost: logos/sparkpost
+Speakap: tupadr3/font-awesome-5/speakap
+Speaker Deck: tupadr3/font-awesome-5/speaker_deck
+Speakerdeck: logos/speakerdeck
+Speedcurve: logos/speedcurve
+Spell Check: tupadr3/font-awesome-5/spell_check
+Spider: tupadr3/font-awesome-5/spider
+Spinnaker: logos/spinnaker
+Spinner: tupadr3/font-awesome-5/spinner
+Splotch: tupadr3/font-awesome-5/splotch
+Spotify: tupadr3/font-awesome-5/spotify
+Spray Can: tupadr3/font-awesome-5/spray_can
+Spree: logos/spree
+Spring: tupadr3/devicons2/spring
+Spring Wordmark: tupadr3/devicons2/spring_wordmark
+Square: tupadr3/font-awesome-5/square
+Square Full: tupadr3/font-awesome-5/square_full
+Square Root Alt: tupadr3/font-awesome-5/square_root_alt
+Squarespace: tupadr3/font-awesome-5/squarespace
+Stack Exchange: tupadr3/font-awesome-5/stack_exchange
+Stack Overflow: tupadr3/font-awesome-5/stack_overflow
+StackOverflow: tupadr3/devicons/stackoverflow
+Stackoverflow: logos/stackoverflow
+Stackoverflow Icon: logos/stackoverflow-icon
+Stackpath: tupadr3/font-awesome-5/stackpath
+Stackshare: logos/stackshare
+Stacksmith: logos/stacksmith
+Stamp: tupadr3/font-awesome-5/stamp
+Star: tupadr3/font-awesome-5/star
+Star And Crescent: tupadr3/font-awesome-5/star_and_crescent
+Star Half: tupadr3/font-awesome-5/star_half
+Star Half Alt: tupadr3/font-awesome-5/star_half_alt
+Star Of David: tupadr3/font-awesome-5/star_of_david
+Star Of Life: tupadr3/font-awesome-5/star_of_life
+Statuspage: logos/statuspage
+Staylinked: tupadr3/font-awesome-5/staylinked
+Steam: tupadr3/font-awesome-5/steam
+Steam Square: tupadr3/font-awesome-5/steam_square
+Steam Symbol: tupadr3/font-awesome-5/steam_symbol
+Step Backward: tupadr3/font-awesome-5/step_backward
+Step Forward: tupadr3/font-awesome-5/step_forward
+Steroids: logos/steroids
+Stetho: logos/stetho
+Stethoscope: tupadr3/font-awesome-5/stethoscope
+Sticker Mule: tupadr3/font-awesome-5/sticker_mule
+Stickermule: logos/stickermule
+Sticky Note: tupadr3/font-awesome-5/sticky_note
+Stitch: logos/stitch
+Stop: tupadr3/font-awesome-5/stop
+Stop Circle: tupadr3/font-awesome-5/stop_circle
+Stoplight: logos/stoplight
+Stopwatch: tupadr3/font-awesome-5/stopwatch
+Stopwatch 20: tupadr3/font-awesome-5/stopwatch_20
+Store: tupadr3/font-awesome-5/store
+Store Alt: tupadr3/font-awesome-5/store_alt
+Store Alt Slash: tupadr3/font-awesome-5/store_alt_slash
+Store Slash: tupadr3/font-awesome-5/store_slash
+Stormpath: logos/stormpath
+Storybook: logos/storybook
+Storybook Icon: logos/storybook-icon
+Strapi: logos/strapi
+Strava: tupadr3/font-awesome-5/strava
+Stream: tupadr3/font-awesome-5/stream
+Streamline: tupadr3/devicons/streamline
+Street View: tupadr3/font-awesome-5/street_view
+Strider: logos/strider
+Strikethrough: tupadr3/font-awesome-5/strikethrough
+Stripe: tupadr3/font-awesome-5/stripe
+Stripe S: tupadr3/font-awesome-5/stripe_s
+Stroopwafel: tupadr3/font-awesome-5/stroopwafel
+Struts: logos/struts
+Studiovinari: tupadr3/font-awesome-5/studiovinari
+Stumbleupon: tupadr3/font-awesome-5/stumbleupon
+Stumbleupon Circle: tupadr3/font-awesome-5/stumbleupon_circle
+StyleCI: logos/styleci
+Stylefmt: logos/stylefmt
+Stylelint: logos/stylelint
+Stylus: tupadr3/devicons/stylus
+Stylus Original: tupadr3/devicons2/stylus_original
+SuSE: tupadr3/font-awesome-5/suse
+Sublime: tupadr3/devicons/sublime
+Subscript: tupadr3/font-awesome-5/subscript
+Subversion: logos/subversion
+Subway: tupadr3/font-awesome-5/subway
+Sugarss: logos/sugarss
+Suitcase: tupadr3/font-awesome-5/suitcase
+Suitcase Rolling: tupadr3/font-awesome-5/suitcase_rolling
+Sun: tupadr3/font-awesome-5/sun
+Supergiant: logos/supergiant
+Superpowers: tupadr3/font-awesome-5/superpowers
+Superscript: tupadr3/font-awesome-5/superscript
+Superset: cloudinsight/superset
+Supersonic: logos/supersonic
+Supervisord: cloudinsight/supervisord
+Supple: tupadr3/font-awesome-5/supple
+Supportkit: logos/supportkit
+Surge: logos/surge
+Surprise: tupadr3/font-awesome-5/surprise
+Survicate: logos/survicate
+Suse: logos/suse
+Susy: logos/susy
+Svelte: logos/svelte
+Svelte Icon: logos/svelte-icon
+Swagger: logos/swagger
+Swatchbook: tupadr3/font-awesome-5/swatchbook
+Swift: tupadr3/font-awesome-5/swift
+Swift Wordmark: tupadr3/devicons2/swift_wordmark
+Swiftype: logos/swiftype
+Swimmer: tupadr3/font-awesome-5/swimmer
+Swimming Pool: tupadr3/font-awesome-5/swimming_pool
+Symfony: tupadr3/font-awesome-5/symfony
+Symfony Badge: tupadr3/devicons/symfony_badge
+Symfony Original: tupadr3/devicons2/symfony_original
+Symfony Original Wordmark: tupadr3/devicons2/symfony_original_wordmark
+Synagogue: tupadr3/font-awesome-5/synagogue
+Sync: tupadr3/font-awesome-5/sync
+Sync Alt: tupadr3/font-awesome-5/sync_alt
+Syringe: tupadr3/font-awesome-5/syringe
+Sysdig: logos/sysdig
+T3: logos/t3
+TNW: logos/tnw
+TTY: tupadr3/font-awesome-5/tty
+TV: tupadr3/font-awesome-5/tv
+Table: tupadr3/font-awesome-5/table
+Table Tennis: tupadr3/font-awesome-5/table_tennis
+Tablet: tupadr3/font-awesome-5/tablet
+Tablet Alt: tupadr3/font-awesome-5/tablet_alt
+Tablets: tupadr3/font-awesome-5/tablets
+Tachometer Alt: tupadr3/font-awesome-5/tachometer_alt
+Tag: tupadr3/font-awesome-5/tag
+Tags: tupadr3/font-awesome-5/tags
+Taiga: logos/taiga
+TailwindCSS: tupadr3/devicons2/tailwindcss
+TailwindCSS Icon: logos/tailwindcss-icon
+Tailwindcss Original Wordmark: tupadr3/devicons2/tailwindcss_original_wordmark
+Tapcart: logos/tapcart
+Tape: tupadr3/font-awesome-5/tape
+Targetprocess: logos/targetprocess
+Tasks: tupadr3/font-awesome-5/tasks
+TasteJS: logos/tastejs
+Taxi: tupadr3/font-awesome-5/taxi
+Tealium: logos/tealium
+Teamgrid: logos/teamgrid
+Teamspeak: tupadr3/font-awesome-5/teamspeak
+Teamwork: logos/teamwork
+Teamwork Icon: logos/teamwork-icon
+Techcrunch: tupadr3/devicons/techcrunch
+Tectonic: logos/tectonic
+Teeth: tupadr3/font-awesome-5/teeth
+Teeth Open: tupadr3/font-awesome-5/teeth_open
+Telegram: tupadr3/font-awesome-5/telegram
+Telegram Plane: tupadr3/font-awesome-5/telegram_plane
+Temperature High: tupadr3/font-awesome-5/temperature_high
+Temperature Low: tupadr3/font-awesome-5/temperature_low
+Tencent Weibo: tupadr3/font-awesome-5/tencent_weibo
+Tenge: tupadr3/font-awesome-5/tenge
+Tensorflow: logos/tensorflow
+Tensorflow Line: tupadr3/devicons2/tensorflow_line
+Tensorflow Line Wordmark: tupadr3/devicons2/tensorflow_line_wordmark
+Tensorflow Original: tupadr3/devicons2/tensorflow_original
+Tensorflow Original Wordmark: tupadr3/devicons2/tensorflow_original_wordmark
+Terminal: tupadr3/font-awesome-5/terminal
+Terminal Badge: tupadr3/devicons/terminal_badge
+Terraform: logos/terraform
+Testlodge: logos/testlodge
+Testmunk: logos/testmunk
+Text Height: tupadr3/font-awesome-5/text_height
+Text Width: tupadr3/font-awesome-5/text_width
+Th: tupadr3/font-awesome-5/th
+Th Large: tupadr3/font-awesome-5/th_large
+Th List: tupadr3/font-awesome-5/th_list
+The Red Yeti: tupadr3/font-awesome-5/the_red_yeti
+TheAlgorithms: tupadr3/devicons2/thealgorithms
+Thealgorithms Wordmark: tupadr3/devicons2/thealgorithms_wordmark
+Theater Masks: tupadr3/font-awesome-5/theater_masks
+Themeco: tupadr3/font-awesome-5/themeco
+Themeisle: tupadr3/font-awesome-5/themeisle
+Thermometer: tupadr3/font-awesome-5/thermometer
+Thermometer Empty: tupadr3/font-awesome-5/thermometer_empty
+Thermometer Full: tupadr3/font-awesome-5/thermometer_full
+Thermometer Half: tupadr3/font-awesome-5/thermometer_half
+Thermometer Quarter: tupadr3/font-awesome-5/thermometer_quarter
+Thermometer Three Quarters: tupadr3/font-awesome-5/thermometer_three_quarters
+Thimble: logos/thimble
+Think Peaks: tupadr3/font-awesome-5/think_peaks
+Thumbs Down: tupadr3/font-awesome-5/thumbs_down
+Thumbs Up: tupadr3/font-awesome-5/thumbs_up
+Thumbtack: tupadr3/font-awesome-5/thumbtack
+Ticket Alt: tupadr3/font-awesome-5/ticket_alt
+Tiktok: tupadr3/font-awesome-5/tiktok
+Times: tupadr3/font-awesome-5/times
+Times Circle: tupadr3/font-awesome-5/times_circle
+Tint: tupadr3/font-awesome-5/tint
+Tint Slash: tupadr3/font-awesome-5/tint_slash
+Tired: tupadr3/font-awesome-5/tired
+Titon: logos/titon
+TodoMVC: logos/todomvc
+Todoist: logos/todoist
+Todoist Icon: logos/todoist-icon
+Toggle Off: tupadr3/font-awesome-5/toggle_off
+Toggle On: tupadr3/font-awesome-5/toggle_on
+Toilet: tupadr3/font-awesome-5/toilet
+Toilet Paper: tupadr3/font-awesome-5/toilet_paper
+Toilet Paper Slash: tupadr3/font-awesome-5/toilet_paper_slash
+Tomcat: logos/tomcat
+Tomcat Line: tupadr3/devicons2/tomcat_line
+Tomcat Line Wordmark: tupadr3/devicons2/tomcat_line_wordmark
+Tongzhi: cloudinsight/tongzhi
+Toolbox: tupadr3/font-awesome-5/toolbox
+Tools: tupadr3/font-awesome-5/tools
+Tooth: tupadr3/font-awesome-5/tooth
+Torah: tupadr3/font-awesome-5/torah
+Torii Gate: tupadr3/font-awesome-5/torii_gate
+Torus: logos/torus
+Traackr: logos/traackr
+Trac: logos/trac
+Tractor: tupadr3/font-awesome-5/tractor
+Trade Federation: tupadr3/font-awesome-5/trade_federation
+Trademark: tupadr3/font-awesome-5/trademark
+Traffic Light: tupadr3/font-awesome-5/traffic_light
+Trailer: tupadr3/font-awesome-5/trailer
+Train: tupadr3/font-awesome-5/train
+Tram: tupadr3/font-awesome-5/tram
+Transgender: tupadr3/font-awesome-5/transgender
+Transgender Alt: tupadr3/font-awesome-5/transgender_alt
+Trash: tupadr3/font-awesome-5/trash
+Trash Alt: tupadr3/font-awesome-5/trash_alt
+Trash Restore: tupadr3/font-awesome-5/trash_restore
+Trash Restore Alt: tupadr3/font-awesome-5/trash_restore_alt
+Travis: tupadr3/devicons2/travis
+Travis CI: logos/travis-ci
+Travis CI Monochrome: logos/travis-ci-monochrome
+Travis Wordmark: tupadr3/devicons2/travis_wordmark
+Treasuredata: logos/treasuredata
+Tree: tupadr3/font-awesome-5/tree
+Treehouse: logos/treehouse
+Trello: tupadr3/font-awesome-5/trello
+Trello Wordmark: tupadr3/devicons2/trello_wordmark
+Tripadvisor: tupadr3/font-awesome-5/tripadvisor
+Trophy: tupadr3/font-awesome-5/trophy
+Truck: tupadr3/font-awesome-5/truck
+Truck Loading: tupadr3/font-awesome-5/truck_loading
+Truck Monster: tupadr3/font-awesome-5/truck_monster
+Truck Moving: tupadr3/font-awesome-5/truck_moving
+Truck Pickup: tupadr3/font-awesome-5/truck_pickup
+Tshirt: tupadr3/font-awesome-5/tshirt
+Tsu: logos/tsu
+Tsuru: logos/tsuru
+Tumblr: tupadr3/font-awesome-5/tumblr
+Tumblr Icon: logos/tumblr-icon
+Tumblr Square: tupadr3/font-awesome-5/tumblr_square
+TuneIn: logos/tunein
+Turret: logos/turret
+Tutsplus: logos/tutsplus
+Tutum: logos/tutum
+Tux: logos/tux
+Twilio: logos/twilio
+Twitch: tupadr3/font-awesome-5/twitch
+Twitter: tupadr3/font-awesome-5/twitter
+Twitter Original: tupadr3/devicons2/twitter_original
+Twitter Square: tupadr3/font-awesome-5/twitter_square
+Typeform: logos/typeform
+Typeform Icon: logos/typeform-icon
+Typescript: tupadr3/devicons2/typescript
+Typescript Icon: logos/typescript-icon
+Typo3: tupadr3/font-awesome-5/typo3
+Typo3 Wordmark: tupadr3/devicons2/typo3_wordmark
+UIKit: tupadr3/devicons/uikit
+UIkit: logos/uikit
+USB: tupadr3/font-awesome-5/usb
+Uber: tupadr3/font-awesome-5/uber
+Ubuntu: tupadr3/font-awesome-5/ubuntu
+Ubuntu Wordmark: tupadr3/devicons2/ubuntu_wordmark
+Udacity: logos/udacity
+Udemy: logos/udemy
+Uikit: tupadr3/font-awesome-5/uikit
+Umbraco: tupadr3/font-awesome-5/umbraco
+Umbrella: tupadr3/font-awesome-5/umbrella
+Umbrella Beach: tupadr3/font-awesome-5/umbrella_beach
+Umu: logos/umu
+Unbounce: logos/unbounce
+Uncharted: tupadr3/font-awesome-5/uncharted
+Underline: tupadr3/font-awesome-5/underline
+Undertow: logos/undertow
+Undo: tupadr3/font-awesome-5/undo
+Undo Alt: tupadr3/font-awesome-5/undo_alt
+Unionpay: logos/unionpay
+Uniregistry: tupadr3/font-awesome-5/uniregistry
+UnitJS: logos/unitjs
+Unito: logos/unito
+Unity: tupadr3/font-awesome-5/unity
+Unity Small: tupadr3/devicons/unity_small
+Universal Access: tupadr3/font-awesome-5/universal_access
+University: tupadr3/font-awesome-5/university
+Unix Original: tupadr3/devicons2/unix_original
+Unlink: tupadr3/font-awesome-5/unlink
+Unlock: tupadr3/font-awesome-5/unlock
+Unlock Alt: tupadr3/font-awesome-5/unlock_alt
+Unsplash: tupadr3/font-awesome-5/unsplash
+Untappd: tupadr3/font-awesome-5/untappd
+Upcase: logos/upcase
+Upload: tupadr3/font-awesome-5/upload
+Ups: tupadr3/font-awesome-5/ups
+Upwork: logos/upwork
+User: tupadr3/font-awesome-5/user
+User Alt: tupadr3/font-awesome-5/user_alt
+User Alt Slash: tupadr3/font-awesome-5/user_alt_slash
+User Astronaut: tupadr3/font-awesome-5/user_astronaut
+User Check: tupadr3/font-awesome-5/user_check
+User Circle: tupadr3/font-awesome-5/user_circle
+User Clock: tupadr3/font-awesome-5/user_clock
+User Cog: tupadr3/font-awesome-5/user_cog
+User Edit: tupadr3/font-awesome-5/user_edit
+User Friends: tupadr3/font-awesome-5/user_friends
+User Graduate: tupadr3/font-awesome-5/user_graduate
+User Injured: tupadr3/font-awesome-5/user_injured
+User Lock: tupadr3/font-awesome-5/user_lock
+User Md: tupadr3/font-awesome-5/user_md
+User Mgmt: cloudogu/dogus/usermgmt
+User Minus: tupadr3/font-awesome-5/user_minus
+User Ninja: tupadr3/font-awesome-5/user_ninja
+User Nurse: tupadr3/font-awesome-5/user_nurse
+User Plus: tupadr3/font-awesome-5/user_plus
+User Secret: tupadr3/font-awesome-5/user_secret
+User Shield: tupadr3/font-awesome-5/user_shield
+User Slash: tupadr3/font-awesome-5/user_slash
+User Tag: tupadr3/font-awesome-5/user_tag
+User Testing: logos/user-testing
+User Tie: tupadr3/font-awesome-5/user_tie
+User Times: tupadr3/font-awesome-5/user_times
+Users: tupadr3/font-awesome-5/users
+Users Cog: tupadr3/font-awesome-5/users_cog
+Users Slash: tupadr3/font-awesome-5/users_slash
+Uservoice: logos/uservoice
+Usps: tupadr3/font-awesome-5/usps
+Ussunnah: tupadr3/font-awesome-5/ussunnah
+Utensil Spoon: tupadr3/font-awesome-5/utensil_spoon
+Utensils: tupadr3/font-awesome-5/utensils
+Uwsgi: tupadr3/devicons2/uwsgi
+V8: logos/v8
+V8 Ignition: logos/v8-ignition
+V8 Turbofan: logos/v8-turbofan
+VMware: cloudogu/tools/vmware
+VS Code: tupadr3/devicons2/vscode
+VS Code Wordmark: tupadr3/devicons2/vscode_wordmark
+Vaadin: tupadr3/font-awesome-5/vaadin
+Vaddy: logos/vaddy
+Vagrant: tupadr3/devicons2/vagrant
+Vagrant Wordmark: tupadr3/devicons2/vagrant_wordmark
+Vault: logos/vault
+Vector Square: tupadr3/font-awesome-5/vector_square
+Venus: tupadr3/font-awesome-5/venus
+Venus Double: tupadr3/font-awesome-5/venus_double
+Venus Mars: tupadr3/font-awesome-5/venus_mars
+VerneMQ: logos/vernemq
+Vest: tupadr3/font-awesome-5/vest
+Vest Patches: tupadr3/font-awesome-5/vest_patches
+Viacoin: tupadr3/font-awesome-5/viacoin
+Viadeo: tupadr3/font-awesome-5/viadeo
+Viadeo Square: tupadr3/font-awesome-5/viadeo_square
+Vial: tupadr3/font-awesome-5/vial
+Vials: tupadr3/font-awesome-5/vials
+Viber: tupadr3/font-awesome-5/viber
+VictorOps: logos/victorops
+Video: tupadr3/font-awesome-5/video
+Video Slash: tupadr3/font-awesome-5/video_slash
+Vihara: tupadr3/font-awesome-5/vihara
+Vim: tupadr3/devicons2/vim
+Vimeo: tupadr3/font-awesome-5/vimeo
+Vimeo Icon: logos/vimeo-icon
+Vimeo Square: tupadr3/font-awesome-5/vimeo_square
+Vimeo V: tupadr3/font-awesome-5/vimeo_v
+Vine: tupadr3/font-awesome-5/vine
+VirtualBox: cloudogu/tools/virtualbox
+Virus: tupadr3/font-awesome-5/virus
+Virus Slash: tupadr3/font-awesome-5/virus_slash
+Viruses: tupadr3/font-awesome-5/viruses
+Visa: logos/visa
+Visaelectron: logos/visaelectron
+Visual Studio: tupadr3/devicons/visualstudio
+Visual Studio Code: logos/visual-studio-code
+Visual Website Optimizer: logos/visual_website_optimizer
+VisualStudio: tupadr3/devicons2/visualstudio
+VisualStudio Wordmark: tupadr3/devicons2/visualstudio_wordmark
+Vivaldi: logos/vivaldi
+Vk: tupadr3/font-awesome-5/vk
+Vnv: tupadr3/font-awesome-5/vnv
+Voicemail: tupadr3/font-awesome-5/voicemail
+Void: logos/void
+Volleyball Ball: tupadr3/font-awesome-5/volleyball_ball
+Volume Down: tupadr3/font-awesome-5/volume_down
+Volume Mute: tupadr3/font-awesome-5/volume_mute
+Volume Off: tupadr3/font-awesome-5/volume_off
+Volume Up: tupadr3/font-awesome-5/volume_up
+Vote Yea: tupadr3/font-awesome-5/vote_yea
+Vr Cardboard: tupadr3/font-awesome-5/vr_cardboard
+Vue: logos/vue
+VueJS: tupadr3/font-awesome-5/vuejs
+VueJS Line: tupadr3/devicons2/vuejs_line
+VueJS Line Wordmark: tupadr3/devicons2/vuejs_line_wordmark
+VueJS Wordmark: tupadr3/devicons2/vuejs_wordmark
+Vuestorefront: tupadr3/devicons2/vuestorefront
+VuetifyJS: logos/vuetifyjs
+Vulkan: logos/vulkan
+Vultr: logos/vultr
+W3C: tupadr3/devicons/w3c
+WPengine: logos/wpengine
+Waffle: logos/waffle
+Wagtail: logos/wagtail
+Wakatime: logos/wakatime
+Walking: tupadr3/font-awesome-5/walking
+Wallet: tupadr3/font-awesome-5/wallet
+Warehouse: tupadr3/font-awesome-5/warehouse
+Watchman: logos/watchman
+Watchman Monitoring: tupadr3/font-awesome-5/watchman_monitoring
+Water: tupadr3/font-awesome-5/water
+Wave Square: tupadr3/font-awesome-5/wave_square
+Waze: tupadr3/font-awesome-5/waze
+Weave: logos/weave
+WebComponents: logos/webcomponents
+WebPlatform: tupadr3/devicons/webplatform
+WebRTC: logos/webrtc
+WebTorrent: logos/webtorrent
+Webassembly: logos/webassembly
+Webflow: logos/webflow
+Webhooks: logos/webhooks
+Weblate: tupadr3/devicons2/weblate
+Weblate Wordmark: tupadr3/devicons2/weblate_wordmark
+Webmin: logos/webmin
+Webpack: tupadr3/devicons2/webpack
+Webpack Wordmark: tupadr3/devicons2/webpack_wordmark
+Websocket: logos/websocket
+Webstorm: tupadr3/devicons2/webstorm
+Webstorm Wordmark: tupadr3/devicons2/webstorm_wordmark
+Webtask: logos/webtask
+Weebly: tupadr3/font-awesome-5/weebly
+Weibo: tupadr3/font-awesome-5/weibo
+Weight: tupadr3/font-awesome-5/weight
+Weight Hanging: tupadr3/font-awesome-5/weight_hanging
+Weixin: tupadr3/font-awesome-5/weixin
+Wercker: logos/wercker
+Whalar: logos/whalar
+WhatWG: logos/whatwg
+WhatsApp: logos/whatsapp
+Whatsapp: tupadr3/font-awesome-5/whatsapp
+Whatsapp Square: tupadr3/font-awesome-5/whatsapp_square
+Wheelchair: tupadr3/font-awesome-5/wheelchair
+Whmcs: tupadr3/font-awesome-5/whmcs
+WiFi: tupadr3/font-awesome-5/wifi
+Wicket: logos/wicket
+Wicket Icon: logos/wicket-icon
+Wikipedia W: tupadr3/font-awesome-5/wikipedia_w
+Wind: tupadr3/font-awesome-5/wind
+Window Close: tupadr3/font-awesome-5/window_close
+Window Maximize: tupadr3/font-awesome-5/window_maximize
+Window Minimize: tupadr3/font-awesome-5/window_minimize
+Window Restore: tupadr3/font-awesome-5/window_restore
+Windows: tupadr3/font-awesome-5/windows
+Windows8 Original: tupadr3/devicons2/windows8_original
+Windows8 Original Wordmark: tupadr3/devicons2/windows8_original_wordmark
+Wine Bottle: tupadr3/font-awesome-5/wine_bottle
+Wine Glass: tupadr3/font-awesome-5/wine_glass
+Wine Glass Alt: tupadr3/font-awesome-5/wine_glass_alt
+Wire: logos/wire
+Wiredtree: logos/wiredtree
+Wix: tupadr3/font-awesome-5/wix
+Wizards Of The Coast: tupadr3/font-awesome-5/wizards_of_the_coast
+Wodu: tupadr3/font-awesome-5/wodu
+Wolf Pack Battalion: tupadr3/font-awesome-5/wolf_pack_battalion
+Won Sign: tupadr3/font-awesome-5/won_sign
+WooCommerce: tupadr3/devicons2/woocommerce
+WooCommerce Wordmark: tupadr3/devicons2/woocommerce_wordmark
+Woocommerce: logos/woocommerce
+Woopra: logos/woopra
+Wordpress: tupadr3/font-awesome-5/wordpress
+Wordpress Icon: logos/wordpress-icon
+Wordpress Simple: tupadr3/font-awesome-5/wordpress_simple
+Wordpress Wordmark: tupadr3/devicons2/wordpress_wordmark
+Workboard: logos/workboard
+Wpbeginner: tupadr3/font-awesome-5/wpbeginner
+Wpexplorer: tupadr3/font-awesome-5/wpexplorer
+Wpforms: tupadr3/font-awesome-5/wpforms
+Wpressr: tupadr3/font-awesome-5/wpressr
+Wrench: tupadr3/font-awesome-5/wrench
+Wufoo: logos/wufoo
+X: cloudinsight/x
+X Ray: tupadr3/font-awesome-5/x_ray
+X Ray Goggles: logos/x-ray-goggles
+XD Line: tupadr3/devicons2/xd_line
+Xamarin: logos/xamarin
+Xampp: logos/xampp
+Xbox: tupadr3/font-awesome-5/xbox
+Xcart: logos/xcart
+Xd: tupadr3/devicons2/xd
+Xero: logos/xero
+Xing: tupadr3/font-awesome-5/xing
+Xing Square: tupadr3/font-awesome-5/xing_square
+Xplenty: logos/xplenty
+Xtend: logos/xtend
+Xwiki: logos/xwiki
+Y Combinator: tupadr3/font-awesome-5/y_combinator
+YCombinator: logos/ycombinator
+Yahoo: tupadr3/font-awesome-5/yahoo
+Yahoo Small: tupadr3/devicons/yahoo_small
+Yammer: tupadr3/font-awesome-5/yammer
+Yandex: tupadr3/font-awesome-5/yandex
+Yandex International: tupadr3/font-awesome-5/yandex_international
+Yandex Ru: logos/yandex-ru
+Yanjing: cloudinsight/yanjing
+Yarn: tupadr3/font-awesome-5/yarn
+Yarn Wordmark: tupadr3/devicons2/yarn_wordmark
+Yelp: tupadr3/font-awesome-5/yelp
+Yen Sign: tupadr3/font-awesome-5/yen_sign
+Yeoman: tupadr3/devicons/yeoman
+Yii: tupadr3/devicons2/yii
+Yii Wordmark: tupadr3/devicons2/yii_wordmark
+Yin Yang: tupadr3/font-awesome-5/yin_yang
+Yoast: tupadr3/font-awesome-5/yoast
+Youtrack: logos/youtrack
+Youtube: tupadr3/font-awesome-5/youtube
+Youtube Square: tupadr3/font-awesome-5/youtube_square
+Yunohost: tupadr3/devicons2/yunohost
+ZWave: logos/zwave
+Zapier: logos/zapier
+Zeit: logos/zeit
+Zeit Icon: logos/zeit-icon
+Zend: tupadr3/devicons2/zend
+Zend Framework: logos/zend-framework
+Zend Wordmark: tupadr3/devicons2/zend_wordmark
+Zendesk: logos/zendesk
+Zenhub: logos/zenhub
+Zeplin: logos/zeplin
+Zest: logos/zest
+Zhihu: tupadr3/font-awesome-5/zhihu
+Zig Original: tupadr3/devicons2/zig_original
+Zig Wordmark: tupadr3/devicons2/zig_wordmark
+Zigbee: logos/zigbee
+Zoho: logos/zoho
+Zookeeper: cloudinsight/zookeeper
+Zube: logos/zube
+Zulip: logos/zulip
+iTunes: tupadr3/font-awesome-5/itunes
+iTunes Note: tupadr3/font-awesome-5/itunes_note
