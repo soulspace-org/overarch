@@ -92,10 +92,10 @@
 (s/def :overarch.criterium/id? boolean?)
 (s/def :overarch.criterium/id keyword?)
 (s/def :overarch.criterium/!id keyword?)
-(s/def :overarch.criterium/from keyword?)
-(s/def :overarch.criterium/!from keyword?)
-(s/def :overarch.criterium/to keyword?)
-(s/def :overarch.criterium/!to keyword?)
+(s/def :overarch.criterium/from (s/or :map map? :vector vector?))
+(s/def :overarch.criterium/!from (s/or :map map? :vector vector?))
+(s/def :overarch.criterium/to (s/or :map map? :vector vector?))
+(s/def :overarch.criterium/!to (s/or :map map? :vector vector?))
 (s/def :overarch.criterium/subtype? boolean?)
 (s/def :overarch.criterium/subtype keyword?)
 (s/def :overarch.criterium/subtypes (s/and set? (s/coll-of keyword?)))
@@ -216,10 +216,6 @@
         :criteria-vector :overarch/criteria-vector))
 
 (s/def :overarch/selection
-  (s/or :criteria :overarch/criteria
-        :criteria-vector :overarch/criteria-vector))
-
-(s/def :overarch/selection-criteria
   (s/or :criteria :overarch/criteria
         :criteria-vector :overarch/criteria-vector))
 
