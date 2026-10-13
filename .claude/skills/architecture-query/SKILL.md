@@ -23,7 +23,6 @@ java -jar tools/overarch.jar --select-view-references '<criteria>'
 - Output starts with a "Model Warnings" block. Check it for build problems or unresolved refs before trusting the result. Filter it with `| grep -v -E "build-problems|unresolved"` if needed.
 - Use `-S` first for counting or listing. Use `-s` when you need names, descriptions, or technologies.
 - A "Spec failed" error means the criteria are malformed. Read the message, as it points at the offending value.
-- Full criteria reference: `tools/selection-criteria.md`. CLI reference: `tools/commandline.md`.
 
 ## Element ids
 

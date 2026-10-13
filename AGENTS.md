@@ -18,7 +18,15 @@ Overarch is a Clojure project built with Leiningen. The general organization is
 * [Example Models](/examples)
 
 The namespace prefix is: `org.soulspace.overarch`.
-The system id in the architecture model is `:overarch.architecture/overarch`.
+
+# Architecture Queries
+The system id for Overarch in the architecture model is `:overarch.architecture/overarch`.
+
+Relevant documentation:
+* [Command Line Reference](/doc/topics/commandline.md)
+* [Selection Criteria Reference](/doc/topics/selection-criteria.md)
+* [Modelling Reference](/doc/topics/modelling.md)
+
 
 # Additional information
 * [Overarch Features](/agents/features.md)
