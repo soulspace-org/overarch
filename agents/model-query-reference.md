@@ -79,7 +79,7 @@ Example, who uses what: `-s '{:el :uses}'` returns relations with `:from` and `:
 | Domain | `:domain`, `:bounded-context`, `:aggregate`, `:entity`, `:value-object`, `:command`, `:domain-event`, `:policy`, `:model` |
 | Organization | `:organization`, `:org-unit` |
 | Roles | `:role`, `:permission`, `:person` |
-| Process | `:process`, `:capability`, `:goal`, `:requirement`, `:constraint`, `:regulation`, `:control`, `:test`, `:decision`, `:information`, `:knowledge`, `:artifact`, `:version` |
+| Process | `:process`, `:capability`, `:goal`, `:non-goal`, `:requirement`, `:risk`, `:stakeholder`, `:constraint`, `:regulation`, `:control`, `:test`, `:decision`, `:information`, `:knowledge`, `:artifact`, `:version` |
 | State machine | `:state-machine`, `:state`, `:start-state`, `:end-state`, `:choice`, `:fork`, `:join`, `:history-state`, `:deep-history-state` |
 | Code | `:namespace`, `:package`, `:class`, `:interface`, `:protocol`, `:schema`, `:enum`, `:enum-value`, `:field`, `:function`, `:method`, `:parameter` |
 
@@ -104,7 +104,7 @@ Meaning of the architecture nodes:
 | Concepts | `:rel` (generic), `:is-a` (specialization), `:has` (composition or association) | concepts |
 | Organization | `:responsible-for`, `:collaborates-with`, `:role-in` | organization nodes ↔ architecture or deployment elements. Person → org unit or process. |
 | Roles | `:permission-of`, `:granted-for` | permission → system or role |
-| Process | `:input-of`, `:output-of`, `:goal-for`, `:required-for`, `:constraint-for`, `:regulation-for`, `:control-for`, `:test-for`, `:artifact-of`, `:version-of` | process nodes |
+| Process | `:input-of`, `:output-of`, `:goal-for`, `:non-goal-for`, `:required-for`, `:risk-for`, `:stakeholder-of`, `:constraint-for`, `:regulation-for`, `:control-for`, `:test-for`, `:artifact-of`, `:version-of` | process nodes |
 | State machine | `:transition` | state → state |
 | Code | `:inheritance`, `:implementation`, `:association`, `:aggregation`, `:composition`, `:dependency` | code nodes |
 
