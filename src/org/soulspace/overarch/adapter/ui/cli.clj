@@ -538,8 +538,6 @@
   (-main "--debug")
   (-main "--debug" "--render-format" "plantuml")
   (-main "--debug" "--render-format" "plantuml")
-  (-main "--debug" "--render-format" "markdown")
-  (-main "--debug" "--render-format" "graphviz")
   (-main "--debug" "--render-format" "all")
   (-main "--debug" "--render-format" "all" "--no-render-format-subdirs")
   (-main "--debug" "--export-format" "json")

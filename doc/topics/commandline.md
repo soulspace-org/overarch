@@ -13,7 +13,7 @@ Usage: java -jar overarch.jar [options].
 Options:
 
   -m, --model-dir PATH                   models     Models directory or path
-  -r, --render-format FORMAT                        Render format (all, graphviz, markdown, plantuml)
+  -r, --render-format FORMAT                        Render format (all, plantuml)
   -R, --render-dir DIRNAME               export     Render directory
       --[no-]render-format-subdirs       true       Use subdir per render format
   -x, --export-format FORMAT                        Export format (json, structurizr)
