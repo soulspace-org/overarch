@@ -73,7 +73,7 @@ Example, who uses what: `-s '{:el :uses}'` returns relations with `:from` and `:
 | Area | Node types (`:el`) |
 |---|---|
 | Architecture | `:person`, `:system`, `:container`, `:component`, `:context-boundary`, `:enterprise-boundary` |
-| Deployment | `:node` (infrastructure node, contains nodes and deployed containers), `:container`, `:artifact`, `:system` (external) |
+| Deployment | `:node` (infrastructure node, contains nodes and deployed containers), `:container-instance`, `:artifact`, `:system` (external) |
 | Use cases | `:actor`, `:use-case`, `:person`, `:system`, `:container` |
 | Concepts | `:concept`, `:person`, `:system`, `:container`, `:context-boundary`, `:enterprise-boundary` |
 | Domain | `:domain`, `:bounded-context`, `:aggregate`, `:entity`, `:value-object`, `:command`, `:domain-event`, `:policy`, `:model` |
@@ -87,7 +87,7 @@ Actors of use cases are usually `:person` or `:system` nodes (from the architect
 
 Meaning of the architecture nodes:
 * `:system`: a system. External systems are black boxes, the described system contains `:container`s.
-* `:container`: a deployed process or data store (service, application, database).
+* `:container`: a deployable process, data store or queue (service, application, database).
 * `:component`: a logical building block inside a container (module, layer).
 * `:person`: a human user or role.
 * `:context-boundary`, `:enterprise-boundary`: group elements that belong together.
@@ -98,7 +98,7 @@ Meaning of the architecture nodes:
 |---|---|---|
 | Hierarchy (all areas) | `:contained-in` | child → parent. Derived from the nesting of elements. |
 | Architecture (technical) | `:request` (synchronous), `:response`, `:send` (asynchronous, point-to-point), `:publish`, `:subscribe` (asynchronous via broker or topic), `:dataflow` | architecture elements |
-| Deployment | `:deployed-to`, `:link` | container or artifact → node. Node ↔ node. |
+| Deployment | `:deployed-to`, `:link` | container-instance or artifact → node. Node ↔ node. |
 | Trace | `:instance-of`, `:implements` | element → its definition |
 | Use cases | `:uses`, `:include`, `:extends`, `:generalizes` | actor ↔ use case. Use case ↔ use case. |
 | Concepts | `:rel` (generic), `:is-a` (specialization), `:has` (composition or association) | concepts |
