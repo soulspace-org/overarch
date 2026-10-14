@@ -22,8 +22,6 @@
             [org.soulspace.overarch.adapter.reader.model-reader :as reader]
             [org.soulspace.overarch.adapter.reader.input-model-reader :as imreader]
             [org.soulspace.overarch.adapter.reader.file-input-model-reader :as fimreader]
-            [org.soulspace.overarch.adapter.render.graphviz :as graphviz]
-            [org.soulspace.overarch.adapter.render.markdown :as markdown]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
             [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
@@ -45,7 +43,7 @@
 
 (def cli-opts
   [["-m" "--model-dir PATH" "Models directory or path" :default "models"]
-   ["-r" "--render-format FORMAT" "Render format (all, graphviz, markdown, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
+   ["-r" "--render-format FORMAT" "Render format (all, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
    ["-R" "--render-dir DIRNAME" "Render directory" :default "export"]
    [nil  "--[no-]render-format-subdirs" "Use subdir per render format" :default true]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
