@@ -23,12 +23,20 @@ The namespace prefix is: `org.soulspace.overarch`.
 The system id for Overarch in the architecture model is `:overarch.architecture/overarch`.
 
 Relevant documentation:
-* [Command Line Reference](/doc/topics/commandline.md)
-* [Selection Criteria Reference](/doc/topics/selection-criteria.md)
+* [Command Line Reference](doc/topics/commandline.md)
+* [Selection Criteria Reference](doc/topics/selection-criteria.md)
+* [Model Query Reference](agents/model-query-reference.md)
+
+# Architecture Modelling
+Relevant documentation:
+* [Modelling Reference for Agents](agents/modelling-reference.md)
+* [Model Query Reference](agents/model-query-reference.md)
+* [Modelling Reference](doc/topics/modelling.md)
+* [Views Reference](doc/topics/views.md)
+* [Best Practices](doc/topics/best-practices.md)
+
+# Additional Overarch Information
+* [Overarch Features](agents/features.md)
+* [Overarch Architecture](agents/architecture.md)
 * [Modelling Reference](/doc/topics/modelling.md)
-
-
-# Additional information
-* [Overarch Features](/agents/features.md)
-* [Overarch Architecture](/agents/architecture.md)
 * [Clojure Instructions](.github/instructions/clojure.instructions.md)

@@ -7,6 +7,8 @@ description: Answer questions about a system, software or enterprise architectur
 
 The model is the source of truth. The generated documentation is derived output and can be stale, so query the model and don't grep the generated docs. Project-specific details (namespaces, system ids) are in the project's `AGENTS.md`/`CLAUDE.md`.
 
+For the element types (`:el` values), their keys and relation semantics, read the model query reference linked in the project's `AGENTS.md`/`CLAUDE.md` (in the Overarch repository: `agents/model-query-reference.md`). Read it when the model is unfamiliar or a query returns nothing.
+
 ## Run a query
 
 Run from the repository root, with the jar at `tools/overarch.jar`:
