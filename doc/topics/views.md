@@ -255,7 +255,7 @@ key              | type    | example values           | description
 
 ### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
-the elements of a diagram.
+the elements of the C4 architecture diagrams.
 It does so by matching the value of the **:tech** key of a model element to
 the list of sprites. You can also directly add a **:sprite** key to the
 reference of a model element in a view. The explicit **:sprite** value takes
@@ -293,37 +293,3 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ,
 Eclipse, Maven, Leiningen).
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
-
-## GraphViz
-The concept view can be exported as a concept map to a GraphViz *.dot file.
-
-### Rendering GraphViz diagrams
-For GraphViz there are a few Visual Studio Code  extensions available that
-allow previews of the generated Graphviz files. 
-
-The images can be created with the *dot* executable, which resides in the bin
-directory of the GraphViz installation.
-
-You can specify Graphviz directives with the **:graphviz** key.
-Currently only the configuration of the
-[layout engine](https://graphviz.org/docs/layouts/) is supported.
-
-### Keys
-
-key              | type    | values                   | description 
------------------|---------|--------------------------|------------
-:engine          | keyword | e.g. :dot, :neato, :sfdp | the graphviz layout engine to use
-
-## Markdown
-Markdown is used to render textual representations of the views.
-You can use converters to generate other formats like HTML or PDF from markdown.
-
-You can specify Markdown directives with the **:markdown** key.
-
-### Keys
-
-key              | type    | values                   | description 
------------------|---------|--------------------------|------------
-:references      | boolean | true, false              | render references for nodes
-:diagram         | map     | {:format "png"}          | render diagram image
-
