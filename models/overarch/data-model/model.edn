@@ -9,7 +9,7 @@
    :id :overarch.data-model/element
    :abstract true
    :name "element"
-   :desc "An element of data."
+   :desc "An element of the Overarch data model."
    :tags #{"base-model"}
    :ct [{:el :field
          :name "el"
@@ -22,22 +22,22 @@
         {:el :field
          :name "name"
          :type "string"
-         :desc "Name of the element."}
+         :desc "The name of the element."}
         {:el :field
          :name "desc"
          :type "string"
          :optional true
-         :desc "(Short) description of the element. Could be rendered in diagrams."}
+         :desc "The (short) description of the element. Could be rendered in diagrams."}
         {:el :field
          :name "doc"
          :type "string"
          :optional true
-         :desc "Documentation of the element."}]}
+         :desc "The documentation of the element."}]}
 
   {:el :schema
    :id :overarch.data-model/ref
    :name "ref"
-   :desc "A reference to an element."
+   :desc "A reference to an element of the Overarch data model."
    :tags #{"ref-model"}}
 
   {:el :association
@@ -45,7 +45,7 @@
    :from :overarch.data-model/ref
    :to :overarch.data-model/element
    :to-name "ref"
-   :desc "The identifier the reference is referring to."
+   :desc "The identifier of the element in the Overarch data model that the reference is referring to."
    :tags #{"ref-model"}}
 
   ;;
@@ -55,7 +55,7 @@
    :id :overarch.data-model/model-element
    :abstract true
    :name "model-element"
-   :desc "An element which describes the relation of elements."
+   :desc "A model element in the Overarch data model. It serves as a base type for all model elements."
    :tags #{"model-model"}
    :ct [{:el :field
          :name "maturity"
@@ -72,14 +72,14 @@
    :id :overarch.data-model/model-node
    :abstract true
    :name "model-node"
-   :desc "An element which is a node in the model."
+   :desc "An element which is a node in the Overarch data model."
    :tags #{"model-model"}}
 
   {:el :schema
    :id :overarch.data-model/model-relation
    :abstract true
    :name "model-relation"
-   :desc "An element which is a relation in the and describes the relationship of two model nodes."
+   :desc "An element which is a relation in the Overarch data model and describes the relationship of two model nodes."
    :tags #{"model-model"}
    :ct [{:el :field
          :name "from"
@@ -699,10 +699,10 @@
    :tags #{"deployment-model"}}
 
   #_{:el :inheritance
-   :id :overarch.data-model/container-is-a-deployment-model-node
-   :to :overarch.data-model/deployment-model-node
-   :from :overarch.data-model/container
-   :tags #{"deployment-model"}}
+     :id :overarch.data-model/container-is-a-deployment-model-node
+     :to :overarch.data-model/deployment-model-node
+     :from :overarch.data-model/container
+     :tags #{"deployment-model"}}
 
   {:el :inheritance
    :id :overarch.data-model/link-is-a-deployment-model-relation
@@ -2434,13 +2434,13 @@
    :to :overarch.data-model/process-model-relation
    :from :overarch.data-model/risk-for
    :tags #{"process-model"}}
-  
+
   {:el :inheritance
    :id :overarch.data-model/stakeholder-of-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
    :from :overarch.data-model/stakeholder-of
    :tags #{"process-model"}}
-  
+
   {:el :inheritance
    :id :overarch.data-model/test-for-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
@@ -2471,14 +2471,8 @@
    :ct [{:el :field
          :name "title"
          :type "string"
-         :desc "The title of the view."}]}
-
-  {:el :schema
-   :id :overarch.data-model/rendering-spec
-   :name "spec"
-   :desc "A specification of the rendering options for a view."
-   :tags #{"view-model"}
-   :ct [{:el :field
+         :desc "The title of the view."}
+        {:el :field
          :name "include"
          :type "keyword"
          :desc "A directive to include additional elements in the view."}
@@ -2505,7 +2499,7 @@
         {:el :field
          :name "theme"
          :type "map"
-         :desc "A directive for the renderer use a them to style elements (if supported by the renderer)."}]}
+         :desc "A directive for the renderer use a theme to style elements (if supported by the renderer)."}]}
 
   {:el :schema
    :id :overarch.data-model/architecture-view
@@ -2556,7 +2550,18 @@
    :name "deployment-view"
    :desc "The deployment view is a static architectural view.
           It shows the deployment of a system with the infrastructure modelled
-          as nodes and the containers of the system deployed in these nodes."
+          as nodes and the container instances and artifacts of the system
+          deployed in these nodes."
+   :tags #{"view-model"}}
+
+  {:el :schema
+   :id :overarch.data-model/deployment-architecture-view
+   :name "deployment-architecture-view"
+   :desc "The deployment architecture view is a static architectural view.
+          It shows the deployment of a system with the infrastructure modelled
+          as nodes and the container instances and artifacts of the system
+          deployed in these nodes. It also shows the architectural relationships
+          between the deployed container instances and artifacts."
    :tags #{"view-model"}}
 
   {:el :schema
@@ -2596,6 +2601,18 @@
           It shows the concepts as a concept map with the relations between the concepts."
    :tags #{"view-model"}}
 
+  {:el :schema
+   :id :overarch.data-model/process-view
+   :name "process-view"
+   :desc "The process view is a graphical view."
+   :tags #{"view-model"}}
+
+  {:el :schema
+   :id :overarch.data-model/domain-view
+   :name "domain-view"
+   :desc "The domain view is a graphical view."
+   :tags #{"view-model"}} 
+  
   {:el :schema
    :id :overarch.data-model/glossary-view
    :name "glossary-view"
@@ -2639,14 +2656,6 @@
    :id :overarch.data-model/view-is-a-element
    :to :overarch.data-model/element
    :from :overarch.data-model/view
-   :tags #{"view-model"}}
-
-  {:el :aggregation
-   :id :overarch.data-model/view-contains-rendering-spec
-   :from :overarch.data-model/view
-   :to :overarch.data-model/rendering-spec
-   :to-name "spec"
-   :to-card :zero-to-one
    :tags #{"view-model"}}
 
   {:el :inheritance
