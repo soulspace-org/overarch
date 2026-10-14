@@ -1,5 +1,5 @@
 
-# code-view (Class)
+# code-view (Schema)
 ## Description
 The code view is a static design view.
           It shows the code structure of some components of the system.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

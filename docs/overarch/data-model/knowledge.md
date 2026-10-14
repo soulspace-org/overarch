@@ -1,7 +1,7 @@
 
-# knowledge (Class)
+# knowledge (Schema)
 ## Description
-A process in the process model
+A knowledge element in the process model, representing understanding and expertise.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

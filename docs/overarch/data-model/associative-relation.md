@@ -1,5 +1,5 @@
 
-# associative-relation (Class)
+# associative-relation (Schema)
 ## Description
 A relation that may provide associative access to the referred element.
 
@@ -8,7 +8,7 @@ A relation that may provide associative access to the referred element.
 code-model
 
 ## Superclasses
-[aggregation](../../overarch/data-model/aggregation.md), [association](../../overarch/data-model/association.md), [composition](../../overarch/data-model/composition.md)
+[composition](../../overarch/data-model/composition.md), [association](../../overarch/data-model/association.md), [aggregation](../../overarch/data-model/aggregation.md)
 
 ## Subclasses
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
@@ -34,11 +34,6 @@ The cardinality of the referred element.
 string to-role
  
 The role of the referred element.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

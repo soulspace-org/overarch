@@ -1,5 +1,5 @@
 
-# deployed-to (Class)
+# deployed-to (Schema)
 ## Description
 A deployment relation between a container or an artifact and a node in the deployment model. The container or artifact is deployed to the node.
 
@@ -9,11 +9,6 @@ deployment-model
 
 ## Subclasses
 [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

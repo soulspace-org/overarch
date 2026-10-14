@@ -1,5 +1,5 @@
 
-# model-element (Class)
+# model-element (Schema)
 ## Description
 An element which describes the relation of elements.
 
@@ -8,7 +8,7 @@ An element which describes the relation of elements.
 model-model
 
 ## Superclasses
-[concept-model-element](../../overarch/data-model/concept-model-element.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [process-model-element](../../overarch/data-model/process-model-element.md), [organization-model-element](../../overarch/data-model/organization-model-element.md), [model-node](../../overarch/data-model/model-node.md), [model-relation](../../overarch/data-model/model-relation.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [domain-model-element](../../overarch/data-model/domain-model-element.md), [role-model-element](../../overarch/data-model/role-model-element.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md), [architecture-model-element](../../overarch/data-model/architecture-model-element.md), [code-model-element](../../overarch/data-model/code-model-element.md)
+[role-model-element](../../overarch/data-model/role-model-element.md), [architecture-model-element](../../overarch/data-model/architecture-model-element.md), [concept-model-element](../../overarch/data-model/concept-model-element.md), [organization-model-element](../../overarch/data-model/organization-model-element.md), [process-model-element](../../overarch/data-model/process-model-element.md), [model-node](../../overarch/data-model/model-node.md), [domain-model-element](../../overarch/data-model/domain-model-element.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [model-relation](../../overarch/data-model/model-relation.md), [code-model-element](../../overarch/data-model/code-model-element.md)
 
 ## Subclasses
 [element](../../overarch/data-model/element.md)
@@ -22,11 +22,6 @@ Maturity of the element. Values are :proposed, :implemented and :deprecated. Def
 set tags
  
 Set of string tags associated with the element.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

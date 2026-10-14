@@ -1,5 +1,5 @@
 
-# architecture-model-node (Class)
+# architecture-model-node (Schema)
 ## Description
 A node in the architecture model.
 
@@ -8,15 +8,10 @@ A node in the architecture model.
 architecture-model
 
 ## Superclasses
-[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [person](../../overarch/data-model/person.md), [context-boundary](../../overarch/data-model/context-boundary.md)
+[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [context-boundary](../../overarch/data-model/context-boundary.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [person](../../overarch/data-model/person.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [architecture-model-element](../../overarch/data-model/architecture-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-node](../../overarch/data-model/model-node.md)
 
 
 ## Navigation

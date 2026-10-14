@@ -1,5 +1,5 @@
 
-# glossary-view (Class)
+# glossary-view (Schema)
 ## Description
 The glossary view is a textual view.
           It shows the main elements and concepts of the system under description
@@ -11,11 +11,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# technical-architecture-model-relation (Class)
+# technical-architecture-model-relation (Schema)
 ## Description
 A technical relation in the architecture model.
 
@@ -8,15 +8,10 @@ A technical relation in the architecture model.
 architecture-model
 
 ## Superclasses
-[publish](../../overarch/data-model/publish.md), [request](../../overarch/data-model/request.md), [send](../../overarch/data-model/send.md), [response](../../overarch/data-model/response.md), [dataflow](../../overarch/data-model/dataflow.md), [rel](../../overarch/data-model/rel.md), [subscribe](../../overarch/data-model/subscribe.md)
+[subscribe](../../overarch/data-model/subscribe.md), [publish](../../overarch/data-model/publish.md), [rel](../../overarch/data-model/rel.md), [dataflow](../../overarch/data-model/dataflow.md), [response](../../overarch/data-model/response.md), [send](../../overarch/data-model/send.md), [request](../../overarch/data-model/request.md)
 
 ## Subclasses
 [architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [technical-element](../../overarch/data-model/technical-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

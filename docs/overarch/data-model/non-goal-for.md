@@ -1,10 +1,14 @@
 
-# application.reader (Component)
+# non-goal-for (Schema)
 ## Description
-Contains the reader multimethods to be implemented by the concrete reader adapter implementations.
+A relation between a non-goal and other elements.
 
-## Parent
-[Overarch CLI](../../overarch/architecture/overarch-cli.md)
+
+## Tags
+process-model
+
+## Subclasses
+[process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 
 ## Navigation

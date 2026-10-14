@@ -1,5 +1,5 @@
 
-# typed-node (Class)
+# typed-node (Schema)
 ## Description
 A node which may have a type field.
 
@@ -8,18 +8,13 @@ A node which may have a type field.
 code-model
 
 ## Superclasses
-[method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md), [function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md)
+[function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md), [method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md)
 
 ## Fields
 ### type
 string type
  
 The type of the element.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

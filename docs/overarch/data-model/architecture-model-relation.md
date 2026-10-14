@@ -1,5 +1,5 @@
 
-# architecture-model-relation (Class)
+# architecture-model-relation (Schema)
 ## Description
 A relation in the architecture model.
 
@@ -11,12 +11,7 @@ architecture-model
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [architecture-model-element](../../overarch/data-model/architecture-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# system (Class)
+# system (Schema)
 ## Description
 A system relevant in the architecture.
           A system can be an external system, which is modelled as a black box
@@ -11,12 +11,7 @@ A system relevant in the architecture.
 architecture-model, use-case-model
 
 ## Subclasses
-[technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[concept-model-node](../../overarch/data-model/concept-model-node.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# actor (Class)
+# actor (Schema)
 ## Description
 An actor (role) in a use case model.
           The actor can be human or technical, e.g. a system or time.
@@ -12,11 +12,6 @@ use-case-model
 
 ## Subclasses
 [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# is-a (Class)
+# is-a (Schema)
 ## Description
 A specialization relationship between the concepts.
 
@@ -9,11 +9,6 @@ concept-model
 
 ## Subclasses
 [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,7 +1,7 @@
 
-# capability (Class)
+# capability (Schema)
 ## Description
-A capability in the process model
+A capability in the process model, representing the abilities, competencies and resources required to achieve certain outcomes.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

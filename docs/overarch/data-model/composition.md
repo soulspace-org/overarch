@@ -1,5 +1,5 @@
 
-# composition (Class)
+# composition (Schema)
 ## Description
 A composition relationship between two classes in the code model.
 
@@ -9,11 +9,6 @@ code-model
 
 ## Subclasses
 [associative-relation](../../overarch/data-model/associative-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

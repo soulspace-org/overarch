@@ -1,5 +1,5 @@
 
-# dynamic-view (Class)
+# dynamic-view (Schema)
 ## Description
 The dynamic view is an architectural and behavioural view.
           It shows the order of some interactions between elements of the
@@ -11,11 +11,6 @@ view-model
 
 ## Subclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

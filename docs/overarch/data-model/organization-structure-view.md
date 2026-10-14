@@ -1,5 +1,5 @@
 
-# organization-structure-view (Class)
+# organization-structure-view (Schema)
 ## Description
 The organization structure view is a graphical view.
           It shows the hierarchy of the organization and its parts as an organigram.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# use-case-model-relation (Class)
+# use-case-model-relation (Schema)
 ## Description
 A relation in the use case model of overarch.
 
@@ -8,15 +8,10 @@ A relation in the use case model of overarch.
 use-case-model
 
 ## Superclasses
-[extends](../../overarch/data-model/extends.md), [include](../../overarch/data-model/include.md), [generalizes](../../overarch/data-model/generalizes.md), [uses](../../overarch/data-model/uses.md)
+[extends](../../overarch/data-model/extends.md), [generalizes](../../overarch/data-model/generalizes.md), [include](../../overarch/data-model/include.md), [uses](../../overarch/data-model/uses.md)
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[use-case-model-element](../../overarch/data-model/use-case-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

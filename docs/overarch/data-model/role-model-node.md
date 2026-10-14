@@ -1,5 +1,5 @@
 
-# role-model-node (Class)
+# role-model-node (Schema)
 ## Description
 A node in the role model.
 
@@ -11,12 +11,7 @@ role-model
 [permission](../../overarch/data-model/permission.md), [role](../../overarch/data-model/role.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [role-model-element](../../overarch/data-model/role-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[role-model-element](../../overarch/data-model/role-model-element.md), [model-node](../../overarch/data-model/model-node.md)
 
 
 ## Navigation

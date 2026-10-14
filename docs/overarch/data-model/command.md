@@ -1,5 +1,5 @@
 
-# command (Class)
+# command (Schema)
 ## Description
 An instruction to perform a specific action or operation within the domain.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

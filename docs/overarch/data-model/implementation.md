@@ -1,5 +1,5 @@
 
-# implementation (Class)
+# implementation (Schema)
 ## Description
 An implementation relationship between a code and an interface/protocol in the class model.
 
@@ -9,11 +9,6 @@ code-model
 
 ## Subclasses
 [type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

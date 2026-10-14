@@ -1,5 +1,5 @@
 
-# organization-model-element (Class)
+# organization-model-element (Schema)
 ## Description
 An element in the organization model
 
@@ -8,15 +8,10 @@ An element in the organization model
 organization-model
 
 ## Superclasses
-[organization-model-relation](../../overarch/data-model/organization-model-relation.md), [organization-model-node](../../overarch/data-model/organization-model-node.md)
+[organization-model-node](../../overarch/data-model/organization-model-node.md), [organization-model-relation](../../overarch/data-model/organization-model-relation.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

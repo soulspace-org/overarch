@@ -1,5 +1,5 @@
 
-# architecture-model-element (Class)
+# architecture-model-element (Schema)
 ## Description
 An element of the architecture model.
 
@@ -8,7 +8,7 @@ An element of the architecture model.
 architecture-model
 
 ## Superclasses
-[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [architecture-model-relation](../../overarch/data-model/architecture-model-relation.md)
+[architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
@@ -18,11 +18,6 @@ architecture-model
 boolean external
  
 When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

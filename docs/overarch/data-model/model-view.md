@@ -1,5 +1,5 @@
 
-# model-view (Class)
+# model-view (Schema)
 ## Description
 The model view is a graphical view.
           It shows all selected elements as a graph.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

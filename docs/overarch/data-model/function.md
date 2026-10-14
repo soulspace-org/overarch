@@ -1,5 +1,5 @@
 
-# function (Class)
+# function (Schema)
 ## Description
 A function in the code model.
 
@@ -8,12 +8,7 @@ A function in the code model.
 code-model
 
 ## Subclasses
-[visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md), [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 
 ## Navigation

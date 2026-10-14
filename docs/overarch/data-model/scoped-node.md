@@ -1,5 +1,5 @@
 
-# scoped-node (Class)
+# scoped-node (Schema)
 ## Description
 A node which may have a scope field.
 
@@ -15,11 +15,6 @@ code-model
 keyword scope
  
 The scope of the element (:classifier or :instance). Defaults to instance.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

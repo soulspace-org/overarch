@@ -1,5 +1,5 @@
 
-# deployment-structure-view (Class)
+# deployment-structure-view (Schema)
 ## Description
 The deployment structure view is a graphical view.
           It shows the hierarchy of the infrastructure and deployments as an organigram.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

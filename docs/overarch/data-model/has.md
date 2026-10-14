@@ -1,5 +1,5 @@
 
-# has (Class)
+# has (Schema)
 ## Description
 A composition or association relationship between the concepts.
 
@@ -9,11 +9,6 @@ concept-model
 
 ## Subclasses
 [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

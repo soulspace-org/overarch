@@ -1,5 +1,5 @@
 
-# collaborates-with (Class)
+# collaborates-with (Schema)
 ## Description
 A relation between two organisational model nodes.
 
@@ -9,11 +9,6 @@ organization-model
 
 ## Subclasses
 [organization-model-relation](../../overarch/data-model/organization-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

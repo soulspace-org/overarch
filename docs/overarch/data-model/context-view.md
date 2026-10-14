@@ -1,5 +1,5 @@
 
-# context-view (Class)
+# context-view (Schema)
 ## Description
 The (system) context view is a static architectural view.
           It shows the system under description and the interactions with it's
@@ -11,11 +11,6 @@ view-model
 
 ## Subclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

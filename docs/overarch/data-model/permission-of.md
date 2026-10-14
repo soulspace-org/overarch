@@ -1,5 +1,5 @@
 
-# permission-of (Class)
+# permission-of (Schema)
 ## Description
 A relationship between a permission and an architecture node, e.g. a system.
 
@@ -9,11 +9,6 @@ role-model
 
 ## Subclasses
 [role-model-relation](../../overarch/data-model/role-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

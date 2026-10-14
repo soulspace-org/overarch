@@ -1,5 +1,5 @@
 
-# uses (Class)
+# uses (Schema)
 ## Description
 A use relationship between an actor and a use case (or vice versa).
 
@@ -9,11 +9,6 @@ use-case-model
 
 ## Subclasses
 [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

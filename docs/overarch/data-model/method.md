@@ -1,5 +1,5 @@
 
-# method (Class)
+# method (Schema)
 ## Description
 A method in a code model element.
 
@@ -8,12 +8,7 @@ A method in a code model element.
 code-model
 
 ## Subclasses
-[scoped-node](../../overarch/data-model/scoped-node.md), [visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md), [abstract-node](../../overarch/data-model/abstract-node.md), [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[scoped-node](../../overarch/data-model/scoped-node.md), [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [abstract-node](../../overarch/data-model/abstract-node.md), [visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# code-model-element (Class)
+# code-model-element (Schema)
 ## Description
 An element in a code model.
 
@@ -12,11 +12,6 @@ code-model
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

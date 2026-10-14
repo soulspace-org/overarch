@@ -1,19 +1,14 @@
 
-# artifact (Class)
+# artifact (Schema)
 ## Description
-An artifact in the process model
+An artifact in the process model, representing a tangible or intangible output produced during the execution of a process.
 
 
 ## Tags
 process-model, deployment-model
 
 ## Subclasses
-[technical-element](../../overarch/data-model/technical-element.md), [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[process-model-node](../../overarch/data-model/process-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
 
 
 ## Navigation

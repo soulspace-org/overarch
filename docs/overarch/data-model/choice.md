@@ -1,5 +1,5 @@
 
-# choice (Class)
+# choice (Schema)
 ## Description
 A choice of transitions in a state machine.
           A choice has a single incoming transition and multiple outgoing
@@ -17,11 +17,6 @@ state-machine-model
 string condition
  
 The condition of the choice state.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

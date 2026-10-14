@@ -1,5 +1,5 @@
 
-# architecture-view (Class)
+# architecture-view (Schema)
 ## Description
 An architectural view.
 
@@ -8,15 +8,10 @@ An architectural view.
 view-model
 
 ## Superclasses
-[system-landscape-view](../../overarch/data-model/system-landscape-view.md), [component-view](../../overarch/data-model/component-view.md), [dynamic-view](../../overarch/data-model/dynamic-view.md), [context-view](../../overarch/data-model/context-view.md), [container-view](../../overarch/data-model/container-view.md)
+[system-landscape-view](../../overarch/data-model/system-landscape-view.md), [container-view](../../overarch/data-model/container-view.md), [context-view](../../overarch/data-model/context-view.md), [component-view](../../overarch/data-model/component-view.md), [dynamic-view](../../overarch/data-model/dynamic-view.md)
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

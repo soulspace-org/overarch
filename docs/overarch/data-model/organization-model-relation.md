@@ -1,5 +1,5 @@
 
-# organization-model-relation (Class)
+# organization-model-relation (Schema)
 ## Description
 A relation in the organization model
 
@@ -8,15 +8,10 @@ A relation in the organization model
 organization-model
 
 ## Superclasses
-[collaborates-with](../../overarch/data-model/collaborates-with.md), [role-in](../../overarch/data-model/role-in.md), [responsible-for](../../overarch/data-model/responsible-for.md)
+[role-in](../../overarch/data-model/role-in.md), [responsible-for](../../overarch/data-model/responsible-for.md), [collaborates-with](../../overarch/data-model/collaborates-with.md)
 
 ## Subclasses
 [organization-model-element](../../overarch/data-model/organization-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

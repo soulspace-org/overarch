@@ -1,5 +1,5 @@
 
-# type-hierarchy-relation (Class)
+# type-hierarchy-relation (Schema)
 ## Description
 A relation that establishes a type hierarchy.
 
@@ -12,11 +12,6 @@ code-model
 
 ## Subclasses
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

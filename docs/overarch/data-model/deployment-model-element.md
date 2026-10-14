@@ -1,5 +1,5 @@
 
-# deployment-model-element (Class)
+# deployment-model-element (Schema)
 ## Description
 An element in the deployment model.
 
@@ -8,15 +8,10 @@ An element in the deployment model.
 deployment-model
 
 ## Superclasses
-[deployment-model-relation](../../overarch/data-model/deployment-model-relation.md), [deployment-model-node](../../overarch/data-model/deployment-model-node.md)
+[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

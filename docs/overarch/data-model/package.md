@@ -1,5 +1,5 @@
 
-# package (Class)
+# package (Schema)
 ## Description
 A package in the code model.
           Packages provide a hierarchical structure for the organisation of the elements of the class model.
@@ -10,11 +10,6 @@ code-model
 
 ## Subclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

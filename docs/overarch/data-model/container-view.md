@@ -1,5 +1,5 @@
 
-# container-view (Class)
+# container-view (Schema)
 ## Description
 The container view is a static architectural view.
           It shows the process structure of the system under description and
@@ -12,11 +12,6 @@ view-model
 
 ## Subclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

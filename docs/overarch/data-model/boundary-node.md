@@ -1,5 +1,5 @@
 
-# boundary-node (Class)
+# boundary-node (Schema)
 ## Description
 A grouping of elements belonging together in a context.
 
@@ -9,11 +9,6 @@ architecture-model, concept-model
 
 ## Superclasses
 [enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [context-boundary](../../overarch/data-model/context-boundary.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

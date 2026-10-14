@@ -1,5 +1,5 @@
 
-# concept-view (Class)
+# concept-view (Schema)
 ## Description
 The concept view is a graphical view.
           It shows the concepts as a concept map with the relations between the concepts.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

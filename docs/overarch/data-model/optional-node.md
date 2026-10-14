@@ -1,5 +1,5 @@
 
-# optional-node (Class)
+# optional-node (Schema)
 ## Description
 A node which may have an optional field.
 
@@ -8,18 +8,13 @@ A node which may have an optional field.
 code-model
 
 ## Superclasses
-[method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md), [function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md)
+[function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md), [method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md)
 
 ## Fields
 ### optional
 boolean optional
  
 When true the element can be null/nil. Default is false.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

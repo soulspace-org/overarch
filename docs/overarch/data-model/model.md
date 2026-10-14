@@ -1,5 +1,5 @@
 
-# model (Class)
+# model (Schema)
 ## Description
 A representation of a domain that captures the essential aspects. Part of the solution space.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

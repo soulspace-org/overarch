@@ -1,5 +1,5 @@
 
-# model-node (Class)
+# model-node (Schema)
 ## Description
 An element which is a node in the model.
 
@@ -8,15 +8,10 @@ An element which is a node in the model.
 model-model
 
 ## Superclasses
-[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [process-model-node](../../overarch/data-model/process-model-node.md), [deployment-model-node](../../overarch/data-model/deployment-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [domain-model-node](../../overarch/data-model/domain-model-node.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [organization-model-node](../../overarch/data-model/organization-model-node.md), [role-model-node](../../overarch/data-model/role-model-node.md)
+[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [organization-model-node](../../overarch/data-model/organization-model-node.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [domain-model-node](../../overarch/data-model/domain-model-node.md), [process-model-node](../../overarch/data-model/process-model-node.md), [role-model-node](../../overarch/data-model/role-model-node.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

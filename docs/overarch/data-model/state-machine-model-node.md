@@ -1,5 +1,5 @@
 
-# state-machine-model-node (Class)
+# state-machine-model-node (Schema)
 ## Description
 A node in the state machine model.
 
@@ -8,15 +8,10 @@ A node in the state machine model.
 state-machine-model
 
 ## Superclasses
-[history-state](../../overarch/data-model/history-state.md), [deep-history-state](../../overarch/data-model/deep-history-state.md), [choice](../../overarch/data-model/choice.md), [state](../../overarch/data-model/state.md), [join](../../overarch/data-model/join.md), [fork](../../overarch/data-model/fork.md), [end-state](../../overarch/data-model/end-state.md), [start-state](../../overarch/data-model/start-state.md)
+[join](../../overarch/data-model/join.md), [choice](../../overarch/data-model/choice.md), [start-state](../../overarch/data-model/start-state.md), [history-state](../../overarch/data-model/history-state.md), [deep-history-state](../../overarch/data-model/deep-history-state.md), [end-state](../../overarch/data-model/end-state.md), [state](../../overarch/data-model/state.md), [fork](../../overarch/data-model/fork.md)
 
 ## Subclasses
-[state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [model-node](../../overarch/data-model/model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[model-node](../../overarch/data-model/model-node.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md)
 
 
 ## Navigation

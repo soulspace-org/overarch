@@ -1,5 +1,5 @@
 
-# deep-history-state (Class)
+# deep-history-state (Schema)
 ## Description
 A state with a deep history.
 
@@ -9,11 +9,6 @@ state-machine-model
 
 ## Subclasses
 [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

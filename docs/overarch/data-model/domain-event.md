@@ -1,5 +1,5 @@
 
-# domain-event (Class)
+# domain-event (Schema)
 ## Description
 A record of a significant event that happened in the domain that domain experts would recognize and care about. A fact in the past.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# state-machine-model-element (Class)
+# state-machine-model-element (Schema)
 ## Description
 An element in a state machine model.
 
@@ -8,15 +8,10 @@ An element in a state machine model.
 state-machine-model
 
 ## Superclasses
-[state-machine](../../overarch/data-model/state-machine.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
+[state-machine](../../overarch/data-model/state-machine.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

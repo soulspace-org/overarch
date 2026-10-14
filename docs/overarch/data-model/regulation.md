@@ -1,7 +1,7 @@
 
-# regulation (Class)
+# regulation (Schema)
 ## Description
-A regulation in the process model
+A regulation in the process model, something that governs the requirements and constraints.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

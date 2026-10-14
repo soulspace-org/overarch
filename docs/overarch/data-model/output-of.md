@@ -1,5 +1,5 @@
 
-# output-of (Class)
+# output-of (Schema)
 ## Description
 A relation between artifacts, information or knowledge and processes.
 
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

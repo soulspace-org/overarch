@@ -1,5 +1,5 @@
 
-# use-case (Class)
+# use-case (Schema)
 ## Description
 A use case in the use case model.
 
@@ -15,11 +15,6 @@ use-case-model
 keyword level
  
 The level of the use case (:summary, :user-goal, :subfunction).
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

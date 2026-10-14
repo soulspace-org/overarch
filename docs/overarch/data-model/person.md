@@ -1,5 +1,5 @@
 
-# person (Class)
+# person (Schema)
 ## Description
 A human actor or role working with the system under description. A person can be used in the architecture model and the use case model.
 
@@ -8,12 +8,7 @@ A human actor or role working with the system under description. A person can be
 role-model architecture-model, use-case-model
 
 ## Subclasses
-[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
 
 
 ## Navigation

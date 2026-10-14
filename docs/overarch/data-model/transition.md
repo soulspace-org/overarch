@@ -1,5 +1,5 @@
 
-# transition (Class)
+# transition (Schema)
 ## Description
 A transition from on state to another in effect of an event in the state machine.
 
@@ -9,11 +9,6 @@ state-machine-model
 
 ## Subclasses
 [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

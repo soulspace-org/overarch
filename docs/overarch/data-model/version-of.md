@@ -1,5 +1,5 @@
 
-# version-of (Class)
+# version-of (Schema)
 ## Description
 A relation between versions and artifacts.
 
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,7 +1,7 @@
 
-# control-for (Class)
+# control-for (Schema)
 ## Description
-A relation between control and other elements.
+A relation between a control and other elements.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

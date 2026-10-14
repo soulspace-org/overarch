@@ -1,5 +1,5 @@
 
-# interface (Class)
+# interface (Schema)
 ## Description
 An interface in the code model.
           An interface defines related methods.
@@ -10,11 +10,6 @@ code-model
 
 ## Subclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

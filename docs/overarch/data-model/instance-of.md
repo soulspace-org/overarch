@@ -1,5 +1,5 @@
 
-# instance-of (Class)
+# instance-of (Schema)
 ## Description
 An element is an instance of another element.
 
@@ -9,11 +9,6 @@ trace-model
 
 ## Subclasses
 [model-relation](../../overarch/data-model/model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# visibility-node (Class)
+# visibility-node (Schema)
 ## Description
 A node which may have a visibility field.
 
@@ -8,18 +8,13 @@ A node which may have a visibility field.
 code-model
 
 ## Superclasses
-[method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md), [function](../../overarch/data-model/function.md)
+[function](../../overarch/data-model/function.md), [method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md)
 
 ## Fields
 ### visibility
 string visibility
  
 The visibility of the element.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

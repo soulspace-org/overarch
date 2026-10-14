@@ -1,5 +1,5 @@
 
-# technical-element (Class)
+# technical-element (Schema)
 ## Description
 An element which is implemented in the given technologies.
 
@@ -8,18 +8,13 @@ An element which is implemented in the given technologies.
 architecture-model, deployment-model
 
 ## Superclasses
-[technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [artifact](../../overarch/data-model/artifact.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md), [code-model-element](../../overarch/data-model/code-model-element.md)
+[technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [artifact](../../overarch/data-model/artifact.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [code-model-element](../../overarch/data-model/code-model-element.md)
 
 ## Fields
 ### tech
 string tech
  
 Technology the element is implemented in.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

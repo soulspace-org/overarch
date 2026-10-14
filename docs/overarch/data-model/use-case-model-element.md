@@ -1,5 +1,5 @@
 
-# use-case-model-element (Class)
+# use-case-model-element (Schema)
 ## Description
 An element in a use case model.
 
@@ -8,15 +8,10 @@ An element in a use case model.
 use-case-model
 
 ## Superclasses
-[use-case-model-relation](../../overarch/data-model/use-case-model-relation.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
+[use-case-model-node](../../overarch/data-model/use-case-model-node.md), [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

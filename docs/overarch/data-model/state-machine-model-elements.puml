@@ -7,37 +7,37 @@
 
 title State Machine Model Elements
 
-class "history-state" as overarch_dataModel_historyState {}
-abstract class "state-machine-model-element" as overarch_dataModel_stateMachineModelElement {}
-abstract class "model-element" as overarch_dataModel_modelElement {
+class "join" as overarch_dataModel_join <<schema>> {}
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "deep-history-state" as overarch_dataModel_deepHistoryState {}
-class "choice" as overarch_dataModel_choice {
+class "state-machine" as overarch_dataModel_stateMachine <<schema>> {}
+class "choice" as overarch_dataModel_choice <<schema>> {
   condition : string
 }
-class "state" as overarch_dataModel_state {}
-class "state-machine" as overarch_dataModel_stateMachine {}
-abstract class "model-node" as overarch_dataModel_modelNode {}
-abstract class "model-relation" as overarch_dataModel_modelRelation {
-  from : keyword
-  to : keyword
-}
-class "join" as overarch_dataModel_join {}
-class "fork" as overarch_dataModel_fork {}
-abstract class "state-machine-model-relation" as overarch_dataModel_stateMachineModelRelation {}
-class "transition" as overarch_dataModel_transition {}
-class "end-state" as overarch_dataModel_endState {}
-abstract class "state-machine-model-node" as overarch_dataModel_stateMachineModelNode {}
-abstract class "element" as overarch_dataModel_element {
+class "transition" as overarch_dataModel_transition <<schema>> {}
+class "start-state" as overarch_dataModel_startState <<schema>> {}
+class "state-machine-model-node" as overarch_dataModel_stateMachineModelNode <<schema>> {}
+class "history-state" as overarch_dataModel_historyState <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "state-machine-model-element" as overarch_dataModel_stateMachineModelElement <<schema>> {}
+class "deep-history-state" as overarch_dataModel_deepHistoryState <<schema>> {}
+class "end-state" as overarch_dataModel_endState <<schema>> {}
+class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
   el : keyword
   id : keyword
   name : string
 }
-class "start-state" as overarch_dataModel_startState {}
+class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
+  from : keyword
+  to : keyword
+}
+class "state" as overarch_dataModel_state <<schema>> {}
+class "state-machine-model-relation" as overarch_dataModel_stateMachineModelRelation <<schema>> {}
+class "fork" as overarch_dataModel_fork <<schema>> {}
 overarch_dataModel_stateMachineModelNode <|-- overarch_dataModel_choice
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode

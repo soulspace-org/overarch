@@ -1,5 +1,5 @@
 
-# element (Class)
+# element (Schema)
 ## Description
 An element of data.
 
@@ -31,11 +31,6 @@ The identifier of the element.
 string name
  
 Name of the element.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

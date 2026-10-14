@@ -7,39 +7,41 @@
 
 title Deployment Model Elements
 
-class "artifact" as overarch_dataModel_artifact {}
-abstract class "deployment-model-relation" as overarch_dataModel_deploymentModelRelation {}
-class "link" as overarch_dataModel_link {}
-abstract class "model-element" as overarch_dataModel_modelElement {
+class "deployment-model-node" as overarch_dataModel_deploymentModelNode <<schema>> {}
+class "container" as overarch_dataModel_container <<schema>> {}
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "deployed-to" as overarch_dataModel_deployedTo {}
-abstract class "technical-element" as overarch_dataModel_technicalElement {
-  tech : string [0..1]
-}
-class "version" as overarch_dataModel_version {}
-class "artifact-of" as overarch_dataModel_artifactOf {}
-class "container" as overarch_dataModel_container {}
-abstract class "deployment-model-node" as overarch_dataModel_deploymentModelNode {}
-class "node" as overarch_dataModel_node {}
-abstract class "model-node" as overarch_dataModel_modelNode {}
-abstract class "model-relation" as overarch_dataModel_modelRelation {
-  from : keyword
-  to : keyword
-}
-abstract class "deployment-model-element" as overarch_dataModel_deploymentModelElement {}
-abstract class "element" as overarch_dataModel_element {
+class "artifact-of" as overarch_dataModel_artifactOf <<schema>> {}
+class "artifact" as overarch_dataModel_artifact <<schema>> {}
+class "deployed-to" as overarch_dataModel_deployedTo <<schema>> {}
+class "deployment-model-relation" as overarch_dataModel_deploymentModelRelation <<schema>> {}
+class "node" as overarch_dataModel_node <<schema>> {}
+class "link" as overarch_dataModel_link <<schema>> {}
+class "container-instance" as overarch_dataModel_containerInstance <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
   el : keyword
   id : keyword
   name : string
 }
+class "version" as overarch_dataModel_version <<schema>> {}
+class "deployment-model-element" as overarch_dataModel_deploymentModelElement <<schema>> {}
+class "technical-element" as overarch_dataModel_technicalElement <<schema>> {
+  tech : string [0..1]
+}
+class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
+  from : keyword
+  to : keyword
+}
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_modelRelation <|-- overarch_dataModel_deploymentModelRelation
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode
 overarch_dataModel_node *-->  "ct\n0..n" overarch_dataModel_deploymentModelNode
+overarch_dataModel_deploymentModelNode <|-- overarch_dataModel_containerInstance
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelRelation
 overarch_dataModel_deploymentModelElement <|-- overarch_dataModel_deploymentModelNode
 overarch_dataModel_technicalElement <|-- overarch_dataModel_artifact
@@ -49,6 +51,5 @@ overarch_dataModel_technicalElement <|-- overarch_dataModel_deploymentModelEleme
 overarch_dataModel_modelElement <|-- overarch_dataModel_deploymentModelElement
 overarch_dataModel_deploymentModelRelation <|-- overarch_dataModel_link
 overarch_dataModel_deploymentModelNode <|-- overarch_dataModel_node
-overarch_dataModel_deploymentModelNode <|-- overarch_dataModel_container
 overarch_dataModel_deploymentModelElement <|-- overarch_dataModel_deploymentModelRelation
 @enduml

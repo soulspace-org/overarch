@@ -1,5 +1,5 @@
 
-# use-case-model-node (Class)
+# use-case-model-node (Schema)
 ## Description
 A node in the use case model of overarch.
 
@@ -8,15 +8,10 @@ A node in the use case model of overarch.
 use-case-model
 
 ## Superclasses
-[use-case](../../overarch/data-model/use-case.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md), [actor](../../overarch/data-model/actor.md)
+[container](../../overarch/data-model/container.md), [actor](../../overarch/data-model/actor.md), [use-case](../../overarch/data-model/use-case.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md)
 
 ## Subclasses
 [model-node](../../overarch/data-model/model-node.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,7 +1,7 @@
 
-# decision (Class)
+# decision (Schema)
 ## Description
-An decision in the process model
+A decision in the process model
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

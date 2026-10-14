@@ -1,5 +1,5 @@
 
-# use-case-view (Class)
+# use-case-view (Schema)
 ## Description
 The use case view is a behavioural view of the (functional) requirements. 
           It shows the actors of the system and the use cases to provide
@@ -11,11 +11,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

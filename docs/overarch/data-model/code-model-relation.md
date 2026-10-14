@@ -1,5 +1,5 @@
 
-# code-model-relation (Class)
+# code-model-relation (Schema)
 ## Description
 A relation in the code model.
 
@@ -12,11 +12,6 @@ code-model
 
 ## Subclasses
 [model-relation](../../overarch/data-model/model-relation.md), [code-model-element](../../overarch/data-model/code-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

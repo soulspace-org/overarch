@@ -1,5 +1,5 @@
 
-# state-machine-view (Class)
+# state-machine-view (Schema)
 ## Description
 The state machine view is a behavioural design view.
           It shows states and transitions of a state machine.
@@ -10,11 +10,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

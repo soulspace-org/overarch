@@ -1,5 +1,5 @@
 
-# deployment-model-relation (Class)
+# deployment-model-relation (Schema)
 ## Description
 A relation in the deployment model.
 
@@ -8,15 +8,10 @@ A relation in the deployment model.
 deployment-model
 
 ## Superclasses
-[link](../../overarch/data-model/link.md), [deployed-to](../../overarch/data-model/deployed-to.md)
+[deployed-to](../../overarch/data-model/deployed-to.md), [link](../../overarch/data-model/link.md)
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[deployment-model-element](../../overarch/data-model/deployment-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

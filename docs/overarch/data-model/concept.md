@@ -1,5 +1,5 @@
 
-# concept (Class)
+# concept (Schema)
 ## Description
 A concept in the (ubiquous) language of the system.
 
@@ -9,11 +9,6 @@ concept-model
 
 ## Subclasses
 [concept-model-node](../../overarch/data-model/concept-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

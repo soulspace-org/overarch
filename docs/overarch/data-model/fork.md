@@ -1,5 +1,5 @@
 
-# fork (Class)
+# fork (Schema)
 ## Description
 A fork of transitions in a state machine.
           A fork has a single incoming transition and multiple outgoing
@@ -11,11 +11,6 @@ state-machine-model
 
 ## Subclasses
 [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

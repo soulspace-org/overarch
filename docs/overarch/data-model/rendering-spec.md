@@ -1,5 +1,5 @@
 
-# spec (Class)
+# spec (Schema)
 ## Description
 A specification of the rendering options for a view.
 
@@ -36,11 +36,6 @@ A directive for the renderer to style elements (if supported by the renderer).
 map theme
  
 A directive for the renderer use a them to style elements (if supported by the renderer).
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# container (Class)
+# container (Schema)
 ## Description
 A container is a part of a system and describes a deployed process in the architecture (e.g. a service or an application).
           A container is a compound element which contains the components of the implementation.
@@ -10,12 +10,7 @@ A container is a part of a system and describes a deployed process in the archit
 architecture-model, use-case-model, deployment-model
 
 ## Subclasses
-[technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [deployment-model-node](../../overarch/data-model/deployment-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[concept-model-node](../../overarch/data-model/concept-model-node.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# implements (Class)
+# implements (Schema)
 ## Description
 A trace relation from an implementation to its definition.
 
@@ -9,11 +9,6 @@ trace-model
 
 ## Subclasses
 [model-relation](../../overarch/data-model/model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

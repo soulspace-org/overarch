@@ -1,7 +1,7 @@
 
-# control (Class)
+# control (Schema)
 ## Description
-A control in the process model
+A control in the process model, representing checks to ensure the desired outcomes.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

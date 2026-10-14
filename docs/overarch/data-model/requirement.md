@@ -1,5 +1,5 @@
 
-# requirement (Class)
+# requirement (Schema)
 ## Description
 A requirement in the process model
 
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

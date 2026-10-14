@@ -1,5 +1,5 @@
 
-# schema (Class)
+# schema (Schema)
 ## Description
 A schema in the code model.
           A schema defines the shape of data.
@@ -10,11 +10,6 @@ code-model
 
 ## Subclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

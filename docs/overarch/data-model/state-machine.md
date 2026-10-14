@@ -1,5 +1,5 @@
 
-# state-machine (Class)
+# state-machine (Schema)
 ## Description
 A state machine as root element of the state machine model.
           A state machine encapsulates a set of states of a system and
@@ -11,11 +11,6 @@ state-machine-model
 
 ## Subclasses
 [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

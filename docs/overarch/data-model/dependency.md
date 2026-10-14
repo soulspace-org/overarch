@@ -1,5 +1,5 @@
 
-# dependency (Class)
+# dependency (Schema)
 ## Description
 A dependency relationship between two elements in the code model.
 
@@ -9,11 +9,6 @@ code-model
 
 ## Subclasses
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

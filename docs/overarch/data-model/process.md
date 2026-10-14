@@ -1,7 +1,7 @@
 
-# process (Class)
+# process (Schema)
 ## Description
-A process in the process model
+A process in the process model, representing a sequence of activities aimed at achieving specific outcomes.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

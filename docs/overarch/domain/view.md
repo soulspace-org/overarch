@@ -8,9 +8,7 @@ Contains the view specification and functions.
 ## Incoming Synchronous Requests 
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|
-| [adapter.render.markdown](../../overarch/adapter/render/markdown.md) |  queries | [domain.view](../../overarch/domain/view.md) |  | view |
 | [application.template](../../overarch/application/template.md) | accesses | [domain.view](../../overarch/domain/view.md) |  | view |
-| [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md) | calls | [domain.view](../../overarch/domain/view.md) |  | view queries and rendering functions |
 | [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md) | queries | [domain.view](../../overarch/domain/view.md) |  | view |
 ## Outgoing Synchronous Requests 
 | From | Name | To | Technology | Description |

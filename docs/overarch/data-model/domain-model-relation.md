@@ -1,5 +1,5 @@
 
-# domain-model-relation (Class)
+# domain-model-relation (Schema)
 ## Description
 A relation in the domain model.
 
@@ -8,12 +8,7 @@ A relation in the domain model.
 domain-model
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [domain-model-element](../../overarch/data-model/domain-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[domain-model-element](../../overarch/data-model/domain-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

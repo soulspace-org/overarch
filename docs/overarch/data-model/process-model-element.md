@@ -1,5 +1,5 @@
 
-# process-model-element (Class)
+# process-model-element (Schema)
 ## Description
 An element in the process model
 
@@ -8,15 +8,10 @@ An element in the process model
 process-model
 
 ## Superclasses
-[process-model-node](../../overarch/data-model/process-model-node.md), [process-model-relation](../../overarch/data-model/process-model-relation.md)
+[process-model-relation](../../overarch/data-model/process-model-relation.md), [process-model-node](../../overarch/data-model/process-model-node.md)
 
 ## Subclasses
 [model-element](../../overarch/data-model/model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

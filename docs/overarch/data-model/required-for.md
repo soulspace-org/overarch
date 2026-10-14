@@ -1,7 +1,7 @@
 
-# required-for (Class)
+# required-for (Schema)
 ## Description
-A relation between other nodes and capabilities.
+A relation between a requirement and other elements.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# abstract-node (Class)
+# abstract-node (Schema)
 ## Description
 A node which may have an abstract field.
 
@@ -15,11 +15,6 @@ code-model
 boolean abstract
  
 When true the element is abstract. Default is false.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

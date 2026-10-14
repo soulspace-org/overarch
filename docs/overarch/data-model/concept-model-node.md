@@ -1,5 +1,5 @@
 
-# concept-model-node (Class)
+# concept-model-node (Schema)
 ## Description
 A node in the concept model.
 
@@ -8,15 +8,10 @@ A node in the concept model.
 concept-model
 
 ## Superclasses
-[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md), [context-boundary](../../overarch/data-model/context-boundary.md), [concept](../../overarch/data-model/concept.md)
+[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [container](../../overarch/data-model/container.md), [context-boundary](../../overarch/data-model/context-boundary.md), [concept](../../overarch/data-model/concept.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md)
 
 ## Subclasses
 [concept-model-element](../../overarch/data-model/concept-model-element.md), [model-node](../../overarch/data-model/model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

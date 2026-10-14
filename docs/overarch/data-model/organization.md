@@ -1,5 +1,5 @@
 
-# organization (Class)
+# organization (Schema)
 ## Description
 An organization (e.g. a company) in the organization model.
 
@@ -9,11 +9,6 @@ organization-model
 
 ## Subclasses
 [organization-model-node](../../overarch/data-model/organization-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

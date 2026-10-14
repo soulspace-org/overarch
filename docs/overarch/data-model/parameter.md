@@ -1,5 +1,5 @@
 
-# parameter (Class)
+# parameter (Schema)
 ## Description
 A parameter in a code model method or function.
 
@@ -8,12 +8,7 @@ A parameter in a code model method or function.
 code-model
 
 ## Subclasses
-[optional-node](../../overarch/data-model/optional-node.md), [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 
 ## Navigation

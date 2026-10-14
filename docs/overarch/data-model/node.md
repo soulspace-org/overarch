@@ -1,5 +1,5 @@
 
-# node (Class)
+# node (Schema)
 ## Description
 An element of the deployment model of the system under description.
           A node is a compound element which contains other nodes or containers
@@ -11,11 +11,6 @@ deployment-model
 
 ## Subclasses
 [deployment-model-node](../../overarch/data-model/deployment-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

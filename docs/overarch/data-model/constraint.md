@@ -1,7 +1,7 @@
 
-# constraint (Class)
+# constraint (Schema)
 ## Description
-A constraint in the process model
+A constraint in the process model, representing limitations or restrictions that must be adhered to.
 
 
 ## Tags
@@ -9,11 +9,6 @@ process-model
 
 ## Subclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

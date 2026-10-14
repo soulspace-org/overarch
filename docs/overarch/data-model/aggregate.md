@@ -1,5 +1,5 @@
 
-# aggregate (Class)
+# aggregate (Schema)
 ## Description
 A cluster of domain objects that can be treated as a single unit for consistency and invariants. Part of the solution space.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

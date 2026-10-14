@@ -1,5 +1,5 @@
 
-# domain (Class)
+# domain (Schema)
 ## Description
 A specific area of knowledge, activity or subject matter. Part of the problem space.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

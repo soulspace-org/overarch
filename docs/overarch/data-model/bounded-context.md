@@ -1,5 +1,5 @@
 
-# bounded-context (Class)
+# bounded-context (Schema)
 ## Description
 A boundary within which a particular domain model is valid and consistent. Part of the solution space.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

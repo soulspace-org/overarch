@@ -9,9 +9,7 @@ Contains the model specification and functions.
 | From | Name | To | Technology | Description |
 |---|---|---|---|---|
 | [adapter.exports.structurizr](../../overarch/adapter/exports/structurizr.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
-| [adapter.render.markdown](../../overarch/adapter/render/markdown.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 | [application.template](../../overarch/application/template.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
-| [adapter.render.graphviz](../../overarch/adapter/render/graphviz.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 | [domain.view](../../overarch/domain/view.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 | [adapter.render.plantuml](../../overarch/adapter/render/plantuml.md) | queries | [domain.model](../../overarch/domain/model.md) |  | model |
 

@@ -1,5 +1,5 @@
 
-# policy (Class)
+# policy (Schema)
 ## Description
 A rule or guideline that governs the behavior or actions within the domain.
 
@@ -9,11 +9,6 @@ domain-model
 
 ## Subclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

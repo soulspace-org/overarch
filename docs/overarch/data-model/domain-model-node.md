@@ -1,5 +1,5 @@
 
-# domain-model-node (Class)
+# domain-model-node (Schema)
 ## Description
 A node in the domain model.
 
@@ -8,15 +8,10 @@ A node in the domain model.
 domain-model
 
 ## Superclasses
-[aggregate](../../overarch/data-model/aggregate.md), [command](../../overarch/data-model/command.md), [model](../../overarch/data-model/model.md), [value-object](../../overarch/data-model/value-object.md), [entity](../../overarch/data-model/entity.md), [policy](../../overarch/data-model/policy.md), [bounded-context](../../overarch/data-model/bounded-context.md), [domain-event](../../overarch/data-model/domain-event.md), [domain](../../overarch/data-model/domain.md)
+[policy](../../overarch/data-model/policy.md), [entity](../../overarch/data-model/entity.md), [aggregate](../../overarch/data-model/aggregate.md), [model](../../overarch/data-model/model.md), [domain-event](../../overarch/data-model/domain-event.md), [value-object](../../overarch/data-model/value-object.md), [domain](../../overarch/data-model/domain.md), [command](../../overarch/data-model/command.md), [bounded-context](../../overarch/data-model/bounded-context.md)
 
 ## Subclasses
 [model-node](../../overarch/data-model/model-node.md), [domain-model-element](../../overarch/data-model/domain-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

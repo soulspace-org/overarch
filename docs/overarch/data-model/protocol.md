@@ -1,5 +1,5 @@
 
-# protocol (Class)
+# protocol (Schema)
 ## Description
 A protocol in the code model.
           A protocol defines related functions.
@@ -10,11 +10,6 @@ code-model
 
 ## Subclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

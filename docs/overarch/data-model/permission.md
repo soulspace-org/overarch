@@ -1,5 +1,5 @@
 
-# permission (Class)
+# permission (Schema)
 ## Description
 A permission, entitlement or access right for some action e.g. in a system.
 
@@ -9,11 +9,6 @@ role-model
 
 ## Subclasses
 [role-model-node](../../overarch/data-model/role-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

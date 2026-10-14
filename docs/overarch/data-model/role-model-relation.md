@@ -1,5 +1,5 @@
 
-# role-model-relation (Class)
+# role-model-relation (Schema)
 ## Description
 A relation in the role model.
 
@@ -11,12 +11,7 @@ role-model
 [granted-for](../../overarch/data-model/granted-for.md), [permission-of](../../overarch/data-model/permission-of.md)
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [role-model-element](../../overarch/data-model/role-model-element.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[role-model-element](../../overarch/data-model/role-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

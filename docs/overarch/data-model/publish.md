@@ -1,5 +1,5 @@
 
-# publish (Class)
+# publish (Schema)
 ## Description
 Publishing of asynchronous events between two elements of the architecture (receiver should be a broker or topic).
 
@@ -9,11 +9,6 @@ architecture-model
 
 ## Subclasses
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# system-landscape-view (Class)
+# system-landscape-view (Schema)
 ## Description
 The system landscape view is a static architectural view.
           It shows the broader context of the system under description.
@@ -14,11 +14,6 @@ view-model
 
 ## Subclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

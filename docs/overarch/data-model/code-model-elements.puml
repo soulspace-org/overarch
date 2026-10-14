@@ -7,69 +7,69 @@
 
 title Code Model Elements
 
-class "aggregation" as overarch_dataModel_aggregation {}
-class "method" as overarch_dataModel_method {}
-abstract class "type-hierarchy-relation" as overarch_dataModel_typeHierarchyRelation {}
-class "enum-value" as overarch_dataModel_enumValue {}
-class "field" as overarch_dataModel_field {}
-class "inheritance" as overarch_dataModel_inheritance {}
-class "function" as overarch_dataModel_function {}
-class "parameter" as overarch_dataModel_parameter {}
-abstract class "scoped-node" as overarch_dataModel_scopedNode {
-  scope : keyword [0..1]
-}
-class "association" as overarch_dataModel_association {}
-abstract class "model-element" as overarch_dataModel_modelElement {
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "namespace" as overarch_dataModel_namespace {}
-class "package" as overarch_dataModel_package {}
-abstract class "visibility-node" as overarch_dataModel_visibilityNode {
-  visibility : string [0..1]
+class "enum-value" as overarch_dataModel_enumValue <<schema>> {}
+class "inheritance" as overarch_dataModel_inheritance <<schema>> {}
+class "class" as overarch_dataModel_class <<schema>> {}
+class "enum" as overarch_dataModel_enum <<schema>> {}
+class "scoped-node" as overarch_dataModel_scopedNode <<schema>> {
+  scope : keyword [0..1]
 }
-abstract class "optional-node" as overarch_dataModel_optionalNode {
-  optional : boolean [0..1]
-}
-abstract class "technical-element" as overarch_dataModel_technicalElement {
-  tech : string [0..1]
-}
-abstract class "abstract-node" as overarch_dataModel_abstractNode {
-  abstract : boolean [0..1]
-}
-abstract class "model-node" as overarch_dataModel_modelNode {}
-class "enum" as overarch_dataModel_enum {}
-abstract class "model-relation" as overarch_dataModel_modelRelation {
-  from : keyword
-  to : keyword
-}
-abstract class "typed-node" as overarch_dataModel_typedNode {
+class "function" as overarch_dataModel_function <<schema>> {}
+class "composition" as overarch_dataModel_composition <<schema>> {}
+class "code-model-relation" as overarch_dataModel_codeModelRelation <<schema>> {}
+class "parameter" as overarch_dataModel_parameter <<schema>> {}
+class "typed-node" as overarch_dataModel_typedNode <<schema>> {
   type : string [0..1]
 }
-abstract class "code-model-relation" as overarch_dataModel_codeModelRelation {}
-class "interface" as overarch_dataModel_interface {}
-class "composition" as overarch_dataModel_composition {}
-abstract class "code-model-node" as overarch_dataModel_codeModelNode {}
-class "class" as overarch_dataModel_class {}
-class "protocol" as overarch_dataModel_protocol {}
-abstract class "associative-relation" as overarch_dataModel_associativeRelation {
-  from-card : string [0..1]
-  from-role : string [0..1]
-  qualifier : string [0..1]
-  to-card : string
-  to-role : string [0..1]
-}
-class "implementation" as overarch_dataModel_implementation {}
-abstract class "element" as overarch_dataModel_element {
+class "type-hierarchy-relation" as overarch_dataModel_typeHierarchyRelation <<schema>> {}
+class "code-model-node" as overarch_dataModel_codeModelNode <<schema>> {}
+class "interface" as overarch_dataModel_interface <<schema>> {}
+class "package" as overarch_dataModel_package <<schema>> {}
+class "implementation" as overarch_dataModel_implementation <<schema>> {}
+class "protocol" as overarch_dataModel_protocol <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
   el : keyword
   id : keyword
   name : string
 }
-class "dependency" as overarch_dataModel_dependency {}
-class "schema" as overarch_dataModel_schema {}
-abstract class "code-model-element" as overarch_dataModel_codeModelElement {}
+class "method" as overarch_dataModel_method <<schema>> {}
+class "association" as overarch_dataModel_association <<schema>> {}
+class "associative-relation" as overarch_dataModel_associativeRelation <<schema>> {
+  from-card : string [0..1]
+  from-role : string [0..1]
+  qualifier : string [0..1]
+  to-card : string
+  to-role : string [0..1]
+}
+class "technical-element" as overarch_dataModel_technicalElement <<schema>> {
+  tech : string [0..1]
+}
+class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
+  from : keyword
+  to : keyword
+}
+class "namespace" as overarch_dataModel_namespace <<schema>> {}
+class "aggregation" as overarch_dataModel_aggregation <<schema>> {}
+class "dependency" as overarch_dataModel_dependency <<schema>> {}
+class "abstract-node" as overarch_dataModel_abstractNode <<schema>> {
+  abstract : boolean [0..1]
+}
+class "code-model-element" as overarch_dataModel_codeModelElement <<schema>> {}
+class "visibility-node" as overarch_dataModel_visibilityNode <<schema>> {
+  visibility : string [0..1]
+}
+class "schema" as overarch_dataModel_schema <<schema>> {}
+class "optional-node" as overarch_dataModel_optionalNode <<schema>> {
+  optional : boolean [0..1]
+}
+class "field" as overarch_dataModel_field <<schema>> {}
 overarch_dataModel_optionalNode <|-- overarch_dataModel_field
 overarch_dataModel_codeModelNode <|-- overarch_dataModel_class
 overarch_dataModel_namespace *-->  "0..n" overarch_dataModel_codeModelNode

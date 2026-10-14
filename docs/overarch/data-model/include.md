@@ -1,5 +1,5 @@
 
-# include (Class)
+# include (Schema)
 ## Description
 A include relationship between two use cases.
 
@@ -9,11 +9,6 @@ use-case-model
 
 ## Subclasses
 [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

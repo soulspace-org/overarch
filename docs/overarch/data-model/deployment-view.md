@@ -1,5 +1,5 @@
 
-# deployment-view (Class)
+# deployment-view (Schema)
 ## Description
 The deployment view is a static architectural view.
           It shows the deployment of a system with the infrastructure modelled
@@ -11,11 +11,6 @@ view-model
 
 ## Subclasses
 [view](../../overarch/data-model/view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

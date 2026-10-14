@@ -1,5 +1,5 @@
 
-# link (Class)
+# link (Schema)
 ## Description
 A link between two nodes of the deployment model.
 
@@ -9,11 +9,6 @@ deployment-model
 
 ## Subclasses
 [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# enterprise-boundary (Class)
+# enterprise-boundary (Schema)
 ## Description
 A boundary of an enterprise or a company.
 
@@ -8,12 +8,7 @@ A boundary of an enterprise or a company.
 architecture-model, concept-model
 
 ## Subclasses
-[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [boundary-node](../../overarch/data-model/boundary-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
+[concept-model-node](../../overarch/data-model/concept-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [boundary-node](../../overarch/data-model/boundary-node.md)
 
 
 ## Navigation

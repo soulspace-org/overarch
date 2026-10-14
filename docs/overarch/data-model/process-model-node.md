@@ -1,5 +1,5 @@
 
-# process-model-node (Class)
+# process-model-node (Schema)
 ## Description
 A node in the process model
 
@@ -8,15 +8,10 @@ A node in the process model
 process-model
 
 ## Superclasses
-[control](../../overarch/data-model/control.md), [artifact](../../overarch/data-model/artifact.md), [information](../../overarch/data-model/information.md), [constraint](../../overarch/data-model/constraint.md), [capability](../../overarch/data-model/capability.md), [knowledge](../../overarch/data-model/knowledge.md), [version](../../overarch/data-model/version.md), [process](../../overarch/data-model/process.md), [requirement](../../overarch/data-model/requirement.md), [regulation](../../overarch/data-model/regulation.md), [test](../../overarch/data-model/test.md), [goal](../../overarch/data-model/goal.md), [decision](../../overarch/data-model/decision.md)
+[capability](../../overarch/data-model/capability.md), [control](../../overarch/data-model/control.md), [regulation](../../overarch/data-model/regulation.md), [artifact](../../overarch/data-model/artifact.md), [risk](../../overarch/data-model/risk.md), [information](../../overarch/data-model/information.md), [stakeholder](../../overarch/data-model/stakeholder.md), [non-goal](../../overarch/data-model/non-goal.md), [decision](../../overarch/data-model/decision.md), [process](../../overarch/data-model/process.md), [test](../../overarch/data-model/test.md), [version](../../overarch/data-model/version.md), [requirement](../../overarch/data-model/requirement.md), [constraint](../../overarch/data-model/constraint.md), [goal](../../overarch/data-model/goal.md), [knowledge](../../overarch/data-model/knowledge.md)
 
 ## Subclasses
 [process-model-element](../../overarch/data-model/process-model-element.md), [model-node](../../overarch/data-model/model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# artifact-of (Class)
+# artifact-of (Schema)
 ## Description
 A relation between artifacts and other process or deployment model nodes.
 
@@ -9,11 +9,6 @@ process-model, deployment-model
 
 ## Subclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

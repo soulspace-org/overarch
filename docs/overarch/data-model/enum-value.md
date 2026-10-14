@@ -1,5 +1,5 @@
 
-# enum-value (Class)
+# enum-value (Schema)
 ## Description
 A value of an enumeration in the code model.
 
@@ -9,11 +9,6 @@ code-model
 
 ## Subclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

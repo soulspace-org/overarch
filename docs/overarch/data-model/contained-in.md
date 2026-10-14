@@ -1,5 +1,5 @@
 
-# contained-in (Class)
+# contained-in (Schema)
 ## Description
 A composition relation from child to parent.
 
@@ -9,11 +9,6 @@ containment-model
 
 ## Subclasses
 [model-relation](../../overarch/data-model/model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

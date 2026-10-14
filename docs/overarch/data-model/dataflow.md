@@ -1,5 +1,5 @@
 
-# dataflow (Class)
+# dataflow (Schema)
 ## Description
 A flow of data between two elements of the architecture.
 
@@ -9,11 +9,6 @@ architecture-model
 
 ## Subclasses
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

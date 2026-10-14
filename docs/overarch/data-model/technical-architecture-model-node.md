@@ -1,5 +1,5 @@
 
-# technical-architecture-model-node (Class)
+# technical-architecture-model-node (Schema)
 ## Description
 A technical node in the architecture model.
 
@@ -8,7 +8,7 @@ A technical node in the architecture model.
 architecture-model
 
 ## Superclasses
-[component](../../overarch/data-model/component.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md)
+[container](../../overarch/data-model/container.md), [component](../../overarch/data-model/component.md), [system](../../overarch/data-model/system.md)
 
 ## Subclasses
 [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
@@ -18,11 +18,6 @@ architecture-model
 string subtype
  
 Subtype of the element, one of :database or :queue.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

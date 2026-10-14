@@ -1,5 +1,5 @@
 
-# role-in (Class)
+# role-in (Schema)
 ## Description
 A relation between persons and organization units or processes.
 
@@ -9,11 +9,6 @@ organization-model, process-model
 
 ## Subclasses
 [organization-model-relation](../../overarch/data-model/organization-model-relation.md), [process-model-relation](../../overarch/data-model/process-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

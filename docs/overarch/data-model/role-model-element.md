@@ -1,5 +1,5 @@
 
-# role-model-element (Class)
+# role-model-element (Schema)
 ## Description
 An element of the role model.
 
@@ -18,11 +18,6 @@ role-model
 boolean external
  
 When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false.
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

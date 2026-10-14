@@ -1,5 +1,5 @@
 
-# state-machine-model-relation (Class)
+# state-machine-model-relation (Schema)
 ## Description
 A relation in the state machine model.
 
@@ -12,11 +12,6 @@ state-machine-model
 
 ## Subclasses
 [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

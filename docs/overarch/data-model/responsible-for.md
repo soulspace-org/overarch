@@ -1,5 +1,5 @@
 
-# responsible-for (Class)
+# responsible-for (Schema)
 ## Description
 A relation between organisational model nodes and architecture or deployment model elements.
 
@@ -9,11 +9,6 @@ organization-model
 
 ## Subclasses
 [organization-model-relation](../../overarch/data-model/organization-model-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

@@ -1,5 +1,5 @@
 
-# component (Class)
+# component (Schema)
 ## Description
 A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer).
 
@@ -9,11 +9,6 @@ architecture-model
 
 ## Subclasses
 [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

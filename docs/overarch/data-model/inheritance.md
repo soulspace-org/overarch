@@ -1,5 +1,5 @@
 
-# inheritance (Class)
+# inheritance (Schema)
 ## Description
 An inheritance relationship between two classes in the code model.
 
@@ -9,11 +9,6 @@ code-model
 
 ## Subclasses
 [type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation

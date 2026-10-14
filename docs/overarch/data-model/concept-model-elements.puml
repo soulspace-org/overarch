@@ -7,35 +7,35 @@
 
 title Concept Model Elements
 
-class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary {}
-abstract class "concept-model-element" as overarch_dataModel_conceptModelElement {}
-abstract class "model-element" as overarch_dataModel_modelElement {
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary <<schema>> {}
+class "container" as overarch_dataModel_container <<schema>> {}
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "person" as overarch_dataModel_person {}
-class "system" as overarch_dataModel_system {}
-class "container" as overarch_dataModel_container {}
-class "context-boundary" as overarch_dataModel_contextBoundary {}
-class "concept" as overarch_dataModel_concept {}
-class "has" as overarch_dataModel_has {}
-abstract class "concept-model-node" as overarch_dataModel_conceptModelNode {}
-abstract class "model-node" as overarch_dataModel_modelNode {}
-abstract class "model-relation" as overarch_dataModel_modelRelation {
-  from : keyword
-  to : keyword
-}
-class "rel" as overarch_dataModel_rel {}
-abstract class "boundary-node" as overarch_dataModel_boundaryNode {}
-abstract class "concept-model-relation" as overarch_dataModel_conceptModelRelation {}
-abstract class "element" as overarch_dataModel_element {
+class "context-boundary" as overarch_dataModel_contextBoundary <<schema>> {}
+class "concept-model-node" as overarch_dataModel_conceptModelNode <<schema>> {}
+class "has" as overarch_dataModel_has <<schema>> {}
+class "concept-model-element" as overarch_dataModel_conceptModelElement <<schema>> {}
+class "rel" as overarch_dataModel_rel <<schema>> {}
+class "is-a" as overarch_dataModel_isA <<schema>> {}
+class "concept" as overarch_dataModel_concept <<schema>> {}
+class "boundary-node" as overarch_dataModel_boundaryNode <<schema>> {}
+class "person" as overarch_dataModel_person <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
   el : keyword
   id : keyword
   name : string
 }
-class "is-a" as overarch_dataModel_isA {}
+class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
+  from : keyword
+  to : keyword
+}
+class "system" as overarch_dataModel_system <<schema>> {}
+class "concept-model-relation" as overarch_dataModel_conceptModelRelation <<schema>> {}
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode

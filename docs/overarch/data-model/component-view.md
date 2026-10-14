@@ -1,5 +1,5 @@
 
-# component-view (Class)
+# component-view (Schema)
 ## Description
 The component view is a static architectural view.
           It shows the component structure of a container and the
@@ -12,11 +12,6 @@ view-model
 
 ## Subclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
-
-## Code View
-![code-view](../../overarch/data-model/code-view.png)
-
-[code-view](../../overarch/data-model/code-view.md)
 
 
 ## Navigation
