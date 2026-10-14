@@ -67,10 +67,6 @@
                  :name "application.export"
                  :desc "Contains the export multimethods to be implemented by the concrete export adapter implementations."}
                 {:el :component
-                 :id :overarch.application/reader
-                 :name "application.reader"
-                 :desc "Contains the reader multimethods to be implemented by the concrete reader adapter implementations."}
-                {:el :component
                  :id :overarch.application/render
                  :name "application.render"
                  :desc "Contains the render multimethods to be implemented by the concrete render adapter implementations."}
@@ -86,14 +82,6 @@
                  :id :overarch.adapter.render/plantuml
                  :name "adapter.render.plantuml"
                  :desc "Contains the implementation of the PlantUML rendering."}
-                {:el :component
-                 :id :overarch.adapter.render/markdown
-                 :name "adapter.render.markdown"
-                 :desc "Contains the implementation of the Markdown rendering."}
-                {:el :component
-                 :id :overarch.adapter.render/graphviz
-                 :name "adapter.render.graphviz"
-                 :desc "Contains the implementation of the Graphviz rendering."}
                 {:el :component
                  :id :overarch.adapter.template/comb
                  :name "adapter.template.comb"
@@ -332,48 +320,6 @@
    :to :overarch.domain/view
    :name "queries"
    :desc "view"}
-
-  {:el :implements
-   :id :overarch.architecture/markdown-implements-render
-   :from :overarch.adapter.render/markdown
-   :to :overarch.application/render
-   :name "implements"
-   :desc "render functions for Markdown representations"}
-
-  {:el :request
-   :id :overarch.architecture/markdown-accesses-model
-   :from :overarch.adapter.render/markdown
-   :to :overarch.domain/model
-   :name "queries"
-   :desc "model"}
-
-  {:el :request
-   :id :overarch.architecture/markdown-calls-view
-   :from :overarch.adapter.render/markdown
-   :to :overarch.domain/view
-   :name " queries"
-   :desc "view"}
-
-  {:el :implements
-   :id :overarch.architecture/graphviz-implements-render
-   :from :overarch.adapter.render/graphviz
-   :to :overarch.application/render
-   :name "implements"
-   :desc "render functions for GraphViz diagrams"}
-
-  {:el :request
-   :id :overarch.architecture/graphviz-accesses-model
-   :from :overarch.adapter.render/graphviz
-   :to :overarch.domain/model
-   :name "queries"
-   :desc "model"}
-
-  {:el :request
-   :id :overarch.architecture/graphviz-calls-view
-   :from :overarch.adapter.render/graphviz
-   :to :overarch.domain/view
-   :name "calls"
-   :desc "view queries and rendering functions"}
 
   {:el :implements
    :id :overarch.architecture/json-implements-export

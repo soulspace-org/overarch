@@ -5,7 +5,7 @@
   ;;;
   ;;; Abstract types
   ;;; 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/element
    :abstract true
    :name "element"
@@ -34,7 +34,7 @@
          :optional true
          :desc "Documentation of the element."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/ref
    :name "ref"
    :desc "A reference to an element."
@@ -51,7 +51,7 @@
   ;;
   ;; Model hierarchies
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/model-element
    :abstract true
    :name "model-element"
@@ -68,14 +68,14 @@
          :optional true
          :desc "Set of string tags associated with the element."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/model-node
    :abstract true
    :name "model-node"
    :desc "An element which is a node in the model."
    :tags #{"model-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/model-relation
    :abstract true
    :name "model-relation"
@@ -112,7 +112,7 @@
   ;;
   ;; Generic Relations
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/contained-in
    :name "contained-in"
    :desc "A composition relation from child to parent."
@@ -124,13 +124,13 @@
    :from :overarch.data-model/contained-in
    :tags #{"containment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/implements
    :name "implements"
    :desc "A trace relation from an implementation to its definition."
    :tags #{"trace-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/instance-of
    :name "instance-of"
    :desc "An element is an instance of another element."
@@ -151,7 +151,7 @@
   ;;
   ;; Generic Nodes
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/technical-element
    :abstract true
    :name "technical-element"
@@ -166,20 +166,20 @@
   ;;
   ;; Boundaries
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/boundary-node
    :abstract true
    :name "boundary-node"
    :desc "A grouping of elements belonging together in a context."
    :tags #{"architecture-model" "concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/context-boundary
    :name "context-boundary"
    :desc "A boundary of a bounded context."
    :tags #{"architecture-model" "concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/enterprise-boundary
    :name "enterprise-boundary"
    :desc "A boundary of an enterprise or a company."
@@ -200,7 +200,7 @@
   ;;
   ;; Role Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/role-model-element
    :abstract true
    :name "role-model-element"
@@ -212,39 +212,39 @@
          :optional true
          :desc "When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/role-model-node
    :abstract true
    :name "role-model-node"
    :desc "A node in the role model."
    :tags #{"role-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/role-model-relation
    :abstract true
    :name "role-model-relation"
    :desc "A relation in the role model."
    :tags #{"role-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/role
    :name "role"
    :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
    :tags #{"role-model architecture-model" "use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/permission
    :name "permission"
    :desc "A permission, entitlement or access right for some action e.g. in a system."
    :tags #{"role-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/granted-for
    :name "granted-for"
    :desc "A relationship between a permission and a role."
    :tags #{"role-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/permission-of
    :name "permission-of"
    :desc "A relationship between a permission and an architecture node, e.g. a system."
@@ -307,7 +307,7 @@
   ;;
   ;; Architecture Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/architecture-model-element
    :abstract true
    :name "architecture-model-element"
@@ -319,14 +319,14 @@
          :optional true
          :desc "When true, the element plays a role in the model but it is not in the scope of the project. Defaults to false."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/architecture-model-node
    :abstract true
    :name "architecture-model-node"
    :desc "A node in the architecture model."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/technical-architecture-model-node
    :abstract true
    :name "technical-architecture-model-node"
@@ -338,27 +338,27 @@
          :optional true
          :desc "Subtype of the element, one of :database or :queue."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/architecture-model-relation
    :abstract true
    :name "architecture-model-relation"
    :desc "A relation in the architecture model."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/technical-architecture-model-relation
    :abstract true
    :name "technical-architecture-model-relation"
    :desc "A technical relation in the architecture model."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/person
    :name "person"
    :desc "A human actor or role working with the system under description. A person can be used in the architecture model and the use case model."
    :tags #{"role-model architecture-model" "use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/system
    :name "system"
    :desc "A system relevant in the architecture.
@@ -367,7 +367,7 @@
           A system can be used in the architecture model, the deployment model (external systems) and the use case model (external systems)."
    :tags #{"architecture-model" "use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/container
    :name "container"
    :desc "A container is a part of a system and describes a deployed process in the architecture (e.g. a service or an application).
@@ -375,43 +375,43 @@
           A container can be used in the architecture model, the deployment model and the use case model."
    :tags #{"architecture-model" "deployment-model" "use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/component
    :name "component"
    :desc "A compontent is a part of a container and describes a (logical) building block of a container (e.g. a module or a layer)."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/request
    :name "request"
    :desc "A synchronous request between two elements of the architecture."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/response
    :name "response"
    :desc "A response to a synchronous request between two elements of the architecture."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/dataflow
    :name "dataflow"
    :desc "A flow of data between two elements of the architecture."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/send
    :name "send"
    :desc "An asynchronous message or command between two elements of the architecture (point-to-point)."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/publish
    :name "publish"
    :desc "Publishing of asynchronous events between two elements of the architecture (receiver should be a broker or topic)."
    :tags #{"architecture-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/subscribe
    :name "subscribe"
    :desc "Subscription of asynchronous events between two elements of the architecture (sender should be a broker or topic)."
@@ -591,28 +591,28 @@
   ;;
   ;; Deployment Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployment-model-node
    :abstract true
    :name "deployment-model-node"
    :desc "A node in the deployment model."
    :tags #{"deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployment-model-relation
    :abstract true
    :name "deployment-model-relation"
    :desc "A relation in the deployment model."
    :tags #{"deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployment-model-element
    :abstract true
    :name "deployment-model-element"
    :desc "An element in the deployment model."
    :tags #{"deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/node
    :name "node"
    :desc "An element of the deployment model of the system under description.
@@ -620,13 +620,22 @@
           referenced from the architecture model."
    :tags #{"deployment-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/container-instance
+   :name "container-instance"
+   :desc "An element of the deployment model of the system under description.
+          A container-instance is a specific instance of a container
+          of the architecture model, deployed on a node, e.g. the instance
+          of a service container in a test or production environment."
+   :tags #{"deployment-model"}}
+
+  {:el :schema
    :id :overarch.data-model/link
    :name "link"
    :desc "A link between two nodes of the deployment model."
    :tags #{"deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployed-to
    :name "deployed-to"
    :desc "A deployment relation between a container or an artifact and a node in the deployment model. The container or artifact is deployed to the node."
@@ -675,6 +684,12 @@
    :from :overarch.data-model/node
    :tags #{"deployment-model"}}
 
+  {:el :inheritance
+   :id :overarch.data-model/container-instance-is-a-deployment-model-node
+   :to :overarch.data-model/deployment-model-node
+   :from :overarch.data-model/container-instance
+   :tags #{"deployment-model"}}
+
   {:el :composition
    :id :overarch.data-model/node-contains-deployment-model-node
    :from :overarch.data-model/node
@@ -683,7 +698,7 @@
    :to-card :zero-to-many
    :tags #{"deployment-model"}}
 
-  {:el :inheritance
+  #_{:el :inheritance
    :id :overarch.data-model/container-is-a-deployment-model-node
    :to :overarch.data-model/deployment-model-node
    :from :overarch.data-model/container
@@ -704,7 +719,7 @@
   ;;
   ;; Code Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/abstract-node
    :abstract true
    :name "abstract-node"
@@ -716,7 +731,7 @@
           :optional true
           :desc "When true the element is abstract. Default is false."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/optional-node
    :abstract true
    :name "optional-node"
@@ -728,7 +743,7 @@
           :optional true
           :desc "When true the element can be null/nil. Default is false."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/scoped-node
    :abstract true
    :name "scoped-node"
@@ -740,7 +755,7 @@
           :optional true
           :desc "The scope of the element (:classifier or :instance). Defaults to instance."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/visibility-node
    :abstract true
    :name "visibility-node"
@@ -752,7 +767,7 @@
           :optional true
           :desc "The visibility of the element."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/typed-node
    :abstract true
    :name "typed-node"
@@ -764,14 +779,14 @@
           :optional true
           :desc "The type of the element."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/type-hierarchy-relation
    :abstract :true
    :name "type-hierarchy-relation"
    :desc "A relation that establishes a type hierarchy."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/associative-relation
    :abstract true
    :name "associative-relation"
@@ -802,136 +817,136 @@
           :optional true
           :desc "The name of a field for associative access."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/code-model-element
    :abstract true
    :name "code-model-element"
    :desc "An element in a code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/code-model-node
    :abstract true
    :name "code-model-node"
    :desc "A node in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/code-model-relation
    :abstract true
    :name "code-model-relation"
    :desc "A relation in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/package
    :name "package"
    :desc "A package in the code model.
           Packages provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/namespace
    :name "namespace"
    :desc "A namespace in the code model.
           Namespaces provide a hierarchical structure for the organisation of the elements of the class model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/interface
    :name "interface"
    :desc "An interface in the code model.
           An interface defines related methods."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/protocol
    :name "protocol"
    :desc "A protocol in the code model.
           A protocol defines related functions."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/schema
    :name "schema"
    :desc "A schema in the code model.
           A schema defines the shape of data."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/class
    :name "class"
    :desc "A class in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/enum
    :name "enum"
    :desc "An enumeration of typed related values in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/enum-value
    :name "enum-value"
    :desc "A value of an enumeration in the code model."
    :tags #{"code-model"}}
 
   ;; TODO replace content fields with references to type/optional/visibility nodes
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/field
    :name "field"
    :desc "A field in a code model element."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/function
    :name "function"
    :desc "A function in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/method
    :name "method"
    :desc "A method in a code model element."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/parameter
    :name "parameter"
    :desc "A parameter in a code model method or function."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/implementation
    :name "implementation"
    :desc "An implementation relationship between a code and an interface/protocol in the class model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/inheritance
    :name "inheritance"
    :desc "An inheritance relationship between two classes in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/composition
    :name "composition"
    :desc "A composition relationship between two classes in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/aggregation
    :name "aggregation"
    :desc "A aggregation relationship between two classes in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/association
    :name "association"
    :desc "A association relationship between two classes in the code model."
    :tags #{"code-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/dependency
    :name "dependency"
    :desc "A dependency relationship between two elements in the code model."
@@ -1258,28 +1273,28 @@
   ;;
   ;; State Machine Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state-machine-model-element
    :abstract true
    :name "state-machine-model-element"
    :desc "An element in a state machine model."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state-machine-model-node
    :abstract true
    :name "state-machine-model-node"
    :desc "A node in the state machine model."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state-machine-model-relation
    :abstract true
    :name "state-machine-model-relation"
    :desc "A relation in the state machine model."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state-machine
    :name "state-machine"
    :desc "A state machine as root element of the state machine model.
@@ -1287,25 +1302,25 @@
           the transitions between these states."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state
    :name "state"
    :desc "A state in a state machine."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/start-state
    :name "start-state"
    :desc "A start state in a state machine."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/end-state
    :name "end-state"
    :desc "A end state in a state machine."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/fork
    :name "fork"
    :desc "A fork of transitions in a state machine.
@@ -1313,7 +1328,7 @@
           transitions."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/join
    :name "join"
    :desc "A join of transitions in a state machine.
@@ -1321,7 +1336,7 @@
           transition."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/choice
    :name "choice"
    :desc "A choice of transitions in a state machine.
@@ -1333,19 +1348,19 @@
           :desc "The condition of the choice state."
           :type "string"}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/history-state
    :name "history-state"
    :desc "A state with history."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deep-history-state
    :name "deep-history-state"
    :desc "A state with a deep history."
    :tags #{"state-machine-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/transition
    :name "transition"
    :desc "A transition from on state to another in effect of an event in the state machine."
@@ -1459,28 +1474,28 @@
   ;;
   ;; Use Case Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/use-case-model-element
    :abstract true
    :name "use-case-model-element"
    :desc "An element in a use case model."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/use-case-model-node
    :abstract true
    :name "use-case-model-node"
    :desc "A node in the use case model of overarch."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/use-case-model-relation
    :abstract true
    :name "use-case-model-relation"
    :desc "A relation in the use case model of overarch."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/actor
    :name "actor"
    :desc "An actor (role) in a use case model.
@@ -1489,7 +1504,7 @@
           the use cases, you can replace the actors with these elements."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/use-case
    :name "use-case"
    :desc "A use case in the use case model."
@@ -1499,25 +1514,25 @@
           :type "keyword"
           :desc "The level of the use case (:summary, :user-goal, :subfunction)."}}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/uses
    :name "uses"
    :desc "A use relationship between an actor and a use case (or vice versa)."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/include
    :name "include"
    :desc "A include relationship between two use cases."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/extends
    :name "extends"
    :desc "An extends relationship between two use cases."
    :tags #{"use-case-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/generalizes
    :name "generalizes"
    :desc "A generalizes relationship between two use case elements."
@@ -1611,46 +1626,46 @@
   ;;
   ;; Concept Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/concept-model-element
    :abstract true
    :name "concept-model-element"
    :desc "An element in the concept model."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/concept-model-node
    :abstract true
    :name "concept-model-node"
    :desc "A node in the concept model."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/concept-model-relation
    :abstract true
    :name "concept-model-relation"
    :desc "A relation in the concept model."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/concept
    :name "concept"
    :desc "A concept in the (ubiquous) language of the system."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/is-a
    :name "is-a"
    :desc "A specialization relationship between the concepts."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/has
    :name "has"
    :desc "A composition or association relationship between the concepts."
    :tags #{"concept-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/rel
    :name "rel"
    :desc "A generic relation between the concepts."
@@ -1744,76 +1759,76 @@
   ;;
   ;; Domain Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/domain-model-element
    :abstract true
    :name "domain-model-element"
    :desc "An element in the domain model."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/domain-model-node
    :abstract true
    :name "domain-model-node"
    :desc "A node in the domain model."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/domain-model-relation
    :abstract true
    :name "domain-model-relation"
    :desc "A relation in the domain model."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/domain
    :name "domain"
    :desc "A specific area of knowledge, activity or subject matter. Part of the problem space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/bounded-context
    :name "bounded-context"
    :desc "A boundary within which a particular domain model is valid and consistent. Part of the solution space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/model
    :name "model"
    :desc "A representation of a domain that captures the essential aspects. Part of the solution space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/aggregate
    :name "aggregate"
    :desc "A cluster of domain objects that can be treated as a single unit for consistency and invariants. Part of the solution space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/entity
    :name "entity"
    :desc "An object that is defined by its identity rather than its attributes. Part of the solution space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/value-object
    :name "value-object"
    :desc "An object that is defined by its attributes rather than its identity. Part of the solution space."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/domain-event
    :name "domain-event"
    :desc "A record of a significant event that happened in the domain that domain experts would recognize and care about. A fact in the past."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/policy
    :name "policy"
    :desc "A rule or guideline that governs the behavior or actions within the domain."
    :tags #{"domain-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/command
    :name "command"
    :desc "An instruction to perform a specific action or operation within the domain."
@@ -1906,52 +1921,58 @@
   ;;
   ;; Organization Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/organization-model-element
    :abstract true
    :name "organization-model-element"
    :desc "An element in the organization model"
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/organization-model-node
    :abstract true
    :name "organization-model-node"
    :desc "A node in the organization model"
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/organization-model-relation
    :abstract true
    :name "organization-model-relation"
    :desc "A relation in the organization model"
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/organization
    :name "organization"
    :desc "An organization (e.g. a company) in the organization model."
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/org-unit
    :name "org-unit"
    :desc "An organizational unit (e.g. a department) in the organization model."
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/team
+   :name "team"
+   :desc "An team in the organization model."
+   :tags #{"organization-model"}}
+
+  {:el :schema
    :id :overarch.data-model/responsible-for
    :name "responsible-for"
    :desc "A relation between organisational model nodes and architecture or deployment model elements."
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/collaborates-with
    :name "collaborates-with"
    :desc "A relation between two organisational model nodes."
    :tags #{"organization-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/role-in
    :name "role-in"
    :desc "A relation between persons and organization units or processes."
@@ -2027,160 +2048,196 @@
   ;;
   ;; Process Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/process-model-element
    :abstract true
    :name "process-model-element"
    :desc "An element in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/process-model-node
    :abstract true
    :name "process-model-node"
    :desc "A node in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/process-model-relation
    :abstract true
    :name "process-model-relation"
    :desc "A relation in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/artifact
    :name "artifact"
-   :desc "An artifact in the process model"
+   :desc "An artifact in the process model, representing a tangible or intangible output produced during the execution of a process."
    :tags #{"process-model" "deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/capability
    :name "capability"
-   :desc "A capability in the process model"
+   :desc "A capability in the process model, representing the abilities, competencies and resources required to achieve certain outcomes."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/constraint
    :name "constraint"
-   :desc "A constraint in the process model"
+   :desc "A constraint in the process model, representing limitations or restrictions that must be adhered to."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/control
    :name "control"
-   :desc "A control in the process model"
+   :desc "A control in the process model, representing checks to ensure the desired outcomes."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/decision
    :name "decision"
-   :desc "An decision in the process model"
+   :desc "A decision in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/goal
    :name "goal"
-   :desc "An goal in the process model"
+   :desc "A goal in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/information
    :name "information"
-   :desc "An information in the process model"
+   :desc "An information element in the process model, representing meaningful data."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/knowledge
    :name "knowledge"
-   :desc "A process in the process model"
+   :desc "A knowledge element in the process model, representing understanding and expertise."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/non-goal
+   :name "non-goal"
+   :desc "A non-goal in the process model, something that is not in scope."
+   :tags #{"process-model"}}
+
+  {:el :schema
    :id :overarch.data-model/process
    :name "process"
-   :desc "A process in the process model"
+   :desc "A process in the process model, representing a sequence of activities aimed at achieving specific outcomes."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/regulation
    :name "regulation"
-   :desc "A regulation in the process model"
+   :desc "A regulation in the process model, something that governs the requirements and constraints."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/requirement
    :name "requirement"
    :desc "A requirement in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/risk
+   :name "risk"
+   :desc "A risk in the process model, representing potential events that could negatively impact the achievement of objectives."
+   :tags #{"process-model"}}
+
+  {:el :schema
+   :id :overarch.data-model/stakeholder
+   :name "stakeholder"
+   :desc "A stakeholder in the process model, representing an individual or group with an interest or concern."
+   :tags #{"process-model"}}
+
+  {:el :schema
    :id :overarch.data-model/test
    :name "test"
    :desc "A test in the process model"
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/version
    :name "version"
    :desc "A version of an artifact in the process model"
    :tags #{"process-model" "deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/artifact-of
    :name "artifact-of"
    :desc "A relation between artifacts and other process or deployment model nodes."
    :tags #{"process-model" "deployment-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/constraint-for
    :name "constraint-for"
-   :desc "A relation between constraint and other elements."
+   :desc "A relation between a constraint and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/control-for
    :name "control-for"
-   :desc "A relation between control and other elements."
+   :desc "A relation between a control and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/goal-for
    :name "goal-for"
-   :desc "A relation between goal and other elements."
+   :desc "A relation between a goal and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/input-of
    :name "input-of"
    :desc "A relation between artifacts, information or knowledge and processes."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/non-goal-for
+   :name "non-goal-for"
+   :desc "A relation between a non-goal and other elements."
+   :tags #{"process-model"}}
+
+  {:el :schema
    :id :overarch.data-model/output-of
    :name "output-of"
    :desc "A relation between artifacts, information or knowledge and processes."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/regulation-for
    :name "regulation-for"
-   :desc "A relation between regulation and other elements."
+   :desc "A relation between a regulation and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/required-for
    :name "required-for"
-   :desc "A relation between other nodes and capabilities."
+   :desc "A relation between a requirement and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
+   :id :overarch.data-model/risk-for
+   :name "risk-for"
+   :desc "A relation between a risk and other elements."
+   :tags #{"process-model"}}
+
+  {:el :schema
+   :id :overarch.data-model/stakeholder-of
+   :name "stakeholder-of"
+   :desc "A relation between a stakeholder and other elements."
+   :tags #{"process-model"}}
+
+  {:el :schema
    :id :overarch.data-model/test-for
    :name "test-for"
    :desc "A relation between a test and other elements."
    :tags #{"process-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/version-of
    :name "version-of"
    :desc "A relation between versions and artifacts."
@@ -2271,6 +2328,12 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/non-goal-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/non-goal
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/process-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/process
@@ -2286,6 +2349,18 @@
    :id :overarch.data-model/requirement-is-a-process-model-node
    :to :overarch.data-model/process-model-node
    :from :overarch.data-model/requirement
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/risk-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/risk
+   :tags #{"process-model"}}
+
+  {:el :inheritance
+   :id :overarch.data-model/stakeholder-is-a-process-model-node
+   :to :overarch.data-model/process-model-node
+   :from :overarch.data-model/stakeholder
    :tags #{"process-model"}}
 
   {:el :inheritance
@@ -2331,6 +2406,12 @@
    :tags #{"process-model"}}
 
   {:el :inheritance
+   :id :overarch.data-model/non-goal-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/non-goal-for
+   :tags #{"process-model"}}
+
+  {:el :inheritance
    :id :overarch.data-model/output-of-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
    :from :overarch.data-model/output-of
@@ -2348,6 +2429,18 @@
    :from :overarch.data-model/required-for
    :tags #{"process-model"}}
 
+  {:el :inheritance
+   :id :overarch.data-model/risk-for-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/risk-for
+   :tags #{"process-model"}}
+  
+  {:el :inheritance
+   :id :overarch.data-model/stakeholder-of-is-a-process-model-relation
+   :to :overarch.data-model/process-model-relation
+   :from :overarch.data-model/stakeholder-of
+   :tags #{"process-model"}}
+  
   {:el :inheritance
    :id :overarch.data-model/test-for-is-a-process-model-relation
    :to :overarch.data-model/process-model-relation
@@ -2369,7 +2462,7 @@
   ;;
   ;; View Model
   ;;
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/view
    :abstract true
    :name "view"
@@ -2380,7 +2473,7 @@
          :type "string"
          :desc "The title of the view."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/rendering-spec
    :name "spec"
    :desc "A specification of the rendering options for a view."
@@ -2414,14 +2507,14 @@
          :type "map"
          :desc "A directive for the renderer use a them to style elements (if supported by the renderer)."}]}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/architecture-view
    :abstract true
    :name "architecture-view"
    :desc "An architectural view."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/system-landscape-view
    :name "system-landscape-view"
    :desc "The system landscape view is a static architectural view.
@@ -2432,7 +2525,7 @@
           description."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/context-view
    :name "context-view"
    :desc "The (system) context view is a static architectural view.
@@ -2440,7 +2533,7 @@
           environment consisting of users and external systems."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/container-view
    :name "container-view"
    :desc "The container view is a static architectural view.
@@ -2449,7 +2542,7 @@
           consisting of users and external systems."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/component-view
    :name "component-view"
    :desc "The component view is a static architectural view.
@@ -2458,7 +2551,7 @@
           consisting of users and external systems."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployment-view
    :name "deployment-view"
    :desc "The deployment view is a static architectural view.
@@ -2466,7 +2559,7 @@
           as nodes and the containers of the system deployed in these nodes."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/dynamic-view
    :name "dynamic-view"
    :desc "The dynamic view is an architectural and behavioural view.
@@ -2474,7 +2567,7 @@
           architecture."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/use-case-view
    :name "use-case-view"
    :desc "The use case view is a behavioural view of the (functional) requirements. 
@@ -2482,28 +2575,28 @@
           an overview of the functionality of the system under description."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/code-view
    :name "code-view"
    :desc "The code view is a static design view.
           It shows the code structure of some components of the system."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/state-machine-view
    :name "state-machine-view"
    :desc "The state machine view is a behavioural design view.
           It shows states and transitions of a state machine."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/concept-view
    :name "concept-view"
    :desc "The concept view is a graphical view.
           It shows the concepts as a concept map with the relations between the concepts."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/glossary-view
    :name "glossary-view"
    :desc "The glossary view is a textual view.
@@ -2511,28 +2604,28 @@
           alphabetically sorted."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/model-view
    :name "model-view"
    :desc "The model view is a graphical view.
           It shows all selected elements as a graph."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/system-structure-view
    :name "system-structure-view"
    :desc "The system structure view is a graphical view.
           It shows the hierarchy of the system and its parts as an organigram."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/deployment-structure-view
    :name "deployment-structure-view"
    :desc "The deployment structure view is a graphical view.
           It shows the hierarchy of the infrastructure and deployments as an organigram."
    :tags #{"view-model"}}
 
-  {:el :class
+  {:el :schema
    :id :overarch.data-model/organization-structure-view
    :name "organization-structure-view"
    :desc "The organization structure view is a graphical view.
