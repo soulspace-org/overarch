@@ -1,0 +1,39 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Risks and Technical Dept
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [risks (m/select-model-elements model {:el :risk})
+      technical-depts []] ; TODO model and select technical dept
+
+%># Risks and Technical Dept
+## Risks
+<!-- PA-BEGIN(Risk1) -->
+<%= (get protected-areas "Risk1" "")
+%><!-- PA-END(Risk1) -->
+
+<%
+  (when (seq risks)
+%><%=
+    (md/node-description-table e :risk risks))
+%>
+
+<!-- PA-BEGIN(Risk2) -->
+<%= (get protected-areas "Risk2" "")
+%><!-- PA-END(Risk2) -->
+
+## Technical Dept
+<!-- PA-BEGIN(TechnicalDept1) -->
+<%= (get protected-areas "TechnicalDept1" "")
+%><!-- PA-END(TechnicalDept1) -->
+
+<!-- PA-BEGIN(TechnicalDept2) -->
+<%= (get protected-areas "TechnicalDept2" "")
+%><!-- PA-END(TechnicalDept2) -->
+
+<%
+) ; end of let
+%>

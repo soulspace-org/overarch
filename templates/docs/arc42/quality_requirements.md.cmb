@@ -1,0 +1,30 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Quality Requirements
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [quality-requirements (m/select-model-elements model {:el :requirement :tags #{"quality"}})]
+
+%># Quality Requirements
+<!-- PA-BEGIN(QualityRequirements1) -->
+<%= (get protected-areas "QualityRequirements1" "")
+%><!-- PA-END(QualityRequirements1) -->
+
+<%
+  (when (seq quality-requirements)
+%>
+### Requirements
+<%=
+    (md/node-description-table e :requirement quality-requirements))
+%>
+
+<!-- PA-BEGIN(QualityRequirements2) -->
+<%= (get protected-areas "QualityRequirements2" "")
+%><!-- PA-END(QualityRequirements2) -->
+
+<%
+) ; end of let
+%>

@@ -1,0 +1,29 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Solution Strategy
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [strategy-decisions (m/select-model-elements model {:el :decision :tags #{"solution strategy"}})]
+
+%># Solution Strategy
+<!-- PA-BEGIN(SolutionStrategy1) -->
+<%= (get protected-areas "SolutionStrategy1" "")
+%><!-- PA-END(SolutionStrategy1) -->
+<%
+  (when (seq strategy-decisions)
+%>
+### Decisions
+<%=
+    (md/node-description-table e :decision strategy-decisions))
+%>
+
+<!-- PA-BEGIN(SolutionStrategy2) -->
+<%= (get protected-areas "SolutionStrategy2" "")
+%><!-- PA-END(SolutionStrategy2) -->
+
+<%
+) ; end of let
+%>

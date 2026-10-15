@@ -1,0 +1,27 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Deployment View
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%># Deployment View
+<!-- PA-BEGIN(DeploymentView1) -->
+<%= (get protected-areas "DeploymentView1" "")
+%><!-- PA-END(DeploymentView1) -->
+<%
+  (when-let [deployment-view (m/resolve-view model e "deployment-view")]
+%>
+### Deployment Diagram
+<%= (md/relative-diagram-link e deployment-view) %>
+
+<%= (md/relative-view-link e deployment-view) %>
+<%
+  )
+%>
+
+<!-- PA-BEGIN(DeploymentView2) -->
+<%= (get protected-areas "DeploymentView2" "")
+%><!-- PA-END(DeploymentView2) -->
+

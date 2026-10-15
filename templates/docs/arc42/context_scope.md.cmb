@@ -1,0 +1,36 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the System Context and Scope
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%># System Context and Scope
+<!-- PA-BEGIN(SystemContext1) -->
+<%= (get protected-areas "SystemContext1" "")
+%><!-- PA-END(SystemContext1) -->
+
+<%
+    (when-let [context-view (m/resolve-view model e "context-view")]
+%>
+## System Context View
+<%= (md/relative-diagram-link e context-view) %>
+
+<%= (md/relative-view-link e context-view) %>
+<%
+    )
+%>
+<!-- PA-BEGIN(SystemContext2) -->
+<%= (get protected-areas "SystemContext2" "")
+%><!-- PA-END(SystemContext2) -->
+
+## Scope
+<!-- PA-BEGIN(Scope1) -->
+<%= (get protected-areas "Scope1" "")
+%><!-- PA-END(Scope1) -->
+
+<!-- PA-BEGIN(Scope2) -->
+<%= (get protected-areas "Scope2" "")
+%><!-- PA-END(Scope2) -->
+

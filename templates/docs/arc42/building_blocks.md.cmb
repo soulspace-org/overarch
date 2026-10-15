@@ -1,0 +1,27 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Building Blocks
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%># Building Blocks
+<!-- PA-BEGIN(BuildingBlocks1) -->
+<%= (get protected-areas "BuildingBlocks1" "")
+%><!-- PA-END(BuildingBlocks1) -->
+
+<%
+    (when-let [container-view (m/resolve-view model e "container-view")]
+%>
+### Container View
+<%= (md/relative-diagram-link e container-view) %>
+
+<%= (md/relative-view-link e container-view) %>
+<%
+    )
+%>
+
+<!-- PA-BEGIN(BuildingBlocks2) -->
+<%= (get protected-areas "BuildingBlocks2" "")
+%><!-- PA-END(BuildingBlocks2) -->

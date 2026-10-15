@@ -80,6 +80,7 @@
 <!-- PA-BEGIN(SystemContext1) -->
 <%= (get protected-areas "SystemContext1" "")
 %><!-- PA-END(SystemContext1) -->
+
 <%
     (when-let [context-view (m/resolve-view model e "context-view")]
 %>
@@ -90,19 +91,23 @@
 <%
     )
 %>
-<!-- PA-BEGIN(SystemContext1) -->
-<%= (get protected-areas "SystemContext1" "")
-%><!-- PA-END(SystemContext1) -->
+<!-- PA-BEGIN(SystemContext2) -->
+<%= (get protected-areas "SystemContext2" "")
+%><!-- PA-END(SystemContext2) -->
 
 ### Scope
-<!-- PA-BEGIN(Scope) -->
-<%= (get protected-areas "Scope" "")
-%><!-- PA-END(Scope) -->
+<!-- PA-BEGIN(Scope1) -->
+<%= (get protected-areas "Scope1" "")
+%><!-- PA-END(Scope1) -->
+
+<!-- PA-BEGIN(Scope2) -->
+<%= (get protected-areas "Scope2" "")
+%><!-- PA-END(Scope2) -->
 
 ## Solution Strategy
-<!-- PA-BEGIN(SolutionStrategy) -->
-<%= (get protected-areas "SolutionStrategy" "")
-%><!-- PA-END(SolutionStrategy) -->
+<!-- PA-BEGIN(SolutionStrategy1) -->
+<%= (get protected-areas "SolutionStrategy1" "")
+%><!-- PA-END(SolutionStrategy1) -->
 <%
   (when (seq strategy-decisions)
 %>
@@ -111,6 +116,9 @@
     (md/node-description-table e :decision strategy-decisions))
 %>
 
+<!-- PA-BEGIN(SolutionStrategy2) -->
+<%= (get protected-areas "SolutionStrategy2" "")
+%><!-- PA-END(SolutionStrategy2) -->
 
 ## Building Blocks
 <!-- PA-BEGIN(BuildingBlocks1) -->
@@ -133,9 +141,13 @@
 %><!-- PA-END(BuildingBlocks2) -->
 
 ## Runtime View
-<!-- PA-BEGIN(RuntimeView) -->
-<%= (get protected-areas "RuntimeView" "")
-%><!-- PA-END(RuntimeView) -->
+<!-- PA-BEGIN(RuntimeView1) -->
+<%= (get protected-areas "RuntimeView1" "")
+%><!-- PA-END(RuntimeView1) -->
+
+<!-- PA-BEGIN(RuntimeView2) -->
+<%= (get protected-areas "RuntimeView2" "")
+%><!-- PA-END(RuntimeView2) -->
 
 ## Deployment View
 <!-- PA-BEGIN(DeploymentView1) -->
@@ -157,9 +169,13 @@
 %><!-- PA-END(DeploymentView2) -->
 
 ## Crosscutting Concepts
-<!-- PA-BEGIN(CrosscuttingConcepts) -->
-<%= (get protected-areas "CrosscuttingConcepts" "")
-%><!-- PA-END(CrosscuttingConcepts) -->
+<!-- PA-BEGIN(CrosscuttingConcepts1) -->
+<%= (get protected-areas "CrosscuttingConcepts1" "")
+%><!-- PA-END(CrosscuttingConcepts1) -->
+
+<!-- PA-BEGIN(CrosscuttingConcepts2) -->
+<%= (get protected-areas "CrosscuttingConcepts2" "")
+%><!-- PA-END(CrosscuttingConcepts2) -->
 
 
 ## Architecture Decisions
@@ -213,9 +229,13 @@
 %><!-- PA-END(Risk2) -->
 
 ### Technical Dept
-<!-- PA-BEGIN(TechnicalDept) -->
-<%= (get protected-areas "TechnicalDept" "")
-%><!-- PA-END(TechnicalDept) -->
+<!-- PA-BEGIN(TechnicalDept1) -->
+<%= (get protected-areas "TechnicalDept1" "")
+%><!-- PA-END(TechnicalDept1) -->
+
+<!-- PA-BEGIN(TechnicalDept2) -->
+<%= (get protected-areas "TechnicalDept2" "")
+%><!-- PA-END(TechnicalDept2) -->
 
 <%
 ) ; end of let

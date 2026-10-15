@@ -1,0 +1,33 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Architecture Constraints
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [architecture-constraints (m/select-model-elements model {:el :constraint})]
+
+
+%># Architecture Constraints
+
+## Architecture Constraints
+<!-- PA-BEGIN(ArchitectureConstraints1) -->
+<%= (get protected-areas "ArchitectureConstraints1" "")
+%><!-- PA-END(ArchitectureConstraints1) -->
+
+<%
+  (when (seq architecture-constraints)
+%>
+### Constraints
+<%=
+    (md/node-description-table e :constraint architecture-constraints))
+%>
+
+<!-- PA-BEGIN(ArchitectureConstraints2) -->
+<%= (get protected-areas "ArchitectureConstraints2" "")
+%><!-- PA-END(ArchitectureConstraints2) -->
+
+<%
+) ; end of let
+%>

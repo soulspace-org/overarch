@@ -1,0 +1,13 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Crosscutting Concepts
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%># Crosscutting Concepts
+<!-- PA-BEGIN(CrosscuttingConcepts) -->
+<%= (get protected-areas "CrosscuttingConcepts" "")
+%><!-- PA-END(CrosscuttingConcepts) -->
+

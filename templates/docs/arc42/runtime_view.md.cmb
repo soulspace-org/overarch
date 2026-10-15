@@ -1,0 +1,27 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Runtime View
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+%># Runtime View
+<!-- PA-BEGIN(RuntimeView1) -->
+<%= (get protected-areas "RuntimeView1" "")
+%><!-- PA-END(RuntimeView1) -->
+
+<%
+  (when-let [runtime-view (m/resolve-view model e "runtime-view")]
+%>
+### Runtime Diagram
+<%= (md/relative-diagram-link e runtime-view) %>
+
+<%= (md/relative-view-link e runtime-view) %>
+<%
+  )
+%>
+
+<!-- PA-BEGIN(RuntimeView2) -->
+<%= (get protected-areas "RuntimeView2" "")
+%><!-- PA-END(RuntimeView2) -->

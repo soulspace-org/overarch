@@ -1,0 +1,30 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Architecture Decisions
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [architecture-decisions (m/select-model-elements model {:el :decision :tags #{"architecture"}})]
+
+%># Architecture Decisions
+<!-- PA-BEGIN(ArchitectureDecisions1) -->
+<%= (get protected-areas "ArchitectureDecisions1" "")
+%><!-- PA-END(ArchitectureDecisions1) -->
+
+<%
+  (when (seq architecture-decisions)
+%>
+### Decisions
+<%=
+    (md/node-description-table e :decision architecture-decisions))
+%>
+
+<!-- PA-BEGIN(ArchitectureDecisions2) -->
+<%= (get protected-areas "ArchitectureDecisions2" "")
+%><!-- PA-END(ArchitectureDecisions2) -->
+
+<%
+) ; end of let
+%>

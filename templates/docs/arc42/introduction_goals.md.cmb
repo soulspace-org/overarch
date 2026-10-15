@@ -1,0 +1,39 @@
+<%
+;;;;
+;;;; Markdown Arc42 Documentation Template for the Introduction and Goals
+;;;;
+
+(require '[lib.text :as t])
+(require '[lib.markdown :as md])
+
+(let [goals (m/select-model-elements model {:el :goal})
+      non-goals (m/select-model-elements model {:el :non-goal})]
+
+%># Introduction and Goals
+<!-- PA-BEGIN(Introduction1) -->
+<%= (get protected-areas "Introduction1" "")
+%><!-- PA-END(Introduction1) -->
+
+<%
+  (when (seq goals)
+%>
+### Goals
+<%=
+    (md/node-description-table e :goal (sort-by :priority goals)))
+%>
+
+<%
+  (when (seq non-goals)
+%>
+### Non Goals
+<%=
+    (md/node-description-table e :non-goal (sort-by :name non-goals)))
+%>
+
+<!-- PA-BEGIN(Introduction2) -->
+<%= (get protected-areas "Introduction2" "")
+%><!-- PA-END(Introduction2) -->
+
+<%
+) ; end of let
+%>
