@@ -3,6 +3,7 @@
 ;;;; Markdown Arc42 Documentation Template
 ;;;;
 
+; TODO update link generation, when generated file structure is fixed
 ; TODO use protected areas for hand written content?
 
 (require '[lib.text :as t])

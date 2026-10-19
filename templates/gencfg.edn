@@ -80,8 +80,10 @@
   :extension "md"}
 
  ;;;
- ;;; Markdown Architecture Documentation
+ ;;; Markdown Architecture Documentation (arc42)
  ;;;
+
+ ;; Single Page
  {:selection {:el :system :external? false}
   :template "docs/arc42.md.cmb"
   :per-element true
@@ -89,6 +91,87 @@
   :suffix "_architecture"
   :extension "md"
   :protected-area "PA"}
+
+ ;; Multi Page
+ ;; TODO filenames
+ #_{:selection {:el :system :external? false}
+   :template "docs/arc42/index.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+ #_{:selection {:el :system :external? false}
+  :template "docs/arc42/introduction_goals.md.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "md"
+  :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/architecture_constraints.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/solution_strategy.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/building_block_view.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/runtime_view.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/deployment_view.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/crosscutting_concepts.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/architecture_decisions.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/quality_requirements.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+#_{:selection {:el :system :external? false}
+   :template "docs/arc42/risks_and_technical_debt.md.cmb"
+   :per-element true
+   :id-as-name true
+   :extension "md"
+   :protected-area "PA"}
+
+
 
  ;;;
  ;;; Markdown Reports
