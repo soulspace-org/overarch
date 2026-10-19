@@ -1,7 +1,7 @@
 
 # model-relation (Schema)
 ## Description
-An element which is a relation in the and describes the relationship of two model nodes.
+An element which is a relation in the Overarch data model and describes the relationship of two model nodes.
 
 
 ## Tags

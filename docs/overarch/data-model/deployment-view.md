@@ -3,7 +3,8 @@
 ## Description
 The deployment view is a static architectural view.
           It shows the deployment of a system with the infrastructure modelled
-          as nodes and the containers of the system deployed in these nodes.
+          as nodes and the container instances and artifacts of the system
+          deployed in these nodes.
 
 
 ## Tags

@@ -11,7 +11,7 @@ organization-model
 [organization](../../overarch/data-model/organization.md), [org-unit](../../overarch/data-model/org-unit.md)
 
 ## Subclasses
-[organization-model-element](../../overarch/data-model/organization-model-element.md), [model-node](../../overarch/data-model/model-node.md)
+[model-node](../../overarch/data-model/model-node.md), [organization-model-element](../../overarch/data-model/organization-model-element.md)
 
 
 ## Navigation

@@ -8,12 +8,40 @@ An element for describing a view.
 view-model
 
 ## Superclasses
-[system-structure-view](../../overarch/data-model/system-structure-view.md), [deployment-view](../../overarch/data-model/deployment-view.md), [concept-view](../../overarch/data-model/concept-view.md), [architecture-view](../../overarch/data-model/architecture-view.md), [code-view](../../overarch/data-model/code-view.md), [state-machine-view](../../overarch/data-model/state-machine-view.md), [model-view](../../overarch/data-model/model-view.md), [glossary-view](../../overarch/data-model/glossary-view.md), [deployment-structure-view](../../overarch/data-model/deployment-structure-view.md), [organization-structure-view](../../overarch/data-model/organization-structure-view.md), [use-case-view](../../overarch/data-model/use-case-view.md)
+[system-structure-view](../../overarch/data-model/system-structure-view.md), [concept-view](../../overarch/data-model/concept-view.md), [architecture-view](../../overarch/data-model/architecture-view.md), [code-view](../../overarch/data-model/code-view.md), [state-machine-view](../../overarch/data-model/state-machine-view.md), [model-view](../../overarch/data-model/model-view.md), [glossary-view](../../overarch/data-model/glossary-view.md), [deployment-structure-view](../../overarch/data-model/deployment-structure-view.md), [deployment-view](../../overarch/data-model/deployment-view.md), [organization-structure-view](../../overarch/data-model/organization-structure-view.md), [use-case-view](../../overarch/data-model/use-case-view.md)
 
 ## Subclasses
 [element](../../overarch/data-model/element.md)
 
 ## Fields
+### include
+keyword include
+ 
+A directive to include additional elements in the view.
+### layout
+keyword layout
+ 
+A directive for the renderer to change the rendering (if supported by the renderer).
+### linetype
+keyword linetype
+ 
+A directive for the renderer to change the linetype for relations (if supported by the renderer).
+### selection
+criteria selection
+ 
+A directive to select the elements for the view by the critera.
+### sketch
+boolean sketch
+ 
+If true, the view is rendered as a sketch (if supported by the renderer).
+### styles
+map styles
+ 
+A directive for the renderer to style elements (if supported by the renderer).
+### theme
+map theme
+ 
+A directive for the renderer use a theme to style elements (if supported by the renderer).
 ### title
 string title
  

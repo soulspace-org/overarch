@@ -7,25 +7,33 @@
 
 title Process Model Elements
 
-class "model-element" as overarch_dataModel_modelElement <<schema>> {
-  maturity : keyword [0..1]
-  tags : set [0..1]
-}
 class "control-for" as overarch_dataModel_controlFor <<schema>> {}
 class "required-for" as overarch_dataModel_requiredFor <<schema>> {}
 class "capability" as overarch_dataModel_capability <<schema>> {}
 class "artifact-of" as overarch_dataModel_artifactOf <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
 class "control" as overarch_dataModel_control <<schema>> {}
 class "regulation" as overarch_dataModel_regulation <<schema>> {}
 class "role-in" as overarch_dataModel_roleIn <<schema>> {}
 class "artifact" as overarch_dataModel_artifact <<schema>> {}
 class "process-model-element" as overarch_dataModel_processModelElement <<schema>> {}
+class "element" as overarch_dataModel_element <<schema>> {
+  desc : string [0..1]
+  doc : string [0..1]
+  el : keyword
+  id : keyword
+  name : string
+}
 class "non-goal-for" as overarch_dataModel_nonGoalFor <<schema>> {}
 class "test-for" as overarch_dataModel_testFor <<schema>> {}
 class "process-model-relation" as overarch_dataModel_processModelRelation <<schema>> {}
 class "risk" as overarch_dataModel_risk <<schema>> {}
 class "information" as overarch_dataModel_information <<schema>> {}
 class "stakeholder" as overarch_dataModel_stakeholder <<schema>> {}
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
 class "non-goal" as overarch_dataModel_nonGoal <<schema>> {}
 class "output-of" as overarch_dataModel_outputOf <<schema>> {}
 class "decision" as overarch_dataModel_decision <<schema>> {}
@@ -34,15 +42,7 @@ class "risk-for" as overarch_dataModel_riskFor <<schema>> {}
 class "input-of" as overarch_dataModel_inputOf <<schema>> {}
 class "test" as overarch_dataModel_test <<schema>> {}
 class "stakeholder-of" as overarch_dataModel_stakeholderOf <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
 class "process-model-node" as overarch_dataModel_processModelNode <<schema>> {}
-class "element" as overarch_dataModel_element <<schema>> {
-  desc : string [0..1]
-  doc : string [0..1]
-  el : keyword
-  id : keyword
-  name : string
-}
 class "regulation-for" as overarch_dataModel_regulationFor <<schema>> {}
 class "version" as overarch_dataModel_version <<schema>> {}
 class "requirement" as overarch_dataModel_requirement <<schema>> {}
@@ -50,15 +50,15 @@ class "version-of" as overarch_dataModel_versionOf <<schema>> {}
 class "technical-element" as overarch_dataModel_technicalElement <<schema>> {
   tech : string [0..1]
 }
-class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
-  from : keyword
-  to : keyword
-}
 class "constraint" as overarch_dataModel_constraint <<schema>> {}
 class "goal" as overarch_dataModel_goal <<schema>> {}
 class "goal-for" as overarch_dataModel_goalFor <<schema>> {}
 class "constraint-for" as overarch_dataModel_constraintFor <<schema>> {}
 class "knowledge" as overarch_dataModel_knowledge <<schema>> {}
+class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
+  from : keyword
+  to : keyword
+}
 overarch_dataModel_processModelNode <|-- overarch_dataModel_version
 overarch_dataModel_modelNode <|-- overarch_dataModel_processModelNode
 overarch_dataModel_processModelNode <|-- overarch_dataModel_knowledge

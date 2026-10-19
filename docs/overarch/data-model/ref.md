@@ -1,7 +1,7 @@
 
 # ref (Schema)
 ## Description
-A reference to an element.
+A reference to an element of the Overarch data model.
 
 
 ## Tags

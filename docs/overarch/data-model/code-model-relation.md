@@ -11,7 +11,7 @@ code-model
 [type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md), [associative-relation](../../overarch/data-model/associative-relation.md), [dependency](../../overarch/data-model/dependency.md)
 
 ## Subclasses
-[model-relation](../../overarch/data-model/model-relation.md), [code-model-element](../../overarch/data-model/code-model-element.md)
+[code-model-element](../../overarch/data-model/code-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 
 ## Navigation

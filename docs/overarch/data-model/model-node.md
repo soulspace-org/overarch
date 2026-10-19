@@ -1,7 +1,7 @@
 
 # model-node (Schema)
 ## Description
-An element which is a node in the model.
+An element which is a node in the Overarch data model.
 
 
 ## Tags

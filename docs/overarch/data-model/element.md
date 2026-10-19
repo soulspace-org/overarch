@@ -1,7 +1,7 @@
 
 # element (Schema)
 ## Description
-An element of data.
+An element of the Overarch data model.
 
 
 ## Tags
@@ -14,11 +14,11 @@ base-model
 ### desc
 string desc
  
-(Short) description of the element. Could be rendered in diagrams.
+The (short) description of the element. Could be rendered in diagrams.
 ### doc
 string doc
  
-Documentation of the element.
+The documentation of the element.
 ### el
 keyword el
  
@@ -30,7 +30,7 @@ The identifier of the element.
 ### name
 string name
  
-Name of the element.
+The name of the element.
 
 
 ## Navigation

@@ -9,18 +9,10 @@ title Deployment Model Elements
 
 class "deployment-model-node" as overarch_dataModel_deploymentModelNode <<schema>> {}
 class "container" as overarch_dataModel_container <<schema>> {}
-class "model-element" as overarch_dataModel_modelElement <<schema>> {
-  maturity : keyword [0..1]
-  tags : set [0..1]
-}
 class "artifact-of" as overarch_dataModel_artifactOf <<schema>> {}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {}
 class "artifact" as overarch_dataModel_artifact <<schema>> {}
 class "deployed-to" as overarch_dataModel_deployedTo <<schema>> {}
-class "deployment-model-relation" as overarch_dataModel_deploymentModelRelation <<schema>> {}
-class "node" as overarch_dataModel_node <<schema>> {}
-class "link" as overarch_dataModel_link <<schema>> {}
-class "container-instance" as overarch_dataModel_containerInstance <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
 class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
@@ -28,6 +20,14 @@ class "element" as overarch_dataModel_element <<schema>> {
   id : keyword
   name : string
 }
+class "deployment-model-relation" as overarch_dataModel_deploymentModelRelation <<schema>> {}
+class "model-element" as overarch_dataModel_modelElement <<schema>> {
+  maturity : keyword [0..1]
+  tags : set [0..1]
+}
+class "node" as overarch_dataModel_node <<schema>> {}
+class "link" as overarch_dataModel_link <<schema>> {}
+class "container-instance" as overarch_dataModel_containerInstance <<schema>> {}
 class "version" as overarch_dataModel_version <<schema>> {}
 class "deployment-model-element" as overarch_dataModel_deploymentModelElement <<schema>> {}
 class "technical-element" as overarch_dataModel_technicalElement <<schema>> {
