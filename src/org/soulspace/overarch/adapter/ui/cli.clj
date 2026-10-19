@@ -11,9 +11,10 @@
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
             [org.soulspace.overarch.domain.spec :as spec]
+            ; registers the view type multimethods
+            [org.soulspace.overarch.domain.views]
             [org.soulspace.overarch.application.model-repository :as repo]
             [org.soulspace.overarch.application.export :as exp]
-            [org.soulspace.overarch.application.render :as rndr]
             [org.soulspace.overarch.application.template :as tmpl]
             ; require adapters here to register multimethods
             ; require dynamically?
@@ -23,10 +24,7 @@
             [org.soulspace.overarch.adapter.reader.input-model-reader :as imreader]
             [org.soulspace.overarch.adapter.reader.file-input-model-reader :as fimreader]
             [org.soulspace.overarch.adapter.render.plantuml :as puml]
-            [org.soulspace.overarch.adapter.render.plantuml.c4 :as c4]
-            [org.soulspace.overarch.adapter.render.plantuml.uml :as uml]
-            [org.soulspace.overarch.adapter.template.comb :as comb]
-            [org.soulspace.overarch.application.render :as render])
+            [org.soulspace.overarch.adapter.template.comb :as comb])
   (:gen-class))
 
 ;;;
@@ -43,9 +41,9 @@
 
 (def cli-opts
   [["-m" "--model-dir PATH" "Models directory or path" :default "models"]
-   ["-r" "--render-format FORMAT" "Render format (all, plantuml)" :parse-fn keyword] ; :default :all :default-desc "all"]
-   ["-R" "--render-dir DIRNAME" "Render directory" :default "export"]
-   [nil  "--[no-]render-format-subdirs" "Use subdir per render format" :default true]
+   ["-r" "--render-format FORMAT" "Deprecated, has no effect. Use templates (-g) to generate artifacts" :parse-fn keyword]
+   ["-R" "--render-dir DIRNAME" "Render directory (deprecated with -r)" :default "export"]
+   [nil  "--[no-]render-format-subdirs" "Use subdir per render format (deprecated with -r)" :default true]
    ["-x" "--export-format FORMAT" "Export format (json, structurizr)" :parse-fn keyword]
    ["-X" "--export-dir DIRNAME" "Export directory" :default "export"]
    ["-w" "--watch" "Watch model dir for changes and trigger action" :default false]
@@ -197,6 +195,19 @@
                    (map el/element->ref))
           (repo/views))))
 
+(def render-format-deprecation-warning
+  "The warning printed when the deprecated render format option is used."
+  (str "Warning: the -r/--render-format option is deprecated and has no effect. "
+       "All render artifacts are generated via the templates, "
+       "use the generation config (-g) instead."))
+
+(defn warn-deprecated-render-format
+  "Prints a deprecation warning to stderr, if the render format option is set in `options`."
+  [options]
+  (when (:render-format options)
+    (binding [*out* *err*]
+      (println render-format-deprecation-warning))))
+
 ; TODO: use multimethods for dispatching on options and actions to be extensible
 (defn dispatch
   "Dispatch on `options` to the requested actions."
@@ -221,8 +232,7 @@
     (pp/pprint (select-view-references options)))
   (when (:plantuml-list-sprites options)
     (print-sprite-mappings))
-  (when (:render-format options)
-    (rndr/render model (:render-format options) options))
+  (warn-deprecated-render-format options)
   (when (:export-format options)
     (exp/export model (:export-format options) options))
   (when (:generation-config options)
@@ -278,8 +288,7 @@
                          default-options
                          {:model-dir "models"
                           :export-dir "export"
-                          :render-dir "export"
-                          :render-format :plantuml
+                          :generation-config "templates/gencfg.edn"
                           :debug true}))
 
   (model-info (reader/update-state! (merge
@@ -452,15 +461,6 @@
     (view/rendered-elements (repo/model) view))
   rendered-new
 
-  (puml/plantuml-view? view)
-
-  (render/render-view (repo/model)
-                      :plantuml
-                      (merge {:render-dir "exports"
-                              :render-format :plantuml}
-                             default-options)
-                      view)
-
   (count referenced)
   (count selected)
   (count specified)
@@ -517,29 +517,12 @@
   (model/children (repo/model)
                   (model/resolve-element (repo/model)
                                          :banking.internet-banking/internet-banking-system))
-  (c4/render-c4-element (repo/model)
-                        (model/resolve-element (repo/model)
-                                               :banking/container-view)
-                        0
-                        (model/resolve-element (repo/model)
-                                               :banking.internet-banking/internet-banking-system))
-  
-  (c4/render-c4-element (repo/model)
-                        (model/resolve-element (repo/model)
-                                               :banking/container-view)
-                        0
-                        (model/resolve-element (repo/model)
-                                               :banking/big-bank-plc-datacenter))
-
   ;
   )
 
 (comment ; CLI calls
   (-main "--debug")
-  (-main "--debug" "--render-format" "plantuml")
-  (-main "--debug" "--render-format" "plantuml")
-  (-main "--debug" "--render-format" "all")
-  (-main "--debug" "--render-format" "all" "--no-render-format-subdirs")
+  (-main "--debug" "--generation-config" "templates/gencfg.edn")
   (-main "--debug" "--export-format" "json")
   (-main "--model-dir" "examples/banking" "--export-format" "structurizr")
   (-main "--model-info")
@@ -548,8 +531,6 @@
   (-main "--help") ; ends REPL session
 
   ; 
-  (-main "--debug" "--no-render-format-subdirs" "--render-format" "plantuml" "--generation-config" "templates/gencfg.edn")
-
   ; overarch development
   (-main "--debug" "--generation-config" "dev/model-gencfg.edn" "-T" "dev/templates")
   (-main "--debug" "--generation-config" "dev/report-gencfg.edn")

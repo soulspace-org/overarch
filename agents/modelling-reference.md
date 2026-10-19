@@ -223,8 +223,8 @@ Run from the repository root with `java -jar tools/overarch.jar`.
 | Task | Command |
 |---|---|
 | Load the model and check for problems | `-m models -s '{:id :x/none}'` or any query. The model warnings are printed first |
-| Render all views | `-r plantuml`. Output goes to `export/`, or to the directory given with `-R` |
-| Rebuild on every change | `-r plantuml -w` |
+| Generate all diagrams and docs | `-g templates/gencfg.edn`. Output goes to `generated/`, or to the directory given with `-G`. The `-r` flag is deprecated and has no effect |
+| Rebuild on every change | `-g templates/gencfg.edn -w` |
 | Export | `-x json` or `-x structurizr` (`-X` for the directory) |
 | Generate artifacts from templates | `-T templates -g templates/gencfg.edn -G generated` |
 | Model location | `-m <dir>`, models directory or path |

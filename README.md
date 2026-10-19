@@ -274,9 +274,9 @@ Start the the *Overarch* CLI tool with java.
 java -jar overarch.jar [options]
 ```
 
-For example to generate all views for the models with some debug output, use
+For example to generate all artifacts for the models with some debug output, use
 ```
-java -jar ./target/overarch.jar -r all --debug
+java -jar ./target/overarch.jar -g templates/gencfg.edn --debug
 ```
 
 *Overarch* currently supports these options
@@ -294,9 +294,9 @@ Usage: java -jar overarch.jar [options].
 Options:
 
   -m, --model-dir PATH                   models     Models directory or path
-  -r, --render-format FORMAT                        Render format (all, graphviz, markdown, plantuml)
-  -R, --render-dir DIRNAME               export     Render directory
-      --[no-]render-format-subdirs       true       Use subdir per render format
+  -r, --render-format FORMAT                        Deprecated, has no effect. Use templates (-g) to generate artifacts
+  -R, --render-dir DIRNAME               export     Render directory (deprecated with -r)
+      --[no-]render-format-subdirs       true       Use subdir per render format (deprecated with -r)
   -x, --export-format FORMAT                        Export format (json, structurizr)
   -X, --export-dir DIRNAME               export     Export directory
   -w, --watch                            false      Watch model dir for changes and trigger action

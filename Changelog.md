@@ -6,7 +6,14 @@
 * added :decision-for, :non-goal-for, :risk-for and :stakeholder-of relations
 * fixed :goal-for relation
 * fixed and improved protected area handling in templates
-* updated arc42 template
+* generated PlantUML diagrams for UML views (code, state machine and use case views) by the template `views/uml-view.puml.cmb` instead of the built-in renderer
+* generated PlantUML C4 diagrams (system landscape, context, container, component, dynamic and deployment views) by the template `views/c4-view.puml.cmb` instead of the built-in renderer
+  * fixed the `$tags` argument of nodes with children, the description of collapsed nodes, empty boundaries and the remote sprite library imports
+* deprecated the `-r/--render-format` option, it has no effect anymore and prints a warning. All artifacts are generated via the templates (`-g`)
+* moved the registration of the view type multimethods to the namespace `org.soulspace.overarch.domain.views`
+* removed the obsolete namespace `org.soulspace.overarch.application.render` with the render multimethods
+* added `collapsed?` to the template model API and `rendered-elements`, `hierarchical-view?`, `tech-sprite`, `sprites-for-view` and `sprite-path` to the template view API
+* updated arc42 templates
 * updated overarch models
 * enhanced AI instructions
 

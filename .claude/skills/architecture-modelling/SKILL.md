@@ -33,7 +33,7 @@ Load the model and read the "Model Warnings" block that starts the output:
 java -jar tools/overarch.jar -m <model-dir> -S '{:namespace-prefix "<ns>"}'
 ```
 
-`:build-problems`, `:unresolved-refs-in-relations` and `:unresolved-refs-in-views` must be empty. A "Spec failed" error names the invalid value. Then confirm the change with a query, e.g. that the new element and its relations are present and that it is contained in the right parent. If a view should show the new element, check the view with `--select-views '{:id <view-id>}'` or render it with `-r plantuml`.
+`:build-problems`, `:unresolved-refs-in-relations` and `:unresolved-refs-in-views` must be empty. A "Spec failed" error names the invalid value. Then confirm the change with a query, e.g. that the new element and its relations are present and that it is contained in the right parent. If a view should show the new element, check the view with `--select-views '{:id <view-id>}'` or generate the diagram with `-g templates/gencfg.edn`.
 
 Run commands from the repository root. Don't continue with further changes while the warnings aren't empty, unless the warnings existed before your change. Report those separately.
 

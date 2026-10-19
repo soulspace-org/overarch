@@ -13,9 +13,9 @@ Usage: java -jar overarch.jar [options].
 Options:
 
   -m, --model-dir PATH                   models     Models directory or path
-  -r, --render-format FORMAT                        Render format (all, plantuml)
-  -R, --render-dir DIRNAME               export     Render directory
-      --[no-]render-format-subdirs       true       Use subdir per render format
+  -r, --render-format FORMAT                        Deprecated, has no effect. Use templates (-g) to generate artifacts
+  -R, --render-dir DIRNAME               export     Render directory (deprecated with -r)
+      --[no-]render-format-subdirs       true       Use subdir per render format (deprecated with -r)
   -x, --export-format FORMAT                        Export format (json, structurizr)
   -X, --export-dir DIRNAME               export     Export directory
   -w, --watch                            false      Watch model dir for changes and trigger action
@@ -43,23 +43,23 @@ For the CLI examples a model repository with the following directory layout is e
 
 Renders all artifacts to the `generated` directory using the generation config in `templates/gencfg.edn`, this is the commandline used in the `publish.sh` scripts in the example models. 
 ```
-java -jar tools/overarch.jar --no-render-format-subdirs -R generated -r plantuml -g templates/gencfg.edn
+java -jar tools/overarch.jar -g templates/gencfg.edn
 ```
 
-To render all views for all models, use
+To generate the artifacts (e.g. the diagrams) for all models, use
 ```
-> java -jar tools/overarch.jar -r all
+> java -jar tools/overarch.jar -g templates/gencfg.edn
 ```
 
 or
 
 ```
-> java -jar tools/overarch.jar -r all --debug
+> java -jar tools/overarch.jar -g templates/gencfg.edn --debug
 ```
 
-To render all views for all models with a directory watch to trigger rerendering on changes, use
+To generate the artifacts (e.g. the diagrams) for all models with a directory watch to trigger rerendering on changes, use
 ```
-> java -jar tools/overarch.jar -r all -w --debug
+> java -jar tools/overarch.jar -g templates/gencfg.edn -w --debug
 ```
 
 To export the models to JSON, use

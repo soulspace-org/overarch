@@ -7,7 +7,7 @@ cp -r docs/* backup/
 
 # read model and generate output with overarch
 echo "reading model and generating with overarch"
-java -jar tools/overarch.jar --no-render-format-subdirs -R generated -r plantuml -g templates/gencfg.edn
+java -jar tools/overarch.jar -g templates/gencfg.edn
 
 # generate diagrams with PlantUML
 echo "generating diagrams with PlantUML"
