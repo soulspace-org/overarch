@@ -1,7 +1,7 @@
 
 # adapter.render.plantuml (Component)
 ## Description
-Contains the implementation of the PlantUML rendering.
+Contains the PlantUML sprite mappings used by the templates for the PlantUML diagrams.
 
 ## Parent
 [Overarch CLI](../../../overarch/architecture/overarch-cli.md)

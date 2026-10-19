@@ -11,7 +11,6 @@
 *** adapter.exports.json
 *** util.io
 *** application.export
-*** application.render
 *** adapter.reader.model-reader
 *** adapter.exports.structurizr
 *** adapter.ui.cli
