@@ -121,7 +121,8 @@
        (flatten [(render-line indent header " {")
                  (map #(render-uml-element model view (+ indent 2) %) (sorter content))
                  (render-line indent "}")])
-       [(render-line indent header " {}")]))))
+       [(render-line indent header " {")
+        (render-line indent "}")]))))
 
 (defn render-classifier-header
   "Renders the header of a classifier of the given `kind` for element `e`."
