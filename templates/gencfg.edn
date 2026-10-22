@@ -24,11 +24,19 @@
   :extension "puml"}
 
  ; rendered as plantuml UML
- #_{:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
-    :template "views/uml-view.puml.cmb"
-    :per-element true
-    :id-as-name true
-    :extension "puml"}
+ {:view-selection {:els #{:code-view :state-machine-view :use-case-view}}
+  :template "views/uml-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
+
+ ; rendered as plantuml C4
+ {:view-selection {:els #{:system-landscape-view :context-view :container-view :component-view
+                          :dynamic-view :deployment-view :deployment-architecture-view}}
+  :template "views/c4-view.puml.cmb"
+  :per-element true
+  :id-as-name true
+  :extension "puml"}
 
  ; rendered as Mermaid treemap
  #_{:view-selection {:els #{:deployment-structure-view :organization-structure-view :system-structure-view}}

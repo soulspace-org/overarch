@@ -14,7 +14,6 @@ Parses the command line options and dispatches functions on them.
 |---|---|---|---|---|
 | [adapter.ui.cli](../../../overarch/adapter/ui/cli.md) | calls | [application.export](../../../overarch/application/export.md) |  | export functions |
 | [adapter.ui.cli](../../../overarch/adapter/ui/cli.md) | calls | [application.template](../../../overarch/application/template.md) |  | template functions |
-| [adapter.ui.cli](../../../overarch/adapter/ui/cli.md) | calls | [application.render](../../../overarch/application/render.md) |  | render functions |
 | [adapter.ui.cli](../../../overarch/adapter/ui/cli.md) | loads | [application.model-repository](../../../overarch/application/model-repository.md) |  | model |
 
 

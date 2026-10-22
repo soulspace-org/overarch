@@ -51,6 +51,11 @@
   [e]
   (el/model-relation? e))
 
+(defn collapsed?
+  "Returns true if the given element `e` is collapsed."
+  [e]
+  (el/collapsed? e))
+
 (defn architecture-model-element?
   "Returns true if the given element `e` is an architecture model element."
   [e]

@@ -67,10 +67,6 @@
                  :name "application.export"
                  :desc "Contains the export multimethods to be implemented by the concrete export adapter implementations."}
                 {:el :component
-                 :id :overarch.application/render
-                 :name "application.render"
-                 :desc "Contains the render multimethods to be implemented by the concrete render adapter implementations."}
-                {:el :component
                  :id :overarch.application/template
                  :name "application.template"
                  :desc "Contains the functions for template based artifact generation and multimethods to be implemented by the concrete template engine adapter implementations."}
@@ -81,7 +77,7 @@
                 {:el :component
                  :id :overarch.adapter.render/plantuml
                  :name "adapter.render.plantuml"
-                 :desc "Contains the implementation of the PlantUML rendering."}
+                 :desc "Contains the PlantUML sprite mappings used by the templates for the PlantUML diagrams."}
                 {:el :component
                  :id :overarch.adapter.template/comb
                  :name "adapter.template.comb"
@@ -259,13 +255,6 @@
    :desc "export functions"}
 
   {:el :request
-   :id :overarch.architecture/cli-calls-render
-   :from :overarch.adapter.ui/cli
-   :to :overarch.application/render
-   :name "calls"
-   :desc "render functions"}
-
-  {:el :request
    :id :overarch.architecture/cli-calls-template
    :from :overarch.adapter.ui/cli
    :to :overarch.application/template
@@ -292,13 +281,6 @@
    :to :overarch.domain/view
    :name "accesses"
    :desc "view"}
-
-  {:el :implements
-   :id :overarch.architecture/plantuml-implements-render
-   :from :overarch.adapter.render/plantuml
-   :to :overarch.application/render
-   :name "implements"
-   :desc "render functions for PlantUML diagrams"}
 
   {:el :request
    :id :overarch.architecture/plantuml-accesses-model

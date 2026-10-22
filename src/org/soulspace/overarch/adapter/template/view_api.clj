@@ -3,7 +3,10 @@
   (:require [org.soulspace.overarch.domain.element :as el]
             [org.soulspace.overarch.domain.model :as model]
             [org.soulspace.overarch.domain.view :as view]
+            ; registers the view type multimethods
+            [org.soulspace.overarch.domain.views]
             [org.soulspace.overarch.application.model-repository :as repo]
+            [org.soulspace.overarch.adapter.render.plantuml :as puml]
             [clojure.string :as str]
             [org.soulspace.overarch.adapter.template.view-api :as v]))
 
@@ -49,6 +52,37 @@
    (view/elements-to-render model view))
   ([model view coll]
    (view/elements-to-render model view coll)))
+
+(defn rendered-elements
+  "Returns the elements to render in the `view` for the given `model`.
+   Optionally takes the collection `coll` of elements to start with."
+  ([model view]
+   (view/rendered-elements model view))
+  ([model view coll]
+   (view/rendered-elements model view coll)))
+
+(defn hierarchical-view?
+  "Returns true if the `view` is a hierarchical view."
+  [view]
+  (el/hierarchical-view? view))
+
+;;;
+;;; Sprites
+;;;
+(defn tech-sprite
+  "Returns the sprite for the technology `tech`, nil if there is none."
+  [tech]
+  (puml/tech->sprite tech))
+
+(defn sprites-for-view
+  "Returns the sprites for the technologies and sprites used in the `view` of the `model`."
+  [model view]
+  (puml/sprites-for-view model view))
+
+(defn sprite-path
+  "Returns the path of the `sprite`."
+  [sprite]
+  (puml/sprite-path sprite))
 
 (defn include-spec
   "Returns the include specification for the `view`. Defaults to :referenced-only."
