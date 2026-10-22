@@ -409,8 +409,8 @@
                             :referred {:els #{:inheritance :implementation}}})
   ; type hierarchy of :code-model-node (downwards)
   (model/transitive-search (repo/model)
-                           {:refers {:els #{:inheritance :implementation}}}
-                           :overarch.data-model/code-model-node)
+                           {:start {:id :overarch.data-model/code-model-node}
+                            :refers {:els #{:inheritance :implementation}}})
   ;
   )
 
