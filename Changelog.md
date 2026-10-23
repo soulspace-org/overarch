@@ -15,6 +15,7 @@
 * added `collapsed?` to the template model API and `rendered-elements`, `hierarchical-view?`, `tech-sprite`, `sprites-for-view` and `sprite-path` to the template view API
 * updated arc42 templates
 * updated overarch models
+* updated docs
 * enhanced AI instructions
 
 ## Version 0.42.0
