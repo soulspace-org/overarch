@@ -81,7 +81,7 @@
 
 (def domain-relation-types
   "Relation types for domain models."
-  #{})
+  #{:triggers})
 
 ;;
 ;; Deployment model
