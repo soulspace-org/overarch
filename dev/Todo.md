@@ -6,9 +6,9 @@
   * Why? (purpose, description?)
   * Who? (organizations, roles, use case actors)
   * With what/whom? (collaborations, supporting actors/systems, interfaces, artifacts)
-  * How? (processes, use cases, scenarios/stories, sequences, activities, state machines, data?)
+  * How? (processes, use cases, scenarios/stories, sequences, activities, state machines, systems, containers, components, code, data)
   * When? (events, triggers, timings, policies, state machines)
-  * Where (locations, regions, deployment/infrastructure)
+  * Where (locations, regions, infrastructure)
   * How good? (NFRs, quality metrics)
   * How long? (retentions, ...)
   * How configured? (parameters, environments)
@@ -35,7 +35,6 @@
 
 ## Templates
 * check generation for :artifact-of, :version-of and :instance-of relationships
-* add templates for plantuml C4 and UML
 * check templates for mermaid
   * treeview/treemap
   * class/state diagrams?
