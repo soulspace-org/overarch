@@ -18,5 +18,3 @@ You also get integrated previews of the rendered PlantUML diagrams and the
 ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
 directly from within Visual Studio Code.
 
-## IntelliJ
-

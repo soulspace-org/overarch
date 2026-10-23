@@ -158,7 +158,7 @@ key               | type     | values              | default  | description
 :view-selection   | CRITERIA | {:el :context-view} |          | Criteria to select views
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :combsci            | :combsci | The template engine to use (currently just :combsci)
-:encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
+:encoding         | string   | "UTF-8"             | "UTF-8"  | Accepted setting; currently not applied when writing artifacts
 :per-element      | boolean  | true/false          | false    | Apply the template for each element of the selection
 :per-namespace    | boolean  | true/false          | false    | Apply the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
@@ -169,11 +169,14 @@ key               | type     | values              | default  | description
 :base-name        | string   |                     |          | Base of the filename
 :suffix           | string   | "Impl"              |          | Suffix for the filename
 :extension        | string   | "md" "clj" "java"   |          | Extension for the filename
-:filename         | string   | "README.md"         |          | Specific filename to use
 :id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
-:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
-:protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
+:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the generated filename
+:protected-area   | string   | "PA"                |          | Marker for protected areas in the template/artifact
 :debug            | boolean  | true/false          | false    | Print parsed template on error
+
+Although `:encoding` is accepted in a generation context, the artifact writer
+currently uses the platform's default character encoding and does not apply
+this setting.
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
@@ -195,7 +198,6 @@ the generation on a view level.
  :template "node-report.md.cmb"  ; relative path of the template to apply
  :title "Banking Systems Report" ; title of the report
  :engine :combsci                ; the template engine to use (currently only :combsci)
- :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
  ; :namespace-prefix ""          ; prefix for the namespace of the generated artifact
@@ -214,7 +216,6 @@ the generation on a view level.
  :template "rel-report.md.cmb"   ; relative path of the template to apply
  :title "REST Interface Report"  ; title of the report
  :engine :combsci                ; the template engine to use (currently only :combsci)
- :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
 ; :namespace-prefix ""           ; prefix for the namespace of the generated artifact
@@ -239,8 +240,7 @@ The relevant CLI options for template based artifact generation are
   -B, --backup-dir DIRNAME       backup     Generation backup directory
 ```
 
-Example using a config file in the current directory and default directories
+Example using a config file in the `templates` directory and default directories
 ```
-java -jar overarch.jar -g gencfg.edn
+java -jar overarch.jar -g templates/gencfg.edn
 ```
-

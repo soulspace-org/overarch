@@ -23,6 +23,9 @@ Overarch currently supports the following kinds of models
 * [Organization Models](#organization-model)
   to model organizational structures, roles, collaborations and responsibilities for
   parts of the system
+* [Domain Models](#domain-model)
+  to model domain-driven design concepts such as bounded contexts, aggregates,
+  entities and domain events
 * [Process Models](#process-model)
   to model capabilities, processes, artifacts, information, knowledge, roles, requirements, decisions and their relationships
 
@@ -473,7 +476,7 @@ state machine itself.
 A transition connects two states and models the input that leads to the
 transition from the current state (:from) to the next state (:to).
 
-### Forks and Joins (:fork-state, :join-state)
+### Forks and Joins (:fork, :join)
 You can split a transition to trigger multiple new states with a fork state.
 A fork has a single input transition and multiple output transitions.
 
@@ -555,13 +558,27 @@ The collaborates-with relation captures collaborations between organizations or 
 
 The role-in relation maps `:person` nodes to organizational units.
 
+## Domain Model
+The domain model captures the design of a domain using domain-driven design
+concepts. It can describe a domain and its bounded contexts, and the aggregates,
+entities, value objects, domain events, policies and commands within them.
+
+### Nodes (:domain :bounded-context :aggregate :entity :value-object :domain-event :policy :command)
+The domain nodes represent the main concepts in the domain.
+
+### Relations (:triggers)
+The triggers relation links domain elements that trigger others, e.g. commands triggering domain events.
+
 ## Process Model
 The process model captures the structure of capabilities, processes and their resources.
 
 ### Logical Data Model for the Process Model Elements
 ![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
-### Nodes (:artifact :capability :constraint :control :decision :goal :information :knowledge :permission :process :regulation :requirement :test :version)
+### Nodes (:artifact :capability :constraint :control :decision :goal :information :knowledge :non-goal :process :regulation :requirement :risk :stakeholder :test :version)
 
-### Relations (:artifact-of :constraint-for :control-for :goal-for :granted-for :input-of :output-of :permission-of :regulation-for :required-for :role-in :test-for :version-of)
-The role-in relation maps `:person` nodes to `:process` nodes.
+### Relations (:artifact-of :constraint-for :control-for :decision-for :goal-for :input-of :non-goal-for :output-of :regulation-for :required-for :risk-for :role-in :stakeholder-of :test-for :version-of)
+The `:role-in` relation maps `:person` nodes to `:process` nodes. The
+`:decision-for`, `:goal-for`, `:non-goal-for`, `:risk-for`, and
+`:stakeholder-of` relations link their corresponding process concepts to the
+element they concern.

@@ -35,45 +35,45 @@ Options:
       --debug                            false      Print debug messages
  ```
 
+Model warnings are enabled by default. They report model build problems and
+unresolved references in relations and views; use `--no-model-warnings` to
+disable them. `--model-info` prints counts of nodes, relations, views and
+elements by type or namespace, plus external and synthetic element counts.
+
 ## CLI Examples
-For the CLI examples a model repository with the following directory layout is expected:
-* `models` containes the EDN files for models and views 
-* `templates` contains the templates for the artifact generation
-* `tools` contains the overarch.jar (and the plantuml.jar)
+By default the CLI reads models from `models/` and templates from `templates/`.
+Use `-m` and `-T` to choose different directories.
 
-Renders all artifacts to the `generated` directory using the generation config in `templates/gencfg.edn`, this is the commandline used in the `publish.sh` scripts in the example models. 
+Generate artifacts, including view diagrams configured in
+`templates/gencfg.edn`, into the default `generated/` directory:
 ```
-java -jar tools/overarch.jar -g templates/gencfg.edn
-```
-
-To generate the artifacts (e.g. the diagrams) for all models, use
-```
-> java -jar tools/overarch.jar -g templates/gencfg.edn
+java -jar overarch.jar -g templates/gencfg.edn
 ```
 
-or
+Use `--debug` for additional diagnostic output, or `-w` to rerun the action
+when model files change:
 
 ```
-> java -jar tools/overarch.jar -g templates/gencfg.edn --debug
+java -jar overarch.jar -g templates/gencfg.edn --debug
 ```
 
-To generate the artifacts (e.g. the diagrams) for all models with a directory watch to trigger rerendering on changes, use
-```
-> java -jar tools/overarch.jar -g templates/gencfg.edn -w --debug
-```
+The `-r/--render-format` option is deprecated and has no effect. Configure
+diagram generation through templates and `-g/--generation-config`.
 
 To export the models to JSON, use
 ```
-> java -jar tools/overarch.jar -x json
+java -jar overarch.jar -x json
 ```
 
 To query the model for all containers, use
 ```
-> java -jar tools/overarch.jar -s '{:el :container}'
+java -jar overarch.jar -s '{:el :container}'
 ```
 or
 ```
-> java -jar tools/overarch.jar -S '{:el :container}'
+java -jar overarch.jar -S '{:el :container}'
 ```
-
+Use `-s` to print selected elements and `-S` to print them as references.
+Transitive selection is also available by passing criteria with a `:start`
+key, as described in [Transitive Model Element Selection](selection-criteria.md#transitive-model-element-selection).
 

@@ -3,11 +3,11 @@ To show model elements in diagrams or in textual representations you can define
 different kind of views. The kind of view defines the visual rendering of the
 elements and the kind of elements and relations that are shown.
 
-Overarch supports different types of views and renderings. For architecture and
-deployment models, C4 diagrams can be rendered. Use case models, state machine
-models and code models can be rendered as UML diagrams. Structure diagams can
-be used to show the hierarchical structure of organisations, systems or
-deployments.
+Overarch supports different types of views and renderings. Architecture and
+deployment views can be rendered as C4 diagrams. Use case, state machine and
+code views can be rendered as UML diagrams. Structure diagrams show the
+hierarchical structure of organisations, systems or deployments. Concept,
+process, domain and model views can be rendered as Graphviz diagrams.
 
 Overarch supports the description of all C4 core and supplementary diagrams
 as views. The core C4 views form a hierarchy of views. See
@@ -66,19 +66,20 @@ pattern.
 
 The data models shown here in the documentation are examples of code-views.
 
-## System Structure View (:deployment-structure-view)
-The system structure view shows hierarchical composition of a system.
+## System Structure View (:system-structure-view)
+The system structure view shows the hierarchical decomposition of systems,
+containers and components.
 
-### System Landscape Views (:system-landscape-view)
+## System Landscape View (:system-landscape-view)
 The system landscape view shows a high level picture, a broader view of the
 system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking/system-landscape-view.svg)
 
-### Dynamic Views (:dynamic-view)
-Shows the order of interactions. The relations get numerated in the given order
-and the nuber is rendered in the diagram. The `:index` attribute can be used on
-relations or refs to relations to set the number for a relation in the view.
+## Dynamic View (:dynamic-view)
+Shows the order of interactions. Relations are numbered in the diagram. The
+`:index` attribute can be used on relations or references to relations to set
+the number for a relation in the view.
 
 If the relations are describing interactions specific for the diagram instead
 of general architectural relations (e.g. interfaces) of the model elements,
@@ -119,9 +120,22 @@ with the relations between the concepts.
 ## Organization Structure View (:organization-structure-view)
 The organization structure view shows hierarchical composition of a organization.
 
-## Glossary View (:glossary)
+## Glossary View (:glossary-view)
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
+
+## Process View (:process-view)
+The process view shows process-model elements such as capabilities, processes,
+requirements, decisions, information and their supported relations.
+
+## Domain View (:domain-view)
+The domain view shows domain-model elements, including domains, bounded
+contexts, aggregates, domain events, commands and policies.
+
+## Model View (:model-view)
+The model view can show model nodes and relations selected for the view. An
+empty selection (`:selection {}`) includes the whole model and can help reveal
+unconnected elements or inspect the model structure.
 
 ## Logical Data Model for the View Model Elements
 ![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
@@ -227,17 +241,21 @@ key           | type    | values                   | description
 :legend-text  | string  |                          | meaningful text to show in legend
 
 # Rendering
-Views can be rendered into different formats via the Overarch CLI tool.
-Views can also be rendered via templates, which allows full control over the
-output and allows new output formats without changes in Overarch itself (see
-[Template Based Artifact Generation](#template-based-artifact-generation)).
+Views are rendered through templates configured for the Overarch CLI. This
+allows full control over the output and supports new output formats without
+changes to Overarch itself (see
+[Template Based Artifact Generation](templates.md#template-based-artifact-generation)).
 
-This section describes the rendering of views via the Overarch CLI tool.
+The default template configuration generates PlantUML for C4, UML and structure
+views, and Graphviz DOT for concept, process, domain and model views. The
+`-r/--render-format` CLI option is deprecated and has no effect; use
+`-g/--generation-config` to generate view artifacts. See
+[Command Line Interface](commandline.md#cli-examples).
 
 ## PlantUML
-The specified views C4 architecture and UML views can be rendered to PlantUML
-diagram specification (*.puml files). These can be rendered into different
-formats (e.g. SVG, PNG, PDF) with PlantUML.
+The default generation configuration produces PlantUML diagram specifications
+(`*.puml`) for C4 architecture, UML and structure views. These can be rendered
+into image formats (e.g. SVG, PNG, PDF) with PlantUML.
 
 You can specify PlantUML specific directives with the **:plantuml** key.
 
@@ -293,3 +311,9 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ,
 Eclipse, Maven, Leiningen).
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
+* [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
+
+## Graphviz
+The default generation configuration produces Graphviz DOT files for concept,
+process, domain and model views. The DOT files can be previewed with an editor
+extension or rendered to images using the Graphviz `dot` executable.
