@@ -87,51 +87,47 @@ Options:
       --debug                            false      Print debug messages
  ```
 
+Model warnings are enabled by default. They report model build problems and
+unresolved references in relations and views; use `--no-model-warnings` to
+disable them. `--model-info` prints counts of nodes, relations, views and
+elements by type or namespace, plus external and synthetic element counts.
+
 ## CLI Examples
-For the CLI examples a model repository with the following directory layout is expected:
-* `models` containes the EDN files for models and views 
-* `templates` contains the templates for the artifact generation
-* `tools` contains the overarch.jar (and the plantuml.jar)
+By default the CLI reads models from `models/` and templates from `templates/`.
+Use `-m` and `-T` to choose different directories.
 
-Renders all artifacts to the `generated` directory using the generation config in `templates/gencfg.edn`, this is the commandline used in the `publish.sh` scripts in the example models. 
+Generate artifacts, including view diagrams configured in
+`templates/gencfg.edn`, into the default `generated/` directory:
 ```
-java -jar tools/overarch.jar -g templates/gencfg.edn
-```
-
-To generate the artifacts (e.g. the diagrams) for all models, use
-```
-> java -jar tools/overarch.jar -g templates/gencfg.edn
+java -jar overarch.jar -g templates/gencfg.edn
 ```
 
-or
+Use `--debug` for additional diagnostic output, or `-w` to rerun the action
+when model files change:
 
 ```
-> java -jar tools/overarch.jar -g templates/gencfg.edn --debug
+java -jar overarch.jar -g templates/gencfg.edn --debug
 ```
 
-To generate the artifacts (e.g. the diagrams) for all models with a directory watch to trigger rerendering on changes, use
-```
-> java -jar tools/overarch.jar -g templates/gencfg.edn -w --debug
-```
+The `-r/--render-format` option is deprecated and has no effect. Configure
+diagram generation through templates and `-g/--generation-config`.
 
 To export the models to JSON, use
 ```
-> java -jar tools/overarch.jar -x json
+java -jar overarch.jar -x json
 ```
 
 To query the model for all containers, use
 ```
-> java -jar tools/overarch.jar -s '{:el :container}'
+java -jar overarch.jar -s '{:el :container}'
 ```
 or
 ```
-> java -jar tools/overarch.jar -S '{:el :container}'
+java -jar overarch.jar -S '{:el :container}'
 ```
-
-## Start Scripts
-The [My Bank Example](https://github.com/soulspace-org/my-bank-model) contains
-a setup with the Overarch and PlantUML jar files in the tools directory and
-two simple bash scripts for the development and publication of overarch models.
+Use `-s` to print selected elements and `-S` to print them as references.
+Transitive selection is also available by passing criteria with a `:start`
+key, as described in [Transitive Model Element Selection](selection-criteria.md#transitive-model-element-selection).
 
 
 # Editor/IDE Integration
@@ -153,8 +149,6 @@ syntax check and syntax highlighting.
 You also get integrated previews of the rendered PlantUML diagrams and the
 ability to generate image files in different formats (e.g. PNG, SVG, PDF, ...)
 directly from within Visual Studio Code.
-
-## IntelliJ
 
 
 # Modelling
@@ -182,6 +176,9 @@ Overarch currently supports the following kinds of models
 * [Organization Models](#organization-model)
   to model organizational structures, roles, collaborations and responsibilities for
   parts of the system
+* [Domain Models](#domain-model)
+  to model domain-driven design concepts such as bounded contexts, aggregates,
+  entities and domain events
 * [Process Models](#process-model)
   to model capabilities, processes, artifacts, information, knowledge, roles, requirements, decisions and their relationships
 
@@ -632,7 +629,7 @@ state machine itself.
 A transition connects two states and models the input that leads to the
 transition from the current state (:from) to the next state (:to).
 
-### Forks and Joins (:fork-state, :join-state)
+### Forks and Joins (:fork, :join)
 You can split a transition to trigger multiple new states with a fork state.
 A fork has a single input transition and multiple output transitions.
 
@@ -714,108 +711,148 @@ The collaborates-with relation captures collaborations between organizations or 
 
 The role-in relation maps `:person` nodes to organizational units.
 
+## Domain Model
+The domain model captures the design of a domain using domain-driven design
+concepts. It can describe a domain and its bounded contexts, and the aggregates,
+entities, value objects, domain events, policies and commands within them.
+
+### Nodes (:domain :bounded-context :aggregate :entity :value-object :domain-event :policy :command)
+The domain nodes represent the main concepts in the domain.
+
+### Relations (:triggers)
+The triggers relation links domain elements that trigger others, e.g. commands triggering domain events.
+
 ## Process Model
 The process model captures the structure of capabilities, processes and their resources.
 
 ### Logical Data Model for the Process Model Elements
 ![Process Model Elements](/doc/images/overarch/data-model/process-model-elements.svg)
 
-### Nodes (:artifact :capability :constraint :control :decision :goal :information :knowledge :permission :process :regulation :requirement :test :version)
+### Nodes (:artifact :capability :constraint :control :decision :goal :information :knowledge :non-goal :process :regulation :requirement :risk :stakeholder :test :version)
 
-### Relations (:artifact-of :constraint-for :control-for :goal-for :granted-for :input-of :output-of :permission-of :regulation-for :required-for :role-in :test-for :version-of)
-The role-in relation maps `:person` nodes to `:process` nodes.
+### Relations (:artifact-of :constraint-for :control-for :decision-for :goal-for :input-of :non-goal-for :output-of :regulation-for :required-for :risk-for :role-in :stakeholder-of :test-for :version-of)
+The `:role-in` relation maps `:person` nodes to `:process` nodes. The
+`:decision-for`, `:goal-for`, `:non-goal-for`, `:risk-for`, and
+`:stakeholder-of` relations link their corresponding process concepts to the
+element they concern.
 
-# Model Element Selection By Criteria
-Model elements can be selected based on criteria.
-Criterias are given as a map where each key/value pair specifies a criterium
+# Queries and Selection
+Overarch elements can be queried and selected by criteria.
+Selection works on model elements (nodes and relations) and views.
+It is a central mechanism of overarch and is used in many places, e.g.
+* selection of elements to include in a specific view
+* selection of model elements or views in template based artifact generation
+* model or view queries via the command line 
+
+## Model Element Selection By Criteria
+Criterias are given as a criteria map or a vector of criteria maps. 
+
+In a critera map each key/value pair specifies a criterium
 for the selection. An element is selected, if it matches all criteria in the
 map (logical conjunction). For example a criteria map of
 ```{:el :component :namespace "overarch.domain"}``` 
 selects all components in the "overarch.domain" namespace.
 
+In a vector of criteria maps an element is selected, if it is selected by any
+of the criteria maps in the vector (logical disjunction).
+
 A criterium can be negated by adding a ``!`` in front of the key name.
 For example a criteria map of ```{:el :component :!namespace "overarch.domain"}``` 
 selects all components not in the "overarch.domain" namespace.
 
-Criterias can also be given as a vector of criteria maps. An element is
-selected, if it is selected by any of the criteria maps (logical disjunction).
+### Criterium Keys
+criterium key           | type            | scope   | example values               | description
+------------------------|-----------------|---------|------------------------------|------------
+:model-node?            | boolean         | element | true, false                  | elements for which the check for model node returns the given value
+:model-relation?        | boolean         | element | true, false                  | elements for which the check for model relation returns the given value
+:key?                   | vector          | element | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
+:key                    | vector          | element | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
+:el                     | keyword         | element | :system                      | elements in the given set of ``:el`` types
+:els                    | set of keywords | element | #{:system :person}           | elements with one of the given ``:el`` types
+:namespace              | string          | element | "org.soulspace"              | elements with the given ``:id`` namespace
+:namespaces             | set of strings  | element | #{"org.soulspace"}           | elements with one of the given ``:id`` namespaces
+:namespace-prefix       | string          | element | "org"                        | elements with the given ``:id`` namespace prefix
+:id?                    | boolean         | element | true, false                  | elements for which the ``:id`` check returns the given value
+:id                     | keyword         | element | :org.soulspace/overarch      | the element with the given ``:id``
+:ids                    | keyword         | element | #{:org.soulspace/overarch}   | elements in the given set of``:id``s
+:from                   | criteria        | model   | {:el system :external? true} | relations where the ``:from`` node matches the criteria
+:to                     | criteria        | model   | {:el system :external? true} | relations where the ``:to`` node matches the criteria
+:subtype?               | boolean         | element | true, false                  | nodes for which the ``:subtype`` check returns the given boolean value
+:subtype                | keyword         | element | :queue                       | nodes of the given ``:subtype``
+:subtypes               | set of keywords | element | #{:queue :database}          | nodes of one of the given ``:subtype``s
+:maturity?              | boolean         | element | true, false                  | elements for which the ``:maturity`` check returns the given boolean value
+:maturity               | keyword         | element | :proposed, :deprecated       | elements of the given ``:maturity``
+:maturities             | set of keywords | element | #{:implemented  :deprecated} | elements of the given maturities
+:external?              | boolean         | model   | true, false                  | elements of the given external state
+:name?                  | boolean         | element | true, false                  | elements for which the ``:name`` check returns the given value
+:name                   | string/regex    | element | "Overarch CLI" "(?i).*CLI.*" | elements for which the ``:name`` matches the given value
+:desc?                  | boolean         | element | true, false                  | elements for which the ``:desc`` check returns the given value
+:desc                   | string/regex    | element | "CLI" "(?i).*CLI.*"          | elements for which the ``:desc`` matches the given value
+:doc?                   | boolean         | element | true, false                  | elements for which the ``:doc`` check returns the given value
+:doc                    | string/regex    | element | "CLI" "(?i).*CLI.*"          | elements for which the ``:doc`` matches the given value
+:tech?                  | boolean         | element | true, false                  | elements for which the ``:tech`` check returns the given value
+:tech                   | string          | element | "Clojure"                    | elements of the given ``:tech``
+:techs                  | set of strings  | element | #{"Clojure" "Java"}          | elements with one or more of the given ``:tech``s
+:all-techs              | set of strings  | element | #{"Clojure" "Java"}          | elements with all of the given ``:tech``s
+:tags?                  | boolean         | element | true, false                  | elements for which the ``:tags`` check returns the given value
+:tag                    | string          | element | "critical"                   | elements with the given tag
+:tags                   | set of strings  | element | #{"Clojure" "Java"}          | elements with one or more of the given ``:tags``
+:all-tags               | set of strings  | element | #{"Clojure" "Java"}          | elements with all of the given ``:tags``
+:refers?                | boolean         | model   | true, false                  | nodes for which the check for refers returns the given value
+:referred?              | boolean         | model   | true, false                  | nodes for which the check for referred returns the given value
+:refers                 | criteria        | model   | {:el :request}               | nodes with a referring relation matching the criteria 
+:referred               | criteria        | model   | {:el :request}               | nodes with a referred relation matching the criteria
+:refers-to              | keyword         | model   | :org.soulspace/overarch      | nodes which refer to the node with the given id
+:referred-by            | keyword         | model   | :org.soulspace/overarch      | nodes which are referred by the node with the
+:child?                 | boolean         | model   | true, false                  | nodes for which the check for child returns the given value
+:child-of               | keyword         | model   | :org.soulspace/overarch      | nodes which are children of the node with the given id
+:descendant-of          | keyword         | model   | :org.soulspace/overarch      | nodes which are descendants of the node with the given id
+:parent?                | boolean         | model   | true, false                  | nodes for which the check for children returns the given value
+:parent-of              | keyword         | model   | :org.soulspace/overarch      | node which is the parent of the node with the given id
+:ancestor-of            | keyword         | model   | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
 
-## Criteria Keys
-criteria key           | type            | scope   | example values               | description
------------------------|-----------------|---------|------------------------------|------------
-:model-node?           | boolean         | element | true, false                  | elements for which the check for model node returns the given value
-:model-relation?       | boolean         | element | true, false                  | elements for which the check for model relation returns the given value
-:key?                  | vector          | element | [:tech true]                 | elements for which the check for the key returns the value (useful for custom keys)
-:key                   | vector          | element | [:tech "Clojure"]            | elements for which the lookup of the key returns the value (useful for custom keys)
-:el                    | keyword         | element | :system                      | elements in the given set of ``:el`` types
-:els                   | set of keywords | element | #{:system :person}           | elements with one of the given ``:el`` types
-:namespace             | string          | element | "org.soulspace"              | elements with the given ``:id`` namespace
-:namespaces            | set of strings  | element | #{"org.soulspace"}           | elements with one of the given ``:id`` namespaces
-:namespace-prefix      | string          | element | "org"                        | elements with the given ``:id`` namespace prefix
-:id?                   | boolean         | element | true, false                  | elements for which the ``:id`` check returns the given value
-:id                    | keyword         | element | :org.soulspace/overarch      | the element with the given ``:id``
-:ids                   | keyword         | element | #{:org.soulspace/overarch}   | elements in the given set of``:id``s
-:from                  | criteria        | model   | {:el system :external? true} | relations where the ``:from`` node matches the criteria
-:to                    | criteria        | model   | {:el system :external? true} | relations where the ``:to`` node matches the criteria
-:subtype?              | boolean         | element | true, false                  | nodes for which the ``:subtype`` check returns the given boolean value
-:subtype               | keyword         | element | :queue                       | nodes of the given ``:subtype``
-:subtypes              | set of keywords | element | #{:queue :database}          | nodes of one of the given ``:subtype``s
-:maturity?             | boolean         | element | true, false                  | elements for which the ``:maturity`` check returns the given boolean value
-:maturity              | keyword         | element | :proposed, :deprecated       | elements of the given ``:maturity``
-:maturities            | set of keywords | element | #{:implemented  :deprecated} | elements of the given maturities
-:external?             | boolean         | model   | true, false                  | elements of the given external state
-:name?                 | boolean         | element | true, false                  | elements for which the ``:name`` check returns the given value
-:name                  | string/regex    | element | "Overarch CLI" "(?i).*CLI.*" | elements for which the ``:name`` matches the given value
-:desc?                 | boolean         | element | true, false                  | elements for which the ``:desc`` check returns the given value
-:desc                  | string/regex    | element | "CLI" "(?i).*CLI.*"          | elements for which the ``:desc`` matches the given value
-:doc?                  | boolean         | element | true, false                  | elements for which the ``:doc`` check returns the given value
-:doc                   | string/regex    | element | "CLI" "(?i).*CLI.*"          | elements for which the ``:doc`` matches the given value
-:tech?                 | boolean         | element | true, false                  | elements for which the ``:tech`` check returns the given value
-:tech                  | string          | element | "Clojure"                    | elements of the given ``:tech``
-:techs                 | set of strings  | element | #{"Clojure" "Java"}          | elements with one or more of the given ``:tech``s
-:all-techs             | set of strings  | element | #{"Clojure" "Java"}          | elements with all of the given ``:tech``s
-:tags?                 | boolean         | element | true, false                  | elements for which the ``:tags`` check returns the given value
-:tag                   | string          | element | "critical"                   | elements with the given tag
-:tags                  | set of strings  | element | #{"Clojure" "Java"}          | elements with one or more of the given ``:tags``
-:all-tags              | set of strings  | element | #{"Clojure" "Java"}          | elements with all of the given ``:tags``
-:refers?               | boolean         | model   | true, false                  | nodes for which the check for refers returns the given value
-:referred?             | boolean         | model   | true, false                  | nodes for which the check for referred returns the given value
-:refers                | criteria        | model   | {:el :request}               | nodes with a referring relation matching the criteria 
-:referred              | criteria        | model   | {:el :request}               | nodes with a referred relation matching the criteria
-:refers-to             | keyword         | model   | :org.soulspace/overarch      | nodes which refer to the node with the given id
-:referred-by           | keyword         | model   | :org.soulspace/overarch      | nodes which are referred by the node with the
-:child?                | boolean         | model   | true, false                  | nodes for which the check for child returns the given value
-:child-of              | keyword         | model   | :org.soulspace/overarch      | nodes which are children of the node with the given id
-:descendant-of         | keyword         | model   | :org.soulspace/overarch      | nodes which are descendants of the node with the given id
-:parent?               | boolean         | model   | true, false                  | nodes for which the check for children returns the given value
-:parent-of             | keyword         | model   | :org.soulspace/overarch      | node which is the parent of the node with the given id
-:ancestor-of           | keyword         | model   | :org.soulspace/overarch      | nodes which are ancestors of the node with the given id
+### Deprecated Criterium keys
+The following keys are deprecated since version 0.37.0: `:from-namespace`,
+`:from-namespaces`, `:from-namespace-prefix`, `:to-namespace`, `:to-namespaces`
+and `:to-namespace-prefix`. 
 
-## Deprecated Criteria keys
-The following keys are deprecated and can be rewritten using ``:from`` and
-``:to``, e.g ```{:to-namespace "overarch.domain"}``` should be replaced by
-```{:to {:namespace "overarch.domain"}}```. By using the new form, additional
- criteria could be added for the referred nodes to match the relation.
+They should be rewritten using `:from` and `:to`, e.g `{:to-namespace "overarch.domain"}`
+should be replaced by `{:to {:namespace "overarch.domain"}}`. By using the new
+form, additional criteria could be added for the referred nodes to match the
+relation.
 
-criteria key           | type            | scope   | example values               | description
------------------------|-----------------|---------|------------------------------|------------
-:from-namespace        | string          | element | "org.soulspace"              | relations with the given id namespace of the ``:from`` reference
-:from-namespaces       | set of strings  | element | #{"org.soulspace"}           | relations with one of the given id namespaces of the ``:from`` reference
-:from-namespace-prefix | string          | element | "org"                        | relations with the given id namespace prefix of the ``:from`` reference
-:to-namespace          | string          | element | "org.soulspace"              | relations with the given id namespace of the ``:to`` reference
-:to-namespaces         | set of strings  | element | #{"org.soulspace"}           | relations with one of the given id namespaces of the ``:to`` reference
-:to-namespace-prefix   | string          | element | "org"                        | relations with the given id namespace prefix of the ``:to`` reference
+## Transitive Model Element Selection
+*Experimental, subject to change*
+
+Transitive queries on the model are a powerful tool to answer important
+architectural questions, e.g.
+* which services, applications and roles will be affected by a problem with a
+  specific service because of synchronous coupling via request/response
+* which service outages will cause a problem in my service or application
+
+To use a transitive query of model elements, a map with a `:start` key must be
+provided. The relations to follow transitively are specified by either the
+`:referred` key or the `:refers` key. A selection predicate for the elements
+ to be selected can be specified with the `:elements` key. 
+
+### Transitive Selection Keys
+key        | type     | example values | description
+-----------|----------|----------------|------------
+:start     | criteria | {:id :overarch.data-model/architecture-element} | criteria for the start element of the transitive query
+:elements  | criteria | {:el :class} | optional criteria for the elements to select
+:refers    | criteria | {:el :inheritance} | nodes with a referring relation matching the criteria
+:referred  | criteria | {:el :inheritance} | nodes with a referred relation matching the criteria
 
 # Views
 To show model elements in diagrams or in textual representations you can define
 different kind of views. The kind of view defines the visual rendering of the
 elements and the kind of elements and relations that are shown.
 
-Overarch supports different types of views and renderings. For architecture and
-deployment models, C4 diagrams can be rendered. Use case models, state machine
-models and code models can be rendered as UML diagrams. Structure diagams can
-be used to show the hierarchical structure of organisations, systems or
-deployments.
+Overarch supports different types of views and renderings. Architecture and
+deployment views can be rendered as C4 diagrams. Use case, state machine and
+code views can be rendered as UML diagrams. Structure diagrams show the
+hierarchical structure of organisations, systems or deployments. Concept,
+process, domain and model views can be rendered as Graphviz diagrams.
 
 Overarch supports the description of all C4 core and supplementary diagrams
 as views. The core C4 views form a hierarchy of views. See
@@ -874,19 +911,20 @@ pattern.
 
 The data models shown here in the documentation are examples of code-views.
 
-## System Structure View (:deployment-structure-view)
-The system structure view shows hierarchical composition of a system.
+## System Structure View (:system-structure-view)
+The system structure view shows the hierarchical decomposition of systems,
+containers and components.
 
-### System Landscape Views (:system-landscape-view)
+## System Landscape View (:system-landscape-view)
 The system landscape view shows a high level picture, a broader view of the
 system landscape and the interactions of the systems.
 
 ![System Landscape View rendered with PlantUML](/doc/images/banking/system-landscape-view.svg)
 
-### Dynamic Views (:dynamic-view)
-Shows the order of interactions. The relations get numerated in the given order
-and the nuber is rendered in the diagram. The `:index` attribute can be used on
-relations or refs to relations to set the number for a relation in the view.
+## Dynamic View (:dynamic-view)
+Shows the order of interactions. Relations are numbered in the diagram. The
+`:index` attribute can be used on relations or references to relations to set
+the number for a relation in the view.
 
 If the relations are describing interactions specific for the diagram instead
 of general architectural relations (e.g. interfaces) of the model elements,
@@ -927,9 +965,22 @@ with the relations between the concepts.
 ## Organization Structure View (:organization-structure-view)
 The organization structure view shows hierarchical composition of a organization.
 
-## Glossary View (:glossary)
+## Glossary View (:glossary-view)
 The glossary view is a textual view. It shows a sorted list of elements with
 their type and their descriptions.
+
+## Process View (:process-view)
+The process view shows process-model elements such as capabilities, processes,
+requirements, decisions, information and their supported relations.
+
+## Domain View (:domain-view)
+The domain view shows domain-model elements, including domains, bounded
+contexts, aggregates, domain events, commands and policies.
+
+## Model View (:model-view)
+The model view can show model nodes and relations selected for the view. An
+empty selection (`:selection {}`) includes the whole model and can help reveal
+unconnected elements or inspect the model structure.
 
 ## Logical Data Model for the View Model Elements
 ![View Model Elements](/doc/images/overarch/data-model/view-model-elements.svg)
@@ -943,12 +994,13 @@ use cases or state machines, even if they are referenced in the view. Please con
 the models for the model and view elements.
 
 Model elements can be referenced directly via a `:ref`. They can also be
-selected via model criteria. Either References for selected nodes or nodes for
-selected references can be included automatically.
+selected via selection criteria (see [Model Element Selection](#model-element-selection-by-criteria)).
+Either References for selected nodes or nodes for selected references can be
+included automatically.
 
 The views can reference elements from the model as their content. The
 content of a view should be a list instead of a set because the order
-of elements may be relevant in the rendering of a view. 
+of elements may be relevant in the rendering of a view.
 
 ### Keys
 key              | type          | example values            | description 
@@ -956,7 +1008,7 @@ key              | type          | example values            | description
 :el              | keyword       | see views                 | type of the view
 :id              | keyword       | namespaced id             | used for export file name
 :title           | string        |                           | rendered title
-:selection       | map or vector | {:namespace "banking"}    | select the content by criteria (see [Model Element Selection](#model-element-selection-by-criteria))
+:selection       | map or vector | {:namespace "banking"}    | select the content by criteria
 :include         | keyword       | :relations :related       | specify automatic includes (work in progress)
 :ct              | list          | model refs (or elements)  | view specific keys possible
 :layout          | keyword       | :top-down, :left-right    | rendering direction
@@ -1034,17 +1086,21 @@ key           | type    | values                   | description
 :legend-text  | string  |                          | meaningful text to show in legend
 
 # Rendering
-Views can be rendered into different formats via the Overarch CLI tool.
-Views can also be rendered via templates, which allows full control over the
-output and allows new output formats without changes in Overarch itself (see
-[Template Based Artifact Generation](#template-based-artifact-generation)).
+Views are rendered through templates configured for the Overarch CLI. This
+allows full control over the output and supports new output formats without
+changes to Overarch itself (see
+[Template Based Artifact Generation](templates.md#template-based-artifact-generation)).
 
-This section describes the rendering of views via the Overarch CLI tool.
+The default template configuration generates PlantUML for C4, UML and structure
+views, and Graphviz DOT for concept, process, domain and model views. The
+`-r/--render-format` CLI option is deprecated and has no effect; use
+`-g/--generation-config` to generate view artifacts. See
+[Command Line Interface](commandline.md#cli-examples).
 
 ## PlantUML
-The specified views C4 architecture and UML views can be rendered to PlantUML
-diagram specification (*.puml files). These can be rendered into different
-formats (e.g. SVG, PNG, PDF) with PlantUML.
+The default generation configuration produces PlantUML diagram specifications
+(`*.puml`) for C4 architecture, UML and structure views. These can be rendered
+into image formats (e.g. SVG, PNG, PDF) with PlantUML.
 
 You can specify PlantUML specific directives with the **:plantuml** key.
 
@@ -1062,7 +1118,7 @@ key              | type    | example values           | description
 
 ### Sprite Support
 Overarch supports PlantUML sprites to show a visual cue of the technology in
-the elements of a diagram.
+the elements of the C4 architecture diagrams.
 It does so by matching the value of the **:tech** key of a model element to
 the list of sprites. You can also directly add a **:sprite** key to the
 reference of a model element in a view. The explicit **:sprite** value takes
@@ -1100,40 +1156,12 @@ PlantUML plugins also exists for major IDEs and build tools (e.g. IntelliJ,
 Eclipse, Maven, Leiningen).
 
 * [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
+* [PlantUML Plugin for Leiningen](https://github.com/vbauer/lein-plantuml)
 
-## GraphViz
-The concept view can be exported as a concept map to a GraphViz *.dot file.
-
-### Rendering GraphViz diagrams
-For GraphViz there are a few Visual Studio Code  extensions available that
-allow previews of the generated Graphviz files. 
-
-The images can be created with the *dot* executable, which resides in the bin
-directory of the GraphViz installation.
-
-You can specify Graphviz directives with the **:graphviz** key.
-Currently only the configuration of the
-[layout engine](https://graphviz.org/docs/layouts/) is supported.
-
-### Keys
-
-key              | type    | values                   | description 
------------------|---------|--------------------------|------------
-:engine          | keyword | e.g. :dot, :neato, :sfdp | the graphviz layout engine to use
-
-## Markdown
-Markdown is used to render textual representations of the views.
-You can use converters to generate other formats like HTML or PDF from markdown.
-
-You can specify Markdown directives with the **:markdown** key.
-
-### Keys
-
-key              | type    | values                   | description 
------------------|---------|--------------------------|------------
-:references      | boolean | true, false              | render references for nodes
-:diagram         | map     | {:format "png"}          | render diagram image
-
+## Graphviz
+The default generation configuration produces Graphviz DOT files for concept,
+process, domain and model views. The DOT files can be previewed with an editor
+extension or rendered to images using the Graphviz `dot` executable.
 
 # Exports
 
@@ -1310,7 +1338,7 @@ key               | type     | values              | default  | description
 :view-selection   | CRITERIA | {:el :context-view} |          | Criteria to select views
 :template         | PATH     | "report/node.cmb"   |          | Path to the template relative to the template dir
 :engine           | :keyword | :combsci            | :combsci | The template engine to use (currently just :combsci)
-:encoding         | string   | "UTF-8"             | "UTF-8"  | The encoding of the result artifact
+:encoding         | string   | "UTF-8"             | "UTF-8"  | Accepted setting; currently not applied when writing artifacts
 :per-element      | boolean  | true/false          | false    | Apply the template for each element of the selection
 :per-namespace    | boolean  | true/false          | false    | Apply the template for each namespace of the selection
 :subdir           | string   | "report"            |          | Subdirectory for generated artifact under the generator directory
@@ -1321,11 +1349,14 @@ key               | type     | values              | default  | description
 :base-name        | string   |                     |          | Base of the filename
 :suffix           | string   | "Impl"              |          | Suffix for the filename
 :extension        | string   | "md" "clj" "java"   |          | Extension for the filename
-:filename         | string   | "README.md"         |          | Specific filename to use
 :id-as-namespace  | boolean  | true/false          | false    | Use the element id as the namespace for path generation
-:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the name for path generation
-:protected-areas  | string   | "PA"                |          | Marker for protected areas in the template/artifact
+:id-as-name       | boolean  | true/false          | false    | Use the name part of the element id as the generated filename
+:protected-area   | string   | "PA"                |          | Marker for protected areas in the template/artifact
 :debug            | boolean  | true/false          | false    | Print parsed template on error
+
+Although `:encoding` is accepted in a generation context, the artifact writer
+currently uses the platform's default character encoding and does not apply
+this setting.
 
 You can add additional (namespaced) keys to the generation context map, which
 are available in via the `ctx` symbol in the template.
@@ -1347,7 +1378,6 @@ the generation on a view level.
  :template "node-report.md.cmb"  ; relative path of the template to apply
  :title "Banking Systems Report" ; title of the report
  :engine :combsci                ; the template engine to use (currently only :combsci)
- :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
  ; :namespace-prefix ""          ; prefix for the namespace of the generated artifact
@@ -1366,7 +1396,6 @@ the generation on a view level.
  :template "rel-report.md.cmb"   ; relative path of the template to apply
  :title "REST Interface Report"  ; title of the report
  :engine :combsci                ; the template engine to use (currently only :combsci)
- :encoding "UTF-8"               ; artifact encoding
  :per-element false              ; apply the template for each element of the selection or on the selection as a whole
  :subdir "reports"               ; subdirectory for generated artifact
 ; :namespace-prefix ""           ; prefix for the namespace of the generated artifact
@@ -1391,11 +1420,10 @@ The relevant CLI options for template based artifact generation are
   -B, --backup-dir DIRNAME       backup     Generation backup directory
 ```
 
-Example using a config file in the current directory and default directories
+Example using a config file in the `templates` directory and default directories
 ```
-java -jar overarch.jar -g gencfg.edn
+java -jar overarch.jar -g templates/gencfg.edn
 ```
-
 
 # Best Practices
 Here are some best practices or guidelines from my practical use of Overarch.
