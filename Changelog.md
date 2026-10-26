@@ -1,5 +1,8 @@
 # Changelog
 
+## Version (0.44.0-SNAPSHOT)
+
+
 ## Version 0.43.0
 * exposed transitive search via CLI
 * added :non-goal, :risk and :stakeholder nodes
