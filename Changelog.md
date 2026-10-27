@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version (0.44.0-SNAPSHOT)
-
+* updated dependencies
 
 ## Version 0.43.0
 * exposed transitive search via CLI
