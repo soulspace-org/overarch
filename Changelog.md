@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version (0.44.0-SNAPSHOT)
+* fixed index corruption on duplicate ids and parent overrides
 * updated dependencies
 
 ## Version 0.43.0
