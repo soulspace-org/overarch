@@ -208,7 +208,7 @@ The input model is transformed by
 
                :id->element
                (if-let [el (get-in acc [:id->element (:id prepared-node)])]
-                 (println "Error: Duplicate element id" (:id prepared-node) "for" e "and" el)
+                 (:id->element acc)
                  (assoc (:id->element acc)
                         (:id prepared-node) prepared-node
                         (:id c-rel) c-rel))
@@ -216,7 +216,7 @@ The input model is transformed by
                ; currently only one parent is supported here
                :id->parent-id
                (if-let [po (get-in acc [:id->parent-id (:id prepared-node)])]
-                 (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:id prepared-node))
+                 (:id->parent-id acc)
                  (assoc (:id->parent-id acc) (:id prepared-node) (:id p)))
 
                :relations
@@ -243,7 +243,7 @@ The input model is transformed by
 
              :id->element
              (if-let [el (get-in acc [:id->element (:id prepared-node)])]
-               (println "Error: Duplicate element id" (:id prepared-node) "for" e "and" el)
+               (:id->element acc)
                (assoc (:id->element acc) (:id prepared-node) prepared-node))
 
              :build-problems
@@ -269,8 +269,8 @@ The input model is transformed by
 
              ; currently only one parent is supported here
              :id->parent-id
-             (if-let [po (get-in acc [:id->parent-id (:ref e)])]
-               (println "Error: Illegal override of parent" po "with" (:id p) "for element id" (:ref e))
+             (if-let [po (get-in acc [:id->parent-id (:ref e)])] 
+               (:id->parent-id acc)
                (assoc (:id->parent-id acc) (:ref e) (:id p)))
 
              :referrer-id->relations
