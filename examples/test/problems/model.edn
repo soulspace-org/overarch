@@ -1,0 +1,6 @@
+; duplicate container id
+#{{:el :system :id :repro/a :name "A"}
+  {:el :system :id :repro/b :name "B"}
+  {:el :container :id :repro/twice :name "Twice"}
+  {:el :container :id :repro/twice :name "Twice, renamed"}
+  {:el :rel :id :repro/a-uses-b :from :repro/a :to :repro/b}}
