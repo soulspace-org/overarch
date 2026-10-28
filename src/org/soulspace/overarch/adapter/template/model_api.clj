@@ -397,12 +397,12 @@
 (defn superclasses
   "Returns the set of direct superclasses of the class element `e` in the `model`."
   [model e]
-  (referring-nodes model e {:el :inheritance}))
+  (referred-nodes model e {:el :inheritance}))
 
 (defn subclasses
   "Returns the set of direct subclasses of the class element `e` in the `model`."
   [model e]
-  (referred-nodes model e {:el :inheritance}))
+  (referring-nodes model e {:el :inheritance}))
 
 (defn interfaces
   "Returns the set of direct interfaces of the class element `e` in the `model`."
@@ -410,14 +410,15 @@
   (referring-nodes model e {:el :implementation}))
 
 (defn implementations
-  "Returns the set of direct interfaces of the class element `e` in the `model`."
+  "Returns the set of direct implementations of the class element `e` in the `model`."
   [model e]
   (referred-nodes model e {:el :implementation}))
 
+; TODO check direction of implementation and inheritance
 (defn supertypes
   "Returns the set of direct supertypes (classes or interfaces) of the class element `e` in the `model`."
   [model e]
-  (referring-nodes model e {:els #{:implementation :inheritance}}))
+  (referred-nodes model e {:els #{:implementation :inheritance}}))
 
 (defn referencing
   "Returns the referenced elements of `e` in the `model`."
