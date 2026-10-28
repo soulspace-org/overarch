@@ -7,7 +7,7 @@ A process in the process model, representing a sequence of activities aimed at a
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

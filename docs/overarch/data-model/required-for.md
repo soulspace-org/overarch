@@ -7,7 +7,7 @@ A relation between a requirement and other elements.
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

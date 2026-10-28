@@ -7,7 +7,7 @@ A method in a code model element.
 ## Tags
 code-model
 
-## Subclasses
+## Superclasses
 [scoped-node](../../overarch/data-model/scoped-node.md), [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [abstract-node](../../overarch/data-model/abstract-node.md), [visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 

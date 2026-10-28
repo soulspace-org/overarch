@@ -8,10 +8,10 @@ A relation in the role model.
 role-model
 
 ## Superclasses
-[granted-for](../../overarch/data-model/granted-for.md), [permission-of](../../overarch/data-model/permission-of.md)
+[role-model-element](../../overarch/data-model/role-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[role-model-element](../../overarch/data-model/role-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[granted-for](../../overarch/data-model/granted-for.md), [permission-of](../../overarch/data-model/permission-of.md)
 
 
 ## Navigation

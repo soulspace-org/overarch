@@ -7,7 +7,7 @@ A control in the process model, representing checks to ensure the desired outcom
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

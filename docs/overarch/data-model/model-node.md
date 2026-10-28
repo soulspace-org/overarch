@@ -8,10 +8,10 @@ An element which is a node in the Overarch data model.
 model-model
 
 ## Superclasses
-[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [organization-model-node](../../overarch/data-model/organization-model-node.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [domain-model-node](../../overarch/data-model/domain-model-node.md), [process-model-node](../../overarch/data-model/process-model-node.md), [role-model-node](../../overarch/data-model/role-model-node.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [concept-model-node](../../overarch/data-model/concept-model-node.md), [organization-model-node](../../overarch/data-model/organization-model-node.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [domain-model-node](../../overarch/data-model/domain-model-node.md), [process-model-node](../../overarch/data-model/process-model-node.md), [role-model-node](../../overarch/data-model/role-model-node.md)
 
 
 ## Navigation

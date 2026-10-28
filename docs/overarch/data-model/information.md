@@ -7,7 +7,7 @@ An information element in the process model, representing meaningful data.
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

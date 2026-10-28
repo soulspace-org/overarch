@@ -7,7 +7,7 @@ A non-goal in the process model, something that is not in scope.
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

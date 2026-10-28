@@ -8,10 +8,10 @@ A relation that may provide associative access to the referred element.
 code-model
 
 ## Superclasses
-[composition](../../overarch/data-model/composition.md), [association](../../overarch/data-model/association.md), [aggregation](../../overarch/data-model/aggregation.md)
+[code-model-relation](../../overarch/data-model/code-model-relation.md)
 
 ## Subclasses
-[code-model-relation](../../overarch/data-model/code-model-relation.md)
+[composition](../../overarch/data-model/composition.md), [association](../../overarch/data-model/association.md), [aggregation](../../overarch/data-model/aggregation.md)
 
 ## Fields
 ### from-card

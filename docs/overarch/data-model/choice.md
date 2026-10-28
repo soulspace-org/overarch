@@ -9,7 +9,7 @@ A choice of transitions in a state machine.
 ## Tags
 state-machine-model
 
-## Subclasses
+## Superclasses
 [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
 
 ## Fields

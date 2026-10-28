@@ -8,7 +8,7 @@ An interface in the code model.
 ## Tags
 code-model
 
-## Subclasses
+## Superclasses
 [code-model-node](../../overarch/data-model/code-model-node.md)
 
 

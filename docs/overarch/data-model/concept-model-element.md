@@ -8,10 +8,10 @@ An element in the concept model.
 concept-model
 
 ## Superclasses
-[concept-model-node](../../overarch/data-model/concept-model-node.md), [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[concept-model-node](../../overarch/data-model/concept-model-node.md), [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 
 ## Navigation

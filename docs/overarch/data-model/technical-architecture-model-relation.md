@@ -8,10 +8,10 @@ A technical relation in the architecture model.
 architecture-model
 
 ## Superclasses
-[subscribe](../../overarch/data-model/subscribe.md), [publish](../../overarch/data-model/publish.md), [rel](../../overarch/data-model/rel.md), [dataflow](../../overarch/data-model/dataflow.md), [response](../../overarch/data-model/response.md), [send](../../overarch/data-model/send.md), [request](../../overarch/data-model/request.md)
+[architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [technical-element](../../overarch/data-model/technical-element.md)
 
 ## Subclasses
-[architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [technical-element](../../overarch/data-model/technical-element.md)
+[subscribe](../../overarch/data-model/subscribe.md), [publish](../../overarch/data-model/publish.md), [rel](../../overarch/data-model/rel.md), [dataflow](../../overarch/data-model/dataflow.md), [response](../../overarch/data-model/response.md), [send](../../overarch/data-model/send.md), [request](../../overarch/data-model/request.md)
 
 
 ## Navigation

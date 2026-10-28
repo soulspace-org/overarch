@@ -1,12 +1,19 @@
 @startuml organization-model-elements
 title Organization Model Elements
-class "organization-model-node" as overarch_dataModel_organizationModelNode <<schema>> {}
-class "organization" as overarch_dataModel_organization <<schema>> {}
-class "organization-model-relation" as overarch_dataModel_organizationModelRelation <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
-class "team" as overarch_dataModel_team <<schema>> {}
-class "role-in" as overarch_dataModel_roleIn <<schema>> {}
-class "organization-model-element" as overarch_dataModel_organizationModelElement <<schema>> {}
+class "organization-model-node" as overarch_dataModel_organizationModelNode <<schema>> {
+}
+class "organization" as overarch_dataModel_organization <<schema>> {
+}
+class "organization-model-relation" as overarch_dataModel_organizationModelRelation <<schema>> {
+}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {
+}
+class "team" as overarch_dataModel_team <<schema>> {
+}
+class "role-in" as overarch_dataModel_roleIn <<schema>> {
+}
+class "organization-model-element" as overarch_dataModel_organizationModelElement <<schema>> {
+}
 class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
@@ -18,9 +25,12 @@ class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "responsible-for" as overarch_dataModel_responsibleFor <<schema>> {}
-class "collaborates-with" as overarch_dataModel_collaboratesWith <<schema>> {}
-class "org-unit" as overarch_dataModel_orgUnit <<schema>> {}
+class "responsible-for" as overarch_dataModel_responsibleFor <<schema>> {
+}
+class "collaborates-with" as overarch_dataModel_collaboratesWith <<schema>> {
+}
+class "org-unit" as overarch_dataModel_orgUnit <<schema>> {
+}
 class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
   from : keyword
   to : keyword

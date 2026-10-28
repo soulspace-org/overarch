@@ -8,10 +8,10 @@ A relation that establishes a type hierarchy.
 code-model
 
 ## Superclasses
-[inheritance](../../overarch/data-model/inheritance.md), [implementation](../../overarch/data-model/implementation.md)
+[code-model-relation](../../overarch/data-model/code-model-relation.md)
 
 ## Subclasses
-[code-model-relation](../../overarch/data-model/code-model-relation.md)
+[inheritance](../../overarch/data-model/inheritance.md), [implementation](../../overarch/data-model/implementation.md)
 
 
 ## Navigation

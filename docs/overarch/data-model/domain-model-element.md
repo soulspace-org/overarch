@@ -8,10 +8,10 @@ An element in the domain model.
 domain-model
 
 ## Superclasses
-[domain-model-relation](../../overarch/data-model/domain-model-relation.md), [domain-model-node](../../overarch/data-model/domain-model-node.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[domain-model-relation](../../overarch/data-model/domain-model-relation.md), [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 
 ## Navigation

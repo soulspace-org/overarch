@@ -8,10 +8,10 @@ A relation in the deployment model.
 deployment-model
 
 ## Superclasses
-[deployed-to](../../overarch/data-model/deployed-to.md), [link](../../overarch/data-model/link.md)
+[deployment-model-element](../../overarch/data-model/deployment-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[deployment-model-element](../../overarch/data-model/deployment-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[deployed-to](../../overarch/data-model/deployed-to.md), [link](../../overarch/data-model/link.md)
 
 
 ## Navigation

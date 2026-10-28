@@ -7,7 +7,7 @@ A state with a deep history.
 ## Tags
 state-machine-model
 
-## Subclasses
+## Superclasses
 [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
 
 

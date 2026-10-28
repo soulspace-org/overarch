@@ -7,7 +7,7 @@ An inheritance relationship between two classes in the code model.
 ## Tags
 code-model
 
-## Subclasses
+## Superclasses
 [type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md)
 
 

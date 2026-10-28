@@ -1,8 +1,9 @@
 @startuml use-case-model-elements
 title Use Case Model Elements
-class "container" as overarch_dataModel_container <<schema>> {}
-class "actor" as overarch_dataModel_actor <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "actor" as overarch_dataModel_actor <<schema>> {
+}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {
+}
 class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
@@ -10,7 +11,8 @@ class "element" as overarch_dataModel_element <<schema>> {
   id : keyword
   name : string
 }
-class "extends" as overarch_dataModel_extends <<schema>> {}
+class "extends" as overarch_dataModel_extends <<schema>> {
+}
 class "use-case" as overarch_dataModel_useCase <<schema>> {
   level : keyword
 }
@@ -18,15 +20,26 @@ class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "use-case-model-node" as overarch_dataModel_useCaseModelNode <<schema>> {}
-class "generalizes" as overarch_dataModel_generalizes <<schema>> {}
-class "person" as overarch_dataModel_person <<schema>> {}
-class "use-case-model-relation" as overarch_dataModel_useCaseModelRelation <<schema>> {}
-class "role" as overarch_dataModel_role <<schema>> {}
-class "use-case-model-element" as overarch_dataModel_useCaseModelElement <<schema>> {}
-class "include" as overarch_dataModel_include <<schema>> {}
-class "system" as overarch_dataModel_system <<schema>> {}
-class "uses" as overarch_dataModel_uses <<schema>> {}
+class "use-case-model-node" as overarch_dataModel_useCaseModelNode <<schema>> {
+}
+class "generalizes" as overarch_dataModel_generalizes <<schema>> {
+}
+class "person" as overarch_dataModel_person <<schema>> {
+}
+class "use-case-model-relation" as overarch_dataModel_useCaseModelRelation <<schema>> {
+}
+class "role" as overarch_dataModel_role <<schema>> {
+}
+class "use-case-model-element" as overarch_dataModel_useCaseModelElement <<schema>> {
+}
+class "system" as overarch_dataModel_system <<schema>> {
+}
+class "include" as overarch_dataModel_include <<schema>> {
+}
+class "container" as overarch_dataModel_container <<schema>> {
+}
+class "uses" as overarch_dataModel_uses <<schema>> {
+}
 class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
   from : keyword
   to : keyword

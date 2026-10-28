@@ -7,7 +7,7 @@ A node which may have an abstract field.
 ## Tags
 code-model
 
-## Superclasses
+## Subclasses
 [method](../../overarch/data-model/method.md)
 
 ## Fields

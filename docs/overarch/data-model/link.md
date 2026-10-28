@@ -7,7 +7,7 @@ A link between two nodes of the deployment model.
 ## Tags
 deployment-model
 
-## Subclasses
+## Superclasses
 [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
 
 

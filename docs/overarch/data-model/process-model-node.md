@@ -8,10 +8,10 @@ A node in the process model
 process-model
 
 ## Superclasses
-[capability](../../overarch/data-model/capability.md), [control](../../overarch/data-model/control.md), [regulation](../../overarch/data-model/regulation.md), [artifact](../../overarch/data-model/artifact.md), [risk](../../overarch/data-model/risk.md), [information](../../overarch/data-model/information.md), [stakeholder](../../overarch/data-model/stakeholder.md), [non-goal](../../overarch/data-model/non-goal.md), [decision](../../overarch/data-model/decision.md), [process](../../overarch/data-model/process.md), [test](../../overarch/data-model/test.md), [version](../../overarch/data-model/version.md), [requirement](../../overarch/data-model/requirement.md), [constraint](../../overarch/data-model/constraint.md), [goal](../../overarch/data-model/goal.md), [knowledge](../../overarch/data-model/knowledge.md)
+[model-node](../../overarch/data-model/model-node.md), [process-model-element](../../overarch/data-model/process-model-element.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [process-model-element](../../overarch/data-model/process-model-element.md)
+[capability](../../overarch/data-model/capability.md), [control](../../overarch/data-model/control.md), [regulation](../../overarch/data-model/regulation.md), [artifact](../../overarch/data-model/artifact.md), [risk](../../overarch/data-model/risk.md), [information](../../overarch/data-model/information.md), [stakeholder](../../overarch/data-model/stakeholder.md), [non-goal](../../overarch/data-model/non-goal.md), [decision](../../overarch/data-model/decision.md), [process](../../overarch/data-model/process.md), [test](../../overarch/data-model/test.md), [version](../../overarch/data-model/version.md), [requirement](../../overarch/data-model/requirement.md), [constraint](../../overarch/data-model/constraint.md), [goal](../../overarch/data-model/goal.md), [knowledge](../../overarch/data-model/knowledge.md)
 
 
 ## Navigation

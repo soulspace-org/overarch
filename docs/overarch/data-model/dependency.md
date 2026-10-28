@@ -7,7 +7,7 @@ A dependency relationship between two elements in the code model.
 ## Tags
 code-model
 
-## Subclasses
+## Superclasses
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
 
 

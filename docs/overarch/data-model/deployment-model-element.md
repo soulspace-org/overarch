@@ -8,10 +8,10 @@ An element in the deployment model.
 deployment-model
 
 ## Superclasses
-[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
+[model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
+[deployment-model-node](../../overarch/data-model/deployment-model-node.md), [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
 
 
 ## Navigation

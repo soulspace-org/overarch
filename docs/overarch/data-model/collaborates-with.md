@@ -7,7 +7,7 @@ A relation between two organisational model nodes.
 ## Tags
 organization-model
 
-## Subclasses
+## Superclasses
 [organization-model-relation](../../overarch/data-model/organization-model-relation.md)
 
 

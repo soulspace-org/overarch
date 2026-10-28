@@ -9,7 +9,7 @@ The use case view is a behavioural view of the (functional) requirements.
 ## Tags
 view-model
 
-## Subclasses
+## Superclasses
 [view](../../overarch/data-model/view.md)
 
 

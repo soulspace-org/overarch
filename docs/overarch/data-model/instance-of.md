@@ -7,7 +7,7 @@ An element is an instance of another element.
 ## Tags
 trace-model
 
-## Subclasses
+## Superclasses
 [model-relation](../../overarch/data-model/model-relation.md)
 
 

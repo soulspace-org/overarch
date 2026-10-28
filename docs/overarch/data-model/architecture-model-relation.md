@@ -8,10 +8,10 @@ A relation in the architecture model.
 architecture-model
 
 ## Superclasses
-[technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
+[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 
 ## Navigation

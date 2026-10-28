@@ -7,7 +7,7 @@ A boundary of a bounded context.
 ## Tags
 architecture-model, concept-model
 
-## Subclasses
+## Superclasses
 [concept-model-node](../../overarch/data-model/concept-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [boundary-node](../../overarch/data-model/boundary-node.md)
 
 

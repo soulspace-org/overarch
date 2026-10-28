@@ -7,7 +7,7 @@ A compontent is a part of a container and describes a (logical) building block o
 ## Tags
 architecture-model
 
-## Subclasses
+## Superclasses
 [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md)
 
 

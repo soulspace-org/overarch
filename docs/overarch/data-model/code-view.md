@@ -8,7 +8,7 @@ The code view is a static design view.
 ## Tags
 view-model
 
-## Subclasses
+## Superclasses
 [view](../../overarch/data-model/view.md)
 
 

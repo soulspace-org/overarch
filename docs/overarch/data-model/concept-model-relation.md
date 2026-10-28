@@ -8,10 +8,10 @@ A relation in the concept model.
 concept-model
 
 ## Superclasses
-[has](../../overarch/data-model/has.md), [rel](../../overarch/data-model/rel.md), [is-a](../../overarch/data-model/is-a.md)
+[concept-model-element](../../overarch/data-model/concept-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[concept-model-element](../../overarch/data-model/concept-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[has](../../overarch/data-model/has.md), [rel](../../overarch/data-model/rel.md), [is-a](../../overarch/data-model/is-a.md)
 
 
 ## Navigation

@@ -7,7 +7,7 @@ A node which may have a scope field.
 ## Tags
 code-model
 
-## Superclasses
+## Subclasses
 [method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md)
 
 ## Fields

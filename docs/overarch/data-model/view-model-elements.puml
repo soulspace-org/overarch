@@ -1,25 +1,34 @@
 @startuml view-model-elements
 left to right direction
 title View Model Elements
-class "deployment-model-node" as overarch_dataModel_deploymentModelNode <<schema>> {}
-class "deployment-architecture-view" as overarch_dataModel_deploymentArchitectureView <<schema>> {}
-class "system-structure-view" as overarch_dataModel_systemStructureView <<schema>> {}
+class "deployment-model-node" as overarch_dataModel_deploymentModelNode <<schema>> {
+}
+class "state-machine" as overarch_dataModel_stateMachine <<schema>> {
+}
 class "architecture-model-element" as overarch_dataModel_architectureModelElement <<schema>> {
   external : boolean [0..1]
 }
-class "state-machine" as overarch_dataModel_stateMachine <<schema>> {}
-class "domain-view" as overarch_dataModel_domainView <<schema>> {}
-class "concept-model-element" as overarch_dataModel_conceptModelElement <<schema>> {}
-class "organization-model-node" as overarch_dataModel_organizationModelNode <<schema>> {}
-class "concept-view" as overarch_dataModel_conceptView <<schema>> {}
-class "system-landscape-view" as overarch_dataModel_systemLandscapeView <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
-class "architecture-view" as overarch_dataModel_architectureView <<schema>> {}
-class "container-view" as overarch_dataModel_containerView <<schema>> {}
+class "domain-view" as overarch_dataModel_domainView <<schema>> {
+}
+class "concept-model-element" as overarch_dataModel_conceptModelElement <<schema>> {
+}
+class "organization-model-node" as overarch_dataModel_organizationModelNode <<schema>> {
+}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {
+}
+class "organization-structure-view" as overarch_dataModel_organizationStructureView <<schema>> {
+}
+class "state-machine-view" as overarch_dataModel_stateMachineView <<schema>> {
+}
+class "architecture-view" as overarch_dataModel_architectureView <<schema>> {
+}
 class "technical-architecture-model-node" as overarch_dataModel_technicalArchitectureModelNode <<schema>> {
   subtype : string [0..1]
 }
-class "code-view" as overarch_dataModel_codeView <<schema>> {}
+class "container-view" as overarch_dataModel_containerView <<schema>> {
+}
+class "deployment-view" as overarch_dataModel_deploymentView <<schema>> {
+}
 class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
@@ -27,22 +36,34 @@ class "element" as overarch_dataModel_element <<schema>> {
   id : keyword
   name : string
 }
-class "state-machine-view" as overarch_dataModel_stateMachineView <<schema>> {}
-class "process-view" as overarch_dataModel_processView <<schema>> {}
-class "context-view" as overarch_dataModel_contextView <<schema>> {}
+class "use-case-view" as overarch_dataModel_useCaseView <<schema>> {
+}
+class "process-view" as overarch_dataModel_processView <<schema>> {
+}
 class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "model-view" as overarch_dataModel_modelView <<schema>> {}
-class "use-case-model-element" as overarch_dataModel_useCaseModelElement <<schema>> {}
-class "glossary-view" as overarch_dataModel_glossaryView <<schema>> {}
-class "deployment-model-element" as overarch_dataModel_deploymentModelElement <<schema>> {}
-class "deployment-structure-view" as overarch_dataModel_deploymentStructureView <<schema>> {}
-class "deployment-view" as overarch_dataModel_deploymentView <<schema>> {}
-class "organization-structure-view" as overarch_dataModel_organizationStructureView <<schema>> {}
-class "component-view" as overarch_dataModel_componentView <<schema>> {}
-class "code-model-element" as overarch_dataModel_codeModelElement <<schema>> {}
+class "dynamic-view" as overarch_dataModel_dynamicView <<schema>> {
+}
+class "deployment-structure-view" as overarch_dataModel_deploymentStructureView <<schema>> {
+}
+class "glossary-view" as overarch_dataModel_glossaryView <<schema>> {
+}
+class "code-view" as overarch_dataModel_codeView <<schema>> {
+}
+class "system-landscape-view" as overarch_dataModel_systemLandscapeView <<schema>> {
+}
+class "use-case-model-element" as overarch_dataModel_useCaseModelElement <<schema>> {
+}
+class "deployment-model-element" as overarch_dataModel_deploymentModelElement <<schema>> {
+}
+class "code-model-element" as overarch_dataModel_codeModelElement <<schema>> {
+}
+class "context-view" as overarch_dataModel_contextView <<schema>> {
+}
+class "component-view" as overarch_dataModel_componentView <<schema>> {
+}
 class "view" as overarch_dataModel_view <<schema>> {
   include : keyword
   layout : keyword
@@ -53,12 +74,18 @@ class "view" as overarch_dataModel_view <<schema>> {
   theme : map
   title : string
 }
-class "dynamic-view" as overarch_dataModel_dynamicView <<schema>> {}
+class "concept-view" as overarch_dataModel_conceptView <<schema>> {
+}
+class "model-view" as overarch_dataModel_modelView <<schema>> {
+}
+class "deployment-architecture-view" as overarch_dataModel_deploymentArchitectureView <<schema>> {
+}
+class "system-structure-view" as overarch_dataModel_systemStructureView <<schema>> {
+}
 class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
   from : keyword
   to : keyword
 }
-class "use-case-view" as overarch_dataModel_useCaseView <<schema>> {}
 overarch_dataModel_codeView o-->  "ct\n1..n" overarch_dataModel_codeModelElement
 overarch_dataModel_architectureView <|-- overarch_dataModel_dynamicView
 overarch_dataModel_element <|-- overarch_dataModel_modelElement

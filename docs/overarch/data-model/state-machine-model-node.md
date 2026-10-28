@@ -8,10 +8,10 @@ A node in the state machine model.
 state-machine-model
 
 ## Superclasses
-[join](../../overarch/data-model/join.md), [choice](../../overarch/data-model/choice.md), [start-state](../../overarch/data-model/start-state.md), [history-state](../../overarch/data-model/history-state.md), [deep-history-state](../../overarch/data-model/deep-history-state.md), [end-state](../../overarch/data-model/end-state.md), [state](../../overarch/data-model/state.md), [fork](../../overarch/data-model/fork.md)
+[model-node](../../overarch/data-model/model-node.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md)
+[choice](../../overarch/data-model/choice.md), [start-state](../../overarch/data-model/start-state.md), [fork](../../overarch/data-model/fork.md), [history-state](../../overarch/data-model/history-state.md), [deep-history-state](../../overarch/data-model/deep-history-state.md), [end-state](../../overarch/data-model/end-state.md), [state](../../overarch/data-model/state.md), [join](../../overarch/data-model/join.md)
 
 
 ## Navigation

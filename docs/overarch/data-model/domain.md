@@ -7,7 +7,7 @@ A specific area of knowledge, activity or subject matter. Part of the problem sp
 ## Tags
 domain-model
 
-## Subclasses
+## Superclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

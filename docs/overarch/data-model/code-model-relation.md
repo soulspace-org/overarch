@@ -8,10 +8,10 @@ A relation in the code model.
 code-model
 
 ## Superclasses
-[type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md), [associative-relation](../../overarch/data-model/associative-relation.md), [dependency](../../overarch/data-model/dependency.md)
+[code-model-element](../../overarch/data-model/code-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[code-model-element](../../overarch/data-model/code-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md), [associative-relation](../../overarch/data-model/associative-relation.md), [dependency](../../overarch/data-model/dependency.md)
 
 
 ## Navigation

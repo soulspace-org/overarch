@@ -8,7 +8,7 @@ The model view is a graphical view.
 ## Tags
 view-model
 
-## Subclasses
+## Superclasses
 [view](../../overarch/data-model/view.md)
 
 

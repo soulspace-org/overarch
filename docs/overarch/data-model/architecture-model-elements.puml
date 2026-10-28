@@ -1,17 +1,24 @@
 @startuml architecture-model-elements
 title Architecture Model Elements
-class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary <<schema>> {}
-class "technical-architecture-model-relation" as overarch_dataModel_technicalArchitectureModelRelation <<schema>> {}
-class "container" as overarch_dataModel_container <<schema>> {}
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary <<schema>> {
+}
+class "technical-architecture-model-relation" as overarch_dataModel_technicalArchitectureModelRelation <<schema>> {
+}
 class "architecture-model-element" as overarch_dataModel_architectureModelElement <<schema>> {
   external : boolean [0..1]
 }
-class "context-boundary" as overarch_dataModel_contextBoundary <<schema>> {}
-class "subscribe" as overarch_dataModel_subscribe <<schema>> {}
-class "publish" as overarch_dataModel_publish <<schema>> {}
-class "architecture-model-relation" as overarch_dataModel_architectureModelRelation <<schema>> {}
-class "rel" as overarch_dataModel_rel <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
+class "context-boundary" as overarch_dataModel_contextBoundary <<schema>> {
+}
+class "subscribe" as overarch_dataModel_subscribe <<schema>> {
+}
+class "publish" as overarch_dataModel_publish <<schema>> {
+}
+class "architecture-model-relation" as overarch_dataModel_architectureModelRelation <<schema>> {
+}
+class "rel" as overarch_dataModel_rel <<schema>> {
+}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {
+}
 class "technical-architecture-model-node" as overarch_dataModel_technicalArchitectureModelNode <<schema>> {
   subtype : string [0..1]
 }
@@ -22,22 +29,33 @@ class "element" as overarch_dataModel_element <<schema>> {
   id : keyword
   name : string
 }
-class "dataflow" as overarch_dataModel_dataflow <<schema>> {}
+class "dataflow" as overarch_dataModel_dataflow <<schema>> {
+}
 class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "architecture-model-node" as overarch_dataModel_architectureModelNode <<schema>> {}
-class "component" as overarch_dataModel_component <<schema>> {}
-class "boundary-node" as overarch_dataModel_boundaryNode <<schema>> {}
-class "person" as overarch_dataModel_person <<schema>> {}
-class "response" as overarch_dataModel_response <<schema>> {}
-class "send" as overarch_dataModel_send <<schema>> {}
+class "architecture-model-node" as overarch_dataModel_architectureModelNode <<schema>> {
+}
+class "component" as overarch_dataModel_component <<schema>> {
+}
+class "boundary-node" as overarch_dataModel_boundaryNode <<schema>> {
+}
+class "person" as overarch_dataModel_person <<schema>> {
+}
+class "response" as overarch_dataModel_response <<schema>> {
+}
+class "send" as overarch_dataModel_send <<schema>> {
+}
+class "system" as overarch_dataModel_system <<schema>> {
+}
 class "technical-element" as overarch_dataModel_technicalElement <<schema>> {
   tech : string [0..1]
 }
-class "system" as overarch_dataModel_system <<schema>> {}
-class "request" as overarch_dataModel_request <<schema>> {}
+class "container" as overarch_dataModel_container <<schema>> {
+}
+class "request" as overarch_dataModel_request <<schema>> {
+}
 class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
   from : keyword
   to : keyword

@@ -8,10 +8,10 @@ A relation in the state machine model.
 state-machine-model
 
 ## Superclasses
-[transition](../../overarch/data-model/transition.md)
+[state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[transition](../../overarch/data-model/transition.md)
 
 
 ## Navigation

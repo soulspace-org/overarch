@@ -8,10 +8,10 @@ A relation in the organization model
 organization-model
 
 ## Superclasses
-[role-in](../../overarch/data-model/role-in.md), [responsible-for](../../overarch/data-model/responsible-for.md), [collaborates-with](../../overarch/data-model/collaborates-with.md)
+[organization-model-element](../../overarch/data-model/organization-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[organization-model-element](../../overarch/data-model/organization-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[role-in](../../overarch/data-model/role-in.md), [responsible-for](../../overarch/data-model/responsible-for.md), [collaborates-with](../../overarch/data-model/collaborates-with.md)
 
 
 ## Navigation

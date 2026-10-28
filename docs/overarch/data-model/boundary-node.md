@@ -7,7 +7,7 @@ A grouping of elements belonging together in a context.
 ## Tags
 architecture-model, concept-model
 
-## Superclasses
+## Subclasses
 [enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [context-boundary](../../overarch/data-model/context-boundary.md)
 
 

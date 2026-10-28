@@ -8,10 +8,10 @@ A node in the use case model of overarch.
 use-case-model
 
 ## Superclasses
-[container](../../overarch/data-model/container.md), [actor](../../overarch/data-model/actor.md), [use-case](../../overarch/data-model/use-case.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md)
+[model-node](../../overarch/data-model/model-node.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md)
+[actor](../../overarch/data-model/actor.md), [use-case](../../overarch/data-model/use-case.md), [person](../../overarch/data-model/person.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md)
 
 
 ## Navigation

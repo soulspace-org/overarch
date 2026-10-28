@@ -8,10 +8,10 @@ An element of the architecture model.
 architecture-model
 
 ## Superclasses
-[architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
 
 ## Fields
 ### external

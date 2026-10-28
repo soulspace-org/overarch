@@ -7,7 +7,7 @@ A use case in the use case model.
 ## Tags
 use-case-model
 
-## Subclasses
+## Superclasses
 [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 ## Fields

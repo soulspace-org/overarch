@@ -1,14 +1,21 @@
 @startuml concept-model-elements
 title Concept Model Elements
-class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary <<schema>> {}
-class "container" as overarch_dataModel_container <<schema>> {}
-class "context-boundary" as overarch_dataModel_contextBoundary <<schema>> {}
-class "concept-model-node" as overarch_dataModel_conceptModelNode <<schema>> {}
-class "has" as overarch_dataModel_has <<schema>> {}
-class "concept-model-element" as overarch_dataModel_conceptModelElement <<schema>> {}
-class "rel" as overarch_dataModel_rel <<schema>> {}
-class "model-node" as overarch_dataModel_modelNode <<schema>> {}
-class "is-a" as overarch_dataModel_isA <<schema>> {}
+class "enterprise-boundary" as overarch_dataModel_enterpriseBoundary <<schema>> {
+}
+class "context-boundary" as overarch_dataModel_contextBoundary <<schema>> {
+}
+class "concept-model-node" as overarch_dataModel_conceptModelNode <<schema>> {
+}
+class "has" as overarch_dataModel_has <<schema>> {
+}
+class "concept-model-element" as overarch_dataModel_conceptModelElement <<schema>> {
+}
+class "rel" as overarch_dataModel_rel <<schema>> {
+}
+class "model-node" as overarch_dataModel_modelNode <<schema>> {
+}
+class "is-a" as overarch_dataModel_isA <<schema>> {
+}
 class "element" as overarch_dataModel_element <<schema>> {
   desc : string [0..1]
   doc : string [0..1]
@@ -16,19 +23,26 @@ class "element" as overarch_dataModel_element <<schema>> {
   id : keyword
   name : string
 }
-class "concept" as overarch_dataModel_concept <<schema>> {}
+class "concept" as overarch_dataModel_concept <<schema>> {
+}
 class "model-element" as overarch_dataModel_modelElement <<schema>> {
   maturity : keyword [0..1]
   tags : set [0..1]
 }
-class "boundary-node" as overarch_dataModel_boundaryNode <<schema>> {}
-class "person" as overarch_dataModel_person <<schema>> {}
-class "system" as overarch_dataModel_system <<schema>> {}
+class "boundary-node" as overarch_dataModel_boundaryNode <<schema>> {
+}
+class "person" as overarch_dataModel_person <<schema>> {
+}
+class "system" as overarch_dataModel_system <<schema>> {
+}
+class "container" as overarch_dataModel_container <<schema>> {
+}
 class "model-relation" as overarch_dataModel_modelRelation <<schema>> {
   from : keyword
   to : keyword
 }
-class "concept-model-relation" as overarch_dataModel_conceptModelRelation <<schema>> {}
+class "concept-model-relation" as overarch_dataModel_conceptModelRelation <<schema>> {
+}
 overarch_dataModel_element <|-- overarch_dataModel_modelElement
 overarch_dataModel_boundaryNode <|-- overarch_dataModel_contextBoundary
 overarch_dataModel_modelElement <|-- overarch_dataModel_modelNode

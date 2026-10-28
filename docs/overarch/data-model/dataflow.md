@@ -7,7 +7,7 @@ A flow of data between two elements of the architecture.
 ## Tags
 architecture-model
 
-## Subclasses
+## Superclasses
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 

@@ -7,7 +7,7 @@ An organization (e.g. a company) in the organization model.
 ## Tags
 organization-model
 
-## Subclasses
+## Superclasses
 [organization-model-node](../../overarch/data-model/organization-model-node.md)
 
 

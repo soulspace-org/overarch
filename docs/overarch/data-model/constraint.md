@@ -7,7 +7,7 @@ A constraint in the process model, representing limitations or restrictions that
 ## Tags
 process-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

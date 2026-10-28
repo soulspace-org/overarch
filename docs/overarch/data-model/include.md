@@ -7,7 +7,7 @@ A include relationship between two use cases.
 ## Tags
 use-case-model
 
-## Subclasses
+## Superclasses
 [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 

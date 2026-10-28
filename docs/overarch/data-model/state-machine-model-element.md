@@ -8,10 +8,10 @@ An element in a state machine model.
 state-machine-model
 
 ## Superclasses
-[state-machine](../../overarch/data-model/state-machine.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[state-machine](../../overarch/data-model/state-machine.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
 
 
 ## Navigation

@@ -7,7 +7,7 @@ A specialization relationship between the concepts.
 ## Tags
 concept-model
 
-## Subclasses
+## Superclasses
 [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 

@@ -8,10 +8,10 @@ A technical node in the architecture model.
 architecture-model
 
 ## Superclasses
-[container](../../overarch/data-model/container.md), [component](../../overarch/data-model/component.md), [system](../../overarch/data-model/system.md)
+[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
 
 ## Subclasses
-[architecture-model-node](../../overarch/data-model/architecture-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
+[component](../../overarch/data-model/component.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md)
 
 ## Fields
 ### subtype

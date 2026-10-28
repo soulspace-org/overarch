@@ -10,7 +10,7 @@ An actor (role) in a use case model.
 ## Tags
 use-case-model
 
-## Subclasses
+## Superclasses
 [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 

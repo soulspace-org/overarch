@@ -7,7 +7,7 @@ An object that is defined by its attributes rather than its identity. Part of th
 ## Tags
 domain-model
 
-## Subclasses
+## Superclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

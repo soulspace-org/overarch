@@ -8,10 +8,10 @@ A relation in the use case model of overarch.
 use-case-model
 
 ## Superclasses
-[extends](../../overarch/data-model/extends.md), [generalizes](../../overarch/data-model/generalizes.md), [include](../../overarch/data-model/include.md), [uses](../../overarch/data-model/uses.md)
+[use-case-model-element](../../overarch/data-model/use-case-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[use-case-model-element](../../overarch/data-model/use-case-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[extends](../../overarch/data-model/extends.md), [generalizes](../../overarch/data-model/generalizes.md), [include](../../overarch/data-model/include.md), [uses](../../overarch/data-model/uses.md)
 
 
 ## Navigation

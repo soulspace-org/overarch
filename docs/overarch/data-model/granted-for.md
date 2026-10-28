@@ -7,7 +7,7 @@ A relationship between a permission and a role.
 ## Tags
 role-model
 
-## Subclasses
+## Superclasses
 [role-model-relation](../../overarch/data-model/role-model-relation.md)
 
 

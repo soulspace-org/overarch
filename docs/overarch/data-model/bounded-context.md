@@ -7,7 +7,7 @@ A boundary within which a particular domain model is valid and consistent. Part 
 ## Tags
 domain-model
 
-## Subclasses
+## Superclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

@@ -8,10 +8,10 @@ A node in the architecture model.
 architecture-model
 
 ## Superclasses
-[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [context-boundary](../../overarch/data-model/context-boundary.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [person](../../overarch/data-model/person.md)
+[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-node](../../overarch/data-model/model-node.md)
 
 ## Subclasses
-[architecture-model-element](../../overarch/data-model/architecture-model-element.md), [model-node](../../overarch/data-model/model-node.md)
+[enterprise-boundary](../../overarch/data-model/enterprise-boundary.md), [context-boundary](../../overarch/data-model/context-boundary.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [person](../../overarch/data-model/person.md)
 
 
 ## Navigation

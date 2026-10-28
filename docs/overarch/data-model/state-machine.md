@@ -9,7 +9,7 @@ A state machine as root element of the state machine model.
 ## Tags
 state-machine-model
 
-## Subclasses
+## Superclasses
 [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md)
 
 

@@ -8,10 +8,10 @@ An element in a use case model.
 use-case-model
 
 ## Superclasses
-[use-case-model-node](../../overarch/data-model/use-case-model-node.md), [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[use-case-model-node](../../overarch/data-model/use-case-model-node.md), [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 
 ## Navigation

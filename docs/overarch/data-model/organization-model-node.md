@@ -8,10 +8,10 @@ A node in the organization model
 organization-model
 
 ## Superclasses
-[organization](../../overarch/data-model/organization.md), [org-unit](../../overarch/data-model/org-unit.md)
+[model-node](../../overarch/data-model/model-node.md), [organization-model-element](../../overarch/data-model/organization-model-element.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [organization-model-element](../../overarch/data-model/organization-model-element.md)
+[organization](../../overarch/data-model/organization.md), [org-unit](../../overarch/data-model/org-unit.md)
 
 
 ## Navigation

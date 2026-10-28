@@ -7,7 +7,7 @@ A human actor or role working with the system under description. A person can be
 ## Tags
 role-model architecture-model, use-case-model
 
-## Subclasses
+## Superclasses
 [concept-model-node](../../overarch/data-model/concept-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
 
 

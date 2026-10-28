@@ -7,7 +7,7 @@ A version of an artifact in the process model
 ## Tags
 process-model, deployment-model
 
-## Subclasses
+## Superclasses
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

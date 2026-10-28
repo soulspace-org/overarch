@@ -8,10 +8,10 @@ A node in the role model.
 role-model
 
 ## Superclasses
-[permission](../../overarch/data-model/permission.md), [role](../../overarch/data-model/role.md)
+[role-model-element](../../overarch/data-model/role-model-element.md), [model-node](../../overarch/data-model/model-node.md)
 
 ## Subclasses
-[role-model-element](../../overarch/data-model/role-model-element.md), [model-node](../../overarch/data-model/model-node.md)
+[permission](../../overarch/data-model/permission.md), [role](../../overarch/data-model/role.md)
 
 
 ## Navigation

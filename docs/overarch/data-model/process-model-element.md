@@ -8,10 +8,10 @@ An element in the process model
 process-model
 
 ## Superclasses
-[process-model-relation](../../overarch/data-model/process-model-relation.md), [process-model-node](../../overarch/data-model/process-model-node.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[process-model-relation](../../overarch/data-model/process-model-relation.md), [process-model-node](../../overarch/data-model/process-model-node.md)
 
 
 ## Navigation

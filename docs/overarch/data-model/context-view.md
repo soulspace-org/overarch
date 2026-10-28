@@ -9,7 +9,7 @@ The (system) context view is a static architectural view.
 ## Tags
 view-model
 
-## Subclasses
+## Superclasses
 [architecture-view](../../overarch/data-model/architecture-view.md)
 
 

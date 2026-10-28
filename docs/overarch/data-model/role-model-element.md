@@ -8,10 +8,10 @@ An element of the role model.
 role-model
 
 ## Superclasses
-[role-model-relation](../../overarch/data-model/role-model-relation.md), [role-model-node](../../overarch/data-model/role-model-node.md)
+[model-element](../../overarch/data-model/model-element.md)
 
 ## Subclasses
-[model-element](../../overarch/data-model/model-element.md)
+[role-model-relation](../../overarch/data-model/role-model-relation.md), [role-model-node](../../overarch/data-model/role-model-node.md)
 
 ## Fields
 ### external

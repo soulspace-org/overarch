@@ -8,10 +8,10 @@ A node in the deployment model.
 deployment-model
 
 ## Superclasses
-[node](../../overarch/data-model/node.md), [container-instance](../../overarch/data-model/container-instance.md)
+[model-node](../../overarch/data-model/model-node.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md)
 
 ## Subclasses
-[model-node](../../overarch/data-model/model-node.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md)
+[node](../../overarch/data-model/node.md), [container-instance](../../overarch/data-model/container-instance.md)
 
 
 ## Navigation

@@ -7,7 +7,7 @@ A record of a significant event that happened in the domain that domain experts 
 ## Tags
 domain-model
 
-## Subclasses
+## Superclasses
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

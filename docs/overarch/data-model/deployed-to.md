@@ -7,7 +7,7 @@ A deployment relation between a container or an artifact and a node in the deplo
 ## Tags
 deployment-model
 
-## Subclasses
+## Superclasses
 [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
 
 

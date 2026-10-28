@@ -8,10 +8,10 @@ A relation in the process model
 process-model
 
 ## Superclasses
-[control-for](../../overarch/data-model/control-for.md), [required-for](../../overarch/data-model/required-for.md), [artifact-of](../../overarch/data-model/artifact-of.md), [role-in](../../overarch/data-model/role-in.md), [non-goal-for](../../overarch/data-model/non-goal-for.md), [test-for](../../overarch/data-model/test-for.md), [output-of](../../overarch/data-model/output-of.md), [risk-for](../../overarch/data-model/risk-for.md), [input-of](../../overarch/data-model/input-of.md), [stakeholder-of](../../overarch/data-model/stakeholder-of.md), [regulation-for](../../overarch/data-model/regulation-for.md), [version-of](../../overarch/data-model/version-of.md), [goal-for](../../overarch/data-model/goal-for.md), [constraint-for](../../overarch/data-model/constraint-for.md)
+[process-model-element](../../overarch/data-model/process-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Subclasses
-[process-model-element](../../overarch/data-model/process-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
+[control-for](../../overarch/data-model/control-for.md), [required-for](../../overarch/data-model/required-for.md), [artifact-of](../../overarch/data-model/artifact-of.md), [role-in](../../overarch/data-model/role-in.md), [non-goal-for](../../overarch/data-model/non-goal-for.md), [test-for](../../overarch/data-model/test-for.md), [output-of](../../overarch/data-model/output-of.md), [risk-for](../../overarch/data-model/risk-for.md), [input-of](../../overarch/data-model/input-of.md), [stakeholder-of](../../overarch/data-model/stakeholder-of.md), [regulation-for](../../overarch/data-model/regulation-for.md), [version-of](../../overarch/data-model/version-of.md), [goal-for](../../overarch/data-model/goal-for.md), [constraint-for](../../overarch/data-model/constraint-for.md)
 
 
 ## Navigation
