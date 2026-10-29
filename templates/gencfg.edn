@@ -49,8 +49,8 @@
  ;;  Markdown Generation for Model Elements
  ;;
 
- ; every model node except fields and methods
- {:selection {:model-node? true :!els #{:field :method}}
+ ; every model node except fields, methods and functions
+ {:selection {:model-node? true :!els #{:field :method :function}}
   :template "docs/node.md.cmb"
   :per-element true
   :id-as-name true
