@@ -10,7 +10,7 @@ The component view is a static architectural view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [architecture-view](../../overarch/data-model/architecture-view.md)
 
 

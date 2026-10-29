@@ -7,10 +7,10 @@ A node in the domain model.
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [model-node](../../overarch/data-model/model-node.md), [domain-model-element](../../overarch/data-model/domain-model-element.md)
 
-## Subclasses
+## Inherited by
 [policy](../../overarch/data-model/policy.md), [entity](../../overarch/data-model/entity.md), [aggregate](../../overarch/data-model/aggregate.md), [model](../../overarch/data-model/model.md), [domain-event](../../overarch/data-model/domain-event.md), [value-object](../../overarch/data-model/value-object.md), [domain](../../overarch/data-model/domain.md), [command](../../overarch/data-model/command.md), [bounded-context](../../overarch/data-model/bounded-context.md)
 
 

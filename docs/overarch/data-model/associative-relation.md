@@ -7,10 +7,10 @@ A relation that may provide associative access to the referred element.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
 
-## Subclasses
+## Inherited by
 [composition](../../overarch/data-model/composition.md), [association](../../overarch/data-model/association.md), [aggregation](../../overarch/data-model/aggregation.md)
 
 ## Fields

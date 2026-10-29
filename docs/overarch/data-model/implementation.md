@@ -7,7 +7,7 @@ An implementation relationship between a code and an interface/protocol in the c
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [type-hierarchy-relation](../../overarch/data-model/type-hierarchy-relation.md)
 
 

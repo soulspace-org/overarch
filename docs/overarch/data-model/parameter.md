@@ -7,7 +7,7 @@ A parameter in a code model method or function.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 

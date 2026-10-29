@@ -7,7 +7,7 @@ A generic relation between the concepts.
 ## Tags
 architecture-model, concept-model
 
-## Superclasses
+## Inherits From
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md), [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 

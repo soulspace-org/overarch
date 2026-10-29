@@ -7,7 +7,7 @@ A response to a synchronous request between two elements of the architecture.
 ## Tags
 architecture-model
 
-## Superclasses
+## Inherits From
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 

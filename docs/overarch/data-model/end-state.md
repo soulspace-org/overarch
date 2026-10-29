@@ -7,7 +7,7 @@ A end state in a state machine.
 ## Tags
 state-machine-model
 
-## Superclasses
+## Inherits From
 [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md)
 
 

@@ -7,10 +7,10 @@ A node in the deployment model.
 ## Tags
 deployment-model
 
-## Superclasses
+## Inherits From
 [model-node](../../overarch/data-model/model-node.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md)
 
-## Subclasses
+## Inherited by
 [node](../../overarch/data-model/node.md), [container-instance](../../overarch/data-model/container-instance.md)
 
 

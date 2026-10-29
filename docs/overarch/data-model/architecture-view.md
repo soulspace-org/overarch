@@ -7,10 +7,10 @@ An architectural view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [view](../../overarch/data-model/view.md)
 
-## Subclasses
+## Inherited by
 [container-view](../../overarch/data-model/container-view.md), [dynamic-view](../../overarch/data-model/dynamic-view.md), [system-landscape-view](../../overarch/data-model/system-landscape-view.md), [context-view](../../overarch/data-model/context-view.md), [component-view](../../overarch/data-model/component-view.md)
 
 

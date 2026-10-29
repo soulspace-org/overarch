@@ -7,7 +7,7 @@ An element which is implemented in the given technologies.
 ## Tags
 architecture-model, deployment-model
 
-## Subclasses
+## Inherited by
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [artifact](../../overarch/data-model/artifact.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [code-model-element](../../overarch/data-model/code-model-element.md)
 
 ## Fields

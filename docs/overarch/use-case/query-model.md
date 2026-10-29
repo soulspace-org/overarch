@@ -7,6 +7,11 @@ Query the model with selection criteria.
 | Actor | Description |
 |---|---|
 | [Modeller](../../overarch/roles/modeller.md) | Models the architecture of a system and specifies views of the model. |
+## Including Use Cases
+| Use Case | Description |
+|---|---|
+| [generate artifacts ](../../overarch/use-case/generate-artifacts.md) | Generate artifacts with templates from model selections. |
+| [render views](../../overarch/use-case/render-views.md) | Render the views of the system. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

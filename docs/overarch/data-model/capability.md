@@ -7,7 +7,7 @@ A capability in the process model, representing the abilities, competencies and 
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

@@ -7,7 +7,7 @@ A composition or association relationship between the concepts.
 ## Tags
 concept-model
 
-## Superclasses
+## Inherits From
 [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 

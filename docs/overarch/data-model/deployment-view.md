@@ -10,7 +10,7 @@ The deployment view is a static architectural view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [view](../../overarch/data-model/view.md)
 
 

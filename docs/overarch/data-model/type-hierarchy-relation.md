@@ -7,10 +7,10 @@ A relation that establishes a type hierarchy.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [code-model-relation](../../overarch/data-model/code-model-relation.md)
 
-## Subclasses
+## Inherited by
 [inheritance](../../overarch/data-model/inheritance.md), [implementation](../../overarch/data-model/implementation.md)
 
 

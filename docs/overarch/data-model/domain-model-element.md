@@ -7,10 +7,10 @@ An element in the domain model.
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [domain-model-relation](../../overarch/data-model/domain-model-relation.md), [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

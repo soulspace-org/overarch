@@ -8,7 +8,7 @@ A protocol in the code model.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [code-model-node](../../overarch/data-model/code-model-node.md)
 
 

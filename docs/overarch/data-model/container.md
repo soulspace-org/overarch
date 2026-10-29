@@ -9,7 +9,7 @@ A container is a part of a system and describes a deployed process in the archit
 ## Tags
 architecture-model, use-case-model, deployment-model
 
-## Superclasses
+## Inherits From
 [concept-model-node](../../overarch/data-model/concept-model-node.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 

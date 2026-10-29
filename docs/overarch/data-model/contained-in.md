@@ -7,7 +7,7 @@ A composition relation from child to parent.
 ## Tags
 containment-model
 
-## Superclasses
+## Inherits From
 [model-relation](../../overarch/data-model/model-relation.md)
 
 

@@ -7,7 +7,7 @@ A node which may have a type field.
 ## Tags
 code-model
 
-## Subclasses
+## Inherited by
 [function](../../overarch/data-model/function.md), [parameter](../../overarch/data-model/parameter.md), [method](../../overarch/data-model/method.md), [field](../../overarch/data-model/field.md)
 
 ## Fields

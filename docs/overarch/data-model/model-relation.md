@@ -7,10 +7,10 @@ An element which is a relation in the Overarch data model and describes the rela
 ## Tags
 model-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [instance-of](../../overarch/data-model/instance-of.md), [implements](../../overarch/data-model/implements.md), [architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [organization-model-relation](../../overarch/data-model/organization-model-relation.md), [domain-model-relation](../../overarch/data-model/domain-model-relation.md), [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md), [process-model-relation](../../overarch/data-model/process-model-relation.md), [code-model-relation](../../overarch/data-model/code-model-relation.md), [contained-in](../../overarch/data-model/contained-in.md), [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md), [role-model-relation](../../overarch/data-model/role-model-relation.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md), [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 ## Fields

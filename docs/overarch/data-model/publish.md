@@ -7,7 +7,7 @@ Publishing of asynchronous events between two elements of the architecture (rece
 ## Tags
 architecture-model
 
-## Superclasses
+## Inherits From
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 

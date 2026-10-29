@@ -7,7 +7,7 @@ An asynchronous message or command between two elements of the architecture (poi
 ## Tags
 architecture-model
 
-## Superclasses
+## Inherits From
 [technical-architecture-model-relation](../../overarch/data-model/technical-architecture-model-relation.md)
 
 

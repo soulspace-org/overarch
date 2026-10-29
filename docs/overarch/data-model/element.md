@@ -7,7 +7,7 @@ An element of the Overarch data model.
 ## Tags
 base-model
 
-## Subclasses
+## Inherited by
 [model-element](../../overarch/data-model/model-element.md), [view](../../overarch/data-model/view.md)
 
 ## Fields

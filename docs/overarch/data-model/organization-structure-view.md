@@ -8,7 +8,7 @@ The organization structure view is a graphical view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [view](../../overarch/data-model/view.md)
 
 

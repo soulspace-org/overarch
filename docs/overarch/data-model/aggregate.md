@@ -7,7 +7,7 @@ A cluster of domain objects that can be treated as a single unit for consistency
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

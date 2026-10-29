@@ -7,7 +7,7 @@ A permission, entitlement or access right for some action e.g. in a system.
 ## Tags
 role-model
 
-## Superclasses
+## Inherits From
 [role-model-node](../../overarch/data-model/role-model-node.md)
 
 

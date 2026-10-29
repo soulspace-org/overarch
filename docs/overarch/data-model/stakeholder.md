@@ -7,7 +7,7 @@ A stakeholder in the process model, representing an individual or group with an 
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

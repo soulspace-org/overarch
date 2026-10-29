@@ -7,7 +7,7 @@ A relation between a non-goal and other elements.
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

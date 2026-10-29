@@ -7,10 +7,10 @@ A node in the organization model
 ## Tags
 organization-model
 
-## Superclasses
+## Inherits From
 [model-node](../../overarch/data-model/model-node.md), [organization-model-element](../../overarch/data-model/organization-model-element.md)
 
-## Subclasses
+## Inherited by
 [organization](../../overarch/data-model/organization.md), [org-unit](../../overarch/data-model/org-unit.md)
 
 

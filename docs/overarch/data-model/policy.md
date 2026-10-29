@@ -7,7 +7,7 @@ A rule or guideline that governs the behavior or actions within the domain.
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

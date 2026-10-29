@@ -7,10 +7,10 @@ A relation in the state machine model.
 ## Tags
 state-machine-model
 
-## Superclasses
+## Inherits From
 [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
-## Subclasses
+## Inherited by
 [transition](../../overarch/data-model/transition.md)
 
 

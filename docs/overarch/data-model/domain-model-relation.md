@@ -7,7 +7,7 @@ A relation in the domain model.
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [domain-model-element](../../overarch/data-model/domain-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 

@@ -7,10 +7,10 @@ An element in the concept model.
 ## Tags
 concept-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [concept-model-node](../../overarch/data-model/concept-model-node.md), [concept-model-relation](../../overarch/data-model/concept-model-relation.md)
 
 

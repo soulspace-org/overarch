@@ -7,10 +7,10 @@ A relation in the role model.
 ## Tags
 role-model
 
-## Superclasses
+## Inherits From
 [role-model-element](../../overarch/data-model/role-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
-## Subclasses
+## Inherited by
 [granted-for](../../overarch/data-model/granted-for.md), [permission-of](../../overarch/data-model/permission-of.md)
 
 

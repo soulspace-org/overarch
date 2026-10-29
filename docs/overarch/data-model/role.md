@@ -7,7 +7,7 @@ A human actor or role working with the system under description. A person can be
 ## Tags
 role-model architecture-model, use-case-model
 
-## Superclasses
+## Inherits From
 [role-model-node](../../overarch/data-model/role-model-node.md)
 
 

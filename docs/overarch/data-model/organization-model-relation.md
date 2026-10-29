@@ -7,10 +7,10 @@ A relation in the organization model
 ## Tags
 organization-model
 
-## Superclasses
+## Inherits From
 [organization-model-element](../../overarch/data-model/organization-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
-## Subclasses
+## Inherited by
 [role-in](../../overarch/data-model/role-in.md), [responsible-for](../../overarch/data-model/responsible-for.md), [collaborates-with](../../overarch/data-model/collaborates-with.md)
 
 

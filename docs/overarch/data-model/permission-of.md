@@ -7,7 +7,7 @@ A relationship between a permission and an architecture node, e.g. a system.
 ## Tags
 role-model
 
-## Superclasses
+## Inherits From
 [role-model-relation](../../overarch/data-model/role-model-relation.md)
 
 

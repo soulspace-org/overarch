@@ -7,6 +7,10 @@ Render the views of the system.
 | Actor | Description |
 |---|---|
 | [Modeller](../../overarch/roles/modeller.md) | Models the architecture of a system and specifies views of the model. |
+## Included Use Cases
+| Use Case | Description |
+|---|---|
+| [query model](../../overarch/use-case/query-model.md) | Query the model with selection criteria. |
 
 ## Use Case View
 ![Use Case View of Overarch](../../overarch/use-case/use-case-view.png)

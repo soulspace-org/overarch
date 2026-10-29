@@ -7,7 +7,7 @@ A relation between versions and artifacts.
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

@@ -7,7 +7,7 @@ A use relationship between an actor and a use case (or vice versa).
 ## Tags
 use-case-model
 
-## Superclasses
+## Inherits From
 [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 

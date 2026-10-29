@@ -7,7 +7,7 @@ An instruction to perform a specific action or operation within the domain.
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

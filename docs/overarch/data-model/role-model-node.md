@@ -7,10 +7,10 @@ A node in the role model.
 ## Tags
 role-model
 
-## Superclasses
+## Inherits From
 [role-model-element](../../overarch/data-model/role-model-element.md), [model-node](../../overarch/data-model/model-node.md)
 
-## Subclasses
+## Inherited by
 [permission](../../overarch/data-model/permission.md), [role](../../overarch/data-model/role.md)
 
 

@@ -7,7 +7,7 @@ A aggregation relationship between two classes in the code model.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [associative-relation](../../overarch/data-model/associative-relation.md)
 
 

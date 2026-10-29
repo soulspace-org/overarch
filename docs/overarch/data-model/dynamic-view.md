@@ -9,7 +9,7 @@ The dynamic view is an architectural and behavioural view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [architecture-view](../../overarch/data-model/architecture-view.md)
 
 

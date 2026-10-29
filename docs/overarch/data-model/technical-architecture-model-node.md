@@ -7,10 +7,10 @@ A technical node in the architecture model.
 ## Tags
 architecture-model
 
-## Superclasses
+## Inherits From
 [architecture-model-node](../../overarch/data-model/architecture-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
 
-## Subclasses
+## Inherited by
 [component](../../overarch/data-model/component.md), [system](../../overarch/data-model/system.md), [container](../../overarch/data-model/container.md)
 
 ## Fields

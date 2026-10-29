@@ -7,7 +7,7 @@ A representation of a domain that captures the essential aspects. Part of the so
 ## Tags
 domain-model
 
-## Superclasses
+## Inherits From
 [domain-model-node](../../overarch/data-model/domain-model-node.md)
 
 

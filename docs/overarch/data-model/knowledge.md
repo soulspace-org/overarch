@@ -7,7 +7,7 @@ A knowledge element in the process model, representing understanding and experti
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

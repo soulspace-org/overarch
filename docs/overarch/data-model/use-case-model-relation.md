@@ -7,10 +7,10 @@ A relation in the use case model of overarch.
 ## Tags
 use-case-model
 
-## Superclasses
+## Inherits From
 [use-case-model-element](../../overarch/data-model/use-case-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
-## Subclasses
+## Inherited by
 [extends](../../overarch/data-model/extends.md), [generalizes](../../overarch/data-model/generalizes.md), [include](../../overarch/data-model/include.md), [uses](../../overarch/data-model/uses.md)
 
 

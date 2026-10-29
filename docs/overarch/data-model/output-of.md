@@ -7,7 +7,7 @@ A relation between artifacts, information or knowledge and processes.
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

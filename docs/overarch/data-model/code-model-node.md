@@ -7,10 +7,10 @@ A node in the code model.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [model-node](../../overarch/data-model/model-node.md), [code-model-element](../../overarch/data-model/code-model-element.md)
 
-## Subclasses
+## Inherited by
 [enum-value](../../overarch/data-model/enum-value.md), [class](../../overarch/data-model/class.md), [enum](../../overarch/data-model/enum.md), [function](../../overarch/data-model/function.md), [protocol](../../overarch/data-model/protocol.md), [parameter](../../overarch/data-model/parameter.md), [method](../../overarch/data-model/method.md), [schema](../../overarch/data-model/schema.md), [package](../../overarch/data-model/package.md), [namespace](../../overarch/data-model/namespace.md), [interface](../../overarch/data-model/interface.md), [field](../../overarch/data-model/field.md)
 
 

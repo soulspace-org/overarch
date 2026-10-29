@@ -8,7 +8,7 @@ The state machine view is a behavioural design view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [view](../../overarch/data-model/view.md)
 
 

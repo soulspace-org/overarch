@@ -10,7 +10,7 @@ An element of the deployment model of the system under description.
 ## Tags
 deployment-model
 
-## Superclasses
+## Inherits From
 [deployment-model-node](../../overarch/data-model/deployment-model-node.md)
 
 

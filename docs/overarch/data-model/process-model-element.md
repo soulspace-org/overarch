@@ -7,10 +7,10 @@ An element in the process model
 ## Tags
 process-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [process-model-relation](../../overarch/data-model/process-model-relation.md), [process-model-node](../../overarch/data-model/process-model-node.md)
 
 

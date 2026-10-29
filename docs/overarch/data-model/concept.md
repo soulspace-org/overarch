@@ -7,7 +7,7 @@ A concept in the (ubiquous) language of the system.
 ## Tags
 concept-model
 
-## Superclasses
+## Inherits From
 [concept-model-node](../../overarch/data-model/concept-model-node.md)
 
 

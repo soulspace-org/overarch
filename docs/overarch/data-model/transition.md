@@ -7,7 +7,7 @@ A transition from on state to another in effect of an event in the state machine
 ## Tags
 state-machine-model
 
-## Superclasses
+## Inherits From
 [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
 
 

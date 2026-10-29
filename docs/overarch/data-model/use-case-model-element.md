@@ -7,10 +7,10 @@ An element in a use case model.
 ## Tags
 use-case-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [use-case-model-node](../../overarch/data-model/use-case-model-node.md), [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 

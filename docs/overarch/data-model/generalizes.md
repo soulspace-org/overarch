@@ -7,7 +7,7 @@ A generalizes relationship between two use case elements.
 ## Tags
 use-case-model
 
-## Superclasses
+## Inherits From
 [use-case-model-relation](../../overarch/data-model/use-case-model-relation.md)
 
 

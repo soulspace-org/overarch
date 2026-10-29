@@ -7,10 +7,10 @@ An element in a code model.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
 
-## Subclasses
+## Inherited by
 [code-model-relation](../../overarch/data-model/code-model-relation.md), [code-model-node](../../overarch/data-model/code-model-node.md)
 
 

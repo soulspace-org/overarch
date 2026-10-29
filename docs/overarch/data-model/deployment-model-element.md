@@ -7,10 +7,10 @@ An element in the deployment model.
 ## Tags
 deployment-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md), [technical-element](../../overarch/data-model/technical-element.md)
 
-## Subclasses
+## Inherited by
 [deployment-model-node](../../overarch/data-model/deployment-model-node.md), [deployment-model-relation](../../overarch/data-model/deployment-model-relation.md)
 
 

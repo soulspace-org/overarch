@@ -7,10 +7,10 @@ An element in a state machine model.
 ## Tags
 state-machine-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [state-machine](../../overarch/data-model/state-machine.md), [state-machine-model-node](../../overarch/data-model/state-machine-model-node.md), [state-machine-model-relation](../../overarch/data-model/state-machine-model-relation.md)
 
 

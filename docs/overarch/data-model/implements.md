@@ -7,7 +7,7 @@ A trace relation from an implementation to its definition.
 ## Tags
 trace-model
 
-## Superclasses
+## Inherits From
 [model-relation](../../overarch/data-model/model-relation.md)
 
 

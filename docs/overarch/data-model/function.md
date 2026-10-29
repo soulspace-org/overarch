@@ -7,7 +7,7 @@ A function in the code model.
 ## Tags
 code-model
 
-## Superclasses
+## Inherits From
 [typed-node](../../overarch/data-model/typed-node.md), [code-model-node](../../overarch/data-model/code-model-node.md), [visibility-node](../../overarch/data-model/visibility-node.md), [optional-node](../../overarch/data-model/optional-node.md)
 
 

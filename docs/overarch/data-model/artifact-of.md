@@ -7,7 +7,7 @@ A relation between artifacts and other process or deployment model nodes.
 ## Tags
 process-model, deployment-model
 
-## Superclasses
+## Inherits From
 [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

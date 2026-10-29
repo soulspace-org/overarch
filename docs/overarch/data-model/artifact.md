@@ -7,7 +7,7 @@ An artifact in the process model, representing a tangible or intangible output p
 ## Tags
 process-model, deployment-model
 
-## Superclasses
+## Inherits From
 [process-model-node](../../overarch/data-model/process-model-node.md), [technical-element](../../overarch/data-model/technical-element.md)
 
 

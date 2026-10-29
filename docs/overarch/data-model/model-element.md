@@ -7,10 +7,10 @@ A model element in the Overarch data model. It serves as a base type for all mod
 ## Tags
 model-model
 
-## Superclasses
+## Inherits From
 [element](../../overarch/data-model/element.md)
 
-## Subclasses
+## Inherited by
 [role-model-element](../../overarch/data-model/role-model-element.md), [architecture-model-element](../../overarch/data-model/architecture-model-element.md), [concept-model-element](../../overarch/data-model/concept-model-element.md), [model-node](../../overarch/data-model/model-node.md), [organization-model-element](../../overarch/data-model/organization-model-element.md), [process-model-element](../../overarch/data-model/process-model-element.md), [domain-model-element](../../overarch/data-model/domain-model-element.md), [state-machine-model-element](../../overarch/data-model/state-machine-model-element.md), [use-case-model-element](../../overarch/data-model/use-case-model-element.md), [deployment-model-element](../../overarch/data-model/deployment-model-element.md), [code-model-element](../../overarch/data-model/code-model-element.md), [model-relation](../../overarch/data-model/model-relation.md)
 
 ## Fields

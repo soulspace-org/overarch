@@ -7,10 +7,10 @@ An element of the architecture model.
 ## Tags
 architecture-model
 
-## Superclasses
+## Inherits From
 [model-element](../../overarch/data-model/model-element.md)
 
-## Subclasses
+## Inherited by
 [architecture-model-relation](../../overarch/data-model/architecture-model-relation.md), [architecture-model-node](../../overarch/data-model/architecture-model-node.md)
 
 ## Fields

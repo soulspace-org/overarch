@@ -7,7 +7,7 @@ A relation between persons and organization units or processes.
 ## Tags
 organization-model, process-model
 
-## Superclasses
+## Inherits From
 [organization-model-relation](../../overarch/data-model/organization-model-relation.md), [process-model-relation](../../overarch/data-model/process-model-relation.md)
 
 

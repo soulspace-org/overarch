@@ -10,7 +10,7 @@ A system relevant in the architecture.
 ## Tags
 architecture-model, use-case-model
 
-## Superclasses
+## Inherits From
 [concept-model-node](../../overarch/data-model/concept-model-node.md), [technical-architecture-model-node](../../overarch/data-model/technical-architecture-model-node.md), [use-case-model-node](../../overarch/data-model/use-case-model-node.md)
 
 

@@ -9,7 +9,7 @@ The glossary view is a textual view.
 ## Tags
 view-model
 
-## Superclasses
+## Inherits From
 [view](../../overarch/data-model/view.md)
 
 
