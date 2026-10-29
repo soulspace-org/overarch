@@ -672,23 +672,23 @@
 ;; code (TODO add functions, enums, ...)
 ;;
 
-  (when-let [interfaces (seq (m/interfaces model e))]
+  (when-let [interfaces (seq (m/referring-nodes model e {:el :implementation}))]
 %>
-## Extended/Implemented Interfaces
+## Implements
 <%= (str/join ", " (map #(md/relative-element-link e %) interfaces)) %>
 <%
   )
 
-  (when-let [superclasses (seq (m/superclasses model e))]
+  (when-let [superclasses (seq (m/referred-nodes model e {:el :inheritance}))]
 %>
-## Superclasses
+## Inherits From
 <%= (str/join ", " (map #(md/relative-element-link e %) superclasses)) %>
 <%
   )
 
-  (when-let [subclasses  (seq (m/subclasses model e))]
+  (when-let [subclasses  (seq (m/referring-nodes model e {:el :inheritance}))]
 %>
-## Subclasses
+## Inherited by
 <%= (str/join ", " (map #(md/relative-element-link e %) subclasses)) %>
 <%
   )
