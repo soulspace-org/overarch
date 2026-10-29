@@ -3,6 +3,7 @@
 ## Version (0.44.0-SNAPSHOT)
 * fixed subclasses and superclasses in model API
 * fixed index corruption on duplicate ids and parent overrides
+* updated templates
 * updated dependencies
 
 ## Version 0.43.0
