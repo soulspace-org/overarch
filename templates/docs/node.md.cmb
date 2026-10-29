@@ -212,7 +212,7 @@
 <%
   )
 
-  (when-let [responsibilities (seq (filter #(= :systems (:el %)) responsible-for))]
+  (when-let [responsibilities (seq (filter #(= :system (:el %)) responsible-for))]
 %>
 ## Responsibility for Systems
 <%= (md/node-description-table e :system responsibilities) %>
@@ -313,7 +313,7 @@
 ;;
 ;; technical architecture
 ;;
-  (when-let [systems (seq (filter #(= :systems (:el %)) children))]
+  (when-let [systems (seq (filter #(= :system (:el %)) children))]
 %>## Systems
 <%= (md/node-description-table e :system systems) %>
 <%
@@ -472,20 +472,14 @@
 <%
   )
 
-  (when-let [use-cases (seq (m/referring-nodes model e {:el :includes}))]
+  (when-let [use-cases (seq (m/referring-nodes model e {:el :include}))]
 %>## Including Use Cases
 <%= (md/node-description-table e :use-case use-cases) %>
 <%
   )
 
-  (when-let [use-cases (seq (m/referred-nodes model e {:el :includes}))]
+  (when-let [use-cases (seq (m/referred-nodes model e {:el :include}))]
 %>## Included Use Cases
-<%= (md/node-description-table e :use-case use-cases) %>
-<%
-  )
-
-  (when-let [use-cases (seq (m/referring-nodes model e {:el :includes}))]
-%>## Including Use Cases
 <%= (md/node-description-table e :use-case use-cases) %>
 <%
   )
@@ -507,25 +501,25 @@
 ;; processes
 ;;
 
-  (when-let [inputs (seq (m/referring-nodes model e {:el :input-for}))]
+  (when-let [inputs (seq (m/referring-nodes model e {:el :input-of}))]
 %>## Input Artifacts
 <%= (md/node-description-table e :artifact inputs) %>
 <%
   )
 
-  (when-let [processes (seq (m/referred-nodes model e {:el :input-for}))]
+  (when-let [processes (seq (m/referred-nodes model e {:el :input-of}))]
 %>## Input of
 <%= (md/node-description-table e :process processes) %>
 <%
   )
 
-  (when-let [outputs (seq (m/referring-nodes model e {:el :output-for}))]
+  (when-let [outputs (seq (m/referring-nodes model e {:el :output-of}))]
 %>## Output Artifacts
 <%= (md/node-description-table e :artifact outputs) %>
 <%
   )
 
-  (when-let [processes (seq (m/referred-nodes model e {:el :output-for}))]
+  (when-let [processes (seq (m/referred-nodes model e {:el :output-of}))]
 %>## Output of
 <%= (md/node-description-table e :process processes) %>
 <%
