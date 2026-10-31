@@ -1,5 +1,8 @@
 # Changelog
 
+## Version (0.45.0-SNAPSHOT)
+
+
 ## Version 0.44.0
 * fixed subclasses and superclasses in model API
 * fixed index corruption on duplicate ids and parent overrides
