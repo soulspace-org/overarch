@@ -1,17 +1,15 @@
 ![overarch - Image © 2019 Ludger Solbach](/doc/images/overarch.jpg)
 
 # Overarch
-Overarch provides an ontology and a data driven model of software systems
-and organizations based on e.g. UML and the C4 model.
+Overarch provides an ontology and a knowledge graph for IT architecture on various levels for human and AI consumtion, opening various use cases on the model data. Supports artifact generation (e.g. code, docs and diagrams).
 
-Model your system as data and specify/generate representations (e.g.
-diagrams) for your system. All core and supplementary C4 diagrams except code
-diagrams are supported. Also UML use case, state machine and class diagrams
-are supported.
+Capture architectural knowledge by modeling your enterprise and systems as plain data. Define different views on the resulting knowledge graph to generate artifacts like diagrams and docs.
 
-Overarch is not so much about how to model your architecture (see
-[C4 Model](https://c4model.com) for that), but about making these models
-composable and reusable.
+Query the knowledge graph to answer questions about your architecture, e.g. the impact of a change or a broken service.
+
+Let the AI model and query the knowledge graph to create a shared understanding of your architecture. The discoverable knowledge graph provides the AI with architectural context without the need to read all the code and docs. This keeps the AI context small and token effective.
+
+The Overarch models and the resulting knowledge graphs are designed to be composable and reusable. This allows for flexible architecture management and easier integration with other tools. It also enables better collaboration across teams.
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.soulspace.clj/overarch.svg)](https://clojars.org/org.soulspace.clj/overarch)
 [![cljdoc badge](https://cljdoc.org/badge/org.soulspace.clj/overarch)](https://cljdoc.org/d/org.soulspace.clj/overarch)
