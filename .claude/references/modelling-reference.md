@@ -1,6 +1,6 @@
 # Overarch Modelling Reference
 
-Reference for creating and editing Overarch models and views. For the element types and their keys see [model-query-reference.md](model-query-reference.md). For querying a model see the `architecture-query` skill. Details are in `doc/topics/modelling.md`, `doc/topics/views.md`, `doc/topics/best-practices.md` and `doc/topics/commandline.md`.
+Reference for creating and editing Overarch models and views. For the element types and their keys see [model-query-reference.md](model-query-reference.md). For querying a model see the `architecture-query` skill. Details are in `doc/topics/modelling.md`, `doc/topics/views.md`, `doc/topics/best-practices.md` and `doc/topics/commandline.md` in the [Overarch repository](https://github.com/soulspace-org/overarch).
 
 ## File format
 
@@ -112,12 +112,12 @@ Nodes (`:node`) form the infrastructure hierarchy through `:ct`. Container insta
         :tech "Kubernetes"}}}
 
 {:el :container-instance
-        :id :shop.webshop/api-instance
-        :name "API"
-        :tech "Clojure"}
+ :id :shop.webshop/api-instance
+ :name "API"
+ :tech "Clojure"}
        
 {:el :deployed-to
- :id :shop.webshop/api-deployed-to-k8s
+ :id :shop.webshop/api-instance-deployed-to-k8s
  :from :shop.webshop/api-instance
  :to :shop.deployment/k8s}
 ```
@@ -223,8 +223,8 @@ Run from the repository root with `java -jar tools/overarch.jar`.
 | Task | Command |
 |---|---|
 | Load the model and check for problems | `-m models -s '{:id :x/none}'` or any query. The model warnings are printed first |
-| Generate all diagrams and docs | `-g templates/gencfg.edn`. Output goes to `generated/`, or to the directory given with `-G`. The `-r` flag is deprecated and has no effect |
-| Rebuild on every change | `-g templates/gencfg.edn -w` |
+| Render all views | `-r plantuml`. Output goes to `export/`, or to the directory given with `-R` |
+| Rebuild on every change | `-r plantuml -w` |
 | Export | `-x json` or `-x structurizr` (`-X` for the directory) |
 | Generate artifacts from templates | `-T templates -g templates/gencfg.edn -G generated` |
 | Model location | `-m <dir>`, models directory or path |

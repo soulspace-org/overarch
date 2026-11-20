@@ -1,7 +1,10 @@
 # Changelog
 
 ## Version (0.45.0-SNAPSHOT)
-
+* renamed :value-object to :value, it's more general not just objects
+* fixed parent-check used in :parent? (and deprecated children?) criteria
+* fixed element inclusion rules for some views
+* added agent skills for model based development
 
 ## Version 0.44.0
 * fixed subclasses and superclasses in model API
