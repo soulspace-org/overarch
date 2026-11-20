@@ -69,28 +69,29 @@
     :id :deployment-architecture-view
     :name "Deployment Architecture View"
     :desc "shows the deployment of containers and artifacts to nodes, also shows the interactions."
-    :nodes {:els #{:node :system :container :artifact}}
+    :nodes {:els #{:node :system :container :container-instance :artifact}}
     :relations {:els #{:link :deployed-to :request :response :send :publish :subscribe :dataflow}}
     :hierarchical? true}
    {:el :view-spec
     :id :deployment-structure-view
     :name "Deployment Structure View"
     :desc "shows the structural decomposition of the deployment of nodes, containers and artifacts."
-    :nodes {:els #{:node :container}}
+    :nodes {:els #{:node :container :container-instance :artifact}}
     :relations {:els #{:link :deployed-to}}
     :hierarchical? true}
    {:el :view-spec
     :id :deployment-view
     :name "Deployment View"
     :desc "shows the deployment of containers and artifacts to nodes."
-    :nodes {:els #{:node :container :artifact}}
+    :nodes {:els #{:node :container :container-instance :artifact}}
     :relations {:els #{:link :deployed-to}}
     :hierarchical? true}
    {:el :view-spec
     :id :domain-view
     :name "Domain View"
     :desc "shows the design of a domain."
-    :nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
+    :nodes {:els #{:domain :bounded-context :aggregate :domain-event
+                   :command :policy :entity :value}}
     :relations {:els #{:triggers}}}
    {:el :view-spec
     :id :dynamic-view
@@ -104,7 +105,7 @@
     :name "Glossary View"
     :desc "shows the glossary for a domain."
     :nodes {:els #{:concept :person :system :container
-                   :organization
+                   ; :organization
                    :enterprise-boundary :context-boundary}}
     :relations {:els #{:is-a :has :part-of :rel}}}
    {:el :view-spec
@@ -124,9 +125,15 @@
     :id :process-view
     :name "Process View"
     :desc "shows the process related elements of a domain."
-    :nodes {:els #{:capability :knowledge :information :process
-                   :artifact :requirement :decision}}
-    :relations {:els #{:role-in :required-for :input-of :output-of}}}
+    :nodes {:els #{:artifact :capability :constraint :control 
+                   :decision :goal :information :knowledge
+                   :non-goal :process :regulation :risk
+                   :requirement :stakeholder :test :version}}
+    :relations {:els #{:artifact-of :constraint-for :control-for
+                       :decision-for :goal-for
+                       :input-of :output-of :role-in :required-for
+                       :regulation-for :risk-for
+                       :stakeholder-of :test-for :version-of}}}
    {:el :view-spec
     :id :state-machine-view
     :name "State Machine View"

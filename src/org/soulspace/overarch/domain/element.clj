@@ -77,7 +77,7 @@
 ;;
 (def domain-node-types
   "Node types for domain models."
-  #{:domain :bounded-context :aggregate :entity :value-object :domain-event :policy :command})
+  #{:domain :bounded-context :aggregate :entity :value :domain-event :policy :command})
 
 (def domain-relation-types
   "Relation types for domain models."
