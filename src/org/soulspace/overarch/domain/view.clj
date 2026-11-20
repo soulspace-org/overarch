@@ -24,7 +24,7 @@
     :nodes {:els #{:annotation :class :enum :enum-value
                    :field :function :interface :method
                    :namespace :package :parameter
-                   :protocol :stereotype}}
+                   :protocol :schema :stereotype}}
     :relations {:els #{:aggregation :association :composition
                        :dependency :implementation :inheritance}}
     :hierarchical? true}
