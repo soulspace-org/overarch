@@ -107,7 +107,8 @@
     :nodes {:els #{:concept :person :system :container
                    ; :organization
                    :enterprise-boundary :context-boundary}}
-    :relations {:els #{:is-a :has :part-of :rel}}}
+    :relations {:els #{:is-a :has :part-of :rel}} 
+    :hierarchical? true}
    {:el :view-spec
     :id :model-view
     :name "Model View"
