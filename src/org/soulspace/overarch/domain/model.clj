@@ -538,7 +538,7 @@
   "Returns a predicate that returns true if the check for children of `e` equals the boolean value `v`"
   [model v]
   (fn [e]
-    (= v (empty? (children model e)))))
+    (not= v (empty? (children model e)))))
 
 (defn parent-pred
   "Returns a predicate that returns true if `v` is the parent of `e`"
