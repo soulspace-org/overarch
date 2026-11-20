@@ -42,7 +42,7 @@
 
 (defmethod view/include-content? :process-view
   [model view e]
-  (and (contains? el/concept-view-element-types (:el e))
+  (and (contains? el/process-view-element-types (:el e))
        (el/boundary? e)))
 
 (defmethod view/element-to-render :process-view

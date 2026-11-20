@@ -42,7 +42,7 @@
 
 (defmethod view/include-content? :deployment-architecture-view
   [model view e]
-  (contains? el/deployment-view-element-types (:el e)))
+  (contains? el/deployment-architecture-view-element-types (:el e)))
 
 (defmethod view/element-to-render :deployment-architecture-view
   [model view e]

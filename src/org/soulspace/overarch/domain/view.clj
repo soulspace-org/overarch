@@ -18,14 +18,32 @@
 ;;;
 (def view-specs
   [{:el :view-spec
-    :id :context-view
-    :name "Context View"
-    :desc "shows the system as a black box in its environment, with its users, systems and other external entities."
+    :id :code-view
+    :name "Code View"
+    :desc "shows the code structure of the system, e.g. classes, interfaces, methods, functions, etc."
+    :nodes {:els #{:annotation :class :enum :enum-value
+                   :field :function :interface :method
+                   :namespace :package :parameter
+                   :protocol :stereotype}}
+    :relations {:els #{:aggregation :association :composition
+                       :dependency :implementation :inheritance}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :component-view
+    :name "Component View"
+    :desc "shows the containers as a set of components and interactions."
     :nodes {:els #{:enterprise-boundary :context-boundary
-                   :system :person}}
+                   :system :container :component :person}}
     :relations {:els #{:request :response :publish
                        :subscribe :send :dataflow}}
+    :as-boundary {:els #{:system :container} :external? false}
     :hierarchical? true}
+   {:el :view-spec
+    :id :concept-view
+    :name "Concept View"
+    :desc "shows the concepts of a domain and their relationships."
+    :nodes {:els #{:concept}}
+    :relations {:els #{:is-a :has :part-of :rel}}}
    {:el :view-spec
     :id :container-view
     :name "Container View"
@@ -39,46 +57,13 @@
     :as-boundary {:el :system :external? false}
     :hierarchical? true}
    {:el :view-spec
-    :id :component-view
-    :name "Component View"
-    :desc "shows the containers as a set of components and interactions."
-    :nodes {:els #{:enterprise-boundary :context-boundary
-                   :system :container :component :person}}
-    :relations {:els #{:request :response :publish
-                       :subscribe :send :dataflow}}
-    :as-boundary {:els #{:system :container} :external? false}
-    :hierarchical? true}
-   {:el :view-spec
-    :id :system-structure-view
-    :name "System Structure View"
-    :desc "shows the structrural decomposition of a system."
-    :nodes {:els #{:enterprise-boundary :context-boundary
-                   :system :container :component :person}}
-    :relations {:els #{:request :response :publish
-                       :subscribe :send :dataflow}}
-    :hierarchical? true}
-   {:el :view-spec
-    :id :system-landscape-view
-    :name "System Landscape View"
-    :desc "shows the system landscape with all systems and their interactions."
+    :id :context-view
+    :name "Context View"
+    :desc "shows the system as a black box in its environment, with its users, systems and other external entities."
     :nodes {:els #{:enterprise-boundary :context-boundary
                    :system :person}}
     :relations {:els #{:request :response :publish
                        :subscribe :send :dataflow}}
-    :hierarchical? true}
-   {:el :view-spec
-    :id :dynamic-view
-    :name "Dynamic View"
-    :desc "shows the interactions between elements in a sequence of steps."
-    :nodes {:els #{:enterprise-boundary :context-boundary
-                   :system :container :component :person}}
-    :relations {:els #{:step}}}
-   {:el :view-spec
-    :id :deployment-view
-    :name "Deployment View"
-    :desc "shows the deployment of containers and artifacts to nodes."
-    :nodes {:els #{:node :container :artifact}}
-    :relations {:els #{:link :deployed-to}}
     :hierarchical? true}
    {:el :view-spec
     :id :deployment-architecture-view
@@ -95,38 +80,25 @@
     :relations {:els #{:link :deployed-to}}
     :hierarchical? true}
    {:el :view-spec
-    :id :code-view
-    :name "Code View"
-    :desc "shows the code structure of the system, e.g. classes, interfaces, methods, functions, etc."
-    :nodes {:els #{:annotation :class :enum :enum-value
-                   :field :function :interface :method
-                   :namespace :package :parameter
-                   :protocol :stereotype}}
-    :relations {:els #{:aggregation :association :composition
-                       :dependency :implementation :inheritance}}
+    :id :deployment-view
+    :name "Deployment View"
+    :desc "shows the deployment of containers and artifacts to nodes."
+    :nodes {:els #{:node :container :artifact}}
+    :relations {:els #{:link :deployed-to}}
     :hierarchical? true}
    {:el :view-spec
-    :id :state-machine-view
-    :name "State Machine View"
-    :desc "shows the state machine of a system, container, component or class."
-    :nodes {:els #{:state-machine :start-state :end-state
-                   :state :fork :join :choice
-                   :history-state :deep-history-state}}
-    :relations {:els #{:transition}}
-    :hierarchical? true}
+    :id :domain-view
+    :name "Domain View"
+    :desc "shows the design of a domain."
+    :nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
+    :relations {:els #{:triggers}}}
    {:el :view-spec
-    :id :use-case-view
-    :name "Use Case View"
-    :desc "shows the use cases of a system and their interactions with actors."
-    :nodes {:els #{:use-case :actor :person :system :container
-                   :context-boundary}}
-    :relations {:els #{:uses :include :extends :generalizes}}}
-   {:el :view-spec
-    :id :concept-view
-    :name "Concept View"
-    :desc "shows the concepts of a domain and their relationships."
-    :nodes {:els #{:concept}}
-    :relations {:els #{:is-a :has :part-of :rel}}}
+    :id :dynamic-view
+    :name "Dynamic View"
+    :desc "shows the interactions between elements in a sequence of steps."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :component :person}}
+    :relations {:els #{:step}}}
    {:el :view-spec
     :id :glossary-view
     :name "Glossary View"
@@ -135,6 +107,12 @@
                    :organization
                    :enterprise-boundary :context-boundary}}
     :relations {:els #{:is-a :has :part-of :rel}}}
+   {:el :view-spec
+    :id :model-view
+    :name "Model View"
+    :desc "shows the complete model of a domain."
+    :nodes {:model-node? true}
+    :relations {:model-relation? true}}
    {:el :view-spec
     :id :organization-structure-view
     :name "Organization Structure View"
@@ -150,17 +128,39 @@
                    :artifact :requirement :decision}}
     :relations {:els #{:role-in :required-for :input-of :output-of}}}
    {:el :view-spec
-    :id :domain-view
-    :name "Domain View"
-    :desc "shows the design of a domain."
-    :nodes {:els #{:domain :bounded-context :aggregate :domain-event :command :policy}}
-    :relations {:els #{:triggers}}}
+    :id :state-machine-view
+    :name "State Machine View"
+    :desc "shows the state machine of a system, container, component or class."
+    :nodes {:els #{:state-machine :start-state :end-state
+                   :state :fork :join :choice
+                   :history-state :deep-history-state}}
+    :relations {:els #{:transition}}
+    :hierarchical? true}
    {:el :view-spec
-    :id :model-view
-    :name "Model View"
-    :desc "shows the complete model of a domain."
-    :nodes {:model-node? true}
-    :relations {:model-relation? true}}
+    :id :system-landscape-view
+    :name "System Landscape View"
+    :desc "shows the system landscape with all systems and their interactions."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :system-structure-view
+    :name "System Structure View"
+    :desc "shows the structrural decomposition of a system."
+    :nodes {:els #{:enterprise-boundary :context-boundary
+                   :system :container :component :person}}
+    :relations {:els #{:request :response :publish
+                       :subscribe :send :dataflow}}
+    :hierarchical? true}
+   {:el :view-spec
+    :id :use-case-view
+    :name "Use Case View"
+    :desc "shows the use cases of a system and their interactions with actors."
+    :nodes {:els #{:use-case :actor :person :system :container
+                   :context-boundary}}
+    :relations {:els #{:uses :include :extends :generalizes}}}
    ;
    ])
 

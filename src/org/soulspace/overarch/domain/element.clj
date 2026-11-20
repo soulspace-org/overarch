@@ -350,12 +350,13 @@
   (set/union c4-view-types uml-view-types concept-view-types domain-view-types
              structure-view-types process-view-types model-view-types))
 
+; TODO check if glossary-view should be hierarchical
 (def hierarchical-view-types
   "The set of hierarchical view types."
   #{:context-view :container-view :component-view
-    :deployment-view :deployment-structure-view
+    :deployment-architecture-view :deployment-view :deployment-structure-view
     :system-landscape-view :system-structure-view
-    :state-machine-view :code-view :glossary-view
+    :state-machine-view :code-view  :glossary-view
     :organization-structure-view})
 
 ;;
@@ -395,10 +396,11 @@
 
 (def view-type-order
   "The set of view types as vector."
-  [:concept-view :process-view :use-case-view :context-view :container-view :component-view
-   :system-landscape-view :system-structure-view :dynamic-view
-   :state-machine-view :code-view :deployment-view :deployment-structure-view
-   :organization-structure-view :glossary-view :model-view])
+  [:concept-view :process-view :use-case-view :context-view :container-view
+   :component-view :system-landscape-view :system-structure-view :dynamic-view
+   :state-machine-view :code-view :deployment-structure-view :deployment-view
+   :deployment-architecture-view :organization-structure-view :glossary-view
+   :model-view])
 
 (comment
   (count model-element-types)
